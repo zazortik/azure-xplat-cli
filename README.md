@@ -21,6 +21,11 @@ Check out our new IRC channel on freenode, node-azure.
 	* Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+* Mobile Services
+    * Create and manage Mobile Services
+    * Manage tables, scripts, and configuration
+    * Access logs
+    * Access data
 
 # Library Features
 
