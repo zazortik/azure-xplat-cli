@@ -3,3 +3,4 @@ commands/cli.deployment-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
 linkrevisioncontrol-tests.js
+commands/cli.storage-tests.js
