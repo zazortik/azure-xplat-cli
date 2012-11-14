@@ -143,7 +143,7 @@ suite('cli', function(){
           storageAccountKeys.Primary.should.not.be.null;
           storageAccountKeys.Secondary.should.not.be.null;
 
-          var cmd = ('node cli.js account storage keys renew ' + storageName + ' primary --json').split(' ');
+          var cmd = ('node cli.js account storage keys renew ' + storageName + ' --primary --json').split(' ');
 
           capture(function() {
             cli.parse(cmd);
