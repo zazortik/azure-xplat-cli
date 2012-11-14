@@ -69,7 +69,7 @@ suite('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -133,6 +133,7 @@ suite('cli', function(){
                   capture(function() {
                     cli.parse(cmd);
                   }, function (result) {
+                    console.log(result.text.length);
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
