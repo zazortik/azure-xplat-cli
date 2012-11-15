@@ -4,3 +4,4 @@ commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
 linkrevisioncontrol-tests.js
 commands/cli.storage-tests.js
+commands/cli.mobile-tests.js
