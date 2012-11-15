@@ -209,7 +209,7 @@ suite('azure mobile', function(){
     });
   });  
 
-  test('(add 5 rows of data to table with public insert permission)', function(done) {
+  function instert5Rows(callback) {
     var success = 0;
     var failure = 0;
 
@@ -218,8 +218,7 @@ suite('azure mobile', function(){
         return;
       }
 
-      failure.should.equal(0);
-      done();
+      callback(success, failure);
     }
 
     for (var i = 0; i < 5; i++) {
@@ -245,6 +244,13 @@ suite('azure mobile', function(){
 
       req.end(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }));
     }
+  };
+
+  test('(add 5 rows of data to table with public insert permission)', function(done) {
+    instert5Rows(function (success, failure) {
+      failure.should.equal(0);
+      done();
+    });
   });    
 
   test('table show ' + servicename + ' table1 --json (new rows and columns)', function(done) {
@@ -322,6 +328,106 @@ suite('azure mobile', function(){
           response.columns[columnIndex].name.should.equal(column.name);
           response.columns[columnIndex].indexed.should.equal(column.indexed);
         });
+      done();
+    });
+  });    
+
+  test('script list ' + servicename + ' --json (no scripts by default)', function(done) {
+    var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.should.include({
+        "table": []
+      });
+      done();
+    });
+  });    
+
+  test('script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json (upload one script)', function(done) {
+    var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });    
+
+  test('script list ' + servicename + ' --json (insert script uploaded)', function(done) {
+    var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response.table).should.be.ok;
+      response.table.length.should.equal(1);
+      response.table[0].table.should.equal('table1');
+      response.table[0].operation.should.equal('insert');
+      done();
+    });
+  });      
+
+  test('log ' + servicename + ' --json (no logs by default)', function(done) {
+    var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.should.include({
+        "results": []
+      });
+      done();
+    });
+  });    
+
+  test('(add 5 more rows of data to invoke scripts)', function(done) {
+    instert5Rows(function (success, failure) {
+      failure.should.equal(0);
+      done();
+    });
+  });      
+
+  test('log ' + servicename + ' --json (10 log entries added)', function(done) {
+    var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response.results).should.be.ok;
+      response.results.length.should.equal(10);
+      done();
+    });
+  });    
+
+  test('log ' + servicename + ' --type error --json (5 error log entries added)', function(done) {
+    var cmd = ('node cli.js mobile log ' + servicename + ' --type error --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response.results).should.be.ok;
+      response.results.length.should.equal(5);
+      done();
+    });
+  });    
+
+  test('log ' + servicename + ' --top 3 --json (list 3 top log entries)', function(done) {
+    var cmd = ('node cli.js mobile log ' + servicename + ' --top 3 --json').split(' ');
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response.results).should.be.ok;
+      response.results.length.should.equal(3);
       done();
     });
   });    
