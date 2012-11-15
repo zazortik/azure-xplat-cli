@@ -26,7 +26,7 @@ suite('azure mobile', function(){
   var servicename = 'clitest' + uuid();
 
   after(function (done) {
-    //make best effort to remove the service in case of a test failure
+    // make best effort to remove the service in case of a test failure
     var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
     capture(function() {
       cli.parse(cmd);
