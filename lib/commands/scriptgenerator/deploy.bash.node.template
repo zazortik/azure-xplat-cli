@@ -12,7 +12,7 @@ exitWithMessageOnError "Kudu Sync failed"
 # 2. Install npm packages
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
-  npm install --production
+  npm install --production --silent
   exitWithMessageOnError "npm failed"
   cd -
 fi
