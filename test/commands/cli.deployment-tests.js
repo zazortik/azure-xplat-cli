@@ -133,7 +133,6 @@ suite('cli', function(){
                   capture(function() {
                     cli.parse(cmd);
                   }, function (result) {
-                    console.log(result.text.length);
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
