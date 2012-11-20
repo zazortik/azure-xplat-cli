@@ -59,6 +59,7 @@ Lists all your storage accounts
 Creates a new storage account
 
 **--location** - Location for the storage account 
+
 **--affinitygroup** - Affinity group for the storage account
 
 **Note:** Either location or affinity group is required.
