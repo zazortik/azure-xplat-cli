@@ -1,7 +1,7 @@
 {
   "name": "azure-cli",
   "author": "Microsoft Corporation",
-  "contributors": ["Glenn Block <gblock@microsoft.com>", "Mark Cowlishaw <markcowl@microsoft.com>", "Louis Dejardin <loudej@microsoft.com>", "Yavor Georgiev <yavorg@microsoft.com>", "Tomasz Janczuk <tjanczuk@microsoft.com>", "Andre Rodrigues <andrerod@microsoft.com>", "Chris Tavares <ctavares@microsoft.com>"],
+  "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
   "version": "0.6.8",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags" : ["azure", "cli"],
