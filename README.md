@@ -1,4 +1,4 @@
-# Windows Azure CLI tool
+# Windows Azure CLI tool for Mac and Linux
 
 This project provide a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
