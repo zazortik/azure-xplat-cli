@@ -1,4 +1,4 @@
-# Windows Azure SDK for Node.js
+# Windows Azure CLI tool
 
 This project provide a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
