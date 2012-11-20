@@ -38,7 +38,7 @@ The azure cli has several top level commands which correlate to different featur
 
 Below is a list of some of the more common commands and explanations on how to use them. 
 
-## azure account - Managing Azure credentials
+## azure account - Managing Azure accounts
 
 In order to use the CLI, you must first import credentials.
 
@@ -47,6 +47,33 @@ Download your credentials from Windows Azure. Logs you in to the Azure portal an
 
     azure account import [file]
 Imports previously downloaded credentials
+
+### azure account storage - Manage Azure Storage accounts
+
+You can create and manage store accounts for leveraging blobs, tables and queues within your applications.
+
+    azure account storage list
+Lists all your storage accounts
+
+    azure account storage create [name]
+Creates a new storage account
+
+**--location** - Location for the storage account 
+**--affinitygroup** - Affinity group for the storage account
+
+**Note:** Either location or affinity group is required.
+
+    azure account storage update [name]
+Updates a storage account label, description, etc.
+
+    azure account storage delete [name]
+Removes the storage account
+
+    azure account storage keys list [name]
+Lists out storage account keys for the specified account
+
+    azure account storage keys renew [name]
+Renews storage account keys for the specified account
 
 ## azure site - Managing Windows Azure Websites
 
