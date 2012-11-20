@@ -1,6 +1,16 @@
+2012.11.20 - Version 0.6.8
+* Initial release of stand alone CLI.
+* New commands for managing storage accounts
+* Support for new .publishsettings file format
+* Several bug fixes for github repos.
+
+========== CLI Split =========
+
 2012.10.15 Version 0.6.7
  * Adding connection strings support for storage and service bus
  * Fixing issue with EMULATED and explicit variables making the later more relevant
+ * Adding Github support
+ * Adding website application settings support
 
 2012.10.12 Version 0.6.6
  * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
@@ -41,3 +51,4 @@
 
 2011.12.09 Version 0.5.0
  * Initial Release
+
