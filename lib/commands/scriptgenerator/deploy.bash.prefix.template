@@ -43,7 +43,7 @@ fi
 if [[ ! -n "$KUDU_SYNC_COMMAND" ]]; then
   # Install kudu sync
   echo Installing Kudu Sync
-  npm install https://github.com/projectkudu/KuduSync/tarball/ignore_files -g --silent
+  npm install https://github.com/projectkudu/KuduSync/tarball/master -g --silent
   exitWithMessageOnError "npm failed"
 
   KUDU_SYNC_COMMAND="kuduSync"
