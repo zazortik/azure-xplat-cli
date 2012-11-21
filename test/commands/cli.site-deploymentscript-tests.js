@@ -58,26 +58,34 @@ suite('cli', function () {
             removePath(testDir);
         });
 
-        test('generate basic deployment script (--basic -y -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --basic -y -r ' + testDir).split(' ');
+        test('generate basic deployment script (--basic -r)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --basic -r ' + testDir).split(' ');
 
             runBasicSiteDeploymentScriptScenario(cmd, done);
         });
 
-        test('generate php deployment script (--php -y -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --php -y -r ' + testDir).split(' ');
+        test('generate php deployment script (--php -r)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --php -r ' + testDir).split(' ');
 
             runBasicSiteDeploymentScriptScenario(cmd, done);
         });
 
-        test('generate python deployment script (--python -y -r)', function (done) {
+        test('generate python deployment script (--python -r)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --python -r ' + testDir).split(' ');
+
+            runBasicSiteDeploymentScriptScenario(cmd, done);
+        });
+
+        test('generate python deployment script twice with -y (--python -y -r)', function (done) {
             var cmd = ('node cli.js site deploymentscript --python -y -r ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, done);
+            runBasicSiteDeploymentScriptScenario(cmd, function () {
+                runBasicSiteDeploymentScriptScenario(cmd, done);
+            });
         });
 
-        test('generate basic aspWebSite deployment script (--aspWebSite -y -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --aspWebSite -y -r ' + testDir).split(' ');
+        test('generate basic aspWebSite deployment script (--aspWebSite -r)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --aspWebSite -r ' + testDir).split(' ');
 
             runBasicSiteDeploymentScriptScenario(cmd, done);
         });
@@ -108,7 +116,7 @@ suite('cli', function () {
 
         test('--aspWAP requires project file path argument', function (done) {
             var cmd = ('node cli.js site deploymentscript -r ' + testDir + ' --aspWAP').split(' ');
-            i = 0;
+
             runErrorScenario(cmd, 'argument missing', done);
         });
 
@@ -116,6 +124,12 @@ suite('cli', function () {
             var cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
 
             runErrorScenario(cmd, 'Missing server.js/app.js file', done);
+        });
+
+        test('generate node deployment script (--node -r)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
+
+            runNodeSiteDeploymentScriptScenario(cmd, done);
         });
     });
 });
@@ -128,18 +142,16 @@ function runBasicSiteDeploymentScriptScenario(cmd, callback) {
         'deploy.cmd',
         callback);
 }
-var i = 0;
-function runErrorScenario(cmd, errorText, callback) {
-    runCommand(cmd, function (result, e) {
-        if (e) {
-            callback(e);
-            return;
-        }
 
-        result.exitStatus.should.equal(1, 'Received success status exit code');
-        result.errorText.should.include(errorText);
-        callback();
-    });
+function runNodeSiteDeploymentScriptScenario(cmd, callback) {
+    generateServerJsFile();
+
+    runSiteDeploymentScriptScenario(
+        cmd,
+        ['Generating deployment script for node', 'Generated deployment script (deploy.cmd and .deployment)'],
+        ['echo Handling node.js deployment.'],
+        'deploy.cmd',
+        callback);
 }
 
 function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, scriptFileName, callback) {
@@ -151,18 +163,31 @@ function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, sc
 
         result.exitStatus.should.equal(0, 'Received an error status exit code');
 
-        for (var i; i < outputContains.length; i++) {
+        for (var i = 0; i < outputContains.length; i++) {
             result.text.should.include(outputContains[i]);
         }
 
         var deployCmdContent = getFileContent(scriptFileName);
-        for (var i; i < scriptContains.length; i++) {
+        for (var i = 0; i < scriptContains.length; i++) {
             deployCmdContent.should.include(scriptContains[i]);
         }
 
         var deploymentFileContent = getFileContent('.deployment');
         deploymentFileContent.should.include(scriptFileName);
 
+        callback();
+    });
+}
+
+function runErrorScenario(cmd, errorText, callback) {
+    runCommand(cmd, function (result, e) {
+        if (e) {
+            callback(e);
+            return;
+        }
+
+        result.exitStatus.should.equal(1, 'Received success status exit code');
+        result.errorText.should.include(errorText);
         callback();
     });
 }
@@ -185,6 +210,10 @@ function runCommand(cmd, callback) {
             callback(result, e);
         }
     });
+}
+
+function generateServerJsFile() {
+    fs.writeFileSync(pathUtil.join(testDir, 'server.js'), '//do nothing', 'utf8');
 }
 
 function getFileContent(path) {
