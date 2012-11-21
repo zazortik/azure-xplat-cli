@@ -2,7 +2,7 @@
 # Deployment
 # ----------
 
-echo Handling Basic Web Site deployment.
+echo Handling node.js deployment.
 
 # 1. KuduSync
 echo Kudu Sync from "$DEPLOYMENT_SOURCE" to "$DEPLOYMENT_TARGET"

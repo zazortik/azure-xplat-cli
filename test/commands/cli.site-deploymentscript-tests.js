@@ -120,6 +120,35 @@ suite('cli', function () {
             runNodeSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
         });
 
+        test('generate batch aspWebSite with solution file deployment script (--aspWebSite -s solutionFile.sln -r)', function (done) {
+            var solutionFile = 'solutionFile.sln';
+            var solutionFilePath = pathUtil.join(testDir, solutionFile);
+
+            var cmd = ('node cli.js site deploymentscript --aspWebSite -s ' + solutionFilePath + ' -r ' + testDir).split(' ');
+
+            runAspWebSiteDeploymentScriptScenario(cmd, done, solutionFile);
+        });
+
+        test('generate batch aspWAP deployment script (--aspWAP projectFile.csproj -r)', function (done) {
+            var projectFile = 'projectFile.csproj';
+            var projectFilePath = pathUtil.join(testDir, projectFile);
+
+            var cmd = ('node cli.js site deploymentscript --aspWAP ' + projectFilePath + ' -r ' + testDir).split(' ');
+
+            runAspWAPDeploymentScriptScenario(cmd, done, projectFile);
+        });
+
+        test('generate batch aspWAP with solution file deployment script (--aspWAP projectFile.csproj -s solutionFile.sln -r)', function (done) {
+            var projectFile = 'projectFile.csproj';
+            var projectFilePath = pathUtil.join(testDir, projectFile);
+            var solutionFile = 'solutionFile.sln';
+            var solutionFilePath = pathUtil.join(testDir, solutionFile);
+
+            var cmd = ('node cli.js site deploymentscript --aspWAP ' + projectFilePath + ' -s ' + solutionFilePath + ' -r ' + testDir).split(' ');
+
+            runAspWAPDeploymentScriptScenario(cmd, done, projectFile, solutionFile);
+        });
+
         test('using exclusion flags together should fail (--aspWebSite --python ...)', function (done) {
             var cmd = ('node cli.js site deploymentscript --aspWebSite --python -r ' + testDir).split(' ');
 
@@ -155,8 +184,37 @@ suite('cli', function () {
 
             runErrorScenario(cmd, 'Missing server.js/app.js file', done);
         });
+
+        test('--scriptType only accepts batch or bash (--scriptType sh)', function (done) {
+            var cmd = ('node cli.js site deploymentscript --php --scriptType sh -r ' + testDir).split(' ');
+
+            runErrorScenario(cmd, 'Script type should be either batch or bash', done);
+        });
     });
 });
+
+function runAspWebSiteDeploymentScriptScenario(cmd, callback, solutionFile) {
+    var scriptFileName = 'deploy.cmd';
+
+    runSiteDeploymentScriptScenario(
+        cmd,
+        ['Generating deployment script for .NET Web Site', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['echo Handling .NET Web Site deployment.', solutionFile, 'MSBUILD_PATH'],
+        scriptFileName,
+        callback);
+}
+
+function runAspWAPDeploymentScriptScenario(cmd, callback, projectFile, solutionFile) {
+    var scriptFileName = 'deploy.cmd';
+    solutionFile = solutionFile || '';
+
+    runSiteDeploymentScriptScenario(
+        cmd,
+        ['Generating deployment script for .NET Web Application', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['echo Handling .NET Web Application deployment.', projectFile, 'MSBUILD_PATH', solutionFile],
+        scriptFileName,
+        callback);
+}
 
 function runBasicSiteDeploymentScriptScenario(cmd, callback, bash) {
     var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
