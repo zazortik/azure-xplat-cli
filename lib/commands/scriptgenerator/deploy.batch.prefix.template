@@ -40,7 +40,7 @@ IF NOT DEFINED NEXT_MANIFEST_PATH (
 IF NOT DEFINED KUDU_SYNC_COMMAND (
   :: Install kudu sync
   echo Installing Kudu Sync
-  call npm install https://github.com/projectkudu/KuduSync/tarball/fix_recursive_bug -g --silent
+  call npm install https://github.com/projectkudu/KuduSync/tarball/ignore_files -g --silent
 
   :: Locally just running "kuduSync" would also work
   SET KUDU_SYNC_COMMAND=node "%appdata%\npm\node_modules\kuduSync\bin\kuduSync"
