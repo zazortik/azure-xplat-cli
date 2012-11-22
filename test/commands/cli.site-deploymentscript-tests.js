@@ -229,7 +229,9 @@ function runBasicSiteDeploymentScriptScenario(cmd, callback, bash) {
 }
 
 function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
-    generateServerJsFile();
+    var nodeStartUpFile = 'server.js';
+
+    generateNodeStartJsFile(nodeStartUpFile);
 
     var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
     var scriptExtraInclue = bash ? '#!/bin/bash' : '@echo off';
@@ -239,7 +241,22 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
         ['Generating deployment script for node', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
         ['echo Handling node.js deployment.', scriptExtraInclue],
         scriptFileName,
-        callback);
+        function (err) {
+            if (err) {
+                callback(err);
+                return;
+            }
+
+            try {
+                var webConfigContent = getFileContent('web.config');
+                webConfigContent.should.include(nodeStartUpFile);
+                webConfigContent.should.not.include('{NodeStartFile}');
+                callback();
+            }
+            catch (e) {
+                callback(e);
+            }
+        });
 }
 
 function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, scriptFileName, callback) {
@@ -300,8 +317,8 @@ function runCommand(cmd, callback) {
     });
 }
 
-function generateServerJsFile() {
-    fs.writeFileSync(pathUtil.join(testDir, 'server.js'), '//do nothing', 'utf8');
+function generateNodeStartJsFile(startFile) {
+    fs.writeFileSync(pathUtil.join(testDir, startFile), '//do nothing', 'utf8');
 }
 
 function getFileContent(path) {
