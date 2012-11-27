@@ -53,6 +53,6 @@ if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
   DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
 else
   # In case we are running on kudu service this is the correct location of kuduSync
-  KUDU_SYNC_COMMAND="node \"$APPDATA/npm/node_modules/kuduSync/bin/kuduSync\""
+  KUDU_SYNC_COMMAND="$APPDATA\\npm\\node_modules\\kuduSync\\bin\\kuduSync"
 fi
 

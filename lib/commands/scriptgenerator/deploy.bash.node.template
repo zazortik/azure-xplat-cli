@@ -14,7 +14,7 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   npm install --production --silent
   exitWithMessageOnError "npm failed"
-  cd -
+  cd - > /dev/null
 fi
 
 ##################################################################################################################################
