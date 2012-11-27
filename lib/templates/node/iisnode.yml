@@ -9,9 +9,6 @@ node_env: production
 # Other settings with their default values follow.
 # For documentation see https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml
 
-# Use node version 0.8.2 instead of the default 0.6.20
-# nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\0.8.2\node.exe"
-
 # nodeProcessCountPerApplication: 1
 # maxConcurrentRequestsPerProcess: 1024
 # maxNamedPipeConnectionRetry: 24
