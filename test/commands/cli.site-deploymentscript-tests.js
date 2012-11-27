@@ -251,6 +251,10 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
                 var webConfigContent = getFileContent('web.config');
                 webConfigContent.should.include(nodeStartUpFile);
                 webConfigContent.should.not.include('{NodeStartFile}');
+
+                var iisNodeYmlContent = getFileContent('iisnode.yml');
+                iisNodeYmlContent.should.include('node_env: production');
+
                 callback();
             }
             catch (e) {
