@@ -143,8 +143,8 @@ suite('cli', function () {
             runAspWAPDeploymentScriptScenario(cmd, done, projectFile);
         });
 
-        test('generate batch aspWAP with solution file deployment script (--aspWAP projectFile.csproj -s solutionFile.sln -r)', function (done) {
-            var projectFile = 'projectFile.csproj';
+        test('generate batch aspWAP with solution file deployment script (--aspWAP site\\projectFile.csproj -s solutionFile.sln -r)', function (done) {
+            var projectFile = 'site\\projectFile.csproj';
             var projectFilePath = pathUtil.join(testDir, projectFile);
             var solutionFile = 'solutionFile.sln';
             var solutionFilePath = pathUtil.join(testDir, solutionFile);
