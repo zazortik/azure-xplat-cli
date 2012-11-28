@@ -18,6 +18,8 @@ var should = require('should');
 var cli = require('../cli');
 var capture = require('../util').capture;
 
+var format = require('util').format;
+
 var fs = require('fs');
 var pathUtil = require('path');
 if (!fs.existsSync) {
@@ -46,6 +48,7 @@ suite('cli', function () {
                     delete command.suppressPrompt;
                     delete command.scriptType;
                     delete command.solutionFile;
+                    delete command.sitePath;
                 }
             }
 
@@ -120,11 +123,13 @@ suite('cli', function () {
             runNodeSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
         });
 
-        test('generate batch aspWebSite with solution file deployment script (--aspWebSite -s solutionFile.sln -r)', function (done) {
+        test('generate batch aspWebSite with solution file deployment script (--aspWebSite -s solutionFile.sln -p site -r)', function (done) {
             var solutionFile = 'solutionFile.sln';
             var solutionFilePath = pathUtil.join(testDir, solutionFile);
+            var siteDir = 'site';
+            var siteDirPath = pathUtil.join(testDir, siteDir);
 
-            var cmd = ('node cli.js site deploymentscript --aspWebSite -s ' + solutionFilePath + ' -r ' + testDir).split(' ');
+            var cmd = format('node cli.js site deploymentscript --aspWebSite -s %s -p %s -r %s', solutionFilePath, siteDirPath, testDir).split(' ');
 
             runAspWebSiteDeploymentScriptScenario(cmd, done, solutionFile);
         });
@@ -133,7 +138,7 @@ suite('cli', function () {
             var projectFile = 'projectFile.csproj';
             var projectFilePath = pathUtil.join(testDir, projectFile);
 
-            var cmd = ('node cli.js site deploymentscript --aspWAP ' + projectFilePath + ' -r ' + testDir).split(' ');
+            var cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
 
             runAspWAPDeploymentScriptScenario(cmd, done, projectFile);
         });
@@ -144,9 +149,36 @@ suite('cli', function () {
             var solutionFile = 'solutionFile.sln';
             var solutionFilePath = pathUtil.join(testDir, solutionFile);
 
-            var cmd = ('node cli.js site deploymentscript --aspWAP ' + projectFilePath + ' -s ' + solutionFilePath + ' -r ' + testDir).split(' ');
+            var cmd = format('node cli.js site deploymentscript --aspWAP %s -s %s -r %s', projectFilePath, solutionFilePath, testDir).split(' ');
 
             runAspWAPDeploymentScriptScenario(cmd, done, projectFile, solutionFile);
+        });
+
+        test('generate batch basic site deployment script with sitePath (--basic -p site -r)', function (done) {
+            var siteDir = 'site';
+            var siteDirPath = pathUtil.join(testDir, siteDir);
+
+            var cmd = format('node cli.js site deploymentscript --basic -p %s -r %s', siteDirPath, testDir).split(' ');
+
+            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '%\\site');
+        });
+
+        test('generate batch php site deployment script with sitePath fullpath (--php -p site\\site2 -r)', function (done) {
+            var siteDir = 'site\\site2';
+            var siteDirPath = pathUtil.resolve(pathUtil.join(testDir, siteDir));
+
+            var cmd = format('node cli.js site deploymentscript --php -p %s -r %s', siteDirPath, testDir).split(' ');
+
+            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '%\\site\\site2');
+        });
+
+        test('generate bash python site deployment script with sitePath (--python -t bash --sitePath site -r)', function (done) {
+            var siteDir = 'site';
+            var siteDirPath = pathUtil.join(testDir, siteDir);
+
+            var cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+
+            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true, '$DEPLOYMENT_SOURCE\\site');
         });
 
         test('using exclusion flags together should fail (--aspWebSite --python ...)', function (done) {
@@ -216,14 +248,16 @@ function runAspWAPDeploymentScriptScenario(cmd, callback, projectFile, solutionF
         callback);
 }
 
-function runBasicSiteDeploymentScriptScenario(cmd, callback, bash) {
+function runBasicSiteDeploymentScriptScenario(cmd, callback, bash, expectedSitePath) {
     var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
     var scriptExtraInclue = bash ? '#!/bin/bash' : '@echo off';
+
+    expectedSitePath = expectedSitePath || '';
 
     runSiteDeploymentScriptScenario(
         cmd,
         ['Generating deployment script for Web Site', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
-        ['echo Handling Basic Web Site deployment.', scriptExtraInclue],
+        ['echo Handling Basic Web Site deployment.', scriptExtraInclue, expectedSitePath],
         scriptFileName,
         callback);
 }
@@ -280,6 +314,8 @@ function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, sc
         for (var i = 0; i < scriptContains.length; i++) {
             deployCmdContent.should.include(scriptContains[i]);
         }
+        deployCmdContent.should.not.include('{MSBuildArguments}');
+        deployCmdContent.should.not.include('{SitePath}');
 
         var deploymentFileContent = getFileContent('.deployment');
         deploymentFileContent.should.include(scriptFileName);
