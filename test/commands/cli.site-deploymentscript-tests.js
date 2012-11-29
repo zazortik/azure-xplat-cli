@@ -49,6 +49,7 @@ suite('cli', function () {
                     delete command.scriptType;
                     delete command.solutionFile;
                     delete command.sitePath;
+                    delete command.dotDeployment;
                 }
             }
 
@@ -181,6 +182,12 @@ suite('cli', function () {
             runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true, '$DEPLOYMENT_SOURCE\\site');
         });
 
+        test('generate batch php site deployment script without .deployment file (--php --no-dot-deployment -r)', function (done) {
+            var cmd = format('node cli.js site deploymentscript --php --no-dot-deployment -r %s', testDir).split(' ');
+
+            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '', /*noDotDeployment*/true);
+        });
+
         test('using exclusion flags together should fail (--aspWebSite --python ...)', function (done) {
             var cmd = ('node cli.js site deploymentscript --aspWebSite --python -r ' + testDir).split(' ');
 
@@ -230,9 +237,10 @@ function runAspWebSiteDeploymentScriptScenario(cmd, callback, solutionFile) {
 
     runSiteDeploymentScriptScenario(
         cmd,
-        ['Generating deployment script for .NET Web Site', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['Generating deployment script for .NET Web Site', 'Generated deployment script'],
         ['echo Handling .NET Web Site deployment.', solutionFile, 'MSBUILD_PATH'],
         scriptFileName,
+        /*noDotDeployment*/false,
         callback);
 }
 
@@ -242,13 +250,14 @@ function runAspWAPDeploymentScriptScenario(cmd, callback, projectFile, solutionF
 
     runSiteDeploymentScriptScenario(
         cmd,
-        ['Generating deployment script for .NET Web Application', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['Generating deployment script for .NET Web Application', 'Generated deployment script'],
         ['echo Handling .NET Web Application deployment.', projectFile, 'MSBUILD_PATH', solutionFile],
         scriptFileName,
+        /*noDotDeployment*/false,
         callback);
 }
 
-function runBasicSiteDeploymentScriptScenario(cmd, callback, bash, expectedSitePath) {
+function runBasicSiteDeploymentScriptScenario(cmd, callback, bash, expectedSitePath, noDotDeployment) {
     var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
     var scriptExtraInclue = bash ? '#!/bin/bash' : '@echo off';
 
@@ -256,9 +265,10 @@ function runBasicSiteDeploymentScriptScenario(cmd, callback, bash, expectedSiteP
 
     runSiteDeploymentScriptScenario(
         cmd,
-        ['Generating deployment script for Web Site', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['Generating deployment script for Web Site', 'Generated deployment script'],
         ['echo Handling Basic Web Site deployment.', scriptExtraInclue, expectedSitePath],
         scriptFileName,
+        noDotDeployment,
         callback);
 }
 
@@ -272,9 +282,10 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
 
     runSiteDeploymentScriptScenario(
         cmd,
-        ['Generating deployment script for node', 'Generated deployment script (' + scriptFileName + ' and .deployment)'],
+        ['Generating deployment script for node', 'Generated deployment script'],
         ['echo Handling node.js deployment.', scriptExtraInclue],
         scriptFileName,
+        /*noDotDeployment*/false,
         function (err) {
             if (err) {
                 callback(err);
@@ -297,7 +308,7 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
         });
 }
 
-function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, scriptFileName, callback) {
+function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, scriptFileName, noDotDeployment, callback) {
     runCommand(cmd, function (result, e) {
         if (e) {
             callback(e);
@@ -317,8 +328,14 @@ function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, sc
         deployCmdContent.should.not.include('{MSBuildArguments}');
         deployCmdContent.should.not.include('{SitePath}');
 
-        var deploymentFileContent = getFileContent('.deployment');
-        deploymentFileContent.should.include(scriptFileName);
+        if (noDotDeployment) {
+            var dotDeploymentFilePath = pathUtil.join(testDir, '.deployment');
+            fs.existsSync(dotDeploymentFilePath).should.equal(false, "File exist: " + dotDeploymentFilePath);
+        }
+        else {
+            var deploymentFileContent = getFileContent('.deployment');
+            deploymentFileContent.should.include(scriptFileName);
+        }
 
         callback();
     });
