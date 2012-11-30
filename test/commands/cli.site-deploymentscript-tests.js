@@ -30,6 +30,7 @@ var baseTestTempDir = "__temp";
 var testDirBase = "test";
 var testDirIndex = 0;
 var testDir = "";
+var testSettings;
 
 suite('cli', function () {
     suite('site deploymentscript', function () {
@@ -56,6 +57,9 @@ suite('cli', function () {
             testDirIndex++;
             testDir = pathUtil.join(baseTestTempDir, testDirBase + testDirIndex);
             ensurePathExists(testDir);
+
+            testSettings = {};
+            testSettings.bash = false;
         });
 
         teardown(function () {
@@ -63,65 +67,69 @@ suite('cli', function () {
         });
 
         test('generate batch basic deployment script (--basic -t batch -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --basic -t batch -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --basic -t batch -r ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate bash basic deployment script (--basic -t bash -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --basic -t bash -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --basic -t bash -r ' + testDir).split(' ');
+            testSettings.bash = true;
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch php deployment script (--php -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --php -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --php -r ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, done);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate bash php deployment script (--php -t bash -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --php -t bash -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --php -t bash -r ' + testDir).split(' ');
+            testSettings.bash = true;
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch python deployment script (--python -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --python -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --python -r ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, done);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch python deployment script twice with -y (--python -y -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --python -y -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --python -y -r ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, function () {
-                runBasicSiteDeploymentScriptScenario(cmd, done);
+            runBasicSiteDeploymentScriptScenario(testSettings, function () {
+                runBasicSiteDeploymentScriptScenario(testSettings, done);
             });
         });
 
         test('generate bash python deployment script (--python --scriptType bash -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --python --scriptType bash -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --python --scriptType bash -r ' + testDir).split(' ');
+            testSettings.bash = true;
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch basic aspWebSite deployment script (--aspWebSite --repositoryRoot)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --aspWebSite --repositoryRoot ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --aspWebSite --repositoryRoot ' + testDir).split(' ');
 
-            runBasicSiteDeploymentScriptScenario(cmd, done);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate node deployment script (--node -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
 
-            runNodeSiteDeploymentScriptScenario(cmd, done);
+            runNodeSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate bash node deployment script (--node -t bash -r)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --node -t bash -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --node -t bash -r ' + testDir).split(' ');
+            testSettings.bash = true;
 
-            runNodeSiteDeploymentScriptScenario(cmd, done, /*bash*/true);
+            runNodeSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch aspWebSite with solution file deployment script (--aspWebSite -s solutionFile.sln -p site -r)', function (done) {
@@ -130,18 +138,20 @@ suite('cli', function () {
             var siteDir = 'site';
             var siteDirPath = pathUtil.join(testDir, siteDir);
 
-            var cmd = format('node cli.js site deploymentscript --aspWebSite -s %s -p %s -r %s', solutionFilePath, siteDirPath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --aspWebSite -s %s -p %s -r %s', solutionFilePath, siteDirPath, testDir).split(' ');
+            testSettings.solutionFile = solutionFile;
 
-            runAspWebSiteDeploymentScriptScenario(cmd, done, solutionFile);
+            runAspWebSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch aspWAP deployment script (--aspWAP projectFile.csproj -r)', function (done) {
             var projectFile = 'projectFile.csproj';
             var projectFilePath = pathUtil.join(testDir, projectFile);
 
-            var cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
+            testSettings.projectFile = projectFile;
 
-            runAspWAPDeploymentScriptScenario(cmd, done, projectFile);
+            runAspWAPDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch aspWAP with solution file deployment script (--aspWAP site\\projectFile.csproj -s solutionFile.sln -r)', function (done) {
@@ -150,143 +160,139 @@ suite('cli', function () {
             var solutionFile = 'solutionFile.sln';
             var solutionFilePath = pathUtil.join(testDir, solutionFile);
 
-            var cmd = format('node cli.js site deploymentscript --aspWAP %s -s %s -r %s', projectFilePath, solutionFilePath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -s %s -r %s', projectFilePath, solutionFilePath, testDir).split(' ');
+            testSettings.solutionFile = solutionFile;
+            testSettings.projectFile = projectFile;
 
-            runAspWAPDeploymentScriptScenario(cmd, done, projectFile, solutionFile);
+            runAspWAPDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch basic site deployment script with sitePath (--basic -p site -r)', function (done) {
             var siteDir = 'site';
             var siteDirPath = pathUtil.join(testDir, siteDir);
 
-            var cmd = format('node cli.js site deploymentscript --basic -p %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --basic -p %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.siteDir = '%\\site';
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '%\\site');
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch php site deployment script with sitePath fullpath (--php -p site\\site2 -r)', function (done) {
             var siteDir = 'site\\site2';
             var siteDirPath = pathUtil.resolve(pathUtil.join(testDir, siteDir));
 
-            var cmd = format('node cli.js site deploymentscript --php -p %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --php -p %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.siteDir = '%\\site\\site2';
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '%\\site\\site2');
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate bash python site deployment script with sitePath (--python -t bash --sitePath site -r)', function (done) {
             var siteDir = 'site';
             var siteDirPath = pathUtil.join(testDir, siteDir);
 
-            var cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.bash = true;
+            testSettings.siteDir = '$DEPLOYMENT_SOURCE\\site';
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/true, '$DEPLOYMENT_SOURCE\\site');
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('generate batch php site deployment script without .deployment file (--php --no-dot-deployment -r)', function (done) {
-            var cmd = format('node cli.js site deploymentscript --php --no-dot-deployment -r %s', testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --php --no-dot-deployment -r %s', testDir).split(' ');
+            testSettings.noDotDeployment = true;
 
-            runBasicSiteDeploymentScriptScenario(cmd, done, /*bash*/false, '', /*noDotDeployment*/true);
+            runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
         test('using exclusion flags together should fail (--aspWebSite --python ...)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --aspWebSite --python -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --aspWebSite --python -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'specify only one of these flags';
 
-            runErrorScenario(cmd, 'specify only one of these flags', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('using exclusion flags together should fail (--node --php ...)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --node --php -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --node --php -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'specify only one of these flags';
 
-            runErrorScenario(cmd, 'specify only one of these flags', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('using exclusion flags together should fail (--aspWAP . --basic ...)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --aspWAP . --basic -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --aspWAP . --basic -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'specify only one of these flags';
 
-            runErrorScenario(cmd, 'specify only one of these flags', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('using exclusion flags together should fail (--basic --php ...)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --basic --php -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --basic --php -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'specify only one of these flags';
 
-            runErrorScenario(cmd, 'specify only one of these flags', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('--aspWAP requires project file path argument', function (done) {
-            var cmd = ('node cli.js site deploymentscript -r ' + testDir + ' --aspWAP').split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript -r ' + testDir + ' --aspWAP').split(' ');
+            testSettings.errorMessage = 'argument missing';
 
-            runErrorScenario(cmd, 'argument missing', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('--node requires directory to contain server.js file (--node)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'Missing server.js/app.js file';
 
-            runErrorScenario(cmd, 'Missing server.js/app.js file', done);
+            runErrorScenario(testSettings, done);
         });
 
         test('--scriptType only accepts batch or bash (--scriptType sh)', function (done) {
-            var cmd = ('node cli.js site deploymentscript --php --scriptType sh -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --php --scriptType sh -r ' + testDir).split(' ');
+            testSettings.errorMessage = 'Script type should be either batch or bash';
 
-            runErrorScenario(cmd, 'Script type should be either batch or bash', done);
+            runErrorScenario(testSettings, done);
         });
     });
 });
 
-function runAspWebSiteDeploymentScriptScenario(cmd, callback, solutionFile) {
-    var scriptFileName = 'deploy.cmd';
+function runAspWebSiteDeploymentScriptScenario(settings, callback) {
+    settings.scriptFileName = 'deploy.cmd';
+    settings.outputContains = ['Generating deployment script for .NET Web Site', 'Generated deployment script'];
+    settings.scriptContains = ['echo Handling .NET Web Site deployment.', settings.solutionFile, 'MSBUILD_PATH'];
 
-    runSiteDeploymentScriptScenario(
-        cmd,
-        ['Generating deployment script for .NET Web Site', 'Generated deployment script'],
-        ['echo Handling .NET Web Site deployment.', solutionFile, 'MSBUILD_PATH'],
-        scriptFileName,
-        /*noDotDeployment*/false,
-        callback);
+    runSiteDeploymentScriptScenario(settings, callback);
 }
 
-function runAspWAPDeploymentScriptScenario(cmd, callback, projectFile, solutionFile) {
-    var scriptFileName = 'deploy.cmd';
-    solutionFile = solutionFile || '';
+function runAspWAPDeploymentScriptScenario(settings, callback) {
+    settings.scriptFileName = 'deploy.cmd';
+    settings.solutionFile = settings.solutionFile || '';
+    settings.outputContains = ['Generating deployment script for .NET Web Application', 'Generated deployment script'];
+    settings.scriptContains = ['echo Handling .NET Web Application deployment.', settings.projectFile, 'MSBUILD_PATH', settings.solutionFile];
 
-    runSiteDeploymentScriptScenario(
-        cmd,
-        ['Generating deployment script for .NET Web Application', 'Generated deployment script'],
-        ['echo Handling .NET Web Application deployment.', projectFile, 'MSBUILD_PATH', solutionFile],
-        scriptFileName,
-        /*noDotDeployment*/false,
-        callback);
+    runSiteDeploymentScriptScenario(settings, callback);
 }
 
-function runBasicSiteDeploymentScriptScenario(cmd, callback, bash, expectedSitePath, noDotDeployment) {
-    var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
-    var scriptExtraInclue = bash ? '#!/bin/bash' : '@echo off';
+function runBasicSiteDeploymentScriptScenario(settings, callback) {
+    settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
+    settings.scriptExtraInclue = settings.bash ? '#!/bin/bash' : '@echo off';
+    settings.expectedSitePath = settings.expectedSitePath || '';
+    settings.outputContains = ['Generating deployment script for Web Site', 'Generated deployment script'];
+    settings.scriptContains = ['echo Handling Basic Web Site deployment.', settings.scriptExtraInclue, settings.expectedSitePath];
 
-    expectedSitePath = expectedSitePath || '';
-
-    runSiteDeploymentScriptScenario(
-        cmd,
-        ['Generating deployment script for Web Site', 'Generated deployment script'],
-        ['echo Handling Basic Web Site deployment.', scriptExtraInclue, expectedSitePath],
-        scriptFileName,
-        noDotDeployment,
-        callback);
+    runSiteDeploymentScriptScenario(settings, callback);
 }
 
-function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
-    var nodeStartUpFile = 'server.js';
+function runNodeSiteDeploymentScriptScenario(settings, callback) {
+    settings.nodeStartUpFile = settings.nodeStartUpFile || 'server.js';
+    settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
+    settings.scriptExtraInclue = settings.bash ? '#!/bin/bash' : '@echo off';
+    settings.outputContains = ['Generating deployment script for node', 'Generated deployment script'];
+    settings.scriptContains = ['echo Handling node.js deployment.', settings.scriptExtraInclue];
 
-    generateNodeStartJsFile(nodeStartUpFile);
+    generateNodeStartJsFile(settings.nodeStartUpFile);
 
-    var scriptFileName = bash ? 'deploy.sh' : 'deploy.cmd';
-    var scriptExtraInclue = bash ? '#!/bin/bash' : '@echo off';
-
-    runSiteDeploymentScriptScenario(
-        cmd,
-        ['Generating deployment script for node', 'Generated deployment script'],
-        ['echo Handling node.js deployment.', scriptExtraInclue],
-        scriptFileName,
-        /*noDotDeployment*/false,
-        function (err) {
+    runSiteDeploymentScriptScenario(settings, function (err) {
             if (err) {
                 callback(err);
                 return;
@@ -294,7 +300,7 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
 
             try {
                 var webConfigContent = getFileContent('web.config');
-                webConfigContent.should.include(nodeStartUpFile);
+                webConfigContent.should.include(settings.nodeStartUpFile);
                 webConfigContent.should.not.include('{NodeStartFile}');
 
                 var iisNodeYmlContent = getFileContent('iisnode.yml');
@@ -308,8 +314,8 @@ function runNodeSiteDeploymentScriptScenario(cmd, callback, bash) {
         });
 }
 
-function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, scriptFileName, noDotDeployment, callback) {
-    runCommand(cmd, function (result, e) {
+function runSiteDeploymentScriptScenario(settings, callback) {
+    runCommand(settings.cmd, function (result, e) {
         if (e) {
             callback(e);
             return;
@@ -317,39 +323,39 @@ function runSiteDeploymentScriptScenario(cmd, outputContains, scriptContains, sc
 
         result.exitStatus.should.equal(0, 'Received an error status exit code');
 
-        for (var i = 0; i < outputContains.length; i++) {
-            result.text.should.include(outputContains[i]);
+        for (var i = 0; i < settings.outputContains.length; i++) {
+            result.text.should.include(settings.outputContains[i]);
         }
 
-        var deployCmdContent = getFileContent(scriptFileName);
-        for (var i = 0; i < scriptContains.length; i++) {
-            deployCmdContent.should.include(scriptContains[i]);
+        var deployCmdContent = getFileContent(settings.scriptFileName);
+        for (var i = 0; i < settings.scriptContains.length; i++) {
+            deployCmdContent.should.include(settings.scriptContains[i]);
         }
         deployCmdContent.should.not.include('{MSBuildArguments}');
         deployCmdContent.should.not.include('{SitePath}');
 
-        if (noDotDeployment) {
+        if (settings.noDotDeployment) {
             var dotDeploymentFilePath = pathUtil.join(testDir, '.deployment');
             fs.existsSync(dotDeploymentFilePath).should.equal(false, "File exist: " + dotDeploymentFilePath);
         }
         else {
             var deploymentFileContent = getFileContent('.deployment');
-            deploymentFileContent.should.include(scriptFileName);
+            deploymentFileContent.should.include(settings.scriptFileName);
         }
 
         callback();
     });
 }
 
-function runErrorScenario(cmd, errorText, callback) {
-    runCommand(cmd, function (result, e) {
+function runErrorScenario(settings, callback) {
+    runCommand(settings.cmd, function (result, e) {
         if (e) {
             callback(e);
             return;
         }
 
         result.exitStatus.should.equal(1, 'Received success status exit code');
-        result.errorText.should.include(errorText);
+        result.errorText.should.include(settings.errorMessage);
         callback();
     });
 }
