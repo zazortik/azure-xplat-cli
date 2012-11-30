@@ -205,6 +205,14 @@ suite('cli', function () {
             runBasicSiteDeploymentScriptScenario(testSettings, done);
         });
 
+        test('generate bash node site deployment script without .deployment file (--node -t bash --no-dot-deployment -r)', function (done) {
+            testSettings.cmd = format('node cli.js site deploymentscript --node -t bash --no-dot-deployment -r %s', testDir).split(' ');
+            testSettings.bash = true;
+            testSettings.noDotDeployment = true;
+
+            runNodeSiteDeploymentScriptScenario(testSettings, done);
+        });
+
         test('using exclusion flags together should fail (--aspWebSite --python ...)', function (done) {
             testSettings.cmd = ('node cli.js site deploymentscript --aspWebSite --python -r ' + testDir).split(' ');
             testSettings.errorMessage = 'specify only one of these flags';
