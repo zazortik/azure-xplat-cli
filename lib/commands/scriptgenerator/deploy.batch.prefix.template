@@ -17,7 +17,7 @@ IF %ERRORLEVEL% NEQ 0 (
 :: Setup
 :: -----
 
-setlocal
+setlocal enabledelayedexpansion
 
 SET ARTIFACTS=%~dp0%artifacts
 

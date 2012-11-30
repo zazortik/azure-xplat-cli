@@ -14,7 +14,7 @@ IF %ERRORLEVEL% NEQ 0 goto error
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd %DEPLOYMENT_TARGET%
   call npm install --production --silent
-  IF %ERRORLEVEL% NEQ 0 goto error
+  IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 
