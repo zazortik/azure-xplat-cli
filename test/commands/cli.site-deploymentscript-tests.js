@@ -274,9 +274,10 @@ function runAspWebSiteDeploymentScriptScenario(settings, callback) {
 
 function runAspWAPDeploymentScriptScenario(settings, callback) {
     settings.scriptFileName = 'deploy.cmd';
-    settings.solutionFile = settings.solutionFile || '';
+    var solutionRelated = settings.solutionFile != null ? 'SolutionDir' : '';
+
     settings.outputContains = ['Generating deployment script for .NET Web Application', 'Generated deployment script'];
-    settings.scriptContains = ['echo Handling .NET Web Application deployment.', settings.projectFile, 'MSBUILD_PATH', settings.solutionFile];
+    settings.scriptContains = ['echo Handling .NET Web Application deployment.', settings.projectFile, 'MSBUILD_PATH', solutionRelated];
 
     runSiteDeploymentScriptScenario(settings, callback);
 }
