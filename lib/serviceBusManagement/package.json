@@ -1,0 +1,4 @@
+{
+  "name" : "serviceBusManagment",
+  "main" : "./index.js"
+}
