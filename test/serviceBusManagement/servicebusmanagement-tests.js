@@ -35,7 +35,8 @@ describe('Service Bus Management', function () {
     var pem = account.managementCertificate();
     var auth = { keyvalue: pem.key, certvalue: pem.cert };
     var endpoint = url.parse(account.managementEndpointUrl());
-    service = new ServiceBusManagement(subscriptionId, auth,
+    service = new ServiceBusManagement.ServiceBusManagementService(
+      subscriptionId, auth,
       { host: endpoint.hostname,
         port: endpoint.port,
         serializetype: 'XML'});
