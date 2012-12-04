@@ -32,7 +32,7 @@ function capture(action, cb) {
   };
 
   process.stderr.write = function (data, encoding, fd) {
-      result.errorText += data;
+    result.errorText += data;
   };
 
   process.exit = function(status) {
@@ -54,6 +54,8 @@ function capture(action, cb) {
     process.stderr.write = processStderrWrite;
     process.exit = processExit;
 
-    cb(result);
+    if (!result.exitStatus) {
+        cb(result);
+    }
   }
 }

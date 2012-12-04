@@ -324,48 +324,48 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
 }
 
 function runSiteDeploymentScriptScenario(callback, settings) {
-    runCommand(function (result, e) {
-        if (e) {
+    runCommand(function (result) {
+        try {
+            result.exitStatus.should.equal(0, 'Received an error status exit code');
+
+            for (var i = 0; i < settings.outputContains.length; i++) {
+                result.text.should.include(settings.outputContains[i]);
+            }
+
+            var deployCmdContent = getFileContent(settings.scriptFileName);
+            for (var i = 0; i < settings.scriptContains.length; i++) {
+                deployCmdContent.should.include(settings.scriptContains[i]);
+            }
+            deployCmdContent.should.not.include('{MSBuildArguments}');
+            deployCmdContent.should.not.include('{SitePath}');
+
+            if (settings.noDotDeployment) {
+                var dotDeploymentFilePath = pathUtil.join(testDir, '.deployment');
+                fs.existsSync(dotDeploymentFilePath).should.equal(false, "File exist: " + dotDeploymentFilePath);
+            }
+            else {
+                var deploymentFileContent = getFileContent('.deployment');
+                deploymentFileContent.should.include(settings.scriptFileName);
+            }
+
+            callback();
+        }
+        catch (e) {
             callback(e);
-            return;
         }
-
-        result.exitStatus.should.equal(0, 'Received an error status exit code');
-
-        for (var i = 0; i < settings.outputContains.length; i++) {
-            result.text.should.include(settings.outputContains[i]);
-        }
-
-        var deployCmdContent = getFileContent(settings.scriptFileName);
-        for (var i = 0; i < settings.scriptContains.length; i++) {
-            deployCmdContent.should.include(settings.scriptContains[i]);
-        }
-        deployCmdContent.should.not.include('{MSBuildArguments}');
-        deployCmdContent.should.not.include('{SitePath}');
-
-        if (settings.noDotDeployment) {
-            var dotDeploymentFilePath = pathUtil.join(testDir, '.deployment');
-            fs.existsSync(dotDeploymentFilePath).should.equal(false, "File exist: " + dotDeploymentFilePath);
-        }
-        else {
-            var deploymentFileContent = getFileContent('.deployment');
-            deploymentFileContent.should.include(settings.scriptFileName);
-        }
-
-        callback();
     }, settings.cmd);
 }
 
 function runErrorScenario(callback, settings) {
-    runCommand(function (result, e) {
-        if (e) {
-            callback(e);
-            return;
+    runCommand(function (result) {
+        try {
+            result.exitStatus.should.equal(1, 'Received success status exit code');
+            result.errorText.should.include(settings.errorMessage);
+            callback();
         }
-
-        result.exitStatus.should.equal(1, 'Received success status exit code');
-        result.errorText.should.include(settings.errorMessage);
-        callback();
+        catch (e) {
+            callback(e);
+        }
     }, settings.cmd);
 }
 
@@ -373,19 +373,9 @@ function runCommand(callback, cmd) {
     capture(function () {
         cli.parse(cmd);
     }, function (result) {
-        if (result.error) {
-            // To avoid calling done twice
-            return;
-        }
-
-        try {
-            console.log('\n' + result.text);
-            console.log(result.errorText);
-            callback(result);
-        }
-        catch (e) {
-            callback(result, e);
-        }
+        console.log('\n' + result.text);
+        console.log(result.errorText);
+        callback(result);
     });
 }
 
