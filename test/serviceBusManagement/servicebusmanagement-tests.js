@@ -86,4 +86,63 @@ describe('Service Bus Management', function () {
     });
   });
 
+  describe('verify namespace', function () {
+    it('should throw an error if namespace is malformed', function (done) {
+      service.verifyNamespace("%$!@%^!", function (err, result) {
+        should.exist(err);
+        err.message.should.include('must start with a letter');
+        done();
+      });
+    });
+
+    it('should return availability if namespace is properly formed', function (done) {
+      service.verifyNamespace('cctsandbox', function (err, result) {
+        should.not.exist(err);
+        should.exist(result);
+        result.should.be.false;
+        done();
+      });
+    });
+  });
+
+  describe('Namespace validation', function () {
+    var namespaceNameIsValid = ServiceBusManagement.namespaceNameIsValid;
+
+    it('should pass on valid name', function() {
+      (function() { namespaceNameIsValid('aValidNamespace'); })
+        .should.not.throw();
+    });
+
+    it('should fail if name is too short', function () {
+      (function() { namespaceNameIsValid("a"); })  
+        .should.throw(/6 to 50/);
+    });
+
+    it('should fail if name is too long', function () {
+      (function () { namespaceNameIsValid('sbm12345678901234567890123456789012345678901234567890'); })
+        .should.throw(/6 to 50/);
+    });
+
+    it("should fail if name doesn't start with a letter", function () {
+      (function () { namespaceNameIsValid('!notALetter'); })
+        .should.throw(/start with a letter/);
+    });
+
+    it('should fail if ends with illegal ending', function () {
+      (function () { namespaceNameIsValid('namespace-'); } )
+        .should.throw(/may not end with/);
+
+      (function () { namespaceNameIsValid('namespace-sb'); })
+        .should.throw(/may not end with/);
+
+      (function () { namespaceNameIsValid('namespace-mgmt'); })
+        .should.throw(/may not end with/);
+
+      (function () { namespaceNameIsValid('namespace-cache'); })
+        .should.throw(/may not end with/);
+
+      (function () { namespaceNameIsValid('namespace-appfabric'); })
+        .should.throw(/may not end with/);
+    });
+  });
 });
