@@ -676,7 +676,7 @@ suite('azure mobile', function(){
       cli.parse(cmd);
     }, function (result) {
       result.exitStatus.should.equal(1);
-      result.stderrText.should.include('The table \'table1\' was not found');
+      result.errorText.should.include('The table \'table1\' was not found');
       checkScopes(scopes);
       done();
     });
@@ -720,7 +720,7 @@ suite('azure mobile', function(){
       cli.parse(cmd);
     }, function (result) {
       result.exitStatus.should.equal(1);
-      result.stderrText.should.include('The application name was not found');
+      result.errorText.should.include('The application name was not found');
       checkScopes(scopes);
       done();
     });

@@ -1,0 +1,9 @@
+
+goto end
+
+:error
+echo An error has occured during web site deployment.
+exit /b 1
+
+:end
+echo Finished successfully.
