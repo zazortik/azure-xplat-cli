@@ -1,3 +1,0 @@
-*               text=auto
-deploy.bash.*   text eol=lf
-deploy.batch.*  text eol=crlf
