@@ -460,8 +460,8 @@ suite('azure mobile', function(){
     });
   });    
 
-  test('table data ' + servicename + ' table1 --json (show 5 rows of data)', function(done) {
-    var cmd = ('node cli.js mobile table data ' + servicename + ' table1 --json').split(' ');
+  test('data read ' + servicename + ' table1 --json (show 5 rows of data)', function(done) {
+    var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
     capture(function() {
       cli.parse(cmd);
@@ -475,8 +475,8 @@ suite('azure mobile', function(){
     });
   });    
 
-  test('table data ' + servicename + ' table1 --top 1 --json (show top 1 row of data)', function(done) {
-    var cmd = ('node cli.js mobile table data ' + servicename + ' table1 --top 1 --json').split(' ');
+  test('data read ' + servicename + ' table1 --top 1 --json (show top 1 row of data)', function(done) {
+    var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --top 1 --json').split(' ');
     var scopes = setupNock(cmd);
     capture(function() {
       cli.parse(cmd);
