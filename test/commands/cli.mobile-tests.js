@@ -46,8 +46,8 @@
 
 */
 
-var nockedSubscriptionId = 'b0517e1d-2b30-4be3-9b82-f407c57b91df';
-var nockedServiceName = 'clitest325b9ef2-7970-4f06-87ad-81a2779d96ed';
+var nockedSubscriptionId = '342d6bc9-21b7-427d-a31c-04956f221bd1';
+var nockedServiceName = 'clitest1955cc10-6b6c-435b-be3b-39f2719c1b08';
 
 var nockhelper = require('./nock-helper.js');
 var https = require('https');
@@ -243,13 +243,18 @@ suite('azure mobile', function(){
     }, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
+      if (response.service && response.service.applicationSystemKey) {
+        response.service.applicationSystemKey = '';
+      }
+
       response.should.include({
         "apns": {
           "mode": "none"
         },
         "live": {},
         "service": {
-          "dynamicSchemaEnabled": true
+          "dynamicSchemaEnabled": true,
+          "applicationSystemKey": ""
         },
         "auth": []
       });
@@ -383,7 +388,7 @@ suite('azure mobile', function(){
     });
   });  
 
-  function instert5Rows(callback) {
+  function insert5Rows(callback) {
     var success = 0;
     var failure = 0;
 
@@ -407,8 +412,10 @@ suite('azure mobile', function(){
       };
 
       var req = https.request(options, function (res) {
-        res.statusCode >= 400 ? failure++ : success++;
-        tryFinish();
+        res.on('end', function () {
+          res.statusCode >= 400 ? failure++ : success++;
+          tryFinish();  
+        });
       });
 
       req.on('error', function () {
@@ -422,7 +429,7 @@ suite('azure mobile', function(){
 
   test('(add 5 rows of data to table with public insert permission)', function(done) {
     var scopes = setupNock([]);
-    instert5Rows(function (success, failure) {
+    insert5Rows(function (success, failure) {
       failure.should.equal(0);
       checkScopes(scopes);
       done();
@@ -582,7 +589,7 @@ suite('azure mobile', function(){
 
   test('(add 5 more rows of data to invoke scripts)', function(done) {
     var scopes = setupNock([]);
-    instert5Rows(function (success, failure) {
+    insert5Rows(function (success, failure) {
       failure.should.equal(0);
       checkScopes(scopes);
       done();
