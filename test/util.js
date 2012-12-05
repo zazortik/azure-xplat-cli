@@ -20,26 +20,19 @@ exports = module.exports = {
 function capture(action, cb) {
   var result = {
     text: '',
-    errorText: '',
   }
 
   var processStdoutWrite = process.stdout.write
-  var processStderrWrite = process.stderr.write
   var processExit = process.exit
 
   process.stdout.write = function(data, encoding, fd) {
     result.text += data;
   };
 
-  process.stderr.write = function (data, encoding, fd) {
-    result.errorText += data;
-  };
-
   process.exit = function(status) {
     result.exitStatus = status;
 
     process.stdout.write = processStdoutWrite;
-    process.stderr.write = processStderrWrite;
     process.exit = processExit;
 
     return cb(result);
@@ -51,11 +44,8 @@ function capture(action, cb) {
     result.error = err;
 
     process.stdout.write = processStdoutWrite;
-    process.stderr.write = processStderrWrite;
     process.exit = processExit;
 
-    if (!result.exitStatus) {
-        cb(result);
-    }
+    cb(result);
   }
 }
