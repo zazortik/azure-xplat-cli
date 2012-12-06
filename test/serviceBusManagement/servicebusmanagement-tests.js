@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+var js2xml = require('../../lib/util/js2xml');
+var uuid = require('node-uuid');
 var url = require('url');
 
 var util = require('util');
@@ -27,7 +29,7 @@ var account = cli.category('account');
 var ServiceBusManagement = require('../../lib/serviceBusManagement');
 
 describe('Service Bus Management', function () {
-
+  var namespacesToClean = [];
   var service;
 
   before(function () {
@@ -42,10 +44,14 @@ describe('Service Bus Management', function () {
         serializetype: 'XML'});
   });
 
+  function newName() {
+    return 'xplatcli-' + uuid.v4();
+  }
+
 // TODO: Figure out how to manage service bus services better so that
 // we can switch accounts to ones in the appropriate state
   describe('List Namespaces', function () {
-    describe('No defined namespaces', function () {
+    describe.skip('No defined namespaces', function () {
       it('should return empty list of namespaces', function (done) {
         service.listNamespaces(function (err, namespaces) {
           should.exist(namespaces);
@@ -58,15 +64,66 @@ describe('Service Bus Management', function () {
 
 // TODO: Figure out how to manage service bus services better so that
 // we can switch accounts to ones in the appropriate state
-  describe.skip('Show namespace', function () {
+  describe('Show namespace', function () {
     describe('namespace name exists', function () {
       it('should return the namespace definition', function (done) {
-        service.getNamespace('cctsandbox', function (err, namespace) {
-          should.not.exist(err);
-          should.exist(namespace);
-          namespace.Name.should.equal('cctsandbox');
-          done(err);
-        });
+        var name = newName();
+        var region = 'West US';
+        service.createNamespace(name, region, function (err, result) {
+          if(err) { return done(err); }
+
+          service.getNamespace(name, function (err, namespace) {
+            should.not.exist(err);
+            should.exist(namespace);
+            namespace.Name.should.equal(name);
+            namespace.Region.should.equal(region);
+            done(err);
+          });
+        });     
+      });
+    });
+  });
+
+  describe('create namespace', function () {
+
+    it('should fail if name is invalid', function (done) {
+      service.createNamespace('!notValid$', "West US", function (err, result) {
+        should.exist(err);
+        err.message.should.match(/must start with a letter/);
+        done();
+      });
+    });
+
+    it('should succeed if namespace does not exist', function (done) {
+      var name = newName();
+      var region = 'West US';
+      service.createNamespace(name, region, function (err, result) {
+        should.not.exist(err);
+        result.Name.should.equal(name);
+        result.Region.should.equal(region);
+        done(err);
+      });
+    });
+  });
+
+  describe('create namespace', function () {
+
+    it('should fail if name is invalid', function (done) {
+      service.createNamespace('!notValid$', "West US", function (err, result) {
+        should.exist(err);
+        err.message.should.match(/must start with a letter/);
+        done();
+      });
+    });
+
+    it('should succeed if namespace does not exist', function (done) {
+      var name = newName();
+      var region = 'South Central US';
+      service.createNamespace(name, region, function (err, result) {
+        should.not.exist(err);
+        result.Name.should.equal(name);
+        result.Region.should.equal(region);
+        done(err);
       });
     });
   });
