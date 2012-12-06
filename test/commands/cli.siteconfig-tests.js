@@ -45,6 +45,10 @@ suite('cli', function(){
       capture(function() {
         cli.parse(cmd);
       }, function (result) {
+        if (result.text == '') {
+          return done();
+        }
+        
         var siteList = JSON.parse(result.text);
         var filteredSites = siteNames.filter(function (site) {
           return siteList.some(function (s) {
