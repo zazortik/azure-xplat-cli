@@ -108,7 +108,7 @@ describe('Service Bus Management', function () {
 
   describe('create namespace', function () {
 
-    it.skip('should fail if name is invalid', function (done) {
+    it('should fail if name is invalid', function (done) {
       service.createNamespace('!notValid$', "West US", function (err, result) {
         should.exist(err);
         err.message.should.match(/must start with a letter/);
@@ -117,15 +117,18 @@ describe('Service Bus Management', function () {
     });
 
     it('should succeed if namespace does not exist', function (done) {
-      service.createNamespace('xplatclitestns', 'West US', function (err, result) {
+      var name = newName();
+      var region = 'South Central US';
+      service.createNamespace(name, region, function (err, result) {
         should.not.exist(err);
-        result.Name.should.equal('xplatclitestns');
+        result.Name.should.equal(name);
+        result.Region.should.equal(region);
         done(err);
       });
     });
   });
 
-  describe.skip('Get regions', function() {
+  describe('Get regions', function() {
     it('should return array of available regions', function (done) {
       service.getRegions(function (err, result) {
         should.exist(result);
@@ -140,7 +143,7 @@ describe('Service Bus Management', function () {
     });
   });
 
-  describe.skip('verify namespace', function () {
+  describe('verify namespace', function () {
     it('should throw an error if namespace is malformed', function (done) {
       service.verifyNamespace("%$!@%^!", function (err, result) {
         should.exist(err);
