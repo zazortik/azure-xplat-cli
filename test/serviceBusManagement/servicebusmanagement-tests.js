@@ -96,7 +96,7 @@ describe('Service Bus Management', function () {
 
     it('should succeed if namespace does not exist', function (done) {
       var name = newName();
-      var region = 'West US';
+      var region = 'South Central US';
       service.createNamespace(name, region, function (err, result) {
         should.not.exist(err);
         result.Name.should.equal(name);
@@ -106,24 +106,25 @@ describe('Service Bus Management', function () {
     });
   });
 
-  describe('create namespace', function () {
-
+  describe('delete namespace', function () {
     it('should fail if name is invalid', function (done) {
-      service.createNamespace('!notValid$', "West US", function (err, result) {
+      service.deleteNamespace('!NotValid$', function (err, result) {
         should.exist(err);
         err.message.should.match(/must start with a letter/);
         done();
       });
     });
 
-    it('should succeed if namespace does not exist', function (done) {
+    it('should succeed if namespace exists and is activated', function (done) {
       var name = newName();
-      var region = 'South Central US';
-      service.createNamespace(name, region, function (err, result) {
-        should.not.exist(err);
-        result.Name.should.equal(name);
-        result.Region.should.equal(region);
-        done(err);
+      var region = 'West US';
+      service.createNamespace(name, region, function (err, callback) {
+        if (err) { return done(err); }
+        waitForNamespaceToActivate(service, name, function (err) {
+          if (err) { return done(err); };
+
+          service.deleteNamespace(name, done);
+        });
       });
     });
   });
@@ -203,3 +204,21 @@ describe('Service Bus Management', function () {
     });
   });
 });
+
+function waitForNamespaceToActivate(service, namespaceName, callback) {
+  function poll() {
+    console.log('.');
+    service.getNamespace(namespaceName, function (err, ns) {
+      if (err) { 
+        callback(err); 
+      } else if (ns.Status === 'Activating') {
+        setTimeout(poll, 2000);
+      } else {
+        // Give Azure time to settle down - can't delete immediately after activating
+        // without getting a 500 error.
+        setTimeout(callback, 5000);
+      }
+    });
+  }
+  poll();
+}
