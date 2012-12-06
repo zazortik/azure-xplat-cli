@@ -72,6 +72,16 @@ suite('cli', function () {
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
 
+        test('generate batch basic deployment script with package.json file (--basic --sitePath site -r) should generate deploy.cmd', function (done) {
+            var siteDir = 'site';
+            ensurePathExists(pathUtil.join(testDir, siteDir));
+            testSettings.cmd = format('node cli.js site deploymentscript --basic --sitePath %s -r %s', pathUtil.join(testDir, siteDir), testDir).split(' ');
+            testSettings.siteDir = siteDir;
+            testSettings.scriptContains = ['npm', testSettings. siteDir];
+
+            runBasicSiteDeploymentScriptScenario(done, testSettings);
+        });
+
         test('generate bash basic deployment script (--basic -t bash -r) should generate deploy.sh', function (done) {
             testSettings.cmd = ('node cli.js site deploymentscript --basic -t bash -r ' + testDir).split(' ');
             testSettings.bash = true;
@@ -125,6 +135,15 @@ suite('cli', function () {
             runNodeSiteDeploymentScriptScenario(done, testSettings);
         });
 
+        test('generate node deployment script (--node -p site -r) should generate deploy.cmd', function (done) {
+            var siteDir = 'site';
+            ensurePathExists(pathUtil.join(testDir, siteDir));
+            testSettings.cmd = format('node cli.js site deploymentscript --node -p %s -r %s', pathUtil.join(testDir, siteDir), testDir).split(' ');
+            testSettings.siteDir = siteDir;
+
+            runNodeSiteDeploymentScriptScenario(done, testSettings);
+        });
+
         test('generate bash node deployment script (--node -t bash -r) should generate deploy.sh', function (done) {
             testSettings.cmd = ('node cli.js site deploymentscript --node -t bash -r ' + testDir).split(' ');
             testSettings.bash = true;
@@ -140,6 +159,7 @@ suite('cli', function () {
 
             testSettings.cmd = format('node cli.js site deploymentscript --aspWebSite -s %s -p %s -r %s', solutionFilePath, siteDirPath, testDir).split(' ');
             testSettings.solutionFile = solutionFile;
+            testSettings.siteDir = siteDir;
 
             runAspWebSiteDeploymentScriptScenario(done, testSettings);
         });
@@ -167,12 +187,12 @@ suite('cli', function () {
             runAspWAPDeploymentScriptScenario(done, testSettings);
         });
 
-        test('generate batch basic site deployment script with sitePath (--basic -p site -r) should generate deploy.cmd', function (done) {
-            var siteDir = 'site';
+        test('generate batch basic site deployment script with sitePath (--basic -p "site\\" -r) should generate deploy.cmd', function (done) {
+            var siteDir = 'site\\';
             var siteDirPath = pathUtil.join(testDir, siteDir);
 
             testSettings.cmd = format('node cli.js site deploymentscript --basic -p %s -r %s', siteDirPath, testDir).split(' ');
-            testSettings.siteDir = '%\\site';
+            testSettings.siteDir = '%\\site" ';
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
@@ -285,9 +305,9 @@ function runAspWAPDeploymentScriptScenario(callback, settings) {
 function runBasicSiteDeploymentScriptScenario(callback, settings) {
     settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
     settings.scriptExtraInclude = settings.bash ? '#!/bin/bash' : '@echo off';
-    settings.expectedSitePath = settings.expectedSitePath || '';
-    settings.outputContains = ['Generating deployment script for Web Site', 'Generated deployment script'];
-    settings.scriptContains = ['echo Handling Basic Web Site deployment.', settings.scriptExtraInclude, settings.expectedSitePath];
+    settings.siteDir = settings.siteDir || '';
+    settings.outputContains = settings.outputContains || ['Generating deployment script for Web Site', 'Generated deployment script'];
+    settings.scriptContains = settings.scriptContains || ['echo Handling Basic Web Site deployment.', settings.scriptExtraInclude, settings.siteDir];
 
     runSiteDeploymentScriptScenario(callback, settings);
 }
@@ -299,7 +319,7 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
     settings.outputContains = ['Generating deployment script for node', 'Generated deployment script'];
     settings.scriptContains = ['echo Handling node.js deployment.', settings.scriptExtraInclude];
 
-    generateNodeStartJsFile(settings.nodeStartUpFile);
+    generateNodeStartJsFile(pathUtil.join(settings.siteDir, settings.nodeStartUpFile));
 
     runSiteDeploymentScriptScenario(function (err) {
             if (err) {
@@ -308,11 +328,11 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
             }
 
             try {
-                var webConfigContent = getFileContent('web.config');
+                var webConfigContent = getFileContent(pathUtil.join(settings.siteDir, 'web.config'));
                 webConfigContent.should.include(settings.nodeStartUpFile);
                 webConfigContent.should.not.include('{NodeStartFile}');
 
-                var iisNodeYmlContent = getFileContent('iisnode.yml');
+                var iisNodeYmlContent = getFileContent(pathUtil.join(settings.siteDir, 'iisnode.yml'));
                 iisNodeYmlContent.should.include('node_env: production');
 
                 callback();
