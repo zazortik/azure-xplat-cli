@@ -69,7 +69,7 @@ suite('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -133,13 +133,15 @@ suite('cli', function(){
                   capture(function() {
                     cli.parse(cmd);
                   }, function (result) {
-                    siteList = JSON.parse(result.text);
+                    if (result.text != '') {
+                      siteList = JSON.parse(result.text);
 
-                    siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase()
-                    });
+                      siteExists = siteList.some(function (site) {
+                        return site.Name.toLowerCase() === siteName.toLowerCase()
+                      });
 
-                    siteExists.should.not.be.ok;
+                      siteExists.should.not.be.ok;
+                    }
 
                     done();
                   });

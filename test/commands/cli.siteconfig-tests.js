@@ -45,6 +45,10 @@ suite('cli', function(){
       capture(function() {
         cli.parse(cmd);
       }, function (result) {
+        if (result.text == '') {
+          return done();
+        }
+        
         var siteList = JSON.parse(result.text);
         var filteredSites = siteNames.filter(function (site) {
           return siteList.some(function (s) {
@@ -61,7 +65,7 @@ suite('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -126,7 +130,7 @@ suite('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);

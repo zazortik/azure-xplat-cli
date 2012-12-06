@@ -34,7 +34,8 @@
     "mocha": "*",
     "jshint": "*",
     "sinon": "*",
-    "should": "*"
+    "should": "*",
+    "nock": "0.13.5"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
   "repository": {

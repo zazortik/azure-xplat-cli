@@ -49,7 +49,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -65,7 +65,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -92,7 +92,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -126,7 +126,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);

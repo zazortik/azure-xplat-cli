@@ -16,6 +16,11 @@ With Windows Azure Websites you can deploy node.js applications to the cloud in 
 	* Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+* Mobile Services
+    * Create and manage Mobile Services
+    * Manage tables, scripts, and configuration
+    * Access logs
+    * Access data
 
 # Getting Started
 ## Download Source Code

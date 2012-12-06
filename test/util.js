@@ -20,7 +20,7 @@ exports = module.exports = {
 function capture(action, cb) {
   var result = {
     text: '',
-    errorText: '',
+    errorText: ''
   }
 
   var processStdoutWrite = process.stdout.write
