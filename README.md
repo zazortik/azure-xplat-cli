@@ -226,6 +226,37 @@ If you would like to become an active contributor to this project please follow 
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
 
+## Running tests
+
+The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account. 
+
+Before running tests, you must take a one-time action to configure the CLI with the Windows Azure subscription by running
+
+```
+azure account download
+azure account import
+```
+
+Next, provide the following parameters by setting environment variables:
+
+- `AZURE_STORAGE_ACCOUNT` - your Windows Azure Storage Account name
+- `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
+- `AZURE_SERVICEBUS_NAMESPACE` - your Windows Azure Service Bus Namespace
+- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
+- `AZURE_GITHUB_USERNAME` - GitHub account username
+- `AZURE_GITHUB_PASSWORD` - GitHub account password
+- `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
+
+To run the tests, call
+
+```
+npm test
+```
+
+from the root of your clone of the repository. Most tests execute against live Windows Azure management APIs, and running them takes considerable time. 
+
+Note: by default, the tests targeting the Windows Azure Mobile Services run against a mocked Windows Azure HTTP endpoints. In order to execute these tests against live Windows Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests. 
+
 # Learn More
 For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
 
