@@ -3,6 +3,7 @@
 * New commands for managing Service Bus namespaces
 * New command for generating deployment scripts
 * New command for creating VMs from community images
+* "azure site portal" command renamed to "azure portal"
 
 2012.11.20 - Version 0.6.8
 * Initial release of stand alone CLI.
