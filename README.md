@@ -118,6 +118,9 @@ Starts the website
     azure site restart [site]
 Stops and starts the website
 
+    azure site deploymentscript 
+Generates a bash or cmd script for customizing the deplyoment of your Website
+
 **--quiet** - overrides prompting for delete.
 
 **Note:** Above [site] is not required if the command is run in the main app folder.
@@ -154,6 +157,8 @@ Create a new virtual machine using the specific image and credentials. An image 
 **--ssh [port]** - Enable a Linux VM to be remotely administered via ssh. By default port 22 is chosen.
 
 **--rdp [port]** - Enable a Windows VM to be remotely administered via RDP. By default port 3389 is chosen.
+
+**--community** - Specfies that the image is a community image
 
     azure vm create-from [name] [rolefile]
 Create a virtual machine from a previously exported rolefile.
