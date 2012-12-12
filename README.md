@@ -267,7 +267,7 @@ Creates a new table for your mobiel service
 **--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
 
     azure mobile table show [servicename] [tablename]
-Display table details such as the number of records stucture and which scripts are defined.
+Display table details such as the number of records, the list of columns and which scripts are defined.
 
     azure mobile table update [options] [servicename] [tablename] 
 Updates mobile table schema, permissions and indexes
@@ -286,7 +286,7 @@ You can create and upload scripts for your table operations.
 List scripts for the specified service
 
     azure mobile script download [servicename] [scriptname]
-Downloads the specific script
+Downloads the specified script. Table script names are in the format table/.{read|insert|update|delete} (e.g. table/todoitem.insert)
 
     azure mobile script upload [servicename] [scriptname]
 Uploads a script
