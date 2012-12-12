@@ -6,6 +6,9 @@ With Windows Azure Websites you can deploy node.js applications to the cloud in 
 
 # CLI Features
 
+* Accounts
+    * Download and import Azure publish settings
+    * Create and manage Storage Accounts
 * Websites
 	* Create and manage WindowsAzure websites
     * Download site logs
@@ -21,6 +24,8 @@ With Windows Azure Websites you can deploy node.js applications to the cloud in 
     * Manage tables, scripts, and configuration
     * Access logs
     * Access data
+* Service Bus
+    * Create and manage Service Bus namespaces
 
 # Getting Started
 ## Download Source Code
@@ -213,6 +218,103 @@ Attaches an image to an existing VM.
 
     azure vm disk detach [vm-name] [image]
 Detaches an image from an existing VM.
+
+## azure mobile - Managing Azure Mobile Services
+
+You can create and manage your mobile services right from the cli. You can create new services and databases, work directly with table data, manage scripts and more.
+
+    azure mobile list
+Lists all mobile services for this subscription
+
+    azure mobile create [servicename] [sqlAdminUsername] [sqlAdminPassword]
+Creates a new mobile service using the specific service name. Also creates a new SQL Database using the specified user and password.
+ 
+    azure mobile show [servicename]
+Displays details about a mobile service including database details, applicationUrl and and applicationKey
+
+    azure mobile delete
+Deletes a mobile service [servicename]
+
+    azure mobile log
+Retrieves mobile logs [servicename]
+
+### azure mobile config - Manage your mobile service configuration
+
+You can configure your microsoft account, facebook, twitter, google and push notification settings using these commands.
+
+    azure mobile config list [servicename]
+Lists the available mobile configuration settings and their values
+
+    azure mobile config set [servicename] [key] [value]
+Sets mobile configuration settings
+
+    azure mobile config get [servicename] [key]
+Gets a specific mobile configuration setting
+
+### azure mobile table - Manage your mobile service tables
+
+    azure mobile table list [servicename]
+List the tables for a specific service
+
+    azure mobile table create [servicename] [tablename]
+Creates a new table for your mobiel service
+
+**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+
+    azure mobile table show [servicename] [tablename]
+Display table details such as the number of records stucture and which scripts are defined.
+
+    azure mobile table update [options] [servicename] [tablename] 
+Updates mobile table schema, permissions and indexes
+
+**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+**--deleteColumn [columns]** - comma delmiated list of colums to deletee
+
+    azure mobile table delete [servicename] [tablename]
+Deletes a mobile table
+
+### azure mobile script - Manage your mobile service scripts
+
+You can create and upload scripts for your table operations.
+
+    azure mobile script list
+List scripts for the specified service
+
+    azure mobile script download [servicename] [scriptname]
+Downloads the specific script
+
+    azure mobile script upload [servicename] [scriptname]
+Uploads a script
+
+    azure mobile script delete [servicename] [scriptname]
+Deletes a script
+
+### azure mobile data - Manage data from your mobile service
+
+    azure mobile data read [servicename] [tablename] [query]
+Query a mobile service table
+
+## azure sb - Manage your Service Bus configuration
+
+### azure sb namespace - Manage your Service Bus namespaces
+
+    azure sb namespace list
+List all your Service Bus namespaces
+
+    azure sb namespace create [namespace] [region]
+Create a new Service Bus namespace in the specified region
+
+    azure sb namespace show [name]
+Display details about a namespace such as the connection string and endpoint information
+
+    azure sb namespace check [name]
+Check if a namespace is available
+
+    azure sb namespace delete [name]
+Delete a namespace
+
+    azure sb namespace location list
+Lists all available regions for creating new namespaces
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
