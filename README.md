@@ -1,21 +1,31 @@
 # Windows Azure CLI tool for Mac and Linux
 
-This project provide a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
+This project provides a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
 With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git. 
 
 # CLI Features
 
+* Accounts
+    * Download and import Azure publish settings
+    * Create and manage Storage Accounts
 * Websites
-	* Create and manage WindowsAzure websites
+    * Create and manage Windows Azure websites
     * Download site logs
     * Manage Deployments
     * Configure Github integration
 * Virtual machines
     * Create and manage Windows and Linux Virtual machines
-	* Create and manage VM endpoints
+    * Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+* Mobile Services
+    * Create and manage Mobile Services
+    * Manage tables, scripts, and configuration
+    * Access logs
+    * Access data
+* Service Bus
+    * Create and manage Service Bus namespaces
 
 # Getting Started
 ## Download Source Code
@@ -34,7 +44,7 @@ You can install the azure cli npm package directly.
 
 # Using the cli
 
-The azure cli has several top level commands which correlate to different features of Windows Azure. Each top level command is then broken up into further sub commmands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.
+The azure cli has several top-level commands, which correspond to different features of Windows Azure. Each top-level command is then broken up into further sub commands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.
 
 Below is a list of some of the more common commands and explanations on how to use them. 
 
@@ -108,13 +118,16 @@ Starts the website
     azure site restart [site]
 Stops and starts the website
 
+    azure site deploymentscript 
+Generates a bash or cmd script for customizing the deployment of your Website
+
 **--quiet** - overrides prompting for delete.
 
 **Note:** Above [site] is not required if the command is run in the main app folder.
 
 ### azure site config - Managing site app settings
 
-You can set application settings which will propagate to environment variables for your node and PHP applications. Changes are instant, and you do not need to stop/start the app to pick up the new variables.
+You can set application settings, which will propagate to environment variables for your node and PHP applications. Changes are instant, and you do not need to stop/start the app to pick up the new variables.
 
     azure site config list [site]
 Lists all application settings.
@@ -144,6 +157,8 @@ Create a new virtual machine using the specific image and credentials. An image 
 **--ssh [port]** - Enable a Linux VM to be remotely administered via ssh. By default port 22 is chosen.
 
 **--rdp [port]** - Enable a Windows VM to be remotely administered via RDP. By default port 3389 is chosen.
+
+**--community** - Specifies that the image is a community image
 
     azure vm create-from [name] [rolefile]
 Create a virtual machine from a previously exported rolefile.
@@ -190,7 +205,7 @@ Deletes the specified image.
 
 ### azure vm disk - Managing VM data disks
 
-You can create additional data disks which you mount within your virtual machines.
+You can create additional data disks, which you mount within your virtual machines.
 
     azure vm disk list
 Lists available data disks
@@ -208,6 +223,103 @@ Attaches an image to an existing VM.
 
     azure vm disk detach [vm-name] [image]
 Detaches an image from an existing VM.
+
+## azure mobile - Managing Azure Mobile Services
+
+You can create and manage your mobile services right from the cli. You can create new services and databases, work directly with table data, and manage scripts and more.
+
+    azure mobile list
+Lists all mobile services for this subscription
+
+    azure mobile create [servicename] [sqlAdminUsername] [sqlAdminPassword]
+Creates a new mobile service using the specific service name. Also creates a new SQL Database using the specified user and password.
+ 
+    azure mobile show [servicename]
+Displays details about a mobile service including database details, applicationUrl and applicationKey
+
+    azure mobile delete
+Deletes a mobile service [servicename]
+
+    azure mobile log
+Retrieves mobile logs [servicename]
+
+### azure mobile config - Manage your mobile service configuration
+
+You can configure your Microsoft account, Facebook, Twitter, Google and push notification settings using these commands.
+
+    azure mobile config list [servicename]
+Lists the available mobile configuration settings and their values
+
+    azure mobile config set [servicename] [key] [value]
+Sets mobile configuration settings
+
+    azure mobile config get [servicename] [key]
+Gets a specific mobile configuration setting
+
+### azure mobile table - Manage your mobile service tables
+
+    azure mobile table list [servicename]
+List the tables for a specific service
+
+    azure mobile table create [servicename] [tablename]
+Creates a new table for your mobile service
+
+**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+
+    azure mobile table show [servicename] [tablename]
+Display table details such as the number of records, the list of columns and which scripts are defined.
+
+    azure mobile table update [options] [servicename] [tablename] 
+Updates mobile table schema, permissions and indexes
+
+**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+**--deleteColumn [columns]** - comma delimited list of columns to delete
+
+    azure mobile table delete [servicename] [tablename]
+Deletes a mobile table
+
+### azure mobile script - Manage your mobile service scripts
+
+You can create and upload scripts for your table operations.
+
+    azure mobile script list
+List scripts for the specified service
+
+    azure mobile script download [servicename] [scriptname]
+Downloads the specified script. Table script names are in the format table/.{read|insert|update|delete} (e.g. table/todoitem.insert)
+
+    azure mobile script upload [servicename] [scriptname]
+Uploads a script
+
+    azure mobile script delete [servicename] [scriptname]
+Deletes a script
+
+### azure mobile data - Manage data from your mobile service
+
+    azure mobile data read [servicename] [tablename] [query]
+Query a mobile service table
+
+## azure sb - Manage your Service Bus configuration
+
+### azure sb namespace - Manage your Service Bus namespaces
+
+    azure sb namespace list
+List all your Service Bus namespaces
+
+    azure sb namespace create [namespace] [region]
+Create a new Service Bus namespace in the specified region
+
+    azure sb namespace show [name]
+Display details about a namespace such as the connection string and endpoint information
+
+    azure sb namespace check [name]
+Check if a namespace is available
+
+    azure sb namespace delete [name]
+Delete a namespace
+
+    azure sb namespace location list
+Lists all available regions for creating new namespaces
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
@@ -258,3 +370,4 @@ For documentation on how to host Node.js applications on Windows Azure, please s
 For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
 
 Check out our new IRC channel on freenode, node-azure.
+

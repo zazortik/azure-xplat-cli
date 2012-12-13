@@ -15,6 +15,7 @@
 
 var should = require('should');
 var url = require('url');
+var uuid = require('node-uuid');
 var GitHubApi = require('github');
 
 var cli = require('../cli');
@@ -65,11 +66,11 @@ suite('cli', function(){
     });
 
     test('site deployment github', function(done) {
-      var siteName = 'cliuttestdeploy1';
+      var siteName = 'cliuttestdeploy1' + uuid.v4();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -133,13 +134,15 @@ suite('cli', function(){
                   capture(function() {
                     cli.parse(cmd);
                   }, function (result) {
-                    siteList = JSON.parse(result.text);
+                    if (result.text != '') {
+                      siteList = JSON.parse(result.text);
 
-                    siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase()
-                    });
+                      siteExists = siteList.some(function (site) {
+                        return site.Name.toLowerCase() === siteName.toLowerCase()
+                      });
 
-                    siteExists.should.not.be.ok;
+                      siteExists.should.not.be.ok;
+                    }
 
                     done();
                   });

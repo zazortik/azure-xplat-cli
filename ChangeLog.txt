@@ -1,3 +1,11 @@
+2012.12.12 - Version 0.6.9
+* "azure portal" - replaces "azure vm portal" and "azure site portal".
+* "azure mobile" - Manages Azure Mobile Services
+* "azure sb namespace" - Manages Service Bus namespaces
+* "azure site deploymentscript" - Generates deployment scripts for customizing your website deployment
+* "azure vm create -o" - Create VMs using community/OSS images 
+* "azure vm endpoint create-multiple" - Create multiple VM endpoints in one shot.
+
 2012.11.20 - Version 0.6.8
 * Initial release of stand alone CLI.
 * New commands for managing storage accounts

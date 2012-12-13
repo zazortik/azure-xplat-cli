@@ -13,55 +13,46 @@
 * limitations under the License.
 */
 
+var uuid = require('node-uuid');
+
 var should = require('should');
 var cli = require('../cli');
 var capture = require('../util').capture;
 
-var currentSiteName = 0;
-var siteNames = [ 'siteName1', 'siteName2' ];
+var createdSites = [];
+
+function newName() {
+  var name = 'testsite-' + uuid.v4();
+  createdSites.push(name);
+  return name;
+}
 
 suite('cli', function(){
   suite('siteconfig', function() {
-    setup(function (done) {
 
-      var removeSites = function (sites, cb) {
-        if (sites.length === 0) {
-          currentSiteName++;
-          cb();
-        } else {
-          var siteName = sites.pop();
-          // Delete created site
-          var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
-            removeSites(sites, cb);
-          });
+    teardown(function (done) {
+      function removeSite() {
+        if (createdSites.length === 0) {
+          return done();
         }
-      };
-
-      // List sites
-      var cmd = ('node cli.js site list --json').split(' ');
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        var siteList = JSON.parse(result.text);
-        var filteredSites = siteNames.filter(function (site) {
-          return siteList.some(function (s) {
-            return site === s.Name;
-          });
+        var siteName = createdSites.pop();
+        var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
+        capture(function() {
+          cli.parse(cmd);
+        }, function (result) {
+          removeSite();
         });
+      }
 
-        removeSites(filteredSites, done);
-      });
+      removeSite();
     });
 
     test('siteconfig list', function(done) {
-      var siteName = siteNames[currentSiteName];
+      var siteName = newName();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -122,11 +113,11 @@ suite('cli', function(){
     });
 
     test('siteconfig add get clear', function(done) {
-      var siteName = siteNames[currentSiteName];
+      var siteName = newName();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);

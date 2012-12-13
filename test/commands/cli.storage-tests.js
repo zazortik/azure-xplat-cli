@@ -49,7 +49,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -65,7 +65,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -92,7 +92,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -126,7 +126,7 @@ suite('cli', function(){
       var storageName = storageNames[0];
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -151,20 +151,25 @@ suite('cli', function(){
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
+            // It takes the servers a few moments to actually return the updated keys
+            // Wait a bit, then retrieve and confirm
 
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
-              var renewedStorageAccountKeys = JSON.parse(result.text);
-              renewedStorageAccountKeys.Primary.should.not.be.null;
-              renewedStorageAccountKeys.Secondary.should.not.be.null;
+            setTimeout(function () {
+              var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
 
-              renewedStorageAccountKeys.Primary.should.not.equal(storageAccountKeys.Primary);
-              renewedStorageAccountKeys.Secondary.should.equal(storageAccountKeys.Secondary);
+              capture(function() {
+                cli.parse(cmd);
+              }, function (result) {
+                var renewedStorageAccountKeys = JSON.parse(result.text);
+                renewedStorageAccountKeys.Primary.should.not.be.null;
+                renewedStorageAccountKeys.Secondary.should.not.be.null;
 
-              done();
-            });
+                renewedStorageAccountKeys.Primary.should.not.equal(storageAccountKeys.Primary);
+                renewedStorageAccountKeys.Secondary.should.equal(storageAccountKeys.Secondary);
+
+                done();
+              });
+            }, 5000);
           });
         });
       });

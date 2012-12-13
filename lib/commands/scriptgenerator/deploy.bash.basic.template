@@ -1,0 +1,12 @@
+##################################################################################################################################
+# Deployment
+# ----------
+
+echo Handling Basic Web Site deployment.
+
+# 1. KuduSync
+echo Kudu Sync from "$DEPLOYMENT_SOURCE{SitePath}" to "$DEPLOYMENT_TARGET"
+$KUDU_SYNC_COMMAND -q -f "$DEPLOYMENT_SOURCE{SitePath}" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.deployment;deploy.sh"
+exitWithMessageOnError "Kudu Sync failed"
+
+##################################################################################################################################
