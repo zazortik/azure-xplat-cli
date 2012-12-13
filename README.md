@@ -44,7 +44,7 @@ You can install the azure cli npm package directly.
 
 # Using the cli
 
-The azure cli has several top-level commands, which correlate to different features of Windows Azure. Each top-level command is then broken up into further sub commands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.
+The azure cli has several top-level commands, which correspond to different features of Windows Azure. Each top-level command is then broken up into further sub commands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.
 
 Below is a list of some of the more common commands and explanations on how to use them. 
 
@@ -158,7 +158,7 @@ Create a new virtual machine using the specific image and credentials. An image 
 
 **--rdp [port]** - Enable a Windows VM to be remotely administered via RDP. By default port 3389 is chosen.
 
-**--community** - Specfies that the image is a community image
+**--community** - Specifies that the image is a community image
 
     azure vm create-from [name] [rolefile]
 Create a virtual machine from a previously exported rolefile.
