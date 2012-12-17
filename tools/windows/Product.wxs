@@ -69,6 +69,11 @@
                  Guid="{7B72A8A3-F7CC-4799-AFFC-7EEA75383FE2}">
         <RemoveFolder Id="DynamicCliDir" On="uninstall" />
       </Component>
+      <Component Id="RemoveAzureCLIFolder"
+                 Directory="AZURECLIFOLDER"
+                 Guid="{74FDA7F1-2D99-404E-A714-0ABC250F1555}">
+        <RemoveFolder Id="AZURECLIFOLDER" On="uninstall" />
+      </Component>
       <Component Id="AzureCliSystemPath"
                  Directory="DynamicCliDir"
                  Guid="{5169C84A-A6EF-4D2E-9A54-A9247FE09016}">
@@ -79,18 +84,6 @@
                      Part="last"
                      Action="set"
                      System="yes" />
-        <CreateFolder />
-      </Component>
-      <Component Id="AzureCliUserPath"
-                 Directory="DynamicCliDir"
-                 Guid="{ED34DCDF-112F-4CAF-8BCC-06C2EB005308}">
-        <Environment Id="AzureCliAddedToUserPATH"
-                     Name="PATH"
-                     Value="[DynamicCliDir]wbin"
-                     Permanent="yes"
-                     Part="last"
-                     Action="set"
-                     System="no" />
         <CreateFolder />
       </Component>
       <Component Id="AzureCliRegistry"
