@@ -99,7 +99,7 @@
       <Component Id="AzureCliVersion"
                  Directory="DynamicCliDir"
                  Guid="{5D62AC48-3FC1-4664-854F-864FBCBA394A}">
-        <RegistryValue Root="HKCU"
+        <RegistryValue Root="HKLM"
                        Key="Software\Microsoft\$(var.ProductName)"
                        Name="version"
                        Type="string"
