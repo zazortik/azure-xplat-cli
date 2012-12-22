@@ -13,49 +13,45 @@
 * limitations under the License.
 */
 
+var sinon = require('sinon');
+
 exports = module.exports = {
     capture: capture,
 };
 
 function capture(action, cb) {
+  var sandbox = sinon.sandbox.create();
+
   var result = {
     text: '',
     errorText: ''
   }
 
-  var processStdoutWrite = process.stdout.write
-  var processStderrWrite = process.stderr.write
-  var processExit = process.exit
-
-  process.stdout.write = function(data, encoding, fd) {
+  sandbox.stub(process.stdout, 'write', function(data, encoding, fd) {
     result.text += data;
-  };
+  });
 
-  process.stderr.write = function (data, encoding, fd) {
+  sandbox.stub(process.stderr, 'write', function (data, encoding, fd) {
     result.errorText += data;
-  };
+  });
 
-  process.exit = function(status) {
+  sandbox.stub(process, 'exit', function(status) {
     result.exitStatus = status;
 
-    process.stdout.write = processStdoutWrite;
-    process.stderr.write = processStderrWrite;
-    process.exit = processExit;
+    sandbox.restore();
 
     return cb(result);
-  };
+  });
 
   try {
     action();
   } catch(err) {
     result.error = err;
 
-    process.stdout.write = processStdoutWrite;
-    process.stderr.write = processStderrWrite;
-    process.exit = processExit;
+    sandbox.restore();
 
     if (!result.exitStatus) {
-        cb(result);
+      cb(result);
     }
   }
 }
