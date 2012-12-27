@@ -1,4 +1,3 @@
-commands/generate-psm1-utils-test.js
 commands/cli.deployment-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
