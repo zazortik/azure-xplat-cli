@@ -25,6 +25,7 @@ var LinkedRevisionControlClient = require('../../lib/linkedrevisioncontrol').Lin
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
 var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
+var gitUsername = process.env['AZURE_GIT_USERNAME'];
 var githubClient = new GitHubApi({ version: "3.0.0" });
 
 githubClient.authenticate({
@@ -51,6 +52,15 @@ suite('cli', function(){
           });
         }
       };
+
+      // Force options reset in the create command
+      var createCommand = cli.categories.site.commands.filter(function (command) {
+        return command.name === 'create';
+      })[0];
+
+      for (var option in createCommand.options) {
+        delete createCommand[createCommand.options[option].long.substr(2)];
+      }
 
       // Remove any existing repository hooks
       githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
@@ -289,7 +299,7 @@ suite('cli', function(){
         });
       });
     });
-    
+
     test('site restart running site', function (done) {
       var siteName = 'cliuttestsite4' + uuid();
 
@@ -339,7 +349,6 @@ suite('cli', function(){
           }, function (result) {
             
             // Delete test site
-
             cmd = util.format('node cli.js site delete %s', siteName).split(' ');
             capture(function () {
               cli.parse(cmd);
@@ -348,7 +357,7 @@ suite('cli', function(){
             });
           });
         });
-      });      
+      });
     });
   });
 });

@@ -1,7 +1,7 @@
 commands/cli.deployment-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
-commands/cli.site-log-tests.js
 linkrevisioncontrol-tests.js
 commands/cli.storage-tests.js
 commands/cli.mobile-tests.js
+commands/cli.site-log-tests.js
