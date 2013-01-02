@@ -167,6 +167,8 @@ suite('azure mobile', function(){
 
           // do not filter on body of app create request, since it contains random GUIDs that would mismatch
           line = line.replace(/(\.post\('\/[^\/]*\/applications')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          // do not filter on the body of script upload, since line endings differ between Windows and Mac
+          line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
           // nock encoding bug
           line = line.replace("'error'", "\\'error\\'");
           // nock is loosing the port number

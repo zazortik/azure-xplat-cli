@@ -655,7 +655,8 @@ nock('https://management.core.windows.net')
  return result; }],
 [function (nock) { var result = 
 nock('https://management.core.windows.net')
-  .put('/342d6bc9-21b7-427d-a31c-04956f221bd1/services/mobileservices/mobileservices/clitest6aa9b366-9cc6-43b8-a739-4bf388c51ce1/tables/table1/scripts/insert/code', "function insert(item, user, request) {\n    console.log('Sample information');\n    console.error('Sample error');\n    request.execute();\n}")
+  .filteringRequestBody(function (path) { return '*';})
+  .put('/342d6bc9-21b7-427d-a31c-04956f221bd1/services/mobileservices/mobileservices/clitest6aa9b366-9cc6-43b8-a739-4bf388c51ce1/tables/table1/scripts/insert/code', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',

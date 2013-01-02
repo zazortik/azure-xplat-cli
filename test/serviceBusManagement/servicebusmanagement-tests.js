@@ -27,6 +27,7 @@ var cli = require('../../lib/cli');
 var account = cli.category('account');
 
 var ServiceBusManagement = require('../../lib/serviceBusManagement');
+var sampledata = require('./sampledata.js');
 
 describe('Service Bus Management', function () {
   var namespacesToClean = [];
@@ -66,6 +67,29 @@ describe('Service Bus Management', function () {
         service.listNamespaces(function (err, namespaces) {
           should.exist(namespaces);
           namespaces.should.be.empty;
+          done(err);
+        });
+      });
+    });
+
+    describe('when one namespace is defined', function () {
+      var name = newName();
+      var region = 'West US';
+
+      before(function (done) {
+        service.listNamespaces(function (err, namespaces) {
+          deleteNamespaces(namespaces.map(function (ns) { return ns.Name; }), function () {
+            service.createNamespace(name, region, done);
+          });
+        });
+      });
+
+      it('should return one namespace in the list', function (done) {
+        service.listNamespaces(function (err, namespaces) {
+          should.exist(namespaces);
+          namespaces.should.have.length(1);
+          namespaces[0].Name.should.equal(name);
+          namespaces[0].Region.should.equal(region);
           done(err);
         });
       });
@@ -212,6 +236,48 @@ describe('Service Bus Management', function () {
     });
   });
 
+  describe('Result parsing', function () {
+    describe('When parsing an entry', function () {
+      it('should return a single object containing the contents', function () {
+        var result = ServiceBusManagement.parseServerResponse(sampledata.singleEntry, 'NamespaceDescription');
+
+        result.should.not.be.an.instanceOf(Array);
+        result.should.have.property('Name');
+        result.should.have.property('Region');
+      });
+    });
+
+    describe('When parsing a feed', function () {
+      it('should return an array with all entries when feed contains more than one entry', function () {
+        var result = ServiceBusManagement.parseServerResponse(sampledata.threeItemFeed, 'NamespaceDescription');
+
+        result.should.be.an.instanceOf(Array);
+        result.should.have.length(3);
+        result.forEach(function (ns) {
+          ns.should.have.property('Name');
+          ns.should.have.property('Region');
+        });
+      });
+
+      it('should return an array with one entry when feed contains exactly one entry', function () {
+        var result = ServiceBusManagement.parseServerResponse(sampledata.oneEntryFeed, 'NamespaceDescription');
+
+        result.should.be.an.instanceOf(Array);
+        result.should.have.length(1);
+        result[0].should.have.property('Name');
+        result[0].should.have.property('Region');
+      });
+
+      it('should return an empty array when feed contains no entries', function () {
+        var result = ServiceBusManagement.parseServerResponse(sampledata.noEntryFeed, 'NamespaceDescription');
+        should.exist(result);
+
+        result.should.be.an.instanceOf(Array);
+        result.should.have.length(0);
+      });
+    });
+  });
+
   function deleteNamespaces(namespaces, callback) {
     if (namespaces.length === 0) { return callback(); }
     var numDeleted = 0;
@@ -229,7 +295,6 @@ describe('Service Bus Management', function () {
 
   function waitForNamespaceToActivate(namespaceName, callback) {
     function poll() {
-      console.log('.');
       service.getNamespace(namespaceName, function (err, ns) {
         if (err) { 
           callback(err); 
@@ -261,13 +326,15 @@ describe('Service Bus Management', function () {
     function poll(namespace) {
       service.getNamespace(namespace, function (err, result) {
         // If we get an error, the namespace is gone
-        if (!err) {
+        if (err) {
           --numNamespaces;
           if (numNamespaces === 0) {
             callback();
           }
         } else {
-          setTimeout(poll(namespace), 2000);
+          // Try again. Spread out the polling a little randomly so we don't
+          // hammer the server all at once
+          setTimeout(poll(namespace), 2000 + (Math.floor(Math.random() * 10)) * 1000);
         }
       });
     }
