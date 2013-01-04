@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = '342d6bc9-21b7-427d-a31c-04956f221bd1';
-var nockedServiceName = 'clitest6aa9b366-9cc6-43b8-a739-4bf388c51ce1';
+var nockedServiceName = 'clitest9e9c40de-4c24-4dd9-9073-f3d7988c187f';
 
 var nockhelper = require('./nock-helper.js');
 var https = require('https');
@@ -232,6 +232,9 @@ suite('azure mobile', function(){
       response.application.Name.should.equal(servicename + 'mobileservice');
       response.application.Label.should.equal(servicename);
       response.application.State.should.equal('Healthy');
+      response.webspace.computeMode.should.equal('Shared');
+      response.webspace.numberOfInstances.should.equal(1);
+      response.webspace.workerSize.should.equal('Small');
       checkScopes(scopes);
       done();
     });
@@ -679,6 +682,64 @@ suite('azure mobile', function(){
     }, function (result) {
       result.exitStatus.should.equal(1);
       result.errorText.should.include('The table \'table1\' was not found');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale show ' + servicename + ' --json (show default scale settings)', function(done) {
+    var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.computeMode.should.equal('Shared');
+      response.numberOfInstances.should.equal(1);
+      response.workerSize.should.equal('Small');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale change ' + servicename + ' -c Reserved -i 2 --json (rescale to 2 reserved instances)', function(done) {
+    var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Reserved -i 2 --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
+    var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.computeMode.should.equal('Dedicated');
+      response.numberOfInstances.should.equal(2);
+      response.workerSize.should.equal('Small');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale change ' + servicename + ' -c Free -i 1 --json (rescale back to default)', function(done) {
+    var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Free -i 1 --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
