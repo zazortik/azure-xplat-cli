@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = '342d6bc9-21b7-427d-a31c-04956f221bd1';
-var nockedServiceName = 'clitest6aa9b366-9cc6-43b8-a739-4bf388c51ce1';
+var nockedServiceName = 'clitest702b50cd-54c3-4a32-8f9a-f0812246b2a7';
 
 var nockhelper = require('./nock-helper.js');
 var https = require('https');
@@ -167,6 +167,10 @@ suite('azure mobile', function(){
 
           // do not filter on body of app create request, since it contains random GUIDs that would mismatch
           line = line.replace(/(\.post\('\/[^\/]*\/applications')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          // do not filter on body of job create request, since it contains random startTime that would mismatch
+          line = line.replace(/(\.post\('\/[^\/]*\/services\/mobileservices\/mobileservices\/[^\/]*\/scheduler\/jobs')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          // do not filter on body of job update request, since it contains random startTime that would mismatch
+          line = line.replace(/(\.put\('\/[^\/]*\/services\/mobileservices\/mobileservices\/[^\/]*\/scheduler\/jobs')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
           // do not filter on the body of script upload, since line endings differ between Windows and Mac
           line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
           // nock encoding bug
@@ -232,10 +236,116 @@ suite('azure mobile', function(){
       response.application.Name.should.equal(servicename + 'mobileservice');
       response.application.Label.should.equal(servicename);
       response.application.State.should.equal('Healthy');
+      response.webspace.computeMode.should.equal('Shared');
+      response.webspace.numberOfInstances.should.equal(1);
+      response.webspace.workerSize.should.equal('Small');
       checkScopes(scopes);
       done();
     });
   });  
+
+  test('job list --json (contains no scheduled jobs by default)', function(done) {
+    var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(0);
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('job create ' + servicename + ' foobar --json (create default scheduled job)', function(done) {
+    var cmd = ('node cli.js mobile job create ' + servicename + ' foobar --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('job list --json (contains one scheduled job)', function(done) {
+    var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('disabled');
+      response[0].intervalUnit.should.equal('minute');
+      response[0].intervalPeriod.should.equal(15);
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json (update scheduled job)', function(done) {
+    var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });   
+
+  test('job list --json (contains updated scheduled job)', function(done) {
+    var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('enabled');
+      response[0].intervalUnit.should.equal('hour');
+      response[0].intervalPeriod.should.equal(2);
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('job delete ' + servicename + ' foobar --json (delete scheduled job)', function(done) {
+    var cmd = ('node cli.js mobile job delete ' + servicename + ' foobar --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });   
+
+  test('job list --json (contains no scheduled jobs after deletion)', function(done) {
+    var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(0);
+      checkScopes(scopes);
+      done();
+    });
+  });    
 
   test('config list ' + servicename + ' --json (default config)', function(done) {
     var cmd = ('node cli.js mobile config list ' + servicename + ' --json').split(' ');
@@ -679,6 +789,64 @@ suite('azure mobile', function(){
     }, function (result) {
       result.exitStatus.should.equal(1);
       result.errorText.should.include('The table \'table1\' was not found');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale show ' + servicename + ' --json (show default scale settings)', function(done) {
+    var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.computeMode.should.equal('Shared');
+      response.numberOfInstances.should.equal(1);
+      response.workerSize.should.equal('Small');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale change ' + servicename + ' -c Reserved -i 2 --json (rescale to 2 reserved instances)', function(done) {
+    var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Reserved -i 2 --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
+    var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.computeMode.should.equal('Dedicated');
+      response.numberOfInstances.should.equal(2);
+      response.workerSize.should.equal('Small');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('scale change ' + servicename + ' -c Free -i 1 --json (rescale back to default)', function(done) {
+    var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Free -i 1 --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
