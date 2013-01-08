@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = '342d6bc9-21b7-427d-a31c-04956f221bd1';
-var nockedServiceName = 'clitest702b50cd-54c3-4a32-8f9a-f0812246b2a7';
+var nockedServiceName = 'clitest0a586cde-41ca-4cbf-b812-87060f6b1702';
 
 var nockhelper = require('./nock-helper.js');
 var https = require('https');
@@ -632,6 +632,21 @@ suite('azure mobile', function(){
           response.columns[columnIndex].name.should.equal(column.name);
           response.columns[columnIndex].indexed.should.equal(column.indexed);
         });
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
+    var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.didTruncate.should.equal(true);
+      response.rowCount.should.equal(5);
       checkScopes(scopes);
       done();
     });
