@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = '342d6bc9-21b7-427d-a31c-04956f221bd1';
-var nockedServiceName = 'clitest0a586cde-41ca-4cbf-b812-87060f6b1702';
+var nockedServiceName = 'clitest65f1407b-8c9a-4d83-a3e3-3674e3ae5fd5';
 
 var nockhelper = require('./nock-helper.js');
 var https = require('https');
@@ -62,7 +62,7 @@ var fs = require('fs');
 
 var scopeWritten;
 
-// plyfill appendFileSync
+// polyfill appendFileSync
 if (!fs.appendFileSync) {
   fs.appendFileSync = function (file, content) {
     var current = fs.readFileSync(file, 'utf8');
@@ -401,6 +401,47 @@ suite('azure mobile', function(){
       done();
     });
   });     
+
+  test('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
+    var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.apns.should.equal('none');
+      checkScopes(scopes);
+      done();
+    });
+  });  
+
+  test('config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json (set apns certificate)', function(done) {
+    var cmd = ('node cli.js mobile config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      checkScopes(scopes);
+      done();
+    });
+  });    
+
+  test('config get ' + servicename + ' apns --json (apns certificate was set)', function(done) {
+    var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
+    var scopes = setupNock(cmd);
+    capture(function() {
+      cli.parse(cmd);
+    }, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.apns.should.equal('dev');
+      checkScopes(scopes);
+      done();
+    });
+  });       
 
   test('table list ' + servicename + ' --json (no tables by default)', function(done) {
     var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
