@@ -51,6 +51,7 @@ suite('cli', function () {
                     delete command.solutionFile;
                     delete command.sitePath;
                     delete command.dotDeployment;
+                    delete command.solution;
                 }
             }
 
@@ -164,11 +165,11 @@ suite('cli', function () {
             runAspWebSiteDeploymentScriptScenario(done, testSettings);
         });
 
-        test('generate batch aspWAP deployment script (--aspWAP projectFile.csproj -r) should generate deploy.cmd', function (done) {
+        test('generate batch aspWAP with --no-solution deployment script (--aspWAP projectFile.csproj --no-solution -r) should generate deploy.cmd', function (done) {
             var projectFile = 'projectFile.csproj';
             var projectFilePath = pathUtil.join(testDir, projectFile);
 
-            testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
+            testSettings.cmd = format('node cli.js site deploymentscript --no-solution --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
             testSettings.projectFile = projectFile;
 
             runAspWAPDeploymentScriptScenario(done, testSettings);
@@ -278,6 +279,17 @@ suite('cli', function () {
         test('--scriptType only accepts batch or bash (--scriptType sh)', function (done) {
             testSettings.cmd = ('node cli.js site deploymentscript --php --scriptType sh -r ' + testDir).split(' ');
             testSettings.errorMessage = 'Script type should be either batch or bash';
+
+            runErrorScenario(done, testSettings);
+        });
+
+        test('generate batch aspWAP without a solution file path (--aspWAP projectFile.csproj -r) should fail', function (done) {
+            var projectFile = 'projectFile.csproj';
+            var projectFilePath = pathUtil.join(testDir, projectFile);
+
+            testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
+            testSettings.projectFile = projectFile;
+            testSettings.errorMessage = 'Missing solution file path';
 
             runErrorScenario(done, testSettings);
         });
