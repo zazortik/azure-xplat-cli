@@ -16,8 +16,7 @@
 var uuid = require('node-uuid');
 
 var should = require('should');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
@@ -66,31 +65,23 @@ suite('cli', function () {
     function createSite(siteName, callback) {
       var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
       cmd.push('West US');
-      capture(function() {
-        cli.parse(cmd);
-      }, callback);
+      executeCmd(cmd, callback);
     }
 
     function showSite(siteName, callback) {
       var cmd = ('node cli.js site show ' + siteName + ' --json').split(' ');
-      capture(function() {
-        cli.parse(cmd);
-      }, callback);
+      executeCmd(cmd, callback);
     }
 
     function deleteSite(siteName, callback) {
       var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-      capture(function() {
-        cli.parse(cmd);
-      }, callback);
+      executeCmd(cmd, callback);
     }
 
     function connectLogStream(siteName, callback) {
       setTimeout(function () { process.exit(0); }, 5000);
       var cmd = ('node cli.js site log tail ' + siteName).split(' ');
-      capture(function() {
-        cli.parse(cmd);
-      }, callback);
+      executeCmd(cmd, callback);
     }
   });
 });

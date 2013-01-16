@@ -15,8 +15,7 @@
 
 var should = require('should');
 var sinon = require('sinon');
-var cli = require('./cli');
-var capture = require('./util').capture;
+var cli = require('../lib/cli');
 var LinkedRevisionControl = require('../lib/linkedrevisioncontrol');
 
 var sandbox;

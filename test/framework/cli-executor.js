@@ -14,44 +14,50 @@
 */
 
 var sinon = require('sinon');
+var cli = require('../../lib/cli');
+
+var winston = require('winston');
+require('./winston-memory').Memory;
+
+winston.add(cli.output.transports.Memory);
+winston.remove(cli.output.transports.Console);
 
 exports = module.exports = {
-    capture: capture,
+  execute: execute,
 };
 
-function capture(action, cb) {
+function execute(cmd, cb) {
   var sandbox = sinon.sandbox.create();
 
   var result = {
     text: '',
-    errorText: ''
+    errorText: '',
+    exitStatus: 0
   }
 
-  sandbox.stub(process.stdout, 'write', function(data, encoding, fd) {
-    result.text += data;
-  });
+  var end = function () {
+    var transport = cli.output['default'].transports['memory'];
 
-  sandbox.stub(process.stderr, 'write', function (data, encoding, fd) {
-    result.errorText += data;
-  });
+    result.text = transport.writeOutput.join('\n');
+    result.errorText = transport.errorOutput.join('\n');
 
-  sandbox.stub(process, 'exit', function(status) {
-    result.exitStatus = status;
+    transport.errorOutput = [];
+    transport.writeOutput = [];
 
     sandbox.restore();
 
     return cb(result);
+  };
+
+  sandbox.stub(cli, 'exit', function () {
+    end();
   });
 
   try {
-    action();
+    cli.parse(cmd);
   } catch(err) {
     result.error = err;
 
-    sandbox.restore();
-
-    if (!result.exitStatus) {
-      cb(result);
-    }
+    end();
   }
 }

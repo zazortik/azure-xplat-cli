@@ -56,8 +56,7 @@ var should = require('should');
 var url = require('url');
 var uuid = require('node-uuid');
 var util = require('util');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 
 var scopeWritten;
@@ -105,13 +104,10 @@ suite('azure mobile', function(){
     // make best effort to remove the service in case of a test failure
     if (process.env.NOCK_OFF) {
       var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         callback();
-      });    
-    }
-    else {
+      });
+    } else {
       callback();
     }
   }
@@ -185,14 +181,12 @@ suite('azure mobile', function(){
 
     nockhelper.unNockHttp();
     done();
-  });  
+  });
 
   test('create ' + servicename + ' tjanczuk FooBar#12 --json (create new service)', function(done) {
     var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.should.have.property('Name', servicename + 'mobileservice');
@@ -206,9 +200,7 @@ suite('azure mobile', function(){
   test('list --json (contains healthy service)', function(done) {
     var cmd = ('node cli.js mobile list --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.some(function (service) { 
@@ -217,14 +209,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });  
+  });
 
   test('show ' + servicename + ' --json (contains healthy service)', function(done) {
     var cmd = ('node cli.js mobile show ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.service.name.should.equal(servicename);
@@ -235,14 +225,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });  
+  });
 
   test('config list ' + servicename + ' --json (default config)', function(done) {
     var cmd = ('node cli.js mobile config list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       if (response.service && response.service.applicationSystemKey) {
@@ -263,41 +251,35 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('config set ' + servicename + ' facebookClientId 123 --json', function(done) {
     var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientId 123 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });     
+  });
 
   test('config get ' + servicename + ' facebookClientId --json (value was set)', function(done) {
     var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientId --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.facebookClientId.should.equal('123');
       checkScopes(scopes);
       done();
     });
-  });     
+  });
 
   test('table list ' + servicename + ' --json (no tables by default)', function(done) {
     var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
@@ -305,27 +287,23 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });      
+  });
 
   test('table create ' + servicename + ' table1 --json (add first table)', function(done) {
     var cmd = ('node cli.js mobile table create ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('table list ' + servicename + ' --json (contains one table)', function(done) {
     var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
@@ -334,14 +312,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });      
+  });
 
   test('table show ' + servicename + ' table1 --json (default table config)', function(done) {
     var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       ['insert', 'read', 'update', 'delete'].forEach(function (permission) {
@@ -359,22 +335,18 @@ suite('azure mobile', function(){
   test('table update ' + servicename + ' table1 -p *=admin,insert=public --json (update permissions)', function(done) {
     var cmd = ('node cli.js mobile table update ' + servicename + ' table1 -p *=admin,insert=public --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });   
+  });
 
   test('table show ' + servicename + ' table1 --json (updated permissions)', function(done) {
     var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       ['read', 'update', 'delete'].forEach(function (permission) {
@@ -388,7 +360,7 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });  
+  });
 
   function insert5Rows(callback) {
     var success = 0;
@@ -441,9 +413,7 @@ suite('azure mobile', function(){
   test('table show ' + servicename + ' table1 --json (new rows and columns)', function(done) {
     var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.table.metrics.recordCount.should.equal(5);
@@ -460,14 +430,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('data read ' + servicename + ' table1 --json (show 5 rows of data)', function(done) {
     var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
@@ -475,14 +443,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('data read ' + servicename + ' table1 --top 1 --json (show top 1 row of data)', function(done) {
     var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --top 1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
@@ -490,27 +456,23 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('table update ' + servicename + ' table1 --deleteColumn foo --addIndex bar,baz -q --json (delete column, add indexes)', function(done) {
     var cmd = ('node cli.js mobile table update ' + servicename + ' table1  --deleteColumn foo --addIndex bar,baz -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });   
+  });
 
   test('table show ' + servicename + ' table1 --json (fewer columns, more indexes)', function(done) {
     var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response.columns).should.be.ok;
@@ -525,14 +487,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('script list ' + servicename + ' --json (no scripts by default)', function(done) {
     var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.should.include({
@@ -541,27 +501,23 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json (upload one script)', function(done) {
     var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('script list ' + servicename + ' --json (insert script uploaded)', function(done) {
     var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response.table).should.be.ok;
@@ -571,14 +527,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });      
+  });
 
   test('log ' + servicename + ' --json (no logs by default)', function(done) {
     var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.should.include({
@@ -587,7 +541,7 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('(add 5 more rows of data to invoke scripts)', function(done) {
     var scopes = setupNock([]);
@@ -601,9 +555,7 @@ suite('azure mobile', function(){
   test('log ' + servicename + ' --json (10 log entries added)', function(done) {
     var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response.results).should.be.ok;
@@ -611,14 +563,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('log ' + servicename + ' --type error --json (5 error log entries added)', function(done) {
     var cmd = ('node cli.js mobile log ' + servicename + ' --type error --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response.results).should.be.ok;
@@ -626,14 +576,12 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('log ' + servicename + ' --top 3 --json (list 3 top log entries)', function(done) {
     var cmd = ('node cli.js mobile log ' + servicename + ' --top 3 --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response.results).should.be.ok;
@@ -641,27 +589,23 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('table delete ' + servicename + ' table1 -q --json (delete existing table)', function(done) {
     var cmd = ('node cli.js mobile table delete ' + servicename + ' table1 -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.text.should.equal('');
       result.exitStatus.should.equal(0);
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('table list ' + servicename + ' --json (no tables after table deletion)', function(done) {
     var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
@@ -669,40 +613,34 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });      
+  });
 
   test('table delete ' + servicename + ' table1 -q --json (delete nonexisting table)', function(done) {
     var cmd = ('node cli.js mobile table delete ' + servicename + ' table1 -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(1);
       result.errorText.should.include('The table \'table1\' was not found');
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('delete ' + servicename + ' -a -q --json (delete existing service)', function(done) {
     var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.text.should.equal('');
       result.exitStatus.should.equal(0);
       checkScopes(scopes);
       done();
     });
-  });  
+  });
 
   test('list --json (no services exist)', function(done) {
     var cmd = ('node cli.js mobile list --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       if (result.text !== '') {
         var response = JSON.parse(result.text);
@@ -713,19 +651,16 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });      
+  });
 
   test('delete ' + servicename + ' -a -q --json (delete nonexisting service)', function(done) {
     var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(1);
       result.errorText.should.include('The application name was not found');
       checkScopes(scopes);
       done();
     });
-  });  
-
+  });
 });
