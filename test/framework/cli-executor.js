@@ -23,7 +23,7 @@ winston.add(cli.output.transports.Memory);
 winston.remove(cli.output.transports.Console);
 
 exports = module.exports = {
-  execute: execute,
+  execute: execute
 };
 
 function execute(cmd, cb) {
@@ -38,18 +38,23 @@ function execute(cmd, cb) {
   var end = function () {
     var transport = cli.output['default'].transports['memory'];
 
-    result.text = transport.writeOutput.join('\n');
-    result.errorText = transport.errorOutput.join('\n');
+    if (transport.writeOutput.length > 0) {
+      result.text = transport.writeOutput.join('\n') + '\n';
+      transport.writeOutput = [];
+    }
 
-    transport.errorOutput = [];
-    transport.writeOutput = [];
+    if (transport.errorOutput.length > 0) {
+      result.errorText = transport.errorOutput.join('\n') + '\n';
+      transport.errorOutput = [];
+      result.exitStatus = 1;
+    }
 
     sandbox.restore();
 
     return cb(result);
   };
 
-  sandbox.stub(cli, 'exit', function () {
+  sandbox.stub(process, 'exit', function () {
     end();
   });
 

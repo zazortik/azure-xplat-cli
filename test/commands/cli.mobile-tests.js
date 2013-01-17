@@ -237,9 +237,7 @@ suite('azure mobile', function(){
   test('job list --json (contains no scheduled jobs by default)', function(done) {
     var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.length.should.equal(0);
@@ -251,9 +249,7 @@ suite('azure mobile', function(){
   test('job create ' + servicename + ' foobar --json (create default scheduled job)', function(done) {
     var cmd = ('node cli.js mobile job create ' + servicename + ' foobar --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
@@ -264,9 +260,7 @@ suite('azure mobile', function(){
   test('job list --json (contains one scheduled job)', function(done) {
     var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.length.should.equal(1);
@@ -282,9 +276,7 @@ suite('azure mobile', function(){
   test('job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json (update scheduled job)', function(done) {
     var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
@@ -295,9 +287,7 @@ suite('azure mobile', function(){
   test('job list --json (contains updated scheduled job)', function(done) {
     var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.length.should.equal(1);
@@ -313,9 +303,7 @@ suite('azure mobile', function(){
   test('job delete ' + servicename + ' foobar --json (delete scheduled job)', function(done) {
     var cmd = ('node cli.js mobile job delete ' + servicename + ' foobar --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
@@ -326,9 +314,7 @@ suite('azure mobile', function(){
   test('job list --json (contains no scheduled jobs after deletion)', function(done) {
     var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.length.should.equal(0);
@@ -389,9 +375,7 @@ suite('azure mobile', function(){
   test('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
     var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.apns.should.equal('none');
@@ -403,9 +387,7 @@ suite('azure mobile', function(){
   test('config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json (set apns certificate)', function(done) {
     var cmd = ('node cli.js mobile config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
@@ -416,9 +398,7 @@ suite('azure mobile', function(){
   test('config get ' + servicename + ' apns --json (apns certificate was set)', function(done) {
     var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.apns.should.equal('dev');
@@ -643,9 +623,7 @@ suite('azure mobile', function(){
   test('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
     var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
     var scopes = setupNock(cmd);
-    capture(function() {
-      cli.parse(cmd);
-    }, function (result) {
+    executeCmd(cmd, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.didTruncate.should.equal(true);
