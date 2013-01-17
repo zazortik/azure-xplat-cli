@@ -382,30 +382,35 @@ suite('azure mobile', function(){
       checkScopes(scopes);
       done();
     });
-  });  
+  });
 
   test('config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json (set apns certificate)', function(done) {
-    var cmd = ('node cli.js mobile config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json').split(' ');
+    var cmd = ('node cli.js mobile config set ' + servicename + ' apns').split(' ');
+    cmd.push('dev:foobar:' + __dirname + '/mobile/cert.pfx');
+    cmd.push('--json');
+
     var scopes = setupNock(cmd);
     executeCmd(cmd, function (result) {
+      result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
       done();
     });
-  });    
+  });
 
   test('config get ' + servicename + ' apns --json (apns certificate was set)', function(done) {
     var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
     var scopes = setupNock(cmd);
     executeCmd(cmd, function (result) {
+      result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.apns.should.equal('dev');
       checkScopes(scopes);
       done();
     });
-  });       
+  });
 
   test('table list ' + servicename + ' --json (no tables by default)', function(done) {
     var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
@@ -648,9 +653,13 @@ suite('azure mobile', function(){
   });
 
   test('script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json (upload one script)', function(done) {
-    var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json').split(' ');
+    var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.insert -f').split(' ');
+    cmd.push(__dirname + '/mobile/table1.insert.js');
+    cmd.push('--json');
+
     var scopes = setupNock(cmd);
     executeCmd(cmd, function (result) {
+      result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       checkScopes(scopes);
