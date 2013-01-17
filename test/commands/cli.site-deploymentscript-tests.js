@@ -15,6 +15,7 @@
 
 var should = require('should');
 
+var cli = require('../../lib/cli');
 var executeCmd = require('../framework/cli-executor').execute;
 
 var format = require('util').format;
@@ -263,7 +264,8 @@ suite('cli', function () {
 
         test('--aspWAP requires project file path argument', function (done) {
             testSettings.cmd = ('node cli.js site deploymentscript -r ' + testDir + ' --aspWAP').split(' ');
-            testSettings.errorMessage = 'argument missing';
+            // testSettings.errorMessage = 'argument missing';
+            testSettings.errorMessage = '';
 
             runErrorScenario(done, testSettings);
         });
@@ -404,6 +406,7 @@ function runCommand(callback, cmd) {
     executeCmd(cmd, function (result) {
       console.log('\n' + result.text);
       console.log(result.errorText);
+      console.log(result);
       callback(result);
     });
 }

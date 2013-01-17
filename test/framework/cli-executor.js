@@ -48,6 +48,7 @@ var cleanCliOptions = function (cli) {
 };
 
 function execute(cmd, cb) {
+  var endRunOnce = false;
   var sandbox = sinon.sandbox.create();
 
   var result = {
@@ -57,6 +58,11 @@ function execute(cmd, cb) {
   }
 
   var end = _.once(function () {
+    if (endRunOnce) {
+      return;
+    }
+
+    endRunOnce = true;
     var transport = cli.output['default'].transports['memory'];
 
     if (transport.writeOutput.length > 0) {
