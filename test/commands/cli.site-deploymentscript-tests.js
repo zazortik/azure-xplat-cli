@@ -15,8 +15,7 @@
 
 var should = require('should');
 
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 
 var format = require('util').format;
 
@@ -402,12 +401,10 @@ function runErrorScenario(callback, settings) {
 }
 
 function runCommand(callback, cmd) {
-    capture(function () {
-        cli.parse(cmd);
-    }, function (result) {
-        console.log('\n' + result.text);
-        console.log(result.errorText);
-        callback(result);
+    executeCmd(cmd, function (result) {
+      console.log('\n' + result.text);
+      console.log(result.errorText);
+      callback(result);
     });
 }
 

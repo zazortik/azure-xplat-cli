@@ -18,8 +18,8 @@ var url = require('url');
 var uuid = require('node-uuid');
 var GitHubApi = require('github');
 var util = require('util');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var cli = require('../../lib/cli');
+var executeCmd = require('../framework/cli-executor').execute;
 var LinkedRevisionControlClient = require('../../lib/linkedrevisioncontrol').LinkedRevisionControlClient;
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
@@ -82,17 +82,14 @@ suite('cli', function(){
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('West US');
 
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
+        result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
         cmd = 'node cli.js site list --json'.split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
@@ -103,17 +100,13 @@ suite('cli', function(){
 
           // Delete created site
           cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
             // List sites
             cmd = 'node cli.js site list --json'.split(' ');
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
+            executeCmd(cmd, function (result) {
               if (result.text != '') {
                 siteList = JSON.parse(result.text);
 
@@ -144,17 +137,13 @@ suite('cli', function(){
       cmd.push('--githubrepository');
       cmd.push(githubRepositoryFullName);
 
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
         cmd = 'node cli.js site list --json'.split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
@@ -180,17 +169,13 @@ suite('cli', function(){
 
               // Delete created site
               cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
+              executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
                 // List sites
                 cmd = 'node cli.js site list --json'.split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
+                executeCmd(cmd, function (result) {
                   if (result.text != '') {
                     siteList = JSON.parse(result.text);
 
@@ -217,9 +202,7 @@ suite('cli', function(){
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('West US');
 
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
@@ -232,18 +215,13 @@ suite('cli', function(){
         cmd.push(githubRepositoryFullName);
 
         // Rerun to make sure update hook works properly
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // List sites
           cmd = 'node cli.js site list --json'.split(' ');
-
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             var siteList = JSON.parse(result.text);
 
             var siteExists = siteList.some(function (site) {
@@ -269,17 +247,13 @@ suite('cli', function(){
 
                 // Delete created site
                 cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
+                executeCmd(cmd, function (result) {
                   result.text.should.equal('');
                   result.exitStatus.should.equal(0);
 
                   // List sites
                   cmd = 'node cli.js site list --json'.split(' ');
-                  capture(function() {
-                    cli.parse(cmd);
-                  }, function (result) {
+                  executeCmd(cmd, function (result) {
                     if (result.text != '') {
                       siteList = JSON.parse(result.text);
 
@@ -306,22 +280,15 @@ suite('cli', function(){
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
       cmd.push('West US');
-      capture(function () {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
 
         // Restart site, it's created running
         cmd = util.format('node cli.js site restart %s', siteName).split(' ');
-        capture(function () {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
 
           // Delete test site
-
           cmd = util.format('node cli.js site delete %s', siteName).split(' ');
-          capture(function () {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             done();
           });
         });
@@ -334,25 +301,17 @@ suite('cli', function(){
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
       cmd.push('West US');
-      capture(function () {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         // Stop the site
         cmd = util.format('node cli.js site stop %s', siteName).split(' ');
-        capture(function () {
-          cli.parse(cmd);
-        }, function () {
+        executeCmd(cmd, function (result) {
           // Restart site
           cmd = util.format('node cli.js site restart %s', siteName).split(' ');
-          capture(function () {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             
             // Delete test site
             cmd = util.format('node cli.js site delete %s', siteName).split(' ');
-            capture(function () {
-              cli.parse(cmd);
-            }, function (result) {
+            executeCmd(cmd, function (result) {
               done();
             });
           });
