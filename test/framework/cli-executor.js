@@ -17,7 +17,7 @@ var sinon = require('sinon');
 var cli = require('../../lib/cli');
 
 var winston = require('winston');
-require('./winston-memory').Memory;
+require('winston-memory').Memory;
 
 winston.add(cli.output.transports.Memory);
 winston.remove(cli.output.transports.Console);

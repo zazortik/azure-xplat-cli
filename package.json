@@ -28,7 +28,8 @@
     "easy-table": "0.0.1",
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
-    "github": "0.1.6"
+    "github": "0.1.6",
+    "winston-memory": "0.1.0"
   },
   "devDependencies": {
     "mocha": "*",
