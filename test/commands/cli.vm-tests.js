@@ -17,34 +17,30 @@ var should = require('should');
 var url = require('url');
 var uuid = require('node-uuid');
 var util = require('util');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var cli = require('../../lib/cli');
+var executeCmd = require('../framework/cli-executor').execute;
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
 // A common VM used by multiple tests
 var vmToUse = { Name: null, Created: false, Delete: false};
 
-suite('cli', function (){
-  suite('vm', function () {
+suite('cli', function(){
+  suite('site', function() {
     teardown(function (done) {
-      function deleteUsedVM (vm) {
+      function deleteUsedVM (vm, callBack) {
         if (vm.Created && vm.Delete) {
           var cmd = ('node cli.js vm delete ' + vm.Name + ' --json').split(' ');
-
-          capture(function () {
-            cli.parse(cmd);
-          }, function () {
-            done();
+          executeCmd(cmd, function (result) {
+            vm.Name = null;
+            vm.Created = vm.Delete = false;
+            return callBack();
           });
-      
-          vm.Name = null;
-          vm.Created = vm.Delete = false;
         } else {
-          done();
+          return done();
         }
       };
 
-      deleteUsedVM(vmToUse);
+      deleteUsedVM(vmToUse, done);
     });
 
     test('vm endpoint create-multiple. Verify creation of multiple endpoints', function (done) {
@@ -52,42 +48,41 @@ suite('cli', function (){
         vm.Created.should.be.ok;
 
         var endPoints =  { 
-          OnlyLb: {Lb: 3333 }, 
-          LbAndVm: { Lb: 4444, Vm: 4454 },
-          LbVmAndSet: { Lb: 5555, Vm: 5565, LbSetName: 'LbSet1' },
-          LbVmSetProb: { Lb: 6666, Vm: 6676, LbSetName: 'LbSet2', PProtocol: 'http', PPort: "7777", PPath: '/prob/listner1'}
+          OnlyPP: { PublicPort: 3333 },
+          PPAndLP: { PublicPort: 4444, LocalPort: 4454 },
+          PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, LoadBalancerSetName: 'LbSet1' },
+          PP_LP_LBSetAndProb: {
+            PublicPort: 6666, LocalPort: 6676, LoadBalancerSetName: 'LbSet2',
+            ProbProtocol: 'http', ProbPort: "7777", ProbPath: '/prob/listner1'
+          }
         };
 
         var cmd = util.format(
           'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s,%s:%s:%s:%s:%s:%s --json', 
           vm.Name, 
           // EndPoint1
-          endPoints.OnlyLb.Lb, 
+          endPoints.OnlyPP.PublicPort,
           // EndPoint2
-          endPoints.LbAndVm.Lb, endPoints.LbAndVm.Vm,
+          endPoints.PPAndLP.PublicPort, endPoints.PPAndLP.LocalPort,
           // EndPoint3
-          endPoints.LbVmAndSet.Lb, endPoints.LbVmAndSet.Vm, endPoints.LbVmAndSet.LbSetName,
+          endPoints.PP_LPAndLBSet.PublicPort, endPoints.PP_LPAndLBSet.LocalPort, endPoints.PP_LPAndLBSet.LoadBalancerSetName,
           // EndPoint4
-          endPoints.LbVmSetProb.Lb, endPoints.LbVmSetProb.Vm, endPoints.LbVmSetProb.LbSetName,
-          endPoints.LbVmSetProb.PProtocol, endPoints.LbVmSetProb.PPort, endPoints.LbVmSetProb.PPath
+          endPoints.PP_LP_LBSetAndProb.PublicPort, endPoints.PP_LP_LBSetAndProb.LocalPort, endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName,
+          endPoints.PP_LP_LBSetAndProb.ProbProtocol, endPoints.PP_LP_LBSetAndProb.ProbPort, endPoints.PP_LP_LBSetAndProb.ProbPath
         ).split(' ');
 
-        capture(function() {
-          cli.parse(cmd)
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           result.exitStatus.should.equal(0);
 
           cmd = util.format('node cli.js vm endpoint list %s --json', vm.Name).split(' ');
-          capture(function() {
-            cli.parse(cmd)
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var allEndPointList = JSON.parse(result.text);
 
             // Verify endpoint creation with only lb port
             var endPointListOnlyLb = allEndPointList.filter(
               function(element, index, array) { 
-                return (element.LocalPort == endPoints.OnlyLb.Lb)
+                return (element.LocalPort == endPoints.OnlyPP.PublicPort)
               }
             );
             endPointListOnlyLb.length.should.be.equal(1);
@@ -96,24 +91,22 @@ suite('cli', function (){
             // Verify endpoint creation with lb port and vm port
             var endPointListLbAndVm = allEndPointList.filter(
               function(element, index, array) { 
-                return (element.LocalPort == endPoints.LbAndVm.Vm)
+                return (element.LocalPort == endPoints.PPAndLP.LocalPort)
               }
             );
             endPointListLbAndVm.length.should.be.equal(1);
-            (endPointListLbAndVm[0].PublicPort == endPoints.LbAndVm.Lb).should.be.true;
+            (endPointListLbAndVm[0].PublicPort == endPoints.PPAndLP.PublicPort).should.be.true;
 
             // Verify endpoint creation with lbSetName and prob option
             cmd = util.format('node cli.js vm show %s --json', vm.Name).split(' ');
-            capture(function() {
-              cli.parse(cmd)
-            }, function (result) {
+            executeCmd(cmd, function (result) {
               result.exitStatus.should.equal(0);
               var vmInfo = JSON.parse(result.text);
               (vmInfo.Network.Endpoints.length >= 4).should.be.true;
 
               var endPointListLbVmAndSet = vmInfo.Network.Endpoints.filter(
                 function(element, index, array) { 
-                  return (element.LocalPort == endPoints.LbVmAndSet.Vm)
+                  return (element.LocalPort == endPoints.PP_LPAndLBSet.LocalPort)
                 }
               );
               endPointListLbVmAndSet.length.should.be.equal(1);
@@ -121,17 +114,17 @@ suite('cli', function (){
 
               var endPointListLbVmSetAndProb = vmInfo.Network.Endpoints.filter(
                 function(element, index, array) { 
-                  return (element.LocalPort == endPoints.LbVmSetProb.Vm)
+                  return (element.LocalPort == endPoints.PP_LP_LBSetAndProb.LocalPort)
                 }
               );
               endPointListLbVmSetAndProb.length.should.be.equal(1);
-              endPointListLbVmSetAndProb[0].LoadBalancedEndpointSetName.should.be.equal('LbSet2');
-              endPointListLbVmSetAndProb[0].LoadBalancerProbe.Protocol.should.be.equal('http');
-              endPointListLbVmSetAndProb[0].LoadBalancerProbe.Port.should.be.equal(endPoints.LbVmSetProb.PPort);
+              endPointListLbVmSetAndProb[0].LoadBalancedEndpointSetName.should.be.equal(endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName);
+              endPointListLbVmSetAndProb[0].LoadBalancerProbe.Protocol.should.be.equal(endPoints.PP_LP_LBSetAndProb.ProbProtocol);
+              endPointListLbVmSetAndProb[0].LoadBalancerProbe.Port.should.be.equal(endPoints.PP_LP_LBSetAndProb.ProbPort);
 
               // Set Delete to true if this is the last test using shared vm
               vm.Delete = true;
-              done();
+              return done();
             });
           });
         });
@@ -147,16 +140,12 @@ suite('cli', function (){
         communityImageId
       ).split(' ');
       cmd.push('West US');
-    
-      capture(function () {
-        cli.parse(cmd);
-      }, function (result) {
+
+      executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         // List the VMs
         cmd = 'node cli.js vm list --json'.split(' ');
-        capture(function () {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var vmList = JSON.parse(result.text);
           // Look for created VM
           var vmExists = vmList.some(function (vm) {
@@ -164,13 +153,13 @@ suite('cli', function (){
           });
       
           vmExists.should.be.ok;
-      
-          // Delete the VM
+          // Delete created VM
           cmd = ('node cli.js vm delete ' + vmName + ' --json').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
-            done();
+          cmd.push('--dns-name');
+          cmd.push(vmName);
+          executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            return done();
           });
         });
       });
@@ -183,9 +172,7 @@ suite('cli', function (){
         callBack(getImageName.imageName);
       } else {
         var cmd = 'node cli.js vm image list --json'.split(' ');
-        capture(function () {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
             if (image.Category.toLowerCase() === category.toLowerCase()) {
@@ -202,7 +189,7 @@ suite('cli', function (){
     function getSharedVM(callBack)
     {
       if (vmToUse.Created) {
-        callBack(vmToUse);
+        return callBack(vmToUse);
       } else {
         getImageName('Microsoft', function(imageName) {
           var name = ('clitestvm1' + uuid()).toLowerCase().substr(0, 15);
@@ -212,12 +199,10 @@ suite('cli', function (){
             imageName
           ).split(' ');
           cmd.push('West US');
-          capture(function () {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             vmToUse.Created = (result.exitStatus == 0);
             vmToUse.Name = vmToUse.Created ? name : null;
-            callBack(vmToUse);
+            return callBack(vmToUse);
           });
         });
       }
