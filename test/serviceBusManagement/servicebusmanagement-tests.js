@@ -13,7 +13,6 @@
 * limitations under the License.
 */
 
-var js2xml = require('../../lib/util/js2xml');
 var uuid = require('node-uuid');
 var url = require('url');
 

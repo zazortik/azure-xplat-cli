@@ -20,7 +20,7 @@ var GitHubApi = require('github');
 var util = require('util');
 var cli = require('../../lib/cli');
 var executeCmd = require('../framework/cli-executor').execute;
-var LinkedRevisionControlClient = require('../../lib/linkedrevisioncontrol').LinkedRevisionControlClient;
+var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
