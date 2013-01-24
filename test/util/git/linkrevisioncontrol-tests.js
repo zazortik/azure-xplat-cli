@@ -15,8 +15,9 @@
 
 var should = require('should');
 var sinon = require('sinon');
-var cli = require('../lib/cli');
-var LinkedRevisionControl = require('../lib/linkedrevisioncontrol');
+
+var cli = require('../../../lib/cli');
+var LinkedRevisionControl = require('../../../lib/util/git/linkedrevisioncontrol');
 
 var sandbox;
 
