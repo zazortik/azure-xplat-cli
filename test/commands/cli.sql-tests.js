@@ -77,10 +77,15 @@ describe('CLI', function () {
           cmd.push(administratorLogin);
           cmd.push(administratorLoginPassword);
           cmd.push(location);
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
+
+            var serverName = JSON.parse(result.text);
+            serverName.should.not.be.null;
+            serverName.should.match(/[0-9a-zA-Z]*/);
 
             done();
           });
@@ -109,6 +114,8 @@ describe('CLI', function () {
 
         it('should show the server', function (done) {
           var cmd = ('node cli.js sql server show ' + serverName).split(' ');
+          cmd.push('--json');
+
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
@@ -124,6 +131,8 @@ describe('CLI', function () {
 
         it('should list the server', function (done) {
           var cmd = ('node cli.js sql server list').split(' ');
+          cmd.push('--json');
+
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
@@ -165,7 +174,8 @@ describe('CLI', function () {
       });
 
       after(function (done) {
-        var cmd = ('node cli.js sql server remove ' + serverName + ' --json').split(' ');
+        var cmd = ('node cli.js sql server remove ' + serverName).split(' ');
+        cmd.push('--json');
 
         executeCmd(cmd, function (result) {
           result.text.should.not.be.null;
@@ -178,6 +188,7 @@ describe('CLI', function () {
       describe('Create and remove firewall Rule', function () {
         it('should create a firewall rule', function (done) {
           var cmd = util.format('node cli.js sql firewallrule create %s %s %s %s', serverName, ruleName, startIPAddress, endIPAddress).split(' ');
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
@@ -189,6 +200,7 @@ describe('CLI', function () {
 
         it('should remove a firewall rule', function (done) {
           var cmd = util.format('node cli.js sql firewallrule remove %s %s', serverName, ruleName).split(' ');
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
@@ -202,6 +214,7 @@ describe('CLI', function () {
       describe('List and show Firewall Rule', function () {
         before(function (done) {
           var cmd = util.format('node cli.js sql firewallrule create %s %s %s %s', serverName, ruleName, startIPAddress, endIPAddress).split(' ');
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
@@ -213,6 +226,7 @@ describe('CLI', function () {
 
         it('should show firewall rule', function (done) {
           var cmd = util.format('node cli.js sql firewallrule show %s %s', serverName, ruleName).split(' ');
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
@@ -224,6 +238,7 @@ describe('CLI', function () {
 
         it('should list firewall rule', function (done) {
           var cmd = util.format('node cli.js sql firewallrule list %s', serverName).split(' ');
+          cmd.push('--json');
 
           executeCmd(cmd, function (result) {
             result.text.should.not.be.null;
