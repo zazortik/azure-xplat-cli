@@ -13,7 +13,6 @@
 * limitations under the License.
 */
 
-var js2xml = require('../../lib/util/js2xml');
 var _ = require('underscore');
 var util = require('util');
 var xmlbuilder = require('xmlbuilder');
