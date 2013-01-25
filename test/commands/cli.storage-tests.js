@@ -121,20 +121,29 @@ suite('cli', function(){
             result.exitStatus.should.equal(0);
 
             // It takes the servers a few moments to actually return the updated keys
-            // Wait a bit, then retrieve and confirm
-            setTimeout(function () {
-              var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
+            // therefore, retry until the key actually changes to confirm
+            //
+            // If the key never changes, the UT will eventually timeout and fail.
+            var checkPrimaryKeyChanged = function (storageAccount, originalKey, callback) {
+              var cmd = ('node cli.js account storage keys list ' + storageAccount + ' --json').split(' ');
               executeCmd(cmd, function (result) {
                 var renewedStorageAccountKeys = JSON.parse(result.text);
                 renewedStorageAccountKeys.Primary.should.not.be.null;
                 renewedStorageAccountKeys.Secondary.should.not.be.null;
 
-                renewedStorageAccountKeys.Primary.should.not.equal(storageAccountKeys.Primary);
-                renewedStorageAccountKeys.Secondary.should.equal(storageAccountKeys.Secondary);
-
-                done();
+                if (renewedStorageAccountKeys.Primary !== originalKey) {
+                  callback();
+                  renewedStorageAccountKeys.Secondary.should.equal(storageAccountKeys.Secondary);
+                } else {
+                  // wait 2 seconds and try again
+                  setTimeout(function () {
+                    checkPrimaryKeyChanged(storageAccount, originalKey, callback);
+                  }, 2000);
+                }
               });
-            }, 5000);
+            };
+
+            checkPrimaryKeyChanged(storageName, storageAccountKeys.Primary, done);
           });
         });
       });
