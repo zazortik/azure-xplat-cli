@@ -46,7 +46,7 @@ args.push('tdd');
 
 // TODO: remove this timeout once tests are faster
 args.push('-t');
-args.push('200000');
+args.push('300000');
 
 files.forEach(function (file) {
   if (file.length > 0 && file.trim()[0] !== '#') {
