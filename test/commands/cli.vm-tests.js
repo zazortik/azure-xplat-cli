@@ -25,7 +25,7 @@ var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
 var vmToUse = { Name: null, Created: false, Delete: false};
 
 suite('cli', function(){
-  suite('site', function() {
+  suite('vm', function() {
     teardown(function (done) {
       function deleteUsedVM (vm, callBack) {
         if (vm.Created && vm.Delete) {
@@ -40,6 +40,15 @@ suite('cli', function(){
         }
       };
 
+      // Force options reset in the create command
+      var createCommand = cli.categories.vm.commands.filter(function (command) {
+        return command.name === 'create';
+      })[0];
+
+      for (var option in createCommand.options) {
+        delete createCommand[createCommand.options[option].long.substr(2)];
+      }
+	  
       deleteUsedVM(vmToUse, done);
     });
 
