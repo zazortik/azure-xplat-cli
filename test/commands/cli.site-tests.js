@@ -53,15 +53,6 @@ suite('cli', function(){
         }
       };
 
-      // Force options reset in the create command
-      var createCommand = cli.categories.site.commands.filter(function (command) {
-        return command.name === 'create';
-      })[0];
-
-      for (var option in createCommand.options) {
-        delete createCommand[createCommand.options[option].long.substr(2)];
-      }
-
       // Remove any existing repository hooks
       githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
         repositoryName = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName).name;
@@ -287,7 +278,7 @@ suite('cli', function(){
         executeCmd(cmd, function (result) {
 
           // Delete test site
-          cmd = util.format('node cli.js site delete %s', siteName).split(' ');
+          cmd = util.format('node cli.js site delete %s --quiet', siteName).split(' ');
           executeCmd(cmd, function (result) {
             done();
           });
@@ -310,7 +301,7 @@ suite('cli', function(){
           executeCmd(cmd, function (result) {
             
             // Delete test site
-            cmd = util.format('node cli.js site delete %s', siteName).split(' ');
+            cmd = util.format('node cli.js site delete %s --quiet', siteName).split(' ');
             executeCmd(cmd, function (result) {
               done();
             });

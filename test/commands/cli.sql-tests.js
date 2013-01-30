@@ -74,8 +74,11 @@ describe('CLI', function () {
       describe('Create SQL Server', function () {
         it('should create a server', function (done) {
           var cmd = ('node cli.js sql server create').split(' ');
+          cmd.push('--administratorLogin');
           cmd.push(administratorLogin);
+          cmd.push('--administratorPassword');
           cmd.push(administratorLoginPassword);
+          cmd.push('--location');
           cmd.push(location);
           cmd.push('--json');
 
@@ -97,8 +100,11 @@ describe('CLI', function () {
 
         before(function (done) {
           var cmd = ('node cli.js sql server create').split(' ');
+          cmd.push('--administratorLogin');
           cmd.push(administratorLogin);
+          cmd.push('--administratorPassword');
           cmd.push(administratorLoginPassword);
+          cmd.push('--location');
           cmd.push(location);
           cmd.push('--json');
 
@@ -158,8 +164,11 @@ describe('CLI', function () {
 
       before(function (done) {
         var cmd = ('node cli.js sql server create').split(' ');
+        cmd.push('--administratorLogin');
         cmd.push(administratorLogin);
+        cmd.push('--administratorPassword');
         cmd.push(administratorLoginPassword);
+        cmd.push('--location');
         cmd.push(location);
         cmd.push('--json');
 

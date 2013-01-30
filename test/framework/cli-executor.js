@@ -15,15 +15,31 @@
 
 var sinon = require('sinon');
 var cli = require('../../lib/cli');
+var _ = require('underscore');
 
 var winston = require('winston');
 require('winston-memory').Memory;
 
-winston.add(cli.output.transports.Memory);
-winston.remove(cli.output.transports.Console);
+winston.add(winston.transports.Memory);
+winston.remove(winston.transports.Console);
 
 exports = module.exports = {
   execute: execute
+};
+
+var cleanCliOptions = function (cli) {
+  _.each(cli.categories, function (category) {
+    delete category.rawArgs;
+    delete category.args;
+
+    _.each(category.commands, function (command) {
+      for (var option in command.options) {
+        delete command[command.options[option].long.substr(2)];
+      }
+    });
+
+    cleanCliOptions(category);
+  });
 };
 
 function execute(cmd, cb) {
@@ -59,6 +75,7 @@ function execute(cmd, cb) {
   });
 
   try {
+    cleanCliOptions(cli);
     cli.parse(cmd);
   } catch(err) {
     result.error = err;
