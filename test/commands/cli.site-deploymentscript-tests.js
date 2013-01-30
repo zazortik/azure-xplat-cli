@@ -406,7 +406,6 @@ function runCommand(callback, cmd) {
     executeCmd(cmd, function (result) {
       console.log('\n' + result.text);
       console.log(result.errorText);
-      console.log(result);
       callback(result);
     });
 }
