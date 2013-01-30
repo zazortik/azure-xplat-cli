@@ -57,6 +57,8 @@ suite('cli', function () {
 
             testDirIndex++;
             testDir = pathUtil.join(baseTestTempDir, testDirBase + testDirIndex);
+
+            removePath(testDir);
             ensurePathExists(testDir);
 
             testSettings = {};
@@ -68,7 +70,7 @@ suite('cli', function () {
         });
 
         test('generate batch basic deployment script (--basic -t batch -r) should generate deploy.cmd', function (done) {
-            testSettings.cmd = ('node cli.js site deploymentscript --basic -t batch -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript -v --basic -t batch -r ' + testDir).split(' ');
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
