@@ -62,7 +62,6 @@ function execute(cmd, cb) {
     if (transport.errorOutput.length > 0) {
       result.errorText = transport.errorOutput.join('\n') + '\n';
       transport.errorOutput = [];
-      result.exitStatus = 1;
     }
 
     sandbox.restore();
@@ -70,7 +69,9 @@ function execute(cmd, cb) {
     return cb(result);
   };
 
-  sandbox.stub(process, 'exit', function () {
+  sandbox.stub(process, 'exit', function (exitStatus) {
+    result.exitStatus = exitStatus;
+
     end();
   });
 
