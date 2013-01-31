@@ -39,18 +39,6 @@ suite('cli', function () {
             for (var i in cli.categories.site.commands) {
                 var command = cli.categories.site.commands[i];
                 if (command.name == 'deploymentscript') {
-                    delete command.php;
-                    delete command.basic;
-                    delete command.aspWAP;
-                    delete command.aspWebSite;
-                    delete command.python;
-                    delete command.node;
-                    delete command.repositoryRoot;
-                    delete command.suppressPrompt;
-                    delete command.scriptType;
-                    delete command.solutionFile;
-                    delete command.sitePath;
-                    delete command.dotDeployment;
                     delete command.solution;
                 }
             }
@@ -70,7 +58,7 @@ suite('cli', function () {
         });
 
         test('generate batch basic deployment script (--basic -t batch -r) should generate deploy.cmd', function (done) {
-            testSettings.cmd = ('node cli.js site deploymentscript -v --basic -t batch -r ' + testDir).split(' ');
+            testSettings.cmd = ('node cli.js site deploymentscript --basic -t batch -r ' + testDir).split(' ');
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
