@@ -80,7 +80,7 @@ suite('cli', function () {
 
     function connectLogStream(siteName, callback) {
       setTimeout(function () { process.exit(0); }, 5000);
-      var cmd = ('node cli.js site log tail ' + siteName).split(' ');
+      var cmd = ('node cli.js site log tail ' + siteName + ' --log').split(' ');
       executeCmd(cmd, callback);
     }
   });
