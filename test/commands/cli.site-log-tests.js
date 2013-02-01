@@ -54,7 +54,7 @@ suite('cli', function () {
           result.exitStatus.should.equal(0);
 
           connectLogStream(siteName, function (result) {
-            result.text.should.include('Welcome, you are now connected to log-streaming service.');
+            result.text.replace(/\n/g, '').should.include('Welcome, you are now connected to log-streaming service.');
 
             done();
           });
