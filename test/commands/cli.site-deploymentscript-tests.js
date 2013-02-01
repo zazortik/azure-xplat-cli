@@ -35,14 +35,6 @@ var testSettings;
 suite('cli', function () {
     suite('site deploymentscript', function () {
         setup(function () {
-            // Reset site deploymentscript command
-            for (var i in cli.categories.site.commands) {
-                var command = cli.categories.site.commands[i];
-                if (command.name == 'deploymentscript') {
-                    delete command.solution;
-                }
-            }
-
             testDirIndex++;
             testDir = pathUtil.join(baseTestTempDir, testDirBase + testDirIndex);
 
