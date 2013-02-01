@@ -34,7 +34,12 @@ var cleanCliOptions = function (cli) {
 
     _.each(category.commands, function (command) {
       for (var option in command.options) {
-        delete command[command.options[option].long.substr(2)];
+        var optionName = command.options[option].long.substr(2);
+        if (_.startsWith(optionName, 'no-')) {
+          optionName = optionName.substr(3);
+        }
+
+        delete command[optionName];
       }
     });
 
@@ -43,6 +48,7 @@ var cleanCliOptions = function (cli) {
 };
 
 function execute(cmd, cb) {
+  var endRunOnce = false;
   var sandbox = sinon.sandbox.create();
 
   var result = {
@@ -52,6 +58,11 @@ function execute(cmd, cb) {
   }
 
   var end = function () {
+    if (endRunOnce) {
+      return;
+    }
+
+    endRunOnce = true;
     var transport = cli.output['default'].transports['memory'];
 
     if (transport.writeOutput.length > 0) {
