@@ -172,18 +172,22 @@ suite('cli', function () {
         });
 
         test('generate batch basic site deployment script with sitePath (--basic -p "site\\" -r) should generate deploy.cmd', function (done) {
-            var siteDir = 'site\\';
+            var siteDir = 'site';
+            if (pathUtil.sep) {
+                siteDir += pathUtil.sep
+            }
+
             var siteDirPath = pathUtil.join(testDir, siteDir);
 
             testSettings.cmd = format('node cli.js site deploymentscript --basic -p %s -r %s', siteDirPath, testDir).split(' ');
             testSettings.siteDirPath = siteDir;
-            testSettings.siteDir = '%\\site';
+            testSettings.siteDir = '%\\site" ';
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
 
         test('generate batch php site deployment script with sitePath fullpath (--php -p site\\site2 -r) should generate deploy.cmd', function (done) {
-            var siteDir = 'site\\site2';
+            var siteDir = pathUtil.join('site', 'site2');
             var siteDirPath = pathUtil.resolve(pathUtil.join(testDir, siteDir));
 
             testSettings.cmd = format('node cli.js site deploymentscript --php -p %s -r %s', siteDirPath, testDir).split(' ');
@@ -201,6 +205,18 @@ suite('cli', function () {
             testSettings.bash = true;
             testSettings.siteDirPath = siteDir;
             testSettings.siteDir = '$DEPLOYMENT_SOURCE/site';
+
+            runBasicSiteDeploymentScriptScenario(done, testSettings);
+        });
+
+        test('generate bash python site deployment script with sitePath (--python -t bash --sitePath site\\site2 -r) should generate deploy.sh', function (done) {
+            var siteDir = pathUtil.join('site', 'site2');
+            var siteDirPath = pathUtil.join(testDir, siteDir);
+
+            testSettings.cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+            testSettings.bash = true;
+            testSettings.siteDirPath = siteDir;
+            testSettings.siteDir = '$DEPLOYMENT_SOURCE/site/site2';
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
