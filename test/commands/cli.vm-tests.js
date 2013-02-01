@@ -40,15 +40,6 @@ suite('cli', function(){
         }
       };
 
-      // Force options reset in the create command
-      var createCommand = cli.categories.vm.commands.filter(function (command) {
-        return command.name === 'create';
-      })[0];
-
-      for (var option in createCommand.options) {
-        delete createCommand[createCommand.options[option].long.substr(2)];
-      }
-	  
       deleteUsedVM(vmToUse, done);
     });
 
