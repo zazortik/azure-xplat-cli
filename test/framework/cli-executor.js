@@ -48,7 +48,6 @@ var cleanCliOptions = function (cli) {
 };
 
 function execute(cmd, cb) {
-  var endRunOnce = false;
   var sandbox = sinon.sandbox.create();
 
   var result = {
@@ -57,12 +56,7 @@ function execute(cmd, cb) {
     exitStatus: 0
   }
 
-  var end = function () {
-    if (endRunOnce) {
-      return;
-    }
-
-    endRunOnce = true;
+  var end = _.once(function () {
     var transport = cli.output['default'].transports['memory'];
 
     if (transport.writeOutput.length > 0) {
@@ -78,7 +72,7 @@ function execute(cmd, cb) {
     sandbox.restore();
 
     return cb(result);
-  };
+  });
 
   sandbox.stub(process, 'exit', function (exitStatus) {
     result.exitStatus = exitStatus;
