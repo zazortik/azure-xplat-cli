@@ -1,4 +1,5 @@
 commands/cli.deployment-tests.js
+commands/cli.site-deploymentscript-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
 util/git/linkrevisioncontrol-tests.js

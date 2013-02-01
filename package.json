@@ -49,8 +49,7 @@
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
-    "sbmtests": "node test/runtests.js sbmtestlist.txt",
-    "deployment-script-tests": "node test/runtests.js deploymentscripttestlist.txt"
+    "sbmtests": "node test/runtests.js sbmtestlist.txt"
   },
   "bin": {
     "azure": "./bin/azure"
