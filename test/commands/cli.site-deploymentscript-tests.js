@@ -200,7 +200,7 @@ suite('cli', function () {
             testSettings.cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
             testSettings.bash = true;
             testSettings.siteDirPath = siteDir;
-            testSettings.siteDir = '$DEPLOYMENT_SOURCE\\site';
+            testSettings.siteDir = '$DEPLOYMENT_SOURCE/site';
 
             runBasicSiteDeploymentScriptScenario(done, testSettings);
         });
