@@ -70,7 +70,7 @@ Creates a new storage account
 
 **--location** - Location for the storage account 
 
-**--affinitygroup** - Affinity group for the storage account
+**--affinity-group** - Affinity group for the storage account
 
 **Note:** Either location or affinity group is required.
 
