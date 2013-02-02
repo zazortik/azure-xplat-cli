@@ -358,8 +358,7 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
       iisNodeYmlContent.should.include('node_env: production');
 
       callback();
-    }
-    catch (e) {
+    } catch (e) {
       callback(e);
     }
   }, settings);
@@ -384,15 +383,13 @@ function runSiteDeploymentScriptScenario(callback, settings) {
       if (settings.noDotDeployment) {
         var dotDeploymentFilePath = pathUtil.join(testDir, '.deployment');
         fs.existsSync(dotDeploymentFilePath).should.equal(false, "File exist: " + dotDeploymentFilePath);
-      }
-      else {
+      } else {
         var deploymentFileContent = getFileContent('.deployment');
         deploymentFileContent.should.include(settings.scriptFileName);
       }
 
       callback();
-    }
-    catch (e) {
+    } catch (e) {
       callback(e);
     }
   }, settings.cmd);
@@ -404,8 +401,7 @@ function runErrorScenario(callback, settings) {
       result.exitStatus.should.equal(1, 'Received success status exit code');
       result.errorText.should.include(settings.errorMessage);
       callback();
-    }
-    catch (e) {
+    } catch (e) {
       callback(e);
     }
   }, settings.cmd);
@@ -434,8 +430,7 @@ function removePath(path) {
   if (stat) {
     if (!stat.isDirectory()) {
       tryRemoveFile(path);
-    }
-    else {
+    } else {
       var files = fs.readdirSync(path);
       for (var index in files) {
         var file = files[index];
@@ -451,8 +446,7 @@ function removePath(path) {
 function tryGetFileStat(path) {
   try {
     return fs.statSync(path);
-  }
-  catch (e) {
+  } catch (e) {
     if (e.errno == 34) {
       // Return null if path doesn't exist
       return null;
@@ -465,8 +459,7 @@ function tryGetFileStat(path) {
 function tryRemoveFile(path) {
   try {
     fs.unlinkSync(path);
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
   }
 }
@@ -474,8 +467,7 @@ function tryRemoveFile(path) {
 function tryRemoveDir(path) {
   try {
     fs.rmdirSync(path);
-  }
-  catch (e) {
+  } catch (e) {
   }
 }
 
