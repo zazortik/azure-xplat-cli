@@ -190,7 +190,12 @@ suite('cli', function () {
             var siteDir = pathUtil.join('site', 'site2');
             var siteDirPath = pathUtil.resolve(pathUtil.join(testDir, siteDir));
 
-            testSettings.cmd = format('node cli.js site deploymentscript --php -p %s -r %s', siteDirPath, testDir).split(' ');
+            var cmd = 'node cli.js site deploymentscript --php -p'.split(' ');
+            cmd.push(siteDirPath);
+            cmd.push('-r');
+            cmd.push(testDir);
+            testSettings.cmd = cmd;
+
             testSettings.siteDirPath = siteDir;
             testSettings.siteDir = '%\\site\\site2';
 
