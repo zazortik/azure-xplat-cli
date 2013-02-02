@@ -1,3 +1,4 @@
+commands/cli.affinitygroup-tests.js
 commands/cli.deployment-tests.js
 commands/cli.site-deploymentscript-tests.js
 commands/cli.site-tests.js
