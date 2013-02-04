@@ -305,7 +305,7 @@ describe('CLI', function () {
 
       describe('List and show databases', function () {
         it('should list master database', function (done) {
-          var cmd = util.format('node cli.js sql db list %s %s', serverName, administratorLoginPassword).split(' ');
+          var cmd = util.format('node cli.js sql db list %s %s %s', serverName, administratorLogin, administratorLoginPassword).split(' ');
           cmd.push('--json');
 
           executeCmd(cmd, function (result) {
@@ -321,7 +321,7 @@ describe('CLI', function () {
 
         describe('when a database is created', function () {
           before(function (done) {
-            var cmd = util.format('node cli.js sql db create %s %s %s', serverName, DATABASE_NAME, administratorLoginPassword).split(' ');
+            var cmd = util.format('node cli.js sql db create %s %s %s %s', serverName, DATABASE_NAME, administratorLogin, administratorLoginPassword).split(' ');
             cmd.push('--json');
 
             executeCmd(cmd, function (result) {
@@ -333,7 +333,7 @@ describe('CLI', function () {
           });
 
           it('should list new database plus master', function (done) {
-            var cmd = util.format('node cli.js sql db list %s %s', serverName, administratorLoginPassword).split(' ');
+            var cmd = util.format('node cli.js sql db list %s %s %s', serverName, administratorLogin, administratorLoginPassword).split(' ');
             cmd.push('--json');
 
             executeCmd(cmd, function (result) {
