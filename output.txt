@@ -7,24 +7,8 @@
 	<file name="lib/cert.js">
 		<issue line="201" char="10" reason="Don&apos;t make functions within a loop." evidence="        })();" />
 	</file>
-	<file name="lib/channel.js">
-		<issue line="125" char="12" reason="Missing semicolon." evidence="          }" />
-		<issue line="170" char="2" reason="Unnecessary semicolon." evidence="};" />
-	</file>
 	<file name="lib/cli.js">
-		<issue line="55" char="35" reason="[&apos;console&apos;] is better written in dot notation." evidence="    if (!log[&apos;default&apos;].transports[&apos;console&apos;]) {" />
-		<issue line="306" char="14" reason="&apos;opts&apos; is already defined." evidence="    var opts = {" />
-		<issue line="391" char="37" reason="Bad escapement." evidence="    if (char === &apos;\b&apos; || char === &apos;\177&apos;) {" />
-		<issue line="465" char="39" reason="[&apos;console&apos;] is better written in dot notation." evidence="        if (!log[&apos;default&apos;].transports[&apos;console&apos;]) {" />
-		<issue line="523" char="5" reason="Comma warnings can be turned off with &apos;laxcomma&apos;" evidence="    , len = argv.length" />
-		<issue line="522" char="15" reason="Bad line breaking before &apos;,&apos;." evidence="  var args = []" />
-		<issue line="523" char="18" reason="Bad line breaking before &apos;,&apos;." evidence="    , len = argv.length" />
-		<issue line="524" char="17" reason="Bad line breaking before &apos;,&apos;." evidence="    , literal = false" />
-		<issue line="525" char="7" reason="Bad line breaking before &apos;,&apos;." evidence="    , option" />
-		<issue line="579" char="18" reason="Use &apos;===&apos; to compare with &apos;null&apos;." evidence="        if (null == arg) return this.optionMissingArgument(option);" />
-		<issue line="585" char="18" reason="Use &apos;===&apos; to compare with &apos;null&apos;." evidence="        if (null == arg || &apos;-&apos; == arg[0]) {" />
-		<issue line="897" char="32" reason="Missing radix parameter." evidence="  var ver1num = parseInt(ver[1]);" />
-		<issue line="898" char="32" reason="Missing radix parameter." evidence="  var ver2num = parseInt(ver[2]);" />
+		<issue line="390" char="37" reason="Bad escapement." evidence="    if (char === &apos;\b&apos; || char === &apos;\177&apos;) {" />
 	</file>
 	<file name="lib/commands/account.js">
 		<issue line="70" char="109" reason="Missing semicolon." evidence="      var filtered = subscriptions.filter(function (s) { return utils.ignoreCaseEquals(s.Name, subscription) });" />
