@@ -10,7 +10,7 @@
   "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#release-0.6.10",
+    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
     "xml2js" : "0.1.x",
     "qs": ">= 0.3.1",
     "log": ">= 1.2.0",
@@ -48,8 +48,7 @@
   },
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
-    "jshint": "node test/runjshint.js",
-    "sbmtests": "node test/runtests.js sbmtestlist.txt"
+    "jshint": "node test/runjshint.js"
   },
   "bin": {
     "azure": "./bin/azure"
