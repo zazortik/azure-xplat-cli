@@ -1,0 +1,174 @@
+
+> azure-cli@0.6.11 jshint /Users/andrerod/workspace/azure-sdk-tools-xplat
+> node test/runjshint.js
+
+<?xml version="1.0" encoding="utf-8"?>
+<jslint>
+	<file name="lib/cert.js">
+		<issue line="201" char="10" reason="Don&apos;t make functions within a loop." evidence="        })();" />
+	</file>
+	<file name="lib/channel.js">
+		<issue line="125" char="12" reason="Missing semicolon." evidence="          }" />
+		<issue line="170" char="2" reason="Unnecessary semicolon." evidence="};" />
+	</file>
+	<file name="lib/cli.js">
+		<issue line="55" char="35" reason="[&apos;console&apos;] is better written in dot notation." evidence="    if (!log[&apos;default&apos;].transports[&apos;console&apos;]) {" />
+		<issue line="306" char="14" reason="&apos;opts&apos; is already defined." evidence="    var opts = {" />
+		<issue line="391" char="37" reason="Bad escapement." evidence="    if (char === &apos;\b&apos; || char === &apos;\177&apos;) {" />
+		<issue line="465" char="39" reason="[&apos;console&apos;] is better written in dot notation." evidence="        if (!log[&apos;default&apos;].transports[&apos;console&apos;]) {" />
+		<issue line="523" char="5" reason="Comma warnings can be turned off with &apos;laxcomma&apos;" evidence="    , len = argv.length" />
+		<issue line="522" char="15" reason="Bad line breaking before &apos;,&apos;." evidence="  var args = []" />
+		<issue line="523" char="18" reason="Bad line breaking before &apos;,&apos;." evidence="    , len = argv.length" />
+		<issue line="524" char="17" reason="Bad line breaking before &apos;,&apos;." evidence="    , literal = false" />
+		<issue line="525" char="7" reason="Bad line breaking before &apos;,&apos;." evidence="    , option" />
+		<issue line="579" char="18" reason="Use &apos;===&apos; to compare with &apos;null&apos;." evidence="        if (null == arg) return this.optionMissingArgument(option);" />
+		<issue line="585" char="18" reason="Use &apos;===&apos; to compare with &apos;null&apos;." evidence="        if (null == arg || &apos;-&apos; == arg[0]) {" />
+		<issue line="897" char="32" reason="Missing radix parameter." evidence="  var ver1num = parseInt(ver[1]);" />
+		<issue line="898" char="32" reason="Missing radix parameter." evidence="  var ver2num = parseInt(ver[2]);" />
+	</file>
+	<file name="lib/commands/account.js">
+		<issue line="70" char="109" reason="Missing semicolon." evidence="      var filtered = subscriptions.filter(function (s) { return utils.ignoreCaseEquals(s.Name, subscription) });" />
+		<issue line="74" char="105" reason="Missing semicolon." evidence="        filtered = subscriptions.filter(function (s) { return utils.ignoreCaseEquals(s.Id, subscription) });" />
+		<issue line="86" char="45" reason="Missing semicolon." evidence="      setSubscription(subscriptionObject.Id)" />
+		<issue line="136" char="11" reason="&apos;publishSettings&apos; used out of scope." evidence="      if (publishSettings &amp;&amp; publishSettings.PublishProfile.Subscription[&apos;@&apos;]) {" />
+		<issue line="136" char="30" reason="&apos;publishSettings&apos; used out of scope." evidence="      if (publishSettings &amp;&amp; publishSettings.PublishProfile.Subscription[&apos;@&apos;]) {" />
+		<issue line="137" char="65" reason="&apos;publishSettings&apos; used out of scope." evidence="        return cli.category(&apos;site&apos;).doSpacesGet({ subscription: publishSettings.PublishProfile.Subscription[&apos;@&apos;].Id }, " />
+		<issue line="155" char="14" reason="Confusing use of &apos;!&apos;." evidence="             !(settings.PublishProfile[&apos;@&apos;].SchemaVersion === &apos;2.0&apos;))) {" />
+		<issue line="194" char="76" reason="Missing semicolon." evidence="          log.info(&apos;Use &quot;azure account set&quot; to change to a different one.&apos;)" />
+		<issue line="334" char="56" reason="Missing semicolon." evidence="      throw new Error(&apos;Invalid publish settings file.&apos;)" />
+	</file>
+	<file name="lib/commands/mobile.js">
+		<issue line="53" char="34" reason="Missing semicolon." evidence="      .path(options.subscription)" />
+		<issue line="73" char="34" reason="Missing semicolon." evidence="      .path(options.subscription)" />
+		<issue line="287" char="9" reason="Missing semicolon." evidence="      })" />
+		<issue line="291" char="70" reason="Missing semicolon." evidence="        channel.query(&apos;continuationToken&apos;, options.continuationToken)" />
+		<issue line="534" char="34" reason="Use &apos;===&apos; to compare with &apos;0&apos;." evidence="      if (error || tables.length == 0) {" />
+		<issue line="748" char="9" reason="Missing semicolon." evidence="      })" />
+		<issue line="754" char="45" reason="Missing semicolon." evidence="        channel.query(&apos;$skip&apos;, options.skip)" />
+		<issue line="759" char="4" reason="Missing semicolon." evidence="  }" />
+		<issue line="781" char="68" reason="Missing semicolon." evidence="            &apos;Please confirm the status on the management portal.&apos;))" />
+		<issue line="785" char="89" reason="Missing semicolon." evidence="            &apos;Please confirm the status of the mobile service n the management portal.&apos;))" />
+		<issue line="823" char="49" reason="Unexpected escaped character &apos;&lt;&apos; in regular expression." evidence="            var match = item.FailureCode.match(/\&lt;Message\&gt;([^\&lt;]*)\&lt;\/Message\&gt;/);" />
+		<issue line="823" char="63" reason="Unexpected escaped character &apos;&lt;&apos; in regular expression." evidence="            var match = item.FailureCode.match(/\&lt;Message\&gt;([^\&lt;]*)\&lt;\/Message\&gt;/);" />
+		<issue line="823" char="68" reason="Unexpected escaped character &apos;&lt;&apos; in regular expression." evidence="            var match = item.FailureCode.match(/\&lt;Message\&gt;([^\&lt;]*)\&lt;\/Message\&gt;/);" />
+		<issue line="839" char="33" reason="Missing semicolon." evidence="      .path(options.servicename)" />
+		<issue line="890" char="11" reason="Bad line breaking before &apos;+&apos;." evidence="          + options.subscription + &apos;/services/sqlservers/servers/&apos; + options.sqlServer" />
+		<issue line="927" char="11" reason="Bad line breaking before &apos;+&apos;." evidence="          + options.subscription + &apos;/services/sqlservers/servers/&apos; + options.sqlServer " />
+		<issue line="928" char="11" reason="Bad line breaking before &apos;+&apos;." evidence="          + &apos;/databases/&apos; + options.sqlDb" />
+		<issue line="1051" char="19" reason="Bad line breaking before &apos;+&apos;." evidence="                  + &apos; state: &apos; + resource.State);" />
+		<issue line="1104" char="85" reason="Expected an assignment or function call and instead saw an expression." evidence="          options.location ? ensuredLocation(options.location) : getDefaultLocation();" />
+		<issue line="1112" char="59" reason="Use &apos;===&apos; to compare with &apos;0&apos;." evidence="              if (!Array.isArray(result) || result.length == 0 || !result[0].region) {" />
+		<issue line="1124" char="117" reason="Expected an assignment or function call and instead saw an expression." evidence="            servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1127" char="69" reason="Expected an assignment or function call and instead saw an expression." evidence="              username ? ensuredUsername(username) : promptUsername();" />
+		<issue line="1147" char="71" reason="Expected an assignment or function call and instead saw an expression." evidence="                password ? ensuredPassword(password) : promptPassword();" />
+		<issue line="1243" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1263" char="105" reason="Expected an assignment or function call and instead saw an expression." evidence="                cli.confirm(&apos;Do you want to delete the mobile service&apos; + prompt + &apos;? (y/n): &apos;, doProceed);" />
+		<issue line="1389" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1412" char="54" reason="Missing semicolon." evidence="                  log.info(&apos;Mobile application&apos;.blue)" />
+		<issue line="1456" char="19" reason="Bad line breaking before &apos;+&apos;." evidence="                  + &apos;. Use azure mobile list to check if it exists.&apos;);" />
+		<issue line="1480" char="16" reason="Missing semicolon." evidence="              }" />
+		<issue line="1499" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1538" char="92" reason="Missing semicolon." evidence="              return callback(new Error(&apos;The key type must be &quot;application&quot; or &quot;master&quot;.&apos;))" />
+		<issue line="1542" char="117" reason="Expected an assignment or function call and instead saw an expression." evidence="            servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1572" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1599" char="65" reason="Missing semicolon." evidence="                  log.info(&apos;There are no matching log entries.&apos;)" />
+		<issue line="1616" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1647" char="25" reason="Extra comma." evidence="                  &apos;apns&apos;," />
+		<issue line="1707" char="16" reason="Missing semicolon." evidence="              }" />
+		<issue line="1755" char="6" reason="Missing semicolon." evidence="    }" />
+		<issue line="1776" char="9" reason="Bad line breaking before &apos;+&apos;." evidence="        + &apos;e.g. dev:abc!123:./mycertificate.pfx. If the password contains : (colon) characters, they must be escaped as :: (double colon).&apos;);" />
+		<issue line="1800" char="40" reason="Missing semicolon." evidence="            log.info(&apos;Supported keys:&apos;)" />
+		<issue line="1854" char="6" reason="Missing semicolon." evidence="    }" />
+		<issue line="1878" char="40" reason="Missing semicolon." evidence="            log.info(&apos;Supported keys:&apos;)" />
+		<issue line="1906" char="59" reason="Missing semicolon." evidence="                log.warn(&apos;Setting is not configured&apos;.blue)" />
+		<issue line="1922" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1954" char="115" reason="Expected an assignment or function call and instead saw an expression." evidence="          servicename ? ensuredServiceName(servicename) : promptString(&apos;Mobile service name: &apos;, ensuredServiceName);" />
+		<issue line="1957" char="100" reason="Expected an assignment or function call and instead saw an expression." evidence="            tablename ? ensuredTableName(tablename) : promptString(&apos;Table name: &apos;, ensuredTableName);" />
+		<issue line="1977" char="115" reason="Missing semicolon." evidence="                  return callback(&apos;Table &apos; + tablename + &apos; or mobile service &apos; + servicename + &apos; does not exist.&apos;)" />
+		<issue line="2019" char="64" reason="Missing semicolon." evidence="                    log.error(&apos;Unable to obtain table columns&apos;)" />
+		<issue line="2034" char="18" reason="Missing semicolon." evidence="                }" />
+		<issue line="2078" char="9" reason="Missing semicolon." evidence="      })" />
+		<issue line="2078" char="9" reason="Too many errors. (69% scanned)." evidence="" />
+	</file>
+	<file name="lib/commands/portal.js">
+		<issue line="35" char="2" reason="Missing semicolon." evidence="}" />
+	</file>
+	<file name="lib/commands/vm.js">
+		<issue line="434" char="61" reason="Extra comma." evidence="        dnsPrefix: utils.getDnsPrefix(options.dnsName, true)," />
+		<issue line="472" char="4" reason="Mixed spaces and tabs." evidence="    		&apos;                             is a Windows Azure private blob url&apos;)" />
+		<issue line="510" char="4" reason="Mixed spaces and tabs." evidence="    		&apos;                             is a Windows Azure private blob url&apos;)    " />
+		<issue line="521" char="4" reason="Mixed spaces and tabs." evidence="    		&apos;                         is a Windows Azure private blob url&apos;)" />
+		<issue line="523" char="4" reason="Mixed spaces and tabs." evidence="    	if (/^https?\:\/\//i.test(sourcePath)) {" />
+		<issue line="524" char="4" reason="Mixed spaces and tabs." evidence="    	  logger.verbose(&apos;Copying blob from &apos; + sourcePath);" />
+		<issue line="525" char="4" reason="Mixed spaces and tabs." evidence="    	  if (options.md5Skip || options.parallel !== 96  || options.baseVhd) {" />
+		<issue line="526" char="4" reason="Mixed spaces and tabs." evidence="    	    logger.warn(&apos;--md5-skip, --parallel and/or --base-vhd options will be ignored&apos;);" />
+		<issue line="527" char="4" reason="Mixed spaces and tabs." evidence="    	  }" />
+		<issue line="528" char="4" reason="Mixed spaces and tabs." evidence="    	  if (!options.forceOverwrite) {" />
+		<issue line="529" char="4" reason="Mixed spaces and tabs." evidence="    	    logger.warn(&apos;Any existing blob will be overwritten&apos; + (blobUrl ?  &apos; at &apos; + blobUrl : &apos;&apos;));" />
+		<issue line="530" char="4" reason="Mixed spaces and tabs." evidence="    	  }" />
+		<issue line="531" char="4" reason="Mixed spaces and tabs." evidence="    	  var progress = cli.progress(&apos;Copying blob&apos;); " />
+		<issue line="533" char="4" reason="Mixed spaces and tabs." evidence="    	    progress.end();" />
+		<issue line="534" char="4" reason="Mixed spaces and tabs." evidence="    	    logger.silly(util.inspect(response, null, null, true));" />
+		<issue line="535" char="4" reason="Mixed spaces and tabs." evidence="    	    if (!error) {" />
+		<issue line="536" char="4" reason="Mixed spaces and tabs." evidence="    	      logger.silly(&apos;Status : &apos; + response.copyStatus);" />
+		<issue line="537" char="4" reason="Mixed spaces and tabs." evidence="    	    }" />
+		<issue line="538" char="4" reason="Mixed spaces and tabs." evidence="    	    callback(error);" />
+		<issue line="539" char="4" reason="Mixed spaces and tabs." evidence="    	  });" />
+		<issue line="540" char="4" reason="Mixed spaces and tabs." evidence="    	} else {" />
+		<issue line="554" char="4" reason="Mixed spaces and tabs." evidence="    	}" />
+		<issue line="947" char="17" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="                function createDeployment_() {" />
+		<issue line="977" char="15" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="              function addRole_() {" />
+		<issue line="1121" char="13" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="            function _svcMgmtRoleCreateInternal() {" />
+		<issue line="1243" char="15" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="              function toNext() {" />
+		<issue line="1266" char="15" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="              function done() {                " />
+		<issue line="1552" char="11" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="          function _prepareForExport(role) {" />
+		<issue line="1562" char="46" reason="[&apos;MediaLink&apos;] is better written in dot notation." evidence="                          delete role[key][i][&apos;MediaLink&apos;];" />
+		<issue line="1563" char="46" reason="[&apos;SourceMediaLink&apos;] is better written in dot notation." evidence="                          delete role[key][i][&apos;SourceMediaLink&apos;];" />
+		<issue line="1566" char="39" reason="[&apos;MediaLink&apos;] is better written in dot notation." evidence="                      delete role[key][&apos;MediaLink&apos;];" />
+		<issue line="1567" char="39" reason="[&apos;SourceImageName&apos;] is better written in dot notation." evidence="                      delete role[key][&apos;SourceImageName&apos;];" />
+		<issue line="1793" char="39" reason="Use &apos;===&apos; to compare with &apos;null&apos;." evidence="                var errorObj = (error == null) ? null : new Error(error);" />
+	</file>
+	<file name="lib/iaas/blobserviceex.js">
+		<issue line="117" char="4" reason="Mixed spaces and tabs." evidence="    	response.copyStatus = response.headers[&apos;x-ms-copy-status&apos;] || response.headers[&apos;x-ms-copy-blob-status&apos;]; " />
+	</file>
+	<file name="lib/iaas/image.js">
+		<issue line="129" char="48" reason="Unexpected escaped character &apos;&lt;&apos; in regular expression." evidence="      if (!name.match(/^[a-zA-Z_][^\\\/\:\*\?\&quot;\&lt;\&gt;\|\`\&apos;\^%\#]*$/) || name.slice(-1).match(/[\.\s]/)) {" />
+		<issue line="361" char="9" reason="Line breaking error &apos;return&apos;." evidence="        return" />
+		<issue line="361" char="15" reason="Missing semicolon." evidence="        return" />
+	</file>
+	<file name="lib/iaas/upload/pageBlob.js">
+		<issue line="126" char="6" reason="Bad line breaking before &apos;+&apos;." evidence="     + leftPadTwo((date.getUTCMonth()+1))+&apos;-&apos;" />
+		<issue line="127" char="6" reason="Bad line breaking before &apos;+&apos;." evidence="     + leftPadTwo(date.getUTCDate())+&apos;T&apos;" />
+		<issue line="128" char="6" reason="Bad line breaking before &apos;+&apos;." evidence="     + leftPadTwo(date.getUTCHours())+&apos;:&apos;" />
+		<issue line="129" char="6" reason="Bad line breaking before &apos;+&apos;." evidence="     + leftPadTwo(date.getUTCMinutes())+&apos;:&apos;" />
+		<issue line="130" char="6" reason="Bad line breaking before &apos;+&apos;." evidence="     + leftPadTwo(date.getUTCSeconds())+&apos;Z&apos;);" />
+		<issue line="311" char="34" reason="[&apos;upload&apos;] is better written in dot notation." evidence="    var alreadyExisted = finished[&apos;upload&apos;][1]; // arg 1" />
+	</file>
+	<file name="lib/keyFiles.js">
+		<issue line="34" char="18" reason="&apos;data&apos; used out of scope." evidence="  var matchKey = data.match(KEY_PATT);" />
+		<issue line="39" char="19" reason="&apos;data&apos; used out of scope." evidence="  var matchCert = data.match(CERT_PATT);" />
+	</file>
+	<file name="lib/serviceBusManagement/nameValidation.js">
+		<issue line="16" char="42" reason="Unescaped &apos;-&apos;." evidence="var validNameRegex = /^[a-zA-Z][a-zA-Z0-9-]*$/" />
+		<issue line="16" char="47" reason="Missing semicolon." evidence="var validNameRegex = /^[a-zA-Z][a-zA-Z0-9-]*$/" />
+		<issue line="36" char="6" reason="Missing semicolon." evidence="    }" />
+		<issue line="40" char="6" reason="Missing semicolon." evidence="    }" />
+	</file>
+	<file name="lib/utils.js">
+		<issue line="63" char="4" reason="Unnecessary semicolon." evidence="  };" />
+		<issue line="168" char="9" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="        function checkNextStorageAccount_() {" />
+		<issue line="201" char="7" reason="Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function." evidence="      function createNewStorageAccount_() {" />
+		<issue line="240" char="22" reason="Don&apos;t use extra leading zeros &apos;0600&apos;." evidence="  mode = mode || 0600; // maximum protection by default" />
+		<issue line="405" char="5" reason="Bad line breaking before &apos;?&apos;." evidence="    ? constants.DEFAULT_HTTPS_PORT" />
+		<issue line="425" char="2" reason="Unnecessary semicolon." evidence="};" />
+		<issue line="429" char="10" reason="Bad line breaking before &apos;||&apos;." evidence="         || path.join(homeFolder(), &apos;.azure&apos;);" />
+		<issue line="440" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || constants.DEFAULT_PORTAL_URL;" />
+		<issue line="445" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || constants.DEFAULT_PUBLISHINGPROFILE_URL;" />
+		<issue line="481" char="2" reason="Missing semicolon." evidence="}" />
+		<issue line="485" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || accountManagementEndpointUrl" />
+		<issue line="486" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || constants.DEFAULT_MANAGEMENTENDPOINT_URL;" />
+		<issue line="491" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || constants.DEFAULT_SQL_MANAGEMENTENDPOINT_URL;" />
+		<issue line="496" char="5" reason="Bad line breaking before &apos;||&apos;." evidence="    || constants.DEFAULT_HOSTNAME_SUFFIX;" />
+		<issue line="518" char="3" reason="Bad line breaking before &apos;?&apos;." evidence="  ? fs.existsSync" />
+	</file>
+</jslint>
