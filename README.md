@@ -430,7 +430,54 @@ Delete a rule
 
 **--ruleName** - Rule to delete.
 
+### azure sql db - Manage Azure SQL Databases
 
+    azure sql db create [serverName] [databaseName] [administratorLogin] [administratorPassword] [options]
+Create a new database
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+**--collationName** - Collation for the DB
+
+**--edition** - Database edition
+
+**--maxSizeInGB** - Database max size
+
+    azure sql db list [serverName] [administratorLogin] [administratorPassword]
+List databases
+
+**--serverName** - Server to create the database on
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+    azure sql db show [serverName] [databaseName] [administratorLogin] [administratorPassword]
+Show database details
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+    azure sql db delete [serverName] [databaseName] [administratorPassword]
+Delete a database
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorPassword** - Administrator Password
+    
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
