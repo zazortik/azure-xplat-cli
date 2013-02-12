@@ -146,7 +146,9 @@ Retrieves the value for the selected key.
     azure site log tail [options] [name]
 Streams live diagnostic logs from your website to the console
 **--path [path]** - Path under the LogFiles folder to pull logs from.
+
 **--filter** - Filter to match against for displaying log output.
+
 **--log** - Write output in a log format.
 
 ## azure vm - Managing Windows Azure virtual machines.
