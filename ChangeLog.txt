@@ -6,7 +6,7 @@
 * "azure mobile scale" - allows managing scale out for your mobile app #139
 * "azure mobile job" - allows managing scheduled jobs #78
 * "azure mobile data truncate" - allows truncating mobile tables #164
-* "azure site deplyomentscript" - bunch of fixes
+* "azure site deploymentscript" - bunch of fixes
 
 2012.12.12 - Version 0.6.9
 * "azure portal" - replaces "azure vm portal" and "azure site portal".
