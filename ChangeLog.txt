@@ -1,3 +1,13 @@
+2012.12.12 - Version 0.6.11
+* "azure sql" - manage Azure SQL Server servers, databases and firewall rules
+* "azure site log tail" - realtime streaming logs over Windows Azure.
+* "azure mobile script upload" - now supports shared and scheduler scripts #179
+* "azure mobile show" - now displays scale information #139
+* "azure mobile scale" - allows managing scale out for your mobile app #139
+* "azure mobile job" - allows managing scheduled jobs #78
+* "azure mobile data truncate" - allows truncating mobile tables #164
+* "azure site deploymentscript" - bunch of fixes
+
 2012.12.12 - Version 0.6.9
 * "azure portal" - replaces "azure vm portal" and "azure site portal".
 * "azure mobile" - Manages Azure Mobile Services
