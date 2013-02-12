@@ -26,7 +26,9 @@ With Windows Azure Websites you can deploy node.js applications to the cloud in 
     * Access data
 * Service Bus
     * Create and manage Service Bus namespaces
-
+* Azure SQL Server
+    * Create and manage SQL Servers, Firewall rules and Databases
+    
 # Getting Started
 ## Download Source Code
 
@@ -320,6 +322,22 @@ Delete a namespace
 
     azure sb namespace location list
 Lists all available regions for creating new namespaces
+
+## azure sql - Manage Azure SQL
+
+### azure sql server - Manage your Azure SQL Servers
+
+    azure sql server show [serverName]
+Display server details
+
+    azure sql server list
+Lists all your Azure SQL Servers
+
+    azure sql server create [administratorLogin] [administratorPassw0rd] [location]
+Create a new Azure SQL Server
+
+    azure sql server delete [serverName]
+Delete an Azure SQL Server
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
