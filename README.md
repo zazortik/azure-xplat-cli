@@ -257,7 +257,9 @@ Show the scalability settings of a mobile sservice
 
     azure mobile scale change [options] [servicename]
 Change the scalability settings of a mobile service
+
 **--computeMode [mode]** - 'Free' or 'Reserved'
+
 **--numberOfInstances [count]** - number of instances in reserved mode.
 
     azure mobile log [servicename]
@@ -293,6 +295,7 @@ Display table details such as the number of records, the list of columns and whi
 Updates mobile table schema, permissions and indexes
 
 **--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+
 **--deleteColumn [columns]** - comma delimited list of columns to delete
 
     azure mobile table delete [servicename] [tablename]
@@ -330,15 +333,22 @@ List jobs
 
     azure mobile job create [servicename] [jobname]
 Create a new job
+
 **--interval [number]** - Interval for executing the job, defaults to 15.
+
 **--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+
 **--startTime [time]** - Time that the script should start in ISO format
 
     azure mobile job update [servicename] [jobname]
 Update job settings
+
 **--interval [number]** - Interval for executing the job, defaults to 15.
+
 **--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+
 **--startTime [time]** - Time that the script should start in ISO format
+
 **--status [status]** - 'enabled' or 'disabled'
 
     azure mobile job delete [servicename] [jobname]
