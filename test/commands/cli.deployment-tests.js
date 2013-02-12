@@ -18,9 +18,8 @@ var url = require('url');
 var uuid = require('node-uuid');
 var GitHubApi = require('github');
 
-var cli = require('../cli');
-var capture = require('../util').capture;
-var LinkedRevisionControlClient = require('../../lib/linkedrevisioncontrol').LinkedRevisionControlClient;
+var executeCmd = require('../framework/cli-executor').execute;
+var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
@@ -72,17 +71,14 @@ suite('cli', function(){
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('West US');
 
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
+        result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
         cmd = 'node cli.js site list --json'.split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
@@ -100,10 +96,9 @@ suite('cli', function(){
           cmd.push('--githubrepository');
           cmd.push(githubRepositoryFullName);
 
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.text.should.equal('');
+            result.errorText.should.equal('');
             result.exitStatus.should.equal(0);
 
             // verify that the hook is in github
@@ -123,17 +118,14 @@ suite('cli', function(){
 
                 // Delete created site
                 cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
+                executeCmd(cmd, function (result) {
                   result.text.should.equal('');
+                  result.errorText.should.equal('');
                   result.exitStatus.should.equal(0);
 
                   // List sites
                   cmd = 'node cli.js site list --json'.split(' ');
-                  capture(function() {
-                    cli.parse(cmd);
-                  }, function (result) {
+                  executeCmd(cmd, function (result) {
                     if (result.text != '') {
                       siteList = JSON.parse(result.text);
 

@@ -16,8 +16,7 @@
 var should = require('should');
 var uuid = require('node-uuid');
 
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 
 var currentStorageName = 0;
 var storageNames = [ ('storage' + uuid()).toLowerCase().substr(0, 15) ];
@@ -30,10 +29,7 @@ suite('cli', function(){
           var storage = storages.pop();
 
           var cmd = ('node cli.js account storage delete ' + storage + ' --json').split(' ');
-
-          capture(function() {
-            cli.parse(cmd);
-          }, function () {
+          executeCmd(cmd, function (result) {
             deleteUsedStorage(storages);
           });
         } else {
@@ -50,10 +46,7 @@ suite('cli', function(){
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
@@ -66,18 +59,12 @@ suite('cli', function(){
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         var cmd = ('node cli.js account storage list --json').split(' ');
-
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var storageAccounts = JSON.parse(result.text);
           storageAccounts.some(function (account) {
             return account.ServiceName === storageName;
@@ -93,26 +80,17 @@ suite('cli', function(){
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         var cmd = ('node cli.js account storage update ' + storageName + ' --label test --json').split(' ');
-
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           var cmd = ('node cli.js account storage show ' + storageName + ' --json').split(' ');
-
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             var storageAccount = JSON.parse(result.text);
             new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
 
@@ -127,49 +105,22 @@ suite('cli', function(){
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
-
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           var storageAccountKeys = JSON.parse(result.text);
           storageAccountKeys.Primary.should.not.be.null;
           storageAccountKeys.Secondary.should.not.be.null;
 
           var cmd = ('node cli.js account storage keys renew ' + storageName + ' --primary --json').split(' ');
-
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            // It takes the servers a few moments to actually return the updated keys
-            // Wait a bit, then retrieve and confirm
-
-            setTimeout(function () {
-              var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
-
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
-                var renewedStorageAccountKeys = JSON.parse(result.text);
-                renewedStorageAccountKeys.Primary.should.not.be.null;
-                renewedStorageAccountKeys.Secondary.should.not.be.null;
-
-                renewedStorageAccountKeys.Primary.should.not.equal(storageAccountKeys.Primary);
-                renewedStorageAccountKeys.Secondary.should.equal(storageAccountKeys.Secondary);
-
-                done();
-              });
-            }, 5000);
+            done();
           });
         });
       });

@@ -14,21 +14,19 @@
 */
 
 require('should');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 
 suite('cli', function(){
   suite('account', function() {
     suite('import', function() {
       test('should launch browser when there is no file name', function(done) {
-        capture(function() {
-          cli.parse('node cli.js account import data/account-credentials.publishsettings'.split(' '));
-        }, function (result) {
+        var cmd = 'node cli.js account import data/account-credentials.publishsettings'.split(' ');
+        executeCmd(cmd, function (result) {
+          result.exitStatus.should.equal(1);
 
           done();
         });
-       });
-   });
+      });
+    });
+  });
 });
-
-

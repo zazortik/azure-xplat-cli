@@ -2,7 +2,7 @@
   "name": "azure-cli",
   "author": "Microsoft Corporation",
   "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
-  "version": "0.6.10",
+  "version": "0.6.11",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags" : ["azure", "cli"],
   "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
@@ -10,7 +10,7 @@
   "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "azure" : "0.6.9",
+    "azure" : "0.6.10",
     "xml2js" : "0.1.x",
     "qs": ">= 0.3.1",
     "log": ">= 1.2.0",
@@ -20,7 +20,7 @@
     "node-uuid": "> = 1.2.0",
     "tunnel": ">= 0.0.1",
     "async": ">= 0.1.18",
-    "streamline": "0.2.4",
+    "streamline": ">= 0.4.5",
     "commander": "1.0.4",
     "winston": ">= 0.5.10",
     "colors": "0.x.x",
@@ -35,7 +35,8 @@
     "jshint": "*",
     "sinon": "*",
     "should": "*",
-    "nock": "0.13.5"
+    "nock": "0.13.5",
+    "winston-memory": "0.1.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
   "repository": {
@@ -48,8 +49,7 @@
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
-    "sbmtests": "node test/runtests.js sbmtestlist.txt",
-    "deployment-script-tests": "node test/runtests.js deploymentscripttestlist.txt"
+    "sbmtests": "node test/runtests.js sbmtestlist.txt"
   },
   "bin": {
     "azure": "./bin/azure"

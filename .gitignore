@@ -10,6 +10,12 @@ node_modules/
 npm-debug.log
 azure_error
 
+# Builds #
+out/*
+tmp/*
+obj/
+out/
+
 # Mac OS #
 .DS_Store
 .DS_Store?

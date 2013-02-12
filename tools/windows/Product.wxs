@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?define ProductVersion="0.6.9" ?>
+  
+  <?define ProductName = "Windows Azure Command Line Tools" ?>
+  <?define ProductDescription = "Node.js" ?>
+  <?define ProductAuthor = "Microsoft Corporation" ?>
+  <?define ProductResources = "..\resources\" ?>
+
+  <Product Id="*" 
+           Name="$(var.ProductName)"
+           Language="1033"
+           Version="$(var.ProductVersion)"
+           Manufacturer="$(var.ProductAuthor)"
+           UpgradeCode="6dd1d1f3-4908-450d-8127-d9ce638646d9">
+    
+		<Package InstallerVersion="200" 
+             Compressed="yes" 
+             InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <Media Id="1" Cabinet="WindowsAzureCLI.cab" EmbedCab="yes" CompressionLevel="high" />
+    
+    <Icon Id="AzureIcon" SourceFile="$(var.ProductResources)windowsazure.ico" />
+
+    <Property Id="ARPPRODUCTICON" Value="AzureIcon" />
+    <Property Id="ARPHELPLINK" Value="http://www.microsoft.com/windowsazure/sdk" />
+    <Property Id="ARPURLINFOABOUT" Value="http://www.microsoft.com/windowsazure/support" />
+    <Property Id="ARPURLUPDATEINFO" Value="http://www.microsoft.com/windowsazure/sdk" />
+    <Property Id="ApplicationFolderName" Value="Microsoft SDKs\Windows Azure" />
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+
+    <Feature Id="ProductFeature" 
+             Title="Windows Azure Command Line Tools" 
+             Level="1"
+             AllowAdvertise="no">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+    <!-- User Interface -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProductResources)License.rtf"/>
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.ProductResources)Dialog.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.ProductResources)Banner.bmp" />
+
+    <UIRef Id="WixUI_Advanced"/>
+    
+  </Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONFOLDER">
+          <Directory Id="AZURECLIFOLDER" Name="CLI">
+            <Directory Id="VersionDir" Name="$(var.ProductVersion)">
+              <Directory Id="DynamicCliDir"/>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+    <ComponentGroup Id="AzureCliSettingsGroup">
+      <Component Id="RemoveCLIFolder"
+                 Directory="DynamicCliDir"
+                 Guid="{7B72A8A3-F7CC-4799-AFFC-7EEA75383FE2}">
+        <RemoveFolder Id="DynamicCliDir" On="uninstall" />
+      </Component>
+      <Component Id="RemoveAzureCLIFolder"
+                 Directory="AZURECLIFOLDER"
+                 Guid="{74FDA7F1-2D99-404E-A714-0ABC250F1555}">
+        <RemoveFolder Id="AZURECLIFOLDER" On="uninstall" />
+      </Component>
+      <Component Id="AzureCliSystemPath"
+                 Directory="DynamicCliDir"
+                 Guid="{5169C84A-A6EF-4D2E-9A54-A9247FE09016}">
+        <Environment Id="AzureCliAddedToPATH"
+                     Name="PATH"
+                     Value="[DynamicCliDir]wbin"
+                     Permanent="yes"
+                     Part="last"
+                     Action="set"
+                     System="yes" />
+        <CreateFolder />
+      </Component>
+      <Component Id="AzureCliRegistry"
+                 Directory="DynamicCliDir"
+                 Guid="{9D27CB5B-40F9-475C-AC1C-0DD48D87088B}">
+        <RegistryValue Root="HKCU" 
+                       Key="Software\Microsoft\$(var.ProductName)" 
+                       Name="installed" 
+                       Type="integer" 
+                       Value="1" 
+                       KeyPath="yes"/>
+      </Component>
+      <Component Id="AzureCliVersion"
+                 Directory="DynamicCliDir"
+                 Guid="{5D62AC48-3FC1-4664-854F-864FBCBA394A}">
+        <RegistryValue Root="HKLM"
+                       Key="Software\Microsoft\$(var.ProductName)"
+                       Name="version"
+                       Type="string"
+                       Value="$(var.ProductVersion)"
+                       KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="ProductComponents">
+      <ComponentGroupRef Id="AzureCliComponentGroup"/>
+      <ComponentGroupRef Id="AzureCliSettingsGroup"/>
+    </ComponentGroup>
+    
+	</Fragment>
+</Wix>

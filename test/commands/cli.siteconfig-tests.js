@@ -16,8 +16,7 @@
 var uuid = require('node-uuid');
 
 var should = require('should');
-var cli = require('../cli');
-var capture = require('../util').capture;
+var executeCmd = require('../framework/cli-executor').execute;
 
 var createdSites = [];
 
@@ -37,9 +36,7 @@ suite('cli', function(){
         }
         var siteName = createdSites.pop();
         var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           removeSite();
         });
       }
@@ -53,34 +50,25 @@ suite('cli', function(){
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
         cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
           var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
             cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
+            executeCmd(cmd, function (result) {
               var settingsList = JSON.parse(result.text);
 
               // Listing should return 1 setting now
@@ -88,16 +76,12 @@ suite('cli', function(){
 
               // add another setting
               var cmd = ('node cli.js site config add mysetting2=myvalue ' + siteName + ' --json').split(' ');
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
+              executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
                 cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
+                executeCmd(cmd, function (result) {
                   var settingsList = JSON.parse(result.text);
 
                   // Listing should return 2 setting now
@@ -118,49 +102,36 @@ suite('cli', function(){
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('West US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
+      executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
         cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
+        executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
           var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
+          executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
             cmd = ('node cli.js site config get mysetting ' + siteName + ' --json').split(' ');
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
+            executeCmd(cmd, function (result) {
               result.text.should.equal('"myvalue"\n');
               result.exitStatus.should.equal(0);
 
               // add another setting
               var cmd = ('node cli.js site config clear mysetting ' + siteName + ' --json').split(' ');
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
+              executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
                 cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
+                executeCmd(cmd, function (result) {
                   result.text.should.equal('');
                   result.exitStatus.should.equal(0);
 
