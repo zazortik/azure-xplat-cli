@@ -352,7 +352,7 @@ Update job settings
 **--status [status]** - 'enabled' or 'disabled'
 
     azure mobile job delete [servicename] [jobname]
-Delete a scheduled joba
+Delete a scheduled job
 
 ## azure sb - Manage your Service Bus configuration
 
@@ -386,7 +386,7 @@ Display server details
     azure sql server list
 Lists all your Azure SQL Servers
 
-    azure sql server create [administratorLogin] [administratorPassw0rd] [location]
+    azure sql server create [administratorLogin] [administratorPassword] [location]
 Create a new Azure SQL Server
 
     azure sql server delete [serverName]
