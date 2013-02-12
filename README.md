@@ -143,6 +143,12 @@ Removes the specified app setting.
     azure site config get [key] [site]
 Retrieves the value for the selected key.
 
+    azure site log tail [options] [name]
+Streams live diagnostic logs from your website to the console
+**--path [path]** - Path under the LogFiles folder to pull logs from.
+**--filter** - Filter to match against for displaying log output.
+**--log** - Write output in a log format.
+
 ## azure vm - Managing Windows Azure virtual machines.
 
 You can create and manage both Windows and Linux virtual machines in Windows Azure.
@@ -239,11 +245,21 @@ Creates a new mobile service using the specific service name. Also creates a new
     azure mobile show [servicename]
 Displays details about a mobile service including database details, applicationUrl and applicationKey
 
-    azure mobile delete
-Deletes a mobile service [servicename]
+    azure mobile delete [servicename]
+Deletes a mobile service 
 
-    azure mobile log
-Retrieves mobile logs [servicename]
+## azure mobile scale - Manage scale for your mobile service
+
+    azure mobile scale show [servicename]
+Show the scalability settings of a mobile sservice
+
+    azure mobile scale change [options] [servicename]
+Change the scalability settings of a mobile service
+**--computeMode [mode]** - 'Free' or 'Reserved'
+**--numberOfInstances [count]** - number of instances in reserved mode.
+
+    azure mobile log [servicename]
+Retrieves mobile logs 
 
 ### azure mobile config - Manage your mobile service configuration
 
@@ -300,6 +316,31 @@ Deletes a script
 
     azure mobile data read [servicename] [tablename] [query]
 Query a mobile service table
+
+    azure mobile data truncate [servicename] [tablename]
+Delete all data from a mobile service table
+**--quiet** - do not prompt before deleting
+
+### azure mobile job - Manage scheduled jobs
+
+    azure mobile job list [servicename]
+List jobs
+
+    azure mobile job create [servicename] [jobname]
+Create a new job
+**--interval [number]** - Interval for executing the job, defaults to 15.
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+**--startTime [time]** - Time that the script should start in ISO format
+
+    azure mobile job update [servicename] [jobname]
+Update job settings
+**--interval [number]** - Interval for executing the job, defaults to 15.
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+**--startTime [time]** - Time that the script should start in ISO format
+**--status [status]** - 'enabled' or 'disabled'
+
+    azure mobile job delete [servicename] [jobname]
+Delete a scheduled joba
 
 ## azure sb - Manage your Service Bus configuration
 
