@@ -389,8 +389,48 @@ Lists all your Azure SQL Servers
     azure sql server create [administratorLogin] [administratorPassword] [location]
 Create a new Azure SQL Server
 
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+**--location** - Region where the server will be located
+
     azure sql server delete [serverName]
 Delete an Azure SQL Server
+
+### azure sql firewallrule - Manage you Azure SQL Firewall Rules
+
+    azure sql firewallrule create [serverName] [ruleName] [startIPAddress] [endIPAddress]
+Create a new firewall rule
+
+**--serverName** - Server to create the rule on.
+
+**--ruleName** - Name for the rule
+
+**--startIPAddress** - Start IP Range for the rule
+
+**--endIPAddress** - (Optional) End IP Range for the rule. If not supplied this will equal startIPAddress.
+
+    azure sql firewallrule show [serverName] [rulename]
+Show details for a firewall rule
+
+**--serverName** - Server the rule resides on.
+
+**--ruleName** - Rule to show
+
+    azure sql firewallrule list [serverName]
+List all firewall rules on specified server.
+
+**--serverName** - Server to list rules for
+
+    azure sql firewall delete [serverName] [ruleName]
+Delete a rule
+
+**--serverName** - Server where the rule resides
+
+**--ruleName** - Rule to delete.
+
+
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
