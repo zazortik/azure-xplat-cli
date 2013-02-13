@@ -17,10 +17,5 @@
                 </rule>
            </rules>
       </rewrite>
-    <iisnode 
-      nodeProcessCommandLine="&quot;%programfiles(x86)%\nodejs\node.exe&quot;"
-      debuggingEnabled="false"
-      logDirectory="..\..\LogFiles\nodejs" 
-      watchedFiles="*.js;iisnode.yml;node_modules\*;views\*.jade;views\*.ejb;routes\*.js" />
    </system.webServer>
  </configuration>
