@@ -86,12 +86,49 @@ describe('CLI', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text);
+            var serverName = JSON.parse(result.text).Name;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
             done();
           });
+        });
+      });
+
+      describe('Create SQL Server with azure firewall rule', function () {
+        it('should create a server with firewall rule', function (done) {
+          var cmd = ('node cli.js sql server create').split(' ');
+          cmd.push('--administratorLogin');
+          cmd.push(administratorLogin);
+          cmd.push('--administratorPassword');
+          cmd.push(administratorLoginPassword);
+          cmd.push('--location');
+          cmd.push(location);
+          cmd.push('--defaultFirewallRule');
+          cmd.push('--json');
+
+          executeCmd(cmd, function (result) {
+            try {
+              result.text.should.not.be.null;
+              result.exitStatus.should.equal(0);
+
+              var serverName = JSON.parse(result.text).Name;
+              serverName.should.not.be.null;
+              serverName.should.match(/[0-9a-zA-Z]*/);
+
+              var cmd = util.format('node cli.js sql firewallrule show %s AllowAllWindowsAzureIps', serverName).split(' ');
+              cmd.push('--json');
+
+              executeCmd(cmd, function (result) {
+                result.text.should.not.be.null;
+                result.exitStatus.should.equal(0);
+
+                done();
+              });
+            } catch (err) {
+              done(err);
+            }
+          });        
         });
       });
 
