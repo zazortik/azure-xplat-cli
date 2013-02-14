@@ -339,7 +339,7 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
   settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
   settings.scriptExtraInclude = settings.bash ? '#!/bin/bash' : '@echo off';
   settings.outputContains = ['Generating deployment script for node', 'Generated deployment script'];
-  settings.scriptContains = ['echo Handling node.js deployment.', settings.scriptExtraInclude];
+  settings.scriptContains = ['echo Handling node.js deployment.', 'KUDU_SELECT_NODE_VERSION_CMD', settings.scriptExtraInclude];
 
   generateNodeStartJsFile(pathUtil.join(settings.siteDirPath, settings.nodeStartUpFile));
 
