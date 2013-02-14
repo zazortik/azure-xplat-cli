@@ -52,7 +52,7 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   npm install kudusync -g --silent
   exitWithMessageOnError "npm failed"
 
-  if [[ ! -n "KUDU_SERVICE" ]]; then
+  if [[ ! -n "$KUDU_SERVICE" ]]; then
     # In case we are running locally this is the correct location of kuduSync
     KUDU_SYNC_CMD="kuduSync"
   else
