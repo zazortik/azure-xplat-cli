@@ -26,7 +26,9 @@ With Windows Azure Websites you can deploy node.js applications to the cloud in 
     * Access data
 * Service Bus
     * Create and manage Service Bus namespaces
-
+* Azure SQL Server
+    * Create and manage SQL Servers, Firewall rules and Databases
+    
 # Getting Started
 ## Download Source Code
 
@@ -141,6 +143,14 @@ Removes the specified app setting.
     azure site config get [key] [site]
 Retrieves the value for the selected key.
 
+    azure site log tail [options] [name]
+Streams live diagnostic logs from your website to the console
+**--path [path]** - Path under the LogFiles folder to pull logs from.
+
+**--filter** - Filter to match against for displaying log output.
+
+**--log** - Write output in a log format.
+
 ## azure vm - Managing Windows Azure virtual machines.
 
 You can create and manage both Windows and Linux virtual machines in Windows Azure.
@@ -237,11 +247,23 @@ Creates a new mobile service using the specific service name. Also creates a new
     azure mobile show [servicename]
 Displays details about a mobile service including database details, applicationUrl and applicationKey
 
-    azure mobile delete
-Deletes a mobile service [servicename]
+    azure mobile delete [servicename]
+Deletes a mobile service 
 
-    azure mobile log
-Retrieves mobile logs [servicename]
+## azure mobile scale - Manage scale for your mobile service
+
+    azure mobile scale show [servicename]
+Show the scalability settings of a mobile sservice
+
+    azure mobile scale change [options] [servicename]
+Change the scalability settings of a mobile service
+
+**--computeMode [mode]** - 'Free' or 'Reserved'
+
+**--numberOfInstances [count]** - number of instances in reserved mode.
+
+    azure mobile log [servicename]
+Retrieves mobile logs 
 
 ### azure mobile config - Manage your mobile service configuration
 
@@ -273,6 +295,7 @@ Display table details such as the number of records, the list of columns and whi
 Updates mobile table schema, permissions and indexes
 
 **--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+
 **--deleteColumn [columns]** - comma delimited list of columns to delete
 
     azure mobile table delete [servicename] [tablename]
@@ -299,6 +322,38 @@ Deletes a script
     azure mobile data read [servicename] [tablename] [query]
 Query a mobile service table
 
+    azure mobile data truncate [servicename] [tablename]
+Delete all data from a mobile service table
+**--quiet** - do not prompt before deleting
+
+### azure mobile job - Manage scheduled jobs
+
+    azure mobile job list [servicename]
+List jobs
+
+    azure mobile job create [servicename] [jobname]
+Create a new job
+
+**--interval [number]** - Interval for executing the job, defaults to 15.
+
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+
+**--startTime [time]** - Time that the script should start in ISO format
+
+    azure mobile job update [servicename] [jobname]
+Update job settings
+
+**--interval [number]** - Interval for executing the job, defaults to 15.
+
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+
+**--startTime [time]** - Time that the script should start in ISO format
+
+**--status [status]** - 'enabled' or 'disabled'
+
+    azure mobile job delete [servicename] [jobname]
+Delete a scheduled job
+
 ## azure sb - Manage your Service Bus configuration
 
 ### azure sb namespace - Manage your Service Bus namespaces
@@ -320,6 +375,109 @@ Delete a namespace
 
     azure sb namespace location list
 Lists all available regions for creating new namespaces
+
+## azure sql - Manage Azure SQL
+
+### azure sql server - Manage your Azure SQL Servers
+
+    azure sql server show [serverName]
+Display server details
+
+    azure sql server list
+Lists all your Azure SQL Servers
+
+    azure sql server create [administratorLogin] [administratorPassword] [location]
+Create a new Azure SQL Server
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+**--location** - Region where the server will be located
+
+    azure sql server delete [serverName]
+Delete an Azure SQL Server
+
+### azure sql firewallrule - Manage you Azure SQL Firewall Rules
+
+    azure sql firewallrule create [serverName] [ruleName] [startIPAddress] [endIPAddress]
+Create a new firewall rule
+
+**--serverName** - Server to create the rule on.
+
+**--ruleName** - Name for the rule
+
+**--startIPAddress** - Start IP Range for the rule
+
+**--endIPAddress** - (Optional) End IP Range for the rule. If not supplied this will equal startIPAddress.
+
+    azure sql firewallrule show [serverName] [rulename]
+Show details for a firewall rule
+
+**--serverName** - Server the rule resides on.
+
+**--ruleName** - Rule to show
+
+    azure sql firewallrule list [serverName]
+List all firewall rules on specified server.
+
+**--serverName** - Server to list rules for
+
+    azure sql firewall delete [serverName] [ruleName]
+Delete a rule
+
+**--serverName** - Server where the rule resides
+
+**--ruleName** - Rule to delete.
+
+### azure sql db - Manage Azure SQL Databases
+
+    azure sql db create [serverName] [databaseName] [administratorLogin] [administratorPassword] [options]
+Create a new database
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+**--collationName** - Collation for the DB
+
+**--edition** - Database edition
+
+**--maxSizeInGB** - Database max size
+
+    azure sql db list [serverName] [administratorLogin] [administratorPassword]
+List databases
+
+**--serverName** - Server to create the database on
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+    azure sql db show [serverName] [databaseName] [administratorLogin] [administratorPassword]
+Show database details
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorLogin** - Administrator login user
+
+**--administratorPassword** - Administrator Password
+
+    azure sql db delete [serverName] [databaseName] [administratorPassword]
+Delete a database
+
+**--serverName** - Server to create the database on
+
+**--databaseName** - Name for the database
+
+**--administratorPassword** - Administrator Password
+    
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
