@@ -384,6 +384,37 @@ describe('CLI', function () {
             });
           });
         });
+
+        describe('when a database is created without credentials', function () {
+          var DATABASE_NAME_2 = DATABASE_NAME + '2';
+
+          before(function (done) {
+            var cmd = util.format('node cli.js sql db create %s %s', serverName, DATABASE_NAME_2).split(' ');
+            cmd.push('--json');
+
+            executeCmd(cmd, function (result) {
+              result.text.should.not.be.null;
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+
+          it('should list new database', function (done) {
+            var cmd = util.format('node cli.js sql db list %s %s %s', serverName, administratorLogin, administratorLoginPassword).split(' ');
+            cmd.push('--json');
+
+            executeCmd(cmd, function (result) {
+              result.text.should.not.be.null;
+              result.exitStatus.should.equal(0);
+
+              var databases = JSON.parse(result.text);
+              var myDb = databases.filter(function (db) { return db.Name === DATABASE_NAME_2; });
+              myDb.length.should.equal(1);
+
+              done();
+            });
+          });
+        })
       });
     });
   });
