@@ -1,3 +1,4 @@
+* Adding support for creating and deleting affinity groups
 * Changed the option names to --description and --affinity-group on the storage command
 
 2012.12.12 - Version 0.6.11
