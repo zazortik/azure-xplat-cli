@@ -53,9 +53,7 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER">
           <Directory Id="AZURECLIFOLDER" Name="CLI">
-            <Directory Id="VersionDir" Name="$(var.ProductVersion)">
-              <Directory Id="DynamicCliDir"/>
-            </Directory>
+            <Directory Id="DynamicCliDir"/>
           </Directory>
         </Directory>
       </Directory>
