@@ -39,13 +39,13 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
-if (!AZURE_NOCK_OFF) {
+if (!process.env.AZURE_NOCK_OFF) {
   if (!process.env.AZURE_NOCK_RECORD) {
     process.env.AZURE_NOCK_RECORD = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
   }
 
   if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
-    AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
+    process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
   }
 }
 
