@@ -40,8 +40,8 @@ if (fs.existsSync(testList)) {
 }
 
 if (!process.env.AZURE_NOCK_OFF) {
-  if (!process.env.AZURE_NOCK_RECORD) {
-    process.env.AZURE_NOCK_RECORD = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
+  if (!process.env.AZURE_SUBSCRIPTION_ID) {
+    process.env.AZURE_SUBSCRIPTION_ID = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
   }
 
   if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
@@ -56,7 +56,7 @@ args.push('tdd');
 
 // TODO: remove this timeout once tests are faster
 args.push('-t');
-args.push('300000');
+args.push('500000');
 
 files.forEach(function (file) {
   if (file.length > 0 && file.trim()[0] !== '#') {
