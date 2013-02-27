@@ -19,7 +19,7 @@ var url = require('url');
 var util = require('util');
 var crypto = require('crypto');
 var cli = require('../../lib/cli');
-var executeCmd = require('../framework/cli-executor').execute;
+var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
@@ -33,6 +33,15 @@ var suiteUtil;
 var testPrefix = 'cli.vm-tests';
 
 var currentRandom = 0;
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
 
 suite('cli', function(){
   suite('vm', function() {
@@ -177,7 +186,6 @@ suite('cli', function(){
         communityImageId
       ).split(' ');
       cmd.push('West US');
-
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
 
@@ -189,7 +197,7 @@ suite('cli', function(){
           var vmExists = vmList.some(function (vm) {
             return vm.VMName.toLowerCase() === vmName.toLowerCase()
           });
-      
+
           vmExists.should.be.ok;
           // Delete created VM
           cmd = ('node cli.js vm delete ' + vmName + ' --json').split(' ');
