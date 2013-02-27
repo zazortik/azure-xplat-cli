@@ -14,33 +14,69 @@
 */
 
 var should = require('should');
+var sinon = require('sinon');
 var url = require('url');
-var uuid = require('node-uuid');
 var util = require('util');
+var crypto = require('crypto');
 var cli = require('../../lib/cli');
 var executeCmd = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
 // A common VM used by multiple tests
 var vmToUse = { Name: null, Created: false, Delete: false};
 
+var vmPrefix = 'clitestvm1';
+var vmNames = [];
+
+var suiteUtil;
+var testPrefix = 'cli.vm-tests';
+
+var currentRandom = 0;
+
 suite('cli', function(){
   suite('vm', function() {
+    suiteSetup(function (done) {
+      suiteUtil = new MockedTestUtils(testPrefix, true);
+
+      if (suiteUtil.isMocked) {
+        sinon.stub(crypto, 'randomBytes', function () {
+          return (++currentRandom).toString();
+        });
+      }
+
+      suiteUtil.setupSuite(done);
+    });
+
+    suiteTeardown(function (done) {
+      if (suiteUtil.isMocked) {
+        crypto.randomBytes.restore();
+      }
+
+      suiteUtil.teardownSuite(done);
+    });
+
+    setup(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
     teardown(function (done) {
-      function deleteUsedVM (vm, callBack) {
+      function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
           var cmd = ('node cli.js vm delete ' + vm.Name + ' --json').split(' ');
           executeCmd(cmd, function (result) {
             vm.Name = null;
             vm.Created = vm.Delete = false;
-            return callBack();
+            return callback();
           });
         } else {
-          return done();
+          return callback();
         }
       };
 
-      deleteUsedVM(vmToUse, done);
+      deleteUsedVM(vmToUse, function () {
+        suiteUtil.teardownTest(done);
+      });
     });
 
     test('vm endpoint create-multiple. Verify creation of multiple endpoints', function (done) {
@@ -132,7 +168,8 @@ suite('cli', function(){
     });
 
     test('vm create from community image', function (done) {
-      var vmName = ('cliuttestvm2' + uuid()).toLowerCase().substr(0, 15);
+      var vmName = suiteUtil.generateId(vmPrefix, vmNames);
+
       // Create a VM using community image (-o option)
       var cmd = util.format(
         'node cli.js vm create %s %s communityUser PassW0rd$ -o --json --ssh --location', 
@@ -143,6 +180,7 @@ suite('cli', function(){
 
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
+
         // List the VMs
         cmd = 'node cli.js vm list --json'.split(' ');
         executeCmd(cmd, function (result) {
@@ -192,7 +230,8 @@ suite('cli', function(){
         return callBack(vmToUse);
       } else {
         getImageName('Microsoft', function(imageName) {
-          var name = ('clitestvm1' + uuid()).toLowerCase().substr(0, 15);
+          var name = suiteUtil.generateId(vmPrefix, vmNames);
+
           var cmd = util.format(
             'node cli.js vm create %s %s Administrator PassW0rd$ --json --location', 
             name, 

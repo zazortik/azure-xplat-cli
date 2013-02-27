@@ -49,7 +49,7 @@
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 var nockedServiceName = 'clitest98e1b80f-545e-46fc-b62f-a866dc66ffad';
 
-var nockhelper = require('../util/nock-helper.js');
+var nockhelper = require('../framework/nock-helper.js');
 var https = require('https');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
 var should = require('should');
