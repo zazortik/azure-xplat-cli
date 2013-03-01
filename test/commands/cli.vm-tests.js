@@ -46,6 +46,8 @@ var executeCmd = function (cmd, callback) {
 suite('cli', function(){
   suite('vm', function() {
     suiteSetup(function (done) {
+      process.env.AZURE_STRICT_SSL = false;
+
       suiteUtil = new MockedTestUtils(testPrefix, true);
 
       if (suiteUtil.isMocked) {
@@ -62,7 +64,10 @@ suite('cli', function(){
         crypto.randomBytes.restore();
       }
 
-      suiteUtil.teardownSuite(done);
+      suiteUtil.teardownSuite(function () {
+        process.env.AZURE_STRICT_SSL = true;
+        done();
+      });
     });
 
     setup(function (done) {
