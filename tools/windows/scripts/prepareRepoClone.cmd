@@ -115,7 +115,7 @@ copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo Copying Node.exe...
-copy %FIXED_NODE_DISTRIBUTION%node.exe %TEMP_REPO%\wbin\
+copy %FIXED_NODE_DISTRIBUTION%node.exe %TEMP_REPO%\bin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 copy ..\resources\*.rtf %TEMP_REPO%
