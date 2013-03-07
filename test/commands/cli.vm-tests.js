@@ -46,8 +46,6 @@ var executeCmd = function (cmd, callback) {
 suite('cli', function(){
   suite('vm', function() {
     suiteSetup(function (done) {
-      process.env.AZURE_DISABLE_STRICT_SSL = true;
-
       suiteUtil = new MockedTestUtils(testPrefix, true);
 
       if (suiteUtil.isMocked) {
@@ -65,7 +63,6 @@ suite('cli', function(){
       }
 
       suiteUtil.teardownSuite(function () {
-        delete process.env.AZURE_DISABLE_STRICT_SSL;
         done();
       });
     });
