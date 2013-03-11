@@ -34,6 +34,7 @@ suite('cli', function(){
         if (createdSites.length === 0) {
           return done();
         }
+
         var siteName = createdSites.pop();
         var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
         executeCmd(cmd, function (result) {
