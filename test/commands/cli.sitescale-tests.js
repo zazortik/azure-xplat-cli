@@ -28,7 +28,6 @@ function newName() {
 
 describe('CLI', function () {
   describe('SiteScale', function () {
-
     after(function (done) {
       function removeSite() {
         if (createdSites.length === 0) {
@@ -70,15 +69,30 @@ describe('CLI', function () {
       });
     });
 
-    it('should be able to set the instances number and size', function(done) {
-      var siteName = newName();
+    describe('instances', function() {
+      var siteName;
 
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
-      executeCmd(cmd, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
+      before(function (done) {
+        siteName = newName();
 
+        var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
+        cmd.push('West US');
+        executeCmd(cmd, function (result) {
+          done();
+        });
+      });
+
+      it('should not be able to set instances on a free site', function (done) {
+        var cmd = ('node cli.js site scale instances ' + siteName + ' 2 small --json ').split(' ');
+        executeCmd(cmd, function (result) {
+          result.errorText.indexOf('Instances can only be changed for sites in reserved mode').should.not.equal(-1);
+          result.exitStatus.should.equal(1);
+
+          done();
+        });
+      });
+
+      it('should be able to set the instances number and size', function(done) {
         var cmd = ('node cli.js site scale mode ' + siteName + ' reserved --json').split(' ');
         executeCmd(cmd, function (result) {
           cmd = ('node cli.js site scale instances ' + siteName + ' 2 small --json ').split(' ');
