@@ -25,7 +25,7 @@ var executeCmd = require('../framework/cli-executor').execute;
 var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
 var AFFINITYGROUP_LOCATION = 'West US';
 
-describe('CLI', function () {
+describe('cli', function () {
   var affinityGroupName;
 
   before(function () {
