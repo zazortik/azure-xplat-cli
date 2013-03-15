@@ -16,7 +16,7 @@
 var uuid = require('node-uuid');
 
 var should = require('should');
-var executeCmd = require('../framework/cli-executor').execute;
+var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var createdSitesPrefix = 'clisitescale-';
@@ -24,6 +24,15 @@ var createdSites = [];
 
 var suiteUtil;
 var testPrefix = 'cli.sitescale-tests';
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
 
 describe('cli', function () {
   describe('SiteScale', function () {

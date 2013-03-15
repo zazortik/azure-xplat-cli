@@ -29,7 +29,7 @@ function MockedTestUtils(testPrefix, forceMocked) {
   if (forceMocked) {
     this.isMocked = true;
   } else {
-    this.isMocked = !process.env.AZURE_NOCK_OFF;
+    this.isMocked = !process.env.NOCK_OFF;
   }
 
   this.isRecording = process.env.AZURE_NOCK_RECORD;
