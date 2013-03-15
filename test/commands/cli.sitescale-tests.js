@@ -25,9 +25,9 @@ var createdSites = [];
 var suiteUtil;
 var testPrefix = 'cli.sitescale-tests';
 
-describe('CLI', function () {
+describe('cli', function () {
   describe('SiteScale', function () {
-    suiteSetup(function (done) {
+    before(function (done) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
       suiteUtil = new MockedTestUtils(testPrefix, true);
@@ -35,18 +35,18 @@ describe('CLI', function () {
       suiteUtil.setupSuite(done);
     });
 
-    suiteTeardown(function (done) {
+    after(function (done) {
       suiteUtil.teardownSuite(done);
     });
 
-    setup(function (done) {
+    beforeEach(function (done) {
       suiteUtil.setupTest(function () {
         delete process.env.AZURE_ENABLE_STRICT_SSL;
         done();
       });
     });
 
-    teardown(function (done) {
+    afterEach(function (done) {
       function removeSite(callback) {
         if (createdSites.length === 0) {
           return callback();
