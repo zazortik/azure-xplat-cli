@@ -17,38 +17,60 @@ var uuid = require('node-uuid');
 
 var should = require('should');
 var executeCmd = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
+var createdSitesPrefix = 'clisitescale-';
 var createdSites = [];
 
-function newName() {
-  var name = 'testsite-' + uuid.v4();
-  createdSites.push(name);
-  return name;
-}
+var suiteUtil;
+var testPrefix = 'cli.sitescale-tests';
 
 describe('CLI', function () {
   describe('SiteScale', function () {
-    after(function (done) {
-      function removeSite() {
+    suiteSetup(function (done) {
+      process.env.AZURE_ENABLE_STRICT_SSL = false;
+
+      suiteUtil = new MockedTestUtils(testPrefix, true);
+
+      suiteUtil.setupSuite(done);
+    });
+
+    suiteTeardown(function (done) {
+      suiteUtil.teardownSuite(done);
+    });
+
+    setup(function (done) {
+      suiteUtil.setupTest(function () {
+        delete process.env.AZURE_ENABLE_STRICT_SSL;
+        done();
+      });
+    });
+
+    teardown(function (done) {
+      function removeSite(callback) {
         if (createdSites.length === 0) {
-          return done();
+          return callback();
         }
 
         var siteName = createdSites.pop();
         var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
         executeCmd(cmd, function (result) {
-          removeSite();
+          removeSite(callback);
         });
       }
 
-      removeSite();
+      removeSite(function () {
+        suiteUtil.teardownTest(function () {
+          done();
+        });
+      });
     });
 
     it('should be able to set the scale mode', function(done) {
-      var siteName = newName();
+      var siteName = suiteUtil.generateId(createdSitesPrefix, createdSites);
 
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('North Europe');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -72,11 +94,11 @@ describe('CLI', function () {
     describe('instances', function() {
       var siteName;
 
-      before(function (done) {
-        siteName = newName();
+      beforeEach(function (done) {
+        siteName = suiteUtil.generateId(createdSitesPrefix, createdSites);
 
         var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-        cmd.push('West US');
+        cmd.push('North Europe');
         executeCmd(cmd, function (result) {
           done();
         });
