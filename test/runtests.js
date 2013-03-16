@@ -39,7 +39,7 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
-if (!process.env.AZURE_NOCK_OFF) {
+if (!process.env.NOCK_OFF) {
   if (!process.env.AZURE_SUBSCRIPTION_ID) {
     process.env.AZURE_SUBSCRIPTION_ID = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
   }

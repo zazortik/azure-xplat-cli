@@ -19,6 +19,7 @@ var url = require('url');
 var util = require('util');
 var crypto = require('crypto');
 var cli = require('../../lib/cli');
+var utils = require('../../lib/utils');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
@@ -43,9 +44,9 @@ var executeCmd = function (cmd, callback) {
   executeCommand(cmd, callback);
 }
 
-suite('cli', function(){
-  suite('vm', function() {
-    suiteSetup(function (done) {
+describe('cli', function () {
+  describe('vm', function () {
+    before(function (done) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
       suiteUtil = new MockedTestUtils(testPrefix, true);
@@ -54,12 +55,14 @@ suite('cli', function(){
         sinon.stub(crypto, 'randomBytes', function () {
           return (++currentRandom).toString();
         });
+
+        utils.POLL_REQUEST_INTERVAL = 0;
       }
 
       suiteUtil.setupSuite(done);
     });
 
-    suiteTeardown(function (done) {
+    after(function (done) {
       if (suiteUtil.isMocked) {
         crypto.randomBytes.restore();
       }
@@ -70,11 +73,11 @@ suite('cli', function(){
       });
     });
 
-    setup(function (done) {
+    beforeEach(function (done) {
       suiteUtil.setupTest(done);
     });
 
-    teardown(function (done) {
+    afterEach(function (done) {
       function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
           var cmd = ('node cli.js vm delete ' + vm.Name + ' --json').split(' ');
@@ -93,7 +96,7 @@ suite('cli', function(){
       });
     });
 
-    test('vm endpoint create-multiple. Verify creation of multiple endpoints', function (done) {
+    it('should verify creation of multiple endpoints', function (done) {
       getSharedVM(function(vm) {
         vm.Created.should.be.ok;
 
@@ -181,7 +184,7 @@ suite('cli', function(){
       });
     });
 
-    test('vm create from community image', function (done) {
+    it('should create from community image', function (done) {
       var vmName = suiteUtil.generateId(vmPrefix, vmNames);
 
       // Create a VM using community image (-o option)
@@ -217,8 +220,7 @@ suite('cli', function(){
     });
 
     // Get name of an image of the given category
-    function getImageName(category, callBack)
-    {
+    function getImageName(category, callBack) {
       if (getImageName.imageName) {
         callBack(getImageName.imageName);
       } else {
@@ -237,8 +239,7 @@ suite('cli', function(){
   
     // Create a VM to be used by multiple tests (this will be useful when we add more tests
     // for endpoint create/delete/update, vm create -c.
-    function getSharedVM(callBack)
-    {
+    function getSharedVM(callBack) {
       if (vmToUse.Created) {
         return callBack(vmToUse);
       } else {
