@@ -1277,7 +1277,7 @@ nock('https://management.core.windows.net:443')
  return result; }],
 [function (nock) { 
 var result = 
-nock('vmdepot.msopentech.com:80')
+nock('http://vmdepot.msopentech.com:80')
   .get('/OData.svc/ResolveUid?uid=%27vmdepot-1-1-1%27')
   .reply(200, "{\r\n\"d\" : [\r\n{\r\n\"__metadata\": {\r\n\"type\": \"Bamako_ServiceModel.DeployVM\"\r\n}, \"BlobUrl\": \"http://vmdepotwestus.blob.core.windows.net/linux-community-store/community-4-202cff4c-0b2a-4bc4-82df-bcfe44394f90-1.vhd\", \"Location\": \"West US\"\r\n}\r\n]\r\n}", { 'cache-control': 'no-cache',
   'content-length': '239',
@@ -1367,7 +1367,7 @@ nock('https://management.core.windows.net:443')
  return result; },
 function (nock) { 
 var result = 
-nock('azurejavasdk.blob.core.windows.net:80')
+nock('https://azurejavasdk.blob.core.windows.net:443')
   .put('/vm-images?restype=container')
   .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:8fab2ac0-c715-4ae9-85c2-0252c5a46297\nTime:2013-02-27T23:04:43.3702963Z</Message></Error>", { 'content-length': '230',
   'content-type': 'application/xml',
@@ -1378,7 +1378,7 @@ nock('azurejavasdk.blob.core.windows.net:80')
  return result; },
 function (nock) { 
 var result = 
-nock('azurejavasdk.blob.core.windows.net:80')
+nock('https://azurejavasdk.blob.core.windows.net:443')
   .put('/vm-images/community-4-202cff4c-0b2a-4bc4-82df-bcfe44394f90-1.vhd')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   'last-modified': 'Wed, 27 Feb 2013 23:04:44 GMT',
@@ -1646,7 +1646,7 @@ nock('https://management.core.windows.net:443')
  return result; },
 function (nock) { 
 var result = 
-nock('azurejavasdk.blob.core.windows.net:80')
+nock('https://azurejavasdk.blob.core.windows.net:443')
   .delete('/vm-images/community-4-202cff4c-0b2a-4bc4-82df-bcfe44394f90-1.vhd')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
