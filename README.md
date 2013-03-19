@@ -175,7 +175,7 @@ Streams live diagnostic logs from your website to the console
 
 **--log** - Write output in a log format.
 
-## azure site scale - Manage Scaling mode for Azure websites
+### azure site scale - Manage Scaling mode for Azure websites
 
 You can change your scale mode and number of instances for your websites in Windows Azure.
 
