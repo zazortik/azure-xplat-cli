@@ -1,3 +1,4 @@
+2012.03.19
 * Switch "azure site repository delete" to use the new api.  Old api will be deprecated in 08/13 and users using old SDK will need upgrade.
 * Adding support for creating and deleting affinity groups
 * Changed the option names to --description and --affinity-group on the storage command
