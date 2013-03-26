@@ -277,13 +277,6 @@ suite('cli', function () {
       runErrorScenario(done, testSettings);
     });
 
-    test('--node requires directory to contain server.js file (--node)', function (done) {
-      testSettings.cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
-      testSettings.errorMessage = 'Missing server.js/app.js file';
-
-      runErrorScenario(done, testSettings);
-    });
-
     test('--scriptType only accepts batch or bash (--scriptType sh)', function (done) {
       testSettings.cmd = ('node cli.js site deploymentscript --php --scriptType sh -r ' + testDir).split(' ');
       testSettings.errorMessage = 'Script type should be either batch or bash';
@@ -350,10 +343,6 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
     }
 
     try {
-      var webConfigContent = getFileContent(pathUtil.join(settings.siteDirPath, 'web.config'));
-      webConfigContent.should.include(settings.nodeStartUpFile);
-      webConfigContent.should.not.include('{NodeStartFile}');
-
       var iisNodeYmlContent = getFileContent(pathUtil.join(settings.siteDirPath, 'iisnode.yml'));
       iisNodeYmlContent.should.include('node_env: production');
 
