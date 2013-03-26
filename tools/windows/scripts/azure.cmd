@@ -3,7 +3,7 @@
 :: Copyright (C) Microsoft Corporation. All Rights Reserved.
 ::
 
-@IF EXIST "%~dp0\..\node.exe" (
+@IF EXIST "%~dp0\..\bin\node.exe" (
   "%~dp0\..\bin\node.exe"  "%~dp0\..\bin\azure" %*
 ) ELSE (
   node  "%~dp0\..\bin\azure" %*

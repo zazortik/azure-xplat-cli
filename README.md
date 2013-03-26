@@ -175,6 +175,22 @@ Streams live diagnostic logs from your website to the console
 
 **--log** - Write output in a log format.
 
+### azure site scale - Manage Scaling mode for Azure websites
+
+You can change your scale mode and number of instances for your websites in Windows Azure.
+
+    azure site scale mode [name] [mode]
+Set the web site scale mode
+
+**--mode** - The mode for the site: free, shared, or reserved
+
+    azure site scale instances [name] [instances] [size]
+Sets the number and size of instances for a web site
+
+**instances** - number of instances
+
+**--size** - size of instances to run: small, medium, or large
+
 ## azure vm - Managing Windows Azure virtual machines.
 
 You can create and manage both Windows and Linux virtual machines in Windows Azure.

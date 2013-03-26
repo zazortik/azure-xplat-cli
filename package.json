@@ -2,7 +2,7 @@
   "name": "azure-cli",
   "author": "Microsoft Corporation",
   "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
-  "version": "0.6.12",
+  "version": "0.6.13",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags" : ["azure", "cli"],
   "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
@@ -11,7 +11,7 @@
   "engineStrict": "true", 
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
+    "azure" : ">= 0.7.0",
     "xml2js" : "0.1.x",
     "qs": ">= 0.3.1",
     "log": ">= 1.2.0",
