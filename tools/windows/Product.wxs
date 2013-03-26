@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define ProductVersion="0.6.9" ?>
+  <?define ProductVersion="0.6.13" ?>
   
   <?define ProductName = "Windows Azure Command Line Tools" ?>
   <?define ProductDescription = "Node.js" ?>
@@ -53,9 +53,7 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER">
           <Directory Id="AZURECLIFOLDER" Name="CLI">
-            <Directory Id="VersionDir" Name="$(var.ProductVersion)">
-              <Directory Id="DynamicCliDir"/>
-            </Directory>
+            <Directory Id="DynamicCliDir"/>
           </Directory>
         </Directory>
       </Directory>
@@ -112,6 +110,5 @@
       <ComponentGroupRef Id="AzureCliComponentGroup"/>
       <ComponentGroupRef Id="AzureCliSettingsGroup"/>
     </ComponentGroup>
-    
 	</Fragment>
 </Wix>

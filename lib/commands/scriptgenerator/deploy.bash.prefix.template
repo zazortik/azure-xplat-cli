@@ -40,19 +40,24 @@ if [[ ! -n "$NEXT_MANIFEST_PATH" ]]; then
   fi
 fi
 
-if [[ ! -n "$KUDU_SYNC_COMMAND" ]]; then
+if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
+  DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
+else
+  KUDU_SERVICE=true
+fi
+
+if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   # Install kudu sync
   echo Installing Kudu Sync
   npm install kudusync -g --silent
   exitWithMessageOnError "npm failed"
 
-  KUDU_SYNC_COMMAND="kuduSync"
-fi
-
-if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
-  DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
-else
-  # In case we are running on kudu service this is the correct location of kuduSync
-  KUDU_SYNC_COMMAND="$APPDATA\\npm\\node_modules\\kuduSync\\bin\\kuduSync"
+  if [[ ! -n "$KUDU_SERVICE" ]]; then
+    # In case we are running locally this is the correct location of kuduSync
+    KUDU_SYNC_CMD="kuduSync"
+  else
+    # In case we are running on kudu service this is the correct location of kuduSync
+    KUDU_SYNC_CMD="$APPDATA/npm/node_modules/kuduSync/bin/kuduSync"
+  fi
 fi
 

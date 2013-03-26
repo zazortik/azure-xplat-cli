@@ -15,15 +15,51 @@
 
 var should = require('should');
 var uuid = require('node-uuid');
+var utils = require('../../lib/utils');
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
-var executeCmd = require('../framework/cli-executor').execute;
+var storageNamesPrefix = 'clistorage';
+var storageNames = [];
 
-var currentStorageName = 0;
-var storageNames = [ ('storage' + uuid()).toLowerCase().substr(0, 15) ];
+var suiteUtil;
+var testPrefix = 'cli.storage-tests';
 
-suite('cli', function(){
-  suite('storage', function() {
-    teardown(function (done) {
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
+
+describe('cli', function () {
+  describe('storage', function () {
+    before(function (done) {
+      process.env.AZURE_ENABLE_STRICT_SSL = false;
+
+      suiteUtil = new MockedTestUtils(testPrefix, true);
+
+      if (suiteUtil.isMocked) {
+        utils.POLL_REQUEST_INTERVAL = 0;
+      }
+
+      suiteUtil.setupSuite(done);
+    });
+
+    after(function (done) {
+      suiteUtil.teardownSuite(function () {
+        delete process.env.AZURE_ENABLE_STRICT_SSL;
+        done();
+      });
+    });
+
+    beforeEach(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
+    afterEach(function (done) {
       function deleteUsedStorage (storages) {
         if (storages.length > 0) {
           var storage = storages.pop();
@@ -33,7 +69,7 @@ suite('cli', function(){
             deleteUsedStorage(storages);
           });
         } else {
-          done();
+          suiteUtil.teardownTest(done);
         }
       };
 
@@ -41,8 +77,8 @@ suite('cli', function(){
       deleteUsedStorage(storageNames.slice(0));
     });
 
-    test('storage create', function(done) {
-      var storageName = storageNames[0];
+    it('should create a storage account', function(done) {
+      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
@@ -54,8 +90,8 @@ suite('cli', function(){
       });
     });
 
-    test('storage list', function(done) {
-      var storageName = storageNames[0];
+    it('should list storage accounts', function(done) {
+      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
@@ -75,8 +111,8 @@ suite('cli', function(){
       });
     });
 
-    test('storage update', function(done) {
-      var storageName = storageNames[0];
+    it('should update storage accounts', function(done) {
+      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');
@@ -100,8 +136,8 @@ suite('cli', function(){
       });
     });
 
-    test('storage keys renew', function(done) {
-      var storageName = storageNames[0];
+    it('should renew storage keys', function(done) {
+      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
       cmd.push('West US');

@@ -66,6 +66,24 @@ Download your credentials from Windows Azure. Logs you in to the Azure portal an
     azure account import [file]
 Imports previously downloaded credentials
 
+### azure account affinity-group - Manage Azure Affinity Groups
+
+You can create and manage affinity groups.
+
+    azure account affinity-group list
+Lists all your affinity groups
+
+    azure account affinity-group create [name]
+Creates a new affinity group
+
+**--location** - Location for the affinity group 
+
+    azure account affinity-group show [name]
+Display details about an affinity group
+
+    azure account affinity-group delete [name]
+Removes the affinity group
+
 ### azure account storage - Manage Azure Storage accounts
 
 You can create and manage store accounts for leveraging blobs, tables and queues within your applications.
@@ -78,7 +96,7 @@ Creates a new storage account
 
 **--location** - Location for the storage account 
 
-**--affinitygroup** - Affinity group for the storage account
+**--affinity-group** - Affinity group for the storage account
 
 **Note:** Either location or affinity group is required.
 
@@ -156,6 +174,22 @@ Streams live diagnostic logs from your website to the console
 **--filter** - Filter to match against for displaying log output.
 
 **--log** - Write output in a log format.
+
+### azure site scale - Manage Scaling mode for Azure websites
+
+You can change your scale mode and number of instances for your websites in Windows Azure.
+
+    azure site scale mode [name] [mode]
+Set the web site scale mode
+
+**--mode** - The mode for the site: free, shared, or reserved
+
+    azure site scale instances [name] [instances] [size]
+Sets the number and size of instances for a web site
+
+**instances** - number of instances
+
+**--size** - size of instances to run: small, medium, or large
 
 ## azure vm - Managing Windows Azure virtual machines.
 
