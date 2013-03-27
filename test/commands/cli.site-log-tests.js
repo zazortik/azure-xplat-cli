@@ -92,7 +92,6 @@ describe('cli', function () {
     function createSite(siteName, callback) {
       var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
       cmd.push('East US');
-      console.log(cmd);
       executeCmd(cmd, callback);
     }
 
