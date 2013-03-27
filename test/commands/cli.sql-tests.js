@@ -68,7 +68,6 @@ describe('CLI', function () {
       beforeEach(function (done) {
         var cmd = ('node cli.js sql server list --json').split(' ');
         executeCmd(cmd, function (result) {
-
           oldServerNames = JSON.parse(result.text).map(function (server) {
             return server.Name;
           });
@@ -286,7 +285,6 @@ describe('CLI', function () {
           cmd.push('--json');
 
           executeCmd(cmd, function (result) {
-            console.log(result);
             done();
           });
         });
@@ -370,7 +368,7 @@ describe('CLI', function () {
             // let firewall rule create
             setTimeout(function () {
               done();
-            }, 5000);
+            }, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 5000);
           });
         });
       });

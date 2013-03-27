@@ -47,6 +47,22 @@ if (!process.env.NOCK_OFF) {
   if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
     process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
   }
+
+  if (!process.env.AZURE_GITHUB_USERNAME) {
+    process.env.AZURE_GITHUB_USERNAME = 'azuresdkci';
+  }
+
+  if (!process.env.AZURE_GITHUB_PASSWORD) {
+    process.env.AZURE_GITHUB_PASSWORD = 'fakepassword';
+  }
+
+  if (!process.env.AZURE_GITHUB_REPOSITORY) {
+    process.env.AZURE_GITHUB_REPOSITORY = 'azuresdkci/azuresdkci-repo';
+  }
+
+  if (!process.env.AZURE_GIT_USERNAME) {
+    process.env.AZURE_GIT_USERNAME = 'andrerod';
+  }
 }
 
 var files = fileContent.split('\n');
