@@ -45,7 +45,7 @@
     "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "node test/runtests.js testlist.txt",
+    "test": "node test/runci.js testlist.txt",
     "jshint": "node test/runjshint.js"
   },
   "bin": {
