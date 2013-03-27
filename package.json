@@ -7,11 +7,10 @@
   "tags" : ["azure", "cli"],
   "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
   "main": "./lib/cli.js",
-  "engines": { "node": ">= 0.6.15 < 0.9" },
-  "engineStrict": "true", 
+  "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "azure" : ">= 0.7.0",
+    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
     "xml2js" : "0.1.x",
     "qs": ">= 0.3.1",
     "log": ">= 1.2.0",
@@ -27,8 +26,6 @@
     "colors": "0.x.x",
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
-    "request": ">= 2.9.203",
-    "validator": ">= 0.4.12",
     "github": "0.1.6"
   },
   "devDependencies": {
@@ -48,7 +45,7 @@
     "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "node test/runtests.js testlist.txt",
+    "test": "node test/runci.js testlist.txt",
     "jshint": "node test/runjshint.js"
   },
   "bin": {

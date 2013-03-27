@@ -20,16 +20,50 @@ var mocha = require('mocha');
 
 var util = require('util');
 var uuid = require('node-uuid');
-var executeCmd = require('../framework/cli-executor').execute;
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
 var AFFINITYGROUP_LOCATION = 'West US';
 
+var createdAffinityGroups = [];
+
+var suiteUtil;
+var testPrefix = 'cli.affinitygroup-tests';
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
+
 describe('cli', function () {
   var affinityGroupName;
 
-  before(function () {
-    affinityGroupName = AFFINITYGROUP_NAME_PREFIX + uuid.v4().substr(0, 8);
+  before(function (done) {
+    process.env.AZURE_ENABLE_STRICT_SSL = false;
+    suiteUtil = new MockedTestUtils(testPrefix, true);
+    affinityGroupName = suiteUtil.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
+
+    suiteUtil.setupSuite(done);
+  });
+
+  after(function (done) {
+    suiteUtil.teardownSuite(function () {
+      delete process.env.AZURE_ENABLE_STRICT_SSL;
+      done();
+    });
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suiteUtil.teardownTest(done);
   });
 
   describe('account affinity-group create', function () {

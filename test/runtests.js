@@ -47,6 +47,68 @@ if (!process.env.NOCK_OFF) {
   if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
     process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
   }
+
+  if (!process.env.AZURE_GITHUB_USERNAME) {
+    process.env.AZURE_GITHUB_USERNAME = 'azuresdkci';
+  }
+
+  if (!process.env.AZURE_GITHUB_PASSWORD) {
+    process.env.AZURE_GITHUB_PASSWORD = 'fakepassword';
+  }
+
+  if (!process.env.AZURE_GITHUB_REPOSITORY) {
+    process.env.AZURE_GITHUB_REPOSITORY = 'azuresdkci/azuresdkci-repo';
+  }
+
+  if (!process.env.AZURE_GIT_USERNAME) {
+    process.env.AZURE_GIT_USERNAME = 'andrerod';
+  }
+}
+
+var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
+var defaultCommunityImageId = 'vmdepot-1-1-1';
+var defaultGithubUsername = 'azuresdkci';
+var defaultGithubPassword = 'fakepassword';
+var defaultGithubRepository = 'azuresdkci/azuresdkci-repo';
+var defaultGitUsername = 'andrerod';
+
+if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
+  if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+    process.env.AZURE_SUBSCRIPTION_ID = defaultSubscription;
+  }
+
+  if (process.env.AZURE_COMMUNITY_IMAGE_ID !== defaultCommunityImageId) {
+    process.env.AZURE_COMMUNITY_IMAGE_ID = defaultCommunityImageId;
+  }
+
+  if (process.env.AZURE_GITHUB_USERNAME !== defaultGithubUsername) {
+    process.env.AZURE_GITHUB_USERNAME = defaultGithubUsername;
+    process.env.AZURE_GITHUB_PASSWORD = defaultGithubPassword;
+    process.env.AZURE_GITHUB_REPOSITORY = defaultGithubRepository;
+  }
+
+  if (process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
+    process.env.AZURE_GIT_USERNAME = defaultGitUsername;
+  }
+} else if (!process.env.NOCK_OFF && process.env.AZURE_NOCK_RECORD) {
+  // If in record mode, and environment variables are set, make sure they are the expected one for recording
+  // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
+  // after merge
+  if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+    throw new Error('Storage recordings can only be made with the subscription ' + defaultSubscription);
+  }
+
+  if (process.env.AZURE_COMMUNITY_IMAGE_ID && process.env.AZURE_COMMUNITY_IMAGE_ID !== defaultCommunityImageId) {
+    throw new Error('VM recordings can only be made with the community image ' + defaultCommunityImageId);
+  }
+
+  if (process.env.AZURE_GITHUB_USERNAME && process.env.AZURE_GITHUB_USERNAME !== defaultGithubUsername) {
+    throw new Error('Github recordings can only be made with the subscription ' + defaultGithubUsername);
+  }
+
+  if (process.env.AZURE_GIT_USERNAME && process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
+    throw new Error('Git recordings can only be made with the subscription ' + defaultGitUsername);
+  }
 }
 
 var files = fileContent.split('\n');

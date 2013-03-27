@@ -18,8 +18,24 @@ var url = require('url');
 var uuid = require('node-uuid');
 var GitHubApi = require('github');
 
-var executeCmd = require('../framework/cli-executor').execute;
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
+
 var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
+
+var suiteUtil;
+var testPrefix = 'cli.deployment-tests';
+
+var siteNames = [];
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
@@ -32,14 +48,31 @@ githubClient.authenticate({
   password: githubPassword
 });
 
-suite('cli', function(){
-  suite('deployment', function() {
-    teardown(function (done) {
+describe('cli', function(){
+  describe('deployment', function() {
+    before(function (done) {
+      process.env.AZURE_ENABLE_STRICT_SSL = false;
+      suiteUtil = new MockedTestUtils(testPrefix, true);
+      suiteUtil.setupSuite(done);
+    });
+
+    after(function (done) {
+      suiteUtil.teardownSuite(function () {
+        delete process.env.AZURE_ENABLE_STRICT_SSL;
+        done();
+      });
+    });
+
+    beforeEach(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
+    afterEach(function (done) {
       var repositoryName;
 
       function deleteAllHooks (hooks, callback) {
         if (hooks.length === 0) {
-          callback();
+          suiteUtil.teardownTest(done);
         } else {
           var hook = hooks.pop();
           hook.user = githubUsername;
@@ -64,12 +97,12 @@ suite('cli', function(){
       });
     });
 
-    test('site deployment github', function(done) {
-      var siteName = 'cliuttestdeploy1' + uuid.v4();
+    it('should deploy to github', function(done) {
+      var siteName = suiteUtil.generateId('cliuttestdeploy1', siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
