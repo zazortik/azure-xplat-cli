@@ -92,6 +92,7 @@ describe('cli', function () {
     function createSite(siteName, callback) {
       var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
       cmd.push('East US');
+      console.log(cmd);
       executeCmd(cmd, callback);
     }
 
@@ -106,7 +107,7 @@ describe('cli', function () {
     }
 
     function connectLogStream(siteName, callback) {
-      setTimeout(function () { process.exit(0); }, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 2000 : 5000);
+      setTimeout(function () { process.exit(0); }, 5000);
       var cmd = ('node cli.js site log tail ' + siteName + ' --log').split(' ');
       executeCmd(cmd, callback);
     }
