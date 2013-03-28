@@ -44,18 +44,14 @@ describe('cli', function () {
   var affinityGroupName;
 
   before(function (done) {
-    process.env.AZURE_ENABLE_STRICT_SSL = false;
-    suiteUtil = new MockedTestUtils(testPrefix, true);
+    suiteUtil = new MockedTestUtils(testPrefix);
     affinityGroupName = suiteUtil.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
 
     suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
-    suiteUtil.teardownSuite(function () {
-      delete process.env.AZURE_ENABLE_STRICT_SSL;
-      done();
-    });
+    suiteUtil.teardownSuite(done);
   });
 
   beforeEach(function (done) {
