@@ -37,9 +37,7 @@ var executeCmd = function (cmd, callback) {
 describe('cli', function () {
   describe('storage', function () {
     before(function (done) {
-      process.env.AZURE_ENABLE_STRICT_SSL = false;
-
-      suiteUtil = new MockedTestUtils(testPrefix, true);
+      suiteUtil = new MockedTestUtils(testPrefix);
 
       if (suiteUtil.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
@@ -49,10 +47,7 @@ describe('cli', function () {
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(function () {
-        delete process.env.AZURE_ENABLE_STRICT_SSL;
-        done();
-      });
+      suiteUtil.teardownSuite(done);
     });
 
     beforeEach(function (done) {

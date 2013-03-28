@@ -334,7 +334,7 @@ function runBasicSiteDeploymentScriptScenario(callback, settings) {
 }
 
 function runNodeSiteDeploymentScriptScenario(callback, settings) {
-  settings.siteDirPath = settings.siteDirPath || settings.siteDir;
+  settings.siteDirPath = settings.siteDirPath || settings.siteDir || '';
   settings.nodeStartUpFile = settings.nodeStartUpFile || 'server.js';
   settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
   settings.scriptExtraInclude = settings.bash ? '#!/bin/bash' : '@echo off';

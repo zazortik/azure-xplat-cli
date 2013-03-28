@@ -51,16 +51,12 @@ githubClient.authenticate({
 describe('cli', function(){
   describe('deployment', function() {
     before(function (done) {
-      process.env.AZURE_ENABLE_STRICT_SSL = false;
       suiteUtil = new MockedTestUtils(testPrefix, true);
       suiteUtil.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(function () {
-        delete process.env.AZURE_ENABLE_STRICT_SSL;
-        done();
-      });
+      suiteUtil.teardownSuite(done);
     });
 
     beforeEach(function (done) {
