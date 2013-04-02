@@ -1,3 +1,7 @@
+2012.04.03 - version 0.6.14
+* Adding node 0.10 support.
+* Fixed issue when importing publishsettings files for a brand new Azure account.
+
 2012.03.19 - version 0.6.13
 * Switch "azure site repository delete" to use the new api.  Old api will be deprecated in 08/13 and users using old SDK will need upgrade.
 * Adding support for creating and deleting affinity groups
