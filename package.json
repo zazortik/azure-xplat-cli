@@ -33,7 +33,7 @@
     "jshint": "*",
     "sinon": "*",
     "should": "*",
-    "nock": "*",
+    "nock": "0.16",
     "winston-memory": "*"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
