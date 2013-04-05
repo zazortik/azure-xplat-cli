@@ -1,14 +1,8 @@
-# Windows Azure CLI tool for Mac and Linux
+# Windows Azure CLI tool for Mac and Linux [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
 
 This project provides a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
 With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git. 
-
-# Node Version Requirement
-
-Currently the Windows Azure CLI tool does not support node versions > 0.8.x. We are working on updating our module to support node 0.10 and will keep you posted.
-
-Thank you for your patience.
 
 # CLI Features
 

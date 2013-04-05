@@ -19,7 +19,10 @@ var uuid = require('node-uuid');
 var GitHubApi = require('github');
 var util = require('util');
 var cli = require('../../lib/cli');
-var executeCmd = require('../framework/cli-executor').execute;
+
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
+
 var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
@@ -28,20 +31,48 @@ var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 var githubClient = new GitHubApi({ version: "3.0.0" });
 
+var suiteUtil;
+var testPrefix = 'cli.site-tests';
+
+var siteNamePrefix = 'clitests';
+var siteNames = [];
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
+
 githubClient.authenticate({
   type: "basic",
   username: githubUsername,
   password: githubPassword
 });
 
-suite('cli', function(){
-  suite('site', function() {
-    teardown(function (done) {
+describe('cli', function(){
+  describe('site', function() {
+    before(function (done) {
+      suiteUtil = new MockedTestUtils(testPrefix);
+      suiteUtil.setupSuite(done);
+    });
+
+    after(function (done) {
+      suiteUtil.teardownSuite(done);
+    });
+
+    beforeEach(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
+    afterEach(function (done) {
       var repositoryName;
 
       function deleteAllHooks (hooks, callback) {
         if (hooks.length === 0) {
-          callback();
+          suiteUtil.teardownTest(done);
         } else {
           var hook = hooks.pop();
           hook.user = githubUsername;
@@ -66,12 +97,12 @@ suite('cli', function(){
       });
     });
 
-    test('site create', function(done) {
-      var siteName = 'cliuttestsite1' + uuid();
+    it('create a site', function(done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
@@ -115,12 +146,12 @@ suite('cli', function(){
       });
     });
 
-    test('site create github', function(done) {
-      var siteName = 'cliuttestsite2b' + uuid();
+    it('create a site with github', function(done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       cmd.push('--githubusername');
       cmd.push(githubUsername);
       cmd.push('--githubpassword');
@@ -186,12 +217,12 @@ suite('cli', function(){
       });
     });
 
-    test('site create github rerun scenario', function(done) {
-      var siteName = 'cliuttestsite3' + uuid();
+    it('create a site with github rerun scenario', function(done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
@@ -265,12 +296,12 @@ suite('cli', function(){
       });
     });
 
-    test('site restart running site', function (done) {
-      var siteName = 'cliuttestsite4' + uuid();
+    it('restarts a running site', function (done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       executeCmd(cmd, function (result) {
 
         // Restart site, it's created running
@@ -286,12 +317,12 @@ suite('cli', function(){
       });
     });
 
-    test('site restart stopped site', function (done) {
-      var siteName = 'cliuttestsite4' + uuid();
+    it('restarts a stopped site', function (done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       executeCmd(cmd, function (result) {
         // Stop the site
         cmd = util.format('node cli.js site stop %s', siteName).split(' ');

@@ -24,11 +24,13 @@ version = node_version()
 if version == None:
   print 'Node is not installed.'
   errors = True
-elif int(version.replace('.', '')) < 615:
-  print 'Node version needs to be higher than 0.6.15'
-  errors = True
 else:
-  print 'Node is installed. Version: ' + version
+  versionParts = [int(i.split('-')[0]) for i in version.split('.')]
+  if versionParts[0] == 0 and (versionParts[1] < 6 or (versionParts[1] == 6 and versionParts[2] < 15)):
+    print 'Node version needs to be higher than 0.6.15'
+    errors = True
+  else:
+    print 'Node is installed. Version: ' + version
 
 npm_version = npm_version()
 if npm_version == None:

@@ -16,35 +16,58 @@
 var uuid = require('node-uuid');
 
 var should = require('should');
-var executeCmd = require('../framework/cli-executor').execute;
+
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
-suite('cli', function () {
-  suite('site log', function () {
+var suiteUtil;
+var testPrefix = 'cli.site-log-tests';
 
+var siteNamePrefix = 'clitests';
+var siteNames = [];
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
+}
+
+describe('cli', function () {
+  describe('site log', function () {
     var createdSites = [];
 
-    function newName() {
-      var name = 'testsite-' + uuid.v4().substr(0, 8);
-      createdSites.push(name);
-      return name;
-    }
+    before(function (done) {
+      suiteUtil = new MockedTestUtils(testPrefix);
+      suiteUtil.setupSuite(done);
+    });
 
-    teardown(function (done) {
+    after(function (done) {
+      suiteUtil.teardownSuite(done);
+    });
+
+    beforeEach(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
+    afterEach(function (done) {
       var deleteSites = function () {
         if (createdSites.length > 0) {
           deleteSite(createdSites.pop(), deleteSites);
         } else {
-          done();
+          return suiteUtil.teardownTest(done);
         }
       };
 
       deleteSites();
     });
 
-    test('tail', function (done) {
-      var siteName = newName();
+    it('should show tail', function (done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       createSite(siteName, function (result) {
         result.text.should.equal('');
@@ -64,7 +87,7 @@ suite('cli', function () {
 
     function createSite(siteName, callback) {
       var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       executeCmd(cmd, callback);
     }
 

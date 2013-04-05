@@ -47,8 +47,6 @@ var executeCmd = function (cmd, callback) {
 describe('cli', function () {
   describe('vm', function () {
     before(function (done) {
-      process.env.AZURE_ENABLE_STRICT_SSL = false;
-
       suiteUtil = new MockedTestUtils(testPrefix, true);
 
       if (suiteUtil.isMocked) {
@@ -67,10 +65,7 @@ describe('cli', function () {
         crypto.randomBytes.restore();
       }
 
-      suiteUtil.teardownSuite(function () {
-        delete process.env.AZURE_ENABLE_STRICT_SSL;
-        done();
-      });
+      suiteUtil.teardownSuite(done);
     });
 
     beforeEach(function (done) {

@@ -16,23 +16,47 @@
 var uuid = require('node-uuid');
 
 var should = require('should');
-var executeCmd = require('../framework/cli-executor').execute;
+
+var executeCommand = require('../framework/cli-executor').execute;
+var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var createdSites = [];
 
-function newName() {
-  var name = 'testsite-' + uuid.v4();
-  createdSites.push(name);
-  return name;
+var suiteUtil;
+var testPrefix = 'cli.siteconfig-tests';
+
+var siteNamePrefix = 'clitests';
+var siteNames = [];
+
+var executeCmd = function (cmd, callback) {
+  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
+    cmd.push('-s');
+    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+  }
+
+  executeCommand(cmd, callback);
 }
 
-suite('cli', function(){
-  suite('siteconfig', function() {
+describe('cli', function(){
+  describe('siteconfig', function() {
 
-    teardown(function (done) {
+    before(function (done) {
+      suiteUtil = new MockedTestUtils(testPrefix);
+      suiteUtil.setupSuite(done);
+    });
+
+    after(function (done) {
+      suiteUtil.teardownSuite(done);
+    });
+
+    beforeEach(function (done) {
+      suiteUtil.setupTest(done);
+    });
+
+    afterEach(function (done) {
       function removeSite() {
         if (createdSites.length === 0) {
-          return done();
+          return suiteUtil.teardownTest(done);
         }
 
         var siteName = createdSites.pop();
@@ -45,12 +69,12 @@ suite('cli', function(){
       removeSite();
     });
 
-    test('siteconfig list', function(done) {
-      var siteName = newName();
+    it('should list site configs', function(done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -97,12 +121,12 @@ suite('cli', function(){
       });
     });
 
-    test('siteconfig add get clear', function(done) {
-      var siteName = newName();
+    it('should add get and clear site configs', function(done) {
+      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push('East US');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);

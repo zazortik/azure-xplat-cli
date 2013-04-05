@@ -37,10 +37,7 @@ var executeCmd = function (cmd, callback) {
 describe('cli', function () {
   describe('SiteScale', function () {
     before(function (done) {
-      process.env.AZURE_ENABLE_STRICT_SSL = false;
-
       suiteUtil = new MockedTestUtils(testPrefix, true);
-
       suiteUtil.setupSuite(done);
     });
 
@@ -49,10 +46,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(function () {
-        delete process.env.AZURE_ENABLE_STRICT_SSL;
-        done();
-      });
+      suiteUtil.setupTest(done);
     });
 
     afterEach(function (done) {
