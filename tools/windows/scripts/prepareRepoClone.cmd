@@ -6,8 +6,9 @@
 :: heat.exe from the WiX toolset is used for this.
 :: 
 
-SET NODE_VERSION=0.6.17
-SET NPM_VERSION=
+SET NODE_VERSION=0.8.22
+SET NPM_VERSION=1.2.14
+
 :: We're using Node 0.6.17 for testing, etc.
 :: http://nodejs.org/dist/v0.6.17/
 
@@ -18,8 +19,9 @@ SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 pushd %~dp0..\
 
 SET NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
+SET NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
 
-GOTO OUTPUT_DIRECTORY_CREATE
+GOTO CLEAN_OUTPUT_DIRECTORY
 
 SET PRIVATE_REPO_NAME=azure-sdk-for-net-installer
 SET PRIVATE_REPO_FOLDER=%~dp0..\..\..\..\%PRIVATE_REPO_NAME%\Binaries\
@@ -55,7 +57,7 @@ REM echo This build will contain this Node version:
 REM %FIXED_NODE_DISTRIBUTION%\node.exe -v
 REM echo.
 
-
+:CLEAN_OUTPUT_DIRECTORY
 IF NOT EXIST .\out\ GOTO OUTPUT_DIRECTORY_CREATE
 echo Cleaning previous build artifacts...
 rmdir /s /q .\out\azure-cli
@@ -88,11 +90,15 @@ popd
 
 echo Downloading node and npm...
 pushd %TEMP_REPO%\bin
-
+curl -o node.exe %NODE_DOWNLOAD_URL%
+curl -o npm.zip %NPM_DOWNLOAD_URL%
+unzip -q npm.zip
+del npm.zip
+popd
 
 echo Running npm update...
 pushd %TEMP_REPO%
-CALL %FIXED_NODE_DISTRIBUTION%npm.cmd update
+CALL bin/npm.cmd update
 echo.
 echo IF YOU SEE A FAILURE AT THE BOTTOM OF THE NPM OUTPUT:
 echo If you do not have Node.js installed on this local machine, the Azure 
@@ -112,6 +118,9 @@ del /q *.md
 del *.git*
 del *.npm*
 del ChangeLog.txt
+cd bin
+rmdir /s /q node_modules
+del npm.cmd
 echo.
 popd
 
@@ -122,9 +131,9 @@ mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
-echo Copying Node.exe...
-copy %FIXED_NODE_DISTRIBUTION%node.exe %TEMP_REPO%\bin\
-IF NOT ERRORLEVEL 0 GOTO ERROR
+REM echo Copying Node.exe...
+REM copy %FIXED_NODE_DISTRIBUTION%node.exe %TEMP_REPO%\bin\
+REM IF NOT ERRORLEVEL 0 GOTO ERROR
 
 copy ..\resources\*.rtf %TEMP_REPO%
 IF NOT ERRORLEVEL 0 GOTO ERROR
