@@ -7,14 +7,19 @@
 :: 
 
 SET NODE_VERSION=0.6.17
+SET NPM_VERSION=
 :: We're using Node 0.6.17 for testing, etc.
 :: http://nodejs.org/dist/v0.6.17/
 
 :: Add Git to the path as this should be run through a .NET command prompt 
-:: and not a Git bash shell...
-SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin"
+:: and not a Git bash shell... We also need the gnu toolchain (for curl)
+SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
+
+SET NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
+
+GOTO OUTPUT_DIRECTORY_CREATE
 
 SET PRIVATE_REPO_NAME=azure-sdk-for-net-installer
 SET PRIVATE_REPO_FOLDER=%~dp0..\..\..\..\%PRIVATE_REPO_NAME%\Binaries\
@@ -80,6 +85,9 @@ xcopy . %TEMP_REPO%\ /E /Q /EXCLUDE:tools\windows\scripts\xcopy-exclude.txt
 IF NOT ERRORLEVEL 0 GOTO ERROR
 echo.
 popd
+
+echo Downloading node and npm...
+pushd %TEMP_REPO%\bin
 
 
 echo Running npm update...
