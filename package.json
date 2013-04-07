@@ -7,7 +7,7 @@
   "tags" : ["azure", "cli"],
   "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
   "main": "./lib/cli.js",
-  "engines": { "node": ">= 0.6.15" },
+  "engines": { "node": ">= 0.8.x" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
