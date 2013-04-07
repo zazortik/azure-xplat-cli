@@ -9,53 +9,14 @@
 SET NODE_VERSION=0.8.22
 SET NPM_VERSION=1.2.14
 
-:: We're using Node 0.6.17 for testing, etc.
-:: http://nodejs.org/dist/v0.6.17/
-
 :: Add Git to the path as this should be run through a .NET command prompt 
-:: and not a Git bash shell... We also need the gnu toolchain (for curl)
+:: and not a Git bash shell... We also need the gnu toolchain (for curl & unzip)
 SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
 
 SET NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
 SET NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
-
-GOTO CLEAN_OUTPUT_DIRECTORY
-
-SET PRIVATE_REPO_NAME=azure-sdk-for-net-installer
-SET PRIVATE_REPO_FOLDER=%~dp0..\..\..\..\%PRIVATE_REPO_NAME%\Binaries\
-
-SET FIXED_NODE_DISTRIBUTION=%PRIVATE_REPO_FOLDER%node\v%NODE_VERSION%\
-
-
-IF EXIST %PRIVATE_REPO_FOLDER% GOTO PRIVATE_REPO_EXISTS
-echo Private repository %PRIVATE_REPO_NAME% not found.
-echo There are binaries and other support files for the Windows Installer 
-echo build.
-echo.
-echo Please check your permissions and clone %PRIVATE_REPO_NAME% as a peer of 
-echo the xplat repo.
-echo.
-echo If you do not have repo access, you can easily support building 
-echo by downloading Wix 3.6 and the supported Node version above and 
-echo placing its binaries in the appropriate matching folders.
-echo.
-goto ERROR
-
-
-:PRIVATE_REPO_EXISTS
-IF EXIST %FIXED_NODE_DISTRIBUTION%node.exe GOTO PRIVATE_NODE_EXISTS
-echo Error: The fixed Node version does not exist.
-echo Folder: %FIXED_NODE_DISTRIBUTION%
-goto ERROR
-:PRIVATE_NODE_EXISTS
-
-
-:CHECK_OUTPUT_DIRECTORY
-REM echo This build will contain this Node version:
-REM %FIXED_NODE_DISTRIBUTION%\node.exe -v
-REM echo.
 
 :CLEAN_OUTPUT_DIRECTORY
 IF NOT EXIST .\out\ GOTO OUTPUT_DIRECTORY_CREATE
@@ -91,10 +52,14 @@ popd
 echo Downloading node and npm...
 pushd %TEMP_REPO%\bin
 curl -o node.exe %NODE_DOWNLOAD_URL%
+IF NOT ERRORLEVEL 0 GOTO ERROR
 curl -o npm.zip %NPM_DOWNLOAD_URL%
+IF NOT ERRORLEVEL 0 GOTO ERROR
 unzip -q npm.zip
+IF NOT ERRORLEVEL 0 GOTO ERROR
 del npm.zip
 popd
+
 
 echo Running npm update...
 pushd %TEMP_REPO%
@@ -131,22 +96,15 @@ mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
-REM echo Copying Node.exe...
-REM copy %FIXED_NODE_DISTRIBUTION%node.exe %TEMP_REPO%\bin\
-REM IF NOT ERRORLEVEL 0 GOTO ERROR
-
 copy ..\resources\*.rtf %TEMP_REPO%
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo.
 
-
 :SUCCESS
 echo Looks good.
 
-
 goto END
-
 
 :ERROR
 echo Something happened. And this script just can't continue.
