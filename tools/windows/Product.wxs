@@ -110,5 +110,16 @@
       <ComponentGroupRef Id="AzureCliComponentGroup"/>
       <ComponentGroupRef Id="AzureCliSettingsGroup"/>
     </ComponentGroup>
+
+    <CustomAction Id="Streamline"
+      Directory="AZURECLIFOLDER"
+      ExeCommand="cmd.exe /k bin\node.exe node_modules\streamline\bin\_node --verbose -c lib"
+      Execute="deferred"
+      Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action="Streamline" After="InstallFiles">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
 	</Fragment>
 </Wix>
