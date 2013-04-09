@@ -117,8 +117,15 @@
       Execute="deferred"
       Impersonate="no" />
 
+    <CustomAction Id="CleanupStreamline"
+      Directory="AZURECLIFOLDER"
+      ExeCommand="cmd.exe /c for /r lib %f in (*._js) do @del &quot;%~dpnf.js&quot;"
+      Execute="deferred"
+      Impersonate="no" />
+
     <InstallExecuteSequence>
       <Custom Action="Streamline" After="InstallFiles">NOT Installed</Custom>
+      <Custom Action="CleanupStreamline" Before="RemoveFiles">Installed</Custom>
     </InstallExecuteSequence>
 
 	</Fragment>
