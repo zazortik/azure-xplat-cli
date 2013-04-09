@@ -113,7 +113,7 @@
 
     <CustomAction Id="Streamline"
       Directory="AZURECLIFOLDER"
-      ExeCommand="cmd.exe /k bin\node.exe node_modules\streamline\bin\_node --verbose -c lib"
+      ExeCommand="cmd.exe /c bin\node.exe node_modules\streamline\bin\_node --verbose -c lib"
       Execute="deferred"
       Impersonate="no" />
 
