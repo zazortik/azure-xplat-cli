@@ -19,9 +19,12 @@ var executeCmd = require('../framework/cli-executor').execute;
 suite('cli', function(){
   suite('account', function() {
     suite('import', function() {
-      test('should launch browser when there is no file name', function(done) {
-        var cmd = 'node cli.js account import data/account-credentials.publishsettings'.split(' ');
+      test('certificate should not be valid', function(done) {
+        var cmd = 'node cli.js account import ./test/data/account-credentials.publishsettings'.split(' ');
         executeCmd(cmd, function (result) {
+          should.not.equal(
+            result.errorText.indexOf('The server failed to authenticate the request. Verify that the certificate is valid and is associated with this subscription'),
+            -1);
           result.exitStatus.should.equal(1);
 
           done();
