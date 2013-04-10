@@ -73,12 +73,17 @@ echo This is fine as long as only the Azure module had this issue. Onward!
 echo.
 popd
 
+echo Compiling streamline files...
+pushd %TEMP_REPO%
+.\bin\node.exe node_modules\streamline\bin\_node --verbose -c lib
+popd
 
 echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
 rmdir /s /q test
-REM rmdir /s /q tools
+rmdir /s /q tools
+rmdir /s /q .idea
 del /q *.md
 del *.git*
 del *.npm*
