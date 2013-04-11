@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define ProductVersion="0.6.13" ?>
+  <?define ProductVersion="0.6.14" ?>
   
   <?define ProductName = "Windows Azure Command Line Tools" ?>
   <?define ProductDescription = "Node.js" ?>
@@ -110,5 +110,6 @@
       <ComponentGroupRef Id="AzureCliComponentGroup"/>
       <ComponentGroupRef Id="AzureCliSettingsGroup"/>
     </ComponentGroup>
+
 	</Fragment>
 </Wix>
