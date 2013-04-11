@@ -110,5 +110,6 @@
       <ComponentGroupRef Id="AzureCliComponentGroup"/>
       <ComponentGroupRef Id="AzureCliSettingsGroup"/>
     </ComponentGroup>
+
 	</Fragment>
 </Wix>
