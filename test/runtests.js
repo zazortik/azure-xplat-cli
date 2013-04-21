@@ -39,32 +39,6 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
-if (!process.env.NOCK_OFF) {
-  if (!process.env.AZURE_SUBSCRIPTION_ID) {
-    process.env.AZURE_SUBSCRIPTION_ID = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-  }
-
-  if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
-    process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
-  }
-
-  if (!process.env.AZURE_GITHUB_USERNAME) {
-    process.env.AZURE_GITHUB_USERNAME = 'azuresdkci';
-  }
-
-  if (!process.env.AZURE_GITHUB_PASSWORD) {
-    process.env.AZURE_GITHUB_PASSWORD = 'fakepassword';
-  }
-
-  if (!process.env.AZURE_GITHUB_REPOSITORY) {
-    process.env.AZURE_GITHUB_REPOSITORY = 'azuresdkci/azuresdkci-repo';
-  }
-
-  if (!process.env.AZURE_GIT_USERNAME) {
-    process.env.AZURE_GIT_USERNAME = 'andrerod';
-  }
-}
-
 var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 
 // Fake certificate
@@ -165,6 +139,14 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
 
   if (process.env.AZURE_GIT_USERNAME && process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
     throw new Error('Git recordings can only be made with the subscription ' + defaultGitUsername);
+  }
+
+  if (!process.env.AZURE_CERTIFICATE) {
+    throw new Error('Azure certificate needs to be defined for recordings');
+  }
+
+  if (!process.env.AZURE_CERTIFICATE_KEY) {
+    throw new Error('Azure certificate key needs to be defined for recordings');
   }
 }
 

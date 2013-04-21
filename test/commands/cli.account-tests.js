@@ -14,12 +14,25 @@
 */
 
 require('should');
+var sinon = require('sinon');
+var fs = require('fs');
+
 var executeCmd = require('../framework/cli-executor').execute;
 
-suite('cli', function(){
-  suite('account', function() {
-    suite('import', function() {
-      test('certificate should not be valid', function(done) {
+describe('cli', function(){
+  describe('account', function() {
+    describe('import', function() {
+      beforeEach(function (done) {
+        sinon.stub(fs, 'writeFileSync', function () {});
+        done();
+      });
+
+      afterEach(function (done) {
+        fs.writeFileSync.restore();
+        done();
+      });
+
+      it('should not import invalid certificate', function(done) {
         var cmd = 'node cli.js account import ./test/data/account-credentials.publishsettings'.split(' ');
         executeCmd(cmd, function (result) {
           should.not.equal(
