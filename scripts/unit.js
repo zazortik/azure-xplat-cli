@@ -39,6 +39,32 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
+if (!process.env.NOCK_OFF) {
+  if (!process.env.AZURE_SUBSCRIPTION_ID) {
+    process.env.AZURE_SUBSCRIPTION_ID = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
+  }
+
+  if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
+    process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
+  }
+
+  if (!process.env.AZURE_GITHUB_USERNAME) {
+    process.env.AZURE_GITHUB_USERNAME = 'azuresdkci';
+  }
+
+  if (!process.env.AZURE_GITHUB_PASSWORD) {
+    process.env.AZURE_GITHUB_PASSWORD = 'fakepassword';
+  }
+
+  if (!process.env.AZURE_GITHUB_REPOSITORY) {
+    process.env.AZURE_GITHUB_REPOSITORY = 'azuresdkci/azuresdkci-repo';
+  }
+
+  if (!process.env.AZURE_GIT_USERNAME) {
+    process.env.AZURE_GIT_USERNAME = 'andrerod';
+  }
+}
+
 var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 
 // Fake certificate
@@ -94,32 +120,6 @@ var defaultGithubUsername = 'azuresdkci';
 var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkci/azuresdkci-repo';
 var defaultGitUsername = 'andrerod';
-
-if (!process.env.NOCK_OFF) {
-  if (!process.env.AZURE_SUBSCRIPTION_ID) {
-    process.env.AZURE_SUBSCRIPTION_ID = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-  }
-
-  if (!process.env.AZURE_COMMUNITY_IMAGE_ID) {
-    process.env.AZURE_COMMUNITY_IMAGE_ID = 'vmdepot-1-1-1';
-  }
-
-  if (!process.env.AZURE_GITHUB_USERNAME) {
-    process.env.AZURE_GITHUB_USERNAME = 'azuresdkci';
-  }
-
-  if (!process.env.AZURE_GITHUB_PASSWORD) {
-    process.env.AZURE_GITHUB_PASSWORD = 'fakepassword';
-  }
-
-  if (!process.env.AZURE_GITHUB_REPOSITORY) {
-    process.env.AZURE_GITHUB_REPOSITORY = 'azuresdkci/azuresdkci-repo';
-  }
-
-  if (!process.env.AZURE_GIT_USERNAME) {
-    process.env.AZURE_GIT_USERNAME = 'andrerod';
-  }
-}
 
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
