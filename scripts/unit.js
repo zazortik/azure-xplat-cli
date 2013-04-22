@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -165,6 +165,14 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
 
   if (process.env.AZURE_GIT_USERNAME && process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
     throw new Error('Git recordings can only be made with the subscription ' + defaultGitUsername);
+  }
+
+  if (!process.env.AZURE_CERTIFICATE) {
+    throw new Error('Azure certificate needs to be defined for recordings');
+  }
+
+  if (!process.env.AZURE_CERTIFICATE_KEY) {
+    throw new Error('Azure certificate key needs to be defined for recordings');
   }
 }
 

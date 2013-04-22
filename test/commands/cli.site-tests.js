@@ -44,7 +44,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 githubClient.authenticate({
   type: "basic",
@@ -82,7 +82,7 @@ describe('cli', function(){
             deleteAllHooks(hooks, callback);
           });
         }
-      };
+      }
 
       // Remove any existing repository hooks
       githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
@@ -115,7 +115,7 @@ describe('cli', function(){
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase()
+            return site.Name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -129,11 +129,11 @@ describe('cli', function(){
             // List sites
             cmd = 'node cli.js site list --json'.split(' ');
             executeCmd(cmd, function (result) {
-              if (result.text != '') {
+              if (result.text !== '') {
                 siteList = JSON.parse(result.text);
 
                 siteExists = siteList.some(function (site) {
-                  return site.Name.toLowerCase() === siteName.toLowerCase()
+                  return site.Name.toLowerCase() === siteName.toLowerCase();
                 });
 
                 siteExists.should.not.be.ok;
@@ -169,7 +169,7 @@ describe('cli', function(){
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase()
+            return site.Name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -198,11 +198,11 @@ describe('cli', function(){
                 // List sites
                 cmd = 'node cli.js site list --json'.split(' ');
                 executeCmd(cmd, function (result) {
-                  if (result.text != '') {
+                  if (result.text !== '') {
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase()
+                      return site.Name.toLowerCase() === siteName.toLowerCase();
                     });
 
                     siteExists.should.not.be.ok;
@@ -247,7 +247,7 @@ describe('cli', function(){
             var siteList = JSON.parse(result.text);
 
             var siteExists = siteList.some(function (site) {
-              return site.Name.toLowerCase() === siteName.toLowerCase()
+              return site.Name.toLowerCase() === siteName.toLowerCase();
             });
 
             siteExists.should.be.ok;
@@ -276,7 +276,7 @@ describe('cli', function(){
                   // List sites
                   cmd = 'node cli.js site list --json'.split(' ');
                   executeCmd(cmd, function (result) {
-                    if (result.text != '') {
+                    if (result.text !== '') {
                       siteList = JSON.parse(result.text);
 
                       siteExists = siteList.some(function (site) {
@@ -330,7 +330,7 @@ describe('cli', function(){
           // Restart site
           cmd = util.format('node cli.js site restart %s', siteName).split(' ');
           executeCmd(cmd, function (result) {
-            
+
             // Delete test site
             cmd = util.format('node cli.js site delete %s --quiet', siteName).split(' ');
             executeCmd(cmd, function (result) {
