@@ -19,7 +19,7 @@ var url = require('url');
 var util = require('util');
 var crypto = require('crypto');
 var cli = require('../../lib/cli');
-var utils = require('../../lib/utils');
+var utils = require('../../lib/util/utils');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
@@ -42,7 +42,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function () {
   describe('vm', function () {
