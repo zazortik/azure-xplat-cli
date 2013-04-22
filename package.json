@@ -45,8 +45,9 @@
     "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "node test/runci.js testlist.txt",
-    "jshint": "node test/runjshint.js"
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "unit": "node scripts/unit.js testlist.txt",
+    "jshint": "jshint lib --jslint-reporter"
   },
   "bin": {
     "azure": "./bin/azure"
