@@ -242,6 +242,29 @@ suite('cli', function () {
       runBasicSiteDeploymentScriptScenario(done, testSettings);
     });
 
+    test('generate batch basic deployment script with different output path (--basic -t batch -r -o) should generate deploy.cmd in output path', function (done) {
+      var testOutputDir = pathUtil.join(testDir, 'outputDirectory');
+      removePath(testOutputDir);
+      ensurePathExists(testOutputDir);
+
+      testSettings.cmd = ('node cli.js site deploymentscript --basic -t batch -r ' + testDir + ' -o ' + testOutputDir).split(' ');
+      testSettings.testOutputDir = testOutputDir;
+
+      runBasicSiteDeploymentScriptScenario(done, testSettings);
+    });
+
+    test('generate bash node deployment script with different output path (--node -t bash --outputPath -r) should generate deploy.sh in output path', function (done) {
+      var testOutputDir = pathUtil.join(testDir, 'outputDirectory');
+      removePath(testOutputDir);
+      ensurePathExists(testOutputDir);
+
+      testSettings.cmd = ('node cli.js site deploymentscript --node -t bash --outputPath ' + testOutputDir + ' -r ' + testDir).split(' ');
+      testSettings.bash = true;
+      testSettings.testOutputDir = testOutputDir;
+
+      runNodeSiteDeploymentScriptScenario(done, testSettings);
+    });
+
     test('generate batch php site deployment script without .deployment file (--php --no-dot-deployment -r) should generate deploy.cmd', function (done) {
       testSettings.cmd = format('node cli.js site deploymentscript -t batch --php --no-dot-deployment -r %s', testDir).split(' ');
       testSettings.noDotDeployment = true;
@@ -370,6 +393,8 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
 }
 
 function runSiteDeploymentScriptScenario(callback, settings) {
+  settings.testOutputDir = settings.testOutputDir || testDir;
+
   runCommand(function (result) {
     try {
       result.exitStatus.should.equal(0, 'Received an error status exit code');
@@ -378,7 +403,7 @@ function runSiteDeploymentScriptScenario(callback, settings) {
         result.text.should.include(settings.outputContains[i]);
       }
 
-      var deployCmdContent = getFileContent(settings.scriptFileName);
+      var deployCmdContent = getFileContent(settings.scriptFileName, settings.testOutputDir);
       for (var i = 0; i < settings.scriptContains.length; i++) {
         deployCmdContent.should.include(settings.scriptContains[i]);
       }
@@ -424,8 +449,10 @@ function generateNodeStartJsFile(startFile) {
   fs.writeFileSync(pathUtil.join(testDir, startFile), '//do nothing', 'utf8');
 }
 
-function getFileContent(path) {
-  path = pathUtil.join(testDir, path);
+function getFileContent(path, testOutputDir) {
+  testOutputDir = testOutputDir || testDir;
+
+  path = pathUtil.join(testOutputDir, path);
   fs.existsSync(path).should.equal(true, "File doesn't exist: " + path);
   return fs.readFileSync(path, 'utf8');
 }
