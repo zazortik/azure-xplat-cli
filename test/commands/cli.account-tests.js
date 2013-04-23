@@ -18,6 +18,7 @@ var sinon = require('sinon');
 var fs = require('fs');
 
 var keyFiles = require('../../lib/util/keyFiles');
+var utils = require('../../lib/util/utils');
 var executeCmd = require('../framework/cli-executor').execute;
 
 var testFile = './test/data/account-credentials.publishsettings';
@@ -30,6 +31,8 @@ describe('cli', function(){
         var currentCertificateKey = process.env.AZURE_CERTIFICATE_KEY;
 
         var realRead = keyFiles.readFromFile;
+
+        sinon.stub(utils, 'writeFileSyncMode', function () { });
 
         sinon.stub(keyFiles, 'readFromFile', function (filename) {
           if (filename === testFile) {
@@ -58,6 +61,10 @@ describe('cli', function(){
 
         if (keyFiles.writeToFile.restore) {
           keyFiles.writeToFile.restore();
+        }
+
+        if (utils.writeFileSyncMode.restore) {
+          utils.writeFileSyncMode.restore();
         }
 
         done();
