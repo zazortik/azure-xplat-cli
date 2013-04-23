@@ -35,11 +35,8 @@ describe('cli', function(){
       it('should not import invalid certificate', function(done) {
         var cmd = 'node cli.js account import ./test/data/account-credentials.publishsettings'.split(' ');
         executeCmd(cmd, function (result) {
-          should.not.equal(
-            result.errorText.indexOf('The server failed to authenticate the request. Verify that the certificate is valid and is associated with this subscription'),
-            -1);
+          result.errorText.should.match(/The server failed to authenticate the request. Verify that the certificate is valid and is associated with this subscription/);
           result.exitStatus.should.equal(1);
-
           done();
         });
       });
