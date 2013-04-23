@@ -59,7 +59,7 @@ var util = require('util');
 var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
-var keyFiles = require('../../lib/keyFiles');
+var keyFiles = require('../../lib/util/keyFiles');
 
 var scopeWritten;
 
@@ -69,7 +69,7 @@ if (!fs.appendFileSync) {
     var current = fs.readFileSync(file, 'utf8');
     current += content;
     fs.writeFileSync(file, current);
-  }
+  };
 }
 
 var currentTest = 0;
@@ -184,7 +184,7 @@ describe('cli', function () {
             if (line.match(/\/operations\//) && !line.match(/\<Status\>Succeeded\<\/Status\>/)) {
               return;
             }
-            
+
             // apply fixups of nock generated mocks
 
             // do not filter on body of app create request, since it contains random GUIDs that would mismatch

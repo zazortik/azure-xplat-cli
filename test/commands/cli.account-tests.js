@@ -17,8 +17,8 @@ require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 
-var keyFiles = require('../../lib/keyFiles');
-var utils = require('../../lib/utils');
+var keyFiles = require('../../lib/util/keyFiles');
+var utils = require('../../lib/util/utils');
 var executeCmd = require('../framework/cli-executor').execute;
 
 var testFile = './test/data/account-credentials.publishsettings';

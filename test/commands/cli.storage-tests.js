@@ -15,7 +15,7 @@
 
 var should = require('should');
 var uuid = require('node-uuid');
-var utils = require('../../lib/utils');
+var utils = require('../../lib/util/utils');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 

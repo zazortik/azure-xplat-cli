@@ -16,7 +16,7 @@
 // Test includes
 var fs = require('fs');
 var sinon = require('sinon');
-var keyFiles = require('../../lib/keyFiles');
+var keyFiles = require('../../lib/util/keyFiles');
 
 var nockHelper = require('./nock-helper');
 
