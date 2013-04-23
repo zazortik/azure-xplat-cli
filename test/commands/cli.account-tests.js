@@ -32,7 +32,36 @@ describe('cli', function(){
 
         var realRead = keyFiles.readFromFile;
 
-        sinon.stub(utils, 'writeFileSyncMode', function () { });
+        var filesExist = [];
+
+        sinon.stub(fs, 'mkdirSync', function () { });
+
+        sinon.stub(fs, 'writeFileSync', function (filename, data) {
+          filesExist.push({ name: filename, data: data });
+        });
+
+        sinon.stub(fs, 'writeFile', function (filename, data, callback) { callback(); });
+
+        var originalReadFileSync = fs.readFileSync;
+        sinon.stub(fs, 'readFileSync', function (filename) {
+          if (filename === testFile) {
+            return originalReadFileSync(filename, 'utf8');
+          } else {
+            return filesExist.filter(function (f) {
+              return f.name === filename;
+            })[0].data;
+          }
+        });
+
+        sinon.stub(utils, 'writeFileSyncMode', function (filename, data) {
+          filesExist.push({ name: filename, data: data });
+        });
+
+        sinon.stub(utils, 'pathExistsSync', function (filename) {
+          return filesExist.some(function (f) {
+            return f.name === filename;
+          });
+        });
 
         sinon.stub(keyFiles, 'readFromFile', function (filename) {
           if (filename === testFile) {
@@ -65,6 +94,30 @@ describe('cli', function(){
 
         if (utils.writeFileSyncMode.restore) {
           utils.writeFileSyncMode.restore();
+        }
+
+        if (utils.pathExistsSync.restore) {
+          utils.pathExistsSync.restore();
+        }
+
+        if (fs.mkdirSync.restore) {
+          fs.mkdirSync.restore();
+        }
+
+        if (fs.writeFileSync.restore) {
+          fs.writeFileSync.restore();
+        }
+
+        if (fs.writeFile.restore) {
+          fs.writeFile.restore();
+        }
+
+        if (fs.readFile.restore) {
+          fs.readFile.restore();
+        }
+
+        if (fs.readFileSync.restore) {
+          fs.readFileSync.restore();
         }
 
         done();
