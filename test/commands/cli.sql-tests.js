@@ -83,7 +83,7 @@ describe('CLI', function () {
           } else {
             done();
           }
-        };
+        }
 
         var cmd = ('node cli.js sql server list --json').split(' ');
         executeCmd(cmd, function (result) {
