@@ -13,10 +13,8 @@
 * limitations under the License.
 */
 
-var should = require('should');
-var url = require('url');
-var uuid = require('node-uuid');
 var GitHubApi = require('github');
+var url = require('url');
 
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
@@ -35,15 +33,15 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
 var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
-var githubClient = new GitHubApi({ version: "3.0.0" });
+var githubClient = new GitHubApi({ version: '3.0.0' });
 
 githubClient.authenticate({
-  type: "basic",
+  type: 'basic',
   username: githubUsername,
   password: githubPassword
 });
@@ -78,7 +76,7 @@ describe('cli', function(){
             deleteAllHooks(hooks, callback);
           });
         }
-      };
+      }
 
       // Remove any existing repository hooks
       githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
@@ -111,7 +109,7 @@ describe('cli', function(){
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase()
+            return site.Name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -159,7 +157,7 @@ describe('cli', function(){
                       siteList = JSON.parse(result.text);
 
                       siteExists = siteList.some(function (site) {
-                        return site.Name.toLowerCase() === siteName.toLowerCase()
+                        return site.Name.toLowerCase() === siteName.toLowerCase();
                       });
 
                       siteExists.should.not.be.ok;
