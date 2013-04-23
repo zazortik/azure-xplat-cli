@@ -16,9 +16,7 @@
 var _ = require('underscore');
 
 var should = require('should');
-var mocha = require('mocha');
 
-var util = require('util');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
@@ -35,7 +33,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('CLI', function () {
   describe('Cloud Service', function () {
@@ -62,10 +60,10 @@ describe('CLI', function () {
       var oldServiceNames;
 
       beforeEach(function (done) {
-        var cmd = ('node cli.js cloudservice list --json').split(' ');
+        var cmd = ('node cli.js service list --json').split(' ');
         executeCmd(cmd, function (result) {
-          oldServiceNames = JSON.parse(result.text).map(function (server) {
-            return server.Name;
+          oldServiceNames = JSON.parse(result.text).map(function (service) {
+            return service.ServiceName;
           });
 
           done();
@@ -73,12 +71,12 @@ describe('CLI', function () {
       });
 
       afterEach(function (done) {
-        function deleteUsedServices (serverNames) {
+        function deleteUsedServices (serviceNames) {
           if (serviceNames.length > 0) {
             var serviceName = serviceNames.pop();
 
-            var cmd = ('node cli.js cloudservice delete ' + serviceName + ' --json').split(' ');
-            executeCmd(cmd, function (result) {
+            var cmd = ('node cli.js service delete ' + serviceName + ' --json').split(' ');
+            executeCmd(cmd, function () {
               deleteUsedServices(serviceNames);
             });
           } else {
@@ -86,13 +84,13 @@ describe('CLI', function () {
           }
         }
 
-        var cmd = ('node cli.js sql server list --json').split(' ');
+        var cmd = ('node cli.js service list --json').split(' ');
         executeCmd(cmd, function (result) {
           var services = JSON.parse(result.text);
 
           var usedServices = [ ];
-          _.each(services, function (server) {
-            if (!_.contains(oldServiceNames, service.ServicName)) {
+          _.each(services, function (service) {
+            if (!_.contains(oldServiceNames, service.ServiceName)) {
               usedServices.push(service.ServiceName);
             }
           });
@@ -105,7 +103,7 @@ describe('CLI', function () {
         it('should create a server', function (done) {
           var cloudServiceName = suiteUtil.generateId(createdServicesPrefix, createdServices);
 
-          var cmd = ('node cli.js cloudservice create ' + cloudServiceName).split(' ');
+          var cmd = ('node cli.js service create ' + cloudServiceName).split(' ');
           cmd.push('--location');
           cmd.push(location);
           cmd.push('--json');
@@ -129,7 +127,7 @@ describe('CLI', function () {
         beforeEach(function (done) {
           cloudServiceName = suiteUtil.generateId(createdServicesPrefix, createdServices);
 
-          var cmd = ('node cli.js cloudservice create ' + cloudServiceName).split(' ');
+          var cmd = ('node cli.js service create ' + cloudServiceName).split(' ');
           cmd.push('--location');
           cmd.push(location);
           cmd.push('--json');
@@ -138,7 +136,7 @@ describe('CLI', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            serviceName = JSON.parse(result.text).ServiceName;
+            serviceName = JSON.parse(result.text).Name;
             serviceName.should.equal(cloudServiceName);
 
             done();
@@ -146,7 +144,7 @@ describe('CLI', function () {
         });
 
         it('should show the service', function (done) {
-          var cmd = ('node cli.js cloudservice show ' + cloudServiceName).split(' ');
+          var cmd = ('node cli.js service show ' + cloudServiceName).split(' ');
           cmd.push('--json');
 
           executeCmd(cmd, function (result) {
@@ -161,7 +159,7 @@ describe('CLI', function () {
         });
 
         it('should list the service', function (done) {
-          var cmd = ('node cli.js cloudservice list').split(' ');
+          var cmd = ('node cli.js service list').split(' ');
           cmd.push('--json');
 
           executeCmd(cmd, function (result) {
