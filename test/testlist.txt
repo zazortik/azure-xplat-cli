@@ -1,13 +1,14 @@
-commands/cli.account-tests.js
-commands/cli.affinitygroup-tests.js
-commands/cli.deployment-tests.js
-commands/cli.site-deploymentscript-tests.js
-commands/cli.site-tests.js
-commands/cli.siteconfig-tests.js
-commands/cli.sitescale-tests.js
-util/git/linkrevisioncontrol-tests.js
-commands/cli.storage-tests.js
-commands/cli.mobile-tests.js
-commands/cli.vm-tests.js
-commands/cli.sql-tests.js
-commands/cli.site-log-tests.js
+# commands/cli.account-tests.js
+# commands/cli.affinitygroup-tests.js
+# commands/cli.deployment-tests.js
+# commands/cli.site-deploymentscript-tests.js
+# commands/cli.site-tests.js
+# commands/cli.siteconfig-tests.js
+# commands/cli.sitescale-tests.js
+# util/git/linkrevisioncontrol-tests.js
+# commands/cli.storage-tests.js
+# commands/cli.mobile-tests.js
+# commands/cli.vm-tests.js
+# commands/cli.sql-tests.js
+# commands/cli.site-log-tests.js
+websites/websiteManagementService-tests.js
