@@ -47,7 +47,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
-    "jshint": "jshint lib --jslint-reporter"
+    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'"
   },
   "bin": {
     "azure": "./bin/azure"
