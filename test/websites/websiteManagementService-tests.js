@@ -33,6 +33,7 @@ describe('Website Management', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
+    service.strictSSL = false;
     suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
