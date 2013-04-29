@@ -34,7 +34,7 @@ describe('Website Management', function () {
       { serializetype: 'XML'});
 
     service.strictSSL = false;
-    suiteUtil = new MockedTestUtils(service, testPrefix);
+    suiteUtil = new MockedTestUtils(testPrefix);
     suiteUtil.setupSuite(done);
   });
 
@@ -54,7 +54,7 @@ describe('Website Management', function () {
     it('should work', function (done) {
       service.listWebspaces(function (err, webspaces) {
         should.exist(webspaces);
-        webspaces.length.should.equal(4);
+        webspaces.length.should.be.above(0);
         webspaces[0].AvailabilityState.should.not.be.null;
         webspaces[0].ComputeMode.should.not.be.null;
         webspaces[0].CurrentNumberOfWorkers.should.not.be.null;
@@ -63,6 +63,18 @@ describe('Website Management', function () {
         webspaces[0].GeoRegion.should.not.be.null;
         webspaces[0].Name.should.not.be.null;
         webspaces[0].NumberOfWorkers.should.not.be.null;
+
+        done();
+      });
+    });
+  });
+
+  describe('listGeoRegions', function () {
+    it('should work', function (done) {
+      service.listGeoRegions(function (err, geoRegions) {
+        should.exist(geoRegions);
+        geoRegions.length.should.be.above(0);
+        geoRegions[0].Name.should.not.be.null;
 
         done();
       });
