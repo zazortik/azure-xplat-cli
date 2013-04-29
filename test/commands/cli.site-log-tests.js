@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-var uuid = require('node-uuid');
-
 var should = require('should');
 
 var executeCommand = require('../framework/cli-executor').execute;
@@ -35,7 +33,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function () {
   describe('site log', function () {

@@ -13,9 +13,8 @@
 * limitations under the License.
 */
 
-var uuid = require('node-uuid');
-
 var should = require('should');
+
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
@@ -32,7 +31,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function () {
   describe('SiteScale', function () {
@@ -57,7 +56,7 @@ describe('cli', function () {
 
         var siteName = createdSites.pop();
         var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-        executeCmd(cmd, function (result) {
+        executeCmd(cmd, function () {
           removeSite(callback);
         });
       }
@@ -102,7 +101,7 @@ describe('cli', function () {
 
         var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
         cmd.push('North Europe');
-        executeCmd(cmd, function (result) {
+        executeCmd(cmd, function () {
           done();
         });
       });
@@ -119,7 +118,7 @@ describe('cli', function () {
 
       it('should be able to set the instances number and size', function(done) {
         var cmd = ('node cli.js site scale mode ' + siteName + ' reserved --json').split(' ');
-        executeCmd(cmd, function (result) {
+        executeCmd(cmd, function () {
           cmd = ('node cli.js site scale instances ' + siteName + ' 2 small --json ').split(' ');
           executeCmd(cmd, function (result) {
             result.text.should.equal('');
