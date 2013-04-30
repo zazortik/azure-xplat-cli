@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+var should = require('should');
+
 var GitHubApi = require('github');
 var url = require('url');
 

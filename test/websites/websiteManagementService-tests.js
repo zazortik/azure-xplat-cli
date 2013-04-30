@@ -15,13 +15,14 @@
 
 var should = require('should');
 
+var testutil = require('../util/util');
+
 var WebsiteManagementService = require('../../lib/websites/websiteManagementService');
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var testPrefix = 'website-tests';
 
 describe('Website Management', function () {
-  var sqlServersToClean = [];
   var service;
   var suiteUtil;
 
@@ -32,14 +33,13 @@ describe('Website Management', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    suiteUtil = new MockedTestUtils(service, testPrefix);
+    service.strictSSL = false;
+    suiteUtil = new MockedTestUtils(testPrefix);
     suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
-    deleteSqlServers(sqlServersToClean, function () {
-      suiteUtil.teardownSuite(done);
-    });
+    suiteUtil.teardownSuite(done);
   });
 
   beforeEach(function (done) {
@@ -47,15 +47,47 @@ describe('Website Management', function () {
   });
 
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suiteUtil.teardownTest(done);
   });
 
   describe('listWebspaces', function () {
     it('should work', function (done) {
       service.listWebspaces(function (err, webspaces) {
         should.exist(webspaces);
-        webspaces.should.be.empty;
-        done(err);
+        webspaces.length.should.be.above(0);
+        webspaces[0].AvailabilityState.should.not.be.null;
+        webspaces[0].ComputeMode.should.not.be.null;
+        webspaces[0].CurrentNumberOfWorkers.should.not.be.null;
+        webspaces[0].CurrentWorkerSize.should.not.be.null;
+        webspaces[0].GeoLocation.should.not.be.null;
+        webspaces[0].GeoRegion.should.not.be.null;
+        webspaces[0].Name.should.not.be.null;
+        webspaces[0].NumberOfWorkers.should.not.be.null;
+
+        done();
+      });
+    });
+  });
+
+  describe('listGeoRegions', function () {
+    it('should work', function (done) {
+      service.listGeoRegions(function (err, geoRegions) {
+        should.exist(geoRegions);
+        geoRegions.length.should.be.above(0);
+        geoRegions[0].Name.should.not.be.null;
+
+        done();
+      });
+    });
+  });
+
+  describe('listDNSSuffix', function () {
+    it('should work', function (done) {
+      service.listDNSSuffix(function (err, suffix) {
+        should.exist(suffix);
+        suffix.should.equal('azurewebsites.net');
+
+        done();
       });
     });
   });
