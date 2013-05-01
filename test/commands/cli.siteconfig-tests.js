@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-var uuid = require('node-uuid');
-
 var should = require('should');
 
 var executeCommand = require('../framework/cli-executor').execute;
@@ -35,7 +33,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function(){
   describe('siteconfig', function() {
@@ -74,7 +72,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -126,7 +124,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);

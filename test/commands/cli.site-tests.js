@@ -102,7 +102,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
@@ -222,7 +222,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
@@ -301,7 +301,7 @@ describe('cli', function(){
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
       executeCmd(cmd, function (result) {
 
         // Restart site, it's created running
@@ -322,7 +322,7 @@ describe('cli', function(){
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('East US');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'East US');
       executeCmd(cmd, function (result) {
         // Stop the site
         cmd = util.format('node cli.js site stop %s', siteName).split(' ');

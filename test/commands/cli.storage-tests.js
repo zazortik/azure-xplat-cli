@@ -14,12 +14,11 @@
 */
 
 var should = require('should');
-var uuid = require('node-uuid');
 var utils = require('../../lib/util/utils');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
-var storageNamesPrefix = 'clistorage';
+var storageNamesPrefix = 'cstorage';
 var storageNames = [];
 
 var suiteUtil;
@@ -32,10 +31,12 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function () {
   describe('storage', function () {
+    var storageName;
+
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix);
 
@@ -55,28 +56,14 @@ describe('cli', function () {
     });
 
     afterEach(function (done) {
-      function deleteUsedStorage (storages) {
-        if (storages.length > 0) {
-          var storage = storages.pop();
-
-          var cmd = ('node cli.js account storage delete ' + storage + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
-            deleteUsedStorage(storages);
-          });
-        } else {
-          suiteUtil.teardownTest(done);
-        }
-      };
-
-      // Remove any existing repository hooks
-      deleteUsedStorage(storageNames.slice(0));
+      suiteUtil.teardownTest(done);
     });
 
     it('should create a storage account', function(done) {
-      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
+      storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
 
       var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('West US');
+      cmd.push(process.env.AZURE_STORAGE_TEST_LOCATION || 'East US');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -86,73 +73,59 @@ describe('cli', function () {
     });
 
     it('should list storage accounts', function(done) {
-      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
+      var cmd = ('node cli.js account storage list --json').split(' ');
+      executeCmd(cmd, function (result) {
+        var storageAccounts = JSON.parse(result.text);
+        storageAccounts.some(function (account) {
+          return account.ServiceName === storageName;
+        }).should.be.true;
 
-      var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('West US');
+        done();
+      });
+    });
+
+    it('should update storage accounts', function(done) {
+      var cmd = ('node cli.js account storage update ' + storageName + ' --label test --json').split(' ');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        var cmd = ('node cli.js account storage list --json').split(' ');
+        var cmd = ('node cli.js account storage show ' + storageName + ' --json').split(' ');
         executeCmd(cmd, function (result) {
-          var storageAccounts = JSON.parse(result.text);
-          storageAccounts.some(function (account) {
-            return account.ServiceName === storageName;
-          }).should.be.true;
+          var storageAccount = JSON.parse(result.text);
+          new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
 
           done();
         });
       });
     });
 
-    it('should update storage accounts', function(done) {
-      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
-
-      var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('West US');
+    it('should renew storage keys', function(done) {
+      var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
       executeCmd(cmd, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
+        var storageAccountKeys = JSON.parse(result.text);
+        storageAccountKeys.Primary.should.not.be.null;
+        storageAccountKeys.Secondary.should.not.be.null;
 
-        var cmd = ('node cli.js account storage update ' + storageName + ' --label test --json').split(' ');
+        var cmd = ('node cli.js account storage keys renew ' + storageName + ' --primary --json').split(' ');
         executeCmd(cmd, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
-          var cmd = ('node cli.js account storage show ' + storageName + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
-            var storageAccount = JSON.parse(result.text);
-            new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
+          function deleteUsedStorage (storages) {
+            if (storages.length > 0) {
+              var storage = storages.pop();
 
-            done();
-          });
-        });
-      });
-    });
+              var cmd = ('node cli.js account storage delete ' + storage + ' --json').split(' ');
+              executeCmd(cmd, function () {
+                deleteUsedStorage(storages);
+              });
+            } else {
+              done();
+            }
+          }
 
-    it('should renew storage keys', function(done) {
-      var storageName = suiteUtil.generateId(storageNamesPrefix, storageNames);
-
-      var cmd = ('node cli.js account storage create ' + storageName + ' --json --location').split(' ');
-      cmd.push('West US');
-      executeCmd(cmd, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-
-        var cmd = ('node cli.js account storage keys list ' + storageName + ' --json').split(' ');
-        executeCmd(cmd, function (result) {
-          var storageAccountKeys = JSON.parse(result.text);
-          storageAccountKeys.Primary.should.not.be.null;
-          storageAccountKeys.Secondary.should.not.be.null;
-
-          var cmd = ('node cli.js account storage keys renew ' + storageName + ' --primary --json').split(' ');
-          executeCmd(cmd, function (result) {
-            result.text.should.equal('');
-            result.exitStatus.should.equal(0);
-
-            done();
-          });
+          deleteUsedStorage(storageNames);
         });
       });
     });

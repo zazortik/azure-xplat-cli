@@ -32,16 +32,21 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('CLI', function () {
   describe('SQL', function () {
     var administratorLogin = 'azuresdk';
     var administratorLoginPassword = 'SQLR0cks!999';
-    var location = 'West US';
+    var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix, true);
+      if (process.env.AZURE_TEST_MC) {
+        suiteUtil = new MockedTestUtils(testPrefix);
+      } else {
+        suiteUtil = new MockedTestUtils(testPrefix, true);
+      }
+
       suiteUtil.setupSuite(done);
     });
 
@@ -77,13 +82,13 @@ describe('CLI', function () {
             var serverName = serverNames.pop();
 
             var cmd = ('node cli.js sql server delete ' + serverName + ' --json').split(' ');
-            executeCmd(cmd, function (result) {
+            executeCmd(cmd, function () {
               deleteUsedServers(serverNames);
             });
           } else {
             done();
           }
-        };
+        }
 
         var cmd = ('node cli.js sql server list --json').split(' ');
         executeCmd(cmd, function (result) {
@@ -157,7 +162,7 @@ describe('CLI', function () {
             } catch (err) {
               done(err);
             }
-          });        
+          });
         });
       });
 
@@ -279,7 +284,7 @@ describe('CLI', function () {
           var cmd = util.format('node cli.js sql firewallrule create %s %s %s %s', serverName, ruleName, startIPAddress, endIPAddress).split(' ');
           cmd.push('--json');
 
-          executeCmd(cmd, function (result) {
+          executeCmd(cmd, function () {
             done();
           });
         });
@@ -359,7 +364,7 @@ describe('CLI', function () {
           var cmd = util.format('node cli.js sql firewallrule create %s %s %s %s', serverName, RULE_NAME, '0.0.0.0', '255.255.255.255').split(' ');
           cmd.push('--json');
 
-          executeCmd(cmd, function (result) {
+          executeCmd(cmd, function () {
             // let firewall rule create
             setTimeout(function () {
               done();
@@ -454,7 +459,7 @@ describe('CLI', function () {
               done();
             });
           });
-        })
+        });
       });
     });
   });

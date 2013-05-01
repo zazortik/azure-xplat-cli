@@ -72,7 +72,7 @@ describe('cli', function () {
       var siteName = suiteUtil.generateId(createdSitesPrefix, createdSites);
 
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('North Europe');
+      cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'North Europe');
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -100,7 +100,7 @@ describe('cli', function () {
         siteName = suiteUtil.generateId(createdSitesPrefix, createdSites);
 
         var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-        cmd.push('North Europe');
+        cmd.push(process.env.AZURE_SITE_TEST_LOCATION || 'North Europe');
         executeCmd(cmd, function () {
           done();
         });
