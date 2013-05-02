@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-var uuid = require('node-uuid');
-
 var should = require('should');
 
 var executeCommand = require('../framework/cli-executor').execute;
@@ -28,6 +26,8 @@ var testPrefix = 'cli.siteconfig-tests';
 var siteNamePrefix = 'clitests';
 var siteNames = [];
 
+var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
     cmd.push('-s');
@@ -35,7 +35,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function(){
   describe('siteconfig', function() {
@@ -61,7 +61,7 @@ describe('cli', function(){
 
         var siteName = createdSites.pop();
         var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-        executeCmd(cmd, function (result) {
+        executeCmd(cmd, function () {
           removeSite();
         });
       }
@@ -74,7 +74,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(location);
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -126,7 +126,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(location);
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);

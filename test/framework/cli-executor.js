@@ -54,7 +54,7 @@ function execute(cmd, cb) {
     text: '',
     errorText: '',
     exitStatus: 0
-  }
+  };
 
   var end = _.once(function () {
     var transport = cli.output['default'].transports['memory'];

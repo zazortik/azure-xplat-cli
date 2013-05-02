@@ -1,0 +1,3 @@
+commands/cli.account-tests.js
+commands/cli.storage-tests.js
+commands/cli.sql-tests.js

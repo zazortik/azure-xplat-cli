@@ -15,10 +15,8 @@
 
 var should = require('should');
 var sinon = require('sinon');
-var url = require('url');
 var util = require('util');
 var crypto = require('crypto');
-var cli = require('../../lib/cli');
 var utils = require('../../lib/util/utils');
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
@@ -76,7 +74,7 @@ describe('cli', function () {
       function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
           var cmd = ('node cli.js vm delete ' + vm.Name + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
+          executeCmd(cmd, function () {
             vm.Name = null;
             vm.Created = vm.Delete = false;
             return callback();
@@ -84,7 +82,7 @@ describe('cli', function () {
         } else {
           return callback();
         }
-      };
+      }
 
       deleteUsedVM(vmToUse, function () {
         suiteUtil.teardownTest(done);
@@ -95,7 +93,7 @@ describe('cli', function () {
       getSharedVM(function(vm) {
         vm.Created.should.be.ok;
 
-        var endPoints =  { 
+        var endPoints =  {
           OnlyPP: { PublicPort: 3333 },
           PPAndLP: { PublicPort: 4444, LocalPort: 4454 },
           PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, LoadBalancerSetName: 'LbSet1' },
@@ -107,7 +105,7 @@ describe('cli', function () {
 
         var cmd = util.format(
           'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s,%s:%s:%s:%s:%s:%s --json', 
-          vm.Name, 
+          vm.Name,
           // EndPoint1
           endPoints.OnlyPP.PublicPort,
           // EndPoint2
@@ -129,7 +127,7 @@ describe('cli', function () {
 
             // Verify endpoint creation with only lb port
             var endPointListOnlyLb = allEndPointList.filter(
-              function(element, index, array) { 
+              function(element, index, array) {
                 return (element.LocalPort == endPoints.OnlyPP.PublicPort)
               }
             );
@@ -138,7 +136,7 @@ describe('cli', function () {
 
             // Verify endpoint creation with lb port and vm port
             var endPointListLbAndVm = allEndPointList.filter(
-              function(element, index, array) { 
+              function(element, index, array) {
                 return (element.LocalPort == endPoints.PPAndLP.LocalPort)
               }
             );
@@ -153,7 +151,7 @@ describe('cli', function () {
               (vmInfo.Network.Endpoints.length >= 4).should.be.true;
 
               var endPointListLbVmAndSet = vmInfo.Network.Endpoints.filter(
-                function(element, index, array) { 
+                function(element, index, array) {
                   return (element.LocalPort == endPoints.PP_LPAndLBSet.LocalPort)
                 }
               );
@@ -161,7 +159,7 @@ describe('cli', function () {
               endPointListLbVmAndSet[0].LoadBalancedEndpointSetName.should.be.equal('LbSet1');
 
               var endPointListLbVmSetAndProb = vmInfo.Network.Endpoints.filter(
-                function(element, index, array) { 
+                function(element, index, array) {
                   return (element.LocalPort == endPoints.PP_LP_LBSetAndProb.LocalPort)
                 }
               );
@@ -188,7 +186,7 @@ describe('cli', function () {
         vmName, 
         communityImageId
       ).split(' ');
-      cmd.push('West US');
+      cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
 
@@ -231,7 +229,7 @@ describe('cli', function () {
         });
       }
     }
-  
+
     // Create a VM to be used by multiple tests (this will be useful when we add more tests
     // for endpoint create/delete/update, vm create -c.
     function getSharedVM(callBack) {
@@ -242,13 +240,13 @@ describe('cli', function () {
           var name = suiteUtil.generateId(vmPrefix, vmNames);
 
           var cmd = util.format(
-            'node cli.js vm create %s %s Administrator PassW0rd$ --json --location', 
-            name, 
+            'node cli.js vm create %s %s Administrator PassW0rd$ --json --location',
+            name,
             imageName
           ).split(' ');
-          cmd.push('West US');
+          cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
           executeCmd(cmd, function (result) {
-            vmToUse.Created = (result.exitStatus == 0);
+            vmToUse.Created = (result.exitStatus === 0);
             vmToUse.Name = vmToUse.Created ? name : null;
             return callBack(vmToUse);
           });

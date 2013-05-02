@@ -28,6 +28,8 @@ var testPrefix = 'cli.deployment-tests';
 
 var siteNames = [];
 
+var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
     cmd.push('-s');
@@ -98,7 +100,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(location);
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
