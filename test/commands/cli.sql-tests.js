@@ -25,6 +25,8 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 var suiteUtil;
 var testPrefix = 'cli.sql-tests';
 
+var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
+
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
     cmd.push('-s');
@@ -38,7 +40,6 @@ describe('CLI', function () {
   describe('SQL', function () {
     var administratorLogin = 'azuresdk';
     var administratorLoginPassword = 'SQLR0cks!999';
-    var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 
     before(function (done) {
       if (process.env.AZURE_TEST_MC) {
