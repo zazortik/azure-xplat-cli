@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Local WiX -->
   <PropertyGroup>
-    <LocalWixRoot>..\..\..\azure-sdk-for-net-installer\Binaries\wix\3.6.3303.0\</LocalWixRoot>
+    <LocalWixRoot>.\wix\3.6.3303.0\</LocalWixRoot>
     <WixToolPath>$(LocalWixRoot)</WixToolPath>
     <WixTargetsPath>$(WixToolPath)Wix.targets</WixTargetsPath>
     <WixTasksPath>wixtasks.dll</WixTasksPath>
