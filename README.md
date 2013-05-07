@@ -2,7 +2,7 @@
 
 This project provides a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
-With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git. 
+With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git.
 
 # CLI Features
 
