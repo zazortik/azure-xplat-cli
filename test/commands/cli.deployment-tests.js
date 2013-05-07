@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+var should = require('should');
+
 var GitHubApi = require('github');
 var url = require('url');
 
@@ -25,6 +27,8 @@ var suiteUtil;
 var testPrefix = 'cli.deployment-tests';
 
 var siteNames = [];
+
+var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
@@ -96,7 +100,7 @@ describe('cli', function(){
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push(location);
 
       executeCmd(cmd, function (result) {
         result.text.should.equal('');
