@@ -22,6 +22,9 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var testPrefix = 'website-tests';
 
+var siteNamePrefix = 'clitests';
+var siteNames = [];
+
 describe('Website Management', function () {
   var service;
   var suiteUtil;
@@ -88,6 +91,93 @@ describe('Website Management', function () {
         suffix.should.equal('azurewebsites.net');
 
         done();
+      });
+    });
+  });
+
+  describe('sites', function () {
+    describe('create site', function () {
+      var siteName;
+      var webspace;
+
+      beforeEach(function (done) {
+        service.listWebspaces(function (err, webspaces) {
+          webspace = webspaces[0];
+
+          done();
+        });
+      });
+
+      afterEach(function (done) {
+        service.deleteSite(webspace.Name, siteName, done);
+      });
+
+      it('should work', function (done) {
+        siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+
+        var siteProperties = {
+          HostNames: {
+            '$': { 'xmlns:a': 'http://schemas.microsoft.com/2003/10/Serialization/Arrays' },
+            'a:string': [ siteName + '.azurewebsites.net' ]
+          },
+          Name: siteName,
+          WebSpace: webspace.Name
+        };
+
+        service.createSite(webspace.Name, siteName, siteProperties, function (err) {
+          should.not.exist(err);
+
+          done();
+        });
+      });
+    });
+
+    describe('when a site exists', function () {
+      var webspace;
+      var siteName;
+
+      beforeEach(function (done) {
+        siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+
+        service.listWebspaces(function (err, webspaces) {
+          webspace = webspaces[0];
+
+          var siteProperties = {
+            HostNames: {
+              '$': { 'xmlns:a': 'http://schemas.microsoft.com/2003/10/Serialization/Arrays' },
+              'a:string': [ siteName + '.azurewebsites.net' ]
+            },
+            Name: siteName,
+            WebSpace: webspace.Name
+          };
+
+          service.createSite(webspace.Name, siteName, siteProperties, done);
+        });
+      });
+
+      afterEach(function (done) {
+        service.deleteSite(webspace.Name, siteName, done);
+      });
+
+      it('should list the site', function (done) {
+        service.listSites(webspace.Name, function (err, sites) {
+          should.not.exist(err);
+
+          sites.some(function (s) {
+            return s.Name === siteName;
+          }).should.be.true;
+
+          done();
+        });
+      });
+
+      it('should show the site', function (done) {
+        service.getSite(webspace.Name, siteName, function (err, site) {
+          should.not.exist(err);
+          site.Name.should.equal(siteName);
+
+          done();
+        });
       });
     });
   });
