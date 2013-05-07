@@ -84,6 +84,7 @@ function execute(cmd, cb) {
     cleanCliOptions(cli);
     cli.parse(cmd);
   } catch(err) {
+    result.errorStack = err.stack;
     result.error = err;
 
     end();

@@ -1,10 +1,10 @@
-commands/cli.sitescale-tests.js
 commands/cli.account-tests.js
 commands/cli.affinitygroup-tests.js
 commands/cli.deployment-tests.js
 commands/cli.site-deploymentscript-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
+commands/cli.sitescale-tests.js
 websites/websiteManagementService-tests.js
 util/git/linkrevisioncontrol-tests.js
 commands/cli.storage-tests.js
