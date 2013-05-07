@@ -37,7 +37,7 @@ var executeCmd = function (cmd, callback) {
 
 describe('CLI', function () {
   describe('Cloud Service', function () {
-    var location = 'West US';
+    var location = process.env.AZURE_CLOUD_SERVICE_TEST_LOCATION || 'West US';
 
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix, true);
