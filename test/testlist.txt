@@ -8,6 +8,7 @@ commands/cli.siteconfig-tests.js
 commands/cli.sitescale-tests.js
 websites/websiteManagementService-tests.js
 util/git/linkrevisioncontrol-tests.js
+util/utils-tests.js
 commands/cli.storage-tests.js
 commands/cli.mobile-tests.js
 commands/cli.vm-tests.js
