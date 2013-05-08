@@ -136,7 +136,7 @@ describe('CLI', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            serviceName = JSON.parse(result.text).Name;
+            var serviceName = JSON.parse(result.text).Name;
             serviceName.should.equal(cloudServiceName);
 
             done();
