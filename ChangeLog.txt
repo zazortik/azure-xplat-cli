@@ -3,6 +3,7 @@
 * Fixed jsHint errors.
 * Multiple fixes to support different REST endpoints / environments.
 * Dinamicaly fetch locations for websites instead of hardcoding them.
+* Fixed issues around first website creation to enable this scenario more easily.
 
 2013.04.21 - version 0.6.15
 * Locked package.json dependencies to patch versions.
