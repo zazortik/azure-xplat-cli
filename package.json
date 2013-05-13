@@ -2,7 +2,7 @@
   "name": "azure-cli",
   "author": "Microsoft Corporation",
   "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
-  "version": "0.6.15",
+  "version": "0.6.16",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags" : ["azure", "cli"],
   "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
@@ -10,7 +10,7 @@
   "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "azure" : "0.7.2",
+    "azure" : "0.7.3",
     "xml2js" : "0.1.x",
     "qs": "0.5.x",
     "log": "1.3.x",
@@ -45,8 +45,10 @@
     "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "node test/runci.js testlist.txt",
-    "jshint": "node test/runjshint.js"
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "unit": "node scripts/unit.js testlist.txt",
+    "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
+    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'"
   },
   "bin": {
     "azure": "./bin/azure"

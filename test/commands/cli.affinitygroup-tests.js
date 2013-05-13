@@ -24,7 +24,7 @@ var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
-var AFFINITYGROUP_LOCATION = 'West US';
+var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West US';
 
 var createdAffinityGroups = [];
 
@@ -38,7 +38,7 @@ var executeCmd = function (cmd, callback) {
   }
 
   executeCommand(cmd, callback);
-}
+};
 
 describe('cli', function () {
   var affinityGroupName;

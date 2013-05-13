@@ -5,6 +5,7 @@ commands/cli.site-deploymentscript-tests.js
 commands/cli.site-tests.js
 commands/cli.siteconfig-tests.js
 commands/cli.sitescale-tests.js
+websites/websiteManagementService-tests.js
 util/git/linkrevisioncontrol-tests.js
 commands/cli.storage-tests.js
 commands/cli.mobile-tests.js
