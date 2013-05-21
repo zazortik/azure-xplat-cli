@@ -23,6 +23,13 @@ if (coverageOption !== -1) {
   args.splice(coverageOption, 1);
 }
 
+var reporter = 'list';
+var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
+if (xunitOption !== -1) {
+  reporter = 'xunit';
+  args.splice(xunitOption, 1);
+}
+
 var mcOption = Array.prototype.indexOf.call(args, '--mc') !== -1;
 
 var testList = args.pop();
@@ -201,7 +208,7 @@ if (coverageOption !== -1) {
   args.push('html-cov');
 } else {
   args.push('-R');
-  args.push('list');
+  args.push(reporter);
 }
 
 require('../node_modules/mocha/bin/mocha');

@@ -45,7 +45,10 @@
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
-    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'"
+    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
+    "preci": "jshint lib --reporter=checkstyle --extra-ext '*_.js' > checkstyle-result.xml",
+    "ci": "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
+    "postci": "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml"
   },
   "bin": {
     "azure": "./bin/azure"
