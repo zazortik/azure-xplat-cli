@@ -21,19 +21,34 @@ var os = require('os');
 
 var EOL = '\n';
 var debugStream = null;
-
-var debugIndex = process.argv.indexOf('-debug');
-if (debugIndex !== -1) {
-  process.argv.splice(debugIndex, 1);
-  debugStream = fs.createWriteStream('filter-debug.log', { flags:'w'});
-}
-
+var deleteInput = false;
 var source;
+
+ifFlag('-rm', function () {
+  deleteInput = true;
+});
+
+ifFlag('-debug', function () {
+  debugStream = fs.createWriteStream('filter-debug.log', {flags: 'w'});
+});
 
 if (process.argv.length > 2) {
   source = fs.createReadStream(process.argv[2], { flags: 'r' });
+  if (deleteInput) {
+    source.on('close', function () {
+      fs.unlinkSync(process.argv[2]);
+    });
+  }
 } else {
   source = process.stdin;
+}
+
+function ifFlag(flag, ifPresentCallback) {
+  var flagIndex = process.argv.indexOf(flag);
+  if (flagIndex !== -1) {
+    process.argv.splice(flagIndex, 1);
+    ifPresentCallback();
+  }
 }
 
 //
