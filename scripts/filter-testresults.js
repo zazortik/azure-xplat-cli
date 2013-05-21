@@ -38,6 +38,7 @@ function testResultFilter() {
   return stream;
 
   function write(buffer, encoding) {
+    console.warn('received buffer', buffer, 'encoding', encoding);
     if (typeof buffer === 'string') {
       pendingLines += buffer;
     } else {
@@ -57,21 +58,26 @@ function testResultFilter() {
     stream.emit('close');
   }
 
+  var EOL = '\n';
+
   function filterPendingLines() {
+    console.warn('processing lines, xmlFound=', xmlFound);
     if (xmlFound) {
+      console.warn('sending xml');
       this.emit('data', pendingLines);
       pendingLines = '';
     } else {
-
-      var lines = pendingLines.split(os.EOL);
-      if (pendingLines.slice(-os.EOL.length) !== os.EOL) {
+      console.warn('looking for xml start');
+      var lines = pendingLines.split(EOL);
+      if (pendingLines.slice(-(EOL.length)) !== EOL) {
         // We've got a partial line, sock it away until we get more data
+        console.warn('last line isn\'t complete, saving for later');
         pendingLines = lines[lines.length - 1];
         lines.pop();
       } else {
         pendingLines = '';
       }
-
+      console.warn('looking for xml start line, there are', lines.length, 'lines to process');
       var self = this;
       var openTag = '<testsuite';
       var output = [];
@@ -84,7 +90,7 @@ function testResultFilter() {
           output.push(l);
         }
       });
-
+      console.warn('lines processed, output.length=', output.length);
       if (output.length > 0) {
         this.emit('data', output.join(os.EOL));
       }

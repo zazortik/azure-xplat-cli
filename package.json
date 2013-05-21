@@ -47,8 +47,9 @@
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
     "ci": "npm -s run-script jshint-ci && npm -s run-script unit-ci",
-    "jshint-ci": "jshint lib --reporter=checkstyle > checkstyle-result.xml",
-    "unit-ci": "node scripts/unit.js testlist.txt -xunit | node scripts/filter-testresults.js > test-result.xml"
+    "jshint-ci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
+    "unit-ci": "node scripts/unit.js testlist.txt -xunit > test-result.xml.unfiltered && node scripts/filter-testresults.js < test-result.xml.unfiltered > test-result.xml",
+    "unit-filter-ci": "node scripts/filter-testresults.js < test-result.xml.unfiltered > test-result.xml"
   },
   "bin": {
     "azure": "./bin/azure"
