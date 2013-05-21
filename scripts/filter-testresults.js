@@ -139,5 +139,5 @@ function testResultFilter() {
   }
 }
 
-source.pipe(testResultFilter()).pipe(process.stdout);
 source.resume();
+source.pipe(testResultFilter()).pipe(process.stdout);
