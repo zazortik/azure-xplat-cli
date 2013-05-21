@@ -16,7 +16,25 @@
 'use strict';
 
 var Stream = require('stream');
+var fs = require('fs');
 var os = require('os');
+
+var EOL = '\n';
+var debugStream = null;
+
+var debugIndex = process.argv.indexOf('-debug');
+if (debugIndex !== -1) {
+  process.argv.splice(debugIndex, 1);
+  debugStream = fs.createWriteStream('filter-debug.log', { flags:'w'});
+}
+
+var source;
+
+if (process.argv.length > 2) {
+  source = fs.createReadStream(process.argv[2], { flags: 'r' });
+} else {
+  source = process.stdin;
+}
 
 //
 // A simple transformation stream that reads in
@@ -38,46 +56,52 @@ function testResultFilter() {
   return stream;
 
   function write(buffer, encoding) {
-    console.warn('received buffer', buffer, 'encoding', encoding);
     if (typeof buffer === 'string') {
       pendingLines += buffer;
     } else {
       pendingLines += buffer.toString(encoding);
+    }
+    if (debugStream) {
+      debugStream.write('>>>>> Received lines: ' + pendingLines);
     }
     process.nextTick(filterPendingLines.bind(this));
   }
 
   function end(buffer, encoding) {
     if (buffer) {
+      if (debugStream) {
+        debugStream.write('>>>>> end received with buffer, writing');
+      }
       this.write(buffer, encoding);
     }
     if (pendingLines.length > 0) {
+      if (debugStream) {
+        debugStream.write('>>>>> end received, flushing remaining pending lines');
+      }
       filterPendingLines.call(this);
+    }
+    if (debugStream) {
+      debugStream.write('>>>>> Input stream has ended');
     }
     stream.emit('end');
     stream.emit('close');
   }
 
-  var EOL = '\n';
-
   function filterPendingLines() {
-    console.warn('processing lines, xmlFound=', xmlFound);
     if (xmlFound) {
-      console.warn('sending xml');
+      if (debugStream) {
+        debugStream.write('>>>>> writing to output stream: ' + pendingLines);
+      }
       this.emit('data', pendingLines);
-      pendingLines = '';
     } else {
-      console.warn('looking for xml start');
       var lines = pendingLines.split(EOL);
       if (pendingLines.slice(-(EOL.length)) !== EOL) {
         // We've got a partial line, sock it away until we get more data
-        console.warn('last line isn\'t complete, saving for later');
         pendingLines = lines[lines.length - 1];
         lines.pop();
       } else {
         pendingLines = '';
       }
-      console.warn('looking for xml start line, there are', lines.length, 'lines to process');
       var self = this;
       var openTag = '<testsuite';
       var output = [];
@@ -90,13 +114,15 @@ function testResultFilter() {
           output.push(l);
         }
       });
-      console.warn('lines processed, output.length=', output.length);
       if (output.length > 0) {
-        this.emit('data', output.join(os.EOL));
+        if (debugStream) {
+          debugStream.write('>>>>> writing to output stream: ' + output.join(EOL));
+        }
+        this.emit('data', output.join(EOL));
       }
     }
   }
 }
 
-process.stdin.pipe(testResultFilter()).pipe(process.stdout);
-process.stdin.resume();
+source.pipe(testResultFilter()).pipe(process.stdout);
+source.resume();
