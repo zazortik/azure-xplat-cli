@@ -132,7 +132,7 @@ describe('cli', function () {
               }
             );
             endPointListOnlyLb.length.should.be.equal(1);
-            (endPointListOnlyLb[0].PublicPort == endPointListOnlyLb[0].LocalPort).should.be.true;
+            (endPointListOnlyLb[0].Port == endPointListOnlyLb[0].Port).should.be.true;
 
             // Verify endpoint creation with lb port and vm port
             var endPointListLbAndVm = allEndPointList.filter(
