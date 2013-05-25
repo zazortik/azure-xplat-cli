@@ -141,7 +141,7 @@ describe('cli', function () {
               }
             );
             endPointListLbAndVm.length.should.be.equal(1);
-            (endPointListLbAndVm[0].PublicPort == endPoints.PPAndLP.PublicPort).should.be.true;
+            (endPointListLbAndVm[0].Port == endPoints.PPAndLP.PublicPort).should.be.true;
 
             // Verify endpoint creation with lbSetName and prob option
             cmd = util.format('node cli.js vm show %s --json', vm.Name).split(' ');
