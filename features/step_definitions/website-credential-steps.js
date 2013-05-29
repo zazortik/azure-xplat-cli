@@ -16,9 +16,10 @@
 'use strict';
 
 function websiteCredentialSteps() {
-  this.Given(/^a one subscription publishsettings file$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+  this.World = require('../support/website-credentials-world').world;
+
+  this.Given(/^an? (.+) publishsettings file$/, function(publishSettingsName, callback) {
+    this.selectPublishSettings(publishSettingsName, callback);
   });
 
   this.When(/^I import the publishsettings file$/, function(callback) {

@@ -74,7 +74,9 @@
     "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
     "postci": "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml",
-    "cuke": "node node_modules/cucumber/bin/cucumber.js -f pretty"
+    "precuke": "node scripts/cuke-environment.js setup",
+    "cuke": "node node_modules/cucumber/bin/cucumber.js",
+    "postcuke": "node scripts/cuke-environment.js teardown"
   },
   "bin": {
     "azure": "./bin/azure"
