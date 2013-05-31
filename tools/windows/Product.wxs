@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define ProductVersion="0.6.16" ?>
-  
+  <?define ProductVersion="0.6.17" ?>
+
   <?define ProductName = "Windows Azure Command Line Tools" ?>
   <?define ProductDescription = "Node.js" ?>
   <?define ProductAuthor = "Microsoft Corporation" ?>
   <?define ProductResources = "..\resources\" ?>
 
-  <Product Id="*" 
+  <Product Id="*"
            Name="$(var.ProductName)"
            Language="1033"
            Version="$(var.ProductVersion)"
            Manufacturer="$(var.ProductAuthor)"
            UpgradeCode="6dd1d1f3-4908-450d-8127-d9ce638646d9">
-    
-		<Package InstallerVersion="200" 
-             Compressed="yes" 
+
+		<Package InstallerVersion="200"
+             Compressed="yes"
              InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
     <Media Id="1" Cabinet="WindowsAzureCLI.cab" EmbedCab="yes" CompressionLevel="high" />
-    
+
     <Icon Id="AzureIcon" SourceFile="$(var.ProductResources)windowsazure.ico" />
 
     <Property Id="ARPPRODUCTICON" Value="AzureIcon" />
@@ -32,8 +32,8 @@
     <Property Id="ApplicationFolderName" Value="Microsoft SDKs\Windows Azure" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
-    <Feature Id="ProductFeature" 
-             Title="Windows Azure Command Line Tools" 
+    <Feature Id="ProductFeature"
+             Title="Windows Azure Command Line Tools"
              Level="1"
              AllowAdvertise="no">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -45,7 +45,7 @@
     <WixVariable Id="WixUIBannerBmp" Value="$(var.ProductResources)Banner.bmp" />
 
     <UIRef Id="WixUI_Advanced"/>
-    
+
   </Product>
 
 	<Fragment>
@@ -87,11 +87,11 @@
       <Component Id="AzureCliRegistry"
                  Directory="DynamicCliDir"
                  Guid="{9D27CB5B-40F9-475C-AC1C-0DD48D87088B}">
-        <RegistryValue Root="HKCU" 
-                       Key="Software\Microsoft\$(var.ProductName)" 
-                       Name="installed" 
-                       Type="integer" 
-                       Value="1" 
+        <RegistryValue Root="HKCU"
+                       Key="Software\Microsoft\$(var.ProductName)"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
                        KeyPath="yes"/>
       </Component>
       <Component Id="AzureCliVersion"
