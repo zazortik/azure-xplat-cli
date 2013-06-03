@@ -73,6 +73,34 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/webspaces/eastasiawebspace/sites/?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7d01592900014705ba0c3212f26be41f',
+  date: 'Mon, 29 Apr 2013 19:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/webspaces/northcentraluswebspace/sites/?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7d01592900014705ba0c3212f26be41f',
+  date: 'Mon, 29 Apr 2013 19:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/webspaces/?properties=georegions')
   .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
   'content-length': '519',
