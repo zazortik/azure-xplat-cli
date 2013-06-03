@@ -82,7 +82,7 @@ describe('cli', function() {
           });
         });
 
-        it('shoule support wildcard', function(done) {
+        it('should support wildcard', function(done) {
           var cmd = "container list t*4".toStorageCmd();
           executeCmd(cmd, function(result) {
             var containers = JSON.parse(result.text);
