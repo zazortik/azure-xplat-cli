@@ -20,6 +20,7 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 
 var suiteUtil;
 var testPrefix = 'cli.storage.blob-tests';
+var fakeConnectionString = 'DefaultEndpointsProtocol=http;AccountName=yaotest;AccountKey=null';
 
 /**
 * Convert a cmd to azure storge cli
@@ -38,10 +39,14 @@ String.prototype.toStorageCmd = function () {
   return cmds;
 }
 
-
 describe('cli', function() {
   describe('storage', function() {
+    var savedConnectionString = '';
+
     before(function (done) {
+      savedConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+      process.env.AZURE_STORAGE_CONNECTION_STRING = fakeConnectionString;
+
       suiteUtil = new MockedTestUtils(testPrefix);
 
       if (suiteUtil.isMocked) {
@@ -52,6 +57,7 @@ describe('cli', function() {
     });
 
     after(function (done) {
+      process.env.AZURE_STORAGE_CONNECTION_STRING = savedConnectionString;
       suiteUtil.teardownSuite(done);
     });
 
