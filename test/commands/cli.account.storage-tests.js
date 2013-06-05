@@ -22,7 +22,7 @@ var storageNamesPrefix = 'cstorage';
 var storageNames = [];
 
 var suiteUtil;
-var testPrefix = 'cli.storage-tests';
+var testPrefix = 'cli.account.storage-tests';
 
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
@@ -34,7 +34,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 describe('cli', function () {
-  describe('storage', function () {
+  describe('account storage', function () {
     var storageName;
 
     before(function (done) {

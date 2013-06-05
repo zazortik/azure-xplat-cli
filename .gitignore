@@ -27,3 +27,6 @@ Thumbs.db
 
 # WebStorm #
 .idea/
+
+# Linux #
+*.swp
