@@ -46,13 +46,12 @@ function websiteCredentialSteps() {
   });
 
   this.When(/^I list Websites$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+    this.runScript('azure site list', callback);
   });
 
   this.Then(/^the command succeeds$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+    should.not.exist(this.scriptErr);
+    callback();
   });
 }
 
