@@ -82,7 +82,6 @@ function downloadPublishSettings(settingsName, callback) {
   var self = this;
   var blobName = settingsName + '.publishsettings';
   var destPath = self._fullSettingsFilePath(settingsName);
-  console.log('Attempting to download blob', blobName, 'from container', self.blobContainer);
   self.blobService.getBlobToFile(self.blobContainer, blobName, destPath, function (err) {
     if (err) { return callback(err); }
 
