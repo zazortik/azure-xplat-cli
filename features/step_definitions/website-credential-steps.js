@@ -37,8 +37,12 @@ function websiteCredentialSteps() {
   });
 
   this.Then(/^management endpoint is set correctly$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+    var self = this;
+    var expected = new RegExp('^data:\\s+endpoint\\s+' + self.managementEndpoint + '\\s*$', 'm');
+    self.runScript('azure config list', function () {
+      self.scriptStdout.should.match(expected);
+      callback();
+    });
   });
 
   this.When(/^I list Websites$/, function(callback) {
