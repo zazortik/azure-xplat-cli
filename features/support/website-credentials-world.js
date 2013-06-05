@@ -16,11 +16,16 @@
 'use strict';
 var _ = require('underscore');
 var EnvironmentDownloader = require('./environmentDownloader').EnvironmentDownloader;
+var ScriptRunner = require('./scriptrunner').ScriptRunner;
+var util = require('util');
 
 function World(callback) {
+  ScriptRunner.call(this);
   this.downloader = new EnvironmentDownloader('credentials');
   callback();
 }
+
+util.inherits(World, ScriptRunner);
 
 _.extend(World.prototype, {
   selectPublishSettings: function (settingsName, callback) {
@@ -31,11 +36,28 @@ _.extend(World.prototype, {
           self.managementEndpoint = results[0].endpoint;
           self.subscriptionId = results[0].subscriptionId;
           self.subscriptionName = results[0].subscriptionName;
+          self.publishSettingsPath = results[0].path;
         } else {
           self.subscriptions = results;
         }
       }
       callback(err);
+    });
+  },
+
+  runScript: function (script, callback) {
+    var self = this;
+    if (_.isString(script)) {
+      script = script.split(/\n|\r\n/);
+    }
+    if (!_.isArray(script)) {
+      throw new Error('Must pass either a string or array for scripts to run');
+    }
+    self.runCommands(script, function (err, stdout, stderr) {
+      self.scriptErr = err;
+      self.scriptStdout = stdout;
+      self.scriptStdErr = stderr;
+      callback();
     });
   }
 });

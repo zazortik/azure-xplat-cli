@@ -32,11 +32,15 @@ function ScriptRunner() {
 
 ScriptRunner.prototype.azureCommandToNodeInvocation = function (command) {
   var nodeCall = 'node ' + this.azureScriptPath + ' ';
-  command.replace(/^azure\s+/, nodeCall);
+  return command.replace(/^azure\s+/, nodeCall);
 }
 
-ScriptRunner.prototype.osScriptSeparator = function () {
+var separators = {
+    'Win32': ' && '
+};
 
+ScriptRunner.prototype.osScriptSeparator = function () {
+  return separators[os.platform] || ' ; ';
 }
 
 /**
@@ -44,6 +48,10 @@ ScriptRunner.prototype.osScriptSeparator = function () {
 * system shell, calling the callback when the scripts
 * complete.
 */
-function run(commands, callback) {
-
+ScriptRunner.prototype.runCommands = function(commands, callback) {
+  commands = commands.map(this.azureCommandToNodeInvocation.bind(this));
+  var command = commands.join(this.osScriptSeparator());
+  return exec(command, callback);
 }
+
+exports.ScriptRunner = ScriptRunner;

@@ -14,6 +14,7 @@
 */
 
 'use strict';
+var should = require('should');
 
 function websiteCredentialSteps() {
   this.World = require('../support/website-credentials-world').world;
@@ -23,13 +24,16 @@ function websiteCredentialSteps() {
   });
 
   this.When(/^I import the publishsettings file$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+    this.runScript('azure account import ' + this.publishSettingsPath, callback);
   });
 
   this.Then(/^current subscription is set correctly$/, function(callback) {
-    // express the regexp above with the code you wish you had
-    callback.pending();
+    var self = this;
+
+    self.runScript('azure account list', function () {
+      self.scriptStdout.should.include(self.subscriptionId);
+      callback();
+    });
   });
 
   this.Then(/^management endpoint is set correctly$/, function(callback) {
