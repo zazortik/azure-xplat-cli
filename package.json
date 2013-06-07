@@ -45,8 +45,16 @@
     "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "node test/runci.js testlist.txt",
-    "jshint": "node test/runjshint.js"
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "unit": "node scripts/unit.js testlist.txt",
+    "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
+    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
+    "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
+    "ci": "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
+    "postci": "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml",
+    "preacceptance": "node scripts/cuke-environment.js setup",
+    "acceptance": "node node_modules/cucumber/bin/cucumber.js",
+    "postacceptance": "node scripts/cuke-environment.js teardown"    
   },
   "bin": {
     "azure": "./bin/azure"
