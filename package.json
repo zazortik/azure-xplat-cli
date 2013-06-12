@@ -48,7 +48,7 @@
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
     "github": "0.1.6",
-	"kuduscript": "git://github.com/projectkudu/KuduScript.git#e297c5edb967449e40b13fb11eaee1a4124e669b"
+    "kuduscript": "git://github.com/projectkudu/KuduScript.git#593601edb55c0c9d2925650077ba9214e3df927c"
   },
   "devDependencies": {
     "mocha": "*",
