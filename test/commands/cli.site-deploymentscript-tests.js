@@ -375,21 +375,7 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
 
   generateNodeStartJsFile(pathUtil.join(settings.siteDirPath, settings.nodeStartUpFile));
 
-  runSiteDeploymentScriptScenario(function (err) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    try {
-      var iisNodeYmlContent = getFileContent(pathUtil.join(settings.siteDirPath, 'iisnode.yml'));
-      iisNodeYmlContent.should.include('node_env: production');
-
-      callback();
-    } catch (e) {
-      callback(e);
-    }
-  }, settings);
+  runSiteDeploymentScriptScenario(callback, settings);
 }
 
 function runSiteDeploymentScriptScenario(callback, settings) {
