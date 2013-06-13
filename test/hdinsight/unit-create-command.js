@@ -398,6 +398,46 @@ describe('HDInsight create command (under unit test)', function() {
     done();
   });
 
+  it('should call validateLocation before attempting to create the cluster', function(done) {
+    var command = new GetCommand();
+    var options = {
+      clusterName : 'test2',
+      nodes : 4,
+      location : 'East US'
+    };
+    command.hdinsight.createClusterCommand(undefined, options);
+    should.exist(command.processor.validateLocation.firstCall);
+    command.processor.validateLocation.firstCall.args[0].should.be.equal('East US');
+    done();
+  });
+
+  it('should call pass the subscriptionId into validateLocation if supplied', function(done) {
+    var command = new GetCommand();
+    var options = {
+      clusterName : 'test2',
+      nodes : 4,
+      location : 'East US',
+      subscription : '1234'
+    };
+    command.hdinsight.createClusterCommand(undefined, options);
+    should.exist(command.processor.validateLocation.firstCall);
+    command.processor.validateLocation.firstCall.args[1].should.be.equal('1234');
+    done();
+  });
+
+  it('should call registerLocation before attempting to create the cluster if validateLocation returned 404', function(done) {
+    var command = new GetCommand();
+    command.processor.validateLocationResults = 404;
+    var options = {
+      clusterName : 'test2',
+      nodes : 4,
+      location : 'East US'
+    };
+    command.hdinsight.createClusterCommand(undefined, options);
+    should.exist(command.processor.registerLocation.firstCall);
+    done();
+  });
+
   it('should pass the correct creationObject into createCluster', function(done) {
     var command = new GetCommand();
     var options = {

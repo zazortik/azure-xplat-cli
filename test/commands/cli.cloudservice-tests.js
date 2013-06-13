@@ -31,7 +31,6 @@ var executeCmd = function (cmd, callback) {
     cmd.push('-s');
     cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
   }
-
   executeCommand(cmd, callback);
 };
 

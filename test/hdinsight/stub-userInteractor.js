@@ -42,6 +42,8 @@ var UserInteractor = function() {
 
   sinon.spy(this, 'verifyCompat');
 
+  this.checkpoint = sinon.spy();
+
   this.promptResults = {
     'Config File Path: ' : 'test.json',
     'Storage Account Name: ' : 'account1',
@@ -60,15 +62,21 @@ var UserInteractor = function() {
     'Metastore user: ' : 'user1',
     'Metastore password: ' : 'password'
   };
-  this.promptIfNotGiven = function(name, value) {
+  this.promptIfNotGiven = function(name, value, callback) {
+    var retval;
     if (!_.isUndefined(value)) {
-      return value;
+      retval = value;
     }
     else {
-      var retval = this.promptResults[name];
+      retval = this.promptResults[name];
       if (!retval) {
         throw new Error('mocker was unable to locate a parameter return value for ' + name);
       }
+    }
+    if (callback) {
+      callback(null, retval);
+    }
+    else {
       return retval;
     }
   };

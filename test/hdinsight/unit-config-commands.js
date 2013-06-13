@@ -897,7 +897,7 @@ describe('HDInsight config commands (under unit test)', function() {
         name : 'account2',
         key : 'key2'
       }]
-    }
+    };
     command.hdinsight.removeConfigStorageCommand(undefined, undefined, options);
     command.user.writeConfig.firstCall.args[0].should.be.equal('test.json');
     command.user.writeConfig.firstCall.args[1].should.be.eql(expected);

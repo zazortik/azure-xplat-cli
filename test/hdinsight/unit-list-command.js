@@ -26,6 +26,17 @@ var util = testutil.libRequire('util/utils');
 var GetCommand = require('./util-GetCommand.js');
 
 describe('HDInsight list command (under unit test)', function() {
+
+  after(function (done) {
+    done();
+  });
+
+  // NOTE: To Do, we should actually create new acounts for our tests
+  //       So that we can work on any existing subscription.
+  before (function (done) {
+    done();
+  });
+
   it('should call startProgress with the correct statement', function(done) {
     var command = new GetCommand();
     should.exist(command.hdinsight.listClustersCommand);

@@ -20,41 +20,90 @@ var ExecutionProcessor = function() {
   var self = this;
   this.filterCluster = sinon.spy();
   this.createClusterResults = 200;
-  this.createCluster = function(creationObject, subscriptionId) {
-    return { statusCode : self.validateLocationResults };
+  this.createCluster = function(creationObject, subscriptionId, callback) {
+    if (callback) {
+      callback(null, { statusCode : self.createClusterResults });
+    }
+    else {
+      return { statusCode : self.createClusterResults };
+    }
   };
   sinon.spy(this, 'createCluster');
 
-  this.getCluster = function(clusterName, subscriptionId) {
-    var list = this.listClusters(subscriptionId);
+  this.getCluster = function(clusterName, subscriptionId, callback) {
+    var list = this.listResultsForEachCall[this.listClustersCallCount++];
     var retval;
     list.body.clusters.forEach(function (cluster) {
       if (cluster.Name === clusterName) {
         retval = cluster;
       }
     });
-    return retval;
+    if (callback) {
+      callback(null, retval);
+    }
+    else {
+      return retval;
+    }
   };
   sinon.spy(this, 'getCluster');
 
   this.validateLocationResults = 200;
-  this.validateLocation = function (location, subscriptionId) {
-    return { statusCode : self.validateLocationResults };
+  this.validateLocation = function (location, subscriptionId, callback) {
+    if (callback) {
+      callback(null, { statusCode : self.validateLocationResults });
+    }
+    else {
+      return { statusCode : self.validateLocationResults };
+    }
   };
   sinon.spy(this, 'validateLocation');
 
-  this.registerLocation = sinon.spy();
+  this.registerLocation = function (location, subscriptionId, callback) {
+    if (callback) {
+      callback(null, { statusCode : 200});
+    }
+    else {
+      return { statusCode : 200};
+    }
+  };
 
-  this.deleteCluster = sinon.spy();
+  sinon.spy(this, 'registerLocation');
+
+  this.deleteCluster = function (name, location, subscriptionId, callback) {
+    if (callback) {
+      callback(null, null);
+    }
+  };
+
+  sinon.spy(this, 'deleteCluster');
   this.createHDInsightManagementService = sinon.spy();
-  this.doPollRequest = sinon.spy();
+  this.doPollRequest = function(name, subscriptionId, callback) {
+    if (callback) {
+      callback(null, null);
+    }
+  };
+
+  sinon.spy(this, 'doPollRequest');
+
+  this.doPollValidation = function(location, subscriptionId, callback) {
+    if (callback) {
+      callback(null, null);
+    }
+  };
+
+  sinon.spy(this, 'doPollValidation');
 
   this.listClustersCallCount = 0;
   // Specifies an array of results to return for each call attempt.
   this.listResultsForEachCall = [];
 
-  this.listClusters = function(subscriptionId) {
-    return this.listResultsForEachCall[this.listClustersCallCount++];
+  this.listClusters = function(subscriptionId, callback) {
+    if (callback) {
+      callback(null, this.listResultsForEachCall[this.listClustersCallCount++]);
+    }
+    else {
+      return this.listResultsForEachCall[this.listClustersCallCount++];
+    }
   };
 
   sinon.spy(this, 'listClusters');
