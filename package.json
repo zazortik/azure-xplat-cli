@@ -34,7 +34,7 @@
     }
   ],
   "dependencies": {
-    "azure" : "git://github.com/tistocks/azure-sdk-for-node.git#tistocks_HDInsight_2",
+    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "underscore": "1.4.x",
