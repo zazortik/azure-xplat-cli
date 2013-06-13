@@ -100,6 +100,17 @@ describe('cli', function() {
           });
         });
       });
+
+      describe('show', function(done) {
+        it('should show details of the specified container', function(done) {
+          var cmd = "container show test1".toStorageCmd();
+          executeCmd(cmd, function(result) {
+            var container = JSON.parse(result.text);
+            container.name.should.equal('test1');
+            done();
+          });
+        });
+      });
     });
   }); 
 });

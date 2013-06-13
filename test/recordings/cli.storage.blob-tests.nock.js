@@ -3,13 +3,13 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://yaotest.blob.core.windows.net:80')
-  .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"http://yaotest.blob.core.windows.net/\"><Containers><Container><Name>test1</Name><Url>http://yaotest.blob.core.windows.net/test1</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D2942\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test2</Name><Url>http://yaotest.blob.core.windows.net/test2</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D5052\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test3</Name><Url>http://yaotest.blob.core.windows.net/test3</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:12 GMT</Last-Modified><Etag>\"0x8D028A1C54F054B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test4</Name><Url>http://yaotest.blob.core.windows.net/test4</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:28 GMT</Last-Modified><Etag>\"0x8D028A1CF0B160B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test5</Name><Url>http://yaotest.blob.core.windows.net/test5</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D9E72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .get('/?comp=list&include=metadata')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"http://yaotest.blob.core.windows.net/\"><Containers><Container><Name>test1</Name><Url>http://yaotest.blob.core.windows.net/test1</Url><Properties><Last-Modified>Fri, 07 Jun 2013 09:11:39 GMT</Last-Modified><Etag>\"0x8D03176279E7B72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test2</Name><Url>http://yaotest.blob.core.windows.net/test2</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D5052\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test3</Name><Url>http://yaotest.blob.core.windows.net/test3</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:12 GMT</Last-Modified><Etag>\"0x8D028A1C54F054B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test4</Name><Url>http://yaotest.blob.core.windows.net/test4</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:28 GMT</Last-Modified><Etag>\"0x8D028A1CF0B160B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test5</Name><Url>http://yaotest.blob.core.windows.net/test5</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D9E72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test6</Name><Url>http://yaotest.blob.core.windows.net/test6</Url><Properties><Last-Modified>Thu, 13 Jun 2013 05:29:11 GMT</Last-Modified><Etag>\"0x8D0360E11DF1D0A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '62fa0a8c-f642-4e6a-8340-9e030193846d',
+  'x-ms-request-id': '908d7f1c-9317-459b-9f17-e6bbc2e69f26',
   'x-ms-version': '2012-02-12',
-  date: 'Mon, 03 Jun 2013 06:36:48 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -17,13 +17,13 @@ nock('http://yaotest.blob.core.windows.net:80')
   .get('/test1?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Thu, 02 May 2013 11:43:42 GMT',
-  etag: '"0x8D015416E4D2942"',
+  'last-modified': 'Fri, 07 Jun 2013 09:11:39 GMT',
+  etag: '"0x8D03176279E7B72"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e1300d93-ef18-40ac-840b-eb4d61b7d672',
+  'x-ms-request-id': '82491ef1-6cbb-430a-a8e5-957e80f87c5f',
   'x-ms-version': '2012-02-12',
-  'x-ms-blob-public-access': 'blob',
-  date: 'Mon, 03 Jun 2013 06:36:47 GMT' });
+  'x-ms-blob-public-access': 'container',
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -34,10 +34,10 @@ nock('http://yaotest.blob.core.windows.net:80')
   'last-modified': 'Thu, 02 May 2013 11:43:42 GMT',
   etag: '"0x8D015416E4D5052"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '74edf5e2-e1f5-40d7-bd94-5c1c734bce0b',
+  'x-ms-request-id': '6c1e50d3-77ec-46d2-97ac-acd48d80c104',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'blob',
-  date: 'Mon, 03 Jun 2013 06:36:48 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -48,9 +48,9 @@ nock('http://yaotest.blob.core.windows.net:80')
   'last-modified': 'Mon, 27 May 2013 03:31:12 GMT',
   etag: '"0x8D028A1C54F054B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a3ba2d3-aea2-4e67-97ef-1851e0ad979f',
+  'x-ms-request-id': '3d2cf05f-7309-4790-864c-db74b4251620',
   'x-ms-version': '2012-02-12',
-  date: 'Mon, 03 Jun 2013 06:36:49 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -61,10 +61,10 @@ nock('http://yaotest.blob.core.windows.net:80')
   'last-modified': 'Mon, 27 May 2013 03:31:28 GMT',
   etag: '"0x8D028A1CF0B160B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f57a072e-2f84-4a42-88e9-6e55205ce5fb',
+  'x-ms-request-id': 'f3fa2a43-f640-4641-b668-bfad9d50b96a',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'container',
-  date: 'Mon, 03 Jun 2013 06:36:48 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -75,21 +75,35 @@ nock('http://yaotest.blob.core.windows.net:80')
   'last-modified': 'Thu, 02 May 2013 11:43:42 GMT',
   etag: '"0x8D015416E4D9E72"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f115dd80-81bc-4714-ab65-5850f353f61d',
+  'x-ms-request-id': '91b458b4-bafd-4a74-83f2-f2e31518de2c',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'blob',
-  date: 'Mon, 03 Jun 2013 06:36:47 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:11 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://yaotest.blob.core.windows.net:80')
+  .get('/test6?restype=container&comp=acl')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  'last-modified': 'Thu, 13 Jun 2013 05:29:11 GMT',
+  etag: '"0x8D0360E11DF1D0A"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f307c1db-cdc5-45ce-a008-b4d85496589a',
+  'x-ms-version': '2012-02-12',
+  'x-ms-blob-public-access': 'container',
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://yaotest.blob.core.windows.net:80')
-  .get('/?comp=list&prefix=t')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"http://yaotest.blob.core.windows.net/\"><Prefix>t</Prefix><Containers><Container><Name>test1</Name><Url>http://yaotest.blob.core.windows.net/test1</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D2942\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test2</Name><Url>http://yaotest.blob.core.windows.net/test2</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D5052\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test3</Name><Url>http://yaotest.blob.core.windows.net/test3</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:12 GMT</Last-Modified><Etag>\"0x8D028A1C54F054B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test4</Name><Url>http://yaotest.blob.core.windows.net/test4</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:28 GMT</Last-Modified><Etag>\"0x8D028A1CF0B160B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>test5</Name><Url>http://yaotest.blob.core.windows.net/test5</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D9E72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .get('/?comp=list&prefix=t&include=metadata')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"http://yaotest.blob.core.windows.net/\"><Prefix>t</Prefix><Containers><Container><Name>test1</Name><Url>http://yaotest.blob.core.windows.net/test1</Url><Properties><Last-Modified>Fri, 07 Jun 2013 09:11:39 GMT</Last-Modified><Etag>\"0x8D03176279E7B72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test2</Name><Url>http://yaotest.blob.core.windows.net/test2</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D5052\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test3</Name><Url>http://yaotest.blob.core.windows.net/test3</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:12 GMT</Last-Modified><Etag>\"0x8D028A1C54F054B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test4</Name><Url>http://yaotest.blob.core.windows.net/test4</Url><Properties><Last-Modified>Mon, 27 May 2013 03:31:28 GMT</Last-Modified><Etag>\"0x8D028A1CF0B160B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test5</Name><Url>http://yaotest.blob.core.windows.net/test5</Url><Properties><Last-Modified>Thu, 02 May 2013 11:43:42 GMT</Last-Modified><Etag>\"0x8D015416E4D9E72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container><Container><Name>test6</Name><Url>http://yaotest.blob.core.windows.net/test6</Url><Properties><Last-Modified>Thu, 13 Jun 2013 05:29:11 GMT</Last-Modified><Etag>\"0x8D0360E11DF1D0A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd2a097ea-ec9f-40c8-a598-1dddb7ae43d4',
+  'x-ms-request-id': '4c66da18-da5c-4d2b-bb3f-a7470950281e',
   'x-ms-version': '2012-02-12',
-  date: 'Mon, 03 Jun 2013 06:36:49 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -100,8 +114,36 @@ nock('http://yaotest.blob.core.windows.net:80')
   'last-modified': 'Mon, 27 May 2013 03:31:28 GMT',
   etag: '"0x8D028A1CF0B160B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '156809a8-c035-4569-ba64-3659309c3eb8',
+  'x-ms-request-id': 'd5d9b4f5-ce09-4eeb-bbbf-cccba6abbd48',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'container',
-  date: 'Mon, 03 Jun 2013 06:36:48 GMT' });
+  date: 'Thu, 13 Jun 2013 09:24:11 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://yaotest.blob.core.windows.net:80')
+  .head('/test1?restype=container')
+  .reply(200, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Fri, 07 Jun 2013 09:11:39 GMT',
+  etag: '"0x8D03176279E7B72"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a63890a4-e812-457b-bff0-573ec79b4b5b',
+  'x-ms-version': '2012-02-12',
+  'x-ms-lease-status': 'unlocked',
+  'x-ms-lease-state': 'available',
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://yaotest.blob.core.windows.net:80')
+  .get('/test1?restype=container&comp=acl')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  'last-modified': 'Fri, 07 Jun 2013 09:11:39 GMT',
+  etag: '"0x8D03176279E7B72"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a67aeb12-2535-4015-a7fd-fd1629b42bc0',
+  'x-ms-version': '2012-02-12',
+  'x-ms-blob-public-access': 'container',
+  date: 'Thu, 13 Jun 2013 09:24:10 GMT' });
  return result; }]];
