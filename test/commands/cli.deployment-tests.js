@@ -95,6 +95,18 @@ describe('cli', function(){
       });
     });
 
+    it('should set git credentials', function(done) {
+      // Create site
+      var cmd = ('node cli.js site deployment user set mygituser 12345Qwerty --json').split(' ');
+      executeCmd(cmd, function (result) {
+        result.text.should.equal('');
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        done();
+      });
+    });
+
     it('should deploy to github', function(done) {
       var siteName = suiteUtil.generateId('cliuttestdeploy1', siteNames);
 
