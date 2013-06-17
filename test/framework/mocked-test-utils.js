@@ -57,7 +57,7 @@ MockedTestUtils.prototype.setupSuite = function (callback) {
         return originalReadFileSync(filename, 'utf8');
       } else {
         return '{ "endpoint": "https://management.core.windows.net",' +
-          ' "subscription": "279b0675-cf67-467f-98f0-67ae31eb540f" }';
+          ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
       }
     });
 
