@@ -11,6 +11,7 @@ util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
 commands/cli.account.storage-tests.js
 commands/cli.mobile-tests.js
+commands/cli.mobilerecover-tests.js
 commands/cli.vm-tests.js
 commands/cli.sql-tests.js
 commands/cli.site-log-tests.js
