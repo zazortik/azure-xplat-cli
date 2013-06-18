@@ -19,6 +19,7 @@ var sinon = require('sinon');
 var nockhelper = require('../framework/nock-helper.js');
 var executeCmd = require('../framework/cli-executor').execute;
 var keyFiles = require('../../lib/util/keyFiles');
+var testUtil = require('../util/util');
 
 describe('cli', function(){
   describe('mobile', function() {
@@ -29,8 +30,8 @@ describe('cli', function(){
 
         sinon.stub(keyFiles, 'readFromFile', function () {                    
           return {
-            cert: process.env.AZURE_CERTIFICATE,
-            key: process.env.AZURE_CERTIFICATE_KEY
+            cert: testUtil.getCertificate(),
+            key: testUtil.getCertificateKey()
           };
         });
 
