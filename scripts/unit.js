@@ -144,11 +144,11 @@ if (!process.env.NOCK_OFF) {
     }
 
     if (process.env.AZURE_GITHUB_USERNAME && process.env.AZURE_GITHUB_USERNAME !== defaultGithubUsername) {
-      throw new Error('Github recordings can only be made with the subscription ' + defaultGithubUsername);
+      throw new Error('Github recordings can only be made with the github username ' + defaultGithubUsername);
     }
 
     if (process.env.AZURE_GIT_USERNAME && process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
-      throw new Error('Git recordings can only be made with the subscription ' + defaultGitUsername);
+      throw new Error('Git recordings can only be made with the git username ' + defaultGitUsername);
     }
 
     if (!process.env.AZURE_CERTIFICATE) {
@@ -157,6 +157,10 @@ if (!process.env.NOCK_OFF) {
 
     if (!process.env.AZURE_CERTIFICATE_KEY) {
       throw new Error('Azure certificate key needs to be defined for recordings');
+    }
+
+    if (!process.env.AZURE_STORAGE_CONNECTION_STRING) {
+      throw new Error('Azure storage connection string needs to be defined for recordings');
     }
   }
 } else {
