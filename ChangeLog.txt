@@ -1,3 +1,8 @@
+2013.06.20 - version 0.6.17
+* HDInsight commands
+* Added cucumber tests
+* Multiple fixes to support Azure China and Windows Azure Pack
+
 2013.05.13 - version 0.6.16
 * Fixed issue with registered resources on account import.
 * Fixed jsHint errors.
