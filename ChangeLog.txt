@@ -2,6 +2,8 @@
 * HDInsight commands
 * Added cucumber tests
 * Multiple fixes to support Azure China and Windows Azure Pack
+* Multiple VM fixes
+* New azure site repository sync command
 
 2013.05.13 - version 0.6.16
 * Fixed issue with registered resources on account import.
