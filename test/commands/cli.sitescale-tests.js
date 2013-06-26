@@ -13,7 +13,10 @@
 * limitations under the License.
 */
 
-var should = require('should');
+var fs = require('fs');
+var path = require('path');
+var sinon = require('sinon');
+var utils = require('../../lib/util/utils');
 
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');

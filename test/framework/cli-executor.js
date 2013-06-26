@@ -15,6 +15,7 @@
 
 var sinon = require('sinon');
 var cli = require('../../lib/cli');
+var azureutil = require('../../lib/util/utils');
 var _ = require('underscore');
 
 var winston = require('winston');
@@ -35,7 +36,7 @@ var cleanCliOptions = function (cli) {
     _.each(category.commands, function (command) {
       for (var option in command.options) {
         var optionName = command.options[option].long.substr(2);
-        if (_.startsWith(optionName, 'no-')) {
+        if (azureutil.stringStartsWith(optionName, 'no-')) {
           optionName = optionName.substr(3);
         }
 
@@ -84,6 +85,7 @@ function execute(cmd, cb) {
     cleanCliOptions(cli);
     cli.parse(cmd);
   } catch(err) {
+    result.errorStack = err.stack;
     result.error = err;
 
     end();

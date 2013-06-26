@@ -23,6 +23,13 @@ if (coverageOption !== -1) {
   args.splice(coverageOption, 1);
 }
 
+var reporter = 'list';
+var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
+if (xunitOption !== -1) {
+  reporter = 'xunit';
+  args.splice(xunitOption, 1);
+}
+
 var mcOption = Array.prototype.indexOf.call(args, '--mc') !== -1;
 
 var testList = args.pop();
@@ -137,11 +144,11 @@ if (!process.env.NOCK_OFF) {
     }
 
     if (process.env.AZURE_GITHUB_USERNAME && process.env.AZURE_GITHUB_USERNAME !== defaultGithubUsername) {
-      throw new Error('Github recordings can only be made with the subscription ' + defaultGithubUsername);
+      throw new Error('Github recordings can only be made with the github username ' + defaultGithubUsername);
     }
 
     if (process.env.AZURE_GIT_USERNAME && process.env.AZURE_GIT_USERNAME !== defaultGitUsername) {
-      throw new Error('Git recordings can only be made with the subscription ' + defaultGitUsername);
+      throw new Error('Git recordings can only be made with the git username ' + defaultGitUsername);
     }
 
     if (!process.env.AZURE_CERTIFICATE) {
@@ -150,6 +157,10 @@ if (!process.env.NOCK_OFF) {
 
     if (!process.env.AZURE_CERTIFICATE_KEY) {
       throw new Error('Azure certificate key needs to be defined for recordings');
+    }
+
+    if (!process.env.AZURE_STORAGE_CONNECTION_STRING) {
+      throw new Error('Azure storage connection string needs to be defined for recordings');
     }
   }
 } else {
@@ -201,7 +212,7 @@ if (coverageOption !== -1) {
   args.push('html-cov');
 } else {
   args.push('-R');
-  args.push('list');
+  args.push(reporter);
 }
 
 require('../node_modules/mocha/bin/mocha');

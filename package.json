@@ -1,22 +1,43 @@
 {
   "name": "azure-cli",
   "author": "Microsoft Corporation",
-  "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
-  "version": "0.6.16",
+  "contributors": [
+    "Block, Glenn <gblock@microsoft.com>",
+    "Cowlishaw, Mark <markcowl@microsoft.com>",
+    "Dejardin, Louis <loudej@microsoft.com>",
+    "Georgiev, Yavor <yavorg@microsoft.com>",
+    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
+    "Rodrigues, Andre <andrerod@microsoft.com>",
+    "Tavares, Chris <ctavares@microsoft.com>"
+  ],
+  "version": "0.6.17",
   "description": "Windows Azure Cross Platform Command Line tool",
-  "tags" : ["azure", "cli"],
-  "keywords": [ "node", "azure", "cli", "cloud hosting", "deployment" ],
+  "tags": [
+    "azure",
+    "cli"
+  ],
+  "keywords": [
+    "node",
+    "azure",
+    "cli",
+    "cloud hosting",
+    "deployment"
+  ],
   "main": "./lib/cli.js",
-  "engines": { "node": ">= 0.6.15" },
-  "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "dependencies": {
-    "azure" : "0.7.3",
-    "xml2js" : "0.1.x",
-    "qs": "0.5.x",
-    "log": "1.3.x",
+    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
+    "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "underscore": "1.4.x",
-    "underscore.string": "2.3.x",
     "node-uuid": "1.2.0",
     "tunnel": "0.0.2",
     "async": "0.2.7",
@@ -34,21 +55,28 @@
     "sinon": "*",
     "should": "*",
     "nock": "0.16",
-    "winston-memory": "*"
+    "winston-memory": "*",
+    "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
   "repository": {
     "type": "git",
     "url": "git@github.com:WindowsAzure/azure-sdk-tools-xplat.git"
   },
-  "bugs" : {
-    "url" : "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
+  "bugs": {
+    "url": "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
-    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'"
+    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
+    "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
+    "ci": "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
+    "postci": "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml",
+    "preacceptance": "node scripts/cuke-environment.js setup",
+    "acceptance": "node node_modules/cucumber/bin/cucumber.js",
+    "postacceptance": "node scripts/cuke-environment.js teardown"
   },
   "bin": {
     "azure": "./bin/azure"
