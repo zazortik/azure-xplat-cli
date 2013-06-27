@@ -7,6 +7,8 @@ This project provides a cross platform command line tool for developers and admi
 * Accounts
     * Download and import Azure publish settings
     * Create and manage Storage Accounts
+* Storage
+    * List blob container (more will come)
 * Websites
     * Create and manage Windows Azure websites
     * Download site log files and get real time log streaming
@@ -103,6 +105,16 @@ Lists out storage account keys for the specified account
 
     azure account storage keys renew [name]
 Renews storage account keys for the specified account
+
+## azure storage - Managing Windows Azure Storage
+
+You can list storage blob container
+
+    azure storage container list
+Lists all the blob container in the storage account. Before using this command, you need to set one of the following two environment variable sets:
+
+1. `AZURE_STORAGE_CONNECTION_STRING`
+2. `AZURE_STORAGE_ACCOUNT` and `AZURE_STORAGE_ACCESS_KEY`
 
 ## azure site - Managing Windows Azure Websites
 
