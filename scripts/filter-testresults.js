@@ -64,7 +64,7 @@ function lineFilter() {
   stream.writable = true;
 
   var pendingLines = [];
-  var partialLine = "";
+  var partialLine = null;
   var done = false;
 
   stream.write = write;
@@ -76,6 +76,9 @@ function lineFilter() {
     if (pendingLines.length > 0) {
       var lineToSend = pendingLines.shift();
       stream.emit('data', lineToSend + EOL);
+      if(debugStream) {
+        debugStream.write('line filter sending line ' + lineToSend + EOL);
+      }
       process.nextTick(sendNextLine);
     } else if (done) {
       if (partialLine !== null) {
@@ -106,8 +109,8 @@ function lineFilter() {
     var shouldSend = (pendingLines.length === 0);
 
     splitBufferIntoLines(buffer, encoding, function (fullLines, leftover) {
-      if (fullLines.length > 0) {
-        fullLines[0] = partialLine + leftover;
+      if (fullLines.length > 0 && partialLine !== null) {
+        fullLines[0] = partialLine + fullLines[0];
         partialLine = null;
       }
 
@@ -156,8 +159,13 @@ function testResultFilter() {
     }
     checkIfXmlFound(buffer);
     if (xmlFound) {
+      if (debugStream) {
+       debugStream.write('received line '  + buffer + ' and it\'s in the xml\n');
+      }
       var self = this;
       process.nextTick(function () { self.emit('data', buffer); });
+    } else if (debugStream) {
+      debugStream.write('received line ' + buffer + ' and it\'s not in the xml\n');
     }
   }
 
