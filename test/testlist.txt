@@ -15,7 +15,8 @@ commands/cli.mobilerecover-tests.js
 commands/cli.vm-tests.js
 commands/cli.sql-tests.js
 commands/cli.site-log-tests.js
-commands/cli.storage.blob-tests.jshdinsight/unit-cli-setup.js
+commands/cli.storage.blob-tests.js
+hdinsight/unit-cli-setup.js
 hdinsight/unit-cli-setup.js
 hdinsight/unit-list-command.js
 hdinsight/unit-show-command.js

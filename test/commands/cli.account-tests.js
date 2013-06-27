@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-require('should');
+var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 
@@ -25,6 +25,25 @@ var testFile = './test/data/account-credentials.publishsettings';
 
 describe('cli', function(){
   describe('account', function() {
+    describe('env', function () {
+      describe('list', function () {
+        it('should work', function (done) {
+          var cmd = ('node cli.js account env list --json').split(' ');
+          executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var environments = JSON.parse(result.text);
+
+            should.exist(environments.AzureCloud);
+            should.exist(environments.AzureChinaCloud);
+            should.exist(environments.AzureCloud.publishingProfile);
+            should.exist(environments.AzureChinaCloud.publishingProfile);
+
+            done();
+          });
+        });
+      });
+    });
+
     describe('import', function() {
       beforeEach(function (done) {
         var currentCertificate = process.env.AZURE_CERTIFICATE;
