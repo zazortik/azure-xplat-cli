@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest67f3e332-a60c-436c-a459-232827f16732';
+var nockedServiceName = 'clitestc912ea71-5385-4c21-98b1-e02ae7e04880';
 
 var nockhelper = require('../framework/nock-helper.js');
 var https = require('https');
@@ -60,7 +60,7 @@ var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
-
+var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var scopeWritten;
 
 // polyfill appendFileSync
@@ -214,8 +214,12 @@ describe('cli', function () {
       done();
     });
 
-    it('create ' + servicename + ' tjanczuk FooBar#12 --json (create new service)', function(done) {
-      var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12 --json').split(' ');
+    it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service)', function(done) {     
+      var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12').split(' ');
+          cmd.push('--sqlLocation');
+          cmd.push(location);
+          cmd.push('--json');
+
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -253,9 +257,8 @@ describe('cli', function () {
         response.application.Name.should.equal(servicename + 'mobileservice');
         response.application.Label.should.equal(servicename);
         response.application.State.should.equal('Healthy');
-        response.webspace.computeMode.should.equal('Shared');
-        response.webspace.numberOfInstances.should.equal(1);
-        response.webspace.workerSize.should.equal('Small');
+        response.scalesettings.tier.should.equal('free');
+        response.scalesettings.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
       });
@@ -366,10 +369,12 @@ describe('cli', function () {
           },
           "live": {},
           "service": {
-            "dynamicSchemaEnabled": true
+            "dynamicSchemaEnabled": true,
+            "previewFeatures": []
           },
           "auth": []
         });
+
         checkScopes(scopes);
         done();
       });
@@ -433,6 +438,52 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.apns.should.equal('dev');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' microsoftAccountClientSecret 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientSecret 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountClientSecret.should.equal('123');
         checkScopes(scopes);
         done();
       });
@@ -811,16 +862,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.computeMode.should.equal('Shared');
+        response.tier.should.equal('free');
         response.numberOfInstances.should.equal(1);
-        response.workerSize.should.equal('Small');
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -c Reserved -i 2 --json (rescale to 2 reserved instances)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Reserved -i 2 --json').split(' ');
+    it('scale change ' + servicename + ' -t standard -i 2 --json (rescale to 2 reserved instances)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard -i 2 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -836,16 +886,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.computeMode.should.equal('Dedicated');
+        response.tier.should.equal('standard');
         response.numberOfInstances.should.equal(2);
-        response.workerSize.should.equal('Small');
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -c Free -i 1 --json (rescale back to default)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Free -i 1 --json').split(' ');
+    it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t free -i 1 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
