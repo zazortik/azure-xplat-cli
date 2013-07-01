@@ -1,3 +1,4 @@
+
 {
   "name": "azure-cli",
   "author": "Microsoft Corporation",
@@ -24,6 +25,7 @@
     "deployment"
   ],
   "main": "./lib/cli.js",
+  "preferGlobal": "true",
   "engines": {
     "node": ">= 0.6.15"
   },
