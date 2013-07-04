@@ -70,13 +70,13 @@ describe('cli', function () {
       beforeEach(function (done) {
         siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
-        createSite(siteName, function (result) {
+        createSite(siteName, function () {
           done();
         });
       });
 
       it('should allow setting everything', function (done) {
-        var cmd = ('node cli.js site log config ' + siteName + ' --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json').split(' ');
+        var cmd = ('node cli.js site log set ' + siteName + ' --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json').split(' ');
         executeCmd(cmd, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
@@ -99,7 +99,7 @@ describe('cli', function () {
       });
 
       it('should allow disabling everything', function (done) {
-        var cmd = ('node cli.js site log config ' + siteName + ' --disable-application -o file --disable-web-server-logging --disable-detailed-error-messages --disable-failed-request-tracing --json').split(' ');
+        var cmd = ('node cli.js site log set ' + siteName + ' --disable-application -o file --disable-web-server-logging --disable-detailed-error-messages --disable-failed-request-tracing --json').split(' ');
         executeCmd(cmd, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
