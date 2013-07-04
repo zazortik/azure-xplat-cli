@@ -240,7 +240,7 @@ describe('cli', function () {
           var name = suiteUtil.generateId(vmPrefix, vmNames);
 
           var cmd = util.format(
-            'node cli.js vm create %s %s Administrator PassW0rd$ --json --location',
+            'node cli.js vm create %s %s Administrator PassW0rd$ --ssh --json --location',
             name,
             imageName
           ).split(' ');
