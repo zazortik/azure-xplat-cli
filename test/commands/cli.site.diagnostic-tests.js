@@ -70,7 +70,7 @@ describe('cli', function () {
       beforeEach(function (done) {
         siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
-        createSite(siteName, function (result) {
+        createSite(siteName, function () {
           done();
         });
       });
