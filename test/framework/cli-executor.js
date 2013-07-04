@@ -14,8 +14,7 @@
 */
 
 var sinon = require('sinon');
-var cli = require('../../lib/cli');
-var azureutil = require('../../lib/util/utils');
+var AzureCli = require('../../lib/cli');
 var _ = require('underscore');
 
 var winston = require('winston');
@@ -26,26 +25,6 @@ winston.remove(winston.transports.Console);
 
 exports = module.exports = {
   execute: execute
-};
-
-var cleanCliOptions = function (cli) {
-  _.each(cli.categories, function (category) {
-    delete category.rawArgs;
-    delete category.args;
-
-    _.each(category.commands, function (command) {
-      for (var option in command.options) {
-        var optionName = command.options[option].long.substr(2);
-        if (azureutil.stringStartsWith(optionName, 'no-')) {
-          optionName = optionName.substr(3);
-        }
-
-        delete command[optionName];
-      }
-    });
-
-    cleanCliOptions(category);
-  });
 };
 
 function execute(cmd, cb) {
@@ -82,7 +61,7 @@ function execute(cmd, cb) {
   });
 
   try {
-    cleanCliOptions(cli);
+    var cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;
