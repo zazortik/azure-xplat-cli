@@ -26,7 +26,7 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 var suiteUtil;
 var testPrefix = 'cli.sb-tests';
 
-var namespacePrefix = 'sbtests';
+var namespacePrefix = 'sbtst';
 var namespaces = [];
 
 var executeCmd = function (cmd, callback) {
@@ -55,6 +55,52 @@ describe('cli', function(){
 
     afterEach(function (done) {
       suiteUtil.teardownTest(done);
+    });
+
+    describe('location', function () {
+      it('should work', function (done) {
+        var cmd = ('node cli.js sb namespace location list --json').split(' ');
+        executeCmd(cmd, function (result) {
+          result.text.should.not.be.null;
+          result.exitStatus.should.equal(0);
+
+          var locations = JSON.parse(result.text);
+
+          locations.some(function (l) {
+            return l.FullName === 'East Asia';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'West Europe';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'North Europe';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'East US';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'Southeast Asia';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'North Central US';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'West US';
+          }).should.be.true;
+
+          locations.some(function (l) {
+            return l.FullName === 'South Central US';
+          }).should.be.true;
+
+          done();
+        });
+      });
     });
 
     describe('namespace', function () {

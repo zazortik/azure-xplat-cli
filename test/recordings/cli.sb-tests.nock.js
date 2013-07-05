@@ -3,50 +3,62 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/sbtests1', '*')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6bfa4921-5248-4685-a57d-3b228b12ffbe;id=491420</id><title type=\"text\"></title><updated>2013-07-05T10:30:18Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>sbtests1</Name><Region>West US</Region><DefaultKey>GKNvBWDOsSY0suGBZzGM5mRqLYmjQrzb21/shXMHnAQ=</DefaultKey><Status>Activating</Status><CreatedAt>2013-07-05T10:30:16.02Z</CreatedAt><AcsManagementEndpoint>https://sbtests1-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://sbtests1.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://sbtests1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=GKNvBWDOsSY0suGBZzGM5mRqLYmjQrzb21/shXMHnAQ=</ConnectionString><SubscriptionId>db1ab6f047694b27930e01e2ef9c123c</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
-  'content-length': '1050',
-  'content-type': 'application/atom+xml; type=entry; charset=utf-8',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Regions/')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\"></title><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471484</id><updated>2013-07-05T10:39:25Z</updated><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471485</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>East Asia</Code><FullName>East Asia</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471486</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>West Europe</Code><FullName>West Europe</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471487</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>North Europe</Code><FullName>North Europe</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471488</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>East US</Code><FullName>East US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471489</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>Southeast Asia</Code><FullName>Southeast Asia</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471490</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>North Central US</Code><FullName>North Central US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471491</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>West US</Code><FullName>West US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471492</id><title type=\"text\"></title><updated>2013-07-05T10:39:25Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>South Central US</Code><FullName>South Central US</FullName></RegionCodeDescription></content></entry></feed>", { 'cache-control': 'no-cache',
+  'content-length': '3533',
+  'content-type': 'application/atom+xml; type=feed; charset=utf-8',
   server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'a6f7030ccd3943398e135cdf088c98b1',
-  date: 'Fri, 05 Jul 2013 10:30:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/CheckNamespaceAvailability/?namespace=sbtests1')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6bfa4921-5248-4685-a57d-3b228b12ffbe;id=491427</id><title type=\"text\"></title><updated>2013-07-05T10:30:19Z</updated><content type=\"application/xml\"><NamespaceAvailability xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><ReasonDetail>The specified service namespace is not available.</ReasonDetail></NamespaceAvailability></content></entry>", { 'cache-control': 'no-cache',
-  'content-length': '532',
-  'content-type': 'application/atom+xml; type=entry; charset=utf-8',
-  server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '6ee1ebf3c9fa403fa14c670286f4b14b',
-  date: 'Fri, 05 Jul 2013 10:30:17 GMT' });
+  'x-ms-request-id': '5482cb460259477b82881866b3142103',
+  date: 'Fri, 05 Jul 2013 10:39:21 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/sbtests2', '*')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:c911bc3d-fdc6-47a1-8dbe-918a4989d138;id=505171</id><title type=\"text\"></title><updated>2013-07-05T10:30:22Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>sbtests2</Name><Region>West US</Region><DefaultKey>EUTqDjSO87zyMrf1dhymmCjuap05pHV0o+mafWk8/mo=</DefaultKey><Status>Activating</Status><CreatedAt>2013-07-05T10:30:21.27Z</CreatedAt><AcsManagementEndpoint>https://sbtests2-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://sbtests2.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://sbtests2.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=EUTqDjSO87zyMrf1dhymmCjuap05pHV0o+mafWk8/mo=</ConnectionString><SubscriptionId>db1ab6f047694b27930e01e2ef9c123c</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
-  'content-length': '1050',
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/sbtst1', '*')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:97c73764-b51c-4db6-82cf-fbe233869a42;id=471497</id><title type=\"text\"></title><updated>2013-07-05T10:39:26Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>sbtst1</Name><Region>West US</Region><DefaultKey>cLEbVzEs+fS5JL1g9JOv5BlTi7/JVbrtKH/G8HPWi+0=</DefaultKey><Status>Activating</Status><CreatedAt>2013-07-05T10:39:24.273Z</CreatedAt><AcsManagementEndpoint>https://sbtst1-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://sbtst1.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://sbtst1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=cLEbVzEs+fS5JL1g9JOv5BlTi7/JVbrtKH/G8HPWi+0=</ConnectionString><SubscriptionId>db1ab6f047694b27930e01e2ef9c123c</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
+  'content-length': '1043',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
   server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '5a23e7e768474ee78e4666a733c84305',
-  date: 'Fri, 05 Jul 2013 10:30:22 GMT' });
+  'x-ms-request-id': '72c3805de49e4ff49ac3dabc0a1d0ab0',
+  date: 'Fri, 05 Jul 2013 10:39:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/CheckNamespaceAvailability/?namespace=sbtests3')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:c911bc3d-fdc6-47a1-8dbe-918a4989d138;id=505172</id><title type=\"text\"></title><updated>2013-07-05T10:30:24Z</updated><content type=\"application/xml\"><NamespaceAvailability xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>true</Result><ReasonDetail i:nil=\"true\"/></NamespaceAvailability></content></entry>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/CheckNamespaceAvailability/?namespace=sbtst1')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6bfa4921-5248-4685-a57d-3b228b12ffbe;id=492117</id><title type=\"text\"></title><updated>2013-07-05T10:39:28Z</updated><content type=\"application/xml\"><NamespaceAvailability xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><ReasonDetail>The specified service namespace is not available.</ReasonDetail></NamespaceAvailability></content></entry>", { 'cache-control': 'no-cache',
+  'content-length': '532',
+  'content-type': 'application/atom+xml; type=entry; charset=utf-8',
+  server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': '0a72a9d423094ee8b246110e267fe808',
+  date: 'Fri, 05 Jul 2013 10:39:26 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/sbtst2', '*')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:7310ddc8-ca54-41fb-9a49-d57d15022f37;id=485171</id><title type=\"text\"></title><updated>2013-07-05T10:39:27Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>sbtst2</Name><Region>West US</Region><DefaultKey>IBYlxsm20bICBAmHXjmjGkhIZwoEfTwOeBCzl5L9/b8=</DefaultKey><Status>Activating</Status><CreatedAt>2013-07-05T10:39:27.623Z</CreatedAt><AcsManagementEndpoint>https://sbtst2-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://sbtst2.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://sbtst2.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=IBYlxsm20bICBAmHXjmjGkhIZwoEfTwOeBCzl5L9/b8=</ConnectionString><SubscriptionId>db1ab6f047694b27930e01e2ef9c123c</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
+  'content-length': '1043',
+  'content-type': 'application/atom+xml; type=entry; charset=utf-8',
+  server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': '3237632f062a4a1ba2c9c802bee1ad16',
+  date: 'Fri, 05 Jul 2013 10:39:27 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/CheckNamespaceAvailability/?namespace=sbtst3')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6bfa4921-5248-4685-a57d-3b228b12ffbe;id=492125</id><title type=\"text\"></title><updated>2013-07-05T10:39:31Z</updated><content type=\"application/xml\"><NamespaceAvailability xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>true</Result><ReasonDetail i:nil=\"true\"/></NamespaceAvailability></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '481',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
   server: '33.0.6198.62 (rd_rdfe_stable.130701-1039) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '4d950d60212f4019be5a3b3ebf94d361',
-  date: 'Fri, 05 Jul 2013 10:30:23 GMT' });
+  'x-ms-request-id': '179e85a1c35a49c2a130926201683502',
+  date: 'Fri, 05 Jul 2013 10:39:30 GMT' });
  return result; }]];
