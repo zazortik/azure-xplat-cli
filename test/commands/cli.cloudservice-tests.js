@@ -152,6 +152,11 @@ describe('CLI', function () {
 
             var service = JSON.parse(result.text);
             service.Location.should.equal(location);
+            service.ServiceName.should.equal(cloudServiceName);
+            service.Label.should.not.be.null;
+            service.Status.should.equal('Created');
+            service.DateCreated.should.not.be.null;
+            service.DateLastModified.should.not.be.null;
 
             done();
           });

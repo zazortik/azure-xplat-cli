@@ -15,7 +15,7 @@
 
 'use strict';
 
-var _ = require('underscore')
+var _ = require('underscore');
 var azure = require('azure');
 var xml2js = require('xml2js');
 
