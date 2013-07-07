@@ -61,6 +61,14 @@ function parsePublishSettings(fileName, callback) {
       result.PublishData.PublishProfile.forEach(function (profile) {
         var endpoint = profile.$.Url;
         profile.Subscription.forEach(function (subscription) {
+          if (!endpoint) {
+            endpoint = subscription.$.ServiceManagementUrl;
+          }
+
+          if (endpoint[endpoint.length - 1] !== '/') {
+            endpoint += '/';
+          }
+
           results.push({
             endpoint: endpoint,
             subscriptionId: subscription.$.Id,
