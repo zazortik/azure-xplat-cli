@@ -1,4 +1,4 @@
-Feature: Websites credential import
+Feature: Website credential
 
   Scenario: basic import
     Given a one subscription publishsettings file
