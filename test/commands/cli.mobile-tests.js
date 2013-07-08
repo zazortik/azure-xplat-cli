@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestc912ea71-5385-4c21-98b1-e02ae7e04880';
+var nockedServiceName = 'clitestf264a367-68da-4dc5-bfe9-aac91628910c';
 
 var nockhelper = require('../framework/nock-helper.js');
 var https = require('https');
