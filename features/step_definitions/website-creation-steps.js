@@ -72,14 +72,23 @@ function websiteCredentialSteps() {
     });
   });
 
-  this.Then(/^the local git repo should contain a remote called azure with username? (.+)$/, function(username, callback) {
+  this.Then(/^the local git repo should contain a remote called? (.+)$/, function(remoteName, callback) {
     var self = this;
-    var expectedAzure = new RegExp('^azure\\s+https://' + username + '@' + self.currentSiteName + '.scm.azurewebsites.net/' + self.currentSiteName + '.git(.+)$', 'm');
-    var expectedOrigin = new RegExp('^origin(.+)$', 'm');
+    var expected = new RegExp('^' + remoteName + '(.+)$', 'm');
 
     this.runScript('git remote -v', function () {
-      self.scriptStdout.should.match(expectedAzure);
-      self.scriptStdout.should.match(expectedOrigin);
+      self.scriptStdout.should.match(expected);
+
+      callback();
+    }); 
+  });
+
+  this.Then(/^the local git repo should contain a remote called? (.+) with username? (.+)$/, function(remoteName, username, callback) {
+    var self = this;
+    var expected = new RegExp('^' + remoteName + '\\s+https://' + username + '@' + self.currentSiteName + '.scm.azurewebsites.net/' + self.currentSiteName + '.git(.+)$', 'm');
+
+    this.runScript('git remote -v', function () {
+      self.scriptStdout.should.match(expected);
 
       callback();
     });
