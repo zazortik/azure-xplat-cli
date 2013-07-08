@@ -406,7 +406,30 @@ describe('cli', function () {
       });
     });
 
-    // Apple Push Notification Setting Tests
+    it('config set ' + servicename + ' facebookClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' facebookClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.facebookClientSecret.should.equal('456');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Apple Push Notification
 
     it('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
       var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
@@ -470,6 +493,102 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.gcm.should.equal('test-0-gcm-key');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Google Settings
+
+    it('config set ' + servicename + ' googleClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' googleClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.googleClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' googleClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' googleClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.googleClientSecret.should.equal('456');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Twitter Settings
+
+    it('config set ' + servicename + ' twitterClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' twitterClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.twitterClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' twitterClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' twitterClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.twitterClientSecret.should.equal('456');
         checkScopes(scopes);
         done();
       });
@@ -541,7 +660,7 @@ describe('cli', function () {
       });
     });
 
-    // Microsoft (Live) Account Settings
+    // Microsoft (Live) Settings
 
     it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function(done) {
       var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
@@ -589,9 +708,28 @@ describe('cli', function () {
       });
     });
 
-    // twitter
-    // packagesid
-    // google
+    it('config set ' + servicename + ' microsoftAccountPackageSID 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountPackageSID 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountPackageSID --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountPackageSID --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountPackageSID.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
 
     it('table list ' + servicename + ' --json (no tables by default)', function(done) {
       var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
