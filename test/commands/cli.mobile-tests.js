@@ -372,13 +372,16 @@ describe('cli', function () {
             "dynamicSchemaEnabled": true,
             "previewFeatures": []
           },
-          "auth": []
+          "auth": [],
+          "gcm": {}
         });
 
         checkScopes(scopes);
         done();
       });
     });
+
+    // Facebook settings
 
     it('config set ' + servicename + ' facebookClientId 123 --json', function(done) {
       var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientId 123 --json').split(' ');
@@ -402,6 +405,8 @@ describe('cli', function () {
         done();
       });
     });
+
+    // Apple Push Notification Setting Tests
 
     it('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
       var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
@@ -442,6 +447,101 @@ describe('cli', function () {
         done();
       });
     });
+
+    // Google Cloud Messaging
+
+    it('config set ' + servicename + ' gcm test-0-gcm-key --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' gcm test-0-gcm-key --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' gcm --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' gcm --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.gcm.should.equal('test-0-gcm-key');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Cross Domain Whitelist
+
+    it('config set ' + servicename + ' crossDomainWhitelist localhost --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist localhost --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.crossDomainWhitelist.length.should.equal(1);
+        response.should.include({
+          "crossDomainWhitelist": [
+            { host: "localhost" }
+          ]
+        });
+
+        response.crossDomainWhitelist[0].host.should.equal('localhost');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+   it('config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.crossDomainWhitelist.length.should.equal(2);
+        response.should.include({
+          "crossDomainWhitelist": [
+            { host: "test.com" },
+            { host: "127.0.0.1" }
+          ]
+        });
+
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Microsoft (Live) Account Settings
 
     it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function(done) {
       var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
@@ -488,6 +588,10 @@ describe('cli', function () {
         done();
       });
     });
+
+    // twitter
+    // packagesid
+    // google
 
     it('table list ' + servicename + ' --json (no tables by default)', function(done) {
       var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
