@@ -24,8 +24,6 @@ function World(callback) {
   ScriptRunner.call(this);
   this.downloader = new EnvironmentDownloader('credentials');
 
-  this.defaultSiteName = 'mytstsite';
-
   callback();
 }
 

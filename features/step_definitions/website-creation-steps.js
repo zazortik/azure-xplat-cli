@@ -44,20 +44,29 @@ function websiteCredentialSteps() {
     });
   });
 
-  this.When(/^I create a new website mytstsite with git integration using location? (.+)$/, function(location, callback) {
-    this.runScript('azure site create ' + this.defaultSiteName + ' --git --location "' + location + '"', callback);
+  this.When(/^I create a new website? (.+) with git integration using location? (.+)$/, function(siteName, location, callback) {
+    this.currentSiteName = siteName;
+
+    this.runScript('azure site create ' + siteName + ' --git --location "' + location + '"', callback);
+  });
+
+  this.When(/^I create a new website? (.+) with git integration using location? (.+) and git user? (.+)$/, function(siteName, location, gitusername, callback) {
+    var self = this;
+    self.currentSiteName = siteName;
+
+    this.runScript('azure site create ' + siteName + ' --git --gitusername "' + gitusername + '" --location "' + location + '"', callback);
   });
 
   this.When(/^I setup the remote git credentials to username? (.+) and password? (.+)$/, function(username, password, callback) {
     this.runScript('azure site deployment user set ' + username + ' ' + password, callback);
   });
 
-  this.Then(/^the website mytstsite should be created in location? (.+)$/, function(location, callback) {
+  this.Then(/^the website? (.+) should be created in location? (.+)$/, function(siteName, location, callback) {
     var self = this;
     var webspace = location.toLowerCase().replace(/ /g, '') + 'webspace';
     var expected = new RegExp('^data:\\s+Site WebSpace\\s+' + webspace + '\\s*$', 'm');
 
-    this.runScript('azure site show ' + this.defaultSiteName, function () {
+    this.runScript('azure site show ' + siteName, function () {
       self.scriptStdout.should.match(expected);
       callback();
     });
@@ -65,7 +74,7 @@ function websiteCredentialSteps() {
 
   this.Then(/^the local git repo should contain a remote called azure with username? (.+)$/, function(username, callback) {
     var self = this;
-    var expectedAzure = new RegExp('^azure\\s+https://' + username + '@' + self.defaultSiteName + '.scm.azurewebsites.net/' + self.defaultSiteName + '.git(.+)$', 'm');
+    var expectedAzure = new RegExp('^azure\\s+https://' + username + '@' + self.currentSiteName + '.scm.azurewebsites.net/' + self.currentSiteName + '.git(.+)$', 'm');
     var expectedOrigin = new RegExp('^origin(.+)$', 'm');
 
     this.runScript('git remote -v', function () {
