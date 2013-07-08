@@ -14,6 +14,7 @@
 */
 
 'use strict';
+var fs = require('fs');
 var _ = require('underscore');
 var EnvironmentDownloader = require('./environmentDownloader').EnvironmentDownloader;
 var ScriptRunner = require('./scriptrunner').ScriptRunner;
@@ -22,6 +23,7 @@ var util = require('util');
 function World(callback) {
   ScriptRunner.call(this);
   this.downloader = new EnvironmentDownloader('credentials');
+
   callback();
 }
 
@@ -59,6 +61,24 @@ _.extend(World.prototype, {
       self.scriptStdErr = stderr;
       callback();
     });
+  },
+
+  deleteFolderRecursive: function(path) {
+    var self = this;
+
+    var files = [];
+    if(fs.existsSync(path) ) {
+      files = fs.readdirSync(path);
+      files.forEach(function(file){
+        var curPath = path + '/' + file;
+        if(fs.statSync(curPath).isDirectory()) { // recurse
+          self.deleteFolderRecursive(curPath);
+        } else { // delete file
+          fs.unlinkSync(curPath);
+        }
+      });
+      fs.rmdirSync(path);
+    }
   }
 });
 

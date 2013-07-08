@@ -15,11 +15,13 @@
 
 'use strict';
 
-var _ = require('underscore');
 var exec = require('child_process').exec;
 var os = require('os');
 var path = require('path');
-var util = require('util');
+
+var separators = {
+  'Win32': ' && '
+};
 
 /**
 * Object that encapsulates the logic required to run scripts
@@ -33,15 +35,11 @@ function ScriptRunner() {
 ScriptRunner.prototype.azureCommandToNodeInvocation = function (command) {
   var nodeCall = 'node ' + this.azureScriptPath + ' ';
   return command.replace(/^azure\s+/, nodeCall);
-}
-
-var separators = {
-    'Win32': ' && '
 };
 
 ScriptRunner.prototype.osScriptSeparator = function () {
   return separators[os.platform] || ' ; ';
-}
+};
 
 /**
 * Run a set of scripts as a separate process through the
@@ -52,6 +50,6 @@ ScriptRunner.prototype.runCommands = function(commands, callback) {
   commands = commands.map(this.azureCommandToNodeInvocation.bind(this));
   var command = commands.join(this.osScriptSeparator());
   return exec(command, callback);
-}
+};
 
 exports.ScriptRunner = ScriptRunner;
