@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest67f3e332-a60c-436c-a459-232827f16732';
+var nockedServiceName = 'clitestf264a367-68da-4dc5-bfe9-aac91628910c';
 
 var nockhelper = require('../framework/nock-helper.js');
 var https = require('https');
@@ -60,7 +60,7 @@ var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
-
+var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var scopeWritten;
 
 // polyfill appendFileSync
@@ -214,8 +214,12 @@ describe('cli', function () {
       done();
     });
 
-    it('create ' + servicename + ' tjanczuk FooBar#12 --json (create new service)', function(done) {
-      var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12 --json').split(' ');
+    it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service)', function(done) {     
+      var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12').split(' ');
+          cmd.push('--sqlLocation');
+          cmd.push(location);
+          cmd.push('--json');
+
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -253,9 +257,8 @@ describe('cli', function () {
         response.application.Name.should.equal(servicename + 'mobileservice');
         response.application.Label.should.equal(servicename);
         response.application.State.should.equal('Healthy');
-        response.webspace.computeMode.should.equal('Shared');
-        response.webspace.numberOfInstances.should.equal(1);
-        response.webspace.workerSize.should.equal('Small');
+        response.scalesettings.tier.should.equal('free');
+        response.scalesettings.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
       });
@@ -366,14 +369,19 @@ describe('cli', function () {
           },
           "live": {},
           "service": {
-            "dynamicSchemaEnabled": true
+            "dynamicSchemaEnabled": true,
+            "previewFeatures": []
           },
-          "auth": []
+          "auth": [],
+          "gcm": {}
         });
+
         checkScopes(scopes);
         done();
       });
     });
+
+    // Facebook settings
 
     it('config set ' + servicename + ' facebookClientId 123 --json', function(done) {
       var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientId 123 --json').split(' ');
@@ -397,6 +405,31 @@ describe('cli', function () {
         done();
       });
     });
+
+    it('config set ' + servicename + ' facebookClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' facebookClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.facebookClientSecret.should.equal('456');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Apple Push Notification
 
     it('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
       var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
@@ -433,6 +466,266 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.apns.should.equal('dev');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Google Cloud Messaging
+
+    it('config set ' + servicename + ' gcm test-0-gcm-key --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' gcm test-0-gcm-key --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' gcm --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' gcm --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.gcm.should.equal('test-0-gcm-key');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Google Settings
+
+    it('config set ' + servicename + ' googleClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' googleClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.googleClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' googleClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' googleClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.googleClientSecret.should.equal('456');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Twitter Settings
+
+    it('config set ' + servicename + ' twitterClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' twitterClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.twitterClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' twitterClientSecret 456 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientSecret 456 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' twitterClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.twitterClientSecret.should.equal('456');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Cross Domain Whitelist
+
+    it('config set ' + servicename + ' crossDomainWhitelist localhost --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist localhost --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.crossDomainWhitelist.length.should.equal(1);
+        response.should.include({
+          "crossDomainWhitelist": [
+            { host: "localhost" }
+          ]
+        });
+
+        response.crossDomainWhitelist[0].host.should.equal('localhost');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+   it('config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.crossDomainWhitelist.length.should.equal(2);
+        response.should.include({
+          "crossDomainWhitelist": [
+            { host: "test.com" },
+            { host: "127.0.0.1" }
+          ]
+        });
+
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Microsoft (Live) Settings
+
+    it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountClientId --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountClientId.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' microsoftAccountClientSecret 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientSecret 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountClientSecret --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientSecret --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountClientSecret.should.equal('123');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config set ' + servicename + ' microsoftAccountPackageSID 123 --json', function(done) {
+      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountPackageSID 123 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('config get ' + servicename + ' microsoftAccountPackageSID --json (value was set)', function(done) {
+      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountPackageSID --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.microsoftAccountPackageSID.should.equal('123');
         checkScopes(scopes);
         done();
       });
@@ -811,16 +1104,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.computeMode.should.equal('Shared');
+        response.tier.should.equal('free');
         response.numberOfInstances.should.equal(1);
-        response.workerSize.should.equal('Small');
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -c Reserved -i 2 --json (rescale to 2 reserved instances)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Reserved -i 2 --json').split(' ');
+    it('scale change ' + servicename + ' -t standard -i 2 --json (rescale to 2 reserved instances)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard -i 2 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -836,16 +1128,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.computeMode.should.equal('Dedicated');
+        response.tier.should.equal('standard');
         response.numberOfInstances.should.equal(2);
-        response.workerSize.should.equal('Small');
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -c Free -i 1 --json (rescale back to default)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -c Free -i 1 --json').split(' ');
+    it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t free -i 1 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
