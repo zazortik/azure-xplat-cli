@@ -21,7 +21,7 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
 var suiteUtil;
-var testPrefix = 'cli.site-log-tests';
+var testPrefix = 'cli.site.diagnostic-tests';
 
 var siteNamePrefix = 'clitests';
 var siteNames = [];
@@ -64,18 +64,56 @@ describe('cli', function () {
       deleteSites();
     });
 
-    it('should show tail', function (done) {
-      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+    describe('config', function () {
+      var siteName;
 
-      createSite(siteName, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
+      beforeEach(function (done) {
+        siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
-        showSite(siteName, function (result) {
+        createSite(siteName, function () {
+          done();
+        });
+      });
+
+      it('should allow setting everything', function (done) {
+        var cmd = ('node cli.js site log set ' + siteName + ' --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json').split(' ');
+        executeCmd(cmd, function (result) {
+          result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
-          connectLogStream(siteName, function (result) {
-            result.text.replace(/\n/g, '').should.include('Welcome, you are now connected to log-streaming service.');
+          showSite(siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            var site = JSON.parse(result.text);
+
+            site.diagnosticsSettings.AzureDriveEnabled.should.equal(true);
+            site.diagnosticsSettings.AzureDriveTraceLevel.should.equal('error');
+
+            site.config.RequestTracingEnabled.should.equal('true');
+            site.config.HttpLoggingEnabled.should.equal('true');
+            site.config.DetailedErrorLoggingEnabled.should.equal('true');
+
+            done();
+          });
+        });
+      });
+
+      it('should allow disabling everything', function (done) {
+        var cmd = ('node cli.js site log set ' + siteName + ' --disable-application -o file --disable-web-server-logging --disable-detailed-error-messages --disable-failed-request-tracing --json').split(' ');
+        executeCmd(cmd, function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          showSite(siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            var site = JSON.parse(result.text);
+
+            site.diagnosticsSettings.AzureDriveEnabled.should.equal(false);
+
+            site.config.RequestTracingEnabled.should.equal('false');
+            site.config.HttpLoggingEnabled.should.equal('false');
+            site.config.DetailedErrorLoggingEnabled.should.equal('false');
 
             done();
           });
@@ -96,12 +134,6 @@ describe('cli', function () {
 
     function deleteSite(siteName, callback) {
       var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-      executeCmd(cmd, callback);
-    }
-
-    function connectLogStream(siteName, callback) {
-      setTimeout(function () { process.exit(0); }, 5000);
-      var cmd = ('node cli.js site log tail ' + siteName + ' --log').split(' ');
       executeCmd(cmd, callback);
     }
   });

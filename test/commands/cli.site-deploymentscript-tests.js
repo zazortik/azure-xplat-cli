@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -375,21 +375,7 @@ function runNodeSiteDeploymentScriptScenario(callback, settings) {
 
   generateNodeStartJsFile(pathUtil.join(settings.siteDirPath, settings.nodeStartUpFile));
 
-  runSiteDeploymentScriptScenario(function (err) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    try {
-      var iisNodeYmlContent = getFileContent(pathUtil.join(settings.siteDirPath, 'iisnode.yml'));
-      iisNodeYmlContent.should.include('node_env: production');
-
-      callback();
-    } catch (e) {
-      callback(e);
-    }
-  }, settings);
+  runSiteDeploymentScriptScenario(callback, settings);
 }
 
 function runSiteDeploymentScriptScenario(callback, settings) {

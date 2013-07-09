@@ -1,3 +1,11 @@
+2013.06.20 - version 0.6.17
+* HDInsight commands
+* Added cucumber tests
+* Multiple fixes to support Azure China
+* Multiple VM fixes
+* New azure site repository sync command to sync the deployment of a website
+* New azure mobile recover command to recover of an unhealthy mobile service
+
 2013.05.13 - version 0.6.16
 * Fixed issue with registered resources on account import.
 * Fixed jsHint errors.

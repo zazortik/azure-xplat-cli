@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -92,6 +92,18 @@ describe('cli', function(){
         }, function (err, hooks) {
           deleteAllHooks(hooks, done);
         });
+      });
+    });
+
+    it('should set git credentials', function(done) {
+      // Create site
+      var cmd = ('node cli.js site deployment user set mygituser 12345Qwerty --json').split(' ');
+      executeCmd(cmd, function (result) {
+        result.text.should.equal('');
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        done();
       });
     });
 

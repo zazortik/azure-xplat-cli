@@ -1,4 +1,4 @@
-# Windows Azure CLI tool for Windows, Mac and Linux [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=dev)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
+# Windows Azure CLI tool for Windows, Mac and Linux [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
 
 This project provides a cross platform command line tool for developers and administrators to develop, deploy and manage Windows Azure applications.
 

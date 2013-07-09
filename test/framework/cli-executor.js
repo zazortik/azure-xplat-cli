@@ -40,7 +40,14 @@ var cleanCliOptions = function (cli) {
           optionName = optionName.substr(3);
         }
 
-        delete command[optionName];
+        for(var commandIndex in command) {
+          var strippedOptionName = optionName.replace(/-/g, '');
+
+          if (azureutil.ignoreCaseEquals(commandIndex, strippedOptionName)) {
+            delete command[commandIndex];
+            delete cli[commandIndex];
+          }
+        }
       }
     });
 
