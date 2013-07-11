@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -240,7 +240,7 @@ describe('cli', function () {
           var name = suiteUtil.generateId(vmPrefix, vmNames);
 
           var cmd = util.format(
-            'node cli.js vm create %s %s Administrator PassW0rd$ --json --location',
+            'node cli.js vm create %s %s Administrator PassW0rd$ --ssh --json --location',
             name,
             imageName
           ).split(' ');

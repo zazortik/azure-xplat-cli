@@ -41,4 +41,16 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('should equal ignore case', function (done) {
+    assert.equal(util.ignoreCaseEquals(null, 'a'), false);
+    assert.equal(util.ignoreCaseEquals('b', null), false);
+    assert.equal(util.ignoreCaseEquals(null, null), true);
+    assert.equal(util.ignoreCaseEquals(undefined, undefined), true);
+    assert.equal(util.ignoreCaseEquals('A', 'a'), true);
+    assert.equal(util.ignoreCaseEquals('AbC', 'aBc'), true);
+    assert.equal(util.ignoreCaseEquals('AbC', 'aBcD'), false);
+
+    done();
+  });
 });

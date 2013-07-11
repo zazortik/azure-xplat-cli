@@ -13,10 +13,22 @@
 * limitations under the License.
 */
 
-var AzureCli = require('../lib/cli');
+var scenarioHooks = function () {
+  this.After(function(callback) {
+    var self = this;
 
-var cli = new AzureCli();
-cli.parse(process.argv);
-if (cli.args.length === 0) {
-  cli.parse(['', '', '-h']);
-}
+    if (self.originalPath) {
+      process.chdir(self.originalPath);
+    }
+
+    if (self.createdDirectories) {
+      self.createdDirectories.forEach(function (path) {
+        self.deleteFolderRecursive(path);
+      });
+    }
+
+    callback();
+  });
+};
+
+module.exports = scenarioHooks;
