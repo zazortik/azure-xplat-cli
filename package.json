@@ -49,7 +49,7 @@
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
     "github": "0.1.6",
-    "kuduscript": "http://github.com/projectkudu/KuduScript/tarball/593601edb55c0c9d2925650077ba9214e3df927c"
+    "kuduscript": "0.1.2"
   },
   "devDependencies": {
     "mocha": "*",
