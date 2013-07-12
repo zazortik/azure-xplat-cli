@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestf264a367-68da-4dc5-bfe9-aac91628910c';
+var nockedServiceName = 'clitest174894ce-00c8-4f2d-9f78-447a2f90660e';
 
 var nockhelper = require('../framework/nock-helper.js');
 var https = require('https');
@@ -325,6 +325,59 @@ describe('cli', function () {
         response[0].status.should.equal('enabled');
         response[0].intervalUnit.should.equal('hour');
         response[0].intervalPeriod.should.equal(2);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job update ' + servicename + ' foobar -u none --json (update scheduled job to be on demand)', function(done) {
+      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u none --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job list --json (job updated to be on demand)', function(done) {
+      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(1);
+        response[0].name.should.equal('foobar');
+        response[0].status.should.equal('disabled');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job update ' + servicename + ' foobar -u minute -i 20 --json (update on demand job to have schedule)', function(done) {
+      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u minute -i 20 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job list --json (job now a scheduled job)', function(done) {
+      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(1);
+        response[0].name.should.equal('foobar');
+        response[0].status.should.equal('disabled');
+        response[0].intervalUnit.should.equal('minute');
+        response[0].intervalPeriod.should.equal(20);
+        response[0].startTime.should.equal('1900-01-01T00:00:00Z');
         checkScopes(scopes);
         done();
       });
