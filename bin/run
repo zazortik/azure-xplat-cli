@@ -1,0 +1,4 @@
+node azure storage blob download bigfile abc.mp4 -q -m
+node azure storage blob upload abc.mp4 bigfile abc1.mp4 -q
+node azure storage blob download bigfile big.vhd
+node azure storage blob upload big.vhd bigfile big2.vhd --blobtype page -q
