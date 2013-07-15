@@ -1,5 +1,11 @@
-2013.07.10 - version 0.6.18
-* Add website diagnostics commands
+2013.07.15 - version 0.6.18
+* Added website diagnostics configuration command
+  * azure site log set
+* Added more storage container commands
+  * azure storage container show
+  * azure storage container create
+  * azure storage container set
+  * azure storage container delete
 * Multiple fixes
 * Made module global by default
 * Added scenario tests
@@ -11,6 +17,8 @@
 * Multiple VM fixes
 * New azure site repository sync command to sync the deployment of a website
 * New azure mobile recover command to recover of an unhealthy mobile service
+* Command to list Windows Azure Storage container
+  * azure storage container list
 
 2013.05.13 - version 0.6.16
 * Fixed issue with registered resources on account import.
