@@ -50,7 +50,7 @@
     "easy-table": "0.0.1",
     "github": "0.1.6",
     "omelette": "0.1.0",
-    "kuduscript": "git://github.com/projectkudu/KuduScript.git#593601edb55c0c9d2925650077ba9214e3df927c"
+    "kuduscript": "0.1.2"
   },
   "devDependencies": {
     "mocha": "*",
