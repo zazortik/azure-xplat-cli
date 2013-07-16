@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.6.17",
+  "version": "0.6.18",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -24,6 +24,7 @@
     "deployment"
   ],
   "main": "./lib/cli.js",
+  "preferGlobal": "true",
   "engines": {
     "node": ">= 0.6.15"
   },
@@ -47,7 +48,8 @@
     "colors": "0.x.x",
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
-    "github": "0.1.6"
+    "github": "0.1.6",
+    "kuduscript": "0.1.2"
   },
   "devDependencies": {
     "mocha": "*",
@@ -72,8 +74,7 @@
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
     "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
-    "ci": "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
-    "postci": "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml",
+    "ci": "node scripts/unit.js testlist.txt -xunit",
     "preacceptance": "node scripts/cuke-environment.js setup",
     "acceptance": "node node_modules/cucumber/bin/cucumber.js",
     "postacceptance": "node scripts/cuke-environment.js teardown"

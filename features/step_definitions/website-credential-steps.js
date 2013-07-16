@@ -17,7 +17,7 @@
 var should = require('should');
 
 function websiteCredentialSteps() {
-  this.World = require('../support/website-credentials-world').world;
+  this.World = require('../support/website-world').world;
 
   this.Given(/^an? (.+) publishsettings file$/, function(publishSettingsName, callback) {
     this.selectPublishSettings(publishSettingsName, callback);

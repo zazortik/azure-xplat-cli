@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -152,6 +152,11 @@ describe('CLI', function () {
 
             var service = JSON.parse(result.text);
             service.Location.should.equal(location);
+            service.ServiceName.should.equal(cloudServiceName);
+            service.Label.should.not.be.null;
+            service.Status.should.equal('Created');
+            service.DateCreated.should.not.be.null;
+            service.DateLastModified.should.not.be.null;
 
             done();
           });

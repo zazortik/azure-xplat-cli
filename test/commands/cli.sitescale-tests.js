@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -114,7 +114,7 @@ describe('cli', function () {
       it('should not be able to set instances on a free site', function (done) {
         var cmd = ('node cli.js site scale instances ' + siteName + ' 2 small --json ').split(' ');
         executeCmd(cmd, function (result) {
-          result.errorText.indexOf('Instances can only be changed for sites in reserved mode').should.not.equal(-1);
+          result.errorText.indexOf('Instances can only be changed for sites in standard mode').should.not.equal(-1);
           result.exitStatus.should.equal(1);
 
           done();
@@ -122,7 +122,7 @@ describe('cli', function () {
       });
 
       it('should be able to set the instances number and size', function(done) {
-        var cmd = ('node cli.js site scale mode ' + siteName + ' reserved --json').split(' ');
+        var cmd = ('node cli.js site scale mode ' + siteName + ' standard --json').split(' ');
         executeCmd(cmd, function () {
           cmd = ('node cli.js site scale instances ' + siteName + ' 2 small --json ').split(' ');
           executeCmd(cmd, function (result) {
