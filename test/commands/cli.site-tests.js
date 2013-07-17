@@ -15,10 +15,8 @@
 
 var should = require('should');
 var url = require('url');
-var uuid = require('node-uuid');
 var GitHubApi = require('github');
 var util = require('util');
-var cli = require('../../lib/cli');
 
 var executeCommand = require('../framework/cli-executor').execute;
 var MockedTestUtils = require('../framework/mocked-test-utils');
@@ -28,8 +26,7 @@ var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncont
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
 var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
-var gitUsername = process.env['AZURE_GIT_USERNAME'];
-var githubClient = new GitHubApi({ version: "3.0.0" });
+var githubClient = new GitHubApi({ version: '3.0.0' });
 
 var suiteUtil;
 var testPrefix = 'cli.site-tests';
@@ -49,7 +46,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 githubClient.authenticate({
-  type: "basic",
+  type: 'basic',
   username: githubUsername,
   password: githubPassword
 });
@@ -337,6 +334,54 @@ describe('cli', function(){
             cmd = util.format('node cli.js site delete %s --quiet', siteName).split(' ');
             executeCmd(cmd, function (result) {
               done();
+            });
+          });
+        });
+      });
+    });
+
+    describe('set', function () {
+      var siteName;
+
+      beforeEach(function (done) {
+        siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+
+        var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
+        cmd.push(location);
+        executeCmd(cmd, function () {
+          done();
+        });
+      });
+
+      it('sets all properties', function (done) {
+        var cmd = util.format('node cli.js site set --net-version 3.5 --php-version 5.3 %s --json', siteName).split(' ');
+        executeCmd(cmd, function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          var cmd = util.format('node cli.js site show %s --json', siteName).split(' ');
+          executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+
+            var site = JSON.parse(result.text);
+            site.config.NetFrameworkVersion.should.equal('v2.0');
+            site.config.PhpVersion.should.equal('5.3');
+
+            var cmd = util.format('node cli.js site set --net-version 3.5 --php-version off %s --json', siteName).split(' ');
+            executeCmd(cmd, function (result) {
+              result.text.should.equal('');
+              result.exitStatus.should.equal(0);
+
+              var cmd = util.format('node cli.js site show %s --json', siteName).split(' ');
+              executeCmd(cmd, function (result) {
+                result.exitStatus.should.equal(0);
+
+                var site = JSON.parse(result.text);
+                site.config.NetFrameworkVersion.should.equal('v2.0');
+                site.config.PhpVersion.should.equal('');
+
+                done();
+              });
             });
           });
         });
