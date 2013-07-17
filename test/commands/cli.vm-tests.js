@@ -96,24 +96,24 @@ describe('cli', function () {
         var endPoints =  {
           OnlyPP: { PublicPort: 3333 },
           PPAndLP: { PublicPort: 4444, LocalPort: 4454 },
-          PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, LoadBalancerSetName: 'LbSet1' },
+          PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, Protocol: 'tcp', LoadBalancerSetName: 'LbSet1' },
           PP_LP_LBSetAndProb: {
-            PublicPort: 6666, LocalPort: 6676, LoadBalancerSetName: 'LbSet2',
+            PublicPort: 6666, LocalPort: 6676, Protocol: 'tcp', LoadBalancerSetName: 'LbSet2',
             ProbProtocol: 'http', ProbPort: "7777", ProbPath: '/prob/listner1'
           }
         };
 
         var cmd = util.format(
-          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s,%s:%s:%s:%s:%s:%s --json', 
+          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s:%s,%s:%s:%s:%s:%s:%s --json',
           vm.Name,
           // EndPoint1
           endPoints.OnlyPP.PublicPort,
           // EndPoint2
           endPoints.PPAndLP.PublicPort, endPoints.PPAndLP.LocalPort,
           // EndPoint3
-          endPoints.PP_LPAndLBSet.PublicPort, endPoints.PP_LPAndLBSet.LocalPort, endPoints.PP_LPAndLBSet.LoadBalancerSetName,
+          endPoints.PP_LPAndLBSet.PublicPort, endPoints.PP_LPAndLBSet.LocalPort, endPoints.PP_LPAndLBSet.Protocol, endPoints.PP_LPAndLBSet.LoadBalancerSetName,
           // EndPoint4
-          endPoints.PP_LP_LBSetAndProb.PublicPort, endPoints.PP_LP_LBSetAndProb.LocalPort, endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName,
+          endPoints.PP_LP_LBSetAndProb.PublicPort, endPoints.PP_LP_LBSetAndProb.LocalPort, endPoints.PP_LP_LBSetAndProb.Protocol, endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName,
           endPoints.PP_LP_LBSetAndProb.ProbProtocol, endPoints.PP_LP_LBSetAndProb.ProbPort, endPoints.PP_LP_LBSetAndProb.ProbPath
         ).split(' ');
 
