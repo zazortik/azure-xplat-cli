@@ -25,7 +25,7 @@ var createdSitesPrefix = 'clisitescale-';
 var createdSites = [];
 
 var suiteUtil;
-var testPrefix = 'cli.sitescale-tests';
+var testPrefix = 'cli.site.scale-tests';
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'North Europe';
 
