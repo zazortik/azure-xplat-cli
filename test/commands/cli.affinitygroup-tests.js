@@ -146,6 +146,7 @@ describe('cli', function () {
     it('should fail if name is invalid', function (done) {
       var cmd = ('node cli.js account affinity-group delete').split(' ');
       cmd.push('!NotValid$');
+      cmd.push('--quiet');
       cmd.push('--json');
 
       executeCmd(cmd, function (result) {
@@ -160,6 +161,7 @@ describe('cli', function () {
     it('should succeed', function (done) {
       var cmd = ('node cli.js account affinity-group delete').split(' ');
       cmd.push(affinityGroupName);
+      cmd.push('--quiet');
       cmd.push('--json');
 
       executeCmd(cmd, function (result) {
