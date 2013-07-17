@@ -1,4 +1,5 @@
 commands/cli.account-tests.js
+commands/cli.account.environment-tests.js
 commands/cli.affinitygroup-tests.js
 commands/cli.cloudservice-tests.js
 commands/cli.deployment-tests.js
