@@ -3,11 +3,12 @@ commands/cli.account.environment-tests.js
 commands/cli.affinitygroup-tests.js
 commands/cli.cloudservice-tests.js
 commands/cli.deployment-tests.js
-commands/cli.site-deploymentscript-tests.js
 commands/cli.site-tests.js
-commands/cli.siteconfig-tests.js
-commands/cli.sitescale-tests.js
-websites/websiteManagementService-tests.js
+commands/cli.site.appsetting-tests.js
+commands/cli.site.connectionstring-tests.js
+commands/cli.site.diagnostic-tests.js
+commands/cli.site.deployment-tests.js
+commands/cli.site.scale-tests.js
 util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
 commands/cli.account.storage-tests.js
@@ -15,8 +16,6 @@ commands/cli.mobile-tests.js
 commands/cli.mobilerecover-tests.js
 commands/cli.vm-tests.js
 commands/cli.sql-tests.js
-commands/cli.site-log-tests.js
-commands/cli.site.diagnostic-tests.js
 commands/cli.storage.blob-tests.js
 commands/cli.sb-tests.js
 hdinsight/unit-cli-setup.js
@@ -26,3 +25,4 @@ hdinsight/unit-show-command.js
 hdinsight/unit-delete-command.js
 hdinsight/unit-create-command.js
 hdinsight/unit-config-commands.js
+commands/cli.site.log-tests.js
