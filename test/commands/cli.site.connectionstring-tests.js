@@ -23,10 +23,11 @@ var createdSites = [];
 var suiteUtil;
 var testPrefix = 'cli.site.connectionstring-tests';
 
-var siteNamePrefix = 'clitests';
+var siteNamePrefix = 'contests';
 var siteNames = [];
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+var connectionString = 'Endpoint=sb://gongchen1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=fake=';
 
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
@@ -69,7 +70,7 @@ describe('cli', function(){
       removeSite();
     });
 
-    it('should list site configs', function(done) {
+    it('should list site connectionstring', function(done) {
       var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
@@ -80,19 +81,19 @@ describe('cli', function(){
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
+        cmd = ('node cli.js site connectionstring list ' + siteName + ' --json ').split(' ');
         executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
+          var cmd = ('node cli.js site connectionstring add mystring ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
           executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
+            cmd = ('node cli.js site connectionstring list ' + siteName + ' --json').split(' ');
             executeCmd(cmd, function (result) {
               var settingsList = JSON.parse(result.text);
 
@@ -100,12 +101,12 @@ describe('cli', function(){
               settingsList.length.should.equal(1);
 
               // add another setting
-              var cmd = ('node cli.js site config add mysetting2=myvalue ' + siteName + ' --json').split(' ');
+              var cmd = ('node cli.js site connectionstring add mystring2 ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
-                cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
+                cmd = ('node cli.js site connectionstring list ' + siteName + ' --json').split(' ');
                 executeCmd(cmd, function (result) {
                   var settingsList = JSON.parse(result.text);
 
@@ -121,7 +122,7 @@ describe('cli', function(){
       });
     });
 
-    it('should add get and clear site configs', function(done) {
+    it('should add get and clear site connectionstring', function(done) {
       var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
 
       // Create site
@@ -132,30 +133,30 @@ describe('cli', function(){
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
+        cmd = ('node cli.js site connectionstring list ' + siteName + ' --json ').split(' ');
         executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
+          var cmd = ('node cli.js site connectionstring add mynewstring myvalue SQLAzure ' + siteName + ' --json').split(' ');
           executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site config get mysetting ' + siteName + ' --json').split(' ');
+            cmd = ('node cli.js site connectionstring show mynewstring ' + siteName + ' --json').split(' ');
             executeCmd(cmd, function (result) {
               result.text.should.equal('"myvalue"\n');
               result.exitStatus.should.equal(0);
 
               // add another setting
-              var cmd = ('node cli.js site config clear mysetting ' + siteName + ' --json').split(' ');
+              var cmd = ('node cli.js site connectionstring delete mynewstring ' + siteName + ' --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
-                cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
+                cmd = ('node cli.js site connectionstring list ' + siteName + ' --json').split(' ');
                 executeCmd(cmd, function (result) {
                   result.text.should.equal('');
                   result.exitStatus.should.equal(0);
