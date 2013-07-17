@@ -21,7 +21,7 @@ var MockedTestUtils = require('../framework/mocked-test-utils');
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
 var suiteUtil;
-var testPrefix = 'cli.site-log-tests';
+var testPrefix = 'cli.site.log-tests';
 
 var siteNamePrefix = 'clitests';
 var siteNames = [];
