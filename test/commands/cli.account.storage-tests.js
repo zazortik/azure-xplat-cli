@@ -116,7 +116,7 @@ describe('cli', function () {
             if (storages.length > 0) {
               var storage = storages.pop();
 
-              var cmd = ('node cli.js account storage delete ' + storage + ' --json').split(' ');
+              var cmd = ('node cli.js account storage delete ' + storage + ' --quiet --json').split(' ');
               executeCmd(cmd, function () {
                 deleteUsedStorage(storages);
               });

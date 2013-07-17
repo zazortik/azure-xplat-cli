@@ -74,7 +74,7 @@ describe('CLI', function () {
           if (serviceNames.length > 0) {
             var serviceName = serviceNames.pop();
 
-            var cmd = ('node cli.js service delete ' + serviceName + ' --json').split(' ');
+            var cmd = ('node cli.js service delete ' + serviceName + ' --quiet --json').split(' ');
             executeCmd(cmd, function () {
               deleteUsedServices(serviceNames);
             });
