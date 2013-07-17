@@ -367,7 +367,22 @@ describe('cli', function(){
             site.config.NetFrameworkVersion.should.equal('v2.0');
             site.config.PhpVersion.should.equal('5.3');
 
-            done();
+            var cmd = util.format('node cli.js site set --net-version 3.5 --php-version off %s --json', siteName).split(' ');
+            executeCmd(cmd, function (result) {
+              result.text.should.equal('');
+              result.exitStatus.should.equal(0);
+
+              var cmd = util.format('node cli.js site show %s --json', siteName).split(' ');
+              executeCmd(cmd, function (result) {
+                result.exitStatus.should.equal(0);
+
+                var site = JSON.parse(result.text);
+                site.config.NetFrameworkVersion.should.equal('v2.0');
+                site.config.PhpVersion.should.equal('');
+
+                done();
+              });
+            });
           });
         });
       });
