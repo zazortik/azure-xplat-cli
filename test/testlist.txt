@@ -8,7 +8,6 @@ commands/cli.site.appsetting-tests.js
 commands/cli.site.connectionstring-tests.js
 commands/cli.site.diagnostic-tests.js
 commands/cli.site.deployment-tests.js
-commands/cli.site.log-tests.js
 commands/cli.site.scale-tests.js
 util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
@@ -26,3 +25,4 @@ hdinsight/unit-show-command.js
 hdinsight/unit-delete-command.js
 hdinsight/unit-create-command.js
 hdinsight/unit-config-commands.js
+commands/cli.site.log-tests.js
