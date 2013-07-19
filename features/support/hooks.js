@@ -13,15 +13,22 @@
 * limitations under the License.
 */
 
-var interaction = require('../util/interaction');
+var scenarioHooks = function () {
+  this.After(function(callback) {
+    var self = this;
 
-exports.init = function(cli) {
-  cli.command('portal')
-    .description('Opens the portal in a browser')
-    .option('-e, --environment <environment>', 'The publish settings download environment')
-    .option('-r, --realm <realm>', 'specifies organization used for login')
-    .execute(function (options) {
-      var targetUrl = cli.environmentManager.getPortalUrl(options.realm, options.environment);
-      interaction.launchBrowser(targetUrl);
-    });
+    if (self.originalPath) {
+      process.chdir(self.originalPath);
+    }
+
+    if (self.createdDirectories) {
+      self.createdDirectories.forEach(function (path) {
+        self.deleteFolderRecursive(path);
+      });
+    }
+
+    callback();
+  });
 };
+
+module.exports = scenarioHooks;
