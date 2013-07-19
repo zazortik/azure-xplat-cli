@@ -22,7 +22,7 @@ var storageNamesPrefix = 'cstorage';
 var storageNames = [];
 
 var suiteUtil;
-var testPrefix = 'cli.account.storage-tests';
+var testPrefix = 'cli.storage.account-tests';
 
 var executeCmd = function (cmd, callback) {
   if (suiteUtil.isMocked && !suiteUtil.isRecording) {
