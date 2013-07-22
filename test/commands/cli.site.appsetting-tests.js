@@ -150,7 +150,7 @@ describe('cli', function(){
               result.exitStatus.should.equal(0);
 
               // add another setting
-              var cmd = ('node cli.js site appsetting delete mysetting ' + siteName + ' --json').split(' ');
+              var cmd = ('node cli.js site appsetting delete mysetting ' + siteName + ' --quiet --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);

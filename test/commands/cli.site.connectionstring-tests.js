@@ -151,7 +151,7 @@ describe('cli', function(){
               result.exitStatus.should.equal(0);
 
               // add another setting
-              var cmd = ('node cli.js site connectionstring delete mynewstring ' + siteName + ' --json').split(' ');
+              var cmd = ('node cli.js site connectionstring delete mynewstring ' + siteName + ' --quiet --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
