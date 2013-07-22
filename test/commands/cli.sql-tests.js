@@ -82,7 +82,7 @@ describe('CLI', function () {
           if (serverNames.length > 0) {
             var serverName = serverNames.pop();
 
-            var cmd = ('node cli.js sql server delete ' + serverName + ' --json').split(' ');
+            var cmd = ('node cli.js sql server delete ' + serverName + ' --quiet --json').split(' ');
             executeCmd(cmd, function () {
               deleteUsedServers(serverNames);
             });
@@ -256,6 +256,7 @@ describe('CLI', function () {
 
       afterEach(function (done) {
         var cmd = ('node cli.js sql server delete ' + serverName).split(' ');
+        cmd.push('--quiet');
         cmd.push('--json');
 
         executeCmd(cmd, function (result) {
@@ -292,6 +293,7 @@ describe('CLI', function () {
 
         it('should delete a firewall rule', function (done) {
           var cmd = util.format('node cli.js sql firewallrule delete %s %s', serverName, ruleName).split(' ');
+          cmd.push('--quiet');
           cmd.push('--json');
 
           executeCmd(cmd, function (result) {
@@ -376,6 +378,7 @@ describe('CLI', function () {
 
       afterEach(function (done) {
         var cmd = ('node cli.js sql server delete ' + serverName).split(' ');
+        cmd.push('--quiet');
         cmd.push('--json');
 
         executeCmd(cmd, function (result) {
