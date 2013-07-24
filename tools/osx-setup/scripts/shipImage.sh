@@ -54,7 +54,7 @@ cp resources/background.png "/Volumes/Windows Azure SDK/.background/" > /dev/nul
 
 # Customize the disk image visually
 echo Customizing the image Finder window... Please do not interact with the UI.
-osascript scripts/customizeDiskImage.scpt
+osascript scripts/customizeDiskImage.applescript
 
 # Detach the image
 hdiutil detach "/Volumes/Windows Azure SDK" -quiet
