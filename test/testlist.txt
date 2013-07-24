@@ -1,3 +1,4 @@
+cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.affinitygroup-tests.js
