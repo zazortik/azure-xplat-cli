@@ -39,7 +39,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 describe('cli', function(){
-  describe('connectionstring', function() {
+  describe('site connectionstring', function() {
 
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix);
@@ -87,7 +87,7 @@ describe('cli', function(){
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site connectionstring add mystring ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
+          var cmd = ('node cli.js site connectionstring add param1 ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
           executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
@@ -100,7 +100,7 @@ describe('cli', function(){
               settingsList.length.should.equal(1);
 
               // add another setting
-              var cmd = ('node cli.js site connectionstring add mystring2 ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
+              var cmd = ('node cli.js site connectionstring add param2 ' + connectionString + ' SQLAzure ' + siteName + ' --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
@@ -138,18 +138,18 @@ describe('cli', function(){
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site connectionstring add mynewstring myvalue SQLAzure ' + siteName + ' --json').split(' ');
+          var cmd = ('node cli.js site connectionstring add param3 myvalue SQLAzure ' + siteName + ' --json').split(' ');
           executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site connectionstring show mynewstring ' + siteName + ' --json').split(' ');
+            cmd = ('node cli.js site connectionstring show param3 ' + siteName + ' --json').split(' ');
             executeCmd(cmd, function (result) {
               result.text.should.equal('"myvalue"\n');
               result.exitStatus.should.equal(0);
 
               // add another setting
-              var cmd = ('node cli.js site connectionstring delete mynewstring ' + siteName + ' --quiet --json').split(' ');
+              var cmd = ('node cli.js site connectionstring delete param3 ' + siteName + ' --quiet --json').split(' ');
               executeCmd(cmd, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);

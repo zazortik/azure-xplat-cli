@@ -38,7 +38,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 describe('cli', function(){
-  describe('appsetting', function() {
+  describe('site appsetting', function() {
 
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix);
