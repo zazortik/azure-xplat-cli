@@ -22,7 +22,7 @@ var suiteUtil;
 var testPrefix = 'cli.site.handler-tests';
 
 var createdSites = [];
-var siteNamePrefix = 'clitsts';
+var siteNamePrefix = 'cli';
 var siteNames = [];
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
