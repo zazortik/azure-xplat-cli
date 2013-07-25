@@ -6,6 +6,7 @@ commands/cli.cloudservice-tests.js
 commands/cli.deployment-tests.js
 commands/cli.site-tests.js
 commands/cli.site.appsetting-tests.js
+commands/cli.site.config-tests.js
 commands/cli.site.defaultdocument-tests.js
 commands/cli.site.connectionstring-tests.js
 commands/cli.site.diagnostic-tests.js
@@ -17,6 +18,7 @@ commands/cli.mobilerecover-tests.js
 commands/cli.network-tests.js
 commands/cli.vm-tests.js
 commands/cli.sql-tests.js
+commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
 commands/cli.sb-tests.js
 util/git/linkrevisioncontrol-tests.js
