@@ -23,11 +23,12 @@ var _ = require('underscore');
 var keyFiles = require('../../lib/util/keyFiles');
 var utils = require('../../lib/util/utils');
 
+var executeCommand = require('./cli-executor').execute;
 var nockHelper = require('./nock-helper');
 
-exports = module.exports = MockedTestUtils;
+exports = module.exports = CLITest;
 
-function MockedTestUtils(testPrefix, forceMocked) {
+function CLITest(testPrefix, forceMocked) {
   this.testPrefix = testPrefix;
   this.currentTest = 0;
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
@@ -35,13 +36,13 @@ function MockedTestUtils(testPrefix, forceMocked) {
   if (forceMocked) {
     this.isMocked = true;
   } else {
-    this.isMocked = !process.env.NOCK_OFF;
+    this.isMocked = testPrefix && !process.env.NOCK_OFF;
   }
 
   this.isRecording = process.env.AZURE_NOCK_RECORD;
 }
 
-_.extend(MockedTestUtils.prototype, {
+_.extend(CLITest.prototype, {
   setupSuite: function (callback) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
@@ -122,6 +123,43 @@ _.extend(MockedTestUtils.prototype, {
     if (fs.existsSync(spacesCachePath)) {
       fs.unlinkSync(spacesCachePath);
     }
+  },
+
+  execute: function (cmd) {
+    if (!_.isString(cmd) && !_.isArray(cmd)) {
+      throw new Error('First argument needs to be a string or array with the command to execute');
+    }
+
+    var args = Array.prototype.slice.call(arguments);
+
+    if (args.length < 2 || !_.isFunction(args[args.length - 1])) {
+      throw new Error('Callback needs to be passed as last argument');
+    }
+
+    var callback = args[args.length - 1];
+
+    if (_.isString(cmd)) {
+      cmd = cmd.split(' ');
+
+      var rep = 1;
+      for (var i = 0; i < cmd.length; i++) {
+        if (cmd[i] === '%s') {
+          cmd[i] = args[rep++];
+        }
+      }
+    }
+
+    if (cmd[0] !== 'node') {
+      cmd.unshift('cli.js');
+      cmd.unshift('node');
+    }
+
+    if (!this.skipSubscription && this.isMocked && !this.isRecording) {
+      cmd.push('-s');
+      cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
+    }
+
+    executeCommand(cmd, callback);
   },
 
   setupTest: function (callback) {

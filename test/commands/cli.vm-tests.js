@@ -18,8 +18,8 @@ var sinon = require('sinon');
 var util = require('util');
 var crypto = require('crypto');
 var utils = require('../../lib/util/utils');
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+
+var CLITest = require('../framework/cli-test');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
 // A common VM used by multiple tests
@@ -28,26 +28,17 @@ var vmToUse = { Name: null, Created: false, Delete: false};
 var vmPrefix = 'clitestvm1';
 var vmNames = [];
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.vm-tests';
 
 var currentRandom = 0;
 
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
-
 describe('cli', function () {
   describe('vm', function () {
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix, true);
+      suite = new CLITest(testPrefix, true);
 
-      if (suiteUtil.isMocked) {
+      if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
           return (++currentRandom).toString();
         });
@@ -55,26 +46,25 @@ describe('cli', function () {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
 
-      suiteUtil.setupSuite(done);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      if (suiteUtil.isMocked) {
+      if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
 
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
       function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
-          var cmd = ('node cli.js vm delete ' + vm.Name + ' --json').split(' ');
-          executeCmd(cmd, function () {
+          suite.execute('vm delete %s --json', vm.Name, function () {
             vm.Name = null;
             vm.Created = vm.Delete = false;
             return callback();
@@ -85,7 +75,7 @@ describe('cli', function () {
       }
 
       deleteUsedVM(vmToUse, function () {
-        suiteUtil.teardownTest(done);
+        suite.teardownTest(done);
       });
     });
 
@@ -117,11 +107,11 @@ describe('cli', function () {
           endPoints.PP_LP_LBSetAndProb.ProbProtocol, endPoints.PP_LP_LBSetAndProb.ProbPort, endPoints.PP_LP_LBSetAndProb.ProbPath
         ).split(' ');
 
-        executeCmd(cmd, function (result) {
+        suite.execute(cmd, function (result) {
           result.exitStatus.should.equal(0);
 
           cmd = util.format('node cli.js vm endpoint list %s --json', vm.Name).split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var allEndPointList = JSON.parse(result.text);
 
@@ -145,7 +135,7 @@ describe('cli', function () {
 
             // Verify endpoint creation with lbSetName and prob option
             cmd = util.format('node cli.js vm show %s --json', vm.Name).split(' ');
-            executeCmd(cmd, function (result) {
+            suite.execute(cmd, function (result) {
               result.exitStatus.should.equal(0);
               var vmInfo = JSON.parse(result.text);
               (vmInfo.Network.Endpoints.length >= 4).should.be.true;
@@ -178,7 +168,7 @@ describe('cli', function () {
     });
 
     it('should create from community image', function (done) {
-      var vmName = suiteUtil.generateId(vmPrefix, vmNames);
+      var vmName = suite.generateId(vmPrefix, vmNames);
 
       // Create a VM using community image (-o option)
       var cmd = util.format(
@@ -187,12 +177,12 @@ describe('cli', function () {
         communityImageId
       ).split(' ');
       cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
-      executeCmd(cmd, function (result) {
+      suite.execute(cmd, function (result) {
         result.exitStatus.should.equal(0);
 
         // List the VMs
         cmd = 'node cli.js vm list --json'.split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute(cmd, function (result) {
           var vmList = JSON.parse(result.text);
           // Look for created VM
           var vmExists = vmList.some(function (vm) {
@@ -204,7 +194,7 @@ describe('cli', function () {
           cmd = ('node cli.js vm delete ' + vmName + ' --json').split(' ');
           cmd.push('--dns-name');
           cmd.push(vmName);
-          executeCmd(cmd, function (result) {
+          suite.execute(cmd, function (result) {
             result.exitStatus.should.equal(0);
             return done();
           });
@@ -218,7 +208,7 @@ describe('cli', function () {
         callBack(getImageName.imageName);
       } else {
         var cmd = 'node cli.js vm image list --json'.split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute(cmd, function (result) {
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
             if (image.Category.toLowerCase() === category.toLowerCase()) {
@@ -237,7 +227,7 @@ describe('cli', function () {
         return callBack(vmToUse);
       } else {
         getImageName('Microsoft', function(imageName) {
-          var name = suiteUtil.generateId(vmPrefix, vmNames);
+          var name = suite.generateId(vmPrefix, vmNames);
 
           var cmd = util.format(
             'node cli.js vm create %s %s Administrator PassW0rd$ --ssh --json --location',
@@ -245,7 +235,7 @@ describe('cli', function () {
             imageName
           ).split(' ');
           cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
-          executeCmd(cmd, function (result) {
+          suite.execute(cmd, function (result) {
             vmToUse.Created = (result.exitStatus === 0);
             vmToUse.Name = vmToUse.Created ? name : null;
             return callBack(vmToUse);

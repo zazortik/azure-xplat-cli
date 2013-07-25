@@ -20,14 +20,14 @@ var executeCmd = require('../framework/cli-executor').execute;
 var keyFiles = require('../../lib/util/keyFiles');
 var testUtil = require('../util/util');
 
-describe('cli', function(){
+describe('cli', function () {
   describe('mobile', function() {
     describe('recover', function() {
 
       before(function (done) {        
         process.env.AZURE_ENABLE_STRICT_SSL = false;
 
-        sinon.stub(keyFiles, 'readFromFile', function () {                    
+        sinon.stub(keyFiles, 'readFromFile', function () {
           return {
             cert: testUtil.getCertificate(),
             key: testUtil.getCertificateKey()

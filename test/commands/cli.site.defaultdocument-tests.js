@@ -15,12 +15,11 @@
 
 var should = require('should');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
 var createdSites = [];
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.site.defaultdocument-tests';
 
 var siteNamePrefix = 'contests';
@@ -30,35 +29,26 @@ var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 var defaultDocument = 'index.js';
 var defaultDocument2 = 'other.js';
 
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
-
 describe('cli', function(){
   describe('defaultdocument', function() {
 
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
       function removeSite() {
         if (createdSites.length === 0) {
-          return suiteUtil.teardownTest(done);
+          return suite.teardownTest(done);
         }
 
         var siteName = createdSites.pop();
@@ -72,28 +62,23 @@ describe('cli', function(){
     });
 
     it('should add and list defaultdocument', function(done) {
-      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+      var siteName = suite.generateId(siteNamePrefix, siteNames);
 
       // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push(location);
-      executeCmd(cmd, function (result) {
+      suite.execute('site create %s --json --location %s', siteName, location, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site defaultdocument list ' + siteName + ' --json ').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('site defaultdocument list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site defaultdocument add ' + defaultDocument + ' ' + siteName + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('site defaultdocument add %s %s --json', defaultDocument, siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site defaultdocument list ' + siteName + ' --json').split(' ');
-            executeCmd(cmd, function (result) {
+            suite.execute('site defaultdocument list %s --json', siteName, function (result) {
               var documents = JSON.parse(result.text);
 
               // Listing should return 1 setting now
@@ -102,13 +87,11 @@ describe('cli', function(){
               }).should.equal(true);
 
               // add another setting
-              var cmd = ('node cli.js site defaultdocument add ' + defaultDocument2 + ' ' + siteName + ' --json').split(' ');
-              executeCmd(cmd, function (result) {
+              suite.execute('site defaultdocument add %s %s --json', defaultDocument2, siteName, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
-                cmd = ('node cli.js site defaultdocument list ' + siteName + ' --json').split(' ');
-                executeCmd(cmd, function (result) {
+                suite.execute('site defaultdocument list %s --json', siteName, function (result) {
                   var documents = JSON.parse(result.text);
 
                   // Listing should return 2 setting now
@@ -126,35 +109,29 @@ describe('cli', function(){
     });
 
     it('should delete defaultDocument', function(done) {
-      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+      var siteName = suite.generateId(siteNamePrefix, siteNames);
 
       // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push(location);
-      executeCmd(cmd, function (result) {
+      suite.execute('site create %s --json --location %s', siteName, location, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site defaultdocument list ' + siteName + ' --json ').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('site defaultdocument list %s --json', siteName, function (result) {
           // there should be not settings yet as the site was just created
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site defaultdocument add ' + defaultDocument + ' ' + siteName + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('site defaultdocument add %s %s --json', defaultDocument, siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
             // add another setting
-            var cmd = ('node cli.js site defaultdocument delete ' + defaultDocument + ' ' + siteName + ' --json').split(' ');
-            executeCmd(cmd, function (result) {
+            suite.execute('site defaultdocument delete %s %s --json', defaultDocument, siteName, function (result) {
               result.text.should.equal('');
               result.exitStatus.should.equal(0);
 
-              cmd = ('node cli.js site defaultdocument list ' + siteName + ' --json').split(' ');
-              executeCmd(cmd, function (result) {
+              suite.execute('site defaultdocument list %s --json', siteName, function (result) {
                 result.exitStatus.should.equal(0);
 
                 var documents = JSON.parse(result.text);
