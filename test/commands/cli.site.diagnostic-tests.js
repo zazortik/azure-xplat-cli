@@ -15,41 +15,31 @@
 
 var should = require('should');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.site.diagnostic-tests';
 
 var siteNamePrefix = 'clitests';
 var siteNames = [];
-
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
 
 describe('cli', function () {
   describe('site log', function () {
     var createdSites = [];
 
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
@@ -57,7 +47,7 @@ describe('cli', function () {
         if (createdSites.length > 0) {
           deleteSite(createdSites.pop(), deleteSites);
         } else {
-          return suiteUtil.teardownTest(done);
+          return suite.teardownTest(done);
         }
       };
 
@@ -68,7 +58,7 @@ describe('cli', function () {
       var siteName;
 
       beforeEach(function (done) {
-        siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+        siteName = suite.generateId(siteNamePrefix, siteNames);
 
         createSite(siteName, function () {
           done();
@@ -76,8 +66,10 @@ describe('cli', function () {
       });
 
       it('should allow setting everything', function (done) {
-        var cmd = ('node cli.js site log set ' + siteName + ' --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('site log set %s --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json',
+          siteName,
+          function (result) {
+
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
@@ -99,8 +91,10 @@ describe('cli', function () {
       });
 
       it('should allow disabling everything', function (done) {
-        var cmd = ('node cli.js site log set ' + siteName + ' --disable-application -o file --disable-web-server-logging --disable-detailed-error-messages --disable-failed-request-tracing --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('site log set %s --disable-application -o file --disable-web-server-logging --disable-detailed-error-messages --disable-failed-request-tracing --json',
+          siteName,
+          function (result) {
+
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
@@ -122,19 +116,15 @@ describe('cli', function () {
     });
 
     function createSite(siteName, callback) {
-      var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
-      cmd.push('East US');
-      executeCmd(cmd, callback);
+      suite.execute('node cli.js site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, 'East US', callback);
     }
 
     function showSite(siteName, callback) {
-      var cmd = ('node cli.js site show ' + siteName + ' --json').split(' ');
-      executeCmd(cmd, callback);
+      suite.execute('node cli.js site show %s --json', siteName, callback);
     }
 
     function deleteSite(siteName, callback) {
-      var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-      executeCmd(cmd, callback);
+      suite.execute('node cli.js site delete %s --json --quiet', siteName, callback);
     }
   });
 });

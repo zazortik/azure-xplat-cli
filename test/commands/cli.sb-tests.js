@@ -14,53 +14,37 @@
 */
 
 var should = require('should');
-var url = require('url');
-var uuid = require('node-uuid');
-var GitHubApi = require('github');
-var util = require('util');
-var cli = require('../../lib/cli');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.sb-tests';
 
 var namespacePrefix = 'sbtst';
 var namespaces = [];
 
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
-
-describe('cli', function(){
+describe('cli', function () {
   describe('sb', function() {
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
-      suiteUtil.teardownTest(done);
+      suite.teardownTest(done);
     });
 
     describe('location', function () {
       it('should work', function (done) {
-        var cmd = ('node cli.js sb namespace location list --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('sb namespace location list --json', function (result) {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
@@ -108,20 +92,15 @@ describe('cli', function(){
         var namespaceName;
 
         beforeEach(function (done) {
-          namespaceName = suiteUtil.generateId(namespacePrefix, namespaces);
+          namespaceName = suite.generateId(namespacePrefix, namespaces);
 
-          var cmd = ('node cli.js sb namespace create ' + namespaceName + ' --json').split(' ');
-          cmd.push('--region');
-          cmd.push('West US');
-
-          executeCmd(cmd, function () {
+          suite.execute('sb namespace create %s --json --region %s', namespaceName, 'West US', function () {
             done();
           });
         });
 
         it('should detect non available namespace name', function (done) {
-          var cmd = ('node cli.js sb namespace check ' + namespaceName + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('sb namespace check %s --json', namespaceName, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
@@ -132,9 +111,8 @@ describe('cli', function(){
         });
 
         it('should detect available namespace name', function (done) {
-          var namespaceName = suiteUtil.generateId(namespacePrefix, namespaces);
-          var cmd = ('node cli.js sb namespace check ' + namespaceName + ' --json').split(' ');
-          executeCmd(cmd, function (result) {
+          var namespaceName = suite.generateId(namespacePrefix, namespaces);
+          suite.execute('sb namespace check %s --json', namespaceName, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
