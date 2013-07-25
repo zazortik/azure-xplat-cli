@@ -14,29 +14,27 @@
 */
 
 var should = require('should');
-var mocha = require('mocha');
 
-var executeCmd = require('../framework/cli-executor').execute;
+var CLITest = require('../framework/cli-test');
+var suite = new CLITest();
 
-describe('CLI', function () {
-  describe('Environment', function () {
+describe('cli', function () {
+  describe('account env', function () {
     before(function (done) {
-      cmd = ('node cli.js account env delete newenv --json').split(' ');
-      executeCmd(cmd, function () {
+      suite.execute('node cli.js account env delete newenv --json', function () {
         done();
       });
     });
 
     it('should add and show', function (done) {
-      cmd = ('node cli.js account env add newenv --publish-settings-file-url http://url1.com ' +
+      cmd = 'node cli.js account env add newenv --publish-settings-file-url http://url1.com ' +
         '--management-portal-url http://url2.com --service-endpoint http://url3.com ' +
-        '--storage-endpoint http://url4.com --sql-database-endpoint http://url5.com --json').split(' ');
+        '--storage-endpoint http://url4.com --sql-database-endpoint http://url5.com --json';
 
-      executeCmd(cmd, function (result) {
+      suite.execute(cmd, function (result) {
         result.exitStatus.should.equal(0);
 
-        cmd = 'node cli.js account env show newenv --json'.split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('account env show newenv --json', function (result) {
           result.exitStatus.should.equal(0);
 
           var environment = JSON.parse(result.text);
@@ -52,8 +50,7 @@ describe('CLI', function () {
     });
 
     it('should list', function (done) {
-      cmd = 'node cli.js account env list --json'.split(' ');
-      executeCmd(cmd, function (result) {
+      suite.execute('account env list --json', function (result) {
         result.exitStatus.should.equal(0);
 
         var environments = JSON.parse(result.text);
@@ -74,12 +71,10 @@ describe('CLI', function () {
     });
 
     it('should delete', function (done) {
-      cmd = ('node cli.js account env delete newenv --json').split(' ');
-      executeCmd(cmd, function (result) {
+      suite.execute('account env delete newenv --json', function (result) {
         result.exitStatus.should.equal(0);
 
-        cmd = 'node cli.js account env list --json'.split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('account env list --json', function (result) {
           result.exitStatus.should.equal(0);
 
           var environments = JSON.parse(result.text);

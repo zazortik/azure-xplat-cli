@@ -907,7 +907,7 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
-    });
+    });    
 
     it('table show ' + servicename + ' table1 --json (new rows and columns)', function(done) {
       var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');

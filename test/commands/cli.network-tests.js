@@ -15,58 +15,45 @@
 
 var should = require('should');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.network-tests';
 
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
-
-describe('cli', function(){
+describe('cli', function () {
   describe('network', function() {
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
-      suiteUtil.teardownTest(done);
+      suite.teardownTest(done);
     });
 
     describe('dnsserver', function () {
       var dnsIp = '10.0.0.1';
 
       afterEach(function (done) {
-        var cmd = ('node cli.js network dnsserver unregister ' + dnsIp + ' --quiet --json').split(' ');
-        executeCmd(cmd, function () {
+        suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function () {
           done();
         });
       });
 
       it('should create and list', function (done) {
-        var cmd = ('node cli.js network dnsserver register ' + dnsIp + ' --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('network dnsserver register %s --json', dnsIp, function (result) {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          cmd = ('node cli.js network dnsserver list --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('network dnsserver list --json', function (result) {
             result.exitStatus.should.equal(0);
 
             var dnsservers = JSON.parse(result.text);
@@ -86,23 +73,21 @@ describe('cli', function(){
       var vnetName = 'vnet1';
 
       afterEach(function (done) {
-        var cmd = ('node cli.js network vnet delete ' + vnetName + ' --quiet --json').split(' ');
-        executeCmd(cmd, function () {
+        suite.execute('network vnet delete %s --quiet --json', vnetName, function () {
           done();
         });
       });
 
       it('should create basic vnet, show and list', function (done) {
-        var cmd = ('node cli.js network vnet create ' + vnetName + ' --address-space 10.0.0.0 --json').split(' ');
-        cmd.push('--location');
-        cmd.push('West US');
+        suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s',
+          vnetName,
+          'West US',
+          function (result) {
 
-        executeCmd(cmd, function (result) {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          cmd = ('node cli.js network vnet list --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('network vnet list --json', function (result) {
             result.exitStatus.should.equal(0);
 
             var vnets = JSON.parse(result.text);
@@ -116,8 +101,7 @@ describe('cli', function(){
             vnet.Subnets[0].Name.should.equal('Subnet-1');
             vnet.Subnets[0].AddressPrefix.should.equal('10.0.0.0/11');
 
-            cmd = ('node cli.js network vnet show ' + vnetName + ' --json').split(' ');
-            executeCmd(cmd, function (result) {
+            suite.execute('network vnet show %s --json', vnetName, function (result) {
               result.exitStatus.should.equal(0);
 
               var vnet = JSON.parse(result.text);
@@ -132,21 +116,16 @@ describe('cli', function(){
           });
         });
       });
-	  
+    
       it('should create vnet with dns-server-id option and show', function (done) {
         var dnsIp = '66.77.88.99';
         var dnsId = 'dns-cli-0';
 
-        var cmd = ('node cli.js network dnsserver register ' + dnsIp + ' --json').split(' ');
-        cmd.push('--dns-id');
-        cmd.push(dnsId);
-
-        executeCmd(cmd, function (result) {
+        suite.execute('network dnsserver register %s --json --dns-id %s', dnsIp, dnsId, function (result) {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          cmd = ('node cli.js network dnsserver list --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('network dnsserver list --json', function (result) {
             result.exitStatus.should.equal(0);
 
             var dnsservers = JSON.parse(result.text);
@@ -155,27 +134,26 @@ describe('cli', function(){
             })[0];
 
             should.exist(dnsserver);
-            var cmd = ('node cli.js network vnet create ' + vnetName + ' --address-space 10.0.0.0 --json').split(' ');
-            cmd.push('--location');
-            cmd.push('West US');
-            cmd.push('--dns-server-id');
-            cmd.push(dnsId);
 
-            executeCmd(cmd, function (result) {
+            suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s --dns-server-id %s',
+              vnetName,
+              'West US',
+              dnsId,
+              function (result) {
+
               result.text.should.not.be.null;
               result.exitStatus.should.equal(0);
-              cmd = ('node cli.js network vnet show ' + vnetName + ' --json').split(' ');
-              executeCmd(cmd, function (result) {
+
+              suite.execute('network vnet show %s --json', vnetName, function (result) {
                 result.exitStatus.should.equal(0);
 
                 var vnet = JSON.parse(result.text);
                 should.exist(vnet);
                 vnet.State.should.equal('Created');
                 vnet.Dns.DnsServers[0].Name.should.equal(dnsId);
-                cmd = ('node cli.js network vnet delete ' + vnetName + ' --quiet --json').split(' ');
-                executeCmd(cmd, function () {
-                  cmd = ('node cli.js network dnsserver unregister ' + dnsIp + ' --quiet --json').split(' ');
-                  executeCmd(cmd, function () {
+
+                suite.execute('network vnet delete %s --quiet --json', vnetName, function () {
+                  suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function () {
                     done();
                   });
                 })
