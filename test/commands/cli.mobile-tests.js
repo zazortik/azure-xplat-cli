@@ -50,7 +50,6 @@ var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 var nockedServiceName = 'clitest174894ce-00c8-4f2d-9f78-447a2f90660e';
 
 var nockhelper = require('../framework/nock-helper.js');
-var https = require('https');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
 var should = require('should');
 var url = require('url');
@@ -60,6 +59,7 @@ var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
+var Channel = require('../../lib/util/channel');
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var scopeWritten;
 
@@ -874,7 +874,13 @@ describe('cli', function () {
       var success = 0;
       var failure = 0;
 
-      function tryFinish() {
+      function tryFinish (error, content, response) {
+        if(error) {
+          failure++;
+        } else {
+          response.statusCode >= 400 ? failure++ : success++;
+        }
+
         if ((success + failure) < 5) {
           return;
         }
@@ -883,29 +889,14 @@ describe('cli', function () {
       }
 
       for (var i = 0; i < 5; i++) {
-        var options = {
+        var channel = new Channel({
           host: servicename + '.azure-mobile.net',
-          port: 443,
-          path: '/tables/table1',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
+          port: 443
+        }).path('tables')
+          .path('table1')
+          .header('Content-Type', 'application/json');
 
-        var req = https.request(options, function (res) {
-          res.on('end', function () {
-            res.statusCode >= 400 ? failure++ : success++;
-            tryFinish();  
-          });
-        });
-
-        req.on('error', function () {
-          failure++;
-          tryFinish();
-        });
-
-        req.end(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }));
+        channel.POST(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
       }
     };
 
@@ -916,7 +907,7 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
-    });    
+    });
 
     it('table show ' + servicename + ' table1 --json (new rows and columns)', function(done) {
       var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
