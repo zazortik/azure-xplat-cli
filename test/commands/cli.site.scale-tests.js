@@ -39,7 +39,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 describe('cli', function () {
-  describe('SiteScale', function () {
+  describe('site scale', function () {
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix, true);
       suiteUtil.setupSuite(done);

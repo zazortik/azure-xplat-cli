@@ -38,7 +38,7 @@ var executeCmd = function (cmd, callback) {
 };
 
 describe('cli', function(){
-  describe('appsetting', function() {
+  describe('site appsetting', function() {
 
     before(function (done) {
       suiteUtil = new MockedTestUtils(testPrefix);
@@ -83,7 +83,6 @@ describe('cli', function(){
         cmd = ('node cli.js site appsetting list ' + siteName + ' --json ').split(' ');
         executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
-          result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
@@ -135,7 +134,6 @@ describe('cli', function(){
         cmd = ('node cli.js site appsetting list ' + siteName + ' --json ').split(' ');
         executeCmd(cmd, function (result) {
           // there should be not settings yet as the site was just created
-          result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
           // add a setting
@@ -157,7 +155,6 @@ describe('cli', function(){
 
                 cmd = ('node cli.js site appsetting list ' + siteName + ' --json').split(' ');
                 executeCmd(cmd, function (result) {
-                  result.text.should.equal('');
                   result.exitStatus.should.equal(0);
 
                   done();
