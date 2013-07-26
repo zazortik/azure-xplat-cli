@@ -159,7 +159,7 @@ if (!process.env.NOCK_OFF) {
       throw new Error('Azure certificate key needs to be defined for recordings');
     }
     if (!process.env.AZURE_STORAGE_CONNECTION_STRING && !process.env.AZURE_STORAGE_ACCOUNT) {
-      // throw new Error('Azure storage connection string needs to be defined for recordings');
+      throw new Error('Azure storage connection string needs to be defined for recordings');
     }
   }
 } else {
