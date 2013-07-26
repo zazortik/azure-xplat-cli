@@ -127,7 +127,7 @@ describe('cli', function(){
             result.exitStatus.should.equal(0);
 
             // add another setting
-            suite.execute('site defaultdocument delete %s %s --json', defaultDocument, siteName, function (result) {
+            suite.execute('site defaultdocument delete %s %s --quiet --json', defaultDocument, siteName, function (result) {
               result.text.should.equal('');
               result.exitStatus.should.equal(0);
 
