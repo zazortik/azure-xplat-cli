@@ -19,7 +19,7 @@ var should = require('should');
 var CLITest = require('../framework/cli-test');
 
 var suite;
-var testPrefix = 'cli.cloudservice-tests';
+var testPrefix = 'cli.service-tests';
 
 var createdServicesPrefix = 'cli-cs';
 var createdServices = [];
