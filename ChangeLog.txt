@@ -1,3 +1,20 @@
+2013.07.31 - version 0.7.0
+* Added network commands
+* Added more site commands
+  * azure site set
+  * azure site cert
+  * azure site connectionstring
+  * azure site defaultdocument
+  * azure site domain
+  * azure site handler
+* Improved site list to show locations
+* Renamed azure site config (will be removed in a future version) to azure site appsettings
+* Renamed azure account storage (will be removed in a future version) to azure storage account
+* Reduced CLI generic help
+* Fixed generic options (--json and --verbose) to only show up where they work
+* Improved and updated setup experience
+* Multiple bugfixes and test infrastructure improvements
+
 2013.07.15 - version 0.6.18
 * Added website diagnostics configuration command
   * azure site log set

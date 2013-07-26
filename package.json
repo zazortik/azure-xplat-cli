@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.6.18",
+  "version": "0.7.0",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
