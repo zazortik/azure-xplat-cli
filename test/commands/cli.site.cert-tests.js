@@ -50,7 +50,7 @@ describe('cli', function(){
         result.exitStatus.should.equal(0);
 
         // add a setting
-        suite.execute('site cert add %s %s %s --json', siteCertPath, siteCertPassword, siteName, function (result) {
+        suite.execute('site cert add %s --key %s %s --json', siteCertPath, siteCertPassword, siteName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
