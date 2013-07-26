@@ -94,7 +94,7 @@ describe('cli', function () {
         };
 
         var cmd = util.format(
-          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s:%s,%s:%s:%s:%s:%s:%s --json',
+          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s:%s,%s:%s:%s:%s:%s:%s:%s --json',
           vm.Name,
           // EndPoint1
           endPoints.OnlyPP.PublicPort,
