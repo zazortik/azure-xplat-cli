@@ -1190,6 +1190,50 @@ describe('cli', function () {
       });
     });
 
+    // Preview Features
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [],
+          "available": [ "SourceControl" ]
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview enable ' + servicename + ' sourcecontrol --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.featureName.should.equal("SourceControl");
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [ "SourceControl" ],
+          "available": [ "SourceControl" ]
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
     it('delete ' + servicename + ' -a -q --json (delete existing service)', function(done) {
       var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
       var scopes = setupNock(cmd);
