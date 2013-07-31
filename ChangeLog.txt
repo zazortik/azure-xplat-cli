@@ -11,6 +11,7 @@
 * Renamed azure site config (will be removed in a future version) to azure site appsettings
 * Renamed azure account storage (will be removed in a future version) to azure storage account
 * Reduced CLI generic help
+* Added bash Autocomplete support for commands and categories
 * Fixed generic options (--json and --verbose) to only show up where they work
 * Improved and updated setup experience
 * Multiple bugfixes and test infrastructure improvements
