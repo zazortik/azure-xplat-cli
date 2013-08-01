@@ -64,11 +64,11 @@ describe('cli', function () {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('site scale mode %s free --json ', siteName, function (result) {
+        suite.execute('site scale mode free %s --json ', siteName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
-          suite.execute('site scale mode %s shared --json', siteName, function (result) {
+          suite.execute('site scale mode shared %s --json', siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
@@ -90,7 +90,7 @@ describe('cli', function () {
       });
 
       it('should not be able to set instances on a free site', function (done) {
-        suite.execute('site scale instances %s 2 small --json ', siteName, function (result) {
+        suite.execute('site scale instances 2 --size small %s --json ', siteName, function (result) {
           result.errorText.indexOf('Instances can only be changed for sites in standard mode').should.not.equal(-1);
           result.exitStatus.should.equal(1);
 
@@ -99,8 +99,8 @@ describe('cli', function () {
       });
 
       it('should be able to set the instances number and size', function(done) {
-        suite.execute('site scale mode %s standard --json', siteName, function () {
-          suite.execute('site scale instances %s 2 small --json ', siteName, function (result) {
+        suite.execute('site scale mode standard %s --json', siteName, function () {
+          suite.execute('site scale instances 2 --size small %s --json ', siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
