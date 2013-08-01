@@ -126,7 +126,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['show'];
-    command.usage.firstCall.args[0].should.be.equal('<clusterName> [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] <clusterName>');
     done();
   });
 
@@ -166,7 +166,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['delete'];
-    command.usage.firstCall.args[0].should.be.equal('<clusterName> [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] <clusterName>');
     done();
   });
 
@@ -206,7 +206,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['create'];
-    command.usage.firstCall.args[0].should.be.equal('[config] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [config]');
     done();
   });
 
@@ -263,7 +263,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['show'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file]');
     done();
   });
 
@@ -301,7 +301,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['create'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file]');
     done();
   });
 
@@ -339,7 +339,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['set'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file]');
     done();
   });
 
@@ -394,7 +394,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var storage = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['storage'];
     var command = storage.commands['add'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [storageAccountName] [storageAccountKey] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file] [storageAccountName] [storageAccountKey]');
     done();
   });
 
@@ -435,7 +435,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var storage = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['storage'];
     var command = storage.commands['remove'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [storageAccountName] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file] [storageAccountName]');
     done();
   });
 
@@ -474,7 +474,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var metastore = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['metastore'];
     var command = metastore.commands['set'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [metastoreType] [server] [database] [user] [metastorePassword] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file] [metastoreType] [server] [database] [user] [metastorePassword]');
     done();
   });
 
@@ -521,7 +521,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var metastore = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['metastore'];
     var command = metastore.commands['clear'];
-    command.usage.firstCall.args[0].should.be.equal('[file] [metastoreType] [options]');
+    command.usage.firstCall.args[0].should.be.equal('[options] [file] [metastoreType]');
     done();
   });
 
