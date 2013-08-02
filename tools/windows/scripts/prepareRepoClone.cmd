@@ -1,15 +1,15 @@
 @echo off
 :: Windows Azure CLI - Windows Installer - Author file components script
 :: Copyright (C) Microsoft Corporation. All Rights Reserved.
-:: 
-:: This re-builds partial WiX files for use in cloning the repo after install. 
+::
+:: This re-builds partial WiX files for use in cloning the repo after install.
 :: heat.exe from the WiX toolset is used for this.
-:: 
+::
 
 SET NODE_VERSION=0.8.22
 SET NPM_VERSION=1.2.14
 
-:: Add Git to the path as this should be run through a .NET command prompt 
+:: Add Git to the path as this should be run through a .NET command prompt
 :: and not a Git bash shell... We also need the gnu toolchain (for curl & unzip)
 SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
@@ -66,7 +66,7 @@ pushd %TEMP_REPO%
 CALL bin/npm.cmd update
 echo.
 echo IF YOU SEE A FAILURE AT THE BOTTOM OF THE NPM OUTPUT:
-echo If you do not have Node.js installed on this local machine, the Azure 
+echo If you do not have Node.js installed on this local machine, the Azure
 echo postinstall command run by npm will fail.
 echo.
 echo This is fine as long as only the Azure module had this issue. Onward!
@@ -82,11 +82,19 @@ echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
 rmdir /s /q test
+rmdir /s /q features
 rmdir /s /q tools
 rmdir /s /q .idea
+rmdir /s /q __temp
 del /q *.md
 del *.git*
 del *.npm*
+del azure_error
+del azure.err
+del checkstyle-result.xml
+del test-result.xml
+del .travis.yml
+del .jshintrc
 del ChangeLog.txt
 cd bin
 rmdir /s /q node_modules
