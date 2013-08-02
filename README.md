@@ -54,7 +54,8 @@ echo '. <(azure --completion)' >> .zshrc
 
 To enable it in bash, you can write:
 
-azure --completion >> ~/azure.completion.sh
+azure --completion >> ~/azure.completion.sh<br />
+
 echo 'source ~/azure.completion.sh' >> .bash_profile
 
 # Using the cli
