@@ -14,53 +14,42 @@
 */
 
 var _ = require('underscore');
-
 var should = require('should');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
-var suiteUtil;
-var testPrefix = 'cli.cloudservice-tests';
+var suite;
+var testPrefix = 'cli.service-tests';
 
 var createdServicesPrefix = 'cli-cs';
 var createdServices = [];
 
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-  executeCommand(cmd, callback);
-};
-
-describe('CLI', function () {
-  describe('Cloud Service', function () {
+describe('cli', function () {
+  describe('service', function () {
     var location = process.env.AZURE_CLOUD_SERVICE_TEST_LOCATION || 'West US';
 
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix, true);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
-      suiteUtil.teardownTest(done);
+      suite.teardownTest(done);
     });
 
     describe('server cmdlets', function () {
       var oldServiceNames;
 
       beforeEach(function (done) {
-        var cmd = ('node cli.js service list --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('service list --json', function (result) {
           oldServiceNames = JSON.parse(result.text).map(function (service) {
             return service.ServiceName;
           });
@@ -74,8 +63,7 @@ describe('CLI', function () {
           if (serviceNames.length > 0) {
             var serviceName = serviceNames.pop();
 
-            var cmd = ('node cli.js service delete ' + serviceName + ' --quiet --json').split(' ');
-            executeCmd(cmd, function () {
+            suite.execute('service delete %s --quiet --json', serviceName, function () {
               deleteUsedServices(serviceNames);
             });
           } else {
@@ -83,8 +71,7 @@ describe('CLI', function () {
           }
         }
 
-        var cmd = ('node cli.js service list --json').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('node cli.js service list --json', function (result) {
           var services = JSON.parse(result.text);
 
           var usedServices = [ ];
@@ -100,14 +87,9 @@ describe('CLI', function () {
 
       describe('Create Cloud Service', function () {
         it('should create a server', function (done) {
-          var cloudServiceName = suiteUtil.generateId(createdServicesPrefix, createdServices);
+          var cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
 
-          var cmd = ('node cli.js service create ' + cloudServiceName).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          cmd.push('--json');
-
-          executeCmd(cmd, function (result) {
+          suite.execute('node cli.js service create %s --location %s --json', cloudServiceName, location, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
@@ -124,14 +106,8 @@ describe('CLI', function () {
         var cloudServiceName;
 
         beforeEach(function (done) {
-          cloudServiceName = suiteUtil.generateId(createdServicesPrefix, createdServices);
-
-          var cmd = ('node cli.js service create ' + cloudServiceName).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          cmd.push('--json');
-
-          executeCmd(cmd, function (result) {
+          cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
+          suite.execute('service create %s --location %s --json', cloudServiceName, location, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
@@ -143,10 +119,7 @@ describe('CLI', function () {
         });
 
         it('should show the service', function (done) {
-          var cmd = ('node cli.js service show ' + cloudServiceName).split(' ');
-          cmd.push('--json');
-
-          executeCmd(cmd, function (result) {
+          suite.execute('service show %s --json', cloudServiceName, function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
@@ -163,10 +136,7 @@ describe('CLI', function () {
         });
 
         it('should list the service', function (done) {
-          var cmd = ('node cli.js service list').split(' ');
-          cmd.push('--json');
-
-          executeCmd(cmd, function (result) {
+          suite.execute('service list --json', function (result) {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 

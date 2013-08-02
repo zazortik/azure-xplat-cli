@@ -15,41 +15,31 @@
 
 var should = require('should');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.site.log-tests';
 
 var siteNamePrefix = 'clitests';
 var siteNames = [];
-
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
 
 describe('cli', function () {
   describe('site log', function () {
     var createdSites = [];
 
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
@@ -57,7 +47,7 @@ describe('cli', function () {
         if (createdSites.length > 0) {
           deleteSite(createdSites.pop(), deleteSites);
         } else {
-          return suiteUtil.teardownTest(done);
+          return suite.teardownTest(done);
         }
       };
 
@@ -65,7 +55,7 @@ describe('cli', function () {
     });
 
     it('should show tail', function (done) {
-      var siteName = suiteUtil.generateId(siteNamePrefix, siteNames);
+      var siteName = suite.generateId(siteNamePrefix, siteNames);
 
       createSite(siteName, function (result) {
         result.text.should.equal('');
@@ -84,25 +74,20 @@ describe('cli', function () {
     });
 
     function createSite(siteName, callback) {
-      var cmd = ('node cli.js site create ' + siteName + ' --git --gitusername ' + gitUsername + ' --json --location').split(' ');
-      cmd.push('East US');
-      executeCmd(cmd, callback);
+      suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, 'East US', callback);
     }
 
     function showSite(siteName, callback) {
-      var cmd = ('node cli.js site show ' + siteName + ' --json').split(' ');
-      executeCmd(cmd, callback);
+      suite.execute('site show %s --json', siteName, callback);
     }
 
     function deleteSite(siteName, callback) {
-      var cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-      executeCmd(cmd, callback);
+      suite.execute('site delete %s --json --quiet', siteName, callback);
     }
 
     function connectLogStream(siteName, callback) {
       setTimeout(function () { process.exit(0); }, 5000);
-      var cmd = ('node cli.js site log tail ' + siteName + ' --log').split(' ');
-      executeCmd(cmd, callback);
+      suite.execute('node cli.js site log tail %s --log', siteName, callback);
     }
   });
 });

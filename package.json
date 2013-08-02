@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.6.18",
+  "version": "0.7.0",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -77,7 +77,6 @@
     "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",
     "preacceptance": "node scripts/cuke-environment.js setup",
-    "postinstall": "node scripts/setup-autocomplete.js",
     "acceptance": "node node_modules/cucumber/bin/cucumber.js",
     "postacceptance": "node scripts/cuke-environment.js teardown"
   },

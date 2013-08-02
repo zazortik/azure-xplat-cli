@@ -18,26 +18,16 @@ var should = require('should');
 var GitHubApi = require('github');
 var url = require('url');
 
-var executeCommand = require('../framework/cli-executor').execute;
-var MockedTestUtils = require('../framework/mocked-test-utils');
+var CLITest = require('../framework/cli-test');
 
 var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
 
-var suiteUtil;
+var suite;
 var testPrefix = 'cli.deployment-tests';
 
 var siteNames = [];
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
-
-var executeCmd = function (cmd, callback) {
-  if (suiteUtil.isMocked && !suiteUtil.isRecording) {
-    cmd.push('-s');
-    cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
-  }
-
-  executeCommand(cmd, callback);
-};
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
@@ -50,19 +40,19 @@ githubClient.authenticate({
   password: githubPassword
 });
 
-describe('cli', function(){
-  describe('deployment', function() {
+describe('cli', function () {
+  describe('site deployment', function() {
     before(function (done) {
-      suiteUtil = new MockedTestUtils(testPrefix, true);
-      suiteUtil.setupSuite(done);
+      suite = new CLITest(testPrefix, true);
+      suite.setupSuite(done);
     });
 
     after(function (done) {
-      suiteUtil.teardownSuite(done);
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
-      suiteUtil.setupTest(done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {
@@ -70,7 +60,7 @@ describe('cli', function(){
 
       function deleteAllHooks (hooks, callback) {
         if (hooks.length === 0) {
-          suiteUtil.teardownTest(done);
+          suite.teardownTest(done);
         } else {
           var hook = hooks.pop();
           hook.user = githubUsername;
@@ -96,9 +86,7 @@ describe('cli', function(){
     });
 
     it('should set git credentials', function(done) {
-      // Create site
-      var cmd = ('node cli.js site deployment user set mygituser 12345Qwerty --json').split(' ');
-      executeCmd(cmd, function (result) {
+      suite.execute('site deployment user set mygituser 12345Qwerty --json', function (result) {
         result.text.should.equal('');
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
@@ -108,20 +96,16 @@ describe('cli', function(){
     });
 
     it('should deploy to github', function(done) {
-      var siteName = suiteUtil.generateId('cliuttestdeploy1', siteNames);
+      var siteName = suite.generateId('cliuttestdeploy1', siteNames);
 
       // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push(location);
-
-      executeCmd(cmd, function (result) {
+      suite.execute('site create %s --json --location %s', siteName, location, function (result) {
         result.text.should.equal('');
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = 'node cli.js site list --json'.split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('site list --json', function (result) {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
@@ -131,15 +115,13 @@ describe('cli', function(){
           siteExists.should.be.ok;
 
           // Create the hook using deployment github cmdlet
-          cmd = ('node cli.js site deployment github ' + siteName + ' --json').split(' ');
-          cmd.push('--githubusername');
-          cmd.push(githubUsername);
-          cmd.push('--githubpassword');
-          cmd.push(githubPassword);
-          cmd.push('--githubrepository');
-          cmd.push(githubRepositoryFullName);
+          suite.execute('site deployment github %s --json --githubusername %s --githubpassword %s --githubrepository %s',
+            siteName,
+            githubUsername,
+            githubPassword,
+            githubRepositoryFullName,
+            function (result) {
 
-          executeCmd(cmd, function (result) {
             result.text.should.equal('');
             result.errorText.should.equal('');
             result.exitStatus.should.equal(0);
@@ -160,15 +142,13 @@ describe('cli', function(){
                 hookExists.should.be.ok;
 
                 // Delete created site
-                cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-                executeCmd(cmd, function (result) {
+                suite.execute('site delete %s --json --quiet', siteName, function (result) {
                   result.text.should.equal('');
                   result.errorText.should.equal('');
                   result.exitStatus.should.equal(0);
 
                   // List sites
-                  cmd = 'node cli.js site list --json'.split(' ');
-                  executeCmd(cmd, function (result) {
+                  suite.execute('site list --json', function (result) {
                     if (result.text != '') {
                       siteList = JSON.parse(result.text);
 

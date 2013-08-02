@@ -61,9 +61,19 @@ echo Copied your local Node.js binary version $NODE_VERSION into the output fold
 # OS X Package creation
 # ---------------------
 echo Building "Windows Azure SDK.pkg"
-/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker --doc sdk.pmdoc --out "./out/Windows Azure SDK.pkg"
+/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker --doc sdk.pmdoc --out "./out/Install Command Line Interface.pkg"
 
 echo 
 echo The package has been built and can be found in the ./out/ folder.
+
+echo
+echo Important:
+echo This package needs to be signed with an Apple Developer ID for the best 
+echo experience of Mountain Lion and newer users. Please follow the process 
+echo for this per the shipping guidelines.
+echo
+echo Once the package has been signed, you can then place it inside a 
+echo custom disk image by running the scripts/shipImage.sh script.
+echo
 
 open ./out
