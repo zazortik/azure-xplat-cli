@@ -79,7 +79,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['list'];
-    command.description.firstCall.args[0].should.be.equal('Get the list of clusters');
+    command.description.firstCall.args[0].should.be.equal('List the clusters');
     done();
   });
 
@@ -99,7 +99,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = cluster.commands['list'];
     command.optionCount.should.be.equal(1);
     should.exist(command.options['-s, --subscription <id>']);
-    command.options['-s, --subscription <id>'].should.be.equal('use the subscription id')
+    command.options['-s, --subscription <id>'].should.be.equal('The subscription id')
     done();
   });
 
@@ -117,7 +117,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['show'];
-    command.description.firstCall.args[0].should.be.equal('Display cluster details');
+    command.description.firstCall.args[0].should.be.equal('Show cluster details');
     done();
   });
 
@@ -137,7 +137,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = cluster.commands['show'];
     command.optionCount.should.be.equal(2);
     should.exist(command.options['-s, --subscription <id>']);
-    command.options['-s, --subscription <id>'].should.be.equal('use the subscription id')
+    command.options['-s, --subscription <id>'].should.be.equal('The subscription id')
     should.exist(command.options['--clusterName <clusterName>']);
     command.options['--clusterName <clusterName>'].should.be.equal('The HdInsight cluster name')
     done();
@@ -177,7 +177,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = cluster.commands['delete'];
     command.optionCount.should.be.equal(2);
     should.exist(command.options['-s, --subscription <id>']);
-    command.options['-s, --subscription <id>'].should.be.equal('use the subscription id')
+    command.options['-s, --subscription <id>'].should.be.equal('The subscription id')
     should.exist(command.options['--clusterName <clusterName>']);
     command.options['--clusterName <clusterName>'].should.be.equal('The HdInsight cluster name')
     done();
@@ -219,19 +219,19 @@ describe('HDInsight command line (under unit test)', function() {
     should.exist(command.options['--config <config>']);
     command.options['--config <config>'].should.be.equal('The config file for cluster creation');
     should.exist(command.options['-s, --subscription <id>']);
-    command.options['-s, --subscription <id>'].should.be.equal('use the subscription id');
+    command.options['-s, --subscription <id>'].should.be.equal('The subscription id');
     should.exist(command.options['--clusterName <clusterName>']);
     command.options['--clusterName <clusterName>'].should.be.equal('The HdInsight cluster name');
     should.exist(command.options['--storageAccountName <storageAccountName>']);
-    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The storage account to use for HDInsight storage');
     should.exist(command.options['--storageAccountKey <storageAccountKey>']);
-    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the storage account to use for HDInsight storage');
     should.exist(command.options['--storageContainer <storageContainer>']);
-    command.options['--storageContainer <storageContainer>'].should.be.equal('The container in the Azure storage account to use for HDInsight default storage');
+    command.options['--storageContainer <storageContainer>'].should.be.equal('The container in the storage account to use for HDInsight default storage');
     should.exist(command.options['--nodes <nodes>']);
     command.options['--nodes <nodes>'].should.be.equal('The number of data nodes to use for the cluster');
     should.exist(command.options['--location <location>']);
-    command.options['--location <location>'].should.be.equal('The Azure location for the cluster');
+    command.options['--location <location>'].should.be.equal('The data center location for the cluster');
     should.exist(command.options['--username <username>']);
     command.options['--username <username>'].should.be.equal('The user name to use for the cluster');
     should.exist(command.options['--clusterPassword <clusterPassword>']);
@@ -254,7 +254,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['show'];
-    command.description.firstCall.args[0].should.be.equal('Shows the contents of an HDInsight configuration file.');
+    command.description.firstCall.args[0].should.be.equal('Show the contents of an HDInsight configuration file');
     done();
   });
 
@@ -292,7 +292,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['create'];
-    command.description.firstCall.args[0].should.be.equal('Creates an HDInsight configuration file');
+    command.description.firstCall.args[0].should.be.equal('Create an HDInsight configuration file');
     done();
   });
 
@@ -330,7 +330,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['set'];
-    command.description.firstCall.args[0].should.be.equal('Sets the basic parameters for a cluster configuration.');
+    command.description.firstCall.args[0].should.be.equal('Update the basic parameters for a cluster configuration');
     done();
   });
 
@@ -348,21 +348,21 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var config = cli.categories['hdinsight'].categories['cluster'].categories['config'];
     var command = config.commands['set'];
-    command.optionCount.should.be.equal(9);
+    command.optionCount.should.be.equal(10);
     should.exist(command.options['--file <path>']);
     command.options['--file <path>'].should.be.equal('The path to the config file for cluster creation');
     should.exist(command.options['--clusterName <clusterName>']);
     command.options['--clusterName <clusterName>'].should.be.equal('The HdInsight cluster name');
     should.exist(command.options['--storageAccountName <storageAccountName>']);
-    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The storage account to use for HDInsight storage');
     should.exist(command.options['--storageAccountKey <storageAccountKey>']);
-    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the storage account to use for HDInsight storage');
     should.exist(command.options['--storageContainer <storageContainer>']);
-    command.options['--storageContainer <storageContainer>'].should.be.equal('The container in the Azure storage account to use for HDInsight default storage');
+    command.options['--storageContainer <storageContainer>'].should.be.equal('The container in the storage account to use for HDInsight default storage');
     should.exist(command.options['--nodes <nodes>']);
     command.options['--nodes <nodes>'].should.be.equal('The number of data nodes to use for the cluster');
     should.exist(command.options['--location <location>']);
-    command.options['--location <location>'].should.be.equal('The Azure location for the cluster');
+    command.options['--location <location>'].should.be.equal('The data center location for the cluster');
     should.exist(command.options['--username <username>']);
     command.options['--username <username>'].should.be.equal('The user name to use for the cluster');
     should.exist(command.options['--clusterPassword <clusterPassword>']);
@@ -385,7 +385,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var storage = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['storage'];
     var command = storage.commands['add'];
-    command.description.firstCall.args[0].should.be.equal('Adds a storage account to the cluster configuration.');
+    command.description.firstCall.args[0].should.be.equal('Add a storage account to the cluster configuration');
     done();
   });
 
@@ -405,9 +405,9 @@ describe('HDInsight command line (under unit test)', function() {
     var command = storage.commands['add'];
     command.optionCount.should.be.equal(2);
     should.exist(command.options['--storageAccountName <storageAccountName>']);
-    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The storage account to use for HDInsight storage');
     should.exist(command.options['--storageAccountKey <storageAccountKey>']);
-    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('The key to the storage account to use for HDInsight storage');
 
     done();
   });
@@ -426,7 +426,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var storage = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['storage'];
     var command = storage.commands['remove'];
-    command.description.firstCall.args[0].should.be.equal('Removes a storage account to the cluster configuration.');
+    command.description.firstCall.args[0].should.be.equal('Remove a storage account from the cluster configuration');
     done();
   });
 
@@ -446,7 +446,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = storage.commands['remove'];
     command.optionCount.should.be.equal(1);
     should.exist(command.options['--storageAccountName <storageAccountName>']);
-    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The Azure storage account to use for HDInsight storage');
+    command.options['--storageAccountName <storageAccountName>'].should.be.equal('The storage account to use for HDInsight storage');
 
     done();
   });
@@ -465,7 +465,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var metastore = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['metastore'];
     var command = metastore.commands['set'];
-    command.description.firstCall.args[0].should.be.equal('Sets a metastore in the cluster configuration.');
+    command.description.firstCall.args[0].should.be.equal('Update a metastore in the cluster configuration');
     done();
   });
 
@@ -485,7 +485,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = metastore.commands['set'];
     command.optionCount.should.be.equal(5);
     should.exist(command.options['--type <metastoreType>']);
-    command.options['--type <metastoreType>'].should.be.equal('The type of metastore to set. (example: hive, oozie)');
+    command.options['--type <metastoreType>'].should.be.equal('The type of metastore to set (example: hive, oozie)');
     should.exist(command.options['--server <server>']);
     command.options['--server <server>'].should.be.equal('The name of the sql server for the metastore');
     should.exist(command.options['--database <database>']);
@@ -512,7 +512,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var metastore = cli.categories['hdinsight'].categories['cluster'].categories['config'].categories['metastore'];
     var command = metastore.commands['clear'];
-    command.description.firstCall.args[0].should.be.equal('Clears a metastore in the cluster configuration.');
+    command.description.firstCall.args[0].should.be.equal('Clear a metastore in the cluster configuration');
     done();
   });
 
@@ -532,7 +532,7 @@ describe('HDInsight command line (under unit test)', function() {
     var command = metastore.commands['clear'];
     command.optionCount.should.be.equal(1);
     should.exist(command.options['--type <metastoreType>']);
-    command.options['--type <metastoreType>'].should.be.equal('The type of metastore to clear. (example: hive, oozie)');
+    command.options['--type <metastoreType>'].should.be.equal('The type of metastore to clear (example: hive, oozie)');
     done();
   });
 });
