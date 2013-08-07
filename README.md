@@ -44,6 +44,20 @@ You can install the azure cli npm package directly.
 
     npm install -g azure-cli
 
+## Autocomplete
+
+Autocomplete is supported in the azure CLI.
+
+To enable it in zsh, you can write:
+
+    echo '. <(azure --completion)' >> .zshrc
+
+To enable it in bash, you can write:
+
+    azure --completion >> ~/azure.completion.sh<br />
+
+    echo 'source ~/azure.completion.sh' >> .bash_profile
+
 # Using the cli
 
 The azure cli has several top-level commands, which correspond to different features of Windows Azure. Each top-level command is then broken up into further sub commands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.

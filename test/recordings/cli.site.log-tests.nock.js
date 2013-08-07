@@ -187,4 +187,19 @@ nock('https://clitests1.scm.azurewebsites.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ARR/2.5, ASP.NET',
   date: 'Fri, 28 Jun 2013 23:15:42 GMT' });
- return result; }]];
+ return result; },
+function (nock) { 
+var result = 
+nock('https://clitests1.scm.azurewebsites.net:443')
+  .get('/logstream')
+  .reply(200, "2013-04-24T20:20:44  Welcome, you are now connected to log-streaming service.", { 'cache-control': 'private',
+  'transfer-encoding': 'chunked',
+  'content-type': 'text/plain; charset=utf-8',
+  server: 'Microsoft-IIS/7.5',
+  'set-cookie': 
+   [ 'ARRAffinity=462716b27beb795c09df205e893d3e263b1ec9b710c92f7c4203f4b63ac1aed2;Path=/;Domain=clitests1.scm.azurewebsites.net',
+     'WAWebSiteSID=9d414b6427954beebeccbc195571a058; Path=/; HttpOnly' ],
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET, ARR/2.5, ASP.NET',
+  date: 'Wed, 24 Apr 2013 20:24:01 GMT' });
+ return result; } ]];

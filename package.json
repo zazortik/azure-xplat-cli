@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.6.18",
+  "version": "0.7.0",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -35,7 +35,7 @@
     }
   ],
   "dependencies": {
-    "azure" : "0.7.10",
+    "azure" : "0.7.12",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "underscore": "1.4.x",
@@ -49,11 +49,12 @@
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
     "github": "0.1.6",
+    "omelette": "0.1.0",
     "kuduscript": "0.1.2"
   },
   "devDependencies": {
-    "mocha": "*",
-    "jshint": "*",
+    "mocha": ">= 1.12.0",
+    "jshint": ">= 2.1.4",
     "sinon": "*",
     "should": "*",
     "nock": "0.16",
