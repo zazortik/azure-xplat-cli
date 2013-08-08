@@ -1,5 +1,8 @@
-2013.07.31 - version 0.7.0
+2013.08.07 - version 0.7.0
 * Added network commands
+  * azure network
+  * azure network vnet
+  * azure network dnsserver
 * Added more site commands
   * azure site set
   * azure site cert
