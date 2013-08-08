@@ -6,8 +6,12 @@ This project provides a cross platform command line tool for developers and admi
 
 * Accounts
     * Download and import Azure publish settings
-    * Create and manage Storage Accounts
+    * List imported Azure subscriptions
+    * Select current subscription
+    * Manage Azure environments
+    * Create and manage affinity groups
 * Storage
+    * Create and manage Storage Accounts
     * Create and manage blob container and ACL
 * Websites
     * Create and manage Windows Azure websites
@@ -19,6 +23,10 @@ This project provides a cross platform command line tool for developers and admi
     * Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+* Network
+    * Import and export network configuration
+    * Create and manage virtual network
+    * Create and manage DNS server
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
@@ -92,14 +100,16 @@ Display details about an affinity group
     azure account affinity-group delete [name]
 Removes the affinity group
 
-### azure account storage - Manage Azure Storage accounts
+## azure storage - Managing Azure Storage
+
+### azure storage account - Manage Azure Storage accounts
 
 You can create and manage store accounts for leveraging blobs, tables and queues within your applications.
 
-    azure account storage list
+    azure storage account list
 Lists all your storage accounts
 
-    azure account storage create [name]
+    azure storage account create [name]
 Creates a new storage account
 
 **--location** - Location for the storage account 
@@ -108,19 +118,19 @@ Creates a new storage account
 
 **Note:** Either location or affinity group is required.
 
-    azure account storage update [name]
+    azure storage account update [name]
 Updates a storage account label, description, etc.
 
-    azure account storage delete [name]
+    azure storage account delete [name]
 Removes the storage account
 
-    azure account storage keys list [name]
+    azure storage account keys list [name]
 Lists out storage account keys for the specified account
 
-    azure account storage keys renew [name]
+    azure storage account keys renew [name]
 Renews storage account keys for the specified account
 
-## azure storage - Managing Windows Azure Storage
+### azure storage container - Manage Azure Storage containers
 
 You can list storage container
 
@@ -178,21 +188,20 @@ Generates a bash or cmd script for customizing the deployment of your Website
 
 **Note:** Above [site] is not required if the command is run in the main app folder.
 
-### azure site config - Managing site app settings
+### azure site appsetting - Managing site app settings
+### azure site cert - Managing site certificates
+### azure site connectionstring - Managing site connection strings
+### azure site defaultdocument - Managing site default documents
+### azure site domain - Managing site domains
+### azure site handler - Managing site handler mappings
 
-You can set application settings, which will propagate to environment variables for your node and PHP applications. Changes are instant, and you do not need to stop/start the app to pick up the new variables.
+### azure site log - Managing site diagnostics
 
-    azure site config list [site]
-Lists all application settings.
+    azure site log set [options] [name]
+Configure the site and application diagnositcs of your website.
 
-    azure site config add [keyvaluepair] [site]
-Adds a new app setting. [keyvaluepair] is of the form "[key]=[value]" i.e. "foo=bar".
-
-    azure site config clear [key] [site]
-Removes the specified app setting.
-
-    azure site config get [key] [site]
-Retrieves the value for the selected key.
+    azure site log save [options] [name]
+Download diagnostic logs from your website to a local file.
 
     azure site log tail [options] [name]
 Streams live diagnostic logs from your website to the console
@@ -300,6 +309,11 @@ Attaches an image to an existing VM.
 
     azure vm disk detach [vm-name] [image]
 Detaches an image from an existing VM.
+
+## azure network - Managing Azure Network
+
+### azure network vnet - Managing Azure Virtual Network
+### azure network dnsserver - Managing Azure DNS Server
 
 ## azure mobile - Managing Azure Mobile Services
 
