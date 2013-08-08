@@ -50,7 +50,7 @@ SetFile -a C "/Volumes/Windows Azure SDK"
 
 # Copy the background image
 mkdir "/Volumes/Windows Azure SDK/.background"
-cp resources/background.png "/Volumes/Windows Azure SDK/.background/" > /dev/null
+cp resources/WindowsAzureBackground.png "/Volumes/Windows Azure SDK/.background/background.png" > /dev/null
 
 # Customize the disk image visually
 echo Customizing the image Finder window... Please do not interact with the UI.
