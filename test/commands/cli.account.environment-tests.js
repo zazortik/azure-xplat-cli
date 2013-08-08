@@ -87,7 +87,7 @@ describe('cli', function () {
       });
     });
 
-    it('should modify', function (done) {
+    it('should modify a predefined environment setting', function (done) {
       suite.execute('account env set AzureCloud --publish-settings-file-url http://test.com --json', function (result) {
         result.exitStatus.should.equal(0);
 

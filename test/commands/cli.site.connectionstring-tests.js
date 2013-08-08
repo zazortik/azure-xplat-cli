@@ -153,7 +153,6 @@ describe('cli', function(){
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        // List sites
         suite.execute('site connectionstring list %s --json', siteName, function (result) {
           // there should be not settings yet as the site was just created
           result.exitStatus.should.equal(0);
