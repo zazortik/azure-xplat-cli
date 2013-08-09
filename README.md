@@ -54,7 +54,7 @@ To enable it in zsh, you can write:
 
 To enable it in bash, you can write:
 
-    azure --completion >> ~/azure.completion.sh<br />
+    azure --completion >> ~/azure.completion.sh
 
     echo 'source ~/azure.completion.sh' >> .bash_profile
 
