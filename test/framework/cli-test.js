@@ -123,6 +123,11 @@ _.extend(CLITest.prototype, {
     if (fs.existsSync(spacesCachePath)) {
       fs.unlinkSync(spacesCachePath);
     }
+
+    var environmentsPath = path.join(utils.azureDir(), 'environment.json');
+    if (fs.existsSync(environmentsPath)) {
+      fs.unlinkSync(environmentsPath);
+    }
   },
 
   execute: function (cmd) {
