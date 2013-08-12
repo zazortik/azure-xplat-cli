@@ -64,7 +64,7 @@ describe('cli', function () {
     afterEach(function (done) {
       function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
-          suite.execute('vm delete %s --json', vm.Name, function () {
+          suite.execute('vm delete %s --json --quiet', vm.Name, function () {
             vm.Name = null;
             vm.Created = vm.Delete = false;
             return callback();
@@ -189,7 +189,7 @@ describe('cli', function () {
           vmExists.should.be.ok;
 
           // Delete created VM
-          suite.execute('vm delete %s --dns-name %s --json', vmName, vmName, function (result) {
+          suite.execute('vm delete %s --dns-name %s --json --quiet', vmName, vmName, function (result) {
             result.exitStatus.should.equal(0);
             return done();
           });
