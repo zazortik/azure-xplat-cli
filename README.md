@@ -50,12 +50,13 @@ Autocomplete is supported in the azure CLI.
 
 To enable it in zsh, you can write:
 
-echo '. <(azure --completion)' >> .zshrc
+    echo '. <(azure --completion)' >> .zshrc
 
 To enable it in bash, you can write:
 
-azure --completion >> ~/azure.completion.sh
-echo 'source ~/azure.completion.sh' >> .bash_profile
+    azure --completion >> ~/azure.completion.sh<br />
+
+    echo 'source ~/azure.completion.sh' >> .bash_profile
 
 # Using the cli
 
