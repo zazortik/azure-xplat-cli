@@ -138,22 +138,23 @@ describe('cli', function () {
     describe('blob', function() {
       var containerName = 'storage-cli-blob-test';
       var blobName = 'blobname';
-      var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
       before(function(done) {
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
         blobService.createContainer(containerName, function(){done();});
       });
 
       after(function(done) {
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
         blobService.deleteContainer(containerName, function(){done();});
       });
 
       it('should upload a basic file to azure storage', function(done) {
-        var text = 'HelloWord';
+        var buf = new Buffer('HelloWord', 'utf8');
         var fileName = 'hello.tmp.txt';
         var fd = fs.openSync(fileName, 'w');
-        fs.writeSync(fd, text, 0, text.length, 0);
+        fs.writeSync(fd, buf, 0, buf.length, 0);
         var md5Hash = crypto.createHash('md5');
-        md5Hash.update(text);
+        md5Hash.update(buf);
         var contentMD5 = md5Hash.digest('base64');
         suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blobName, function(result) {
           var blob = JSON.parse(result.text);
