@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest174894ce-00c8-4f2d-9f78-447a2f90660e';
+var nockedServiceName = 'clitest0e8fae25-a394-473c-a71b-b36c72ffb2bd';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -1185,6 +1185,50 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Preview Features
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [],
+          "available": [ "SourceControl" ]
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview enable ' + servicename + ' sourcecontrol --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.featureName.should.equal("SourceControl");
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [ "SourceControl" ],
+          "available": [ "SourceControl" ]
+        });
         checkScopes(scopes);
         done();
       });
