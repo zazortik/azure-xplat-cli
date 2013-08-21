@@ -1142,6 +1142,61 @@ describe('cli', function () {
       });
     });
 
+    // Key Command Tests
+    // Test setting and randomly generating the application key
+    it('key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json', function (done) {
+      var cmd = ('node cli.js mobile key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.applicationKey.should.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+    
+    it('key regenerate ' + servicename + ' application --json', function (done) {
+      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' application --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.applicationKey.length.should.equal(32);
+        response.applicationKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Repeat test for master key
+    it('key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json', function (done) {
+      var cmd = ('node cli.js mobile key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.masterKey.should.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+    
+    it('key regenerate ' + servicename + ' master --json', function (done) {
+      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' master --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.masterKey.length.should.equal(32);
+        response.masterKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Scale Tests
+
     it('scale show ' + servicename + ' --json (show default scale settings)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
