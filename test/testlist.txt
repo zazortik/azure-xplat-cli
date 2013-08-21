@@ -1,5 +1,6 @@
 cli-tests.js
 commands/cli.account-tests.js
+commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.site.domain-tests.js
 commands/cli.site.handler-tests.js
