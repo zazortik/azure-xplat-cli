@@ -340,7 +340,11 @@
     "Do you really want to delete all data from the table? [y/n]: ": "Do you really want to delete all data from the table? [y/n]: ",
     "Do you really want to delete the column(s)? [y/n]: ": "Do you really want to delete the column(s)? [y/n]: ",
     "Do you really want to delete the table? [y/n]: ": "Do you really want to delete the table? [y/n]: ",
+<<<<<<< HEAD
     "Do you want to delete the mobile service %s ? [y/n]: ": "Do you want to delete the mobile service %s ? [y/n]: ",
+=======
+    "Do you want to delete the mobile service? [y/n]: ": "Do you want to delete the mobile service? [y/n]: ",
+>>>>>>> dev
     "Do you want to overwrite %s?": "Do you want to overwrite %s?",
     "Do you want to remove the blob %s in container %s?": "Do you want to remove the blob %s in container %s?",
     "Do you want to remove the storage container %s?": "Do you want to remove the storage container %s?",
@@ -420,6 +424,7 @@
     "Getting affinity groups": "Getting affinity groups",
     "Getting blobs in container %s": "Getting blobs in container %s",
     "Getting certificates": "Getting certificates",
+    "Getting choices": "Getting choices",
     "Getting cloud service": "Getting cloud service",
     "Getting cloud service properties": "Getting cloud service properties",
     "Getting cloud services": "Getting cloud services",
@@ -625,6 +630,11 @@
     "Open the portal in a browser": "Open the portal in a browser",
     "Open your web site in a browser": "Open your web site in a browser",
     "Operation": "Operation",
+<<<<<<< HEAD
+=======
+    "Operation failed. ' +\n            'Please confirm the status on the management portal": "Operation failed. ' +\n            'Please confirm the status on the management portal",
+    "Operation status: %s": "Operation status: %s",
+>>>>>>> dev
     "Output: ": "Output: ",
     "Overall application state: %s": "Overall application state: %s",
     "Parameters": "Parameters",
@@ -734,7 +744,7 @@
     "Service was restarted.": "Service was restarted.",
     "Set a mobile service configuration setting": "Set a mobile service configuration setting",
     "Set configuration options for your web site [name]": "Set configuration options for your web site [name]",
-    "Set container acl": "Set container acl",
+    "Set storage container ACL": "Set storage container ACL",
     "Set the Network configuration from a json file": "Set the Network configuration from a json file",
     "Set the current subscription": "Set the current subscription",
     "Set the deployment credentials": "Set the deployment credentials",
@@ -857,8 +867,11 @@
     "The request failed. Please contact support for more information": "The request failed. Please contact support for more information",
     "The requested cluster already exists": "The requested cluster already exists",
     "The scheduled job settings already match the requested settings. No changes made": "The scheduled job settings already match the requested settings. No changes made",
+<<<<<<< HEAD
     "The storage container name": "The storage container name",
     "The storage container name prefix": "The storage container name prefix",
+=======
+>>>>>>> dev
     "The subnet is not in the address space": "The subnet is not in the address space",
     "The valid address space ranges are:": "The valid address space ranges are:",
     "The value must be either true or false": "The value must be either true or false",
@@ -901,6 +914,7 @@
     "Unable to read script from file %s": "Unable to read script from file %s",
     "Unable to read settings": "Unable to read settings",
     "Unable to retrieve storage account": "Unable to retrieve storage account",
+    "Unexpected response from Windows Azure. ' +\n            'Please confirm the status of the mobile service n the management portal": "Unexpected response from Windows Azure. ' +\n            'Please confirm the status of the mobile service n the management portal",
     "Unknown command name %s": "Unknown command name %s",
     "Unknown environment %s": "Unknown environment %s",
     "Unregister a DNS Server registered in the current Azure Network by dns-id or dns-ip": "Unregister a DNS Server registered in the current Azure Network by dns-id or dns-ip",
@@ -992,7 +1006,10 @@
     "comma separated list of columns to create an index on": "comma separated list of columns to create an index on",
     "comma separated list of columns to delete": "comma separated list of columns to delete",
     "comma separated list of columns to delete an index from": "comma separated list of columns to delete an index from",
+<<<<<<< HEAD
     "concurrent download threads number": "concurrent download threads number",
+=======
+>>>>>>> dev
     "connect to existing VMs": "connect to existing VMs",
     "consider VM hosted in this DNS name": "consider VM hosted in this DNS name",
     "create the SQL server in a particular location; defaults to mobile service location": "create the SQL server in a particular location; defaults to mobile service location",
@@ -1080,7 +1097,6 @@
     "the certificate thumbprint": "the certificate thumbprint",
     "the cloud service name": "the cloud service name",
     "the comma-delimited subnet names": "the comma-delimited subnet names",
-    "the concurrent upload threads number": "the concurrent upload threads number",
     "the config file for cluster creation": "the config file for cluster creation",
     "the connection string name": "the connection string name",
     "the connection string type": "the connection string type",
@@ -1122,6 +1138,7 @@
     "the management service endpoint": "the management service endpoint",
     "the maximum number of VMs in the address space": "the maximum number of VMs in the address space",
     "the maximum number of VMs in the subnet": "the maximum number of VMs in the subnet",
+    "the maximum number of concurrent upload requests": "the maximum number of concurrent upload requests",
     "the maximum number of parallel uploads [96]": "the maximum number of parallel uploads [96]",
     "the maximum number of parallel uploads [96]', 9": "the maximum number of parallel uploads [96]', 9",
     "the mode of the site (available are: free, shared and standard)": "the mode of the site (available are: free, shared and standard)",
@@ -1176,6 +1193,7 @@
     "the storage connection string": "the storage connection string",
     "the storage container ACL permission(Off/Blob/Container)": "the storage container ACL permission(Off/Blob/Container)",
     "the storage container name": "the storage container name",
+    "the storage container name prefix": "the storage container name prefix",
     "the storage service endpoint": "the storage service endpoint",
     "the subnet network mask in CIDR format": "the subnet network mask in CIDR format",
     "the subscription id": "the subscription id",
