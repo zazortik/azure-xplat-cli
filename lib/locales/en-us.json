@@ -340,11 +340,7 @@
     "Do you really want to delete all data from the table? [y/n]: ": "Do you really want to delete all data from the table? [y/n]: ",
     "Do you really want to delete the column(s)? [y/n]: ": "Do you really want to delete the column(s)? [y/n]: ",
     "Do you really want to delete the table? [y/n]: ": "Do you really want to delete the table? [y/n]: ",
-<<<<<<< HEAD
     "Do you want to delete the mobile service %s ? [y/n]: ": "Do you want to delete the mobile service %s ? [y/n]: ",
-=======
-    "Do you want to delete the mobile service? [y/n]: ": "Do you want to delete the mobile service? [y/n]: ",
->>>>>>> dev
     "Do you want to overwrite %s?": "Do you want to overwrite %s?",
     "Do you want to remove the blob %s in container %s?": "Do you want to remove the blob %s in container %s?",
     "Do you want to remove the storage container %s?": "Do you want to remove the storage container %s?",
@@ -630,11 +626,8 @@
     "Open the portal in a browser": "Open the portal in a browser",
     "Open your web site in a browser": "Open your web site in a browser",
     "Operation": "Operation",
-<<<<<<< HEAD
-=======
     "Operation failed. ' +\n            'Please confirm the status on the management portal": "Operation failed. ' +\n            'Please confirm the status on the management portal",
     "Operation status: %s": "Operation status: %s",
->>>>>>> dev
     "Output: ": "Output: ",
     "Overall application state: %s": "Overall application state: %s",
     "Parameters": "Parameters",
@@ -867,11 +860,6 @@
     "The request failed. Please contact support for more information": "The request failed. Please contact support for more information",
     "The requested cluster already exists": "The requested cluster already exists",
     "The scheduled job settings already match the requested settings. No changes made": "The scheduled job settings already match the requested settings. No changes made",
-<<<<<<< HEAD
-    "The storage container name": "The storage container name",
-    "The storage container name prefix": "The storage container name prefix",
-=======
->>>>>>> dev
     "The subnet is not in the address space": "The subnet is not in the address space",
     "The valid address space ranges are:": "The valid address space ranges are:",
     "The value must be either true or false": "The value must be either true or false",
@@ -1006,10 +994,6 @@
     "comma separated list of columns to create an index on": "comma separated list of columns to create an index on",
     "comma separated list of columns to delete": "comma separated list of columns to delete",
     "comma separated list of columns to delete an index from": "comma separated list of columns to delete an index from",
-<<<<<<< HEAD
-    "concurrent download threads number": "concurrent download threads number",
-=======
->>>>>>> dev
     "connect to existing VMs": "connect to existing VMs",
     "consider VM hosted in this DNS name": "consider VM hosted in this DNS name",
     "create the SQL server in a particular location; defaults to mobile service location": "create the SQL server in a particular location; defaults to mobile service location",
