@@ -64,7 +64,7 @@ describe('cli', function () {
     afterEach(function (done) {
       function deleteUsedVM (vm, callback) {
         if (vm.Created && vm.Delete) {
-          suite.execute('vm delete %s --json', vm.Name, function () {
+          suite.execute('vm delete %s --json --quiet', vm.Name, function () {
             vm.Name = null;
             vm.Created = vm.Delete = false;
             return callback();
@@ -110,8 +110,7 @@ describe('cli', function () {
         suite.execute(cmd, function (result) {
           result.exitStatus.should.equal(0);
 
-          cmd = util.format('node cli.js vm endpoint list %s --json', vm.Name).split(' ');
-          suite.execute(cmd, function (result) {
+          suite.execute('vm endpoint list %s --json', vm.Name, function (result) {
             result.exitStatus.should.equal(0);
             var allEndPointList = JSON.parse(result.text);
 
@@ -134,8 +133,7 @@ describe('cli', function () {
             (endPointListLbAndVm[0].Port == endPoints.PPAndLP.PublicPort).should.be.true;
 
             // Verify endpoint creation with lbSetName and prob option
-            cmd = util.format('node cli.js vm show %s --json', vm.Name).split(' ');
-            suite.execute(cmd, function (result) {
+            suite.execute('vm show %s --json', vm.Name, function (result) {
               result.exitStatus.should.equal(0);
               var vmInfo = JSON.parse(result.text);
               (vmInfo.Network.Endpoints.length >= 4).should.be.true;
@@ -171,30 +169,27 @@ describe('cli', function () {
       var vmName = suite.generateId(vmPrefix, vmNames);
 
       // Create a VM using community image (-o option)
-      var cmd = util.format(
-        'node cli.js vm create %s %s communityUser PassW0rd$ -o --json --ssh --location', 
-        vmName, 
-        communityImageId
-      ).split(' ');
-      cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
-      suite.execute(cmd, function (result) {
+      suite.execute('vm create %s %s communityUser PassW0rd$ -o --json --ssh --location %s',
+        vmName,
+        communityImageId,
+        process.env.AZURE_VM_TEST_LOCATION || 'West US',
+        function (result) {
+
         result.exitStatus.should.equal(0);
 
         // List the VMs
-        cmd = 'node cli.js vm list --json'.split(' ');
-        suite.execute(cmd, function (result) {
+        suite.execute('vm list --json', function (result) {
           var vmList = JSON.parse(result.text);
+
           // Look for created VM
           var vmExists = vmList.some(function (vm) {
             return vm.VMName.toLowerCase() === vmName.toLowerCase()
           });
 
           vmExists.should.be.ok;
+
           // Delete created VM
-          cmd = ('node cli.js vm delete ' + vmName + ' --json').split(' ');
-          cmd.push('--dns-name');
-          cmd.push(vmName);
-          suite.execute(cmd, function (result) {
+          suite.execute('vm delete %s --dns-name %s --json --quiet', vmName, vmName, function (result) {
             result.exitStatus.should.equal(0);
             return done();
           });
@@ -207,14 +202,14 @@ describe('cli', function () {
       if (getImageName.imageName) {
         callBack(getImageName.imageName);
       } else {
-        var cmd = 'node cli.js vm image list --json'.split(' ');
-        suite.execute(cmd, function (result) {
+        suite.execute('vm image list --json', function (result) {
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
             if (image.Category.toLowerCase() === category.toLowerCase()) {
               getImageName.imageName = image.Name;
             }
           });
+
           callBack(getImageName.imageName);
         });
       }
@@ -229,13 +224,12 @@ describe('cli', function () {
         getImageName('Microsoft', function(imageName) {
           var name = suite.generateId(vmPrefix, vmNames);
 
-          var cmd = util.format(
-            'node cli.js vm create %s %s Administrator PassW0rd$ --ssh --json --location',
+          suite.execute('vm create %s %s Administrator PassW0rd$ --ssh --json --location %s',
             name,
-            imageName
-          ).split(' ');
-          cmd.push(process.env.AZURE_VM_TEST_LOCATION || 'West US');
-          suite.execute(cmd, function (result) {
+            imageName,
+            process.env.AZURE_VM_TEST_LOCATION || 'West US',
+            function (result) {
+
             vmToUse.Created = (result.exitStatus === 0);
             vmToUse.Name = vmToUse.Created ? name : null;
             return callBack(vmToUse);

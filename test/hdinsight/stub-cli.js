@@ -30,6 +30,9 @@ var CliStub = function() {
     this.optionCount++;
     return this;
   };
+  this.getLocaleString = function (string) {
+    return string;
+  },
   this.usage = sinon.stub().returns(this);
   this.description = sinon.stub().returns(this);
   this.execute = sinon.spy();

@@ -1,3 +1,8 @@
+2013.07.31 - version 0.7.1
+* Added blob storage commands
+* Added azure account cert export
+* Multiple bugfixes
+
 2013.07.31 - version 0.7.0
 * Added network commands
 * Added more site commands
