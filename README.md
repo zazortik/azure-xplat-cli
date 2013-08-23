@@ -17,7 +17,7 @@ This project provides a cross platform command line tool for developers and admi
     * Create and manage Windows Azure websites
     * Download site log files and get real time log streaming
     * Manage Deployments
-    * Configure Github integration
+    * Configure GitHub integration
 * Virtual machines
     * Create and manage Windows and Linux Virtual machines
     * Create and manage VM endpoints
@@ -189,6 +189,9 @@ Generates a bash or cmd script for customizing the deployment of your Website
 **Note:** Above [site] is not required if the command is run in the main app folder.
 
 ### azure site appsetting - Managing site app settings
+
+
+
 ### azure site cert - Managing site certificates
 ### azure site connectionstring - Managing site connection strings
 ### azure site defaultdocument - Managing site default documents
@@ -198,7 +201,7 @@ Generates a bash or cmd script for customizing the deployment of your Website
 ### azure site log - Managing site diagnostics
 
     azure site log set [options] [name]
-Configure the site and application diagnositcs of your website.
+Configure the site and application diagnostics of your website.
 
     azure site log save [options] [name]
 Download diagnostic logs from your website to a local file.
@@ -588,7 +591,7 @@ Next, provide the following parameters by setting environment variables:
 - `AZURE_STORAGE_ACCOUNT` - your Windows Azure Storage Account name
 - `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
 - `AZURE_SERVICEBUS_NAMESPACE` - your Windows Azure Service Bus Namespace
-- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
+- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus Namespace
 - `AZURE_GITHUB_USERNAME` - GitHub account username
 - `AZURE_GITHUB_PASSWORD` - GitHub account password
 - `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
