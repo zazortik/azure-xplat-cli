@@ -20,14 +20,14 @@ var executeCmd = require('../framework/cli-executor').execute;
 var keyFiles = require('../../lib/util/keyFiles');
 var testUtil = require('../util/util');
 
-describe('cli', function(){
+describe('cli', function () {
   describe('mobile', function() {
     describe('recover', function() {
 
       before(function (done) {        
         process.env.AZURE_ENABLE_STRICT_SSL = false;
 
-        sinon.stub(keyFiles, 'readFromFile', function () {                    
+        sinon.stub(keyFiles, 'readFromFile', function () {
           return {
             cert: testUtil.getCertificate(),
             key: testUtil.getCertificateKey()
@@ -95,7 +95,7 @@ describe('cli', function(){
             date: 'Tue, 18 Jun 2013 17:09:47 GMT'
           });
 
-        var cmd = ('node cli.js mobile recover foo bar -q -s --json ba090344-f0ae-4520-b8a0-205635df65ed').split(' ');
+        var cmd = ('node cli.js mobile recover foo bar -q -s ba090344-f0ae-4520-b8a0-205635df65ed --json').split(' ');
         executeCmd(cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();

@@ -16,7 +16,7 @@
 var should = require('should');
 var sinon = require('sinon');
 
-var cli = require('../../../lib/cli');
+var AzureCli = require('../../../lib/cli');
 var LinkedRevisionControl = require('../../../lib/util/git/linkedrevisioncontrol');
 
 var sandbox;
@@ -43,7 +43,7 @@ suite('cli', function(){
         stderr: '' 
       };
 
-      var cli = { output: { }, progress: function() { return { end: function() {}}} };
+      var cli = new AzureCli();
       var githubClient = LinkedRevisionControl.createClient(cli, 'github');
 
       var execStub = sandbox.stub(githubClient, '_exec');
@@ -69,7 +69,7 @@ suite('cli', function(){
         stderr: '' 
       };
 
-      var cli = { output: { }, progress: function() { return { end: function() {}}} };
+      var cli = new AzureCli();
       var githubClient = LinkedRevisionControl.createClient(cli, 'github');
 
       var execStub = sandbox.stub(githubClient, '_exec');

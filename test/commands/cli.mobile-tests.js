@@ -47,10 +47,9 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestf264a367-68da-4dc5-bfe9-aac91628910c';
+var nockedServiceName = 'clitest0e8fae25-a394-473c-a71b-b36c72ffb2bd';
 
 var nockhelper = require('../framework/nock-helper.js');
-var https = require('https');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
 var should = require('should');
 var url = require('url');
@@ -60,6 +59,7 @@ var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
+var Channel = require('../../lib/util/channel');
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var scopeWritten;
 
@@ -325,6 +325,59 @@ describe('cli', function () {
         response[0].status.should.equal('enabled');
         response[0].intervalUnit.should.equal('hour');
         response[0].intervalPeriod.should.equal(2);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job update ' + servicename + ' foobar -u none --json (update scheduled job to be on demand)', function(done) {
+      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u none --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job list --json (job updated to be on demand)', function(done) {
+      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(1);
+        response[0].name.should.equal('foobar');
+        response[0].status.should.equal('disabled');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job update ' + servicename + ' foobar -u minute -i 20 --json (update on demand job to have schedule)', function(done) {
+      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u minute -i 20 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('job list --json (job now a scheduled job)', function(done) {
+      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(1);
+        response[0].name.should.equal('foobar');
+        response[0].status.should.equal('disabled');
+        response[0].intervalUnit.should.equal('minute');
+        response[0].intervalPeriod.should.equal(20);
+        response[0].startTime.should.equal('1900-01-01T00:00:00Z');
         checkScopes(scopes);
         done();
       });
@@ -821,7 +874,13 @@ describe('cli', function () {
       var success = 0;
       var failure = 0;
 
-      function tryFinish() {
+      function tryFinish (error, content, response) {
+        if(error) {
+          failure++;
+        } else {
+          response.statusCode >= 400 ? failure++ : success++;
+        }
+
         if ((success + failure) < 5) {
           return;
         }
@@ -830,29 +889,14 @@ describe('cli', function () {
       }
 
       for (var i = 0; i < 5; i++) {
-        var options = {
+        var channel = new Channel({
           host: servicename + '.azure-mobile.net',
-          port: 443,
-          path: '/tables/table1',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
+          port: 443
+        }).path('tables')
+          .path('table1')
+          .header('Content-Type', 'application/json');
 
-        var req = https.request(options, function (res) {
-          res.on('end', function () {
-            res.statusCode >= 400 ? failure++ : success++;
-            tryFinish();  
-          });
-        });
-
-        req.on('error', function () {
-          failure++;
-          tryFinish();
-        });
-
-        req.end(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }));
+        channel.POST(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
       }
     };
 
@@ -1141,6 +1185,50 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Preview Features
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [],
+          "available": [ "SourceControl" ]
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview enable ' + servicename + ' sourcecontrol --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.featureName.should.equal("SourceControl");
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [ "SourceControl" ],
+          "available": [ "SourceControl" ]
+        });
         checkScopes(scopes);
         done();
       });

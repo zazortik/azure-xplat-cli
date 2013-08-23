@@ -14,12 +14,15 @@
 */
 
 var sinon = require('sinon');
+var Interaction = require('../../lib/util/interaction');
 
 var CliStub = function() {
   this.categories = { };
   this.commands = { };
   this.options = { };
   this.optionCount = 0;
+  this.interaction = new Interaction(this);
+
   this.category = function(name) {
     var retval = new CliStub();
     this.categories[name] = retval;
@@ -30,6 +33,9 @@ var CliStub = function() {
     this.optionCount++;
     return this;
   };
+  this.getLocaleString = function (string) {
+    return string;
+  },
   this.usage = sinon.stub().returns(this);
   this.description = sinon.stub().returns(this);
   this.execute = sinon.spy();

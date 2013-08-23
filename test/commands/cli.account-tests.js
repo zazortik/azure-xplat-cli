@@ -19,17 +19,18 @@ var fs = require('fs');
 
 var keyFiles = require('../../lib/util/keyFiles');
 var utils = require('../../lib/util/utils');
-var executeCmd = require('../framework/cli-executor').execute;
+
+var CLITest = require('../framework/cli-test');
+var suite = new CLITest();
 
 var testFile = './test/data/account-credentials.publishsettings';
 
-describe('cli', function(){
+describe('cli', function () {
   describe('account', function() {
     describe('env', function () {
       describe('list', function () {
         it('should work', function (done) {
-          var cmd = ('node cli.js account env list --json').split(' ');
-          executeCmd(cmd, function (result) {
+          suite.execute('account env list --json', function (result) {
             result.exitStatus.should.equal(0);
             var environments = JSON.parse(result.text);
 
@@ -143,8 +144,7 @@ describe('cli', function(){
       });
 
       it('should import certificate', function(done) {
-        var cmd = ('node cli.js account import ' + testFile + ' --skipregister').split(' ');
-        executeCmd(cmd, function (result) {
+        suite.execute('account import %s --skipregister', testFile, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });

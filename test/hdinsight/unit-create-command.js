@@ -329,7 +329,7 @@ describe('HDInsight create command (under unit test)', function() {
     command.hdinsight.createClusterCommand(undefined, options);
     var expected = command.processor.listResultsForEachCall[0].body.clusters[0];
     should.exist(command.user.logErrorAndData.firstCall);
-    command.user.logErrorAndData.firstCall.args[0].should.be.equal('The requested cluster already exists.');
+    command.user.logErrorAndData.firstCall.args[0].should.be.equal('The requested cluster already exists');
     command.user.logErrorAndData.firstCall.args[1].should.be.equal(expected);
     done();
   });
@@ -617,7 +617,7 @@ describe('HDInsight create command (under unit test)', function() {
     };
     command.hdinsight.createClusterCommand(undefined, options);
     should.exist(command.user.logErrorAndData.firstCall);
-    command.user.logErrorAndData.firstCall.args[0].should.be.equal('Unable to create cluster.');
+    command.user.logErrorAndData.firstCall.args[0].should.be.equal('Unable to create cluster');
     command.user.logErrorAndData.firstCall.args[1].should.be.equal(expected);
     done();
   });
@@ -635,7 +635,7 @@ describe('HDInsight create command (under unit test)', function() {
     should.exist(command.user.logError.firstCall);
     command.user.logError.firstCall.args[0].should.be.equal('The cluster could not be created');
     should.exist(command.user.logError.secondCall);
-    command.user.logError.secondCall.args[0].should.be.equal('The request failed. Please contact support for more information.');
+    command.user.logError.secondCall.args[0].should.be.equal('The request failed. Please contact support for more information');
     done();
   });
 });
