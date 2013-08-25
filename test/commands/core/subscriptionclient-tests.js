@@ -37,7 +37,7 @@ describe('subscriptionclient', function () {
       '{"endpoint":"https://management.core.windows.net/","subscription":"' + currentSubscription + '"}'
     );
 
-    var publishSettings = fs.readFileSync(path.join(__dirname, '../../data/account-credentials2.publishsettings')).toString();
+    var publishSettings = fs.readFileSync(path.join(__dirname, '../../data/account-credentials2.publishSettings')).toString();
     fs.writeFileSync(
       path.join(azureDir, 'publishSettings.xml'),
       publishSettings
