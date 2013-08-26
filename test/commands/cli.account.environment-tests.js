@@ -86,5 +86,20 @@ describe('cli', function () {
         });
       });
     });
+
+    it('should modify a predefined environment setting', function (done) {
+      suite.execute('account env set AzureCloud --publish-settings-file-url http://test.com --json', function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('account env show AzureCloud --json', function (result) {
+          result.exitStatus.should.equal(0);
+
+          var properties = JSON.parse(result.text);
+          properties.publishingProfile.should.equal('http://test.com');
+
+          done();
+        });
+      });
+    });
   });
 });

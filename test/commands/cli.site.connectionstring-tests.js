@@ -26,7 +26,8 @@ var siteNamePrefix = 'contests';
 var siteNames = [];
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
-var connectionString = 'Endpoint=sb://gongchen1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=fake=';
+var serviceBusConnectionString = 'Endpoint=sb://gongchen1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=fake=';
+var SqlConnectionString = 'Server=tcp:gpg5beafeq.database.windows.net,1433;Database=testasdasd;User ID=andrerod@gpg5beafeq;Password={your_password_here};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;';
 
 describe('cli', function(){
   describe('site connectionstring', function() {
@@ -73,7 +74,7 @@ describe('cli', function(){
           result.exitStatus.should.equal(0);
 
           // add a setting
-          suite.execute('site connectionstring add param1 %s SQLAzure %s --json', connectionString, siteName, function (result) {
+          suite.execute('site connectionstring add param1 %s SQLAzure %s --json', serviceBusConnectionString, siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
@@ -84,7 +85,7 @@ describe('cli', function(){
               settingsList.length.should.equal(1);
 
               // add another setting
-              suite.execute('site connectionstring add param2 %s SQLAzure %s --json', connectionString, siteName, function (result) {
+              suite.execute('site connectionstring add param2 %s SQLAzure %s --json', serviceBusConnectionString, siteName, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
@@ -134,6 +135,49 @@ describe('cli', function(){
 
                 suite.execute('site connectionstring list %s --json', siteName, function (result) {
                   result.exitStatus.should.equal(0);
+
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('should list site SQL connectionstring', function(done) {
+      var siteName = suite.generateId(siteNamePrefix, siteNames);
+
+      // Create site
+      suite.execute('site create %s --json --location %s', siteName, location, function (result) {
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        suite.execute('site connectionstring list %s --json', siteName, function (result) {
+          // there should be not settings yet as the site was just created
+          result.exitStatus.should.equal(0);
+
+          // add a setting
+          suite.execute('site connectionstring add conn1 %s SQLAzure %s --json', SqlConnectionString, siteName, function (result) {
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
+
+            suite.execute('site connectionstring list %s --json', siteName, function (result) {
+              var settingsList = JSON.parse(result.text);
+
+              // Listing should return 1 setting now
+              settingsList.length.should.equal(1);
+
+              // add another setting
+              suite.execute('site connectionstring add conn2 %s SQLAzure %s --json', SqlConnectionString, siteName, function (result) {
+                result.text.should.equal('');
+                result.exitStatus.should.equal(0);
+
+                suite.execute('site connectionstring list %s --json', siteName, function (result) {
+                  var settingsList = JSON.parse(result.text);
+
+                  // Listing should return 2 setting now
+                  settingsList.length.should.equal(2);
 
                   done();
                 });
