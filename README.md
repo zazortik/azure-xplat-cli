@@ -6,19 +6,28 @@ This project provides a cross platform command line tool for developers and admi
 
 * Accounts
     * Download and import Azure publish settings
-    * Create and manage Storage Accounts
+    * List imported Azure subscriptions
+    * Select current subscription
+    * Manage Azure environments
+    * Create and manage affinity groups
+    * Export management certificate
 * Storage
-    * Create and manage blob container and ACL
+    * Create and manage Storage Accounts
+    * Create and manage container, blob and ACL
 * Websites
     * Create and manage Windows Azure websites
     * Download site log files and get real time log streaming
     * Manage Deployments
-    * Configure Github integration
+    * Configure GitHub integration
 * Virtual machines
     * Create and manage Windows and Linux Virtual machines
     * Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+* Network
+    * Import and export network configuration
+    * Create and manage virtual network
+    * Create and manage DNS server
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
@@ -54,7 +63,7 @@ To enable it in zsh, you can write:
 
 To enable it in bash, you can write:
 
-    azure --completion >> ~/azure.completion.sh
+    azure --completion >> ~/azure.completion.sh<br />
 
     echo 'source ~/azure.completion.sh' >> .bash_profile
 
