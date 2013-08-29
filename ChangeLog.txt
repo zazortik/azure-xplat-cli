@@ -1,3 +1,13 @@
+2013.08.26 - version 0.7.1
+* Added blob storage commands
+  * azure storage blob list
+  * azure storage blob show
+  * azure storage blob upload
+  * azure storage blob download
+  * azure storage blob delete
+* Added azure account cert export
+* Multiple bug fixes
+
 2013.07.31 - version 0.7.0
 * Added network commands
 * Added more site commands
@@ -11,10 +21,10 @@
 * Renamed azure site config (will be removed in a future version) to azure site appsettings
 * Renamed azure account storage (will be removed in a future version) to azure storage account
 * Reduced CLI generic help
-* Added bash Autocomplete support for commands and categories
+* Added bash auto-complete support for commands and categories
 * Fixed generic options (--json and --verbose) to only show up where they work
 * Improved and updated setup experience
-* Multiple bugfixes and test infrastructure improvements
+* Multiple bug fixes and test infrastructure improvement
 
 2013.07.15 - version 0.6.18
 * Added website diagnostics configuration command
