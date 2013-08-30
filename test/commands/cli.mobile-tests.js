@@ -383,6 +383,18 @@ describe('cli', function () {
       });
     });
 
+      // Disable specific scheduler job
+    it('job update ' + servicename + ' -a disabled --json', function (done) {
+        var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -a disabled --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     it('job delete ' + servicename + ' foobar --json (delete scheduled job)', function(done) {
       var cmd = ('node cli.js mobile job delete ' + servicename + ' foobar --json').split(' ');
       var scopes = setupNock(cmd);
@@ -820,6 +832,18 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+      // Create table with specific permission 
+    it('table create ' + servicename + ' table2 --json (add table with specific permission)', function (done) {
+        var cmd = ('node cli.js mobile table create -p insert=public,update=public,read=user,delete=admin ' + servicename + ' table2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('table show ' + servicename + ' table1 --json (default table config)', function(done) {
@@ -1484,6 +1508,18 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+      // Enable preview features
+    it('preview list ' + servicename + ' --json', function (done) {
+        var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.include('SourceControl');
+            checkScopes(scopes);
+            done();
+        });
     });
   });
 });
