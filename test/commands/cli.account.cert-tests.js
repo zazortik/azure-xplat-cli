@@ -23,7 +23,7 @@ var suite = new CLITest();
 describe('cli', function () {
   describe('account cert', function () {
     it('should export with subscription, output file and publish settings specified', function (done) {
-      var publishSettingsPath = path.join(__dirname, '../data/account-credentials.publishsettings');
+      var publishSettingsPath = path.join(__dirname, '../data/account-credentials.publishSettings');
       var pemPath = path.join(__dirname, '../../out.pem');
 
       suite.execute('account cert export --publishsettings %s --file %s --subscription %s',
@@ -40,7 +40,7 @@ describe('cli', function () {
     });
 
     it('should export with subscription and publish settings specified', function (done) {
-      var publishSettingsPath = path.join(__dirname, '../data/account-credentials.publishsettings');
+      var publishSettingsPath = path.join(__dirname, '../data/account-credentials.publishSettings');
       var pemPath = path.join(__dirname, '../../Account.pem');
 
       suite.execute('account cert export --publishsettings %s --subscription %s',

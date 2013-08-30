@@ -95,12 +95,12 @@ function parsePublishSettings(fileName, callback) {
 }
 
 function fullSettingsFilePath(settingsName) {
-  return path.resolve(this.path, settingsName + '.publishsettings');
+  return path.resolve(this.path, settingsName + '.publishSettings');
 }
 
 function downloadPublishSettings(settingsName, callback) {
   var self = this;
-  var blobName = settingsName + '.publishsettings';
+  var blobName = settingsName + '.publishSettings';
   var destPath = self._fullSettingsFilePath(settingsName);
   self.blobService.getBlobToFile(self.blobContainer, blobName, destPath, function (err) {
     if (err) { return callback(err); }
