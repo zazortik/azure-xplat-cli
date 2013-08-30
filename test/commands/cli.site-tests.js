@@ -313,6 +313,18 @@ describe('cli', function () {
       });
     });
 
+    it('gives good error message', function (done) {
+      var siteName = 'mytestsite';
+
+      // Create site for testing
+      suite.execute('site create %s --json --location %s', siteName, location, function (result) {
+        result.exitStatus.should.equal(1);
+        result.errorText.indexOf('Website with given name mytestsite already exists.').should.be.above(-1);
+
+        done();
+      });
+    });
+
     describe('set', function () {
       var siteName;
 
