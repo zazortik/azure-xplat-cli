@@ -1213,6 +1213,51 @@ describe('cli', function () {
       });
     });
 
+    it('script upload ' + servicename + ' table/table1.read -f ' + __dirname + '/mobile/table1.read.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.read -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.read.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' table/table1.update -f ' + __dirname + '/mobile/table1.update.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.update -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.update.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' table/table1.delete -f ' + __dirname + '/mobile/table1.delete.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.delete -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.delete.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     it('script list ' + servicename + ' --json (insert script uploaded)', function(done) {
       var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1220,12 +1265,133 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.table).should.be.ok;
-        response.table.length.should.equal(1);
-        response.table[0].table.should.equal('table1');
-        response.table[0].operation.should.equal('insert');
+        response.table.length.should.equal(4);
+        response.table.forEach(function (item) {
+            switch (item.operation) {
+                case 'insert':
+                    {
+                        item.table.should.equal('table1');
+                        item.should.have.property('selflink');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'update':
+                    {
+                        item.table.should.equal('table1');
+                        item.should.have.property('selflink');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'delete':
+                    {
+                        item.table.should.equal('table1');
+                        item.should.have.property('selflink');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'read':
+                    {
+                        item.table.should.equal('table1');
+                        item.should.have.property('selflink');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                default:
+                    {
+                        false.should.not.be.false;
+                    }
+                    break;
+            }
+        });
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('script download ' + servicename + ' table/table1.insert -o -f ' + __dirname + '/mobile/table1.insert.js --json (download one script)', function (done) {
+        var cmd = ('node cli.js mobile script download ' + servicename + ' table/table1.insert -o -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.insert.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script delete ' + servicename + '/mobile/table1.insert.js --json (delete one script)', function (done) {
+        var cmd = ('node cli.js mobile script delete ' + servicename + ' table/table1.insert --json').split(' ');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script list ' + servicename + ' --json (insert script uploaded)', function (done) {
+        var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.table).should.be.ok;
+            response.table.length.should.equal(3);
+            response.table.forEach(function (item) {
+                switch (item.operation) {
+                    case 'update':
+                        {
+                            item.table.should.equal('table1');
+                            item.should.have.property('selflink');
+                            item.should.have.property('sizeBytes');
+                        }
+                        break;
+                    case 'delete':
+                        {
+                            item.table.should.equal('table1');
+                            item.should.have.property('selflink');
+                            item.should.have.property('sizeBytes');
+                        }
+                        break;
+                    case 'read':
+                        {
+                            item.table.should.equal('table1');
+                            item.should.have.property('selflink');
+                            item.should.have.property('sizeBytes');
+                        }
+                        break;
+                    default:
+                        {
+                            false.should.not.be.false;
+                        }
+                        break;
+                }
+            });
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' shared/apnsFeedback -f ' + __dirname + '/mobile/feedback.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' shared/apnsFeedback -f').split(' ');
+        cmd.push(__dirname + '/mobile/feedback.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('log ' + servicename + ' --json (no logs by default)', function(done) {
@@ -1508,18 +1674,6 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
-    });
-
-      // Enable preview features
-    it('preview list ' + servicename + ' --json', function (done) {
-        var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.include('SourceControl');
-            checkScopes(scopes);
-            done();
-        });
     });
   });
 });
