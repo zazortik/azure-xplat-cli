@@ -796,6 +796,37 @@ describe('cli', function () {
       });
     });
 
+    // Setting from file
+
+    it('config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json', function(done) {
+        var cmd = ('node cli.js mobile config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json').split(' ');
+        var scopes = setupNock(cmd);
+    executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+    });
+    });
+
+    it('config get -f ' + __dirname + '/mobile/facebookClientId.txt '+ servicename + ' facebookClientId --json (value was set)', function(done) {
+        var cmd = ('node cli.js mobile config get -f ' + __dirname + '/mobile/facebookClientId.txt '+ servicename + ' facebookClientId --json').split(' ');
+    var scopes = setupNock(cmd);
+    executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        var fs = require('fs');
+        fs.readFile(__dirname + '/mobile/facebookClientId.txt', 'utf8', function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            response.facebookClientId.should.equal(data);
+        });
+        checkScopes(scopes);
+        done();
+    });
+    });
+
     it('table list ' + servicename + ' --json (no tables by default)', function(done) {
       var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
@@ -834,7 +865,8 @@ describe('cli', function () {
       });
     });
 
-      // Create table with specific permission 
+     // Create table with specific permission 
+
     it('table create ' + servicename + ' table2 --json (add table with specific permission)', function (done) {
         var cmd = ('node cli.js mobile table create -p insert=public,update=public,read=user,delete=admin ' + servicename + ' table2 --json').split(' ');
         var scopes = setupNock(cmd);
@@ -981,6 +1013,58 @@ describe('cli', function () {
       });
     });
 
+    it('data read ' + servicename + ' table1 --skip 3 --json', function (done) {
+        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 --skip 3 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response.forEach(function (item) {
+                item.should.have.property('id');
+                item.should.have.property('rowNumber');
+                item.should.have.property('foo');
+                item.should.have.property('bar');
+                item.should.have.property('baz');
+            });
+            response[0].id.should.equal(4);
+            response[1].id.should.equal(5);
+            checkScopes(scopes);
+            done();
+        })
+    });
+
+    it('data read ' + servicename + ' table1 --skip 2 --top 2 --json (skip top 2 row of data to show following 2 records)', function (done) {
+        var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --skip 2 --top 2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response[0].id.should.equal(3);
+            response[1].id.should.equal(4)
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('data read ' + servicename + ' table1 $top=2 --json', function (done) {
+        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 $top=2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response[0].id.should.equal(1);
+            response[1].id.should.equal(2);
+            checkScopes(scopes);
+            done();
+        })
+    });
+
     it('table update ' + servicename + ' table1 --deleteColumn foo --addIndex bar,baz -q --json (delete column, add indexes)', function(done) {
       var cmd = ('node cli.js mobile table update ' + servicename + ' table1  --deleteColumn foo --addIndex bar,baz -q --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1010,6 +1094,37 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('table update ' + servicename + ' table1 --deleteIndex bar -q --json (delete index)', function (done) {
+        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('table show ' + servicename + ' table1 --json (remove index on specific column)', function (done) {
+        var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.columns).should.be.ok;
+            response.columns.length.should.equal(4);
+            [{ name: 'id', indexed: true },
+              { name: 'rowNumber', indexed: false },
+              { name: 'bar', indexed: false },
+              { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
+                  response.columns[columnIndex].name.should.equal(column.name);
+                  response.columns[columnIndex].indexed.should.equal(column.indexed);
+              });
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
