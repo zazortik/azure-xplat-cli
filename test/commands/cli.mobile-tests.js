@@ -809,7 +809,7 @@ describe('cli', function () {
     });
     });
 
-    it('config get ' + servicename + ' facebookClientId --json (setted from file)', function (done) {
+    it('config get ' + servicename + ' facebookClientId --json (set from file)', function (done) {
         var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientId --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
@@ -1542,6 +1542,32 @@ describe('cli', function () {
         done();
       });
     });
+      
+    it('log ' + servicename + ' --type information --json (5 information log entries added)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' --type information --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(5);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' --type warning --json (no warning log entry)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' --type warning --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
 
     it('log ' + servicename + ' --type error --json (5 error log entries added)', function(done) {
       var cmd = ('node cli.js mobile log ' + servicename + ' --type error --json').split(' ');
@@ -1567,6 +1593,32 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('log ' + servicename + ' -r $top=1 --json (list 1 top log entry)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' -r $top=1&$skip=1 --json (list 1 top log entry after skip 1)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1&$skip=1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('table delete ' + servicename + ' table1 -q --json (delete existing table)', function(done) {
@@ -1683,7 +1735,7 @@ describe('cli', function () {
       });
     });
 
-    it('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
+    it('scale show ' + servicename + ' --json (show updated scale settings - standard)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1696,6 +1748,30 @@ describe('cli', function () {
       });
     });
 
+    it('scale change ' + servicename + ' -t premium --json (change scale to premium)', function (done) {
+        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t premium --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('scale show ' + servicename + ' --json (show updated scale settings - premium)', function (done) {
+        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.tier.should.equal('premium');
+            response.numberOfInstances.should.equal(2);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function(done) {
       var cmd = ('node cli.js mobile scale change ' + servicename + ' -t free -i 1 --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1705,6 +1781,19 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('scale show ' + servicename + ' --json (show updated scale settings - free)', function (done) {
+        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.tier.should.equal('free');
+            response.numberOfInstances.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     // Preview Features
