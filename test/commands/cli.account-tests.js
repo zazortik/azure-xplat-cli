@@ -23,7 +23,7 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 var suite = new CLITest();
 
-var testFile = './test/data/account-credentials.publishsettings';
+var testFile = './test/data/account-credentials.publishSettings';
 
 describe('cli', function () {
   describe('account', function() {

@@ -41,7 +41,7 @@ describe('HDInsight list command (under unit test)', function() {
     var command = new GetCommand();
     should.exist(command.hdinsight.listClustersCommand);
     command.hdinsight.listClustersCommand({});
-    command.user.startProgress.firstCall.args[0].should.be.equal('Listing HDInsight Servers');
+    command.user.startProgress.firstCall.args[0].should.be.equal('Getting HDInsight servers');
     done();
   });
 

@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest174894ce-00c8-4f2d-9f78-447a2f90660e';
+var nockedServiceName = 'clitest0d5ad654-65da-4337-93ba-02233d979352';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -999,7 +999,166 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
-    });    
+    });
+    
+    /* Custom Api */
+
+    it('api list ' + servicename + ' --json (no apis by default)', function (done) {
+      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(0);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('api create ' + servicename + ' testapi --json (create first api)', function (done) {
+      var cmd = ('node cli.js mobile api create ' + servicename + ' testapi --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('api create ' + servicename + ' testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json', function (done) {
+      var cmd = ('node cli.js mobile api create ' + servicename + ' testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Confirm apis were created
+    it('api list ' + servicename + ' --json', function (done) {
+      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+
+        response.should.includeEql({
+          name: 'testapi',
+          get: 'application',
+          put: 'application',
+          post: 'application',
+          patch: 'application',
+          delete: 'application'
+        });
+        response.should.includeEql({        
+          name: 'testapitwo',
+          get: 'public',
+          put: 'user',
+          post: 'application'
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('api update ' + servicename + ' testapi --json', function (done) {
+      var cmd = ('node cli.js mobile api update ' + servicename + ' testapi --permissions get=public,post=application,put=user,patch=admin,delete=admin --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('api delete ' + servicename + ' testapitwo --json', function (done) {
+      var cmd = ('node cli.js mobile api delete ' + servicename + ' testapitwo --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Confirm permissions were updated and second api deleted
+    it('api list ' + servicename + ' --json', function (done) {
+      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.includeEql({
+          name: 'testapi', 
+          get: 'public',
+          put: 'user',
+          post: 'application'
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('script upload ' + servicename + ' api/testapi.js -f ' + __dirname + '/mobile/testapi.js --json (upload new script)', function(done) {
+      var cmd = ('node cli.js mobile script upload ' + servicename + ' api/testapi.js -f').split(' ');
+      cmd.push(__dirname + '/mobile/testapi.js');
+      cmd.push('--json');
+
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('script download ' + servicename + ' api/testapi.js -o -f ' + __dirname + '/mobile/testapicopy.js --json (download script)', function(done) {
+      var cmd = ('node cli.js mobile script download ' + servicename + ' api/testapi.js -o -f').split(' ');
+      cmd.push(__dirname + '/mobile/testapicopy.js');
+      cmd.push('--json');
+
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('api delete ' + servicename + ' testapi --json', function (done) {
+      var cmd = ('node cli.js mobile api delete ' + servicename + ' testapi --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Confirm no api's exist after delete
+    it('api list ' + servicename + ' --json', function (done) {
+      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.length.should.equal(0);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    /* script commands */
 
     it('script list ' + servicename + ' --json (no scripts by default)', function(done) {
       var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
@@ -1142,6 +1301,61 @@ describe('cli', function () {
       });
     });
 
+    // Key Command Tests
+    // Test setting and randomly generating the application key
+    it('key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json', function (done) {
+      var cmd = ('node cli.js mobile key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.applicationKey.should.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+    
+    it('key regenerate ' + servicename + ' application --json', function (done) {
+      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' application --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.applicationKey.length.should.equal(32);
+        response.applicationKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Repeat test for master key
+    it('key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json', function (done) {
+      var cmd = ('node cli.js mobile key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.masterKey.should.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+    
+    it('key regenerate ' + servicename + ' master --json', function (done) {
+      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' master --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.masterKey.length.should.equal(32);
+        response.masterKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Scale Tests
+
     it('scale show ' + servicename + ' --json (show default scale settings)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1185,6 +1399,50 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Preview Features
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [],
+          "available": [ "SourceControl" ]
+        });
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview enable ' + servicename + ' sourcecontrol --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.featureName.should.equal("SourceControl");
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
+      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.should.include({
+          "enabled": [ "SourceControl" ],
+          "available": [ "SourceControl" ]
+        });
         checkScopes(scopes);
         done();
       });

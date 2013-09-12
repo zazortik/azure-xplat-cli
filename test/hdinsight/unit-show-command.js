@@ -29,7 +29,7 @@ describe('HDInsight show command (under unit test)', function() {
   it('should call startProgress with the correct statement', function(done) {
     var command = new GetCommand();
     command.hdinsight.showClusterCommand('test1', {});
-    command.user.startProgress.firstCall.args[0].should.be.equal('Getting HDInsight Cluster');
+    command.user.startProgress.firstCall.args[0].should.be.equal('Getting HDInsight cluster');
     done();
   });
 

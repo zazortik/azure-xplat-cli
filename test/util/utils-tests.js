@@ -53,4 +53,38 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('getReplaceRegExpFromCharCode should work', function(done) {
+    var charCodes = [];
+    assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/(?:)/');
+    charCodes = [65];
+    assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/A/gim');
+    charCodes = [65, 66];
+    assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/A|B/gim');
+    charCodes = [63];
+    assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/\\?/gim');
+    charCodes = [63, 66];
+    assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/\\?|B/gim');
+    done();
+  });
+
+  test('escapeFilePath should work', function(done) {
+    //Run test case on all platforms
+    util.isWindows = function() { return true;};
+    assert.equal(util.escapeFilePath('abc'), 'abc');
+    assert.equal(util.escapeFilePath('a?c'), 'a%3fc');
+    assert.equal(util.escapeFilePath('a\\c'), 'a%5cc');
+    assert.equal(util.escapeFilePath('a/bc'), 'a%2fbc');
+    assert.equal(util.escapeFilePath('a?c/*'), 'a%3fc%2f%2a');
+    assert.equal(util.escapeFilePath('COM'), 'COM');
+    assert.equal(util.escapeFilePath('COM1'), 'COM1 (1)');
+    assert.equal(util.escapeFilePath('COm1'), 'COm1 (1)');
+    assert.equal(util.escapeFilePath(''), '');
+    assert.equal(util.escapeFilePath('a?*bc'), 'a%3f%2abc');
+    assert.equal(util.escapeFilePath('a\0bc'), 'a%0bc');
+    assert.equal(util.escapeFilePath('con'), 'con (1)');
+    assert.equal(util.escapeFilePath('lpT9'), 'lpT9 (1)');
+    assert.equal(util.escapeFilePath('LPT9?'), 'LPT9%3f');
+    done();
+  });
 });

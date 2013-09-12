@@ -13,14 +13,17 @@
 * limitations under the License.
 */
 
+var azure = require('azure');
 var should = require('should');
+var fs = require('fs');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
 var suite;
 var testPrefix = 'cli.storage.blob-tests';
-var fakeConnectionString = 'DefaultEndpointsProtocol=https;AccountName=yaotest;AccountKey=null';
+var fakeConnectionString = 'DefaultEndpointsProtocol=https;AccountName=ciserversdk;AccountKey=null';
+var crypto = require('crypto');
 
 /**
 * Convert a cmd to azure storge cli
@@ -128,6 +131,74 @@ describe('cli', function () {
           suite.execute('storage container delete %s -q --json', containerName, function(result) {
             done();
           });
+        });
+      });
+    });
+
+    describe('blob', function() {
+      var containerName = 'storage-cli-blob-test';
+      var blobName = 'blobname';
+      before(function(done) {
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        blobService.createContainer(containerName, function(){done();});
+      });
+
+      after(function(done) {
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        blobService.deleteContainer(containerName, function(){done();});
+      });
+
+      it('should upload a basic file to azure storage', function(done) {
+        var buf = new Buffer('HelloWord', 'utf8');
+        var fileName = 'hello.tmp.txt';
+        var fd = fs.openSync(fileName, 'w');
+        fs.writeSync(fd, buf, 0, buf.length, 0);
+        var md5Hash = crypto.createHash('md5');
+        md5Hash.update(buf);
+        var contentMD5 = md5Hash.digest('base64');
+        suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blobName, function(result) {
+          var blob = JSON.parse(result.text);
+          blob.blob.should.equal(blobName);
+          blob.contentMD5.should.equal(contentMD5);
+          fs.unlinkSync(fileName);
+          done();
+        });
+      });
+
+      it('should list all blobs', function(done) {
+        suite.execute('storage blob list %s --json', containerName, function(result) {
+          var blobs = JSON.parse(result.text);
+          blobs.length.should.greaterThan(0);
+          blobs.some(function(blob) {
+            return blob.name === blobName;
+          }).should.be.true;
+          done();
+        });
+      });
+
+      it('should show specified blob', function(done) {
+        suite.execute('storage blob show %s %s --json', containerName, blobName, function(result) {
+          var blob = JSON.parse(result.text);
+          blob.blob.should.equal(blobName);
+          done();
+        });
+      });
+
+      it('should download the specified blob', function(done) {
+        var fileName = 'hello.download.txt';
+        suite.execute('storage blob download %s %s %s -q -m --json', containerName, blobName, fileName, function(result) {
+          var blob = JSON.parse(result.text);
+          blob.blob.should.equal(blobName);
+          blob.fileName.should.equal(fileName);
+          fs.unlinkSync(fileName);
+          done();
+        });
+      });
+
+      it('should delete the specified blob', function(done) {
+        suite.execute('storage blob delete %s %s --json', containerName, blobName, function(result) {
+          result.errorText.should.be.empty;
+          done();
         });
       });
     });
