@@ -441,12 +441,12 @@ Create a new custom API
 **--permissions [permissions]** - comma delimited list of &lt;method&gt;=&lt;permission&gt; pairs
 
     azure mobile api update [servicename] [apiname]
-Updates a custom API
+Update a custom API
 
 **--permissions [permissions]** - comma delimited list of &lt;method&gt;=&lt;permission&gt; pairs
 
     azure mobile api delete [servicename] [apiname]
-Deletes a custom API
+Delete a custom API
 
 ## azure sb - Manage your Service Bus configuration
 
