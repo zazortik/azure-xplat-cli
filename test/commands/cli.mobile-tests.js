@@ -61,6 +61,7 @@ var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
 var Channel = require('../../lib/util/channel');
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
+var servicedomain = process.env.SERVICE_DOMAIN || '.azure-mobile.net';
 var scopeWritten;
 
 // polyfill appendFileSync
@@ -940,6 +941,17 @@ describe('cli', function () {
         });
     });
 
+    it('table delete ' + servicename + ' table2 -q --json (delete table2)', function (done) {
+        var cmd = ('node cli.js mobile table delete ' + servicename + ' table2 -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     function insert5Rows(callback) {
       var success = 0;
       var failure = 0;
@@ -960,7 +972,7 @@ describe('cli', function () {
 
       for (var i = 0; i < 5; i++) {
         var channel = new Channel({
-          host: servicename + '.azure-mobile.net',
+          host: servicename + servicedomain,
           port: 443
         }).path('tables')
           .path('table1')
@@ -1203,7 +1215,9 @@ describe('cli', function () {
           name: 'testapitwo',
           get: 'public',
           put: 'user',
-          post: 'application'
+          post: 'application',
+          patch: 'admin',
+          delete: 'admin'
         });
         checkScopes(scopes);
         done();
@@ -1243,7 +1257,9 @@ describe('cli', function () {
           name: 'testapi', 
           get: 'public',
           put: 'user',
-          post: 'application'
+          post: 'application',
+          patch: 'admin',
+          delete: 'admin'
         });
         checkScopes(scopes);
         done();
@@ -1430,8 +1446,8 @@ describe('cli', function () {
       });
     });
 
-    it('script delete ' + servicename + '/mobile/table1.insert.js --json (delete insert script)', function (done) {
-        var cmd = ('node cli.js mobile script delete ' + servicename + ' table/table1.insert --json').split(' ');
+    it('script delete ' + servicename + '/mobile/table1.read.js --json (delete read script)', function (done) {
+        var cmd = ('node cli.js mobile script delete ' + servicename + ' table/table1.read --json').split(' ');
 
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
@@ -1486,7 +1502,7 @@ describe('cli', function () {
         });
     });
 
-    it('script list ' + servicename + ' --json (with APNS script but without insert script)', function (done) {
+    it('script list ' + servicename + ' --json (with APNS script but without read script)', function (done) {
         var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
         var scopes = setupNock(cmd);
 
@@ -1495,12 +1511,12 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response.shared).should.be.ok;
             response.shared.length.should.equal(1);
-            response.shared[0].name.should.equal('apnsFeedback');
+            response.shared[0].name.should.equal('apnsfeedback.js');
 
             Array.isArray(response.table).should.be.ok;
             response.table.length.should.equal(3);
             response.table.forEach(function (item) {
-                item.operation.should.not.equal('insert');
+                item.operation.should.not.equal('read');
             });
             checkScopes(scopes);
             done();
