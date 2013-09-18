@@ -76,7 +76,7 @@ describe('cli', function () {
     });
 
     it('should update storage accounts', function(done) {
-      suite.execute('storage account update %s --label test --json', storageName, function (result) {
+      suite.execute('storage account set %s --label test --json', storageName, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
