@@ -46,8 +46,8 @@
 
 */
 
-var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest0d5ad654-65da-4337-93ba-02233d979352';
+var nockedSubscriptionId = '8c074cc8-ec99-43cc-9aaf-c18158fccd6c';
+var nockedServiceName = 'clitest5b2cbba3-6826-4117-877d-bc729848222e';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -198,6 +198,8 @@ describe('cli', function () {
             line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             // nock encoding bug
             line = line.replace("'error'", "\\'error\\'");
+            line = line.replace("'information'", "\\'information\\'");
+            line = line.replace("'warning'", "\\'warning\\'");
             // nock is loosing the port number
             line = line.replace("nock('https://management.database.windows.net')", "nock('https://management.database.windows.net:8443')");
 
