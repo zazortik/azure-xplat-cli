@@ -53,7 +53,7 @@ describe('cli', function () {
     it('should create a storage account', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
-      suite.execute('account storage create %s --json --location %s',
+      suite.execute('storage account create %s --json --location %s',
         storageName,
         process.env.AZURE_STORAGE_TEST_LOCATION || 'East US',
         function (result) {
@@ -65,7 +65,7 @@ describe('cli', function () {
     });
 
     it('should list storage accounts', function(done) {
-      suite.execute('account storage list --json', function (result) {
+      suite.execute('storage account list --json', function (result) {
         var storageAccounts = JSON.parse(result.text);
         storageAccounts.some(function (account) {
           return account.ServiceName === storageName;
@@ -76,11 +76,11 @@ describe('cli', function () {
     });
 
     it('should update storage accounts', function(done) {
-      suite.execute('account storage update %s --label test --json', storageName, function (result) {
+      suite.execute('storage account update %s --label test --json', storageName, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('account storage show %s --json', storageName, function (result) {
+        suite.execute('storage account show %s --json', storageName, function (result) {
           var storageAccount = JSON.parse(result.text);
           new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
 
@@ -90,12 +90,12 @@ describe('cli', function () {
     });
 
     it('should renew storage keys', function(done) {
-      suite.execute('account storage keys list %s --json', storageName, function (result) {
+      suite.execute('storage account keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
         storageAccountKeys.Primary.should.not.be.null;
         storageAccountKeys.Secondary.should.not.be.null;
 
-        suite.execute('account storage keys renew %s --primary --json', storageName, function (result) {
+        suite.execute('storage account keys renew %s --primary --json', storageName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
@@ -103,7 +103,7 @@ describe('cli', function () {
             if (storages.length > 0) {
               var storage = storages.pop();
 
-              suite.execute('account storage delete %s --quiet --json', storage, function () {
+              suite.execute('storage account delete %s --quiet --json', storage, function () {
                 deleteUsedStorage(storages);
               });
             } else {
