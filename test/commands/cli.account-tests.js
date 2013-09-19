@@ -149,6 +149,13 @@ describe('cli', function () {
           done();
         });
       });
+
+      it('should work accounts', function (done) {
+        suite.execute('account clear', function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
     });
   });
 });
