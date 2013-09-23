@@ -1,4 +1,4 @@
 function update(id, user, request) {
-        console.log("Invoking update script");        
+        console.log('Invoking update script');        
 	request.respond();
 }
