@@ -1,3 +1,3 @@
 function processFeedback() {
-    console.log("Logged from feedback!");
+    console.log('Logged from feedback!');
 }
