@@ -334,9 +334,9 @@ Show the scalability settings of a mobile sservice
     azure mobile scale change [options] [servicename]
 Change the scalability settings of a mobile service
 
-**--computeMode [mode]** - 'Free' or 'Reserved'
+**--tier [tier]** - 'Free', 'Standard' or 'Premium'
 
-**--numberOfInstances [count]** - number of instances in reserved mode.
+**--numberOfInstances [count]** - number of instances in standard or premium mode.
 
     azure mobile log [servicename]
 Retrieves mobile logs 
@@ -362,7 +362,7 @@ List the tables for a specific service
     azure mobile table create [servicename] [tablename]
 Creates a new table for your mobile service
 
-**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+**--permissions [permissions]** - comma delimited list of &lt;operation&gt;=&lt;permission&gt; pairs
 
     azure mobile table show [servicename] [tablename]
 Display table details such as the number of records, the list of columns and which scripts are defined.
@@ -370,7 +370,7 @@ Display table details such as the number of records, the list of columns and whi
     azure mobile table update [options] [servicename] [tablename] 
 Updates mobile table schema, permissions and indexes
 
-**--permissions [permissions]** - comma delimited list of <operation>=<permission> pairs
+**--permissions [permissions]** - comma delimited list of &lt;operation&gt;=&lt;permission&gt; pairs
 
 **--deleteColumn [columns]** - comma delimited list of columns to delete
 
@@ -429,6 +429,24 @@ Update job settings
 
     azure mobile job delete [servicename] [jobname]
 Delete a scheduled job
+
+### azure mobile api - Manage custom APIs
+
+    azure mobile api list [servicename]
+List custom APIs
+
+    azure mobile api create [servicename] [apiname]
+Create a new custom API
+
+**--permissions [permissions]** - comma delimited list of &lt;method&gt;=&lt;permission&gt; pairs
+
+    azure mobile api update [servicename] [apiname]
+Update a custom API
+
+**--permissions [permissions]** - comma delimited list of &lt;method&gt;=&lt;permission&gt; pairs
+
+    azure mobile api delete [servicename] [apiname]
+Delete a custom API
 
 ## azure sb - Manage your Service Bus configuration
 

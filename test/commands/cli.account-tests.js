@@ -23,7 +23,7 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 var suite = new CLITest();
 
-var testFile = './test/data/account-credentials.publishsettings';
+var testFile = './test/data/account-credentials.publishSettings';
 
 describe('cli', function () {
   describe('account', function() {
@@ -145,6 +145,13 @@ describe('cli', function () {
 
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('should work accounts', function (done) {
+        suite.execute('account clear', function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
