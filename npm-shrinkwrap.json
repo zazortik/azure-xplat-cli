@@ -4,6 +4,7 @@
   "dependencies": {
     "azure": {
       "version": "0.7.15",
+      "from": "git://github.com/andrerod/azure-sdk-for-node.git#deployment",
       "dependencies": {
         "xml2js": {
           "version": "0.2.8",
@@ -426,10 +427,26 @@
               }
             },
             "http-browserify": {
-              "version": "0.1.11",
+              "version": "0.1.12",
               "dependencies": {
                 "concat-stream": {
-                  "version": "0.0.8"
+                  "version": "1.0.1",
+                  "dependencies": {
+                    "bops": {
+                      "version": "0.0.6",
+                      "dependencies": {
+                        "base64-js": {
+                          "version": "0.0.2"
+                        },
+                        "to-utf8": {
+                          "version": "0.0.1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Base64": {
+                  "version": "0.1.2"
                 }
               }
             },

@@ -197,7 +197,7 @@ describe('HDInsight command line (under unit test)', function() {
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
     var command = cluster.commands['create'];
-    command.description.firstCall.args[0].should.be.equal('Create a new cluster');
+    command.description.firstCall.args[0].should.be.equal('Create a cluster');
     done();
   });
 
