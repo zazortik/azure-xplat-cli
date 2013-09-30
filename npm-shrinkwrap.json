@@ -4,7 +4,7 @@
   "dependencies": {
     "azure": {
       "version": "0.7.15",
-      "from": "git://github.com/andrerod/azure-sdk-for-node.git#deployment",
+      "from": "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
       "dependencies": {
         "xml2js": {
           "version": "0.2.8",
