@@ -61,6 +61,7 @@ var sinon = require('sinon');
 var keyFiles = require('../../lib/util/keyFiles');
 var Channel = require('../../lib/util/channel');
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
+var servicedomain = process.env.SERVICE_DOMAIN || '.azure-mobile.net';
 var scopeWritten;
 
 // polyfill appendFileSync
@@ -197,6 +198,8 @@ describe('cli', function () {
             line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             // nock encoding bug
             line = line.replace("'error'", "\\'error\\'");
+            line = line.replace("'information'", "\\'information\\'");
+            line = line.replace("'warning'", "\\'warning\\'");
             // nock is loosing the port number
             line = line.replace("nock('https://management.database.windows.net')", "nock('https://management.database.windows.net:8443')");
 
@@ -381,6 +384,18 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+      // Disable specific scheduler job
+    it('job update ' + servicename + ' -a disabled --json', function (done) {
+        var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -a disabled --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('job delete ' + servicename + ' foobar --json (delete scheduled job)', function(done) {
@@ -784,6 +799,36 @@ describe('cli', function () {
       });
     });
 
+    // Setting from file
+
+    it('config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json', function(done) {
+        var cmd = ('node cli.js mobile config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json').split(' ');
+        var scopes = setupNock(cmd);
+    executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+    });
+    });
+
+    it('config get ' + servicename + ' facebookClientId --json (set from file)', function (done) {
+        var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientId --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            fs.readFileSync(__dirname + '/mobile/facebookClientId.txt', 'utf8', function (err, data) {
+                if (err) {
+                    return console.log(err);
+                }
+                response.facebookClientId.should.equal(data);
+            });
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     it('table list ' + servicename + ' --json (no tables by default)', function(done) {
       var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
@@ -870,6 +915,45 @@ describe('cli', function () {
       });
     });
 
+    it('table create ' + servicename + ' table2 --json (add table with specific permission)', function (done) {
+        var cmd = ('node cli.js mobile table create -p insert=public,update=public,read=user,delete=admin ' + servicename + ' table2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('table show ' + servicename + ' table2 --json (check the specific permission setting)', function (done) {
+        var cmd = ('node cli.js mobile table show ' + servicename + ' table2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            ['insert', 'update'].forEach(function (permission) {
+                response.permissions[permission].should.equal('public');
+            });
+            response.permissions.read.should.equal('user');
+            response.permissions.delete.should.equal('admin');
+            response.table.name.should.equal('table2');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('table delete ' + servicename + ' table2 -q --json (delete table2)', function (done) {
+        var cmd = ('node cli.js mobile table delete ' + servicename + ' table2 -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     function insert5Rows(callback) {
       var success = 0;
       var failure = 0;
@@ -890,7 +974,7 @@ describe('cli', function () {
 
       for (var i = 0; i < 5; i++) {
         var channel = new Channel({
-          host: servicename + '.azure-mobile.net',
+          host: servicename + servicedomain,
           port: 443
         }).path('tables')
           .path('table1')
@@ -957,6 +1041,51 @@ describe('cli', function () {
       });
     });
 
+    it('data read ' + servicename + ' table1 --skip 3 --json', function (done) {
+        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 --skip 3 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response[0].id.should.equal(4);
+            response[1].id.should.equal(5);
+            checkScopes(scopes);
+            done();
+        })
+    });
+
+    it('data read ' + servicename + ' table1 --skip 2 --top 2 --json (skip top 2 row of data to show following 2 records)', function (done) {
+        var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --skip 2 --top 2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response[0].id.should.equal(3);
+            response[1].id.should.equal(4)
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('data read ' + servicename + ' table1 $top=2 --json', function (done) {
+        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 $top=2 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.length.should.equal(2);
+            response[0].id.should.equal(1);
+            response[1].id.should.equal(2);
+            checkScopes(scopes);
+            done();
+        })
+    });
+
     it('table update ' + servicename + ' table1 --deleteColumn foo --addIndex bar,baz -q --json (delete column, add indexes)', function(done) {
       var cmd = ('node cli.js mobile table update ' + servicename + ' table1  --deleteColumn foo --addIndex bar,baz -q --json').split(' ');
       var scopes = setupNock(cmd);
@@ -986,6 +1115,37 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('table update ' + servicename + ' table1 --deleteIndex bar -q --json (delete index)', function (done) {
+        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('table show ' + servicename + ' table1 --json (remove index on specific column)', function (done) {
+        var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.columns).should.be.ok;
+            response.columns.length.should.equal(4);
+            [{ name: 'id', indexed: true },
+              { name: 'rowNumber', indexed: false },
+              { name: 'bar', indexed: false },
+              { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
+                  response.columns[columnIndex].name.should.equal(column.name);
+                  response.columns[columnIndex].indexed.should.equal(column.indexed);
+              });
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
@@ -1057,7 +1217,9 @@ describe('cli', function () {
           name: 'testapitwo',
           get: 'public',
           put: 'user',
-          post: 'application'
+          post: 'application',
+          patch: 'admin',
+          delete: 'admin'
         });
         checkScopes(scopes);
         done();
@@ -1097,7 +1259,9 @@ describe('cli', function () {
           name: 'testapi', 
           get: 'public',
           put: 'user',
-          post: 'application'
+          post: 'application',
+          patch: 'admin',
+          delete: 'admin'
         });
         checkScopes(scopes);
         done();
@@ -1189,19 +1353,176 @@ describe('cli', function () {
       });
     });
 
-    it('script list ' + servicename + ' --json (insert script uploaded)', function(done) {
+    it('script upload ' + servicename + ' table/table1.read -f ' + __dirname + '/mobile/table1.read.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.read -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.read.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' table/table1.update -f ' + __dirname + '/mobile/table1.update.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.update -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.update.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' table/table1.delete -f ' + __dirname + '/mobile/table1.delete.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.delete -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.delete.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script list ' + servicename + ' --json (insert&read&upload&delete scripts uploaded)', function(done) {
       var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.table).should.be.ok;
-        response.table.length.should.equal(1);
-        response.table[0].table.should.equal('table1');
-        response.table[0].operation.should.equal('insert');
+        response.table.length.should.equal(4);
+        response.table.forEach(function (item) {
+            switch (item.operation) {
+                case 'insert':
+                    {
+                        item.table.should.equal('table1');
+                        item.selflink.should.include(servicename + '/tables/table1/scripts/Insert');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'update':
+                    {
+                        item.table.should.equal('table1');
+                        item.selflink.should.include(servicename + '/tables/table1/scripts/Update');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'delete':
+                    {
+                        item.table.should.equal('table1');
+                        item.selflink.should.include(servicename + '/tables/table1/scripts/Delete');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                case 'read':
+                    {
+                        item.table.should.equal('table1');
+                        item.selflink.should.include(servicename + '/tables/table1/scripts/Read');
+                        item.should.have.property('sizeBytes');
+                    }
+                    break;
+                default:
+                    {
+                        false.should.not.be.false;
+                    }
+                    break;
+            }
+        });
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('script delete ' + servicename + '/mobile/table1.read.js --json (delete read script)', function (done) {
+        var cmd = ('node cli.js mobile script delete ' + servicename + ' table/table1.read --json').split(' ');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' shared/apnsFeedback -f ' + __dirname + '/mobile/feedback_upload.js --json (upload APNS script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' shared/apnsFeedback -f').split(' ');
+        cmd.push(__dirname + '/mobile/feedback_upload.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script download ' + servicename + ' shared/apnsFeedback -f -o ' + __dirname + '/mobile/feedback_download.js --json (download APNS script)', function (done) {
+        var cmd = ('node cli.js mobile script download ' + servicename + ' shared/apnsFeedback -o -f').split(' ');
+        cmd.push(__dirname + '/mobile/feedback_download.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.errorText.should.equal('');
+            result.text.should.equal('');
+            var data_str = null;
+            fs.readFileSync(__dirname + '/mobile/feedback_download.js', 'utf8', function (err, data) {
+                if (err) {
+                    return console.log(err);
+                }
+                data_str = data;
+            });
+            fs.readFileSync(__dirname + '/mobile/feedback_upload.js', 'utf8', function (err, data) {
+                if (err) {
+                    return console.log(err);
+                }
+                data.should.equal(data_str);
+            });
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script list ' + servicename + ' --json (with APNS script but without read script)', function (done) {
+        var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.shared).should.be.ok;
+            response.shared.length.should.equal(1);
+            response.shared[0].name.should.equal('apnsfeedback.js');
+
+            Array.isArray(response.table).should.be.ok;
+            response.table.length.should.equal(3);
+            response.table.forEach(function (item) {
+                item.operation.should.not.equal('read');
+            });
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('log ' + servicename + ' --json (no logs by default)', function(done) {
@@ -1239,6 +1560,32 @@ describe('cli', function () {
         done();
       });
     });
+      
+    it('log ' + servicename + ' --type information --json (5 information log entries added)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' --type information --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(5);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' --type warning --json (no warning log entry)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' --type warning --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
 
     it('log ' + servicename + ' --type error --json (5 error log entries added)', function(done) {
       var cmd = ('node cli.js mobile log ' + servicename + ' --type error --json').split(' ');
@@ -1264,6 +1611,32 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('log ' + servicename + ' -r $top=1 --json (list 1 top log entry)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' -r $top=1&$skip=1 --json (list 1 top log entry after skip 1)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1&$skip=1 --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('table delete ' + servicename + ' table1 -q --json (delete existing table)', function(done) {
@@ -1380,7 +1753,7 @@ describe('cli', function () {
       });
     });
 
-    it('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
+    it('scale show ' + servicename + ' --json (show updated scale settings - standard)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1393,6 +1766,30 @@ describe('cli', function () {
       });
     });
 
+    it('scale change ' + servicename + ' -t premium --json (change scale to premium)', function (done) {
+        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t premium --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('scale show ' + servicename + ' --json (show updated scale settings - premium)', function (done) {
+        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.tier.should.equal('premium');
+            response.numberOfInstances.should.equal(2);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function(done) {
       var cmd = ('node cli.js mobile scale change ' + servicename + ' -t free -i 1 --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1402,6 +1799,19 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('scale show ' + servicename + ' --json (show updated scale settings - free)', function (done) {
+        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.tier.should.equal('free');
+            response.numberOfInstances.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     // Preview Features
