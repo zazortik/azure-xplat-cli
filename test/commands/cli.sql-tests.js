@@ -179,9 +179,9 @@ describe('cli', function () {
 
             var servers = JSON.parse(result.text);
 
-            should.exist(servers.filter(function (server) {
+            servers.some(function (server) {
               return server.Name === serverName;
-            }));
+            }).should.equal(true);
 
             done();
           });

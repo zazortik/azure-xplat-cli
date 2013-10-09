@@ -83,13 +83,13 @@ describe('subscriptionclient', function () {
   describe('getSubscriptions', function () {
     it('should work', function (done) {
       var subscriptions = subscriptionClient.getSubscriptions();
-      should.exist(subscriptions.filter(function (s) {
+      subscriptions.some(function (s) {
         return s.Id === 'db1ab6f0-4769-4b27-930e-01e2ef9c124d' && s.Name === 'Other';
-      })[0]);
+      }).should.equal(true);
 
-      should.exist(subscriptions.filter(function (s) {
+      subscriptions.some(function (s) {
         return s.Id === 'db1ab6f0-4769-4b27-930e-01e2ef9c123c' && s.Name === 'Account';
-      })[0]);
+      }).should.equal(true);
 
       done();
     });

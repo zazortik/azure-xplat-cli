@@ -34,10 +34,10 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var environments = JSON.parse(result.text);
 
-            should.exist(environments.AzureCloud);
-            should.exist(environments.AzureChinaCloud);
-            should.exist(environments.AzureCloud.publishingProfile);
-            should.exist(environments.AzureChinaCloud.publishingProfile);
+            environments.AzureCloud.should.not.equal(null);
+            environments.AzureChinaCloud.should.not.equal(null);
+            environments.AzureCloud.should.not.equal(null);
+            environments.AzureChinaCloud.publishingProfile.should.not.equal(null);
 
             done();
           });
