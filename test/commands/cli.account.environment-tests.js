@@ -54,17 +54,17 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         var environments = JSON.parse(result.text);
-        should.exist(Object.keys(environments).filter(function (e) {
+        Object.keys(environments).some(function (e) {
           return e === 'AzureCloud';
-        })[0]);
+        }).should.equal(true);
 
-        should.exist(Object.keys(environments).filter(function (e) {
+        Object.keys(environments).some(function (e) {
           return e === 'AzureChinaCloud';
-        })[0]);
+        }).should.equal(true);
 
-        should.exist(Object.keys(environments).filter(function (e) {
+        Object.keys(environments).some(function (e) {
           return e === 'newenv';
-        })[0]);
+        }).should.equal(true);
 
         done();
       });
@@ -78,9 +78,9 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
 
           var environments = JSON.parse(result.text);
-          should.not.exist(Object.keys(environments).filter(function (e) {
+          Object.keys(environments).some(function (e) {
             return e === 'newenv';
-          })[0]);
+          }).should.equal(false);
 
           done();
         });

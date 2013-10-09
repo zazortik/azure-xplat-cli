@@ -57,11 +57,9 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             var dnsservers = JSON.parse(result.text);
-            var dnsserver = dnsservers.filter(function (v) {
+            dnsservers.some(function (v) {
               return v.IPAddress === dnsIp;
-            })[0];
-
-            should.exist(dnsserver);
+            }).should.equal(true);
 
             done();
           });
@@ -95,7 +93,7 @@ describe('cli', function () {
               return v.Name === vnetName;
             })[0];
 
-            should.exist(vnet);
+            vnet.should.not.equal(null);
             vnet.State.should.equal('Created');
             vnet.AddressSpace.AddressPrefixes[0].should.equal('10.0.0.0/8');
             vnet.Subnets[0].Name.should.equal('Subnet-1');
@@ -105,7 +103,7 @@ describe('cli', function () {
               result.exitStatus.should.equal(0);
 
               var vnet = JSON.parse(result.text);
-              should.exist(vnet);
+              vnet.should.not.equal(null);
               vnet.State.should.equal('Created');
               vnet.AddressSpace.AddressPrefixes[0].should.equal('10.0.0.0/8');
               vnet.Subnets[0].Name.should.equal('Subnet-1');
@@ -133,7 +131,7 @@ describe('cli', function () {
               return v.Name === dnsId;
             })[0];
 
-            should.exist(dnsserver);
+            dnsserver.should.not.equal(null);
 
             suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s --dns-server-id %s',
               vnetName,
@@ -148,7 +146,7 @@ describe('cli', function () {
                 result.exitStatus.should.equal(0);
 
                 var vnet = JSON.parse(result.text);
-                should.exist(vnet);
+                vnet.should.not.equal(null);
                 vnet.State.should.equal('Created');
                 vnet.Dns.DnsServers[0].Name.should.equal(dnsId);
 

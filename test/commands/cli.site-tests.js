@@ -99,7 +99,7 @@ describe('cli', function () {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase();
+            return site.name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -115,7 +115,7 @@ describe('cli', function () {
                 siteList = JSON.parse(result.text);
 
                 siteExists = siteList.some(function (site) {
-                  return site.Name.toLowerCase() === siteName.toLowerCase();
+                  return site.name.toLowerCase() === siteName.toLowerCase();
                 });
 
                 siteExists.should.not.be.ok;
@@ -148,7 +148,7 @@ describe('cli', function () {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase();
+            return site.name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -179,7 +179,7 @@ describe('cli', function () {
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase();
+                      return site.name.toLowerCase() === siteName.toLowerCase();
                     });
 
                     siteExists.should.not.be.ok;
@@ -219,7 +219,7 @@ describe('cli', function () {
             var siteList = JSON.parse(result.text);
 
             var siteExists = siteList.some(function (site) {
-              return site.Name.toLowerCase() === siteName.toLowerCase();
+              return site.name.toLowerCase() === siteName.toLowerCase();
             });
 
             siteExists.should.be.ok;
@@ -250,7 +250,7 @@ describe('cli', function () {
                       siteList = JSON.parse(result.text);
 
                       siteExists = siteList.some(function (site) {
-                        return site.Name.toLowerCase() === siteName.toLowerCase();
+                        return site.name.toLowerCase() === siteName.toLowerCase();
                       });
 
                       siteExists.should.not.be.ok;
@@ -345,8 +345,8 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             var site = JSON.parse(result.text);
-            site.config.NetFrameworkVersion.should.equal('v2.0');
-            site.config.PhpVersion.should.equal('5.3');
+            site.config.netFrameworkVersion.should.equal('v2.0');
+            site.config.phpVersion.should.equal('5.3');
 
             suite.execute('site set --net-version 3.5 --php-version off %s --json', siteName, function (result) {
               result.text.should.equal('');
@@ -356,8 +356,8 @@ describe('cli', function () {
                 result.exitStatus.should.equal(0);
 
                 var site = JSON.parse(result.text);
-                site.config.NetFrameworkVersion.should.equal('v2.0');
-                site.config.PhpVersion.should.equal('');
+                site.config.netFrameworkVersion.should.equal('v2.0');
+                Object.keys(site.config).some(function (k) { return k === 'phpVersion'; }).should.equal(false);
 
                 done();
               });

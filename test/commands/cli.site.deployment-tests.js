@@ -86,7 +86,7 @@ describe('cli', function () {
     });
 
     it('should set git credentials', function(done) {
-      suite.execute('site deployment user set mygituser 12345Qwerty --json', function (result) {
+      suite.execute('site deployment user set mygituser2 12345Qwerty --json', function (result) {
         result.text.should.equal('');
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
@@ -109,7 +109,7 @@ describe('cli', function () {
           var siteList = JSON.parse(result.text);
 
           var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase();
+            return site.name.toLowerCase() === siteName.toLowerCase();
           });
 
           siteExists.should.be.ok;
@@ -153,7 +153,7 @@ describe('cli', function () {
                       siteList = JSON.parse(result.text);
 
                       siteExists = siteList.some(function (site) {
-                        return site.Name.toLowerCase() === siteName.toLowerCase();
+                        return site.name.toLowerCase() === siteName.toLowerCase();
                       });
 
                       siteExists.should.not.be.ok;

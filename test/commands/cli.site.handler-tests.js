@@ -76,9 +76,9 @@ describe('cli', function () {
             suite.execute('site handler list %s --json', siteName, function (result) {
               var handlers = JSON.parse(result.text);
 
-              should.exist(handlers.filter(function (d) {
-                return d.Extension === extension;
-              })[0]);
+              handlers.some(function (d) {
+                return d.extension === extension;
+              }).should.equal(true);
 
               suite.execute('node cli.js site handler delete %s %s --quiet --json', extension, siteName, function (result) {
                 result.text.should.equal('');
@@ -87,9 +87,9 @@ describe('cli', function () {
                 suite.execute('node cli.js site handler list %s --json', siteName, function (result) {
                   handlers = JSON.parse(result.text);
 
-                  should.not.exist(handlers.filter(function (d) {
-                    return d.Extension === extension;
-                  })[0]);
+                  handlers.some(function (d) {
+                    return d.extension === extension;
+                  }).should.equal(false);
 
                   done();
                 });

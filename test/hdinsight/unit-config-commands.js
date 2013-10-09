@@ -28,24 +28,24 @@ var GetCommand = require('./util-GetCommand.js');
 describe('HDInsight config commands (under unit test)', function() {
   it('create should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.createConfigCommand('test.json', {});
-    should.not.exist(command.user.startProgress.firstCall)
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('create should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.createConfigCommand('test.json', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('create should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.createConfigCommand(undefined, {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -68,24 +68,24 @@ describe('HDInsight config commands (under unit test)', function() {
 
   it('show should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.showConfigCommand('test.json', {});
-    should.not.exist(command.user.startProgress.firstCall)
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('show should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.showConfigCommand('test.json', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('show should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.showConfigCommand(undefined, {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -122,24 +122,24 @@ describe('HDInsight config commands (under unit test)', function() {
 
   it('set should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.setConfigCommand('test.json', {});
-    should.not.exist(command.user.startProgress.firstCall);
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('set should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.setConfigCommand('test.json', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('set should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand(undefined, {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -154,7 +154,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the clusterName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Cluster name: ');
     done();
   });
@@ -169,7 +169,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the nodes if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(1));
+    command.user.promptIfNotGiven.getCall(1).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(2).args[0].should.be.equal('Nodes: ');
     done();
   });
@@ -184,7 +184,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the location if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(2));
+    command.user.promptIfNotGiven.getCall(2).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(3).args[0].should.be.equal('Location: ');
     done();
   });
@@ -199,7 +199,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the storageAccountName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(4).args[0].should.be.equal('Storage acount name: ');
     done();
   });
@@ -214,7 +214,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the storageAccountKey if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(5).args[0].should.be.equal('Storage account key: ');
     done();
   });
@@ -229,7 +229,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the storageContainer if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(6).args[0].should.be.equal('Storage container: ');
     done();
   });
@@ -244,7 +244,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the username if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(7).args[0].should.be.equal('Username: ');
     done();
   });
@@ -259,7 +259,7 @@ describe('HDInsight config commands (under unit test)', function() {
   it('set should prompt for the password if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigCommand('test.json', {});
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(8).args[0].should.be.equal('Password: ');
     done();
   });
@@ -296,7 +296,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var command = new GetCommand();
     command.user.compatResult = false;
     command.hdinsight.setConfigCommand(undefined, { file : 'test2.json' });
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
   });
 
@@ -320,24 +320,24 @@ describe('HDInsight config commands (under unit test)', function() {
 
   it('set metastore should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.setConfigMetastoreCommand('test.json', 'type', 'server', 'database', 'user', 'password', {});
-    should.not.exist(command.user.startProgress.firstCall);
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('set metastore should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.setConfigMetastoreCommand('test.json', 'type', 'server', 'database', 'user', 'password', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('set metastore should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.setConfigMetastoreCommand(undefined, 'type', 'server', 'database', 'user', 'password', {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -357,7 +357,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var options = {
     };
     command.hdinsight.setConfigMetastoreCommand('test.json', undefined, 'server', 'database', 'user', 'password', options);
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Metastore Type: ');
     done();
   });
@@ -377,7 +377,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var options = {
     };
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', undefined, 'database', 'user', 'password', options);
-    should.exist(command.user.promptIfNotGiven.getCall(1));
+    command.user.promptIfNotGiven.getCall(1).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(2).args[0].should.be.equal('Metastore Server: ');
     done();
   });
@@ -397,7 +397,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var options = {
     };
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', 'server', undefined, 'user', 'password', options);
-    should.exist(command.user.promptIfNotGiven.getCall(2));
+    command.user.promptIfNotGiven.getCall(2).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(3).args[0].should.be.equal('Metastore Database: ');
     done();
   });
@@ -417,7 +417,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var options = {
     };
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', 'server', 'database', undefined, 'password', options);
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(4).args[0].should.be.equal('Metastore user: ');
     done();
   });
@@ -438,7 +438,7 @@ describe('HDInsight config commands (under unit test)', function() {
       metastorePassword : 'password'
     };
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', 'server', 'database', 'user', undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(5).args[0].should.be.equal('Metastore password: ');
     done();
   });
@@ -478,7 +478,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var command = new GetCommand();
     command.user.compatResult = false;
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', 'server', 'database', 'user', undefined, {});
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
   });
 
@@ -500,24 +500,24 @@ describe('HDInsight config commands (under unit test)', function() {
 
   it('remove metastore should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.removeConfigMetastoreCommand('test.json', 'type', {});
-    should.not.exist(command.user.startProgress.firstCall);
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('remove metastore should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.removeConfigMetastoreCommand('test.json', 'type', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('remove metastore should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.removeConfigMetastoreCommand(undefined, 'type', {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -537,7 +537,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var options = {
     };
     command.hdinsight.removeConfigMetastoreCommand('test.json', undefined, options);
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Metastore Type: ');
     done();
   });
@@ -577,7 +577,7 @@ describe('HDInsight config commands (under unit test)', function() {
     var command = new GetCommand();
     command.user.compatResult = false;
     command.hdinsight.removeConfigMetastoreCommand('test.json', 'hive', {});
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
   });
 
@@ -590,27 +590,26 @@ describe('HDInsight config commands (under unit test)', function() {
     done();
   });
 
-
   it('add storage should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.addConfigStorageCommand('test.json', 'account', 'key', {});
-    should.not.exist(command.user.startProgress.firstCall);
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('add storage should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.addConfigStorageCommand('test.json', 'account', 'key', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('add storage should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.addConfigStorageCommand(undefined, 'account', 'key', {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -631,7 +630,7 @@ describe('HDInsight config commands (under unit test)', function() {
       file : 'test.json'
     };
     command.hdinsight.addConfigStorageCommand(undefined, undefined, 'key', options);
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Storage Account Name: ');
     done();
   });
@@ -654,7 +653,7 @@ describe('HDInsight config commands (under unit test)', function() {
       file : 'test.json'
     };
     command.hdinsight.addConfigStorageCommand(undefined, undefined, undefined, options);
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(2).args[0].should.be.equal('Storage Account Key: ');
     done();
   });
@@ -716,7 +715,7 @@ describe('HDInsight config commands (under unit test)', function() {
       storageAccountKey : 'key'
     };
     command.hdinsight.addConfigStorageCommand(undefined, undefined, undefined, options);
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
   });
 
@@ -776,24 +775,24 @@ describe('HDInsight config commands (under unit test)', function() {
 
   it('remove storage should not call startProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.createConfigCommand);
+    command.hdinsight.createConfigCommand.should.not.equal(null);
     command.hdinsight.removeConfigStorageCommand('test.json', 'account', {});
-    should.not.exist(command.user.startProgress.firstCall);
+    (command.user.startProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('remove storage should not call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     command.hdinsight.removeConfigStorageCommand('test.json', 'account', {});
-    should.not.exist(command.user.endProgress.firstCall);
+    (command.user.endProgress.firstCall === null).should.equal(true);
     done();
   });
 
   it('remove storage should prompt for the fileName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.removeConfigStorageCommand(undefined, 'account', {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Config File Path: ');
     done();
   });
@@ -814,7 +813,7 @@ describe('HDInsight config commands (under unit test)', function() {
       file : 'test.json'
     };
     command.hdinsight.removeConfigStorageCommand(undefined, undefined, options);
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Storage Account Name: ');
     done();
   });
@@ -871,7 +870,7 @@ describe('HDInsight config commands (under unit test)', function() {
       storageAccountName : 'account',
     };
     command.hdinsight.removeConfigStorageCommand(undefined, undefined, options);
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
   });
 

@@ -93,7 +93,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text).Name;
+            var serverName = JSON.parse(result.text).name;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -111,7 +111,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serviceName = JSON.parse(result.text).Name;
+            var serviceName = JSON.parse(result.text).name;
             serviceName.should.equal(cloudServiceName);
 
             done();
@@ -143,7 +143,7 @@ describe('cli', function () {
             var services = JSON.parse(result.text);
 
             should.exist(services.filter(function (service) {
-              return service.Name === cloudServiceName;
+              return service.name === cloudServiceName;
             }));
 
             done();

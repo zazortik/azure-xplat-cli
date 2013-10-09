@@ -81,9 +81,9 @@ describe('cli', function () {
             site.diagnosticsSettings.AzureDriveEnabled.should.equal(true);
             site.diagnosticsSettings.AzureDriveTraceLevel.should.equal('error');
 
-            site.config.RequestTracingEnabled.should.equal('true');
-            site.config.HttpLoggingEnabled.should.equal('true');
-            site.config.DetailedErrorLoggingEnabled.should.equal('true');
+            site.config.requestTracingEnabled.should.equal('true');
+            site.config.httpLoggingEnabled.should.equal('true');
+            site.config.detailedErrorLoggingEnabled.should.equal('true');
 
             done();
           });
@@ -105,9 +105,9 @@ describe('cli', function () {
 
             site.diagnosticsSettings.AzureDriveEnabled.should.equal(false);
 
-            site.config.RequestTracingEnabled.should.equal('false');
-            site.config.HttpLoggingEnabled.should.equal('false');
-            site.config.DetailedErrorLoggingEnabled.should.equal('false');
+            site.config.requestTracingEnabled.should.equal('false');
+            site.config.httpLoggingEnabled.should.equal('false');
+            site.config.detailedErrorLoggingEnabled.should.equal('false');
 
             done();
           });
