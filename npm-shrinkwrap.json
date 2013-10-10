@@ -1,6 +1,6 @@
 {
   "name": "azure-cli",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "dependencies": {
     "azure": {
       "version": "0.7.15",
