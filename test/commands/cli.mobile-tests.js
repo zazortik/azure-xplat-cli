@@ -106,6 +106,7 @@ describe('cli', function () {
 
     // The hardcoded service name may need to be updated every time before a new NOCK recording is made
     var servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : nockedServiceName;
+    var existingServiceName = servicename.replace(/-/g, '');
 
     function cleanupService(callback) {
       // make best effort to remove the service in case of a test failure
