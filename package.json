@@ -35,11 +35,7 @@
     }
   ],
   "dependencies": {
-<<<<<<< HEAD
     "azure" : "git://github.com/andrerod/azure-sdk-for-node.git#new_version",
-=======
-    "azure" : "git://github.com/WindowsAzure/azure-sdk-for-node.git#dev",
->>>>>>> dev
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "underscore": "1.4.x",
