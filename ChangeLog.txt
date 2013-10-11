@@ -1,3 +1,6 @@
+2013.09.24 - version 0.7.2
+* Multiple bugfixes
+
 2013.08.26 - version 0.7.1
 * Added blob storage commands
   * azure storage blob list
