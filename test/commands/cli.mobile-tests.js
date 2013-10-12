@@ -221,6 +221,20 @@ describe('cli', function () {
       done();
     });
 
+it('locations --json (Get all locations provided by Azure)', function(done) {
+          var cmd = ('node cli.js mobile locations --json').split(' ');
+          var scopes = setupNock(cmd);
+          executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response[0].region.should.equal('East US');
+            response[1].region.should.equal('North Europe');
+            checkScopes(scopes);
+            done();
+          });
+        });
+
     it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
       var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12').split(' ');
           cmd.push('--sqlLocation');
@@ -277,6 +291,17 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
+        var cmd = ('node cli.js mobile restart ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('{}\n');
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('show ' + servicename + ' --json (contains healthy service)', function(done) {
