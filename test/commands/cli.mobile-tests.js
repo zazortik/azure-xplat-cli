@@ -106,7 +106,7 @@ describe('cli', function () {
 
     // The hardcoded service name may need to be updated every time before a new NOCK recording is made
     var servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : nockedServiceName;
-    var existingServiceName = servicename.replace(/-/g, '');
+    var existingServiceName = servicename.replace(/clitest/, 'existing');
 
     function cleanupService(callback) {
       // make best effort to remove the service in case of a test failure
@@ -221,15 +221,15 @@ describe('cli', function () {
       done();
     });
 
-it('locations --json (Get all locations provided by Azure)', function(done) {
+    it('locations --json (verify the locations provided by mobile service)', function (done) {
           var cmd = ('node cli.js mobile locations --json').split(' ');
           var scopes = setupNock(cmd);
           executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response).should.be.ok;
-            response[0].region.should.equal('East US');
-            response[1].region.should.equal('North Europe');
+            response.should.includeEql({ 'region': 'East US' });
+            response.should.includeEql({ 'region': 'North Europe' });
             checkScopes(scopes);
             done();
           });
@@ -1603,7 +1603,7 @@ it('locations --json (Get all locations provided by Azure)', function(done) {
       });
     });
 
-    it('log ' + servicename + ' --json (10 log entries added)', function(done) {
+    it('log ' + servicename + ' --json (15 log entries added)', function(done) {
       var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1616,14 +1616,14 @@ it('locations --json (Get all locations provided by Azure)', function(done) {
       });
     });
       
-    it('log ' + servicename + ' --type information --json (5 information log entries added)', function (done) {
+    it('log ' + servicename + ' --type information --json (10 information log entries added)', function (done) {
         var cmd = ('node cli.js mobile log ' + servicename + ' --type information --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(5);
+            response.results.length.should.equal(10);
             checkScopes(scopes);
             done();
         });
@@ -1718,12 +1718,11 @@ it('locations --json (Get all locations provided by Azure)', function(done) {
     it('log ' + servicename + ' -c ' + "existingContinuationToken" + ' --json (get logs by Continuation Token)', function (done) {
         var cmd = ('node cli.js mobile log ' + servicename + ' -c ' + existingContinuationToken + ' --json').split(' ');
         var scopes = setupNock(cmd);
-        console.log(existingContinuationToken);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(5);
+            response.results.length.should.equal(6);
             response.results.forEach(function (item) {
                 item.timeCreated.should.not.be.empty;
                 item.type.should.not.be.empty;
