@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest0d5ad654-65da-4337-93ba-02233d979352';
+var nockedServiceName = 'clitestd093a12a-0811-49d8-aa8f-0dc85556c9c6';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -201,6 +201,12 @@ describe('cli', function () {
             // do not filter on the body of script upload, since line endings differ between Windows and Mac
             line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             // nock encoding bug
+            var reg = new RegExp(/^([\S\s]*)\.get\(\'(.*?)\'\)([\S\s]*)$/gim);
+            var result = reg.exec(line);
+            if (result !== null) {
+                line = result[1] + ".get('" + result[2].replace(/'/igm, "\\'") + "')" + result[3];
+            }
+
             line = line.replace("'error'", "\\'error\\'");
             line = line.replace("'information'", "\\'information\\'");
             line = line.replace("'warning'", "\\'warning\\'");
@@ -1715,7 +1721,7 @@ describe('cli', function () {
         });
     });
 
-    it('log ' + servicename + ' -c ' + "existingContinuationToken" + ' --json (get logs by Continuation Token)', function (done) {
+    it('log ' + servicename + ' -c existingContinuationToken --json (get logs by Continuation Token)', function (done) {
         var cmd = ('node cli.js mobile log ' + servicename + ' -c ' + existingContinuationToken + ' --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
