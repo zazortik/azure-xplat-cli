@@ -115,17 +115,17 @@ _.extend(CLITest.prototype, {
 
   removeCacheFiles: function () {
     var sitesCachePath = path.join(utils.azureDir(), util.format('sites.%s.json', process.env.AZURE_SUBSCRIPTION_ID));
-    if (fs.existsSync(sitesCachePath)) {
+    if (utils.pathExistsSync(sitesCachePath)) {
       fs.unlinkSync(sitesCachePath);
     }
 
     var spacesCachePath = path.join(utils.azureDir(), util.format('spaces.%s.json', process.env.AZURE_SUBSCRIPTION_ID));
-    if (fs.existsSync(spacesCachePath)) {
+    if (utils.pathExistsSync(spacesCachePath)) {
       fs.unlinkSync(spacesCachePath);
     }
 
     var environmentsPath = path.join(utils.azureDir(), 'environment.json');
-    if (fs.existsSync(environmentsPath)) {
+    if (utils.pathExistsSync(environmentsPath)) {
       fs.unlinkSync(environmentsPath);
     }
   },

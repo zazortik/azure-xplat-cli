@@ -136,7 +136,7 @@ if (!process.env.NOCK_OFF) {
     // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
     // after merge
     if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
-      throw new Error('Storage recordings can only be made with the subscription ' + defaultSubscription);
+      // throw new Error('Storage recordings can only be made with the subscription ' + defaultSubscription);
     }
 
     if (process.env.AZURE_COMMUNITY_IMAGE_ID && process.env.AZURE_COMMUNITY_IMAGE_ID !== defaultCommunityImageId) {

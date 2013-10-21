@@ -25,7 +25,7 @@ var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
 // A common VM used by multiple tests
 var vmToUse = { Name: null, Created: false, Delete: false};
 
-var vmPrefix = 'clitestvm1';
+var vmPrefix = 'clitestvm30';
 var vmNames = [];
 
 var suite;
@@ -86,24 +86,24 @@ describe('cli', function () {
         var endPoints =  {
           OnlyPP: { PublicPort: 3333 },
           PPAndLP: { PublicPort: 4444, LocalPort: 4454 },
-          PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, Protocol: 'tcp', LoadBalancerSetName: 'LbSet1' },
+          PP_LPAndLBSet: { PublicPort: 5555, LocalPort: 5565, Protocol: 'tcp', EnableDirectServerReturn: false, LoadBalancerSetName: 'LbSet1' },
           PP_LP_LBSetAndProb: {
-            PublicPort: 6666, LocalPort: 6676, Protocol: 'tcp', LoadBalancerSetName: 'LbSet2',
+            PublicPort: 6666, LocalPort: 6676, Protocol: 'tcp', EnableDirectServerReturn: false, LoadBalancerSetName: 'LbSet2',
             ProbProtocol: 'http', ProbPort: "7777", ProbPath: '/prob/listner1'
           }
         };
 
         var cmd = util.format(
-          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s:%s,%s:%s:%s:%s:%s:%s:%s --json',
+          'node cli.js vm endpoint create-multiple %s %s,%s:%s,%s:%s:%s:%s:%s,%s:%s:%s:%s:%s:%s:%s:%s --json',
           vm.Name,
           // EndPoint1
           endPoints.OnlyPP.PublicPort,
           // EndPoint2
           endPoints.PPAndLP.PublicPort, endPoints.PPAndLP.LocalPort,
           // EndPoint3
-          endPoints.PP_LPAndLBSet.PublicPort, endPoints.PP_LPAndLBSet.LocalPort, endPoints.PP_LPAndLBSet.Protocol, endPoints.PP_LPAndLBSet.LoadBalancerSetName,
+          endPoints.PP_LPAndLBSet.PublicPort, endPoints.PP_LPAndLBSet.LocalPort, endPoints.PP_LPAndLBSet.Protocol, endPoints.PP_LPAndLBSet.EnableDirectServerReturn, endPoints.PP_LPAndLBSet.LoadBalancerSetName,
           // EndPoint4
-          endPoints.PP_LP_LBSetAndProb.PublicPort, endPoints.PP_LP_LBSetAndProb.LocalPort, endPoints.PP_LP_LBSetAndProb.Protocol, endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName,
+          endPoints.PP_LP_LBSetAndProb.PublicPort, endPoints.PP_LP_LBSetAndProb.LocalPort, endPoints.PP_LP_LBSetAndProb.Protocol, endPoints.PP_LP_LBSetAndProb.EnableDirectServerReturn, endPoints.PP_LP_LBSetAndProb.LoadBalancerSetName,
           endPoints.PP_LP_LBSetAndProb.ProbProtocol, endPoints.PP_LP_LBSetAndProb.ProbPort, endPoints.PP_LP_LBSetAndProb.ProbPath
         ).split(' ');
 
@@ -167,7 +167,6 @@ describe('cli', function () {
 
     it('should create from community image', function (done) {
       var vmName = suite.generateId(vmPrefix, vmNames);
-
       // Create a VM using community image (-o option)
       suite.execute('vm create %s %s communityUser PassW0rd$ -o --json --ssh --location %s',
         vmName,
@@ -221,10 +220,9 @@ describe('cli', function () {
       if (vmToUse.Created) {
         return callBack(vmToUse);
       } else {
-        getImageName('Microsoft', function(imageName) {
+        getImageName('Microsoft Corporation', function(imageName) {
           var name = suite.generateId(vmPrefix, vmNames);
-
-          suite.execute('vm create %s %s Administrator PassW0rd$ --ssh --json --location %s',
+          suite.execute('vm create %s %s azureuser PassW0rd$ --ssh --json --location %s',
             name,
             imageName,
             process.env.AZURE_VM_TEST_LOCATION || 'West US',

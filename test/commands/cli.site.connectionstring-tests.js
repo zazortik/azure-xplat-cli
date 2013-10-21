@@ -126,7 +126,7 @@ describe('cli', function(){
               result.exitStatus.should.equal(0);
 
               var value = JSON.parse(result.text);
-              value.ConnectionString.should.equal('myvalue');
+              value.connectionString.should.equal('myvalue');
 
               // add another setting
               suite.execute('site connectionstring delete param3 %s --quiet --json', siteName, function (result) {

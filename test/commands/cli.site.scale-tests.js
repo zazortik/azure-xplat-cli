@@ -13,6 +13,7 @@
 * limitations under the License.
 */
 
+var should = require('should');
 var CLITest = require('../framework/cli-test');
 
 var createdSitesPrefix = 'clisitescale-';
