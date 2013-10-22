@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest66ebde12-fc5c-4065-973b-f934bdd3199d';
+var nockedServiceName = 'clitest170fe6cc-04f5-4f76-a707-7d06e7fca92f';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -1704,11 +1704,7 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
-<<<<<<< HEAD
             response.results.length.should.equal(10);
-=======
-            response.results.length.should.be.below(7); // if so, apns feedback script could run
->>>>>>> 168d0cdf8c09c638fc7dd8fe50a31c220a7a4e36
             checkScopes(scopes);
             done();
         });
