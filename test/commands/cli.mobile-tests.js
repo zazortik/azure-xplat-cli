@@ -27,7 +27,7 @@
   INSTRUCTIONS FOR RE-GENERATING THE cli.mobile-tests.nock.js FILE:
 
   1. Make sure the tests are passing against live Windows Azure endpoints:
-  1.0. Remeber to register your Windows Azure credentials with `azure account import`
+  1.0. Remember to register your Windows Azure credentials with `azure account import`
   1.1. Set the NOCK_OFF environment variable to `true`
   1.2. Run tests with `npm test`
 
@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest0d5ad654-65da-4337-93ba-02233d979352';
+var nockedServiceName = 'clitest600a5a2d-799d-4ecc-9590-1d6e0cdae9d4';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -829,6 +829,81 @@ describe('cli', function () {
         });
     });
 
+    it('appsetting list ' + servicename + '--json (empty)', function(done) {
+      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(0);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('appsetting add ' + servicename + '  testsetting alpha1 --json', function(done) {
+      var cmd = ('node cli.js mobile appsetting add ' + servicename + ' testsetting alpha1 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('appsetting show ' + servicename + '  testsetting --json', function(done) {
+      var cmd = ('node cli.js mobile appsetting show ' + servicename + ' testsetting --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        var response = JSON.parse(result.text);
+        response.name.should.equal('testsetting');
+        response.value.should.equal('alpha1');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('appsetting list ' + servicename + '--json (empty)', function(done) {
+      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(1);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('appsetting delete ' + servicename + '  testsetting alpha1 --json', function(done) {
+      var cmd = ('node cli.js mobile appsetting delete ' + servicename + ' testsetting --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('appsetting list ' + servicename + '--json (empty)', function(done) {
+      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(0);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    // Table commands
+
     it('table list ' + servicename + ' --json (no tables by default)', function(done) {
       var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1568,7 +1643,7 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(5);
+            response.results.length.should.be.below(7); // if so, apns feedback script could run
             checkScopes(scopes);
             done();
         });
