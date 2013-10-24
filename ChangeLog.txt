@@ -6,7 +6,8 @@
 * #987 - Fix issue with "azure site download" on windows
 * #925 - Making "azure site create" show template based error instead of generic one
 * #963 - Update kudu script module to version 0.1.5
-* Upgade to latest SDK (which uses generated website wrappers)
+* Upgrade to latest SDK (which uses generated website wrappers)
+* Supports the new high-memory A5 instance size (2 cores, 14GB RAM)
 
 2013.09.24 - version 0.7.2
 * Multiple bugfixes
