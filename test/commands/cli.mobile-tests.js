@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest600a5a2d-799d-4ecc-9590-1d6e0cdae9d4';
+var nockedServiceName = 'clitestd229493b-3968-46e6-b8a6-dcae82b66a2f';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -63,6 +63,9 @@ var Channel = require('../../lib/util/channel');
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var servicedomain = process.env.SERVICE_DOMAIN || '.azure-mobile.net';
 var scopeWritten;
+var existingDBName;
+var existingServerName;
+var existingContinuationToken;
 
 // polyfill appendFileSync
 if (!fs.appendFileSync) {
@@ -103,6 +106,7 @@ describe('cli', function () {
 
     // The hardcoded service name may need to be updated every time before a new NOCK recording is made
     var servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : nockedServiceName;
+    var existingServiceName = servicename.replace(/clitest/, 'existing');
 
     function cleanupService(callback) {
       // make best effort to remove the service in case of a test failure
@@ -197,6 +201,12 @@ describe('cli', function () {
             // do not filter on the body of script upload, since line endings differ between Windows and Mac
             line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             // nock encoding bug
+            var reg = new RegExp(/^([\S\s]*)\.get\(\'(.*?)\'\)([\S\s]*)$/gim);
+            var result = reg.exec(line);
+            if (result !== null) {
+                line = result[1] + ".get('" + result[2].replace(/'/igm, "\\'") + "')" + result[3];
+            }
+
             line = line.replace("'error'", "\\'error\\'");
             line = line.replace("'information'", "\\'information\\'");
             line = line.replace("'warning'", "\\'warning\\'");
@@ -217,7 +227,21 @@ describe('cli', function () {
       done();
     });
 
-    it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service)', function(done) {     
+    it('locations --json (verify the locations provided by mobile service)', function (done) {
+          var cmd = ('node cli.js mobile locations --json').split(' ');
+          var scopes = setupNock(cmd);
+          executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response).should.be.ok;
+            response.should.includeEql({ 'region': 'East US' });
+            response.should.includeEql({ 'region': 'North Europe' });
+            checkScopes(scopes);
+            done();
+          });
+        });
+
+    it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
       var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12').split(' ');
           cmd.push('--sqlLocation');
           cmd.push(location);
@@ -230,9 +254,32 @@ describe('cli', function () {
         response.should.have.property('Name', servicename + 'mobileservice');
         response.should.have.property('Label', servicename);
         response.should.have.property('State', 'Healthy');
+        existingDBName = response.InternalResources.InternalResource[1].Name;
+        existingServerName = response.InternalResources.InternalResource[2].Name;
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('create ' + existingServiceName + ' -d ' + "existingDBName" + ' -r ' + "existingServerName" + ' tjanczuk FooBar#12 ' + ' --json (create service with existing DB and server)', function (done) {
+        var cmd = ('node cli.js mobile create ' + existingServiceName + ' -d ' + existingDBName + ' -r ' + existingServerName + ' tjanczuk FooBar#12').split(' ');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.should.have.property('Name', existingServiceName + 'mobileservice');
+            response.should.have.property('Label', existingServiceName);
+            response.should.have.property('State', 'Healthy');
+            response.InternalResources.InternalResource.Name.should.equal(existingServiceName);
+            Array.isArray(response.ExternalResources.ExternalResource).should.be.ok;
+            response.ExternalResources.ExternalResource.length.should.equal(2);
+            response.ExternalResources.ExternalResource[0].Name.should.equal(existingDBName);
+            response.ExternalResources.ExternalResource[1].Name.should.equal(existingServerName);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('list --json (contains healthy service)', function(done) {
@@ -244,9 +291,23 @@ describe('cli', function () {
         response.some(function (service) { 
           return service.name === servicename && service.state === 'Ready'; 
         }).should.be.ok;
+        response.some(function (service) {
+            return service.name === existingServiceName && service.state === 'Ready';
+        }).should.be.ok;
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
+        var cmd = ('node cli.js mobile restart ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('{}\n');
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('show ' + servicename + ' --json (contains healthy service)', function(done) {
@@ -1623,7 +1684,7 @@ describe('cli', function () {
       });
     });
 
-    it('log ' + servicename + ' --json (10 log entries added)', function(done) {
+    it('log ' + servicename + ' --json (15 log entries added)', function(done) {
       var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1636,14 +1697,14 @@ describe('cli', function () {
       });
     });
       
-    it('log ' + servicename + ' --type information --json (5 information log entries added)', function (done) {
+    it('log ' + servicename + ' --type information --json (10 information log entries added)', function (done) {
         var cmd = ('node cli.js mobile log ' + servicename + ' --type information --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
-            response.results.length.should.be.below(7); // if so, apns feedback script could run
+            response.results.length.should.equal(10);
             checkScopes(scopes);
             done();
         });
@@ -1709,6 +1770,46 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response.results).should.be.ok;
             response.results.length.should.equal(1);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' --source /table/table1.insert.js --json (get logs from specific source)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' --source /table/table1.insert.js --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(10);
+            response.results.forEach(function (item) {
+                item.timeCreated.should.not.be.empty;
+                item.type.should.not.be.empty;
+                item.source.should.not.be.empty;
+                item.message.should.not.be.empty;
+            });
+            response.continuationToken.should.not.be.empty;
+            existingContinuationToken = response.continuationToken;
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('log ' + servicename + ' -c existingContinuationToken --json (get logs by Continuation Token)', function (done) {
+        var cmd = ('node cli.js mobile log ' + servicename + ' -c ' + existingContinuationToken + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.results).should.be.ok;
+            response.results.length.should.equal(6);
+            response.results.forEach(function (item) {
+                item.timeCreated.should.not.be.empty;
+                item.type.should.not.be.empty;
+                item.source.should.not.be.empty;
+                item.message.should.not.be.empty;
+            });
             checkScopes(scopes);
             done();
         });
@@ -1931,6 +2032,46 @@ describe('cli', function () {
         checkScopes(scopes);
         done();
       });
+    });
+
+    it('delete ' + existingServiceName + ' -d -q --json (delete service without DB)', function (done) {
+        var cmd = ('node cli.js mobile delete ' + existingServiceName + ' -d -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('list --json (Only leave the service with new DB and server)', function (done) {
+        var cmd = ('node cli.js mobile list --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            response.some(function (service) {
+                return service.name === existingServiceName;
+            }).should.not.be.ok;
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('show ' + servicename + ' --json (verify the existing DB and server exist or not )', function (done) {
+        var cmd = ('node cli.js mobile show ' + servicename + ' --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var response = JSON.parse(result.text);
+            Array.isArray(response.application.InternalResources.InternalResource).should.be.ok;
+            response.application.InternalResources.InternalResource.length.should.equal(3);
+            response.application.InternalResources.InternalResource[1].Name.should.equal(existingDBName);
+            response.application.InternalResources.InternalResource[2].Name.should.equal(existingServerName);
+            checkScopes(scopes);
+            done();
+        });
     });
 
     it('delete ' + servicename + ' -a -q --json (delete existing service)', function(done) {
