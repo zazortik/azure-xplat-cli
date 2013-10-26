@@ -50,7 +50,8 @@
     "easy-table": "0.0.1",
     "github": "0.1.6",
     "omelette": "0.1.0",
-    "kuduscript": "0.1.5"
+    "kuduscript": "0.1.5",
+    "zombie": "2.0.0-alpha24"
   },
   "devDependencies": {
     "mocha": ">= 1.12.0",
