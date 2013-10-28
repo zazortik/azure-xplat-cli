@@ -90,7 +90,7 @@ describe('cli', function () {
           var cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
 
           suite.execute('node cli.js service create %s --location %s --json', cloudServiceName, location, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var serverName = JSON.parse(result.text).serviceName;
@@ -108,7 +108,7 @@ describe('cli', function () {
         beforeEach(function (done) {
           cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
           suite.execute('service create %s --location %s --json', cloudServiceName, location, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var serviceName = JSON.parse(result.text).serviceName;
@@ -120,7 +120,7 @@ describe('cli', function () {
 
         it('should show the service', function (done) {
           suite.execute('service show %s --json', cloudServiceName, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var service = JSON.parse(result.text);
@@ -138,7 +138,7 @@ describe('cli', function () {
 
         it('should list the service', function (done) {
           suite.execute('service list --json', function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var services = JSON.parse(result.text);
