@@ -143,9 +143,9 @@ describe('cli', function () {
 
             var services = JSON.parse(result.text);
 
-            should.exist(services.filter(function (service) {
+            services.some(function (service) {
               return service.serviceName === cloudServiceName;
-            }));
+            }).should.equal(true);
 
             done();
           });
