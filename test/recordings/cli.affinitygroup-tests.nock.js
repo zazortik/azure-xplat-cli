@@ -7,80 +7,68 @@ nock('https://management.core.windows.net:443')
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroup/xplatcli-1',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c347f9be10554f0eaa170a6c6a200ba9',
-  date: 'Wed, 27 Mar 2013 15:30:26 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/c347f9be10554f0eaa170a6c6a200ba9')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>c347f9be-1055-4f0e-aa17-0a6c6a200ba9</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '232',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ce053455bd3c46d0ba52d1b12db33b61',
-  date: 'Wed, 27 Mar 2013 15:30:28 GMT',
-  connection: 'close' });
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroup/xplat-afg-1',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'd883585d4f7c23b381fc7903d59bb74e',
+  date: 'Mon, 28 Oct 2013 14:01:30 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid$')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The affinity group does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536f77a787f74d45aea7f574516ac7df',
-  date: 'Wed, 27 Mar 2013 15:30:30 GMT',
-  connection: 'close' });
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': '30d515689a6e2f70b857974efe0b8612',
+  date: 'Mon, 28 Oct 2013 14:01:33 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplatcli-1')
-  .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplatcli-1</Name><Label>eHBsYXRjbGktMQ==</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup>", { 'cache-control': 'no-cache',
-  'content-length': '354',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplat-afg-1')
+  .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplat-afg-1</Name><Label>eHBsYXQtYWZnLTE=</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup>", { 'cache-control': 'no-cache',
+  'content-length': '390',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '03935e21af70473ba3efedeb99e8ae45',
-  date: 'Wed, 27 Mar 2013 15:30:32 GMT',
-  connection: 'close' });
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'e42681cd2e952ee697e096c7ed00bab9',
+  date: 'Mon, 28 Oct 2013 14:01:35 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>xplatcli-1</Name><Label>eHBsYXRjbGktMQ==</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>xplatcli-e918ef15</Name><Label>eHBsYXRjbGktZTkxOGVmMTU=</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '584',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>AG-CLI-1d0a2453cc8d1118</Name><Label>QUctQ0xJLTFkMGEyNDUzY2M4ZDExMTg=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>azuresdkci</Name><Label>YXp1cmVzZGtjaQ==</Label><Description/><Location>East US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>javasdkciag</Name><Label>amF2YXNka2NpYWc=</Label><Description/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>myafgp</Name><Label>bXlhZmdw</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>testGetAffinityGroupPropertiesSuccess</Name><Label>dGVzdEdldEFmZmluaXR5R3JvdXBQcm9wZXJ0aWVzU3VjY2Vzcw==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>xplat-1</Name><Label>Y3JlYXRl</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>xplat-afg-1</Name><Label>eHBsYXQtYWZnLTE=</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>xplat-ag-1</Name><Label>eHBsYXQtYWctMQ==</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>xplatcli-1</Name><Label>QUctREVTQw==</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '2339',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e52cddcaa0d47068fcca7c834598925',
-  date: 'Wed, 27 Mar 2013 15:30:35 GMT',
-  connection: 'close' });
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'd5a5da477ac72cf28cb2f3d71a227667',
+  date: 'Mon, 28 Oct 2013 14:01:37 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid$')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The affinity group name is invalid.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '194',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0d27d68508146cdb55cf83b2c99fedc',
-  date: 'Wed, 27 Mar 2013 15:30:36 GMT',
-  connection: 'close' });
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': '764aba518de72a50ab71e5f09df6bb57',
+  date: 'Mon, 28 Oct 2013 14:01:39 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplatcli-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplat-afg-1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e7573abeec01499ab7f2bd62aa91093f',
-  date: 'Wed, 27 Mar 2013 15:30:41 GMT',
-  connection: 'close' });
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'f4c30fa3433e256f8b605c2051a8566b',
+  date: 'Mon, 28 Oct 2013 14:01:43 GMT' });
  return result; }]];
