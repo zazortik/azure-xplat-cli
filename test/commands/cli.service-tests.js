@@ -93,7 +93,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text).name;
+            var serverName = JSON.parse(result.text).serviceName;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -111,7 +111,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serviceName = JSON.parse(result.text).name;
+            var serviceName = JSON.parse(result.text).serviceName;
             serviceName.should.equal(cloudServiceName);
 
             done();
@@ -124,12 +124,13 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             var service = JSON.parse(result.text);
-            service.Location.should.equal(location);
-            service.ServiceName.should.equal(cloudServiceName);
-            service.Label.should.not.be.null;
-            service.Status.should.equal('Created');
-            service.DateCreated.should.not.be.null;
-            service.DateLastModified.should.not.be.null;
+
+            service.serviceName.should.equal(cloudServiceName);
+            service.properties.location.should.equal(location);
+            service.properties.label.should.not.be.null;
+            service.properties.status.should.equal('Created');
+            service.properties.dateCreated.should.not.be.null;
+            service.properties.dateLastModified.should.not.be.null;
 
             done();
           });
@@ -143,7 +144,7 @@ describe('cli', function () {
             var services = JSON.parse(result.text);
 
             should.exist(services.filter(function (service) {
-              return service.name === cloudServiceName;
+              return service.serviceName === cloudServiceName;
             }));
 
             done();
