@@ -18,7 +18,7 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
-var storageNamesPrefix = 'cstorage';
+var storageNamesPrefix = 'xplatcli';
 var storageNames = [];
 
 var suite;
@@ -55,7 +55,7 @@ describe('cli', function () {
 
       suite.execute('account storage create %s --json --location %s',
         storageName,
-        process.env.AZURE_STORAGE_TEST_LOCATION || 'East US',
+        process.env.AZURE_STORAGE_TEST_LOCATION || 'West Europe',
         function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -68,7 +68,7 @@ describe('cli', function () {
       suite.execute('account storage list --json', function (result) {
         var storageAccounts = JSON.parse(result.text);
         storageAccounts.some(function (account) {
-          return account.ServiceName === storageName;
+          return account.serviceName === storageName;
         }).should.be.true;
 
         done();
@@ -82,7 +82,7 @@ describe('cli', function () {
 
         suite.execute('account storage show %s --json', storageName, function (result) {
           var storageAccount = JSON.parse(result.text);
-          new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
+          storageAccount.properties.label.should.equal('test');
 
           done();
         });
@@ -92,12 +92,15 @@ describe('cli', function () {
     it('should renew storage keys', function(done) {
       suite.execute('account storage keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
-        storageAccountKeys.Primary.should.not.be.null;
-        storageAccountKeys.Secondary.should.not.be.null;
+        storageAccountKeys.primaryKey.should.not.be.null;
+        storageAccountKeys.secondaryKey.should.not.be.null;
 
         suite.execute('account storage keys renew %s --primary --json', storageName, function (result) {
-          result.text.should.equal('');
           result.exitStatus.should.equal(0);
+
+          storageAccountKeys = JSON.parse(result.text);
+          storageAccountKeys.primaryKey.should.not.be.null;
+          storageAccountKeys.secondaryKey.should.not.be.null;
 
           function deleteUsedStorage (storages) {
             if (storages.length > 0) {
