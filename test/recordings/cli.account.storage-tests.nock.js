@@ -7,177 +7,93 @@ nock('https://management.core.windows.net:443')
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/storage/cstorage1',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/storage/xplatcli1',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'a994def76a7544119d520a1b53b77e18',
-  date: 'Thu, 02 May 2013 02:31:53 GMT' });
+  'x-ms-request-id': '7d4a0f5e92b72d298dffea36f37f5eee',
+  date: 'Mon, 28 Oct 2013 18:13:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'abbf2fc3ae7a480887af9f1cfb501f31',
-  date: 'Thu, 02 May 2013 02:31:55 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '9eec3238d389470ea94f1eacc48f0e4b',
-  date: 'Thu, 02 May 2013 02:31:58 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '8f25718a72a24c998f7c36eed1520b40',
-  date: 'Thu, 02 May 2013 02:32:00 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'c66470b618f3444594f9df29e7051287',
-  date: 'Thu, 02 May 2013 02:32:02 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '9f0e95a082a74d6e981c901c4a50e35f',
-  date: 'Thu, 02 May 2013 02:32:04 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'd1bf29fe7b2b414fbbca4ade1b78ef38',
-  date: 'Thu, 02 May 2013 02:32:06 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>InProgress</Status></Operation>", { 'cache-control': 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '65cac4f4368e4fe9a65af88a21c37f4e',
-  date: 'Thu, 02 May 2013 02:32:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/a994def76a7544119d520a1b53b77e18')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>a994def7-6a75-4411-9d52-0a1b53b77e18</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/7d4a0f5e92b72d298dffea36f37f5eee')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7d4a0f5e-92b7-2d29-8dff-ea36f37f5eee</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': 'aecf7d050ef24b5d9cbb65712975fd4b',
-  date: 'Thu, 02 May 2013 02:32:11 GMT' });
+  'x-ms-request-id': 'd4a286a8c2e02ca18208ea332448b9cc',
+  date: 'Mon, 28 Oct 2013 18:13:57 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azuresdkci</Url><ServiceName>azuresdkci</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>North Central US</Location><Label>YXp1cmVzZGtjaQ==</Label><Status>Created</Status><Endpoints><Endpoint>http://azuresdkci.blob.core.windows.net/</Endpoint><Endpoint>http://azuresdkci.queue.core.windows.net/</Endpoint><Endpoint>http://azuresdkci.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>North Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>South Central US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/clistorage1</Url><ServiceName>clistorage1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>Y2xpc3RvcmFnZTE=</Label><Status>Created</Status><Endpoints><Endpoint>http://clistorage1.blob.core.windows.net/</Endpoint><Endpoint>http://clistorage1.queue.core.windows.net/</Endpoint><Endpoint>http://clistorage1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1</Url><ServiceName>cstorage1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>Y3N0b3JhZ2Ux</Label><Status>Created</Status><Endpoints><Endpoint>http://cstorage1.blob.core.windows.net/</Endpoint><Endpoint>http://cstorage1.queue.core.windows.net/</Endpoint><Endpoint>http://cstorage1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatstorage1</Url><ServiceName>xplatstorage1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>eHBsYXRzdG9yYWdlMQ==</Label><Status>Created</Status><Endpoints><Endpoint>http://xplatstorage1.blob.core.windows.net/</Endpoint><Endpoint>http://xplatstorage1.queue.core.windows.net/</Endpoint><Endpoint>http://xplatstorage1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
-  'content-length': '5523',
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail2</Url><ServiceName>aogail2</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW9nYWlsMg==</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail2.blob.core.windows.net/</Endpoint><Endpoint>http://aogail2.queue.core.windows.net/</Endpoint><Endpoint>http://aogail2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-05-01T21:56:19Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azurejavasdk</Url><ServiceName>azurejavasdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>YXp1cmVqYXZhc2Rr</Label><Status>Created</Status><Endpoints><Endpoint>http://azurejavasdk.blob.core.windows.net/</Endpoint><Endpoint>http://azurejavasdk.queue.core.windows.net/</Endpoint><Endpoint>http://azurejavasdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-09-10T23:35:55Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azurejavasdkwin2k12</Url><ServiceName>azurejavasdkwin2k12</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>azuresdkci</AffinityGroup><Label>YXp1cmVqYXZhc2Rrd2luMmsxMg==</Label><Status>Created</Status><Endpoints><Endpoint>http://azurejavasdkwin2k12.blob.core.windows.net/</Endpoint><Endpoint>http://azurejavasdkwin2k12.queue.core.windows.net/</Endpoint><Endpoint>http://azurejavasdkwin2k12.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-01-22T18:18:06Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azurejavasdkwin2k12m</Url><ServiceName>azurejavasdkwin2k12m</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>YXp1cmVqYXZhc2Rrd2luMmsxMm0=</Label><Status>Created</Status><Endpoints><Endpoint>http://azurejavasdkwin2k12m.blob.core.windows.net/</Endpoint><Endpoint>http://azurejavasdkwin2k12m.queue.core.windows.net/</Endpoint><Endpoint>http://azurejavasdkwin2k12m.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2013-01-22T19:05:38Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azuresdkci</Url><ServiceName>azuresdkci</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>North Central US</Location><Label>YXp1cmVzZGtjaQ==</Label><Status>Created</Status><Endpoints><Endpoint>http://azuresdkci.blob.core.windows.net/</Endpoint><Endpoint>http://azuresdkci.queue.core.windows.net/</Endpoint><Endpoint>http://azuresdkci.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>North Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>South Central US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2013-05-08T18:30:00Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/azurestoragemediaservice</Url><ServiceName>azurestoragemediaservice</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>YXp1cmVzdG9yYWdlbWVkaWFzZXJ2aWNl</Label><Status>Created</Status><Endpoints><Endpoint>http://azurestoragemediaservice.blob.core.windows.net/</Endpoint><Endpoint>http://azurestoragemediaservice.queue.core.windows.net/</Endpoint><Endpoint>http://azurestoragemediaservice.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2013-02-27T20:18:04Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1</Url><ServiceName>cstorage1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>Y3N0b3JhZ2Ux</Label><Status>Created</Status><Endpoints><Endpoint>http://cstorage1.blob.core.windows.net/</Endpoint><Endpoint>http://cstorage1.queue.core.windows.net/</Endpoint><Endpoint>http://cstorage1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-10-28T17:56:24Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/gongchen1</Url><ServiceName>gongchen1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Z29uZ2NoZW4x</Label><Status>Created</Status><Endpoints><Endpoint>http://gongchen1.blob.core.windows.net/</Endpoint><Endpoint>http://gongchen1.queue.core.windows.net/</Endpoint><Endpoint>http://gongchen1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-06-18T18:16:19Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/gongchen2</Url><ServiceName>gongchen2</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Z29uZ2NoZW4y</Label><Status>Created</Status><Endpoints><Endpoint>http://gongchen2.blob.core.windows.net/</Endpoint><Endpoint>http://gongchen2.queue.core.windows.net/</Endpoint><Endpoint>http://gongchen2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-08-06T18:30:50Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/javasdkci</Url><ServiceName>javasdkci</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>javasdkciag</AffinityGroup><Label>amF2YXNka2Np</Label><Status>Created</Status><Endpoints><Endpoint>http://javasdkci.blob.core.windows.net/</Endpoint><Endpoint>http://javasdkci.queue.core.windows.net/</Endpoint><Endpoint>http://javasdkci.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-03-12T00:25:38Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/mediasvcazurejavasdkci</Url><ServiceName>mediasvcazurejavasdkci</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>bWVkaWFzdmNhenVyZWphdmFzZGtjaQ==</Label><Status>Created</Status><Endpoints><Endpoint>http://mediasvcazurejavasdkci.blob.core.windows.net/</Endpoint><Endpoint>http://mediasvcazurejavasdkci.queue.core.windows.net/</Endpoint><Endpoint>http://mediasvcazurejavasdkci.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-10-02T19:16:57Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/portalvhds2wdcfvkv5phc9</Url><ServiceName>portalvhds2wdcfvkv5phc9</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>West US</Location><Label>cG9ydGFsdmhkczJ3ZGNmdmt2NXBoYzk=</Label><Status>Created</Status><Endpoints><Endpoint>http://portalvhds2wdcfvkv5phc9.blob.core.windows.net/</Endpoint><Endpoint>http://portalvhds2wdcfvkv5phc9.queue.core.windows.net/</Endpoint><Endpoint>http://portalvhds2wdcfvkv5phc9.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-06-25T17:50:15Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/portalvhds3285b8sydlcm1</Url><ServiceName>portalvhds3285b8sydlcm1</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>East US</Location><Label>cG9ydGFsdmhkczMyODViOHN5ZGxjbTE=</Label><Status>Created</Status><Endpoints><Endpoint>http://portalvhds3285b8sydlcm1.blob.core.windows.net/</Endpoint><Endpoint>http://portalvhds3285b8sydlcm1.queue.core.windows.net/</Endpoint><Endpoint>http://portalvhds3285b8sydlcm1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><CreationTime>2012-10-15T12:23:53Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/teststorageko2s3beu</Url><ServiceName>teststorageko2s3beu</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>dGVzdHN0b3JhZ2VrbzJzM2JldQ==</Label><Status>Created</Status><Endpoints><Endpoint>http://teststorageko2s3beu.blob.core.windows.net/</Endpoint><Endpoint>http://teststorageko2s3beu.queue.core.windows.net/</Endpoint><Endpoint>http://teststorageko2s3beu.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-10-14T18:53:50Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/teststoragem4pry42c</Url><ServiceName>teststoragem4pry42c</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>dGVzdHN0b3JhZ2VtNHByeTQyYw==</Label><Status>Created</Status><Endpoints><Endpoint>http://teststoragem4pry42c.blob.core.windows.net/</Endpoint><Endpoint>http://teststoragem4pry42c.queue.core.windows.net/</Endpoint><Endpoint>http://teststoragem4pry42c.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-10-14T18:44:54Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplat1</Url><ServiceName>xplat1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eHBsYXQx</Label><Status>Creating</Status><Endpoints><Endpoint>http://xplat1.blob.core.windows.net/</Endpoint><Endpoint>http://xplat1.queue.core.windows.net/</Endpoint><Endpoint>http://xplat1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><CreationTime>2013-10-28T18:09:40Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1</Url><ServiceName>xplatcli1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West Europe</Location><Label>eHBsYXRjbGkx</Label><Status>Created</Status><Endpoints><Endpoint>http://xplatcli1.blob.core.windows.net/</Endpoint><Endpoint>http://xplatcli1.queue.core.windows.net/</Endpoint><Endpoint>http://xplatcli1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-10-28T18:13:24Z</CreationTime></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  'content-length': '14259',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '5573fc3bb3054af6b8371637a9215fe7',
-  date: 'Thu, 02 May 2013 02:32:14 GMT' });
+  'x-ms-request-id': 'ee9d4fda80bf206aaaf47372aa5d035a',
+  date: 'Mon, 28 Oct 2013 18:14:00 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '20da0c1fe18247d489df26a939833c2b',
-  date: 'Thu, 02 May 2013 02:32:19 GMT' });
+  'x-ms-request-id': 'a4176ab0b5f8257e8f5ae6a61ef7673b',
+  date: 'Mon, 28 Oct 2013 18:14:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1</Url><ServiceName>cstorage1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>http://cstorage1.blob.core.windows.net/</Endpoint><Endpoint>http://cstorage1.queue.core.windows.net/</Endpoint><Endpoint>http://cstorage1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
-  'content-length': '921',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1</Url><ServiceName>xplatcli1</ServiceName><StorageServiceProperties><Description>function (str){\n  if (0 == arguments.length) return this._description;\n  this._description = str;\n  return this;\n}</Description><Location>West Europe</Location><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>http://xplatcli1.blob.core.windows.net/</Endpoint><Endpoint>http://xplatcli1.queue.core.windows.net/</Endpoint><Endpoint>http://xplatcli1.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>false</GeoReplicationEnabled><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2013-10-28T18:13:24Z</CreationTime></StorageServiceProperties><ExtendedProperties/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '1066',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '84b11536b4a74b939b974beb4ee49c3c',
-  date: 'Thu, 02 May 2013 02:32:21 GMT' });
+  'x-ms-request-id': 'b1d01927a33026a3a2dc36761529489d',
+  date: 'Mon, 28 Oct 2013 18:14:05 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1</Url><StorageServiceKeys><Primary>3+jfznNpbgsD8oA3VD8cORri0Q6AyPBHJGZwnJ0x3iBzC3MtaclBYcdPx424XjWpp420Z/IPv5cxE/2bwHVRCg==</Primary><Secondary>4FL3+v/34afik/f+Kk3CstHx3BjrM1BggDSIxwyxD9Ao14uhdNk/OOJlbUEjNq9MGKjmW9nJiWg7IuipIaZxuw==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1</Url><StorageServiceKeys><Primary>83k1jNVvpfb9yOS4uFhuH5KTG1rNUo5P4wOC4EUjWL3KciRuH2EpU9aWuRAD+nChF8AQMfGQ7S1bGKly3AHsWA==</Primary><Secondary>qInnbI8xvtKOV8PAn2uVeYlIcxTS0nabiXHJqOIHv5SAPA6F62dtFIbXG1Sy4GNNSE/QQv4qsNu+P2+Mz68zQQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '512',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '06d8075caadc44dcb7f93dfd8092e632',
-  date: 'Thu, 02 May 2013 02:32:23 GMT' });
+  'x-ms-request-id': '944e155451ac2bd080ece8ff2cd56f0d',
+  date: 'Mon, 28 Oct 2013 18:14:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1/keys?action=regenerate', '*')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1</Url><StorageServiceKeys><Primary>IM2hjkNCGDDQWas659Mp2mCarT6OBVaK4L3GNWwyFKSOkB6bg/13qHJofxzyLJ8VPwQdmw5cPajOsh5RwYCjVA==</Primary><Secondary>4FL3+v/34afik/f+Kk3CstHx3BjrM1BggDSIxwyxD9Ao14uhdNk/OOJlbUEjNq9MGKjmW9nJiWg7IuipIaZxuw==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1/keys?action=regenerate', '*')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1</Url><StorageServiceKeys><Primary>LciMeZ4QWYD6RnnTXDyUw6P6IFyLMWlNk7u2sB+hgf2BEmH1Sqi5pYm4yUQa3Va+pXoCOqjAfY9rt44sl3sBbw==</Primary><Secondary>qInnbI8xvtKOV8PAn2uVeYlIcxTS0nabiXHJqOIHv5SAPA6F62dtFIbXG1Sy4GNNSE/QQv4qsNu+P2+Mz68zQQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '512',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '2f9a3447fa084013b630aded73b5c11b',
-  date: 'Thu, 02 May 2013 02:32:28 GMT' });
+  'x-ms-request-id': '30f8af3ac986285c9eb12e5b6da95195',
+  date: 'Mon, 28 Oct 2013 18:14:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/cstorage1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xplatcli1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
-  'x-ms-request-id': '4059f819220144e1b91badf8d2a57ffb',
-  date: 'Thu, 02 May 2013 02:32:34 GMT' });
+  'x-ms-request-id': '03ec75bee45c22ceb75fd6b7ef28d692',
+  date: 'Mon, 28 Oct 2013 18:14:14 GMT' });
  return result; }]];
