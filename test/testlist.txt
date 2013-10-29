@@ -13,6 +13,7 @@ commands/cli.mobile-tests.js
 commands/cli.mobilerecover-tests.js
 commands/cli.network-tests.js
 commands/cli.sb-tests.js
+commands/cli.service-tests.js
 commands/cli.site-tests.js
 commands/cli.site.appsetting-tests.js
 commands/cli.site.cert-tests.js
