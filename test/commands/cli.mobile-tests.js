@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestd229493b-3968-46e6-b8a6-dcae82b66a2f';
+var nockedServiceName = 'clitest0dbafa76-5c14-424a-8ae6-f3755694e3ea';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
