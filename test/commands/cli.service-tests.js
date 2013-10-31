@@ -90,10 +90,10 @@ describe('cli', function () {
           var cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
 
           suite.execute('node cli.js service create %s --location %s --json', cloudServiceName, location, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text).name;
+            var serverName = JSON.parse(result.text).serviceName;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -108,10 +108,10 @@ describe('cli', function () {
         beforeEach(function (done) {
           cloudServiceName = suite.generateId(createdServicesPrefix, createdServices);
           suite.execute('service create %s --location %s --json', cloudServiceName, location, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
-            var serviceName = JSON.parse(result.text).name;
+            var serviceName = JSON.parse(result.text).serviceName;
             serviceName.should.equal(cloudServiceName);
 
             done();
@@ -120,16 +120,17 @@ describe('cli', function () {
 
         it('should show the service', function (done) {
           suite.execute('service show %s --json', cloudServiceName, function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var service = JSON.parse(result.text);
-            service.Location.should.equal(location);
-            service.ServiceName.should.equal(cloudServiceName);
-            service.Label.should.not.be.null;
-            service.Status.should.equal('Created');
-            service.DateCreated.should.not.be.null;
-            service.DateLastModified.should.not.be.null;
+
+            service.serviceName.should.equal(cloudServiceName);
+            service.properties.location.should.equal(location);
+            service.properties.label.should.not.be.null;
+            service.properties.status.should.equal('Created');
+            service.properties.dateCreated.should.not.be.null;
+            service.properties.dateLastModified.should.not.be.null;
 
             done();
           });
@@ -137,14 +138,14 @@ describe('cli', function () {
 
         it('should list the service', function (done) {
           suite.execute('service list --json', function (result) {
-            result.text.should.not.be.null;
+            (result.text === null).should.be.false;
             result.exitStatus.should.equal(0);
 
             var services = JSON.parse(result.text);
 
-            should.exist(services.filter(function (service) {
-              return service.name === cloudServiceName;
-            }));
+            services.some(function (service) {
+              return service.serviceName === cloudServiceName;
+            }).should.equal(true);
 
             done();
           });

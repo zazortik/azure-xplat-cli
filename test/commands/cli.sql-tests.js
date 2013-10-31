@@ -57,7 +57,7 @@ describe('cli', function () {
       beforeEach(function (done) {
         suite.execute('sql server list --json', function (result) {
           oldServerNames = JSON.parse(result.text).map(function (server) {
-            return server.Name;
+            return server.name;
           });
 
           done();
@@ -83,7 +83,7 @@ describe('cli', function () {
           var usedServers = [ ];
           _.each(servers, function (server) {
             if (!_.contains(oldServerNames, server.Name)) {
-              usedServers.push(server.Name);
+              usedServers.push(server.name);
             }
           });
 
@@ -102,7 +102,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text).Name;
+            var serverName = JSON.parse(result.text).name;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -122,7 +122,7 @@ describe('cli', function () {
               result.text.should.not.be.null;
               result.exitStatus.should.equal(0);
 
-              var serverName = JSON.parse(result.text).Name;
+              var serverName = JSON.parse(result.text).name;
               serverName.should.not.be.null;
               serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -152,7 +152,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            serverName = JSON.parse(result.text).Name;
+            serverName = JSON.parse(result.text).name;
 
             done();
           });
@@ -164,9 +164,9 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             var server = JSON.parse(result.text);
-            server.Name.should.equal(serverName);
-            server.AdministratorLogin.should.equal(administratorLogin);
-            server.Location.should.equal(location);
+            server.name.should.equal(serverName);
+            server.administratorUserName.should.equal(administratorLogin);
+            server.location.should.equal(location);
 
             done();
           });
@@ -180,7 +180,7 @@ describe('cli', function () {
             var servers = JSON.parse(result.text);
 
             servers.some(function (server) {
-              return server.Name === serverName;
+              return server.name === serverName;
             }).should.equal(true);
 
             done();
@@ -206,7 +206,7 @@ describe('cli', function () {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          serverName = JSON.parse(result.text).Name;
+          serverName = JSON.parse(result.text).name;
 
           done();
         });
@@ -297,8 +297,7 @@ describe('cli', function () {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          serverName = JSON.parse(result.text).Name;
-
+          serverName = JSON.parse(result.text).name;
           suite.execute('sql firewallrule create %s %s %s %s --json', serverName, RULE_NAME, '0.0.0.0', '255.255.255.255', function () {
             // let firewall rule create
             setTimeout(function () {

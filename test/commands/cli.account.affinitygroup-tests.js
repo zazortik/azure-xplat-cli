@@ -16,7 +16,7 @@ var should = require('should');
 
 var CLITest = require('../framework/cli-test');
 
-var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
+var AFFINITYGROUP_NAME_PREFIX = 'xplat-afg-';
 var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West US';
 
 var createdAffinityGroups = [];
@@ -79,10 +79,10 @@ describe('cli', function () {
 
           var affinityGroup = JSON.parse(result.text);
 
-          affinityGroup.Name.should.equal(affinityGroupName);
-          affinityGroup.Description.should.equal('AG-DESC');
-          affinityGroup.Location.should.equal(AFFINITYGROUP_LOCATION);
-          affinityGroup.Label.should.equal(new Buffer(affinityGroupName).toString('base64'));
+          affinityGroup.name.should.equal(affinityGroupName);
+          affinityGroup.description.should.equal('AG-DESC');
+          affinityGroup.location.should.equal(AFFINITYGROUP_LOCATION);
+          affinityGroup.label.should.equal(affinityGroupName);
 
           done();
         });
@@ -96,13 +96,13 @@ describe('cli', function () {
 
           var found = false;
           JSON.parse(result.text).forEach(function (affinityGroup) {
-            if(affinityGroup.Name === affinityGroupName) {
+            if(affinityGroup.name === affinityGroupName) {
               found = true;
 
-              affinityGroup.Name.should.equal(affinityGroupName);
-              affinityGroup.Description.should.equal('AG-DESC');
-              affinityGroup.Location.should.equal(AFFINITYGROUP_LOCATION);
-              affinityGroup.Label.should.equal(new Buffer(affinityGroupName).toString('base64'));
+              affinityGroup.name.should.equal(affinityGroupName);
+              affinityGroup.description.should.equal('AG-DESC');
+              affinityGroup.location.should.equal(AFFINITYGROUP_LOCATION);
+              affinityGroup.label.should.equal(affinityGroupName);
             }
           });
           found.should.equal(true);

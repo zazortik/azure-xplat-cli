@@ -1,3 +1,14 @@
+2013.10.18 - version 0.7.3
+* #961 - Fixed issue with site connection strings
+* #712 - Add support for VM shutdown on stop
+* #876 - Improve azure site show appearance
+* #966 - Fixed issue with incorrect service endpoint being used from publish settings
+* #987 - Fix issue with "azure site download" on windows
+* #925 - Making "azure site create" show template based error instead of generic one
+* #963 - Update kudu script module to version 0.1.5
+* Upgrade to latest SDK (which uses generated website wrappers)
+* Supports the new high-memory A5 instance size (2 cores, 14GB RAM)
+
 2013.09.24 - version 0.7.2
 * Multiple bugfixes
 

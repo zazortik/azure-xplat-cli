@@ -51,35 +51,35 @@ describe('cli', function () {
           var locations = JSON.parse(result.text);
 
           locations.some(function (l) {
-            return l.FullName === 'East Asia';
+            return l.fullName === 'East Asia';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'West Europe';
+            return l.fullName === 'West Europe';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'North Europe';
+            return l.fullName === 'North Europe';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'East US';
+            return l.fullName === 'East US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'Southeast Asia';
+            return l.fullName === 'Southeast Asia';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'North Central US';
+            return l.fullName === 'North Central US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'West US';
+            return l.fullName === 'West US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'South Central US';
+            return l.fullName === 'South Central US';
           }).should.be.true;
 
           done();
