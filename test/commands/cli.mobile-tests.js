@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest0dbafa76-5c14-424a-8ae6-f3755694e3ea';
+var nockedServiceName = 'clitestef4a1ced-9e1d-4c02-ad54-9d7b5e6f13b7';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -66,6 +66,7 @@ var scopeWritten;
 var existingDBName;
 var existingServerName;
 var existingContinuationToken;
+var knownRecords;
 
 // polyfill appendFileSync
 if (!fs.appendFileSync) {
@@ -261,7 +262,7 @@ describe('cli', function () {
       });
     });
 
-    it('create ' + existingServiceName + ' -d ' + "existingDBName" + ' -r ' + "existingServerName" + ' tjanczuk FooBar#12 ' + ' --json (create service with existing DB and server)', function (done) {
+    it('create ' + existingServiceName + ' -d existingDBName -r existingServerName tjanczuk FooBar#12 --json (create service with existing DB and server)', function (done) {
         var cmd = ('node cli.js mobile create ' + existingServiceName + ' -d ' + existingDBName + ' -r ' + existingServerName + ' tjanczuk FooBar#12').split(' ');
         cmd.push('--json');
 
@@ -1014,8 +1015,9 @@ describe('cli', function () {
         });
         response.table.name.should.equal('table1');
         Array.isArray(response.columns).should.be.ok;
-        response.columns.length.should.equal(1);
+        response.columns.length.should.equal(4);
         response.columns[0].name.should.equal('id');
+        response.columns[0].type.should.equal('string');
         checkScopes(scopes);
         done();
       });
@@ -1044,7 +1046,7 @@ describe('cli', function () {
         response.permissions.insert.should.equal('public');
         response.table.name.should.equal('table1');
         Array.isArray(response.columns).should.be.ok;
-        response.columns.length.should.equal(1);
+        response.columns.length.should.equal(4);
         response.columns[0].name.should.equal('id');
         checkScopes(scopes);
         done();
@@ -1137,8 +1139,11 @@ describe('cli', function () {
         var response = JSON.parse(result.text);
         response.table.metrics.recordCount.should.equal(5);
         Array.isArray(response.columns).should.be.ok;
-        response.columns.length.should.equal(5);
+        response.columns.length.should.equal(8);
         [ { name: 'id', indexed: true },
+          { name: '__createdAt', indexed: true },
+          { name: '__updatedAt', indexed: false },
+          { name: '__version', indexed: false },
           { name: 'rowNumber', indexed: false },
           { name: 'foo', indexed: false },
           { name: 'bar', indexed: false },
@@ -1156,9 +1161,9 @@ describe('cli', function () {
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        Array.isArray(response).should.be.ok;
-        response.length.should.equal(5);
+        knownRecords = JSON.parse(result.text);
+        Array.isArray(knownRecords).should.be.ok;
+        knownRecords.length.should.equal(5);
         checkScopes(scopes);
         done();
       });
@@ -1172,6 +1177,7 @@ describe('cli', function () {
         var response = JSON.parse(result.text);
         Array.isArray(response).should.be.ok;
         response.length.should.equal(1);
+        response[0].id.should.equal(knownRecords[0].id);            
         checkScopes(scopes);
         done();
       });
@@ -1185,8 +1191,8 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response).should.be.ok;
             response.length.should.equal(2);
-            response[0].id.should.equal(4);
-            response[1].id.should.equal(5);
+            response[0].id.should.equal(knownRecords[3].id);
+            response[1].id.should.equal(knownRecords[4].id);
             checkScopes(scopes);
             done();
         })
@@ -1200,8 +1206,8 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response).should.be.ok;
             response.length.should.equal(2);
-            response[0].id.should.equal(3);
-            response[1].id.should.equal(4)
+            response[0].id.should.equal(knownRecords[2].id);
+            response[1].id.should.equal(knownRecords[3].id);
             checkScopes(scopes);
             done();
         });
@@ -1215,8 +1221,8 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response).should.be.ok;
             response.length.should.equal(2);
-            response[0].id.should.equal(1);
-            response[1].id.should.equal(2);
+            response[0].id.should.equal(knownRecords[0].id);
+            response[1].id.should.equal(knownRecords[1].id);            
             checkScopes(scopes);
             done();
         })
@@ -1240,8 +1246,11 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.columns).should.be.ok;
-        response.columns.length.should.equal(4);
+        response.columns.length.should.equal(7);
         [ { name: 'id', indexed: true },
+          { name: '__createdAt', indexed: true },
+          { name: '__updatedAt', indexed: false },
+          { name: '__version', indexed: false },        
           { name: 'rowNumber', indexed: false },
           { name: 'bar', indexed: true },
           { name: 'baz', indexed: true } ].forEach(function (column, columnIndex) {
@@ -1271,8 +1280,11 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.columns).should.be.ok;
-            response.columns.length.should.equal(4);
+            response.columns.length.should.equal(7);
             [{ name: 'id', indexed: true },
+              { name: '__createdAt', indexed: true },
+              { name: '__updatedAt', indexed: false },
+              { name: '__version', indexed: false },        
               { name: 'rowNumber', indexed: false },
               { name: 'bar', indexed: false },
               { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
@@ -1284,6 +1296,31 @@ describe('cli', function () {
         });
     });
 
+    /* The required upstream support for string id is not yet in place
+    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete all data from table)', function(done) {
+      var cmd = ('node cli.js mobile data delete ' + servicename + ' table1 ' + knownRecords[0].id + ' -q --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('data read ' + servicename + ' table1 --json (show 4 rows of data)', function(done) {
+      var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        knownRecords = JSON.parse(result.text);
+        Array.isArray(knownRecords).should.be.ok;
+        knownRecords.length.should.equal(4);
+        checkScopes(scopes);
+        done();
+      });
+    });
+    */
+
     it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
       var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
       var scopes = setupNock(cmd);
@@ -1291,12 +1328,51 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.didTruncate.should.equal(true);
-        response.rowCount.should.equal(5);
+        response.rowCount.should.equal(5);  // Revert to 4 when delete data changes are in prod for recording
         checkScopes(scopes);
         done();
       });
     });
     
+    // Verify we can create old style tables
+
+    it('table create ' + servicename + ' table3 --integerId --json', function(done) {
+      var cmd = ('node cli.js mobile table create ' + servicename + ' table3 --integerId --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('table show ' + servicename + ' table3 --json (fewer columns, more indexes)', function(done) {
+      var cmd = ('node cli.js mobile table show ' + servicename + ' table3 --json').split(' ');
+      var scopes = setupNock(cmd);
+      executeCmd(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.columns).should.be.ok;
+        response.columns[0].name.should.equal('id');
+        response.columns[0].indexed.should.equal(true);
+        response.columns[0].type.should.equal('bigint (MSSQL)');
+        checkScopes(scopes);
+        done();
+      });
+    });
+
+    it('table delete ' + servicename + ' table3 -q --json (delete table3)', function (done) {
+        var cmd = ('node cli.js mobile table delete ' + servicename + ' table3 -q --json').split(' ');
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
+            checkScopes(scopes);
+            done();
+        });
+    });
+
     /* Custom Api */
 
     it('api list ' + servicename + ' --json (no apis by default)', function (done) {
