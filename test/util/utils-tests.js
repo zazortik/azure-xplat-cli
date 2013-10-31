@@ -68,6 +68,17 @@ suite('util-tests', function() {
     done();
   });
 
+  test('stringTrimEnd should work', function(done) {
+    assert.equal(util.stringTrimEnd(null), null);
+    assert.equal(util.stringTrimEnd(''), '');
+    assert.equal(util.stringTrimEnd('a', 'a'), '');
+    assert.equal(util.stringTrimEnd('abc   '), 'abc');
+    assert.equal(util.stringTrimEnd('abc', 'c'), 'ab');
+    assert.equal(util.stringTrimEnd('abccc', 'c'), 'ab');
+    assert.equal(util.stringTrimEnd('abccc', 'd'), 'abccc');
+    done();
+  });
+
   test('escapeFilePath should work', function(done) {
     //Run test case on all platforms
     util.isWindows = function() { return true;};

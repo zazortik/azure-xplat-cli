@@ -1415,6 +1415,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
         checkScopes(scopes);
+
         done();
       });
     });
@@ -1426,10 +1427,13 @@ describe('cli', function () {
 
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
+        try { fs.unlinkSync(__dirname + '/mobile/testapicopy.js'); } catch (e) {}
+
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
         checkScopes(scopes);
+
         done();
       });
     });
@@ -1635,6 +1639,8 @@ describe('cli', function () {
                 }
                 data.should.equal(data_str);
             });
+
+            try { fs.unlinkSync(__dirname + '/mobile/feedback_download.js'); } catch (e) {}
             checkScopes(scopes);
             done();
         });
