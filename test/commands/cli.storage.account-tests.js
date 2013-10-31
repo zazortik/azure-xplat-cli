@@ -18,8 +18,13 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
-var storageNamesPrefix = 'xplatcli';
+var storageNamesPrefix = 'xcli';
 var storageNames = [];
+
+var AFFINITYGROUP_NAME_PREFIX = 'xcli';
+var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West Europe';
+
+var createdAffinityGroups = [];
 
 var suite;
 var testPrefix = 'cli.storage.account-tests';
@@ -27,6 +32,7 @@ var testPrefix = 'cli.storage.account-tests';
 describe('cli', function () {
   describe('storage account', function () {
     var storageName;
+    var affinityGroupName;
 
     before(function (done) {
       suite = new CLITest(testPrefix);
@@ -50,7 +56,7 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    it('should create a storage account', function(done) {
+    it('should create a storage account with location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
       suite.execute('storage account create %s --json --location %s',
@@ -61,6 +67,30 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         done();
+      });
+    });
+
+    it('should create a storage account with affinity group', function(done) {
+      storageName = suite.generateId(storageNamesPrefix, storageNames);
+      affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
+
+      suite.execute('account affinity-group create %s --location %s --description AG-DESC --json',
+        affinityGroupName,
+        AFFINITYGROUP_LOCATION,
+        function (result) {
+
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        suite.execute('storage account create %s --json -a %s',
+          storageName,
+          affinityGroupName,
+          function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          done();
+        });
       });
     });
 
