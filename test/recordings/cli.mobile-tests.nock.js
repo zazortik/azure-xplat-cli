@@ -2953,7 +2953,7 @@ nock('https://management.core.windows.net:443')
  return result; },
 function (nock) { var result = 
 nock('https://management.core.windows.net:443')
-  .delete('//db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/x8nff48d8s')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/x8nff48d8s')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.18 (rd_rdfe_stable.131024-2205) Microsoft-HTTPAPI/2.0',
