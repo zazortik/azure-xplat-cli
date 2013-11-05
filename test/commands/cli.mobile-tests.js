@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestef4a1ced-9e1d-4c02-ad54-9d7b5e6f13b7';
+var nockedServiceName = 'clitest8a52dd7a-51c7-4fc5-883e-5e865d0cd035';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -322,7 +322,7 @@ describe('cli', function () {
         response.application.Name.should.equal(servicename + 'mobileservice');
         response.application.Label.should.equal(servicename);
         response.application.State.should.equal('Healthy');
-        response.scalesettings.tier.should.equal('free');
+        response.scalesettings.tier.should.equal('tier1');
         response.scalesettings.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
@@ -1993,15 +1993,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.tier.should.equal('free');
+        response.tier.should.equal('tier1');
         response.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -t standard -i 2 --json (rescale to 2 reserved instances)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard -i 2 --json').split(' ');
+    it('scale change ' + servicename + ' -t basic -i 2 --json (rescale to 2 basic instances)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t basic -i 2 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -2011,21 +2011,21 @@ describe('cli', function () {
       });
     });
 
-    it('scale show ' + servicename + ' --json (show updated scale settings - standard)', function(done) {
+    it('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.tier.should.equal('standard');
+        response.tier.should.equal('tier2');
         response.numberOfInstances.should.equal(2);
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -t premium --json (change scale to premium)', function (done) {
-        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t premium --json').split(' ');
+    it('scale change ' + servicename + ' -t standard --json (change scale to standard)', function (done) {
+        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -2041,7 +2041,7 @@ describe('cli', function () {
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
-            response.tier.should.equal('premium');
+            response.tier.should.equal('tier3');
             response.numberOfInstances.should.equal(2);
             checkScopes(scopes);
             done();
@@ -2065,7 +2065,7 @@ describe('cli', function () {
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
-            response.tier.should.equal('free');
+            response.tier.should.equal('tier1');
             response.numberOfInstances.should.equal(1);
             checkScopes(scopes);
             done();
