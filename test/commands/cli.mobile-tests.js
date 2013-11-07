@@ -2024,8 +2024,8 @@ describe('cli', function () {
       });
     });
 
-    it('scale change ' + servicename + ' -t standard --json (change scale to standard)', function (done) {
-        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard --json').split(' ');
+    it('scale change ' + servicename + ' -t standard --json -q (change scale to standard)', function (done) {
+        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard --json -q').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
