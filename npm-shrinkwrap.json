@@ -1,9 +1,9 @@
 {
   "name": "azure-cli",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "dependencies": {
     "azure": {
-      "version": "0.7.16",
+      "version": "0.7.17",
       "dependencies": {
         "xml2js": {
           "version": "0.2.8",
@@ -96,7 +96,7 @@
           }
         },
         "validator": {
-          "version": "1.5.1"
+          "version": "2.0.0"
         },
         "wns": {
           "version": "0.5.3"
@@ -106,6 +106,12 @@
         },
         "envconf": {
           "version": "0.0.4"
+        },
+        "duplexer": {
+          "version": "0.1.1"
+        },
+        "through": {
+          "version": "2.3.4"
         }
       }
     },
@@ -195,7 +201,7 @@
       }
     },
     "should": {
-      "version": "2.0.1"
+      "version": "2.0.2"
     },
     "winston-memory": {
       "version": "0.1.0"
@@ -222,7 +228,7 @@
       }
     },
     "jshint": {
-      "version": "2.1.11",
+      "version": "2.3.0",
       "dependencies": {
         "shelljs": {
           "version": "0.1.4"
@@ -257,10 +263,10 @@
       }
     },
     "mocha": {
-      "version": "1.13.0",
+      "version": "1.14.0",
       "dependencies": {
         "commander": {
-          "version": "0.6.1"
+          "version": "2.0.0"
         },
         "growl": {
           "version": "1.7.0"
@@ -268,6 +274,9 @@
         "jade": {
           "version": "0.26.3",
           "dependencies": {
+            "commander": {
+              "version": "0.6.1"
+            },
             "mkdirp": {
               "version": "0.3.0"
             }
@@ -277,7 +286,7 @@
           "version": "1.0.7"
         },
         "debug": {
-          "version": "0.7.2"
+          "version": "0.7.3"
         },
         "mkdirp": {
           "version": "0.3.5"
@@ -371,7 +380,7 @@
               "version": "0.0.3"
             },
             "debug": {
-              "version": "0.7.2"
+              "version": "0.7.3"
             }
           }
         },

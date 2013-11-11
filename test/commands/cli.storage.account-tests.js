@@ -18,8 +18,13 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
-var storageNamesPrefix = 'cstorage';
+var storageNamesPrefix = 'xcli';
 var storageNames = [];
+
+var AFFINITYGROUP_NAME_PREFIX = 'xcli';
+var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West Europe';
+
+var createdAffinityGroups = [];
 
 var suite;
 var testPrefix = 'cli.storage.account-tests';
@@ -27,6 +32,7 @@ var testPrefix = 'cli.storage.account-tests';
 describe('cli', function () {
   describe('storage account', function () {
     var storageName;
+    var affinityGroupName;
 
     before(function (done) {
       suite = new CLITest(testPrefix);
@@ -50,12 +56,12 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    it('should create a storage account', function(done) {
+    it('should create a storage account with location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
       suite.execute('storage account create %s --json --location %s',
         storageName,
-        process.env.AZURE_STORAGE_TEST_LOCATION || 'East US',
+        process.env.AZURE_STORAGE_TEST_LOCATION || 'West Europe',
         function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -64,11 +70,35 @@ describe('cli', function () {
       });
     });
 
+    it('should create a storage account with affinity group', function(done) {
+      storageName = suite.generateId(storageNamesPrefix, storageNames);
+      affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
+
+      suite.execute('account affinity-group create %s --location %s --description AG-DESC --json',
+        affinityGroupName,
+        AFFINITYGROUP_LOCATION,
+        function (result) {
+
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        suite.execute('storage account create %s --json -a %s',
+          storageName,
+          affinityGroupName,
+          function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          done();
+        });
+      });
+    });
+
     it('should list storage accounts', function(done) {
       suite.execute('storage account list --json', function (result) {
         var storageAccounts = JSON.parse(result.text);
         storageAccounts.some(function (account) {
-          return account.ServiceName === storageName;
+          return account.serviceName === storageName;
         }).should.be.true;
 
         done();
@@ -82,7 +112,7 @@ describe('cli', function () {
 
         suite.execute('storage account show %s --json', storageName, function (result) {
           var storageAccount = JSON.parse(result.text);
-          new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
+          storageAccount.properties.label.should.equal('test');
 
           done();
         });
@@ -92,12 +122,15 @@ describe('cli', function () {
     it('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
-        storageAccountKeys.Primary.should.not.be.null;
-        storageAccountKeys.Secondary.should.not.be.null;
+        storageAccountKeys.primaryKey.should.not.be.null;
+        storageAccountKeys.secondaryKey.should.not.be.null;
 
         suite.execute('storage account keys renew %s --primary --json', storageName, function (result) {
-          result.text.should.equal('');
           result.exitStatus.should.equal(0);
+
+          storageAccountKeys = JSON.parse(result.text);
+          storageAccountKeys.primaryKey.should.not.be.null;
+          storageAccountKeys.secondaryKey.should.not.be.null;
 
           function deleteUsedStorage (storages) {
             if (storages.length > 0) {
