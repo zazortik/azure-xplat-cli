@@ -2953,6 +2953,16 @@ nock('https://management.core.windows.net:443')
  return result; },
 function (nock) { var result = 
 nock('https://management.core.windows.net:443')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/vmrqzoaz8m')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  server: '1.0.6198.19 (rd_rdfe_stable.131030-2145) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': '22b9f422129b2a51bf45a378d63b59ef',
+  date: 'Tue, 05 Nov 2013 05:45:05 GMT' });
+ return result; },  
+function (nock) { var result = 
+nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/applications/clitest8a52dd7a-51c7-4fc5-883e-5e865d0cd035mobileservice')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
