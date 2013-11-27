@@ -47,7 +47,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest8a52dd7a-51c7-4fc5-883e-5e865d0cd035';
+var nockedServiceName = 'clitest5c65dc65-bbd1-4393-a0ee-e866158c9309';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -1262,8 +1262,8 @@ describe('cli', function () {
       });
     });
 
-    it('table update ' + servicename + ' table1 --deleteIndex bar -q --json (delete index)', function (done) {
-        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar -q --json').split(' ');
+    it('table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json (delete index)', function (done) {
+        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -1280,14 +1280,15 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.columns).should.be.ok;
-            response.columns.length.should.equal(7);
+            response.columns.length.should.equal(8);
             [{ name: 'id', indexed: true },
               { name: '__createdAt', indexed: true },
               { name: '__updatedAt', indexed: false },
               { name: '__version', indexed: false },        
               { name: 'rowNumber', indexed: false },
               { name: 'bar', indexed: false },
-              { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
+              { name: 'baz', indexed: true },
+              { name: 'custom', indexed: false }].forEach(function (column, columnIndex) {
                   response.columns[columnIndex].name.should.equal(column.name);
                   response.columns[columnIndex].indexed.should.equal(column.indexed);
               });
@@ -1296,8 +1297,7 @@ describe('cli', function () {
         });
     });
 
-    /* The required upstream support for string id is not yet in place
-    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete all data from table)', function(done) {
+    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete a record)', function(done) {
       var cmd = ('node cli.js mobile data delete ' + servicename + ' table1 ' + knownRecords[0].id + ' -q --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1319,7 +1319,6 @@ describe('cli', function () {
         done();
       });
     });
-    */
 
     it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
       var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
@@ -1328,7 +1327,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.didTruncate.should.equal(true);
-        response.rowCount.should.equal(5);  // Revert to 4 when delete data changes are in prod for recording
+        response.rowCount.should.equal(4);
         checkScopes(scopes);
         done();
       });
