@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 /*
 
@@ -47,7 +48,7 @@
 */
 
 var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitestef4a1ced-9e1d-4c02-ad54-9d7b5e6f13b7';
+var nockedServiceName = 'clitest5c65dc65-bbd1-4393-a0ee-e866158c9309';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -322,7 +323,7 @@ describe('cli', function () {
         response.application.Name.should.equal(servicename + 'mobileservice');
         response.application.Label.should.equal(servicename);
         response.application.State.should.equal('Healthy');
-        response.scalesettings.tier.should.equal('free');
+        response.scalesettings.tier.should.equal('tier1');
         response.scalesettings.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
@@ -1262,8 +1263,8 @@ describe('cli', function () {
       });
     });
 
-    it('table update ' + servicename + ' table1 --deleteIndex bar -q --json (delete index)', function (done) {
-        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar -q --json').split(' ');
+    it('table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json (delete index)', function (done) {
+        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -1280,14 +1281,15 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
             Array.isArray(response.columns).should.be.ok;
-            response.columns.length.should.equal(7);
+            response.columns.length.should.equal(8);
             [{ name: 'id', indexed: true },
               { name: '__createdAt', indexed: true },
               { name: '__updatedAt', indexed: false },
               { name: '__version', indexed: false },        
               { name: 'rowNumber', indexed: false },
               { name: 'bar', indexed: false },
-              { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
+              { name: 'baz', indexed: true },
+              { name: 'custom', indexed: false }].forEach(function (column, columnIndex) {
                   response.columns[columnIndex].name.should.equal(column.name);
                   response.columns[columnIndex].indexed.should.equal(column.indexed);
               });
@@ -1296,8 +1298,7 @@ describe('cli', function () {
         });
     });
 
-    /* The required upstream support for string id is not yet in place
-    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete all data from table)', function(done) {
+    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete a record)', function(done) {
       var cmd = ('node cli.js mobile data delete ' + servicename + ' table1 ' + knownRecords[0].id + ' -q --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
@@ -1319,7 +1320,6 @@ describe('cli', function () {
         done();
       });
     });
-    */
 
     it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
       var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
@@ -1328,7 +1328,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.didTruncate.should.equal(true);
-        response.rowCount.should.equal(5);  // Revert to 4 when delete data changes are in prod for recording
+        response.rowCount.should.equal(4);
         checkScopes(scopes);
         done();
       });
@@ -1993,15 +1993,15 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.tier.should.equal('free');
+        response.tier.should.equal('tier1');
         response.numberOfInstances.should.equal(1);
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -t standard -i 2 --json (rescale to 2 reserved instances)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard -i 2 --json').split(' ');
+    it('scale change ' + servicename + ' -t basic -i 2 --json (rescale to 2 basic instances)', function(done) {
+      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t basic -i 2 --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
@@ -2011,21 +2011,21 @@ describe('cli', function () {
       });
     });
 
-    it('scale show ' + servicename + ' --json (show updated scale settings - standard)', function(done) {
+    it('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
       var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
       var scopes = setupNock(cmd);
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.tier.should.equal('standard');
+        response.tier.should.equal('tier2');
         response.numberOfInstances.should.equal(2);
         checkScopes(scopes);
         done();
       });
     });
 
-    it('scale change ' + servicename + ' -t premium --json (change scale to premium)', function (done) {
-        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t premium --json').split(' ');
+    it('scale change ' + servicename + ' -t standard --json -q (change scale to standard)', function (done) {
+        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard --json -q').split(' ');
         var scopes = setupNock(cmd);
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -2041,7 +2041,7 @@ describe('cli', function () {
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
-            response.tier.should.equal('premium');
+            response.tier.should.equal('tier3');
             response.numberOfInstances.should.equal(2);
             checkScopes(scopes);
             done();
@@ -2065,7 +2065,7 @@ describe('cli', function () {
         executeCmd(cmd, function (result) {
             result.exitStatus.should.equal(0);
             var response = JSON.parse(result.text);
-            response.tier.should.equal('free');
+            response.tier.should.equal('tier1');
             response.numberOfInstances.should.equal(1);
             checkScopes(scopes);
             done();

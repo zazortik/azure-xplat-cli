@@ -1,4 +1,6 @@
-# Windows Azure CLI tool for Windows, Mac and Linux [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
+# Windows Azure CLI tool for Windows, Mac and Linux
+
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
 
 This project provides a cross platform command line tool for developers and administrators to develop, deploy and manage Windows Azure applications.
 
@@ -329,14 +331,14 @@ Deletes a mobile service
 ## azure mobile scale - Manage scale for your mobile service
 
     azure mobile scale show [servicename]
-Show the scalability settings of a mobile sservice
+Show the scalability settings of a mobile service
 
     azure mobile scale change [options] [servicename]
 Change the scalability settings of a mobile service
 
-**--tier [tier]** - 'Free', 'Standard' or 'Premium'
+**--tier [tier]** - 'Free', 'Basic' or 'Standard'
 
-**--numberOfInstances [count]** - number of instances in standard or premium mode.
+**--numberOfInstances [count]** - number of instances in basic or standard mode.
 
     azure mobile log [servicename]
 Retrieves mobile logs 
