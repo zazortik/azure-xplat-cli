@@ -157,7 +157,7 @@ suite('site deploymentscript', function () {
     var projectFile = 'site\\projectFile.csproj';
     var projectFilePath = pathUtil.join(testDir, projectFile);
 
-    testSettings.cmd = format('node cli.js site deploymentscript --dotNetConsole %s -s %s -r %s', projectFilePath, solutionFilePath, testDir).split(' ');
+    testSettings.cmd = format('node cli.js site deploymentscript --dotNetConsole %s -s %s -r %s -t batch', projectFilePath, solutionFilePath, testDir).split(' ');
     testSettings.solutionFile = solutionFile;
     testSettings.projectFile = projectFile;
 
