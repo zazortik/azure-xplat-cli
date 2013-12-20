@@ -151,6 +151,19 @@ suite('site deploymentscript', function () {
     runNodeSiteDeploymentScriptScenario(done, testSettings);
   });
 
+  test('generate batch .NET console application deployment script (--dotNetConsole site\\projectFile.csproj -s solutionFile.sln -r) should generate deploy.cmd', function (done) {
+    var solutionFile = 'solutionFile.sln';
+    var solutionFilePath = pathUtil.join(testDir, solutionFile);
+    var projectFile = 'site\\projectFile.csproj';
+    var projectFilePath = pathUtil.join(testDir, projectFile);
+
+    testSettings.cmd = format('node cli.js site deploymentscript --dotNetConsole %s -s %s -r %s -t batch', projectFilePath, solutionFilePath, testDir).split(' ');
+    testSettings.solutionFile = solutionFile;
+    testSettings.projectFile = projectFile;
+
+    runDotNetConsoleAppDeploymentScriptScenario(done, testSettings);
+  });
+
   test('generate batch aspWebSite with solution file deployment script (--aspWebSite -s solutionFile.sln -p site -r) should generate deploy.cmd', function (done) {
     var solutionFile = 'solutionFile.sln';
     var solutionFilePath = pathUtil.join(testDir, solutionFile);
@@ -308,6 +321,13 @@ suite('site deploymentscript', function () {
     runErrorScenario(done, testSettings);
   });
 
+  test('using exclusion flags together should fail (--dotNetConsole proj.csproj --php ...)', function (done) {
+    testSettings.cmd = ('node cli.js site deploymentscript --dotNetConsole proj.csproj --php -r ' + testDir).split(' ');
+    testSettings.errorMessage = 'specify only one of these flags';
+
+    runErrorScenario(done, testSettings);
+  });
+
   test('--aspWAP requires project file path argument', function (done) {
     testSettings.cmd = ('node cli.js site deploymentscript -r ' + testDir + ' --aspWAP').split(' ');
     // testSettings.errorMessage = 'argument missing';
@@ -339,6 +359,16 @@ function runAspWebSiteDeploymentScriptScenario(callback, settings) {
   settings.scriptFileName = 'deploy.cmd';
   settings.outputContains = ['Generating deployment script for .NET Web Site', 'Generated deployment script'];
   settings.scriptContains = ['echo Handling .NET Web Site deployment.', settings.solutionFile, 'MSBUILD_PATH'];
+
+  runSiteDeploymentScriptScenario(callback, settings);
+}
+
+function runDotNetConsoleAppDeploymentScriptScenario(callback, settings) {
+  settings.scriptFileName = 'deploy.cmd';
+  var solutionRelated = settings.solutionFile != null ? 'SolutionDir' : '';
+
+  settings.outputContains = ['Generating deployment script for .NET console application', 'Generated deployment script'];
+  settings.scriptContains = ['echo Handling .NET Console Application deployment.', settings.projectFile, 'MSBUILD_PATH', solutionRelated];
 
   runSiteDeploymentScriptScenario(callback, settings);
 }
