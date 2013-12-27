@@ -27,7 +27,7 @@ var testPrefix = 'cli.site.domain-tests';
 */
 var domainName = 'armarmt.mooo.com';
 var fakeDomainName = 'fake.mooo.com';
-var siteName = 'asdqweqwe';
+var siteName = 'asdqweq';
 
 describe('cli', function () {
   describe('site domain', function() {
