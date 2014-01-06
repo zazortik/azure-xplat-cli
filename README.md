@@ -331,14 +331,14 @@ Deletes a mobile service
 ## azure mobile scale - Manage scale for your mobile service
 
     azure mobile scale show [servicename]
-Show the scalability settings of a mobile sservice
+Show the scalability settings of a mobile service
 
     azure mobile scale change [options] [servicename]
 Change the scalability settings of a mobile service
 
-**--tier [tier]** - 'Free', 'Standard' or 'Premium'
+**--tier [tier]** - 'Free', 'Basic' or 'Standard'
 
-**--numberOfInstances [count]** - number of instances in standard or premium mode.
+**--numberOfInstances [count]** - number of instances in basic or standard mode.
 
     azure mobile log [servicename]
 Retrieves mobile logs 
