@@ -30,7 +30,7 @@ nock('https://management.core.windows.net:443')
   date: 'Wed, 08 Jan 2014 08:43:24 GMT' });
  return result; },
 function (nock) { var result = 
-nock('https://management.core.windows.net:443')clitest5c65dc65-bbd1-4393-a0ee-e866158c9309
+nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/applications', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
