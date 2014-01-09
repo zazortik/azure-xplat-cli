@@ -121,7 +121,7 @@ describe('cli', function () {
           suite.execute('site create %s --slot %s --json', siteName, slot, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('site swap %s --slot %s --json', siteName, slot, function (result) {
+            suite.execute('site swap %s --slot %s --json --quiet', siteName, slot, function (result) {
               result.exitStatus.should.equal(0);
 
               done();
