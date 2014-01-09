@@ -107,5 +107,28 @@ describe('cli', function () {
         });
       });
     });
+
+    it('swaps a slot for a site', function (done) {
+      var siteName = suite.generateId(createdSitesPrefix, createdSites);
+      var slot = 'staging';
+
+      suite.execute('site create %s --location %s --json', siteName, location, function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('site scale mode standard %s --json', siteName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('site create %s --slot %s --json', siteName, slot, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('site swap %s --slot %s --json', siteName, slot, function (result) {
+              result.exitStatus.should.equal(0);
+
+              done();
+            });
+          });
+        });
+      });
+    });
   });
 });
