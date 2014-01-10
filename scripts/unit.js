@@ -152,13 +152,22 @@ if (!process.env.NOCK_OFF) {
       throw new Error('Git recordings can only be made with the git username ' + defaultGitUsername);
     }
 
+    if (process.env.AZURE_CERTIFICATE_FILE) {
+      process.env.AZURE_CERTIFICATE = fs.readFileSync(process.env.AZURE_CERTIFICATE_FILE).toString();
+    }
+
     if (!process.env.AZURE_CERTIFICATE) {
       throw new Error('Azure certificate needs to be defined for recordings');
+    }
+
+    if (process.env.AZURE_CERTIFICATE_KEY_FILE) {
+      process.env.AZURE_CERTIFICATE_KEY = fs.readFileSync(process.env.AZURE_CERTIFICATE_KEY_FILE).toString();
     }
 
     if (!process.env.AZURE_CERTIFICATE_KEY) {
       throw new Error('Azure certificate key needs to be defined for recordings');
     }
+
     if (!process.env.AZURE_STORAGE_CONNECTION_STRING && !process.env.AZURE_STORAGE_ACCOUNT) {
       throw new Error('Azure storage connection string needs to be defined for recordings');
     }
