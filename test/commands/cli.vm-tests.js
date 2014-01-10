@@ -642,9 +642,22 @@ describe('cli', function () {
 			});
 		}); 
 		
+		//Creating a Windows VM
 		it('Create Windows Vm', function (done) {
 			getSharedVM(function(vm){
 				vm.Created.should.be.ok;
+				return done();
+			});
+		});
+		
+		 
+		//Vm disk list for a VM
+		it('Vm disk List for a VM', function (done) {
+			suite.execute('vm disk list %s --json', vmName, function (result) {
+				result.exitStatus.should.equal(0);
+				var diskInfo = JSON.parse(result.text);
+				diskInfo[0].DiskName.should.include(vmName);
+				diskInfo[0].SourceImageName.should.equal('xplattestimg');				
 				return done();
 			});
 		});
