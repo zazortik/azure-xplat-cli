@@ -29,6 +29,7 @@ exports = module.exports = {
 
 function execute(cmd, cb) {
   var sandbox = sinon.sandbox.create();
+  var cli;
 
   var result = {
     text: '',
@@ -61,7 +62,7 @@ function execute(cmd, cb) {
   });
 
   try {
-    var cli = new AzureCli();
+    cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;

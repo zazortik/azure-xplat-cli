@@ -25,7 +25,7 @@ describe('cli', function () {
   describe('mobile', function() {
     describe('recover', function() {
 
-      before(function (done) {        
+      before(function (done) {
         process.env.AZURE_ENABLE_STRICT_SSL = false;
 
         sinon.stub(keyFiles, 'readFromFile', function () {
@@ -39,7 +39,7 @@ describe('cli', function () {
         done();
       });
 
-      after(function (done) {        
+      after(function (done) {
         delete process.env.AZURE_ENABLE_STRICT_SSL;
 
         if (keyFiles.readFromFile.restore) {
@@ -53,7 +53,7 @@ describe('cli', function () {
         done();
       });
 
-      beforeEach(function (done) {      
+      beforeEach(function (done) {
         nockhelper.nockHttp();
         done();
       });
