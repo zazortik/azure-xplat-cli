@@ -1,6 +1,6 @@
 {
     "  - digit [0-9],": "  - digit [0-9],",
-    "  - lowecase letter [a-z],": "  - lowecase letter [a-z],",
+    "  - lowercase letter [a-z],": "  - lowercase letter [a-z],",
     "  - special character (e.g. !@#$%^&).": "  - special character (e.g. !@#$%^&).",
     "  - uppercase letter [A-Z],": "  - uppercase letter [A-Z],",
     "  Id:": "  Id:",
