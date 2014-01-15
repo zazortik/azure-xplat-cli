@@ -2082,7 +2082,7 @@ describe('cli', function () {
         var response = JSON.parse(result.text);
         response.should.include({
           "enabled": [],
-          "available": [ "SourceControl" ]
+          "available": [ "SourceControl", "Users" ]
         });
         checkScopes(scopes);
         done();
@@ -2109,7 +2109,7 @@ describe('cli', function () {
         var response = JSON.parse(result.text);
         response.should.include({
           "enabled": [ "SourceControl" ],
-          "available": [ "SourceControl" ]
+          "available": [ "SourceControl", "Users" ]
         });
         checkScopes(scopes);
         done();
