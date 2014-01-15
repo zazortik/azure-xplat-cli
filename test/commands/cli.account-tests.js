@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var should = require('should');
 var sinon = require('sinon');
@@ -34,10 +35,10 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
             var environments = JSON.parse(result.text);
 
-            should.exist(environments.AzureCloud);
-            should.exist(environments.AzureChinaCloud);
-            should.exist(environments.AzureCloud.publishingProfile);
-            should.exist(environments.AzureChinaCloud.publishingProfile);
+            environments.AzureCloud.should.not.equal(null);
+            environments.AzureChinaCloud.should.not.equal(null);
+            environments.AzureCloud.should.not.equal(null);
+            environments.AzureChinaCloud.publishingProfile.should.not.equal(null);
 
             done();
           });
@@ -145,6 +146,13 @@ describe('cli', function () {
 
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('should work accounts', function (done) {
+        suite.execute('account clear', function (result) {
           result.exitStatus.should.equal(0);
           done();
         });

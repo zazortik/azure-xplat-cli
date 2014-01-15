@@ -1,22 +1,23 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 var should = require('should');
 
 var CLITest = require('../framework/cli-test');
 
-var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
+var AFFINITYGROUP_NAME_PREFIX = 'xplat-afg-';
 var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West US';
 
 var createdAffinityGroups = [];
@@ -79,10 +80,10 @@ describe('cli', function () {
 
           var affinityGroup = JSON.parse(result.text);
 
-          affinityGroup.Name.should.equal(affinityGroupName);
-          affinityGroup.Description.should.equal('AG-DESC');
-          affinityGroup.Location.should.equal(AFFINITYGROUP_LOCATION);
-          affinityGroup.Label.should.equal(new Buffer(affinityGroupName).toString('base64'));
+          affinityGroup.name.should.equal(affinityGroupName);
+          affinityGroup.description.should.equal('AG-DESC');
+          affinityGroup.location.should.equal(AFFINITYGROUP_LOCATION);
+          affinityGroup.label.should.equal(affinityGroupName);
 
           done();
         });
@@ -96,13 +97,13 @@ describe('cli', function () {
 
           var found = false;
           JSON.parse(result.text).forEach(function (affinityGroup) {
-            if(affinityGroup.Name === affinityGroupName) {
+            if(affinityGroup.name === affinityGroupName) {
               found = true;
 
-              affinityGroup.Name.should.equal(affinityGroupName);
-              affinityGroup.Description.should.equal('AG-DESC');
-              affinityGroup.Location.should.equal(AFFINITYGROUP_LOCATION);
-              affinityGroup.Label.should.equal(new Buffer(affinityGroupName).toString('base64'));
+              affinityGroup.name.should.equal(affinityGroupName);
+              affinityGroup.description.should.equal('AG-DESC');
+              affinityGroup.location.should.equal(AFFINITYGROUP_LOCATION);
+              affinityGroup.label.should.equal(affinityGroupName);
             }
           });
           found.should.equal(true);

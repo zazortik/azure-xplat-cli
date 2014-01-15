@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var should = require('should');
 
@@ -51,35 +52,35 @@ describe('cli', function () {
           var locations = JSON.parse(result.text);
 
           locations.some(function (l) {
-            return l.FullName === 'East Asia';
+            return l.fullName === 'East Asia';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'West Europe';
+            return l.fullName === 'West Europe';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'North Europe';
+            return l.fullName === 'North Europe';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'East US';
+            return l.fullName === 'East US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'Southeast Asia';
+            return l.fullName === 'Southeast Asia';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'North Central US';
+            return l.fullName === 'North Central US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'West US';
+            return l.fullName === 'West US';
           }).should.be.true;
 
           locations.some(function (l) {
-            return l.FullName === 'South Central US';
+            return l.fullName === 'South Central US';
           }).should.be.true;
 
           done();

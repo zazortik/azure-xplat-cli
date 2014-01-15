@@ -1,25 +1,31 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var should = require('should');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
-var storageNamesPrefix = 'cstorage';
+var storageNamesPrefix = 'xcli';
 var storageNames = [];
+
+var AFFINITYGROUP_NAME_PREFIX = 'xcli';
+var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West Europe';
+
+var createdAffinityGroups = [];
 
 var suite;
 var testPrefix = 'cli.storage.account-tests';
@@ -27,6 +33,7 @@ var testPrefix = 'cli.storage.account-tests';
 describe('cli', function () {
   describe('storage account', function () {
     var storageName;
+    var affinityGroupName;
 
     before(function (done) {
       suite = new CLITest(testPrefix);
@@ -50,12 +57,12 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    it('should create a storage account', function(done) {
+    it('should create a storage account with location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
-      suite.execute('account storage create %s --json --location %s',
+      suite.execute('storage account create %s --json --location %s',
         storageName,
-        process.env.AZURE_STORAGE_TEST_LOCATION || 'East US',
+        process.env.AZURE_STORAGE_TEST_LOCATION || 'West Europe',
         function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -64,11 +71,35 @@ describe('cli', function () {
       });
     });
 
+    it('should create a storage account with affinity group', function(done) {
+      storageName = suite.generateId(storageNamesPrefix, storageNames);
+      affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
+
+      suite.execute('account affinity-group create %s --location %s --description AG-DESC --json',
+        affinityGroupName,
+        AFFINITYGROUP_LOCATION,
+        function (result) {
+
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+
+        suite.execute('storage account create %s --json -a %s',
+          storageName,
+          affinityGroupName,
+          function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          done();
+        });
+      });
+    });
+
     it('should list storage accounts', function(done) {
-      suite.execute('account storage list --json', function (result) {
+      suite.execute('storage account list --json', function (result) {
         var storageAccounts = JSON.parse(result.text);
         storageAccounts.some(function (account) {
-          return account.ServiceName === storageName;
+          return account.serviceName === storageName;
         }).should.be.true;
 
         done();
@@ -76,13 +107,13 @@ describe('cli', function () {
     });
 
     it('should update storage accounts', function(done) {
-      suite.execute('account storage update %s --label test --json', storageName, function (result) {
+      suite.execute('storage account set %s --label test --json', storageName, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('account storage show %s --json', storageName, function (result) {
+        suite.execute('storage account show %s --json', storageName, function (result) {
           var storageAccount = JSON.parse(result.text);
-          new Buffer(storageAccount.StorageServiceProperties.Label, 'base64').toString('ascii').should.equal('test');
+          storageAccount.properties.label.should.equal('test');
 
           done();
         });
@@ -90,20 +121,23 @@ describe('cli', function () {
     });
 
     it('should renew storage keys', function(done) {
-      suite.execute('account storage keys list %s --json', storageName, function (result) {
+      suite.execute('storage account keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
-        storageAccountKeys.Primary.should.not.be.null;
-        storageAccountKeys.Secondary.should.not.be.null;
+        storageAccountKeys.primaryKey.should.not.be.null;
+        storageAccountKeys.secondaryKey.should.not.be.null;
 
-        suite.execute('account storage keys renew %s --primary --json', storageName, function (result) {
-          result.text.should.equal('');
+        suite.execute('storage account keys renew %s --primary --json', storageName, function (result) {
           result.exitStatus.should.equal(0);
+
+          storageAccountKeys = JSON.parse(result.text);
+          storageAccountKeys.primaryKey.should.not.be.null;
+          storageAccountKeys.secondaryKey.should.not.be.null;
 
           function deleteUsedStorage (storages) {
             if (storages.length > 0) {
               var storage = storages.pop();
 
-              suite.execute('account storage delete %s --quiet --json', storage, function () {
+              suite.execute('storage account delete %s --quiet --json', storage, function () {
                 deleteUsedStorage(storages);
               });
             } else {

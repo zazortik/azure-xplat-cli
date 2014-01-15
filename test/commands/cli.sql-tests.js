@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var _ = require('underscore');
 
@@ -57,7 +58,7 @@ describe('cli', function () {
       beforeEach(function (done) {
         suite.execute('sql server list --json', function (result) {
           oldServerNames = JSON.parse(result.text).map(function (server) {
-            return server.Name;
+            return server.name;
           });
 
           done();
@@ -83,7 +84,7 @@ describe('cli', function () {
           var usedServers = [ ];
           _.each(servers, function (server) {
             if (!_.contains(oldServerNames, server.Name)) {
-              usedServers.push(server.Name);
+              usedServers.push(server.name);
             }
           });
 
@@ -102,7 +103,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            var serverName = JSON.parse(result.text).Name;
+            var serverName = JSON.parse(result.text).name;
             serverName.should.not.be.null;
             serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -122,7 +123,7 @@ describe('cli', function () {
               result.text.should.not.be.null;
               result.exitStatus.should.equal(0);
 
-              var serverName = JSON.parse(result.text).Name;
+              var serverName = JSON.parse(result.text).name;
               serverName.should.not.be.null;
               serverName.should.match(/[0-9a-zA-Z]*/);
 
@@ -152,7 +153,7 @@ describe('cli', function () {
             result.text.should.not.be.null;
             result.exitStatus.should.equal(0);
 
-            serverName = JSON.parse(result.text).Name;
+            serverName = JSON.parse(result.text).name;
 
             done();
           });
@@ -164,9 +165,9 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             var server = JSON.parse(result.text);
-            server.Name.should.equal(serverName);
-            server.AdministratorLogin.should.equal(administratorLogin);
-            server.Location.should.equal(location);
+            server.name.should.equal(serverName);
+            server.administratorUserName.should.equal(administratorLogin);
+            server.location.should.equal(location);
 
             done();
           });
@@ -179,9 +180,9 @@ describe('cli', function () {
 
             var servers = JSON.parse(result.text);
 
-            should.exist(servers.filter(function (server) {
-              return server.Name === serverName;
-            }));
+            servers.some(function (server) {
+              return server.name === serverName;
+            }).should.equal(true);
 
             done();
           });
@@ -206,7 +207,7 @@ describe('cli', function () {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          serverName = JSON.parse(result.text).Name;
+          serverName = JSON.parse(result.text).name;
 
           done();
         });
@@ -297,8 +298,7 @@ describe('cli', function () {
           result.text.should.not.be.null;
           result.exitStatus.should.equal(0);
 
-          serverName = JSON.parse(result.text).Name;
-
+          serverName = JSON.parse(result.text).name;
           suite.execute('sql firewallrule create %s %s %s %s --json', serverName, RULE_NAME, '0.0.0.0', '255.255.255.255', function () {
             // let firewall rule create
             setTimeout(function () {

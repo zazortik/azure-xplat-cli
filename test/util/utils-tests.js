@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var assert = require('assert');
 
@@ -65,6 +66,17 @@ suite('util-tests', function() {
     assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/\\?/gim');
     charCodes = [63, 66];
     assert.equal(util.getReplaceRegExpFromCharCode(charCodes).toString(), '/\\?|B/gim');
+    done();
+  });
+
+  test('stringTrimEnd should work', function(done) {
+    assert.equal(util.stringTrimEnd(null), null);
+    assert.equal(util.stringTrimEnd(''), '');
+    assert.equal(util.stringTrimEnd('a', 'a'), '');
+    assert.equal(util.stringTrimEnd('abc   '), 'abc');
+    assert.equal(util.stringTrimEnd('abc', 'c'), 'ab');
+    assert.equal(util.stringTrimEnd('abccc', 'c'), 'ab');
+    assert.equal(util.stringTrimEnd('abccc', 'd'), 'abccc');
     done();
   });
 
