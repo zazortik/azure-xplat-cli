@@ -78,8 +78,8 @@ describe('cli', function () {
             suite.execute('site appsetting list %s --json', siteName, function (result) {
               var settingsList = JSON.parse(result.text);
 
-              // Listing should return 1 setting now
-              settingsList.length.should.equal(1);
+              // Listing should return 2 setting now
+              settingsList.length.should.equal(2);
 
               // add another setting
               suite.execute('site appsetting add mysetting2=myvalue %s --json', siteName, function (result) {
@@ -89,8 +89,8 @@ describe('cli', function () {
                 suite.execute('site appsetting list %s --json', siteName, function (result) {
                   var settingsList = JSON.parse(result.text);
 
-                  // Listing should return 2 setting now
-                  settingsList.length.should.equal(2);
+                  // Listing should return 3 setting now
+                  settingsList.length.should.equal(3);
 
                   done();
                 });

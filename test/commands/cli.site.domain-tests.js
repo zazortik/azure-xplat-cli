@@ -53,9 +53,9 @@ describe('cli', function () {
 
         var domainList = JSON.parse(result.text);
 
-        should.not.exist(domainList.filter(function (d) {
+        domainList.some(function (d) {
           return d === domainName;
-        })[0]);
+        }).should.equal(false);
 
         suite.execute('site domain add %s %s --json', domainName, siteName, function (result) {
           result.text.should.equal('');
@@ -64,9 +64,9 @@ describe('cli', function () {
           suite.execute('site domain list %s --json', siteName, function (result) {
             var domainList = JSON.parse(result.text);
 
-            should.exist(domainList.filter(function (d) {
+            domainList.some(function (d) {
               return d === domainName;
-            })[0]);
+            }).should.equal(true);
 
             suite.execute('site domain delete %s %s --quiet --json', domainName, siteName, function (result) {
               result.text.should.equal('');
@@ -75,9 +75,9 @@ describe('cli', function () {
               suite.execute('site domain list %s --json', siteName, function (result) {
                 var domainList = JSON.parse(result.text);
 
-                should.not.exist(domainList.filter(function (d) {
+                domainList.some(function (d) {
                   return d === domainName;
-                })[0]);
+                }).should.equal(false);
 
                 done();
               });

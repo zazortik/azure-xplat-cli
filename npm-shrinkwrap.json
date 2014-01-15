@@ -1,15 +1,15 @@
 {
   "name": "azure-cli",
-  "version": "0.7.1",
+  "version": "0.7.4",
   "dependencies": {
     "azure": {
-      "version": "0.7.15",
+      "version": "0.7.17",
       "dependencies": {
         "xml2js": {
           "version": "0.2.8",
           "dependencies": {
             "sax": {
-              "version": "0.5.4"
+              "version": "0.5.5"
             }
           }
         },
@@ -20,7 +20,7 @@
           "version": "1.0.2-1.2.3"
         },
         "request": {
-          "version": "2.25.0",
+          "version": "2.27.0",
           "dependencies": {
             "qs": {
               "version": "0.6.5"
@@ -78,7 +78,7 @@
               "version": "1.4.1"
             },
             "form-data": {
-              "version": "0.1.0",
+              "version": "0.1.2",
               "dependencies": {
                 "combined-stream": {
                   "version": "0.0.4",
@@ -96,7 +96,7 @@
           }
         },
         "validator": {
-          "version": "1.5.0"
+          "version": "2.0.0"
         },
         "wns": {
           "version": "0.5.3"
@@ -106,6 +106,12 @@
         },
         "envconf": {
           "version": "0.0.4"
+        },
+        "duplexer": {
+          "version": "0.1.1"
+        },
+        "through": {
+          "version": "2.3.4"
         }
       }
     },
@@ -113,7 +119,7 @@
       "version": "0.1.14",
       "dependencies": {
         "sax": {
-          "version": "0.5.4"
+          "version": "0.5.5"
         }
       }
     },
@@ -164,7 +170,7 @@
       }
     },
     "colors": {
-      "version": "0.6.1"
+      "version": "0.6.2"
     },
     "eyes": {
       "version": "0.1.8"
@@ -179,7 +185,7 @@
       "version": "0.1.0"
     },
     "kuduscript": {
-      "version": "0.1.2",
+      "version": "0.1.5",
       "dependencies": {
         "commander": {
           "version": "1.1.1",
@@ -195,7 +201,7 @@
       }
     },
     "should": {
-      "version": "1.2.2"
+      "version": "2.0.2"
     },
     "winston-memory": {
       "version": "0.1.0"
@@ -212,7 +218,7 @@
       "version": "1.7.3",
       "dependencies": {
         "buster-format": {
-          "version": "0.5.5",
+          "version": "0.5.6",
           "dependencies": {
             "buster-core": {
               "version": "0.6.4"
@@ -222,7 +228,7 @@
       }
     },
     "jshint": {
-      "version": "2.1.10",
+      "version": "2.3.0",
       "dependencies": {
         "shelljs": {
           "version": "0.1.4"
@@ -234,7 +240,7 @@
               "version": "3.2.6",
               "dependencies": {
                 "inherits": {
-                  "version": "2.0.0"
+                  "version": "2.0.1"
                 }
               }
             }
@@ -244,7 +250,7 @@
           "version": "0.2.12",
           "dependencies": {
             "lru-cache": {
-              "version": "2.3.0"
+              "version": "2.3.1"
             },
             "sigmund": {
               "version": "1.0.0"
@@ -257,10 +263,10 @@
       }
     },
     "mocha": {
-      "version": "1.12.0",
+      "version": "1.14.0",
       "dependencies": {
         "commander": {
-          "version": "0.6.1"
+          "version": "2.0.0"
         },
         "growl": {
           "version": "1.7.0"
@@ -268,31 +274,31 @@
         "jade": {
           "version": "0.26.3",
           "dependencies": {
+            "commander": {
+              "version": "0.6.1"
+            },
             "mkdirp": {
               "version": "0.3.0"
             }
           }
         },
         "diff": {
-          "version": "1.0.2"
+          "version": "1.0.7"
         },
         "debug": {
-          "version": "0.7.2"
+          "version": "0.7.3"
         },
         "mkdirp": {
           "version": "0.3.5"
         },
-        "ms": {
-          "version": "0.3.0"
-        },
         "glob": {
-          "version": "3.2.1",
+          "version": "3.2.3",
           "dependencies": {
             "minimatch": {
               "version": "0.2.12",
               "dependencies": {
                 "lru-cache": {
-                  "version": "2.3.0"
+                  "version": "2.3.1"
                 },
                 "sigmund": {
                   "version": "1.0.0"
@@ -300,10 +306,10 @@
               }
             },
             "graceful-fs": {
-              "version": "1.2.3"
+              "version": "2.0.1"
             },
             "inherits": {
-              "version": "1.0.0"
+              "version": "2.0.1"
             }
           }
         }
@@ -322,7 +328,7 @@
               "version": "0.2.1"
             },
             "requirejs": {
-              "version": "2.1.8"
+              "version": "2.1.9"
             },
             "gaze": {
               "version": "0.3.4",
@@ -331,7 +337,7 @@
                   "version": "0.2.12",
                   "dependencies": {
                     "lru-cache": {
-                      "version": "2.3.0"
+                      "version": "2.3.1"
                     },
                     "sigmund": {
                       "version": "1.0.0"
@@ -345,7 +351,7 @@
                       "version": "3.2.6",
                       "dependencies": {
                         "inherits": {
-                          "version": "2.0.0"
+                          "version": "2.0.1"
                         }
                       }
                     }
@@ -374,7 +380,7 @@
               "version": "0.0.3"
             },
             "debug": {
-              "version": "0.7.2"
+              "version": "0.7.3"
             }
           }
         },
@@ -426,10 +432,26 @@
               }
             },
             "http-browserify": {
-              "version": "0.1.11",
+              "version": "0.1.13",
               "dependencies": {
                 "concat-stream": {
-                  "version": "0.0.8"
+                  "version": "1.0.1",
+                  "dependencies": {
+                    "bops": {
+                      "version": "0.0.6",
+                      "dependencies": {
+                        "base64-js": {
+                          "version": "0.0.2"
+                        },
+                        "to-utf8": {
+                          "version": "0.0.1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Base64": {
+                  "version": "0.1.4"
                 }
               }
             },

@@ -64,7 +64,7 @@ describe('cli', function(){
               result.exitStatus.should.equal(0);
 
               var certificate = JSON.parse(result.text);
-              should.exist(certificate);
+              certificate.should.not.equal(null);
 
               done();
             });

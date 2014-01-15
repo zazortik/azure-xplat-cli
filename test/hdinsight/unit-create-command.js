@@ -42,7 +42,7 @@ describe('HDInsight create command (under unit test)', function() {
 
   it('should call endProgress', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test1',
       nodes : 4,
@@ -50,14 +50,14 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.endProgress.firstCall);
+    command.user.endProgress.firstCall.should.not.equal(null);
     done();
   });
 
   it('should prompt for the clusterName if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.createClusterCommand(undefined, {});
-    should.exist(command.user.promptIfNotGiven.firstCall);
+    command.user.promptIfNotGiven.firstCall.should.not.equal(null);
     command.user.promptIfNotGiven.firstCall.args[0].should.be.equal('Cluster name: ');
     done();
   });
@@ -72,7 +72,7 @@ describe('HDInsight create command (under unit test)', function() {
   it('should prompt for the nodes if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.createClusterCommand(undefined,  { clusterName : 'test1' });
-    should.exist(command.user.promptIfNotGiven.getCall(1));
+    command.user.promptIfNotGiven.getCall(1).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(1).args[0].should.be.equal('Nodes: ');
     done();
   });
@@ -95,7 +95,7 @@ describe('HDInsight create command (under unit test)', function() {
       nodes : 4
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(2));
+    command.user.promptIfNotGiven.getCall(2).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(2).args[0].should.be.equal('Location: ');
     done();
   });
@@ -120,7 +120,7 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(3));
+    command.user.promptIfNotGiven.getCall(3).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(3).args[0].should.be.equal('Storage acount name: ');
     done();
   });
@@ -147,7 +147,7 @@ describe('HDInsight create command (under unit test)', function() {
       storageAccountName : 'testAccount'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(4));
+    command.user.promptIfNotGiven.getCall(4).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(4).args[0].should.be.equal('Storage account key: ');
     done();
   });
@@ -176,7 +176,7 @@ describe('HDInsight create command (under unit test)', function() {
       storageAccountKey : 'testAccountKey'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(5));
+    command.user.promptIfNotGiven.getCall(5).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(5).args[0].should.be.equal('Storage container: ');
     done();
   });
@@ -207,7 +207,7 @@ describe('HDInsight create command (under unit test)', function() {
       storageContainer : 'testAccountContainer'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(6));
+    command.user.promptIfNotGiven.getCall(6).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(6).args[0].should.be.equal('Username: ');
     done();
   });
@@ -240,7 +240,7 @@ describe('HDInsight create command (under unit test)', function() {
       username : 'username'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.promptIfNotGiven.getCall(7));
+    command.user.promptIfNotGiven.getCall(7).should.not.equal(null);
     command.user.promptIfNotGiven.getCall(7).args[0].should.be.equal('Password: ');
     done();
   });
@@ -275,7 +275,7 @@ describe('HDInsight create command (under unit test)', function() {
       clusterPassword : 'password'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.firstCall);
+    command.processor.getCluster.firstCall.should.not.equal(null);
     command.processor.getCluster.firstCall.args[0].should.be.equal('test1');
     done();
   });
@@ -293,14 +293,14 @@ describe('HDInsight create command (under unit test)', function() {
       clusterPassword : 'password'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.firstCall);
-    should.not.exist(command.processor.getCluster.firstCall.args[1]);
+    command.processor.getCluster.firstCall.should.not.equal(null);
+    (command.processor.getCluster.firstCall.args[1] === undefined).should.equal(true);
     done();
   });
 
   it('should call getCluster (first call) with the supplied subscriptionId (when one is supplied)', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test2',
       nodes : 4,
@@ -313,8 +313,8 @@ describe('HDInsight create command (under unit test)', function() {
       subscription : 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.firstCall);
-    should.exist(command.processor.getCluster.firstCall.args[1]);
+    command.processor.getCluster.firstCall.should.not.equal(null);
+    command.processor.getCluster.firstCall.args[1].should.not.equal(null);
     command.processor.getCluster.firstCall.args[1].should.be.equal('testId');
     done();
   });
@@ -328,7 +328,7 @@ describe('HDInsight create command (under unit test)', function() {
     };
     command.hdinsight.createClusterCommand(undefined, options);
     var expected = command.processor.listResultsForEachCall[0].body.clusters[0];
-    should.exist(command.user.logErrorAndData.firstCall);
+    command.user.logErrorAndData.firstCall.should.not.equal(null);
     command.user.logErrorAndData.firstCall.args[0].should.be.equal('The requested cluster already exists');
     command.user.logErrorAndData.firstCall.args[1].should.be.equal(expected);
     done();
@@ -342,7 +342,7 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.endProgress.firstCall);
+    command.user.endProgress.firstCall.should.not.equal(null);
     done();
   });
 
@@ -359,7 +359,7 @@ describe('HDInsight create command (under unit test)', function() {
       clusterPassword : 'password'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.createCluster.firstCall);
+    command.processor.createCluster.firstCall.should.not.equal(null);
     done();
   });
 
@@ -386,7 +386,7 @@ describe('HDInsight create command (under unit test)', function() {
     command.user.promptIfNotGiven.getCall(5).args[1].should.be.equal(config.defaultStorageContainer);
     command.user.promptIfNotGiven.getCall(6).args[1].should.be.equal(config.user);
     command.user.promptIfNotGiven.getCall(7).args[1].should.be.equal(config.password);
-    should.exist(command.processor.createCluster.firstCall.args[0]);
+    command.processor.createCluster.firstCall.args[0].should.not.equal(null);
     command.processor.createCluster.firstCall.args[0].name.should.be.equal('test10');
     command.processor.createCluster.firstCall.args[0].nodes.should.be.equal(40);
     command.processor.createCluster.firstCall.args[0].location.should.be.equal('North Europe');
@@ -406,7 +406,7 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.validateLocation.firstCall);
+    command.processor.validateLocation.firstCall.should.not.equal(null);
     command.processor.validateLocation.firstCall.args[0].should.be.equal('East US');
     done();
   });
@@ -420,7 +420,7 @@ describe('HDInsight create command (under unit test)', function() {
       subscription : '1234'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.validateLocation.firstCall);
+    command.processor.validateLocation.firstCall.should.not.equal(null);
     command.processor.validateLocation.firstCall.args[1].should.be.equal('1234');
     done();
   });
@@ -434,7 +434,7 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.registerLocation.firstCall);
+    command.processor.registerLocation.firstCall.should.not.equal(null);
     done();
   });
 
@@ -446,7 +446,7 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.createCluster.firstCall.args[0]);
+    command.processor.createCluster.firstCall.args[0].should.not.equal(null);
     command.processor.createCluster.firstCall.args[0].name.should.be.equal('test2');
     command.processor.createCluster.firstCall.args[0].nodes.should.be.equal(4);
     command.processor.createCluster.firstCall.args[0].location.should.be.equal('East US');
@@ -467,14 +467,14 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.createCluster.firstCall);
-    should.not.exist(command.processor.createCluster.firstCall.args[1]);
+    command.processor.createCluster.firstCall.should.not.equal(null);
+    (command.processor.createCluster.firstCall.args[1] === undefined).should.equal(true);
     done();
   });
 
   it('should call createCluster with the supplied subscriptionId (when one is supplied)', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test2',
       nodes : 4,
@@ -482,8 +482,8 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.createCluster.firstCall);
-    should.exist(command.processor.createCluster.firstCall.args[1]);
+    command.processor.createCluster.firstCall.should.not.equal(null);
+    command.processor.createCluster.firstCall.args[1].should.not.equal(null);
     command.processor.createCluster.firstCall.args[1].should.be.equal('testId');
     done();
   });
@@ -496,14 +496,14 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.doPollRequest.firstCall);
-    should.not.exist(command.processor.doPollRequest.firstCall.args[1]);
+    command.processor.doPollRequest.firstCall.should.not.equal(null);
+    (command.processor.doPollRequest.firstCall.args[1] === undefined).should.equal(true);
     done();
   });
 
   it('should call doPollRequest with the supplied clusterName', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test2',
       nodes : 4,
@@ -511,15 +511,15 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.doPollRequest.firstCall);
-    should.exist(command.processor.doPollRequest.firstCall.args[0]);
+    command.processor.doPollRequest.firstCall.should.not.equal(null);
+    command.processor.doPollRequest.firstCall.args[0].should.not.equal(null);
     command.processor.doPollRequest.firstCall.args[0].should.be.equal('test2');
     done();
   });
 
   it('should call doPollRequest with the supplied subscriptionId (when one is supplied)', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test2',
       nodes : 4,
@@ -527,8 +527,8 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.doPollRequest.firstCall);
-    should.exist(command.processor.doPollRequest.firstCall.args[1]);
+    command.processor.doPollRequest.firstCall.should.not.equal(null);
+    command.processor.doPollRequest.firstCall.args[1].should.not.equal(null);
     command.processor.doPollRequest.firstCall.args[1].should.be.equal('testId');
     done();
   });
@@ -542,7 +542,7 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.secondCall);
+    command.processor.getCluster.secondCall.should.not.equal(null);
     command.processor.getCluster.secondCall.args[0].should.be.equal('test2');
     done();
   });
@@ -555,14 +555,14 @@ describe('HDInsight create command (under unit test)', function() {
       location : 'East US'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.secondCall);
-    should.not.exist(command.processor.getCluster.secondCall.args[1]);
+    command.processor.getCluster.secondCall.should.not.equal(null);
+    (command.processor.getCluster.secondCall.args[1] === undefined).should.equal(true);
     done();
   });
 
   it('should call getCluster (second call) with the supplied subscriptionId (when one is supplied)', function(done) {
     var command = new GetCommand();
-    should.exist(command.hdinsight.listClustersCommand);
+    command.hdinsight.listClustersCommand.should.not.equal(null);
     var options = {
       clusterName : 'test2',
       nodes : 4,
@@ -570,8 +570,8 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.processor.getCluster.secondCall);
-    should.exist(command.processor.getCluster.secondCall.args[1]);
+    command.processor.getCluster.secondCall.should.not.equal(null);
+    command.processor.getCluster.secondCall.args[1].should.not.equal(null);
     command.processor.getCluster.secondCall.args[1].should.be.equal('testId');
     done();
   });
@@ -585,7 +585,7 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.endProgress.firstCall);
+    command.user.endProgress.firstCall.should.not.equal(null);
     done();
   });
 
@@ -599,7 +599,7 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.logData.firstCall);
+    command.user.logData.firstCall.should.not.equal(null);
     command.user.logData.firstCall.args[0].should.be.equal('HDInsight Cluster');
     command.user.logData.firstCall.args[1].should.be.equal(expected);
     done();
@@ -616,7 +616,7 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.logErrorAndData.firstCall);
+    command.user.logErrorAndData.firstCall.should.not.equal(null);
     command.user.logErrorAndData.firstCall.args[0].should.be.equal('Unable to create cluster');
     command.user.logErrorAndData.firstCall.args[1].should.be.equal(expected);
     done();
@@ -632,9 +632,9 @@ describe('HDInsight create command (under unit test)', function() {
       subscription: 'testId'
     };
     command.hdinsight.createClusterCommand(undefined, options);
-    should.exist(command.user.logError.firstCall);
+    command.user.logError.firstCall.should.not.equal(null);
     command.user.logError.firstCall.args[0].should.be.equal('The cluster could not be created');
-    should.exist(command.user.logError.secondCall);
+    command.user.logError.secondCall.should.not.equal(null);
     command.user.logError.secondCall.args[0].should.be.equal('The request failed. Please contact support for more information');
     done();
   });
