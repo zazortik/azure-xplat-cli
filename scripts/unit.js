@@ -100,9 +100,9 @@ var defaultCertificateKey = '-----BEGIN RSA PRIVATE KEY-----' +
   '-----END RSA PRIVATE KEY-----';
 
 var defaultCommunityImageId = 'vmdepot-1-1-1';
-var defaultGithubUsername = 'azuresdkci';
+var defaultGithubUsername = 'azuresdkrec';
 var defaultGithubPassword = 'fakepassword';
-var defaultGithubRepository = 'azuresdkci/azuresdkci-repo';
+var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
 var defaultGitUsername = 'andrerod';
 
 if (!process.env.NOCK_OFF) {
