@@ -1,3 +1,7 @@
+2013.01.20 - version 0.7.5
+* Added web site slots support
+* Multiple bugfixes
+
 2013.11.13 - version 0.7.4
 * azure site set --web-socket --disable-web-socket to enable/disable WebSocket
 * azure site set --remote-debugging --disable-remote-debugging --remote-debugging-version to enable/disable/set remote debugging for .NET application.
