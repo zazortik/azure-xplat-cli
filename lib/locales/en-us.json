@@ -1082,7 +1082,7 @@
     "location does not support PersistentVMRole service": "location does not support PersistentVMRole service",
     "location or affinity group is required for a new cloud service\nplease specify --location or --affinity-group": "location or affinity group is required for a new cloud service\nplease specify --location or --affinity-group",
     "log query; takes precedence over --type, --source, --continuationToken, and --top": "log query; takes precedence over --type, --source, --continuationToken, and --top",
-    "name identifer": "name identifer",
+    "name identifier": "name identifier",
     "number of instances in standard or premium mode": "number of instances in standard or premium mode",
     "only show VMs for this DNS name": "only show VMs for this DNS name",
     "override any custom changes to the permissions metadata file": "override any custom changes to the permissions metadata file",
