@@ -31,7 +31,7 @@ describe('HDInsight list command (under unit test)', function() {
     done();
   });
 
-  // NOTE: To Do, we should actually create new accounts for our tests
+  // NOTE: To Do, we should actually create new acounts for our tests
   //       So that we can work on any existing subscription.
   before (function (done) {
     done();

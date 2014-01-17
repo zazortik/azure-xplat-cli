@@ -63,7 +63,7 @@ function getListCommandData() {
         Name : 'test3',
         Location : 'East US',
         State : 'NotRelevent',
-        Error : 'An error occurred'
+        Error : 'An error occured'
       } ]
     }
   }];
