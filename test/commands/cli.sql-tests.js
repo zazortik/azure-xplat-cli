@@ -320,7 +320,6 @@ describe('cli', function () {
       describe('List and show databases', function () {
         it('should list master database', function (done) {
           suite.execute('sql db list %s %s %s --json', serverName, administratorLogin, administratorLoginPassword, function (result) {
-            result.text.should.be.null;
             result.exitStatus.should.equal(0);
 
             var databases = JSON.parse(result.text);
