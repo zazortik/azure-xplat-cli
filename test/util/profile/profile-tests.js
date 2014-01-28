@@ -22,11 +22,37 @@ var profile = require('../../../lib/util/profile');
 describe('profile', function () {
 
   describe('when empty', function () {
+    var p;
+
+    before(function () {
+      p = profile.load({});
+    });
+
     it('should contain public environments', function () {
-      var p = profile.load({});
       p.environments.length.should.equal(2);
       p.environments.should.have.property('AzureCloud');
       p.environments.should.have.property('AzureChinaCloud');
+    });
+  });
+
+  describe('when loaded with one profile', function () {
+    var p;
+
+    before(function () {
+      p = profile.load({
+        environments: [
+        {
+          name: 'TestProfile',
+          managementEndpoint: 'https://some.site.example'
+        }]
+      });
+    });
+
+    it('should include loaded and public profiles', function () {
+      p.environments.length.should.equal(3);
+      ['TestProfile', 'AzureCloud', 'AzureChinaCloud'].forEach(function (name) {
+        p.environments.should.have.property(name);
+      });
     });
   });
 });
