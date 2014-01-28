@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -50,7 +50,7 @@
     "easy-table": "0.0.1",
     "github": "0.1.6",
     "omelette": "0.1.0",
-    "kuduscript": "0.1.6"
+    "kuduscript": "0.1.7"
   },
   "devDependencies": {
     "mocha": "1.16.0",
