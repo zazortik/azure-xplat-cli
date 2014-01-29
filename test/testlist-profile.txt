@@ -1,1 +1,2 @@
 util/profile/profile-tests.js
+util/profile/publishSettings-tests.js
