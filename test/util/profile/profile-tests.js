@@ -21,6 +21,14 @@ var profile = require('../../../lib/util/profile');
 
 describe('profile', function () {
 
+  describe('default', function () {
+    it('should contain public environments', function () {
+      profile.environments.length.should.be.greaterThan(1);
+      profile.environments.should.have.property('AzureCloud');
+      profile.environments.should.have.property('AzureChinaCloud');
+    });
+  });
+
   describe('when empty', function () {
     var p;
 
