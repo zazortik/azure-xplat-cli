@@ -15,7 +15,9 @@
 
 'use strict';
 
+var es = require('event-stream');
 var should = require('should');
+var stream = require('stream');
 
 var profile = require('../../../lib/util/profile');
 
@@ -30,11 +32,7 @@ describe('profile', function () {
   });
 
   describe('when empty', function () {
-    var p;
-
-    before(function () {
-      p = profile.load({});
-    });
+    var p = profile.load({});
 
     it('should contain public environments', function () {
       p.environments.length.should.equal(2);
@@ -44,23 +42,46 @@ describe('profile', function () {
   });
 
   describe('when loaded with one profile', function () {
-    var p;
-
-    before(function () {
-      p = profile.load({
-        environments: [
-        {
-          name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
-        }]
-      });
+    var p = profile.load({
+      environments: [
+      {
+        name: 'TestProfile',
+        managementEndpoint: 'https://some.site.example'
+      }]
     });
 
     it('should include loaded and public profiles', function () {
-      p.environments.length.should.equal(3);
+      p.environments.should.have.length(3);
       ['TestProfile', 'AzureCloud', 'AzureChinaCloud'].forEach(function (name) {
         p.environments.should.have.property(name);
       });
     });
+
+    describe('and saving', function () {
+      var saved;
+
+      before(function (done) {
+        p.saveToStream(es.wait(function (err, text) {
+          if (err) {
+            done(err);
+          } else {
+            saved = JSON.parse(text);
+            done();
+          }
+        }));
+      });
+
+      it('should not save public profiles', function () {
+        saved.environments.should.have.length(1);
+      });
+
+      it('should save custom environment', function () {
+        saved.environments[0].should.have.properties({
+          name: 'TestProfile',
+          managementEndpoint: 'https://some.site.example'
+        });
+      });
+    });
   });
 });
+
