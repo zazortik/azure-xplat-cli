@@ -1,5 +1,6 @@
 2014.01.20 - version 0.7.5
 * Added web site slots support
+* Added web jobs support
 * Multiple bugfixes
 
 2013.11.13 - version 0.7.4

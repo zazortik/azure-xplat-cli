@@ -29,7 +29,7 @@ var createdSites = [];
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 
 describe('cli', function () {
-  describe('site', function() {
+  describe('slot', function() {
     before(function (done) {
       suite = new CLITest(testPrefix);
       suite.setupSuite(done);
