@@ -24,9 +24,8 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var testPrefix = 'cli.site.job-tests';
 
-var createdSitesPrefix = 'nte';
+var createdSitesPrefix = 'utr';
 var createdSites = [];
-var createdSitesBefore = 0;
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 var gitUsername = process.env['AZURE_GIT_USERNAME'];
@@ -50,7 +49,7 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    it('creates a web job for a site', function (done) {
+    it('creates a triggered web job for a site', function (done) {
       var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
       suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
@@ -64,7 +63,101 @@ describe('cli', function () {
       });
     });
 
-    describe('list, show and delete a web job for a site', function () {
+    it('should create a singleton', function (done) {
+      var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+
+      suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('site job upload myjob continuous %s %s --singleton --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+          console.log(result);
+          result.exitStatus.should.equal(0);
+
+          done();
+        });
+      });
+    });
+
+    describe('list, show and delete a continuous web job for a site', function () {
+      var siteName;
+
+      beforeEach(function (done) {
+        siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('site job upload myjob1 continuous %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            done();
+          });
+        });
+      });
+
+      it('should list a continuous web job for a site', function (done) {
+        suite.execute('site job list %s --json', siteName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('site job list %s --job-type continuous --json', siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            var jobs = JSON.parse(result.text);
+            jobs.length.should.equal(1);
+
+            done();
+          });
+        });
+      });
+
+      it('should show a continuous web job for a site', function (done) {
+        suite.execute('site job list %s --json', siteName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          var jobs = JSON.parse(result.text);
+
+          suite.execute('site job show %s %s %s --json', jobs[0].name, jobs[0].type, siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            done();
+          });
+        });
+      });
+
+      it('should stop and start a continuous web job for a site', function (done) {
+        suite.execute('site job list %s --json', siteName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          var jobs = JSON.parse(result.text);
+
+          suite.execute('site job stop %s %s --json', jobs[0].name, siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('site job start %s %s %s --json', jobs[0].name, jobs[0].type, siteName, function (result) {
+              result.exitStatus.should.equal(0);
+
+              done();
+            });
+          });
+        });
+      });
+
+      it('should delete a continuous web job for a site', function (done) {
+        suite.execute('site job list %s --json', siteName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          var jobs = JSON.parse(result.text);
+
+          suite.execute('site job delete %s %s %s --json --quiet', jobs[0].name, jobs[0].type, siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            done();
+          });
+        });
+      });
+    });
+
+    describe('list, show and delete a triggered web job for a site', function () {
       var siteName;
 
       beforeEach(function (done) {
@@ -81,7 +174,7 @@ describe('cli', function () {
         });
       });
 
-      it('should list a web job for a site', function (done) {
+      it('should list a triggered web job for a site', function (done) {
         suite.execute('site job list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -89,7 +182,7 @@ describe('cli', function () {
         });
       });
 
-      it('should show a web job for a site', function (done) {
+      it('should show a triggered web job for a site', function (done) {
         suite.execute('site job list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -103,7 +196,7 @@ describe('cli', function () {
         });
       });
 
-      it('should delete a web job for a site', function (done) {
+      it('should delete a triggered web job for a site', function (done) {
         suite.execute('site job list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -117,7 +210,7 @@ describe('cli', function () {
         });
       });
 
-      it('should start and stop a web job for a site', function (done) {
+      it('should start a triggered web job for a site', function (done) {
         suite.execute('site job list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -131,7 +224,7 @@ describe('cli', function () {
         });
       });
 
-      it('should list and show web job history for a site', function (done) {
+      it('should list and show triggered web job history for a site', function (done) {
         suite.execute('site job list %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
