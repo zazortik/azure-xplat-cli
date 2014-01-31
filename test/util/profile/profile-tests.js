@@ -17,7 +17,10 @@
 
 var es = require('event-stream');
 var should = require('should');
+var sinon = require('sinon');
 var stream = require('stream');
+
+var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
 
@@ -155,7 +158,35 @@ describe('profile', function () {
     it('should have expected default subscription', function () {
       p.subscription.id.should.equal(expectedSubscription2.id);
     });
+
+    describe('when creating service', function () {
+      var factory = sinon.stub().returns("fake factory");
+      var created = p.subscription.createService(factory);
+
+      it('should have called the factory', function () {
+        factory.calledOnce.should.be.true;
+      });
+
+      it('should create factory with expected subscription id', function () {
+        var credentials = factory.args[0][0];
+        credentials.subscriptionId.should.equal(p.subscription.id);
+      });
+
+      it('should have correct key and cert', function () {
+        var credentials = factory.args[0][0];
+        credentials.credentials.should.have.properties({
+          key: p.subscription.managementCertificate.key,
+          cert: p.subscription.managementCertificate.cert
+        });
+      });
+
+      it('should pass CloudCertificateCredentials', function () {
+        factory.args[0][0].should.be.instanceOf(azure.CertificateCloudCredentials);
+      });
+    });
   });
+
+
 });
 
 //////////////////////////
