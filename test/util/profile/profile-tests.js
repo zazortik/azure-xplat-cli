@@ -121,6 +121,41 @@ describe('profile', function () {
       });
     });
   });
+
+  describe('when loaded with two subscriptions', function () {
+    var expectedSubscription1 = {
+      name: 'Account',
+      id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+      managementEndpointUrl: 'https://management.core.windows.net/',
+      managementCertificate: {
+        key: 'to be determined',
+        cert: 'to be determined'
+      }
+    };
+
+    var expectedSubscription2 = {
+      name: 'Other',
+      id: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+      managementEndpointUrl: 'https://management.core.windows.net/',
+      isDefault: true,
+      managementCertificate: {
+        key: 'fake key',
+        cert: 'fake cert'
+      }
+    };
+
+    var p = profile.load({
+      subscriptions: [ expectedSubscription1, expectedSubscription2 ]
+    });
+
+    it('should contain both subscriptions', function () {
+      p.subscriptions.should.have.length(2);
+    });
+
+    it('should have expected default subscription', function () {
+      p.subscription.id.should.equal(expectedSubscription2.id);
+    });
+  });
 });
 
 //////////////////////////
