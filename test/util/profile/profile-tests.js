@@ -61,14 +61,7 @@ describe('profile', function () {
       var saved;
 
       before(function (done) {
-        p.saveToStream(es.wait(function (err, text) {
-          if (err) {
-            done(err);
-          } else {
-            saved = JSON.parse(text);
-            done();
-          }
-        }));
+        saveProfile(p, done, function (s) { saved = s; });
       });
 
       it('should not save public profiles', function () {
@@ -83,5 +76,64 @@ describe('profile', function () {
       });
     });
   });
+
+  describe('when loaded with one subscription', function() {
+    var expectedSubscription = {
+      name: 'Account',
+      id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+      managementEndpointUrl: 'https://management.core.windows.net/',
+      managementCertificate: {
+        key: 'to be determined',
+        cert: 'to be determined'
+      }
+    };
+
+    var p = profile.load({
+      environments: [],
+      subscriptions: [
+        expectedSubscription
+      ]
+    });
+
+    it('should contain one subscription', function () {
+      p.subscriptions.should.have.length(1);
+    });
+
+    it('should contain the named subscription', function () {
+      should.exist(p.subscriptions['Account']);
+    });
+
+    it('should have expected properties', function () {
+      p.subscriptions['Account'].should.have.properties(expectedSubscription);
+    });
+
+    describe('and saving', function () {
+      var saved;
+      before(function (done) {
+        saveProfile(p, done, function (s) { saved = s; });
+      });
+
+      it('should write subscription', function (done) {
+        should.exist(saved.subscriptions);
+        saved.subscriptions.should.have.length(1);
+        saved.subscriptions[0].should.have.properties(expectedSubscription);
+        done();
+      });
+    });
+  });
 });
 
+//////////////////////////
+// Local helper functions
+//
+
+function saveProfile(profile, done, callback) {
+  profile.saveToStream(es.wait(function (err, text) {
+    if (err) {
+      done(err);
+    } else {
+      callback(JSON.parse(text));
+      done();
+    }
+  }));
+}
