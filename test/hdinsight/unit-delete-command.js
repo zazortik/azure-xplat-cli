@@ -50,13 +50,6 @@ describe('HDInsight delete command (under unit test)', function() {
     done();
   });
 
-  it('should use the options for the clusterName if not supplied positionaly', function(done) {
-    var command = new GetCommand();
-    command.hdinsight.deleteClusterCommand(undefined, { clusterName : 'test1' });
-    command.user.promptIfNotGiven.firstCall.args[1].should.be.equal('test1');
-    done();
-  });
-
   it('should call getCluster with the supplied cluster Name', function(done) {
     var command = new GetCommand();
     command.hdinsight.deleteClusterCommand('test1', {});

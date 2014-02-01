@@ -63,14 +63,13 @@ describe('cli', function () {
       });
     });
 
-    it('should create a singleton', function (done) {
+    it('creates a triggered web job for a site with switches', function (done) {
       var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
       suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
         result.exitStatus.should.equal(0);
 
-        suite.execute('site job upload myjob continuous %s %s --singleton --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
-          console.log(result);
+        suite.execute('site job upload --job-name myjob --job-type triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           done();
