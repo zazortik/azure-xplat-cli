@@ -29,7 +29,7 @@ var createdSites = [];
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 
 describe('cli', function () {
-  describe('site', function() {
+  describe('slot', function() {
     before(function (done) {
       suite = new CLITest(testPrefix);
       suite.setupSuite(done);
@@ -121,7 +121,7 @@ describe('cli', function () {
           suite.execute('site create %s --slot %s --json', siteName, slot, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('site swap %s --slot %s --json --quiet', siteName, slot, function (result) {
+            suite.execute('site swap %s --json --quiet', siteName, function (result) {
               result.exitStatus.should.equal(0);
 
               done();
