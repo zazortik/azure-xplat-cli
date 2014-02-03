@@ -15,6 +15,7 @@
 
 'use strict';
 
+var _ = require('underscore');
 var es = require('event-stream');
 var should = require('should');
 var sinon = require('sinon');
@@ -28,7 +29,7 @@ describe('profile', function () {
 
   describe('default', function () {
     it('should contain public environments', function () {
-      profile.environments.length.should.be.greaterThan(1);
+      _.keys(profile.environments).length.should.be.greaterThan(1);
       profile.environments.should.have.property('AzureCloud');
       profile.environments.should.have.property('AzureChinaCloud');
     });
@@ -38,7 +39,7 @@ describe('profile', function () {
     var p = profile.load({});
 
     it('should contain public environments', function () {
-      p.environments.length.should.equal(2);
+      _.keys(p.environments).length.should.equal(2);
       p.environments.should.have.property('AzureCloud');
       p.environments.should.have.property('AzureChinaCloud');
     });
@@ -54,7 +55,7 @@ describe('profile', function () {
     });
 
     it('should include loaded and public profiles', function () {
-      p.environments.should.have.length(3);
+      _.keys(p.environments).should.have.length(3);
       ['TestProfile', 'AzureCloud', 'AzureChinaCloud'].forEach(function (name) {
         p.environments.should.have.property(name);
       });
@@ -99,7 +100,7 @@ describe('profile', function () {
     });
 
     it('should contain one subscription', function () {
-      p.subscriptions.should.have.length(1);
+      _.keys(p.subscriptions).should.have.length(1);
     });
 
     it('should contain the named subscription', function () {
@@ -152,7 +153,7 @@ describe('profile', function () {
     });
 
     it('should contain both subscriptions', function () {
-      p.subscriptions.should.have.length(2);
+      _.keys(p.subscriptions).should.have.length(2);
     });
 
     it('should have expected default subscription', function () {
