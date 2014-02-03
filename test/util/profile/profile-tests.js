@@ -68,12 +68,15 @@ describe('profile', function () {
         saveProfile(p, done, function (s) { saved = s; });
       });
 
-      it('should not save public profiles', function () {
-        saved.environments.should.have.length(1);
+      it('should not public profiles', function () {
+        saved.environments.should.have.length(3);
       });
 
       it('should save custom environment', function () {
-        saved.environments[0].should.have.properties({
+        var customEnvironment = _.filter(saved.environments,
+          function (env) { return env.name === 'TestProfile'; })[0];
+
+        customEnvironment.should.have.properties({
           name: 'TestProfile',
           managementEndpoint: 'https://some.site.example'
         });
