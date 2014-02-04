@@ -160,27 +160,28 @@ describe('profile', function () {
     });
 
     it('should have expected default subscription', function () {
-      p.subscription.id.should.equal(expectedSubscription2.id);
+      p.currentSubscription.id.should.equal(expectedSubscription2.id);
     });
 
     describe('when creating service', function () {
-      var factory = sinon.stub().returns("fake factory");
-      var created = p.subscription.createService(factory);
+      var fakeService = { withFilter: sinon.spy() };
+      var factory = sinon.stub().returns(fakeService);
+      var created = p.currentSubscription.createClient(factory);
 
       it('should have called the factory', function () {
         factory.calledOnce.should.be.true;
       });
 
-      it('should create factory with expected subscription id', function () {
+      it('should call factory with expected subscription id', function () {
         var credentials = factory.args[0][0];
-        credentials.subscriptionId.should.equal(p.subscription.id);
+        credentials.subscriptionId.should.equal(p.currentSubscription.id);
       });
 
       it('should have correct key and cert', function () {
         var credentials = factory.args[0][0];
         credentials.credentials.should.have.properties({
-          key: p.subscription.managementCertificate.key,
-          cert: p.subscription.managementCertificate.cert
+          key: p.currentSubscription.managementCertificate.key,
+          cert: p.currentSubscription.managementCertificate.cert
         });
       });
 
