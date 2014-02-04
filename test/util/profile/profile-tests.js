@@ -45,16 +45,20 @@ describe('profile', function () {
     });
   });
 
-  describe('when loaded with one profile', function () {
-    var p = profile.load({
-      environments: [
-      {
-        name: 'TestProfile',
-        managementEndpoint: 'https://some.site.example'
-      }]
+  describe('when loaded with one environment', function () {
+    var p;
+
+    beforeEach(function () {
+      p = profile.load({
+        environments: [
+        {
+          name: 'TestProfile',
+          managementEndpoint: 'https://some.site.example'
+        }]
+      });
     });
 
-    it('should include loaded and public profiles', function () {
+    it('should include loaded and public environmentd', function () {
       _.keys(p.environments).should.have.length(3);
       ['TestProfile', 'AzureCloud', 'AzureChinaCloud'].forEach(function (name) {
         p.environments.should.have.property(name);
@@ -68,7 +72,7 @@ describe('profile', function () {
         saveProfile(p, done, function (s) { saved = s; });
       });
 
-      it('should not public profiles', function () {
+      it('should include public profiles', function () {
         saved.environments.should.have.length(3);
       });
 
@@ -80,6 +84,29 @@ describe('profile', function () {
           name: 'TestProfile',
           managementEndpoint: 'https://some.site.example'
         });
+      });
+    });
+
+    describe('and importing publishSettings', function () {
+      beforeEach(function () {
+        p.importPublishSettings('./test/data/account-credentials2.publishSettings');
+      });
+
+      it('should import the subscriptions', function() {
+        _.keys(p.subscriptions).should.have.length(2);
+      });
+
+      it('should have loaded first subscription', function () {
+        p.subscriptions['Account'].should.have.properties({
+          name: 'Account',
+          id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+          serviceManagementUrl: 'https://management.core.windows.net/'
+        });
+      });
+
+      it('should set first subscription as default', function () {
+        should.exist(p.currentSubscription);
+        p.currentSubscription.name.should.equal('Account');
       });
     });
   });

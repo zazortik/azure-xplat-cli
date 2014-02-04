@@ -68,7 +68,7 @@ describe('publishSettings import', function () {
       });
     });
 
-    it('shoudl have read correct properties for second subscription', function () {
+    it('should have read correct properties for second subscription', function () {
       subs[1].should.have.properties({
         id: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
         name: 'Other',
