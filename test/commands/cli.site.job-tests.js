@@ -77,6 +77,31 @@ describe('cli', function () {
       });
     });
 
+    describe('site slot', function () {
+      it('should work', function (done) {
+        var slot = 'staging';
+        var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('site scale mode standard %s --json', siteName, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('site create %s --slot %s --json', siteName, slot, function (result) {
+              result.exitStatus.should.equal(0);
+
+              suite.execute('site job upload myjob1 continuous %s %s --json --slot %s', path.join(__dirname, '../data/samplewebjob.zip'), siteName, slot, function (result) {
+                result.exitStatus.should.equal(0);
+
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+
     describe('list, show and delete a continuous web job for a site', function () {
       var siteName;
 
