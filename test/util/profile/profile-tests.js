@@ -192,7 +192,7 @@ describe('profile', function () {
     });
 
     describe('when creating service', function () {
-      var fakeService = { withFilter: sinon.spy() };
+      var fakeService = { withFilter: function () { return this; } };
       var factory = sinon.stub().returns(fakeService);
       var created;
 
