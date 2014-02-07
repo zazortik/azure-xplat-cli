@@ -49,6 +49,34 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
+    it('should not work for wrong extension file', function (done) {
+      var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+
+      suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.rar'), siteName, function (result) {
+          result.exitStatus.should.equal(1);
+
+          done();
+        });
+      });
+    });
+
+    it('should not work for faulty webjob', function (done) {
+      var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+
+      suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob-faulty.zip'), siteName, function (result) {
+          result.exitStatus.should.equal(1);
+
+          done();
+        });
+      });
+    });
+
     it('creates a triggered web job for a site', function (done) {
       var siteName = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
