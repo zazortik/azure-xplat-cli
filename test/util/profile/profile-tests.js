@@ -59,10 +59,7 @@ describe('profile', function () {
     });
 
     it('should include loaded and public environmentd', function () {
-      _.keys(p.environments).should.have.length(3);
-      ['TestProfile', 'AzureCloud', 'AzureChinaCloud'].forEach(function (name) {
-        p.environments.should.have.property(name);
-      });
+      p.environments.should.have.properties('TestProfile', 'AzureCloud', 'AzureChinaCloud');
     });
 
     describe('and saving', function () {
@@ -178,8 +175,12 @@ describe('profile', function () {
       }
     };
 
-    var p = profile.load({
-      subscriptions: [ expectedSubscription1, expectedSubscription2 ]
+    var p;
+
+    beforeEach(function () {
+      p = profile.load({
+        subscriptions: [ expectedSubscription1, expectedSubscription2 ]
+      });
     });
 
     it('should contain both subscriptions', function () {
@@ -193,7 +194,11 @@ describe('profile', function () {
     describe('when creating service', function () {
       var fakeService = { withFilter: sinon.spy() };
       var factory = sinon.stub().returns(fakeService);
-      var created = p.currentSubscription.createClient(factory);
+      var created;
+
+      beforeEach(function () {
+        created = p.currentSubscription.createClient(factory);
+      });
 
       it('should have called the factory', function () {
         factory.calledOnce.should.be.true;
@@ -216,9 +221,50 @@ describe('profile', function () {
         factory.args[0][0].should.be.instanceOf(azure.CertificateCloudCredentials);
       });
     });
+
+    describe('when deleting the Account subscription', function () {
+      beforeEach(function () {
+        p.deleteSubscription('Account');
+      });
+
+      it('should have one subscription left', function () {
+        _.keys(p.subscriptions).should.have.length(1);
+      });
+
+      it('should leave default subscription unchanged', function () {
+        p.currentSubscription.name.should.equal('Other');
+      });
+    });
+
+    describe('when deleting the default subscription', function () {
+      beforeEach(function () {
+        p.deleteSubscription('Other');
+      });
+
+      it('should have one subscription left', function () {
+        _.keys(p.subscriptions).should.have.length(1);
+      });
+
+      it('should reset default subscription', function () {
+        p.currentSubscription.name.should.equal('Account');
+      });
+    });
+
+    describe('when deleting all subscriptions', function () {
+      beforeEach(function () {
+        p.deleteSubscription('Account');
+        p.deleteSubscription('Other');
+      });
+
+      it('should have no subscriptions left', function () {
+        _.keys(p.subscriptions).should.have.length(0);
+      });
+
+      it('should have no default subscription', function () {
+        should.not.exist(p.currentSubscription);
+      });
+    });
   });
-
-
 });
 
 //////////////////////////

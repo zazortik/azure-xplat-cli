@@ -15,8 +15,9 @@
 
 var sinon = require('sinon');
 var AzureCli = require('../../lib/cli');
+var profile = require('../../lib/util/profile');
 var _ = require('underscore');
-
+var util = require('util');
 var winston = require('winston');
 require('winston-memory').Memory;
 
@@ -62,12 +63,12 @@ function execute(cmd, cb) {
   });
 
   try {
+    profile.reload();
     cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;
     result.error = err;
-
     end();
   }
 }
