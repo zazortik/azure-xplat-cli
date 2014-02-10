@@ -5,4 +5,4 @@
 #commands/cli.account.environment-tests.js
 #commands/cli.site.deployment-tests.js
 #commands/cli.mobile-tests.js
-commands/cli.vm-tests.js
+commands/cli.site.deploymentscript-tests.js

@@ -69,7 +69,6 @@ function execute(cmd, cb) {
     cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
-    console.log('ERROR:::', err, err.stack);
     result.errorStack = err.stack;
     result.error = err;
     end();

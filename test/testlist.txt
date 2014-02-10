@@ -18,7 +18,7 @@ commands/cli.site-tests.js
 commands/cli.site.appsetting-tests.js
 commands/cli.site.connectionstring-tests.js
 commands/cli.site.defaultdocument-tests.js
-#commands/cli.site.deploymentscript-tests.js
+commands/cli.site.deploymentscript-tests.js
 commands/cli.site.log-tests.js
 commands/cli.site.scale-tests.js
 commands/cli.site.slots-tests.js
