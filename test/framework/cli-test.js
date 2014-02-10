@@ -50,6 +50,7 @@ _.extend(CLITest.prototype, {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
       sinon.stub(keyFiles, 'readFromFile', function () {
+        console.log('loading fake key files');
         return {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
@@ -60,11 +61,18 @@ _.extend(CLITest.prototype, {
 
       var originalReadFileSync = fs.readFileSync;
       sinon.stub(fs, 'readFileSync', function (filename) {
-        if (path.basename(filename) !== 'config.json') {
-          return originalReadFileSync(filename, 'utf8');
-        } else {
-          return '{ "endpoint": "https://management.core.windows.net",' +
-            ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
+        console.log('mocked readFileSync', filename);
+        switch(path.basename(filename)) {
+          case 'config.json':
+            console.log('loading default subscriptions from old file');
+            return '{ "endpoint": "https://management.core.windows.net",' +
+              ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
+          case 'azureProfile.json':
+            console.log('loading default subscriptions for tests');
+            return createTestSubscriptionFileContents();
+          default:
+           // console.log('loading file ' + filename);
+            return originalReadFileSync(filename, 'utf8');
         }
       });
 
@@ -263,3 +271,21 @@ _.extend(CLITest.prototype, {
     }
   }
 });
+
+function createTestSubscriptionFile() {
+  var contents = {
+    environments: [],
+    subscriptions: [
+      {
+        id: process.env.AZURE_SUBSCRIPTION_ID,
+        name: 'testAccount',
+        managementEndpointUrl: 'https://management.core.windows.net/',
+        managementCertificate: {
+          cert: process.env.AZURE_CERTIFICATE,
+          key: process.env.AZURE_CERTIFICATE_KEY
+        }
+      }
+    ]
+  }
+  return JSON.stringify(contents);
+}

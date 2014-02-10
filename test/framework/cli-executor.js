@@ -63,7 +63,7 @@ function execute(cmd, cb) {
   });
 
   try {
-    profile.reload();
+    profile.current.reload();
     cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
