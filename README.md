@@ -21,11 +21,14 @@ This project provides a cross platform command line tool for developers and admi
     * Download site log files and get real time log streaming
     * Manage Deployments
     * Configure GitHub integration
+    * Create, manage and swap slots
+    * Create and manage WebJobs
 * Virtual machines
     * Create and manage Windows and Linux Virtual machines
     * Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+    * CloudInit for Ubuntu VM
 * Network
     * Import and export network configuration
     * Create and manage virtual network
@@ -39,7 +42,7 @@ This project provides a cross platform command line tool for developers and admi
     * Create and manage Service Bus namespaces
 * Azure SQL Server
     * Create and manage SQL Servers, Firewall rules and Databases
-    
+
 # Getting Started
 ## Download Source Code
 
@@ -47,11 +50,11 @@ To get the source code of the SDK via **git** just type:
 
     git clone https://github.com/WindowsAzure/azure-sdk-tools-xplat.git
     cd ./azure-sdk-tools-xplat
-    npm install 
+    npm install
 
 ## Install the npm package
 
-You can install the azure cli npm package directly. 
+You can install the azure cli npm package directly.
 
     npm install -g azure-cli
 
@@ -73,7 +76,7 @@ To enable it in bash, you can write:
 
 The azure cli has several top-level commands, which correspond to different features of Windows Azure. Each top-level command is then broken up into further sub commands. Typing "azure" by itself or "azure --help" will list out each of the sub commands.
 
-Below is a list of some of the more common commands and explanations on how to use them. 
+Below is a list of some of the more common commands and explanations on how to use them.
 
 ## azure account - Managing Azure accounts
 
@@ -95,7 +98,7 @@ Lists all your affinity groups
     azure account affinity-group create [name]
 Creates a new affinity group
 
-**--location** - Location for the affinity group 
+**--location** - Location for the affinity group
 
     azure account affinity-group show [name]
 Display details about an affinity group
@@ -113,7 +116,7 @@ Lists all your storage accounts
     azure account storage create [name]
 Creates a new storage account
 
-**--location** - Location for the storage account 
+**--location** - Location for the storage account
 
 **--affinity-group** - Affinity group for the storage account
 
@@ -143,7 +146,7 @@ Show the details for a specific container.
 
     azure storage container create -a <account name> -k <access key> [container]
 Create a container
-    
+
     azure storage container delete -a <account name> -k <access key> [container]
 Delete a container
 
@@ -158,17 +161,17 @@ You can create websites for deploying static HTML, node.js, PHP, and .NET applic
 Lists all your websites
 
     azure site create [site]
-Creates a new Windows Azure website. If run in a folder that has an app.js or a server.js, we will assume this is a node.js application and create an iisnode.yml file for configuring the node hosted environment. 
+Creates a new Windows Azure website. If run in a folder that has an app.js or a server.js, we will assume this is a node.js application and create an iisnode.yml file for configuring the node hosted environment.
 
 **--git** - create a git repo for deploying the application. Will call "git init" to initialize the local folder as repo and will add an "azure" remote for the remote repository. --publishingUsername can be used for scripting scenarios. If publishing user is not provider, you will be prompted. ex. "azure site create foo --git".
 
 **--github** - connect this website to a github repo. If run in a local repo, will use the remotes present. --githubusername / --githubpassword / -- githubrepository can be used for scripting scenarios. If these are not provided, you will be prompted. ex. "azure site create foo --github"
 
     azure site show [site]
-Lists the details for a specific website. 
+Lists the details for a specific website.
 
     azure site browse [site]
-Opens the website in the browser. 
+Opens the website in the browser.
 
     azure site delete [site]
 Deletes the current site. Will prompt for deletion.
@@ -182,7 +185,7 @@ Starts the website
     azure site restart [site]
 Stops and starts the website
 
-    azure site deploymentscript 
+    azure site deploymentscript
 Generates a bash or cmd script for customizing the deployment of your Website
 
 **--quiet** - overrides prompting for delete.
@@ -321,12 +324,12 @@ Lists all mobile services for this subscription
 
     azure mobile create [servicename] [sqlAdminUsername] [sqlAdminPassword]
 Creates a new mobile service using the specific service name. Also creates a new SQL Database using the specified user and password.
- 
+
     azure mobile show [servicename]
 Displays details about a mobile service including database details, applicationUrl and applicationKey
 
     azure mobile delete [servicename]
-Deletes a mobile service 
+Deletes a mobile service
 
 ## azure mobile scale - Manage scale for your mobile service
 
@@ -341,7 +344,7 @@ Change the scalability settings of a mobile service
 **--numberOfInstances [count]** - number of instances in basic or standard mode.
 
     azure mobile log [servicename]
-Retrieves mobile logs 
+Retrieves mobile logs
 
 ### azure mobile config - Manage your mobile service configuration
 
@@ -369,7 +372,7 @@ Creates a new table for your mobile service
     azure mobile table show [servicename] [tablename]
 Display table details such as the number of records, the list of columns and which scripts are defined.
 
-    azure mobile table update [options] [servicename] [tablename] 
+    azure mobile table update [options] [servicename] [tablename]
 Updates mobile table schema, permissions and indexes
 
 **--permissions [permissions]** - comma delimited list of &lt;operation&gt;=&lt;permission&gt; pairs
@@ -414,7 +417,7 @@ Create a new job
 
 **--interval [number]** - Interval for executing the job, defaults to 15.
 
-**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'.
 
 **--startTime [time]** - Time that the script should start in ISO format
 
@@ -423,7 +426,7 @@ Update job settings
 
 **--interval [number]** - Interval for executing the job, defaults to 15.
 
-**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'. 
+**--intervalUnit [unit]** - 'minute', 'hour', 'day', 'month' or 'none'.
 
 **--startTime [time]** - Time that the script should start in ISO format
 
@@ -573,7 +576,7 @@ Delete a database
 **--databaseName** - Name for the database
 
 **--administratorPassword** - Administrator Password
-    
+
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
@@ -589,7 +592,7 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 
 ## Running tests
 
-The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account. 
+The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account.
 
 Before running tests, you must take a one-time action to configure the CLI with the Windows Azure subscription by running
 
@@ -614,9 +617,9 @@ To run the tests, call
 npm test
 ```
 
-from the root of your clone of the repository. Most tests execute against live Windows Azure management APIs, and running them takes considerable time. 
+from the root of your clone of the repository. Most tests execute against live Windows Azure management APIs, and running them takes considerable time.
 
-Note: by default, the tests targeting the Windows Azure Mobile Services run against a mocked Windows Azure HTTP endpoints. In order to execute these tests against live Windows Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests. 
+Note: by default, the tests targeting the Windows Azure Mobile Services run against a mocked Windows Azure HTTP endpoints. In order to execute these tests against live Windows Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
 
 # Learn More
 For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
