@@ -1,6 +1,7 @@
-2014.01.20 - version 0.7.5
+2014.02.12 - version 0.7.5
 * Added web site slots support
 * Added web jobs support
+* CloudInit support for Ubuntu VM via "azure vm create -d"
 * Multiple bugfixes
 
 2013.11.13 - version 0.7.4
