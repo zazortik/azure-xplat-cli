@@ -63,10 +63,11 @@ function execute(cmd, cb) {
   });
 
   try {
-    profile.current.reload();
+    profile.current = profile.load();
     cli = new AzureCli();
     cli.parse(cmd);
   } catch(err) {
+    console.log('ERROR:::', err, err.stack);
     result.errorStack = err.stack;
     result.error = err;
     end();

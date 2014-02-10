@@ -61,17 +61,13 @@ _.extend(CLITest.prototype, {
 
       var originalReadFileSync = fs.readFileSync;
       sinon.stub(fs, 'readFileSync', function (filename) {
-        console.log('mocked readFileSync', filename);
         switch(path.basename(filename)) {
           case 'config.json':
-            console.log('loading default subscriptions from old file');
             return '{ "endpoint": "https://management.core.windows.net",' +
               ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
           case 'azureProfile.json':
-            console.log('loading default subscriptions for tests');
             return createTestSubscriptionFileContents();
           default:
-           // console.log('loading file ' + filename);
             return originalReadFileSync(filename, 'utf8');
         }
       });
@@ -92,6 +88,18 @@ _.extend(CLITest.prototype, {
       }
     }
 
+    var originalProfileLoad = profile.load;
+    sinon.stub(profile, 'load', function(fileNameOrData) {
+      if (!fileNameOrData || fileNameOrData === profile.defaultProfileFile) {
+        return originalProfileLoad(JSON.parse(createTestSubscriptionFile()));
+      }
+      return originalProfileLoad(fileNameOrData);
+    });
+
+    profile.current = profile.load();
+
+    console.log("Current profile reset, environments:", profile.current.environments);
+    console.log("Subscriptions:", profile.current.subscriptions);
     // Remove any existing cache files before starting the test
     this.removeCacheFiles();
 
@@ -115,6 +123,10 @@ _.extend(CLITest.prototype, {
 
       if (utils.pathExistsSync.restore) {
         utils.pathExistsSync.restore();
+      }
+
+      if (profile.load.restore) {
+        profile.load.restore();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
