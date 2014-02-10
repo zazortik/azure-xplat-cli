@@ -3,3 +3,4 @@ util/profile/publishSettings-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
+commands/cli.site.deployment-tests.js

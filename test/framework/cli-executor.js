@@ -56,11 +56,13 @@ function execute(cmd, cb) {
     return cb(result);
   });
 
-  sandbox.stub(process, 'exit', function (exitStatus) {
-    result.exitStatus = exitStatus;
+  if (!process.exit.restore) {
+    sandbox.stub(process, 'exit', function (exitStatus) {
+      result.exitStatus = exitStatus;
 
-    end();
-  });
+      end();
+    });
+  }
 
   try {
     profile.current = profile.load();

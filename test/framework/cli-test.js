@@ -98,8 +98,8 @@ _.extend(CLITest.prototype, {
 
     profile.current = profile.load();
 
-    console.log("Current profile reset, environments:", profile.current.environments);
-    console.log("Subscriptions:", profile.current.subscriptions);
+    // console.log("Current profile reset, environments:", profile.current.environments);
+    // console.log("Subscriptions:", profile.current.subscriptions);
     // Remove any existing cache files before starting the test
     this.removeCacheFiles();
 
