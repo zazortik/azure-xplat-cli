@@ -259,7 +259,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?&deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
@@ -693,7 +693,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1(staging)?&deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=false')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1(staging)?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=false')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
@@ -720,7 +720,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Dedicated</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>slots1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>slots1.azurewebsites.net</a:string><a:string>slots1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>slots1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>slots1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>slots1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T01:35:03.043</LastModifiedTimeUtc><Name>slots1</Name><Owner i:nil=\"true\"/><RepositorySiteName>slots1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/slots1</SelfLink><ServerFarm>DefaultServerFarm</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode>Basic</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://slots1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$slots1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>oYCr6mkejRnmxFL0slyxF9dcLGTrtPbyKGjRzlBTxbfte57JY5KEFsthRCaE</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
   'content-length': '2453',
   'content-type': 'application/xml; charset=utf-8',
@@ -769,7 +769,7 @@ nock('https://slots1.scm.azurewebsites.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?&deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
@@ -1162,7 +1162,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?&deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/slots1?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
