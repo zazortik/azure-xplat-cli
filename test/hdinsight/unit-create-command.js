@@ -63,13 +63,6 @@ describe('HDInsight create command (under unit test)', function() {
     done();
   });
 
-  it('should use the options for the clusterName', function(done) {
-    var command = new GetCommand();
-    command.hdinsight.createClusterCommand(undefined, { clusterName : 'test1' });
-    command.user.promptIfNotGiven.firstCall.args[1].should.be.equal('test1');
-    done();
-  });
-
   it('should prompt for the nodes if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.createClusterCommand(undefined,  { clusterName : 'test1' });
@@ -81,10 +74,9 @@ describe('HDInsight create command (under unit test)', function() {
   it('should use the options for the nodes', function(done) {
     var command = new GetCommand();
     var options = {
-      clusterName : 'test1',
       nodes : 4
     };
-    command.hdinsight.createClusterCommand(undefined, options);
+    command.hdinsight.createClusterCommand('test1', options);
     command.user.promptIfNotGiven.getCall(1).args[1].should.be.equal(4);
     done();
   });
