@@ -50,8 +50,7 @@
     "easy-table": "0.0.1",
     "github": "0.1.6",
     "omelette": "0.1.0",
-    "kuduscript": "0.1.7",
-    "event-stream": "~3.1.0"
+    "kuduscript": "0.1.7"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -60,6 +59,7 @@
     "should": "*",
     "nock": "0.16",
     "winston-memory": "*",
+    "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
