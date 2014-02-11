@@ -19,6 +19,7 @@ var util = require('util');
 var crypto = require('crypto');
 var utils = require('../../lib/util/utils');
 var fs = require('fs');
+var path = require('path');
 var CLITest = require('../framework/cli-test');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
@@ -194,17 +195,25 @@ describe('cli', function () {
 				});
 			});
 		});
-
+ 
 		// Export a VM
 		it('Export a VM', function (done) {
-			var path = 'vminfo.json';
-			suite.execute('vm export %s %s  --json', vmName, path, function (result) {
+			var file = 'vminfo.json';
+			suite.execute('vm export %s %s  --json', vmName, file, function (result) {
 				result.exitStatus.should.equal(0);
-				fs.exists('vminfo.json', function (result) {
-					result.should.be.true;
-					// this file will be deleted in 'create-from a VM' method
-					return done();
-				});
+				if(fs.exists){
+					fs.exists(file, function (result) {
+						result.should.be.true;
+						// this file will be deleted in 'create-from a VM' method
+						return done();
+					});
+				} else {
+					path.exists(file, function (result) {
+						result.should.be.true;
+						// this file will be deleted in 'create-from a VM' method
+						return done();
+					});
+				}
 			});
 		});
 
@@ -566,27 +575,23 @@ describe('cli', function () {
 
 		// Create-from
 		it('Create-from a VM', function (done) {
-			var path = 'vminfo.json';
-			fs.exists('vminfo.json', function (exists) {
-				if (exists) {
-					var Fileresult = fs.readFileSync(path, 'utf8');
-					var obj = JSON.parse(Fileresult);
-					obj['RoleName'] = vmName;
-					var jsonstr = JSON.stringify(obj);
-					fs.writeFileSync(path, jsonstr);
-					suite.execute('vm create-from %s %s --json --location %s', vmName, path, location, function (result) {
-						result.exitStatus.should.equal(0);
-						fs.unlink('vminfo.json', function (err) {
-							if (err)
-								throw err;
-							createdDisks.push(obj.OSVirtualHardDisk['DiskName'].toString());
-							vmToUse.Name = vmName;
-							vmToUse.Created = true;
-							vmToUse.Delete = true;
-							done();
-						});
-					});
-				}
+			var file = 'vminfo.json';
+			var Fileresult = fs.readFileSync(file, 'utf8');
+			var obj = JSON.parse(Fileresult);
+			obj['RoleName'] = vmName;
+			var jsonstr = JSON.stringify(obj);
+			fs.writeFileSync(file, jsonstr);
+			suite.execute('vm create-from %s %s --json --location %s', vmName, file, location, function (result) {
+				result.exitStatus.should.equal(0);
+				fs.unlink('vminfo.json', function (err) {
+					if (err)
+						throw err;
+					createdDisks.push(obj.OSVirtualHardDisk['DiskName'].toString());
+					vmToUse.Name = vmName;
+					vmToUse.Created = true;
+					vmToUse.Delete = true;
+					done();
+				});
 			});
 		});
 
