@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Test includes
 var fs = require('fs');
@@ -22,6 +22,7 @@ var util = require('util');
 var _ = require('underscore');
 
 var keyFiles = require('../../lib/util/keyFiles');
+var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
 var executeCommand = require('./cli-executor').execute;
@@ -59,11 +60,14 @@ _.extend(CLITest.prototype, {
 
       var originalReadFileSync = fs.readFileSync;
       sinon.stub(fs, 'readFileSync', function (filename) {
-        if (path.basename(filename) !== 'config.json') {
-          return originalReadFileSync(filename, 'utf8');
-        } else {
-          return '{ "endpoint": "https://management.core.windows.net",' +
-            ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
+        switch(path.basename(filename)) {
+          case 'config.json':
+            return '{ "endpoint": "https://management.core.windows.net",' +
+              ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
+          case 'azureProfile.json':
+            return createTestSubscriptionFileContents();
+          default:
+            return originalReadFileSync(filename, 'utf8');
         }
       });
 
@@ -82,6 +86,16 @@ _.extend(CLITest.prototype, {
           'exports.scopes = [');
       }
     }
+
+    var originalProfileLoad = profile.load;
+    sinon.stub(profile, 'load', function(fileNameOrData) {
+      if (!fileNameOrData || fileNameOrData === profile.defaultProfileFile) {
+        return originalProfileLoad(JSON.parse(createTestSubscriptionFile()));
+      }
+      return originalProfileLoad(fileNameOrData);
+    });
+
+    profile.current = profile.load();
 
     // Remove any existing cache files before starting the test
     this.removeCacheFiles();
@@ -108,6 +122,10 @@ _.extend(CLITest.prototype, {
         utils.pathExistsSync.restore();
       }
 
+      if (profile.load.restore) {
+        profile.load.restore();
+      }
+
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
 
@@ -128,6 +146,11 @@ _.extend(CLITest.prototype, {
     var environmentsPath = path.join(utils.azureDir(), 'environment.json');
     if (utils.pathExistsSync(environmentsPath)) {
       fs.unlinkSync(environmentsPath);
+    }
+
+    var profilePath = path.join(utils.azureDir(), 'azureProfile.json');
+    if (utils.pathExistsSync(profilePath)) {
+      fs.unlinkSync(profilePath);
     }
   },
 
@@ -257,3 +280,21 @@ _.extend(CLITest.prototype, {
     }
   }
 });
+
+function createTestSubscriptionFile() {
+  var contents = {
+    environments: [],
+    subscriptions: [
+      {
+        id: process.env.AZURE_SUBSCRIPTION_ID,
+        name: 'testAccount',
+        managementEndpointUrl: 'https://management.core.windows.net/',
+        managementCertificate: {
+          cert: process.env.AZURE_CERTIFICATE,
+          key: process.env.AZURE_CERTIFICATE_KEY
+        }
+      }
+    ]
+  }
+  return JSON.stringify(contents);
+}
