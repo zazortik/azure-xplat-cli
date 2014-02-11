@@ -50,7 +50,6 @@ _.extend(CLITest.prototype, {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
       sinon.stub(keyFiles, 'readFromFile', function () {
-        console.log('loading fake key files');
         return {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
@@ -98,8 +97,6 @@ _.extend(CLITest.prototype, {
 
     profile.current = profile.load();
 
-    // console.log("Current profile reset, environments:", profile.current.environments);
-    // console.log("Subscriptions:", profile.current.subscriptions);
     // Remove any existing cache files before starting the test
     this.removeCacheFiles();
 
