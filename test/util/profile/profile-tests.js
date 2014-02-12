@@ -151,6 +151,31 @@ describe('profile', function () {
         done();
       });
     });
+
+    describe('and adding a second subscription marked as default', function () {
+      var newSub = new profile.Subscription({
+        name: 'Other',
+        id: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+        managementEndpointUrl: 'https://management.core.windows.net/',
+        isDefault: true,
+        managementCertificate: {
+          key: 'fake key',
+          cert: 'fake cert'
+        }
+      });
+
+      before(function () {
+        p.addSubscription(newSub);
+      });
+
+      it('should reset the current subscription', function () {
+        p.currentSubscription.should.be.exactly(newSub);
+      });
+
+      it('should remove default flag on old subscription', function () {
+        p.subscriptions.Account.isDefault.should.be.false;
+      });
+    });
   });
 
   describe('when loaded with two subscriptions', function () {
@@ -189,6 +214,24 @@ describe('profile', function () {
 
     it('should have expected default subscription', function () {
       p.currentSubscription.id.should.equal(expectedSubscription2.id);
+    });
+
+    describe('when setting current subscription', function () {
+      beforeEach(function () {
+        p.currentSubscription = p.subscriptions[expectedSubscription1.name];
+      });
+
+      it('should set current subscription', function () {
+        p.currentSubscription.id.should.equal(expectedSubscription1.id);
+      });
+
+      it('should set default flag on old one to false', function () {
+        p.getSubscription(expectedSubscription2.id).isDefault.should.be.false;
+      });
+
+      it('should set default flag on new current subscription', function () {
+        p.currentSubscription.isDefault.should.be.true;
+      });
     });
 
     describe('when creating service', function () {
