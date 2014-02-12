@@ -228,7 +228,7 @@ describe('HDInsight config commands (under unit test)', function() {
     command.user.compatResult = false;
     command.hdinsight.setConfigCommand(undefined, { file : 'test2.json' });
     command.user.logError.firstCall.should.not.equal(null);
-    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
+    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatible with this version of the tools');
   });
 
   it('set should call writeConfig once it has set the config values', function(done) {
@@ -350,7 +350,7 @@ describe('HDInsight config commands (under unit test)', function() {
     command.user.compatResult = false;
     command.hdinsight.setConfigMetastoreCommand('test.json', 'hive', 'server', 'database', 'user', undefined, {});
     command.user.logError.firstCall.should.not.equal(null);
-    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
+    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatible with this version of the tools');
   });
 
   it('set metastore should call writeConfig once it has set the config values', function(done) {
@@ -429,7 +429,7 @@ describe('HDInsight config commands (under unit test)', function() {
     command.user.compatResult = false;
     command.hdinsight.removeConfigMetastoreCommand('test.json', 'hive', {});
     command.user.logError.firstCall.should.not.equal(null);
-    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
+    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatible with this version of the tools');
   });
 
   it('remove metastore should call writeConfig once it has set the config values', function(done) {
@@ -533,7 +533,7 @@ describe('HDInsight config commands (under unit test)', function() {
     };
     command.hdinsight.addConfigStorageCommand(undefined, undefined, undefined, options);
     command.user.logError.firstCall.should.not.equal(null);
-    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
+    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatible with this version of the tools');
   });
 
   it('add storage should call writeConfig once it has set the config values', function(done) {
@@ -659,7 +659,7 @@ describe('HDInsight config commands (under unit test)', function() {
     };
     command.hdinsight.removeConfigStorageCommand(undefined, undefined, options);
     command.user.logError.firstCall.should.not.equal(null);
-    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatable with this version of the tools');
+    command.user.logError.firstCall.args[0].should.be.equal('The version of this configuration is not compatible with this version of the tools');
   });
 
   it('remove storage should call writeConfig once it has set the config values', function(done) {
