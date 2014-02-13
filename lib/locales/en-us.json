@@ -652,6 +652,7 @@
     "No storage accounts found": "No storage accounts found",
     "No tables are created. Use azure mobile table command to create tables.": "No tables are created. Use azure mobile table command to create tables.",
     "No tables created yet. You can create a mobile service table using azure mobile table create command": "No tables created yet. You can create a mobile service table using azure mobile table create command",
+    "No tenant found in username %s": "No tenant found in username %s",
     "No updates specified. Check the list of available updates with '--help' and specify at least one.": "No updates specified. Check the list of available updates with '--help' and specify at least one.",
     "No updates specified. Check the list of available updates with --help and specify at least one.": "No updates specified. Check the list of available updates with --help and specify at least one.",
     "No valid publish settings file found. Please use \"azure account import\" first": "No valid publish settings file found. Please use \"azure account import\" first",
