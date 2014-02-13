@@ -281,6 +281,21 @@ _.extend(CLITest.prototype, {
   }
 });
 
+/**
+* A helper function to handle wrapping an existing method in sinon.
+*
+* @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
+* @param {object} object      The object containing the method to wrap
+* @param {string} property    property name of method to wrap
+* @param {function (function)} setup function that receives the original function,
+*                              returns new function that runs when method is called.
+* @return {object}             The created stub.
+*/
+CLITest.wrap = function wrap(sinonObj, object, property, setup) {
+  var original = object[property];
+  return sinonObj.stub(object, property, setup(original));
+};
+
 function createTestSubscriptionFile() {
   var contents = {
     environments: [],
