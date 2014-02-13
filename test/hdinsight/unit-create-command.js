@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var mocha = require('mocha');
 var should = require('should');
@@ -62,13 +63,6 @@ describe('HDInsight create command (under unit test)', function() {
     done();
   });
 
-  it('should use the options for the clusterName', function(done) {
-    var command = new GetCommand();
-    command.hdinsight.createClusterCommand(undefined, { clusterName : 'test1' });
-    command.user.promptIfNotGiven.firstCall.args[1].should.be.equal('test1');
-    done();
-  });
-
   it('should prompt for the nodes if not given', function(done) {
     var command = new GetCommand();
     command.hdinsight.createClusterCommand(undefined,  { clusterName : 'test1' });
@@ -80,10 +74,9 @@ describe('HDInsight create command (under unit test)', function() {
   it('should use the options for the nodes', function(done) {
     var command = new GetCommand();
     var options = {
-      clusterName : 'test1',
       nodes : 4
     };
-    command.hdinsight.createClusterCommand(undefined, options);
+    command.hdinsight.createClusterCommand('test1', options);
     command.user.promptIfNotGiven.getCall(1).args[1].should.be.equal(4);
     done();
   });
