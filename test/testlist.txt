@@ -30,8 +30,10 @@ commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
 util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
+util/authentication/adalAuth-tests.js
 util/profile/profile-tests.js
 util/profile/publishSettings-tests.js
+util/profile/environment-addaccount-tests.js
 hdinsight/unit-cli-setup.js
 hdinsight/unit-cli-setup.js
 hdinsight/unit-list-command.js
