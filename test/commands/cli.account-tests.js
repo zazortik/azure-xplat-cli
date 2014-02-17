@@ -56,7 +56,7 @@ describe('cli', function () {
       });
 
       it('should work accounts', function (done) {
-        suite.execute('account clear', function (result) {
+        suite.execute('account clear --quiet', function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
