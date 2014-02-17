@@ -26,7 +26,7 @@ var CliStub = require('./stub-cli.js');
 
 // Lib includes
 var util = testutil.libRequire('util/utils');
-var hdInsightCli = require('../../lib/commands/hdinsight._js');
+var hdInsightCli = require('../../lib/commands/rdfe/hdinsight._js');
 
 describe('HDInsight command line (under unit test)', function() {
 
