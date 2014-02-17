@@ -23,7 +23,7 @@ var ExecutionProcessorStub = require('./stub-executionProcessor.js');
 
 // Lib includes
 var util = testutil.libRequire('util/utils');
-var HDInsightCli = require('../../lib/commands/hdinsight._js')
+var HDInsightCli = require('../../lib/commands/rdfe/hdinsight._js')
 
 function GetCommand() {
   this.cli = new CliStub();
