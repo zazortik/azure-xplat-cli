@@ -35,7 +35,6 @@ util/profile/profile-tests.js
 util/profile/publishSettings-tests.js
 util/profile/environment-addaccount-tests.js
 hdinsight/unit-cli-setup.js
-hdinsight/unit-cli-setup.js
 hdinsight/unit-list-command.js
 hdinsight/unit-show-command.js
 hdinsight/unit-delete-command.js
