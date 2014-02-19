@@ -42,7 +42,7 @@ describe('publishSettings import', function () {
       subs[0].should.have.properties({
         id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
         name: 'Account',
-        serviceManagementUrl: 'https://management.core.windows.net/'
+        managementEndpointUrl: 'https://management.core.windows.net/'
       });
     });
 
@@ -64,7 +64,7 @@ describe('publishSettings import', function () {
       subs[0].should.have.properties({
         id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
         name: 'Account',
-        serviceManagementUrl: 'https://management.core.windows.net/'
+        managementEndpointUrl: 'https://management.core.windows.net/'
       });
     });
 
@@ -72,7 +72,7 @@ describe('publishSettings import', function () {
       subs[1].should.have.properties({
         id: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
         name: 'Other',
-        serviceManagementUrl: 'https://management.core.windows.net/'
+        managementEndpointUrl: 'https://management.core.windows.net/'
       });
     });
 
