@@ -76,21 +76,21 @@ describe('cli', function () {
           {
             id: process.env.AZURE_SUBSCRIPTION_ID,
             name: 'testAccount',
-            managementEndpointUrl: 'https://management.core.windows.net/',
             isDefault: true,
             managementCertificate: {
               cert: process.env.AZURE_CERTIFICATE,
               key: process.env.AZURE_CERTIFICATE_KEY
-            }
+            },
+            environmentName: 'AzureCloud'
           },
           {
             id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
             name: 'Other',
-            managementEndpointUrl: 'https://management.core.windows.net/',
             managementCertificate: {
               cert: process.env.AZURE_CERTIFICATE,
               key: process.env.AZURE_CERTIFICATE_KEY
-            }
+            },
+            environmentName: 'AzureCloud'
           }
         ]
       };
@@ -121,9 +121,7 @@ describe('cli', function () {
     });
 
     it('should have two subscriptions', function (done) {
-      console.log('listing accounts');
       suite.execute('account list --json', function (result) {
-        console.log('account list complete');
         result.exitStatus.should.equal(0);
         subscriptions = JSON.parse(result.text);
         subscriptions.should.have.length(2);
