@@ -154,6 +154,18 @@ describe('profile', function () {
       });
     });
 
+    describe('and changing an endpoint specifically', function () {
+      before(function () {
+        p.subscriptions.Account.managementEndpointUrl = 'http://some.new.url.example';
+      });
+
+      it('should save updated endpoint with subscription', function (done) {
+        saveProfile(p, done, function (savedData) {
+          savedData.subscriptions[0].managementEndpointUrl.should.equal('http://some.new.url.example');
+        });
+      });
+    });
+
     describe('and adding a second subscription marked as default', function () {
       var newSub = new profile.Subscription({
         name: 'Other',
