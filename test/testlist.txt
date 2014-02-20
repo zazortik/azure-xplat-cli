@@ -1,6 +1,5 @@
 commands/cli.site.cert-tests.js
 cli-tests.js
-commands/core/subscriptionclient-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js

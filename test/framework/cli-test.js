@@ -303,11 +303,11 @@ function createTestSubscriptionFile() {
       {
         id: process.env.AZURE_SUBSCRIPTION_ID,
         name: 'testAccount',
-        managementEndpointUrl: 'https://management.core.windows.net/',
         managementCertificate: {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
-        }
+        },
+        environmentName: 'AzureCloud'
       }
     ]
   }

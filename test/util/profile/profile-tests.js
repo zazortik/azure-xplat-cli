@@ -97,7 +97,7 @@ describe('profile', function () {
         p.subscriptions['Account'].should.have.properties({
           name: 'Account',
           id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-          serviceManagementUrl: 'https://management.core.windows.net/'
+          managementEndpointUrl: 'https://management.core.windows.net/'
         });
       });
 
@@ -112,11 +112,11 @@ describe('profile', function () {
     var expectedSubscription = {
       name: 'Account',
       id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-      managementEndpointUrl: 'https://management.core.windows.net/',
       managementCertificate: {
         key: 'to be determined',
         cert: 'to be determined'
-      }
+      },
+      environmentName: 'AzureCloud'
     };
 
     var p = profile.load({
@@ -135,7 +135,9 @@ describe('profile', function () {
     });
 
     it('should have expected properties', function () {
-      p.subscriptions['Account'].should.have.properties(expectedSubscription);
+      p.subscriptions['Account'].should.have.properties(
+        _.omit(expectedSubscription, 'environmentName'));
+      p.subscriptions.Account.environment.should.equal(p.environments.AzureCloud);
     });
 
     describe('and saving', function () {
@@ -152,6 +154,18 @@ describe('profile', function () {
       });
     });
 
+    describe('and changing an endpoint specifically', function () {
+      before(function () {
+        p.subscriptions.Account.managementEndpointUrl = 'http://some.new.url.example';
+      });
+
+      it('should save updated endpoint with subscription', function (done) {
+        saveProfile(p, done, function (savedData) {
+          savedData.subscriptions[0].managementEndpointUrl.should.equal('http://some.new.url.example');
+        });
+      });
+    });
+
     describe('and adding a second subscription marked as default', function () {
       var newSub = new profile.Subscription({
         name: 'Other',
@@ -165,7 +179,7 @@ describe('profile', function () {
       });
 
       before(function () {
-        p.addSubscription(newSub);
+        p.addSubscription(newSub, p.getEnvironment('AzureCloud'));
       });
 
       it('should reset the current subscription', function () {
