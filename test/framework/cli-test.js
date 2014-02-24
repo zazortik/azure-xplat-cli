@@ -147,11 +147,6 @@ _.extend(CLITest.prototype, {
     if (utils.pathExistsSync(environmentsPath)) {
       fs.unlinkSync(environmentsPath);
     }
-
-    var profilePath = path.join(utils.azureDir(), 'azureProfile.json');
-    if (utils.pathExistsSync(profilePath)) {
-      fs.unlinkSync(profilePath);
-    }
   },
 
   execute: function (cmd) {

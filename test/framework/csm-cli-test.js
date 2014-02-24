@@ -21,8 +21,9 @@ var util = require('util');
 
 var sinon = require('sinon');
 
-var log = require('../../../util/logging');
-var profile = require('../../../util/profile');
+var log = require('../../lib/util/logging');
+var profile = require('../../lib/util/profile');
+var utils = require('../../lib/util/utils');
 var CLITest = require('./cli-test');
 
 function CSMCLITest(testPrefix, forceMocked) {
@@ -42,10 +43,16 @@ _.extend(CSMCLITest.prototype, {
             return originalProfileLoad(JSON.parse(createMockedSubscriptionFile()));
           }
           return originalLoad(filenameOrData);
-        }
+        };
       });
 
-      profile.current = profile.load();
+      CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
+        return function () {
+          var config = originalReadConfig();
+          config.mode = 'csm';
+          return config;
+        };
+      });
     }
 
     if (this.isRecording) {
@@ -55,8 +62,8 @@ _.extend(CSMCLITest.prototype, {
     }
 
     this.removeCacheFiles();
+    profile.current = profile.load();
     this.doLogin(callback);
-    callback();
   },
 
   teardownSuite: function (callback) {
@@ -68,6 +75,10 @@ _.extend(CSMCLITest.prototype, {
 
       if (profile.load.restore) {
         profile.load.restore();
+      }
+
+      if (utils.readConfig.restore) {
+        utils.readConfig.restore();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -86,16 +97,18 @@ _.extend(CSMCLITest.prototype, {
     var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
     if (missingVars.length !== 0) {
       var error = 'Missing environment variables: ' + missingVars.join(', ');
-      log.error(error));
+      log.error(error);
       throw new Error(error);
     }
 
     var env = profile.current.getEnvironment(process.env['AZURE_CSM_TEST_ENVIRONMENT']);
-    environment.addAccount(
+    env.addAccount(
       process.env['AZURE_CSM_TEST_USERNAME'],
       process.env['AZURE_CSM_TEST_PASSWORD'],
       null,
-      function (newSubscription) {
+      function (err, newSubscription) {
+        if (err) { return callback(err); }
+
         newSubscription.id = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'];
         newSubscription.name = 'xplat-test-subscription';
         newSubscription.isDefault = true;
@@ -107,7 +120,7 @@ _.extend(CSMCLITest.prototype, {
   }
 });
 
-function createMockedSubscriptionFile) {
+function createMockedSubscriptionFile () {
   return {
     environments: [
       {
@@ -125,6 +138,7 @@ function createMockedSubscriptionFile) {
 
     subscriptions: [
     ],
-  }
+  };
 }
 
+module.exports = CSMCLITest;
