@@ -48,7 +48,7 @@ describe('csm', function () {
     describe('create', function () {
       var createdGroups = [];
 
-      it('should create group', function (done) {
+      it('should create empty group', function (done) {
         var groupName = suite.generateId('xplatTestGroup', createdGroups);
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -58,7 +58,10 @@ describe('csm', function () {
 
             var groups = JSON.parse(listResult.text);
             groups.some(function (g) { return g.name === groupName; }).should.be.true;
-            done();
+
+            suite.execute('group delete %s --json', groupName, function () {
+              done();
+            });
           });
         });
       });
