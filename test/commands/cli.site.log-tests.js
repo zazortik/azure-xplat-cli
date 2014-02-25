@@ -15,6 +15,7 @@
 // 
 
 var should = require('should');
+var fs = require('fs');
 
 var CLITest = require('../framework/cli-test');
 
@@ -71,6 +72,8 @@ describe('cli', function () {
           siteName,
           function (result) {
 
+            console.log(result);
+            console.log(fs.readFileSync('azure.err'));
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
