@@ -20,7 +20,7 @@ var should = require('should');
 var util = require('util');
 
 var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-group-create-tests';
+var testprefix = 'csm-cli-group-show-tests';
 
 var testLocation = 'South Central US';
 
@@ -45,7 +45,7 @@ describe('csm', function () {
       suite.teardownTest(done);
     });
 
-    describe('create', function () {
+    describe('show', function () {
       var createdGroups = [];
 
       it('should create empty group', function (done) {
@@ -53,11 +53,11 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('group list --json', function (listResult) {
-            listResult.exitStatus.should.equal(0);
+          suite.execute('group show %s --json', groupName, function (showResult) {
+            showResult.exitStatus.should.equal(0);
 
-            var groups = JSON.parse(listResult.text);
-            groups.some(function (g) { return g.name === groupName; }).should.be.true;
+            var group = JSON.parse(showResult.text);
+            group.name.should.equal(groupName);
 
             suite.execute('group delete %s --json', groupName, function () {
               done();
