@@ -37,12 +37,23 @@ _.extend(CSMCLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
-      CLITest.wrap(sinon, profile, 'load', function(originalLoad) {
+      var profileData;
+
+      CLITest.wrap(sinon, profile, 'load', function (originalLoad) {
         return function (filenameOrData) {
-          if (!fileNameOrData || fileNameOrData == profile.defaultProfileFile) {
-            return originalProfileLoad(JSON.parse(createMockedSubscriptionFile()));
+          if (!filenameOrData || filenameOrData == profile.defaultProfileFile) {
+            if (profileData) {
+              return originalLoad(profileData);
+            }
+            return originalLoad(createMockedSubscriptionFile());
           }
           return originalLoad(filenameOrData);
+        };
+      });
+
+      CLITest.wrap(sinon, profile.Profile.prototype, 'save', function (originalSave) {
+        return function (filename) {
+          profileData = this._getSaveData();
         };
       });
 
@@ -70,11 +81,15 @@ _.extend(CSMCLITest.prototype, {
     this.currentTest = 0;
     if (this.isMocked) {
       if (this.isRecording) {
-        fs.appendFIleSync(this.recordingsFile, '];');
+        fs.appendFileSync(this.recordingsFile, '];');
       }
 
       if (profile.load.restore) {
         profile.load.restore();
+      }
+
+      if (profile.Profile.prototype.save.restore) {
+        profile.Profile.prototype.save.restore();
       }
 
       if (utils.readConfig.restore) {
@@ -122,13 +137,22 @@ _.extend(CSMCLITest.prototype, {
 
 function createMockedSubscriptionFile () {
   return {
-    environments: [
-      {
+    environments: [{
         "name": "next",
         "publishingProfileUrl": "https://auxnext.windows.azure-test.net/publishsettings/index",
         "portalUrl": "https://auxnext.windows.azure-test.net",
         "managementEndpointUrl": "https://managementnext.rdfetest.dnsdemo4.com",
         "resourceManagementEndpointUrl": "https://api-next.resources.windows-int.net",
+        "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+        "hostNameSuffix": "azurewebsites.net",
+        "commonTenantName": "common"
+      }, {
+        "name": "current",
+        "publishingProfileUrl": "https://auxcurrent.windows.azure-test.net/publishsettings/index",
+        "portalUrl": "https://auxcurrent.windows.azure-test.net",
+        "managementEndpointUrl": "https://managementcurrent.rdfetest.dnsdemo4.com",
+        "resourceManagementEndpointUrl": "https://api-current.resources.windows-int.net",
         "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
         "hostNameSuffix": "azurewebsites.net",

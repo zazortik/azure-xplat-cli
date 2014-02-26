@@ -20,12 +20,14 @@ var should = require('should');
 var util = require('util');
 
 var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-resource-create-tests';
+var testprefix = 'csm-cli-group-tests';
 
 var testLocation = 'South Central US';
 
+var createdGroups = [];
+
 describe('csm', function () {
-  describe('resource', function () {
+  describe('group', function () {
     var suite;
 
     before(function (done) {
@@ -46,26 +48,40 @@ describe('csm', function () {
     });
 
     describe('create', function () {
-      var createdGroups = [];
-      var createdResources = [];
-
       it('should create empty group', function (done) {
-        var groupName = suite.generateId('xplatTestGroup', createdGroups);
-        var resourceName = suite.generateId('xplatTestRes', createdResources);
+        var groupName = suite.generateId('xplatTestGroupCreate', createdGroups, suite.isMocked);
+
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s "Microsoft.Web/sites" -p "{ \"Name\": %s, \"SiteMode\": 0, \"ComputeMode\": 0 }" --json', groupName, resourceName, testLocation, resourceName, function (result) {
-            result.exitStatus.should.equal(0);
+          suite.execute('group list --json', function (listResult) {
+            listResult.exitStatus.should.equal(0);
 
-            suite.execute('group show %s --json', groupName, function (showResult) {
-              showResult.exitStatus.should.equal(0);
+            var groups = JSON.parse(listResult.text);
+            groups.some(function (g) { return g.name === groupName; }).should.be.true;
 
-              var group = JSON.parse(showResult.text);
+            suite.execute('group delete %s --json --quiet', groupName, function () {
+              done();
+            });
+          });
+        });
+      });
+    });
 
-              suite.execute('group delete %s --json', groupName, function () {
-                done();
-              });
+    describe('show', function () {
+      it('should create empty group', function (done) {
+        var groupName = suite.generateId('xplatTestGroupShow', createdGroups, suite.isMocked);
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('group show %s --json', groupName, function (showResult) {
+            showResult.exitStatus.should.equal(0);
+
+            var group = JSON.parse(showResult.text);
+            group.name.should.equal(groupName);
+
+            suite.execute('group delete %s --json --quiet', groupName, function () {
+              done();
             });
           });
         });
