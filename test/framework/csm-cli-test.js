@@ -90,8 +90,7 @@ _.extend(CSMCLITest.prototype, {
     var requiredVars = [
       'AZURE_CSM_TEST_ENVIRONMENT',
       'AZURE_CSM_TEST_USERNAME',
-      'AZURE_CSM_TEST_PASSWORD',
-      'AZURE_CSM_TEST_SUBSCRIPTIONID'
+      'AZURE_CSM_TEST_PASSWORD'
     ];
 
     var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
@@ -105,14 +104,11 @@ _.extend(CSMCLITest.prototype, {
     env.addAccount(
       process.env['AZURE_CSM_TEST_USERNAME'],
       process.env['AZURE_CSM_TEST_PASSWORD'],
-      null,
-      function (err, newSubscription) {
+      function (err, newSubscriptions) {
         if (err) { return callback(err); }
 
-        newSubscription.id = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'];
-        newSubscription.name = 'xplat-test-subscription';
-        newSubscription.isDefault = true;
-        profile.current.addSubscription(newSubscription);
+        newSubscriptions[0].isDefault = true;
+        newSubscriptions.forEach(function (s) { profile.current.addSubscription(s); });
         profile.current.save();
 
         callback();
