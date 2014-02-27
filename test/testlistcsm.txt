@@ -1,1 +1,2 @@
 commands/csm/groups/csm.group-create-tests.js
+commands/csm/groups/csm.group-template-tests.js
