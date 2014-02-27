@@ -27,6 +27,7 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('./cli-test');
 
 function CSMCLITest(testPrefix, forceMocked) {
+  this.skipSubscription = true;
   CSMCLITest['super_'].call(this, testPrefix, forceMocked);
 }
 
