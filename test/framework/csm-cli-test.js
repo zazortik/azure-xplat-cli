@@ -90,7 +90,8 @@ _.extend(CSMCLITest.prototype, {
     var requiredVars = [
       'AZURE_CSM_TEST_ENVIRONMENT',
       'AZURE_CSM_TEST_USERNAME',
-      'AZURE_CSM_TEST_PASSWORD'
+      'AZURE_CSM_TEST_PASSWORD',
+      'AZURE_CSM_TEST_SUBSCRIPTIONID'
     ];
 
     var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
@@ -100,6 +101,8 @@ _.extend(CSMCLITest.prototype, {
       throw new Error(error);
     }
 
+    var testSubscriptionId = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'].toLowerCase();
+
     var env = profile.current.getEnvironment(process.env['AZURE_CSM_TEST_ENVIRONMENT']);
     env.addAccount(
       process.env['AZURE_CSM_TEST_USERNAME'],
@@ -107,8 +110,20 @@ _.extend(CSMCLITest.prototype, {
       function (err, newSubscriptions) {
         if (err) { return callback(err); }
 
-        newSubscriptions[0].isDefault = true;
-        newSubscriptions.forEach(function (s) { profile.current.addSubscription(s); });
+        var defaultSet = false;
+        newSubscriptions.forEach(function (s) {
+          if (s.id.toLowerCase() === testSubscriptionId) {
+            s.isDefault = true;
+            defaultSet = true;
+          }
+
+          profile.current.addSubscription(s);
+        });
+
+        if (!defaultSet) {
+          callback(new Error(util.format('ERROR: No subscription found for user matching id %s', testSubscriptionId)));
+        }
+
         profile.current.save();
 
         callback();
