@@ -42,7 +42,7 @@ _.extend(CSMCLITest.prototype, {
 
       CLITest.wrap(sinon, profile, 'load', function (originalLoad) {
         return function (filenameOrData) {
-          if (!filenameOrData || filenameOrData == profile.defaultProfileFile) {
+          if (!filenameOrData || filenameOrData === profile.defaultProfileFile) {
             if (profileData) {
               return originalLoad(profileData);
             }
