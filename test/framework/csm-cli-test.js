@@ -117,18 +117,29 @@ _.extend(CSMCLITest.prototype, {
       throw new Error(error);
     }
 
+    var testSubscriptionId = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'].toLowerCase();
+
     var env = profile.current.getEnvironment(process.env['AZURE_CSM_TEST_ENVIRONMENT']);
     env.addAccount(
       process.env['AZURE_CSM_TEST_USERNAME'],
       process.env['AZURE_CSM_TEST_PASSWORD'],
-      null,
-      function (err, newSubscription) {
+      function (err, newSubscriptions) {
         if (err) { return callback(err); }
 
-        newSubscription.id = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'];
-        newSubscription.name = 'xplat-test-subscription';
-        newSubscription.isDefault = true;
-        profile.current.addSubscription(newSubscription);
+        var defaultSet = false;
+        newSubscriptions.forEach(function (s) {
+          if (s.id.toLowerCase() === testSubscriptionId) {
+            s.isDefault = true;
+            defaultSet = true;
+          }
+
+          profile.current.addSubscription(s);
+        });
+
+        if (!defaultSet) {
+          callback(new Error(util.format('ERROR: No subscription found for user matching id %s', testSubscriptionId)));
+        }
+
         profile.current.save();
 
         callback();
