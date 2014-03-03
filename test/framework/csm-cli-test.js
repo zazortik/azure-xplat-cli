@@ -67,23 +67,25 @@ _.extend(CSMCLITest.prototype, {
         };
       });
 
-      CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
-        return function (authConfig, username, password, callback) {
-          callback(null, {
-            authConfig: authConfig,
-            accessToken: 'foobar',
-            expiresAt: new Date(new Date(Date.now()).getTime() + 60000) });
-        };
-      });
+      if (!this.isRecording) {
+        CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
+          return function (authConfig, username, password, callback) {
+            callback(null, {
+              authConfig: authConfig,
+              accessToken: 'foobar',
+              expiresAt: new Date(new Date(Date.now()).getTime() + 60000) });
+          };
+        });
 
-      CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
-        return function (token, callback) {
-          callback(null, [ {
-            subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID,
-            subscriptionStatus: 0
-          }]);
-        };
-      });
+        CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
+          return function (token, callback) {
+            callback(null, [ {
+              subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID,
+              subscriptionStatus: 0
+            }]);
+          };
+        });
+      }
     }
 
     if (this.isRecording) {
@@ -190,7 +192,7 @@ function createMockedSubscriptionFile () {
         "name": "current",
         "publishingProfileUrl": "https://auxcurrent.windows.azure-test.net/publishsettings/index",
         "portalUrl": "https://auxcurrent.windows.azure-test.net",
-        "managementEndpointUrl": "https://managementcurrent.rdfetest.dnsdemo4.com",
+        "managementEndpointUrl": "https://management.rdfetest.dnsdemo4.com",
         "resourceManagementEndpointUrl": "https://api-current.resources.windows-int.net",
         "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",

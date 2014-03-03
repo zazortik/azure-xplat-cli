@@ -18,7 +18,6 @@
 var should = require('should');
 
 var util = require('util');
-var fs = require('fs');
 
 var CLITest = require('../../../framework/csm-cli-test');
 var testprefix = 'csm-cli-group-tests';
@@ -53,8 +52,6 @@ describe('csm', function () {
         var groupName = suite.generateId('xplatTestGroupCreate', createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
-          console.log(result);
-          console.log(fs.readFileSync('azure.err').toString());
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {

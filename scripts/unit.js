@@ -171,7 +171,7 @@ if (!process.env.NOCK_OFF) {
     if (process.env.AZURE_CERTIFICATE_FILE) {
       process.env.AZURE_CERTIFICATE = fs.readFileSync(process.env.AZURE_CERTIFICATE_FILE).toString();
     }
-
+/*
     if (!process.env.AZURE_CERTIFICATE) {
       throw new Error('Azure certificate needs to be defined for recordings');
     }
@@ -185,7 +185,7 @@ if (!process.env.NOCK_OFF) {
     }
     if (!process.env.AZURE_STORAGE_CONNECTION_STRING && !process.env.AZURE_STORAGE_ACCOUNT) {
       throw new Error('Azure storage connection string needs to be defined for recordings');
-    }
+    }*/
   }
 } else {
   if (mcOption) {
