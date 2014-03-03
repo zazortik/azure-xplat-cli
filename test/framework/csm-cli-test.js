@@ -21,6 +21,7 @@ var util = require('util');
 
 var sinon = require('sinon');
 
+var environment = require('../../lib/util/profile/environment');
 var log = require('../../lib/util/logging');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
@@ -65,6 +66,12 @@ _.extend(CSMCLITest.prototype, {
           return config;
         };
       });
+
+      CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
+        return function (authConfig, username, password, callback) {
+          callback(null, { authConfig: authConfig, accessToken: 'foobar' });
+        };
+      });
     }
 
     if (this.isRecording) {
@@ -95,6 +102,10 @@ _.extend(CSMCLITest.prototype, {
 
       if (utils.readConfig.restore) {
         utils.readConfig.restore();
+      }
+
+      if (environment.prototype.acquireToken.restore) {
+        environment.prototype.acquireToken.restore();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
