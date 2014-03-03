@@ -21,12 +21,14 @@ var util = require('util');
 
 var sinon = require('sinon');
 
+var environment = require('../../lib/util/profile/environment');
 var log = require('../../lib/util/logging');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 var CLITest = require('./cli-test');
 
 function CSMCLITest(testPrefix, forceMocked) {
+  this.skipSubscription = true;
   CSMCLITest['super_'].call(this, testPrefix, forceMocked);
 }
 
@@ -37,12 +39,23 @@ _.extend(CSMCLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
-      CLITest.wrap(sinon, profile, 'load', function(originalLoad) {
+      var profileData;
+
+      CLITest.wrap(sinon, profile, 'load', function (originalLoad) {
         return function (filenameOrData) {
-          if (!fileNameOrData || fileNameOrData == profile.defaultProfileFile) {
-            return originalProfileLoad(JSON.parse(createMockedSubscriptionFile()));
+          if (!filenameOrData || filenameOrData === profile.defaultProfileFile) {
+            if (profileData) {
+              return originalLoad(profileData);
+            }
+            return originalLoad(createMockedSubscriptionFile());
           }
           return originalLoad(filenameOrData);
+        };
+      });
+
+      CLITest.wrap(sinon, profile.Profile.prototype, 'save', function (originalSave) {
+        return function (filename) {
+          profileData = this._getSaveData();
         };
       });
 
@@ -53,6 +66,26 @@ _.extend(CSMCLITest.prototype, {
           return config;
         };
       });
+
+      if (!this.isRecording) {
+        CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
+          return function (authConfig, username, password, callback) {
+            callback(null, {
+              authConfig: authConfig,
+              accessToken: 'foobar',
+              expiresAt: new Date(new Date(Date.now()).getTime() + 60000) });
+          };
+        });
+
+        CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
+          return function (token, callback) {
+            callback(null, [ {
+              subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID,
+              subscriptionStatus: 0
+            }]);
+          };
+        });
+      }
     }
 
     if (this.isRecording) {
@@ -70,15 +103,27 @@ _.extend(CSMCLITest.prototype, {
     this.currentTest = 0;
     if (this.isMocked) {
       if (this.isRecording) {
-        fs.appendFIleSync(this.recordingsFile, '];');
+        fs.appendFileSync(this.recordingsFile, '];');
       }
 
       if (profile.load.restore) {
         profile.load.restore();
       }
 
+      if (profile.Profile.prototype.save.restore) {
+        profile.Profile.prototype.save.restore();
+      }
+
       if (utils.readConfig.restore) {
         utils.readConfig.restore();
+      }
+
+      if (environment.prototype.acquireToken.restore) {
+        environment.prototype.acquireToken.restore();
+      }
+
+      if (environment.prototype.getAccountSubscriptions.restore) {
+        environment.prototype.getAccountSubscriptions.restore();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -101,18 +146,29 @@ _.extend(CSMCLITest.prototype, {
       throw new Error(error);
     }
 
+    var testSubscriptionId = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'].toLowerCase();
+
     var env = profile.current.getEnvironment(process.env['AZURE_CSM_TEST_ENVIRONMENT']);
     env.addAccount(
       process.env['AZURE_CSM_TEST_USERNAME'],
       process.env['AZURE_CSM_TEST_PASSWORD'],
-      null,
-      function (err, newSubscription) {
+      function (err, newSubscriptions) {
         if (err) { return callback(err); }
 
-        newSubscription.id = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'];
-        newSubscription.name = 'xplat-test-subscription';
-        newSubscription.isDefault = true;
-        profile.current.addSubscription(newSubscription);
+        var defaultSet = false;
+        newSubscriptions.forEach(function (s) {
+          if (s.id.toLowerCase() === testSubscriptionId) {
+            s.isDefault = true;
+            defaultSet = true;
+          }
+
+          profile.current.addSubscription(s);
+        });
+
+        if (!defaultSet) {
+          callback(new Error(util.format('ERROR: No subscription found for user matching id %s', testSubscriptionId)));
+        }
+
         profile.current.save();
 
         callback();
@@ -122,13 +178,22 @@ _.extend(CSMCLITest.prototype, {
 
 function createMockedSubscriptionFile () {
   return {
-    environments: [
-      {
+    environments: [{
         "name": "next",
         "publishingProfileUrl": "https://auxnext.windows.azure-test.net/publishsettings/index",
         "portalUrl": "https://auxnext.windows.azure-test.net",
         "managementEndpointUrl": "https://managementnext.rdfetest.dnsdemo4.com",
         "resourceManagementEndpointUrl": "https://api-next.resources.windows-int.net",
+        "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+        "hostNameSuffix": "azurewebsites.net",
+        "commonTenantName": "common"
+      }, {
+        "name": "current",
+        "publishingProfileUrl": "https://auxcurrent.windows.azure-test.net/publishsettings/index",
+        "portalUrl": "https://auxcurrent.windows.azure-test.net",
+        "managementEndpointUrl": "https://management.rdfetest.dnsdemo4.com",
+        "resourceManagementEndpointUrl": "https://api-current.resources.windows-int.net",
         "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
         "hostNameSuffix": "azurewebsites.net",
