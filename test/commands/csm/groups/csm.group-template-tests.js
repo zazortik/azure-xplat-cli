@@ -70,6 +70,21 @@ describe('csm', function () {
           });
         });
       });
+
+      // describe('show', function () {
+      //   it('should show a resource group template from gallery', function (done) {
+      //     var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
+      //     suite.execute('group template show %s --json --env %s', templateName, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+      //       result.exitStatus.should.equal(0);
+
+      //       var template = JSON.parse(result.text);
+      //       should.exist(template);
+      //       // template.identity.should.equal(templateName);
+
+      //       done();
+      //     });
+      //   });
+      // });
     });
   });
 });
