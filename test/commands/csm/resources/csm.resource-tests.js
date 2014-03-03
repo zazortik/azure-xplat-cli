@@ -117,7 +117,7 @@ describe('csm', function () {
           suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource list --json', function (listResult) {
+            suite.execute('resource list %s --json', groupName, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
               suite.execute('group delete %s --quiet --json', groupName, function () {
