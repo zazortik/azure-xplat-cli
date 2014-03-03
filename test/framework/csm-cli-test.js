@@ -69,14 +69,18 @@ _.extend(CSMCLITest.prototype, {
 
       CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
         return function (authConfig, username, password, callback) {
-          callback(null, { authConfig: authConfig, accessToken: 'foobar' });
+          callback(null, {
+            authConfig: authConfig,
+            accessToken: 'foobar',
+            expiresAt: new Date(new Date(Date.now()).getTime() + 60000) });
         };
       });
 
       CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
         return function (token, callback) {
           callback(null, [ {
-            subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID
+            subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID,
+            subscriptionStatus: 0
           }]);
         };
       });
