@@ -72,6 +72,14 @@ _.extend(CSMCLITest.prototype, {
           callback(null, { authConfig: authConfig, accessToken: 'foobar' });
         };
       });
+
+      CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
+        return function (token, callback) {
+          callback(null, [ {
+            subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID
+          }]);
+        };
+      });
     }
 
     if (this.isRecording) {
@@ -106,6 +114,10 @@ _.extend(CSMCLITest.prototype, {
 
       if (environment.prototype.acquireToken.restore) {
         environment.prototype.acquireToken.restore();
+      }
+
+      if (environment.prototype.getAccountSubscriptions.restore) {
+        environment.prototype.getAccountSubscriptions.restore();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
