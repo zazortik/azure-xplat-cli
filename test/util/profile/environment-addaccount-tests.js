@@ -25,18 +25,18 @@ var profile = require('../../../lib/util/profile');
 
 var expectedSubscriptions = [
   {
-    subscriptionId: 'id0',
-    subscriptionName: 'name0'
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    subscriptionName: 'Account'
   },
   {
-    subscriptionId: 'id1',
-    subscriptionName: 'name1'
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    subscriptionName: 'Other'
   }
 ];
 
 var expectedToken = {
   accessToken: 'a dummy token',
-  expiresOn: new Date(Date.now() + 5 * 60 * 1000)
+  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000)
 };
 
 describe('Environment', function () {
