@@ -29,7 +29,7 @@ describe('profile', function () {
 
   describe('default', function () {
     it('should contain public environments', function () {
-      _.keys(profile.current.environments).length.should.be.greaterThan(1);
+      _.keys(profile.current.environments).length.should.equal(profile.Environment.publicEnvironments.length);
       profile.current.environments.should.have.property('AzureCloud');
       profile.current.environments.should.have.property('AzureChinaCloud');
     });
@@ -39,7 +39,7 @@ describe('profile', function () {
     var p = profile.load({});
 
     it('should contain public environments', function () {
-      _.keys(p.environments).length.should.equal(2);
+      _.keys(p.environments).length.should.equal(profile.Environment.publicEnvironments.length);
       p.environments.should.have.property('AzureCloud');
       p.environments.should.have.property('AzureChinaCloud');
     });
@@ -69,8 +69,8 @@ describe('profile', function () {
         saveProfile(p, done, function (s) { saved = s; });
       });
 
-      it('should include public profiles', function () {
-        saved.environments.should.have.length(3);
+      it('should not include public profiles', function () {
+        saved.environments.should.have.length(1);
       });
 
       it('should save custom environment', function () {
