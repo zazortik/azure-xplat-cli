@@ -17,6 +17,7 @@
 
 var _ = require('underscore');
 var es = require('event-stream');
+var path = require('path');
 var should = require('should');
 var sinon = require('sinon');
 var stream = require('stream');
@@ -24,6 +25,9 @@ var util = require('util');
 var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
+
+var testFileDir = './test/data';
+var oneSubscriptionFile = 'account-credentials.publishSettings';
 
 describe('profile', function () {
 
@@ -371,6 +375,57 @@ describe('profile', function () {
 
       it('should have no default subscription', function () {
         should.not.exist(p.currentSubscription);
+      });
+    });
+  });
+
+  describe('when loaded with one subscription with access token', function() {
+    var expectedSubscription = {
+      name: 'Account',
+      id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+      accessToken: {
+        accessToken: 'dummy token',
+        refreshToken: 'dummy refresh token',
+        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
+      },
+      environmentName: 'AzureCloud'
+    };
+
+    var p;
+
+    beforeEach(function () {
+      p = profile.load({
+        environments: [],
+        subscriptions: [
+          expectedSubscription
+        ]
+      });
+    });
+
+    describe('and importing publishSettings for same account', function () {
+      beforeEach(function () {
+        var filePath = path.join(testFileDir, oneSubscriptionFile);
+        p.importPublishSettings(filePath);
+      });
+
+      it('should have one subscription', function () {
+        _.keys(p.subscriptions).should.have.length(1);
+      });
+
+      it('should have management cert', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
+      });
+
+      it('should have access token', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
+      });
+
+      it('should have expected cert', function () {
+        p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties('cert', 'key');
+      });
+
+      it('should have expected token', function () {
+        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedSubscription.accessToken);
       });
     });
   });
