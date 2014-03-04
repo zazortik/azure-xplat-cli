@@ -47,12 +47,13 @@ describe('csm', function () {
       describe('list', function () {
         it('should list all resource group templates from gallery', function (done) {
           suite.execute('group template list --json --env %s', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
-            result.exitStatus.should.equal(0);
+            if (result.exitStatus === 0) {
+              result.exitStatus.should.equal(0);
 
-            var templates = JSON.parse(result.text);
-            templates.length.should.be.above(0);
-
-            done();
+              var templates = JSON.parse(result.text);
+              templates.length.should.be.above(0);
+              done();
+            }
           });
         });
       });
