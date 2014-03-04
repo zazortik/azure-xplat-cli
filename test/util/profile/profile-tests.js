@@ -25,7 +25,7 @@ var util = require('util');
 var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
-
+var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
 var testFileDir = './test/data';
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
@@ -426,6 +426,11 @@ describe('profile', function () {
 
       it('should have expected token', function () {
         p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedSubscription.accessToken);
+      });
+
+      it('should create token credentials when asked for credentials', function () {
+        p.subscriptions[expectedSubscription.name]._createCredentials()
+          .should.be.instanceof(AccessTokenCloudCredentials);
       });
     });
   });
