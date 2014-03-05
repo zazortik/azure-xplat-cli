@@ -71,7 +71,7 @@ describe('csm', function () {
               suite.execute('group deployment list -g %s', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-             //TODO: fill in the bug number that Antares resource provider doesn't return correct code when the site has been deleted
+             //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
              // suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
               });
@@ -95,10 +95,10 @@ describe('csm', function () {
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('group deployment stop -g %s', groupName, function (listResult) {
+            suite.execute('group deployment stop -g %s -n %s -q', groupName, deploymentName, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
-             //TODO: fill in the bug number that Antares resource provider doesn't return correct code when the site has been deleted
+             //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
              // suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
             });
