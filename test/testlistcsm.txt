@@ -1,4 +1,4 @@
-commands/csm/groups/csm.group-create-tests.js
-commands/csm/groups/csm.group-tests.js
-commands/csm/resources/csm.resource-tests.js
+#commands/csm/groups/csm.group-create-tests.js
+#commands/csm/groups/csm.group-tests.js
+#commands/csm/resources/csm.resource-tests.js
 commands/csm/groups/csm.group-template-tests.js
