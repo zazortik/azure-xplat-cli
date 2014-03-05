@@ -17,13 +17,17 @@
 
 var _ = require('underscore');
 var es = require('event-stream');
+var path = require('path');
 var should = require('should');
 var sinon = require('sinon');
 var stream = require('stream');
-
+var util = require('util');
 var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
+var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
+var testFileDir = './test/data';
+var oneSubscriptionFile = 'account-credentials.publishSettings';
 
 describe('profile', function () {
 
@@ -119,11 +123,15 @@ describe('profile', function () {
       environmentName: 'AzureCloud'
     };
 
-    var p = profile.load({
-      environments: [],
-      subscriptions: [
-        expectedSubscription
-      ]
+    var p;
+
+    beforeEach(function () {
+      p = profile.load({
+        environments: [],
+        subscriptions: [
+          expectedSubscription
+        ]
+      });
     });
 
     it('should contain one subscription', function () {
@@ -142,7 +150,7 @@ describe('profile', function () {
 
     describe('and saving', function () {
       var saved;
-      before(function (done) {
+      beforeEach(function (done) {
         saveProfile(p, done, function (s) { saved = s; });
       });
 
@@ -155,7 +163,7 @@ describe('profile', function () {
     });
 
     describe('and changing an endpoint specifically', function () {
-      before(function () {
+      beforeEach(function () {
         p.subscriptions.Account.managementEndpointUrl = 'http://some.new.url.example';
       });
 
@@ -178,7 +186,7 @@ describe('profile', function () {
         }
       });
 
-      before(function () {
+      beforeEach(function () {
         p.addSubscription(newSub, p.getEnvironment('AzureCloud'));
       });
 
@@ -188,6 +196,54 @@ describe('profile', function () {
 
       it('should remove default flag on old subscription', function () {
         p.subscriptions.Account.isDefault.should.be.false;
+      });
+    });
+
+    describe('and logging in to already loaded subscription', function () {
+      var loginSubscriptions = [
+      {
+        subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+        subscriptionName: 'Account'
+      }];
+
+      var expectedToken = {
+        accessToken: 'Dummy token',
+        refreshToken: 'Dummy refresh token',
+        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
+      };
+
+      beforeEach(function (done) {
+        var fakeEnvironment = new profile.Environment({name: 'TestEnvironment'});
+        sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
+        sinon.stub(fakeEnvironment, 'getAccountSubscriptions').callsArgWith(1, null, loginSubscriptions);
+
+        fakeEnvironment.addAccount('user', 'password', function (err, subscriptions) {
+          subscriptions.forEach(function (s) {
+            p.addSubscription(s);
+          });
+
+          done();
+        });
+      });
+
+      it('should have one subscription', function () {
+        _.keys(p.subscriptions).should.have.length(1);
+      });
+
+      it('should have management cert', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
+      });
+
+      it('should have access token', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
+      });
+
+      it('should have expected cert', function () {
+        p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties(expectedSubscription.managementCertificate);
+      });
+
+      it('should have expected token', function () {
+        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedToken);
       });
     });
   });
@@ -319,6 +375,62 @@ describe('profile', function () {
 
       it('should have no default subscription', function () {
         should.not.exist(p.currentSubscription);
+      });
+    });
+  });
+
+  describe('when loaded with one subscription with access token', function() {
+    var expectedSubscription = {
+      name: 'Account',
+      id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+      accessToken: {
+        accessToken: 'dummy token',
+        refreshToken: 'dummy refresh token',
+        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
+      },
+      environmentName: 'AzureCloud'
+    };
+
+    var p;
+
+    beforeEach(function () {
+      p = profile.load({
+        environments: [],
+        subscriptions: [
+          expectedSubscription
+        ]
+      });
+    });
+
+    describe('and importing publishSettings for same account', function () {
+      beforeEach(function () {
+        var filePath = path.join(testFileDir, oneSubscriptionFile);
+        p.importPublishSettings(filePath);
+      });
+
+      it('should have one subscription', function () {
+        _.keys(p.subscriptions).should.have.length(1);
+      });
+
+      it('should have management cert', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
+      });
+
+      it('should have access token', function () {
+        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
+      });
+
+      it('should have expected cert', function () {
+        p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties('cert', 'key');
+      });
+
+      it('should have expected token', function () {
+        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedSubscription.accessToken);
+      });
+
+      it('should create token credentials when asked for credentials', function () {
+        p.subscriptions[expectedSubscription.name]._createCredentials()
+          .should.be.instanceof(AccessTokenCloudCredentials);
       });
     });
   });
