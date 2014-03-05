@@ -15,7 +15,6 @@
 // 
 
 var should = require('should');
-var fs = require('fs');
 
 var CLITest = require('../framework/cli-test');
 
