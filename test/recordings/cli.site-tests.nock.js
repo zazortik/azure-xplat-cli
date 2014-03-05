@@ -7,12 +7,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '34327d310a2f5b3fb89890dea5d64024',
-  date: 'Thu, 16 Jan 2014 08:52:45 GMT' });
+  'x-ms-request-id': '59270834129f7b649782b0ab1c6fd6b7',
+  date: 'Wed, 05 Mar 2014 00:32:23 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '706887416fda75ac903f45fb3fd9ae91',
+  date: 'Wed, 05 Mar 2014 00:32:24 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:25:22.333</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string><a:string>clitests1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:24:50.177</LastModifiedTimeUtc><Name>clitests1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>8eH2ec71pS9AlcRjKy4KJ99GgryYN7XFlumEdLNeml5gNwBZZcngcgviFkHu</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '7527',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '827becc473e37698843de932e5fbdde9',
+  date: 'Wed, 05 Mar 2014 00:32:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -21,40 +49,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2249822ace035dd78154df5b3102f5a3',
-  date: 'Thu, 16 Jan 2014 08:52:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e1c0044d2cb957b3b276f65cb103f544',
-  date: 'Thu, 16 Jan 2014 08:52:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f7817b9511ea52d2afb3d1a1aedc4b64',
-  date: 'Thu, 16 Jan 2014 08:52:47 GMT' });
+  'x-ms-request-id': 'c0e656d471ca71c784382d8989e8c6eb',
+  date: 'Wed, 05 Mar 2014 00:32:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -63,40 +63,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9547b55b906a57a5b1de141aae72c530',
-  date: 'Thu, 16 Jan 2014 08:52:47 GMT' });
+  'x-ms-request-id': 'eb96d19ef19e705091641ca1150b82cf',
+  date: 'Wed, 05 Mar 2014 00:32:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestdeploy168464c1d-f66e-4d88-91d2-64a2850e2bc6</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestsite18ebf0a1a-35a9-4bc3-a586-56b27b279382</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestsite1fbf56a87-adb8-47b9-9cf5-6fb94389ddd7</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '3140',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0d0f532b4c615cb6904515ffca3ec536',
-  date: 'Thu, 16 Jan 2014 08:52:47 GMT' });
+  'x-ms-request-id': '857dc1fc360f7643977f3c70f7013002',
+  date: 'Wed, 05 Mar 2014 00:32:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0871fb2a453b5a3ea8083f66efb7b41b',
-  date: 'Thu, 16 Jan 2014 08:52:48 GMT' });
+  'x-ms-request-id': '5de9e040317578d68a6a47fe68100ed0',
+  date: 'Wed, 05 Mar 2014 00:32:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -105,41 +105,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c5f6e9d918925ac3aaa7dc6287227c1d',
-  date: 'Thu, 16 Jan 2014 08:52:51 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=dnssuffix')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
-  'content-length': '94',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8bb185fb987b572fb2561f669ca43110',
-  date: 'Thu, 16 Jan 2014 08:52:51 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string><a:string>clitests1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:52:55.333</LastModifiedTimeUtc><Name>clitests1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e15bcd00122d58159a393a3e9d3ac07f',
-  date: 'Thu, 16 Jan 2014 08:52:57 GMT' });
+  'x-ms-request-id': '542afe1e11d475c7a1df3da75161530d',
+  date: 'Wed, 05 Mar 2014 00:32:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -148,40 +119,36 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b0a36c8f77325120aa2208a4e74e36f9',
-  date: 'Thu, 16 Jan 2014 08:52:58 GMT' });
+  'x-ms-request-id': '8e7711b3b82477bd964b9f7fe9766055',
+  date: 'Wed, 05 Mar 2014 00:32:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6f8791f111785b43b7d5101d4a0229cb',
-  date: 'Thu, 16 Jan 2014 08:53:00 GMT' });
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:32:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9c7d438ee6a35f9886768b26490efe06',
-  date: 'Thu, 16 Jan 2014 08:53:00 GMT' });
+  'x-ms-request-id': '022f7ac5a8517befa07b1370009fecfd',
+  date: 'Wed, 05 Mar 2014 00:32:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -190,40 +157,54 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '48e0fd4477095705abc302355cc5a027',
-  date: 'Thu, 16 Jan 2014 08:53:00 GMT' });
+  'x-ms-request-id': '2bbd1ebf4f1a7f24b5bafd76789339a8',
+  date: 'Wed, 05 Mar 2014 00:32:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string><a:string>clitests1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:52:55.333</LastModifiedTimeUtc><Name>clitests1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>mfnN3QtpXieqozPedfpxyC8wuCA7rS0bCCCQfXPo2rkpb8xZnEjoEdrNuxCB</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '2484',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '94b858d7b76058688d9c990ee0c20d33',
-  date: 'Thu, 16 Jan 2014 08:53:00 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e8a21953325b52e688051928a4b4887b',
-  date: 'Thu, 16 Jan 2014 08:53:01 GMT' });
+  'x-ms-request-id': '847173256d9f72629ee1aaa708c1ed74',
+  date: 'Wed, 05 Mar 2014 00:32:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '151af61573ff7424b0533798eb234457',
+  date: 'Wed, 05 Mar 2014 00:32:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:25:22.333</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string><a:string>clitests1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:24:50.177</LastModifiedTimeUtc><Name>clitests1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>8eH2ec71pS9AlcRjKy4KJ99GgryYN7XFlumEdLNeml5gNwBZZcngcgviFkHu</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '7527',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '89f72de3c85075ea8656128fe4e26c97',
+  date: 'Wed, 05 Mar 2014 00:32:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -231,12 +212,12 @@ nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests1?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'acbe5c34894758c1bcedc096c5fd57e7',
-  date: 'Thu, 16 Jan 2014 08:53:05 GMT' });
+  'x-ms-request-id': '7690503d6b4a7a32ac615ebacf71701d',
+  date: 'Wed, 05 Mar 2014 00:32:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -245,54 +226,22 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8501d56dbf415021b7e3e8180fa118ca',
-  date: 'Thu, 16 Jan 2014 08:53:06 GMT' });
+  'x-ms-request-id': 'd8b6109f2926737099f9f1522224ba7c',
+  date: 'Wed, 05 Mar 2014 00:32:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4472e75813275004aaf5f36538d9f52b',
-  date: 'Thu, 16 Jan 2014 08:53:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '03bcc852527d5e73bf272e6907a69702',
-  date: 'Thu, 16 Jan 2014 08:53:08 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c17c656ef63858dcbb02ce8ed1426621',
-  date: 'Thu, 16 Jan 2014 08:53:08 GMT' });
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:32:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -301,12 +250,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5dd1eac8e4b75775951d8ad507b35353',
-  date: 'Thu, 16 Jan 2014 08:53:08 GMT' });
+  'x-ms-request-id': 'c70b56617a517e398427178b035b4426',
+  date: 'Wed, 05 Mar 2014 00:32:44 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '91939bd18d947252a8d5b72d2b3904ca',
+  date: 'Wed, 05 Mar 2014 00:32:45 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:25:22.333</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5053',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f06ddcf8715974a4b34b9a4f27f1e75e',
+  date: 'Wed, 05 Mar 2014 00:32:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -315,24 +292,38 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5bc96bf9278c572b9cfe5b47743f7912',
-  date: 'Thu, 16 Jan 2014 08:53:09 GMT' });
+  'x-ms-request-id': '84b05451b883733ca59c914ee6fd942b',
+  date: 'Wed, 05 Mar 2014 00:32:42 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '9d4638f3be237331ad59bb4bf035d5c5',
+  date: 'Wed, 05 Mar 2014 00:32:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:10 GMT',
+  date: 'Wed, 05 Mar 2014 00:32:47 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4999',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -340,21 +331,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B99:586DB77:52D79DF5' });
+  'x-github-request-id': '4FA93972:3BE0:488F08:531670AE' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:11 GMT',
+  date: 'Wed, 05 Mar 2014 00:32:49 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4998',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -362,9 +353,9 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B97:53646F1:52D79DF6' });
+  'x-github-request-id': '4FA93972:3BE0:48936E:531670B1' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -373,54 +364,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '82da758d29e757aa880f796222b571a0',
-  date: 'Thu, 16 Jan 2014 08:53:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cba01e864fe85a93b0f397275dc7e742',
-  date: 'Thu, 16 Jan 2014 08:53:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '59d5631a2c965582961ddbba49631274',
-  date: 'Thu, 16 Jan 2014 08:53:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8f72c66b798b5739bbf2928cded8c84c',
-  date: 'Thu, 16 Jan 2014 08:53:13 GMT' });
+  'x-ms-request-id': 'e27209a775b77f96912a310f7c5e43d6',
+  date: 'Wed, 05 Mar 2014 00:32:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -429,26 +378,68 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a32f7016cf8350ddb698a4aef0e9ab3c',
-  date: 'Thu, 16 Jan 2014 08:53:13 GMT' });
+  'x-ms-request-id': '4039ee88b4f47e4aa270e4085f74a9fa',
+  date: 'Wed, 05 Mar 2014 00:32:51 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bf7449ff6aa272f58c8fd06d77d85b70',
+  date: 'Wed, 05 Mar 2014 00:32:50 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '8f795a9749a67be58bab20bbe93fa2bf',
+  date: 'Wed, 05 Mar 2014 00:32:50 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:25:22.333</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5053',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '25d2f38bc04c7abe8685e000f491953c',
+  date: 'Wed, 05 Mar 2014 00:32:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '403ec05b102958798610722824df99ba',
-  date: 'Thu, 16 Jan 2014 08:53:15 GMT' });
+  'x-ms-request-id': '5383cf28c90077aa9734cbd061744e2c',
+  date: 'Wed, 05 Mar 2014 00:32:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -457,53 +448,24 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6efb146ddb3a58c7947be152a266a784',
-  date: 'Thu, 16 Jan 2014 08:53:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=dnssuffix')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
-  'content-length': '94',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bbcf8bda2d8a5fdbb559a06dc0b2c2dc',
-  date: 'Thu, 16 Jan 2014 08:53:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:21.78</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2121',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '243b4b2b005856f6bc38c17372d595fd',
-  date: 'Thu, 16 Jan 2014 08:53:22 GMT' });
+  'x-ms-request-id': 'b016637376e074f2901f1420ad488557',
+  date: 'Wed, 05 Mar 2014 00:32:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:24 GMT',
+  date: 'Wed, 05 Mar 2014 00:32:56 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4997',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -511,21 +473,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B99:586E343:52D79E03' });
+  'x-github-request-id': '4FA93972:3BDF:3B3F75:531670B7' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/orgs')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:24 GMT',
+  date: 'Wed, 05 Mar 2014 00:32:56 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4996',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -533,49 +495,36 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B95:3581339:52D79E04' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests2/repository')
-  .reply(200, "", { 'cache-control': 'private',
-  'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b3afcb9b6eab54a7b43207095db03501',
-  date: 'Thu, 16 Jan 2014 08:53:26 GMT' });
+  'x-github-request-id': '4FA93972:3BDF:3B4019:531670B8' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests2?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:26.337</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>HnrcZuYxb3BqwaeZdCgensBfBfQrCndk9tE6mlcNbkDqE1dCu2xbFu0GhqDX</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2469',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:25:22.333</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2576',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF12986B687310"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF3809655A94D0"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '568867498b065cf7ae58839a2d955bea',
-  date: 'Thu, 16 Jan 2014 08:53:27 GMT' });
+  'x-ms-request-id': '753b37d70e4c7ec8b9283b1141846ee8',
+  date: 'Wed, 05 Mar 2014 00:33:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:28 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:00 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4995',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -583,51 +532,51 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B94:2AA7276:52D79E08' });
+  'x-github-request-id': '4FA93972:3BE0:48A517:531670BC' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/repos/azuresdkrec/azuresdk-repo/hooks', '*')
-  .reply(201, "{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777/test\",\"id\":1690777,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:HnrcZuYxb3BqwaeZdCgensBfBfQrCndk9tE6mlcNbkDqE1dCu2xbFu0GhqDX@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:53:29Z\",\"created_at\":\"2014-01-16T08:53:29Z\"}", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:29 GMT',
+  .reply(201, "{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448/test\",\"id\":1893448,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-03-05T00:33:01Z\",\"created_at\":\"2014-03-05T00:33:01Z\"}", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:33:01 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '201 Created',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4994',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"41f92fc8e21faab501082beb469c08f9"',
-  location: 'https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777',
+  etag: '"3aaa63f1110abc75b6745795a94f6190"',
+  location: 'https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'content-length': '537',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B95:3581663:52D79E09' });
+  'x-github-request-id': '4FA93972:3BE0:48A602:531670BD' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/repos/azuresdkrec/azuresdk-repo/hooks/1690777/test', '*')
+.post('/repos/azuresdkrec/azuresdk-repo/hooks/1893448/test', '*')
   .reply(204, "", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:30 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:02 GMT',
   status: '204 No Content',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4993',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B97:5365267:52D79E09',
+  'x-github-request-id': '4FA93972:3BDE:2B4318:531670BD',
   vary: 'Accept-Encoding' });
  return result; },
 function (nock) { 
@@ -637,54 +586,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c75d1644fc225aceb136d68c6c09bbb2',
-  date: 'Thu, 16 Jan 2014 08:53:31 GMT' });
+  'x-ms-request-id': 'd1e4fe2348487c1286d48f799e3a6d8a',
+  date: 'Wed, 05 Mar 2014 00:33:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '33ec8e305d5e5208b5598bc279c0b095',
-  date: 'Thu, 16 Jan 2014 08:53:33 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ebfda8e887b25f18af294d156f862d3d',
-  date: 'Thu, 16 Jan 2014 08:53:33 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests2</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string><a:string>clitests2.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests2.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:26.337</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests2</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests2</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests2.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests2</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>HnrcZuYxb3BqwaeZdCgensBfBfQrCndk9tE6mlcNbkDqE1dCu2xbFu0GhqDX</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '2484',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2fe9b48b0dec529e8b242732186e19c0',
-  date: 'Thu, 16 Jan 2014 08:53:33 GMT' });
+  'x-ms-request-id': '1a7ceef09329747c9e046c5896f1baf3',
+  date: 'Wed, 05 Mar 2014 00:33:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -693,12 +614,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3320eb34e39e5f52afc375fa21e1c810',
-  date: 'Thu, 16 Jan 2014 08:53:33 GMT' });
+  'x-ms-request-id': '66b6c2936aef7992a93d83681f2c69ef',
+  date: 'Wed, 05 Mar 2014 00:33:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -707,24 +628,52 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c3715956d8215925a45456e6501e6a98',
-  date: 'Thu, 16 Jan 2014 08:53:34 GMT' });
+  'x-ms-request-id': 'af774ffea78c78969627c5d46d16b346',
+  date: 'Wed, 05 Mar 2014 00:33:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '0cc4cd1cb70876a09c2f54bee8d03533',
+  date: 'Wed, 05 Mar 2014 00:33:05 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>foonewnew</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>mbn</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>myawssite</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>mynew2</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>mynew3</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>mynew6</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>sadas</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>testasd</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>testawssite</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests2.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>clitests2</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '12017',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'ed8d4df136227f1c8b98683209630dab',
+  date: 'Wed, 05 Mar 2014 00:33:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:35 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:11 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4992',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -732,44 +681,54 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B95:3581AF4:52D79E0F' });
+  'x-github-request-id': '4FA93972:3BE1:53204B:531670C7' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
-  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777/test\",\"id\":1690777,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:HnrcZuYxb3BqwaeZdCgensBfBfQrCndk9tE6mlcNbkDqE1dCu2xbFu0GhqDX@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:53:29Z\",\"created_at\":\"2014-01-16T08:53:29Z\"}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:36 GMT',
+  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448/test\",\"id\":1893448,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":200,\"status\":\"active\",\"message\":\"OK\"},\"updated_at\":\"2014-03-05T00:33:02Z\",\"created_at\":\"2014-03-05T00:33:01Z\"}]", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:33:12 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4991',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"24334678932daafb43576cfb3b7de8d0"',
+  etag: '"7c3a9f1b80ebd7175ad9f67c32d12e21"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
-  'content-length': '539',
+  'content-length': '538',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B94:2AA7811:52D79E0F' });
+  'x-github-request-id': '4FA93972:3BDF:3B5403:531670C7' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests2?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests2?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:33:12 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests2?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fbc5e756fbc6575ca03e9b7c62098c9b',
-  date: 'Thu, 16 Jan 2014 08:53:39 GMT' });
+  'x-ms-request-id': '6cc914c4fd1b76fe978366b56d94c804',
+  date: 'Wed, 05 Mar 2014 00:33:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -778,26 +737,50 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1b519164cef65a02844a10d1484252b8',
-  date: 'Thu, 16 Jan 2014 08:53:41 GMT' });
+  'x-ms-request-id': 'ec763c8dff1d76e0905d8d3008154f7f',
+  date: 'Wed, 05 Mar 2014 00:33:15 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:33:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cc102d6fc6165dd8bd8f21e6439193b8',
-  date: 'Thu, 16 Jan 2014 08:53:43 GMT' });
+  'x-ms-request-id': 'ecbd14b5dd4271ca882f46ad11bf11d9',
+  date: 'Wed, 05 Mar 2014 00:33:20 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c698c382fa4b77548ea7ce603ebb2d30',
+  date: 'Wed, 05 Mar 2014 00:33:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -806,40 +789,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '697a096a6a79586aa2dc655d1202565b',
-  date: 'Thu, 16 Jan 2014 08:53:43 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '924a26c2994e50a4a2ef6d7275c29667',
-  date: 'Thu, 16 Jan 2014 08:53:42 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '96f4d6f657f4510c88e94aa80a0118bb',
-  date: 'Thu, 16 Jan 2014 08:53:42 GMT' });
+  'x-ms-request-id': 'e29056a11805791f86bac255bc352334',
+  date: 'Wed, 05 Mar 2014 00:33:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -848,24 +803,38 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '615d80ab48fe56db8b5b8eb5d2378b78',
-  date: 'Thu, 16 Jan 2014 08:53:43 GMT' });
+  'x-ms-request-id': '5cc880480c007d9987a7887615aff06b',
+  date: 'Wed, 05 Mar 2014 00:33:19 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '5df52b8ae82a70f8aebedde16233bbc0',
+  date: 'Wed, 05 Mar 2014 00:33:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:44 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:22 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4990',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -873,91 +842,77 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B94:2AA7D6E:52D79E17' });
+  'x-github-request-id': '4FA93972:1E8B:60B37B:531670D2' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
-  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690777/test\",\"id\":1690777,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:HnrcZuYxb3BqwaeZdCgensBfBfQrCndk9tE6mlcNbkDqE1dCu2xbFu0GhqDX@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:53:29Z\",\"created_at\":\"2014-01-16T08:53:29Z\"}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:44 GMT',
+  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893448/test\",\"id\":1893448,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests2:9gpiSfMkwou1LAmcGS8vp6wYFl9mi4Xuu8YYjeAdfPkCvcnolqv2tLf905YM@clitests2.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":200,\"status\":\"active\",\"message\":\"OK\"},\"updated_at\":\"2014-03-05T00:33:02Z\",\"created_at\":\"2014-03-05T00:33:01Z\"}]", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:33:23 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4989',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"24334678932daafb43576cfb3b7de8d0"',
+  etag: '"7c3a9f1b80ebd7175ad9f67c32d12e21"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
-  'content-length': '539',
+  'content-length': '538',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B97:5365B2B:52D79E18' });
+  'x-github-request-id': '4FA93972:1E8A:561CCB:531670D2' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
-  .delete('/repos/azuresdkrec/azuresdk-repo/hooks/1690777')
+  .delete('/repos/azuresdkrec/azuresdk-repo/hooks/1893448')
   .reply(204, "", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:53:45 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:23 GMT',
   status: '204 No Content',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4988',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B98:468D8EA:52D79E19',
+  'x-github-request-id': '4FA93972:1E8B:60B56D:531670D3',
   vary: 'Accept-Encoding' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '21c7ee665f7f51ffbe7ea67b7b54781c',
-  date: 'Thu, 16 Jan 2014 08:53:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a4d95a11e8e5655b0464a7d59410199',
-  date: 'Thu, 16 Jan 2014 08:53:47 GMT' });
+  'x-ms-request-id': '9599dda1b27c7da89293669034510de3',
+  date: 'Wed, 05 Mar 2014 00:33:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '342b872896425666945c20828092009a',
-  date: 'Thu, 16 Jan 2014 08:53:47 GMT' });
+  'x-ms-request-id': '70db4cdb0f3674a2ba603b61982af31a',
+  date: 'Wed, 05 Mar 2014 00:33:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -966,40 +921,54 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ce069b3c9937518aaaf3f18f25f38bfa',
-  date: 'Thu, 16 Jan 2014 08:53:46 GMT' });
+  'x-ms-request-id': 'fe9c32fd52b37e1fbe99147d35cf4dc3',
+  date: 'Wed, 05 Mar 2014 00:33:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f87dce8704a454369c3c6025d3fe157c',
-  date: 'Thu, 16 Jan 2014 08:53:47 GMT' });
+  'x-ms-request-id': '923713c74a5f793d8425ce2ebb1c1f20',
+  date: 'Wed, 05 Mar 2014 00:33:24 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '17fa95a3e2e673c28c6e3999333f75eb',
+  date: 'Wed, 05 Mar 2014 00:33:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'da3c009eaa4e5db4ba4c06950e8c011c',
-  date: 'Thu, 16 Jan 2014 08:53:49 GMT' });
+  'x-ms-request-id': '15226f8c9f65749b9dfd2faab2014d9d',
+  date: 'Wed, 05 Mar 2014 00:33:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1008,12 +977,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '88113fb6b6775472a1082977655655d3',
-  date: 'Thu, 16 Jan 2014 08:53:51 GMT' });
+  'x-ms-request-id': '72af5c4773d275acba9a5273586d7a81',
+  date: 'Wed, 05 Mar 2014 00:33:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1022,55 +991,41 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
   'content-length': '94',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1b94a981c24356afa61159aa85d0d641',
-  date: 'Thu, 16 Jan 2014 08:53:52 GMT' });
+  'x-ms-request-id': 'da2650a91b547388bd9a040f4ab4e13d',
+  date: 'Wed, 05 Mar 2014 00:33:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:55.4</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2120',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:33:34.47</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2228',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a5ae3ae9bca5540181995aa76fa3403d',
-  date: 'Thu, 16 Jan 2014 08:53:56 GMT' });
+  'x-ms-request-id': 'a10af4717a4a7a2684583036b19b0948',
+  date: 'Wed, 05 Mar 2014 00:33:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:55.4</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '2482',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ab444d8c2d2a5d99982600c993f5af46',
-  date: 'Thu, 16 Jan 2014 08:53:57 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0c963b6d3d9c5eb6be163515e27afb00',
-  date: 'Thu, 16 Jan 2014 08:53:58 GMT' });
+  'x-ms-request-id': '8d19b2de727b7cedb3b2e1795a388fe6',
+  date: 'Wed, 05 Mar 2014 00:33:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1079,12 +1034,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '83f801e28990571794752b17b7e51643',
-  date: 'Thu, 16 Jan 2014 08:53:58 GMT' });
+  'x-ms-request-id': '4e09f491da057dc9823262ba4e230a34',
+  date: 'Wed, 05 Mar 2014 00:33:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:33:34.47</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5052',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'a45d5f54bcd67785a9db3f7ad5df6c41',
+  date: 'Wed, 05 Mar 2014 00:33:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1093,66 +1062,76 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '23f761f2007e576abf53fd117dfdbe87',
-  date: 'Thu, 16 Jan 2014 08:53:59 GMT' });
+  'x-ms-request-id': '2e3dc61f7c987839bbab789653120555',
+  date: 'Wed, 05 Mar 2014 00:33:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '10a3c4e72f5958248c30cb8f68767a12',
-  date: 'Thu, 16 Jan 2014 08:53:58 GMT' });
+  'x-ms-request-id': '318b0aa281e6725696f91029f4a5d791',
+  date: 'Wed, 05 Mar 2014 00:33:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '037ca7814ef75800a1b9259e22607f2b',
-  date: 'Thu, 16 Jan 2014 08:54:00 GMT' });
+  'x-ms-request-id': 'aaad2416ba4e7bb68ab258e391b86bc7',
+  date: 'Wed, 05 Mar 2014 00:33:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:33:43 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fb0887d3cb2e50df8a219119621e6974',
-  date: 'Thu, 16 Jan 2014 08:54:02 GMT' });
+  'x-ms-request-id': '224bf066a8007559a7df9451be6ea94e',
+  date: 'Wed, 05 Mar 2014 00:33:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:03 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:46 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4987',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1160,21 +1139,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B93:12A5C56:52D79E2A' });
+  'x-github-request-id': '4FA93972:1E8C:29DB40:531670EA' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/orgs')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:03 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:46 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4986',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1182,36 +1161,36 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B99:586FB4F:52D79E2B' });
+  'x-github-request-id': '4FA93972:1E8B:60E26C:531670EA' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests3?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:55.4</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2467',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:33:34.47</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2575',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF12987CBB1C80"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380A8AB0BA60"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a2f7aaec9bf65ea7ace18c13cffbff81',
-  date: 'Thu, 16 Jan 2014 08:54:05 GMT' });
+  'x-ms-request-id': '12a4abe356fd74f09ee5e9c27cdda3f7',
+  date: 'Wed, 05 Mar 2014 00:33:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:06 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:51 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4985',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1219,51 +1198,51 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B95:3583276:52D79E2E' });
+  'x-github-request-id': '4FA93972:1E8A:564664:531670EE' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/repos/azuresdkrec/azuresdk-repo/hooks', '*')
-  .reply(201, "{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778/test\",\"id\":1690778,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:54:07Z\",\"created_at\":\"2014-01-16T08:54:07Z\"}", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:07 GMT',
+  .reply(201, "{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451/test\",\"id\":1893451,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-03-05T00:33:52Z\",\"created_at\":\"2014-03-05T00:33:52Z\"}", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:33:52 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '201 Created',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4984',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"9862bce1a6061da7a981f875e274658c"',
-  location: 'https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778',
+  etag: '"31daacb4a97886e42e1ca5d1e5c52dcf"',
+  location: 'https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'content-length': '537',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B94:2AA8D66:52D79E2E' });
+  'x-github-request-id': '4FA93972:1E8C:29DE02:531670EF' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/repos/azuresdkrec/azuresdk-repo/hooks/1690778/test', '*')
+.post('/repos/azuresdkrec/azuresdk-repo/hooks/1893451/test', '*')
   .reply(204, "", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:07 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:52 GMT',
   status: '204 No Content',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4983',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B96:423FEF6:52D79E2F',
+  'x-github-request-id': '4FA93972:3BDF:3B88EC:531670F0',
   vary: 'Accept-Encoding' });
  return result; },
 function (nock) { 
@@ -1273,68 +1252,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '819a7823176157388dd27c16587d6833',
-  date: 'Thu, 16 Jan 2014 08:54:10 GMT' });
+  'x-ms-request-id': 'cd279178614a76009d730a5d0084a10b',
+  date: 'Wed, 05 Mar 2014 00:33:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '410ece8d32d355af9f573650827d3c8e',
-  date: 'Thu, 16 Jan 2014 08:54:11 GMT' });
+  'x-ms-request-id': 'f4653bb76b4a730d90a0729f4089c5d3',
+  date: 'Wed, 05 Mar 2014 00:33:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:53:55.4</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '2482',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests3</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string><a:string>clitests3.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests3.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests3.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:33:34.47</LastModifiedTimeUtc><Name>clitests3</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests3</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests3</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests3.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests3</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5052',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'aeb4326f35985359be79146fe3cb412b',
-  date: 'Thu, 16 Jan 2014 08:54:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '393b2cb590b9506fb0c967f2f72eead3',
-  date: 'Thu, 16 Jan 2014 08:54:11 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7eeeb90946745e9dba8e04b8acb9bd17',
-  date: 'Thu, 16 Jan 2014 08:54:11 GMT' });
+  'x-ms-request-id': 'ebe0117c4f3876b1859733fca186729b',
+  date: 'Wed, 05 Mar 2014 00:33:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1343,24 +1294,52 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3e385168062a54a788ad6e14b884498b',
-  date: 'Thu, 16 Jan 2014 08:54:12 GMT' });
+  'x-ms-request-id': '139014e8b27579bf9d00dbb736c57364',
+  date: 'Wed, 05 Mar 2014 00:33:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'e250d7cf3f847efebb1a1a547882ac62',
+  date: 'Wed, 05 Mar 2014 00:33:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4917fe5c4814754b80ff8d151122e3ba',
+  date: 'Wed, 05 Mar 2014 00:33:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:12 GMT',
+  date: 'Wed, 05 Mar 2014 00:33:59 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4982',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1368,44 +1347,54 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B96:4240226:52D79E34' });
+  'x-github-request-id': '4FA93972:3BE1:537AE4:531670F5' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
-  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778/test\",\"id\":1690778,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:54:07Z\",\"created_at\":\"2014-01-16T08:54:07Z\"}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:13 GMT',
+  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451/test\",\"id\":1893451,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":200,\"status\":\"active\",\"message\":\"OK\"},\"updated_at\":\"2014-03-05T00:33:55Z\",\"created_at\":\"2014-03-05T00:33:52Z\"}]", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:34:00 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4981',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"32e9c4f8e77804349a8be941f8fef701"',
+  etag: '"ae24344e11941bf77414f84d7d74cfbb"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
-  'content-length': '539',
+  'content-length': '538',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B93:12A6165:52D79E34' });
+  'x-github-request-id': '4FA93972:3BDF:3B9381:531670F7' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests3?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests3?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:34:00 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests3?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a39930be7e7c52f08b8356d24167d30f',
-  date: 'Thu, 16 Jan 2014 08:54:15 GMT' });
+  'x-ms-request-id': 'b73233c6d5427a3985a61e04522f0650',
+  date: 'Wed, 05 Mar 2014 00:34:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1414,12 +1403,22 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ceff3d05a2735b2a9d19486886a19fcd',
-  date: 'Thu, 16 Jan 2014 08:54:19 GMT' });
+  'x-ms-request-id': 'daa10c12360178eca736a1889ed2ba09',
+  date: 'Wed, 05 Mar 2014 00:34:04 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:34:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1428,40 +1427,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3c428806c3145a80a31be29735ae2283',
-  date: 'Thu, 16 Jan 2014 08:54:19 GMT' });
+  'x-ms-request-id': '84972b9217fc7d529b53d2aa88a41e05',
+  date: 'Wed, 05 Mar 2014 00:34:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9bf7355bd35854c093341a37e20a8564',
-  date: 'Thu, 16 Jan 2014 08:54:20 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8db3ece5fb54518fbeb50fe5d7882c65',
-  date: 'Thu, 16 Jan 2014 08:54:20 GMT' });
+  'x-ms-request-id': 'ee330f3540a17f33b4b58e7317deb749',
+  date: 'Wed, 05 Mar 2014 00:34:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1470,38 +1455,52 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bfa9aebfd46654679d83e2dc31884232',
-  date: 'Thu, 16 Jan 2014 08:54:20 GMT' });
+  'x-ms-request-id': '722240e53e1274068a59bf0082a7a7f9',
+  date: 'Wed, 05 Mar 2014 00:34:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestdeploy168464c1d-f66e-4d88-91d2-64a2850e2bc6</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestsite18ebf0a1a-35a9-4bc3-a586-56b27b279382</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled i:nil=\"true\"/><AvailabilityState>Limited</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs i:nil=\"true\"/><DeploymentId i:nil=\"true\"/><Enabled i:nil=\"true\"/><EnabledHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><HostNameSslStates i:nil=\"true\"/><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><LastModifiedTimeUtc>0001-01-01T00:00:00</LastModifiedTimeUtc><Name>cliuttestsite1fbf56a87-adb8-47b9-9cf5-6fb94389ddd7</Name><Owner i:nil=\"true\"/><RepositorySiteName i:nil=\"true\"/><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates i:nil=\"true\"/><SelfLink i:nil=\"true\"/><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties i:nil=\"true\"/><State i:nil=\"true\"/><StorageRecoveryDefaultState i:nil=\"true\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
-  'content-length': '3140',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7f7b3138b0e45046b8fb6e9d31e9e371',
-  date: 'Thu, 16 Jan 2014 08:54:21 GMT' });
+  'x-ms-request-id': '2216a59ed70470f288a591fb59aeee52',
+  date: 'Wed, 05 Mar 2014 00:34:05 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7d3d07a3da467e84818b5e448e618e2f',
+  date: 'Wed, 05 Mar 2014 00:34:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:22 GMT',
+  date: 'Wed, 05 Mar 2014 00:34:10 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4980',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1509,63 +1508,59 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4A2D:55E98DC:52D79E3D' });
+  'x-github-request-id': '4FA93972:3BDE:2B83B4:53167101' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
-  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1690778/test\",\"id\":1690778,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:Hvt5NQtX45kr2DSj4xytpav0atSvgX13FrXukvcbQer9GGkZpnpgvp5CAWA7@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":null,\"status\":\"unused\",\"message\":null},\"updated_at\":\"2014-01-16T08:54:07Z\",\"created_at\":\"2014-01-16T08:54:07Z\"}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:22 GMT',
+  .reply(200, "[{\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451\",\"test_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks/1893451/test\",\"id\":1893451,\"name\":\"web\",\"active\":true,\"events\":[\"push\"],\"config\":{\"url\":\"https://$clitests3:w1PXDs1mMKRKMbM3Qipm66Q8pJ3BPyuhQGNRjJNmjqBD9NYutXne8TSQku5r@clitests3.scm.azurewebsites.net/deploy\",\"insecure_ssl\":\"1\",\"content_type\":\"form\"},\"last_response\":{\"code\":200,\"status\":\"active\",\"message\":\"OK\"},\"updated_at\":\"2014-03-05T00:33:55Z\",\"created_at\":\"2014-03-05T00:33:52Z\"}]", { server: 'GitHub.com',
+  date: 'Wed, 05 Mar 2014 00:34:10 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4979',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
-  etag: '"32e9c4f8e77804349a8be941f8fef701"',
+  etag: '"ae24344e11941bf77414f84d7d74cfbb"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
-  'content-length': '539',
+  'content-length': '538',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4A25:849AEC:52D79E3E' });
+  'x-github-request-id': '4FA93972:3BDF:3BA0AE:53167102' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
-  .delete('/repos/azuresdkrec/azuresdk-repo/hooks/1690778')
+  .delete('/repos/azuresdkrec/azuresdk-repo/hooks/1893451')
   .reply(204, "", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:24 GMT',
+  date: 'Wed, 05 Mar 2014 00:34:11 GMT',
   status: '204 No Content',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4978',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'x-github-media-type': 'github.beta; format=json',
   'x-content-type-options': 'nosniff',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4A2C:473C73C:52D79E3F',
+  'x-github-request-id': '4FA93972:3BE0:491CD4:53167102',
   vary: 'Accept-Encoding' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '790d472bd4e15f14a112be066c36eaef',
-  date: 'Thu, 16 Jan 2014 08:54:25 GMT' });
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:34:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1574,26 +1569,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b241fb8a1a5352818ac0239836f6ca44',
-  date: 'Thu, 16 Jan 2014 08:54:25 GMT' });
+  'x-ms-request-id': '6c16ca5b6a9276ca94697de6ece261a9',
+  date: 'Wed, 05 Mar 2014 00:34:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'db73506f81405e15a440538427f459c3',
-  date: 'Thu, 16 Jan 2014 08:54:24 GMT' });
+  'x-ms-request-id': '0dc7b96c66d07913a4439ed2dfbdf4f0',
+  date: 'Wed, 05 Mar 2014 00:34:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1602,12 +1597,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f7707a572ac1571daead96779d5d9e16',
-  date: 'Thu, 16 Jan 2014 08:54:26 GMT' });
+  'x-ms-request-id': '64f8f9c40fe77f55afc054af71b931e8',
+  date: 'Wed, 05 Mar 2014 00:34:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1616,26 +1611,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e77c9e1402405fbb9284572398b46326',
-  date: 'Thu, 16 Jan 2014 08:54:26 GMT' });
+  'x-ms-request-id': 'f05c24743e1b773da392eb377dd5edfc',
+  date: 'Wed, 05 Mar 2014 00:34:10 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '24dda46b7064779d8fde07dd00eb1563',
+  date: 'Wed, 05 Mar 2014 00:34:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8a1c6b3fbbe65537b08fa7574159a1fc',
-  date: 'Thu, 16 Jan 2014 08:54:27 GMT' });
+  'x-ms-request-id': '46ff3870e9317652be0d6fa2e8c96a96',
+  date: 'Wed, 05 Mar 2014 00:34:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1644,12 +1653,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '588566c167ca54b59b23fc2b532e72d2',
-  date: 'Thu, 16 Jan 2014 08:54:29 GMT' });
+  'x-ms-request-id': '3e47c1b960d972a1ad43beca64f59d72',
+  date: 'Wed, 05 Mar 2014 00:34:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1658,59 +1667,129 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
   'content-length': '94',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a30cb89972f25a8bb2de5a373b7bad1e',
-  date: 'Thu, 16 Jan 2014 08:54:31 GMT' });
+  'x-ms-request-id': '66a8d729e14874549a5a6b1b4a43d38c',
+  date: 'Wed, 05 Mar 2014 00:34:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:54:33.567</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:22.66</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2228',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f2f8d61884cc52c79519025d1433a228',
-  date: 'Thu, 16 Jan 2014 08:54:35 GMT' });
+  'x-ms-request-id': '7dd5102111727feeade125c2624f9993',
+  date: 'Wed, 05 Mar 2014 00:34:24 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4e3fd9de7c627747bcea8c5c90736ca7',
+  date: 'Wed, 05 Mar 2014 00:34:25 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4ff8bc47cab075eabdfc25a435f84927',
+  date: 'Wed, 05 Mar 2014 00:34:25 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'be89e21118be781f8f338196b1da669f',
+  date: 'Wed, 05 Mar 2014 00:34:25 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:22.66</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests4.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests4</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>0ZH4phBmhsDwPf6BvqcE57MNrJb671BCDy4HqZ1gcHLcSm2sv7mzX6HDwDrw</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5052',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '0594d75b4d9c7179bbc43d3bc3b530c0',
+  date: 'Wed, 05 Mar 2014 00:34:24 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'ad8f2502f29178daa43ffdc9e0ae1796',
+  date: 'Wed, 05 Mar 2014 00:34:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests4', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:54:36.813</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:30.5</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2227',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298956A3BD0"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380AAC163A40"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '94bb9b70045756889a67bb8d21221f10',
-  date: 'Thu, 16 Jan 2014 08:54:36 GMT' });
+  'x-ms-request-id': 'afe9a55a3eb3786f9678c6b7f2daefd5',
+  date: 'Wed, 05 Mar 2014 00:34:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests4', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:54:38.977</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string><a:string>clitests4.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:32.707</LastModifiedTimeUtc><Name>clitests4</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests4</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests4</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2229',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF129896B46F10"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380AAD66FD30"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5cdcae5c4f345635953fddda5fc0c668',
-  date: 'Thu, 16 Jan 2014 08:54:39 GMT' });
+  'x-ms-request-id': '0303e4158e3971e5b61429cfbf4fb023',
+  date: 'Wed, 05 Mar 2014 00:34:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1718,24 +1797,24 @@ nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests4?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '892970d96cc358128b36234dec7cdd90',
-  date: 'Thu, 16 Jan 2014 08:54:41 GMT' });
+  'x-ms-request-id': '0e9d406dffe6743897b3721c94137afd',
+  date: 'Wed, 05 Mar 2014 00:34:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:43 GMT',
+  date: 'Wed, 05 Mar 2014 00:34:42 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4977',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1743,21 +1822,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4A29:307A2EF:52D79E53' });
+  'x-github-request-id': '4FA93972:1E89:4739D2:53167122' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:54:44 GMT',
+  date: 'Wed, 05 Mar 2014 00:34:42 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4976',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1765,37 +1844,37 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4A2D:55EA4AD:52D79E53' });
+  'x-github-request-id': '4FA93972:1E89:473A8E:53167122' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '70cd5f71330b5812b029f9d204131cbb',
-  date: 'Thu, 16 Jan 2014 08:54:43 GMT' });
+  'x-ms-request-id': '284029ac3ea373279822a71505179e74',
+  date: 'Wed, 05 Mar 2014 00:34:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7e11a843f9ae5f0aa808be5c0d92f094',
-  date: 'Thu, 16 Jan 2014 08:54:46 GMT' });
+  'x-ms-request-id': 'c62921f551597cbba572228469ea6747',
+  date: 'Wed, 05 Mar 2014 00:34:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1804,26 +1883,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f1c86886ebd55aa5af8dbd26df622aba',
-  date: 'Thu, 16 Jan 2014 08:54:45 GMT' });
+  'x-ms-request-id': '8331f0e6f9e677d78cbfab239d1dc385',
+  date: 'Wed, 05 Mar 2014 00:34:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6ff2a6585246526f804b6be2c7c33ef4',
-  date: 'Thu, 16 Jan 2014 08:54:46 GMT' });
+  'x-ms-request-id': 'cc2e09fea22572f1b21281a44efe01ee',
+  date: 'Wed, 05 Mar 2014 00:34:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1832,26 +1911,26 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd50519d6faba52a8b56ea1d3d80567e2',
-  date: 'Thu, 16 Jan 2014 08:54:45 GMT' });
+  'x-ms-request-id': '4cd5f0a5cf097f89b3db60aa10e538db',
+  date: 'Wed, 05 Mar 2014 00:34:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '92a30682f95e52cd924ecbdc0508b8da',
-  date: 'Thu, 16 Jan 2014 08:54:47 GMT' });
+  'x-ms-request-id': '7b12a1598fa77ff38cca5be7bd3ad9de',
+  date: 'Wed, 05 Mar 2014 00:34:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1860,89 +1939,169 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
   'content-length': '2300',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c25e2d87f5095deb89a91debe9908442',
-  date: 'Thu, 16 Jan 2014 08:54:48 GMT' });
+  'x-ms-request-id': 'a29be943961e7e9abc23d336f192451f',
+  date: 'Wed, 05 Mar 2014 00:34:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=dnssuffix')
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
+  'content-type': 'application/xml; charset=utf-8',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=dnssuffix',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:34:49 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=dnssuffix')
   .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
   'content-length': '94',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'da8991d969265dea97f8e0683e691392',
-  date: 'Thu, 16 Jan 2014 08:54:51 GMT' });
+  'x-ms-request-id': '4190da8eaa6f79f48fbc9a01e88d9a9b',
+  date: 'Wed, 05 Mar 2014 00:34:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:54:53.77</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2121',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:53.993</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2229',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3b179e8a0973523b820b68024d3966ff',
-  date: 'Thu, 16 Jan 2014 08:54:54 GMT' });
+  'x-ms-request-id': '9bd4d087e69d7b86a568d50a48d0506a',
+  date: 'Wed, 05 Mar 2014 00:34:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4097e61e09e27ec8b578d075533d9e26',
+  date: 'Wed, 05 Mar 2014 00:34:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '937cddfc456f7684a03310ace528877e',
+  date: 'Wed, 05 Mar 2014 00:34:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:53.993</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests5.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests5</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>hJSie8qpCx3MBwFjMzXkmpwHFFv9zylKTlub2rDJ0sl2terdR46oQHpeDecj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5053',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '2a7fee1ff95f7a44a9095f2545c4d316',
+  date: 'Wed, 05 Mar 2014 00:34:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'eab85d3152377477b42fdb79fcaa75a8',
+  date: 'Wed, 05 Mar 2014 00:34:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '62597c43c92d722e89f5ed780f108a38',
+  date: 'Wed, 05 Mar 2014 00:34:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests5', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:54:57.797</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:34:58.93</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2228',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298A1EC2350"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380ABD084D20"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3509b58c871354c8a320ea01476de307',
-  date: 'Thu, 16 Jan 2014 08:54:57 GMT' });
+  'x-ms-request-id': '31f9f64f983578cebea36af8f92791b1',
+  date: 'Wed, 05 Mar 2014 00:34:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests5', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:55:02.103</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:01.463</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Stopped</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2229',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298A47D2E70"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380ABE8ACE70"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '96eff4fd0d9b5c9bb5722033d643b082',
-  date: 'Thu, 16 Jan 2014 08:55:02 GMT' });
+  'x-ms-request-id': 'cdd06cf3b6fc77bf8f5e5d0f046c01ac',
+  date: 'Wed, 05 Mar 2014 00:35:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests5', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:55:04.413</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string><a:string>clitests5.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:04.01</LastModifiedTimeUtc><Name>clitests5</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests5</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests5</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2228',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298A5DDA8D0"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380AC00F72A0"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a24f5d456b55b419dc77923e1223c95',
-  date: 'Thu, 16 Jan 2014 08:55:05 GMT' });
+  'x-ms-request-id': 'c309d21ec01670d5a285bdea4795a326',
+  date: 'Wed, 05 Mar 2014 00:35:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1950,24 +2109,24 @@ nock('https://management.core.windows.net:443')
   .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests5?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0e83824e0ae258aaa1320dac02f5f26a',
-  date: 'Thu, 16 Jan 2014 08:55:08 GMT' });
+  'x-ms-request-id': '5b8a61df3b8176ddb39a0c234c138d3f',
+  date: 'Wed, 05 Mar 2014 00:35:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:55:09 GMT',
+  date: 'Wed, 05 Mar 2014 00:35:07 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4975',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1975,21 +2134,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B93:12A7A43:52D79E6C' });
+  'x-github-request-id': '4FA93972:3CF8:343F68:5316713B' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:55:09 GMT',
+  date: 'Wed, 05 Mar 2014 00:35:08 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4974',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -1997,51 +2156,47 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:4B95:3586263:52D79E6D' });
+  'x-github-request-id': '4FA93972:3CFA:499A5D:5316713C' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '42875a8d32695b63a578a01271d47351',
-  date: 'Thu, 16 Jan 2014 08:55:11 GMT' });
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:35:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e865d5cc31b75a89b666de17047277c4',
-  date: 'Thu, 16 Jan 2014 08:55:11 GMT' });
+  'x-ms-request-id': '381e2ca420fb7578b5bbe3858ccd73d9',
+  date: 'Wed, 05 Mar 2014 00:35:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2579',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3d5f30111ef8526085c1e68d0f99e1a9',
-  date: 'Thu, 16 Jan 2014 08:55:11 GMT' });
+  'x-ms-request-id': '2011fda795e872e2a52ee1a7a43d2c3b',
+  date: 'Wed, 05 Mar 2014 00:35:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2050,12 +2205,12 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9b759db556f251faa7801cd0d0573fb3',
-  date: 'Thu, 16 Jan 2014 08:55:11 GMT' });
+  'x-ms-request-id': 'e175af12ffc075808f27de9046e160a5',
+  date: 'Wed, 05 Mar 2014 00:35:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2064,40 +2219,64 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e7817f254e725d3fb3a69bfa3fafbcb3',
-  date: 'Thu, 16 Jan 2014 08:55:11 GMT' });
+  'x-ms-request-id': '328781f3d5c17334ab96db6a378f45f2',
+  date: 'Wed, 05 Mar 2014 00:35:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c0faf0bf36337179a44c26861cdc519b',
+  date: 'Wed, 05 Mar 2014 00:35:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
-  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>5</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
-  'content-length': '711',
+  .reply(307, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\"/>", { 'content-length': '69',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth',
+  location: 'https://ussouth2.management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Mar 2014 00:35:11 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ussouth2.management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces?properties=georegions')
+  .reply(200, "<GeoRegions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GeoRegion><Description i:nil=\"true\"/><Name>East Asia</Name><SortOrder>0</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Central US</Name><SortOrder>1</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>North Europe</Name><SortOrder>2</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West US</Name><SortOrder>3</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>East US</Name><SortOrder>4</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>West Europe</Name><SortOrder>5</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan East</Name><SortOrder>6</SortOrder></GeoRegion><GeoRegion><Description i:nil=\"true\"/><Name>Japan West</Name><SortOrder>7</SortOrder></GeoRegion></GeoRegions>", { 'cache-control': 'private',
+  'content-length': '905',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.52 (rd_rdfe_stable.140303-1629) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9e3aec7521ff5d24a21486e4c89de56e',
-  date: 'Thu, 16 Jan 2014 08:55:13 GMT' });
+  'x-ms-request-id': '7b80fd808fdb730c8a537a05efe1a2b4',
+  date: 'Wed, 05 Mar 2014 00:35:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces')
-  .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Normal</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
-  'content-length': '2300',
+  .reply(200, "<WebSpaces xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><WebSpace><AvailabilityState>Limited</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>BLU</GeoLocation><GeoRegion>East US</GeoRegion><Name>eastuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Limited</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>CH1</GeoLocation><GeoRegion>North Central US</GeoRegion><Name>northcentraluswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Limited</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>DB3</GeoLocation><GeoRegion>North Europe</GeoRegion><Name>northeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Limited</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>AM2</GeoLocation><GeoRegion>West Europe</GeoRegion><Name>westeuropewebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace><WebSpace><AvailabilityState>Limited</AvailabilityState><ComputeMode i:nil=\"true\"/><CurrentNumberOfWorkers i:nil=\"true\"/><CurrentWorkerSize i:nil=\"true\"/><GeoLocation>bay</GeoLocation><GeoRegion>West US</GeoRegion><Name>westuswebspace</Name><NumberOfWorkers i:nil=\"true\"/><Plan>VirtualDedicatedPlan</Plan><Status>Ready</Status><Subscription>db1ab6f0-4769-4b27-930e-01e2ef9c123c</Subscription><WorkerSize i:nil=\"true\"/></WebSpace></WebSpaces>", { 'cache-control': 'private',
+  'content-length': '2305',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '821b4875a15a5ec893d8def2ccb2c51a',
-  date: 'Thu, 16 Jan 2014 08:55:15 GMT' });
+  'x-ms-request-id': '2f8eae1526067427b3d2f12bc1a6bf14',
+  date: 'Wed, 05 Mar 2014 00:35:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2106,27 +2285,97 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">azurewebsites.net</string>", { 'cache-control': 'private',
   'content-length': '94',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '70ef9d34b61757ffb28b42bf76a9b1a3',
-  date: 'Thu, 16 Jan 2014 08:55:16 GMT' });
+  'x-ms-request-id': '6b7aa1ad4d537b5cb4a9d1b5a46875c6',
+  date: 'Wed, 05 Mar 2014 00:35:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:55:20.363</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2122',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:23.947</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2229',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '306b5471cda85831a9c2f3f22ffed4d8',
-  date: 'Thu, 16 Jan 2014 08:55:21 GMT' });
+  'x-ms-request-id': '24837fbb0712703f90b867b2ab471a83',
+  date: 'Wed, 05 Mar 2014 00:35:25 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7f57e736123f70a7958597440c34450c',
+  date: 'Wed, 05 Mar 2014 00:35:28 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd5054f44bdc17895a9cc138b12a24e79',
+  date: 'Wed, 05 Mar 2014 00:35:26 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '86230ae8ead87d899be19b68a6b521f7',
+  date: 'Wed, 05 Mar 2014 00:35:27 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>foobarnew</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string><a:string>foobarnew.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>foobarnew.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>foobarnew.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-01T04:36:28.313</LastModifiedTimeUtc><Name>foobarnew</Name><Owner i:nil=\"true\"/><RepositorySiteName>foobarnew</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-bay-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/westuswebspace/sites/foobarnew</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://foobarnew.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$foobarnew</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>aE7rRfhgeq5odlm5wuLAdilMFn8ruxBdkZPsfhfcdkFY2jJ5pmg70beALbjj</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '2591',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4ddf5565c3067e678b80aafdce10ef15',
+  date: 'Wed, 05 Mar 2014 00:35:26 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitest1</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string><a:string>clitest1.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitest1.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitest1.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:27:03.63</LastModifiedTimeUtc><Name>clitest1</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitest1</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitest1</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitest1.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitest1</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>jklfsZchjza2du0Xa5ME7rBj3vrldXDH5xEwiQ24bkniDWcil2aFj1Rbmjt9</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:23.947</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests6.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests6</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>erxhzxnZ3voYHoS7zQ2AFxR4d4rBqPouhJgR9ns5nSjGZkcAojiHNfHsSAjG</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
+  'content-length': '5053',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bb1c7eb5b11e7dfe8c924fd7263e625d',
+  date: 'Wed, 05 Mar 2014 00:35:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2135,56 +2384,56 @@ nock('https://management.core.windows.net:443')
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a5a6ec22d7ad5da5a8a311cf81240fd6',
-  date: 'Thu, 16 Jan 2014 08:55:24 GMT' });
+  'x-ms-request-id': '058956575bc476e5999c04afb78c659b',
+  date: 'Wed, 05 Mar 2014 00:35:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:55:24.517</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests6.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests6</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>8J3cZfJ3sBYZS8uDtNCKsJfyw2Eeh4f3fBYkXyhHAS0L1CZ7NGAwrsf22t2J</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2469',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:30.077</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests6.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests6</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>erxhzxnZ3voYHoS7zQ2AFxR4d4rBqPouhJgR9ns5nSjGZkcAojiHNfHsSAjG</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2576',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298B1D94950"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380ACF98F4D0"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0613030f1f845ce5a427c6c046f35c4f',
-  date: 'Thu, 16 Jan 2014 08:55:25 GMT' });
+  'x-ms-request-id': 'b627c1fe6c207964b0736c22f47ccaec',
+  date: 'Wed, 05 Mar 2014 00:35:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.5</Value></NameValuePair></AppSettings><ConnectionStrings/><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v2.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.3</PhpVersion><PublishingPassword>8J3cZfJ3sBYZS8uDtNCKsJfyw2Eeh4f3fBYkXyhHAS0L1CZ7NGAwrsf22t2J</PublishingPassword><PublishingUsername>$clitests6</PublishingUsername><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><ScmType>None</ScmType><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><WebSocketsEnabled>true</WebSocketsEnabled><WindowsAuthEnabled>false</WindowsAuthEnabled></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '1819',
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.21</Value></NameValuePair></AppSettings><ConnectionStrings/><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v2.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.3</PhpVersion><PublishingPassword>erxhzxnZ3voYHoS7zQ2AFxR4d4rBqPouhJgR9ns5nSjGZkcAojiHNfHsSAjG</PublishingPassword><PublishingUsername>$clitests6</PublishingUsername><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><ScmType>None</ScmType><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><WebSocketsEnabled>true</WebSocketsEnabled><WindowsAuthEnabled>false</WindowsAuthEnabled></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '1820',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3acd332b986059d5a342499403c1b763',
-  date: 'Thu, 16 Jan 2014 08:55:26 GMT' });
+  'x-ms-request-id': 'e6cdac7d91ff758fae056ebd31bf21cf',
+  date: 'Wed, 05 Mar 2014 00:35:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://clitests6.scm.azurewebsites.net:443')
-  .get('/settings')
-  .reply(500, "<html>\r\n    <head>\r\n        <title>Configuration Error</title>\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }\r\n         pre {font-family:\"Lucida Console\";font-size: .9em}\r\n         .marker {font-weight: bold; color: black;text-decoration: none;}\r\n         .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }\r\n        </style>\r\n    </head>\r\n\r\n    <body bgcolor=\"white\">\r\n\r\n            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2> <i>Configuration Error</i> </h2></span>\r\n\r\n            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b> Description: </b>An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.\r\n            <br><br>\r\n\r\n            <b> Parser Error Message: </b>Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive.<br><br>\r\n\r\n            <b>Source Error:</b> <br><br>\r\n\r\n            <table width=100% bgcolor=\"#ffffcc\">\r\n               <tr>\r\n                  <td>\r\n                      <code><pre>\r\n\r\nLine 12:   &lt;system.web&gt;\r\nLine 13:     &lt;customErrors mode=&quot;Off&quot; /&gt;\r\n<font color=red>Line 14:     &lt;compilation targetFramework=&quot;4.5&quot; /&gt;\r\n</font>Line 15:     &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;104857600&quot; shutdownTimeout=&quot;6000&quot; executionTimeout=&quot;6000&quot; requestValidationMode=&quot;2.0&quot; /&gt;\r\nLine 16:     &lt;pages controlRenderingCompatibilityVersion=&quot;4.0&quot; /&gt;</pre></code>\r\n\r\n                  </td>\r\n               </tr>\r\n            </table>\r\n\r\n            <br>\r\n\r\n            <b> Source File: </b> D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config<b> &nbsp;&nbsp; Line: </b> 14\r\n            <br><br>\r\n\r\n            <hr width=100% size=1 color=silver>\r\n\r\n            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.6407; ASP.NET Version:2.0.50727.6409\r\n\r\n            </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[ConfigurationErrorsException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config line 14)\r\n   at System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)\r\n[HttpException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config line 14)\r\n   at System.Web.HttpRuntime.FirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)\r\n--><!-- \r\nThis error page might contain sensitive information because ASP.NET is configured to show verbose error messages using &lt;customErrors mode=\"Off\"/&gt;. Consider using &lt;customErrors mode=\"On\"/&gt; or &lt;customErrors mode=\"RemoteOnly\"/&gt; in production environments.-->", { 'cache-control': 'private',
-  'content-length': '3650',
+  .get('/api/settings')
+  .reply(500, "<html>\r\n    <head>\r\n        <title>Configuration Error</title>\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }\r\n         pre {font-family:\"Lucida Console\";font-size: .9em}\r\n         .marker {font-weight: bold; color: black;text-decoration: none;}\r\n         .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }\r\n        </style>\r\n    </head>\r\n\r\n    <body bgcolor=\"white\">\r\n\r\n            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2> <i>Configuration Error</i> </h2></span>\r\n\r\n            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b> Description: </b>An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.\r\n            <br><br>\r\n\r\n            <b> Parser Error Message: </b>Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive.<br><br>\r\n\r\n            <b>Source Error:</b> <br><br>\r\n\r\n            <table width=100% bgcolor=\"#ffffcc\">\r\n               <tr>\r\n                  <td>\r\n                      <code><pre>\r\n\r\nLine 13:   &lt;system.web&gt;\r\nLine 14:     &lt;customErrors mode=&quot;Off&quot; /&gt;\r\n<font color=red>Line 15:     &lt;compilation targetFramework=&quot;4.5&quot; /&gt;\r\n</font>Line 16:     &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;104857600&quot; shutdownTimeout=&quot;6000&quot; executionTimeout=&quot;6000&quot; requestValidationMode=&quot;2.0&quot; /&gt;\r\nLine 17:     &lt;pages controlRenderingCompatibilityVersion=&quot;4.0&quot; /&gt;</pre></code>\r\n\r\n                  </td>\r\n               </tr>\r\n            </table>\r\n\r\n            <br>\r\n\r\n            <b> Source File: </b> D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config<b> &nbsp;&nbsp; Line: </b> 15\r\n            <br><br>\r\n\r\n            <hr width=100% size=1 color=silver>\r\n\r\n            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.6407; ASP.NET Version:2.0.50727.6409\r\n\r\n            </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[ConfigurationErrorsException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config line 15)\r\n   at System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)\r\n[HttpException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config line 15)\r\n   at System.Web.HttpRuntime.FirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)\r\n--><!-- \r\nThis error page might contain sensitive information because ASP.NET is configured to show verbose error messages using &lt;customErrors mode=\"Off\"/&gt;. Consider using &lt;customErrors mode=\"On\"/&gt; or &lt;customErrors mode=\"RemoteOnly\"/&gt; in production environments.-->", { 'cache-control': 'private',
+  'content-length': '3653',
   'content-type': 'text/html; charset=utf-8',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '2.0.50727',
   'x-powered-by': 'ASP.NET, ARR/3.0',
   'set-cookie': 
-   [ 'ARRAffinity=0aa838a6d135416df589fdf143e85368b6fbdf74e61c43aef74593626b8b43b8;Path=/;Domain=clitests6.scm.azurewebsites.net',
-     'WAWebSiteSID=61bfa8a892354998a5526c38b9f7581d; Path=/; HttpOnly' ],
-  date: 'Thu, 16 Jan 2014 08:55:28 GMT' });
+   [ 'ARRAffinity=0965be7dea419bf21c3421daf863f1d9cb0d51975fe8840855206a045ccd0951;Path=/;Domain=clitests6.scm.azurewebsites.net',
+     'WAWebSiteSID=999c1b0d16384a59ae959f48a4509f7c; Path=/; HttpOnly' ],
+  date: 'Wed, 05 Mar 2014 00:35:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2193,68 +2442,68 @@ nock('https://management.core.windows.net:443')
 .put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cd4212ad6a3658e3b85f387453f1e913',
-  date: 'Thu, 16 Jan 2014 08:55:31 GMT' });
+  'x-ms-request-id': '066d3bb4ebc4745c96f238620c9a1a6a',
+  date: 'Wed, 05 Mar 2014 00:35:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-01-16T08:55:31.74</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests6.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests6</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>8J3cZfJ3sBYZS8uDtNCKsJfyw2Eeh4f3fBYkXyhHAS0L1CZ7NGAwrsf22t2J</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2468',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests6</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string><a:string>clitests6.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests6.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests6.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-03-05T00:35:38.633</LastModifiedTimeUtc><Name>clitests6</Name><Owner i:nil=\"true\"/><RepositorySiteName>clitests6</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SSLCertificates/><SelfLink>https://waws-prod-blu-001.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/webspaces/eastuswebspace/sites/clitests6</SelfLink><ServerFarm i:nil=\"true\"/><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests6.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests6</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>erxhzxnZ3voYHoS7zQ2AFxR4d4rBqPouhJgR9ns5nSjGZkcAojiHNfHsSAjG</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebSpace>eastuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2576',
   'content-type': 'application/xml; charset=utf-8',
-  etag: '"1CF1298B6276DC0"',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  etag: '"1CF380AD4B27F90"',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '189cfabe60b757879ce035eaecb2428a',
-  date: 'Thu, 16 Jan 2014 08:55:33 GMT' });
+  'x-ms-request-id': 'bf68ca971f867f8c9cef5b6e050d25d7',
+  date: 'Wed, 05 Mar 2014 00:35:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/WebSpaces/eastuswebspace/sites/clitests6/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.5</Value></NameValuePair></AppSettings><ConnectionStrings/><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v2.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion/><PublishingPassword>8J3cZfJ3sBYZS8uDtNCKsJfyw2Eeh4f3fBYkXyhHAS0L1CZ7NGAwrsf22t2J</PublishingPassword><PublishingUsername>$clitests6</PublishingUsername><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><ScmType>None</ScmType><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><WebSocketsEnabled>false</WebSocketsEnabled><WindowsAuthEnabled>false</WindowsAuthEnabled></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '1805',
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.21</Value></NameValuePair></AppSettings><ConnectionStrings/><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v2.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion/><PublishingPassword>erxhzxnZ3voYHoS7zQ2AFxR4d4rBqPouhJgR9ns5nSjGZkcAojiHNfHsSAjG</PublishingPassword><PublishingUsername>$clitests6</PublishingUsername><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><ScmType>None</ScmType><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><WebSocketsEnabled>false</WebSocketsEnabled><WindowsAuthEnabled>false</WindowsAuthEnabled></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '1806',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.38 (rd_rdfe_stable.131218-1315) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.51 (rd_rdfe_stable.140226-1543) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '868f597041b653f79caf7627fea8dc3b',
-  date: 'Thu, 16 Jan 2014 08:55:33 GMT' });
+  'x-ms-request-id': 'ff53114b8b747758a20a095858effaa1',
+  date: 'Wed, 05 Mar 2014 00:35:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://clitests6.scm.azurewebsites.net:443')
-  .get('/settings')
-  .reply(500, "<html>\r\n    <head>\r\n        <title>Configuration Error</title>\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }\r\n         pre {font-family:\"Lucida Console\";font-size: .9em}\r\n         .marker {font-weight: bold; color: black;text-decoration: none;}\r\n         .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }\r\n        </style>\r\n    </head>\r\n\r\n    <body bgcolor=\"white\">\r\n\r\n            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2> <i>Configuration Error</i> </h2></span>\r\n\r\n            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b> Description: </b>An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.\r\n            <br><br>\r\n\r\n            <b> Parser Error Message: </b>Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive.<br><br>\r\n\r\n            <b>Source Error:</b> <br><br>\r\n\r\n            <table width=100% bgcolor=\"#ffffcc\">\r\n               <tr>\r\n                  <td>\r\n                      <code><pre>\r\n\r\nLine 12:   &lt;system.web&gt;\r\nLine 13:     &lt;customErrors mode=&quot;Off&quot; /&gt;\r\n<font color=red>Line 14:     &lt;compilation targetFramework=&quot;4.5&quot; /&gt;\r\n</font>Line 15:     &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;104857600&quot; shutdownTimeout=&quot;6000&quot; executionTimeout=&quot;6000&quot; requestValidationMode=&quot;2.0&quot; /&gt;\r\nLine 16:     &lt;pages controlRenderingCompatibilityVersion=&quot;4.0&quot; /&gt;</pre></code>\r\n\r\n                  </td>\r\n               </tr>\r\n            </table>\r\n\r\n            <br>\r\n\r\n            <b> Source File: </b> D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config<b> &nbsp;&nbsp; Line: </b> 14\r\n            <br><br>\r\n\r\n            <hr width=100% size=1 color=silver>\r\n\r\n            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.6407; ASP.NET Version:2.0.50727.6409\r\n\r\n            </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[ConfigurationErrorsException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config line 14)\r\n   at System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)\r\n[HttpException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.21127.11\\web.config line 14)\r\n   at System.Web.HttpRuntime.FirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)\r\n--><!-- \r\nThis error page might contain sensitive information because ASP.NET is configured to show verbose error messages using &lt;customErrors mode=\"Off\"/&gt;. Consider using &lt;customErrors mode=\"On\"/&gt; or &lt;customErrors mode=\"RemoteOnly\"/&gt; in production environments.-->", { 'cache-control': 'private',
-  'content-length': '3650',
+  .get('/api/settings')
+  .reply(500, "<html>\r\n    <head>\r\n        <title>Configuration Error</title>\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }\r\n         pre {font-family:\"Lucida Console\";font-size: .9em}\r\n         .marker {font-weight: bold; color: black;text-decoration: none;}\r\n         .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }\r\n        </style>\r\n    </head>\r\n\r\n    <body bgcolor=\"white\">\r\n\r\n            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2> <i>Configuration Error</i> </h2></span>\r\n\r\n            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b> Description: </b>An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.\r\n            <br><br>\r\n\r\n            <b> Parser Error Message: </b>Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive.<br><br>\r\n\r\n            <b>Source Error:</b> <br><br>\r\n\r\n            <table width=100% bgcolor=\"#ffffcc\">\r\n               <tr>\r\n                  <td>\r\n                      <code><pre>\r\n\r\nLine 13:   &lt;system.web&gt;\r\nLine 14:     &lt;customErrors mode=&quot;Off&quot; /&gt;\r\n<font color=red>Line 15:     &lt;compilation targetFramework=&quot;4.5&quot; /&gt;\r\n</font>Line 16:     &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;104857600&quot; shutdownTimeout=&quot;6000&quot; executionTimeout=&quot;6000&quot; requestValidationMode=&quot;2.0&quot; /&gt;\r\nLine 17:     &lt;pages controlRenderingCompatibilityVersion=&quot;4.0&quot; /&gt;</pre></code>\r\n\r\n                  </td>\r\n               </tr>\r\n            </table>\r\n\r\n            <br>\r\n\r\n            <b> Source File: </b> D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config<b> &nbsp;&nbsp; Line: </b> 15\r\n            <br><br>\r\n\r\n            <hr width=100% size=1 color=silver>\r\n\r\n            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.6407; ASP.NET Version:2.0.50727.6409\r\n\r\n            </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[ConfigurationErrorsException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config line 15)\r\n   at System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)\r\n[HttpException]: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive. (D:\\Program Files (x86)\\SiteExtensions\\Kudu\\1.25.30226.668\\web.config line 15)\r\n   at System.Web.HttpRuntime.FirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)\r\n   at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)\r\n--><!-- \r\nThis error page might contain sensitive information because ASP.NET is configured to show verbose error messages using &lt;customErrors mode=\"Off\"/&gt;. Consider using &lt;customErrors mode=\"On\"/&gt; or &lt;customErrors mode=\"RemoteOnly\"/&gt; in production environments.-->", { 'cache-control': 'private',
+  'content-length': '3653',
   'content-type': 'text/html; charset=utf-8',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '2.0.50727',
   'x-powered-by': 'ASP.NET',
   'set-cookie': 
-   [ 'ARRAffinity=0aa838a6d135416df589fdf143e85368b6fbdf74e61c43aef74593626b8b43b8;Path=/;Domain=clitests6.scm.azurewebsites.net',
-     'WAWebSiteSID=7e8884d261fd4c9aa2fef3d7f0f86ccd; Path=/; HttpOnly' ],
-  date: 'Thu, 16 Jan 2014 08:55:34 GMT' });
+   [ 'ARRAffinity=0965be7dea419bf21c3421daf863f1d9cb0d51975fe8840855206a045ccd0951;Path=/;Domain=clitests6.scm.azurewebsites.net',
+     'WAWebSiteSID=6ebe524ecd014be9b969ba0449c1c65d; Path=/; HttpOnly' ],
+  date: 'Wed, 05 Mar 2014 00:35:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/users/azuresdkrec/repos')
   .reply(200, "[{\"id\":15954964,\"name\":\"azuresdk-repo\",\"full_name\":\"azuresdkrec/azuresdk-repo\",\"owner\":{\"login\":\"azuresdkrec\",\"id\":6415380,\"avatar_url\":\"https://gravatar.com/avatar/6f422d44f0de6db7bc36ec66955d57dc?d=https%3A%2F%2Fidenticons.github.com%2F121e1e82974400601af4028c679b79e0.png&r=x\",\"gravatar_id\":\"6f422d44f0de6db7bc36ec66955d57dc\",\"url\":\"https://api.github.com/users/azuresdkrec\",\"html_url\":\"https://github.com/azuresdkrec\",\"followers_url\":\"https://api.github.com/users/azuresdkrec/followers\",\"following_url\":\"https://api.github.com/users/azuresdkrec/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/azuresdkrec/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/azuresdkrec/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/azuresdkrec/subscriptions\",\"organizations_url\":\"https://api.github.com/users/azuresdkrec/orgs\",\"repos_url\":\"https://api.github.com/users/azuresdkrec/repos\",\"events_url\":\"https://api.github.com/users/azuresdkrec/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/azuresdkrec/received_events\",\"type\":\"User\",\"site_admin\":false},\"private\":false,\"html_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"description\":\"\",\"fork\":false,\"url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo\",\"forks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/forks\",\"keys_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/teams\",\"hooks_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/hooks\",\"issue_events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/events\",\"assignees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/tags\",\"blobs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/languages\",\"stargazers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/stargazers\",\"contributors_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contributors\",\"subscribers_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/subscription\",\"commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues/comments/{number}\",\"contents_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/merges\",\"archive_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/downloads\",\"issues_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/azuresdkrec/azuresdk-repo/releases{/id}\",\"created_at\":\"2014-01-16T01:52:53Z\",\"updated_at\":\"2014-01-16T01:52:53Z\",\"pushed_at\":\"2014-01-16T01:52:53Z\",\"git_url\":\"git://github.com/azuresdkrec/azuresdk-repo.git\",\"ssh_url\":\"git@github.com:azuresdkrec/azuresdk-repo.git\",\"clone_url\":\"https://github.com/azuresdkrec/azuresdk-repo.git\",\"svn_url\":\"https://github.com/azuresdkrec/azuresdk-repo\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_downloads\":true,\"has_wiki\":true,\"forks_count\":0,\"mirror_url\":null,\"open_issues_count\":0,\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"master\",\"master_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true}}]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:55:36 GMT',
+  date: 'Wed, 05 Mar 2014 00:35:46 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4973',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"2a93874066a0cec07a6c13dcecc01c73"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -2262,21 +2511,21 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '5029',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:0363:9E44E5:52D79E87' });
+  'x-github-request-id': '4FA93972:1E89:4784DD:53167161' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api.github.com:443')
   .get('/repos/azuresdkrec/azuresdk-repo/hooks')
   .reply(200, "[]", { server: 'GitHub.com',
-  date: 'Thu, 16 Jan 2014 08:55:37 GMT',
+  date: 'Wed, 05 Mar 2014 00:35:47 GMT',
   'content-type': 'application/json; charset=utf-8',
   status: '200 OK',
   'x-ratelimit-limit': '5000',
   'x-ratelimit-remaining': '4972',
-  'x-ratelimit-reset': '1389865990',
+  'x-ratelimit-reset': '1393983167',
   'cache-control': 'private, max-age=60, s-maxage=60',
   etag: '"5af9d0770ec437b9582798588557b062"',
   vary: 'Accept, Authorization, Cookie, X-GitHub-OTP',
@@ -2284,7 +2533,7 @@ nock('https://api.github.com:443')
   'x-content-type-options': 'nosniff',
   'content-length': '2',
   'access-control-allow-credentials': 'true',
-  'access-control-expose-headers': 'ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+  'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
   'access-control-allow-origin': '*',
-  'x-github-request-id': '53277A36:0364:12DB7E2:52D79E88' });
+  'x-github-request-id': '4FA93972:1E8A:5700B1:53167163' });
  return result; }]];

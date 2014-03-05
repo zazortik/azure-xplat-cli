@@ -69,7 +69,7 @@ describe('cli', function () {
       suite.execute('account storage list --json', function (result) {
         var storageAccounts = JSON.parse(result.text);
         storageAccounts.some(function (account) {
-          return account.serviceName === storageName;
+          return account.name === storageName;
         }).should.be.true;
 
         done();
