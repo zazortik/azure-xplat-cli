@@ -50,8 +50,8 @@ describe('csm', function () {
       suite.teardownTest(done);
     });
 
-    describe('list/show', function () {
-      it('should work', function (done) {
+    describe('list and show', function () {
+      it('Should all work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
