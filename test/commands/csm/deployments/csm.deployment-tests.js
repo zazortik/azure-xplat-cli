@@ -71,8 +71,8 @@ describe('csm', function () {
               suite.execute('group deployment list -g %s', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-             //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
-             // suite.execute('group delete %s --quiet --json', groupName, function () {
+                //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+                // suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
               });
             });
@@ -98,9 +98,9 @@ describe('csm', function () {
             suite.execute('group deployment stop -g %s -n %s -q', groupName, deploymentName, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
-             //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
-             // suite.execute('group delete %s --quiet --json', groupName, function () {
-                done();
+              //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+              // suite.execute('group delete %s --quiet --json', groupName, function () {
+              done();
             });
           });
         });
