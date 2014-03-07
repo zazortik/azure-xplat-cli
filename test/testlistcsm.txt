@@ -1,2 +1,3 @@
 commands/csm/groups/csm.group-tests.js
 commands/csm/resources/csm.resource-tests.js
+commands/csm/deployments/csm.deployment-tests.js
