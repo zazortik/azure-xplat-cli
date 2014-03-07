@@ -45,7 +45,7 @@ describe('csm', function () {
       });
 
       describe('list', function () {
-        it('should list all resource group templates from gallery', function (done) {
+        it('should list all templates from gallery', function (done) {
           suite.execute('group template list --json --env %s', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
             if (result.exitStatus === 0) {
               result.exitStatus.should.equal(0);
@@ -56,16 +56,37 @@ describe('csm', function () {
             }
           });
         });
-      });
 
-      describe('list', function () {
-        it('should list all resource group templates published by Microsoft from gallery', function (done) {
+        it('should list all templates published by Microsoft from gallery', function (done) {
           suite.execute('group template list --publisher %s --json --env %s', 'Microsoft', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
             result.exitStatus.should.equal(0);
 
             var templates = JSON.parse(result.text);
             templates.length.should.be.above(0);
             templates.every(function (t) { return t.publisher === 'Microsoft'; }).should.be.true;
+
+            done();
+          });
+        });
+
+        it('should list templates in category1 from gallery', function (done) {
+          suite.execute('group template list -c %s --json --env %s', 'category1', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+            result.exitStatus.should.equal(0);
+            var templates = JSON.parse(result.text);
+            templates.length.should.be.above(0);
+            templates.every(function (t) { return t.categoryIds.indexOf('category1') != -1}).should.be.true;
+
+            done();
+          });
+        });
+
+        it('should list templates from Microsoft in category1 from gallery', function (done) {
+          suite.execute('group template list -p %s -c %s --json --env %s', 'Microsoft', 'category1', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+            result.exitStatus.should.equal(0);
+            var templates = JSON.parse(result.text);
+            templates.length.should.be.above(0);
+            templates.every(function (t) { return t.publisher === 'Microsoft'; }).should.be.true;
+            templates.every(function (t) { return t.categoryIds.indexOf('category1') != -1}).should.be.true;
 
             done();
           });
