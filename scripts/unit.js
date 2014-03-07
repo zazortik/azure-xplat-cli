@@ -103,7 +103,7 @@ var defaultCommunityImageId = 'vmdepot-1-1-1';
 var defaultGithubUsername = 'azuresdkrec';
 var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
-var defaultGitUsername = 'andrerod';
+var defaultGitUsername = 'mynewusr';
 
 if (!process.env.NOCK_OFF) {
   if (!process.env.AZURE_NOCK_RECORD) {
