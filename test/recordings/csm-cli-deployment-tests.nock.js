@@ -8,10 +8,10 @@ nock('https://api-current.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'fa7159e3-0811-4b90-8e7e-0c1829566b3c',
-  'x-ms-correlation-request-id': 'fa7159e3-0811-4b90-8e7e-0c1829566b3c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012922Z:fa7159e3-0811-4b90-8e7e-0c1829566b3c',
-  date: 'Wed, 05 Mar 2014 01:29:22 GMT',
+  'x-ms-request-id': '2d0bab1a-43a7-488a-ae9d-f655eac05aae',
+  'x-ms-correlation-request-id': '2d0bab1a-43a7-488a-ae9d-f655eac05aae',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124355Z:2d0bab1a-43a7-488a-ae9d-f655eac05aae',
+  date: 'Fri, 07 Mar 2014 12:43:55 GMT',
   'content-length': '261' });
  return result; },
 function (nock) { 
@@ -19,56 +19,71 @@ var result =
 nock('https://api-current.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11?api-version=2013-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-05T01:29:23.6161226Z\",\"trackingId\":\"e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
+  .reply(201, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-07T12:43:56.6202181Z\",\"trackingId\":\"dbea1b67-2922-478a-94d9-4afc3260d349\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb',
-  'x-ms-correlation-request-id': 'e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012923Z:e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb',
-  date: 'Wed, 05 Mar 2014 01:29:23 GMT',
+  'x-ms-request-id': 'dbea1b67-2922-478a-94d9-4afc3260d349',
+  'x-ms-correlation-request-id': 'dbea1b67-2922-478a-94d9-4afc3260d349',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124356Z:dbea1b67-2922-478a-94d9-4afc3260d349',
+  date: 'Fri, 07 Mar 2014 12:43:56 GMT',
   'content-length': '1583' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-current.resources.windows-int.net:443')
   .get('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11?api-version=2013-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-05T01:29:23.6161226Z\",\"trackingId\":\"e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-07T12:43:56.6202181Z\",\"trackingId\":\"dbea1b67-2922-478a-94d9-4afc3260d349\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '89ea180c-c6a0-4c73-9f2d-53a189318341',
-  'x-ms-correlation-request-id': '89ea180c-c6a0-4c73-9f2d-53a189318341',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012924Z:89ea180c-c6a0-4c73-9f2d-53a189318341',
-  date: 'Wed, 05 Mar 2014 01:29:23 GMT',
+  'x-ms-request-id': '1afdd307-6e02-40cc-9caa-024c5bd5850a',
+  'x-ms-correlation-request-id': '1afdd307-6e02-40cc-9caa-024c5bd5850a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124357Z:1afdd307-6e02-40cc-9caa-024c5bd5850a',
+  date: 'Fri, 07 Mar 2014 12:43:57 GMT',
   'content-length': '1583' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-current.resources.windows-int.net:443')
   .get('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/?&api-version=2013-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-05T01:29:23.6161226Z\",\"trackingId\":\"e9ea34e8-20a3-4d1f-bf81-7d4e5df4dafb\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/deployments/Deploy11\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"name\":\"Deploy11\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-07T12:43:56.6202181Z\",\"trackingId\":\"dbea1b67-2922-478a-94d9-4afc3260d349\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup1/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'c1c43d75-7b46-4636-ba41-58fb45d650c6',
-  'x-ms-correlation-request-id': 'c1c43d75-7b46-4636-ba41-58fb45d650c6',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012924Z:c1c43d75-7b46-4636-ba41-58fb45d650c6',
-  date: 'Wed, 05 Mar 2014 01:29:24 GMT',
+  'x-ms-request-id': 'c02110bd-98e4-44b1-a502-942712bf7ebe',
+  'x-ms-correlation-request-id': 'c02110bd-98e4-44b1-a502-942712bf7ebe',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124358Z:c02110bd-98e4-44b1-a502-942712bf7ebe',
+  date: 'Fri, 07 Mar 2014 12:43:57 GMT',
   'content-length': '1595' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-current.resources.windows-int.net:443')
   .get('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2?api-version=2013-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"name\":\"xDeploymentTestGroup2\",\"location\":\"South Central US\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xDeploymentTestGroup2' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3483297c-bcab-45a5-b203-da272b38e461',
-  'x-ms-correlation-request-id': '3483297c-bcab-45a5-b203-da272b38e461',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012925Z:3483297c-bcab-45a5-b203-da272b38e461',
-  date: 'Wed, 05 Mar 2014 01:29:24 GMT',
+  'x-ms-request-id': 'e3364de9-ac74-41d9-818b-8aa0cc84d826',
+  'x-ms-correlation-request-id': 'e3364de9-ac74-41d9-818b-8aa0cc84d826',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124358Z:e3364de9-ac74-41d9-818b-8aa0cc84d826',
+  date: 'Fri, 07 Mar 2014 12:43:58 GMT',
+  'content-length': '113' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://api-current.resources.windows-int.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2?api-version=2013-03-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"name\":\"xDeploymentTestGroup2\",\"location\":\"South Central US\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f5e20d43-8b82-4d78-8b22-e696cfb1a547',
+  'x-ms-correlation-request-id': 'f5e20d43-8b82-4d78-8b22-e696cfb1a547',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124400Z:f5e20d43-8b82-4d78-8b22-e696cfb1a547',
+  date: 'Fri, 07 Mar 2014 12:44:00 GMT',
   'content-length': '261' });
  return result; },
 function (nock) { 
@@ -76,28 +91,14 @@ var result =
 nock('https://api-current.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/deployments/Deploy12?api-version=2013-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/deployments/Deploy12\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"name\":\"Deploy12\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-05T01:29:25.8367747Z\",\"trackingId\":\"65fc42a7-6a92-4b2f-bccf-b665d299eed9\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
+  .reply(201, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/deployments/Deploy12\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"name\":\"Deploy12\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-07T12:44:01.1847284Z\",\"trackingId\":\"b305c403-07c2-407e-9904-b580684044f3\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '65fc42a7-6a92-4b2f-bccf-b665d299eed9',
-  'x-ms-correlation-request-id': '65fc42a7-6a92-4b2f-bccf-b665d299eed9',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012925Z:65fc42a7-6a92-4b2f-bccf-b665d299eed9',
-  date: 'Wed, 05 Mar 2014 01:29:25 GMT',
-  'content-length': '1583' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://api-current.resources.windows-int.net:443')
-  .get('/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/deployments/Deploy12?api-version=2013-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/deployments/Deploy12\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"name\":\"Deploy12\",\"properties\":{\"templateLink\":{\"uri\":\"https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-05T01:29:25.8367747Z\",\"trackingId\":\"65fc42a7-6a92-4b2f-bccf-b665d299eed9\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/564eb35a-f27c-4539-a3af-6688f710cb70/resourcegroups/xDeploymentTestGroup2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"subscriptionId\":\"564eb35a-f27c-4539-a3af-6688f710cb70\",\"resourceGroup\":\"xDeploymentTestGroup2\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '4864261e-bc54-4bec-91b4-968733e46241',
-  'x-ms-correlation-request-id': '4864261e-bc54-4bec-91b4-968733e46241',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012926Z:4864261e-bc54-4bec-91b4-968733e46241',
-  date: 'Wed, 05 Mar 2014 01:29:25 GMT',
+  'x-ms-request-id': 'b305c403-07c2-407e-9904-b580684044f3',
+  'x-ms-correlation-request-id': 'b305c403-07c2-407e-9904-b580684044f3',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124401Z:b305c403-07c2-407e-9904-b580684044f3',
+  date: 'Fri, 07 Mar 2014 12:44:01 GMT',
   'content-length': '1583' });
  return result; },
 function (nock) { 
@@ -107,8 +108,8 @@ nock('https://api-current.resources.windows-int.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': 'e77390c0-48fb-4cf3-be24-39f086b58732',
-  'x-ms-correlation-request-id': 'e77390c0-48fb-4cf3-be24-39f086b58732',
-  'x-ms-routing-request-id': 'CENTRALUS:20140305T012926Z:e77390c0-48fb-4cf3-be24-39f086b58732',
-  date: 'Wed, 05 Mar 2014 01:29:25 GMT' });
+  'x-ms-request-id': '2134b561-8022-4963-97fb-ac02557f8e0e',
+  'x-ms-correlation-request-id': '2134b561-8022-4963-97fb-ac02557f8e0e',
+  'x-ms-routing-request-id': 'CENTRALUS:20140307T124402Z:2134b561-8022-4963-97fb-ac02557f8e0e',
+  date: 'Fri, 07 Mar 2014 12:44:01 GMT' });
  return result; }]];
