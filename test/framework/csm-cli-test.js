@@ -70,10 +70,11 @@ _.extend(CSMCLITest.prototype, {
       if (!this.isRecording) {
         CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
           return function (authConfig, username, password, callback) {
+            var fourHoursInMS = 4 * 60 * 60 * 1000;
             callback(null, {
               authConfig: authConfig,
               accessToken: 'foobar',
-              expiresAt: new Date(new Date(Date.now()).getTime() + 60000) });
+              expiresAt: new Date(Date.now() + fourHoursInMS) });
           };
         });
 
