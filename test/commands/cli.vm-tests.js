@@ -17,9 +17,11 @@ var should = require('should');
 var sinon = require('sinon');
 var util = require('util');
 var crypto = require('crypto');
-var utils = require('../../lib/util/utils');
 var fs = require('fs');
 var path = require('path');
+
+var utils = require('../../lib/util/utils');
+var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
@@ -580,10 +582,10 @@ describe('cli', function () {
 			var obj = JSON.parse(Fileresult);
 			obj['RoleName'] = vmName;
 			var jsonstr = JSON.stringify(obj);
-			fs.writeFileSync(file, jsonstr);
+			generateFile(file, null, jsonstr);
 			suite.execute('vm create-from %s %s --json --location %s', vmName, file, location, function (result) {
 				result.exitStatus.should.equal(0);
-				fs.unlink('vminfo.json', function (err) {
+				fs.unlink(file, function (err) {
 					if (err)
 						throw err;
 					createdDisks.push(obj.OSVirtualHardDisk['DiskName'].toString());
@@ -660,27 +662,39 @@ describe('cli', function () {
 		// Create VM with custom data
 		it('Create vm with custom data', function (done) {
 			var customVmName = vmName + 'customdata';
+			var fileName = 'customdata';
+			generateFile(fileName, null, 'nodejs,python,wordpress');
 			suite.execute('vm create %s %s testuser Collabera@01 -l %s -d %s --json --verbose',
-				    customVmName, vmImgName,"West US", 'test/data/customdata.txt', function (result) {
+				customVmName, vmImgName,"West US", fileName, function (result) {
 					result.exitStatus.should.equal(0);
 					var verboseString = result.text;
 					var iPosCustom = verboseString.indexOf('CustomData:');
 					iPosCustom.should.equal(-1);
-					vmToUse.Name = customVmName;
-					vmToUse.Created = true;
-					vmToUse.Delete = true;
-					return done();
+					fs.unlink(fileName, function (err) {
+						if (err)
+							throw err;
+						vmToUse.Name = customVmName;
+						vmToUse.Created = true;
+						vmToUse.Delete = true;
+						return done();
+					});
 			});
 		});
 		
 		// Create VM with custom data with large file as customdata file
 		it('negetive testcase for custom data - Large File', function (done) {
 			var customVmName = vmName + 'customdatalargefile';
+			var fileName = 'customdatalargefile';
+			generateFile(fileName, 70000, null);
 			suite.execute('vm create %s %s testuser Collabera@01 -l %s -d %s --json',
-				customVmName, vmImgName,"West US", 'test/data/customdatalargefile.txt', function (result) {
+				customVmName, vmImgName,"West US", fileName, function (result) {
 					result.exitStatus.should.equal(1);
 					result.errorText.should.include('Input custom data file exceeded the maximum length of 65535 bytes');
-					return done();
+					fs.unlink(fileName, function (err) {
+						if (err)
+							throw err;
+						return done();
+					});
 			});
 		});
 		
@@ -726,6 +740,13 @@ describe('cli', function () {
 					});
 				});
 			}
+		}
+	
+		//create a file and write desired data given as input
+		function generateFile(filename, fileSizeinBytes, data){
+			if(fileSizeinBytes)
+				data = testUtils.generateRandomString(fileSizeinBytes);
+			fs.writeFileSync(filename, data);
 		}
 	});
 });

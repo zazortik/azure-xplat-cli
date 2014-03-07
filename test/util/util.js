@@ -82,3 +82,15 @@ exports.getCertificate = function () {
 
   return null;
 };
+
+//generate a random string
+exports.generateRandomString = function (length) {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz0123456789';			  
+  var randString = '', randNum = '';
+  for (var i = 0; i < length; i++) {
+    //61 is the chars.length
+    randNum = Math.floor(Math.random() * 61);
+    randString += chars.substring(randNum, randNum + 1);
+  }
+  return randString;
+};
