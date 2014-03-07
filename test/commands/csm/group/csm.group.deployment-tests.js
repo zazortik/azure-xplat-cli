@@ -51,7 +51,7 @@ describe('csm', function () {
     });
 
     describe('list and show', function () {
-      it('Should all work', function (done) {
+      it('should all work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
@@ -82,6 +82,32 @@ describe('csm', function () {
     });
 
     describe('stop', function () {
+      it('should work', function (done) {
+        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -p %s --json -vv', 
+            templateUri, groupName, deploymentName, parameterFile);
+        
+        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group deployment stop -g %s -n %s -q', groupName, deploymentName, function (listResult) {
+              listResult.exitStatus.should.equal(0);
+
+              //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+              // suite.execute('group delete %s --quiet --json', groupName, function () {
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    describe('create', function () {
       it('should work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
