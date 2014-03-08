@@ -127,6 +127,28 @@ describe('csm', function () {
           });
         });
       });
+
+    //describe('Set using overwrite mode', function () {
+    //  it('should work', function (done) {
+    //    var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+    //    var resourceName = suite.generateId('xTestGroupRes', createdResources, suite.isMocked);
+    //    suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+    //      result.exitStatus.should.equal(0);
+
+    //      suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+    //        result.exitStatus.should.equal(0);
+
+    //        //Set a new value
+    //        suite.execute('resource set %s %s %s %s -p %s --overwrite --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Free" }', function (result) {
+    //          listResult.exitStatus.should.equal(0);
+
+    //          suite.execute('group delete %s --quiet --json', groupName, function () {
+    //            done();
+    //          });
+    //        });
+    //      });
+    //    });
+    //  });
     });
   });
 });
