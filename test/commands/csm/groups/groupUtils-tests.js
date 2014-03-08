@@ -54,6 +54,9 @@ describe('getTemplateDownloadUrl', function () {
 });
 
 describe('download file name', function () {
+  var yes = sinon.stub().callsArgWith(1, true);
+  var no = sinon.stub().callsArgWith(1, false);
+
   describe('when downloading to an existing file', function () {
     var sandbox;
     var filename = 'existing.json';
@@ -69,36 +72,37 @@ describe('download file name', function () {
       sandbox.restore();
     });
 
-    it('should prompt for overwrite and continue if confirmed', function (done) {
-      var confirmer = sandbox.stub().callsArgWith(1, true);
+    beforeEach(function () {
+      yes.reset();
+      no.reset();
+    });
 
-      groupUtils.normalizeDownloadFileName('name', filename, false, confirmer, function (err, result) {
+    it('should prompt for overwrite and continue if confirmed', function (done) {
+      groupUtils.normalizeDownloadFileName('name', filename, false, yes, function (err, result) {
         if (err) { return done(err); }
 
         result.should.equal(path.resolve(process.cwd(), filename));
-        confirmer.called.should.be.true;
+        yes.called.should.be.true;
         done();
       });
     });
 
     it('should exit if file exists and overwrite is denied', function (done) {
-      var confirmer = sandbox.stub().callsArgWith(1, false);
-      groupUtils.normalizeDownloadFileName('name', filename, false, confirmer, function (err, result) {
+      groupUtils.normalizeDownloadFileName('name', filename, false, no, function (err, result) {
         if (err) { return done(err); }
 
         should(result === null);
-        confirmer.called.should.be.true;
+        no.called.should.be.true;
         done();
       });
     });
 
     it('should not call confirmer and continue if quiet option present', function (done) {
-      var confirmer = sandbox.stub().callsArgWith(1, true);
-      groupUtils.normalizeDownloadFileName('name', filename, true, confirmer, function (err, result) {
+      groupUtils.normalizeDownloadFileName('name', filename, true, no, function (err, result) {
         if (err) { return done(err); }
 
         result.should.equal(path.resolve(process.cwd(), filename));
-        confirmer.called.should.be.false;
+        no.called.should.be.false;
         done();
       });
     });
