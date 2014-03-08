@@ -63,7 +63,7 @@ _.extend(FakeFiles.prototype, {
         return true;
       }
       return oldExists(p);
-    }
+    };
 
     this.statSync = function (p) {
       if (path.resolve(p) === path.resolve(dirPath)) {
@@ -71,7 +71,8 @@ _.extend(FakeFiles.prototype, {
           isDirectory: function () { return true; }
         };
       }
-    }
+      return oldStat(p);
+    };
 
     return this.withDir(path.dirname(dirPath));
   },

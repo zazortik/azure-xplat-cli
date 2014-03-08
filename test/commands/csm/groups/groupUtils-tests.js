@@ -107,4 +107,41 @@ describe('download file name', function () {
       });
     });
   });
+
+  describe('when downloading to an existing directory', function () {
+    var sandbox;
+    var name = 'newtemplate';
+    var filename = name + '.json';
+    var destdir = path.join('first', 'second');
+    var createdDirs;
+
+    before(function () {
+      sandbox = sinon.sandbox.create();
+      var mocked = new FakeFiles()
+        .withDir(destdir);
+      mocked.setMocks(sandbox);
+
+      sandbox.stub(fs, 'mkdirSync', function (filename) { createdDirs.push(filename); });
+    });
+
+    after(function () {
+      sandbox.restore();
+    });
+
+    beforeEach(function () {
+      createdDirs = [];
+      yes.reset();
+      no.reset();
+    });
+
+    it('should return filename in subdirectory', function (done) {
+      groupUtils.normalizeDownloadFileName(name, destdir, false, no, function (err, result) {
+        if (err) { return done(err); }
+
+        result.should.equal(path.resolve(path.join(destdir, filename)));
+        createdDirs.should.have.length(0);
+        done();
+      });
+    });
+  });
 });
