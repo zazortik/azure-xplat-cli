@@ -20,6 +20,8 @@ var path = require('path');
 var should = require('should');
 var sinon = require('sinon');
 
+var CLITest = require('../../../framework/cli-test');
+var FakeFiles = require('../../../framework/fake-files');
 var utils = require('../../../../lib/util/utils');
 var groupUtils = require('../../../../lib/commands/csm/groups/groupUtils');
 
@@ -58,23 +60,13 @@ describe('download file name', function () {
 
     before(function () {
       sandbox = sinon.sandbox.create();
+      var mocked = new FakeFiles()
+        .withFile('existing.json');
+      mocked.setMocks(sandbox);
     });
 
     after(function () {
       sandbox.restore();
-    });
-
-    beforeEach(function () {
-      // var fullFile = path.join(process.cwd(), filename);
-      // sandbox.stub(utils, 'pathExistsSync')
-      //   .withArgs(fullFile)
-      //   .returns(true);
-
-      // sandbox.stub(fs, 'statSync')
-      //   .withArgs(fullFile)
-      //   .returns({
-      //     isDirectory: function () { return false; }
-      //   });
     });
 
     it('should prompt for overwrite and continue if confirmed', function (done) {
@@ -85,6 +77,28 @@ describe('download file name', function () {
 
         result.should.equal(path.resolve(process.cwd(), filename));
         confirmer.called.should.be.true;
+        done();
+      });
+    });
+
+    it('should exit if file exists and overwrite is denied', function (done) {
+      var confirmer = sandbox.stub().callsArgWith(1, false);
+      groupUtils.normalizeDownloadFileName('name', filename, false, confirmer, function (err, result) {
+        if (err) { return done(err); }
+
+        should(result === null);
+        confirmer.called.should.be.true;
+        done();
+      });
+    });
+
+    it('should not call confirmer and continue if quiet option present', function (done) {
+      var confirmer = sandbox.stub().callsArgWith(1, true);
+      groupUtils.normalizeDownloadFileName('name', filename, true, confirmer, function (err, result) {
+        if (err) { return done(err); }
+
+        result.should.equal(path.resolve(process.cwd(), filename));
+        confirmer.called.should.be.false;
         done();
       });
     });
