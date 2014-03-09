@@ -49,15 +49,15 @@ describe('csm', function () {
 
     describe('create', function () {
       it('should create empty group', function (done) {
-        var groupName = suite.generateId('xplatTestGroupCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
             listResult.exitStatus.should.equal(0);
-
             var groups = JSON.parse(listResult.text);
+
             groups.some(function (g) { return g.name === groupName; }).should.be.true;
 
             suite.execute('group delete %s --json --quiet', groupName, function () {
@@ -70,7 +70,7 @@ describe('csm', function () {
 
     describe('show', function () {
       it('should create empty group', function (done) {
-        var groupName = suite.generateId('xplatTestGroupShow', createdGroups, suite.isMocked);
+        var groupName = suite.generateId('xplatTestGrpShow', createdGroups, suite.isMocked);
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
