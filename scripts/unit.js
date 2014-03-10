@@ -105,8 +105,8 @@ var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
 var defaultGitUsername = 'mynewusr';
 
-if (!process.env.SCM_TEST_BLOB_NAME) {
-  process.env.SCM_TEST_BLOB_NAME = 'blob';
+if (!process.env.CSM_TEST_BLOB_NAME) {
+  process.env.CSM_TEST_BLOB_NAME = 'blob';
 }
 
 if (!process.env.NOCK_OFF) {
