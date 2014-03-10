@@ -18,6 +18,7 @@
 var should = require('should');
 
 var fs = require('fs');
+var path = require('path');
 var util = require('util');
 
 var utils = require('../../../../lib/util/utils');
@@ -133,19 +134,42 @@ describe('csm', function () {
       describe('download', function () {
         var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
         var downloadFileName = templateName + '.json';
+        var downloadDir = 'testdownloaddir';
+        var dirDownloadFileName = path.join(downloadDir, downloadFileName);
+        var env = process.env['AZURE_CSM_TEST_ENVIRONMENT'];
 
         beforeEach(function () {
           if (utils.pathExistsSync(downloadFileName)) {
             fs.unlinkSync(downloadFileName);
           }
+
+          if (utils.pathExistsSync(dirDownloadFileName)) {
+            fs.unlinkSync(dirDownloadFileName);
+          }
+
+          if (utils.pathExistsSync(downloadDir)) {
+            fs.rmdirSync(downloadDir);
+          }
         });
 
         it('should download template file using name of template', function (done) {
-          suite.execute('group template download %s --env %s', templateName, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group template download %s --env %s', templateName, env, function (result) {
             result.exitStatus.should.equal(0);
             utils.pathExistsSync(downloadFileName).should.be.true;
 
             fs.unlinkSync(downloadFileName);
+            done();
+          });
+        });
+
+        it('should create directory to download to and download file there', function (done) {
+          suite.execute('group template download %s -f %s --env %s --json', templateName, dirDownloadFileName, env, function (result) {
+            result.exitStatus.should.equal(0);
+
+            utils.pathExistsSync(dirDownloadFileName).should.be.true;
+
+            fs.unlinkSync(dirDownloadFileName);
+            fs.rmdirSync(downloadDir);
             done();
           });
         });
