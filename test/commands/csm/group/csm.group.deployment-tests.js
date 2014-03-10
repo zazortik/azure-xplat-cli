@@ -55,9 +55,9 @@ describe('csm', function () {
         var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -p %s --json -vv', 
-            templateUri, groupName, deploymentName, parameterFile);
+        var templateFile = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
+            templateFile, groupName, deploymentName, parameterFile);
         
         suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -87,7 +87,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -p %s --json -vv', 
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
             templateUri, groupName, deploymentName, parameterFile);
         
         suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
@@ -108,13 +108,13 @@ describe('csm', function () {
     });
 
     describe('create', function () {
-      it('should work', function (done) {
+      it('should work with a remote file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -p %s --json -vv', 
-            templateUri, groupName, deploymentName, parameterFile);
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
+            templateUri, groupName, deploymentName, parameterFile, 'exptest1');
         
         suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -127,6 +127,65 @@ describe('csm', function () {
               //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
               // suite.execute('group delete %s --quiet --json', groupName, function () {
               done();
+            });
+          });
+        });
+      });
+
+      it('should all work with a local file', function (done) {
+        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
+            templateFile, groupName, deploymentName, parameterFile, 'exptest1');
+        
+        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group deployment show -g %s -n %s', groupName, deploymentName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              showResult.text.indexOf(deploymentName).should.be.above(-1);
+
+              suite.execute('group deployment list -g %s', groupName, function (listResult) {
+                listResult.exitStatus.should.equal(0);
+                listResult.text.indexOf(deploymentName).should.be.above(-1);
+                //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+                // suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
+            });
+          });
+        });
+      });
+
+      it('should all work with a string for parameters', function (done) {
+        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/csm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
+
+        parameters = JSON.stringify(JSON.parse(parameters).properties.parameters);
+
+        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('group deployment create -f %s -g %s -m Incremental -n %s -s %s -p %s --json -vv',
+            templateFile, groupName, deploymentName, 'exptest1', parameters, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group deployment show -g %s -n %s', groupName, deploymentName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              showResult.text.indexOf(deploymentName).should.be.above(-1);
+
+              suite.execute('group deployment list -g %s', groupName, function (listResult) {
+                listResult.exitStatus.should.equal(0);
+                listResult.text.indexOf(deploymentName).should.be.above(-1);
+                //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+                // suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
             });
           });
         });
