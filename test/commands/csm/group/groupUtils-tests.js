@@ -24,7 +24,7 @@ var CLITest = require('../../../framework/cli-test');
 var FakeFiles = require('../../../framework/fake-files');
 var testUtil = require('../../../util/util');
 
-var groupUtils = require('../../../../lib/commands/csm/groups/groupUtils');
+var groupUtils = require('../../../../lib/commands/csm/group/groupUtils');
 
 describe('getTemplateDownloadUrl', function () {
   it('should get correct url if case of key matches', function () {
