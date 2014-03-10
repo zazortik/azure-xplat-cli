@@ -188,7 +188,8 @@ function createMockedSubscriptionFile () {
         "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
         "hostNameSuffix": "azurewebsites.net",
-        "commonTenantName": "common"
+        "commonTenantName": "common",
+        "publicGalleryEndpointUrl" : "https://next.gallery.azure-test.net"
       }, {
         "name": "current",
         "publishingProfileUrl": "https://auxcurrent.windows.azure-test.net/publishsettings/index",
@@ -198,7 +199,8 @@ function createMockedSubscriptionFile () {
         "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
         "hostNameSuffix": "azurewebsites.net",
-        "commonTenantName": "common"
+        "commonTenantName": "common",
+        "publicGalleryEndpointUrl" : "https://current.gallery.azure-test.net"
       }
     ],
 
