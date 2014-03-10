@@ -240,5 +240,35 @@ describe('csm', function () {
         });
       });
     });
+
+    describe('set', function () {
+      it('should work to overwrite existing resource', function(done) {
+        var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+
+            //Make a change like set the 'SiteMode' To 'Free'
+            suite.execute('resource set %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '","SiteMode": "Free", "ComputeMode": "Shared" }', function (setResult) {
+              setResult.exitStatus.should.equal(0);
+
+              suite.execute('resource show %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', function (showResult) {
+                showResult.exitStatus.should.equal(0);
+
+                //Serach for "siteMode":"Free" to make sure Set did work
+                showResult.text.indexOf('"siteMode": "Free",').should.be.above(-1);
+
+                suite.execute('group delete %s --quiet --json', groupName, function () {
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+    });
   });
 });
