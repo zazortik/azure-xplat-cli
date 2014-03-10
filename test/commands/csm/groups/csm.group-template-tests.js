@@ -17,8 +17,10 @@
 
 var should = require('should');
 
+var fs = require('fs');
 var util = require('util');
 
+var utils = require('../../../../lib/util/utils');
 var CLITest = require('../../../framework/csm-cli-test');
 var testprefix = 'csm-cli-group-templates-tests';
 
@@ -128,6 +130,26 @@ describe('csm', function () {
         });
       });
 
+      describe('download', function () {
+        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
+        var downloadFileName = templateName + '.json';
+
+        beforeEach(function () {
+          if (utils.pathExistsSync(downloadFileName)) {
+            fs.unlinkSync(downloadFileName);
+          }
+        });
+
+        it('should download template file using name of template', function (done) {
+          suite.execute('group template download %s --env %s', templateName, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+            result.exitStatus.should.equal(0);
+            utils.pathExistsSync(downloadFileName).should.be.true;
+
+            fs.unlinkSync(downloadFileName);
+            done();
+          });
+        });
+      });
     });
   });
 });
