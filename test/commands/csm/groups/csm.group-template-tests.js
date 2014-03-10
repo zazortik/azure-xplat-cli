@@ -153,7 +153,7 @@ describe('csm', function () {
         });
 
         it('should download template file using name of template', function (done) {
-          suite.execute('group template download %s --env %s', templateName, env, function (result) {
+          suite.execute('group template download %s --env %s --json', templateName, env, function (result) {
             result.exitStatus.should.equal(0);
             utils.pathExistsSync(downloadFileName).should.be.true;
 
