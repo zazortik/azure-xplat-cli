@@ -190,6 +190,43 @@ describe('csm', function () {
           });
         });
       });
+
+      it('should all work with a gallery template and a string for parameters', function (done) {
+        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/csm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+
+        parameters = JSON.parse(parameters).properties.parameters;
+        parameters.subscriptionId = {
+          value: process.env['AZURE_SUBSCRIPTION_ID']
+        };
+        parameters.resourceGroup = {
+          value: groupName
+        };
+        parameters = JSON.stringify(parameters);
+
+        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('group deployment create -y %s -g %s -m Incremental -n %s -p %s --env %s --json -vv',
+            galleryTemplate, groupName, deploymentName, parameters, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group deployment show -g %s -n %s', groupName, deploymentName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              showResult.text.indexOf(deploymentName).should.be.above(-1);
+
+              suite.execute('group deployment list -g %s', groupName, function (listResult) {
+                listResult.exitStatus.should.equal(0);
+                listResult.text.indexOf(deploymentName).should.be.above(-1);
+                //TODO: Uncomment after bug fix of "RDTask:1358492:Removing resource group failure caused by Antares resource provider"
+                // suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
+            });
+          });
+        });
+      });
     });
   });
 });
