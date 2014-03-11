@@ -15,7 +15,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:18 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:11 GMT',
   'content-length': '380623' });
  return result; }],
 [function (nock) { 
@@ -33,7 +33,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:21 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:16 GMT',
   'content-length': '118464' });
  return result; }],
 [function (nock) { 
@@ -51,7 +51,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:21 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:19 GMT',
   'content-length': '119646' });
  return result; }],
 [function (nock) { 
@@ -69,7 +69,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:22 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:22 GMT',
   'content-length': '82832' });
  return result; }],
 [function (nock) { 
@@ -87,7 +87,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:22 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:25 GMT',
   'content-length': '3159' });
  return result; }],
 [function (nock) { 
@@ -105,7 +105,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:24 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:26 GMT',
   'content-length': '3159' });
  return result; }],
 [function (nock) { 
@@ -123,7 +123,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:24 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:28 GMT',
   'content-length': '3159' });
  return result; },
 function (nock) { 
@@ -136,13 +136,13 @@ nock('https://galleryservicestore.blob.core.windows.net:443')
   'last-modified': 'Sun, 09 Mar 2014 00:13:17 GMT',
   etag: '0x8D10943812D8D17',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '32b880d7-cd64-4e42-9770-c7a3d7a87525',
+  'x-ms-request-id': '91ab59f7-02f9-45fa-9d92-7b10abc4d7df',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Mon, 10 Mar 2014 23:10:24 GMT' });
+  date: 'Tue, 11 Mar 2014 08:12:28 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -159,7 +159,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 10 Mar 2014 23:10:25 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:31 GMT',
   'content-length': '3159' });
  return result; },
 function (nock) { 
@@ -172,11 +172,11 @@ nock('https://galleryservicestore.blob.core.windows.net:443')
   'last-modified': 'Sun, 09 Mar 2014 00:13:17 GMT',
   etag: '0x8D10943812D8D17',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '83184a52-ba42-4313-b9eb-a6129052439b',
+  'x-ms-request-id': '12bd2352-73d9-42a1-9445-b6fb987c0a97',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Mon, 10 Mar 2014 23:10:24 GMT' });
+  date: 'Tue, 11 Mar 2014 08:12:30 GMT' });
  return result; }]];
