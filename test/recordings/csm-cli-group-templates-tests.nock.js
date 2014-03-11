@@ -15,7 +15,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:09 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:11 GMT',
   'content-length': '380623' });
  return result; }],
 [function (nock) { 
@@ -33,7 +33,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:15 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:16 GMT',
   'content-length': '118464' });
  return result; }],
 [function (nock) { 
@@ -51,7 +51,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:18 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:19 GMT',
   'content-length': '119646' });
  return result; }],
 [function (nock) { 
@@ -69,7 +69,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:21 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:22 GMT',
   'content-length': '82832' });
  return result; }],
 [function (nock) { 
@@ -87,7 +87,7 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:24 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:25 GMT',
   'content-length': '3159' });
  return result; }],
 [function (nock) { 
@@ -105,6 +105,78 @@ nock('https://current.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 11 Mar 2014 07:33:25 GMT',
+  date: 'Tue, 11 Mar 2014 08:12:26 GMT',
   'content-length': '3159' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://current.gallery.azure-test.net:443')
+  .get('/Microsoft.Gallery/galleryitems/Microsoft.WebSiteMySQLDatabase.0.1.0-preview1')
+  .reply(200, "{\"identity\":\"Microsoft.WebSiteMySQLDatabase.0.1.0-preview1\",\"publisher\":\"Microsoft\",\"publisherDisplayName\":\"ClearDB\",\"itemName\":\"WebSiteMySQLDatabase\",\"itemDisplayName\":\"Web Site + MySQL Database\",\"version\":\"0.1.0-preview1\",\"summary\":\"A Windows Azure Web Site with a MySQL Database.\",\"description\":\"Windows Azure Web Sites offers secure and flexible development, deployment and scaling options for any sized web application. Leverage your existing tools to create and deploy applications without the hassle of managing infrastructure.\",\"resourceGroupName\":null,\"definitionTemplates\":{\"uiDefinitionFileUrl\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/UIDefinition.json\",\"defaultDeploymentTemplateId\":\"website_NewHostingPlan_MySQL_NewDB\",\"deploymentTemplateFileUrls\":{\"website_NewHostingPlan_MySQL_ExistingDB\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_ExistingDB.json\",\"website_NewHostingPlan_MySQL_NewDB\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_NewDB.json\"}},\"categoryIds\":[\"category1\",\"category2\",\"category3\",\"category4\",\"category5\"],\"screenshotUrls\":[\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image01.png\",\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image02.png\",\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image03.png\"],\"links\":[],\"iconFileUrls\":{\"small\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Small.png\",\"medium\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Medium.png\",\"large\":null,\"wide\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Wide.png\",\"hero\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Hero.png\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-content-type-options': 'nosniff',
+  'x-xss-protection': '1; mode=block',
+  'x-ms-version': '4.1.8896.24 (rd_auxweb.140308-1352)',
+  'strict-transport-security': 'max-age=2592000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  date: 'Tue, 11 Mar 2014 08:12:28 GMT',
+  'content-length': '3159' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://galleryservicestore.blob.core.windows.net:443')
+  .get('/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_NewDB.json')
+  .reply(200, "{\r\n    \"$schema\": \"http://johngosmanage.blob.core.windows.net/schemas/2014-04-01-preview/deploymentTemplate.json\",\r\n    \"parameters\": {\r\n        \"siteName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"hostingPlanName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"siteMode\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"computeMode\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"workerSize\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"databaseName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"databaseLocation\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"subscriptionId\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"resourceGroup\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"dbSubscriptionId\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"dbResourceGroup\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"resources\": [\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"tags\": {\r\n                \"provision_source\": \"CSM\"\r\n            },\r\n            \"name\": \"[parameters('databaseName')]\",\r\n            \"type\": \"SuccessBricks.ClearDB/databases\",\r\n            \"location\": \"[parameters('databaseLocation')]\"\r\n        },\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"type\": \"Microsoft.Web/serverfarms\",\r\n            \"location\": \"[parameters('siteLocation')]\",\r\n            \"properties\": {\r\n                \"name\": \"[parameters('hostingPlanName')]\",\r\n                \"sku\": \"[parameters('sku')]\",\r\n                \"workerSize\": \"[parameters('workerSize')]\",\r\n                \"numberOfWorkers\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"name\": \"[parameters('siteName')]\",\r\n            \"type\": \"Microsoft.Web/sites\",\r\n            \"location\": \"[parameters('siteLocation')]\",\r\n            \"dependsOn\": [\r\n                \"[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]\"\r\n            ],\r\n            \"tags\": {\r\n                \"[concat('hidden-related:/subscriptions/', parameters('subscriptionId'), '/resourcegroups/', parameters('resourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]\": \"empty\"\r\n            },\r\n            \"properties\": {\r\n                \"name\": \"[parameters('siteName')]\",\r\n                \"serverFarm\": \"[parameters('hostingPlanName')]\",\r\n                \"computeMode\": \"[parameters('computeMode')]\",\r\n                \"siteMode\": \"[parameters('siteMode')]\"\r\n            },\r\n            \"resources\": [\r\n                {\r\n                    \"apiVersion\": \"01-01-2014\",\r\n                    \"type\": \"config\",\r\n                    \"name\": \"web\",\r\n                    \"dependsOn\": [\r\n                        \"[concat('Microsoft.Web/Sites/', parameters('siteName'))]\"\r\n                    ],\r\n                    \"properties\": {\r\n                        \"connectionStrings\": [\r\n                            {\r\n                                \"ConnectionString\": \"[reference(concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))).connectionString]\",\r\n                                \"Name\": \"DefaultConnection\",\r\n                                \"Type\": 0\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}", { 'content-length': '3558',
+  'content-type': 'application/json',
+  'content-md5': 'yfjDCbZeJRJhDhz+Lxkd7w==',
+  'last-modified': 'Sun, 09 Mar 2014 00:13:17 GMT',
+  etag: '0x8D10943812D8D17',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '91ab59f7-02f9-45fa-9d92-7b10abc4d7df',
+  'x-ms-version': '2009-09-19',
+  'x-ms-lease-status': 'unlocked',
+  'x-ms-blob-type': 'BlockBlob',
+  'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
+  'access-control-allow-origin': '*',
+  date: 'Tue, 11 Mar 2014 08:12:28 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://current.gallery.azure-test.net:443')
+  .get('/Microsoft.Gallery/galleryitems/Microsoft.WebSiteMySQLDatabase.0.1.0-preview1')
+  .reply(200, "{\"identity\":\"Microsoft.WebSiteMySQLDatabase.0.1.0-preview1\",\"publisher\":\"Microsoft\",\"publisherDisplayName\":\"ClearDB\",\"itemName\":\"WebSiteMySQLDatabase\",\"itemDisplayName\":\"Web Site + MySQL Database\",\"version\":\"0.1.0-preview1\",\"summary\":\"A Windows Azure Web Site with a MySQL Database.\",\"description\":\"Windows Azure Web Sites offers secure and flexible development, deployment and scaling options for any sized web application. Leverage your existing tools to create and deploy applications without the hassle of managing infrastructure.\",\"resourceGroupName\":null,\"definitionTemplates\":{\"uiDefinitionFileUrl\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/UIDefinition.json\",\"defaultDeploymentTemplateId\":\"website_NewHostingPlan_MySQL_NewDB\",\"deploymentTemplateFileUrls\":{\"website_NewHostingPlan_MySQL_ExistingDB\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_ExistingDB.json\",\"website_NewHostingPlan_MySQL_NewDB\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_NewDB.json\"}},\"categoryIds\":[\"category1\",\"category2\",\"category3\",\"category4\",\"category5\"],\"screenshotUrls\":[\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image01.png\",\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image02.png\",\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Screenshots/Image03.png\"],\"links\":[],\"iconFileUrls\":{\"small\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Small.png\",\"medium\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Medium.png\",\"large\":null,\"wide\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Wide.png\",\"hero\":\"https://galleryservicestore.blob.core.windows.net/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/Icons/Hero.png\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-content-type-options': 'nosniff',
+  'x-xss-protection': '1; mode=block',
+  'x-ms-version': '4.1.8896.24 (rd_auxweb.140308-1352)',
+  'strict-transport-security': 'max-age=2592000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  date: 'Tue, 11 Mar 2014 08:12:31 GMT',
+  'content-length': '3159' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://galleryservicestore.blob.core.windows.net:443')
+  .get('/current-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.WEBSITEMYSQLDATABASE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan_MySQL_NewDB.json')
+  .reply(200, "{\r\n    \"$schema\": \"http://johngosmanage.blob.core.windows.net/schemas/2014-04-01-preview/deploymentTemplate.json\",\r\n    \"parameters\": {\r\n        \"siteName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"hostingPlanName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"siteMode\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"computeMode\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"workerSize\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"databaseName\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"databaseLocation\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"subscriptionId\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"resourceGroup\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"dbSubscriptionId\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"dbResourceGroup\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"resources\": [\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"tags\": {\r\n                \"provision_source\": \"CSM\"\r\n            },\r\n            \"name\": \"[parameters('databaseName')]\",\r\n            \"type\": \"SuccessBricks.ClearDB/databases\",\r\n            \"location\": \"[parameters('databaseLocation')]\"\r\n        },\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"type\": \"Microsoft.Web/serverfarms\",\r\n            \"location\": \"[parameters('siteLocation')]\",\r\n            \"properties\": {\r\n                \"name\": \"[parameters('hostingPlanName')]\",\r\n                \"sku\": \"[parameters('sku')]\",\r\n                \"workerSize\": \"[parameters('workerSize')]\",\r\n                \"numberOfWorkers\": \"1\"\r\n            }\r\n        },\r\n        {\r\n            \"apiVersion\": \"01-01-2014\",\r\n            \"name\": \"[parameters('siteName')]\",\r\n            \"type\": \"Microsoft.Web/sites\",\r\n            \"location\": \"[parameters('siteLocation')]\",\r\n            \"dependsOn\": [\r\n                \"[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]\"\r\n            ],\r\n            \"tags\": {\r\n                \"[concat('hidden-related:/subscriptions/', parameters('subscriptionId'), '/resourcegroups/', parameters('resourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]\": \"empty\"\r\n            },\r\n            \"properties\": {\r\n                \"name\": \"[parameters('siteName')]\",\r\n                \"serverFarm\": \"[parameters('hostingPlanName')]\",\r\n                \"computeMode\": \"[parameters('computeMode')]\",\r\n                \"siteMode\": \"[parameters('siteMode')]\"\r\n            },\r\n            \"resources\": [\r\n                {\r\n                    \"apiVersion\": \"01-01-2014\",\r\n                    \"type\": \"config\",\r\n                    \"name\": \"web\",\r\n                    \"dependsOn\": [\r\n                        \"[concat('Microsoft.Web/Sites/', parameters('siteName'))]\"\r\n                    ],\r\n                    \"properties\": {\r\n                        \"connectionStrings\": [\r\n                            {\r\n                                \"ConnectionString\": \"[reference(concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))).connectionString]\",\r\n                                \"Name\": \"DefaultConnection\",\r\n                                \"Type\": 0\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}", { 'content-length': '3558',
+  'content-type': 'application/json',
+  'content-md5': 'yfjDCbZeJRJhDhz+Lxkd7w==',
+  'last-modified': 'Sun, 09 Mar 2014 00:13:17 GMT',
+  etag: '0x8D10943812D8D17',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '12bd2352-73d9-42a1-9445-b6fb987c0a97',
+  'x-ms-version': '2009-09-19',
+  'x-ms-lease-status': 'unlocked',
+  'x-ms-blob-type': 'BlockBlob',
+  'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
+  'access-control-allow-origin': '*',
+  date: 'Tue, 11 Mar 2014 08:12:30 GMT' });
  return result; }]];
