@@ -53,7 +53,7 @@ describe('csm', function () {
       it('should create empty group', function (done) {
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -76,7 +76,7 @@ describe('csm', function () {
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -m Incremental -e %s -s %s --json',
+        suite.execute('group create %s --location %s -f %s -m Incremental -e %s -s %s --json --quiet',
           groupName, testLocation, templateFile, parameterFile, 'exptest1', function (result) {
           result.exitStatus.should.equal(0);
 
@@ -104,7 +104,7 @@ describe('csm', function () {
     describe('show', function () {
       it('should create empty group', function (done) {
         var groupName = suite.generateId('xplatTestGrpShow', createdGroups, suite.isMocked);
-        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {

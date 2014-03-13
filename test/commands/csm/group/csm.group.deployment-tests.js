@@ -59,7 +59,7 @@ describe('csm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
             templateFile, groupName, deploymentName, parameterFile);
         
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -90,7 +90,7 @@ describe('csm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
             templateUri, groupName, deploymentName, parameterFile);
         
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -116,7 +116,7 @@ describe('csm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
             templateUri, groupName, deploymentName, parameterFile, 'exptest1');
         
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -140,7 +140,7 @@ describe('csm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
             templateFile, groupName, deploymentName, parameterFile, 'exptest1');
         
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -169,7 +169,7 @@ describe('csm', function () {
 
         parameters = JSON.stringify(JSON.parse(parameters).properties.parameters);
 
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -f %s -g %s -m Incremental -n %s -s %s -p %s --json -vv',
             templateFile, groupName, deploymentName, 'exptest1', parameters, function (result) {
@@ -206,7 +206,7 @@ describe('csm', function () {
         };
         parameters = JSON.stringify(parameters);
 
-        suite.execute('group create %s --location %s', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -m Incremental -n %s -p %s --env %s --json -vv',
             galleryTemplate, groupName, deploymentName, parameters, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
