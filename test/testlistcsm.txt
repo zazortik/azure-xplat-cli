@@ -1,6 +1,6 @@
-commands/csm/group/groupUtils-tests.js
-commands/csm/group/csm.group-create-tests.js
+# commands/csm/group/groupUtils-tests.js
+# commands/csm/group/csm.group-create-tests.js
 commands/csm/group/csm.group-tests.js
-commands/csm/resources/csm.resource-tests.js
-commands/csm/group/csm.group-template-tests.js
-commands/csm/group/csm.group.deployment-tests.js
+# commands/csm/resources/csm.resource-tests.js
+# commands/csm/group/csm.group-template-tests.js
+# commands/csm/group/csm.group.deployment-tests.js
