@@ -44,8 +44,12 @@ describe('csm', function () {
     describe('list', function () {
       it('should work', function (done) {
         suite.execute('location list create %s --json', function (result) {
-          //TODO: verify a couple of common providers
           result.exitStatus.should.equal(0);
+          //verify the command indeed produces something valid such as a well known provider: websites  
+          var allResources = JSON.parse(result.text);
+          allResources.some(function (res) {
+            return res.name === 'Microsoft.Web/sites';
+          }).should.be.true;
           done();
         });
       });
