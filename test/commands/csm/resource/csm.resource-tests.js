@@ -31,6 +31,7 @@ var createdResources = [];
 describe('csm', function () {
   describe('resource', function () {
     var suite;
+    var testApiVersion = '2013-03-01';
 
     before(function (done) {
       suite = new CLITest(testprefix);
@@ -56,7 +57,7 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group show %s --json', groupName, function (showResult) {
@@ -79,7 +80,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+        suite.execute('resource create %s %s %s %s 2013-03-01 -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {
@@ -105,10 +106,10 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource delete %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', resourceName, function (result) {
+            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
               result.exitStatus.should.equal(0);
 
               suite.execute('group show %s --json', groupName, function (showResult) {
@@ -136,10 +137,10 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource list %s --json', groupName, function (listResult) {
+            suite.execute('resource list %s %s --json', groupName, testApiVersion, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
               suite.execute('group delete %s --quiet --json', groupName, function () {
@@ -162,13 +163,13 @@ describe('csm', function () {
           suite.execute('group create %s --location %s --json', groupName2, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource create %s %s %s %s -p %s --json', groupName1, resourceName1, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName1, resourceName1, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
               result.exitStatus.should.equal(0);
 
-              suite.execute('resource create %s %s %s %s -p %s --json', groupName2, resourceName2, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName2, resourceName2, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                 result.exitStatus.should.equal(0);
 
-                suite.execute('resource list -g %s --json', groupName1, function (listResult) {
+                suite.execute('resource list -g %s %s --json', groupName1, testApiVersion, function (listResult) {
                   listResult.exitStatus.should.equal(0);
 
                   var results = JSON.parse(listResult.text);
@@ -198,10 +199,10 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource show %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', function (showResult) {
+            suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
               showResult.exitStatus.should.equal(0);
 
               var resource = JSON.parse(showResult.text);
@@ -222,10 +223,10 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource show -g %s -n %s -r %s --json', groupName, resourceName, 'Microsoft.Web/sites', function (showResult) {
+            suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
               showResult.exitStatus.should.equal(0);
 
               var resource = JSON.parse(showResult.text);
@@ -248,14 +249,14 @@ describe('csm', function () {
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             //Make a change like set the 'SiteMode' To 'Free'
-            suite.execute('resource set %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '","SiteMode": "Free", "ComputeMode": "Shared" }', function (setResult) {
+            suite.execute('resource set %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '","SiteMode": "Free", "ComputeMode": "Shared" }', function (setResult) {
               setResult.exitStatus.should.equal(0);
 
-              suite.execute('resource show %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', function (showResult) {
+              suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
 
                 //Serach for "siteMode":"Free" to make sure Set did work
