@@ -173,7 +173,7 @@ describe('csm', function () {
                   listResult.exitStatus.should.equal(0);
 
                   var results = JSON.parse(listResult.text);
-                  //results.length.should.equal(1);
+                  results.length.should.equal(1);
 
                   results.some(function (res) {
                     return res.name === resourceName1;
