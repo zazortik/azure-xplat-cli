@@ -48,7 +48,7 @@ describe('csm', function () {
           //verify the command indeed produces something valid such as a well known provider: websites  
           var allResources = JSON.parse(result.text);
           allResources.some(function (res) {
-            return res.name === 'Microsoft.Web/sites';
+            return res.name === 'Microsoft.Sql/servers';
           }).should.be.true;
           done();
         });
