@@ -80,7 +80,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('resource create %s %s %s %s 2013-03-01 -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+        suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {
