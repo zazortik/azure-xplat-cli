@@ -49,7 +49,7 @@ describe('csm', function () {
 
       describe('list', function () {
         it('should list all templates from gallery', function (done) {
-          suite.execute('group template list --json --env %s', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group template list --json', function (result) {
             if (result.exitStatus === 0) {
               result.exitStatus.should.equal(0);
 
@@ -61,7 +61,7 @@ describe('csm', function () {
         });
 
         it('should list all templates published by Microsoft from gallery', function (done) {
-          suite.execute('group template list --publisher %s --json --env %s', 'Microsoft', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group template list --publisher %s --json', 'Microsoft', function (result) {
             result.exitStatus.should.equal(0);
 
             var templates = JSON.parse(result.text);
@@ -73,7 +73,7 @@ describe('csm', function () {
         });
 
         it('should list templates in category1 from gallery', function (done) {
-          suite.execute('group template list -c %s --json --env %s', 'category1', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group template list -c %s --json', 'category1', function (result) {
             result.exitStatus.should.equal(0);
             var templates = JSON.parse(result.text);
             templates.length.should.be.above(0);
@@ -84,7 +84,7 @@ describe('csm', function () {
         });
 
         it('should list templates from Microsoft in category1 from gallery', function (done) {
-          suite.execute('group template list -p %s -c %s --json --env %s', 'Microsoft', 'category1', process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group template list -p %s -c %s --json', 'Microsoft', 'category1', function (result) {
             result.exitStatus.should.equal(0);
             var templates = JSON.parse(result.text);
             templates.length.should.be.above(0);
@@ -100,10 +100,9 @@ describe('csm', function () {
         var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
         var expectedPublisher = 'Microsoft';
         var expectedVersion = '0.1.0-preview1';
-        var env = process.env['AZURE_CSM_TEST_ENVIRONMENT'];
 
         it('should show a resource group template from gallery with positional name', function (done) {
-          suite.execute('group template show %s --json --env %s', templateName, env, function (result) {
+          suite.execute('group template show %s --json', templateName, function (result) {
             result.exitStatus.should.equal(0);
 
             var template = JSON.parse(result.text);
@@ -117,7 +116,7 @@ describe('csm', function () {
         });
 
         it('should show a resource group template from gallery with name switch', function (done) {
-          suite.execute('group template show --name %s --json --env %s', templateName, env, function (result) {
+          suite.execute('group template show --name %s --json', templateName, function (result) {
             result.exitStatus.should.equal(0);
 
             var template = JSON.parse(result.text);
@@ -136,7 +135,6 @@ describe('csm', function () {
         var downloadFileName = templateName + '.json';
         var downloadDir = 'testdownloaddir';
         var dirDownloadFileName = path.join(downloadDir, downloadFileName);
-        var env = process.env['AZURE_CSM_TEST_ENVIRONMENT'];
 
         beforeEach(function () {
           if (utils.pathExistsSync(downloadFileName)) {
@@ -153,7 +151,7 @@ describe('csm', function () {
         });
 
         it('should download template file using name of template', function (done) {
-          suite.execute('group template download %s --env %s --json', templateName, env, function (result) {
+          suite.execute('group template download %s --json', templateName, function (result) {
             result.exitStatus.should.equal(0);
             utils.pathExistsSync(downloadFileName).should.be.true;
 
@@ -163,7 +161,7 @@ describe('csm', function () {
         });
 
         it('should create directory to download to and download file there', function (done) {
-          suite.execute('group template download %s -f %s --env %s --json', templateName, dirDownloadFileName, env, function (result) {
+          suite.execute('group template download %s -f %s --json', templateName, dirDownloadFileName, function (result) {
             result.exitStatus.should.equal(0);
 
             utils.pathExistsSync(dirDownloadFileName).should.be.true;
