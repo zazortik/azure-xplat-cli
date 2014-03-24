@@ -20,8 +20,8 @@ var should = require('should');
 var path = require('path');
 var util = require('util');
 
-var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-group-tests';
+var CLITest = require('../../../framework/arm-cli-test');
+var testprefix = 'arm-cli-group-tests';
 
 var testLocation = 'South Central US';
 
@@ -70,9 +70,9 @@ describe('csm', function () {
       });
 
       it('should create a group with a named deployment', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 

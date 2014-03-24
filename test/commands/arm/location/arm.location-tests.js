@@ -17,8 +17,8 @@
 
 var should = require('should');
 
-var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-location-tests';
+var CLITest = require('../../../framework/arm-cli-test');
+var testprefix = 'arm-cli-location-tests';
 
 describe('csm', function () {
   describe('location', function () {
@@ -45,7 +45,7 @@ describe('csm', function () {
       it('should work', function (done) {
         suite.execute('location list --json', function (result) {
           result.exitStatus.should.equal(0);
-          //verify the command indeed produces something valid such as a well known provider: sql provider  
+          //verify the command indeed produces something valid such as a well known provider: sql provider
           var allResources = JSON.parse(result.text);
           allResources.some(function (res) {
             return res.name === 'Microsoft.Sql/servers';

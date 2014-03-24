@@ -21,8 +21,8 @@ var util = require('util');
 var fs = require('fs');
 var path = require('path');
 
-var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-deployment-tests';
+var CLITest = require('../../../framework/arm-cli-test');
+var testprefix = 'arm-cli-deployment-tests';
 
 var testLocation = 'South Central US';
 
@@ -52,13 +52,13 @@ describe('csm', function () {
 
     describe('list and show', function () {
       it('should all work', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
-        
+
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
@@ -83,13 +83,13 @@ describe('csm', function () {
 
     describe('stop', function () {
       it('should work', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv', 
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv',
             templateUri, groupName, deploymentName, parameterFile);
-        
+
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
@@ -109,13 +109,13 @@ describe('csm', function () {
 
     describe('create', function () {
       it('should work with a remote file', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv',
             templateUri, groupName, deploymentName, parameterFile, 'exptest1');
-        
+
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
@@ -133,13 +133,13 @@ describe('csm', function () {
       });
 
       it('should all work with a local file', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv', 
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile, 'exptest1');
-        
+
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
@@ -162,10 +162,10 @@ describe('csm', function () {
       });
 
       it('should all work with a string for parameters', function (done) {
-        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/csm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/arm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
         parameters = JSON.stringify(JSON.parse(parameters).properties.parameters);
 
@@ -192,7 +192,7 @@ describe('csm', function () {
       });
 
       it('should all work with a gallery template and a string for parameters', function (done) {
-        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/csm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/arm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
