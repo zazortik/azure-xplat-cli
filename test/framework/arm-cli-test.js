@@ -27,14 +27,14 @@ var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 var CLITest = require('./cli-test');
 
-function CSMCLITest(testPrefix, forceMocked) {
+function ARMCLITest(testPrefix, forceMocked) {
   this.skipSubscription = true;
-  CSMCLITest['super_'].call(this, testPrefix, forceMocked);
+  ARMCLITest['super_'].call(this, testPrefix, forceMocked);
 }
 
-util.inherits(CSMCLITest, CLITest);
+util.inherits(ARMCLITest, CLITest);
 
-_.extend(CSMCLITest.prototype, {
+_.extend(ARMCLITest.prototype, {
   setupSuite: function (callback) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
@@ -209,4 +209,4 @@ function createMockedSubscriptionFile () {
   };
 }
 
-module.exports = CSMCLITest;
+module.exports = ARMCLITest;
