@@ -43,9 +43,9 @@ describe('csm', function () {
 
     describe('list', function () {
       it('should work', function (done) {
-        suite.execute('location list create %s --json', function (result) {
+        suite.execute('location list --json', function (result) {
           result.exitStatus.should.equal(0);
-          //verify the command indeed produces something valid such as a well known provider: websites  
+          //verify the command indeed produces something valid such as a well known provider: sql provider  
           var allResources = JSON.parse(result.text);
           allResources.some(function (res) {
             return res.name === 'Microsoft.Sql/servers';
