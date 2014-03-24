@@ -70,9 +70,9 @@ describe('csm', function () {
       });
 
       it('should create a group with a named deployment', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/csm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/csm-deployment-template.json');
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
