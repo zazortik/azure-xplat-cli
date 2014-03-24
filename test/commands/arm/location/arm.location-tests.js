@@ -18,7 +18,7 @@
 var should = require('should');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'csm-cli-location-tests';
+var testprefix = 'arm-cli-location-tests';
 
 describe('csm', function () {
   describe('location', function () {

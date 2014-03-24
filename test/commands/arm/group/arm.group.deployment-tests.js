@@ -22,7 +22,7 @@ var fs = require('fs');
 var path = require('path');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'csm-cli-deployment-tests';
+var testprefix = 'arm-cli-deployment-tests';
 
 var testLocation = 'South Central US';
 

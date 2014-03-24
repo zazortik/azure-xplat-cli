@@ -21,7 +21,7 @@ var path = require('path');
 var util = require('util');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'csm-cli-group-tests';
+var testprefix = 'arm-cli-group-tests';
 
 var testLocation = 'South Central US';
 

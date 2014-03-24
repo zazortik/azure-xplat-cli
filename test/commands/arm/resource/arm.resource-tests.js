@@ -21,7 +21,7 @@ var util = require('util');
 var fs = require('fs');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'csm-cli-resource-tests';
+var testprefix = 'arm-cli-resource-tests';
 
 var testLocation = 'South Central US';
 
