@@ -22,8 +22,8 @@ var path = require('path');
 var util = require('util');
 
 var utils = require('../../../../lib/util/utils');
-var CLITest = require('../../../framework/csm-cli-test');
-var testprefix = 'csm-cli-group-templates-tests';
+var CLITest = require('../../../framework/arm-cli-test');
+var testprefix = 'arm-cli-group-templates-tests';
 
 describe('csm', function () {
   describe('group', function () {

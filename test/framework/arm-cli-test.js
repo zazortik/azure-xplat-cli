@@ -27,14 +27,14 @@ var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 var CLITest = require('./cli-test');
 
-function CSMCLITest(testPrefix, forceMocked) {
+function ARMCLITest(testPrefix, forceMocked) {
   this.skipSubscription = true;
-  CSMCLITest['super_'].call(this, testPrefix, forceMocked);
+  ARMCLITest['super_'].call(this, testPrefix, forceMocked);
 }
 
-util.inherits(CSMCLITest, CLITest);
+util.inherits(ARMCLITest, CLITest);
 
-_.extend(CSMCLITest.prototype, {
+_.extend(ARMCLITest.prototype, {
   setupSuite: function (callback) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
@@ -62,7 +62,7 @@ _.extend(CSMCLITest.prototype, {
       CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
         return function () {
           var config = originalReadConfig();
-          config.mode = 'csm';
+          config.mode = 'arm';
           return config;
         };
       });
@@ -81,7 +81,7 @@ _.extend(CSMCLITest.prototype, {
         CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
           return function (token, callback) {
             callback(null, [ {
-              subscriptionId: process.env.AZURE_CSM_TEST_SUBSCRIPTIONID,
+              subscriptionId: process.env.AZURE_ARM_TEST_SUBSCRIPTIONID,
               subscriptionStatus: 0
             }]);
           };
@@ -134,10 +134,10 @@ _.extend(CSMCLITest.prototype, {
 
   doLogin: function (callback) {
     var requiredVars = [
-      'AZURE_CSM_TEST_ENVIRONMENT',
-      'AZURE_CSM_TEST_USERNAME',
-      'AZURE_CSM_TEST_PASSWORD',
-      'AZURE_CSM_TEST_SUBSCRIPTIONID'
+      'AZURE_ARM_TEST_ENVIRONMENT',
+      'AZURE_ARM_TEST_USERNAME',
+      'AZURE_ARM_TEST_PASSWORD',
+      'AZURE_ARM_TEST_SUBSCRIPTIONID'
     ];
 
     var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
@@ -147,12 +147,12 @@ _.extend(CSMCLITest.prototype, {
       throw new Error(error);
     }
 
-    var testSubscriptionId = process.env['AZURE_CSM_TEST_SUBSCRIPTIONID'].toLowerCase();
+    var testSubscriptionId = process.env['AZURE_ARM_TEST_SUBSCRIPTIONID'].toLowerCase();
 
-    var env = profile.current.getEnvironment(process.env['AZURE_CSM_TEST_ENVIRONMENT']);
+    var env = profile.current.getEnvironment(process.env['AZURE_ARM_TEST_ENVIRONMENT']);
     env.addAccount(
-      process.env['AZURE_CSM_TEST_USERNAME'],
-      process.env['AZURE_CSM_TEST_PASSWORD'],
+      process.env['AZURE_ARM_TEST_USERNAME'],
+      process.env['AZURE_ARM_TEST_PASSWORD'],
       function (err, newSubscriptions) {
         if (err) { return callback(err); }
 
@@ -209,4 +209,4 @@ function createMockedSubscriptionFile () {
   };
 }
 
-module.exports = CSMCLITest;
+module.exports = ARMCLITest;
