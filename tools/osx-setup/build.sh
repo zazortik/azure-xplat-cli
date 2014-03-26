@@ -6,7 +6,7 @@
 # This script is only used at build time, it is not part of the package.
 # 
 
-CURRENT_NODE_DISTRIBUTION_VERSION=v0.8.22
+CURRENT_NODE_DISTRIBUTION_VERSION=v0.10.23
 
 # Check for Apple's PackageMaker
 # ------------------------------
