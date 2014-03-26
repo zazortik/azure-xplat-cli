@@ -25,6 +25,7 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-deployment-tests';
 
 var testLocation = 'South Central US';
+var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var createdGroups = [];
 var createdDeployments = [];
@@ -56,7 +57,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
@@ -87,7 +88,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateUri, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
@@ -113,7 +114,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateUri = 'https://csmtest.blob.core.test-cint.azure-test.net/deployment-templates/20140228_232416_WebsiteNext.JSON';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
             templateUri, groupName, deploymentName, parameterFile, 'exptest1');
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
@@ -137,7 +138,7 @@ describe('csm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -m Incremental -n %s -e %s -s %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile, 'exptest1');
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
@@ -171,7 +172,7 @@ describe('csm', function () {
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('group deployment create -f %s -g %s -m Incremental -n %s -s %s -p %s --json -vv',
+          suite.execute('group deployment create -f %s -g %s -n %s -s %s -p %s --json -vv',
             templateFile, groupName, deploymentName, 'exptest1', parameters, function (result) {
             result.exitStatus.should.equal(0);
 
@@ -208,7 +209,7 @@ describe('csm', function () {
 
         suite.execute('group create %s --location %s --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('group deployment create -y %s -g %s -m Incremental -n %s -p %s --env %s --json -vv',
+          suite.execute('group deployment create -y %s -g %s -n %s -p %s --env %s --json -vv',
             galleryTemplate, groupName, deploymentName, parameters, process.env['AZURE_CSM_TEST_ENVIRONMENT'], function (result) {
             result.exitStatus.should.equal(0);
 

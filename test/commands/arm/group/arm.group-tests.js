@@ -24,6 +24,7 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-group-tests';
 
 var testLocation = 'South Central US';
+var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var createdGroups = [];
 var createdDeployments = [];
@@ -76,8 +77,8 @@ describe('csm', function () {
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -m Incremental -e %s -s %s -d %s --json --quiet',
-          groupName, testLocation, templateFile, parameterFile, 'exptest1', 'mydep', function (result) {
+        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --json --quiet',
+          groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydep', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {

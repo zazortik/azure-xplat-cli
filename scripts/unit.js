@@ -152,6 +152,10 @@ if (!process.env.NOCK_OFF) {
     if (!process.env.AZURE_ARM_TEST_SUBSCRIPTIONID) {
       process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = '564eb35a-f27c-4539-a3af-6688f710cb70';
     }
+
+    if (!process.env.AZURE_ARM_TEST_STORAGEACCOUNT) {
+      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'exptest1';
+    }
   } else if (process.env.AZURE_NOCK_RECORD) {
     // If in record mode, and environment variables are set, make sure they are the expected one for recording
     // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated

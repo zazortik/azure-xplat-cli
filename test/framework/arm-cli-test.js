@@ -137,7 +137,8 @@ _.extend(ARMCLITest.prototype, {
       'AZURE_ARM_TEST_ENVIRONMENT',
       'AZURE_ARM_TEST_USERNAME',
       'AZURE_ARM_TEST_PASSWORD',
-      'AZURE_ARM_TEST_SUBSCRIPTIONID'
+      'AZURE_ARM_TEST_SUBSCRIPTIONID',
+      'AZURE_ARM_TEST_STORAGEACCOUNT'
     ];
 
     var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
