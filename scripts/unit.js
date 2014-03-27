@@ -138,19 +138,15 @@ if (!process.env.NOCK_OFF) {
     }
 
     if (!process.env.AZURE_ARM_TEST_ENVIRONMENT) {
-       process.env.AZURE_ARM_TEST_ENVIRONMENT = 'current';
-    }
-
-    if (!process.env.AZURE_ARM_TEST_USERNAME) {
-      process.env.AZURE_ARM_TEST_USERNAME = 'admin@aad81.ccsctp.net';
-    }
-
-    if (!process.env.AZURE_ARM_TEST_PASSWORD) {
-      process.env.AZURE_ARM_TEST_PASSWORD = 'foobar';
+       process.env.AZURE_ARM_TEST_ENVIRONMENT = 'dogfood';
     }
 
     if (!process.env.AZURE_ARM_TEST_SUBSCRIPTIONID) {
-      process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = '564eb35a-f27c-4539-a3af-6688f710cb70';
+      process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = '19b520e4-39a7-4fac-b1da-d940f2d39a38';
+    }
+
+    if (!process.env.AZURE_ARM_TEST_STORAGEACCOUNT) {
+      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'xptestss82';
     }
   } else if (process.env.AZURE_NOCK_RECORD) {
     // If in record mode, and environment variables are set, make sure they are the expected one for recording

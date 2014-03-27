@@ -24,11 +24,12 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-group-tests';
 
 var testLocation = 'South Central US';
+var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var createdGroups = [];
 var createdDeployments = [];
 
-describe('csm', function () {
+describe('arm', function () {
   describe('group', function () {
     var suite;
 
@@ -71,13 +72,12 @@ describe('csm', function () {
 
       it('should create a group with a named deployment', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
-        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -m Incremental -e %s -s %s -d %s --json --quiet',
-          groupName, testLocation, templateFile, parameterFile, 'exptest1', 'mydep', function (result) {
+        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --json --quiet',
+          groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydep', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {

@@ -25,7 +25,7 @@ var utils = require('../../../../lib/util/utils');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-group-templates-tests';
 
-describe('csm', function () {
+describe('arm', function () {
   describe('group', function () {
     describe('template', function () {
       var suite;
