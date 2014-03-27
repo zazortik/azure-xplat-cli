@@ -29,6 +29,7 @@ var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var createdGroups = [];
 var createdDeployments = [];
+var cleanedUpGroups = 0;
 
 describe('csm', function () {
   describe('deployment', function () {
@@ -40,17 +41,7 @@ describe('csm', function () {
     });
 
     after(function (done) {
-      function deleteGroups(groups, callback) {
-        if (groups.length === 0) {
-          return callback();
-        }
-        suite.execute('group delete %s --quiet --json', groups[0], function () {
-          deleteGroups(groups.slice(1), callback);
-        });
-      }
-      deleteGroups(createdGroups, function () {
-        suite.teardownSuite(done);
-      });
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -58,7 +49,19 @@ describe('csm', function () {
     });
 
     afterEach(function (done) {
-      suite.teardownTest(done);
+      function deleteGroups(index, callback) {
+        if (index === createdGroups.length) {
+          return callback();
+        }
+        suite.execute('group delete %s --quiet -vv', createdGroups[index], function () {
+          deleteGroups(index + 1, callback);
+        });
+      }
+
+      deleteGroups(cleanedUpGroups, function () {
+        cleanedUpGroups = createdGroups.length;
+        suite.teardownTest(done);
+      });
     });
 
     describe('list and show', function () {
