@@ -302,7 +302,9 @@ function createTestSubscriptionFile() {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
         },
-        environmentName: 'AzureCloud'
+        environmentName: 'AzureCloud',
+        registeredProviders: [ 'website', 'sqlserver' ],
+        registeredResourceNamespaces: [ 'microsoft.insights', 'successbricks.cleardb' ]
       }
     ]
   }

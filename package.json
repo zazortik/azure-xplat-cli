@@ -53,8 +53,9 @@
     "omelette": "0.1.0",
     "kuduscript": "0.1.7",
     "validator": "~3.1.0",
-    "adal-node": "WindowsAzureAD/aal-node",
-    "request": "2.27.0"
+    "request": "2.27.0",
+    "adal-node": "0.1.4",
+    "through": "2.3.4"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -78,7 +79,7 @@
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
-    "unit-csm": "node scripts/unit.js testlistcsm.txt",
+    "unit-arm": "node scripts/unit.js testlistarm.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext ._js",
     "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",

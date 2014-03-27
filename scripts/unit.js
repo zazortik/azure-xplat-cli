@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var fs = require('fs');
 
@@ -105,8 +105,8 @@ var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
 var defaultGitUsername = 'mynewusr';
 
-if (!process.env.CSM_TEST_BLOB_NAME) {
-  process.env.CSM_TEST_BLOB_NAME = 'blob';
+if (!process.env.ARM_TEST_BLOB_NAME) {
+  process.env.ARM_TEST_BLOB_NAME = 'blob';
 }
 
 if (!process.env.NOCK_OFF) {
@@ -137,21 +137,18 @@ if (!process.env.NOCK_OFF) {
       process.env.AZURE_GIT_USERNAME = defaultGitUsername;
     }
 
-    if (!process.env.AZURE_CSM_TEST_ENVIRONMENT) {
-       process.env.AZURE_CSM_TEST_ENVIRONMENT = 'current';
+    if (!process.env.AZURE_ARM_TEST_ENVIRONMENT) {
+       process.env.AZURE_ARM_TEST_ENVIRONMENT = 'dogfood';
     }
 
-    if (!process.env.AZURE_CSM_TEST_USERNAME) {
-      process.env.AZURE_CSM_TEST_USERNAME = 'admin@aad81.ccsctp.net';
+    if (!process.env.AZURE_ARM_TEST_SUBSCRIPTIONID) {
+      process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = '19b520e4-39a7-4fac-b1da-d940f2d39a38';
     }
 
-    if (!process.env.AZURE_CSM_TEST_PASSWORD) {
-      process.env.AZURE_CSM_TEST_PASSWORD = 'foobar';
+    if (!process.env.AZURE_ARM_TEST_STORAGEACCOUNT) {
+      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'xptests82';
     }
 
-    if (!process.env.AZURE_CSM_TEST_SUBSCRIPTIONID) {
-      process.env.AZURE_CSM_TEST_SUBSCRIPTIONID = '564eb35a-f27c-4539-a3af-6688f710cb70';
-    }
   } else if (process.env.AZURE_NOCK_RECORD) {
     // If in record mode, and environment variables are set, make sure they are the expected one for recording
     // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated

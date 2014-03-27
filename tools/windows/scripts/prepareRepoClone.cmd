@@ -6,8 +6,8 @@
 :: heat.exe from the WiX toolset is used for this.
 ::
 
-SET NODE_VERSION=0.8.22
-SET NPM_VERSION=1.2.14
+SET NODE_VERSION=0.10.23
+SET NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
 :: and not a Git bash shell... We also need the gnu toolchain (for curl & unzip)
