@@ -8,9 +8,9 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ddf9e4ed-79ca-41a2-902a-96daad1a3b5f',
-  'x-ms-correlation-request-id': 'ddf9e4ed-79ca-41a2-902a-96daad1a3b5f',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T004024Z:ddf9e4ed-79ca-41a2-902a-96daad1a3b5f',
-  date: 'Thu, 27 Mar 2014 00:40:24 GMT',
+  'x-ms-request-id': 'fba244de-73f7-49b7-bea7-fd2321a7aa22',
+  'x-ms-correlation-request-id': 'fba244de-73f7-49b7-bea7-fd2321a7aa22',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174743Z:fba244de-73f7-49b7-bea7-fd2321a7aa22',
+  date: 'Thu, 27 Mar 2014 17:47:43 GMT',
   'content-length': '4783' });
  return result; }]];
