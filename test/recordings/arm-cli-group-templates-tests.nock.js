@@ -15,7 +15,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:13 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:21 GMT',
   'content-length': '467379' });
  return result; }],
 [function (nock) { 
@@ -33,7 +33,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:13 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:21 GMT',
   'content-length': '160104' });
  return result; }],
 [function (nock) { 
@@ -51,7 +51,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:15 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:23 GMT',
   'content-length': '178326' });
  return result; }],
 [function (nock) { 
@@ -69,7 +69,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:15 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:23 GMT',
   'content-length': '121188' });
  return result; }],
 [function (nock) { 
@@ -87,7 +87,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:16 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:24 GMT',
   'content-length': '4148' });
  return result; }],
 [function (nock) { 
@@ -105,7 +105,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:16 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:24 GMT',
   'content-length': '4148' });
  return result; }],
 [function (nock) { 
@@ -123,7 +123,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:16 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:24 GMT',
   'content-length': '4148' });
  return result; },
 function (nock) { 
@@ -134,16 +134,16 @@ nock('https://galleryservicestore.blob.core.windows.net:443')
   'content-length': '8587',
   'content-type': 'application/json',
   'content-md5': '3IwMlKT0QDgBeTLjxkDgyA==',
-  'last-modified': 'Wed, 26 Mar 2014 20:57:42 GMT',
-  etag: '0x8D1174D2A01A8A7',
+  'last-modified': 'Thu, 27 Mar 2014 00:59:02 GMT',
+  etag: '0x8D1176EE14783F8',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9ab8486e-97a9-48d7-a72d-255546592e90',
+  'x-ms-request-id': '5007566f-4dd0-43b6-aa8c-e366993454e1',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Thu, 27 Mar 2014 00:37:16 GMT' });
+  date: 'Thu, 27 Mar 2014 17:45:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -160,7 +160,7 @@ nock('https://df.gallery.azure-test.net:443')
   'strict-transport-security': 'max-age=2592000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Thu, 27 Mar 2014 00:37:17 GMT',
+  date: 'Thu, 27 Mar 2014 17:45:26 GMT',
   'content-length': '4148' });
  return result; },
 function (nock) { 
@@ -171,14 +171,14 @@ nock('https://galleryservicestore.blob.core.windows.net:443')
   'content-length': '8587',
   'content-type': 'application/json',
   'content-md5': '3IwMlKT0QDgBeTLjxkDgyA==',
-  'last-modified': 'Wed, 26 Mar 2014 20:57:42 GMT',
-  etag: '0x8D1174D2A01A8A7',
+  'last-modified': 'Thu, 27 Mar 2014 00:59:02 GMT',
+  etag: '0x8D1176EE14783F8',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2d56a521-cdf8-4327-9384-34950281d11c',
+  'x-ms-request-id': 'ab32098d-a5a8-48f9-bd1f-11bc05fdbe24',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Thu, 27 Mar 2014 00:37:16 GMT' });
+  date: 'Thu, 27 Mar 2014 17:45:26 GMT' });
  return result; }]];

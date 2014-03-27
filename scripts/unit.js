@@ -146,8 +146,9 @@ if (!process.env.NOCK_OFF) {
     }
 
     if (!process.env.AZURE_ARM_TEST_STORAGEACCOUNT) {
-      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'xptestss82';
+      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'xptests82';
     }
+
   } else if (process.env.AZURE_NOCK_RECORD) {
     // If in record mode, and environment variables are set, make sure they are the expected one for recording
     // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated

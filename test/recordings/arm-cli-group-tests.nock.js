@@ -8,10 +8,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a1958fe1-f75f-467d-8f3e-6d681b61b09c',
-  'x-ms-correlation-request-id': 'a1958fe1-f75f-467d-8f3e-6d681b61b09c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003544Z:a1958fe1-f75f-467d-8f3e-6d681b61b09c',
-  date: 'Thu, 27 Mar 2014 00:35:44 GMT',
+  'x-ms-request-id': 'fe15ce5e-9017-4b15-9110-61317b597970',
+  'x-ms-correlation-request-id': 'fe15ce5e-9017-4b15-9110-61317b597970',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174420Z:fe15ce5e-9017-4b15-9110-61317b597970',
+  date: 'Thu, 27 Mar 2014 17:44:20 GMT',
   'content-length': '109' });
  return result; },
 function (nock) {
@@ -23,25 +23,25 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'bbe1db19-d679-47b6-a5a1-3fec8ddec85c',
-  'x-ms-correlation-request-id': 'bbe1db19-d679-47b6-a5a1-3fec8ddec85c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003545Z:bbe1db19-d679-47b6-a5a1-3fec8ddec85c',
-  date: 'Thu, 27 Mar 2014 00:35:45 GMT',
+  'x-ms-request-id': 'c4ef54bf-4269-40ae-8118-96cd04aa9905',
+  'x-ms-correlation-request-id': 'c4ef54bf-4269-40ae-8118-96cd04aa9905',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174420Z:c4ef54bf-4269-40ae-8118-96cd04aa9905',
+  date: 'Thu, 27 Mar 2014 17:44:20 GMT',
   'content-length': '197' });
  return result; },
 function (nock) {
 var result =
 nock('https://api-dogfood.resources.windows-int.net:443')
   .get('/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate1\",\"name\":\"xplatTestGCreate1\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup1556\",\"name\":\"xDeploymentTestGroup1556\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup5807\",\"name\":\"xDeploymentTestGroup5807\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup6384\",\"name\":\"xDeploymentTestGroup6384\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup9098\",\"name\":\"xDeploymentTestGroup9098\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate1\",\"name\":\"xplatTestGCreate1\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'aef75da9-a50a-434e-8684-1c090a7f75ab',
-  'x-ms-correlation-request-id': 'aef75da9-a50a-434e-8684-1c090a7f75ab',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003545Z:aef75da9-a50a-434e-8684-1c090a7f75ab',
-  date: 'Thu, 27 Mar 2014 00:35:44 GMT',
-  'content-length': '207' });
+  'x-ms-request-id': '47cfff51-e093-4ac5-8216-3edbb83d861f',
+  'x-ms-correlation-request-id': '47cfff51-e093-4ac5-8216-3edbb83d861f',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174421Z:47cfff51-e093-4ac5-8216-3edbb83d861f',
+  date: 'Thu, 27 Mar 2014 17:44:21 GMT',
+  'content-length': '1047' });
  return result; },
 function (nock) {
 var result =
@@ -52,25 +52,26 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   expires: '-1',
   location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHQ1JFQVRFMS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-request-id': '9b44e5c9-99fb-4433-857c-34d810f6ab40',
-  'x-ms-correlation-request-id': '9b44e5c9-99fb-4433-857c-34d810f6ab40',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003546Z:9b44e5c9-99fb-4433-857c-34d810f6ab40',
-  date: 'Thu, 27 Mar 2014 00:35:46 GMT',
+  'x-ms-request-id': '35715f40-0421-43b0-abc0-c8a61cbe534f',
+  'x-ms-correlation-request-id': '35715f40-0421-43b0-abc0-c8a61cbe534f',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174421Z:35715f40-0421-43b0-abc0-c8a61cbe534f',
+  date: 'Thu, 27 Mar 2014 17:44:21 GMT',
   'content-length': '0' });
  return result; },
 function (nock) {
 var result =
 nock('https://api-dogfood.resources.windows-int.net:443')
   .get('/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHQ1JFQVRFMS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview')
-  .reply(200, "null", { 'cache-control': 'no-cache',
+  .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1d8482d2-bbb2-4882-bb4a-d364e39bf402',
-  'x-ms-correlation-request-id': '1d8482d2-bbb2-4882-bb4a-d364e39bf402',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003620Z:1d8482d2-bbb2-4882-bb4a-d364e39bf402',
-  date: 'Thu, 27 Mar 2014 00:36:20 GMT',
-  'content-length': '4' });
+  location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHQ1JFQVRFMS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
+  'retry-after': '15',
+  'x-ms-request-id': '615ff45b-591f-4601-b29f-8563bcc7a717',
+  'x-ms-correlation-request-id': '615ff45b-591f-4601-b29f-8563bcc7a717',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174437Z:615ff45b-591f-4601-b29f-8563bcc7a717',
+  date: 'Thu, 27 Mar 2014 17:44:36 GMT',
+  'content-length': '0' });
  return result; }],
 [function (nock) {
 var result =
@@ -80,10 +81,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7c92356b-0b3d-4bc9-b926-e5d4ed1f2f5c',
-  'x-ms-correlation-request-id': '7c92356b-0b3d-4bc9-b926-e5d4ed1f2f5c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003621Z:7c92356b-0b3d-4bc9-b926-e5d4ed1f2f5c',
-  date: 'Thu, 27 Mar 2014 00:36:20 GMT',
+  'x-ms-request-id': 'eb5a6924-daae-41c6-8c38-e1e77fbcc642',
+  'x-ms-correlation-request-id': 'eb5a6924-daae-41c6-8c38-e1e77fbcc642',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174437Z:eb5a6924-daae-41c6-8c38-e1e77fbcc642',
+  date: 'Thu, 27 Mar 2014 17:44:37 GMT',
   'content-length': '109' });
  return result; },
 function (nock) {
@@ -95,10 +96,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a93dac54-3721-45aa-b607-7ce5eec5f3ad',
-  'x-ms-correlation-request-id': 'a93dac54-3721-45aa-b607-7ce5eec5f3ad',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003622Z:a93dac54-3721-45aa-b607-7ce5eec5f3ad',
-  date: 'Thu, 27 Mar 2014 00:36:22 GMT',
+  'x-ms-request-id': '92f679bb-ea60-4bcf-9c3b-854e30871c94',
+  'x-ms-correlation-request-id': '92f679bb-ea60-4bcf-9c3b-854e30871c94',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174437Z:92f679bb-ea60-4bcf-9c3b-854e30871c94',
+  date: 'Thu, 27 Mar 2014 17:44:37 GMT',
   'content-length': '197' });
  return result; },
 function (nock) {
@@ -110,8 +111,8 @@ nock('https://management-preview.core.windows-int.net:443')
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6196.255 (rd_rdfe.140324-1200) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'uswest',
-  'x-ms-request-id': 'a8d49983903a8503b8544ef502c0186d',
-  date: 'Thu, 27 Mar 2014 00:36:23 GMT' });
+  'x-ms-request-id': '56ad0cd99426839995683a60d7ca39e4',
+  date: 'Thu, 27 Mar 2014 17:44:39 GMT' });
  return result; },
 function (nock) {
 var result =
@@ -122,33 +123,33 @@ nock('https://management-preview.core.windows-int.net:443')
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6196.255 (rd_rdfe.140324-1200) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'uswest',
-  'x-ms-request-id': 'c599353017c384d79a8fb81871927923',
-  date: 'Thu, 27 Mar 2014 00:36:25 GMT' });
+  'x-ms-request-id': '9b58a101096a87cfa64e65723b4083cf',
+  date: 'Thu, 27 Mar 2014 17:44:41 GMT' });
  return result; },
 function (nock) {
 var result =
 nock('http://xptests82.blob.core.test-cint.azure-test.net:80')
   .put('/deployment-templates?restype=container')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:fc843124-015e-4c17-aa92-eb580eb0bc22\nTime:2014-03-27T00:36:26.1851756Z</Message></Error>", { 'content-length': '230',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:b78fae82-ff6b-4822-8a69-47b5ae875607\nTime:2014-03-27T17:44:41.0698012Z</Message></Error>", { 'content-length': '230',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fc843124-015e-4c17-aa92-eb580eb0bc22',
+  'x-ms-request-id': 'b78fae82-ff6b-4822-8a69-47b5ae875607',
   'x-ms-version': '2012-02-12',
-  date: 'Thu, 27 Mar 2014 00:36:26 GMT' });
+  date: 'Thu, 27 Mar 2014 17:44:40 GMT' });
  return result; },
 function (nock) {
 var result =
 nock('http://xptests82.blob.core.test-cint.azure-test.net:80')
   .filteringRequestBody(function (path) { return '*';})
-.put('/deployment-templates/blob', '*')
+.put('/deployment-templates/blob', "*")
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'GsbxbxODESm1PR5cxmMWZg==',
-  'last-modified': 'Thu, 27 Mar 2014 00:36:25 GMT',
-  etag: '"0x8D1176BB8639830"',
+  'last-modified': 'Thu, 27 Mar 2014 17:44:42 GMT',
+  etag: '"0x8D117FB5E386450"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd82db2cd-abf2-4198-902f-ddc52c8c7afd',
+  'x-ms-request-id': '21321815-8869-4a9d-9e62-d5a22404558a',
   'x-ms-version': '2012-02-12',
-  date: 'Thu, 27 Mar 2014 00:36:24 GMT' });
+  date: 'Thu, 27 Mar 2014 17:44:41 GMT' });
  return result; },
 function (nock) {
 var result =
@@ -158,10 +159,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': '2e22e4ef-40e0-4e5a-b3b8-f1866808835b',
-  'x-ms-correlation-request-id': '2e22e4ef-40e0-4e5a-b3b8-f1866808835b',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003626Z:2e22e4ef-40e0-4e5a-b3b8-f1866808835b',
-  date: 'Thu, 27 Mar 2014 00:36:26 GMT',
+  'x-ms-request-id': '14f9cbc8-7f36-4592-b7b8-ffa4b1b7e8e4',
+  'x-ms-correlation-request-id': '14f9cbc8-7f36-4592-b7b8-ffa4b1b7e8e4',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174441Z:14f9cbc8-7f36-4592-b7b8-ffa4b1b7e8e4',
+  date: 'Thu, 27 Mar 2014 17:44:41 GMT',
   'content-length': '0' });
  return result; },
 function (nock) {
@@ -169,43 +170,43 @@ var result =
 nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/mydep?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/mydep\",\"name\":\"mydep\",\"properties\":{\"templateLink\":{\"uri\":\"http://xptests82.blob.core.test-cint.azure-test.net/deployment-templates/blob?se=2014-03-28T00:36:01Z&sp=r&sr=b&sv=2012-02-12&sig=NQRsU4KvfOLFDIpDeVDSnaG3QooVu4WW63TSszPqhGc%3D\",\"contentVersion\":\"1.0.0.0\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-27T00:36:26.7711931Z\",\"correlationId\":\"f3ab5766-73d3-4251-8720-c9f41a06e7c5\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
+  .reply(201, "{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/mydep\",\"name\":\"mydep\",\"properties\":{\"templateLink\":{\"uri\":\"http://xptests82.blob.core.test-cint.azure-test.net/deployment-templates/blob?se=2014-03-28T17:44:41Z&sp=r&sr=b&sv=2012-02-12&sig=1RI4SF%2BShrGkrtBQvn%2FtJS5luS%2BsjyHq8c1qLq22Oho%3D\",\"contentVersion\":\"1.0.0.0\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-27T17:44:42.3926239Z\",\"correlationId\":\"b563c7a6-0520-49fe-909f-a47ceb42773a\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f3ab5766-73d3-4251-8720-c9f41a06e7c5',
-  'x-ms-correlation-request-id': 'f3ab5766-73d3-4251-8720-c9f41a06e7c5',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003626Z:f3ab5766-73d3-4251-8720-c9f41a06e7c5',
-  date: 'Thu, 27 Mar 2014 00:36:26 GMT',
-  'content-length': '1379' });
+  'x-ms-request-id': 'b563c7a6-0520-49fe-909f-a47ceb42773a',
+  'x-ms-correlation-request-id': 'b563c7a6-0520-49fe-909f-a47ceb42773a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174442Z:b563c7a6-0520-49fe-909f-a47ceb42773a',
+  date: 'Thu, 27 Mar 2014 17:44:42 GMT',
+  'content-length': '1385' });
  return result; },
 function (nock) {
 var result =
 nock('https://api-dogfood.resources.windows-int.net:443')
   .get('/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2\",\"name\":\"xplatTestGCreate2\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup1556\",\"name\":\"xDeploymentTestGroup1556\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup5807\",\"name\":\"xDeploymentTestGroup5807\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup6384\",\"name\":\"xDeploymentTestGroup6384\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xDeploymentTestGroup9098\",\"name\":\"xDeploymentTestGroup9098\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate1\",\"name\":\"xplatTestGCreate1\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Deleting\"}},{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2\",\"name\":\"xplatTestGCreate2\",\"location\":\"southcentralus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f8561509-3334-42a4-aff9-78705beb0b3c',
-  'x-ms-correlation-request-id': 'f8561509-3334-42a4-aff9-78705beb0b3c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003627Z:f8561509-3334-42a4-aff9-78705beb0b3c',
-  date: 'Thu, 27 Mar 2014 00:36:27 GMT',
-  'content-length': '207' });
+  'x-ms-request-id': '164983fc-53a2-4bca-9d8f-2b84f5c55968',
+  'x-ms-correlation-request-id': '164983fc-53a2-4bca-9d8f-2b84f5c55968',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174442Z:164983fc-53a2-4bca-9d8f-2b84f5c55968',
+  date: 'Thu, 27 Mar 2014 17:44:42 GMT',
+  'content-length': '1242' });
  return result; },
 function (nock) {
 var result =
 nock('https://api-dogfood.resources.windows-int.net:443')
   .get('/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/?&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/mydep\",\"name\":\"mydep\",\"properties\":{\"templateLink\":{\"uri\":\"http://xptests82.blob.core.test-cint.azure-test.net/deployment-templates/blob?se=2014-03-28T00:36:01Z&sp=r&sr=b&sv=2012-02-12&sig=NQRsU4KvfOLFDIpDeVDSnaG3QooVu4WW63TSszPqhGc%3D\",\"contentVersion\":\"1.0.0.0\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-27T00:36:26.7711931Z\",\"correlationId\":\"f3ab5766-73d3-4251-8720-c9f41a06e7c5\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/deployments/mydep\",\"name\":\"mydep\",\"properties\":{\"templateLink\":{\"uri\":\"http://xptests82.blob.core.test-cint.azure-test.net/deployment-templates/blob?se=2014-03-28T17:44:41Z&sp=r&sr=b&sv=2012-02-12&sig=1RI4SF%2BShrGkrtBQvn%2FtJS5luS%2BsjyHq8c1qLq22Oho%3D\",\"contentVersion\":\"1.0.0.0\"},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2014-03-27T17:44:42.3926239Z\",\"correlationId\":\"b563c7a6-0520-49fe-909f-a47ceb42773a\",\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/serverFarms/xDeploymentTestHost1\",\"resourceType\":\"Microsoft.Web/serverFarms\",\"resourceName\":\"xDeploymentTestHost1\"}],\"id\":\"/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourcegroups/xplatTestGCreate2/providers/Microsoft.Web/Sites/xDeploymentTestSite1\",\"resourceType\":\"Microsoft.Web/Sites\",\"resourceName\":\"xDeploymentTestSite1\"}],\"parameters\":{\"siteName\":{\"type\":\"String\",\"value\":\"xDeploymentTestSite1\"},\"hostingPlanName\":{\"type\":\"String\",\"value\":\"xDeploymentTestHost1\"},\"siteMode\":{\"type\":\"String\",\"value\":\"Limited\"},\"computeMode\":{\"type\":\"String\",\"value\":\"Shared\"},\"siteLocation\":{\"type\":\"String\",\"value\":\"North Europe\"},\"sku\":{\"type\":\"String\",\"value\":\"Free\"},\"workerSize\":{\"type\":\"String\",\"value\":\"0\"}}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '0f7d7643-f4c5-4ea3-ba62-c8b08aac8a2a',
-  'x-ms-correlation-request-id': '0f7d7643-f4c5-4ea3-ba62-c8b08aac8a2a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003627Z:0f7d7643-f4c5-4ea3-ba62-c8b08aac8a2a',
-  date: 'Thu, 27 Mar 2014 00:36:26 GMT',
-  'content-length': '1391' });
+  'x-ms-request-id': 'c7e8c533-ae74-4217-858a-636b040af716',
+  'x-ms-correlation-request-id': 'c7e8c533-ae74-4217-858a-636b040af716',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174443Z:c7e8c533-ae74-4217-858a-636b040af716',
+  date: 'Thu, 27 Mar 2014 17:44:43 GMT',
+  'content-length': '1397' });
  return result; },
 function (nock) {
 var result =
@@ -216,10 +217,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   expires: '-1',
   location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHQ1JFQVRFMi1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-request-id': 'c0cba35f-c83c-4a00-8cc1-1159aa86370a',
-  'x-ms-correlation-request-id': 'c0cba35f-c83c-4a00-8cc1-1159aa86370a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003628Z:c0cba35f-c83c-4a00-8cc1-1159aa86370a',
-  date: 'Thu, 27 Mar 2014 00:36:27 GMT',
+  'x-ms-request-id': '540d1fda-5cdc-4fde-b411-a3b942bee8ae',
+  'x-ms-correlation-request-id': '540d1fda-5cdc-4fde-b411-a3b942bee8ae',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174443Z:540d1fda-5cdc-4fde-b411-a3b942bee8ae',
+  date: 'Thu, 27 Mar 2014 17:44:43 GMT',
   'content-length': '0' });
  return result; },
 function (nock) {
@@ -231,10 +232,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   expires: '-1',
   location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHQ1JFQVRFMi1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-request-id': '5bb93197-51f5-4e54-9909-a68147144db5',
-  'x-ms-correlation-request-id': '5bb93197-51f5-4e54-9909-a68147144db5',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003647Z:5bb93197-51f5-4e54-9909-a68147144db5',
-  date: 'Thu, 27 Mar 2014 00:36:47 GMT',
+  'x-ms-request-id': '4aaa30db-90b3-4723-b037-1bd8c193e648',
+  'x-ms-correlation-request-id': '4aaa30db-90b3-4723-b037-1bd8c193e648',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174502Z:4aaa30db-90b3-4723-b037-1bd8c193e648',
+  date: 'Thu, 27 Mar 2014 17:45:02 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) {
@@ -245,10 +246,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f2799d33-769c-4392-b78a-53704e3e8779',
-  'x-ms-correlation-request-id': 'f2799d33-769c-4392-b78a-53704e3e8779',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003648Z:f2799d33-769c-4392-b78a-53704e3e8779',
-  date: 'Thu, 27 Mar 2014 00:36:48 GMT',
+  'x-ms-request-id': '42f5b70a-8ab8-40d5-9e9c-94dbe14add20',
+  'x-ms-correlation-request-id': '42f5b70a-8ab8-40d5-9e9c-94dbe14add20',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174503Z:42f5b70a-8ab8-40d5-9e9c-94dbe14add20',
+  date: 'Thu, 27 Mar 2014 17:45:03 GMT',
   'content-length': '109' });
  return result; },
 function (nock) {
@@ -260,10 +261,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b509b288-9ca6-43dc-9f1e-973cb71bd4f2',
-  'x-ms-correlation-request-id': 'b509b288-9ca6-43dc-9f1e-973cb71bd4f2',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003648Z:b509b288-9ca6-43dc-9f1e-973cb71bd4f2',
-  date: 'Thu, 27 Mar 2014 00:36:48 GMT',
+  'x-ms-request-id': 'ef631d81-524c-41f1-857f-fc332eb5d278',
+  'x-ms-correlation-request-id': 'ef631d81-524c-41f1-857f-fc332eb5d278',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174504Z:ef631d81-524c-41f1-857f-fc332eb5d278',
+  date: 'Thu, 27 Mar 2014 17:45:04 GMT',
   'content-length': '197' });
  return result; },
 function (nock) {
@@ -274,10 +275,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a6c0c6b4-2bd7-492f-a2df-b2bed3283c93',
-  'x-ms-correlation-request-id': 'a6c0c6b4-2bd7-492f-a2df-b2bed3283c93',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003649Z:a6c0c6b4-2bd7-492f-a2df-b2bed3283c93',
-  date: 'Thu, 27 Mar 2014 00:36:49 GMT',
+  'x-ms-request-id': 'c6ef53ed-47ea-49c8-9284-172aee9bf7d8',
+  'x-ms-correlation-request-id': 'c6ef53ed-47ea-49c8-9284-172aee9bf7d8',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174504Z:c6ef53ed-47ea-49c8-9284-172aee9bf7d8',
+  date: 'Thu, 27 Mar 2014 17:45:04 GMT',
   'content-length': '195' });
  return result; },
 function (nock) {
@@ -288,10 +289,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '144e6a7e-7059-429a-ac47-7fd4d6271090',
-  'x-ms-correlation-request-id': '144e6a7e-7059-429a-ac47-7fd4d6271090',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003649Z:144e6a7e-7059-429a-ac47-7fd4d6271090',
-  date: 'Thu, 27 Mar 2014 00:36:49 GMT',
+  'x-ms-request-id': 'c1e4c27b-3f11-455f-ac1e-765c3143459a',
+  'x-ms-correlation-request-id': 'c1e4c27b-3f11-455f-ac1e-765c3143459a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174505Z:c1e4c27b-3f11-455f-ac1e-765c3143459a',
+  date: 'Thu, 27 Mar 2014 17:45:04 GMT',
   'content-length': '12' });
  return result; },
 function (nock) {
@@ -303,10 +304,10 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   expires: '-1',
   location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHUlBTSE9XMy1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-request-id': '74892787-a889-4cd4-912b-7e2310631668',
-  'x-ms-correlation-request-id': '74892787-a889-4cd4-912b-7e2310631668',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003649Z:74892787-a889-4cd4-912b-7e2310631668',
-  date: 'Thu, 27 Mar 2014 00:36:49 GMT',
+  'x-ms-request-id': '0fce16b7-a2ee-45b3-9044-b27caccd14ca',
+  'x-ms-correlation-request-id': '0fce16b7-a2ee-45b3-9044-b27caccd14ca',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174505Z:0fce16b7-a2ee-45b3-9044-b27caccd14ca',
+  date: 'Thu, 27 Mar 2014 17:45:05 GMT',
   'content-length': '0' });
  return result; },
 function (nock) {
@@ -318,9 +319,9 @@ nock('https://api-dogfood.resources.windows-int.net:443')
   expires: '-1',
   location: 'https://api-dogfood.resources.windows-int.net/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFRFU1RHUlBTSE9XMy1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-request-id': 'f7b4ea5f-506d-4da9-8851-51dc46681e8b',
-  'x-ms-correlation-request-id': 'f7b4ea5f-506d-4da9-8851-51dc46681e8b',
-  'x-ms-routing-request-id': 'CENTRALUS:20140327T003712Z:f7b4ea5f-506d-4da9-8851-51dc46681e8b',
-  date: 'Thu, 27 Mar 2014 00:37:12 GMT',
+  'x-ms-request-id': 'cd11d8ab-8d76-4436-91c6-e92dcb3c4184',
+  'x-ms-correlation-request-id': 'cd11d8ab-8d76-4436-91c6-e92dcb3c4184',
+  'x-ms-routing-request-id': 'CENTRALUS:20140327T174520Z:cd11d8ab-8d76-4436-91c6-e92dcb3c4184',
+  date: 'Thu, 27 Mar 2014 17:45:20 GMT',
   'content-length': '0' });
  return result; }]];

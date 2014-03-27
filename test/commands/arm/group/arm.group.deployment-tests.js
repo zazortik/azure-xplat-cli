@@ -20,12 +20,13 @@ var should = require('should');
 var util = require('util');
 var fs = require('fs');
 var path = require('path');
-
+var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
+
 var testprefix = 'arm-cli-deployment-tests';
+  var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var testLocation = 'South Central US';
-var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var createdGroups = [];
 var createdDeployments = [];
@@ -49,6 +50,10 @@ describe('arm', function () {
     });
 
     afterEach(function (done) {
+      suite.teardownTest(done);
+    });
+
+    function cleanup(done) {
       function deleteGroups(index, callback) {
         if (index === createdGroups.length) {
           return callback();
@@ -60,9 +65,9 @@ describe('arm', function () {
 
       deleteGroups(cleanedUpGroups, function () {
         cleanedUpGroups = createdGroups.length;
-        suite.teardownTest(done);
+        done();
       });
-    });
+    }
 
     describe('list and show', function () {
       it('should all work', function (done) {
@@ -85,7 +90,7 @@ describe('arm', function () {
               suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-                done();
+                cleanup(done);
               });
             });
           });
@@ -110,7 +115,7 @@ describe('arm', function () {
             suite.execute('group deployment stop -g %s -n %s -q --json', groupName, deploymentName, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
-              done();
+              cleanup(done);
             });
           });
         });
@@ -134,7 +139,7 @@ describe('arm', function () {
             suite.execute('group deployment stop -g %s -n %s -q --json', groupName, deploymentName, function (listResult) {
               listResult.exitStatus.should.equal(0);
 
-              done();
+              cleanup(done);
             });
           });
         });
@@ -160,7 +165,7 @@ describe('arm', function () {
               suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-                done();
+                cleanup(done);
               });
             });
           });
@@ -188,7 +193,7 @@ describe('arm', function () {
               suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-                done();
+                cleanup(done);
               });
             });
           });
@@ -203,7 +208,7 @@ describe('arm', function () {
 
         parameters = JSON.parse(parameters).properties.parameters;
         parameters.subscriptionId = {
-          value: process.env['AZURE_ARM_TEST_SUBSCRIPTIONID']
+          value: profile.current.currentSubscription.id
         };
         parameters.resourceGroup = {
           value: groupName
@@ -212,8 +217,8 @@ describe('arm', function () {
 
         suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('group deployment create -y %s -g %s -n %s -p %s --env %s --json -vv',
-            galleryTemplate, groupName, deploymentName, parameters, process.env['AZURE_ARM_TEST_ENVIRONMENT'], function (result) {
+          suite.execute('group deployment create -y %s -g %s -n %s -p %s --json -vv',
+            galleryTemplate, groupName, deploymentName, parameters, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
@@ -223,7 +228,7 @@ describe('arm', function () {
               suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(0);
                 listResult.text.indexOf(deploymentName).should.be.above(-1);
-                done();
+                cleanup(done);
               });
             });
           });
