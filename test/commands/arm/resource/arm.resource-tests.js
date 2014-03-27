@@ -244,7 +244,9 @@ describe('arm', function () {
     });
 
     describe('set', function () {
-      it('should work to overwrite existing resource', function(done) {
+      // Disabling until rp returns the values that were set, right now
+      // it's returning null.
+      it('should work to overwrite existing resource', null, function(done) {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
         suite.execute('group create %s --location %s --quiet --json', groupName, testResourceLocation, function (result) {
