@@ -36,7 +36,7 @@ util.inherits(ARMCLITest, CLITest);
 
 _.extend(ARMCLITest.prototype, {
   setupSuite: function (callback) {
-    if (this.isMocked) {
+    if (this.isMocked && !this.isRecording) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
       var profileData;
@@ -67,26 +67,24 @@ _.extend(ARMCLITest.prototype, {
         };
       });
 
-      if (!this.isRecording) {
-        CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
-          return function (authConfig, username, password, callback) {
-            var fourHoursInMS = 4 * 60 * 60 * 1000;
-            callback(null, {
-              authConfig: authConfig,
-              accessToken: 'foobar',
-              expiresAt: new Date(Date.now() + fourHoursInMS) });
-          };
-        });
+      CLITest.wrap(sinon, environment.prototype, 'acquireToken', function (original) {
+        return function (authConfig, username, password, callback) {
+          var fourHoursInMS = 4 * 60 * 60 * 1000;
+          callback(null, {
+            authConfig: authConfig,
+            accessToken: 'foobar',
+            expiresAt: new Date(Date.now() + fourHoursInMS) });
+        };
+      });
 
-        CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
-          return function (token, callback) {
-            callback(null, [ {
-              subscriptionId: process.env.AZURE_ARM_TEST_SUBSCRIPTIONID,
-              subscriptionStatus: 0
-            }]);
-          };
-        });
-      }
+      CLITest.wrap(sinon, environment.prototype, 'getAccountSubscriptions', function (original) {
+        return function (token, callback) {
+          callback(null, [ {
+            subscriptionId: process.env.AZURE_ARM_TEST_SUBSCRIPTIONID,
+            subscriptionStatus: 0
+          }]);
+        };
+      });
     }
 
     if (this.isRecording) {
@@ -97,7 +95,7 @@ _.extend(ARMCLITest.prototype, {
 
     this.removeCacheFiles();
     profile.current = profile.load();
-    this.doLogin(callback);
+    callback();
   },
 
   teardownSuite: function (callback) {
@@ -130,50 +128,6 @@ _.extend(ARMCLITest.prototype, {
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
     callback();
-  },
-
-  doLogin: function (callback) {
-    var requiredVars = [
-      'AZURE_ARM_TEST_ENVIRONMENT',
-      'AZURE_ARM_TEST_USERNAME',
-      'AZURE_ARM_TEST_PASSWORD',
-      'AZURE_ARM_TEST_SUBSCRIPTIONID'
-    ];
-
-    var missingVars = requiredVars.filter(function (v) { return !process.env[v]; });
-    if (missingVars.length !== 0) {
-      var error = 'Missing environment variables: ' + missingVars.join(', ');
-      log.error(error);
-      throw new Error(error);
-    }
-
-    var testSubscriptionId = process.env['AZURE_ARM_TEST_SUBSCRIPTIONID'].toLowerCase();
-
-    var env = profile.current.getEnvironment(process.env['AZURE_ARM_TEST_ENVIRONMENT']);
-    env.addAccount(
-      process.env['AZURE_ARM_TEST_USERNAME'],
-      process.env['AZURE_ARM_TEST_PASSWORD'],
-      function (err, newSubscriptions) {
-        if (err) { return callback(err); }
-
-        var defaultSet = false;
-        newSubscriptions.forEach(function (s) {
-          if (s.id.toLowerCase() === testSubscriptionId) {
-            s.isDefault = true;
-            defaultSet = true;
-          }
-
-          profile.current.addSubscription(s);
-        });
-
-        if (!defaultSet) {
-          callback(new Error(util.format('ERROR: No subscription found for user matching id %s', testSubscriptionId)));
-        }
-
-        profile.current.save();
-
-        callback();
-      });
   }
 });
 
@@ -205,6 +159,39 @@ function createMockedSubscriptionFile () {
     ],
 
     subscriptions: [
+      {
+        id: "19b520e4-39a7-4fac-b1da-d940f2d39a38",
+        name: "adminDogfood922",
+        "username": "admin@aad126.ccsctp.net",
+        "accessToken": {
+            "authConfig": {
+                "authorityUrl": "https://login.windows-ppe.net",
+                "tenantId": "common",
+                "resourceId": "https://management.core.windows.net/",
+                "clientId": "04b07795-8ddb-461a-bbee-02f9e1bf7b46"
+            },
+            "accessToken": "dummy",
+            "refreshToken": "dummy",
+            "expiresAt": new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        },
+        "isDefault": false,
+        "environmentName": "dogfood",
+        "registeredProviders": [
+            "visualstudio.account",
+            "website",
+            "sqlserver"
+        ],
+        "registeredResourceNamespaces": [
+            "microsoft.insights",
+            "successbricks.cleardb"
+        ],
+        "managementEndpointUrl": "https://management-preview.core.windows-int.net",
+        "resourceManagerEndpointUrl": "https://api-dogfood.resources.windows-int.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+        "hostNameSuffix": "azurewebsites.net",
+        "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
+        "galleryEndpointUrl": "https://df.gallery.azure-test.net"
+      }
     ],
   };
 }
