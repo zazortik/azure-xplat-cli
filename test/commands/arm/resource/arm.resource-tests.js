@@ -29,7 +29,7 @@ var testResourceLocation = 'West US';
 var createdGroups = [];
 var createdResources = [];
 
-describe('csm', function () {
+describe('arm', function () {
   describe('resource', function () {
     var suite;
     var testApiVersion = '2013-03-01';

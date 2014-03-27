@@ -31,7 +31,7 @@ var createdGroups = [];
 var createdDeployments = [];
 var cleanedUpGroups = 0;
 
-describe('csm', function () {
+describe('arm', function () {
   describe('deployment', function () {
     var suite;
 

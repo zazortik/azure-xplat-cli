@@ -29,7 +29,7 @@ var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 var createdGroups = [];
 var createdDeployments = [];
 
-describe('csm', function () {
+describe('arm', function () {
   describe('group', function () {
     var suite;
 
