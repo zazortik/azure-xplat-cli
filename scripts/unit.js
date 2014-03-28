@@ -15,6 +15,7 @@
 //
 
 var fs = require('fs');
+var profile = require('../lib/util/profile');
 
 var args = (process.ARGV || process.argv);
 
@@ -104,6 +105,8 @@ var defaultGithubUsername = 'azuresdkrec';
 var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
 var defaultGitUsername = 'mynewusr';
+var defaultArmSubscription = 'c5f47aa3-5fd0-4410-a734-064e77d5dd94';
+var defaultArmStorageAccount = 'xptests87';
 
 if (!process.env.ARM_TEST_BLOB_NAME) {
   process.env.ARM_TEST_BLOB_NAME = 'blob';
@@ -137,17 +140,8 @@ if (!process.env.NOCK_OFF) {
       process.env.AZURE_GIT_USERNAME = defaultGitUsername;
     }
 
-    if (!process.env.AZURE_ARM_TEST_ENVIRONMENT) {
-       process.env.AZURE_ARM_TEST_ENVIRONMENT = 'dogfood';
-    }
-
-    if (!process.env.AZURE_ARM_TEST_SUBSCRIPTIONID) {
-      process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = '19b520e4-39a7-4fac-b1da-d940f2d39a38';
-    }
-
-    if (!process.env.AZURE_ARM_TEST_STORAGEACCOUNT) {
-      process.env.AZURE_ARM_TEST_STORAGEACCOUNT = 'xptests82';
-    }
+    process.env.AZURE_ARM_TEST_SUBSCRIPTIONID = defaultArmSubscription;
+    process.env.AZURE_ARM_TEST_STORAGEACCOUNT = defaultArmStorageAccount;
 
   } else if (process.env.AZURE_NOCK_RECORD) {
     // If in record mode, and environment variables are set, make sure they are the expected one for recording
@@ -187,6 +181,18 @@ if (!process.env.NOCK_OFF) {
 
     if (!process.env.AZURE_STORAGE_CONNECTION_STRING && !process.env.AZURE_STORAGE_ACCOUNT) {
       throw new Error('Azure storage connection string needs to be defined for recordings');
+    }
+
+    if (profile.current.currentSubscription.id !== defaultArmSubscription) {
+      throw new Error('Current subscription id must be '
+        + defaultArmSubscription
+        + ' while recording');
+    }
+
+    if (process.env.AZURE_ARM_TEST_STORAGEACCOUNT !== defaultArmStorageAccount) {
+      throw new Error('AZURE_ARM_TEST_STORAGEACCOUNT must be set to '
+        + defaultArmStorageAccount
+        + ' while recording');
     }
   }
 } else {

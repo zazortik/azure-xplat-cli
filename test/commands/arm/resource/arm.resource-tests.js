@@ -152,7 +152,8 @@ describe('arm', function () {
         });
       });
 
-      it('should work with group filters', function (done) {
+      // Disabling - group filters no longer work on the server
+      it('should work with group filters', null, function (done) {
         var groupName1 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName1 = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         var groupName2 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
@@ -221,7 +222,7 @@ describe('arm', function () {
       it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        suite.execute('group create %s --location %s --quiet --json', groupName, testResourceLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
@@ -249,7 +250,7 @@ describe('arm', function () {
       it('should work to overwrite existing resource', null, function(done) {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
-        suite.execute('group create %s --location %s --quiet --json', groupName, testResourceLocation, function (result) {
+        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {

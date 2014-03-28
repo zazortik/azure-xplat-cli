@@ -201,18 +201,12 @@ describe('arm', function () {
       });
 
       it('should all work with a gallery template and a string for parameters', function (done) {
-        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/arm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 
         parameters = JSON.parse(parameters).properties.parameters;
-        parameters.subscriptionId = {
-          value: profile.current.currentSubscription.id
-        };
-        parameters.resourceGroup = {
-          value: groupName
-        };
         parameters = JSON.stringify(parameters);
 
         suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
