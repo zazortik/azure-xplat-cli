@@ -148,13 +148,15 @@ echo.
 popd
 
 echo Creating the wbin (Windows binaries) folder that will be added to the path...
-echo Adding license documents...
 mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
+echo Adding license documents...
 copy ..\resources\*.rtf %TEMP_REPO%
 copy ..\resources\ThirdPartyNotices.txt %TEMP_REPO%
+del %TEMP_REPO%\LICENSE.txt
+
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo.
