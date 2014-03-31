@@ -52,9 +52,68 @@ cp scripts/azure /tmp/azureInstallerTemporary/
 cp scripts/azure-uninstall /tmp/azureInstallerTemporary/
 
 # Copy the enlistment
-cp -R ../../ /tmp/azureInstallerTemporary/
+cp -R -L ../../ /tmp/azureInstallerTemporary/
 rm -rf /tmp/azureInstallerTemporary/.git #lazy
 rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
+
+# Remove extraneous junk from tarball
+pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
+
+packages=( azure-gallery
+	azure-mgmt
+	azure-mgmt-compute
+	azure-mgmt-resource
+	azure-mgmt-scheduler
+	azure-mgmt-sb
+	azure-mgmt-sql
+	azure-mgmt-storage
+	azure-mgmt-store
+	azure-mgmt-subscription
+	azure-mgmt-vnet
+	azure-mgmt-website
+	azure-scheduler	
+)
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE/node_modules
+done
+popd
+
+pushd /tmp/azureInstallerTemporary/node_modules/azure
+for PACKAGE in packages scripts test tasks examples jsdoc
+do
+	rm -rf $PACKAGE
+done
+
+cd lib
+rm -rf common
+
+cd services
+packages=( gallery
+	management
+	computeManagement
+	resourceManagement
+	serviceBusManagement
+	schedulerManagement
+	sqlManagement
+	storageManagement
+	subscriptionManagement
+	networkManagement
+	webSiteManagement
+	scheduler
+)
+
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+# compile streamline files
+pushd /tmp/azureInstallerTemporary
+node node_modules/streamline/bin/_node --verbose -c lib
+node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
+popd
 
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/
