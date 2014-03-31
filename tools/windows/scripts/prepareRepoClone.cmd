@@ -124,6 +124,30 @@ rd /s/q scheduler
 
 popd
 
+echo Removing dev dependencies from azure module
+pushd %TEMP_REPO%\node_modules\azure\node_modules
+rd /s/q mocha
+rd /s/q jshint
+rd /s/q sinon
+rd /s/q should
+rd /s/q nock
+rd /s/q grunt
+rd /s/q grunt-jsdoc
+rd /s/q grunt-devserver
+popd
+
+echo Removing dev dependencies for xplat module
+pushd %TEMP_REPO%\node_modules
+rd /s/q mocha
+rd /s/q jshint
+rd /s/q sinon
+rd /s/q should
+rd /s/q nock
+rd /s/q winston-memory
+rd /s/q event-stream
+rd /s/q cucumber
+popd
+
 echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
@@ -147,13 +171,18 @@ del npm.cmd
 echo.
 popd
 
+
+
 echo Creating the wbin (Windows binaries) folder that will be added to the path...
-echo Adding license documents...
 mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
+echo Adding license documents...
 copy ..\resources\*.rtf %TEMP_REPO%
+copy ..\resources\ThirdPartyNotices.txt %TEMP_REPO%
+del %TEMP_REPO%\LICENSE.txt
+
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo.

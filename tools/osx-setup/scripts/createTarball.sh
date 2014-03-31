@@ -57,6 +57,10 @@ rm -rf /tmp/azureInstallerTemporary/.git #lazy
 rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
 
 # Remove extraneous junk from tarball
+pushd /tmp/azureInstallerTemporary/node_modules/azure
+rm -rf .git
+popd
+
 pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
 
 packages=( azure-gallery
@@ -109,11 +113,64 @@ do
 done
 popd
 
+pushd /tmp/azureInstallerTemporary/node_modules
+for PACKAGE in azure-gallery azure-mgmt-resource
+do
+	rm -rf $PACKAGE/node_modules/azure-common
+done
+popd
+
+# Remove dev dependencies from azure module
+pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
+packages=( mocha jshint sinon should nock grunt grunt-jsdoc grunt-devserver )
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+# Remove dev dependencies from xplat module
+pushd /tmp/azureInstallerTemporary/node_modules
+packages=( mocha jshint sinon should nock winston-memory event-stream cucumber )
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+# Remove dev-time only code from xplat module
+pushd /tmp/azureInstallerTemporary
+dirstoremove=( features scripts test tools )
+for DIR in ${dirstoremove[@]}
+do
+	rm -rf $DIR
+done
+popd
+
+# Remove unneeded files
+pushd /tmp/azureInstallerTemporary
+rm -f azure_error
+rm -f azure.azure_error
+rm -f npm-debug.log
+rm -f checkstyle-result.xml
+rm -f test-result.xml
+rm -f .travis.yml
+rm -f .jshintrc
+rm -f .gitattributes
+rm -f .gitignore
+rm -f ChangeLog.txt
+popd
+
 # compile streamline files
 pushd /tmp/azureInstallerTemporary
 node node_modules/streamline/bin/_node --verbose -c lib
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
 popd
+
+# Copy licensing files
+cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
+cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
+rm /tmp/azureInstallerTemporary/LICENSE.txt
 
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/
