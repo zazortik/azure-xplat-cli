@@ -154,6 +154,7 @@ copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 copy ..\resources\*.rtf %TEMP_REPO%
+copy ..\resources\ThirdPartyNotices.txt %TEMP_REPO%
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo.
