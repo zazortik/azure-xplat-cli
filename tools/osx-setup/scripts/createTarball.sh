@@ -115,6 +115,10 @@ node node_modules/streamline/bin/_node --verbose -c lib
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
 popd
 
+# Copy licensing files
+cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
+cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
+
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/
 tar -cf ../azure.tar .
