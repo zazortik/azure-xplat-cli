@@ -118,6 +118,7 @@ popd
 # Copy licensing files
 cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
 cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
+rm /tmp/azureInstallerTemporary/LICENSE.txt
 
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/
