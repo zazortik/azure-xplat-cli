@@ -178,7 +178,7 @@ _.extend(CLITest.prototype, {
       cmd.unshift('node');
     }
 
-    if (!this.skipSubscription && this.isMocked && !this.isRecording) {
+    if (!this.skipSubscription && this.isMocked && !this.isRecording && cmd[2] != 'vm' && cmd[3] != 'location') {
       cmd.push('-s');
       cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
     }
