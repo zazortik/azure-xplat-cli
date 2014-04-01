@@ -142,6 +142,8 @@ azure config mode asm # service management
 azure config mode arm # resource manager
 ```
 
+**For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
+
 ## Running tests
 
 The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account.
