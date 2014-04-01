@@ -44,7 +44,7 @@ popd
 mkdir %TEMP_REPO%
 echo Cloning the repo elsewhere on disk...
 pushd ..\..\
-xcopy . %TEMP_REPO%\ /E /Q /EXCLUDE:tools\windows\scripts\xcopy-exclude.txt
+robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test /NFL /NDL /NJH /NJS
 IF NOT ERRORLEVEL 0 GOTO ERROR
 echo.
 popd
@@ -59,7 +59,6 @@ unzip -q npm.zip
 IF NOT ERRORLEVEL 0 GOTO ERROR
 del npm.zip
 popd
-
 
 echo Running npm update...
 pushd %TEMP_REPO%
@@ -76,14 +75,82 @@ popd
 echo Compiling streamline files...
 pushd %TEMP_REPO%
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c lib
+.\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline\lib\streams
+popd
+
+echo Removing redundant azure-common copies...
+pushd %TEMP_REPO%\node_modules\azure\node_modules
+rmdir /s/q azure-gallery\node_modules
+rmdir /s/q azure-mgmt\node_modules
+rmdir /s/q azure-mgmt-compute\node_modules
+rmdir /s/q azure-mgmt-resource\node_modules
+rmdir /s/q azure-mgmt-scheduler\node_modules
+rmdir /s/q azure-mgmt-sb\node_modules
+rmdir /s/q azure-mgmt-sql\node_modules
+rmdir /s/q azure-mgmt-storage\node_modules
+rmdir /s/q azure-mgmt-store\node_modules
+rmdir /s/q azure-mgmt-subscription\node_modules
+rmdir /s/q azure-mgmt-vnet\node_modules
+rmdir /s/q azure-mgmt-website\node_modules
+rmdir /s/q azure-scheduler\node_modules
+popd
+
+echo Removing unneeded files from azure module...
+pushd %TEMP_REPO%\node_modules\azure
+rd /s/q packages
+rd /s/q scripts
+rd /s/q test
+rd /s/q tasks
+rd /s/q examples
+rd /s/q jsdoc
+
+cd lib
+rd /s/q common
+
+cd services
+rd /s/q gallery
+rd /s/q management
+rd /s/q computeManagement
+rd /s/q resourceManagement
+rd /s/q serviceBusManagement
+rd /s/q schedulerManagement
+rd /s/q sqlManagement
+rd /s/q storageManagement
+rd /s/q storeManagement
+rd /s/q subscriptionManagement
+rd /s/q networkManagement
+rd /s/q webSiteManagement
+rd /s/q scheduler
+
+popd
+
+echo Removing dev dependencies from azure module
+pushd %TEMP_REPO%\node_modules\azure\node_modules
+rd /s/q mocha
+rd /s/q jshint
+rd /s/q sinon
+rd /s/q should
+rd /s/q nock
+rd /s/q grunt
+rd /s/q grunt-jsdoc
+rd /s/q grunt-devserver
+popd
+
+echo Removing dev dependencies for xplat module
+pushd %TEMP_REPO%\node_modules
+rd /s/q mocha
+rd /s/q jshint
+rd /s/q sinon
+rd /s/q should
+rd /s/q nock
+rd /s/q winston-memory
+rd /s/q event-stream
+rd /s/q cucumber
 popd
 
 echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
-rmdir /s /q test
-rmdir /s /q features
-rmdir /s /q tools
 rmdir /s /q .idea
 rmdir /s /q __temp
 del /q *.md
@@ -95,6 +162,8 @@ del checkstyle-result.xml
 del test-result.xml
 del .travis.yml
 del .jshintrc
+del .gitattributes
+del .gitignore
 del ChangeLog.txt
 cd bin
 rmdir /s /q node_modules
@@ -103,13 +172,17 @@ echo.
 popd
 
 
+
 echo Creating the wbin (Windows binaries) folder that will be added to the path...
-echo Adding license documents...
 mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
+echo Adding license documents...
 copy ..\resources\*.rtf %TEMP_REPO%
+copy ..\resources\ThirdPartyNotices.txt %TEMP_REPO%
+del %TEMP_REPO%\LICENSE.txt
+
 IF NOT ERRORLEVEL 0 GOTO ERROR
 
 echo.

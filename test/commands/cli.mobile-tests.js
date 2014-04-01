@@ -753,7 +753,7 @@ describe('cli', function () {
       });
     });
 
-    // Cross Domain Whitelist
+    // Cross Domain approved list
 
     it('config set ' + servicename + ' crossDomainWhitelist localhost --json', function(done) {
       var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist localhost --json').split(' ');

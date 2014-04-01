@@ -160,7 +160,7 @@ function createMockedSubscriptionFile () {
 
     subscriptions: [
       {
-        id: "19b520e4-39a7-4fac-b1da-d940f2d39a38",
+        id: process.env.AZURE_ARM_TEST_SUBSCRIPTIONID,
         name: "adminDogfood922",
         "username": "admin@aad126.ccsctp.net",
         "accessToken": {
