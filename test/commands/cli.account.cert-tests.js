@@ -42,7 +42,7 @@ describe('cli', function () {
 
     it('should export with subscription and publish settings specified', function (done) {
       var publishSettingsPath = path.join(__dirname, '../data/account-credentials.publishSettings');
-      var pemPath = path.join(__dirname, '../../Account.pem');
+      var pemPath = path.join(__dirname, '../../db1ab6f0-4769-4b27-930e-01e2ef9c123c.pem');
 
       suite.execute('account cert export --publishsettings %s --subscription %s',
         publishSettingsPath,
