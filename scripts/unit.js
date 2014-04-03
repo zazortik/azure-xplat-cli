@@ -50,7 +50,7 @@ if (fs.existsSync(testList)) {
   root = true;
 }
 
-var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
+var defaultSubscription = '2c224e7e-3ef5-431d-a57b-e71f4662e3a6';
 
 // Fake certificate
 var defaultCertificate = '-----BEGIN CERTIFICATE-----' +
@@ -105,8 +105,8 @@ var defaultGithubUsername = 'azuresdkrec';
 var defaultGithubPassword = 'fakepassword';
 var defaultGithubRepository = 'azuresdkrec/azuresdk-repo';
 var defaultGitUsername = 'mynewusr';
-var defaultArmSubscription = 'c5f47aa3-5fd0-4410-a734-064e77d5dd94';
-var defaultArmStorageAccount = 'xptests87';
+var defaultArmSubscription = defaultSubscription;
+var defaultArmStorageAccount = 'xplattests';
 
 if (!process.env.ARM_TEST_BLOB_NAME) {
   process.env.ARM_TEST_BLOB_NAME = 'blob';
