@@ -80,7 +80,7 @@ describe('cli', function () {
             var site = JSON.parse(result.text);
 
             site.diagnosticsSettings.AzureDriveEnabled.should.equal(true);
-            site.diagnosticsSettings.AzureDriveTraceLevel.should.equal('error');
+            site.diagnosticsSettings.AzureDriveTraceLevel.should.equal('Error');
 
             site.config.requestTracingEnabled.should.equal(true);
             site.config.httpLoggingEnabled.should.equal(true);

@@ -1,0 +1,6 @@
+commands/arm/group/groupUtils-tests.js
+commands/arm/group/arm.group-tests.js
+commands/arm/group/arm.group-template-tests.js
+commands/arm/group/arm.group.deployment-tests.js
+commands/arm/resource/arm.resource-tests.js
+commands/arm/location/arm.location-tests.js

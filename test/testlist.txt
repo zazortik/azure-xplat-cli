@@ -1,6 +1,5 @@
 commands/cli.site.cert-tests.js
 cli-tests.js
-commands/core/subscriptionclient-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
@@ -30,7 +29,11 @@ commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
 util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
-hdinsight/unit-cli-setup.js
+util/set-tests.js
+util/authentication/adalAuth-tests.js
+util/profile/profile-tests.js
+util/profile/publishSettings-tests.js
+util/profile/environment-addaccount-tests.js
 hdinsight/unit-cli-setup.js
 hdinsight/unit-list-command.js
 hdinsight/unit-show-command.js

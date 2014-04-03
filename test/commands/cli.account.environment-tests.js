@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 
@@ -39,11 +39,11 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
 
           var environment = JSON.parse(result.text);
-          environment['publishingProfile'].should.equal('http://url1.com');
-          environment['portal'].should.equal('http://url2.com');
-          environment['serviceEndpoint'].should.equal('http://url3.com');
+          environment['publishingProfileUrl'].should.equal('http://url1.com');
+          environment['portalUrl'].should.equal('http://url2.com');
+          environment['managementEndpointUrl'].should.equal('http://url3.com');
           environment['storageEndpoint'].should.equal('http://url4.com');
-          environment['sqlDatabaseEndpoint'].should.equal('http://url5.com');
+          environment['sqlManagementEndpointUrl'].should.equal('http://url5.com');
 
           done();
         });
@@ -96,7 +96,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
 
           var properties = JSON.parse(result.text);
-          properties.publishingProfile.should.equal('http://test.com');
+          properties.publishingProfileUrl.should.equal('http://test.com');
 
           done();
         });
