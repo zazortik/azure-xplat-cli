@@ -22,11 +22,14 @@ This project provides a cross-platform command line interface for developers and
     * Download site log files and get real time log streaming
     * Manage Deployments
     * Configure GitHub integration
+    * Create, manage and swap slots
+    * Create and manage WebJobs
 * Virtual machines
     * Create and manage Windows and Linux Virtual machines
     * Create and manage VM endpoints
     * Create and manage Virtual Machine Images
     * Create and manage certificates
+    * CloudInit for Ubuntu VM
 * Network
     * Import and export network configuration
     * Create and manage virtual network
