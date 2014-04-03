@@ -1,0 +1,23 @@
+{
+  "siteName": {
+    "value": "xDeploymentTestSite1"
+  },
+  "hostingPlanName": {
+    "value": "xDeploymentTestHost1"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "Shared"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  }
+}

@@ -2,6 +2,8 @@
 // Windows Azure Deployment Tool
 // Copyright (C) 2012 Microsoft Corporation
 
+process.env.PRECOMPILE_STREAMLINE_FILES = 1
+
 var AzureCli = require('/usr/local/azure/lib/cli');
 
 var cli = new AzureCli();

@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.5",
+  "version": "0.8.0",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -35,7 +35,8 @@
     }
   ],
   "dependencies": {
-    "azure" : "0.8.1",
+    "azure-common": "0.9.1",
+    "azure": "0.9.1",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "underscore": "1.4.x",
@@ -50,7 +51,12 @@
     "easy-table": "0.0.1",
     "github": "0.1.6",
     "omelette": "0.1.0",
-    "kuduscript": "0.1.7"
+    "kuduscript": "0.1.10",
+    "validator": "~3.1.0",
+    "request": "2.27.0",
+    "adal-node": "~0.1.5",
+    "through": "2.3.4",
+    "wordwrap": "0.0.2"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -59,6 +65,7 @@
     "should": "*",
     "nock": "0.16",
     "winston-memory": "*",
+    "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
@@ -73,8 +80,9 @@
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
-    "jshint": "jshint lib --jslint-reporter --extra-ext '._js'",
-    "preci": "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
+    "unit-arm": "node scripts/unit.js testlistarm.txt",
+    "jshint": "jshint lib --jslint-reporter --extra-ext ._js",
+    "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",
     "preacceptance": "node scripts/cuke-environment.js setup",
     "acceptance": "node node_modules/cucumber/bin/cucumber.js",

@@ -34,6 +34,10 @@ var CliStub = function() {
     this.optionCount++;
     return this;
   };
+  this.mode = function (mode) {
+    this._mode = mode;
+    return this;
+  };
   this.getLocaleString = function (string) {
     return string;
   },
