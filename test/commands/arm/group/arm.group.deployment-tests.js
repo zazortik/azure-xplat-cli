@@ -178,7 +178,7 @@ describe('arm', function () {
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-        parameters = JSON.stringify(JSON.parse(parameters).properties.parameters);
+        parameters = JSON.stringify(JSON.parse(parameters));
 
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -205,9 +205,6 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
-
-        parameters = JSON.parse(parameters).properties.parameters;
-        parameters = JSON.stringify(parameters);
 
         suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);

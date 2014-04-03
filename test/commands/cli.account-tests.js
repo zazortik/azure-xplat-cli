@@ -48,16 +48,58 @@ describe('cli', function () {
     });
 
     describe('import', function() {
+      var sandbox;
+      var profileData;
+      var clearAzureDir;
+
+      before(function () {
+        sandbox = sinon.sandbox.create();
+
+        profileData = {
+          environments: [],
+          subscriptions: []
+        };
+
+        CLITest.wrap(sandbox, profile, 'load', function (originalLoad) {
+          return function (fileNameOrData) {
+            if (!fileNameOrData) {
+              return originalLoad(profileData);
+            } else {
+              return originalLoad(fileNameOrData);
+            }
+          }
+        });
+
+        CLITest.wrap(sandbox, profile.Profile.prototype, 'save', function (originalSave) {
+          return function (file) {
+            if (!file) {
+              profileData = this._getSaveData();
+            } else {
+              return originalSave(file);
+            }
+          };
+        });
+
+        clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
+      });
+
+      after(function () {
+        sandbox.restore();
+      });
+
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
           result.exitStatus.should.equal(0);
+          profileData.subscriptions.length.should.equal(1);
           done();
         });
       });
 
-      it('should work accounts', function (done) {
+      it('should clear accounts', function (done) {
         suite.execute('account clear --quiet', function (result) {
           result.exitStatus.should.equal(0);
+          profileData.subscriptions.should.have.length(0);
+          clearAzureDir.callCount.should.equal(1);
           done();
         });
       });

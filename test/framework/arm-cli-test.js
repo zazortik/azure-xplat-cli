@@ -161,11 +161,11 @@ function createMockedSubscriptionFile () {
     subscriptions: [
       {
         id: process.env.AZURE_ARM_TEST_SUBSCRIPTIONID,
-        name: "adminDogfood922",
-        "username": "admin@aad126.ccsctp.net",
+        name: "Node CLI Test",
+        "username": "testdummy@example.com",
         "accessToken": {
             "authConfig": {
-                "authorityUrl": "https://login.windows-ppe.net",
+                "authorityUrl": "https://login.windows.net",
                 "tenantId": "common",
                 "resourceId": "https://management.core.windows.net/",
                 "clientId": "04b07795-8ddb-461a-bbee-02f9e1bf7b46"
@@ -175,7 +175,7 @@ function createMockedSubscriptionFile () {
             "expiresAt": new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
         },
         "isDefault": false,
-        "environmentName": "dogfood",
+        "environmentName": "AzureCloud",
         "registeredProviders": [
             "visualstudio.account",
             "website",
@@ -184,13 +184,7 @@ function createMockedSubscriptionFile () {
         "registeredResourceNamespaces": [
             "microsoft.insights",
             "successbricks.cleardb"
-        ],
-        "managementEndpointUrl": "https://management-preview.core.windows-int.net",
-        "resourceManagerEndpointUrl": "https://api-dogfood.resources.windows-int.net",
-        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-        "hostNameSuffix": "azurewebsites.net",
-        "activeDirectoryEndpointUrl": "https://login.windows-ppe.net",
-        "galleryEndpointUrl": "https://df.gallery.azure-test.net"
+        ]
       }
     ],
   };
