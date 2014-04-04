@@ -1,6 +1,6 @@
 # Windows Azure Xplat-CLI for Windows, Mac and Linux
 
-[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
 
 This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Windows Azure applications.
 
