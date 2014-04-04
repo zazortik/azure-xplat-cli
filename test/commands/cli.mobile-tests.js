@@ -47,8 +47,8 @@
 
 */
 
-var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest5c65dc65-bbd1-4393-a0ee-e866158c9309';
+var nockedSubscriptionId = '2c224e7e-3ef5-431d-a57b-e71f4662e3a6';
+var nockedServiceName = 'clitest165a21dd-ba6f-4329-b5ca-9159f886f63f';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -147,7 +147,7 @@ describe('cli', function () {
               environments: [],
               subscriptions: [
                 {
-                  id: process.env.AZURE_SUBSCRIPTION_ID,
+                  id: nockedSubscriptionId,
                   name: 'testAccount',
                   managementCertificate: {
                     cert: process.env.AZURE_CERTIFICATE,
