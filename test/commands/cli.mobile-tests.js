@@ -1166,7 +1166,6 @@ describe('cli', function () {
       executeCmd(cmd, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.table.metrics.recordCount.should.equal(5);
         Array.isArray(response.columns).should.be.ok;
         response.columns.length.should.equal(8);
         [ { name: 'id', indexed: true },
