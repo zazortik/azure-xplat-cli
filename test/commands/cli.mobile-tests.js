@@ -153,7 +153,8 @@ describe('cli', function () {
                     cert: process.env.AZURE_CERTIFICATE,
                     key: process.env.AZURE_CERTIFICATE_KEY
                   },
-                  environmentName: 'AzureCloud'
+                  environmentName: 'AzureCloud',
+                  registeredProviders: ['sqlserver', 'website', 'Mobileservice']
                 }
               ]
             });
