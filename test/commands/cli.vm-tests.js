@@ -638,26 +638,6 @@ describe('cli', function () {
       });
     });
 
-    // create vm from a community image
-    it('Should create from community image', function (done) {
-      var vmComName = suite.generateId(vmPrefix, vmNames);
-
-      // Create a VM using community image (-o option)
-      suite.execute('vm create %s %s communityUser PassW0rd$ -o --json --ssh --location %s',
-        vmComName, communityImageId, location,
-        function (result) {
-          result.exitStatus.should.equal(0);
-          suite.execute('vm show %s --json', vmComName, function (result) {
-            var vmComObj = JSON.parse(result.text);
-            createdDisks.push(vmComObj.OSDisk.DiskName);
-            vmToUse.Name = vmComName;
-            vmToUse.Created = true;
-            vmToUse.Delete = true;
-            done();
-          });
-        });
-    });
-
     // Create VM with custom data
     it('Create vm with custom data', function (done) {
       var customVmName = vmName + 'customdata';
@@ -693,6 +673,26 @@ describe('cli', function () {
             if (err)
               throw err;
             return done();
+          });
+        });
+    });
+
+    // create vm from a community image
+    it('Should create from community image', function (done) {
+      var vmComName = suite.generateId(vmPrefix, vmNames);
+
+      // Create a VM using community image (-o option)
+      suite.execute('vm create %s %s communityUser PassW0rd$ -o --json --ssh --location %s',
+        vmComName, communityImageId, location,
+        function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('vm show %s --json', vmComName, function (result) {
+            var vmComObj = JSON.parse(result.text);
+            createdDisks.push(vmComObj.OSDisk.DiskName);
+            vmToUse.Name = vmComName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
           });
         });
     });
