@@ -1,6 +1,9 @@
+2014.04.10 Version 0.8.2
+* Hotfix to correct issue with azure mobile create command
+
 2014.04.03 Version 0.8.0
 * Azure Resource Manager commands (preview)
-  * "azure config" mode to switch the PowerShell module between service management and resource manager.
+  * "azure config" mode to switch mode between service management and resource manager.
   * Resource groups
     * azure group create/list/show/delete
     * azure group log show
