@@ -32,7 +32,7 @@ var createdResources = [];
 describe('arm', function () {
   describe('resource', function () {
     var suite;
-    var testApiVersion = '2013-03-01';
+    var testApiVersion = '2014-04-01';
 
     before(function (done) {
       suite = new CLITest(testprefix);
@@ -52,7 +52,7 @@ describe('arm', function () {
     });
 
     describe('create', function () {
-      it('should work', function (done) {
+      it('should work without switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
@@ -71,6 +71,60 @@ describe('arm', function () {
 
               suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
+              });
+            });
+          });
+        });
+      });
+      
+      //once the resource delete for sql server works, will verify this test
+      it('should work with switches', null, function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var parentResourceName = suite.generateId('xTestGrpParentRes', createdResources, suite.isMocked);
+        var childResourceName = suite.generateId('xTestGrpChildRes', createdResources, suite.isMocked);
+        var adminUsername = 'xtestgrpuser';
+        var adminPassword = 'Pa$$word1234';
+        var parentRsrc = 'servers/' + parentResourceName;
+        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          //creates the parent resource - sql server
+          suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', testResourceLocation, '2.0', '{"administratorLogin": "' + adminUsername + '", "administratorLoginPassword": "' + adminPassword + '"}', function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group show %s --json', groupName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+
+              var group = JSON.parse(showResult.text);
+              group.resources.some(function (res) {
+                return res.name === parentResourceName;
+              }).should.be.true;
+
+              //creates the child resource - sql database
+              suite.execute('resource create -g %s -n %s -r %s -l %s -o %s --parent %s -p %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', testResourceLocation, '2.0', parentRsrc, '{"maxSizeBytes": "5368709120", "edition" : "Business", "collation": "SQL_1xcompat_CP850_CI_AS"}', function (result) {
+                result.exitStatus.should.equal(0);
+
+                suite.execute('group show %s --json', groupName, function (showResult) {
+                  showResult.exitStatus.should.equal(0);
+
+                  var group = JSON.parse(showResult.text);
+                  group.resources.some(function (res) {
+                    return res.name === childResourceName;
+                  }).should.be.true;
+                  //delete the child resource - sql database
+                  suite.execute('resource delete -g %s -n %s -r %s -o %s --parent %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', '2.0', parentRsrc, function (deleteResult) {
+                    deleteResult.exitStatus.should.equal(0);
+                    //delete the parent resource - sql server
+                    suite.execute('resource delete %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', '2.0', function (deleteResult) {
+                      deleteResult.exitStatus.should.equal(0);
+                      //delete the group
+                      suite.execute('group delete %s --quiet --json', groupName, function (deleteResult) {
+                        deleteResult.exitStatus.should.equal(0);
+                        done();
+                      });
+                    });
+                  });
+                });
               });
             });
           });
@@ -152,8 +206,7 @@ describe('arm', function () {
         });
       });
 
-      // Disabling - group filters no longer work on the server
-      it('should work with group filters', null, function (done) {
+      it('should work with group name and resource type filters', function (done) {
         var groupName1 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName1 = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         var groupName2 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
@@ -171,7 +224,7 @@ describe('arm', function () {
               suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName2, resourceName2, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                 result.exitStatus.should.equal(0);
 
-                suite.execute('resource list -g %s --json', groupName1, function (listResult) {
+                suite.execute('resource list -g %s -r %s --json', groupName1, 'Microsoft.Web/sites', function (listResult) {
                   listResult.exitStatus.should.equal(0);
 
                   var results = JSON.parse(listResult.text);
@@ -245,26 +298,27 @@ describe('arm', function () {
     });
 
     describe('set', function () {
-      // Disabling until rp returns the values that were set, right now
-      // it's returning null.
-      it('should work to overwrite existing resource', null, function(done) {
+      it('should set the appsettings of a website resource', function(done) {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
+        var parentRsrc = 'sites/' + resourceName;
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1", "siteLocation" : "' + testResourceLocation + '"}', function (result) {
             result.exitStatus.should.equal(0);
 
-            //Make a change like set the 'SiteMode' To 'Free'
-            suite.execute('resource set %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '","SiteMode": "Free", "ComputeMode": "Shared" }', function (setResult) {
+            //Make a change to appsettings property of web config
+            suite.execute('resource set -g %s -n %s -r %s --parent %s -o %s -p %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc , testApiVersion, '{"appSettings": [{"name": "testname1", "value": "testvalue1"}]}', function (setResult) {
               setResult.exitStatus.should.equal(0);
 
-              suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
-
-                //Serach for "siteMode":"Free" to make sure Set did work
-                showResult.text.indexOf('"siteMode": "Free",').should.be.above(-1);
+                
+                //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
+                var resource = JSON.parse(showResult.text);
+                resource.properties.appSettings[0].name.should.be.equal('testname1');
+                resource.properties.appSettings[0].value.should.be.equal('testvalue1');
 
                 suite.execute('group delete %s --quiet --json', groupName, function () {
                   done();

@@ -160,6 +160,21 @@ describe('arm', function () {
           });
         });
 
+        it('should download template file using name of template and overwrite the exisiting file', function (done) {
+          suite.execute('group template download %s --json', templateName, function (result) {
+            result.exitStatus.should.equal(0);
+            utils.pathExistsSync(downloadFileName).should.be.true;
+
+            suite.execute('group template download %s -q --json', templateName, function (result) {
+              result.exitStatus.should.equal(0);
+              utils.pathExistsSync(downloadFileName).should.be.true;
+
+              fs.unlinkSync(downloadFileName);
+              done();
+            });
+          });
+        });
+
         it('should create directory to download to and download file there', function (done) {
           suite.execute('group template download %s -f %s --json', templateName, dirDownloadFileName, function (result) {
             result.exitStatus.should.equal(0);
