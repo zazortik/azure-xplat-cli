@@ -114,17 +114,17 @@ if (!process.env.ARM_TEST_BLOB_NAME) {
 
 if (!process.env.NOCK_OFF) {
   if (!process.env.AZURE_NOCK_RECORD) {
-    if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
-      process.env.AZURE_SUBSCRIPTION_ID = defaultSubscription;
-    }
+    // if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+    //   process.env.AZURE_SUBSCRIPTION_ID = defaultSubscription;
+    // }
 
-    if (process.env.AZURE_CERTIFICATE !== defaultCertificate) {
-      process.env.AZURE_CERTIFICATE = defaultCertificate;
-    }
+    // if (process.env.AZURE_CERTIFICATE !== defaultCertificate) {
+    //   process.env.AZURE_CERTIFICATE = defaultCertificate;
+    // }
 
-    if (process.env.AZURE_CERTIFICATE_KEY !== defaultCertificateKey) {
-      process.env.AZURE_CERTIFICATE_KEY = defaultCertificateKey;
-    }
+    // if (process.env.AZURE_CERTIFICATE_KEY !== defaultCertificateKey) {
+    //   process.env.AZURE_CERTIFICATE_KEY = defaultCertificateKey;
+    // }
 
     if (process.env.AZURE_COMMUNITY_IMAGE_ID !== defaultCommunityImageId) {
       process.env.AZURE_COMMUNITY_IMAGE_ID = defaultCommunityImageId;
@@ -144,6 +144,7 @@ if (!process.env.NOCK_OFF) {
     process.env.AZURE_ARM_TEST_STORAGEACCOUNT = defaultArmStorageAccount;
 
   } else if (process.env.AZURE_NOCK_RECORD) {
+    /*
     // If in record mode, and environment variables are set, make sure they are the expected one for recording
     // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
     // after merge
@@ -194,6 +195,7 @@ if (!process.env.NOCK_OFF) {
         + defaultArmStorageAccount
         + ' while recording');
     }
+    */
   }
 } else {
   if (mcOption) {
