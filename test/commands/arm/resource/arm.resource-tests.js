@@ -23,8 +23,9 @@ var fs = require('fs');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-resource-tests';
 
-var testGroupLocation = 'South Central US';
-var testResourceLocation = 'West US';
+var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
+var testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];;
 
 var createdGroups = [];
 var createdResources = [];

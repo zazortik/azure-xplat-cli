@@ -26,7 +26,8 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-deployment-tests';
   var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
-var testLocation = 'South Central US';
+var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
 
 var createdGroups = [];
 var createdDeployments = [];
@@ -343,7 +344,6 @@ describe('arm', function () {
         var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"sku\":{ \"value\":\"Free\" }, \"workerSize\":{ \"value\":\"0\" }}";
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
