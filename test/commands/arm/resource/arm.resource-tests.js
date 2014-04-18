@@ -25,7 +25,7 @@ var testprefix = 'arm-cli-resource-tests';
 
 var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
 var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
-var testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];;
+var testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];
 
 var createdGroups = [];
 var createdResources = [];
