@@ -24,10 +24,10 @@ var fs = require('fs')
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-group-tests';
 
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
 var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
+var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
 
+var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var createdGroups = [];
 var createdDeployments = [];
 

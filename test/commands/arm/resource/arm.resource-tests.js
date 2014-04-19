@@ -23,8 +23,7 @@ var fs = require('fs');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-resource-tests';
 
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
+var testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
 var testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];
 
 var createdGroups = [];
@@ -159,6 +158,7 @@ describe('arm', function () {
       it('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
         suite.execute('group create %s --location %s --quiet --json', groupName, testResourceLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -190,6 +190,7 @@ describe('arm', function () {
       it('should work without filters', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -252,6 +253,7 @@ describe('arm', function () {
       it('should work with positional', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -276,6 +278,7 @@ describe('arm', function () {
       it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -303,6 +306,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
         var parentRsrc = 'sites/' + resourceName;
+        
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 

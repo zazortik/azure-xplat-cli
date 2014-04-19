@@ -23,12 +23,13 @@ var path = require('path');
 var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
 
-var testprefix = 'arm-cli-deployment-tests';
-  var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
+var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-var normalizedTestLocation = process.env['AZURE_ARM_NORMALIZED_TEST_LOCATION'];
 
+var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+var testprefix = 'arm-cli-deployment-tests';
+var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 var createdGroups = [];
 var createdDeployments = [];
 var cleanedUpGroups = 0;
@@ -281,7 +282,6 @@ describe('arm', function () {
         var parameters = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 
         suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -308,7 +308,6 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
         var commandToCreateDeployment = util.format('group deployment create -f %s -y %s -g %s -n %s -e %s -s %s --json',
             templateFile, galleryTemplate, groupName, deploymentName, parameterFile, testStorageAccount);
 
@@ -344,7 +343,6 @@ describe('arm', function () {
         var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"sku\":{ \"value\":\"Free\" }, \"workerSize\":{ \"value\":\"0\" }}";
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
