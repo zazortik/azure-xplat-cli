@@ -1,6 +1,30 @@
+2014.04.10 Version 0.8.2
+* Hotfix to correct issue with azure mobile create command
+
+2014.04.03 Version 0.8.0
+* Azure Resource Manager commands (preview)
+  * "azure config" mode to switch mode between service management and resource manager.
+  * Resource groups
+    * azure group create/list/show/delete
+    * azure group log show
+  * Templates
+    * azure group template list/show/download/validate
+  * Deployments
+    * azure group deployment create/list/show
+  * Resources
+    * azure resource create/set/list/show/delete
+* Azure Active Directory authentication with Organizational ID
+  * Log in directly from the command line using Organizational ID (create one for free in your subscription)
+    * azure login/logout
+  * Doesn't work with the following commands for now
+    * azure vm
+    * azure network
+    * azure mobile
+
 2014.01.20 - version 0.7.5
 * Added web site slots support
 * Added web jobs support
+* CloudInit support for Ubuntu VM via "azure vm create -d"
 * Multiple bugfixes
 
 2013.11.13 - version 0.7.4

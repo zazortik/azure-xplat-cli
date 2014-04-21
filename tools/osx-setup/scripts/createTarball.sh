@@ -52,9 +52,125 @@ cp scripts/azure /tmp/azureInstallerTemporary/
 cp scripts/azure-uninstall /tmp/azureInstallerTemporary/
 
 # Copy the enlistment
-cp -R ../../ /tmp/azureInstallerTemporary/
+cp -R -L ../../ /tmp/azureInstallerTemporary/
 rm -rf /tmp/azureInstallerTemporary/.git #lazy
 rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
+
+# Remove extraneous junk from tarball
+pushd /tmp/azureInstallerTemporary/node_modules/azure
+rm -rf .git
+popd
+
+pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
+
+packages=( azure-gallery
+	azure-mgmt
+	azure-mgmt-compute
+	azure-mgmt-resource
+	azure-mgmt-scheduler
+	azure-mgmt-sb
+	azure-mgmt-sql
+	azure-mgmt-storage
+	azure-mgmt-store
+	azure-mgmt-subscription
+	azure-mgmt-vnet
+	azure-mgmt-website
+	azure-scheduler	
+)
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE/node_modules
+done
+popd
+
+pushd /tmp/azureInstallerTemporary/node_modules/azure
+for PACKAGE in packages scripts test tasks examples jsdoc
+do
+	rm -rf $PACKAGE
+done
+
+cd lib
+rm -rf common
+
+cd services
+packages=( gallery
+	management
+	computeManagement
+	resourceManagement
+	serviceBusManagement
+	schedulerManagement
+	sqlManagement
+	storageManagement
+	subscriptionManagement
+	networkManagement
+	webSiteManagement
+	scheduler
+)
+
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+pushd /tmp/azureInstallerTemporary/node_modules
+for PACKAGE in azure-gallery azure-mgmt-resource
+do
+	rm -rf $PACKAGE/node_modules/azure-common
+done
+popd
+
+# Remove dev dependencies from azure module
+pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
+packages=( mocha jshint sinon should nock grunt grunt-jsdoc grunt-devserver )
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+# Remove dev dependencies from xplat module
+pushd /tmp/azureInstallerTemporary/node_modules
+packages=( mocha jshint sinon should nock winston-memory event-stream cucumber )
+for PACKAGE in ${packages[@]}
+do
+	rm -rf $PACKAGE
+done
+popd
+
+# Remove dev-time only code from xplat module
+pushd /tmp/azureInstallerTemporary
+dirstoremove=( features scripts test tools )
+for DIR in ${dirstoremove[@]}
+do
+	rm -rf $DIR
+done
+popd
+
+# Remove unneeded files
+pushd /tmp/azureInstallerTemporary
+rm -f azure_error
+rm -f azure.azure_error
+rm -f npm-debug.log
+rm -f checkstyle-result.xml
+rm -f test-result.xml
+rm -f .travis.yml
+rm -f .jshintrc
+rm -f .gitattributes
+rm -f .gitignore
+rm -f ChangeLog.txt
+popd
+
+# compile streamline files
+pushd /tmp/azureInstallerTemporary
+node node_modules/streamline/bin/_node --verbose -c lib
+node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
+popd
+
+# Copy licensing files
+cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
+cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
+rm /tmp/azureInstallerTemporary/LICENSE.txt
 
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/

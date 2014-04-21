@@ -6,7 +6,7 @@
 # This script is only used at build time, it is not part of the package.
 # 
 
-CURRENT_NODE_DISTRIBUTION_VERSION=v0.8.22
+CURRENT_NODE_DISTRIBUTION_VERSION=v0.10.23
 
 # Check for Apple's PackageMaker
 # ------------------------------
@@ -54,9 +54,18 @@ scripts/createTarball.sh
 # Node.js binary
 # --------------
 
+echo Downloading node binary from nodejs.org
+download_url=http://nodejs.org/dist/${CURRENT_NODE_DISTRIBUTION_VERSION}/node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x86.tar.gz
+path_to_node=node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x86/bin/node
+
+rm -f out/node.tar.gz
+rm -rf out/${path_to_node}
+curl -o out/node.tar.gz ${download_url}
+tar xvzf out/node.tar.gz -C out/ ${path_to_node}
+cp out/${path_to_node} out/
+
 # Copy the OS node into our local out folder for packaging
-cp /usr/local/bin/node out/
-echo Copied your local Node.js binary version $NODE_VERSION into the output folder
+echo Copied Node.js binary version $CURRENT_NODE_DISTRIBUTION_VERSION into the output folder
 
 # OS X Package creation
 # ---------------------

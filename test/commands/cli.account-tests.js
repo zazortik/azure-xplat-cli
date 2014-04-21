@@ -1,24 +1,25 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
+var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 
-var keyFiles = require('../../lib/util/keyFiles');
+var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
@@ -37,8 +38,8 @@ describe('cli', function () {
 
             environments.AzureCloud.should.not.equal(null);
             environments.AzureChinaCloud.should.not.equal(null);
-            environments.AzureCloud.should.not.equal(null);
-            environments.AzureChinaCloud.publishingProfile.should.not.equal(null);
+            environments.AzureCloud.publishingProfileUrl.should.not.equal(null);
+            environments.AzureChinaCloud.publishingProfileUrl.should.not.equal(null);
 
             done();
           });
@@ -47,113 +48,141 @@ describe('cli', function () {
     });
 
     describe('import', function() {
-      beforeEach(function (done) {
-        var currentCertificate = process.env.AZURE_CERTIFICATE;
-        var currentCertificateKey = process.env.AZURE_CERTIFICATE_KEY;
+      var sandbox;
+      var profileData;
+      var clearAzureDir;
 
-        var realRead = keyFiles.readFromFile;
+      before(function () {
+        sandbox = sinon.sandbox.create();
 
-        var filesExist = [];
+        profileData = {
+          environments: [],
+          subscriptions: []
+        };
 
-        sinon.stub(fs, 'mkdirSync', function () { });
-
-        sinon.stub(fs, 'writeFileSync', function (filename, data) {
-          filesExist.push({ name: filename, data: data });
-        });
-
-        sinon.stub(fs, 'writeFile', function (filename, data, callback) { callback(); });
-
-        var originalReadFileSync = fs.readFileSync;
-        sinon.stub(fs, 'readFileSync', function (filename) {
-          if (filename === testFile) {
-            return originalReadFileSync(filename, 'utf8');
-          } else {
-            return filesExist.filter(function (f) {
-              return f.name === filename;
-            })[0].data;
+        CLITest.wrap(sandbox, profile, 'load', function (originalLoad) {
+          return function (fileNameOrData) {
+            if (!fileNameOrData) {
+              return originalLoad(profileData);
+            } else {
+              return originalLoad(fileNameOrData);
+            }
           }
         });
 
-        sinon.stub(utils, 'writeFileSyncMode', function (filename, data) {
-          filesExist.push({ name: filename, data: data });
+        CLITest.wrap(sandbox, profile.Profile.prototype, 'save', function (originalSave) {
+          return function (file) {
+            if (!file) {
+              profileData = this._getSaveData();
+            } else {
+              return originalSave(file);
+            }
+          };
         });
 
-        sinon.stub(utils, 'pathExistsSync', function (filename) {
-          return filesExist.some(function (f) {
-            return f.name === filename;
-          });
-        });
-
-        sinon.stub(keyFiles, 'readFromFile', function (filename) {
-          if (filename === testFile) {
-            var data = realRead(filename);
-            return data;
-          } else {
-            return {
-              cert: currentCertificate,
-              key: currentCertificateKey
-            };
-          }
-        });
-
-        sinon.stub(keyFiles, 'writeToFile', function (filename, data) {
-          currentCertificateKey = data.key;
-          currentCertificate = data.cert;
-        });
-
-        done();
+        clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
       });
 
-      afterEach(function (done) {
-        if (keyFiles.readFromFile.restore) {
-          keyFiles.readFromFile.restore();
-        }
-
-        if (keyFiles.writeToFile.restore) {
-          keyFiles.writeToFile.restore();
-        }
-
-        if (utils.writeFileSyncMode.restore) {
-          utils.writeFileSyncMode.restore();
-        }
-
-        if (utils.pathExistsSync.restore) {
-          utils.pathExistsSync.restore();
-        }
-
-        if (fs.mkdirSync.restore) {
-          fs.mkdirSync.restore();
-        }
-
-        if (fs.writeFileSync.restore) {
-          fs.writeFileSync.restore();
-        }
-
-        if (fs.writeFile.restore) {
-          fs.writeFile.restore();
-        }
-
-        if (fs.readFile.restore) {
-          fs.readFile.restore();
-        }
-
-        if (fs.readFileSync.restore) {
-          fs.readFileSync.restore();
-        }
-
-        done();
+      after(function () {
+        sandbox.restore();
       });
 
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
           result.exitStatus.should.equal(0);
+          profileData.subscriptions.length.should.equal(1);
           done();
         });
       });
 
-      it('should work accounts', function (done) {
-        suite.execute('account clear', function (result) {
+      it('should clear accounts', function (done) {
+        suite.execute('account clear --quiet', function (result) {
           result.exitStatus.should.equal(0);
+          profileData.subscriptions.should.have.length(0);
+          clearAzureDir.callCount.should.equal(1);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('set', function () {
+    var sandbox;
+
+    before(function () {
+      sandbox = sinon.sandbox.create();
+
+      var profileData = {
+        environments: [],
+        subscriptions: [
+          {
+            id: process.env.AZURE_SUBSCRIPTION_ID,
+            name: 'testAccount',
+            isDefault: true,
+            managementCertificate: {
+              cert: process.env.AZURE_CERTIFICATE,
+              key: process.env.AZURE_CERTIFICATE_KEY
+            },
+            environmentName: 'AzureCloud'
+          },
+          {
+            id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
+            name: 'Other',
+            managementCertificate: {
+              cert: process.env.AZURE_CERTIFICATE,
+              key: process.env.AZURE_CERTIFICATE_KEY
+            },
+            environmentName: 'AzureCloud'
+          }
+        ]
+      };
+
+      CLITest.wrap(sandbox, profile, 'load', function (originalLoad) {
+        return function (fileNameOrData) {
+          if (!fileNameOrData) {
+            return originalLoad(profileData);
+          } else {
+            return originalLoad(fileNameOrData);
+          }
+        }
+      });
+
+      CLITest.wrap(sandbox, profile.Profile.prototype, 'save', function (originalSave) {
+        return function (file) {
+          if (!file) {
+            profileData = this._getSaveData();
+          } else {
+            return originalSave(file);
+          }
+        };
+      });
+    });
+
+    after(function () {
+      sandbox.restore();
+    });
+
+    it('should have two subscriptions', function (done) {
+      suite.execute('account list --json', function (result) {
+        result.exitStatus.should.equal(0);
+        subscriptions = JSON.parse(result.text);
+        subscriptions.should.have.length(2);
+        done();
+      });
+    });
+
+    it('should set default', function (done) {
+      suite.execute('account set Other', function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('account list --json', function (result) {
+          result.exitStatus.should.equal(0);
+
+          var subscriptions = JSON.parse(result.text);
+          var subsByName = _.object(subscriptions.map(function (s) { return s.name; }), subscriptions);
+
+          subsByName['testAccount'].isDefault.should.be.false;
+          subsByName['Other'].isDefault.should.be.true;
           done();
         });
       });
