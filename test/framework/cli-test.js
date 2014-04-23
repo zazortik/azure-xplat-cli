@@ -185,21 +185,21 @@ _.extend(CLITest.prototype, {
       this.scopeWritten = true;
       var lineWritten;
       nockHelper.nock.recorder.play().forEach(function (line) {
-        if (line.indexOf('nock') >= 0) {
+        //if (line.indexOf('nock') >= 0) {
           // apply fixups of nock generated mocks
 
           // do not filter on body as they usual have time related stamps
-          line = line.replace(/(\.post\('.*?')[^]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.get\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.put\('.*?')[^]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.delete\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.merge\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.patch\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.post\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.get\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.put\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.delete\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
           scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
             'var result = ' + line + ' return result; }';
           lineWritten = true;
-        }
+        //}
       });
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
