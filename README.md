@@ -1,8 +1,8 @@
-# Windows Azure Xplat-CLI for Windows, Mac and Linux
+# Microsoft Azure Xplat-CLI for Windows, Mac and Linux
 
 [![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-tools-xplat)
 
-This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Windows Azure applications.
+This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.
 
 ## Features
 
@@ -18,7 +18,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage Storage Accounts
     * Create and manage container, blob and ACL
 * Websites
-    * Create and manage Windows Azure websites
+    * Create and manage Microsoft Azure websites
     * Download site log files and get real time log streaming
     * Manage Deployments
     * Configure GitHub integration
@@ -68,7 +68,7 @@ npm install -g azure-cli
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/WindowsAzure/azure-sdk-tools-xplat.git
+git clone https://github.com/Azure/azure-sdk-tools-xplat.git
 cd ./azure-sdk-tools-xplat
 npm install
 ```
@@ -94,14 +94,14 @@ echo 'source ~/azure.completion.sh' >> .bash_profile
 
 In general, following are the steps:
 
-* Get yourself authenticated with Windows Azure. For details, please check out [this article](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/).
   * Option 1: Login with your Organizational account. Azure Active Directory authentication is used in this case. No management certificate is needed. **Note**: Microsoft account is not supported in this approach right now. You can create an Organizational account from the Azure portal for free.
   * Option 2: Download and import a publish settings file which contains a management certificate.
 * Use the commands
 
 The first step can be different for different environment you are targeting. Following are detail instructions for each supported environment.
 
-### Windows Azure
+### Microsoft Azure
 
 If you use both mechanisms on the same subscription, Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
 
@@ -149,9 +149,9 @@ azure config mode arm # resource manager
 
 ## Running tests
 
-The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account.
+The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Microsoft Azure subscription as well as a GitHub account.
 
-Before running tests, you must take a one-time action to configure the CLI with the Windows Azure subscription by running
+Before running tests, you must take a one-time action to configure the CLI with the Microsoft Azure subscription by running
 
 ```bash
 azure account download
@@ -160,9 +160,9 @@ azure account import
 
 Next, provide the following parameters by setting environment variables:
 
-- `AZURE_STORAGE_ACCOUNT` - your Windows Azure Storage Account name
+- `AZURE_STORAGE_ACCOUNT` - your Microsoft Azure Storage Account name
 - `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
-- `AZURE_SERVICEBUS_NAMESPACE` - your Windows Azure Service Bus Namespace
+- `AZURE_SERVICEBUS_NAMESPACE` - your Microsoft Azure Service Bus Namespace
 - `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
 - `AZURE_GITHUB_USERNAME` - GitHub account username
 - `AZURE_GITHUB_PASSWORD` - GitHub account password
@@ -177,11 +177,11 @@ To run the tests, call
 npm test
 ```
 
-from the root of your clone of the repository. Most tests execute against live Windows Azure management APIs, and running them takes considerable time.
+from the root of your clone of the repository. Most tests execute against live Microsoft Azure management APIs, and running them takes considerable time.
 
-Note: by default, the tests targeting the Windows Azure Mobile Services run against a mocked Windows Azure HTTP endpoints. In order to execute these tests against live Windows Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
+Note: by default, the tests targeting the Microsoft Azure Mobile Services run against a mocked Microsoft Azure HTTP endpoints. In order to execute these tests against live Microsoft Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
 
 ## Learn More
-For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
+For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
 
 For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
