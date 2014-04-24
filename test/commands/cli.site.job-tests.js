@@ -86,13 +86,13 @@ describe('cli', function () {
           });
         });
       });
-/*
+
       it('creates a triggered web job for a site', function (done) {
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
           result.exitStatus.should.equal(0);
-          console.log(result.text);
+
           suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
             result.exitStatus.should.equal(0);
 
@@ -114,14 +114,19 @@ describe('cli', function () {
           });
         });
       });
-*/
     });
-/*
+
     describe('site slot', function () {
       var sites = siteTracker();
 
+      beforeEach(function (done) {
+        suite.setupTest(done);
+      });
+
       afterEach(function (done) {
-        sites.cleanupSites(done);
+        sites.cleanupSites(function () {
+          suite.teardownTest(done);
+        });
       });
 
       it('should work', function (done) {
@@ -154,20 +159,23 @@ describe('cli', function () {
 
       beforeEach(function (done) {
         siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
-
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
-          result.exitStatus.should.equal(0);
-
-          suite.execute('site job upload myjob1 continuous %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+        suite.setupTest(function () {
+          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
             result.exitStatus.should.equal(0);
 
-            done();
+            suite.execute('site job upload myjob1 continuous %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+              result.exitStatus.should.equal(0);
+
+              done();
+            });
           });
         });
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(done);
+        sites.cleanupSites(function () {
+          suite.teardownTest(done);
+        });
       });
 
       it('should list a continuous web job for a site', function (done) {
@@ -246,20 +254,23 @@ describe('cli', function () {
       var sites = siteTracker();
       beforeEach(function (done) {
         siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
-
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
-          result.exitStatus.should.equal(0);
-
-          suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+        suite.setupTest(function () {
+          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
             result.exitStatus.should.equal(0);
 
-            done();
+            suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
+              result.exitStatus.should.equal(0);
+
+              done();
+            });
           });
         });
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(done);
+        sites.cleanupSites(function () {
+          suite.teardownTest(done);
+        });
       });
 
       it('should list a triggered web job for a site', function (done) {
@@ -336,7 +347,6 @@ describe('cli', function () {
         });
       });
     });
-*/
   });
 });
 
