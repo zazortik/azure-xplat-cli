@@ -82,4 +82,10 @@ exports.getMockedProfile = function () {
   return newProfile;
 };
 
+exports.setEnvironment = function() {
+<% requiredEnvironment.forEach(function (e) {
+%>  process.env[<%= q(e.name) %>] = <%= e.secure ? 'dummy' : q(process.env[e.name]) %>;
+<% });
+%>}
+
 exports.scopes = [

@@ -30,7 +30,12 @@ var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
 
-function CLITest(testPrefix, forceMocked) {
+function CLITest(testPrefix, env, forceMocked) {
+  if (arguments.length === 2 && !Array.isArray(env)) {
+    forceMocked = env;
+    env = [];
+  }
+
   this.testPrefix = testPrefix;
   this.currentTest = 0;
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
@@ -43,24 +48,70 @@ function CLITest(testPrefix, forceMocked) {
 
   this.isRecording = process.env.AZURE_NOCK_RECORD;
   this.skipSubscription = true;
+
+  // change this in derived classes to switch mode
+  this.commandMode = 'asm';
+
+  // Normalize environment
+  this.requiredEnvironment = env.map(function (env) {
+    if (typeof(env) === 'string') {
+      return { name: env, secure: false };
+    } else {
+      return env;
+    }
+  });
+
+  this.validateEnvironment();
 }
 
 _.extend(CLITest.prototype, {
+  validateEnvironment: function () {
+    if (this.isMocked) {
+      return;
+    }
+
+    var missing = [];
+    this.requiredEnvironment.forEach(function (e) {
+      if (!process.env[e.name] && !e.defaultValue) {
+        missing.push(e.name);
+      }
+    });
+
+    if (missing.length > 0) {
+      throw new Error('This test requires the following environment variables which are not set: ' +
+        missing.join(', '));
+    }
+  },
+
+  setEnvironmentDefaults: function () {
+    this.requiredEnvironment.forEach(function (env) {
+      if (env.defaultValue && !process.env[env.name]) {
+        process.env[env.name] = env.defaultValue;
+      }
+    });
+  },
+
   setupSuite: function (callback) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
 
+      // Force mode regardless of current stored setting
+      var commandMode = this.commandMode;
       CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
         return function () {
           var config = originalReadConfig();
-          config.mode = 'asm';
+          config.mode = commandMode;
           return config;
         };
       });
+    }
 
-      if (this.isRecording) {
+    if (!this.isMocked || this.isRecording) {
+      this.setEnvironmentDefaults();
+    }
+
+    if (this.isRecording) {
         this.writeRecordingHeader();
-      }
     }
 
     // Remove any existing cache files before starting the test
@@ -83,11 +134,7 @@ _.extend(CLITest.prototype, {
         fs.appendFileSync(this.recordingsFile, '];');
       }
 
-      restore(keyFiles.readFromFile);
-      restore(keyFiles.writeToFile);
-      restore(fs.readFileSync);
-      restore(utils.pathExistsSync);
-      restore(profile.load);
+      restore(utils.readConfig);
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
@@ -171,6 +218,10 @@ _.extend(CLITest.prototype, {
       if (nocked.getMockedProfile) {
         profile.current = nocked.getMockedProfile();
       }
+
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
     }
 
     callback();
@@ -212,7 +263,10 @@ _.extend(CLITest.prototype, {
   writeRecordingHeader: function () {
     var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
 
-    fs.writeFileSync(this.recordingsFile, _.template(template, { sub: profile.current.currentSubscription }));
+    fs.writeFileSync(this.recordingsFile, _.template(template, {
+      sub: profile.current.currentSubscription,
+      requiredEnvironment: this.requiredEnvironment
+    }));
   },
 
   /**

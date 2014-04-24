@@ -29,13 +29,21 @@ var testPrefix = 'cli.site.job-tests';
 var createdSitesPrefix = 'utr';
 var createdSites = [];
 
-var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
-var gitUsername = process.env['AZURE_GIT_USERNAME'];
+var requiredEnvironmentVariables = [
+  'AZURE_GIT_USERNAME',
+  {
+    name: 'AZURE_SITE_TEST_LOCATION',
+    defaultValue: 'East US'
+  }
+];
+
+function location() { return process.env.AZURE_SITE_TEST_LOCATION };
+function gitUsername() { return process.env.AZURE_GIT_USERNAME };
 
 describe('cli', function () {
   describe('job', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironmentVariables);
       suite.setupSuite(function () {
         sites = siteTracker();
         done();
@@ -62,7 +70,7 @@ describe('cli', function () {
       it('should not work for wrong extension file', function (done) {
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.rar'), siteName, function (result) {
@@ -76,7 +84,7 @@ describe('cli', function () {
       it('should not work for faulty webjob', function (done) {
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob-faulty.zip'), siteName, function (result) {
@@ -90,7 +98,7 @@ describe('cli', function () {
       it('creates a triggered web job for a site', function (done) {
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
@@ -104,7 +112,7 @@ describe('cli', function () {
       it('creates a triggered web job for a site with switches', function (done) {
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('site job upload --job-name myjob --job-type triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
@@ -133,7 +141,7 @@ describe('cli', function () {
         var slot = 'staging';
         var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
 
-        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+        suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('site scale mode standard %s --json', siteName, function (result) {
@@ -160,7 +168,7 @@ describe('cli', function () {
       beforeEach(function (done) {
         siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
         suite.setupTest(function () {
-          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('site job upload myjob1 continuous %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
@@ -255,7 +263,7 @@ describe('cli', function () {
       beforeEach(function (done) {
         siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
         suite.setupTest(function () {
-          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername, location, function (result) {
+          suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('site job upload myjob triggered %s %s --json', path.join(__dirname, '../data/samplewebjob.zip'), siteName, function (result) {
