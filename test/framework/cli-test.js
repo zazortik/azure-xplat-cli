@@ -158,8 +158,6 @@ _.extend(CLITest.prototype, {
     } else if (this.isMocked) {
       // nock playback
       var nocked = require(this.recordingsFile);
-      console.log('setting up mocks for test', this.currentTest);
-      console.log('there are', nocked.scopes.length, 'nock scopes in the recording');
 
       if (this.currentTest < nocked.scopes.length) {
         nocked.scopes[this.currentTest++].forEach(function (createScopeFunc) {
@@ -185,7 +183,7 @@ _.extend(CLITest.prototype, {
       this.scopeWritten = true;
       var lineWritten;
       nockHelper.nock.recorder.play().forEach(function (line) {
-        //if (line.indexOf('nock') >= 0) {
+        if (line.indexOf('nock') >= 0) {
           // apply fixups of nock generated mocks
 
           // do not filter on body as they usual have time related stamps
@@ -199,7 +197,7 @@ _.extend(CLITest.prototype, {
           scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
             'var result = ' + line + ' return result; }';
           lineWritten = true;
-        //}
+        }
       });
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
