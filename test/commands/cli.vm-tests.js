@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 var should = require('should');
 var sinon = require('sinon');
 var util = require('util');
 var crypto = require('crypto');
 var fs = require('fs');
 var path = require('path');
+var isForceMocked = !process.env.NOCK_OFF;
 
 var utils = require('../../lib/util/utils');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var communityImageId = process.env['AZURE_COMMUNITY_IMAGE_ID'];
-var storageAccountKey = process.env['AZURE_STORAGE_ACCOUNT'] ? process.env['AZURE_STORAGE_ACCOUNT'] : 'YW55IGNhcm5hbCBwbGVhc3VyZQ==';
+var storageAccountKey = process.env['AZURE_STORAGE_ACCESS_KEY'] ? process.env['AZURE_STORAGE_ACCESS_KEY'] : 'YW55IGNhcm5hbCBwbGVhc3VyZQ==';
 var createdDisks = [];
 
 // A common VM used by multiple tests
@@ -57,7 +57,7 @@ describe('cli', function () {
       location;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, true);
+      suite = new CLITest(testPrefix, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -78,7 +78,7 @@ describe('cli', function () {
         (function deleteUsedDisk() {
           if (createdDisks.length > 0) {
             var diskName = createdDisks.pop();
-            suite.execute('vm disk delete -b %s --json', diskName, function () {
+            suite.execute('vm disk delete -b %s --json', diskName, function (result) {
               deleteUsedDisk();
             });
           } else {
@@ -95,7 +95,7 @@ describe('cli', function () {
     afterEach(function (done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
-          suite.execute('vm delete %s -b --json --quiet', vm.Name, function () {
+          suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
             vm.Name = null;
             vm.Created = vm.Delete = false;
             return callback();
@@ -220,11 +220,11 @@ describe('cli', function () {
 
     // Negative Test Case by specifying VM Name Twice
     it('Negavtive test case by specifying Vm Name Twice', function (done) {
-      var vmNegName = 'xplattestvm';
+      var vmNegName = vmName;
       suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
         vmNegName, vmImgName, location, function (result) {
           result.exitStatus.should.equal(1);
-          result.errorText.should.include(' A VM with dns prefix "xplattestvm" already exists');
+          result.errorText.should.include('A VM with dns prefix "xplattestvm" already exists');
           return done();
         });
     });
@@ -247,7 +247,7 @@ describe('cli', function () {
 
     // Attach-New
     it('Attach-New', function (done) {
-      var blobUrl = domainUrl + '/disks/xplattestDiskUpload.vhd';
+      var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
       suite.execute('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl, function (result) {
         result.exitStatus.should.equal(0);
         suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
@@ -395,9 +395,7 @@ describe('cli', function () {
               suite.execute('vm show %s --json', vnetVmName, function (result) {
                 var vmVnet = JSON.parse(result.text);
                 createdDisks.push(vmVnet.OSDisk.DiskName);
-                vmToUse.Name = vnetVmName;
-                vmToUse.Created = true;
-                return done();
+                done();
               });
             });
         });
@@ -419,7 +417,7 @@ describe('cli', function () {
               return ep.Name.toLowerCase() === vmEndpointName.toLowerCase();
             });
             epExists.should.be.ok;
-            return done();
+            done();
           });
         });
     });
@@ -533,6 +531,8 @@ describe('cli', function () {
             endPointListLbVmSetAndProb[0].LoadBalancerProbe.Port.should.be.equal(endPoints.PPLPLBSetAndProb.ProbPort);
 
             // Set Delete to true if this is the last test using shared vm
+            vmToUse.Name = vnetVmName;
+            vmToUse.Created = true;
             vmToUse.Delete = true;
             done();
           });
@@ -596,48 +596,6 @@ describe('cli', function () {
       });
     });
 
-    // Delete a Vnet
-    it('Delete Vnet', function (done) {
-      suite.execute('network vnet delete %s --quiet --json', vnetName, function (result) {
-        result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-    // Delete a AffinityGroup
-    it('Delete Affinity Group', function (done) {
-      suite.execute('account affinity-group delete %s --quiet --json', 'xplattestaffingrp', function (result) {
-        result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-    // Image delete
-    it('Image Delete', function (done) {
-      suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
-        result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-    // Delete Disk
-    it('Delete disk', function (done) {
-      suite.execute('vm disk delete -b %s --json', diskName, function (result) {
-        result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-    // upload disk
-    it('Should verify upload disk', function (done) {
-      var sourcePath = process.env['BLOB_SOURCE_PATH'] || diskSourcePath;
-      var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/disknewupload.vhd';
-      suite.execute('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey, function (result) {
-        result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
     // Create VM with custom data
     it('Create vm with custom data', function (done) {
       var customVmName = vmName + 'customdata';
@@ -677,9 +635,53 @@ describe('cli', function () {
         });
     });
 
+    // Delete a Vnet
+    it('Delete Vnet', function (done) {
+      suite.execute('network vnet delete %s --quiet --json', vnetName, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    // Delete a AffinityGroup
+    it('Delete Affinity Group', function (done) {
+      suite.execute('account affinity-group delete %s --quiet --json', 'xplattestaffingrp', function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    // Image delete
+    it('Image Delete', function (done) {
+      suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    // Delete Disk
+    it('Delete disk', function (done) {
+      suite.execute('vm disk delete -b %s --json', diskName, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    // upload disk
+    it('Should verify upload disk', function (done) {
+      var sourcePath = suite.isMocked ? diskSourcePath : (process.env['BLOB_SOURCE_PATH'] || diskSourcePath);
+      var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/disknewupload.vhd';
+      suite.execute('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
     // create vm from a community image
     it('Should create from community image', function (done) {
       var vmComName = suite.generateId(vmPrefix, vmNames);
+      if (suite.isMocked)
+        communityImageId = 'vmdepot-1-1-1';
 
       // Create a VM using community image (-o option)
       suite.execute('vm create %s %s communityUser PassW0rd$ -o --json --ssh --location %s',
@@ -705,7 +707,7 @@ describe('cli', function () {
         suite.execute('vm image list --json', function (result) {
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
-            if (image.Category.toLowerCase() === category.toLowerCase()) {
+            if (image.OS.toLowerCase() === category.toLowerCase() && image.Category.toLowerCase() === 'public') {
               getImageName.imageName = image.Name;
             }
           });
@@ -721,9 +723,9 @@ describe('cli', function () {
       if (vmToUse.Created) {
         return callBack(vmToUse);
       } else {
-        getImageName('Microsoft Corporation', function (imageName) {
+        getImageName('Windows', function (imageName) {
           var name = suite.generateId(vmPrefix, vmNames);
-          suite.execute('vm create %s %s azureuser PassW0rd$ --ssh --json --location %s',
+          suite.execute('vm create %s %s azureuser PassW0rd$ --json --location %s',
             name,
             imageName,
             location,

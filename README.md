@@ -169,6 +169,7 @@ Next, provide the following parameters by setting environment variables:
 - `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
 - `SSHCERT` - path of SSH Certificate (eg. `path\cert.pem`)
 - `BLOB_SOURCE_PATH` - source url path for disk upload (`container\subcontainer\disk.vhd`)
+- `AZURE_COMMUNITY_IMAGE_ID` - Community image id
 
 
 To run the tests, call
