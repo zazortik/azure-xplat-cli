@@ -1,6 +1,6 @@
 #!/bin/sh
-# Windows Azure OS X Package: Create packages script
-# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+# Microsoft Azure OS X Package: Create packages script
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
 #
 # This builds the package as well as prepares the tarball file, etc.
 # This script is only used at build time, it is not part of the package.
@@ -14,8 +14,10 @@ if [ ! -f /Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker ]
 	echo PackageMaker needs to be installed in the Utilies folder on your Mac.
 	echo If you do not yet have PackageMaker, please download it from the Apple Dev Center.
 	echo 
-	echo If you need to download it:
-	echo open http://adcdownload.apple.com/Developer_Tools/auxiliary_tools_for_xcode__february_2012/auxiliary_tools_for_xcode.dmg
+	echo If you need to download it from this page:
+	echo open https://developer.apple.com/downloads/index.action
+	echo
+	echo Look for the "Auxillary Tools for Xcode - Late July 2012" link
 	echo
 	echo If you already have it, just drag it into the Utilities folder since this is hard-coded in the script.
 	echo 
@@ -69,7 +71,7 @@ echo Copied Node.js binary version $CURRENT_NODE_DISTRIBUTION_VERSION into the o
 
 # OS X Package creation
 # ---------------------
-echo Building "Windows Azure SDK.pkg"
+echo Building "Microsoft Azure SDK.pkg"
 /Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker --doc sdk.pmdoc --out "./out/Install Command Line Interface.pkg"
 
 echo 

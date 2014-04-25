@@ -1,6 +1,6 @@
 #!/usr/local/azure/node
-// Windows Azure Deployment Tool
-// Copyright (C) 2012 Microsoft Corporation
+// Microsoft Azure Deployment Tool
+// Copyright (c) Microsoft Corporation
 
 process.env.PRECOMPILE_STREAMLINE_FILES = 1
 
