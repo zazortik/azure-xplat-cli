@@ -31,7 +31,7 @@ var nockHelper = require('./nock-helper');
 exports = module.exports = CLITest;
 
 function CLITest(testPrefix, env, forceMocked) {
-  if (arguments.length === 2 && !Array.isArray(env)) {
+  if (!Array.isArray(env)) {
     forceMocked = env;
     env = [];
   }
