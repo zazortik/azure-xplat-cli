@@ -296,11 +296,11 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         // Restart site, it's created running
-        suite.execute('site restart %s', siteName, function (result) {
+        suite.execute('site restart %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           // Delete test site
-          suite.execute('site delete %s --quiet', siteName, function (result) {
+          suite.execute('site delete %s --quiet --json', siteName, function (result) {
             result.exitStatus.should.equal(0);
 
             done();
@@ -317,15 +317,15 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         // Stop the site
-        suite.execute('site stop %s', siteName, function (result) {
+        suite.execute('site stop %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           // Restart site
-          suite.execute('site restart %s', siteName, function (result) {
+          suite.execute('site restart %s --json', siteName, function (result) {
             result.exitStatus.should.equal(0);
 
             // Delete test site
-            suite.execute('site delete %s --quiet', siteName, function (result) {
+            suite.execute('site delete %s --quiet --json', siteName, function (result) {
               result.exitStatus.should.equal(0);
 
               done();
