@@ -21,7 +21,9 @@ commands/cli.site.log-tests.js
 commands/cli.site.scale-tests.js
 commands/cli.site.slots-tests.js
 commands/cli.site.job-tests.js
+commands/cli.vm.disk_image-tests.js
 commands/cli.vm-tests.js
+commands/cli.vm.endpoint-tests.js
 commands/cli.sql-tests.js
 commands/cli.account.storage-tests.js
 commands/cli.storage.account-tests.js
