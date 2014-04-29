@@ -31,7 +31,7 @@ describe('cli', function () {
   describe('account', function() {
     describe('env', function () {
       describe('list', function () {
-        it('should work', function (done) {
+        it('should include default environments', function (done) {
           suite.execute('account env list --json', function (result) {
             result.exitStatus.should.equal(0);
             var environments = JSON.parse(result.text);
@@ -55,31 +55,8 @@ describe('cli', function () {
       before(function () {
         sandbox = sinon.sandbox.create();
 
-        profileData = {
-          environments: [],
-          subscriptions: []
-        };
-
-        CLITest.wrap(sandbox, profile, 'load', function (originalLoad) {
-          return function (fileNameOrData) {
-            if (!fileNameOrData) {
-              return originalLoad(profileData);
-            } else {
-              return originalLoad(fileNameOrData);
-            }
-          }
-        });
-
-        CLITest.wrap(sandbox, profile.Profile.prototype, 'save', function (originalSave) {
-          return function (file) {
-            if (!file) {
-              profileData = this._getSaveData();
-            } else {
-              return originalSave(file);
-            }
-          };
-        });
-
+        profile.current = new profile.Profile();
+        sandbox.stub(profile, 'save');
         clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
       });
 
@@ -90,7 +67,7 @@ describe('cli', function () {
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
           result.exitStatus.should.equal(0);
-          profileData.subscriptions.length.should.equal(1);
+          profile.current.subscriptions.length.should.equal(1);
           done();
         });
       });
@@ -98,7 +75,7 @@ describe('cli', function () {
       it('should clear accounts', function (done) {
         suite.execute('account clear --quiet', function (result) {
           result.exitStatus.should.equal(0);
-          profileData.subscriptions.should.have.length(0);
+          profile.current.subscriptions.should.have.length(0);
           clearAzureDir.callCount.should.equal(1);
           done();
         });
@@ -111,51 +88,27 @@ describe('cli', function () {
 
     before(function () {
       sandbox = sinon.sandbox.create();
-
-      var profileData = {
-        environments: [],
-        subscriptions: [
-          {
-            id: process.env.AZURE_SUBSCRIPTION_ID,
-            name: 'testAccount',
-            isDefault: true,
-            managementCertificate: {
-              cert: process.env.AZURE_CERTIFICATE,
-              key: process.env.AZURE_CERTIFICATE_KEY
-            },
-            environmentName: 'AzureCloud'
-          },
-          {
-            id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
-            name: 'Other',
-            managementCertificate: {
-              cert: process.env.AZURE_CERTIFICATE,
-              key: process.env.AZURE_CERTIFICATE_KEY
-            },
-            environmentName: 'AzureCloud'
-          }
-        ]
-      };
-
-      CLITest.wrap(sandbox, profile, 'load', function (originalLoad) {
-        return function (fileNameOrData) {
-          if (!fileNameOrData) {
-            return originalLoad(profileData);
-          } else {
-            return originalLoad(fileNameOrData);
-          }
+      profile.current = new profile.Profile();
+      profile.current.addSubscription(new profile.Subscription({
+        id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
+        name: 'testAccount',
+        isDefault: true,
+        managementCertificate: {
+          cert: process.env.AZURE_CERTIFICATE,
+          key: process.env.AZURE_CERTIFICATE_KEY
         }
-      });
+      }), profile.current.getEnvironment('AzureCloud'));
 
-      CLITest.wrap(sandbox, profile.Profile.prototype, 'save', function (originalSave) {
-        return function (file) {
-          if (!file) {
-            profileData = this._getSaveData();
-          } else {
-            return originalSave(file);
-          }
-        };
-      });
+      profile.current.addSubscription(new profile.Subscription({
+        id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
+        name: 'Other',
+        managementCertificate: {
+          cert: process.env.AZURE_CERTIFICATE,
+          key: process.env.AZURE_CERTIFICATE_KEY
+        }
+      }), profile.current.getEnvironment('AzureCloud'));
+
+      sandbox.stub(profile.current, 'save');
     });
 
     after(function () {
