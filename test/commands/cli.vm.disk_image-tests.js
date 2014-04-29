@@ -22,7 +22,6 @@ var path = require('path');
 var isForceMocked = !process.env.NOCK_OFF;
 
 var utils = require('../../lib/util/utils');
-var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var storageAccountKey = process.env['AZURE_STORAGE_ACCESS_KEY'] ? process.env['AZURE_STORAGE_ACCESS_KEY'] : 'YW55IGNhcm5hbCBwbGVhc3VyZQ==';
@@ -37,7 +36,7 @@ var vmToUse = {
 
 var vmPrefix = 'clitestvm';
 var vmNames = [];
-var timeout = isForceMocked ? 0 : 90000;
+var timeout = isForceMocked ? 0 : 120000;
 
 var suite;
 var testPrefix = 'cli.vm.disk_image-tests';
@@ -78,7 +77,7 @@ describe('cli', function () {
             var diskName = createdDisks.pop();
             setTimeout(function () {
               suite.execute('vm disk delete -b %s --json', diskName, function (result) {
-            	deleteUsedDisk();
+                deleteUsedDisk();
               });
             }, timeout);
           } else {
@@ -95,12 +94,12 @@ describe('cli', function () {
     afterEach(function (done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
-		  setTimeout(function () {
+          setTimeout(function () {
             suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
-			  vm.Name = null;
-			  vm.Created = vm.Delete = false;
-			  return callback();
-			});
+              vm.Name = null;
+              vm.Created = vm.Delete = false;
+              return callback();
+            });
           }, timeout);
         } else {
           return callback();
@@ -112,184 +111,179 @@ describe('cli', function () {
       });
     });
 
-    // List Disk
-    it('List and Show Disk', function (done) {
-      suite.execute('vm disk list --json', function (result) {
-        result.exitStatus.should.equal(0);
-        var diskList = JSON.parse(result.text);
-        diskList.length.should.be.above(0);
-        var DiskName = '';
-        for (var diskObj in diskList) {
-          if (diskList[diskObj].OS.toLowerCase() == 'linux') {
-            DiskName = diskList[diskObj].Name;
-            break;
-          }
-        }
-        suite.execute('vm disk show %s --json', DiskName, function (result) {
+    describe('Create and List: ', function () {
+      // List Disk
+      it('List and Show Disk', function (done) {
+        suite.execute('vm disk list --json', function (result) {
           result.exitStatus.should.equal(0);
-          var diskDetails = JSON.parse(result.text);
-          diskSourcePath = diskDetails.MediaLink;
-          domainUrl = 'http://' + diskSourcePath.split('/')[2];
-          location = diskDetails.Location;
+          var diskList = JSON.parse(result.text);
+          diskList.length.should.be.above(0);
+          var DiskName = '';
+          for (var diskObj in diskList) {
+            if (diskList[diskObj].OS.toLowerCase() == 'linux') {
+              DiskName = diskList[diskObj].Name;
+              break;
+            }
+          }
+          suite.execute('vm disk show %s --json', DiskName, function (result) {
+            result.exitStatus.should.equal(0);
+            var diskDetails = JSON.parse(result.text);
+            diskSourcePath = diskDetails.MediaLink;
+            domainUrl = 'http://' + diskSourcePath.split('/')[2];
+            location = diskDetails.Location;
+            done();
+          });
+        });
+      });
+
+      // Create Disk
+      it('Create Disk', function (done) {
+        var blobUrl = domainUrl + '/disks/' + diskName;
+        suite.execute('vm disk create %s %s --location %s -u %s --json', diskName, diskSourcePath, location, blobUrl, function (result) {
+          suite.execute('vm disk show %s --json', diskName, function (result) {
+            if (result.exitStatus == 1)
+              done(result.errorText, null);
+            result.exitStatus.should.equal(0);
+            var diskObj = JSON.parse(result.text);
+            diskObj.Name.should.equal(diskName);
+            imageSourcePath = diskObj.MediaLink;
+            setTimeout(done, timeout);
+          });
+        });
+      });
+
+      // Image Create
+      it('Image Create', function (done) {
+        var blobUrl = domainUrl + '/vm-images/' + vmImgName;
+        suite.execute('vm image create -u %s %s %s --os %s -l %s --json', blobUrl, vmImgName, imageSourcePath, 'Linux', location, function (result) {
+          suite.execute('vm image show %s --json', vmImgName, function (result) {
+            if (result.exitStatus == 1)
+              done(result.errorText, null);
+            var vmImageObj = JSON.parse(result.text);
+            vmImageObj.Name.should.equal(vmImgName);
+            vmImageObj.OS.should.equal('Linux');
+            vmImageObj.MediaLink.should.equal(blobUrl);
+            setTimeout(done, timeout);
+          });
+        });
+      });
+
+      // Create VM using availability set
+      it('Availability set', function (done) {
+        getImageName('Linux', function (ImageName) {
+          suite.execute('vm create -A %s -n %s -l %s %s %s "azureuser" "Pa$$word@123" --json',
+            'Testset', vmName, location, vmName, ImageName, function (result) {
+              suite.execute('vm show %s --json', vmName, function (result) {
+                if (result.exitStatus == 1)
+                  done(result.errorText, null);
+                var vmConnectName = JSON.parse(result.text);
+                vmConnectName.VMName.should.equal(vmName);
+                createdDisks.push(vmConnectName.OSDisk.DiskName);
+                setTimeout(done, timeout);
+              });
+            });
+        });
+      });
+    });
+
+    describe('Disk Operations: ', function () {
+
+      // Attach & Detach Disk		
+      it('Attach & Detach disk', function (done) {
+        suite.execute('vm disk attach %s %s --json', vmName, diskName, function (result) {
+          suite.execute('vm show %s --json', vmName, function (result) {
+            var vmObj = JSON.parse(result.text);
+            vmObj.DataDisks[0].DiskName.should.equal(diskName);
+            createdDisks.push(vmObj.OSDisk.DiskName);
+            suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
+              if (result.exitStatus == 1)
+                done(result.errorText, null);
+              result.exitStatus.should.equal(0);
+              setTimeout(done, timeout);
+            });
+          });
+        });
+      });
+
+      // Attach-New
+      it('Attach-New', function (done) {
+        var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
+        suite.execute('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
+            if (result.exitStatus == 1)
+              done(result.errorText, null);
+            result.exitStatus.should.equal(0);
+            setTimeout(done, timeout);
+          });
+        });
+      });
+
+      // Vm disk list for a VM
+      it('Vm disk List for a VM', function (done) {
+        suite.execute('vm disk list %s --json', vmName, function (result) {
+          if (result.exitStatus == 1)
+            done(result.errorText, null);
+          result.exitStatus.should.equal(0);
+          var diskInfo = JSON.parse(result.text);
+          diskInfo[0].DiskName.should.include(vmName);
+          diskInfo[0].SourceImageName.should.equal('xplattestimg1');
+          vmToUse.Name = vmName;
+          vmToUse.Created = true;
+          vmToUse.Delete = true;
           done();
         });
       });
+
+      // upload disk
+      it('Should verify upload disk', function (done) {
+        var sourcePath = suite.isMocked ? diskSourcePath : (process.env['BLOB_SOURCE_PATH'] || diskSourcePath);
+        var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/' + suite.generateId(vmPrefix, null) + '.vhd';
+        suite.execute('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey, function (result) {
+          if (result.exitStatus == 1)
+            done(result.errorText, null);
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
     });
 
-    // Create Disk
-    it('Create Disk', function (done) {
-      var blobUrl = domainUrl + '/disks/' + diskName;
-      suite.execute('vm disk create %s %s --location %s -u %s --json', diskName, diskSourcePath, location, blobUrl, function (result) {
-        suite.execute('vm disk show %s --json', diskName, function (result) {
-          if(result.exitStatus == 1)
-			done(result.errorText, null);
-		  result.exitStatus.should.equal(0);
-          var diskObj = JSON.parse(result.text);
-          diskObj.Name.should.equal(diskName);
-          imageSourcePath = diskObj.MediaLink;
-          setTimeout(function () {
-              done();
-            }, 0);
+    describe('Clean up: ', function () {
+      this.timeout(60000);
+      // Image delete
+      it('Image Delete', function (done) {
+        suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
+          if (result.exitStatus == 1)
+            done(result.errorText, null);
+          result.exitStatus.should.equal(0);
+          setTimeout(done, timeout);
+        });
+      });
+
+      // Delete Disk
+      it('Delete disk', function (done) {
+        suite.execute('vm disk delete -b %s --json', diskName, function (result) {
+          if (result.exitStatus == 1)
+            done(result.errorText, null);
+          result.exitStatus.should.equal(0);
+          setTimeout(done, timeout);
         });
       });
     });
 
-	// Image Create
-    it('Image Create', function (done) {
-      var blobUrl = domainUrl + '/vm-images/' + vmImgName;
-      suite.execute('vm image create -u %s %s %s --os %s -l %s --json', blobUrl, vmImgName, imageSourcePath, 'Linux', location, function (result) {
-        suite.execute('vm image show %s --json', vmImgName, function (result) {
-           if(result.exitStatus == 1)
-			done(result.errorText, null);
-          var vmImageObj = JSON.parse(result.text);
-          vmImageObj.Name.should.equal(vmImgName);
-          vmImageObj.OS.should.equal('Linux');
-          vmImageObj.MediaLink.should.equal(blobUrl);
-          setTimeout(function () {
-              done();
-            }, 0);
-        });
-      });
-    });
-
-    // Create VM using availability set
-    it('Availability set', function (done) {
-		getImageName('Linux', function (ImageName) {
-			suite.execute('vm create -A %s -n %s -l %s %s %s "azureuser" "Pa$$word@123" --json',
-			'Testset', vmName, location, vmName, ImageName, function (result) {
-			  suite.execute('vm show %s --json', vmName, function (result) {
-				 if(result.exitStatus == 1)
-				done(result.errorText, null);
-				var vmConnectName = JSON.parse(result.text);
-				vmConnectName.VMName.should.equal(vmName);
-				createdDisks.push(vmConnectName.OSDisk.DiskName);
-				setTimeout(function () {
-				  done();
-				}, timeout);
-			  });
-			});
-		});
-    });
- 
-    // Attach & Detach Disk
-    it('Attach & Detach disk', function (done) {
-      suite.execute('vm disk attach %s %s --json', vmName, diskName, function (result) {
-        suite.execute('vm show %s --json', vmName, function (result) {
-          var vmObj = JSON.parse(result.text);
-          vmObj.DataDisks[0].DiskName.should.equal(diskName);
-          createdDisks.push(vmObj.OSDisk.DiskName);
-          suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
-            if(result.exitStatus == 1)
-			  done(result.errorText, null);
-			result.exitStatus.should.equal(0);
-            setTimeout(function () {
-            	done();
-            }, timeout);
-          });
-        });
-      });
-    });
-
-	// Image delete
-    it('Image Delete', function (done) {
-      suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
-         if(result.exitStatus == 1)
-			done(result.errorText, null);
-		result.exitStatus.should.equal(0);
-        setTimeout(function () {
-		  done();
-		}, timeout);
-      });
-    });
-
-    // Attach-New
-    it('Attach-New', function (done) {
-      var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
-      suite.execute('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl, function (result) {
-        result.exitStatus.should.equal(0);
-        suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
-          if(result.exitStatus == 1)
-			done(result.errorText, null);
-		  result.exitStatus.should.equal(0);
-          setTimeout(function () {
-            done();
-          }, timeout);
-        });
-      });
-    });
-
-	// Delete Disk
-    it('Delete disk', function (done) {
-      suite.execute('vm disk delete -b %s --json', diskName, function (result) {
-         if(result.exitStatus == 1)
-			done(result.errorText, null);
-		result.exitStatus.should.equal(0);
-        setTimeout(function () {
-		  done();
-		}, timeout);
-      });
-    });
-	
-    // Vm disk list for a VM
-    it('Vm disk List for a VM', function (done) {
-      suite.execute('vm disk list %s --json', vmName, function (result) {
-        if(result.exitStatus == 1)
-		  done(result.errorText, null);
-		result.exitStatus.should.equal(0);
-        var diskInfo = JSON.parse(result.text);
-        diskInfo[0].DiskName.should.include(vmName);
-        diskInfo[0].SourceImageName.should.equal('xplattestimg1');
-        vmToUse.Name = vmName;
-		vmToUse.Created = true;
-		vmToUse.Delete = true;
-		done();
-      });
-    });
-
-    // upload disk
-    it('Should verify upload disk', function (done) {
-      var sourcePath = suite.isMocked ? diskSourcePath : (process.env['BLOB_SOURCE_PATH'] || diskSourcePath);
-      var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/' + suite.generateId(vmPrefix, null) + '.vhd';
-      suite.execute('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey, function (result) {
-         if(result.exitStatus == 1)
-			done(result.errorText, null);
-		result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-	// Get name of an image of the given category
+    // Get name of an image of the given category
     function getImageName(category, callBack) {
-        suite.execute('vm image list --json', function (result) {
-          var imageList = JSON.parse(result.text);
-          imageList.some(function (image) {
-            if (image.OS.toLowerCase() === category.toLowerCase() && image.Category.toLowerCase() === 'public') {
-              getImageName.ImageName = image.Name;
-			  //location = image.Location.split(';')[0];
-            }
-          });
-          callBack(getImageName.ImageName);
+      suite.execute('vm image list --json', function (result) {
+        var imageList = JSON.parse(result.text);
+        imageList.some(function (image) {
+          if (image.OS.toLowerCase() === category.toLowerCase() && image.Category.toLowerCase() === 'public') {
+            getImageName.ImageName = image.Name;
+            //location = image.Location.split(';')[0];
+          }
         });
+        callBack(getImageName.ImageName);
+      });
     }
   });
 });
