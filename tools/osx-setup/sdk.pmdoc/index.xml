@@ -16,7 +16,7 @@ To uninstall, type `azure-uninstall` in the Terminal.}]]></resource><resource mi
 \
 To get started, just type `azure` in a new Terminal window.\
 \
-If you need to ever install, type `azure-uninstall` from a Terminal window.\
+If you ever need to uninstall, type `azure-uninstall` from a Terminal window.\
 \
 Please make sure that /usr/local/bin/ is in your $PATH.\
 \
