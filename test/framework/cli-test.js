@@ -66,7 +66,7 @@ function CLITest(testPrefix, env, forceMocked) {
 
 _.extend(CLITest.prototype, {
   validateEnvironment: function () {
-    if (this.isMocked) {
+    if (this.isMocked && !this.isRecording) {
       return;
     }
 
