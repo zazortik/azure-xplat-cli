@@ -317,25 +317,3 @@ CLITest.wrap = function wrap(sinonObj, object, property, setup) {
   var original = object[property];
   return sinonObj.stub(object, property, setup(original));
 };
-
-function createTestSubscriptionFile() {
-  var contents = {
-    environments: [],
-    subscriptions: [
-      {
-        id: process.env.AZURE_SUBSCRIPTION_ID,
-        name: 'testAccount',
-        managementCertificate: {
-          cert: process.env.AZURE_CERTIFICATE,
-          key: process.env.AZURE_CERTIFICATE_KEY
-        },
-        environmentName: 'AzureCloud',
-        registeredProviders: [ 'website', 'sqlserver' ],
-        registeredResourceNamespaces: [ 'microsoft.insights', 'successbricks.cleardb' ]
-      }
-    ]
-  }
-  return JSON.stringify(contents);
-}
-
-
