@@ -18,6 +18,7 @@ var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
+var util = require('util');
 
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
@@ -56,7 +57,7 @@ describe('cli', function () {
         sandbox = sinon.sandbox.create();
 
         profile.current = new profile.Profile();
-        sandbox.stub(profile, 'save');
+        sandbox.stub(profile.current, 'save');
         clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
       });
 
@@ -67,7 +68,7 @@ describe('cli', function () {
       it('should import certificate', function(done) {
         suite.execute('account import %s --skipregister', testFile, function (result) {
           result.exitStatus.should.equal(0);
-          profile.current.subscriptions.length.should.equal(1);
+          _.values(profile.current.subscriptions).length.should.equal(1);
           done();
         });
       });
@@ -75,7 +76,7 @@ describe('cli', function () {
       it('should clear accounts', function (done) {
         suite.execute('account clear --quiet', function (result) {
           result.exitStatus.should.equal(0);
-          profile.current.subscriptions.should.have.length(0);
+          _.values(profile.current.subscriptions).should.have.length(0);
           clearAzureDir.callCount.should.equal(1);
           done();
         });
@@ -97,7 +98,7 @@ describe('cli', function () {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
         }
-      }), profile.current.getEnvironment('AzureCloud'));
+      }, profile.current.getEnvironment('AzureCloud')));
 
       profile.current.addSubscription(new profile.Subscription({
         id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
@@ -106,7 +107,7 @@ describe('cli', function () {
           cert: process.env.AZURE_CERTIFICATE,
           key: process.env.AZURE_CERTIFICATE_KEY
         }
-      }), profile.current.getEnvironment('AzureCloud'));
+      }, profile.current.getEnvironment('AzureCloud')));
 
       sandbox.stub(profile.current, 'save');
     });
