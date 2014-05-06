@@ -16,6 +16,7 @@
 
 // Test includes
 var fs = require('fs');
+var os = require('os');
 var path = require('path');
 var sinon = require('sinon');
 var util = require('util');
@@ -53,23 +54,36 @@ function CLITest(testPrefix, env, forceMocked) {
   this.commandMode = 'asm';
 
   // Normalize environment
-  this.requiredEnvironment = env.map(function (env) {
-    if (typeof(env) === 'string') {
-      return { name: env, secure: false };
-    } else {
-      return env;
-    }
-  });
-
+  this.normalizeEnvironment(env);
   this.validateEnvironment();
 }
 
 _.extend(CLITest.prototype, {
+  normalizeEnvironment: function (env) {
+    env = env.filter(function (e) {
+      if (e.requiresCert || e.requiresToken) {
+        this.requiresCert = e.requiresCert;
+        this.requiresToken = e.requiresToken;
+        return false;
+      }
+      return true;
+    });
+
+    this.requiredEnvironment = env.map(function (env) {
+      if (typeof(env) === 'string') {
+        return { name: env, secure: false };
+      } else {
+        return env;
+      }
+    });
+  },
+
   validateEnvironment: function () {
     if (this.isMocked && !this.isRecording) {
       return;
     }
 
+    var messages = [];
     var missing = [];
     this.requiredEnvironment.forEach(function (e) {
       if (!process.env[e.name] && !e.defaultValue) {
@@ -78,8 +92,22 @@ _.extend(CLITest.prototype, {
     });
 
     if (missing.length > 0) {
-      throw new Error('This test requires the following environment variables which are not set: ' +
+      messages.push('This test requires the following environment variables which are not set: ' +
         missing.join(', '));
+    }
+
+    if (this.requiresCert && this.requiresToken) {
+      messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
+    } else if (this.requiresCert && profile.current.currentSubscription.accessToken) {
+      messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
+    } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
+      messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
+    } else if (this.requiresToken && !profile.current.currentSubscription.accessToken) {
+      messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
+    }
+
+    if (messages.length > 0) {
+      throw new Error(messages.join(os.EOL));
     }
   },
 
