@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var azure = require('azure');
 var should = require('should');
@@ -23,23 +23,24 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var testPrefix = 'cli.storage.blob-tests';
-var fakeConnectionString = 'DefaultEndpointsProtocol=https;AccountName=ciserversdk;AccountKey=null';
 var crypto = require('crypto');
+
+function stripAccessKey(connectionString) {
+  return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
+}
+
+var requiredEnvironment = [
+  { name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }
+];
 
 /**
 * Convert a cmd to azure storge cli
 */
 describe('cli', function () {
   describe('storage', function() {
-    var savedConnectionString = '';
 
     before(function (done) {
-      if (!process.env.AZURE_NOCK_RECORD) {
-        savedConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-        process.env.AZURE_STORAGE_CONNECTION_STRING = fakeConnectionString;
-      }
-
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.skipSubscription = true;
 
       if (suite.isMocked) {
@@ -50,9 +51,6 @@ describe('cli', function () {
     });
 
     after(function (done) {
-      if (!process.env.AZURE_NOCK_RECORD) {
-        process.env.AZURE_STORAGE_CONNECTION_STRING = savedConnectionString;
-      }
       suite.teardownSuite(done);
     });
 
