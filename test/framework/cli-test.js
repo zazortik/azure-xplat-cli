@@ -348,6 +348,13 @@ _.extend(CLITest.prototype, {
   *                                               have completed processing.
   */
   forEachName: function (names, iterator, done) {
+    if(typeof iterator === 'string') {
+      var commandString = iterator;
+      iterator = function (name, done) {
+        suite.execute(commadnstring, name, done);
+      }
+    }
+
     function nextName(names) {
       if (names.length === 0) {
         return done();
