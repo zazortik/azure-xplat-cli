@@ -23,7 +23,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var testPrefix = 'cli.site.slot-tests';
 
-var createdSitesPrefix = 'xplatslottests';
+var createdSitesPrefix = 'slots';
 var createdSites = [];
 
 var requiredEnvironment = [
@@ -40,12 +40,16 @@ describe('cli', function () {
 
     after(function (done) {
       function deleteSite(siteName, callback) {
-        suite.execute('site delete %s --json --quiet', sitename, callback);
+        suite.execute('site delete %s --json --quiet', siteName, callback);
       }
 
-      suite.forEachName(createdSites, deleteSite, function () {
+      if (!suite.isMocked || suite.isRecording) {
+        suite.forEachName(createdSites, deleteSite, function () {
+          suite.teardownSuite(done);
+        });
+      } else {
         suite.teardownSuite(done);
-      });
+      }
     });
 
     beforeEach(function (done) {
