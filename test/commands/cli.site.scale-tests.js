@@ -40,9 +40,13 @@ describe('cli', function () {
         suite.execute('site delete %s --json --quiet', siteName, done);
       }
 
-      suite.forEachName(createdSites, deleteSite, function () {
+      if (!suite.isMocked || suite.isRecording) {
+        suite.forEachName(createdSites, deleteSite, function () {
+          suite.teardownSuite(done);
+        });
+      } else {
         suite.teardownSuite(done);
-      });
+      }
     });
 
     beforeEach(function (done) {
