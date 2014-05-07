@@ -84,7 +84,15 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
 <% requiredEnvironment.forEach(function (e) {
-%>  process.env[<%= q(e.name) %>] = <%= e.secure ? '\'dummy\'' : q(process.env[e.name]) %>;
+    var value;
+    if (e.secure && typeof e.secure === 'function') {
+      value = q(e.secure(process.env[e.name]));
+    } else if (e.secure) {
+      value = q('dummy');
+    } else {
+      value = q(process.env[e.name]);
+    }
+%>  process.env[<%= q(e.name) %>] = <%= value %>;
 <% });
 %>}
 
