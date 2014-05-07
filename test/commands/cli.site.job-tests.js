@@ -39,15 +39,15 @@ var requiredEnvironmentVariables = [
 
 function location() { return process.env.AZURE_SITE_TEST_LOCATION };
 function gitUsername() { return process.env.AZURE_GIT_USERNAME };
+function deleteSite(siteName, callback) {
+  suite.execute('site delete %s --json --quiet', siteName, callback);
+}
 
 describe('cli', function () {
   describe('job', function() {
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironmentVariables);
-      suite.setupSuite(function () {
-        sites = siteTracker();
-        done();
-      });
+      suite.setupSuite(done);
     });
 
     after(function (done) {
@@ -55,20 +55,19 @@ describe('cli', function () {
     });
 
     describe('upload', function () {
-      var sites = siteTracker();
-
       beforeEach(function (done) {
         suite.setupTest(done);
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(function () {
+        suite.forEachName(createdSites, deleteSite, function () {
+          createdSites = [];
           suite.teardownTest(done);
         });
       });
 
       it('should not work for wrong extension file', function (done) {
-        var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        var siteName = suite.generateId(createdSitesPrefix, createdSites);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
@@ -82,7 +81,7 @@ describe('cli', function () {
       });
 
       it('should not work for faulty webjob', function (done) {
-        var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        var siteName = suite.generateId(createdSitesPrefix, createdSites);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
@@ -96,7 +95,7 @@ describe('cli', function () {
       });
 
       it('creates a triggered web job for a site', function (done) {
-        var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        var siteName = suite.generateId(createdSitesPrefix, createdSites);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
@@ -110,7 +109,7 @@ describe('cli', function () {
       });
 
       it('creates a triggered web job for a site with switches', function (done) {
-        var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        var siteName = suite.generateId(createdSitesPrefix, createdSites);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
@@ -125,21 +124,20 @@ describe('cli', function () {
     });
 
     describe('site slot', function () {
-      var sites = siteTracker();
-
       beforeEach(function (done) {
         suite.setupTest(done);
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(function () {
+        suite.forEachName(createdSites, deleteSite, function () {
+          createdSites = [];
           suite.teardownTest(done);
         });
       });
 
       it('should work', function (done) {
         var slot = 'staging';
-        var siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        var siteName = suite.generateId(createdSitesPrefix, createdSites);
 
         suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
           result.exitStatus.should.equal(0);
@@ -163,10 +161,9 @@ describe('cli', function () {
 
     describe('list, show and delete a continuous web job for a site', function () {
       var siteName;
-      var sites = siteTracker();
 
       beforeEach(function (done) {
-        siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        siteName = suite.generateId(createdSitesPrefix, createdSites);
         suite.setupTest(function () {
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
@@ -181,7 +178,8 @@ describe('cli', function () {
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(function () {
+        suite.forEachName(createdSites, deleteSite, function () {
+          createdSites = [];
           suite.teardownTest(done);
         });
       });
@@ -259,9 +257,8 @@ describe('cli', function () {
 
     describe('list, show and delete a triggered web job for a site', function () {
       var siteName;
-      var sites = siteTracker();
       beforeEach(function (done) {
-        siteName = sites.generateId(createdSitesPrefix, createdSites, suite.isMocked);
+        siteName = suite.generateId(createdSitesPrefix, createdSites);
         suite.setupTest(function () {
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
@@ -276,7 +273,8 @@ describe('cli', function () {
       });
 
       afterEach(function (done) {
-        sites.cleanupSites(function () {
+        suite.forEachName(createdSites, deleteSite, function () {
+          createdSites = [];
           suite.teardownTest(done);
         });
       });
@@ -357,33 +355,3 @@ describe('cli', function () {
     });
   });
 });
-
-function siteTracker() {
-  var createdSiteNames = [];
-
-  function deleteSites(sitesToDelete, done) {
-    if (sitesToDelete.length === 0) {
-      return done();
-    }
-
-    suite.execute('site delete %s -q --json', sitesToDelete[0], function (result) {
-      deleteSites(sitesToDelete.slice(1), done);
-    });
-  }
-
-  var self = {
-    generateId: function (createdSitesPrefix, createdSites, isMocked) {
-      var name = suite.generateId(createdSitesPrefix, createdSites, suite.isMocked);
-      createdSiteNames.push(name);
-      return name;
-    },
-    cleanupSites: function (done) {
-      deleteSites(createdSiteNames, function () {
-        createdSiteNames = [];
-        done();
-      });
-    }
-  };
-
-  return self;
-}
