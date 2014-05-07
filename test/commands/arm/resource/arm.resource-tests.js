@@ -77,11 +77,10 @@ describe('arm', function () {
         });
       });
       
-      //once the resource delete for sql server works, will verify this test
-      it('should work with switches', null, function (done) {
+      it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
-        var parentResourceName = suite.generateId('xtestgrpparentres', createdResources, suite.isMocked);
-        var childResourceName = suite.generateId('xtestgrpchildres', createdResources, suite.isMocked);
+        var parentResourceName = suite.generateId('xtestgrpparentres', createdResources);
+        var childResourceName = suite.generateId('xtestgrpchildres', createdResources);
         var adminUsername = 'xtestgrpuser';
         var adminPassword = 'Pa$$word1234';
         var parentRsrc = 'servers/' + parentResourceName;
