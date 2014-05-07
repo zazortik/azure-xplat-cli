@@ -29,8 +29,8 @@ var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
 
 var testprefix = 'arm-cli-group-templates-tests';
 var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-var templateUri = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan-Default.json';
-var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+var templateUri = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.2.0-PREVIEW/DeploymentTemplates/Website_NewHostingPlan-Default.json';
+var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
 var createdGroups = [];
 var cleanedUpGroups = 0;
 
@@ -122,9 +122,9 @@ describe('arm', function () {
       });
 
       describe('show', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
+        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.2.0-preview';
         var expectedPublisher = 'Microsoft';
-        var expectedVersion = '0.1.0-preview1';
+        var expectedVersion = '0.2.0-preview';
 
         it('should show a resource group template from gallery with positional name', function (done) {
           suite.execute('group template show %s --json', templateName, function (result) {
@@ -156,7 +156,7 @@ describe('arm', function () {
       });
 
       describe('download', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
+        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.2.0-preview';
         var downloadFileName = templateName + '.json';
         var downloadDir = 'testdownloaddir';
         var dirDownloadFileName = path.join(downloadDir, downloadFileName);
@@ -232,7 +232,7 @@ describe('arm', function () {
         it('should pass when a valid gallery template with a parameter file and a resource group are provided',  function (done) {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-          var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+          var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
           
           suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);

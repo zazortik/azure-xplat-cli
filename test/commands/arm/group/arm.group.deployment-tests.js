@@ -29,7 +29,7 @@ var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
 
 var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var testprefix = 'arm-cli-deployment-tests';
-var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
 var createdGroups = [];
 var createdDeployments = [];
 var cleanedUpGroups = 0;

@@ -104,7 +104,7 @@ describe('arm', function () {
 
       it('should create a group with a named deployment from a gallery template and a parameter file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-        var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+        var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
@@ -215,6 +215,76 @@ describe('arm', function () {
               done();
             });
           });
+        });
+      });
+    });
+
+    describe('log show', function () {
+      var groupName;
+      var deploymentName;
+      var deploymentName1;
+
+      before(function (done) {
+        setupForLogShow(done);
+      });
+
+      after(function (done) {
+       cleanupForLogShow(done);
+      });
+
+      //create a group named xDeploymentTestGroup with two deployments 'Deploy1' and 'Deploy2'
+      function setupForLogShow (done) {
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        deploymentName1 = suite.generateId('Deploy2', createdDeployments, suite.isMocked);
+        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+            templateUri, groupName, deploymentName, parameterFile);
+
+        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+            suite.execute('group deployment create -f %s -g %s -n %s -e %s --json -vv', templateUri, groupName, deploymentName1, parameterFile, function (result2) {
+              result2.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      }
+
+      function cleanupForLogShow (done) {
+        suite.execute('group delete %s --json --quiet', groupName, function () {
+          done();
+        });
+      }
+
+      it('should return logs of all the operations', function (done) {
+        suite.execute('group log show -n %s --all --json', groupName, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('should return logs of the last deployment with the --last-deployment switch', function (done) {
+        suite.execute('group log show -n %s --last-deployment --json', groupName, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('should return logs of the last deployment by default', function (done) {
+        suite.execute('group log show -n %s --json', groupName, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('should return logs of the specified deployment', function (done) {
+        suite.execute('group log show -n %s -d %s --json', groupName, deploymentName, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
         });
       });
     });

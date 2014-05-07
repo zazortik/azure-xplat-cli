@@ -80,8 +80,8 @@ describe('arm', function () {
       //once the resource delete for sql server works, will verify this test
       it('should work with switches', null, function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
-        var parentResourceName = suite.generateId('xTestGrpParentRes', createdResources, suite.isMocked);
-        var childResourceName = suite.generateId('xTestGrpChildRes', createdResources, suite.isMocked);
+        var parentResourceName = suite.generateId('xtestgrpparentres', createdResources, suite.isMocked);
+        var childResourceName = suite.generateId('xtestgrpchildres', createdResources, suite.isMocked);
         var adminUsername = 'xtestgrpuser';
         var adminPassword = 'Pa$$word1234';
         var parentRsrc = 'servers/' + parentResourceName;
@@ -96,8 +96,9 @@ describe('arm', function () {
               showResult.exitStatus.should.equal(0);
 
               var group = JSON.parse(showResult.text);
+              var resourceName = parentResourceName + '/' + childResourceName;
               group.resources.some(function (res) {
-                return res.name === parentResourceName;
+                return res.name === resourceName;
               }).should.be.true;
 
               //creates the child resource - sql database
@@ -112,7 +113,7 @@ describe('arm', function () {
                     return res.name === childResourceName;
                   }).should.be.true;
                   //delete the child resource - sql database
-                  suite.execute('resource delete -g %s -n %s -r %s -o %s --parent %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', '2.0', parentRsrc, function (deleteResult) {
+                  suite.execute('resource delete -g %s -n %s -r %s -o %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', '2.0', parentRsrc, function (deleteResult) {
                     deleteResult.exitStatus.should.equal(0);
                     //delete the parent resource - sql server
                     suite.execute('resource delete %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', '2.0', function (deleteResult) {
