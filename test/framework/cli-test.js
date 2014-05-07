@@ -328,6 +328,37 @@ _.extend(CLITest.prototype, {
         }
       }
     }
+  },
+
+  /**
+  * Helper function for cleanup. executes an async loop over a collection
+  * of names (typically onces created using the generateId method)
+  * and invokes an async iterator on each one. The iterator can do
+  * whatever it needs to on each name.
+  *
+  * @param {string[]}                    names    The array of names
+  *
+  * @param {function(string, function)}  iterator function to run on each
+  *                                               element in the names
+  *                                               array. form is
+  *                                               function (name, done)
+  *
+  * @param {function}                    done     Callback invoked when
+  *                                               all elements in names
+  *                                               have completed processing.
+  */
+  forEachName: function (names, iterator, done) {
+    function nextName(names) {
+      if (names.length === 0) {
+        return done();
+      }
+
+      iterator(names[0], function () {
+        nextName(names.slice(1));
+      });
+    }
+
+    nextName(names);
   }
 });
 
