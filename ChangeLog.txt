@@ -1,3 +1,7 @@
+2014.05.07 Version 0.8.3
+* Bug fixes
+* Engineering and infrastructure improvements
+
 2014.04.10 Version 0.8.2
 * Hotfix to correct issue with azure mobile create command
 
