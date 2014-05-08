@@ -14,6 +14,28 @@
 // limitations under the License.
 //
 
+//
+// Instructions for running this test
+//
+// The test will always run mocked, even if NOCK_OFF is set. To run against
+// production, change the forceRunMocked variable to false.
+//
+// The following environment variables must be set in order for the test to
+// run against live (and must match the settings when the mocks were recorded)
+//
+// AZURE_SUBSCRIPTION_ID   - subscription ID mocks were recorded against
+// AZURE_CERTIFICATE       - value of certificate
+// AZURE_CERTIFICATE_KEY   - value of certificate key
+// AZURE_GITHUB_USERNAME   - user name used to access github
+// AZURE_GITHUB_REPOSITORY - full name of github repository to change, in form of "user/repo"
+// AZURE_GITHUB_PASSWORD   - password or access token for github.
+//
+// If you attempt to run against production and don't set forceRunMocked to false,
+// you will get errors about not having credential.cert set.
+//
+
+var forceRunMocked = true;
+
 var should = require('should');
 
 var GitHubApi = require('github');
@@ -44,7 +66,7 @@ githubClient.authenticate({
 describe('cli', function () {
   describe('site deployment', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, true);
+      suite = new CLITest(testPrefix, forceRunMocked);
       suite.setupSuite(done);
     });
 

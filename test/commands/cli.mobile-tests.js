@@ -48,7 +48,7 @@
 */
 
 var nockedSubscriptionId = '2c224e7e-3ef5-431d-a57b-e71f4662e3a6';
-var nockedServiceName = 'clitest165a21dd-ba6f-4329-b5ca-9159f886f63f';
+var nockedServiceName = 'clitestcdb0958b-be88-4d61-84bd-8ef56dfe6d92';
 
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
@@ -2143,6 +2143,54 @@ describe('cli', function () {
         done();
       });
     });
+
+    // Source control tests for shared scripts
+
+    it('script upload ' + servicename + ' shared/test -f ' + __dirname + '/mobile/table1.delete.js --json (upload one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' shared/test -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.delete.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script upload ' + servicename + ' shared/test -f ' + __dirname + '/mobile/table1.delete.js --json (change one script)', function (done) {
+        var cmd = ('node cli.js mobile script upload ' + servicename + ' shared/test -f').split(' ');
+        cmd.push(__dirname + '/mobile/table1.read.js');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    it('script delete ' + servicename + ' shared/test --json (delete one script)', function (done) {
+        var cmd = ('node cli.js mobile script delete ' + servicename + ' shared/test').split(' ');
+        cmd.push('--json');
+
+        var scopes = setupNock(cmd);
+        executeCmd(cmd, function (result) {
+            result.errorText.should.equal('');
+            result.exitStatus.should.equal(0);
+            result.text.should.equal('');
+            checkScopes(scopes);
+            done();
+        });
+    });
+
+    // delete mobile services
 
     it('delete ' + existingServiceName + ' -d -q --json (delete service without DB)', function (done) {
         var cmd = ('node cli.js mobile delete ' + existingServiceName + ' -d -q --json').split(' ');

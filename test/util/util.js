@@ -13,19 +13,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // 
-
 var fs = require('fs');
 
 var exports = module.exports;
 
 /**
-* Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
-*
-* @param {string} prefix          The prefix to use in the identifier.
-* @param {array}  currentList     The current list of identifiers.
-* @param {bool}   isMocked        Boolean flag indicating if the test is mocked or not.
-* @return {string} A new unique identifier.
-*/
+ * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
+ *
+ * @param {string} prefix          The prefix to use in the identifier.
+ * @param {array}  currentList     The current list of identifiers.
+ * @param {bool}   isMocked        Boolean flag indicating if the test is mocked or not.
+ * @return {string} A new unique identifier.
+ */
 exports.generateId = function (prefix, currentList, isMocked) {
   if (!currentList) {
     currentList = [];
@@ -81,4 +80,17 @@ exports.getCertificate = function () {
   }
 
   return null;
+};
+
+//generate a random string
+exports.generateRandomString = function (length) {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz0123456789';
+  var randString = '',
+    randNum = '';
+  for (var i = 0; i < length; i++) {
+    //61 is the chars.length
+    randNum = Math.floor(Math.random() * 61);
+    randString += chars.substring(randNum, randNum + 1);
+  }
+  return randString;
 };
