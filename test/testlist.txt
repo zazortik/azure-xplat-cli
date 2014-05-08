@@ -1,14 +1,20 @@
-commands/cli.site.cert-tests.js
+# cli.site.cert-tests can only be run mocked, do not try to run live
+# commands/cli.site.cert-tests.js
 cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
+# TODO: Why does environment test pass?
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
 commands/cli.site.deployment-tests.js
-commands/cli.site.domain-tests.js
+# cli.site.domain-tests can only be run mocked, do not try to run live
+# TODO: Mocks are broken.
+#commands/cli.site.domain-tests.js
 commands/cli.site.handler-tests.js
-commands/cli.mobile-tests.js
-commands/cli.mobilerecover-tests.js
+#TODO: This suite uses custom recording
+#commands/cli.mobile-tests.js
+# cli.mobilerecover-tests.js can only be run mocked
+#commands/cli.mobilerecover-tests.js
 commands/cli.network-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
@@ -16,12 +22,14 @@ commands/cli.site-tests.js
 commands/cli.site.appsetting-tests.js
 commands/cli.site.connectionstring-tests.js
 commands/cli.site.defaultdocument-tests.js
-commands/cli.site.deploymentscript-tests.js
+# TODO: This suite uses custom recording
+#commands/cli.site.deploymentscript-tests.js
 commands/cli.site.log-tests.js
 commands/cli.site.scale-tests.js
 commands/cli.site.slots-tests.js
-commands/cli.site.job-tests.js
-commands/cli.vm-tests.js
+#commands/cli.site.job-tests.js
+# TODO: This suite uses custom recording
+#commands/cli.vm-tests.js
 commands/cli.sql-tests.js
 commands/cli.account.storage-tests.js
 commands/cli.storage.account-tests.js
@@ -39,4 +47,5 @@ hdinsight/unit-show-command.js
 hdinsight/unit-delete-command.js
 hdinsight/unit-create-command.js
 hdinsight/unit-config-commands.js
-commands/cli.site.log.tail-tests.js
+# TODO: Not recording call to log service properly, disabling
+#commands/cli.site.log.tail-tests.js
