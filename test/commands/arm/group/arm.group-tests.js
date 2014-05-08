@@ -246,11 +246,25 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('group deployment create -f %s -g %s -n %s -e %s --json -vv', templateUri, groupName, deploymentName1, parameterFile, function (result2) {
-              result2.exitStatus.should.equal(0);
-              done();
-            });
+            poll(done, 1);
           });
+        });
+      }
+
+      //Polls for the output of group log show at an interval of 20 seconds for 3 times (max).
+      function poll (done, counter) {
+        suite.execute('group log show -n %s -l --json', groupName, function (result) {
+          result.exitStatus.should.equal(0);
+          counter = counter + 1;
+          if (result.text === '' && counter <= 3) {
+            setTimeout(function () { poll(done, counter); }, 20000);
+          }
+          else if (result.text === '' && counter >= 3) {
+            throw new Error("group log show command is taking forever, bail out!!");
+          }
+          else {
+            done();
+          }
         });
       }
 
@@ -260,9 +274,19 @@ describe('arm', function () {
         });
       }
 
+      //Validates the content of Logs
+      function validateLogContent (logs) {
+        logs.forEach(function (item) {
+          item.resourceGroupName.should.equal(groupName);
+          item.status.value.should.not.match(/^Failed$/i);
+        });
+      }
+
       it('should return logs of all the operations', function (done) {
         suite.execute('group log show -n %s --all --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
+          result.text.should.not.be.empty;
+          //validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -270,6 +294,8 @@ describe('arm', function () {
       it('should return logs of the last deployment with the --last-deployment switch', function (done) {
         suite.execute('group log show -n %s --last-deployment --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
+          result.text.should.not.be.empty;
+          //validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -277,6 +303,8 @@ describe('arm', function () {
       it('should return logs of the last deployment by default', function (done) {
         suite.execute('group log show -n %s --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
+          result.text.should.not.be.empty;
+          //validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -284,6 +312,8 @@ describe('arm', function () {
       it('should return logs of the specified deployment', function (done) {
         suite.execute('group log show -n %s -d %s --json', groupName, deploymentName, function (result) {
           result.exitStatus.should.equal(0);
+          result.text.should.not.be.empty;
+          //validateLogContent(JSON.parse(result.text));
           done();
         });
       });
