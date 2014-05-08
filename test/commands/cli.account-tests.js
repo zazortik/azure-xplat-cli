@@ -50,12 +50,13 @@ describe('cli', function () {
 
     describe('import', function() {
       var sandbox;
+      var originalProfile;
       var profileData;
       var clearAzureDir;
 
       before(function () {
         sandbox = sinon.sandbox.create();
-
+        originalProfile = profile.current;
         profile.current = new profile.Profile();
         sandbox.stub(profile.current, 'save');
         clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
@@ -63,6 +64,7 @@ describe('cli', function () {
 
       after(function () {
         sandbox.restore();
+        profile.current = originalProfile;
       });
 
       it('should import certificate', function(done) {
@@ -86,9 +88,11 @@ describe('cli', function () {
 
   describe('set', function () {
     var sandbox;
+    var originalProfile;
 
     before(function () {
       sandbox = sinon.sandbox.create();
+      originalProfile = profile.current;
       profile.current = new profile.Profile();
       profile.current.addSubscription(new profile.Subscription({
         id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
@@ -114,6 +118,7 @@ describe('cli', function () {
 
     after(function () {
       sandbox.restore();
+      profile.current = originalProfile;
     });
 
     it('should have two subscriptions', function (done) {
