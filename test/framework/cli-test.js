@@ -120,18 +120,18 @@ _.extend(CLITest.prototype, {
   },
 
   setupSuite: function (callback) {
+    // Force mode regardless of current stored setting
+    var commandMode = this.commandMode;
+    CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
+      return function () {
+        var config = originalReadConfig();
+        config.mode = commandMode;
+        return config;
+      };
+    });
+
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
-
-      // Force mode regardless of current stored setting
-      var commandMode = this.commandMode;
-      CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
-        return function () {
-          var config = originalReadConfig();
-          config.mode = commandMode;
-          return config;
-        };
-      });
     }
 
     if (!this.isMocked || this.isRecording) {
@@ -157,12 +157,12 @@ _.extend(CLITest.prototype, {
 
     this.currentTest = 0;
 
+    restore(utils.readConfig);
+
     if (this.isMocked) {
       if (this.isRecording) {
         fs.appendFileSync(this.recordingsFile, '];');
       }
-
-      restore(utils.readConfig);
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }

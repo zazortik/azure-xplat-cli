@@ -19,37 +19,17 @@ var sinon = require('sinon');
 
 var utils = require('../lib/util/utils');
 
-//
-// Stub out readconfig - the CLI reads config
-// at require time, which means we need to force
-// mode before requiring the cli
-//
-var originalReadConfig = utils.readConfig;
-var globalSandbox = sinon.sandbox.create();
-
 function wrap(sinonObj, obj, functionName, setup) {
   var original = obj[functionName];
   return sinonObj.stub(obj, functionName, setup(original));
 }
 
-wrap(globalSandbox, utils, 'readConfig', function (originalReadConfig) {
-  return function () {
-    var config = originalReadConfig();
-    config.mode = 'asm';
-    return config;
-  };
-});
-
 var AzureCli = require('../lib/cli');
 
 describe('cli', function(){
-  var perTestSandbox;
+  var sandbox;
   var results;
   var originalArgv;
-
-  after(function () {
-    globalSandbox.restore();
-  });
 
   beforeEach(function () {
     results = [];
@@ -61,15 +41,23 @@ describe('cli', function(){
       '', // fragment
     ];
 
-    perTestSandbox = sinon.sandbox.create();
-    perTestSandbox.stub(console, 'log', function (d) {
+    sandbox = sinon.sandbox.create();
+    wrap(sandbox, utils, 'readConfig', function (originalReadConfig) {
+      return function () {
+        var config = originalReadConfig();
+        config.mode = 'asm';
+        return config;
+      };
+    });
+
+    sandbox.stub(console, 'log', function (d) {
       results.push(d);
     });
-    perTestSandbox.stub(process, 'exit');
+    sandbox.stub(process, 'exit');
   });
 
   afterEach(function () {
-    perTestSandbox.restore();
+    sandbox.restore();
     process.argv = originalArgv;
   });
 
@@ -82,7 +70,7 @@ describe('cli', function(){
 
       var cli = new AzureCli();
 
-      perTestSandbox.restore();
+      sandbox.restore();
 
       results = results[0].split('\n');
 
@@ -111,7 +99,7 @@ describe('cli', function(){
 
       var cli = new AzureCli();
 
-      perTestSandbox.restore();
+      sandbox.restore();
 
       results = results[0].split('\n');
 
@@ -149,7 +137,7 @@ describe('cli', function(){
 
       var cli = new AzureCli();
 
-      perTestSandbox.restore();
+      sandbox.restore();
 
       results = results[0].split('\n');
 
