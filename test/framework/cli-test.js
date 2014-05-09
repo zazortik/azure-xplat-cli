@@ -120,16 +120,6 @@ _.extend(CLITest.prototype, {
   },
 
   setupSuite: function (callback) {
-    // Force mode regardless of current stored setting
-    var commandMode = this.commandMode;
-    CLITest.wrap(sinon, utils, 'readConfig', function (originalReadConfig) {
-      return function () {
-        var config = originalReadConfig();
-        config.mode = commandMode;
-        return config;
-      };
-    });
-
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
@@ -149,15 +139,7 @@ _.extend(CLITest.prototype, {
   },
 
   teardownSuite: function (callback) {
-    function restore(fn) {
-      if (fn.restore) {
-        fn.restore();
-      }
-    }
-
     this.currentTest = 0;
-
-    restore(utils.readConfig);
 
     if (this.isMocked) {
       if (this.isRecording) {
@@ -221,7 +203,12 @@ _.extend(CLITest.prototype, {
       cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
     }
 
-    executeCommand(cmd, callback);
+    this.forceSuiteMode(sinon);
+
+    executeCommand(cmd, function (result) {
+      utils.readConfig.restore();
+      callback(result);
+    });
   },
 
   setupTest: function (callback) {
@@ -367,6 +354,30 @@ _.extend(CLITest.prototype, {
     }
 
     nextName(names);
+  },
+
+  /**
+  * Stub out the utils.readConfig method to force the cli mode
+  * to the one required by this test suite.
+  *
+  * This is broken out separately for those tests that are using
+  * a suite for cli execution but otherwise don't need mock recording.
+  *
+  * @param {object} sinonObj The sinon object used to stub out
+  *                          readConfig. This could be either
+  *                          the sinon module or a sandbox.
+  *
+  */
+  forceSuiteMode: function (sinonObj) {
+    // Force mode regardless of current stored setting
+    var commandMode = this.commandMode;
+    CLITest.wrap(sinonObj, utils, 'readConfig', function (originalReadConfig) {
+      return function () {
+        var config = originalReadConfig();
+        config.mode = commandMode;
+        return config;
+      };
+    });
   }
 });
 
