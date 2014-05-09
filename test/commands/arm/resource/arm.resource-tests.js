@@ -23,8 +23,12 @@ var fs = require('fs');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-resource-tests';
 
-var testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-var testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];
+
+var requiredEnvironment = [
+  { requiresToken: true },
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
+  { name: 'AZURE_ARM_TEST_RESOURCE_LOCATION', defaultValue: 'East US' }
+];
 
 var createdGroups = [];
 var createdResources = [];
@@ -33,10 +37,16 @@ describe('arm', function () {
   describe('resource', function () {
     var suite;
     var testApiVersion = '2014-04-01';
+    var testGroupLocation;
+    var testResourceLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
-      suite.setupSuite(done);
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(function () {
+        testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+        testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];
+        done();
+      });
     });
 
     after(function (done) {
@@ -76,9 +86,8 @@ describe('arm', function () {
           });
         });
       });
-      
-      //once the resource delete for sql server works, will verify this test
-      it('should work with switches', null, function (done) {
+
+      it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var parentResourceName = suite.generateId('xTestGrpParentRes', createdResources, suite.isMocked);
         var childResourceName = suite.generateId('xTestGrpChildRes', createdResources, suite.isMocked);
@@ -158,7 +167,7 @@ describe('arm', function () {
       it('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        
+
         suite.execute('group create %s --location %s --quiet --json', groupName, testResourceLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -190,7 +199,7 @@ describe('arm', function () {
       it('should work without filters', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        
+
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -253,7 +262,7 @@ describe('arm', function () {
       it('should work with positional', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        
+
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -278,7 +287,7 @@ describe('arm', function () {
       it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        
+
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -306,7 +315,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
         var parentRsrc = 'sites/' + resourceName;
-        
+
         suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -319,7 +328,7 @@ describe('arm', function () {
 
               suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
-                
+
                 //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
                 var resource = JSON.parse(showResult.text);
                 resource.properties.appSettings[0].name.should.be.equal('testname1');

@@ -23,13 +23,14 @@ var path = require('path');
 var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
 
+var requiredEnvironment = [
+  { requiresToken: true },
+  'AZURE_ARM_TEST_STORAGEACCOUNT',
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
+];
 
-var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-
-var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var testprefix = 'arm-cli-deployment-tests';
-var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
 var createdGroups = [];
 var createdDeployments = [];
 var cleanedUpGroups = 0;
@@ -37,10 +38,18 @@ var cleanedUpGroups = 0;
 describe('arm', function () {
   describe('deployment', function () {
     var suite;
+    var testStorageAccount;
+    var testLocation;
+    var normalizedTestLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
-      suite.setupSuite(done);
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(function () {
+        testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
+        testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        done();
+      });
     });
 
     after(function (done) {
