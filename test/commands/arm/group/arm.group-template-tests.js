@@ -51,12 +51,7 @@ describe('arm', function () {
 
       before(function (done) {
         suite = new CLITest(testprefix, requiredEnvironment);
-        suite.setupSuite(function () {
-          testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-          testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
-          normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-          done();
-        });
+        suite.setupSuite(done);
       });
 
       after(function (done) {
@@ -64,7 +59,12 @@ describe('arm', function () {
       });
 
       beforeEach(function (done) {
-        suite.setupTest(done);
+        suite.setupTest(function () {
+          testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+          testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
+          normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+          done();
+        });
       });
 
       afterEach(function (done) {
