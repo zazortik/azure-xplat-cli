@@ -94,3 +94,55 @@ exports.generateRandomString = function (length) {
   }
   return randString;
 };
+
+/**
+ * Provides information about the template based on the specified keyword
+ *
+ * @param {Object}   suite     The CLI Test suite object
+ * @param {string}   keyword   The template name to search.
+ * @param {callback} callback  callback
+ * @return {Object} A JSON object with templateName, templateUrl, publisher and version as its properties.
+ */
+exports.getTemplateInfo = function (suite, keyword, callback) {
+  var templates = [];
+  var error;
+  var templateInfo = {'templateName' : '', 'templateUrl' : '', 'publisher' : '', 'version' : ''};
+  suite.execute('group template list --json', function (result) {
+    if (result.exitStatus === 0) {
+      templates = JSON.parse(result.text);
+      var templateNotFound = true;
+      templates.forEach(function (item) {
+        var regex = new RegExp(keyword, 'i');
+        if (item.identity.match(regex)) {
+          templateNotFound = false;
+          templateInfo.templateName = item.identity;
+          templateInfo.publisher = item.publisher;
+          templateInfo.version = item.version;
+          var urlKeys = Object.keys(item.definitionTemplates.deploymentTemplateFileUrls);
+          if(urlKeys.length > 0) {
+            var urlKeyNotFound = true;
+              urlKeys.forEach(function (urlKey) {
+              if (urlKey.match(/Default/)) {
+                urlKeyNotFound = false; 
+                templateInfo.templateUrl = item.definitionTemplates.deploymentTemplateFileUrls[urlKey];
+              }
+            });
+              if(urlKeyNotFound) {
+                callback(new Error('Cannot find the default template url'));
+              }
+          }
+          else {
+            callback(new Error('The template ' + item.identity + ' does not have any deployment template urls.'));
+          }
+        }
+      });
+      if(templateNotFound) {
+        callback(new Error('Cannot find a template name with the given keyword ' + keyword));
+      }
+      callback(error, templateInfo);
+    }
+    else {
+      callback(new Error(result.errorText));
+    }
+  });
+};

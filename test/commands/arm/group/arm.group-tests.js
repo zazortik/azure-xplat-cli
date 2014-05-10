@@ -22,6 +22,7 @@ var util = require('util');
 var fs = require('fs')
 
 var CLITest = require('../../../framework/arm-cli-test');
+var testUtil = require('../../../util/util');
 var testprefix = 'arm-cli-group-tests';
 
 var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
@@ -31,13 +32,25 @@ var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var createdGroups = [];
 var createdDeployments = [];
 
+var galleryTemplateName;
+var templateUrl;
+
 describe('arm', function () {
   describe('group', function () {
     var suite;
 
     before(function (done) {
       suite = new CLITest(testprefix);
-      suite.setupSuite(done);
+      suite.setupSuite(function () {
+        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+          if (error) {
+            console.log(error);
+          }
+          galleryTemplateName = templateInfo.templateName;
+          templateUrl = templateInfo.templateUrl;
+          done();
+        });
+      });     
     });
 
     after(function (done) {
@@ -104,7 +117,6 @@ describe('arm', function () {
 
       it('should create a group with a named deployment from a gallery template and a parameter file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-        var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
@@ -134,12 +146,11 @@ describe('arm', function () {
 
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
         var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
-        var templateUri = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan-Default.json';
 
         var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json --quiet',
-          groupName, testLocation, templateUri, parameterString, 'mydepTemplateUri', '1.0.0.0', function (result) {
+          groupName, testLocation, templateUrl, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -234,30 +245,29 @@ describe('arm', function () {
 
       //create a group named xDeploymentTestGroup with two deployments 'Deploy1' and 'Deploy2'
       function setupForLogShow (done) {
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        deploymentName1 = suite.generateId('Deploy2', createdDeployments, suite.isMocked);
-        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateUri, groupName, deploymentName, parameterFile);
+            templateUrl, groupName, deploymentName, parameterFile);
 
+        console.log('  . Creating setup for running group log show tests');
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
-            poll(done, 1);
+            poll(1, done);
           });
         });
       }
 
       //Polls for the output of group log show at an interval of 20 seconds for 3 times (max).
-      function poll (done, counter) {
+      function poll (counter, done) {
         suite.execute('group log show -n %s -l --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
           counter = counter + 1;
           if (result.text === '' && counter <= 3) {
-            setTimeout(function () { poll(done, counter); }, 20000);
+            setTimeout(function () { poll(counter, done); }, 20000);
           }
           else if (result.text === '' && counter >= 3) {
             throw new Error("group log show command is taking forever, bail out!!");
