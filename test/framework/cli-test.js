@@ -253,6 +253,8 @@ _.extend(CLITest.prototype, {
           line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
           line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
+          // put deployment have a timestamp in the url
+          line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/, '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
           scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
             'var result = ' + line + ' return result; }';
           lineWritten = true;
