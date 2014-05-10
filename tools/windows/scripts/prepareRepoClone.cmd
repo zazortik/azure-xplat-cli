@@ -44,7 +44,7 @@ popd
 mkdir %TEMP_REPO%
 echo Cloning the repo elsewhere on disk...
 pushd ..\..\
-robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test /NFL /NDL /NJH /NJS
+robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test node_modules /NFL /NDL /NJH /NJS
 IF NOT ERRORLEVEL 0 GOTO ERROR
 echo.
 popd
@@ -60,9 +60,9 @@ IF NOT ERRORLEVEL 0 GOTO ERROR
 del npm.zip
 popd
 
-echo Running npm update...
+echo Running npm install...
 pushd %TEMP_REPO%
-CALL bin/npm.cmd update
+CALL bin/npm.cmd install --production
 echo.
 echo IF YOU SEE A FAILURE AT THE BOTTOM OF THE NPM OUTPUT:
 echo If you do not have Node.js installed on this local machine, the Azure
@@ -76,23 +76,6 @@ echo Compiling streamline files...
 pushd %TEMP_REPO%
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c lib
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline\lib\streams
-popd
-
-echo Removing redundant azure-common copies...
-pushd %TEMP_REPO%\node_modules\azure\node_modules
-rmdir /s/q azure-gallery\node_modules
-rmdir /s/q azure-mgmt\node_modules
-rmdir /s/q azure-mgmt-compute\node_modules
-rmdir /s/q azure-mgmt-resource\node_modules
-rmdir /s/q azure-mgmt-scheduler\node_modules
-rmdir /s/q azure-mgmt-sb\node_modules
-rmdir /s/q azure-mgmt-sql\node_modules
-rmdir /s/q azure-mgmt-storage\node_modules
-rmdir /s/q azure-mgmt-store\node_modules
-rmdir /s/q azure-mgmt-subscription\node_modules
-rmdir /s/q azure-mgmt-vnet\node_modules
-rmdir /s/q azure-mgmt-website\node_modules
-rmdir /s/q azure-scheduler\node_modules
 popd
 
 echo Removing unneeded files from azure module...
@@ -122,30 +105,6 @@ rd /s/q networkManagement
 rd /s/q webSiteManagement
 rd /s/q scheduler
 
-popd
-
-echo Removing dev dependencies from azure module
-pushd %TEMP_REPO%\node_modules\azure\node_modules
-rd /s/q mocha
-rd /s/q jshint
-rd /s/q sinon
-rd /s/q should
-rd /s/q nock
-rd /s/q grunt
-rd /s/q grunt-jsdoc
-rd /s/q grunt-devserver
-popd
-
-echo Removing dev dependencies for xplat module
-pushd %TEMP_REPO%\node_modules
-rd /s/q mocha
-rd /s/q jshint
-rd /s/q sinon
-rd /s/q should
-rd /s/q nock
-rd /s/q winston-memory
-rd /s/q event-stream
-rd /s/q cucumber
 popd
 
 echo Removing unncessary files from the enlistment for the CLI to function...

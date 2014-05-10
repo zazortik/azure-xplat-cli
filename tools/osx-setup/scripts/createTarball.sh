@@ -61,28 +61,6 @@ pushd /tmp/azureInstallerTemporary/node_modules/azure
 rm -rf .git
 popd
 
-pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
-
-packages=( azure-gallery
-	azure-mgmt
-	azure-mgmt-compute
-	azure-mgmt-resource
-	azure-mgmt-scheduler
-	azure-mgmt-sb
-	azure-mgmt-sql
-	azure-mgmt-storage
-	azure-mgmt-store
-	azure-mgmt-subscription
-	azure-mgmt-vnet
-	azure-mgmt-website
-	azure-scheduler	
-)
-for PACKAGE in ${packages[@]}
-do
-	rm -rf $PACKAGE/node_modules
-done
-popd
-
 pushd /tmp/azureInstallerTemporary/node_modules/azure
 for PACKAGE in packages scripts test tasks examples jsdoc
 do
