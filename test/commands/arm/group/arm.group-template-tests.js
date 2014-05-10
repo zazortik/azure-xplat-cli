@@ -267,7 +267,6 @@ describe('arm', function () {
         it('should pass when a valid gallery template with a parameter file and a resource group are provided',  function (done) {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-          var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
           
           suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
