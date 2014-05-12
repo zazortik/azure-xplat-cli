@@ -23,43 +23,44 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var testPrefix = 'cli.site.slot-tests';
 
-var createdSitesPrefix = 'xplatslottests';
+var createdSitesPrefix = 'slots';
 var createdSites = [];
 
-var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+var requiredEnvironment = [
+  { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US' }
+];
 
 describe('cli', function () {
+  var location;
   describe('slot', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
     after(function (done) {
-      suite.teardownSuite(done);
+      function deleteSite(siteName, callback) {
+        suite.execute('site delete %s --json --quiet', siteName, callback);
+      }
+
+      if (!suite.isMocked || suite.isRecording) {
+        suite.forEachName(createdSites, deleteSite, function () {
+          suite.teardownSuite(done);
+        });
+      } else {
+        suite.teardownSuite(done);
+      }
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_SITE_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
-      function removeSite(callback) {
-        if (createdSites.length === 0) {
-          return callback();
-        }
-
-        var siteName = createdSites.pop();
-        suite.execute('site delete %s --json --quiet', siteName, function () {
-          removeSite(callback);
-        });
-      }
-
-      removeSite(function () {
-        suite.teardownTest(function () {
-          done();
-        });
-      });
+      suite.teardownTest(done);
     });
 
     it('creates a slot for a site', function (done) {

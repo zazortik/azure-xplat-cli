@@ -24,19 +24,33 @@ var fs = require('fs')
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-group-tests';
 
-var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+var groupPrefix = 'xplatTestGCreate';
 
-var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var createdGroups = [];
 var createdDeployments = [];
 
+var requiredEnvironment = [
+  { requiresToken: true },
+  'AZURE_ARM_TEST_STORAGEACCOUNT',
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
+];
+
+var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
+var galleryTemplateUri = 'https://gallerystoreprodch.blob.core.windows.net/' +
+  'prod-microsoft-windowsazure-gallery/' +
+  '8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.2.0-PREVIEW/' +
+  'DeploymentTemplates/Website_NewHostingPlan-Default.json';
+
 describe('arm', function () {
+
   describe('group', function () {
     var suite;
+    var testStorageAccount;
+    var testLocation;
+    var normalizedTestLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
+      suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -45,7 +59,12 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testStorageAccount = process.env.AZURE_ARM_TEST_STORAGEACCOUNT;
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -54,7 +73,7 @@ describe('arm', function () {
 
     describe('create', function () {
       it('should create empty group', function (done) {
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -76,7 +95,7 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
@@ -104,9 +123,8 @@ describe('arm', function () {
 
       it('should create a group with a named deployment from a gallery template and a parameter file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-        var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -y %s -e %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, galleryTemplateName, parameterFile, 'mydepGalleryTemplate', '1.0.0.0', function (result) {
@@ -134,12 +152,11 @@ describe('arm', function () {
 
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
         var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
-        var templateUri = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPlan-Default.json';
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json --quiet',
-          groupName, testLocation, templateUri, parameterString, 'mydepTemplateUri', '1.0.0.0', function (result) {
+          groupName, testLocation, galleryTemplateUri, parameterString, 'mydepTemplateUri', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -188,7 +205,7 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
@@ -207,7 +224,7 @@ describe('arm', function () {
                 item.name.should.equal('xDeploymentTestHost1');
               }
               else if (item.type === 'Microsoft.Web/sites') {
-                item.name.should.equal('xDeploymentTestSite1');  
+                item.name.should.equal('xDeploymentTestSite1');
               }
             });
 
