@@ -280,8 +280,10 @@ describe('arm', function () {
 
       function cleanupForLogShow (done) {
         suite.execute('group delete %s --json --quiet', groupName, function () {
+          console.log(  . Performing cleanup of group log show tests)
           done();
         });
+        done();
       }
 
       //Validates the content of Logs
@@ -324,6 +326,22 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           result.text.should.not.be.empty;
           //validateLogContent(JSON.parse(result.text));
+          done();
+        });
+      });
+
+      it('should fail when an invalid resource group is provided', function (done) {
+        suite.execute('group log show -n %s --json', 'random_group_name', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('Resource group \'random_group_name\' could not be found.');
+          done();
+        });
+      });
+
+      it('should fail when an invalid deployment name is provided', function (done) {
+        suite.execute('group log show -n %s -d %s --json', groupName, 'random_deployment_name', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('Deployment \'random_deployment_name\' could not be found.');
           done();
         });
       });
