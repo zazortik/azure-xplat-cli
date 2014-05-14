@@ -1,24 +1,22 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 
 var CLITest = require('../framework/cli-test');
-
-var createdSites = [];
 
 var suite;
 var testPrefix = 'cli.site.connectionstring-tests';
@@ -26,15 +24,23 @@ var testPrefix = 'cli.site.connectionstring-tests';
 var siteNamePrefix = 'contests';
 var siteNames = [];
 
-var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+var requiredEnvironment = [
+  { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'}
+];
+
+//
+// These connection strings aren't actually used, just parsed, so they
+// do not need to point to actual live endpoints or services.
+//
 var serviceBusConnectionString = 'Endpoint=sb://gongchen1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=fake=';
 var SqlConnectionString = 'Server=tcp:gpg5beafeq.database.windows.net,1433;Database=testasdasd;User ID=andrerod@gpg5beafeq;Password={your_password_here};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;';
 
 describe('cli', function(){
+  var location;
   describe('site connectionstring', function() {
 
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -43,22 +49,21 @@ describe('cli', function(){
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_SITE_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
-      function removeSite() {
-        if (createdSites.length === 0) {
-          return suite.teardownTest(done);
-        }
-
-        var siteName = createdSites.pop();
-        suite.execute('site delete %s --json --quiet', siteName, function () {
-          removeSite();
-        });
+      function deleteSite(siteName, done) {
+        suite.execute('site delete %s --json --quiet', siteName, done);
       }
 
-      removeSite();
+      suite.forEachName(siteNames, deleteSite, function () {
+        siteNames = [];
+        suite.teardownTest(done);
+      });
     });
 
     it('should list site connectionstring', function(done) {

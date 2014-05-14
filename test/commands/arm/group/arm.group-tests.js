@@ -25,32 +25,31 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testUtil = require('../../../util/util');
 var testprefix = 'arm-cli-group-tests';
 
-var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+var groupPrefix = 'xplatTestGCreate';
 
-var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var createdGroups = [];
 var createdDeployments = [];
 
+var requiredEnvironment = [
+  { requiresToken: true },
+  'AZURE_ARM_TEST_STORAGEACCOUNT',
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
+];
+
 var galleryTemplateName;
-var templateUrl;
+var galleryTemplateUrl;
 
 describe('arm', function () {
+
   describe('group', function () {
     var suite;
+    var testStorageAccount;
+    var testLocation;
+    var normalizedTestLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
-      suite.setupSuite(function () {
-        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
-          if (error) {
-            console.log(error);
-          }
-          galleryTemplateName = templateInfo.templateName;
-          templateUrl = templateInfo.templateUrl;
-          done();
-        });
-      });     
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(done);     
     });
 
     after(function (done) {
@@ -58,7 +57,19 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testStorageAccount = process.env.AZURE_ARM_TEST_STORAGEACCOUNT;
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+          if (error) {
+            return done(new Error('Could not get template info: ' + error));
+          }
+          galleryTemplateName = templateInfo.templateName;
+          galleryTemplateUrl = templateInfo.templateUrl;
+          done();
+        });
+      });
     });
 
     afterEach(function (done) {
@@ -67,7 +78,7 @@ describe('arm', function () {
 
     describe('create', function () {
       it('should create empty group', function (done) {
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -89,7 +100,7 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
@@ -118,7 +129,7 @@ describe('arm', function () {
       it('should create a group with a named deployment from a gallery template and a parameter file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -y %s -e %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, galleryTemplateName, parameterFile, 'mydepGalleryTemplate', '1.0.0.0', function (result) {
@@ -147,10 +158,10 @@ describe('arm', function () {
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
         var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json --quiet',
-          groupName, testLocation, templateUrl, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
+          groupName, testLocation, galleryTemplateUrl, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -199,7 +210,7 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-        var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
@@ -218,7 +229,7 @@ describe('arm', function () {
                 item.name.should.equal('xDeploymentTestHost1');
               }
               else if (item.type === 'Microsoft.Web/sites') {
-                item.name.should.equal('xDeploymentTestSite1');  
+                item.name.should.equal('xDeploymentTestSite1');
               }
             });
 
@@ -249,7 +260,7 @@ describe('arm', function () {
         groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateUrl, groupName, deploymentName, parameterFile);
+            galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         console.log('  . Creating setup for running group log show tests');
         suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
@@ -280,7 +291,7 @@ describe('arm', function () {
 
       function cleanupForLogShow (done) {
         suite.execute('group delete %s --json --quiet', groupName, function () {
-          console.log(  . Performing cleanup of group log show tests)
+          console.log('  . Performing cleanup of group log show tests')
           done();
         });
         done();
