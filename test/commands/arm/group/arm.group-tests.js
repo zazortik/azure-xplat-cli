@@ -246,12 +246,20 @@ describe('arm', function () {
       var deploymentName;
       var deploymentName1;
 
-      before(function (done) {
-        setupForLogShow(done);
+      beforeEach(function (done) {
+        if(!groupName) {
+          setupForLogShow(done);
+        } else {
+          done();
+        }
       });
 
       after(function (done) {
-       cleanupForLogShow(done);
+        if(!suite.isMocked || suite.isRecording) {
+          cleanupForLogShow(done);
+        } else {
+          done();
+        }
       });
 
       //create a group named xDeploymentTestGroup with two deployments 'Deploy1' and 'Deploy2'
@@ -279,11 +287,9 @@ describe('arm', function () {
           counter = counter + 1;
           if (result.text === '' && counter <= 3) {
             setTimeout(function () { poll(counter, done); }, 20000);
-          }
-          else if (result.text === '' && counter >= 3) {
+          } else if (result.text === '' && counter >= 3) {
             throw new Error("group log show command is taking forever, bail out!!");
-          }
-          else {
+          } else {
             done();
           }
         });
@@ -294,7 +300,6 @@ describe('arm', function () {
           console.log('  . Performing cleanup of group log show tests')
           done();
         });
-        done();
       }
 
       //Validates the content of Logs
