@@ -70,6 +70,12 @@ describe('profile', function () {
       p.getEnvironment('TestProfile').managementEndpointUrl.should.equal('https://some.site.example');
     });
 
+    it('should throw when reading endpoint that is not set', function () {
+      (function () {
+        p.getEnvironment('TestProfile').resourceManagerEndpointUrl;
+      }).should.throw(/not defined/);
+    });
+
     describe('and saving', function () {
       var saved;
 
@@ -217,7 +223,12 @@ describe('profile', function () {
       };
 
       beforeEach(function (done) {
-        var fakeEnvironment = new profile.Environment({name: 'TestEnvironment'});
+        var fakeEnvironment = new profile.Environment({
+          name: 'TestEnvironment',
+          activeDirectoryEndpointUrl: 'http://dummy.uri',
+          commonTenantName: 'common'
+        });
+
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
         sinon.stub(fakeEnvironment, 'getAccountSubscriptions').callsArgWith(1, null, loginSubscriptions);
 
