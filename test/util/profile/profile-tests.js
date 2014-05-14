@@ -57,13 +57,17 @@ describe('profile', function () {
         environments: [
         {
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         }]
       });
     });
 
-    it('should include loaded and public environmentd', function () {
+    it('should include loaded and public environments', function () {
       p.environments.should.have.properties('TestProfile', 'AzureCloud', 'AzureChinaCloud');
+    });
+
+    it('should read value for custom environment that was set', function () {
+      p.getEnvironment('TestProfile').managementEndpointUrl.should.equal('https://some.site.example');
     });
 
     describe('and saving', function () {
@@ -83,7 +87,7 @@ describe('profile', function () {
 
         customEnvironment.should.have.properties({
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         });
       });
     });
