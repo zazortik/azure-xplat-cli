@@ -86,12 +86,11 @@ describe('arm', function () {
           });
         });
       });
-
-      // Test needs updates to work against currently deployed SQL resource provider
-      it('should work with switches', null, function (done) {
-        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
-        var parentResourceName = suite.generateId('xTestGrpParentRes', createdResources, suite.isMocked);
-        var childResourceName = suite.generateId('xTestGrpChildRes', createdResources, suite.isMocked);
+      
+      it('should work with switches', function (done) {
+        var groupName = suite.generateId('xTestResource1', createdGroups, suite.isMocked);
+        var parentResourceName = suite.generateId('xtestgrpparentresource13', createdResources);
+        var childResourceName = suite.generateId('xtestgrpchildresource13', createdResources);
         var adminUsername = 'xtestgrpuser';
         var adminPassword = 'Pa$$word1234';
         var parentRsrc = 'servers/' + parentResourceName;
@@ -111,21 +110,22 @@ describe('arm', function () {
               }).should.be.true;
 
               //creates the child resource - sql database
-              suite.execute('resource create -g %s -n %s -r %s -l %s -o %s --parent %s -p %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', testResourceLocation, '2.0', parentRsrc, '{"maxSizeBytes": "5368709120", "edition" : "Business", "collation": "SQL_1xcompat_CP850_CI_AS"}', function (result) {
+              suite.execute('resource create -g %s -n %s -r %s -l %s -o %s --parent %s -p %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', testResourceLocation, '2.0', parentRsrc, '{"maxSizeBytes": "5368709120", "edition" : "Web", "collation": "SQL_1xcompat_CP850_CI_AS"}', function (result) {
                 result.exitStatus.should.equal(0);
 
                 suite.execute('group show %s --json', groupName, function (showResult) {
                   showResult.exitStatus.should.equal(0);
 
                   var group = JSON.parse(showResult.text);
+                  var resourceName = parentResourceName + '/' + childResourceName;
                   group.resources.some(function (res) {
-                    return res.name === childResourceName;
+                    return res.name === resourceName;
                   }).should.be.true;
                   //delete the child resource - sql database
                   suite.execute('resource delete -g %s -n %s -r %s -o %s --parent %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', '2.0', parentRsrc, function (deleteResult) {
                     deleteResult.exitStatus.should.equal(0);
                     //delete the parent resource - sql server
-                    suite.execute('resource delete %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', '2.0', function (deleteResult) {
+                    suite.execute('resource delete -g %s -n %s -r %s -o %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', '2.0', function (deleteResult) {
                       deleteResult.exitStatus.should.equal(0);
                       //delete the group
                       suite.execute('group delete %s --quiet --json', groupName, function (deleteResult) {

@@ -254,7 +254,13 @@ _.extend(CLITest.prototype, {
           line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
           // put deployment have a timestamp in the url
-          line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/, '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
+          line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
+            '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
+
+          // Requests to logging service contain timestamps in url query params, filter them out too
+          line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
+            '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
+
           scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
             'var result = ' + line + ' return result; }';
           lineWritten = true;

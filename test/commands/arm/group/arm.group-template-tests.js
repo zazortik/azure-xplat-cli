@@ -17,13 +17,13 @@
 
 var should = require('should');
 
-var fs = require('fs');
+var fs = require('fs'); 
 var path = require('path');
 var util = require('util');
 
 var utils = require('../../../../lib/util/utils');
 var CLITest = require('../../../framework/arm-cli-test');
-
+var testUtil = require('../../../util/util');
 var requiredEnvironment = [
   { requiresToken: true },
   'AZURE_ARM_TEST_STORAGEACCOUNT',
@@ -31,13 +31,8 @@ var requiredEnvironment = [
 ];
 
 var testprefix = 'arm-cli-group-templates-tests';
-
-var galleryTemplateName = 'Microsoft.ASPNETStarterSite.0.2.0-preview';
-var galleryTemplateUri = 'https://gallerystoreprodch.blob.core.windows.net/' +
-  'prod-microsoft-windowsazure-gallery/' +
-  '8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.2.0-PREVIEW/' +
-  'DeploymentTemplates/Website_NewHostingPlan-Default.json';
-
+var galleryTemplateName;
+var galleryTemplateUrl;
 var createdGroups = [];
 var cleanedUpGroups = 0;
 
@@ -51,7 +46,7 @@ describe('arm', function () {
 
       before(function (done) {
         suite = new CLITest(testprefix, requiredEnvironment);
-        suite.setupSuite(done);
+        suite.setupSuite(done);     
       });
 
       after(function (done) {
@@ -63,7 +58,14 @@ describe('arm', function () {
           testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
           testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
           normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-          done();
+          testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+            if (error) {
+              return done(new Error('Could not get template info: ' + error));
+            }
+            galleryTemplateName = templateInfo.templateName;
+            galleryTemplateUrl = templateInfo.templateUrl;
+            done();
+          });
         });
       });
 
@@ -137,9 +139,21 @@ describe('arm', function () {
       });
 
       describe('show', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.2.0-preview';
-        var expectedPublisher = 'Microsoft';
-        var expectedVersion = '0.2.0-preview';
+        var templateName;
+        var expectedPublisher;
+        var expectedVersion;
+
+        before(function (done) {
+          testUtil.getTemplateInfo(suite, 'Microsoft.WebSiteMySQLDatabase', function(error, templateInfo) {
+            if (error) {
+              console.log(error);
+            }
+            templateName = templateInfo.templateName;
+            expectedPublisher = templateInfo.publisher;
+            expectedVersion = templateInfo.version;
+            done();
+          }); 
+        });
 
         it('should show a resource group template from gallery with positional name', function (done) {
           suite.execute('group template show %s --json', templateName, function (result) {
@@ -171,10 +185,23 @@ describe('arm', function () {
       });
 
       describe('download', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.2.0-preview';
-        var downloadFileName = templateName + '.json';
-        var downloadDir = 'testdownloaddir';
-        var dirDownloadFileName = path.join(downloadDir, downloadFileName);
+        var templateName;
+        var downloadFileName;
+        var downloadDir;
+        var dirDownloadFileName;
+
+        before(function (done) {
+          testUtil.getTemplateInfo(suite, 'Microsoft.WebSiteMySQLDatabase', function(error, templateInfo) {
+            if (error) {
+              console.log(error);
+            }
+            templateName = templateInfo.templateName;
+            downloadFileName = templateName + '.json';
+            downloadDir = 'testdownloaddir';
+            dirDownloadFileName = path.join(downloadDir, downloadFileName);
+            done();
+          }); 
+        });
 
         beforeEach(function () {
           if (utils.pathExistsSync(downloadFileName)) {
@@ -247,7 +274,7 @@ describe('arm', function () {
         it('should pass when a valid gallery template with a parameter file and a resource group are provided',  function (done) {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-
+          
           suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
@@ -265,7 +292,7 @@ describe('arm', function () {
           suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, galleryTemplateUri, parameterString, function (result) {
+            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, galleryTemplateUrl, parameterString, function (result) {
               result.exitStatus.should.equal(0);
               cleanup(done);
             });
@@ -290,11 +317,11 @@ describe('arm', function () {
         it('should fail when an invalid template uri is provided',  function (done) {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
-          var invalidTemplateUri = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPla.json';
+          var invalidTemplateUrl = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPla.json';
           suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUri, parameterString, function (result) {
+            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
               result.exitStatus.should.equal(1);
               result.errorText.should.include('Unable to download deployment template. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
               cleanup(done);
