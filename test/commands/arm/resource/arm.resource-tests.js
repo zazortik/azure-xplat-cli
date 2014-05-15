@@ -89,8 +89,8 @@ describe('arm', function () {
       
       it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource1', createdGroups, suite.isMocked);
-        var parentResourceName = suite.generateId('xtestgrpparentres1', createdResources);
-        var childResourceName = suite.generateId('xtestgrpchildres1', createdResources);
+        var parentResourceName = suite.generateId('xtestgrpparentresource13', createdResources);
+        var childResourceName = suite.generateId('xtestgrpchildresource13', createdResources);
         var adminUsername = 'xtestgrpuser';
         var adminPassword = 'Pa$$word1234';
         var parentRsrc = 'servers/' + parentResourceName;
