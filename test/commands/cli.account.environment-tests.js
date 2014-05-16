@@ -38,11 +38,11 @@ describe('cli', function () {
     });
 
     var envCreateOptions = {
-      '--publish-settings-file-url': 'http://url1.com',
-      '--management-portal-url': 'http://url2.com',
-      '--service-endpoint': 'http://url3.com',
+      '--publishing-profile-url': 'http://url1.com',
+      '--portal-url': 'http://url2.com',
+      '--management-endpoint-url': 'http://url3.com',
       '--storage-endpoint': 'http://url4.com',
-      '--sql-database-endpoint': 'http://url5.com'
+      '--sql-management-endpoint-url': 'http://url5.com'
     };
 
     var envCreateCommandLine = 'account env add newenv ' +
@@ -108,7 +108,7 @@ describe('cli', function () {
     });
 
     it('should modify a predefined environment setting', function (done) {
-      suite.execute('account env set AzureCloud --publish-settings-file-url http://test.com --json', function (result) {
+      suite.execute('account env set AzureCloud --publishing-profile-url http://test.com --json', function (result) {
         result.exitStatus.should.equal(0);
 
         suite.execute('account env show AzureCloud --json', function (result) {
