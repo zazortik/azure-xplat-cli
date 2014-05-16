@@ -33,9 +33,7 @@ describe('profile', function () {
 
   describe('default', function () {
     it('should contain public environments', function () {
-      _.keys(profile.current.environments).length.should.equal(profile.Environment.publicEnvironments.length);
-      profile.current.environments.should.have.property('AzureCloud');
-      profile.current.environments.should.have.property('AzureChinaCloud');
+      profile.current.environments.should.have.properties('AzureCloud', 'AzureChinaCloud');
     });
   });
 
