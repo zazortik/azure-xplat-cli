@@ -14,10 +14,13 @@
 // limitations under the License.
 // 
 
+var sinon = require('sinon');
+
 var should = require('should');
 
 var cli = require('../../lib/cli');
-var executeCmd = require('../framework/cli-executor').execute;
+var utils = require('../../lib/util/utils');
+var executor = require('../framework/cli-executor');
 
 var format = require('util').format;
 
@@ -34,6 +37,20 @@ var testDir = "";
 var testSettings;
 
 var isWindows = process.platform === 'win32'
+
+function executeCmd(cmd, cb) {
+  var originalReadConfig = utils.readConfig;
+  sinon.stub(utils, 'readConfig', function () {
+    var config = originalReadConfig();
+    config.mode = 'asm';
+    return config;
+  });
+
+  return executor.execute(cmd, function () {
+    utils.readConfig.restore();
+    cb.apply(null, Array.prototype.slice.call(arguments, 0));
+  });
+}
 
 suite('site deploymentscript', function () {
   setup(function () {

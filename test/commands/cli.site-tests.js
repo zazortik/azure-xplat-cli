@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var url = require('url');
@@ -22,10 +22,23 @@ var CLITest = require('../framework/cli-test');
 
 var LinkedRevisionControlClient = require('../../lib/util/git/linkedrevisioncontrol').LinkedRevisionControlClient;
 
-var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
-var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
-var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
-var githubClient = new GitHubApi({ version: '3.0.0' });
+var requiredEnvironment = [
+  'AZURE_GITHUB_USERNAME',
+  {
+    name: 'AZURE_GITHUB_PASSWORD',
+    secure: true
+  },
+  'AZURE_GITHUB_REPOSITORY',
+  {
+    name: 'AZURE_SITE_TEST_LOCATION',
+    defaultValue: 'East US'
+  }
+];
+
+var githubUsername;
+var githubPassword;
+var githubRepositoryFullName;
+var githubClient;
 
 var suite;
 var testPrefix = 'cli.site-tests';
@@ -33,18 +46,12 @@ var testPrefix = 'cli.site-tests';
 var siteNamePrefix = 'clitests';
 var siteNames = [];
 
-var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
-
-githubClient.authenticate({
-  type: 'basic',
-  username: githubUsername,
-  password: githubPassword
-});
+var location;
 
 describe('cli', function () {
   describe('site', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -53,7 +60,21 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env['AZURE_SITE_TEST_LOCATION'];
+        githubUsername = process.env['AZURE_GITHUB_USERNAME'];
+        githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
+        githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
+        if (!githubClient) {
+          githubClient = new GitHubApi({ version: '3.0.0' });
+          githubClient.authenticate({
+            type: 'basic',
+            username: githubUsername,
+            password: githubPassword
+          });
+        }
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -275,11 +296,11 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         // Restart site, it's created running
-        suite.execute('site restart %s', siteName, function (result) {
+        suite.execute('site restart %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           // Delete test site
-          suite.execute('site delete %s --quiet', siteName, function (result) {
+          suite.execute('site delete %s --quiet --json', siteName, function (result) {
             result.exitStatus.should.equal(0);
 
             done();
@@ -296,15 +317,15 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
 
         // Stop the site
-        suite.execute('site stop %s', siteName, function (result) {
+        suite.execute('site stop %s --json', siteName, function (result) {
           result.exitStatus.should.equal(0);
 
           // Restart site
-          suite.execute('site restart %s', siteName, function (result) {
+          suite.execute('site restart %s --json', siteName, function (result) {
             result.exitStatus.should.equal(0);
 
             // Delete test site
-            suite.execute('site delete %s --quiet', siteName, function (result) {
+            suite.execute('site delete %s --quiet --json', siteName, function (result) {
               result.exitStatus.should.equal(0);
 
               done();
