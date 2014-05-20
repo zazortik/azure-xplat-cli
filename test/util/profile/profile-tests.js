@@ -223,7 +223,8 @@ describe('profile', function () {
       beforeEach(function (done) {
         var fakeEnvironment = new profile.Environment({
           name: 'TestEnvironment',
-          activeDirectoryEndpointUrl: 'http://dummy.uri',
+          activeDirectoryEndpointUrl: 'http://dummy.example',
+          activeDirectoryResourceId: 'http://login.dummy.example',
           commonTenantName: 'common'
         });
 
