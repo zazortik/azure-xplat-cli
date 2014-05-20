@@ -43,7 +43,12 @@ describe('Environment', function () {
   var environment;
 
   before(function () {
-    environment = new profile.Environment({ name: 'TestEnvironment', activeDirectoryEndpointUrl: 'http://notreal.example', commonTenantName: 'common' });
+    environment = new profile.Environment({
+      name: 'TestEnvironment',
+      activeDirectoryEndpointUrl: 'http://notreal.example',
+      commonTenantName: 'common',
+      activeDirectoryResourceId: 'http://login.notreal.example'
+    });
     sinon.stub(environment, 'acquireToken').callsArgWith(3, null, expectedToken);
     sinon.stub(environment, 'getAccountSubscriptions').callsArgWith(1, null, expectedSubscriptions);
   });
@@ -74,7 +79,7 @@ describe('Environment', function () {
         authorityUrl: 'http://notreal.example',
         tenantId: 'common',
         clientId: constants.XPLAT_CLI_CLIENT_ID,
-        resourceId: constants.AZURE_MANAGEMENT_RESOURCE_ID
+        resourceId: environment.activeDirectoryResourceId
       });
     });
 
