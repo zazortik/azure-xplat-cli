@@ -17,6 +17,12 @@ var servicePackages = [
   'webSiteManagement'
 ]
 
+//
+// This script assumes that the node sdk is sitting next to
+// the xplat cli on the file system. If not, change the
+// below variable to point to it.
+//
+
 var root = '../azure-sdk-for-node'
 
 
