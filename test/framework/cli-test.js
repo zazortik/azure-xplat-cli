@@ -22,11 +22,13 @@ var sinon = require('sinon');
 var util = require('util');
 var _ = require('underscore');
 
+var adalAuth = require('../../lib/util/authentication/adalAuth');
 var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
 var executeCommand = require('./cli-executor').execute;
+var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
@@ -230,6 +232,9 @@ _.extend(CLITest.prototype, {
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
+
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
     }
 
     callback();
@@ -269,6 +274,8 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
+    } else if (this.isMocked) {
+      adalAuth.tokenCache = this.originalTokenCache;
     }
 
     nockHelper.unNockHttp();

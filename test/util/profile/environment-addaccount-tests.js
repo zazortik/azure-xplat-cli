@@ -34,6 +34,8 @@ var expectedSubscriptions = [
   }
 ];
 
+var expectedUserName = 'user@somedomain.example';
+
 var expectedToken = {
   accessToken: 'a dummy token',
   expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000)
@@ -57,7 +59,7 @@ describe('Environment', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount('user@somedomain.org', 'sekretPa$$w0rd', function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, 'sekretPa$$w0rd', function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
@@ -85,12 +87,12 @@ describe('Environment', function () {
 
     it('should pass token to get subscriptions', function() {
       var token = environment.getAccountSubscriptions.firstCall.args[0];
-      token.should.equal(expectedToken.accessToken);
+      token.should.equal(expectedToken);
     });
 
-    it('should return a subscription with expected token', function () {
-      should.exist(subscriptions[0].accessToken);
-      subscriptions[0].accessToken.accessToken.should.equal('a dummy token');
+    it('should return a subscription with expected username', function () {
+      should.exist(subscriptions[0].username);
+      subscriptions[0].username.should.equal(expectedUserName);
     });
 
     it('should return listed subscriptions', function () {
@@ -101,9 +103,9 @@ describe('Environment', function () {
       }
     });
 
-    it('should have same token for all subscription', function () {
+    it('should have same username for all subscription', function () {
       subscriptions.forEach(function (s) {
-        s.accessToken.accessToken.should.equal(expectedToken.accessToken);
+        s.username.should.equal(expectedUserName);
       });
     });
   });
