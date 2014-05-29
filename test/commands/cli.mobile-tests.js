@@ -1655,28 +1655,28 @@ describe('cli', function () {
                 case 'insert':
                     {
                         item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Insert');
+                        item.selflink.should.include(servicename + '/repository/service/table/table1.insert.js');
                         item.should.have.property('sizeBytes');
                     }
                     break;
                 case 'update':
                     {
                         item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Update');
+                        item.selflink.should.include(servicename + '/repository/service/table/table1.update.js');
                         item.should.have.property('sizeBytes');
                     }
                     break;
                 case 'delete':
                     {
                         item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Delete');
+                        item.selflink.should.include(servicename + '/repository/service/table/table1.delete.js');
                         item.should.have.property('sizeBytes');
                     }
                     break;
                 case 'read':
                     {
                         item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Read');
+                        item.selflink.should.include(servicename + '/repository/service/table/table1.read.js');
                         item.should.have.property('sizeBytes');
                     }
                     break;
@@ -1759,7 +1759,7 @@ describe('cli', function () {
             var response = JSON.parse(result.text);
             Array.isArray(response.shared).should.be.ok;
             response.shared.length.should.equal(1);
-            response.shared[0].name.should.equal('apnsfeedback.js');
+            response.shared[0].name.toLowerCase().should.equal('apnsfeedback.js');
 
             Array.isArray(response.table).should.be.ok;
             response.table.length.should.equal(3);
@@ -2109,7 +2109,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.should.include({
-          "enabled": [],
+          "enabled": ["SourceControl"],
           "available": [ "SourceControl", "Users" ]
         });
         checkScopes(scopes);
