@@ -227,6 +227,7 @@ _.extend(CLITest.prototype, {
 
       if (nocked.getMockedProfile) {
         profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
       }
 
       if (nocked.setEnvironment) {
