@@ -64,7 +64,7 @@
     "mocha": "1.16.0",
     "jshint": ">= 2.1.4",
     "sinon": "*",
-    "should": "*",
+    "should": "1.2.x",
     "nock": "0.16",
     "winston-memory": "*",
     "event-stream": "~3.1.0",
