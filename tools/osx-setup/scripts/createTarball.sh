@@ -1,6 +1,6 @@
 #!/bin/sh
-# Windows Azure OS X Package: Tarball Creation Script
-# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+# Microsoft Azure OS X Package: Tarball Creation Script
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
 #
 # This script prepares an 'archive' folder that contains the CLI 
 # that is to be packaged in the Mac installer.
@@ -59,28 +59,6 @@ rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
 # Remove extraneous junk from tarball
 pushd /tmp/azureInstallerTemporary/node_modules/azure
 rm -rf .git
-popd
-
-pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
-
-packages=( azure-gallery
-	azure-mgmt
-	azure-mgmt-compute
-	azure-mgmt-resource
-	azure-mgmt-scheduler
-	azure-mgmt-sb
-	azure-mgmt-sql
-	azure-mgmt-storage
-	azure-mgmt-store
-	azure-mgmt-subscription
-	azure-mgmt-vnet
-	azure-mgmt-website
-	azure-scheduler	
-)
-for PACKAGE in ${packages[@]}
-do
-	rm -rf $PACKAGE/node_modules
-done
 popd
 
 pushd /tmp/azureInstallerTemporary/node_modules/azure

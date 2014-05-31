@@ -17,22 +17,36 @@
 
 var should = require('should');
 
-var fs = require('fs');
+var fs = require('fs'); 
 var path = require('path');
 var util = require('util');
 
 var utils = require('../../../../lib/util/utils');
 var CLITest = require('../../../framework/arm-cli-test');
+var testUtil = require('../../../util/util');
+var requiredEnvironment = [
+  { requiresToken: true },
+  'AZURE_ARM_TEST_STORAGEACCOUNT',
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
+];
+
 var testprefix = 'arm-cli-group-templates-tests';
+var galleryTemplateName;
+var galleryTemplateUrl;
+var createdGroups = [];
+var cleanedUpGroups = 0;
 
 describe('arm', function () {
   describe('group', function () {
     describe('template', function () {
       var suite;
+      var testLocation;
+      var testStorageAccount;
+      var normalizedTestLocation;
 
       before(function (done) {
-        suite = new CLITest(testprefix);
-        suite.setupSuite(done);
+        suite = new CLITest(testprefix, requiredEnvironment);
+        suite.setupSuite(done);     
       });
 
       after(function (done) {
@@ -40,12 +54,40 @@ describe('arm', function () {
       });
 
       beforeEach(function (done) {
-        suite.setupTest(done);
+        suite.setupTest(function () {
+          testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+          testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
+          normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+          testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+            if (error) {
+              return done(new Error('Could not get template info: ' + error));
+            }
+            galleryTemplateName = templateInfo.templateName;
+            galleryTemplateUrl = templateInfo.templateUrl;
+            done();
+          });
+        });
       });
 
       afterEach(function (done) {
         suite.teardownTest(done);
       });
+
+      function cleanup(done) {
+        function deleteGroups(index, callback) {
+          if (index === createdGroups.length) {
+            return callback();
+          }
+          suite.execute('group delete %s --quiet -vv', createdGroups[index], function () {
+            deleteGroups(index + 1, callback);
+          });
+        }
+
+        deleteGroups(cleanedUpGroups, function () {
+          cleanedUpGroups = createdGroups.length;
+          done();
+        });
+      }
 
       describe('list', function () {
         it('should list all templates from gallery', function (done) {
@@ -72,24 +114,24 @@ describe('arm', function () {
           });
         });
 
-        it('should list templates in category1 from gallery', function (done) {
-          suite.execute('group template list -c %s --json', 'category1', function (result) {
+        it('should list templates in web category from gallery', function (done) {
+          suite.execute('group template list -c %s --json', 'web', function (result) {
             result.exitStatus.should.equal(0);
             var templates = JSON.parse(result.text);
             templates.length.should.be.above(0);
-            templates.every(function (t) { return t.categoryIds.indexOf('category1') != -1}).should.be.true;
+            templates.every(function (t) { return t.categoryIds.indexOf('web') != -1}).should.be.true;
 
             done();
           });
         });
 
-        it('should list templates from Microsoft in category1 from gallery', function (done) {
-          suite.execute('group template list -p %s -c %s --json', 'Microsoft', 'category1', function (result) {
+        it('should list templates from Microsoft in web category from gallery', function (done) {
+          suite.execute('group template list -p %s -c %s --json', 'Microsoft', 'web', function (result) {
             result.exitStatus.should.equal(0);
             var templates = JSON.parse(result.text);
             templates.length.should.be.above(0);
             templates.every(function (t) { return t.publisher === 'Microsoft'; }).should.be.true;
-            templates.every(function (t) { return t.categoryIds.indexOf('category1') != -1}).should.be.true;
+            templates.every(function (t) { return t.categoryIds.indexOf('web') != -1}).should.be.true;
 
             done();
           });
@@ -97,9 +139,21 @@ describe('arm', function () {
       });
 
       describe('show', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
-        var expectedPublisher = 'Microsoft';
-        var expectedVersion = '0.1.0-preview1';
+        var templateName;
+        var expectedPublisher;
+        var expectedVersion;
+
+        before(function (done) {
+          testUtil.getTemplateInfo(suite, 'Microsoft.WebSiteMySQLDatabase', function(error, templateInfo) {
+            if (error) {
+              console.log(error);
+            }
+            templateName = templateInfo.templateName;
+            expectedPublisher = templateInfo.publisher;
+            expectedVersion = templateInfo.version;
+            done();
+          }); 
+        });
 
         it('should show a resource group template from gallery with positional name', function (done) {
           suite.execute('group template show %s --json', templateName, function (result) {
@@ -131,10 +185,23 @@ describe('arm', function () {
       });
 
       describe('download', function () {
-        var templateName = 'Microsoft.WebSiteMySQLDatabase.0.1.0-preview1';
-        var downloadFileName = templateName + '.json';
-        var downloadDir = 'testdownloaddir';
-        var dirDownloadFileName = path.join(downloadDir, downloadFileName);
+        var templateName;
+        var downloadFileName;
+        var downloadDir;
+        var dirDownloadFileName;
+
+        before(function (done) {
+          testUtil.getTemplateInfo(suite, 'Microsoft.WebSiteMySQLDatabase', function(error, templateInfo) {
+            if (error) {
+              console.log(error);
+            }
+            templateName = templateInfo.templateName;
+            downloadFileName = templateName + '.json';
+            downloadDir = 'testdownloaddir';
+            dirDownloadFileName = path.join(downloadDir, downloadFileName);
+            done();
+          }); 
+        });
 
         beforeEach(function () {
           if (utils.pathExistsSync(downloadFileName)) {
@@ -160,6 +227,21 @@ describe('arm', function () {
           });
         });
 
+        it('should download template file using name of template and overwrite the existing file', function (done) {
+          suite.execute('group template download %s --json', templateName, function (result) {
+            result.exitStatus.should.equal(0);
+            utils.pathExistsSync(downloadFileName).should.be.true;
+
+            suite.execute('group template download %s -q --json', templateName, function (result) {
+              result.exitStatus.should.equal(0);
+              utils.pathExistsSync(downloadFileName).should.be.true;
+
+              fs.unlinkSync(downloadFileName);
+              done();
+            });
+          });
+        });
+
         it('should create directory to download to and download file there', function (done) {
           suite.execute('group template download %s -f %s --json', templateName, dirDownloadFileName, function (result) {
             result.exitStatus.should.equal(0);
@@ -169,6 +251,111 @@ describe('arm', function () {
             fs.unlinkSync(dirDownloadFileName);
             fs.rmdirSync(downloadDir);
             done();
+          });
+        });
+      });
+
+      describe('validate', function () {
+        it('should pass when a valid file template with a storage account, a parameter file and a resource group are provided',  function (done) {
+          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+          var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+          var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
+
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s -f %s -e %s -s %s --json', groupName, templateFile, parameterFile, testStorageAccount, function (result) {
+              result.exitStatus.should.equal(0);
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should pass when a valid gallery template with a parameter file and a resource group are provided',  function (done) {
+          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+          var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+          
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s -y %s -e %s --json', groupName, galleryTemplateName, parameterFile, function (result) {
+              result.exitStatus.should.equal(0);
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should pass when a valid template uri with a parameter string and a resource group are provided',  function (done) {
+          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+          var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, galleryTemplateUrl, parameterString, function (result) {
+              result.exitStatus.should.equal(0);
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should fail when an invalid gallery template is provided',  function (done) {
+          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+          var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+          var invalidGalleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview101ABC';
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s -y %s -e %s --json', groupName, invalidGalleryTemplateName, parameterFile, function (result) {
+              result.exitStatus.should.equal(1);
+              result.errorText.should.include('Gallery item \'Microsoft.ASPNETStarterSite.0.1.0-preview101ABC\' was not found.');
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should fail when an invalid template uri is provided',  function (done) {
+          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
+          var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+          var invalidTemplateUrl = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPla.json';
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
+              result.exitStatus.should.equal(1);
+              result.errorText.should.include('Unable to download deployment template. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should fail when a parameter for template is missing',  function (done) {
+          var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"sku\":{ \"value\":\"Free\" }, \"workerSize\":{ \"value\":\"0\" }}";
+          var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s -y %s -p %s --json', groupName, galleryTemplateName, parameterString, function (result) {
+              result.exitStatus.should.equal(1);
+              result.errorText.should.include('Deployment template validation failed: \'The value for the template parameter \'siteLocation\' is not provided.\'.');
+              cleanup(done);
+            });
+          });
+        });
+
+        it('should fail when an invalid value (Free12) for template parameter (sku) is provided',  function (done) {
+          var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"siteLocation\":{ \"value\":\"West US\" }, \"sku\":{ \"value\":\"Free12\" }, \"workerSize\":{ \"value\":\"0\" }}";
+          var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+
+          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group template validate -g %s -y %s -p %s --json', groupName, galleryTemplateName, parameterString, function (result) {
+              result.exitStatus.should.equal(1);
+              result.errorText.should.include('Deployment template validation failed: \'The provided value for the template parameter \'sku\' is not valid.\'.');
+              cleanup(done);
+            });
           });
         });
       });

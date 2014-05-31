@@ -1,23 +1,26 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
+
+var sinon = require('sinon');
 
 var should = require('should');
 
 var cli = require('../../lib/cli');
-var executeCmd = require('../framework/cli-executor').execute;
+var utils = require('../../lib/util/utils');
+var executor = require('../framework/cli-executor');
 
 var format = require('util').format;
 
@@ -34,6 +37,20 @@ var testDir = "";
 var testSettings;
 
 var isWindows = process.platform === 'win32'
+
+function executeCmd(cmd, cb) {
+  var originalReadConfig = utils.readConfig;
+  sinon.stub(utils, 'readConfig', function () {
+    var config = originalReadConfig();
+    config.mode = 'asm';
+    return config;
+  });
+
+  return executor.execute(cmd, function () {
+    utils.readConfig.restore();
+    cb.apply(null, Array.prototype.slice.call(arguments, 0));
+  });
+}
 
 suite('site deploymentscript', function () {
   setup(function () {
@@ -492,7 +509,7 @@ function tryGetFileStat(path) {
   try {
     return fs.statSync(path);
   } catch (e) {
-    if (e.errno == 34) {
+    if (e.code === 'ENOENT') {
       // Return null if path doesn't exist
       return null;
     }

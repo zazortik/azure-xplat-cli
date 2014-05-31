@@ -1,6 +1,6 @@
 #!/bin/sh
-# Windows Azure CLI Installation Script
-# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+# Microsoft Azure CLI Installation Script
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
 
 # This script is run as a postinstall step in the package.
 
