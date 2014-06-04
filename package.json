@@ -44,6 +44,7 @@
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
+    "event-stream": "3.1.5",
     "eyes": "0.x.x",
     "github": "0.1.6",
     "kuduscript": "0.1.10",
@@ -68,7 +69,6 @@
     "should": "3.3.2",
     "nock": "0.16",
     "winston-memory": "*",
-    "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",

@@ -1,0 +1,2 @@
+# Testing macos token management stuff
+util/authentication/osx-keychain-parser-tests.js
