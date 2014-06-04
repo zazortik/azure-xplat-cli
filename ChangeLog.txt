@@ -1,3 +1,9 @@
+2014.05.30 Version 0.8.4
+* Active directory support for AzureChinaCloud
+* Bug fixes for AzureChinaCloud endpoints
+* Dropped support for Node version 0.6
+* Test system improvements
+
 2014.05.07 Version 0.8.3
 * Bug fixes
 * Engineering and infrastructure improvements
@@ -143,7 +149,7 @@
 * "azure mobile" - Manages Azure Mobile Services
 * "azure sb namespace" - Manages Service Bus namespaces
 * "azure site deploymentscript" - Generates deployment scripts for customizing your website deployment
-* "azure vm create -o" - Create VMs using community/OSS images 
+* "azure vm create -o" - Create VMs using community/OSS images
 * "azure vm endpoint create-multiple" - Create multiple VM endpoints in one shot.
 
 2012.11.20 - Version 0.6.8
