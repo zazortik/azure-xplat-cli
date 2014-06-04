@@ -33,9 +33,7 @@ describe('profile', function () {
 
   describe('default', function () {
     it('should contain public environments', function () {
-      _.keys(profile.current.environments).length.should.equal(profile.Environment.publicEnvironments.length);
-      profile.current.environments.should.have.property('AzureCloud');
-      profile.current.environments.should.have.property('AzureChinaCloud');
+      profile.current.environments.should.have.properties('AzureCloud', 'AzureChinaCloud');
     });
   });
 
@@ -57,13 +55,23 @@ describe('profile', function () {
         environments: [
         {
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         }]
       });
     });
 
-    it('should include loaded and public environmentd', function () {
+    it('should include loaded and public environments', function () {
       p.environments.should.have.properties('TestProfile', 'AzureCloud', 'AzureChinaCloud');
+    });
+
+    it('should read value for custom environment that was set', function () {
+      p.getEnvironment('TestProfile').managementEndpointUrl.should.equal('https://some.site.example');
+    });
+
+    it('should throw when reading endpoint that is not set', function () {
+      (function () {
+        p.getEnvironment('TestProfile').resourceManagerEndpointUrl;
+      }).should.throw(/not defined/);
     });
 
     describe('and saving', function () {
@@ -83,7 +91,7 @@ describe('profile', function () {
 
         customEnvironment.should.have.properties({
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         });
       });
     });
@@ -213,7 +221,13 @@ describe('profile', function () {
       };
 
       beforeEach(function (done) {
-        var fakeEnvironment = new profile.Environment({name: 'TestEnvironment'});
+        var fakeEnvironment = new profile.Environment({
+          name: 'TestEnvironment',
+          activeDirectoryEndpointUrl: 'http://dummy.example',
+          activeDirectoryResourceId: 'http://login.dummy.example',
+          commonTenantName: 'common'
+        });
+
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
         sinon.stub(fakeEnvironment, 'getAccountSubscriptions').callsArgWith(1, null, loginSubscriptions);
 

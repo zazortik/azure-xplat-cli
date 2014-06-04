@@ -24,7 +24,7 @@ var testPrefix = 'cli.network-tests';
 describe('cli', function () {
   describe('network', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, { requiresCert: true });
       suite.setupSuite(done);
     });
 

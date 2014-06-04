@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -26,7 +26,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.8.26"
   },
   "licenses": [
     {
@@ -64,7 +64,7 @@
     "mocha": "1.16.0",
     "jshint": ">= 2.1.4",
     "sinon": "*",
-    "should": "*",
+    "should": "3.3.2",
     "nock": "0.16",
     "winston-memory": "*",
     "event-stream": "~3.1.0",

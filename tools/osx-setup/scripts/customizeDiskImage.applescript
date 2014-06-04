@@ -1,4 +1,4 @@
--- Windows Azure Command Line Interface
+-- Microsoft Azure Command Line Interface
 -- Finder customizer
 --
 -- Note: this is finicky because of the use of UI + copy actions 
@@ -23,7 +23,7 @@ end tell
 
 -- Customize the appearance of the disk image
 tell application "Finder"
-	tell disk "Windows Azure SDK"
+	tell disk "Microsoft Azure SDK"
 		open
 		
 		tell container window
@@ -70,7 +70,7 @@ tell application "Finder"
 		close
 	end tell
 	
-	tell disk "Windows Azure SDK"
+	tell disk "Microsoft Azure SDK"
 		open
 		set position of item "Install Command Line Interface.pkg" of container window to {175, 280}
 		delay 1
@@ -78,7 +78,7 @@ tell application "Finder"
 	end tell
 	
 	-- visual inspection phase
-	tell disk "Windows Azure SDK"
+	tell disk "Microsoft Azure SDK"
 		open
 		delay 5
 		close

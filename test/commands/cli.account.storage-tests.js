@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var utils = require('../../lib/util/utils');
@@ -22,15 +22,20 @@ var CLITest = require('../framework/cli-test');
 var storageNamesPrefix = 'xplatcli';
 var storageNames = [];
 
+var requiredEnvironment = [
+  { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West Europe' }
+];
+
 var suite;
 var testPrefix = 'cli.account.storage-tests';
 
 describe('cli', function () {
   describe('account storage', function () {
     var storageName;
+    var location;
 
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
 
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
@@ -40,11 +45,20 @@ describe('cli', function () {
     });
 
     after(function (done) {
-      suite.teardownSuite(done);
+      if (!suite.isMocked || suite.isRecording) {
+        suite.forEachName(storageNames, 'account storage delete %s --quiet --json', function () {
+          suite.teardownSuite(done);
+        });
+      } else {
+        suite.teardownSuite(done);
+      }
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_STORAGE_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -56,7 +70,7 @@ describe('cli', function () {
 
       suite.execute('account storage create %s --json --location %s',
         storageName,
-        process.env.AZURE_STORAGE_TEST_LOCATION || 'West Europe',
+        location,
         function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -102,20 +116,7 @@ describe('cli', function () {
           storageAccountKeys = JSON.parse(result.text);
           storageAccountKeys.primaryKey.should.not.be.null;
           storageAccountKeys.secondaryKey.should.not.be.null;
-
-          function deleteUsedStorage (storages) {
-            if (storages.length > 0) {
-              var storage = storages.pop();
-
-              suite.execute('node cli.js account storage delete %s --quiet --json', storage, function () {
-                deleteUsedStorage(storages);
-              });
-            } else {
-              done();
-            }
-          }
-
-          deleteUsedStorage(storageNames);
+          done();
         });
       });
     });

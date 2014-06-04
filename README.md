@@ -147,39 +147,9 @@ azure config mode arm # resource manager
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
-## Running tests
+## Running Tests
 
-The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Microsoft Azure subscription as well as a GitHub account.
-
-Before running tests, you must take a one-time action to configure the CLI with the Microsoft Azure subscription by running
-
-```bash
-azure account download
-azure account import
-```
-
-Next, provide the following parameters by setting environment variables:
-
-- `AZURE_STORAGE_ACCOUNT` - your Microsoft Azure Storage Account name
-- `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
-- `AZURE_SERVICEBUS_NAMESPACE` - your Microsoft Azure Service Bus Namespace
-- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
-- `AZURE_GITHUB_USERNAME` - GitHub account username
-- `AZURE_GITHUB_PASSWORD` - GitHub account password
-- `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
-- `SSHCERT` - path of SSH Certificate (eg. `path\cert.pem`)
-- `BLOB_SOURCE_PATH` - source url path for disk upload (`container\subcontainer\disk.vhd`)
-
-
-To run the tests, call
-
-```bash
-npm test
-```
-
-from the root of your clone of the repository. Most tests execute against live Microsoft Azure management APIs, and running them takes considerable time.
-
-Note: by default, the tests targeting the Microsoft Azure Mobile Services run against a mocked Microsoft Azure HTTP endpoints. In order to execute these tests against live Microsoft Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
+See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
