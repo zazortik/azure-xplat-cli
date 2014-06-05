@@ -21,6 +21,7 @@
 //
 
 var es = require('event-stream');
+var util = require('util');
 var should = require('should');
 
 var keychainParser = require('../../../lib/util/authentication/osx-keychain-parser');
@@ -66,5 +67,34 @@ describe('security tool output parsing', function () {
     it('should not have a password', function () {
       should.not.exist(parsingResult[0].password);
     });
+  });
+
+  describe('multiple entries', function () {
+    var parsingResult = [];
+
+    before(function (done) {
+      var dataSource = es.through();
+      var parser = dataSource.pipe(keychainParser());
+      parser.on('data', function (data) {
+        parsingResult.push(data);
+      });
+
+      parser.on('end', function () {
+        done();
+      });
+
+      dataSource.push(entries.entry2);
+      dataSource.push(entries.entry1);
+      dataSource.push(null);
+    });
+
+    it('should have two results', function () {
+      parsingResult.should.have.length(2);
+    });
+
+    it('should have expected accounts', function () {
+      parsingResult[0].acct.should.equal('e:f:g:h');
+      parsingResult[1].acct.should.equal('a:b:c:d');
+    })
   });
 });
