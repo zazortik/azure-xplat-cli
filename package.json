@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Windows Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -26,7 +26,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.8.26"
   },
   "licenses": [
     {
@@ -37,10 +37,10 @@
   "dependencies": {
     "adal-node": "~0.1.5",
     "async": "0.2.7",
-    "azure": "0.9.7",
+    "azure": "0.9.8",
     "azure-common": "0.9.5",
-    "azure-gallery": "2.0.0-pre.4",
-    "azure-mgmt-resource": "2.0.0-pre.4",
+    "azure-gallery": "2.0.0-pre.5",
+    "azure-mgmt-resource": "2.0.0-pre.5",
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
@@ -48,6 +48,7 @@
     "eyes": "0.x.x",
     "github": "0.1.6",
     "kuduscript": "0.1.10",
+    "moment": "2.6.0",
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
     "request": "2.27.0",
