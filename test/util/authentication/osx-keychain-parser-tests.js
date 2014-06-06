@@ -20,9 +20,13 @@
 // darwin 'security' command
 //
 
+var _ = require('underscore');
 var es = require('event-stream');
+var os = require('os');
 var util = require('util');
 var should = require('should');
+
+var childProcess = require('child_process');
 
 var keychainParser = require('../../../lib/util/authentication/osx-keychain-parser');
 
@@ -97,4 +101,96 @@ describe('security tool output parsing', function () {
       parsingResult[1].acct.should.equal('a:b:c:d');
     })
   });
+});
+
+describe('Parsing output of security child process', function () {
+  if (os.platform() !== 'darwin') {
+    console.log('These tests only run on Mac OSX');
+    return;
+  }
+
+  var parseResults = [];
+  var testUser = 'xplat-test-user';
+  var testService = 'xplat test account';
+  var testDescription = 'A dummy entry for testing';
+  var testPassword = 'Sekret!';
+
+  before(function (done) {
+    addExpectedEntry(function (err) {
+      if (err) { return done(err); }
+      runAndParseOutput(function (err) {
+        if (err) { return done(err); }
+        removeExpectedEntry(function (err) {
+          done(err);
+        });
+      });
+    });
+  });
+
+  //
+  // Helper functions to do each stage of the setup
+  //
+
+  function addExpectedEntry(done) {
+    var args = [ 
+      'add-generic-password',
+      '-a', testUser,
+      '-D', testDescription,
+      '-s', testService,
+      '-w', testPassword,
+      '-U'
+    ];
+
+    childProcess.execFile('/usr/bin/security', args, function (err, stdout, stderr) {
+      if (err) {
+        console.log('security program failed on add', err, stdout, stderr);
+      }
+      done(err);
+    });
+  }
+
+  function runAndParseOutput(done) {
+    var parser = keychainParser();
+
+    parser.on('data', function (entry) {
+      parseResults.push(entry);
+    });
+    parser.on('end', function () {
+      done();
+    });
+
+    var security = childProcess.spawn('/usr/bin/security', ['dump-keychain']);
+
+    security.stdout.pipe(parser);
+  }
+
+  function removeExpectedEntry(done) {
+    var args = [
+      'delete-generic-password',
+      '-a', testUser,
+      '-s', testService
+    ];
+
+    childProcess.execFile('/usr/bin/security', args, function (err, stdout, stderr) {
+      if (err) {
+        console.log('security program failed on delete', stderr);
+      }
+      done(err);
+    });
+  }
+
+  it('should have entries', function () {
+    parseResults.length.should.be.greaterThan(0);
+  });
+
+  it('should have expected entry', function () {
+    var entry = _.findWhere(parseResults, { svce: testService });
+    should.exist(entry);
+    entry.should.have.properties({
+      svce: testService,
+      acct: testUser,
+      desc: testDescription
+    });
+  });
+
 });

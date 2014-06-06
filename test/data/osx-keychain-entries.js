@@ -34,11 +34,12 @@ exports.entry1 =
   '    "prot"<blob>=<NULL>' + '\n' +
   '    "scrp"<sint32>=<NULL>' + '\n' +
   '    "svce"<blob>="azure"' + '\n' +
+  '    "port"<uint32>=0x00000000' + '\n' +
   '    "type"<uint32>=<NULL>' + '\n';
 
 exports.entry2 =
   'keychain: "/Users/chris/Library/Keychains/login.keychain"' + '\n' +
-  'class: "genp"' + '\n' +
+  'class: 0x00000008' + '\n' +
   'attributes:' + '\n' +
   '    0x00000007 <blob>="azure"' + '\n' +
   '    0x00000008 <blob>=<NULL>' + '\n' +
