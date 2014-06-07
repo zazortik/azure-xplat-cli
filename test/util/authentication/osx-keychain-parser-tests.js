@@ -119,11 +119,14 @@ describe('Parsing output of security child process', function () {
     addExpectedEntry(function (err) {
       if (err) { return done(err); }
       runAndParseOutput(function (err) {
-        if (err) { return done(err); }
-        removeExpectedEntry(function (err) {
-          done(err);
-        });
+        done(err);
       });
+    });
+  });
+
+  after(function (done) {
+    removeExpectedEntry(function (err) {
+      done(err);
     });
   });
 
@@ -193,4 +196,28 @@ describe('Parsing output of security child process', function () {
     });
   });
 
+  it('should be able to retrieve password for expected entry', function (done) {
+    var entry = _.findWhere(parseResults, {svce: testService });
+
+    var args = [
+      'find-generic-password',
+      '-a', entry.acct,
+      '-s', entry.svce,
+      '-g'
+    ];
+
+    var actualPassword;
+    var security = childProcess.spawn('/usr/bin/security', args);
+    security.stderr.pipe(es.split()).on('data', function (line) {
+      var match = /^password: "(.*)"$/.exec(line);
+      if (match) {
+        actualPassword = match[1];
+      }
+    });
+
+    security.on('exit', function () {
+      actualPassword.should.equal(testPassword);
+      done();
+    });
+  });
 });
