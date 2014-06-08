@@ -30,6 +30,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage Virtual Machine Images
     * Create and manage certificates
     * CloudInit for Ubuntu VM
+    * Create and manage Docker host virtual machines
 * Network
     * Import and export network configuration
     * Create and manage virtual network
@@ -146,6 +147,21 @@ azure config mode arm # resource manager
 ```
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
+
+## Docker
+
+Usage is same as standard vm create.
+
+    azure vm docker create [options] <dns-name> <image> <user-name> [password]
+
+Docker is configured on the VM using HTTPS as described here: http://docs.docker.io/articles/https/ By default, certificates are put in `~/.docker`, and Docker is configured to run on port 4243. These can be configured using new options
+
+    -dp, --docker-port [port]              Port to use for docker [4243]
+    -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
+
+After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
+
+    docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
 
 ## Running Tests
 
