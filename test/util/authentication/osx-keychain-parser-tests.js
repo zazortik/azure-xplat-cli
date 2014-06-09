@@ -28,6 +28,7 @@ var should = require('should');
 
 var childProcess = require('child_process');
 
+var keychain = require('../../../lib/util/authentication/osx-keychain');
 var keychainParser = require('../../../lib/util/authentication/osx-keychain-parser');
 
 var entries = require('../../data/osx-keychain-entries');
@@ -135,25 +136,11 @@ describe('Parsing output of security child process', function () {
   //
 
   function addExpectedEntry(done) {
-    var args = [ 
-      'add-generic-password',
-      '-a', testUser,
-      '-D', testDescription,
-      '-s', testService,
-      '-w', testPassword,
-      '-U'
-    ];
-
-    childProcess.execFile('/usr/bin/security', args, function (err, stdout, stderr) {
-      if (err) {
-        console.log('security program failed on add', err, stdout, stderr);
-      }
-      done(err);
-    });
+    keychain.set(testUser, testService, testDescription, testPassword, done);
   }
 
   function runAndParseOutput(done) {
-    var parser = keychainParser();
+    var parser = keychain.list();
 
     parser.on('data', function (entry) {
       parseResults.push(entry);
@@ -161,25 +148,10 @@ describe('Parsing output of security child process', function () {
     parser.on('end', function () {
       done();
     });
-
-    var security = childProcess.spawn('/usr/bin/security', ['dump-keychain']);
-
-    security.stdout.pipe(parser);
   }
 
   function removeExpectedEntry(done) {
-    var args = [
-      'delete-generic-password',
-      '-a', testUser,
-      '-s', testService
-    ];
-
-    childProcess.execFile('/usr/bin/security', args, function (err, stdout, stderr) {
-      if (err) {
-        console.log('security program failed on delete', stderr);
-      }
-      done(err);
-    });
+    keychain.remove(testUser, testService, done);
   }
 
   it('should have entries', function () {
@@ -199,24 +171,10 @@ describe('Parsing output of security child process', function () {
   it('should be able to retrieve password for expected entry', function (done) {
     var entry = _.findWhere(parseResults, {svce: testService });
 
-    var args = [
-      'find-generic-password',
-      '-a', entry.acct,
-      '-s', entry.svce,
-      '-g'
-    ];
-
     var actualPassword;
-    var security = childProcess.spawn('/usr/bin/security', args);
-    security.stderr.pipe(es.split()).on('data', function (line) {
-      var match = /^password: "(.*)"$/.exec(line);
-      if (match) {
-        actualPassword = match[1];
-      }
-    });
-
-    security.on('exit', function () {
-      actualPassword.should.equal(testPassword);
+    keychain.get(entry.acct, entry.svce, function (err, password) {
+      should.not.exist(err);
+      password.should.equal(testPassword);
       done();
     });
   });
