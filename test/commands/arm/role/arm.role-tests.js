@@ -58,34 +58,15 @@ describe('arm', function () {
       });
     });
 
-    describe('create role assignment', function () {
+    describe('show role', function () {
       it('should work', function (done) {
-        var principalId = 'a30db067-cde1-49be-95bb-9619a8cc8617';
-        var roleName = 'Operator';
-        var scope = 'SDKXplatUnitTest'; 
-
-        suite.execute('role assignment create -p %s -r %s -s %s --json', principalId, roleName, scope, function (result) {
+        suite.execute('role show Operator --json', function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list --json', function (listAssignmentResult) {
-            var assignments = JSON.parse(listAssignmentResult.text);
-            var assignmentId;
-            assignments.some(function (res) {
-              var matched = (res.scope === scope && res.principalId === principalId);
-              if (matched) {
-                assignmentId = res.roleAssignmentId;
-              }
-              return matched;
-            }).should.be.true;
-
-            //clean up
-            if (assignmentId) {
-              suite.execute('role assignment delete %s --json', assignmentId, function (result) {
-                done();
-              })
-            } else {
-              done();
-            }
-          })
+          var roles = JSON.parse(result.text);
+          roles.some(function (res) {
+            return res.name === 'Operator';
+          }).should.be.true;
+          done();
         });
       });
     });
