@@ -25,7 +25,7 @@ var requiredEnvironment = [
 ];
 
 describe('arm', function () {
-  describe('roledefinition', function () {
+  describe('role', function () {
     var suite;
 
     before(function (done) {
