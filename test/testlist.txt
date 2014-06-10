@@ -61,3 +61,6 @@ hdinsight/unit-create-command.js
 hdinsight/unit-config-commands.js
 # TODO: Not recording call to log service properly, disabling
 #commands/cli.site.log.tail-tests.js
+# Testing macos token management stuff
+util/authentication/osx-keychain-parser-tests.js
+util/authentication/token-cache-encoding-tests.js

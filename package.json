@@ -44,6 +44,7 @@
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
+    "event-stream": "3.1.5",
     "eyes": "0.x.x",
     "github": "0.1.6",
     "kuduscript": "0.1.10",
@@ -59,7 +60,8 @@
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
-    "xmlbuilder": "0.4.x"
+    "xmlbuilder": "0.4.x",
+    "readable-stream": "~1.0.0"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -68,7 +70,6 @@
     "should": "3.3.2",
     "nock": "0.16",
     "winston-memory": "*",
-    "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
