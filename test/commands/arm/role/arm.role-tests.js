@@ -73,11 +73,12 @@ describe('arm', function () {
 
     describe('create role assignment', function () {
       it('should work', function (done) {
-        var principalId = 'a30db067-cde1-49be-95bb-9619a8cc8617';
+        var principalId = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
+        var principal = 'admin@aad240.ccsctp.net';
         var roleName = 'Operator';
         var scope = 'SDKXplatUnitTest';
 
-        suite.execute('role assignment create -p %s -r %s -s %s --json', principalId, roleName, scope, function (result) {
+        suite.execute('role assignment create -p %s -r %s -s %s --json', principal, roleName, scope, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list --json', function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
