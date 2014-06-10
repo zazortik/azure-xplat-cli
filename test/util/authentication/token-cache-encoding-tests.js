@@ -59,7 +59,7 @@ describe('Token cache encoding', function () {
           resourceId: 'https://some.resource.id',
           tenantId: '1855B651-EA3D-4545-A0A9-447AC90B8717',
           'key:with:colon': 'value\\with\\backslashes',
-          expiresOn: new Date(2014,5,9,12,0,0),
+          expiresOn: new Date('2014-06-09T19:00:00.000Z'),
           boolValue: true
         },
         'boolValue:true::expiresOn:2014-06-09T19\\:00\\:00.000Z::key\\:with\\:colon:value\\\\with\\\\backslashes::resourceId:https\\://some.resource.id::tenantId:1855B651-EA3D-4545-A0A9-447AC90B8717::userId:user@someorg.example'
