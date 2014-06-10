@@ -20,6 +20,7 @@
 
 'use strict';
 
+var _ = require('underscore');
 var should = require('should');
 
 var cacheEncoding = require('../../../lib/util/authentication/token-cache-encoding');
@@ -57,9 +58,11 @@ describe('Token cache encoding', function () {
           userId: 'user@someorg.example',
           resourceId: 'https://some.resource.id',
           tenantId: '1855B651-EA3D-4545-A0A9-447AC90B8717',
-          'key:with:colon': 'value\\with\\backslashes'
+          'key:with:colon': 'value\\with\\backslashes',
+          expiresOn: new Date(2014,5,9,12,0,0),
+          boolValue: true
         },
-        'key\\:with\\:colon:value\\\\with\\\\backslashes::resourceId:https\\://some.resource.id::tenantId:1855B651-EA3D-4545-A0A9-447AC90B8717::userId:user@someorg.example'
+        'boolValue:true::expiresOn:2014-06-09T19\\:00\\:00.000Z::key\\:with\\:colon:value\\\\with\\\\backslashes::resourceId:https\\://some.resource.id::tenantId:1855B651-EA3D-4545-A0A9-447AC90B8717::userId:user@someorg.example'
       ]
     ];
 
@@ -77,7 +80,15 @@ describe('Token cache encoding', function () {
         var obj = pair[0];
         var encoding = pair[1];
 
-        cacheEncoding.decodeObject(encoding).should.have.properties(obj);
+        var decoded = cacheEncoding.decodeObject(encoding);
+        decoded.should.have.properties(_.omit(obj, ['boolValue', 'expiresOn']));
+        if (_.has(obj, 'boolValue')) {
+          decoded.boolValue.should.equal(obj.boolValue.toString());
+        }
+
+        if (_.has(obj, 'expiresOn')) {
+          decoded.expiresOn.should.equal(obj.expiresOn.toISOString());
+        }
       });
     });
   });
