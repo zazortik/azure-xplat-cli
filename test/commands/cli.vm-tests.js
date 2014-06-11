@@ -336,7 +336,7 @@ describe('cli', function () {
 
     it('Create VM with RDP port', function (done) {
       var rdpVmName = vmName + 'rdp';
-      var certFile = process.env['SSHCERT'] || path.join(__dirname, '../data/azure.pem');
+      var certFile = process.env['SSHCERT'];
 
       suite.execute('vm create -e %s -r %s -z %s --ssh-cert %s --no-ssh-password %s %s "azureuser" "Pa$$word@123"  --json --location %s',
         '223', '3389', 'Small', certFile, rdpVmName, vmImgName, location, function (result) {
