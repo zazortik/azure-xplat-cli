@@ -45,7 +45,7 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
-    describe('list roles', function () {
+    describe('list all built-in roles', function () {
       it('should work', function (done) {
         suite.execute('role list --json', function (result) {
           result.exitStatus.should.equal(0);
@@ -58,7 +58,7 @@ describe('arm', function () {
       });
     });
 
-    describe('show role', function () {
+    describe('show a built-in role of Operator', function () {
       it('should work', function (done) {
         suite.execute('role show Operator --json', function (result) {
           result.exitStatus.should.equal(0);
@@ -71,7 +71,7 @@ describe('arm', function () {
       });
     });
 
-    describe('create role assignment', function () {
+    describe('create role assignment using UPN and built-in Role of Operator', function () {
       it('should work', function (done) {
         var principalId = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
         var principal = 'admin@aad240.ccsctp.net';
