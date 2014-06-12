@@ -25,7 +25,7 @@ var requiredEnvironment = [
 ];
 
 describe('arm', function () {
-  describe('roledefinition', function () {
+  describe('role', function () {
     var suite;
 
     before(function (done) {
@@ -45,7 +45,7 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
-    describe('list roles', function () {
+    describe('list all built-in roles', function () {
       it('should work', function (done) {
         suite.execute('role list --json', function (result) {
           result.exitStatus.should.equal(0);
@@ -58,7 +58,7 @@ describe('arm', function () {
       });
     });
 
-    describe('show role', function () {
+    describe('show a built-in role of Operator', function () {
       it('should work', function (done) {
         suite.execute('role show Operator --json', function (result) {
           result.exitStatus.should.equal(0);
@@ -67,6 +67,39 @@ describe('arm', function () {
             return res.name === 'Operator';
           }).should.be.true;
           done();
+        });
+      });
+    });
+
+    describe('create role assignment using UPN and built-in Role of Operator', function () {
+      it('should work', function (done) {
+        var principalId = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
+        var principal = 'admin@aad240.ccsctp.net';
+        var roleName = 'Operator';
+        var scope = 'SDKXplatUnitTest';
+
+        suite.execute('role assignment create -p %s -r %s -s %s --json', principal, roleName, scope, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('role assignment list --json', function (listAssignmentResult) {
+            var assignments = JSON.parse(listAssignmentResult.text);
+            var assignmentId;
+            assignments.some(function (res) {
+              var matched = (res.scope === scope && res.principalId === principalId);
+              if (matched) {
+                assignmentId = res.roleAssignmentId;
+              }
+              return matched;
+            }).should.be.true;
+
+            //clean up
+            if (assignmentId) {
+              suite.execute('role assignment delete %s --json', assignmentId, function (result) {
+                done();
+              })
+            } else {
+              done();
+            }
+          })
         });
       });
     });
