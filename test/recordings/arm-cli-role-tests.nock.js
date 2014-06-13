@@ -18,9 +18,9 @@ exports.getMockedProfile = function () {
   return newProfile;
 };
 
-exports.setEnvironment = function () {
-  process.env['AZURE_AD_TEST_PRINCIPAL_ID'] = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
+exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_PRINCIPAL_NAME'] = 'admin@aad240.ccsctp.net';
+  process.env['AZURE_AD_TEST_PRINCIPAL_ID'] = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
 }
 
 exports.scopes = [[function (nock) {
@@ -36,7 +36,7 @@ exports.scopes = [[function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:59 GMT',
       'content-length': '1762'
     });
   return result;
@@ -54,7 +54,7 @@ exports.scopes = [[function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:59 GMT',
       'content-length': '1762'
     });
   return result;
@@ -69,17 +69,17 @@ exports.scopes = [[function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': 'b35a50f0-ebba-4422-b2f2-72d080cce224',
-      'client-request-id': 'f9c511f6-ba3f-46c7-b7cc-a4eb6dec9021',
+      'ocp-aad-diagnostics-server-name': 'vzuCxTb1JSfaQjnMwZaeYfNUoDVuCfuHdhsoBd78Wr8=',
+      'request-id': '8772335b-d5ed-4430-b933-c7c59b19cbad',
+      'client-request-id': '6194f82f-7d4d-4d73-995b-a141ebfa9505',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'ZcQnT2jKdbnpaVG6S--p6bLhrbpGmC_XLbkX5AOsK5muhtPiYZoGGJIasMrd9iDb1bqzju8O7kaodSWbX9bMW2BvTdhlaWY0jhczTZ6_ubM.JmYpNghIQ2wsPUoaSYUcEUnpOnlX2nDOxe9QU9ZwCms',
+      'ocp-aad-session-key': 'oL00darDbDDjOLitK83MizaLDE6Q8h3UL7MNewtI1A0TB20PpG7xwFNnus7Kot-wscxdTC6C_VTJTcjrTpAyEjVfBA5yEzzPmxHuOOHiwvc.wd08iyaVGGzuXcA_8L4vS8x2qMYRwhetXbXKYUsssVY',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:12 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:55 GMT',
       'content-length': '1873'
     });
   return result;
@@ -97,7 +97,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:01 GMT',
       'content-length': '1762'
     });
   return result;
@@ -107,17 +107,17 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments', '*')
-    .reply(201, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments/@Element\",\"roleAssignmentId\":\"ef448d79-ca3c-4127-a291-0e49f185d4a8\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n}", {
+    .reply(201, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments/@Element\",\"roleAssignmentId\":\"141a836f-d8ae-4566-8e85-ed6d850b277a\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
       expires: '-1',
-      location: 'https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid\'ef448d79-ca3c-4127-a291-0e49f185d4a8\')',
+      location: 'https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid\'141a836f-d8ae-4566-8e85-ed6d850b277a\')',
       server: 'Microsoft-IIS/8.0',
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:01 GMT',
       'content-length': '373'
     });
   return result;
@@ -127,7 +127,7 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments/listRoleAssignmentsAtScopeAndAbove', '*')
-    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"ef448d79-ca3c-4127-a291-0e49f185d4a8\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n    }\r\n  ]\r\n}", {
+    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"141a836f-d8ae-4566-8e85-ed6d850b277a\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n    }\r\n  ]\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
@@ -136,7 +136,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:01 GMT',
       'content-length': '400'
     });
   return result;
@@ -151,17 +151,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': 'h18CQeQQ6hNksP2st9xsNS1OU3V1ecOI0YBiucSafCY=',
-      'request-id': 'c59ffed6-77e0-4596-b323-81b74cad7590',
-      'client-request-id': 'a7b1ec18-f4cd-453d-9cbd-f87da03ec9ed',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': '8ba6b117-4b6a-48fc-ad61-f62dcc4d511c',
+      'client-request-id': '2b7e6b2c-5456-49fd-be7c-47b6dd788bd7',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'kliyiDDicN0rerBt9uvqxBgOOKKgPgnGhsGj0ybt15BCFp-a_UQWT7kf5khkb0orzWLIYjnhUTVXZ1rHKLcgoiHJjUP169eI20OAACHd6Wg.PzsLq2pZFY0AAXRXESaSq_9SsYKghnrsomYqWPpJjP4',
+      'ocp-aad-session-key': 'Sihpla6HN8fywMrhK4OK6gTl15WXGMAr0zGtzKJQb7mCv-owGrz6ElTJiilhLPDMTWoWjE8GUz40mGxGfIBp_qIyeIge-HbV73jD0lY8P-w.zN2_Y5PxVBQ8TWJj8NFIfxg2uwAoIqASf-8bzqELtpc',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:13 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:58 GMT',
       'content-length': '1873'
     });
   return result;
@@ -179,7 +179,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:02 GMT',
       'content-length': '1762'
     });
   return result;
@@ -195,17 +195,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': '4c3b76cf-3761-467e-89f2-37a1018b4ef3',
-      'client-request-id': '619c8615-2058-4883-8233-40108551b6fc',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': '2a465168-35e3-4a82-b1e2-2881be5b0719',
+      'client-request-id': '908fc4d0-c28e-44ec-aaeb-0679285640b6',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'clsjpQxWsAI166jBZEfXWEfciPFT3XwJtQZHwwDtI8sUIDg9_Tlbec3HPYikeXode1Znxufex2CSXHxJoEvOMQRCMSlGLzUZeiXEdA7dOVA.JA6Z081hoWxVZW_oxBb2B4R0I6s5_vkv-xcjHAyDeS0',
+      'ocp-aad-session-key': 'bi-9-LumZGBZ4Ii67LYF0cKplsHJ4SXIMztDv8pZdDwL0HOde0L4zzkp0C1yWW7T3B5hnyr4_B3-vmV4ocVPLAeQSrDEW6hLWXco2Mluvas.WrzlUG8rkeNuyFncC6gl88itzT3egALha4DyrZMnlQ4',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:13 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:58 GMT',
       'content-length': '381'
     });
   return result;
@@ -215,7 +215,7 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments/listRoleAssignmentsAtScopeAndAbove', '*')
-    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"ef448d79-ca3c-4127-a291-0e49f185d4a8\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n    }\r\n  ]\r\n}", {
+    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"141a836f-d8ae-4566-8e85-ed6d850b277a\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"d4cabc17-0ae7-4855-8bec-89797db15fb0\",\"scope\":\"SDKXplatUnitTest\"\r\n    }\r\n  ]\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
@@ -224,7 +224,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:02 GMT',
       'content-length': '400'
     });
   return result;
@@ -239,17 +239,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': 'f074590a-c63d-4189-b2b0-9dfc4d81e1de',
-      'client-request-id': '23ac88d8-893a-4641-9473-8784b1c2a33c',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': 'c21a6bf7-b7c6-4719-aa21-add057dc9d64',
+      'client-request-id': '15bb7986-0c2c-4e82-adc6-3e3523f85bde',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'G4F4cfMhYRUHu_W9ZEj40jM8etGhLqLiHealPgyOWxBg9NvVRcbO2av7XvfN4KJZHpSwIpHA4IyHEQW_jUMj5TKdJI2Z60hC4qk80pNbg58.H1rqTJk0ifecAiIkUSje6BT1gUUuIrue8CSKMan57JY',
+      'ocp-aad-session-key': 'BITueto53nc08HpKZJKJSbTxWN2jKCFmu2aQuMJKRa-ZJRpS9dH32JRzpA8jHXA226-Tv2U-LMn1HMkBj6rBn7EYXvzZsuAwi8w76jJ0Zro.hCuuztcwFa39yC0UDeLDPd2efAMj9LzXnliBCt8iyAU',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:13 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:59 GMT',
       'content-length': '1873'
     });
   return result;
@@ -267,7 +267,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:03 GMT',
       'content-length': '1762'
     });
   return result;
@@ -275,7 +275,7 @@ function (nock) {
 function (nock) {
   var result =
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
-    .delete('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid%27ef448d79-ca3c-4127-a291-0e49f185d4a8%27)')
+    .delete('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid%27141a836f-d8ae-4566-8e85-ed6d850b277a%27)')
     .reply(204, "", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
@@ -283,7 +283,7 @@ function (nock) {
       server: 'Microsoft-IIS/8.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT'
+      date: 'Fri, 13 Jun 2014 22:15:03 GMT'
     });
   return result;
 }],
@@ -297,17 +297,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': 'Ihxn5Rljcz/pwIcd+WCnst2dpJRggCFeQVOomTpx0wU=',
-      'request-id': '8f12de4f-583e-4bd4-a598-9cc40b8bc30a',
-      'client-request-id': 'f53f2118-340d-4742-b833-6997eaac313f',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': '7548d514-4752-4048-86d9-a55763bd7c7f',
+      'client-request-id': 'c3e19c9b-bc56-446f-bbcd-c95c79f2c5d1',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'oGH8W-kVqfYUVHLL5eDZEPhfxppKV2wBhQNr_rF3UvzDXwMQ8mvz5K4R3qdjjs0qcrNlUoiBkHUBxNhLwrKgTbTgUEnVKnflT33uE5dFzHk._Iq2Q4XvBzJd9wUVp3YpgGK3kh52QNv4SMAhJDiCj-M',
+      'ocp-aad-session-key': 'u0Kk6MgaHWUXmTHIIkuXCYMC4rnH5fFOolDGSjxTrBRNYHgVZZa9IYJat56ZO_EPGbpaeYP39cNP1LVnF-2jefbjYiwDmvr3oQmn-bOuNTc.tmcF8saPuAxc8ONdDLp4WReXUrmutmHd2PTFviqv7b8',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:13 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:00 GMT',
       'content-length': '170'
     });
   return result;
@@ -322,17 +322,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': 'd2890e41-e315-42fa-8adb-335f49a7076c',
-      'client-request-id': 'b2ea89d3-0349-46d1-a4b5-2308d7279581',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': '90e97ea9-6df1-45cb-989e-533ad884e662',
+      'client-request-id': '4a1515d4-4414-45e7-bcf4-a65629fc10e7',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'I3hE8eNLFbOUWvMXX05U-DMt1P0CCEfQFVvqCoHHPnFJawuc0yYzyAcokYWQx6Uop6Scepdr2eLuHF9kVVKahWmSDrbHvXygq4eh47qUzGU.U4XGzQBMbLzVzqoSGgeG_WYfjjh5xXUNq-UM8nHtO8s',
+      'ocp-aad-session-key': 'g5LgwpMADttOw7EOZRAwKMfc74Rag_EqmnUoUAzlJo5ODgKEgRRrnQpfBXBWnhWYlukitBESqbpLq6EtNlhezHvwyiIBKsTe7mWf3izx_Yw.BFhqj_hRu6mvOSyrOZjOxWHX1gJ13BjxMwZqyi2BVwU',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:14 GMT',
+      date: 'Fri, 13 Jun 2014 22:14:59 GMT',
       'content-length': '3935'
     });
   return result;
@@ -350,7 +350,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:17 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:03 GMT',
       'content-length': '1762'
     });
   return result;
@@ -360,17 +360,17 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments', '*')
-    .reply(201, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments/@Element\",\"roleAssignmentId\":\"cb0940a6-eb23-4a14-b85d-4c8555742dc2\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n}", {
+    .reply(201, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments/@Element\",\"roleAssignmentId\":\"8bccfb45-9c7f-42a9-9e0a-758770c46fb1\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
       expires: '-1',
-      location: 'https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid\'cb0940a6-eb23-4a14-b85d-4c8555742dc2\')',
+      location: 'https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid\'8bccfb45-9c7f-42a9-9e0a-758770c46fb1\')',
       server: 'Microsoft-IIS/8.0',
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:17 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:04 GMT',
       'content-length': '427'
     });
   return result;
@@ -380,7 +380,7 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments/listRoleAssignmentsAtScopeAndAbove', '*')
-    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"cb0940a6-eb23-4a14-b85d-4c8555742dc2\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n    }\r\n  ]\r\n}", {
+    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"8bccfb45-9c7f-42a9-9e0a-758770c46fb1\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n    }\r\n  ]\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
@@ -389,7 +389,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:17 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:04 GMT',
       'content-length': '454'
     });
   return result;
@@ -404,17 +404,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': '2e97b3f6-ef95-4aa5-b0c0-514a75b90aa1',
-      'client-request-id': '6b4fb824-3a0f-445a-9353-aaffdf2c8a9c',
+      'ocp-aad-diagnostics-server-name': 'vhYgA4yOUvjGnawHsDLVJznXNq0HF1intYYZGiD8RqA=',
+      'request-id': 'a47ec95d-2507-4748-9190-cff7c9a64e88',
+      'client-request-id': 'e7b70e75-f727-4d6e-92b5-fa25c11c09d9',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'ctJPAfNDQXGHF2YEkU11sRBNO8SHZp5d1i42njronEBuSXHD37JCDFzqRDYeGCkCNGFFt-IdWj1RrPGVXUsjy82c1QyknzpRN5rh_GT-jx0.SyS6Yt9GU9C5HCtMoekTSg4flf7yQr1JofKb9SeovBE',
+      'ocp-aad-session-key': 'sQp6r5T8XjUZPWp7zL1p4BYm746HuT8lXzlu0kjH2BJob6Q260d15XRlsIPI8NFqus2CjofIj3jA9rxel1NoLUJ-TVOaH1MIbFghRd37wh4.nw3VojRwHsbnurmkstWy1Qv_5Oj6xf-TWWoDZP9_E2g',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:01 GMT',
       'content-length': '170'
     });
   return result;
@@ -429,17 +429,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': 'kHZt8MuVwYfJdYwujGQteDz/grzV2fJYNO6fQfWZCxg=',
-      'request-id': '1777b36c-b547-4b38-a822-2912269fcc5b',
-      'client-request-id': 'bd2320d5-a8db-4453-8d04-330057b2167d',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': '54b98560-9c6b-4482-8a70-11e84aa2090f',
+      'client-request-id': 'e0023d0c-8009-49e6-9d46-159e9b507d0a',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'Wet8mYnnsqAcCLwiSYZBgQS-U_bTB3ZwO3ipJjpHOEaS0S6bYS33A4CD91fpXUnITZ3NO_zhNfheVs4oslBcUei6nlsXVzkXC129Mgd6A4U.8R9B1xlhIaF0iXEuU2psEWF_AoBFsRsDbfJrQ4S2hVU',
+      'ocp-aad-session-key': 'kFHmaAM7e8ExsBBGqjSs68-rXPVsz3Sv6eIG13jD9E2uOcRrYTWYs6ARoZsJ2jJVTLqif4UQ9yD9tKGojJ1jXYeaCyJ3oehltJDyZ5RzTWM.qVgyscFakf7_cAWg_bOUcwPkzOcDz0Annhy2z2EbDZ4',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:02 GMT',
       'content-length': '3935'
     });
   return result;
@@ -457,7 +457,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:19 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:06 GMT',
       'content-length': '1762'
     });
   return result;
@@ -473,17 +473,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': 'ee973314-3e57-408e-ac4d-df66ae468ce8',
-      'client-request-id': 'd1d61014-cc63-4516-9136-c42ff93c335b',
+      'ocp-aad-diagnostics-server-name': 'vzuCxTb1JSfaQjnMwZaeYfNUoDVuCfuHdhsoBd78Wr8=',
+      'request-id': '84f6420c-b0c2-4338-9e89-747792a325fe',
+      'client-request-id': '3a2b46a7-bd93-4909-b4e5-67fcb7c949d5',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'qInd4zvs5npe_NMLLpZmhOXdMRZ8s3PVkpIGo5znmaHTEYqI4YgvBBjynHFpM_k2Gkj3r-JKH5EbXtIrQAyeF4piZFgZYqgcJtwhjOj6oXk.ZzZijwicl0wlNs0XWksoJxqgpUGkvgx1jnVlVEN8GwI',
+      'ocp-aad-session-key': 'SXFSXxMXhu6QRMB0LR5N9WIGJ96q72MT8Zfs3CfC6GGG_wJEgxoxa0nmGfNO8L20pCCOzkskmPXevRV8i5jw-P2M75UpPACKs_QL35D9L2I.G2ad_YSI5MXSEwR5mC0xVgBNfa-17B4a_qm3jTsatkU',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:15 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:02 GMT',
       'content-length': '125'
     });
   return result;
@@ -493,7 +493,7 @@ function (nock) {
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
     .filteringRequestBody(function (path) { return '*'; })
   .post('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments/listRoleAssignmentsAtScopeAndAbove', '*')
-    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"cb0940a6-eb23-4a14-b85d-4c8555742dc2\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n    }\r\n  ]\r\n}", {
+    .reply(200, "{\r\n  \"odata.metadata\":\"https://aad-pas-nova-by1-001.cloudapp.net/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/$metadata#roleAssignments\",\"value\":[\r\n    {\r\n      \"roleAssignmentId\":\"8bccfb45-9c7f-42a9-9e0a-758770c46fb1\",\"appId\":\"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\"roleId\":\"be21d9e2-3caf-4ef2-a7b2-5339196d939b\",\"principalId\":\"729827e3-9c14-49f7-bb1b-9608f156bbb8\",\"scope\":\"/subscriptions/358f3860-9dbe-4ace-b0c0-3d4f2d861014/resourcegroups/rg1\"\r\n    }\r\n  ]\r\n}", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
       'content-type': 'application/json; charset=utf-8',
@@ -502,7 +502,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:19 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:06 GMT',
       'content-length': '454'
     });
   return result;
@@ -517,17 +517,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': '5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q=',
-      'request-id': 'b1c064af-c1f4-47e9-b263-b6a592c7cc25',
-      'client-request-id': '46e88696-3a8a-42f7-af07-30a34ddbd8f6',
+      'ocp-aad-diagnostics-server-name': 'p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI=',
+      'request-id': 'b422165a-b099-4250-a3bd-98873bcf9058',
+      'client-request-id': '84b4da65-bf6d-4f32-89c4-16bf47fa288c',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'QRdBx9jqmR5osP4NtGtG64J7AfRJynbWFt4ODuVELj4tr4iF0HRSBTfUqM9VuZSX4cP66TOkkxTOYYCg3cik6eJQRyTe3HpxQMpCe-YR5gg.zs-73oVOo9wDIK9oQtoZTXj4p08iK1-qhmJVBS4muqU',
+      'ocp-aad-session-key': 'pF0rb8E1V4307UONJyMxw3k9yz2GirQ7MxFUC_WFTZsPYSPUMns7okaYnXRFeDscpPeg2SaduEvG59rm0s1oU4gN3SfasUwD1gIZhHx6Z6s.v5aH6tyRhL1tB1eA3WNLIELphF9QmWvIbh79rm5YkOs',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:03 GMT',
       'content-length': '170'
     });
   return result;
@@ -542,17 +542,17 @@ function (nock) {
       'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
       expires: '-1',
       server: 'Microsoft-IIS/8.0',
-      'ocp-aad-diagnostics-server-name': 'h18CQeQQ6hNksP2st9xsNS1OU3V1ecOI0YBiucSafCY=',
-      'request-id': '46571bca-310b-4ba8-bdcb-f8fe4184252d',
-      'client-request-id': '5b45971b-8a02-4cbb-9a0c-65bdd8e1e060',
+      'ocp-aad-diagnostics-server-name': 'vzuCxTb1JSfaQjnMwZaeYfNUoDVuCfuHdhsoBd78Wr8=',
+      'request-id': '36abd72d-ebc5-4911-abab-fb9a7f688a76',
+      'client-request-id': '5af5ad50-f343-4594-ae0b-93786dec2ba5',
       'x-ms-gateway-rewrite': 'false',
       'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
-      'ocp-aad-session-key': 'QlS0_ia13JA64sxlh_xHAvOMSlimFLuZ1DmSYG5jLo58otl1Z81tBjBNF6r2RfCOpsLkrnTmBrjAuqtsvODncdnR1ipl1d_siPl0q_0550Q.2B12YgrVaP6pnLn0JgLR8drvhOdKV-H6u-Mqi9zBE5Y',
+      'ocp-aad-session-key': 'nMqWd-vYO7GXV93_D13JqnGgkJcSqwKrRcgvW0w8htrKDdjRopYPdbMDJbfTxjT4w-WLpIKyW3fuWZTzgVJIm41k0joefxMoAMXloB1E5sU.roVhVQC3CnYHI9aO9K-aslvnTUDlum7aIofqnDOgMmY',
       'x-content-type-options': 'nosniff',
       dataserviceversion: '3.0;',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET, ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:16 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:03 GMT',
       'content-length': '3935'
     });
   return result;
@@ -570,7 +570,7 @@ function (nock) {
       dataserviceversion: '3.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:19 GMT',
+      date: 'Fri, 13 Jun 2014 22:15:07 GMT',
       'content-length': '1762'
     });
   return result;
@@ -578,7 +578,7 @@ function (nock) {
 function (nock) {
   var result =
   nock('https://aad-pas-nova-by1-001.cloudapp.net:443')
-    .delete('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid%27cb0940a6-eb23-4a14-b85d-4c8555742dc2%27)')
+    .delete('/1EEEB395-21C8-4AE0-B145-2ABD2DFE501D/roleAssignments(guid%278bccfb45-9c7f-42a9-9e0a-758770c46fb1%27)')
     .reply(204, "", {
       'cache-control': 'no-cache',
       pragma: 'no-cache',
@@ -586,7 +586,7 @@ function (nock) {
       server: 'Microsoft-IIS/8.0',
       'x-aspnet-version': '4.0.30319',
       'x-powered-by': 'ASP.NET',
-      date: 'Fri, 13 Jun 2014 04:29:20 GMT'
+      date: 'Fri, 13 Jun 2014 22:15:07 GMT'
     });
   return result;
 }]];

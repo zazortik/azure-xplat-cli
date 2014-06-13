@@ -21,10 +21,6 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-role-tests';
 
 var requiredEnvironment = [
-  { requiresToken: false },
-];
-
-var requiredEnvironmentVariables = [
   'AZURE_AD_TEST_PRINCIPAL_NAME',
   'AZURE_AD_TEST_PRINCIPAL_ID'
 ];
@@ -39,7 +35,7 @@ describe('arm', function () {
     var subscriptionId = '358f3860-9dbe-4ace-b0c0-3d4f2d861014';
 
     before(function (done) {
-      suite = new CLITest(testprefix);
+      suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
