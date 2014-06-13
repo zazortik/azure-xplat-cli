@@ -41,6 +41,7 @@ commands/cli.site.job-tests.js
 #commands/cli.vm.create_avail-tests.js
 #commands/cli.vm.create_customdata-tests.js
 #commands/cli.vm.create_create-from-tests.js
+commands/cli.vm.create_docker-tests.js
 #commands/cli.vm.vnet_affin_del-tests.js
 commands/cli.sql-tests.js
 commands/cli.account.storage-tests.js
