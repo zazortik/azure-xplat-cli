@@ -18,7 +18,9 @@ exports.getMockedProfile = function () {
   return newProfile;
 };
 
-exports.setEnvironment = function() {
+exports.setEnvironment = function () {
+  process.env['AZURE_AD_TEST_PRINCIPAL_ID'] = 'd4cabc17-0ae7-4855-8bec-89797db15fb0';
+  process.env['AZURE_AD_TEST_PRINCIPAL_NAME'] = 'admin@aad240.ccsctp.net';
 }
 
 exports.scopes = [[function (nock) {
