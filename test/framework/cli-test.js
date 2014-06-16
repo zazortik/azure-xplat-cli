@@ -58,6 +58,10 @@ function CLITest(testPrefix, env, forceMocked) {
   // Normalize environment
   this.normalizeEnvironment(env);
   this.validateEnvironment();
+
+  if (this.isMocked && !this.isRecording) {
+    this.setTimeouts();
+  }
 }
 
 _.extend(CLITest.prototype, {
@@ -363,6 +367,24 @@ _.extend(CLITest.prototype, {
     }
 
     nextName(names);
+  },
+
+  setTimeouts: function () {
+    // Possible it's already wrapped from a previous failed
+    // execution. If so, unwrap then rewrap.
+    if (utils.createClient.restore) {
+      utils.createClient.restore();
+    }
+
+    CLITest.wrap(sinon, utils, 'createClient', function (originalCreateClient) {
+      return function (factoryOrName, credentials, endpoint) {
+        var client = originalCreateClient(factoryOrName, credentials, endpoint);
+        client.longRunningOperationInitialTimeout = 0;
+        client.longRunningOperationRetryTimeout = 0;
+
+        return client;
+      };
+    });
   },
 
   /**
