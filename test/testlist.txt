@@ -46,7 +46,7 @@ commands/cli.vm.create_from-tests.js
 commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
-commands/cli.vm.create_docker-tests.js
+#commands/cli.vm.create_docker-tests.js
 commands/cli.sql-tests.js
 commands/cli.account.storage-tests.js
 commands/cli.storage.account-tests.js

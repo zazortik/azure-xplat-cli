@@ -87,7 +87,7 @@ describe('cli', function () {
 
 	  
 	  function deleteDockerCertificates() {
-		if(!dockerCertDir) {
+		if(!dockerCertDir || !dockerCerts) {
 			return;
 		}
 			
