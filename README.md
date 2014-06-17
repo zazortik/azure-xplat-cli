@@ -158,11 +158,13 @@ This command only supports Ubuntu 14.04 based images. Docker is configured on th
 
     -dp, --docker-port [port]              Port to use for docker [4243]
     -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
-
+	
 After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
 
     docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
 
+Note: To run docker commands on windows make sure ssl agent is installed.
+	
 ## Running Tests
 
 See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
