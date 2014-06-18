@@ -27,6 +27,7 @@ var os = require('os');
 var util = require('util');
 var should = require('should');
 
+var credStore = require('../../../lib/util/authentication/win-credstore');
 var credStoreParser = require('../../../lib/util/authentication/win-credstore-parser');
 
 var entries = require('../../data/win-credstore-entries');
@@ -100,5 +101,68 @@ describe('credstore output parsing', function () {
     it('should have expected credential', function () {
       parsingResult[0].credential.should.equal('00010203AABBCCDD');
     });
+  });
+});
+
+describe('Parsing output of creds child process', function () {
+  if (os.platform() !== 'win32') {
+    console.log('These tests only run on Windows');
+    return;
+  }
+
+  var parseResults = [];
+  var expectedEntry = null;
+
+  var testTargetName='userId:xplattest@org.example::resourceId:https\\:management.core.windows.net/::tenantId:some-guid';
+  var testPassword = 'Sekret!';
+
+  before(function (done) {
+    addExpectedEntry(function (err) {
+      if (err) { return done(err); }
+      runAndParseOutput(function (err) {
+        done(err);
+      });
+    });
+  });
+
+  after(function (done) {
+    removeExpectedEntry(done);
+  });
+
+  //
+  // Helper functions to do each stage of the setup
+  //
+  function addExpectedEntry(done) {
+    credStore.set(testTargetName, testPassword, done);
+  }
+
+  function runAndParseOutput(done) {
+    credStore.list()
+      .on('data', function (credential) {
+        parseResults.push(credential);
+        if (credential.targetName === testTargetName) {
+          expectedEntry = credential;
+        }
+      })
+      .on('end', function () {
+        done();
+      });
+  }
+
+  function removeExpectedEntry(done) {
+    credStore.remove(testTargetName, done);
+  }
+
+  it('should have entries', function () {
+    parseResults.length.should.be.greaterThan(0);
+  });
+
+  it('should have expected entry', function () {
+    expectedEntry.should.not.be.null;
+  });
+
+  it('should have binary encoded password', function () {
+    var decodedCredential = new Buffer(expectedEntry.credential, 'hex').toString('utf8');
+    decodedCredential.should.equal(testPassword);
   });
 });
