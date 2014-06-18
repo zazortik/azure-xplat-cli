@@ -17,17 +17,17 @@
 var EOL = require('os').EOL;
 
  exports.entry1 =
-  'Target Name: AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/' + EOL +
+  'Target Name: AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\\://management.core.windows.net/' + EOL +
   'Type: Generic' + EOL +
   'User Name: creds.exe' + EOL;
 
  exports.entry2 =
-  'Target Name: AzureXplatCli:target=userId:someotheruser@domain.example::resourceId:https\://management.core.windows.net/' + EOL +
+  'Target Name: AzureXplatCli:target=userId:someotheruser@domain.example::resourceId:https\\://management.core.windows.net/' + EOL +
   'Type: Generic' + EOL +
   'User Name: creds.exe' + EOL;
 
   exports.entry1WithCredential =
-    'Target Name: AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/' + EOL +
+    'Target Name: AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\\://management.core.windows.net/' + EOL +
     'Type: Generic' + EOL +
     'User Name: creds.exe' + EOL +
     'Credential: 00010203AABBCCDD' + EOL;
