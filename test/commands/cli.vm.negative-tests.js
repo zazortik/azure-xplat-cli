@@ -48,14 +48,6 @@ describe('cli', function () {
 			suite.setupSuite(done);
 		});
 
-		after(function (done) {
-			if (suite.isMocked) {
-				crypto.randomBytes.restore();
-			}
-			fs.unlinkSync(fileName);
-			suite.teardownSuite(done);
-		});
-
 		beforeEach(function (done) {
 			suite.setupTest(done);
 		});
@@ -102,24 +94,6 @@ describe('cli', function () {
 					vmNegName, ImageName, 'SomeLoc', function (result) {
 					result.exitStatus.should.equal(1);
 					result.errorText.should.include(' No location found which has DisplayName or Name same as value of --location');
-					done();
-				});
-			});
-		});
-
-		// Create VM with custom data with large file as customdata file
-		it('Negative testcase for custom data - Large File', function (done) {
-			var customVmName = 'xplatcustomvm';
-			var location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
-			vmsize = 'small',
-			sshPort = '223';
-			console.log(fileName);
-			generateFile(fileName, 70000, null);
-			getImageName('Linux', function (ImageName) {
-				suite.execute('vm create -e %s -z %s --no-ssh-password %s %s testuser Collabera@01 -l %s -d %s --json --verbose',
-					sshPort, vmsize, customVmName, ImageName, location, fileName, function (result) {
-					result.exitStatus.should.equal(1);
-					result.errorText.should.include('--custom-data must be less then 64 KB');
 					done();
 				});
 			});
