@@ -72,12 +72,10 @@ describe('cli', function () {
       it('Update and Delete', function (done) {
         var vmEndpointName = 'NewTestEndpoint';
         var vmExistingEndpointName = 'tcp-5555-5565';
-
         suite.execute('vm endpoint update %s -t %s -l %s -n %s -o tcp %s --json',
           vmName, 8081, 8082, vmEndpointName, vmExistingEndpointName, function (result) {
           suite.execute('vm endpoint show %s -e %s --json', vmName, vmEndpointName, function (result) {
             var vmEndpointObj = JSON.parse(result.text);
-            //vmEndpointObj.Network.Endpoints[0].port.should.equal('8082');
             suite.execute('vm endpoint delete %s %s --json', vmName, vmEndpointName, function (result) {
               result.exitStatus.should.equal(0);
               setTimeout(done, timeout);

@@ -74,16 +74,15 @@ describe('cli', function () {
         var probPathName = '/prob/listner1';
         suite.execute('vm endpoint create -n %s -o %s %s %s %s -u -b %s -t %s -r tcp -p %s --json',
           vmEndpointName, 'tcp', vmName, 8080, 80, lbSetName, 4444, probPathName, function (result) {
-          suite.execute('vm endpoint list %s --json', vmName, function (result) {
-            result.exitStatus.should.equal(0);
-            var epList = JSON.parse(result.text);
-
-            var epExists = epList.some(function (ep) {
-                return ep.name.toLowerCase() === vmEndpointName.toLowerCase();
-              });
-            epExists.should.be.ok;
-            done();
-          });
+            suite.execute('vm endpoint list %s --json', vmName, function (result) {
+              result.exitStatus.should.equal(0);
+              var epList = JSON.parse(result.text);
+              var epExists = epList.some(function (ep) {
+                  return ep.name.toLowerCase() === vmEndpointName.toLowerCase();
+                });
+              epExists.should.be.ok;
+              done();
+            });
         });
       });
     });

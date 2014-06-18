@@ -71,7 +71,6 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var diskList = JSON.parse(result.text);
           diskList.length.should.be.above(0);
-
           var diskName = ''
             diskList.some(function (disk) {
               if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {

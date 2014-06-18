@@ -85,27 +85,26 @@ describe('cli', function () {
         }
       }
 
-	  
 	  function deleteDockerCertificates() {
-		if(!dockerCertDir || !dockerCerts) {
-			return;
+        if(!dockerCertDir || !dockerCerts) {
+	      return;
 		}
 			
 		fs.exists(dockerCertDir, function(exists) {
-			if(!exists) {
-				return;
-			}	
-			
-			fs.unlinkSync(dockerCerts.caKey);
-			fs.unlinkSync(dockerCerts.ca);
-			fs.unlinkSync(dockerCerts.serverKey);
-			fs.unlinkSync(dockerCerts.server);
-			fs.unlinkSync(dockerCerts.serverCert);
-			fs.unlinkSync(dockerCerts.clientKey);
-			fs.unlinkSync(dockerCerts.client);
-			fs.unlinkSync(dockerCerts.clientCert);
-			fs.unlinkSync(dockerCerts.extfile);
-			fs.rmdirSync(dockerCertDir);
+		  if(!exists) {
+		    return;
+		  }	
+		  
+		  fs.unlinkSync(dockerCerts.caKey);
+		  fs.unlinkSync(dockerCerts.ca);
+		  fs.unlinkSync(dockerCerts.serverKey);
+		  fs.unlinkSync(dockerCerts.server);
+		  fs.unlinkSync(dockerCerts.serverCert);
+		  fs.unlinkSync(dockerCerts.clientKey);
+		  fs.unlinkSync(dockerCerts.client);
+		  fs.unlinkSync(dockerCerts.clientCert);
+		  fs.unlinkSync(dockerCerts.extfile);
+		  fs.rmdirSync(dockerCertDir);
 		});
 	  }
 	  
@@ -116,9 +115,8 @@ describe('cli', function () {
     });
 
     describe('Vm Create: ', function () {
-	
-      it('Create Docker VM with default values should pass', function (done) {
-		var homePath = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+	  it('Create Docker VM with default values should pass', function (done) {
+        var homePath = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 		dockerCertDir = path.join(homePath, '.docker');
 		var dockerPort = 4243; 
 		
@@ -126,10 +124,10 @@ describe('cli', function () {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh',
             vmName, ImageName, location, function (result) {
 			  suite.execute('vm show %s --json', vmName, function (result) {
-				var certifiatesExist = checkForDockerCertificates(dockerCertDir);
+		        var certifiatesExist = checkForDockerCertificates(dockerCertDir);
 				certifiatesExist.should.be.true;
 				
-				var cratedVM = JSON.parse(result.text);
+		        var cratedVM = JSON.parse(result.text);
 				var dockerPortExists = checkForDockerPort(cratedVM, dockerPort);
 				
 				dockerPortExists.should.be.true;
@@ -153,15 +151,12 @@ describe('cli', function () {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh --docker-cert-dir %s --docker-port %s',
             vmName, ImageName, location, dockerCertDir, dockerPort, function (result) {
 			  suite.execute('vm show %s --json', vmName, function (result) {
-				var certifiatesExist = checkForDockerCertificates(dockerCertDir.toString());
+		        var certifiatesExist = checkForDockerCertificates(dockerCertDir.toString());
 				certifiatesExist.should.be.true;
-				
 				var cratedVM = JSON.parse(result.text);
 				var dockerPortExists = checkForDockerPort(cratedVM, dockerPort);
-				
 				dockerPortExists.should.be.true;
 				cratedVM.VMName.should.equal(vmName);
-				
 				vmToUse.Name = vmName;
 				vmToUse.Created = true;
 				vmToUse.Delete = true;
@@ -175,8 +170,8 @@ describe('cli', function () {
         getImageName('Linux', function (ImageName) {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh 22 --docker-port 22',
             vmName, ImageName, location, function (result) {
-				result.exitStatus.should.not.equal(0);
-				setTimeout(done, timeout);
+			  result.exitStatus.should.not.equal(0);
+			  setTimeout(done, timeout);
             });
         });
       });
@@ -185,8 +180,8 @@ describe('cli', function () {
         getImageName('Linux', function (ImageName) {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh 22 --docker-port 3.2',
             vmName, ImageName, location, function (result) {
-				result.exitStatus.should.not.equal(0);
-				setTimeout(done, timeout);
+			  result.exitStatus.should.not.equal(0);
+			  setTimeout(done, timeout);
             });
         });
       });
@@ -195,8 +190,8 @@ describe('cli', function () {
         getImageName('Linux', function (ImageName) {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh 22 --docker-cert-dir D:/foo/bar',
             vmName, ImageName, location, function (result) {
-				result.exitStatus.should.not.equal(0);
-				setTimeout(done, timeout);
+			  result.exitStatus.should.not.equal(0);
+			  setTimeout(done, timeout);
             });
         });
       });
@@ -219,64 +214,64 @@ describe('cli', function () {
     }
 	
 	function checkForDockerPort(cratedVM, dockerPort) {
-		var result = false;
-		if(cratedVM.Network && cratedVM.Network.Endpoints) {
-			cratedVM.Network.Endpoints.forEach(function(element, index, array) {
-				if(element.name === 'docker' && element.port === dockerPort) {
-					result = true;
-				}
-			});
-		}
-		
-		return result;
+	  var result = false;
+	  if(cratedVM.Network && cratedVM.Network.Endpoints) {
+	    cratedVM.Network.Endpoints.forEach(function(element, index, array) {
+	      if(element.name === 'docker' && element.port === dockerPort) {
+	        result = true;
+	      }
+	    });
+	  }
+	  
+	  return result;
 	}
 	
 	function checkForDockerCertificates(dockerCertDir, cb) {
-		dockerCerts = { 
-		 	caKey: path.join(dockerCertDir, 'ca-key.pem'),
-		 	ca: path.join(dockerCertDir, 'ca.pem'),
-		 	serverKey: path.join(dockerCertDir, 'server-key.pem'),
-		 	server: path.join(dockerCertDir, 'server.csr'),
-		 	serverCert: path.join(dockerCertDir, 'server-cert.pem'),
-		 	clientKey: path.join(dockerCertDir, 'key.pem'),
-		 	client: path.join(dockerCertDir, 'client.csr'),
-		 	clientCert: path.join(dockerCertDir, 'cert.pem'),
-		 	extfile: path.join(dockerCertDir, 'extfile.cnf')
-		 };
-		 
-		if(!fs.existsSync(dockerCerts.caKey)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.ca)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.serverKey)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.server)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.serverCert)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.clientKey)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.client)) {
-			return false;
-		}
-		 
-		if(!fs.existsSync(dockerCerts.clientCert)) {
-			return false;
-		}
-		
-		return true;
+	  dockerCerts = { 
+	    caKey: path.join(dockerCertDir, 'ca-key.pem'),
+	   	ca: path.join(dockerCertDir, 'ca.pem'),
+	   	serverKey: path.join(dockerCertDir, 'server-key.pem'),
+	   	server: path.join(dockerCertDir, 'server.csr'),
+	   	serverCert: path.join(dockerCertDir, 'server-cert.pem'),
+	   	clientKey: path.join(dockerCertDir, 'key.pem'),
+	   	client: path.join(dockerCertDir, 'client.csr'),
+	   	clientCert: path.join(dockerCertDir, 'cert.pem'),
+	   	extfile: path.join(dockerCertDir, 'extfile.cnf')
+	   };
+	   
+	  if(!fs.existsSync(dockerCerts.caKey)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.ca)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.serverKey)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.server)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.serverCert)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.clientKey)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.client)) {
+	  	return false;
+	  }
+	   
+	  if(!fs.existsSync(dockerCerts.clientCert)) {
+	  	return false;
+	  }
+	  
+	  return true;
 	}
   });
 });

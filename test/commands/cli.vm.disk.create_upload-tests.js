@@ -20,16 +20,12 @@ var fs = require('fs');
 var path = require('path');
 
 var isForceMocked = !process.env.NOCK_OFF;
-
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 var timeout = isForceMocked ? 0 : 5000;
-
 var vmPrefix = 'clitestvm';
-
 var suite;
 var testPrefix = 'cli.vm.disk.create_upload-tests';
-
 var currentRandom = 0;
 
 describe('cli', function () {
