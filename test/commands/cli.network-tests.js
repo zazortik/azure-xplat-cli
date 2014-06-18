@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 
@@ -21,10 +21,19 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var testPrefix = 'cli.network-tests';
 
+var requiredEnvironment = [
+  {
+    name: 'AZURE_SITE_TEST_LOCATION',
+    defaultValue: 'West US'
+  }
+];
+
+var testSite;
+
 describe('cli', function () {
   describe('network', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, { requiresCert: true });
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -33,7 +42,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testSite = process.env['AZURE_SITE_TEST_LOCATION'];
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -55,7 +67,6 @@ describe('cli', function () {
 
           suite.execute('network dnsserver list --json', function (result) {
             result.exitStatus.should.equal(0);
-
             var dnsServers = JSON.parse(result.text);
             var exists = dnsServers.some(function (v) {
               return v.IPAddress === dnsIp;
@@ -79,7 +90,7 @@ describe('cli', function () {
 
       it('should create vnet, show and list', function (done) {
         suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s',
-          vnetName, 'West US', function (result) {
+          vnetName, testSite, function (result) {
 
           result.exitStatus.should.equal(0);
 
@@ -114,7 +125,7 @@ describe('cli', function () {
           });
         });
       });
-    
+
       it('should create vnet with dns-server-id option and show', function (done) {
         var dnsIp = '66.77.88.99';
         var dnsId = 'dns-cli-0';
@@ -133,7 +144,7 @@ describe('cli', function () {
             dnsServer.should.not.equal(null);
 
             suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s --dns-server-id %s',
-              vnetName, 'West US', dnsId, function (result) {
+              vnetName, testSite, dnsId, function (result) {
 
               result.text.should.not.be.null;
               result.exitStatus.should.equal(0);
