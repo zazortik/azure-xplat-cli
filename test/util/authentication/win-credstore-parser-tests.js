@@ -62,8 +62,8 @@ describe('credstore output parsing', function () {
         .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/');
     });
 
-    it('should not have a password', function () {
-      parsingResult[0].should.not.have.property('password');
+    it('should not have a credential', function () {
+      parsingResult[0].should.not.have.property('credential');
     });
 
     it('should be generic type', function () {
@@ -89,6 +89,16 @@ describe('credstore output parsing', function () {
         .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/');
       parsingResult[1].targetName.should
         .equal('AzureXplatCli:target=userId:someotheruser@domain.example::resourceId:https\://management.core.windows.net/');
+    });
+  });
+
+  describe('one entry with credential', function () {
+    before(function (done) {
+      parseEntries(entries.entry1WithCredential + os.EOL, done);
+    });
+
+    it('should have expected credential', function () {
+      parsingResult[0].credential.should.equal('00010203AABBCCDD');
     });
   });
 });
