@@ -60,7 +60,7 @@ describe('credstore output parsing', function () {
 
     it('should have expected target', function () {
       parsingResult[0].targetName.should
-        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/');
+        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\\://management.core.windows.net/');
     });
 
     it('should not have a credential', function () {
