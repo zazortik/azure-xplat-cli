@@ -60,7 +60,7 @@ describe('credstore output parsing', function () {
 
     it('should have expected target', function () {
       parsingResult[0].targetName.should
-        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/');
+        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\\://management.core.windows.net/');
     });
 
     it('should not have a credential', function () {
@@ -87,9 +87,9 @@ describe('credstore output parsing', function () {
 
     it('should have expected targets', function () {
       parsingResult[0].targetName.should
-        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\://management.core.windows.net/');
+        .equal('AzureXplatCli:target=userId:someuser@domain.example::resourceId:https\\://management.core.windows.net/');
       parsingResult[1].targetName.should
-        .equal('AzureXplatCli:target=userId:someotheruser@domain.example::resourceId:https\://management.core.windows.net/');
+        .equal('AzureXplatCli:target=userId:someotheruser@domain.example::resourceId:https\\://management.core.windows.net/');
     });
   });
 
@@ -113,7 +113,7 @@ describe('Parsing output of creds child process', function () {
   var parseResults = [];
   var expectedEntry = null;
 
-  var testTargetName='userId:xplattest@org.example::resourceId:https\\:management.core.windows.net/::tenantId:some-guid';
+  var testTargetName='userId:xplattest@org.example::resourceId:https\\://management.core.windows.net/::tenantId:some-guid';
   var testPassword = 'Sekret!';
 
   before(function (done) {
