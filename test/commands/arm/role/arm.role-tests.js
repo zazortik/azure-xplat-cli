@@ -92,7 +92,7 @@ describe('arm', function () {
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -c %s --json', principal, roleName, scope, function (result) {
+            suite.execute('role assignment delete -p %s -o %s -c %s -q --json', principal, roleName, scope, function (result) {
               done();
             });
           });
@@ -117,7 +117,7 @@ describe('arm', function () {
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -g %s --json', principal, roleName, resourceGroup, function (result) {
+            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', principal, roleName, resourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
