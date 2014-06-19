@@ -64,3 +64,5 @@ hdinsight/unit-config-commands.js
 # Testing macos token management stuff
 util/authentication/osx-keychain-parser-tests.js
 util/authentication/token-cache-encoding-tests.js
+# Testing windows token management stuff
+util/authentication/win-credstore-parser-tests.js
