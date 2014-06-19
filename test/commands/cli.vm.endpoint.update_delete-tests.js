@@ -24,25 +24,17 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
-var timeout = isForceMocked ? 0 : 120000;
+var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.vnet_affin_del-tests';
+var testPrefix = 'cli.vm.endpoint.update_delete-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var affinityName = 'xplattestaffingrp', vnetName = 'xplattestvmVnet';
+    var vmName;
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -54,15 +46,17 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
+  
+      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -73,19 +67,20 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    describe('Delete: ', function () {
-      it('Virtual network', function (done) {
-        suite.execute('network vnet delete %s --quiet --json', vnetName, function (result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
-        });
-      });
-
-      // Delete a AffinityGroup
-      it('Affinity Group', function (done) {
-        suite.execute('account affinity-group delete %s --quiet --json', affinityName, function (result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
+    //udpate and delete the endpoint
+    describe('Endpoint:', function () {
+      it('Update and Delete', function (done) {
+        var vmEndpointName = 'NewTestEndpoint';
+        var vmExistingEndpointName = 'tcp-5555-5565';
+        suite.execute('vm endpoint update %s -t %s -l %s -n %s -o tcp %s --json',
+          vmName, 8081, 8082, vmEndpointName, vmExistingEndpointName, function (result) {
+          suite.execute('vm endpoint show %s -e %s --json', vmName, vmEndpointName, function (result) {
+            var vmEndpointObj = JSON.parse(result.text);
+            suite.execute('vm endpoint delete %s %s --json', vmName, vmEndpointName, function (result) {
+              result.exitStatus.should.equal(0);
+              setTimeout(done, timeout);
+            });
+          });
         });
       });
     });

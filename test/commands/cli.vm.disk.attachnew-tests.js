@@ -27,13 +27,14 @@ var CLITest = require('../framework/cli-test');
 var vmPrefix = 'clitestvm';
 
 var suite;
-var testPrefix = 'cli.vm.disk.show-tests';
+var testPrefix = 'cli.vm.disk.attachnew-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-
+    var vmName,
+    diskName = 'xplattestdisk';
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
 
@@ -44,7 +45,8 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
+	  
+	  vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -52,7 +54,6 @@ describe('cli', function () {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
-
       suite.teardownSuite(done);
     });
 
@@ -64,28 +65,37 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    //list and show the disk
+    //attaches a new disk
     describe('Disk:', function () {
-      it('List and Show', function (done) {
-        suite.execute('vm disk list --json', function (result) {
-          result.exitStatus.should.equal(0);
-          var diskList = JSON.parse(result.text);
-          diskList.length.should.be.above(0);
-          var diskName = ''
-            diskList.some(function (disk) {
-              if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
-                diskName = disk.name;
-              }
-            });
-
-          suite.execute('vm disk show %s --json', diskName, function (result) {
+      it('Attach-New', function (done) {
+        suite.execute('vm disk show %s --json', diskName, function (result) {
+          var diskDetails = JSON.parse(result.text);
+          var domainUrl = 'http://' + diskDetails.mediaLinkUri.split('/')[2];
+          var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
+          suite.execute('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl, function (result) {
             result.exitStatus.should.equal(0);
-            var disk = JSON.parse(result.text);
-            disk.name.should.equal(diskName);
-            done();
+            waitForDiskOp(vmName, true, function () {
+              suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
+                waitForDiskOp(vmName, false, done);
+              });
+            });
           });
         });
       });
     });
+
+    function waitForDiskOp(vmName, DiskAttach, callback) {
+      var vmObj;
+      suite.execute('vm show %s --json', vmName, function (result) {
+        vmObj = JSON.parse(result.text);
+        if ((!DiskAttach && !vmObj.DataDisks[0]) || (DiskAttach && vmObj.DataDisks[0])) {
+          callback();
+        } else {
+          setTimeout(function () {
+            waitForDiskOp(vmName, DiskAttach, callback);
+          }, 10000);
+        }
+      });
+    }
   });
 });

@@ -25,14 +25,16 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
 var vmPrefix = 'clitestvm';
+var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.disk.show-tests';
+var testPrefix = 'cli.vm.image.delete-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
+    var vmImgName = 'xplattestimg';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -52,7 +54,6 @@ describe('cli', function () {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
-
       suite.teardownSuite(done);
     });
 
@@ -64,26 +65,12 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    //list and show the disk
-    describe('Disk:', function () {
-      it('List and Show', function (done) {
-        suite.execute('vm disk list --json', function (result) {
+    //delete image
+    describe('Image:', function () {
+      it('Delete', function (done) {
+        suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
           result.exitStatus.should.equal(0);
-          var diskList = JSON.parse(result.text);
-          diskList.length.should.be.above(0);
-          var diskName = ''
-            diskList.some(function (disk) {
-              if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
-                diskName = disk.name;
-              }
-            });
-
-          suite.execute('vm disk show %s --json', diskName, function (result) {
-            result.exitStatus.should.equal(0);
-            var disk = JSON.parse(result.text);
-            disk.name.should.equal(diskName);
-            done();
-          });
+          setTimeout(done, timeout);
         });
       });
     });

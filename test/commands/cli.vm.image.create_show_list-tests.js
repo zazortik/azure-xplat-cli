@@ -24,28 +24,18 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-var storageAccountKey = process.env['AZURE_STORAGE_ACCESS_KEY'] ? process.env['AZURE_STORAGE_ACCESS_KEY'] : 'YW55IGNhcm5hbCBwbGVhc3VyZQ==';
-var createdDisks = [];
-
-// A common VM used by multiple tests
-var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
-var timeout = isForceMocked ? 0 : 120000;
+var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.image-tests';
+var testPrefix = 'cli.vm.image.create_show_list-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var vmImgName = 'xplattestimg', location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
+    var vmImgName = 'xplattestimg',
+    location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -64,8 +54,8 @@ describe('cli', function () {
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -76,46 +66,38 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-    describe('Image: ', function () {
-      // Image Create
+    //create a image
+    describe('Image:', function () {
       it('Create', function (done) {
-		getDiskName('Linux', function(diskObj){
-			var imageSourcePath = diskObj.MediaLink;
-            var domainUrl = 'http://' + imageSourcePath.split('/')[2];
-			var blobUrl = domainUrl + '/vm-images/' + vmImgName;
-			
-			suite.execute('vm image create -u %s %s %s --os %s -l %s --json', blobUrl, vmImgName, imageSourcePath, 'Linux', location, function (result) {
-				result.exitStatus.should.equal(0);
-				setTimeout(done, timeout);
-			});
-		});
-      });
-	  
-		it('Show', function (done) {
-			suite.execute('vm image show %s --json', vmImgName, function (result) {
-				var vmImageObj = JSON.parse(result.text);
-				vmImageObj.Name.should.equal(vmImgName);
-				vmImageObj.OS.should.equal('Linux');
-				done();
-			});
-		});
-		
-		it('List', function (done) {
-			suite.execute('vm image list --json', function (result) {
-				result.exitStatus.should.equal(0);
-				var imageList = JSON.parse(result.text);
-				imageList.length.should.be.above(0);
-				done();
-			});
-		});
-	});
+        getDiskName('Linux', function (diskObj) {
+          var imageSourcePath = diskObj.mediaLinkUri;
+          var domainUrl = 'http://' + imageSourcePath.split('/')[2];
+          var blobUrl = domainUrl + '/vm-images/' + vmImgName;
 
-    describe('Image: ', function () {
-      // Image delete
-      it('Delete', function (done) {
-        suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
+          suite.execute('vm image create -u %s %s %s --os %s -l %s --json', blobUrl, vmImgName, imageSourcePath, 'Linux', location, function (result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(done, timeout);
+          });
+        });
+      });
+
+      //show the created image
+      it('Show', function (done) {
+        suite.execute('vm image show %s --json', vmImgName, function (result) {
+          var vmImageObj = JSON.parse(result.text);
+          vmImageObj.name.should.equal(vmImgName);
+          vmImageObj.operatingSystemType.should.equal('Linux');
+          done();
+        });
+      });
+
+      //list all images
+      it('List', function (done) {
+        suite.execute('vm image list --json', function (result) {
           result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
+          var imageList = JSON.parse(result.text);
+          imageList.length.should.be.above(0);
+          done();
         });
       });
     });
@@ -125,10 +107,11 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-			if (disk.OS.toLowerCase() == OS.toLowerCase())
-				diskObj = disk;
-				return diskObj;
-		});
+          if (disk.operatingSystemType == OS){
+            diskObj = disk;
+            return true;
+          }
+        });
         callBack(diskObj);
       });
     }

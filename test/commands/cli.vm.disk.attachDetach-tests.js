@@ -24,28 +24,17 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-var communityImageId = isForceMocked ? 'vmdepot-1-1-1' : process.env['AZURE_COMMUNITY_IMAGE_ID'];
-var createdDisks = [];
-
-// A common VM used by multiple tests
-var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
-var timeout = isForceMocked ? 0 : 120000;
 
 var suite;
-var testPrefix = 'cli.vm.create_commImg-tests';
+var testPrefix = 'cli.vm.disk.attachDetach-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US', vmComName;
+    var vmName,
+    diskName = 'xplattestdisk';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -57,15 +46,16 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
+	  
+	  vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -73,41 +63,39 @@ describe('cli', function () {
     });
 
     afterEach(function (done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function () {
-            suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              return callback();
+      suite.teardownTest(done);
+    });
+
+	//attach a disk and if successfull detaches the attached disk
+    describe('Disk:', function () {
+      it('Attach & Detach', function (done) {
+        suite.execute('vm disk attach %s %s --json', vmName, diskName, function (result) {
+          waitForDiskOp(vmName, true, function (vmObj) {
+            vmObj.DataDisks[0].name.should.equal(diskName);
+            suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
+              result.exitStatus.should.equal(0);
+              waitForDiskOp(vmName, false, function (vmObj) {
+                done();
+              });
             });
-          }, timeout);
-        } else {
-          return callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function () {
-        suite.teardownTest(done);
-      });
-    });
-
-    describe('Vm Create: ', function () {
-      // create vm from a community image
-      it('From community image', function (done) {
-        vmComName = suite.generateId(vmPrefix, vmNames);
-
-        // Create a VM using community image (-o option)
-        suite.execute('vm create -o %s %s communityUser PassW0rd$ -o --json --location %s',
-          vmComName, communityImageId, location,
-          function (result) {
-            result.exitStatus.should.equal(0);
-			vmToUse.Name = vmComName;
-			vmToUse.Created = true;
-			vmToUse.Delete = true;
-            done();
           });
+        });
       });
     });
+
+	//check if disk is attached or de attached and then call the callback
+    function waitForDiskOp(vmName, DiskAttach, callback) {
+      var vmObj;
+      suite.execute('vm show %s --json', vmName, function (result) {
+        vmObj = JSON.parse(result.text);
+        if ((!DiskAttach && !vmObj.DataDisks[0]) || (DiskAttach && vmObj.DataDisks[0])) {
+          callback(vmObj);
+        } else {
+          setTimeout(function () {
+            waitForDiskOp(vmName, DiskAttach, callback);
+          }, 10000);
+        }
+      });
+    }
   });
 });

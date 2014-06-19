@@ -23,29 +23,27 @@ var isForceMocked = !process.env.NOCK_OFF;
 
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
-
 var communityImageId = isForceMocked ? 'vmdepot-1-1-1' : process.env['AZURE_COMMUNITY_IMAGE_ID'];
-var createdDisks = [];
 
 // A common VM used by multiple tests
 var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
+  Name : null,
+  Created : false,
+  Delete : false
 };
 
 var vmPrefix = 'clitestvm';
 var vmNames = [];
-var timeout = isForceMocked ? 0 : 12000;
 
 var suite;
-var testPrefix = 'cli.vm.create_avail-tests';
-
+var testPrefix = 'cli.vm.create_comm-tests';
+var timeout = isForceMocked ? 0 : 5000;
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US', vmName = 'xplattestvm', availSetName = 'Testset';
+    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
+    customVmName = 'xplattestcommvm';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -64,8 +62,8 @@ describe('cli', function () {
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -76,10 +74,11 @@ describe('cli', function () {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
           setTimeout(function () {
-            suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
+            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
+            suite.execute(cmd, function (result) {
               vm.Name = null;
               vm.Created = vm.Delete = false;
-              return callback();
+              callback();
             });
           }, timeout);
         } else {
@@ -92,39 +91,18 @@ describe('cli', function () {
       });
     });
 
-    describe('Vm Create: ', function () {
-       // Create VM using availability set
-      it('Availability set', function (done) {
-        getImageName('Linux', function (ImageName) {
-          suite.execute('vm create -A %s -n %s -l %s %s %s "azureuser" "Pa$$word@123" --json',
-            'Testset', vmName, location, vmName, ImageName, function (result) {
-              suite.execute('vm show %s --json', vmName, function (result) {
-                var vmConnectName = JSON.parse(result.text);
-                vmConnectName.VMName.should.equal(vmName);
-                createdDisks.push(vmConnectName.OSDisk.DiskName);
-				  vmToUse.Name = vmName;
-				  vmToUse.Created = true;
-				  vmToUse.Delete = true;
-                setTimeout(done, timeout);
-              });
-            });
+    //Create vm with custom data
+    describe('Create:', function () {
+      it('with community data', function (done) {
+        suite.execute('vm create -o %s %s testuser Collabera@01 -l %s  --json --verbose',
+          customVmName, communityImageId, location, function (result) {
+          result.exitStatus.should.equal(0);
+          vmToUse.Name = customVmName;
+          vmToUse.Created = true;
+          vmToUse.Delete = true;
+          done();
         });
       });
     });
-	
-	 // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      suite.execute('vm image list --json', function (result) {
-        var imageList = JSON.parse(result.text);
-        imageList.some(function (image) {
-          if (image.OS.toLowerCase() === category.toLowerCase() && image.Category.toLowerCase() === 'public') {
-            getImageName.ImageName = image.Name;
-            //location = image.Location.split(';')[0];
-          }
-        });
-        callBack(getImageName.ImageName);
-      });
-    }
-	
   });
 });
