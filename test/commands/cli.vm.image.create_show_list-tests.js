@@ -109,8 +109,8 @@ describe('cli', function () {
         diskList.some(function (disk) {
           if (disk.operatingSystemType == OS){
             diskObj = disk;
-			return true;
-		  }
+            return true;
+          }
         });
         callBack(diskObj);
       });

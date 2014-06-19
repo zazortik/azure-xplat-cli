@@ -65,7 +65,7 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-	//create a disk
+    //create a disk
     describe('Disk:', function () {
       it('Create', function (done) {
         getDiskName('Linux', function (diskObj) {
@@ -101,8 +101,8 @@ describe('cli', function () {
         diskList.some(function (disk) {
           if (disk.operatingSystemType == OS){
             diskObj = disk;
-			return true;
-		  }
+            return true;
+          }
         });
         callBack(diskObj);
       });
