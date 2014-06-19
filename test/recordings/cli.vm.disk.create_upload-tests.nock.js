@@ -51,7 +51,7 @@ exports.scopes = [
         });
       return result;
     },
-	function (nock) {
+    function (nock) {
       var result =
         nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/locations')
@@ -66,7 +66,7 @@ exports.scopes = [
         });
       return result;
     },
-	function (nock) {
+    function (nock) {
       var result =
         nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2/keys')
@@ -81,7 +81,7 @@ exports.scopes = [
         });
       return result;
     },
-	function (nock) {
+    function (nock) {
       var result =
         nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2')
@@ -96,7 +96,7 @@ exports.scopes = [
         });
       return result;
     },
-	function (nock) {
+    function (nock) {
       var result =
         nock('http://acsforsdk2.blob.core.windows.net:80/')
         .put('/disks?restype=container')
@@ -128,7 +128,7 @@ exports.scopes = [
         });
       return result;
     },
-	function (nock) {
+    function (nock) {
       var result =
         nock('http://acsforsdk2.blob.core.windows.net:80/')
         .head('/disks/xplattestdisk')
