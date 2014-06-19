@@ -65,7 +65,7 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-	//delete the disk
+    //delete the disk
     describe('Delete:', function () {
       it('Disk', function (done) {
         suite.execute('vm disk delete -b %s --json', diskName, function (result) {

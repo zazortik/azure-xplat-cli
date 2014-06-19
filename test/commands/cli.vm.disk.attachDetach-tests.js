@@ -46,8 +46,8 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-	  
-	  vmName = process.env.TEST_VM_NAME;
+      
+      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -66,7 +66,7 @@ describe('cli', function () {
       suite.teardownTest(done);
     });
 
-	//attach a disk and if successfull detaches the attached disk
+    //attach a disk and if successfull detaches the attached disk
     describe('Disk:', function () {
       it('Attach & Detach', function (done) {
         suite.execute('vm disk attach %s %s --json', vmName, diskName, function (result) {
@@ -83,7 +83,7 @@ describe('cli', function () {
       });
     });
 
-	//check if disk is attached or de attached and then call the callback
+    //check if disk is attached or de attached and then call the callback
     function waitForDiskOp(vmName, DiskAttach, callback) {
       var vmObj;
       suite.execute('vm show %s --json', vmName, function (result) {

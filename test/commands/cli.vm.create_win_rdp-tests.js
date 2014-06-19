@@ -48,7 +48,7 @@ describe('cli', function () {
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
-	  
+      
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
           return (++currentRandom).toString();
@@ -56,10 +56,10 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-	  
-	  process.env.TEST_VM_NAME = isForceMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
-	  vmName = process.env.TEST_VM_NAME;
-	  
+      
+      process.env.TEST_VM_NAME = isForceMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+      vmName = process.env.TEST_VM_NAME;
+      
       suite.setupSuite(done);
     });
 

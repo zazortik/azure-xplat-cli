@@ -45,8 +45,8 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-	  
-	  vmName = process.env.TEST_VM_NAME;
+      
+      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 

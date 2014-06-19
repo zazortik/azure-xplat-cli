@@ -19,7 +19,7 @@ exports.getMockedProfile = function () {
   return newProfile;
 };
 exports.scopes = [
-	/*endpoint create*/
+    /*endpoint create*/
   [
 
     function (nock) {
