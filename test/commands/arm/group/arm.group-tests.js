@@ -235,8 +235,12 @@ describe('arm', function () {
               }
             });
 
-            suite.execute('group delete %s --json --quiet', groupName, function () {
-              done();
+            suite.execute('group list %s --details --json', groupName, function (detailListResult) {
+              var detailGroup = JSON.parse(detailListResult.text);
+              detailGroup[0].permissions.permittedActions[0].actions[0].should.equal('*');
+              suite.execute('group delete %s --json --quiet', groupName, function () {
+                done();
+              });
             });
           });
         });
