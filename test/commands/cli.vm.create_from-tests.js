@@ -22,31 +22,28 @@ var path = require('path');
 var isForceMocked = !process.env.NOCK_OFF;
 
 var utils = require('../../lib/util/utils');
-var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
-
-var createdDisks = [];
 
 // A common VM used by multiple tests
 var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
+  Name : null,
+  Created : false,
+  Delete : false
 };
 
 var vmPrefix = 'clitestvm';
-var vmNames = [];
-var timeout = isForceMocked ? 0 : 90000;
+var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.create_customdata-tests';
+var testPrefix = 'cli.vm.create_from-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US', customVmName = 'xplattestvmcustomdata';
-	var fileName = 'customdata', certFile = process.env['SSHCERT'] || 'test/data/fakeSshcert.pem', vmsize = 'small', sshPort = '223';
+    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
+    vmName,
+    file = 'vminfo.json';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -58,15 +55,16 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
+	  
+	  vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -93,43 +91,42 @@ describe('cli', function () {
       });
     });
 
-    describe('Vm Create: ', function () {
-      //Create vmw with custom data
-      it('Create vm with custom data', function (done) {
-		getImageName('Linux', function(vmImgName){
-			generateFile(fileName, null, 'nodejs,python,wordpress');
-			suite.execute('vm create -e %s -z %s --ssh-cert %s --no-ssh-password %s %s testuser Collabera@01 -l %s -d %s --json --verbose',
-			  sshPort, vmsize, certFile, customVmName, vmImgName, location, fileName, function (result) {
-				var verboseString = result.text;
-				var iPosCustom = verboseString.indexOf('CustomData:');
-				iPosCustom.should.equal(-1);
-				fs.unlinkSync(fileName);
-			    vmToUse.Name = customVmName;
-			    vmToUse.Created = true;
-			    vmToUse.Delete = true;
-			    setTimeout(done, timeout);
-			});
-		});
+    //create a vm from role file
+    describe('Create:', function () {
+      it('Create-from a file', function (done) {
+        var Fileresult = fs.readFileSync(file, 'utf8');
+        var obj = JSON.parse(Fileresult);
+        obj['RoleName'] = vmName;
+        var diskName = obj.oSVirtualHardDisk.name;
+        waitForDiskRelease(diskName, function () {
+          var jsonstr = JSON.stringify(obj);
+          fs.writeFileSync(file, jsonstr);
+          suite.execute('vm create-from %s %s --json -l %s', vmName, file, location, function (result) {
+            result.exitStatus.should.equal(0);
+            fs.unlinkSync('vminfo.json');
+            vmToUse.Name = vmName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
+        });
       });
     });
-	
-	 // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      suite.execute('vm image list --json', function (result) {
-        var imageList = JSON.parse(result.text);
-        imageList.some(function (image) {
-          if (image.OS.toLowerCase() === category.toLowerCase() && image.Category.toLowerCase() === 'public') {
-            getImageName.ImageName = image.Name;
-          }
-        });
-        callBack(getImageName.ImageName);
+
+    //check if disk is released from vm and then if released call callback or else wait till it is released
+    function waitForDiskRelease(vmDisk, callback) {
+      var vmDiskObj;
+      suite.execute('vm disk show %s --json', vmDisk, function (result) {
+        vmDiskObj = JSON.parse(result.text);
+        if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
+          setTimeout(function () {
+            waitForDiskRelease(vmDisk, callback);
+          }, 10000);
+        } else {
+          callback();
+        }
       });
     }
-	//create a file and write desired data given as input
-    function generateFile(filename, fileSizeinBytes, data) {
-      if (fileSizeinBytes)
-        data = testUtils.generateRandomString(fileSizeinBytes);
-      fs.writeFileSync(filename, data);
-    }
+
   });
 });

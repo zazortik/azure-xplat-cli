@@ -24,25 +24,17 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name: null,
-  Created: false,
-  Delete: false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
-var timeout = isForceMocked ? 0 : 12000;
+var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.create_create_from-tests';
+var testPrefix = 'cli.vm.deldisk-tests';
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US', vmName = 'xplattestvm', file = 'vminfo.json';
+    var diskName = 'xplattestdisk';
 
     before(function (done) {
       suite = new CLITest(testPrefix, isForceMocked);
@@ -61,8 +53,8 @@ describe('cli', function () {
     after(function (done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
-      } 
-	  suite.teardownSuite(done);
+      }
+      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -70,42 +62,17 @@ describe('cli', function () {
     });
 
     afterEach(function (done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function () {
-            suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              return callback();
-            });
-          }, timeout);
-        } else {
-          return callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function () {
-        suite.teardownTest(done);
-      });
+      suite.teardownTest(done);
     });
 
-    describe('Vm Create: ', function () {
-       // Create-from
-		it('Create-from a VM', function (done) {
-			var Fileresult = fs.readFileSync(file, 'utf8');
-			var obj = JSON.parse(Fileresult);
-			obj['RoleName'] = vmName;
-			var jsonstr = JSON.stringify(obj);
-			fs.writeFileSync(file, jsonstr);
-			suite.execute('vm create-from %s %s --json -l %s', vmName, file, location, function (result) {
-				result.exitStatus.should.equal(0);
-				fs.unlinkSync('vminfo.json');
-				vmToUse.Name = vmName;
-				vmToUse.Created = true;
-				vmToUse.Delete = true;
-				done();
-			});
-		});
+	//delete the disk
+    describe('Delete:', function () {
+      it('Disk', function (done) {
+        suite.execute('vm disk delete -b %s --json', diskName, function (result) {
+          result.exitStatus.should.equal(0);
+          setTimeout(done, timeout);
+        });
+      });
     });
   });
 });
