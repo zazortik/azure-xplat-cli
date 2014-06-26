@@ -85,7 +85,7 @@ describe('arm', function () {
 
                   var resources = JSON.parse(showResult.text);
                   resources.length.should.equal(1);
-                  resources[0].name.should.equal(resourceName);                  
+                  resources[0].name.should.equal(resourceName);
 
                   suite.execute('resource list %s -t %s --json', groupName, tagName + '=' + tagValue, function (showResult) {
                     showResult.exitStatus.should.equal(0);
@@ -99,6 +99,60 @@ describe('arm', function () {
                       suite.execute('group delete %s --quiet --json', groupName, function () {
                         //TODO: delete the tag
                         done();
+                      });
+                    });
+                  });
+                });
+              });
+          });
+        });
+      });
+    });
+
+    describe('set tags on a resource', function () {
+      it('should work in settting it and filtering', function (done) {
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+        var resourceName = suite.generateId(resourcePrefix, createdResources, suite.isMocked);
+        var tagName = suite.generateId(tagPrefix, createdTags, suite.isMocked);
+
+        suite.execute('tag add %s --json', tagName, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+            result.exitStatus.should.equal(0);
+            suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName,
+              'Microsoft.Web/sites', testResourceLocation, testApiVersion,
+              '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
+              function (result) {
+                result.exitStatus.should.equal(0);
+
+                //set a tag
+                suite.execute('resource set %s %s %s -o %s -t %s --json', groupName, resourceName,
+                  'Microsoft.Web/sites', testApiVersion, tagName, function (result) {
+                  result.exitStatus.should.equal(0);
+
+                  //verify by using it as a filter
+                  suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+                    showResult.exitStatus.should.equal(0);
+
+                    var resources = JSON.parse(showResult.text);
+                    resources.length.should.equal(1);
+                    resources[0].name.should.equal(resourceName);
+
+                    //clear the tag
+                    suite.execute('resource set %s %s %s -o %s --no-tags --json', groupName, resourceName,
+                      'Microsoft.Web/sites', testApiVersion, function (result) {
+                      result.exitStatus.should.equal(0);
+
+                      //again, verify by using it a a filter
+                      suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+                        showResult.exitStatus.should.equal(0);
+                        var resources = JSON.parse(showResult.text);
+                        resources.length.should.equal(0);
+                        suite.execute('group delete %s --quiet --json', groupName, function () {
+                          //TODO: delete the tag
+                          done();
+                        });
                       });
                     });
                   });
