@@ -19,10 +19,9 @@ var path = require('path');
 var should = require('should');
 
 var CLITest = require('../../../framework/arm-cli-test');
+
 var testprefix = 'arm-cli-tag-tests';
-
 var groupPrefix = 'xplatTestTagCreate';
-
 var createdTags = [];
 
 var requiredEnvironment = [
