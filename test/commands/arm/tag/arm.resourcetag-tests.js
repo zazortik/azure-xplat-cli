@@ -72,9 +72,9 @@ describe('arm', function () {
         suite.execute('tag add %s %s --json', tagName, tagValue, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('resource create %s %s %s %s %s -p %s -t %s --quiet --json', groupName, resourceName,
+            suite.execute('resource create %s %s %s %s %s -p %s -t %s --json', groupName, resourceName,
               'Microsoft.Web/sites', testResourceLocation, testApiVersion,
               '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
               tagName + '=' + tagValue, function (result) {
@@ -94,10 +94,11 @@ describe('arm', function () {
                     resources[0].name.should.equal(resourceName);
 
                     suite.execute('resource list %s -t %s --json', groupName, tagName + '=' + invalidTagValue, function (showResult) {
-                      var resources = JSON.parse(showResult.text);
-                      resources.length.should.equal(0);
+                      showResult.exitStatus.should.equal(0);
+                      showResult.text.should.equal('');
                       suite.execute('group delete %s --quiet --json', groupName, function () {
-                        //TODO: delete the tag
+                        //Note, we don't clean up the tag here because it can't be removed till associated resource group is gone which could take a while;
+                        //also addingthe  same tag by multiple tests won't cause error and fail the tests.
                         done();
                       });
                     });
@@ -118,9 +119,9 @@ describe('arm', function () {
         suite.execute('tag add %s --json', tagName, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName,
+            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName,
               'Microsoft.Web/sites', testResourceLocation, testApiVersion,
               '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
               function (result) {
@@ -147,10 +148,10 @@ describe('arm', function () {
                       //again, verify by using it a a filter
                       suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
                         showResult.exitStatus.should.equal(0);
-                        var resources = JSON.parse(showResult.text);
-                        resources.length.should.equal(0);
+                        showResult.text.should.equal('');
                         suite.execute('group delete %s --quiet --json', groupName, function () {
-                          //TODO: delete the tag
+                          //Note, we don't clean up the tag here because it can't be removed till associated resource group is gone which could take a while;
+                          //also addingthe  same tag by multiple tests won't cause error and fail the tests.
                           done();
                         });
                       });
