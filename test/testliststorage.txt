@@ -1,0 +1,2 @@
+commands/cli.storage.account-tests.js
+commands/cli.storage.blob-tests.js

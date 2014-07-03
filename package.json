@@ -86,6 +86,7 @@
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "unit-arm": "node scripts/unit.js testlistarm.txt",
+    "unit-storage": "node scripts/unit.js testliststorage.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext ._js",
     "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",
