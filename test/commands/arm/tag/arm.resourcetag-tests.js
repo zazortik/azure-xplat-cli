@@ -34,7 +34,7 @@ var resourcePrefix = 'xplatResourceTagRes';
 var tagPrefix = 'xplatResourceTag';
 
 describe('arm', function () {
-  describe('resource', function () {
+  describe('resource tag', function () {
     var suite;
     var testApiVersion = '2014-04-01';
     var testGroupLocation;

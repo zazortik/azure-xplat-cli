@@ -58,23 +58,28 @@ describe('arm', function () {
       it('should create a tag with value and delete them when done', function (done) {
         var tagName = suite.generateId(groupPrefix, createdTags, suite.isMocked);
         var tagValue = 'foobar';
-        suite.execute('tag add %s %s --json', tagName, tagValue, function (result) {
+        suite.execute('tag create %s %s --json', tagName, tagValue, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('tag list --json', function (listResult) {
             listResult.exitStatus.should.equal(0);
             var tags = JSON.parse(listResult.text);
             tags.some(function (t) { return (t.name === tagName) && (t.values[0].value === tagValue); }).should.be.true;
-
-            suite.execute('tag delete %s --json --quiet', tagName, function (result) {
-              result.exitStatus.should.equal(0);
-
-              //make sure the tag is gone.
-              suite.execute('tag list --json', function (listResult) {
-                listResult.exitStatus.should.equal(0);
-                var tags = JSON.parse(listResult.text);
-                tags.some(function (t) { return t.name === tagName; }).should.be.false;
-                done();
+            
+            suite.execute('tag show %s --json', tagName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              showResult.text.should.include(tagValue);
+            
+              suite.execute('tag delete %s --json --quiet', tagName, function (result) {
+                result.exitStatus.should.equal(0);
+                
+                //make sure the tag is gone.
+                suite.execute('tag list --json', function (listResult) {
+                  listResult.exitStatus.should.equal(0);
+                  var tags = JSON.parse(listResult.text);
+                  tags.some(function (t) { return t.name === tagName; }).should.be.false;
+                  done();
+                });
               });
             });
           });
