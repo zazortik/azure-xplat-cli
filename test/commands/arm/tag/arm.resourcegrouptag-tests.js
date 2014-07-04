@@ -84,7 +84,8 @@ describe('arm', function () {
                 
                 suite.execute('group list -t %s --json', tagName + '=' + invalidTagValue, function (showResult) {
                   showResult.exitStatus.should.equal(0);
-                  showResult.text.should.equal('');
+                  showResult.text.should.not.include(tagValue);
+
                   suite.execute('group delete %s --quiet --json', groupName, function () {
                     //Note, we don't clean up the tag here because it can't be removed till associated resource group is gone which could take a while;
                     //also adding the same tag by multiple tests won't cause error and fail the tests.
@@ -128,7 +129,7 @@ describe('arm', function () {
                   //again, verify by using it a a filter
                   suite.execute('group list -t %s --json', tagName, function (showResult) {
                     showResult.exitStatus.should.equal(0);
-                    showResult.text.should.equal('');
+                    showResult.text.should.not.include(tagName);
                     suite.execute('group delete %s --quiet --json', groupName, function () {
                       //Note, we don't clean up the tag here because it can't be removed till associated resource group is gone which could take a while;
                       //also addingthe  same tag by multiple tests won't cause error and fail the tests.
