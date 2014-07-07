@@ -22,11 +22,13 @@ var sinon = require('sinon');
 var util = require('util');
 var _ = require('underscore');
 
+var adalAuth = require('../../lib/util/authentication/adalAuth');
 var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
 var executeCommand = require('./cli-executor').execute;
+var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
@@ -56,6 +58,10 @@ function CLITest(testPrefix, env, forceMocked) {
   // Normalize environment
   this.normalizeEnvironment(env);
   this.validateEnvironment();
+
+  if (this.isMocked && !this.isRecording) {
+    this.setTimeouts();
+  }
 }
 
 _.extend(CLITest.prototype, {
@@ -98,11 +104,11 @@ _.extend(CLITest.prototype, {
 
     if (this.requiresCert && this.requiresToken) {
       messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
-    } else if (this.requiresCert && profile.current.currentSubscription.accessToken) {
+    } else if (this.requiresCert && profile.current.currentSubscription.username) {
       messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
     } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
       messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
-    } else if (this.requiresToken && !profile.current.currentSubscription.accessToken) {
+    } else if (this.requiresToken && !profile.current.currentSubscription.username) {
       messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
     }
 
@@ -225,11 +231,15 @@ _.extend(CLITest.prototype, {
 
       if (nocked.getMockedProfile) {
         profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
       }
 
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
+
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
     }
 
     callback();
@@ -269,6 +279,8 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
+    } else if (this.isMocked) {
+      adalAuth.tokenCache = this.originalTokenCache;
     }
 
     nockHelper.unNockHttp();
@@ -357,6 +369,24 @@ _.extend(CLITest.prototype, {
     nextName(names);
   },
 
+  setTimeouts: function () {
+    // Possible it's already wrapped from a previous failed
+    // execution. If so, unwrap then rewrap.
+    if (utils.createClient.restore) {
+      utils.createClient.restore();
+    }
+
+    CLITest.wrap(sinon, utils, 'createClient', function (originalCreateClient) {
+      return function (factoryOrName, credentials, endpoint) {
+        var client = originalCreateClient(factoryOrName, credentials, endpoint);
+        client.longRunningOperationInitialTimeout = 0;
+        client.longRunningOperationRetryTimeout = 0;
+
+        return client;
+      };
+    });
+  },
+
   /**
   * Stub out the utils.readConfig method to force the cli mode
   * to the one required by this test suite.
@@ -370,6 +400,12 @@ _.extend(CLITest.prototype, {
   *
   */
   forceSuiteMode: function (sinonObj) {
+    // Possible it's already wrapped from a previous failed
+    // execution. If so, unwrap then rewrap.
+    if (utils.readConfig.restore) {
+      utils.readConfig.restore();
+    }
+
     // Force mode regardless of current stored setting
     var commandMode = this.commandMode;
     CLITest.wrap(sinonObj, utils, 'readConfig', function (originalReadConfig) {

@@ -248,16 +248,12 @@ describe('profile', function () {
         should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
       });
 
-      it('should have access token', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
-      });
-
       it('should have expected cert', function () {
         p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties(expectedSubscription.managementCertificate);
       });
 
-      it('should have expected token', function () {
-        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedToken);
+      it('should have expected username', function () {
+        p.subscriptions[expectedSubscription.name].username.should.equal('user');
       });
     });
   });
@@ -397,11 +393,7 @@ describe('profile', function () {
     var expectedSubscription = {
       name: 'Account',
       id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-      accessToken: {
-        accessToken: 'dummy token',
-        refreshToken: 'dummy refresh token',
-        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
-      },
+      username: 'someuser@someorg.example',
       environmentName: 'AzureCloud'
     };
 
@@ -430,16 +422,12 @@ describe('profile', function () {
         should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
       });
 
-      it('should have access token', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
+      it('should have user name', function () {
+        p.subscriptions[expectedSubscription.name].username.should.equal(expectedSubscription.username);
       });
 
       it('should have expected cert', function () {
         p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties('cert', 'key');
-      });
-
-      it('should have expected token', function () {
-        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedSubscription.accessToken);
       });
 
       it('should create token credentials when asked for credentials', function () {
