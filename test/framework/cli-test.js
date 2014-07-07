@@ -104,11 +104,11 @@ _.extend(CLITest.prototype, {
 
     if (this.requiresCert && this.requiresToken) {
       messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
-    } else if (this.requiresCert && profile.current.currentSubscription.accessToken) {
+    } else if (this.requiresCert && profile.current.currentSubscription.username) {
       messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
     } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
       messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
-    } else if (this.requiresToken && !profile.current.currentSubscription.accessToken) {
+    } else if (this.requiresToken && !profile.current.currentSubscription.username) {
       messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
     }
 
