@@ -34,7 +34,7 @@ var resourcePrefix = 'xplatResourceTagRes';
 var tagPrefix = 'xplatResourceTag';
 
 describe('arm', function () {
-  describe('resource', function () {
+  describe('resource tag', function () {
     var suite;
     var testApiVersion = '2014-04-01';
     var testGroupLocation;
@@ -69,7 +69,7 @@ describe('arm', function () {
         var tagValue = 'fooValue';
         var invalidTagValue = 'foo2';
 
-        suite.execute('tag add %s %s --json', tagName, tagValue, function (result) {
+        suite.execute('tag create %s %s --json', tagName, tagValue, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
@@ -116,7 +116,7 @@ describe('arm', function () {
         var resourceName = suite.generateId(resourcePrefix, createdResources, suite.isMocked);
         var tagName = suite.generateId(tagPrefix, createdTags, suite.isMocked);
 
-        suite.execute('tag add %s --json', tagName, function (result) {
+        suite.execute('tag create %s --json', tagName, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {

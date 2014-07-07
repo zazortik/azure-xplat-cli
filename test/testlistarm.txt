@@ -6,3 +6,4 @@ commands/arm/resource/arm.resource-tests.js
 commands/arm/location/arm.location-tests.js
 commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
+commands/arm/tag/arm.resourcegrouptag-tests.js

@@ -9,8 +9,8 @@ exports.getMockedProfile = function () {
     id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
     name: 'node',
     username: 'user@domain.example',
-    registeredProviders: ['sqlserver', 'visualstudio.account', 'website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
+    registeredProviders: ['visualstudio.account', 'sqlserver', 'website'],
+    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,11 +28,11 @@ nock('https://management.azure.com:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '41dce3b9-469e-41e7-a5a6-fd335b538b15',
-  'x-ms-correlation-request-id': '41dce3b9-469e-41e7-a5a6-fd335b538b15',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235133Z:41dce3b9-469e-41e7-a5a6-fd335b538b15',
-  date: 'Tue, 01 Jul 2014 23:51:33 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1192',
+  'x-ms-request-id': '60c6c273-5c96-4c82-bd41-2e89b8174d72',
+  'x-ms-correlation-request-id': '60c6c273-5c96-4c82-bd41-2e89b8174d72',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184434Z:60c6c273-5c96-4c82-bd41-2e89b8174d72',
+  date: 'Fri, 04 Jul 2014 18:44:34 GMT',
   'content-length': '169' });
  return result; },
 function (nock) { 
@@ -43,57 +43,72 @@ nock('https://management.azure.com:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-request-id': 'b2315a0a-f232-49df-b261-a7a76323dffb',
-  'x-ms-correlation-request-id': 'b2315a0a-f232-49df-b261-a7a76323dffb',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235133Z:b2315a0a-f232-49df-b261-a7a76323dffb',
-  date: 'Tue, 01 Jul 2014 23:51:33 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-request-id': 'b95bbc6e-a3a5-48a5-8e7e-7be97c796fa3',
+  'x-ms-correlation-request-id': 'b95bbc6e-a3a5-48a5-8e7e-7be97c796fa3',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184435Z:b95bbc6e-a3a5-48a5-8e7e-7be97c796fa3',
+  date: 'Fri, 04 Jul 2014 18:44:35 GMT',
   'content-length': '161' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/\",\"tagName\":\"xplatResourceGroupTag1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2/\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31996',
-  'x-ms-request-id': 'c6644e78-5a55-44d9-8197-bce58f15cc81',
-  'x-ms-correlation-request-id': 'c6644e78-5a55-44d9-8197-bce58f15cc81',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235134Z:c6644e78-5a55-44d9-8197-bce58f15cc81',
-  date: 'Tue, 01 Jul 2014 23:51:33 GMT',
-  'content-length': '1688' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31991',
+  'x-ms-request-id': '7e25caf4-3cf1-49b5-bca9-bee64a9dc2ef',
+  'x-ms-correlation-request-id': '7e25caf4-3cf1-49b5-bca9-bee64a9dc2ef',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184436Z:7e25caf4-3cf1-49b5-bca9-bee64a9dc2ef',
+  date: 'Fri, 04 Jul 2014 18:44:36 GMT',
+  'content-length': '2198' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/\",\"tagName\":\"xplatResourceGroupTag1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2/\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31998',
-  'x-ms-request-id': '14491c03-72fe-499f-8c78-dca30cb8f34f',
-  'x-ms-correlation-request-id': '14491c03-72fe-499f-8c78-dca30cb8f34f',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235134Z:14491c03-72fe-499f-8c78-dca30cb8f34f',
-  date: 'Tue, 01 Jul 2014 23:51:34 GMT',
-  'content-length': '1688' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-request-id': 'fd000b51-e7ad-48f5-a467-8fcab4642566',
+  'x-ms-correlation-request-id': 'fd000b51-e7ad-48f5-a467-8fcab4642566',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184436Z:fd000b51-e7ad-48f5-a467-8fcab4642566',
+  date: 'Fri, 04 Jul 2014 18:44:36 GMT',
+  'content-length': '2198' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/\",\"tagName\":\"xplatResourceGroupTag1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2/\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31998',
-  'x-ms-request-id': '418ed643-9cab-4628-b3eb-e3f14c4cef22',
-  'x-ms-correlation-request-id': '418ed643-9cab-4628-b3eb-e3f14c4cef22',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235134Z:418ed643-9cab-4628-b3eb-e3f14c4cef22',
-  date: 'Tue, 01 Jul 2014 23:51:34 GMT',
-  'content-length': '1688' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-request-id': 'bc869016-7a56-477d-b59c-997812a891c7',
+  'x-ms-correlation-request-id': 'bc869016-7a56-477d-b59c-997812a891c7',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184436Z:bc869016-7a56-477d-b59c-997812a891c7',
+  date: 'Fri, 04 Jul 2014 18:44:36 GMT',
+  'content-length': '2198' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/\",\"tagName\":\"xplatResourceGroupTag1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/\",\"tagName\":\"xplatTestTagCreate1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate1/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2/\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-request-id': '965c67aa-4c41-4bd1-9ebe-0af9bdbf696a',
+  'x-ms-correlation-request-id': '965c67aa-4c41-4bd1-9ebe-0af9bdbf696a',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184438Z:965c67aa-4c41-4bd1-9ebe-0af9bdbf696a',
+  date: 'Fri, 04 Jul 2014 18:44:38 GMT',
+  'content-length': '2198' });
  return result; },
 function (nock) { 
 var result = 
@@ -102,11 +117,11 @@ nock('https://management.azure.com:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-request-id': 'b2b6b4a0-51f6-4c91-9c1f-45fc3275ca39',
-  'x-ms-correlation-request-id': 'b2b6b4a0-51f6-4c91-9c1f-45fc3275ca39',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235134Z:b2b6b4a0-51f6-4c91-9c1f-45fc3275ca39',
-  date: 'Tue, 01 Jul 2014 23:51:33 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1191',
+  'x-ms-request-id': 'd7b845e1-45a0-4c76-aad2-568c3b5f119e',
+  'x-ms-correlation-request-id': 'd7b845e1-45a0-4c76-aad2-568c3b5f119e',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184442Z:d7b845e1-45a0-4c76-aad2-568c3b5f119e',
+  date: 'Fri, 04 Jul 2014 18:44:42 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
@@ -116,25 +131,26 @@ nock('https://management.azure.com:443')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '8dd9cace-6018-4faa-878b-ca3b865f3513',
-  'x-ms-correlation-request-id': '8dd9cace-6018-4faa-878b-ca3b865f3513',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235135Z:8dd9cace-6018-4faa-878b-ca3b865f3513',
-  date: 'Tue, 01 Jul 2014 23:51:35 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': '50d5dda6-451f-4e67-91dc-616b08e4f5a9',
+  'x-ms-correlation-request-id': '50d5dda6-451f-4e67-91dc-616b08e4f5a9',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184443Z:50d5dda6-451f-4e67-91dc-616b08e4f5a9',
+  date: 'Fri, 04 Jul 2014 18:44:43 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/\",\"tagName\":\"ygtag\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag/tagValues/ygtagValue\",\"tagValue\":\"ygtagValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/\",\"tagName\":\"xplatResourceGroupTag1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/\",\"tagName\":\"ygtag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtag2/tagValues/ygtag2Value\",\"tagValue\":\"ygtag2Value\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/\",\"tagName\":\"ygtesttag\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/ygtesttag/tagValues/ygvalue\",\"tagValue\":\"ygvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/\",\"tagName\":\"yugangtag3\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/yugangtag3/tagValues/yagvalue\",\"tagValue\":\"yagvalue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2/\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31997',
-  'x-ms-request-id': '0771bcfc-503c-4a8a-9a03-fbb6501cd694',
-  'x-ms-correlation-request-id': '0771bcfc-503c-4a8a-9a03-fbb6501cd694',
-  'x-ms-routing-request-id': 'WESTUS:20140701T235135Z:0771bcfc-503c-4a8a-9a03-fbb6501cd694',
-  date: 'Tue, 01 Jul 2014 23:51:35 GMT',
-  'content-length': '1357' });
- return result; }]];
+  'x-ms-ratelimit-remaining-subscription-reads': '31989',
+  'x-ms-request-id': '58f8851a-1272-4666-a129-5a6b174c94e4',
+  'x-ms-correlation-request-id': '58f8851a-1272-4666-a129-5a6b174c94e4',
+  'x-ms-routing-request-id': 'WESTUS:20140704T184444Z:58f8851a-1272-4666-a129-5a6b174c94e4',
+  date: 'Fri, 04 Jul 2014 18:44:44 GMT',
+  'content-length': '1867' });
+ return result; }],
+[]];
