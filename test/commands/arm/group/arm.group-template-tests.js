@@ -261,7 +261,7 @@ describe('arm', function () {
           var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
           var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
 
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s -f %s -e %s -s %s --json', groupName, templateFile, parameterFile, testStorageAccount, function (result) {
@@ -275,7 +275,7 @@ describe('arm', function () {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
           
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s -y %s -e %s --json', groupName, galleryTemplateName, parameterFile, function (result) {
@@ -289,7 +289,7 @@ describe('arm', function () {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
 
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, galleryTemplateUrl, parameterString, function (result) {
@@ -303,7 +303,7 @@ describe('arm', function () {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
           var invalidGalleryTemplateName = 'Microsoft.ASPNETStarterSite.0.1.0-preview101ABC';
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s -y %s -e %s --json', groupName, invalidGalleryTemplateName, parameterFile, function (result) {
@@ -318,7 +318,7 @@ describe('arm', function () {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
           var invalidTemplateUrl = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPla.json';
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
@@ -333,7 +333,7 @@ describe('arm', function () {
           var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"sku\":{ \"value\":\"Free\" }, \"workerSize\":{ \"value\":\"0\" }}";
           var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
 
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s -y %s -p %s --json', groupName, galleryTemplateName, parameterString, function (result) {
@@ -348,7 +348,7 @@ describe('arm', function () {
           var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"siteLocation\":{ \"value\":\"West US\" }, \"sku\":{ \"value\":\"Free12\" }, \"workerSize\":{ \"value\":\"0\" }}";
           var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
 
-          suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group template validate -g %s -y %s -p %s --json', groupName, galleryTemplateName, parameterString, function (result) {
