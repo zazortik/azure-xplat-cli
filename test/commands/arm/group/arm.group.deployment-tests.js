@@ -99,7 +99,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -127,7 +127,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -155,7 +155,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -176,7 +176,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -198,7 +198,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -223,7 +223,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
             galleryTemplateUrl, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -245,7 +245,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -272,7 +272,7 @@ describe('arm', function () {
 
         parameters = JSON.stringify(JSON.parse(parameters));
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -f %s -g %s -n %s -s %s -p %s --json -vv',
             templateFile, groupName, deploymentName, testStorageAccount, parameters, function (result) {
@@ -297,7 +297,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -n %s -p %s --json -vv',
             galleryTemplateName, groupName, deploymentName, parameters, function (result) {
@@ -325,7 +325,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -y %s -g %s -n %s -e %s -s %s --json',
             templateFile, galleryTemplateName, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(1);
@@ -343,7 +343,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -y %s -g %s -n %s -e %s --json',
             galleryTemplate, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(1);
@@ -358,7 +358,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -n %s -p %s --json', galleryTemplateName, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
