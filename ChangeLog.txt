@@ -3,6 +3,15 @@
 * Azure Resource Manager Tags
 * Support PHP version 5.5 for web site options
 
+2014.07.07 Version 0.8.5
+* Active directory authentication support for
+  * azure vm
+  * azure vnet
+  * azure mobile
+* Command to create docker VM in azure
+  * azure vm docker create
+* Store active drectory token in key chain on Mac
+
 2014.05.30 Version 0.8.4
 * Active directory support for AzureChinaCloud
 * Bug fixes for AzureChinaCloud endpoints
