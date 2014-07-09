@@ -9,7 +9,7 @@
 2014.07.09 Version 0.8.6
 * Store user credentials in the windows credential store
 * Azure Resource Manager Tags
-* Bug fixes
+* Support PHP version 5.5 for web site options
 
 2014.07.07 Version 0.8.5
 * Active directory authentication support for
