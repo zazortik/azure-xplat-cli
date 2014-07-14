@@ -32,7 +32,7 @@ describe('arm', function () {
   describe('role', function () {
     var suite;
     var TEST_ROLE_NAME = 'Operator';
-
+    var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(done);
@@ -80,13 +80,13 @@ describe('arm', function () {
       it('should work', function (done) {
         var principalId = getTestPrincipalId();
         var principal = getTestPrincipalName();
-        console.log('@@' + principal);
         suite.execute('role assignment create -p %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list -p %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
-            assignments.some(function (res) { //res.scope === scope && 
-              return (res.properties.principalId === principalId);
+            assignments.some(function (res) {
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
 
             //clean up
@@ -108,8 +108,9 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
-            assignments.some(function (res) {//res.scope === expectedScope && 
-              return (res.properties.principalId === principalId);
+            assignments.some(function (res) {
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
 
             //clean up
