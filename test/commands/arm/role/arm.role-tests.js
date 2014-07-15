@@ -21,8 +21,8 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-role-tests';
 
 var requiredEnvironment = [
-  'AZURE_AD_TEST_PRINCIPAL_NAME',
-  'AZURE_AD_TEST_PRINCIPAL_ID'
+  'AZURE_AD_TEST_PRINCIPAL_NAME', //admin@aad240.ccsctp.net
+  'AZURE_AD_TEST_PRINCIPAL_ID'//d4cabc17-0ae7-4855-8bec-89797db15fb0
 ];
 
 function getTestPrincipalName() { return process.env.AZURE_AD_TEST_PRINCIPAL_NAME };
@@ -31,9 +31,8 @@ function getTestPrincipalId() { return process.env.AZURE_AD_TEST_PRINCIPAL_ID };
 describe('arm', function () {
   describe('role', function () {
     var suite;
-    var roleName = 'Operator';
-    var subscriptionId = '358f3860-9dbe-4ace-b0c0-3d4f2d861014';
-
+    var TEST_ROLE_NAME = 'Operator';
+    var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(done);
@@ -57,7 +56,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.name === 'Operator';
+            return res.properties.name === 'Operator';
           }).should.be.true;
           done();
         });
@@ -70,29 +69,28 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.name === 'Operator';
+            return res.properties.name === 'Operator';
           }).should.be.true;
           done();
         });
       });
     });
 
-    describe('create role assignment using UPN and built-in Role of Operator and scope', function () {
+    describe('create a role assignment under subscripton', function () {
       it('should work', function (done) {
-        var scope = 'SDKXplatUnitTest';
-        var principalId = getTestPrincipalId();//;'d4cabc17-0ae7-4855-8bec-89797db15fb0'; 
-        var principal = getTestPrincipalName(); //;'admin@aad240.ccsctp.net';
-
-        suite.execute('role assignment create -p %s -o %s -c %s --json', principal, roleName, scope, function (result) {
+        var principalId = getTestPrincipalId();
+        var principal = getTestPrincipalName();
+        suite.execute('role assignment create -p %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment get -p %s -o %s -c %s --json', principal, roleName, scope, function (listAssignmentResult) {
+          suite.execute('role assignment list -p %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
-              return (res.scope === scope && res.principalId === principalId);
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -c %s -q --json', principal, roleName, scope, function (result) {
+            suite.execute('role assignment delete -p %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
               done();
             });
           });
@@ -100,24 +98,23 @@ describe('arm', function () {
       });
     });
 
-    describe('create role assignment using resource group as scope and use a role as principal', function () {
+    describe('create a role assignment under resource group', function () {
       it('should work', function (done) {
+        var principalId = getTestPrincipalId();
+        var principal = getTestPrincipalName();
         var resourceGroup = 'rg1';
-        var expectedScope = '/subscriptions/' + subscriptionId + '/resourcegroups/rg1';
-        //The following 2 fields should have same values across all tenants
-        var principalId = '729827e3-9c14-49f7-bb1b-9608f156bbb8';
-        var principal = 'Helpdesk Administrator';
-
-        suite.execute('role assignment create -p %s -o %s -g %s --json', principal, roleName, resourceGroup, function (result) {
+        var expectedScopeFragment = '/resourcegroups/rg1';
+        suite.execute('role assignment create -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment get -p %s -o %s -g %s --json', principal, roleName, resourceGroup, function (listAssignmentResult) {
+          suite.execute('role assignment list -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
-              return (res.scope === expectedScope && res.principalId === principalId);
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', principal, roleName, resourceGroup, function (result) {
+            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });

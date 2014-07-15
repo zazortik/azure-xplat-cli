@@ -109,7 +109,7 @@ popd
 
 # Remove dev dependencies from xplat module
 pushd /tmp/azureInstallerTemporary/node_modules
-packages=( mocha jshint sinon should nock winston-memory event-stream cucumber )
+packages=( mocha jshint sinon should nock winston-memory cucumber )
 for PACKAGE in ${packages[@]}
 do
 	rm -rf $PACKAGE

@@ -30,6 +30,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage Virtual Machine Images
     * Create and manage certificates
     * CloudInit for Ubuntu VM
+    * Create and manage Docker host virtual machines
 * Network
     * Import and export network configuration
     * Create and manage virtual network
@@ -147,40 +148,26 @@ azure config mode arm # resource manager
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
-## Running tests
+## Docker
 
-The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Microsoft Azure subscription as well as a GitHub account.
+Usage is same as standard vm create.
 
-Before running tests, you must take a one-time action to configure the CLI with the Microsoft Azure subscription by running
+    azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
-```bash
-azure account download
-azure account import
-```
+This command only supports Ubuntu 14.04 based images. Docker is configured on the VM using HTTPS as described here: http://docs.docker.io/articles/https/ By default, certificates are put in `~/.docker`, and Docker is configured to run on port 4243. These can be configured using new options:
 
-Next, provide the following parameters by setting environment variables:
+    -dp, --docker-port [port]              Port to use for docker [4243]
+    -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
+	
+After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
 
-- `AZURE_STORAGE_ACCOUNT` - your Microsoft Azure Storage Account name
-- `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
-- `AZURE_SERVICEBUS_NAMESPACE` - your Microsoft Azure Service Bus Namespace
-- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
-- `AZURE_GITHUB_USERNAME` - GitHub account username
-- `AZURE_GITHUB_PASSWORD` - GitHub account password
-- `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
-- `SSHCERT` - path of SSH Certificate (eg. `path\cert.pem`)
-- `BLOB_SOURCE_PATH` - source url path for disk upload (`container\subcontainer\disk.vhd`)
-- `AZURE_COMMUNITY_IMAGE_ID` - Community image id
+    docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
 
+Note: To run docker commands on windows make sure ssl agent is installed.
+	
+## Running Tests
 
-To run the tests, call
-
-```bash
-npm test
-```
-
-from the root of your clone of the repository. Most tests execute against live Microsoft Azure management APIs, and running them takes considerable time.
-
-Note: by default, the tests targeting the Microsoft Azure Mobile Services run against a mocked Microsoft Azure HTTP endpoints. In order to execute these tests against live Microsoft Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
+See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).

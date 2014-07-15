@@ -80,7 +80,7 @@ describe('arm', function () {
       it('should create empty group', function (done) {
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -102,7 +102,7 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
+        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
@@ -131,7 +131,7 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -y %s -e %s -d %s --template-version %s --json --quiet',
+        suite.execute('group create %s --location %s -y %s -e %s -d %s --template-version %s --json',
           groupName, testLocation, galleryTemplateName, parameterFile, 'mydepGalleryTemplate', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
@@ -160,7 +160,7 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json --quiet',
+        suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json',
           groupName, testLocation, galleryTemplateUrl, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
@@ -188,7 +188,7 @@ describe('arm', function () {
     describe('show', function () {
       it('should show information of an empty group', function (done) {
         var groupName = suite.generateId('xplatTestGrpShow', createdGroups, suite.isMocked);
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {
@@ -213,7 +213,7 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json --quiet',
+        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json',
           groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
@@ -277,7 +277,7 @@ describe('arm', function () {
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         console.log('  . Creating setup for running group log show tests');
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
