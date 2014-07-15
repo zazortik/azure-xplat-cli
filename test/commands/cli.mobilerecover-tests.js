@@ -94,7 +94,7 @@ describe('cli', function () {
 
       it('should recover successfully', function(done) {
         nockhelper.nock('https://management.core.windows.net')
-          .post('/ba090344-f0ae-4520-b8a0-205635df65ed/services/mobileservices/mobileservices/foo/recover?targetMobileService=bar')
+          .post('//ba090344-f0ae-4520-b8a0-205635df65ed/services/mobileservices/mobileservices/foo/recover?targetMobileService=bar')
           .reply(200, '', {
             'cache-control': 'no-cache',
             pragma: 'no-cache',
@@ -106,7 +106,7 @@ describe('cli', function () {
             date: 'Tue, 18 Jun 2013 17:09:40 GMT'
           })
 
-          .delete('/ba090344-f0ae-4520-b8a0-205635df65ed/applications/barmobileservice')
+          .delete('//ba090344-f0ae-4520-b8a0-205635df65ed/applications/barmobileservice')
           .reply(202, '', {
             'cache-control': 'no-cache',
             'content-length': '0',
@@ -115,7 +115,7 @@ describe('cli', function () {
             date: 'Tue, 18 Jun 2013 17:09:43 GMT'
           })
 
-          .get('/ba090344-f0ae-4520-b8a0-205635df65ed/operations/ea355dfe8247400b92c2170abed6dc2f')
+          .get('//ba090344-f0ae-4520-b8a0-205635df65ed/operations/ea355dfe8247400b92c2170abed6dc2f')
           .reply(200, '<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>ea355dfe-8247-400b-92c2-170abed6dc2f</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>', {
             'cache-control': 'no-cache',
             'content-length': '232',

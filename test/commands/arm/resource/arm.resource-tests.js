@@ -68,10 +68,10 @@ describe('arm', function () {
       it('should work without switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group show %s --json', groupName, function (showResult) {
@@ -90,7 +90,7 @@ describe('arm', function () {
         });
       });
       
-      //Tracking: RD Bug 1713392: failed to delete 'Microsoft.Sql/servers/databases' resource
+      //Migth fail: Tracking: RD Bug 1713392: failed to delete 'Microsoft.Sql/servers/databases' resource
       //it('should work with switches', function (done) {
       //  var groupName = suite.generateId('xTestResource1', createdGroups, suite.isMocked);
       //  var parentResourceName = suite.generateId('xtestgrpparentresource13', createdResources);
@@ -98,11 +98,11 @@ describe('arm', function () {
       //  var adminUsername = 'xtestgrpuser';
       //  var adminPassword = 'Pa$$word1234';
       //  var parentRsrc = 'servers/' + parentResourceName;
-      //  suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+      //  suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
       //    result.exitStatus.should.equal(0);
 
       //    //creates the parent resource - sql server
-      //    suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --quiet --json', groupName, parentResourceName, 'Microsoft.Sql/servers', testSqlResourceLocation, '2.0', '{"administratorLogin": "' + adminUsername + '", "administratorLoginPassword": "' + adminPassword + '"}', function (result) {
+      //    suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, parentResourceName, 'Microsoft.Sql/servers', testSqlResourceLocation, '2.0', '{"administratorLogin": "' + adminUsername + '", "administratorLoginPassword": "' + adminPassword + '"}', function (result) {
       //      result.exitStatus.should.equal(0);
 
       //      suite.execute('group show %s --json', groupName, function (showResult) {
@@ -114,7 +114,7 @@ describe('arm', function () {
       //        }).should.be.true;
 
       //        //creates the child resource - sql database
-      //        suite.execute('resource create -g %s -n %s -r %s -l %s -o %s --parent %s -p %s --quiet --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', testSqlResourceLocation, '2.0', parentRsrc, '{"maxSizeBytes": "5368709120", "edition" : "Web", "collation": "SQL_1xcompat_CP850_CI_AS"}', function (result) {
+      //        suite.execute('resource create -g %s -n %s -r %s -l %s -o %s --parent %s -p %s --json', groupName, childResourceName, 'Microsoft.Sql/servers/databases', testSqlResourceLocation, '2.0', parentRsrc, '{"maxSizeBytes": "5368709120", "edition" : "Web", "collation": "SQL_1xcompat_CP850_CI_AS"}', function (result) {
       //          result.exitStatus.should.equal(0);
 
       //          suite.execute('group show %s --json', groupName, function (showResult) {
@@ -149,7 +149,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+        suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {
@@ -172,11 +172,11 @@ describe('arm', function () {
       it('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-
-        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+        
+        suite.execute('group create %s --location %s --json', groupName, testWebsitesResourceLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
@@ -205,10 +205,10 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource list %s --json', groupName, function (listResult) {
@@ -228,16 +228,16 @@ describe('arm', function () {
         var groupName2 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName2 = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName1, testGroupLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName1, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('group create %s --location %s --quiet --json', groupName2, testGroupLocation, function (result) {
+          suite.execute('group create %s --location %s --json', groupName2, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName1, resourceName1, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName1, resourceName1, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
               result.exitStatus.should.equal(0);
 
-              suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName2, resourceName2, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName2, resourceName2, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                 result.exitStatus.should.equal(0);
 
                 suite.execute('resource list -g %s -r %s --json', groupName1, 'Microsoft.Web/sites', function (listResult) {
@@ -268,10 +268,10 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
@@ -293,10 +293,10 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
@@ -322,17 +322,17 @@ describe('arm', function () {
     //    var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
     //    var parentRsrc = 'sites/' + resourceName;
 
-    //    suite.execute('group create %s --location %s --quiet --json', groupName, testGroupLocation, function (result) {
+    //    suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
     //      result.exitStatus.should.equal(0);
 
-    //      suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1", "siteLocation" : "' + testWebsitesResourceLocation + '"}', function (result) {
+    //      suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1", "siteLocation" : "' + testWebsitesResourceLocation + '"}', function (result) {
     //        result.exitStatus.should.equal(0);
 
     //        //Make a change to appsettings property of web config
-    //        suite.execute('resource set -g %s -n %s -r %s --parent %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites/config', parentRsrc , testApiVersion, '{"appSettings": [{"name": "testname1", "value": "testvalue1"}]}', function (setResult) {
+    //        suite.execute('resource set -g %s -n %s -r %s --parent %s -o %s -p %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc , testApiVersion, '{"appSettings": [{"name": "testname1", "value": "testvalue1"}]}', function (setResult) {
     //          setResult.exitStatus.should.equal(0);
 
-    //          suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
+    //          suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
     //            showResult.exitStatus.should.equal(0);
 
     //            //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
