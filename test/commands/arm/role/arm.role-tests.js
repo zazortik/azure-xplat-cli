@@ -56,7 +56,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.properties.name === 'Operator';
+            return res.properties.roleName === 'Operator';
           }).should.be.true;
           done();
         });
@@ -69,7 +69,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.properties.name === 'Operator';
+            return res.properties.roleName === 'Operator';
           }).should.be.true;
           done();
         });
