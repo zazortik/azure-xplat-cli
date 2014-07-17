@@ -41,7 +41,6 @@ describe('cli', function () {
       '--publishing-profile-url': 'http://url1.com',
       '--portal-url': 'http://url2.com',
       '--management-endpoint-url': 'http://url3.com',
-      '--storage-endpoint': 'http://url4.com',
       '--sql-management-endpoint-url': 'http://url5.com'
     };
 
@@ -61,7 +60,6 @@ describe('cli', function () {
           environment['publishingProfileUrl'].should.equal('http://url1.com');
           environment['portalUrl'].should.equal('http://url2.com');
           environment['managementEndpointUrl'].should.equal('http://url3.com');
-          environment['storageEndpoint'].should.equal('http://url4.com');
           environment['sqlManagementEndpointUrl'].should.equal('http://url5.com');
 
           done();
