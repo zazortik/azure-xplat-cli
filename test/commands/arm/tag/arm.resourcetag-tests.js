@@ -111,7 +111,7 @@ describe('arm', function () {
     });
 
     describe('set tags on a resource', function () {
-      it('should work in settting it and filtering', function (done) {
+      it('should work in setting it and filtering', function (done) {
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
         var resourceName = suite.generateId(resourcePrefix, createdResources, suite.isMocked);
         var tagName = suite.generateId(tagPrefix, createdTags, suite.isMocked);
