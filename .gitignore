@@ -2,6 +2,8 @@ projects/*
 targets/*
 
 # Visual Studio #
+/app.js
+/xPlat.sln
 *.suo
 *.user
 
@@ -31,5 +33,3 @@ Thumbs.db
 
 # Linux #
 *.swp
-/app.js
-/xPlat.sln
