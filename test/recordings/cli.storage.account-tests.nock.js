@@ -149,4 +149,28 @@ nock('https://management.core.windows.net:443')
   'x-ms-servedbyregion': 'ussouth2',
   'x-ms-request-id': 'd189ae5bce0591b58e77112d7bdeaa5a',
   date: 'Wed, 07 May 2014 22:18:35 GMT' });
+ return result; }],
+ [function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xcli2/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xcli2</Url><StorageServiceKeys><Primary>RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==</Primary><Secondary>iCJ+e8XVDCdPvb9MxuqEnY7VDP8h1opRYs/aVXKnyRxVFLl3Y2kLC38ezocox5Y33T7PkG6flXOxTda4iG9CsA==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '508',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.71 (rd_rdfe_stable.140430-1456) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-ms-request-id': 'ebbb6a6dd5869384ab438f5a419f5942',
+  date: 'Wed, 07 May 2014 22:18:34 GMT' });
+ return result; }],
+ [function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xcli2/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/xcli2</Url><StorageServiceKeys><Primary>RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==</Primary><Secondary>iCJ+e8XVDCdPvb9MxuqEnY7VDP8h1opRYs/aVXKnyRxVFLl3Y2kLC38ezocox5Y33T7PkG6flXOxTda4iG9CsA==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '508',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.71 (rd_rdfe_stable.140430-1456) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-ms-request-id': 'ebbb6a6dd5869384ab438f5a419f5942',
+  date: 'Wed, 07 May 2014 22:18:34 GMT' });
  return result; }]];

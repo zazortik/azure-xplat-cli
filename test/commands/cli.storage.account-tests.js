@@ -154,5 +154,23 @@ describe('cli', function () {
         });
       });
     });
+	
+	it('should show connecting string', function (done) {
+      suite.execute('storage account connectionstring show %s --json', storageName, function (result) {
+	    var connectionString = JSON.parse(result.text);
+        connectionString.string.should.equal('DefaultEndpointsProtocol=https;AccountName=xcli2;AccountKey=RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==');
+        result.exitStatus.should.equal(0);
+        done();
+      });
+	});
+	  
+	it('should show connecting string with endpoints', function (done) {
+      suite.execute('storage account connectionstring show --use-http --blob-endpoint myBlob.ep --queue-endpoint 10.0.0.10 --table-endpoint mytable.core.windows.net %s --json', storageName, function (result) {
+	    var connectionString = JSON.parse(result.text);
+        connectionString.string.should.equal('DefaultEndpointsProtocol=http;BlobEndpoint=myBlob.ep;QueueEndpoint=10.0.0.10;TableEndpoint=mytable.core.windows.net;AccountName=xcli2;AccountKey=RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==');
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
   });
 });
