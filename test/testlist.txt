@@ -48,7 +48,6 @@ commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
 #commands/cli.vm.create_docker-tests.js
 commands/cli.sql-tests.js
-commands/cli.account.storage-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
 util/git/linkrevisioncontrol-tests.js
