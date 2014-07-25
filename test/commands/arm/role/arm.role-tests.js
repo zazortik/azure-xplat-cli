@@ -21,17 +21,17 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-role-tests';
 
 var requiredEnvironment = [
-  'AZURE_AD_TEST_PRINCIPAL_NAME', //admin@aad240.ccsctp.net
-  'AZURE_AD_TEST_PRINCIPAL_ID'//d4cabc17-0ae7-4855-8bec-89797db15fb0
+  'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
+  'AZURE_AD_TEST_PRINCIPAL_ID'//ca7db395-f921-403b-bf5b-acf85bcfce03
 ];
 
-function getTestPrincipalName() { return process.env.AZURE_AD_TEST_PRINCIPAL_NAME };
-function getTestPrincipalId() { return process.env.AZURE_AD_TEST_PRINCIPAL_ID };
+function getTestPrincipalName() { return process.env.AZURE_AD_TEST_PRINCIPAL_NAME; }
+function getTestPrincipalId() { return process.env.AZURE_AD_TEST_PRINCIPAL_ID; }
 
 describe('arm', function () {
   describe('role', function () {
     var suite;
-    var TEST_ROLE_NAME = 'Operator';
+    var TEST_ROLE_NAME = 'Owner';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
@@ -56,20 +56,20 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.properties.roleName === 'Operator';
+            return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
           done();
         });
       });
     });
 
-    describe('show a built-in role of Operator', function () {
+    describe('show a built-in role of Owner', function () {
       it('should work', function (done) {
-        suite.execute('role show Operator --json', function (result) {
+        suite.execute('role show %s --json', TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
           roles.some(function (res) {
-            return res.properties.roleName === 'Operator';
+            return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
           done();
         });
@@ -103,7 +103,6 @@ describe('arm', function () {
         var principalId = getTestPrincipalId();
         var principal = getTestPrincipalName();
         var resourceGroup = 'rg1';
-        var expectedScopeFragment = '/resourcegroups/rg1';
         suite.execute('role assignment create -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {

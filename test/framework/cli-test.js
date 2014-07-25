@@ -23,7 +23,6 @@ var util = require('util');
 var _ = require('underscore');
 
 var adalAuth = require('../../lib/util/authentication/adalAuth');
-var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
@@ -58,6 +57,10 @@ function CLITest(testPrefix, env, forceMocked) {
   // Normalize environment
   this.normalizeEnvironment(env);
   this.validateEnvironment();
+  
+  //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
+  this.uuidsGenerated = [];
+  this.currentUuid = 0;
 
   if (this.isMocked && !this.isRecording) {
     this.setTimeouts();
@@ -150,6 +153,7 @@ _.extend(CLITest.prototype, {
     if (this.isMocked) {
       if (this.isRecording) {
         fs.appendFileSync(this.recordingsFile, '];');
+        this.writeGeneratedUuids();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -161,11 +165,20 @@ _.extend(CLITest.prototype, {
   removeCacheFiles: function () {
     var cacheFilePattern = /(sites|spaces)\.[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}\.json/;
 
-    var cacheFiles = fs.readdirSync(utils.azureDir())
+    fs.readdirSync(utils.azureDir())
       .filter(function (p) { return p.match(cacheFilePattern); })
       .forEach(function (p) {
         fs.unlinkSync(path.join(utils.azureDir(), p));
       });
+  },
+  
+  writeGeneratedUuids: function () {
+    if (this.uuidsGenerated.length > 0) {
+      var uuids = this.uuidsGenerated.map(function (uuid) { return '\'' + uuid + '\''; }).join(',');
+      var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
+      fs.appendFileSync(this.recordingsFile, content);
+      this.uuidsGenerated.length = 0;
+    }
   },
 
   execute: function (cmd) {
@@ -203,9 +216,12 @@ _.extend(CLITest.prototype, {
     }
 
     this.forceSuiteMode(sinon);
+    
+    this.stubOutUuidGen(sinon);
 
     executeCommand(cmd, function (result) {
       utils.readConfig.restore();
+      utils.uuidGen.restore();
       callback(result);
     });
   },
@@ -236,6 +252,10 @@ _.extend(CLITest.prototype, {
 
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
+      }
+      
+      if (nocked.uuidsGenerated) {
+        this.uuidsGenerated = nocked.uuidsGenerated();
       }
 
       this.originalTokenCache = adalAuth.tokenCache;
@@ -353,7 +373,7 @@ _.extend(CLITest.prototype, {
       var commandString = iterator;
       iterator = function (name, done) {
         self.execute(commandString, name, done);
-      }
+      };
     }
 
     function nextName(names) {
@@ -383,6 +403,31 @@ _.extend(CLITest.prototype, {
         client.longRunningOperationRetryTimeout = 0;
 
         return client;
+      };
+    });
+  },
+  
+  /*
+  * for any generated uuids which end up in the rest url, record them, and restore under playback
+  */
+  stubOutUuidGen: function () {
+    var self = this;
+    if (utils.uuidGen.restore) {
+      utils.uuidGen.restore();
+    }
+    
+    CLITest.wrap(sinon, utils, 'uuidGen', function (originalUuidGen) {
+      return function () {
+        var uuid;
+        if (self.isMocked) {
+          if (!self.isRecording) {
+            uuid = self.uuidsGenerated[self.currentUuid++];
+          } else {
+            uuid = originalUuidGen();
+            self.uuidsGenerated.push(uuid);
+          }
+        }
+        return uuid;
       };
     });
   },
