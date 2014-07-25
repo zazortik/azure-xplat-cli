@@ -22,9 +22,9 @@ var testprefix = 'arm-cli-ad-tests';
 
 var requiredEnvironment = [
   'AZURE_AD_TEST_GROUP_NAME',//testGroup1
-  'AZURE_AD_TEST_SUBGROUP_NAME',//testGroup2, which is a member of tetsGroup1
+  'AZURE_AD_TEST_SUBGROUP_NAME',//testGroup2(must be a member of tetsGroup1)
   'AZURE_AD_TEST_USER_NAME',//testUser1
-  'AZURE_AD_TEST_USER_PRINCIPAL_NAME', // testUser1@aad105.ccsctp.net
+  'AZURE_AD_TEST_USER_PRINCIPAL_NAME', // testUser1@aad105.ccsctp.net(must be a member of testGroup1, but not of testGroup2)
   'AZURE_AD_TEST_USER_PRINCIPAL_NAME2' //testUser2@aad105.ccsctp.net
 ];
 
@@ -79,6 +79,7 @@ describe('arm', function () {
       it('should work to list and show groups', function (done) {
         var group1 = getTestGroupName();
         var group2 = getTestSubGroupName();
+        var member1 = getTestUPN();
         suite.execute('ad group list --json', function (result) {
           result.exitStatus.should.equal(0);
           var text = result.text;
@@ -89,7 +90,13 @@ describe('arm', function () {
             text = result.text;
             seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
             seemsCorrect.should.equal(true);
-            done();
+            suite.execute('ad group get -p %s --json', member1, function (result) {
+              result.exitStatus.should.equal(0);
+              text = result.text;
+              seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
+              seemsCorrect.should.equal(true);
+              done();
+            });
           });
         });
       });
