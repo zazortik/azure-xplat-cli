@@ -1578,5 +1578,6 @@
     "with all data and the SQL database, but leave SQL server intact": "with all data and the SQL database, but leave SQL server intact",
     "with all data but leave SQL database and SQL server intact": "with all data but leave SQL database and SQL server intact",
     "with all data, SQL database, and the SQL server": "with all data, SQL database, and the SQL server",
-    "write the script to the console instead of a file": "write the script to the console instead of a file"
+    "write the script to the console instead of a file": "write the script to the console instead of a file",
+    "Duplicate names \"%s\" found in both VM and OS images. Please delete one of them using the Portal and try again.": "Duplicate names \"%s\" found in both VM and OS images. Please delete one of them using the Portal and try again."
 }
