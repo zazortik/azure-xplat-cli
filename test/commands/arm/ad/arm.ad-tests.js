@@ -95,7 +95,13 @@ describe('arm', function () {
               text = result.text;
               seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
               seemsCorrect.should.equal(true);
-              done();
+              suite.execute('ad group members %s --json', group1, function (result) {
+                result.exitStatus.should.equal(0);
+                text = result.text;
+                seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);
+                seemsCorrect.should.equal(true);
+                done();
+              });
             });
           });
         });
