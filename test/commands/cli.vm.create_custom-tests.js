@@ -38,19 +38,28 @@ var vmNames = [];
 var suite;
 var testPrefix = 'cli.vm.create_custom-tests';
 var timeout = isForceMocked ? 0 : 5000;
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }, {
+    name : 'SSHCERT',
+    defaultValue : null
+  }
+];
+
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
-    customVmName = 'xplattestvmcustomdata';
+    var customVmName = 'xplattestvmcustdata';
     var fileName = 'customdata',
-    certFile = process.env['SSHCERT'] || 'test/data/fakeSshcert.pem',
+    certFile,
+    location,
     vmsize = 'small',
     sshPort = '223';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -71,7 +80,11 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        certFile = process.env.SSHCERT;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -120,8 +133,9 @@ describe('cli', function () {
       suite.execute('vm image list --json', function (result) {
         var imageList = JSON.parse(result.text);
         imageList.some(function (image) {
-          if (image.operatingSystemType.toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             getImageName.ImageName = image.name;
+			return true;
           }
         });
         callBack(getImageName.ImageName);
