@@ -37,7 +37,7 @@ describe('cli', function () {
     var vmImgName = 'xplattestimg';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {

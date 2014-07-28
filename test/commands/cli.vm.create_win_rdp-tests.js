@@ -37,18 +37,23 @@ var timeout = isForceMocked ? 0 : 30000;
 
 var suite;
 var testPrefix = 'cli.vm.create_win_rdp-tests';
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }
+];
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
-    vmName,
-    vmImgName;
+    var vmName,
+    vmImgName,
+    location;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
-      
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
+
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
           return (++currentRandom).toString();
@@ -56,10 +61,8 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-      
+
       process.env.TEST_VM_NAME = isForceMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
-      vmName = process.env.TEST_VM_NAME;
-      
       suite.setupSuite(done);
     });
 
@@ -71,7 +74,11 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+		vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -99,10 +106,8 @@ describe('cli', function () {
     describe('Create:', function () {
       it('Windows Vm', function (done) {
         getImageName('Windows', function (ImageName) {
-          var cmd = util.format('vm create -r %s %s %s azureuser PassW0rd$ -l %s --json',
-              '3389', vmName, ImageName, 'someLoc').split(' ');
-          cmd[9] = location;
-          suite.execute(cmd, function (result) {
+          suite.execute('vm create -r %s %s %s azureuser PassW0rd$ -l %s --json',
+            '3389', vmName, ImageName, location, function (result) {
             setTimeout(done, timeout);
           });
         });
@@ -144,8 +149,9 @@ describe('cli', function () {
       suite.execute(cmd, function (result) {
         var imageList = JSON.parse(result.text);
         imageList.some(function (image) {
-          if (image.operatingSystemType.toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             vmImgName = image.name;
+			return true;
           }
         });
         callBack(vmImgName);

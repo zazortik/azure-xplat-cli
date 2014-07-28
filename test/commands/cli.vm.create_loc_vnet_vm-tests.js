@@ -36,7 +36,7 @@ var vmNames = [];
 var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
-var testPrefix = 'cli.vm.create_affin_vnet_vm-tests';
+var testPrefix = 'cli.vm.create_loc_vnet_vm-tests';
 var requiredEnvironment = [{
     name : 'AZURE_VM_TEST_LOCATION',
     defaultValue : 'West US'
@@ -52,7 +52,6 @@ describe('cli', function () {
     affinLabel = 'xplatAffinGrp',
     affinDesc = 'Test Affinty Group for xplat',
     location,
-    availSetName = 'Testset',
     userName = 'azureuser',
     password = 'Pa$$word@123';
 
@@ -66,8 +65,6 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
-      vmVnetName = isForceMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
       suite.setupSuite(done);
     });
 
@@ -81,6 +78,7 @@ describe('cli', function () {
     beforeEach(function (done) {
       suite.setupTest(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        vmVnetName = isForceMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
         done();
       });
     });
@@ -108,11 +106,39 @@ describe('cli', function () {
 
     //create a vm with affinity group, vnet and availibilty set
     describe('Create:', function () {
-      it('Vm with affinity, vnet and availibilty set', function (done) {
+      it('Vm should create with vnet and location', function (done) {
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName) {
-            var cmd = util.format('vm create -A %s -n %s -a %s -w %s %s %s %s %s --json',
-                availSetName, vmVnetName, affinityName, virtualnetName, vmVnetName, imageName, userName, password).split(' ');
+            suite.execute('account affinity-group show %s --json', affinityName, function (result) {
+              var vnetObj = JSON.parse(result.text);
+              var cmd = util.format('vm create -w %s -l %s %s %s %s %s --json',
+                  virtualnetName, 'some_loc', vmVnetName, imageName, userName, password).split(' ');
+              cmd[5] = vnetObj.location
+              function executecmd(callback) {
+                suite.execute(cmd, function (result) {
+                  if (result.exitStatus == '1') {
+                    setTimeout(function () {
+                      executecmd(done);
+                    }, 5000);
+                  } else {
+                    vmToUse.Created = true;
+                    vmToUse.Name = vmVnetName;
+                    vmToUse.Delete = true;
+                    callback();
+                  }
+                });
+              }
+              executecmd(done);
+            });
+          });
+        });
+      });
+
+      it('Vm should create with vnet', function (done) {
+        getImageName('Linux', function (imageName) {
+          getVnet('Created', function (virtualnetName, affinityName) {
+            var cmd = util.format('vm create --ssh -w %s %s %s %s %s --json',
+                virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             function executecmd(callback) {
               suite.execute(cmd, function (result) {
                 if (result.exitStatus == '1') {
@@ -128,19 +154,6 @@ describe('cli', function () {
               });
             }
             executecmd(done);
-          });
-        });
-      });
-
-      it('Should delete service on vm fail', function (done) {
-        getImageName('Linux', function (imageName) {
-          suite.execute('vm create -a %s -w %s %s %s %s %s --json',
-            'some_name', 'some_name', vmVnetName, imageName, userName, password, function (result) {
-            result.exitStatus.should.equal(1);
-            suite.execute('service show %s --json', vmVnetName, function (result) {
-              result.text.should.equal('');
-              done();
-            });
           });
         });
       });

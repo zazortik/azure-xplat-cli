@@ -36,7 +36,7 @@ describe('cli', function () {
     var vmName;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -45,8 +45,6 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-  
-      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -59,7 +57,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function(){
+		vmName = process.env.TEST_VM_NAME;
+		done();
+	  });
     });
 
     afterEach(function (done) {
@@ -74,15 +75,15 @@ describe('cli', function () {
         var probPathName = '/prob/listner1';
         suite.execute('vm endpoint create -n %s -o %s %s %s %s -u -b %s -t %s -r tcp -p %s --json',
           vmEndpointName, 'tcp', vmName, 8080, 80, lbSetName, 4444, probPathName, function (result) {
-            suite.execute('vm endpoint list %s --json', vmName, function (result) {
-              result.exitStatus.should.equal(0);
-              var epList = JSON.parse(result.text);
-              var epExists = epList.some(function (ep) {
-                  return ep.name.toLowerCase() === vmEndpointName.toLowerCase();
-                });
-              epExists.should.be.ok;
-              done();
-            });
+          suite.execute('vm endpoint list %s --json', vmName, function (result) {
+            result.exitStatus.should.equal(0);
+            var epList = JSON.parse(result.text);
+            var epExists = epList.some(function (ep) {
+                return ep.name.toLowerCase() === vmEndpointName.toLowerCase();
+              });
+            epExists.should.be.ok;
+            done();
+          });
         });
       });
     });

@@ -38,7 +38,7 @@ describe('cli', function () {
     captureImg = 'xplattestcapimg';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -47,8 +47,6 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-
-      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -67,7 +65,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function(){
+		vmName = process.env.TEST_VM_NAME;
+		done();
+	  });
     });
 
     afterEach(function (done) {
@@ -89,6 +90,23 @@ describe('cli', function () {
       it('capture', function (done) {
         suite.execute('vm capture %s %s %s --json --delete', vmName, captureImg, function (result) {
           result.exitStatus.should.equal(0);
+          setTimeout(done, timeout);
+        });
+      });
+    });
+
+    // VM Capture into a disk
+    describe('Captured Images:', function () {
+      it('should be listed in images list', function (done) {
+        suite.execute('vm image list --json', function (result) {
+          var vmImagelist = JSON.parse(result.text);
+          var imagefound = false;
+          imagefound = vmImagelist.some(function (imageObj) {
+              if (imageObj.name == captureImg) {
+                return true;
+              }
+            });
+          imagefound.should.true;
           setTimeout(done, timeout);
         });
       });

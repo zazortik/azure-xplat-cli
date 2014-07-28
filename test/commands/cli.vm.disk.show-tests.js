@@ -35,7 +35,7 @@ describe('cli', function () {
   describe('vm', function () {
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {

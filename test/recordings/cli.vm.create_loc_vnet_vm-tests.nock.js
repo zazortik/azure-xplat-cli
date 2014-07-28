@@ -23,7 +23,7 @@ exports.setEnvironment = function () {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
 }
 exports.scopes = [
-  /*create vm with vnet avail and affin group*/
+  /*create with vnet and location*/
   [
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
@@ -69,6 +69,21 @@ exports.scopes = [
       return result;
     },
     function (nock) {
+      var result =
+        nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplattestaffingrp')
+        .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplattestaffingrp</Name><Label>eHBsYXQtYWZnLTE=</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '390',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.70 (rd_rdfe_stable.140426-2318) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth2',
+          'x-ms-request-id' : 'a73a950b93349a52a532dcb58a3ad4e8',
+          date : 'Tue, 06 May 2014 17:31:28 GMT'
+        });
+      return result;
+    },
+    function (nock) {
       var result = nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images')
         .reply(200, "<Images xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><OSImage><Category>Public</Category><Label>RightImage CentOS 6.2 x64 v5.8.8.1</Label><Location>West US;East Asia;Southeast Asia;North Europe;West Europe;East US</Location><LogicalSizeInGB>10</LogicalSizeInGB><Name>0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1</Name><OS>Linux</OS><Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement</Eula><Description>CentOS 6.3 with RightLink 5.8.</Description><ImageFamily>RightScale Linux v13</ImageFamily><ShowInGui>false</ShowInGui><PublishedDate>2012-08-28T00:00:00Z</PublishedDate><IsPremium>false</IsPremium><PrivacyUri>http://www.rightscale.com/privacy_policy.php</PrivacyUri><PublisherName>RightScale with Linux</PublisherName></OSImage></Images>", {
@@ -82,7 +97,7 @@ exports.scopes = [
         });
       return result;
     },
-    function (nock) {
+	function (nock) {
       var result = nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/vmimages')
         .reply(200, "<VMImages xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VMImage><Name>nerdworksub1-20140716-893917</Name><Label>nerdworks-ubuntu-image1</Label><Category>User</Category><OSDiskConfiguration><Name>nerdworksub1-20140716-893917-os-2014-07-17</Name><HostCaching>ReadWrite</HostCaching><OSState>Specialized</OSState><OS>Linux</OS><MediaLink>https://acsforsdk2.blob.core.windows.net/vhd-store/nerdworksub1-20140716-893917-os-2014-07-17.vhd</MediaLink><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB></OSDiskConfiguration><DataDiskConfigurations/><ServiceName>nerdworksub1</ServiceName><DeploymentName>nerdworksub1</DeploymentName><RoleName>nerdworksub1</RoleName><Location>West US</Location><CreatedTime>2014-07-17T04:48:06.0038647Z</CreatedTime><ModifiedTime>2014-07-17T04:48:06.0038647Z</ModifiedTime><IsPremium>false</IsPremium></VMImage></VMImages>", {
@@ -156,6 +171,20 @@ exports.scopes = [
     },
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/locations')
+        .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location></Locations>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '2413',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : 'c15bb3fefdf23b6b99dbb38004fd84d5',
+          date : 'Fri, 22 Nov 2013 05:21:39 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result = nock('https://management.core.windows.net:443')
         .filteringRequestBody(function (path) {
           return '*';
         })
@@ -166,14 +195,14 @@ exports.scopes = [
           location : 'https://management.core.windows.net/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/compute/xplattestvm',
           server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
           'x-ms-servedbyregion' : 'ussouth',
-          'x-ms-request-id' : 'db87ea2e8edb3d57b03497dc6eebc77b',
+          'x-ms-request-id' : 'db87ea2e8edb3d57b03497dc6eebc77a',
           date : 'Fri, 22 Nov 2013 05:21:47 GMT'
         });
       return result;
     },
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/db87ea2e8edb3d57b03497dc6eebc77b')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/db87ea2e8edb3d57b03497dc6eebc77a')
         .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
           'cache-control' : 'no-cache',
           'content-length' : '232',
@@ -211,14 +240,14 @@ exports.scopes = [
           'content-length' : '0',
           server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
           'x-ms-servedbyregion' : 'ussouth',
-          'x-ms-request-id' : '2e637a33f044323a8b856e30c876e0a4',
+          'x-ms-request-id' : '2e637a33f044323a8b856e30c876e0a3',
           date : 'Fri, 22 Nov 2013 05:21:52 GMT'
         });
       return result;
     },
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/2e637a33f044323a8b856e30c876e0a4')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/2e637a33f044323a8b856e30c876e0a3')
         .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
           'cache-control' : 'no-cache',
           'content-length' : '232',
@@ -259,7 +288,7 @@ exports.scopes = [
       return result;
     }
   ],
-  /*delete service on vm fail*/
+  /*create with vnet*/
   [
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
@@ -275,7 +304,7 @@ exports.scopes = [
         });
       return result;
     },
-    function (nock) {
+	function (nock) {
       var result = nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/vmimages')
         .reply(200, "<VMImages xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VMImage><Name>nerdworksub1-20140716-893917</Name><Label>nerdworks-ubuntu-image1</Label><Category>User</Category><OSDiskConfiguration><Name>nerdworksub1-20140716-893917-os-2014-07-17</Name><HostCaching>ReadWrite</HostCaching><OSState>Specialized</OSState><OS>Linux</OS><MediaLink>https://acsforsdk2.blob.core.windows.net/vhd-store/nerdworksub1-20140716-893917-os-2014-07-17.vhd</MediaLink><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB></OSDiskConfiguration><DataDiskConfigurations/><ServiceName>nerdworksub1</ServiceName><DeploymentName>nerdworksub1</DeploymentName><RoleName>nerdworksub1</RoleName><Location>West US</Location><CreatedTime>2014-07-17T04:48:06.0038647Z</CreatedTime><ModifiedTime>2014-07-17T04:48:06.0038647Z</ModifiedTime><IsPremium>false</IsPremium></VMImage></VMImages>", {
@@ -317,24 +346,128 @@ exports.scopes = [
           date : 'Wed, 24 Jul 2013 22:16:25 GMT'
         });
       return result;
-    },
+    }, ,
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestvmVnet')
-        .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>No deployments were found.</Message></Error>", {
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
+        .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>xplattestaffingrp</Name><Label>dmFsaWQx</Label><Description/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup></AffinityGroups>", {
           'cache-control' : 'no-cache',
-          'content-length' : '2445',
+          'content-length' : '3950',
           'content-type' : 'application/xml; charset=utf-8',
-          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          server : '1.0.6198.27 (rd_rdfe_stable.131122-1638) Microsoft-HTTPAPI/2.0',
           'x-ms-servedbyregion' : 'ussouth',
-          'x-ms-request-id' : '23b475bd87883e1e9335b43052357f49',
-          date : 'Fri, 22 Nov 2013 05:22:18 GMT'
+          'x-ms-request-id' : 'd2089a4c56ec3a92bd8490281fc1fc39',
+          date : 'Mon, 25 Nov 2013 07:26:23 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result =
+        nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/xplattestaffingrp')
+        .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplattestaffingrp</Name><Label>eHBsYXQtYWZnLTE=</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities></AffinityGroup>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '390',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.70 (rd_rdfe_stable.140426-2318) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth2',
+          'x-ms-request-id' : 'a73a950b93349a52a532dcb58a3ad4e8',
+          date : 'Tue, 06 May 2014 17:31:28 GMT'
         });
       return result;
     },
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestvmVnet')
+        .filteringRequestBody(function (path) {
+          return '*';
+        })
+        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', "*")
+        .reply(201, "", {
+          'cache-control' : 'no-cache',
+          'content-length' : '0',
+          location : 'https://management.core.windows.net/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/compute/xplattestvm',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : 'db87ea2e8edb3d57b03497dc6eebc77c',
+          date : 'Fri, 22 Nov 2013 05:21:47 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result = nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/db87ea2e8edb3d57b03497dc6eebc77c')
+        .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '232',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : 'a3d21c4cb67b3fd39506ecd090429171',
+          date : 'Fri, 22 Nov 2013 05:21:49 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result =
+        nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
+        .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2</Url><ServiceName>acsforsdk2</ServiceName><StorageServiceProperties><Description/><AffinityGroup>xplattestaffingrp</AffinityGroup><Location>West US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://acsforsdk2.blob.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.queue.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '5523',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '33.0.6198.30 (rd_rdfe_stable.130419-2156) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : '5573fc3bb3054af6b8371637a9215fe7',
+          date : 'Thu, 02 May 2013 02:32:14 GMT'
+        });
+      return result;
+    }, function (nock) {
+      var result = nock('https://management.core.windows.net:443')
+        .filteringRequestBody(function (path) {
+          return '*';
+        })
+        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestvmVnet/deployments', "*")
+        .reply(202, "", {
+          'cache-control' : 'no-cache',
+          'content-length' : '0',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : '2e637a33f044323a8b856e30c876e0a5',
+          date : 'Fri, 22 Nov 2013 05:21:52 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result = nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/2e637a33f044323a8b856e30c876e0a5')
+        .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '232',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : 'a3d21c4cb67b3fd39506ecd090429171',
+          date : 'Fri, 22 Nov 2013 05:21:49 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result = nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+        .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/xplattestvmVnet</Url><ServiceName>xplattestvmVnet</ServiceName><HostedServiceProperties><Description>Implicitly created hosted service</Description><Location>West US</Location><Label>eHBsYXR0ZXN0dm0=</Label><Status>Created</Status><DateCreated>2013-11-22T05:21:47Z</DateCreated><DateLastModified>2013-11-22T05:22:06Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", {
+          'cache-control' : 'no-cache',
+          'content-length' : '1120',
+          'content-type' : 'application/xml; charset=utf-8',
+          server : '1.0.6198.25 (rd_rdfe_stable.131118-1436) Microsoft-HTTPAPI/2.0',
+          'x-ms-servedbyregion' : 'ussouth',
+          'x-ms-request-id' : 'e9e05acc29cd37df8b2c9433f02e84e6',
+          date : 'Fri, 22 Nov 2013 05:22:16 GMT'
+        });
+      return result;
+    },
+    function (nock) {
+      var result = nock('https://management.core.windows.net:443')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestvmVnet/deploymentslots/Production')
         .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>No deployments were found.</Message></Error>", {
           'cache-control' : 'no-cache',
           'content-length' : '2445',

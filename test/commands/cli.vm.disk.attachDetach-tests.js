@@ -37,7 +37,7 @@ describe('cli', function () {
     diskName = 'xplattestdisk';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -46,8 +46,6 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-      
-      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -59,7 +57,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function(){
+		vmName = process.env.TEST_VM_NAME;
+		done();
+	  });
     });
 
     afterEach(function (done) {
