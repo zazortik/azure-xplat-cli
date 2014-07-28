@@ -26,16 +26,21 @@ var CLITest = require('../framework/cli-test');
 
 var vmPrefix = 'clitestvm';
 var fileName = 'customdatalargefile';
-var location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
 var suite;
 var testPrefix = 'cli.vm.negative-tests';
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }
+];
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
+    var location;
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -49,25 +54,34 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
       suite.teardownTest(done);
     });
 
+    after(function (done) {
+      if (suite.isMocked) {
+        crypto.randomBytes.restore();
+      }
+      suite.teardownSuite(done);
+    });
+
     // Negative Test Case by specifying invalid Password
     it('Negative test case for password', function (done) {
       var vmNegName = 'TestImg';
       getImageName('Linux', function (ImageName) {
-        var location = process.env.AZURE_VM_TEST_LOCATION || 'West US';;
-
+        var location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
         suite.execute('vm create %s %s "azureuser" "Coll" --json --location %s',
           vmNegName, ImageName, location, function (result) {
-            result.exitStatus.should.equal(1);
-            result.errorText.should.include('password must be at least 8 character in length, it must contain a lower case, an upper case, a number and a special character such as !@#$%^&+=');
-            done();
-          });
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('password must be at least 8 character in length, it must contain a lower case, an upper case, a number and a special character such as !@#$%^&+=');
+          done();
+        });
       });
     });
 
@@ -78,11 +92,11 @@ describe('cli', function () {
       getImageName('Linux', function (ImageName) {
         suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
           vmNegName, ImageName, location, function (result) {
-            // check the error code for error
-            result.exitStatus.should.equal(1);
-            result.errorText.should.include('The hosted service name is invalid.');
-            done();
-          });
+          // check the error code for error
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('The hosted service name is invalid.');
+          done();
+        });
       });
     });
 
@@ -92,10 +106,10 @@ describe('cli', function () {
       getImageName('Linux', function (ImageName) {
         suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
           vmNegName, ImageName, 'SomeLoc', function (result) {
-            result.exitStatus.should.equal(1);
-            result.errorText.should.include(' No location found which has DisplayName or Name same as value of --location');
-            done();
-          });
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include(' No location found which has DisplayName or Name same as value of --location');
+          done();
+        });
       });
     });
 
@@ -107,8 +121,9 @@ describe('cli', function () {
         suite.execute('vm image list --json', function (result) {
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
-            if (image.operatingSystemType.toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
               getImageName.imageName = image.name;
+			  return true;
             }
           });
           callBack(getImageName.imageName);

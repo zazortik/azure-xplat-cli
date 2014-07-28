@@ -36,17 +36,22 @@ var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
 var testPrefix = 'cli.vm.create_from-tests';
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }
+];
 
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
-    vmName,
+    var vmName,
+    location,
     file = 'vminfo.json';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -55,8 +60,6 @@ describe('cli', function () {
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-      
-      vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
@@ -68,7 +71,11 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+		vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
     afterEach(function (done) {
