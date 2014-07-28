@@ -8,3 +8,4 @@ commands/arm/role/arm.role-tests.js
 commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
+commands/arm/ad/arm.ad-tests.js
