@@ -15,6 +15,7 @@
 
 'use strict';
 
+var assert = require('assert');
 var should = require('should');
 
 var CLITest = require('../../../framework/arm-cli-test');
@@ -74,13 +75,14 @@ describe('arm', function () {
 
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
+
             suite.execute('resource create %s %s %s %s %s -p %s -t %s --json', groupName, resourceName,
               'Microsoft.Web/sites', testResourceLocation, testApiVersion,
               '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
               tagName + '=' + tagValue, function (result) {
                 result.exitStatus.should.equal(0);
 
-                suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+                listPoll(suite, groupName, tagName, 3, false, function (showResult) {
                   showResult.exitStatus.should.equal(0);
 
                   var resources = JSON.parse(showResult.text);
@@ -133,7 +135,7 @@ describe('arm', function () {
                   result.exitStatus.should.equal(0);
 
                   //verify by using it as a filter
-                  suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+                  listPoll(suite, groupName, tagName, 3, false, function (showResult) {
                     showResult.exitStatus.should.equal(0);
 
                     var resources = JSON.parse(showResult.text);
@@ -145,8 +147,8 @@ describe('arm', function () {
                       'Microsoft.Web/sites', testApiVersion, function (result) {
                       result.exitStatus.should.equal(0);
 
-                      //again, verify by using it a a filter
-                      suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+                      //again, verify by using it as a filter
+                      listPoll(suite, groupName, tagName, 3, true, function (showResult) {
                         showResult.exitStatus.should.equal(0);
                         showResult.text.should.equal('');
                         suite.execute('group delete %s --quiet --json', groupName, function () {
@@ -165,3 +167,24 @@ describe('arm', function () {
     });
   });
 });
+
+function listPoll(suite, groupName, tagName, attemptsLeft, responseIsEmpty, callback) {
+  if(attemptsLeft === 0) {
+    assert.throws( function() {
+      throw new Error('resource list did not receive expected response');
+    });
+  }
+
+  suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
+    if((showResult.text && !responseIsEmpty) ||
+       (showResult.text === '' && responseIsEmpty)) {
+      callback(showResult);
+    }
+    else {
+      setTimeout( function() {
+        console.log('Listing resources. ' + attemptsLeft + ' attempt(s) left');
+        listPoll(suite, groupName, tagName, attemptsLeft-1, responseIsEmpty, callback);
+      }, 10000);
+    }
+  });
+}
