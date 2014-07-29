@@ -22,11 +22,15 @@ var testprefix = 'arm-cli-role-tests';
 
 var requiredEnvironment = [
   'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
-  'AZURE_AD_TEST_PRINCIPAL_ID'//ca7db395-f921-403b-bf5b-acf85bcfce03
+  'AZURE_AD_TEST_PRINCIPAL_ID',//ca7db395-f921-403b-bf5b-acf85bcfce03
+  'AZURE_AD_TEST_GROUP_NAME', //testgroup1
+  'AZURE_AD_TEST_GROUP_OBJECT_ID' //476b1b7f-6f1f-44e0-baeb-6c0c8b409c89
 ];
 
 function getTestPrincipalName() { return process.env.AZURE_AD_TEST_PRINCIPAL_NAME; }
 function getTestPrincipalId() { return process.env.AZURE_AD_TEST_PRINCIPAL_ID; }
+function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
+function getTestGroupObjectId() { return process.env.AZURE_AD_TEST_GROUP_OBJECT_ID; }
 
 describe('arm', function () {
   describe('role', function () {
@@ -91,6 +95,7 @@ describe('arm', function () {
 
             //clean up
             suite.execute('role assignment delete -p %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
+              result.exitStatus.should.equal(0);
               done();
             });
           });
@@ -114,6 +119,31 @@ describe('arm', function () {
 
             //clean up
             suite.execute('role assignment delete -p %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    describe('create a role assignment for a ad group', function () {
+      it('should work', function (done) {
+        var adGroup = getTestGroupName();
+        var resourceGroup = 'rg1';
+        var adGroupObjectId = getTestGroupObjectId();
+
+        suite.execute('role assignment create -p %s -o %s -g %s --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('role assignment list -p %s -o %s -g %s --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
+            var assignments = JSON.parse(listAssignmentResult.text);
+            assignments.some(function (res) {
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId);
+            }).should.be.true;
+            
+            //clean up
+            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
