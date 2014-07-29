@@ -1,5 +1,5 @@
 @echo off
-:: Windows Azure CLI - Windows Installer - Author file components script
+:: Microsoft Azure CLI - Windows Installer - Author file components script
 :: Copyright (C) Microsoft Corporation. All Rights Reserved.
 ::
 :: This re-builds partial WiX files for use in cloning the repo after install.
