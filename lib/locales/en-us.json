@@ -1541,7 +1541,7 @@
     "the version of remote debugging. It's either VS2012 or VS2013. This parameter is only valid when remote debugging is on.": "the version of remote debugging. It's either VS2012 or VS2013. This parameter is only valid when remote debugging is on.",
     "the virtual machine name": "the virtual machine name",
     "the virtual machine port to use to inspect the role availability status": "the virtual machine port to use to inspect the role availability status",
-    "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7": "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7",
+    "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7, a8, a9": "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7, a8, a9",
     "the virtual network name": "the virtual network name",
     "this VM already has a %s load balancer port %s. lb port and protocol together should be unique": "this VM already has a %s load balancer port %s. lb port and protocol together should be unique",
     "this VM already has an %s load balancer port %s, lb port and protocol together should be unique": "this VM already has an %s load balancer port %s, lb port and protocol together should be unique",
