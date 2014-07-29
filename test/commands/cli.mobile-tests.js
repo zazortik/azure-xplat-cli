@@ -27,12 +27,12 @@
 
   INSTRUCTIONS FOR RE-GENERATING THE cli.mobile-tests.nock.js FILE:
 
-  1. Make sure the tests are passing against live Windows Azure endpoints:
-  1.0. Remember to register your Windows Azure credentials with `azure account import`
+  1. Make sure the tests are passing against live Microsoft Azure endpoints:
+  1.0. Remember to register your Microsoft Azure credentials with `azure account import`
   1.1. Set the NOCK_OFF environment variable to `true`
   1.2. Run tests with `npm test`
 
-  2. Re-run the tests against the live Windows Azure endpints while capturing the
+  2. Re-run the tests against the live Microsoft Azure endpints while capturing the
      HTTP traffic:
   2.1. Make sure NOCK_OFF is still set to `true`
   2.2. Set AZURE_MOBILE_NOCK_REC to `true`
