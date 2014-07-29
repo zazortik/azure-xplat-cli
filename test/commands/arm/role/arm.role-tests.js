@@ -127,7 +127,7 @@ describe('arm', function () {
       });
     });
 
-    describe('create a role assignment for a ad group', function () {
+    describe('create a role assignment using an ad group', function () {
       it('should work', function (done) {
         var adGroup = getTestGroupName();
         var resourceGroup = 'rg1';
