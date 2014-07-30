@@ -25,15 +25,7 @@ var utils = require('../../lib/util/utils');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
 
 var suite;
 var testPrefix = 'cli.vm.create_custom-tests';
@@ -57,6 +49,12 @@ describe('cli', function () {
     location,
     vmsize = 'small',
     sshPort = '223';
+    
+	var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -135,7 +133,7 @@ describe('cli', function () {
         imageList.some(function (image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             getImageName.ImageName = image.name;
-			return true;
+            return true;
           }
         });
         callBack(getImageName.ImageName);

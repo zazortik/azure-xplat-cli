@@ -24,10 +24,7 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
 var timeout = isForceMocked ? 0 : 5000;
 
 var suite;
@@ -49,13 +46,12 @@ describe('cli', function () {
     location,
     userName = 'azureuser',
     password = 'Pa$$word@123';
-	
-	// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
+
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -109,6 +105,7 @@ var vmToUse = {
     //create a vm with affinity group, vnet and availibilty set
     describe('Create:', function () {
       it('Vm should create with vnet and location', function (done) {
+        var retry = 5;
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName) {
             suite.execute('account affinity-group show %s --json', affinityName, function (result) {
@@ -118,7 +115,7 @@ var vmToUse = {
               cmd[5] = vnetObj.location
               function executecmd(callback) {
                 suite.execute(cmd, function (result) {
-                  if (result.exitStatus === 1) {
+                  if (result.exitStatus === 1 && retry--) {
                     setTimeout(function () {
                       executecmd(done);
                     }, 5000);
@@ -137,13 +134,14 @@ var vmToUse = {
       });
 
       it('Vm should create with vnet', function (done) {
+        var retry = 5;
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName) {
             var cmd = util.format('vm create --ssh -w %s %s %s %s %s --json',
                 virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             function executecmd(callback) {
               suite.execute(cmd, function (result) {
-                if (result.exitStatus === 1) {
+                if (result.exitStatus === 1 && retry--) {
                   setTimeout(function () {
                     executecmd(done);
                   }, 5000);
@@ -167,6 +165,7 @@ var vmToUse = {
         callBack(getImageName.imageName);
       } else {
         suite.execute('vm image list --json', function (result) {
+          result.exitStatus.should.equal(0);
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
@@ -187,6 +186,7 @@ var vmToUse = {
       } else {
         cmd = util.format('network vnet list --json').split(' ');
         suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function (vnet) {
               if (vnet.state === status) {
@@ -200,6 +200,7 @@ var vmToUse = {
             getAffinityGroup(location, function (affinGrpName) {
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               suite.execute(cmd, function (result) {
+                result.exitStatus.should.equal(0);
                 getVnet.vnetName = vnetName;
                 getVnet.affinityName = affinGrpName;
                 callback(getVnet.vnetName, getVnet.affinityName);
@@ -218,6 +219,7 @@ var vmToUse = {
         callBack(getAffinityGroup.affinGrpName);
       } else {
         suite.execute('account affinity-group list --json', function (result) {
+          result.exitStatus.should.equal(0);
           var affinList = JSON.parse(result.text);
           var found = affinList.some(function (affinGrp) {
               if (affinGrp.location === location) {
@@ -228,6 +230,7 @@ var vmToUse = {
           if (!found) {
             suite.execute('account affinity-group create -l %s -e %s -d %s %s --json',
               location, affinLabel, affinDesc, affinityName, function (result) {
+              result.exitStatus.should.equal(0);
               getAffinityGroup.affinGrpName = affinityName;
               callBack(affinityName);
             });

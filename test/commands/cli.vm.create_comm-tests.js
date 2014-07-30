@@ -24,15 +24,7 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
 
 var suite;
 var testPrefix = 'cli.vm.create_comm-tests';
@@ -53,6 +45,12 @@ describe('cli', function () {
     var location,
     communityImageId,
     customVmName = 'xplattestcommvm';
+
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);

@@ -35,6 +35,7 @@ describe('cli', function() {
   describe('vm', function() {
     var vmName,
       diskName = 'xplattestdisk';
+	  
     before(function(done) {
       suite = new CLITest(testPrefix, [], isForceMocked);
 
