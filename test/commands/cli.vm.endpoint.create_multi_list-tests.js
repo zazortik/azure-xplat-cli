@@ -141,20 +141,20 @@ describe('cli', function() {
             var endPointListOnlyLb = allEndPointList.filter(
               function(element, index, array) {
 
-                return (element.localPort == endPoints.OnlyPP.PublicPort);
+                return (element.localPort === endPoints.OnlyPP.PublicPort);
               });
 
             endPointListOnlyLb.length.should.be.equal(1);
-            (endPointListOnlyLb[0].Port == endPointListOnlyLb[0].Port).should.be.true;
+            (endPointListOnlyLb[0].Port === endPointListOnlyLb[0].Port).should.be.true;
 
             // Verify endpoint creation with lb port and vm port
             var endPointListLbAndVm = allEndPointList.filter(
               function(element, index, array) {
-                return (element.localPort == endPoints.PPAndLP.LocalPort);
+                return (element.localPort === endPoints.PPAndLP.LocalPort);
               });
 
             endPointListLbAndVm.length.should.be.equal(1);
-            (endPointListLbAndVm[0].port == endPoints.PPAndLP.PublicPort).should.be.true;
+            (endPointListLbAndVm[0].port === endPoints.PPAndLP.PublicPort).should.be.true;
 
             // Verify endpoint creation with lbSetName and prob option
             suite.execute('vm show %s --json', vmName, function(result) {
@@ -164,7 +164,7 @@ describe('cli', function() {
 
               var endPointListLbVmAndSet = vmInfo.Network.Endpoints.filter(
                 function(element, index, array) {
-                  return (element.localPort == endPoints.PPLPAndLBSet.LocalPort);
+                  return (element.localPort === endPoints.PPLPAndLBSet.LocalPort);
                 });
 
               endPointListLbVmAndSet.length.should.be.equal(1);
@@ -173,7 +173,7 @@ describe('cli', function() {
 
               var endPointListLbVmSetAndProb = vmInfo.Network.Endpoints.filter(
                 function(element, index, array) {
-                  return (element.localPort == endPoints.PPLPLBSetAndProb.LocalPort);
+                  return (element.localPort === endPoints.PPLPLBSetAndProb.LocalPort);
                 });
               endPointListLbVmSetAndProb.length.should.be.equal(1);
               endPointListLbVmSetAndProb[0].loadBalancedEndpointSetName.should.be.equal(endPoints.PPLPLBSetAndProb.LoadBalancerSetName);

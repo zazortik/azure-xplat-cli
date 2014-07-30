@@ -73,7 +73,7 @@ describe('cli', function () {
       suite.setupTest(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY;
-        done()
+        done();
       });
     });
 
@@ -115,7 +115,7 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-          if (disk.operatingSystemType == OS) {
+          if (disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
             diskObj = disk;
             return true;
           }

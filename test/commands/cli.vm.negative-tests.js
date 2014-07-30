@@ -25,7 +25,6 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
 var vmPrefix = 'clitestvm';
-var fileName = 'customdatalargefile';
 var suite;
 var testPrefix = 'cli.vm.negative-tests';
 var requiredEnvironment = [{
@@ -130,13 +129,5 @@ describe('cli', function() {
         });
       }
     }
-
-    //create a file and write desired data given as input
-    function generateFile(filename, fileSizeinBytes, data) {
-      if (fileSizeinBytes)
-        data = testUtils.generateRandomString(fileSizeinBytes);
-      fs.writeFileSync(filename, data);
-    }
-
   });
 });
