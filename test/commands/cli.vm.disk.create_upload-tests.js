@@ -115,7 +115,8 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-          if (disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
+          if ((disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) &&
+            (disk.location && disk.location.toLowerCase() === location.toLowerCase())) {
             diskObj = disk;
             return true;
           }
