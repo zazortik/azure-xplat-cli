@@ -24,15 +24,7 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
-
 var vmPrefix = 'clitestvm';
-var vmNames = [];
 var timeout = isForceMocked ? 0 : 30000;
 
 var suite;
@@ -50,6 +42,12 @@ describe('cli', function () {
     var vmName,
     vmImgName,
     location;
+
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -76,7 +74,7 @@ describe('cli', function () {
     beforeEach(function (done) {
       suite.setupTest(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-		vmName = process.env.TEST_VM_NAME;
+        vmName = process.env.TEST_VM_NAME;
         done();
       });
     });
@@ -151,7 +149,7 @@ describe('cli', function () {
         imageList.some(function (image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             vmImgName = image.name;
-			return true;
+            return true;
           }
         });
         callBack(vmImgName);
