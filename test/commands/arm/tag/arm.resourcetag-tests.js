@@ -15,8 +15,8 @@
 
 'use strict';
 
-var assert = require('assert');
 var should = require('should');
+var assert = require('assert');
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-resourcetag-tests';
