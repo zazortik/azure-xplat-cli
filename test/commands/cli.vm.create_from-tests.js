@@ -26,9 +26,9 @@ var CLITest = require('../framework/cli-test');
 
 // A common VM used by multiple tests
 var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
+  Name: null,
+  Created: false,
+  Delete: false
 };
 
 var vmPrefix = 'clitestvm';
@@ -37,24 +37,24 @@ var timeout = isForceMocked ? 0 : 5000;
 var suite;
 var testPrefix = 'cli.vm.create_from-tests';
 var requiredEnvironment = [{
-    name : 'AZURE_VM_TEST_LOCATION',
-    defaultValue : 'West US'
+    name: 'AZURE_VM_TEST_LOCATION',
+    defaultValue: 'West US'
   }
 ];
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName,
-    location,
-    file = 'vminfo.json';
+      location,
+      file = 'vminfo.json';
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -63,26 +63,26 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(function () {
+    beforeEach(function(done) {
+      suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-		vmName = process.env.TEST_VM_NAME;
+        vmName = process.env.TEST_VM_NAME;
         done();
       });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
-          setTimeout(function () {
-            suite.execute('vm delete %s -b --quiet --json', vm.Name, function (result) {
+          setTimeout(function() {
+            suite.execute('vm delete %s -b --quiet --json', vm.Name, function(result) {
               vm.Name = null;
               vm.Created = vm.Delete = false;
               return callback();
@@ -93,22 +93,22 @@ describe('cli', function () {
         }
       }
 
-      deleteUsedVM(vmToUse, function () {
+      deleteUsedVM(vmToUse, function() {
         suite.teardownTest(done);
       });
     });
 
     //create a vm from role file
-    describe('Create:', function () {
-      it('Create-from a file', function (done) {
+    describe('Create:', function() {
+      it('Create-from a file', function(done) {
         var Fileresult = fs.readFileSync(file, 'utf8');
         var obj = JSON.parse(Fileresult);
         obj['RoleName'] = vmName;
         var diskName = obj.oSVirtualHardDisk.name;
-        waitForDiskRelease(diskName, function () {
+        waitForDiskRelease(diskName, function() {
           var jsonstr = JSON.stringify(obj);
           fs.writeFileSync(file, jsonstr);
-          suite.execute('vm create-from %s %s --json -l %s', vmName, file, location, function (result) {
+          suite.execute('vm create-from %s %s --json -l %s', vmName, file, location, function(result) {
             result.exitStatus.should.equal(0);
             fs.unlinkSync('vminfo.json');
             vmToUse.Name = vmName;
@@ -123,10 +123,10 @@ describe('cli', function () {
     //check if disk is released from vm and then if released call callback or else wait till it is released
     function waitForDiskRelease(vmDisk, callback) {
       var vmDiskObj;
-      suite.execute('vm disk show %s --json', vmDisk, function (result) {
+      suite.execute('vm disk show %s --json', vmDisk, function(result) {
         vmDiskObj = JSON.parse(result.text);
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
-          setTimeout(function () {
+          setTimeout(function() {
             waitForDiskRelease(vmDisk, callback);
           }, 10000);
         } else {

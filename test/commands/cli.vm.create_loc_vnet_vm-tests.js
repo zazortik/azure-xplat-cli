@@ -24,12 +24,7 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
+
 
 var vmPrefix = 'clitestvm';
 var vmNames = [];
@@ -54,6 +49,13 @@ describe('cli', function () {
     location,
     userName = 'azureuser',
     password = 'Pa$$word@123';
+	
+	// A common VM used by multiple tests
+var vmToUse = {
+  Name : null,
+  Created : false,
+  Delete : false
+};
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -116,7 +118,7 @@ describe('cli', function () {
               cmd[5] = vnetObj.location
               function executecmd(callback) {
                 suite.execute(cmd, function (result) {
-                  if (result.exitStatus == '1') {
+                  if (result.exitStatus === 1) {
                     setTimeout(function () {
                       executecmd(done);
                     }, 5000);
@@ -141,7 +143,7 @@ describe('cli', function () {
                 virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             function executecmd(callback) {
               suite.execute(cmd, function (result) {
-                if (result.exitStatus == '1') {
+                if (result.exitStatus === 1) {
                   setTimeout(function () {
                     executecmd(done);
                   }, 5000);
@@ -187,7 +189,7 @@ describe('cli', function () {
         suite.execute(cmd, function (result) {
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function (vnet) {
-              if (vnet.state == status) {
+              if (vnet.state === status) {
                 getVnet.vnetName = vnet.name;
                 getVnet.affinityName = vnet.affinityGroup;
                 return true;
@@ -218,7 +220,7 @@ describe('cli', function () {
         suite.execute('account affinity-group list --json', function (result) {
           var affinList = JSON.parse(result.text);
           var found = affinList.some(function (affinGrp) {
-              if (affinGrp.location == location) {
+              if (affinGrp.location === location) {
                 getAffinityGroup.affinGrpName = affinGrp.name;
                 return true;
               }

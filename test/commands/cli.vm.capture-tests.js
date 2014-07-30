@@ -32,16 +32,16 @@ var testPrefix = 'cli.vm.capture-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName,
-    captureImg = 'xplattestcapimg';
+      captureImg = 'xplattestcapimg';
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -50,35 +50,35 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       if (suite.isMocked)
         suite.teardownSuite(done);
       else {
-        suite.execute('service delete %s --quiet --json', vmName, function (result) {
+        suite.execute('service delete %s --quiet --json', vmName, function(result) {
           suite.teardownSuite(done);
         });
       }
 
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(function(){
-		vmName = process.env.TEST_VM_NAME;
-		done();
-	  });
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //shutdown a vm
-    describe('Vm:', function () {
-      it('shutdown', function (done) {
-        suite.execute('vm shutdown %s --json', vmName, function (result) {
+    describe('Vm:', function() {
+      it('shutdown', function(done) {
+        suite.execute('vm shutdown %s --json', vmName, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
         });
@@ -86,9 +86,9 @@ describe('cli', function () {
     });
 
     // VM Capture into a disk
-    describe('Vm:', function () {
-      it('capture', function (done) {
-        suite.execute('vm capture %s %s %s --json --delete', vmName, captureImg, function (result) {
+    describe('Vm:', function() {
+      it('capture', function(done) {
+        suite.execute('vm capture %s %s %s --json --delete', vmName, captureImg, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
         });
@@ -96,16 +96,16 @@ describe('cli', function () {
     });
 
     // VM Capture into a disk
-    describe('Captured Images:', function () {
-      it('should be listed in images list', function (done) {
-        suite.execute('vm image list --json', function (result) {
+    describe('Captured Images:', function() {
+      it('should be listed in images list', function(done) {
+        suite.execute('vm image list --json', function(result) {
           var vmImagelist = JSON.parse(result.text);
           var imagefound = false;
-          imagefound = vmImagelist.some(function (imageObj) {
-              if (imageObj.name == captureImg) {
-                return true;
-              }
-            });
+          imagefound = vmImagelist.some(function(imageObj) {
+            if (imageObj.name === captureImg) {
+              return true;
+            }
+          });
           imagefound.should.true;
           setTimeout(done, timeout);
         });
@@ -113,9 +113,9 @@ describe('cli', function () {
     });
 
     //delete the captured disk
-    describe('Vm:', function () {
-      it('delete captured image', function (done) {
-        suite.execute('vm image delete -b %s --json', captureImg, function (result) {
+    describe('Vm:', function() {
+      it('delete captured image', function(done) {
+        suite.execute('vm image delete -b %s --json', captureImg, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
         });
