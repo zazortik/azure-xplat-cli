@@ -189,7 +189,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function (vnet) {
-              if (vnet.state === status) {
+              if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.affinityGroup !== undefined) {
                 getVnet.vnetName = vnet.name;
                 getVnet.affinityName = vnet.affinityGroup;
                 return true;
