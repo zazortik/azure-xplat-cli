@@ -31,50 +31,51 @@ var testPrefix = 'cli.vm.disk.attachDetach-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName,
-    diskName = 'xplattestdisk';
+      diskName = 'xplattestdisk';
 
-    before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+    before(function(done) {
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-	  
-	  vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(done);
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
-	//attach a disk and if successfull detaches the attached disk
-    describe('Disk:', function () {
-      it('Attach & Detach', function (done) {
-        suite.execute('vm disk attach %s %s --json', vmName, diskName, function (result) {
-          waitForDiskOp(vmName, true, function (vmObj) {
+    //attach a disk and if successfull detaches the attached disk
+    describe('Disk:', function() {
+      it('Attach & Detach', function(done) {
+        suite.execute('vm disk attach %s %s --json', vmName, diskName, function(result) {
+          waitForDiskOp(vmName, true, function(vmObj) {
             vmObj.DataDisks[0].name.should.equal(diskName);
-            suite.execute('vm disk detach %s 0 --json', vmName, function (result) {
+            suite.execute('vm disk detach %s 0 --json', vmName, function(result) {
               result.exitStatus.should.equal(0);
-              waitForDiskOp(vmName, false, function (vmObj) {
+              waitForDiskOp(vmName, false, function(vmObj) {
                 done();
               });
             });
@@ -83,15 +84,15 @@ describe('cli', function () {
       });
     });
 
-	//check if disk is attached or de attached and then call the callback
+    //check if disk is attached or de attached and then call the callback
     function waitForDiskOp(vmName, DiskAttach, callback) {
       var vmObj;
-      suite.execute('vm show %s --json', vmName, function (result) {
+      suite.execute('vm show %s --json', vmName, function(result) {
         vmObj = JSON.parse(result.text);
         if ((!DiskAttach && !vmObj.DataDisks[0]) || (DiskAttach && vmObj.DataDisks[0])) {
           callback(vmObj);
         } else {
-          setTimeout(function () {
+          setTimeout(function() {
             waitForDiskOp(vmName, DiskAttach, callback);
           }, 10000);
         }
