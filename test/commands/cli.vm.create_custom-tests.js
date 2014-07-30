@@ -31,36 +31,36 @@ var suite;
 var testPrefix = 'cli.vm.create_custom-tests';
 var timeout = isForceMocked ? 0 : 5000;
 var requiredEnvironment = [{
-    name : 'AZURE_VM_TEST_LOCATION',
-    defaultValue : 'West US'
+    name: 'AZURE_VM_TEST_LOCATION',
+    defaultValue: 'West US'
   }, {
-    name : 'SSHCERT',
-    defaultValue : null
+    name: 'SSHCERT',
+    defaultValue: null
   }
 ];
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var customVmName = 'xplattestvmcustdata';
     var fileName = 'customdata',
-    certFile,
-    location,
-    vmsize = 'small',
-    sshPort = '223';
-    
-	var vmToUse = {
-      Name : null,
-      Created : false,
-      Delete : false
+      certFile,
+      location,
+      vmsize = 'small',
+      sshPort = '223';
+
+    var vmToUse = {
+      Name: null,
+      Created: false,
+      Delete: false
     };
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -70,27 +70,27 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(function () {
+    beforeEach(function(done) {
+      suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         certFile = process.env.SSHCERT;
         done();
       });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
-          setTimeout(function () {
+          setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            suite.execute(cmd, function (result) {
+            suite.execute(cmd, function(result) {
               vm.Name = null;
               vm.Created = vm.Delete = false;
               callback();
@@ -101,36 +101,36 @@ describe('cli', function () {
         }
       }
 
-      deleteUsedVM(vmToUse, function () {
+      deleteUsedVM(vmToUse, function() {
         suite.teardownTest(done);
       });
     });
 
     //Create vm with custom data
-    describe('Create:', function () {
-      it('with custom data', function (done) {
-        getImageName('Linux', function (vmImgName) {
+    describe('Create:', function() {
+      it('with custom data', function(done) {
+        getImageName('Linux', function(vmImgName) {
           generateFile(fileName, null, 'nodejs,python,wordpress');
           suite.execute('vm create -e %s -z %s --ssh-cert %s --no-ssh-password %s %s testuser Collabera@01 -l %s -d %s --json --verbose',
-            sshPort, vmsize, certFile, customVmName, vmImgName, location, fileName, function (result) {
-            var verboseString = result.text;
-            var iPosCustom = verboseString.indexOf('CustomData:');
-            iPosCustom.should.equal(-1);
-            fs.unlinkSync(fileName);
-            vmToUse.Name = customVmName;
-            vmToUse.Created = true;
-            vmToUse.Delete = true;
-            done();
-          });
+            sshPort, vmsize, certFile, customVmName, vmImgName, location, fileName, function(result) {
+              var verboseString = result.text;
+              var iPosCustom = verboseString.indexOf('CustomData:');
+              iPosCustom.should.equal(-1);
+              fs.unlinkSync(fileName);
+              vmToUse.Name = customVmName;
+              vmToUse.Created = true;
+              vmToUse.Delete = true;
+              done();
+            });
         });
       });
     });
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      suite.execute('vm image list --json', function (result) {
+      suite.execute('vm image list --json', function(result) {
         var imageList = JSON.parse(result.text);
-        imageList.some(function (image) {
+        imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             getImageName.ImageName = image.name;
             return true;
