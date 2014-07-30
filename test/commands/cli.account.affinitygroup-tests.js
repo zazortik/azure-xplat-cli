@@ -1,28 +1,32 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 var should = require('should');
 
 var CLITest = require('../framework/cli-test');
 
 var AFFINITYGROUP_NAME_PREFIX = 'xplat-afg-';
-var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West US';
+var AFFINITYGROUP_LOCATION;
 
 var createdAffinityGroups = [];
 
 var testPrefix = 'cli.affinitygroup-tests';
+
+var requiredEnvironment = [
+  { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'West US' }
+];
 
 describe('cli', function () {
   describe('account affinity-group', function () {
@@ -30,7 +34,7 @@ describe('cli', function () {
     var affinityGroupName;
 
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
 
       suite.setupSuite(done);
@@ -41,7 +45,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest( function () {
+        AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {

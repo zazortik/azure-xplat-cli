@@ -1,8 +1,8 @@
-# Windows Azure Xplat-CLI for Windows, Mac and Linux
+# Microsoft Azure Xplat-CLI for Windows, Mac and Linux
 
-[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-tools-xplat)
 
-This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Windows Azure applications.
+This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.
 
 ## Features
 
@@ -18,7 +18,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage Storage Accounts
     * Create and manage container, blob and ACL
 * Websites
-    * Create and manage Windows Azure websites
+    * Create and manage Microsoft Azure websites
     * Download site log files and get real time log streaming
     * Manage Deployments
     * Configure GitHub integration
@@ -30,6 +30,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage Virtual Machine Images
     * Create and manage certificates
     * CloudInit for Ubuntu VM
+    * Create and manage Docker host virtual machines
 * Network
     * Import and export network configuration
     * Create and manage virtual network
@@ -68,7 +69,7 @@ npm install -g azure-cli
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/WindowsAzure/azure-sdk-tools-xplat.git
+git clone https://github.com/Azure/azure-sdk-tools-xplat.git
 cd ./azure-sdk-tools-xplat
 npm install
 ```
@@ -94,14 +95,14 @@ echo 'source ~/azure.completion.sh' >> .bash_profile
 
 In general, following are the steps:
 
-* Get yourself authenticated with Windows Azure. For details, please check out [this article](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/).
   * Option 1: Login with your Organizational account. Azure Active Directory authentication is used in this case. No management certificate is needed. **Note**: Microsoft account is not supported in this approach right now. You can create an Organizational account from the Azure portal for free.
   * Option 2: Download and import a publish settings file which contains a management certificate.
 * Use the commands
 
 The first step can be different for different environment you are targeting. Following are detail instructions for each supported environment.
 
-### Windows Azure
+### Microsoft Azure
 
 If you use both mechanisms on the same subscription, Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
 
@@ -147,42 +148,28 @@ azure config mode arm # resource manager
 
 **For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
 
-## Running tests
+## Docker
 
-The tests included in the repository execute CLI commands against live Widows Azure management endpoints. In order to run the tests, you must have a Windows Azure subscription as well as a GitHub account.
+Usage is same as standard vm create.
 
-Before running tests, you must take a one-time action to configure the CLI with the Windows Azure subscription by running
+    azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
-```bash
-azure account download
-azure account import
-```
+This command only supports Ubuntu 14.04 based images. Docker is configured on the VM using HTTPS as described here: http://docs.docker.io/articles/https/ By default, certificates are put in `~/.docker`, and Docker is configured to run on port 4243. These can be configured using new options:
 
-Next, provide the following parameters by setting environment variables:
+    -dp, --docker-port [port]              Port to use for docker [4243]
+    -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
+	
+After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
 
-- `AZURE_STORAGE_ACCOUNT` - your Windows Azure Storage Account name
-- `AZURE_STORAGE_ACCESS_KEY` - secret access key to that Storage Account
-- `AZURE_SERVICEBUS_NAMESPACE` - your Windows Azure Service Bus Namespace
-- `AZURE_SERVICEBUS_ACCESS_KEY` - secret access to that Service Bus namespace
-- `AZURE_GITHUB_USERNAME` - GitHub account username
-- `AZURE_GITHUB_PASSWORD` - GitHub account password
-- `AZURE_GITHUB_REPOSITORY` - name an empty GitHub repository to use during tests (e.g. `tjanczuk/clitest`)
-- `SSHCERT` - path of SSH Certificate (eg. `path\cert.pem`)
-- `BLOB_SOURCE_PATH` - source url path for disk upload (`container\subcontainer\disk.vhd`)
-- `AZURE_COMMUNITY_IMAGE_ID` - Community image id
+    docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
 
+Note: To run docker commands on windows make sure ssl agent is installed.
+	
+## Running Tests
 
-To run the tests, call
-
-```bash
-npm test
-```
-
-from the root of your clone of the repository. Most tests execute against live Windows Azure management APIs, and running them takes considerable time.
-
-Note: by default, the tests targeting the Windows Azure Mobile Services run against a mocked Windows Azure HTTP endpoints. In order to execute these tests against live Windows Azure management APIs instead, set the `NOCK_OFF=true` environment variable before running the tests.
+See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
 
 ## Learn More
-For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
+For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
 
 For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)

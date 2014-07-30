@@ -10,8 +10,8 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.2",
-  "description": "Windows Azure Cross Platform Command Line tool",
+  "version": "0.8.6",
+  "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
     "cli"
@@ -26,7 +26,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.8.26"
   },
   "licenses": [
     {
@@ -35,39 +35,43 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.2",
-    "azure": "0.9.2",
-    "azure-gallery": "2.0.0-pre.1",
-    "azure-mgmt-resource": "2.0.0-pre.1",
+    "adal-node": "0.1.6",
+    "async": "0.2.7",
+    "azure": "0.9.11",
+    "azure-common": "0.9.5",
+    "azure-gallery": "2.0.0-pre.7",
+    "azure-mgmt-resource": "2.0.0-pre.8",
+    "colors": "0.x.x",
+    "commander": "1.0.4",
+    "easy-table": "0.0.1",
+    "event-stream": "3.1.5",
+    "eyes": "0.x.x",
+    "github": "0.1.6",
+    "kuduscript": "0.1.11",
+    "moment": "2.6.0",
+    "node-uuid": "1.2.0",
+    "omelette": "0.1.0",
+    "request": "2.27.0",
+    "streamline": "0.4.5",
+    "through": "2.3.4",
+    "tunnel": "0.0.2",
+    "underscore": "1.4.x",
+    "validator": "~3.1.0",
+    "winston": "0.6.x",
+    "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
-    "underscore": "1.4.x",
-    "node-uuid": "1.2.0",
-    "tunnel": "0.0.2",
-    "async": "0.2.7",
-    "streamline": "0.4.5",
-    "commander": "1.0.4",
-    "winston": "0.6.x",
-    "colors": "0.x.x",
-    "eyes": "0.x.x",
-    "easy-table": "0.0.1",
-    "github": "0.1.6",
-    "omelette": "0.1.0",
-    "kuduscript": "0.1.10",
-    "validator": "~3.1.0",
-    "request": "2.27.0",
-    "adal-node": "~0.1.5",
-    "through": "2.3.4",
-    "wordwrap": "0.0.2"
+    "readable-stream": "~1.0.0",
+    "openssl-wrapper": "0.2.1",
+    "caller-id": "0.1.x"
   },
   "devDependencies": {
     "mocha": "1.16.0",
     "jshint": ">= 2.1.4",
     "sinon": "*",
-    "should": "*",
+    "should": "3.3.2",
     "nock": "0.16",
     "winston-memory": "*",
-    "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
   "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
@@ -79,7 +83,7 @@
     "url": "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "unit-arm": "node scripts/unit.js testlistarm.txt",

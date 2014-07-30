@@ -16,21 +16,30 @@
 
 // Test includes
 var fs = require('fs');
+var os = require('os');
 var path = require('path');
 var sinon = require('sinon');
 var util = require('util');
 var _ = require('underscore');
 
+var adalAuth = require('../../lib/util/authentication/adalAuth');
 var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
+var pluginCache = require('../../lib/util/pluginCache');
 
 var executeCommand = require('./cli-executor').execute;
+var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
 
-function CLITest(testPrefix, forceMocked) {
+function CLITest(testPrefix, env, forceMocked) {
+  if (!Array.isArray(env)) {
+    forceMocked = env;
+    env = [];
+  }
+
   this.testPrefix = testPrefix;
   this.currentTest = 0;
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
@@ -42,59 +51,94 @@ function CLITest(testPrefix, forceMocked) {
   }
 
   this.isRecording = process.env.AZURE_NOCK_RECORD;
+  this.skipSubscription = true;
+
+  // change this in derived classes to switch mode
+  this.commandMode = 'asm';
+
+  // Normalize environment
+  this.normalizeEnvironment(env);
+  this.validateEnvironment();
+
+  if (this.isMocked && !this.isRecording) {
+    this.setTimeouts();
+  }
+
+  pluginCache.clear();
 }
 
 _.extend(CLITest.prototype, {
+  normalizeEnvironment: function (env) {
+    env = env.filter(function (e) {
+      if (e.requiresCert || e.requiresToken) {
+        this.requiresCert = e.requiresCert;
+        this.requiresToken = e.requiresToken;
+        return false;
+      }
+      return true;
+    });
+
+    this.requiredEnvironment = env.map(function (env) {
+      if (typeof(env) === 'string') {
+        return { name: env, secure: false };
+      } else {
+        return env;
+      }
+    });
+  },
+
+  validateEnvironment: function () {
+    if (this.isMocked && !this.isRecording) {
+      return;
+    }
+
+    var messages = [];
+    var missing = [];
+    this.requiredEnvironment.forEach(function (e) {
+      if (!process.env[e.name] && !e.defaultValue) {
+        missing.push(e.name);
+      }
+    });
+
+    if (missing.length > 0) {
+      messages.push('This test requires the following environment variables which are not set: ' +
+        missing.join(', '));
+    }
+
+    if (this.requiresCert && this.requiresToken) {
+      messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
+    } else if (this.requiresCert && profile.current.currentSubscription.username) {
+      messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
+    } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
+      messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
+    } else if (this.requiresToken && !profile.current.currentSubscription.username) {
+      messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
+    }
+
+    if (messages.length > 0) {
+      throw new Error(messages.join(os.EOL));
+    }
+  },
+
+  setEnvironmentDefaults: function () {
+    this.requiredEnvironment.forEach(function (env) {
+      if (env.defaultValue && !process.env[env.name]) {
+        process.env[env.name] = env.defaultValue;
+      }
+    });
+  },
+
   setupSuite: function (callback) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
+    }
 
-      sinon.stub(keyFiles, 'readFromFile', function () {
-        return {
-          cert: process.env.AZURE_CERTIFICATE,
-          key: process.env.AZURE_CERTIFICATE_KEY
-        };
-      });
+    if (!this.isMocked || this.isRecording) {
+      this.setEnvironmentDefaults();
+    }
 
-      sinon.stub(keyFiles, 'writeToFile', function () {});
-
-      var originalReadFileSync = fs.readFileSync;
-      sinon.stub(fs, 'readFileSync', function (filename) {
-        switch(path.basename(filename)) {
-          case 'config.json':
-            return '{ "endpoint": "https://management.core.windows.net",' +
-              ' "subscription": "' + process.env.AZURE_SUBSCRIPTION_ID + '" }';
-          case 'azureProfile.json':
-            return createTestSubscriptionFileContents();
-          default:
-            return originalReadFileSync(filename, 'utf8');
-        }
-      });
-
-      var originalPathExistsSync = utils.pathExistsSync;
-      sinon.stub(utils, 'pathExistsSync', function (filename) {
-        if (path.basename(filename) === 'config.json') {
-          return true;
-        }
-
-        return originalPathExistsSync(filename);
-      });
-
-      if (this.isRecording) {
-        fs.writeFileSync(this.recordingsFile,
-          '// This file has been autogenerated.\n\n' +
-          'exports.scopes = [');
-      }
-
-      var originalProfileLoad = profile.load;
-      sinon.stub(profile, 'load', function(fileNameOrData) {
-        if (!fileNameOrData || fileNameOrData === profile.defaultProfileFile) {
-          return originalProfileLoad(JSON.parse(createTestSubscriptionFile()));
-        }
-        return originalProfileLoad(fileNameOrData);
-      });
-
-      profile.current = profile.load();
+    if (this.isRecording) {
+        this.writeRecordingHeader();
     }
 
     // Remove any existing cache files before starting the test
@@ -111,21 +155,6 @@ _.extend(CLITest.prototype, {
         fs.appendFileSync(this.recordingsFile, '];');
       }
 
-      keyFiles.readFromFile.restore();
-      keyFiles.writeToFile.restore();
-
-      if (fs.readFileSync.restore) {
-        fs.readFileSync.restore();
-      }
-
-      if (utils.pathExistsSync.restore) {
-        utils.pathExistsSync.restore();
-      }
-
-      if (profile.load.restore) {
-        profile.load.restore();
-      }
-
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
 
@@ -133,20 +162,13 @@ _.extend(CLITest.prototype, {
   },
 
   removeCacheFiles: function () {
-    var sitesCachePath = path.join(utils.azureDir(), util.format('sites.%s.json', process.env.AZURE_SUBSCRIPTION_ID));
-    if (utils.pathExistsSync(sitesCachePath)) {
-      fs.unlinkSync(sitesCachePath);
-    }
+    var cacheFilePattern = /(sites|spaces)\.[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}\.json/;
 
-    var spacesCachePath = path.join(utils.azureDir(), util.format('spaces.%s.json', process.env.AZURE_SUBSCRIPTION_ID));
-    if (utils.pathExistsSync(spacesCachePath)) {
-      fs.unlinkSync(spacesCachePath);
-    }
-
-    var environmentsPath = path.join(utils.azureDir(), 'environment.json');
-    if (utils.pathExistsSync(environmentsPath)) {
-      fs.unlinkSync(environmentsPath);
-    }
+    var cacheFiles = fs.readdirSync(utils.azureDir())
+      .filter(function (p) { return p.match(cacheFilePattern); })
+      .forEach(function (p) {
+        fs.unlinkSync(path.join(utils.azureDir(), p));
+      });
   },
 
   execute: function (cmd) {
@@ -183,7 +205,12 @@ _.extend(CLITest.prototype, {
       cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
     }
 
-    executeCommand(cmd, callback);
+    this.forceSuiteMode(sinon);
+
+    executeCommand(cmd, function (result) {
+      utils.readConfig.restore();
+      callback(result);
+    });
   },
 
   setupTest: function (callback) {
@@ -204,6 +231,18 @@ _.extend(CLITest.prototype, {
         throw new Error('It appears the ' + this.recordingsFile + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
+
+      if (nocked.getMockedProfile) {
+        profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
+      }
+
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
+
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
     }
 
     callback();
@@ -220,12 +259,20 @@ _.extend(CLITest.prototype, {
           // apply fixups of nock generated mocks
 
           // do not filter on body as they usual have time related stamps
-          line = line.replace(/(\.post\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.get\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.put\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.delete\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.merge\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.patch\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.post\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.get\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.put\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.delete\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+          line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+
+          // put deployment have a timestamp in the url
+          line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
+            '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
+
+          // Requests to logging service contain timestamps in url query params, filter them out too
+          line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
+            '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
 
           scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
             'var result = ' + line + ' return result; }';
@@ -235,11 +282,22 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
+    } else if (this.isMocked) {
+      adalAuth.tokenCache = this.originalTokenCache;
     }
 
     nockHelper.unNockHttp();
 
     callback();
+  },
+
+  writeRecordingHeader: function () {
+    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
+
+    fs.writeFileSync(this.recordingsFile, _.template(template, {
+      sub: profile.current.currentSubscription,
+      requiredEnvironment: this.requiredEnvironment
+    }));
   },
 
   /**
@@ -273,6 +331,93 @@ _.extend(CLITest.prototype, {
         }
       }
     }
+  },
+
+  /**
+  * Helper function for cleanup. executes an async loop over a collection
+  * of names (typically onces created using the generateId method)
+  * and invokes an async iterator on each one. The iterator can do
+  * whatever it needs to on each name.
+  *
+  * @param {string[]}                    names    The array of names
+  *
+  * @param {function(string, function)}  iterator function to run on each
+  *                                               element in the names
+  *                                               array. form is
+  *                                               function (name, done)
+  *
+  * @param {function}                    done     Callback invoked when
+  *                                               all elements in names
+  *                                               have completed processing.
+  */
+  forEachName: function (names, iterator, done) {
+    var self = this;
+    if(typeof iterator === 'string') {
+      var commandString = iterator;
+      iterator = function (name, done) {
+        self.execute(commandString, name, done);
+      }
+    }
+
+    function nextName(names) {
+      if (names.length === 0) {
+        return done();
+      }
+
+      iterator(names[0], function () {
+        nextName(names.slice(1));
+      });
+    }
+
+    nextName(names);
+  },
+
+  setTimeouts: function () {
+    // Possible it's already wrapped from a previous failed
+    // execution. If so, unwrap then rewrap.
+    if (utils.createClient.restore) {
+      utils.createClient.restore();
+    }
+
+    CLITest.wrap(sinon, utils, 'createClient', function (originalCreateClient) {
+      return function (factoryOrName, credentials, endpoint) {
+        var client = originalCreateClient(factoryOrName, credentials, endpoint);
+        client.longRunningOperationInitialTimeout = 0;
+        client.longRunningOperationRetryTimeout = 0;
+
+        return client;
+      };
+    });
+  },
+
+  /**
+  * Stub out the utils.readConfig method to force the cli mode
+  * to the one required by this test suite.
+  *
+  * This is broken out separately for those tests that are using
+  * a suite for cli execution but otherwise don't need mock recording.
+  *
+  * @param {object} sinonObj The sinon object used to stub out
+  *                          readConfig. This could be either
+  *                          the sinon module or a sandbox.
+  *
+  */
+  forceSuiteMode: function (sinonObj) {
+    // Possible it's already wrapped from a previous failed
+    // execution. If so, unwrap then rewrap.
+    if (utils.readConfig.restore) {
+      utils.readConfig.restore();
+    }
+
+    // Force mode regardless of current stored setting
+    var commandMode = this.commandMode;
+    CLITest.wrap(sinonObj, utils, 'readConfig', function (originalReadConfig) {
+      return function () {
+        var config = originalReadConfig();
+        config.mode = commandMode;
+        return config;
+      };
+    });
   }
 });
 
@@ -290,23 +435,3 @@ CLITest.wrap = function wrap(sinonObj, object, property, setup) {
   var original = object[property];
   return sinonObj.stub(object, property, setup(original));
 };
-
-function createTestSubscriptionFile() {
-  var contents = {
-    environments: [],
-    subscriptions: [
-      {
-        id: process.env.AZURE_SUBSCRIPTION_ID,
-        name: 'testAccount',
-        managementCertificate: {
-          cert: process.env.AZURE_CERTIFICATE,
-          key: process.env.AZURE_CERTIFICATE_KEY
-        },
-        environmentName: 'AzureCloud',
-        registeredProviders: [ 'website', 'sqlserver' ],
-        registeredResourceNamespaces: [ 'microsoft.insights', 'successbricks.cleardb' ]
-      }
-    ]
-  }
-  return JSON.stringify(contents);
-}

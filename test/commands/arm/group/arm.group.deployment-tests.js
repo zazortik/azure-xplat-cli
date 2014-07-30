@@ -22,14 +22,17 @@ var fs = require('fs');
 var path = require('path');
 var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
+var testUtil = require('../../../util/util');
 
+var requiredEnvironment = [
+  { requiresToken: true },
+  'AZURE_ARM_TEST_STORAGEACCOUNT',
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
+];
 
-var testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
-var testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-
-var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 var testprefix = 'arm-cli-deployment-tests';
-var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview1';
+var galleryTemplateName;
+var galleryTemplateUrl;
 var createdGroups = [];
 var createdDeployments = [];
 var cleanedUpGroups = 0;
@@ -37,10 +40,13 @@ var cleanedUpGroups = 0;
 describe('arm', function () {
   describe('deployment', function () {
     var suite;
+    var testStorageAccount;
+    var testLocation;
+    var normalizedTestLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
-      suite.setupSuite(done);
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(done);     
     });
 
     after(function (done) {
@@ -48,7 +54,19 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
+        testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+          if (error) {
+            return done(new Error('Could not get template info: ' + error));
+          }
+          galleryTemplateName = templateInfo.templateName;
+          galleryTemplateUrl = templateInfo.templateUrl;
+          done();
+        });
+      });
     });
 
     afterEach(function (done) {
@@ -81,7 +99,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -109,7 +127,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -131,14 +149,13 @@ describe('arm', function () {
 
     describe('stop', function () {
       it('should work', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateUri, groupName, deploymentName, parameterFile);
+            galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -153,14 +170,13 @@ describe('arm', function () {
       });
 
       it('should stop the currently running deployment when deployment name is not provided and only 1 deployment is currently running', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateUri, groupName, deploymentName, parameterFile);
+            galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -175,19 +191,18 @@ describe('arm', function () {
       });
 
       it('should fail when the deployment name is not provided and more than 1 deployment is currently running', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var deploymentName1 = suite.generateId('Deploy2', createdDeployments, suite.isMocked);
-        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateUri, groupName, deploymentName, parameterFile);
+            galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('group deployment create -f %s -g %s -n %s -e %s --json -vv', templateUri, groupName, deploymentName1, parameterFile, function (result2) {
+            suite.execute('group deployment create -f %s -g %s -n %s -e %s --json -vv', galleryTemplateUrl, groupName, deploymentName1, parameterFile, function (result2) {
               result2.exitStatus.should.equal(0);
               suite.execute('group deployment stop -g %s -q --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(1);
@@ -202,14 +217,13 @@ describe('arm', function () {
 
     describe('create', function () {
       it('should work with a remote file', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateUri = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
-            templateUri, groupName, deploymentName, parameterFile, testStorageAccount);
+            galleryTemplateUrl, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -231,7 +245,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
             templateFile, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
@@ -258,7 +272,7 @@ describe('arm', function () {
 
         parameters = JSON.stringify(JSON.parse(parameters));
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -f %s -g %s -n %s -s %s -p %s --json -vv',
             templateFile, groupName, deploymentName, testStorageAccount, parameters, function (result) {
@@ -283,10 +297,10 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
 
-        suite.execute('group create %s --location %s --quiet --json', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -n %s -p %s --json -vv',
-            galleryTemplate, groupName, deploymentName, parameters, function (result) {
+            galleryTemplateName, groupName, deploymentName, parameters, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
@@ -309,9 +323,9 @@ describe('arm', function () {
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var commandToCreateDeployment = util.format('group deployment create -f %s -y %s -g %s -n %s -e %s -s %s --json',
-            templateFile, galleryTemplate, groupName, deploymentName, parameterFile, testStorageAccount);
+            templateFile, galleryTemplateName, groupName, deploymentName, parameterFile, testStorageAccount);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(1);
@@ -329,7 +343,7 @@ describe('arm', function () {
         var commandToCreateDeployment = util.format('group deployment create -y %s -g %s -n %s -e %s --json',
             galleryTemplate, groupName, deploymentName, parameterFile);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(1);
@@ -344,9 +358,9 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
 
-        suite.execute('group create %s --location %s --json --quiet', groupName, testLocation, function (result) {
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('group deployment create -y %s -g %s -n %s -p %s --json', galleryTemplate, groupName, deploymentName, parameterString, function (result) {
+          suite.execute('group deployment create -y %s -g %s -n %s -p %s --json', galleryTemplateName, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.include('Deployment template validation failed: \'The value for the template parameter \'siteLocation\' is not provided.\'.');
             cleanup(done);

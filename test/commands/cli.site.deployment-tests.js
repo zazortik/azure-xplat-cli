@@ -17,27 +17,15 @@
 //
 // Instructions for running this test
 //
-// The test will always run mocked, even if NOCK_OFF is set. To run against
-// production, change the forceRunMocked variable to false.
-//
 // The following environment variables must be set in order for the test to
-// run against live (and must match the settings when the mocks were recorded)
+// run against live.
 //
-// AZURE_SUBSCRIPTION_ID   - subscription ID mocks were recorded against
-// AZURE_CERTIFICATE       - value of certificate
-// AZURE_CERTIFICATE_KEY   - value of certificate key
 // AZURE_GITHUB_USERNAME   - user name used to access github
 // AZURE_GITHUB_REPOSITORY - full name of github repository to change, in form of "user/repo"
 // AZURE_GITHUB_PASSWORD   - password or access token for github.
 //
-// If you attempt to run against production and don't set forceRunMocked to false,
-// you will get errors about not having credential.cert set.
-//
-
-var forceRunMocked = true;
 
 var should = require('should');
-
 var GitHubApi = require('github');
 var url = require('url');
 
@@ -50,23 +38,24 @@ var testPrefix = 'cli.site.deployment-tests';
 
 var siteNames = [];
 
+var requiredEnvironment = [
+  { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
+  'AZURE_GITHUB_USERNAME',
+  'AZURE_GITHUB_REPOSITORY',
+  { name: 'AZURE_GITHUB_PASSWORD', secure: true }
+];
+
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
 
-var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
-var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
-var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
-var githubClient = new GitHubApi({ version: '3.0.0' });
-
-githubClient.authenticate({
-  type: 'basic',
-  username: githubUsername,
-  password: githubPassword
-});
+var githubUsername;
+var githubPassword;
+var githubRepositoryFullName;
+var githubClient;
 
 describe('cli', function () {
   describe('site deployment', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, forceRunMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -75,35 +64,65 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_SITE_TEST_LOCATION;
+        githubUsername = process.env.AZURE_GITHUB_USERNAME;
+        githubPassword = process.env.AZURE_GITHUB_PASSWORD;
+        githubRepositoryFullName = process.env.AZURE_GITHUB_REPOSITORY;
+
+        githubClient = new GitHubApi({ version: '3.0.0' });
+
+        githubClient.authenticate({
+          type: 'basic',
+          username: githubUsername,
+          password: githubPassword
+        });
+
+        done();
+      });
     });
 
     afterEach(function (done) {
-      var repositoryName;
-
-      function deleteAllHooks (hooks, callback) {
-        if (hooks.length === 0) {
-          suite.teardownTest(done);
-        } else {
-          var hook = hooks.pop();
-          hook.user = githubUsername;
-          hook.repo = repositoryName;
-
-          githubClient.repos.deleteHook(hook, function () {
-            deleteAllHooks(hooks, callback);
-          });
-        }
+      function getUserRepositories(callback) {
+        githubClient.repos.getFromUser({ user: githubUsername }, callback);
       }
 
-      // Remove any existing repository hooks
-      githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
-        repositoryName = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName).name;
+      function getTestRepoName(err, repositories, callback) {
+        if (err) { return callback(err); }
+        var repositoryName = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName).name;
+        callback(null, repositoryName);
+      }
 
+      function getHooksFromRepo(err, repositoryName, callback) {
+        if (err) { return callback(err); }
         githubClient.repos.getHooks({
           user: githubUsername,
           repo: repositoryName
         }, function (err, hooks) {
-          deleteAllHooks(hooks, done);
+          callback(err, { repositoryName: repositoryName, hooks: hooks});
+        });
+      }
+
+      function deleteHooks(err, hookInfo, callback) {
+        if (err) { return callback(err); }
+        if (hookInfo.hooks.length === 0) {
+          return callback();
+        }
+        var hook = hookInfo.hooks[0];
+        hook.user = githubUsername;
+        hook.repo = hookInfo.repositoryName;
+        githubClient.repos.deleteHook(hook, function () {
+          deleteHooks(null, { repositoryName: hookInfo.repositoryName, hooks: hookInfo.hooks.slice(1)}, callback);
+        });
+      }
+
+      getUserRepositories(function (err, repositories) {
+        getTestRepoName(err, repositories, function(err, name) {
+          getHooksFromRepo(err, name, function (err, hookInfo) {
+            deleteHooks(err, hookInfo, function (err) {
+              suite.teardownTest(done);
+            });
+          });
         });
       });
     });

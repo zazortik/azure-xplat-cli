@@ -16,23 +16,41 @@
 
 var should = require('should');
 
+var _ = require('underscore');
+var profile = require('../../lib/util/profile');
+
 var CLITest = require('../framework/cli-test');
 var suite = new CLITest();
 
 describe('cli', function () {
   describe('account env', function () {
+    var originalProfile;
+
     before(function (done) {
-      suite.execute('node cli.js account env delete newenv --json', function () {
-        done();
-      });
+      originalProfile = profile.current;
+      profile.current = new profile.Profile();
+      profile.current.save = _.identity;
+      done();
     });
 
-    it('should add and show', function (done) {
-      cmd = 'node cli.js account env add newenv --publish-settings-file-url http://url1.com ' +
-        '--management-portal-url http://url2.com --service-endpoint http://url3.com ' +
-        '--storage-endpoint http://url4.com --sql-database-endpoint http://url5.com --json';
+    after(function () {
+      profile.current = originalProfile;
+    });
 
-      suite.execute(cmd, function (result) {
+    var envCreateOptions = {
+      '--publishing-profile-url': 'http://url1.com',
+      '--portal-url': 'http://url2.com',
+      '--management-endpoint-url': 'http://url3.com',
+      '--sql-management-endpoint-url': 'http://url5.com'
+    };
+
+    var envCreateCommandLine = 'account env add newenv ' +
+       _.pairs(envCreateOptions)
+      .map(function (pair) { return pair[0] + ' ' + pair[1]; })
+      .join(' ') + ' --json';
+
+    it('should add and show', function (done) {
+      suite.execute(envCreateCommandLine, function (result) {
         result.exitStatus.should.equal(0);
 
         suite.execute('account env show newenv --json', function (result) {
@@ -42,7 +60,6 @@ describe('cli', function () {
           environment['publishingProfileUrl'].should.equal('http://url1.com');
           environment['portalUrl'].should.equal('http://url2.com');
           environment['managementEndpointUrl'].should.equal('http://url3.com');
-          environment['storageEndpoint'].should.equal('http://url4.com');
           environment['sqlManagementEndpointUrl'].should.equal('http://url5.com');
 
           done();
@@ -89,7 +106,7 @@ describe('cli', function () {
     });
 
     it('should modify a predefined environment setting', function (done) {
-      suite.execute('account env set AzureCloud --publish-settings-file-url http://test.com --json', function (result) {
+      suite.execute('account env set AzureCloud --publishing-profile-url http://test.com --json', function (result) {
         result.exitStatus.should.equal(0);
 
         suite.execute('account env show AzureCloud --json', function (result) {

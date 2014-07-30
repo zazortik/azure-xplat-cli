@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var utils = require('../../lib/util/utils');
@@ -23,9 +23,15 @@ var storageNamesPrefix = 'xcli';
 var storageNames = [];
 
 var AFFINITYGROUP_NAME_PREFIX = 'xcli';
-var AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION || 'West Europe';
+var storageLocation;
+var siteLocation;
 
 var createdAffinityGroups = [];
+
+var requiredEnvironment = [
+  { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West Europe' },
+  { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'West Europe' }
+];
 
 var suite;
 var testPrefix = 'cli.storage.account-tests';
@@ -36,7 +42,7 @@ describe('cli', function () {
     var affinityGroupName;
 
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
 
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
@@ -46,11 +52,23 @@ describe('cli', function () {
     });
 
     after(function (done) {
-      suite.teardownSuite(done);
+      if (!suite.isMocked || suite.isRecording) {
+        suite.forEachName(storageNames, 'storage account delete %s --json -q', function () {
+          suite.forEachName(createdAffinityGroups, 'account affinity-group delete %s --json -q', function () {
+            suite.teardownSuite(done);
+          });
+        });
+      } else {
+        suite.teardownSuite(done);
+      }
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        storageLocation = process.env.AZURE_STORAGE_TEST_LOCATION;
+        siteLocation = process.env.AZURE_SITE_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -62,7 +80,7 @@ describe('cli', function () {
 
       suite.execute('storage account create %s --json --location %s',
         storageName,
-        process.env.AZURE_STORAGE_TEST_LOCATION || 'West Europe',
+        storageLocation,
         function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
@@ -75,9 +93,9 @@ describe('cli', function () {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
       affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
 
-      suite.execute('account affinity-group create %s --location %s --description AG-DESC --json',
+      suite.execute('account affinity-group create %s --location %s --description XplatCliTestArtifact --json',
         affinityGroupName,
-        AFFINITYGROUP_LOCATION,
+        siteLocation,
         function (result) {
 
         result.text.should.equal('');
@@ -132,21 +150,26 @@ describe('cli', function () {
           storageAccountKeys = JSON.parse(result.text);
           storageAccountKeys.primaryKey.should.not.be.null;
           storageAccountKeys.secondaryKey.should.not.be.null;
-
-          function deleteUsedStorage (storages) {
-            if (storages.length > 0) {
-              var storage = storages.pop();
-
-              suite.execute('storage account delete %s --quiet --json', storage, function () {
-                deleteUsedStorage(storages);
-              });
-            } else {
-              done();
-            }
-          }
-
-          deleteUsedStorage(storageNames);
+          done();
         });
+      });
+    });
+    
+    it('should show connecting string', function(done) {
+      suite.execute('storage account connectionstring show %s --json', storageName, function(result) {
+        var connectionString = JSON.parse(result.text);
+        connectionString.string.should.equal('DefaultEndpointsProtocol=https;AccountName=xcli2;AccountKey=RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==');
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+    
+    it('should show connecting string with endpoints', function (done) {
+      suite.execute('storage account connectionstring show --use-http --blob-endpoint myBlob.ep --queue-endpoint 10.0.0.10 --table-endpoint mytable.core.windows.net %s --json', storageName, function(result) {
+        var connectionString = JSON.parse(result.text);
+        connectionString.string.should.equal('DefaultEndpointsProtocol=http;BlobEndpoint=myBlob.ep;QueueEndpoint=10.0.0.10;TableEndpoint=mytable.core.windows.net;AccountName=xcli2;AccountKey=RYQ4XbDtZBiD4QABy/raSpKQz8tTqDFk+NclVUW6DW8QaD+oBTJ8OT1w2Xg0Vtzu3W9DT+Argl25Ay1iUkcMFQ==');
+        result.exitStatus.should.equal(0);
+        done();
       });
     });
   });
