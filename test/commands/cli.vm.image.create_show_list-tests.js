@@ -109,7 +109,7 @@ describe('cli', function () {
           var found = null,
           imageObj = null;
           found = imageList.some(function (image) {
-              if (image.category.toLowerCase() == 'public') {
+              if (image.category.toLowerCase() === 'public') {
                 imageObj = image;
                 return true;
               }
@@ -120,7 +120,7 @@ describe('cli', function () {
           found = null,
           imageObj = null;
           found = imageList.some(function (image) {
-              if (image.category.toLowerCase() == 'user') {
+              if (image.category.toLowerCase() === 'user') {
                 imageObj = image;
                 return true;
               }
@@ -131,7 +131,7 @@ describe('cli', function () {
           found = null,
           imageObj = null;
           found = imageList.some(function (image) {
-              if (image.category.toLowerCase() == 'user' && image.deploymentName) {
+              if (image.category.toLowerCase() === 'user' && image.deploymentName) {
                 imageObj = image;
                 return true;
               }
@@ -150,7 +150,7 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-          if (disk.operatingSystemType == OS) {
+          if (disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
             diskObj = disk;
             return true;
           }

@@ -24,13 +24,6 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
-
 var vmPrefix = 'clitestvm';
 var timeout = isForceMocked ? 0 : 5000;
 
@@ -49,6 +42,12 @@ describe('cli', function () {
     var vmName,
     location,
     file = 'vminfo.json';
+
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -73,7 +72,7 @@ describe('cli', function () {
     beforeEach(function (done) {
       suite.setupTest(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-		vmName = process.env.TEST_VM_NAME;
+        vmName = process.env.TEST_VM_NAME;
         done();
       });
     });

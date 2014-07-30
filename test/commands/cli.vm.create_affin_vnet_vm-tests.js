@@ -24,13 +24,6 @@ var isForceMocked = !process.env.NOCK_OFF;
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
-
 var vmPrefix = 'clitestvm';
 var vmNames = [];
 var timeout = isForceMocked ? 0 : 5000;
@@ -55,6 +48,12 @@ describe('cli', function () {
     availSetName = 'Testset',
     userName = 'azureuser',
     password = 'Pa$$word@123';
+
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
@@ -109,13 +108,14 @@ describe('cli', function () {
     //create a vm with affinity group, vnet and availibilty set
     describe('Create:', function () {
       it('Vm with affinity, vnet and availibilty set', function (done) {
+        var retry = 5;
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName) {
             var cmd = util.format('vm create -A %s -n %s -a %s -w %s %s %s %s %s --json',
                 availSetName, vmVnetName, affinityName, virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             function executecmd(callback) {
               suite.execute(cmd, function (result) {
-                if (result.exitStatus == '1') {
+                if (result.exitStatus === 1 && retry--) {
                   setTimeout(function () {
                     executecmd(done);
                   }, 5000);
@@ -132,13 +132,15 @@ describe('cli', function () {
         });
       });
 
-      it('Should delete service on vm fail', function (done) {
+      //edge case for vm failure
+      //https://github.com/MSOpenTech/azure-sdk-tools-xplat/issues/7#issuecomment-47410767
+      it('should delete cloud service on vm create failure', function (done) {
         getImageName('Linux', function (imageName) {
           suite.execute('vm create -a %s -w %s %s %s %s %s --json',
             'some_name', 'some_name', vmVnetName, imageName, userName, password, function (result) {
             result.exitStatus.should.equal(1);
             suite.execute('service show %s --json', vmVnetName, function (result) {
-              result.text.should.equal('');
+              result.exitStatus.should.equal(1);
               done();
             });
           });
@@ -152,6 +154,7 @@ describe('cli', function () {
         callBack(getImageName.imageName);
       } else {
         suite.execute('vm image list --json', function (result) {
+          result.exitStatus.should.equal(0);
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
@@ -172,9 +175,10 @@ describe('cli', function () {
       } else {
         cmd = util.format('network vnet list --json').split(' ');
         suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function (vnet) {
-              if (vnet.state == status) {
+              if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.affinityGroup !== undefined) {
                 getVnet.vnetName = vnet.name;
                 getVnet.affinityName = vnet.affinityGroup;
                 return true;
@@ -185,6 +189,7 @@ describe('cli', function () {
             getAffinityGroup(location, function (affinGrpName) {
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               suite.execute(cmd, function (result) {
+                result.exitStatus.should.equal(0);
                 getVnet.vnetName = vnetName;
                 getVnet.affinityName = affinGrpName;
                 callback(getVnet.vnetName, getVnet.affinityName);
@@ -203,9 +208,10 @@ describe('cli', function () {
         callBack(getAffinityGroup.affinGrpName);
       } else {
         suite.execute('account affinity-group list --json', function (result) {
+          result.exitStatus.should.equal(0);
           var affinList = JSON.parse(result.text);
           var found = affinList.some(function (affinGrp) {
-              if (affinGrp.location == location) {
+              if (affinGrp.location.toLowerCase() === location.toLowerCase()) {
                 getAffinityGroup.affinGrpName = affinGrp.name;
                 return true;
               }
@@ -213,6 +219,7 @@ describe('cli', function () {
           if (!found) {
             suite.execute('account affinity-group create -l %s -e %s -d %s %s --json',
               location, affinLabel, affinDesc, affinityName, function (result) {
+              result.exitStatus.should.equal(0);
               getAffinityGroup.affinGrpName = affinityName;
               callBack(affinityName);
             });
