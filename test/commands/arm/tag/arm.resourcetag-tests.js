@@ -170,9 +170,7 @@ describe('arm', function () {
 
 function listPoll(suite, groupName, tagName, attemptsLeft, responseIsEmpty, callback) {
   if(attemptsLeft === 0) {
-    assert.throws( function() {
-      throw new Error('resource list did not receive expected response');
-    });
+    throw new Error('resource list did not receive expected response');
   }
 
   suite.execute('resource list %s -t %s --json', groupName, tagName, function (showResult) {
