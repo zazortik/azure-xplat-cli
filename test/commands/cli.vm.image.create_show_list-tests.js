@@ -30,15 +30,21 @@ var timeout = isForceMocked ? 0 : 5000;
 var suite;
 var testPrefix = 'cli.vm.image.create_show_list-tests';
 
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }
+];
+
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
     var vmImgName = 'xplattestimg',
-    location = process.env.AZURE_VM_TEST_LOCATION || 'West US';
+    location;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -59,7 +65,10 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -97,6 +106,40 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var imageList = JSON.parse(result.text);
           imageList.length.should.be.above(0);
+          var found = null,
+          imageObj = null;
+          found = imageList.some(function (image) {
+              if (image.category.toLowerCase() === 'public') {
+                imageObj = image;
+                return true;
+              }
+            });
+          found.should.be.true;
+          imageObj.category.toLowerCase().should.equal('public');
+
+          found = null,
+          imageObj = null;
+          found = imageList.some(function (image) {
+              if (image.category.toLowerCase() === 'user') {
+                imageObj = image;
+                return true;
+              }
+            });
+          found.should.be.true;
+          imageObj.category.toLowerCase().should.equal('user');
+
+          found = null,
+          imageObj = null;
+          found = imageList.some(function (image) {
+              if (image.category.toLowerCase() === 'user' && image.deploymentName) {
+                imageObj = image;
+                return true;
+              }
+            });
+          if (found) {
+            imageObj.deploymentName.should.not.equal(undefined);
+          }
+
           done();
         });
       });
@@ -107,7 +150,7 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-          if (disk.operatingSystemType == OS){
+          if (disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
             diskObj = disk;
             return true;
           }

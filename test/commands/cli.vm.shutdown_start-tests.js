@@ -31,46 +31,47 @@ var testPrefix = 'cli.vm.shutdown_start-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName;
 
-    before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+    before(function(done) {
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
         utils.POLL_REQUEST_INTERVAL = 0;
       }
-	  
-	  vmName = process.env.TEST_VM_NAME;
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(done);
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //shutdown a vm
-    describe('Vm:', function () {
-      it('Shutdown and start', function (done) {
-        suite.execute('vm shutdown %s --json', vmName, function (result) {
+    describe('Vm:', function() {
+      it('Shutdown and start', function(done) {
+        suite.execute('vm shutdown %s --json', vmName, function(result) {
           result.exitStatus.should.equal(0);
-          suite.execute('vm start %s --json', vmName, function (result) {
+          suite.execute('vm start %s --json', vmName, function(result) {
             result.exitStatus.should.equal(0);
             done();
           });
@@ -78,8 +79,8 @@ describe('cli', function () {
       });
 
       // VM Restart
-      it('Restart', function (done) {
-        suite.execute('vm restart  %s --json', vmName, function (result) {
+      it('Restart', function(done) {
+        suite.execute('vm restart  %s --json', vmName, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });

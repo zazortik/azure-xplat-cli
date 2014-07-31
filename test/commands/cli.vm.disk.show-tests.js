@@ -35,7 +35,7 @@ describe('cli', function () {
   describe('vm', function () {
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -71,7 +71,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var diskList = JSON.parse(result.text);
           diskList.length.should.be.above(0);
-          var diskName = ''
+          var diskName = '';
             diskList.some(function (disk) {
               if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
                 diskName = disk.name;

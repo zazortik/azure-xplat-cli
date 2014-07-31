@@ -26,17 +26,29 @@ var timeout = isForceMocked ? 0 : 5000;
 var vmPrefix = 'clitestvm';
 var suite;
 var testPrefix = 'cli.vm.disk.create_upload-tests';
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }, {
+    name : 'AZURE_STORAGE_ACCESS_KEY',
+    defaultValue : null
+  }, {
+    name : 'BLOB_SOURCE_PATH',
+    defaultValue : null
+  }
+];
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var diskName = 'xplattestdisk',diskObj,
-    location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
-    storageAccountKey = process.env['AZURE_STORAGE_ACCESS_KEY'] ? process.env['AZURE_STORAGE_ACCESS_KEY'] : 'YW55IGNhcm5hbCBwbGVhc3VyZQ==',
-    diskSourcePath;
+    var diskName = 'xplattestdisk',
+    diskObj,
+    diskSourcePath,
+    location,
+    storageAccountKey;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -58,7 +70,11 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY;
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -85,7 +101,7 @@ describe('cli', function () {
 
     describe('Disk:', function () {
       it('Upload', function (done) {
-        var sourcePath = suite.isMocked ? diskSourcePath : (process.env['BLOB_SOURCE_PATH'] || diskSourcePath);
+        var sourcePath = suite.isMocked ? diskSourcePath : (process.env.BLOB_SOURCE_PATH || diskSourcePath);
         var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/' + suite.generateId(vmPrefix, null) + '.vhd';
         suite.execute('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey, function (result) {
           result.exitStatus.should.equal(0);
@@ -99,7 +115,7 @@ describe('cli', function () {
       suite.execute('vm disk list --json', function (result) {
         var diskList = JSON.parse(result.text);
         diskList.some(function (disk) {
-          if (disk.operatingSystemType == OS){
+          if (disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
             diskObj = disk;
             return true;
           }

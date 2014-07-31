@@ -23,30 +23,37 @@ var isForceMocked = !process.env.NOCK_OFF;
 
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
-var communityImageId = isForceMocked ? 'vmdepot-1-1-1' : process.env['AZURE_COMMUNITY_IMAGE_ID'];
-
-// A common VM used by multiple tests
-var vmToUse = {
-  Name : null,
-  Created : false,
-  Delete : false
-};
 
 var vmPrefix = 'clitestvm';
-var vmNames = [];
 
 var suite;
 var testPrefix = 'cli.vm.create_comm-tests';
 var timeout = isForceMocked ? 0 : 5000;
+var requiredEnvironment = [{
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }, {
+    name : 'AZURE_COMMUNITY_IMAGE_ID',
+    defaultValue : null
+  }
+];
+
 var currentRandom = 0;
 
 describe('cli', function () {
   describe('vm', function () {
-    var location = process.env.AZURE_VM_TEST_LOCATION || 'West US',
+    var location,
+    communityImageId,
     customVmName = 'xplattestcommvm';
 
+    var vmToUse = {
+      Name : null,
+      Created : false,
+      Delete : false
+    };
+
     before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function () {
@@ -67,7 +74,11 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
+        done();
+      });
     });
 
     afterEach(function (done) {
