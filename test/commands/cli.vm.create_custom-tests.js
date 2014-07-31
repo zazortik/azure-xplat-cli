@@ -115,8 +115,8 @@ describe('cli', function() {
             sshPort, vmsize, certFile, customVmName, vmImgName, location, fileName, function(result) {
               result.exitStatus.should.equal(0);
               var verboseString = result.text;
-              var iPosCustom = verboseString.indexOf('CustomData:');
-              iPosCustom.should.equal(-1);
+              var iPosCustom = verboseString.indexOf('customdata');
+              iPosCustom.should.not.equal(-1);
               fs.unlinkSync(fileName);
               vmToUse.Name = customVmName;
               vmToUse.Created = true;
