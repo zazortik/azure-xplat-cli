@@ -32,15 +32,15 @@ var testPrefix = 'cli.vm.deldisk-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var diskName = 'xplattestdisk';
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -50,25 +50,25 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
+    beforeEach(function(done) {
       suite.setupTest(done);
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //delete the disk
-    describe('Delete:', function () {
-      it('Disk', function (done) {
-        suite.execute('vm disk delete -b %s --json', diskName, function (result) {
+    describe('Delete:', function() {
+      it('Disk', function(done) {
+        suite.execute('vm disk delete -b %s --json', diskName, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
         });

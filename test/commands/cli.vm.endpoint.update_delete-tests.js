@@ -32,15 +32,15 @@ var testPrefix = 'cli.vm.endpoint.update_delete-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName;
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -49,7 +49,7 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
@@ -57,32 +57,34 @@ describe('cli', function () {
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(function(){
-		vmName = process.env.TEST_VM_NAME;
-		done();
-	  });
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        vmName = process.env.TEST_VM_NAME;
+        done();
+      });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //udpate and delete the endpoint
-    describe('Endpoint:', function () {
-      it('Update and Delete', function (done) {
+    describe('Endpoint:', function() {
+      it('Update and Delete', function(done) {
         var vmEndpointName = 'NewTestEndpoint';
         var vmExistingEndpointName = 'tcp-5555-5565';
         suite.execute('vm endpoint update %s -t %s -l %s -n %s -o tcp %s --json',
-          vmName, 8081, 8082, vmEndpointName, vmExistingEndpointName, function (result) {
-          suite.execute('vm endpoint show %s -e %s --json', vmName, vmEndpointName, function (result) {
-            var vmEndpointObj = JSON.parse(result.text);
-            suite.execute('vm endpoint delete %s %s --json', vmName, vmEndpointName, function (result) {
+          vmName, 8081, 8082, vmEndpointName, vmExistingEndpointName, function(result) {
+            result.exitStatus.should.equal(0);
+            suite.execute('vm endpoint show %s -e %s --json', vmName, vmEndpointName, function(result) {
               result.exitStatus.should.equal(0);
-              setTimeout(done, timeout);
+              var vmEndpointObj = JSON.parse(result.text);
+              suite.execute('vm endpoint delete %s %s --json', vmName, vmEndpointName, function(result) {
+                result.exitStatus.should.equal(0);
+                setTimeout(done, timeout);
+              });
             });
           });
-        });
       });
     });
   });

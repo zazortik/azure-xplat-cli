@@ -69,7 +69,7 @@ exports.scopes = [
     function (nock) {
       var result = nock('https://management.core.windows.net:443')
         .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/30444377dd59388fbef046ea82227b66')
-        .reply(232, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>30444377-dd59-388f-bef0-46ea82227b66</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
+        .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>30444377-dd59-388f-bef0-46ea82227b66</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
           'cache-control' : 'no-cache',
           'content-length' : '232',
           'content-type' : 'application/xml; charset=utf-8',

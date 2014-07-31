@@ -31,13 +31,12 @@ var suite;
 var testPrefix = 'cli.vm.create_custom-tests';
 var timeout = isForceMocked ? 0 : 5000;
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
-  }, {
-    name: 'SSHCERT',
-    defaultValue: null
-  }
-];
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
+}, {
+  name: 'SSHCERT',
+  defaultValue: null
+}];
 
 var currentRandom = 0;
 
@@ -91,6 +90,7 @@ describe('cli', function() {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
             suite.execute(cmd, function(result) {
+              result.exitStatus.should.equal(0);
               vm.Name = null;
               vm.Created = vm.Delete = false;
               callback();
@@ -113,6 +113,7 @@ describe('cli', function() {
           generateFile(fileName, null, 'nodejs,python,wordpress');
           suite.execute('vm create -e %s -z %s --ssh-cert %s --no-ssh-password %s %s testuser Collabera@01 -l %s -d %s --json --verbose',
             sshPort, vmsize, certFile, customVmName, vmImgName, location, fileName, function(result) {
+              result.exitStatus.should.equal(0);
               var verboseString = result.text;
               var iPosCustom = verboseString.indexOf('CustomData:');
               iPosCustom.should.equal(-1);
@@ -129,6 +130,7 @@ describe('cli', function() {
     // Get name of an image of the given category
     function getImageName(category, callBack) {
       suite.execute('vm image list --json', function(result) {
+        result.exitStatus.should.equal(0);
         var imageList = JSON.parse(result.text);
         imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {

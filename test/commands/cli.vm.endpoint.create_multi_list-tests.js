@@ -75,6 +75,7 @@ describe('cli', function() {
         var probPathName = '/prob/listner1';
         suite.execute('vm endpoint create -n %s -o %s %s %s %s -u -b %s -t %s -r tcp -p %s --json',
           vmEndpointName, 'tcp', vmName, 8080, 80, lbSetName, 4444, probPathName, function(result) {
+            result.exitStatus.should.equal(0);
             suite.execute('vm endpoint list %s --json', vmName, function(result) {
               result.exitStatus.should.equal(0);
               var epList = JSON.parse(result.text);
@@ -135,6 +136,7 @@ describe('cli', function() {
           result.exitStatus.should.equal(0);
 
           suite.execute('vm endpoint list %s --json', vmName, function(result) {
+            result.exitStatus.should.equal(0);
             var allEndPointList = JSON.parse(result.text);
 
             // Verify endpoint creation with only lb port
@@ -158,6 +160,7 @@ describe('cli', function() {
 
             // Verify endpoint creation with lbSetName and prob option
             suite.execute('vm show %s --json', vmName, function(result) {
+              result.exitStatus.should.equal(0);
               var vmInfo = JSON.parse(result.text);
 
               (vmInfo.Network.Endpoints.length >= 4).should.be.true;

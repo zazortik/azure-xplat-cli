@@ -32,15 +32,15 @@ var testPrefix = 'cli.vm.image.delete-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmImgName = 'xplattestimg';
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -50,25 +50,25 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
+    beforeEach(function(done) {
       suite.setupTest(done);
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //delete image
-    describe('Image:', function () {
-      it('Delete', function (done) {
-        suite.execute('vm image delete -b %s --json', vmImgName, function (result) {
+    describe('Image:', function() {
+      it('Delete', function(done) {
+        suite.execute('vm image delete -b %s --json', vmImgName, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
         });

@@ -28,10 +28,9 @@ var homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOM
 var suite;
 var testPrefix = 'cli.vm.create_docker-tests';
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
-  }
-];
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
+}];
 
 var currentRandom = 0;
 
@@ -82,6 +81,7 @@ describe('cli', function() {
         if (vm.Created && vm.Delete) {
           setTimeout(function() {
             suite.execute('vm delete %s -b --quiet --json', vm.Name, function(result) {
+              result.exitStatus.should.equal(0);
               vm.Name = null;
               vm.Created = vm.Delete = false;
               return callback();
@@ -129,7 +129,9 @@ describe('cli', function() {
         getImageName('Linux', function(ImageName) {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh',
             vmName, ImageName, location, function(result) {
+              result.exitStatus.should.equal(0);
               suite.execute('vm show %s --json', vmName, function(result) {
+                result.exitStatus.should.equal(0);
                 var certifiatesExist = checkForDockerCertificates(dockerCertDir);
                 certifiatesExist.should.be.true;
                 var createdVM = JSON.parse(result.text);
@@ -152,7 +154,9 @@ describe('cli', function() {
         getImageName('Linux', function(ImageName) {
           suite.execute('vm docker create %s %s "azureuser" "Pa$$word@123" --json --location %s --ssh --docker-cert-dir %s --docker-port %s',
             vmName, ImageName, location, dockerCertDir, dockerPort, function(result) {
+              result.exitStatus.should.equal(0);
               suite.execute('vm show %s --json', vmName, function(result) {
+                result.exitStatus.should.equal(0);
                 var certificatesExist = checkForDockerCertificates(dockerCertDir.toString());
                 certificatesExist.should.be.true;
                 var createdVM = JSON.parse(result.text);
@@ -206,6 +210,7 @@ describe('cli', function() {
     function getImageName(category, callBack) {
       var imageName;
       suite.execute('vm image list --json', function(result) {
+        result.exitStatus.should.equal(0);
         var imageList = JSON.parse(result.text);
         imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
