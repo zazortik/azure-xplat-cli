@@ -280,7 +280,7 @@ describe('arm', function () {
               var resource = JSON.parse(showResult.text);
               resource.name.should.equal(resourceName);
               resource.location.should.equal(testWebsitesResourceLocation);
-              resource.permissions.permittedActions[0].actions[0].should.equal('*');
+              resource.permissions.actions[0].should.equal('*');
               suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
               });
