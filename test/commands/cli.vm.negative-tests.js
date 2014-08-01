@@ -28,10 +28,9 @@ var vmPrefix = 'clitestvm';
 var suite;
 var testPrefix = 'cli.vm.negative-tests';
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
-  }
-];
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
+}];
 
 var currentRandom = 0;
 
@@ -74,7 +73,7 @@ describe('cli', function() {
     it('Negative test case for password', function(done) {
       var vmNegName = 'TestImg';
       getImageName('Linux', function(ImageName) {
-        var location = process.env.AZURE_VM_TEST_LOCATION ;
+        var location = process.env.AZURE_VM_TEST_LOCATION;
         suite.execute('vm create %s %s "azureuser" "Coll" --json --location %s',
           vmNegName, ImageName, location, function(result) {
             result.exitStatus.should.equal(1);
@@ -87,7 +86,7 @@ describe('cli', function() {
     // Negative Test Case for Vm Create with Invalid Name
     it('Negative Test Case for Vm Create with Invalid name', function(done) {
       var vmNegName = 'test1@1';
-      var location = process.env.AZURE_VM_TEST_LOCATION ;
+      var location = process.env.AZURE_VM_TEST_LOCATION;
       getImageName('Linux', function(ImageName) {
         suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
           vmNegName, ImageName, location, function(result) {
@@ -118,6 +117,7 @@ describe('cli', function() {
         callBack(getImageName.imageName);
       } else {
         suite.execute('vm image list --json', function(result) {
+          result.exitStatus.should.equal(0);
           var imageList = JSON.parse(result.text);
           imageList.some(function(image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {

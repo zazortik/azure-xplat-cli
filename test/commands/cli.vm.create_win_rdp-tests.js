@@ -30,30 +30,29 @@ var timeout = isForceMocked ? 0 : 30000;
 var suite;
 var testPrefix = 'cli.vm.create_win_rdp-tests';
 var requiredEnvironment = [{
-    name : 'AZURE_VM_TEST_LOCATION',
-    defaultValue : 'West US'
-  }
-];
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
+}];
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
     var vmName,
-    vmImgName,
-    location;
+      vmImgName,
+      location;
 
     var vmToUse = {
-      Name : null,
-      Created : false,
-      Delete : false
+      Name: null,
+      Created: false,
+      Delete: false
     };
 
-    before(function (done) {
+    before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -64,27 +63,28 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
-      suite.setupTest(function () {
+    beforeEach(function(done) {
+      suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         vmName = process.env.TEST_VM_NAME;
         done();
       });
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
-          setTimeout(function () {
+          setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            suite.execute(cmd, function (result) {
+            suite.execute(cmd, function(result) {
+              result.exitStatus.should.equal(0);
               vm.Name = null;
               vm.Created = vm.Delete = false;
               setTimeout(callback, timeout);
@@ -95,31 +95,32 @@ describe('cli', function () {
         }
       }
 
-      deleteUsedVM(vmToUse, function () {
+      deleteUsedVM(vmToUse, function() {
         suite.teardownTest(done);
       });
     });
 
     //create a vm with windows image
-    describe('Create:', function () {
-      it('Windows Vm', function (done) {
-        getImageName('Windows', function (ImageName) {
+    describe('Create:', function() {
+      it('Windows Vm', function(done) {
+        getImageName('Windows', function(ImageName) {
           suite.execute('vm create -r %s %s %s azureuser PassW0rd$ -l %s --json',
-            '3389', vmName, ImageName, location, function (result) {
-            setTimeout(done, timeout);
-          });
+            '3389', vmName, ImageName, location, function(result) {
+              result.exitStatus.should.equal(0);
+              setTimeout(done, timeout);
+            });
         });
       });
     });
 
     //create a vm with connect option
-    describe('Create:', function () {
-      it('with Connect', function (done) {
+    describe('Create:', function() {
+      it('with Connect', function(done) {
         var vmConnect = vmName + '-2';
         var cmd = util.format('vm create -l %s --connect %s %s azureuser PassW0rd$ --json',
-            'someLoc', vmName, vmImgName).split(' ');
+          'someLoc', vmName, vmImgName).split(' ');
         cmd[3] = location;
-        suite.execute(cmd, function (result) {
+        suite.execute(cmd, function(result) {
           result.exitStatus.should.equal(0);
           vmToUse.Name = vmConnect;
           vmToUse.Created = true;
@@ -130,23 +131,24 @@ describe('cli', function () {
     });
 
     // Negative Test Case by specifying VM Name Twice
-    describe('Negative test case:', function () {
-      it('Specifying Vm Name Twice', function (done) {
+    describe('Negative test case:', function() {
+      it('Specifying Vm Name Twice', function(done) {
         suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
-          vmName, vmImgName, location, function (result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('A VM with dns prefix "' + vmName + '" already exists');
-          done();
-        });
+          vmName, vmImgName, location, function(result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.include('A VM with dns prefix "' + vmName + '" already exists');
+            done();
+          });
       });
     });
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
       var cmd = util.format('vm image list --json').split(' ');
-      suite.execute(cmd, function (result) {
+      suite.execute(cmd, function(result) {
+        result.exitStatus.should.equal(0);
         var imageList = JSON.parse(result.text);
-        imageList.some(function (image) {
+        imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             vmImgName = image.name;
             return true;
