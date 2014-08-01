@@ -22,7 +22,7 @@ var util = require('util');
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 
 var expectedSubscriptions = [
   {
@@ -58,6 +58,10 @@ describe('Environment', function () {
       environment.acquireTokenForUser(username, password, '', function (err) { });
       callback(null, expectedSubscriptions);
     })
+  });
+  
+  after(function () {
+    subscriptionUtils.getSubscriptions.restore();
   });
 
   describe('When creating account', function () {
