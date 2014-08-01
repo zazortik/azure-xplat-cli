@@ -6,6 +6,7 @@ targets/*
 /xPlat.sln
 *.suo
 *.user
+.ntvs_analysis.dat
 
 # Node #
 node_modules/

@@ -345,4 +345,51 @@ nock('https://ciserversdk.blob.core.windows.net:443')
   'x-ms-request-id': '3f1b0975-5f8a-49bc-a204-2958326c8773',
   'x-ms-version': '2014-02-14',
   date: 'Tue, 08 Jul 2014 03:47:35 GMT' });
+ return result; }],
+ [function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443')
+  .put('/test/zhalutest-zhalutest-2014-07-21.vhd')
+  .reply(202, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Wed, 30 Jul 2014 03:08:39 GMT',
+  etag: '"0x8D179BAB1D82CCF"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '8ac8850c-0246-4254-850c-5945edf8ef45',
+  'x-ms-version': '2014-02-14',
+  'x-ms-copy-id': 'f03ab0f6-dd4f-4ffa-a7f5-de9aad0a53b5',
+  'x-ms-copy-status': 'pending',
+  date: 'Wed, 30 Jul 2014 03:08:38 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443')
+  .head('/test/zhalutest-zhalutest-2014-07-21.vhd')
+  .reply(200, "", { 'content-length': '136367309312',
+  'content-type': 'binary/octet-stream',
+  'last-modified': 'Wed, 30 Jul 2014 03:08:39 GMT',
+  'accept-ranges': 'bytes',
+  etag: '"0x8D179BAB1D82CCF"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e125330c-f034-4a64-9bfe-e8e865938081',
+  'x-ms-version': '2014-02-14',
+  'x-ms-meta-pirtag': '1',
+  'x-ms-lease-status': 'unlocked',
+  'x-ms-lease-state': 'available',
+  'x-ms-blob-type': 'PageBlob',
+  'x-ms-blob-sequence-number': '1',
+  'x-ms-copy-id': 'f03ab0f6-dd4f-4ffa-a7f5-de9aad0a53b5',
+  'x-ms-copy-source': 'https://portalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/zhalutest-zhalutest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D',
+  'x-ms-copy-status': 'pending',
+  'x-ms-copy-progress': '0/136367309312',
+  date: 'Wed, 30 Jul 2014 03:08:38 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443')
+  .put('/test/zhalutest-zhalutest-2014-07-21.vhd?copyid=f03ab0f6-dd4f-4ffa-a7f5-de9aad0a53b5&comp=copy')
+  .reply(204, "", { 'content-length': '0',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'c600aff7-04a8-40c0-b540-d17c20fbe05d',
+  'x-ms-version': '2014-02-14',
+  date: 'Wed, 30 Jul 2014 03:08:40 GMT' });
  return result; }]];
