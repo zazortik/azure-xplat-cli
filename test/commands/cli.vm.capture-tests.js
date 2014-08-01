@@ -58,6 +58,7 @@ describe('cli', function() {
         suite.teardownSuite(done);
       else {
         suite.execute('service delete %s --quiet --json', vmName, function(result) {
+          result.exitStatus.should.equal(0);
           suite.teardownSuite(done);
         });
       }
@@ -99,6 +100,7 @@ describe('cli', function() {
     describe('Captured Images:', function() {
       it('should be listed in images list', function(done) {
         suite.execute('vm image list --json', function(result) {
+          result.exitStatus.should.equal(0);
           var vmImagelist = JSON.parse(result.text);
           var imagefound = false;
           imagefound = vmImagelist.some(function(imageObj) {

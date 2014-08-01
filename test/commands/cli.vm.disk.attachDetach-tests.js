@@ -71,6 +71,7 @@ describe('cli', function() {
     describe('Disk:', function() {
       it('Attach & Detach', function(done) {
         suite.execute('vm disk attach %s %s --json', vmName, diskName, function(result) {
+          result.exitStatus.should.equal(0);
           waitForDiskOp(vmName, true, function(vmObj) {
             vmObj.DataDisks[0].name.should.equal(diskName);
             suite.execute('vm disk detach %s 0 --json', vmName, function(result) {
@@ -88,6 +89,7 @@ describe('cli', function() {
     function waitForDiskOp(vmName, DiskAttach, callback) {
       var vmObj;
       suite.execute('vm show %s --json', vmName, function(result) {
+        result.exitStatus.should.equal(0);
         vmObj = JSON.parse(result.text);
         if ((!DiskAttach && !vmObj.DataDisks[0]) || (DiskAttach && vmObj.DataDisks[0])) {
           callback(vmObj);

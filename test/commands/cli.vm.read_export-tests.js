@@ -79,6 +79,7 @@ describe('cli', function() {
 
       it('List', function(done) {
         suite.execute('vm list --json', function(result) {
+          result.exitStatus.should.equal(0);
           var vmList = JSON.parse(result.text);
 
           // Look for created VM
@@ -92,6 +93,7 @@ describe('cli', function() {
 
       it('Show', function(done) {
         suite.execute('vm show %s --json', vmName, function(result) {
+          result.exitStatus.should.equal(0);
           var vmObj = JSON.parse(result.text);
           vmObj.VMName.should.equal(vmName);
           done();
