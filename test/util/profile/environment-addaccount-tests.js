@@ -22,6 +22,7 @@ var util = require('util');
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 
 var expectedSubscriptions = [
   {
@@ -35,6 +36,7 @@ var expectedSubscriptions = [
 ];
 
 var expectedUserName = 'user@somedomain.example';
+var expectedPassword = 'sekretPa$$w0rd';
 
 var expectedToken = {
   accessToken: 'a dummy token',
@@ -52,14 +54,21 @@ describe('Environment', function () {
       activeDirectoryResourceId: 'http://login.notreal.example'
     });
     sinon.stub(environment, 'acquireToken').callsArgWith(3, null, expectedToken);
-    sinon.stub(environment, 'getAccountSubscriptions').callsArgWith(1, null, expectedSubscriptions);
+    sinon.stub(subscriptionUtils, 'getSubscriptions', function (env, username, password, callback) {
+      environment.acquireTokenForUser(username, password, '', function (err) { });
+      callback(null, expectedSubscriptions);
+    })
+  });
+  
+  after(function () {
+    subscriptionUtils.getSubscriptions.restore();
   });
 
   describe('When creating account', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, 'sekretPa$$w0rd', function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
@@ -71,8 +80,13 @@ describe('Environment', function () {
     });
 
     it('should have listed subscriptions', function () {
-      environment.getAccountSubscriptions.called.should.be.true;
+      subscriptionUtils.getSubscriptions.called.should.be.true;
     });
+    
+    it('should have passed environment object to the getSubscriptions', function () {
+      var env = subscriptionUtils.getSubscriptions.firstCall.args[0];
+      env.should.equal(environment);
+    })
 
     it('should pass expected configuration to token provider', function () {
       var config = environment.acquireToken.firstCall.args[0];
@@ -85,9 +99,11 @@ describe('Environment', function () {
       });
     });
 
-    it('should pass token to get subscriptions', function() {
-      var token = environment.getAccountSubscriptions.firstCall.args[0];
-      token.should.equal(expectedToken);
+    it('should pass username and password to getSubscriptions', function() {
+      var username = subscriptionUtils.getSubscriptions.firstCall.args[1];
+      username.should.equal(expectedUserName);
+      var password = subscriptionUtils.getSubscriptions.firstCall.args[2];
+      password.should.equal(expectedPassword);
     });
 
     it('should return a subscription with expected username', function () {
