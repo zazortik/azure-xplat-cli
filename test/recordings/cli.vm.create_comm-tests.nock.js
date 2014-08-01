@@ -4,7 +4,7 @@ exports.getMockedProfile = function() {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123f',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
@@ -43,7 +43,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/hostedservices')
         .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/vnetvmtest2</Url><ServiceName>vnetvmtest2</ServiceName><HostedServiceProperties><Description>Implicitly created hosted service</Description><AffinityGroup>affinity1</AffinityGroup><Label>dm5ldHZtdGVzdDI=</Label><Status>Created</Status><DateCreated>2013-11-20T22:13:19Z</DateCreated><DateLastModified>2013-11-20T22:13:39Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", {
           'cache-control': 'no-cache',
           'content-length': '4051',
@@ -57,7 +57,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/locations')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/locations')
         .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location></Locations>", {
           'cache-control': 'no-cache',
           'content-length': '2413',
@@ -74,7 +74,7 @@ exports.scopes = [
         .filteringRequestBody(function(path) {
           return '*';
         })
-        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', "*")
+        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/hostedservices', "*")
         .reply(201, "", {
           'cache-control': 'no-cache',
           'content-length': '0',
@@ -88,7 +88,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/e201c9379bfd3a02ad915f1ef3f7c038')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/operations/e201c9379bfd3a02ad915f1ef3f7c038')
         .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
           'cache-control': 'no-cache',
           'content-length': '232',
@@ -102,7 +102,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/locations')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/locations')
         .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices></Location></Locations>", {
           'cache-control': 'no-cache',
           'content-length': '2413',
@@ -117,8 +117,8 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
-        .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2</Url><ServiceName>acsforsdk2</ServiceName><StorageServiceProperties><Description/><Location>West US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://acsforsdk2.blob.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.queue.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", {
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/storageservices')
+        .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/storageservices/acsforsdk2</Url><ServiceName>acsforsdk2</ServiceName><StorageServiceProperties><Description/><Location>West US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://acsforsdk2.blob.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.queue.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", {
           'cache-control': 'no-cache',
           'content-length': '5523',
           'content-type': 'application/xml; charset=utf-8',
@@ -132,7 +132,7 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/storageservices/acsforsdk2')
         .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/storageservices/acsforsdk2</Url><ServiceName>acsforsdk2</ServiceName><StorageServiceProperties><Description/><Location>East US</Location><Label>YWNzZm9yc2RrMg==</Label><Status>Created</Status><Endpoints><Endpoint>http://acsforsdk2.blob.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.queue.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><GeoSecondaryRegion>East US</GeoSecondaryRegion><CreationTime>2013-09-10T19:24:30Z</CreationTime><CustomDomains/></StorageServiceProperties><ExtendedProperties/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", {
           'cache-control': 'no-cache',
           'content-length': '948',
@@ -147,7 +147,7 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2/keys')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/storageservices/acsforsdk2/keys')
         .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/storageservices/acsforsdk2</Url><StorageServiceKeys><Primary>1IU5o+vRtVBLHC5RFtXXu/DYl6mmGKupYKWL+liqunMo/IbJxz8Y0hSAwMkOUTtsTpR9adL63fx2Ujd7mMGSaA==</Primary><Secondary>HrJd4UZKe6proYpL643G97R7zdeSJW7YBFCYtCX1Kl6LTBevmuMu3+H5UwROS9qJI4EFQZZnVfwHEWaz/Lh0FQ==</Secondary></StorageServiceKeys></StorageService>", {
           'cache-control': 'no-cache',
           'content-length': '513',
@@ -162,7 +162,7 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/acsforsdk2')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/storageservices/acsforsdk2')
         .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/storageservices/acsforsdk2</Url><ServiceName>acsforsdk2</ServiceName><StorageServiceProperties><Description/><Location>East US</Location><Label>YWNzZm9yc2RrMg==</Label><Status>Created</Status><Endpoints><Endpoint>http://acsforsdk2.blob.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.queue.core.windows.net/</Endpoint><Endpoint>http://acsforsdk2.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><GeoSecondaryRegion>East US</GeoSecondaryRegion><CreationTime>2013-09-10T19:24:30Z</CreationTime><CustomDomains/></StorageServiceProperties><ExtendedProperties/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", {
           'cache-control': 'no-cache',
           'content-length': '948',
@@ -238,7 +238,7 @@ exports.scopes = [
         .filteringRequestBody(function(path) {
           return '*';
         })
-        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images', '*')
+        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/images', '*')
         .reply(200, "<OSImage xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Category>User</Category><Label>vmdepot-1-1-1-1</Label><Location>West US</Location><LogicalSizeInGB>30</LogicalSizeInGB><MediaLink>http://acsforsdk2.blob.core.windows.net/vm-images/community-4-202cff4c-0b2a-4bc4-82df-bcfe44394f90-1.vhd</MediaLink><Name>vmdepot-1-1-1-1</Name><OS>Linux</OS><IsPremium>false</IsPremium><OSState>Generalized</OSState></OSImage>", {
           'cache-control': 'no-cache',
           'content-length': '352',
@@ -252,7 +252,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/images')
         .reply(200, "<Images xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><OSImage><Category>User</Category><Label>vmdepot-1-1-1-1</Label><Location>West US</Location><LogicalSizeInGB>30</LogicalSizeInGB><MediaLink>http://acsforsdk2.blob.core.windows.net/vm-images/community-4-202cff4c-0b2a-4bc4-82df-bcfe44394f90-1.vhd</MediaLink><Name>vmdepot-1-1-1-1</Name><OS>Linux</OS><IsPremium>false</IsPremium><OSState>Generalized</OSState></OSImage><OSImage><Category>RightScale with Linux</Category><Label>RightImage CentOS 6.2 x64 v5.8.8.1</Label><Location>East Asia;Southeast Asia;North Europe;West Europe;East US;West US</Location><LogicalSizeInGB>10</LogicalSizeInGB><Name>0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1</Name><OS>Linux</OS><Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement</Eula><Description>CentOS 6.3 with RightLink 5.8.</Description><ImageFamily>RightScale Linux v13</ImageFamily><ShowInGui>false</ShowInGui><PublishedDate>2012-08-28T00:00:00Z</PublishedDate><IsPremium>false</IsPremium><PrivacyUri>http://www.rightscale.com/privacy_policy.php</PrivacyUri><PublisherName>RightScale with Linux</PublisherName></OSImage></Images>", {
           'cache-control': 'no-cache',
           'content-length': '183188',
@@ -266,7 +266,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/vmimages')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/vmimages')
         .reply(200, "<VMImages xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VMImage><Name>nerdworksub1-20140716-893917</Name><Label>nerdworks-ubuntu-image1</Label><Category>User</Category><OSDiskConfiguration><Name>nerdworksub1-20140716-893917-os-2014-07-17</Name><HostCaching>ReadWrite</HostCaching><OSState>Specialized</OSState><OS>Linux</OS><MediaLink>https://acsforsdk2.blob.core.windows.net/vhd-store/nerdworksub1-20140716-893917-os-2014-07-17.vhd</MediaLink><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB></OSDiskConfiguration><DataDiskConfigurations/><ServiceName>nerdworksub1</ServiceName><DeploymentName>nerdworksub1</DeploymentName><RoleName>nerdworksub1</RoleName><Location>West US</Location><CreatedTime>2014-07-17T04:48:06.0038647Z</CreatedTime><ModifiedTime>2014-07-17T04:48:06.0038647Z</ModifiedTime><IsPremium>false</IsPremium></VMImage></VMImages>", {
           'cache-control': 'no-cache',
           'content-length': '183188',
@@ -283,7 +283,7 @@ exports.scopes = [
         .filteringRequestBody(function(path) {
           return '*';
         })
-        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestcommvm/deployments', "*")
+        .post('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/hostedservices/xplattestcommvm/deployments', "*")
         .reply(202, "", {
           'cache-control': 'no-cache',
           'content-length': '0',
@@ -296,7 +296,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/872c6309016d3f6da2fc87faedfbb792')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/operations/872c6309016d3f6da2fc87faedfbb792')
         .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>e201c937-9bfd-3a02-ad91-5f1ef3f7c038</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", {
           'cache-control': 'no-cache',
           'content-length': '232',
@@ -311,7 +311,7 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images/vmdepot-1-1-1-1')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/images/vmdepot-1-1-1-1')
         .reply(200, "<OSImage xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Category>User</Category><Label>vmdepot-1-1-1-1</Label><Location>West US</Location><LogicalSizeInGB>10</LogicalSizeInGB><MediaLink>http://acsforsdk2.blob.core.windows.net/vm-images/vmdepot-1-1-1-2</MediaLink><Name>vmdepot-1-1-1-1</Name><OS>Linux</OS><IsPremium>false</IsPremium><PublisherName>User</PublisherName></OSImage>", {
           'cache-control': 'no-cache',
           'content-length': '425',
@@ -325,7 +325,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images/vmdepot-1-1-1-1?comp=media')
+        .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/images/vmdepot-1-1-1-1?comp=media')
         .reply(200, "", {
           'cache-control': 'no-cache',
           'content-length': '0',
@@ -338,7 +338,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/vmimages')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/vmimages')
         .reply(200, "<VMImages xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VMImage><Name>nerdworksub1-20140716-893917</Name><Label>nerdworks-ubuntu-image1</Label><Category>User</Category><OSDiskConfiguration><Name>nerdworksub1-20140716-893917-os-2014-07-17</Name><HostCaching>ReadWrite</HostCaching><OSState>Specialized</OSState><OS>Linux</OS><MediaLink>https://acsforsdk2.blob.core.windows.net/vhd-store/nerdworksub1-20140716-893917-os-2014-07-17.vhd</MediaLink><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB></OSDiskConfiguration><DataDiskConfigurations/><ServiceName>nerdworksub1</ServiceName><DeploymentName>nerdworksub1</DeploymentName><RoleName>nerdworksub1</RoleName><Location>West US</Location><CreatedTime>2014-07-17T04:48:06.0038647Z</CreatedTime><ModifiedTime>2014-07-17T04:48:06.0038647Z</ModifiedTime><IsPremium>false</IsPremium></VMImage></VMImages>", {
           'cache-control': 'no-cache',
           'content-length': '183188',
@@ -354,7 +354,7 @@ exports.scopes = [
     function(nock) {
       var result =
         nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/images/vmdepot-1-1-1-1')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/images/vmdepot-1-1-1-1')
         .reply(200, "<OSImage xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Category>User</Category><Label>vmdepot-1-1-1-1</Label><Location>West US</Location><LogicalSizeInGB>10</LogicalSizeInGB><MediaLink>http://acsforsdk2.blob.core.windows.net/vm-images/vmdepot-1-1-1-1</MediaLink><Name>vmdepot-1-1-1-1</Name><OS>Linux</OS><IsPremium>false</IsPremium><PublisherName>User</PublisherName></OSImage>", {
           'cache-control': 'no-cache',
           'content-length': '425',
@@ -368,7 +368,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/hostedservices')
         .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/xplattestcommvm</Url><ServiceName>xplattestcommvm</ServiceName><HostedServiceProperties><Description>Implicitly created hosted service</Description><Location>West US</Location><Label>eHBsYXR0ZXN0dm0=</Label><Status>Created</Status><DateCreated>2013-11-22T05:21:47Z</DateCreated><DateLastModified>2013-11-22T05:22:06Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", {
           'cache-control': 'no-cache',
           'content-length': '1120',
@@ -382,7 +382,7 @@ exports.scopes = [
     },
     function(nock) {
       var result = nock('https://management.core.windows.net:443')
-        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/xplattestcommvm/deploymentslots/Production')
+        .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123f/services/hostedservices/xplattestcommvm/deploymentslots/Production')
         .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>No deployments were found.</Message></Error>", {
           'cache-control': 'no-cache',
           'content-length': '2445',
