@@ -85,17 +85,17 @@ describe('arm', function () {
           var text = result.text;
           var seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) !== -1);
           seemsCorrect.should.equal(true);
-          suite.execute('ad group get %s --json', group1, function (result) {
+          suite.execute('ad group show %s --json', group1, function (result) {
             result.exitStatus.should.equal(0);
             text = result.text;
             seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
             seemsCorrect.should.equal(true);
-            suite.execute('ad group get -p %s --json', member1, function (result) {
+            suite.execute('ad group list -p %s --json', member1, function (result) {
               result.exitStatus.should.equal(0);
               text = result.text;
               seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
               seemsCorrect.should.equal(true);
-              suite.execute('ad group members %s --json', group1, function (result) {
+              suite.execute('ad group member list %s --json', group1, function (result) {
                 result.exitStatus.should.equal(0);
                 text = result.text;
                 seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);
