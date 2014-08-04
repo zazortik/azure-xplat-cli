@@ -202,7 +202,7 @@ describe('cli', function () {
       });
       
       it('should start to copy the specified blob asynchronously', function (done) {
-        var sourceUri = 'https://portalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/zhalutest-zhalutest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D';
+        var sourceUri = 'https://cliportalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/clitest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D';
         var destContainer = 'test';
         suite.execute('storage blob copy start %s --dest-container %s --json', sourceUri, destContainer, function (result) {
           var copy = JSON.parse(result.text);
@@ -214,7 +214,7 @@ describe('cli', function () {
       
       var copyid;
       var destContainer = 'test';
-      var destBlob = 'zhalutest-zhalutest-2014-07-21.vhd';
+      var destBlob = 'clitest-2014-07-21.vhd';
       it('should show the copy status of the specified blob', function (done) {
         suite.execute('storage blob copy show --container %s --blob %s --json', destContainer, destBlob, function (result) {
           var copy = JSON.parse(result.text);
