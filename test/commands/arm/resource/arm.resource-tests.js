@@ -330,12 +330,12 @@ describe('arm', function () {
               suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
                 
-                //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
+                //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
                 var resource = JSON.parse(showResult.text);
                 resource.properties.appSettings[0].name.should.be.equal('testname1');
                 resource.properties.appSettings[0].value.should.be.equal('testvalue1');
 
-                //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
+                //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
                 var resource = JSON.parse(showResult.text);
                 resource.properties.appSettings[0].name.should.be.equal('testname1');
                 resource.properties.appSettings[0].value.should.be.equal('testvalue1');
