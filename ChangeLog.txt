@@ -1,3 +1,10 @@
+2014.08.04 Version 0.8.7
+* Fixed issues with vm cmommands (vm image, vm docket create)
+* Added support for A8, A9 vm sizes in vm create command
+* Fixed user logout scenario issues and bumped up the credential size
+* Rebranding from Windows Azure to Microsoft Azure
+* Test fixes
+
 2014.07.16 Version 0.8.6
 * Store user credentials in the windows credential store
 * Azure Resource Manager Tags (in arm mode)
