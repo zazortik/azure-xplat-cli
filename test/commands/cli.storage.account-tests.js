@@ -19,10 +19,10 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
-var storageNamesPrefix = 'xcli';
+var storageNamesPrefix = 'xcliaccount';
 var storageNames = [];
 
-var AFFINITYGROUP_NAME_PREFIX = 'xcli';
+var AFFINITYGROUP_NAME_PREFIX = 'xcliaffinity';
 var storageLocation;
 var siteLocation;
 
