@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "0.8.6",
-  "description": "Windows Azure Cross Platform Command Line tool",
+  "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
     "cli"
