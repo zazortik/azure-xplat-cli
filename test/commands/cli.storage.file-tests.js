@@ -77,7 +77,6 @@ describe('cli', function () {
       describe('list', function() {
         it('should list all storage shares', function(done) {
             suite.execute('storage share list --json', function (result) {
-              console.log('result for list: ' + result.text);
               var shares = JSON.parse(result.text);
               shares.length.should.greaterThan(0);
               shares.forEach(function(share) {
