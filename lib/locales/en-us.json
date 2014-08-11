@@ -1541,7 +1541,7 @@
     "the version of remote debugging. It's either VS2012 or VS2013. This parameter is only valid when remote debugging is on.": "the version of remote debugging. It's either VS2012 or VS2013. This parameter is only valid when remote debugging is on.",
     "the virtual machine name": "the virtual machine name",
     "the virtual machine port to use to inspect the role availability status": "the virtual machine port to use to inspect the role availability status",
-    "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7": "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7",
+    "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7, a8, a9": "the virtual machine size [small]\n    extrasmall, small, medium, large, extralarge, a5, a6, a7, a8, a9",
     "the virtual network name": "the virtual network name",
     "this VM already has a %s load balancer port %s. lb port and protocol together should be unique": "this VM already has a %s load balancer port %s. lb port and protocol together should be unique",
     "this VM already has an %s load balancer port %s, lb port and protocol together should be unique": "this VM already has an %s load balancer port %s, lb port and protocol together should be unique",
@@ -1578,5 +1578,6 @@
     "with all data and the SQL database, but leave SQL server intact": "with all data and the SQL database, but leave SQL server intact",
     "with all data but leave SQL database and SQL server intact": "with all data but leave SQL database and SQL server intact",
     "with all data, SQL database, and the SQL server": "with all data, SQL database, and the SQL server",
-    "write the script to the console instead of a file": "write the script to the console instead of a file"
+    "write the script to the console instead of a file": "write the script to the console instead of a file",
+    "Duplicate names \"%s\" found in both VM and OS images. Please delete one of them using the Portal and try again.": "Duplicate names \"%s\" found in both VM and OS images. Please delete one of them using the Portal and try again."
 }
