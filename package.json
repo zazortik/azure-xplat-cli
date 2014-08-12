@@ -41,6 +41,7 @@
     "azure-common": "0.9.6",
     "azure-gallery": "2.0.0-pre.8",
     "azure-mgmt-resource": "2.0.0-pre.9",
+    "azure-storage": "0.3.2",
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
