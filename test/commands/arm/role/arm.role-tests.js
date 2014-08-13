@@ -19,12 +19,22 @@ var should = require('should');
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-role-tests';
-
+var util = require('util');
+var testResourceGroup;
+var testSqlServer;
+var testSqlDb;
+var testLocation;
+var testParent;
+var testApiVersion = '2.0';
+var createdGroups = [];
+var createdResources = [];
+var cleanedUpGroups = 0;
 var requiredEnvironment = [
   'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
   'AZURE_AD_TEST_PRINCIPAL_ID',//ca7db395-f921-403b-bf5b-acf85bcfce03
   'AZURE_AD_TEST_GROUP_NAME', //testgroup1
-  'AZURE_AD_TEST_GROUP_OBJECT_ID' //476b1b7f-6f1f-44e0-baeb-6c0c8b409c89
+  'AZURE_AD_TEST_GROUP_OBJECT_ID', //08b96007-f08c-4344-8fe0-3b59dd6a8464
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
 function getTestPrincipalName() { return process.env.AZURE_AD_TEST_PRINCIPAL_NAME; }
@@ -39,11 +49,15 @@ describe('arm', function () {
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite.setupSuite(function () {
+        setup(done);
+      });
     });
 
     after(function (done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function () {
+        cleanup(done);
+      });
     });
 
     beforeEach(function (done) {
@@ -53,6 +67,44 @@ describe('arm', function () {
     afterEach(function (done) {
       suite.teardownTest(done);
     });
+
+    function setup(done) {
+      testResourceGroup = suite.generateId('testrg1', createdGroups, suite.isMocked);
+      testSqlServer = suite.generateId('testserver1', createdResources, suite.isMocked);
+      testSqlDb = suite.generateId('testdb1', createdResources, suite.isMocked);
+      testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+      var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
+      var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
+      testParent = 'servers/' + testSqlServer;
+      suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+          testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+            testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+    }
+
+    function cleanup(done) {
+      function deleteGroups(index, callback) {
+        if (index === createdGroups.length) {
+          return callback();
+        }
+        suite.execute('group delete %s --quiet -vv', createdGroups[index], function () {
+          deleteGroups(index + 1, callback);
+        });
+      }
+
+      deleteGroups(cleanedUpGroups, function () {
+        cleanedUpGroups = createdGroups.length;
+        done();
+      });
+    }
 
     describe('list all built-in roles', function () {
       it('should work', function (done) {
@@ -139,11 +191,40 @@ describe('arm', function () {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
-              return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId);
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId &&
+                      res.properties.permissions === "*");
             }).should.be.true;
             
             //clean up
             suite.execute('role assignment delete -p %s -o %s -g %s -q --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    describe('create a role assignment to access a child resource', function () {
+      it('as a Reader using separate switches should work', function (done) {
+        var principal = getTestPrincipalName();
+        var principalId = getTestPrincipalId();
+        suite.execute('role assignment create -p %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
+                      'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('role assignment list -p %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
+                        'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (listAssignmentResult) {
+            var assignments = JSON.parse(listAssignmentResult.text);
+            assignments.some(function (res) {
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + 
+                                 '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId && 
+                      res.properties.permissions === "*/read");
+            }).should.be.true;
+
+            //clean up
+            suite.execute('role assignment delete -p %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
+                          testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });

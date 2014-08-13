@@ -217,11 +217,15 @@ _.extend(CLITest.prototype, {
 
     this.forceSuiteMode(sinon);
     
-    this.stubOutUuidGen(sinon);
+    if (this.isMocked){
+      this.stubOutUuidGen(sinon);
+    }
 
     executeCommand(cmd, function (result) {
       utils.readConfig.restore();
-      utils.uuidGen.restore();
+      if (this.isMocked){
+        utils.uuidGen.restore();
+      }
       callback(result);
     });
   },

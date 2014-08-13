@@ -16,13 +16,14 @@
 'use strict';
 
 var should = require('should');
+var util = require('util');
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
 
 var requiredEnvironment = [
-  'AZURE_AD_TEST_GROUP_NAME',//testGroup1
-  'AZURE_AD_TEST_SUBGROUP_NAME',//testGroup2(must be a member of tetsGroup1)
+  'AZURE_AD_TEST_GROUP_NAME',//testgroup1
+  'AZURE_AD_TEST_SUBGROUP_NAME',//testgroup2(must be a member of testgroup1)
   'AZURE_AD_TEST_USER_NAME',//testUser1
   'AZURE_AD_TEST_USER_PRINCIPAL_NAME', // testUser1@aad105.ccsctp.net(must be a member of testGroup1, but not of testGroup2)
   'AZURE_AD_TEST_USER_PRINCIPAL_NAME2' //testUser2@aad105.ccsctp.net
@@ -71,6 +72,14 @@ describe('arm', function () {
             seemsCorrect.should.equal(true);
             done();
           });
+        });
+      });
+
+      it('should parse the error properly for a non existant user', function (done) {
+        suite.execute('ad user show -n %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('Resource \'nonexisitinguser@mywebforum.com\' does not exist or one of its queried reference-property objects are not present.');
+          done();
         });
       });
     });
