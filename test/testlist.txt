@@ -51,6 +51,7 @@ commands/cli.vm.negative-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
+commands/cli.storage.file-tests.js
 util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
 util/set-tests.js

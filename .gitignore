@@ -2,8 +2,11 @@ projects/*
 targets/*
 
 # Visual Studio #
+/app.js
+/xPlat.sln
 *.suo
 *.user
+.ntvs_analysis.dat
 
 # Node #
 node_modules/
