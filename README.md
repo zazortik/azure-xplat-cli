@@ -173,3 +173,9 @@ See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
 
 For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
+
+## Contribute Code or Provide Feedback
+
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-tools-xplat/issues) section of the project.

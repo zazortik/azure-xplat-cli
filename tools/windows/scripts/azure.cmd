@@ -1,5 +1,5 @@
 ::
-:: Windows Azure CLI - Windows Installer - Author file components script
+:: Microsoft Azure CLI - Windows Installer - Author file components script
 :: Copyright (C) Microsoft Corporation. All Rights Reserved.
 ::
 
