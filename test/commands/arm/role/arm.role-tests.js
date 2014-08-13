@@ -28,7 +28,7 @@ var testParent;
 var testApiVersion = '2.0';
 var createdGroups = [];
 var createdResources = [];
-var cleanedUpGroups = 0;
+var numOfCleanedUpGroups = 0;
 var requiredEnvironment = [
   'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
   'AZURE_AD_TEST_PRINCIPAL_ID',//ca7db395-f921-403b-bf5b-acf85bcfce03
@@ -100,8 +100,8 @@ describe('arm', function () {
         });
       }
 
-      deleteGroups(cleanedUpGroups, function () {
-        cleanedUpGroups = createdGroups.length;
+      deleteGroups(numOfCleanedUpGroups, function () {
+        numOfCleanedUpGroups = createdGroups.length;
         done();
       });
     }
