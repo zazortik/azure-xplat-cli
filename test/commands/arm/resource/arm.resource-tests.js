@@ -119,7 +119,7 @@ describe('arm', function () {
 
       //          suite.execute('group show %s --json', groupName, function (showResult) {
       //            showResult.exitStatus.should.equal(0);
-
+                    //TODO, when the test gets enabled, add simple verification here that we don't show parent resouce name. (Fixes to RD 1546440)
       //            var group = JSON.parse(showResult.text);
       //            var resourceName = parentResourceName + '/' + childResourceName;
       //            group.resources.some(function (res) {
