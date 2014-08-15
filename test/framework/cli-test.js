@@ -67,6 +67,15 @@ function CLITest(testPrefix, env, forceMocked) {
 
   if (this.isMocked && !this.isRecording) {
     this.setTimeouts();
+
+    var nocked = require(this.recordingsFile);
+    if (nocked.randomTestIdsGenerated) {
+      this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+    }
+    
+    if (nocked.uuidsGenerated) {
+      this.uuidsGenerated = nocked.uuidsGenerated();
+    }
   }
 }
 
@@ -271,14 +280,6 @@ _.extend(CLITest.prototype, {
         nocked.setEnvironment();
       }
       
-      if (nocked.uuidsGenerated) {
-        this.uuidsGenerated = nocked.uuidsGenerated();
-      }
-      
-      if (nocked.randomTestIdsGenerated) {
-        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated;
-      }
-
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
     }
