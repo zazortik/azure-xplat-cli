@@ -48,8 +48,8 @@
 */
 
 var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
-var nodeNockedServiceName = 'clitestadbb0c49-3ca8-4ff1-baea-3a30d606eb69';
-var dotnetNockedServiceName = 'clitest0bf21fd5-5e3a-47e1-bdf4-8790b26c8cab';
+var nodeNockedServiceName = 'clitesta7932ff5-ad63-49a0-9929-1fb4f005b68b';
+var dotnetNockedServiceName = 'clitestc306acfe-8981-4de7-81f5-2d03957acedd';
 var nockhelper = require('../framework/nock-helper.js');
 var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
 var should = require('should');
@@ -59,9 +59,12 @@ var util = require('util');
 var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
 var sinon = require('sinon');
+var azureCommon = require('azure-common');
 var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
-var Channel = require('../../lib/util/channel');
+var PipelineChannel = require('../../lib/commands/asm/mobile/pipelineChannel');
+var utils = require('../../lib/util/utils');
+var WebResource = azureCommon.WebResource;
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var servicedomain = process.env.SERVICE_DOMAIN || '.azure-mobile.net';
 var scopeWritten;
@@ -1586,6 +1589,13 @@ allTests = function (backend) {
     });
   });
 
+  function getWebResource(uri) {
+    var httpRequest = new WebResource();
+
+    httpRequest.uri = uri;
+    return httpRequest;
+  }
+
   function insert5Rows(callback) {
     var success = 0;
     var failure = 0;
@@ -1605,14 +1615,16 @@ allTests = function (backend) {
     }
 
     for (var i = 0; i < 5; i++) {
-      var channel = new Channel({
-        host: servicename + servicedomain,
-        port: 443
-      }).path('tables')
-        .path('table1')
-        .header('Content-Type', 'application/json');
-
-      channel.POST(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
+      var resource = getWebResource('http://' + servicename + servicedomain);
+      var client = azureCommon.requestPipeline.create(
+          utils.createPostBodyFilter(),
+          utils.createFollowRedirectFilter(),
+          utils.createFollowRedirectFilter());
+      var channel = new PipelineChannel(client, resource)
+          .path('tables')
+          .path('table1')
+          .header('Content-Type', 'application/json');
+      channel.post(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
     }
   };
 
