@@ -28,7 +28,6 @@ var testParent;
 var testApiVersion = '2.0';
 var createdGroups = [];
 var createdResources = [];
-var numOfCleanedUpGroups = 0;
 var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PRINCIPAL_NAME', defaultValue: 'admin@aad105.ccsctp.net'},
   { name: 'AZURE_AD_TEST_PRINCIPAL_ID', defaultValue: 'ca7db395-f921-403b-bf5b-acf85bcfce03'},
@@ -47,16 +46,22 @@ describe('arm', function () {
     var suite;
     var TEST_ROLE_NAME = 'Owner';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
+    var shouldRunSuiteSetup;
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(function () {
+        shouldRunSuiteSetup = (!suite.isMocked || suite.isRecording);
         setup(done);
       });
     });
 
     after(function (done) {
       suite.teardownSuite(function () {
-        cleanup(done);
+        if (shouldRunSuiteSetup) {
+          cleanup(done);
+        } else {
+          done();
+        }
       });
     });
 
@@ -76,21 +81,27 @@ describe('arm', function () {
       var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
       var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
       testParent = 'servers/' + testSqlServer;
-      suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
-        result.exitStatus.should.equal(0);
-        suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
-          testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+      
+      if (shouldRunSuiteSetup) {
+        suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
-            testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+          suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+            testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
             result.exitStatus.should.equal(0);
-            done();
+            suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+              testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
           });
         });
-      });
+      } else {
+        done();
+      }
     }
 
     function cleanup(done) {
+      var numOfCleanedUpGroups = 0;
       function deleteGroups(index, callback) {
         if (index === createdGroups.length) {
           return callback();

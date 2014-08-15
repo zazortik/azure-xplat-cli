@@ -22,11 +22,11 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
 
 var requiredEnvironment = [
-  'AZURE_AD_TEST_GROUP_NAME',//testgroup1
-  'AZURE_AD_TEST_SUBGROUP_NAME',//testgroup2(must be a member of testgroup1)
-  'AZURE_AD_TEST_USER_NAME',//testUser1
-  'AZURE_AD_TEST_USER_PRINCIPAL_NAME', // testUser1@aad105.ccsctp.net(must be a member of testGroup1, but not of testGroup2)
-  'AZURE_AD_TEST_USER_PRINCIPAL_NAME2' //testUser2@aad105.ccsctp.net
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
+  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' }, //(must be a member of testgroup1)
+  { name: 'AZURE_AD_TEST_USER_NAME', defaultValue: 'testUser1' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@aad105.ccsctp.net' }, //(must be a member of testGroup1, but not of testGroup2)
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net'}
 ];
 
 function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
@@ -57,9 +57,9 @@ describe('arm', function () {
     
     
     describe('Users', function () {
-      var upn = getTestUPN();
-      var upn2 = getTestUPN2();
       it('should work to list and show users', function (done) {
+        var upn = getTestUPN();
+        var upn2 = getTestUPN2();
         suite.execute('ad user list --json', function (result) {
           result.exitStatus.should.equal(0);
           var text = result.text;
