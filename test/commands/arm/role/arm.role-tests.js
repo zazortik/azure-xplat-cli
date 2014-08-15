@@ -30,10 +30,10 @@ var createdGroups = [];
 var createdResources = [];
 var numOfCleanedUpGroups = 0;
 var requiredEnvironment = [
-  'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
-  'AZURE_AD_TEST_PRINCIPAL_ID',//ca7db395-f921-403b-bf5b-acf85bcfce03
-  'AZURE_AD_TEST_GROUP_NAME', //testgroup1
-  'AZURE_AD_TEST_GROUP_OBJECT_ID', //08b96007-f08c-4344-8fe0-3b59dd6a8464
+  { name: 'AZURE_AD_TEST_PRINCIPAL_NAME', defaultValue: 'admin@aad105.ccsctp.net'},
+  { name: 'AZURE_AD_TEST_PRINCIPAL_ID', defaultValue: 'ca7db395-f921-403b-bf5b-acf85bcfce03'},
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1'},
+  { name: 'AZURE_AD_TEST_GROUP_OBJECT_ID', defaultValue: '08b96007-f08c-4344-8fe0-3b59dd6a8464'},
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
@@ -69,9 +69,9 @@ describe('arm', function () {
     });
 
     function setup(done) {
-      testResourceGroup = suite.generateId('testrg1', createdGroups, suite.isMocked);
-      testSqlServer = suite.generateId('testserver1', createdResources, suite.isMocked);
-      testSqlDb = suite.generateId('testdb1', createdResources, suite.isMocked);
+      testResourceGroup = suite.generateId('testrg1', createdGroups);
+      testSqlServer = suite.generateId('testserver1', createdResources);
+      testSqlDb = suite.generateId('testdb1', createdResources);
       testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
       var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
       var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";

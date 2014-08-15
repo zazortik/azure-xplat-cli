@@ -61,6 +61,9 @@ function CLITest(testPrefix, env, forceMocked) {
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
+  
+  this.randomTestIdsGenerated = [];
+  this.numberOfRandomTestIdGenerated = 0;  
 
   if (this.isMocked && !this.isRecording) {
     this.setTimeouts();
@@ -154,6 +157,7 @@ _.extend(CLITest.prototype, {
       if (this.isRecording) {
         fs.appendFileSync(this.recordingsFile, '];');
         this.writeGeneratedUuids();
+        this.writeGeneratedRandomTestIds();
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -178,6 +182,15 @@ _.extend(CLITest.prototype, {
       var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
       fs.appendFileSync(this.recordingsFile, content);
       this.uuidsGenerated.length = 0;
+    }
+  },
+  
+  writeGeneratedRandomTestIds: function () {
+    if (this.randomTestIdsGenerated.length > 0) {
+      var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
+      var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids);
+      fs.appendFileSync(this.recordingsFile, content);
+      this.randomTestIdsGenerated.length = 0;
     }
   },
 
@@ -261,6 +274,10 @@ _.extend(CLITest.prototype, {
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
+      
+      if (nocked.randomTestIdsGenerated) {
+        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated;
+      }
 
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
@@ -330,28 +347,37 @@ _.extend(CLITest.prototype, {
   * @return {string} A new unique identifier.
   */
   generateId: function (prefix, currentList) {
+    function getRandom() {
+      var newNumber;
+      while (true) {
+        newNumber = prefix + Math.floor(Math.random() * 10000);
+        if (currentList.indexOf(newNumber) === -1) {
+          break;
+        }
+      }
+      return newNumber;
+    }
+
     if (!currentList) {
       currentList = [];
     }
-
-    while (true) {
-      var newNumber;
+    
+    var newNumber;
+    if (!this.isMocked || this.isRecording) {
+      newNumber = getRandom();
       if (this.isMocked) {
-        // Predictable
-        newNumber = prefix + (currentList.length + 1);
-        currentList.push(newNumber);
-
-        return newNumber;
+        this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++] = newNumber;
+      }
+    } else {
+      if (this.randomTestIdsGenerated && this.randomTestIdsGenerated.length > 0) {
+        newNumber = this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++];
       } else {
-        // Random
-        newNumber = prefix + Math.floor(Math.random() * 10000);
-        if (currentList.indexOf(newNumber) === -1) {
-          currentList.push(newNumber);
-
-          return newNumber;
-        }
+        //some test might not have recorded generated ids, so we fall back to the old sequential logic
+        newNumber = prefix + (currentList.length + 1);
       }
     }
+    currentList.push(newNumber);
+    return newNumber;    
   },
 
   /**
