@@ -348,24 +348,13 @@ _.extend(CLITest.prototype, {
   * @return {string} A new unique identifier.
   */
   generateId: function (prefix, currentList) {
-    function getRandom() {
-      var newNumber;
-      while (true) {
-        newNumber = prefix + Math.floor(Math.random() * 10000);
-        if (currentList.indexOf(newNumber) === -1) {
-          break;
-        }
-      }
-      return newNumber;
-    }
-
     if (!currentList) {
       currentList = [];
     }
     
     var newNumber;
     if (!this.isMocked || this.isRecording) {
-      newNumber = getRandom();
+      newNumber = CLITest.generateRandomId(prefix, currentList);
       if (this.isMocked) {
         this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++] = newNumber;
       }
@@ -507,4 +496,15 @@ _.extend(CLITest.prototype, {
 CLITest.wrap = function wrap(sinonObj, object, property, setup) {
   var original = object[property];
   return sinonObj.stub(object, property, setup(original));
+};
+
+CLITest.generateRandomId = function (prefix, currentList) {
+  var newNumber;
+  while (true) {
+    newNumber = prefix + Math.floor(Math.random() * 10000);
+    if (!currentList || currentList.indexOf(newNumber) === -1) {
+      break;
+    }
+  }
+  return newNumber;
 };
