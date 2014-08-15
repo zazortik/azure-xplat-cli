@@ -46,18 +46,16 @@ describe('arm', function () {
     var suite;
     var TEST_ROLE_NAME = 'Owner';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
-    var shouldRunSuiteSetup;
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(function () {
-        shouldRunSuiteSetup = (!suite.isMocked || suite.isRecording);
         setup(done);
       });
     });
 
     after(function (done) {
       suite.teardownSuite(function () {
-        if (shouldRunSuiteSetup) {
+        if (!suite.isPlayback()) {
           cleanup(done);
         } else {
           done();
@@ -82,7 +80,7 @@ describe('arm', function () {
       var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
       testParent = 'servers/' + testSqlServer;
       
-      if (shouldRunSuiteSetup) {
+      if (!suite.isPlayback()) {
         suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 

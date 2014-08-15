@@ -65,17 +65,8 @@ function CLITest(testPrefix, env, forceMocked) {
   this.randomTestIdsGenerated = [];
   this.numberOfRandomTestIdGenerated = 0;  
 
-  if (this.isMocked && !this.isRecording) {
+  if (this.isPlayback()) {
     this.setTimeouts();
-
-    var nocked = require(this.recordingsFile);
-    if (nocked.randomTestIdsGenerated) {
-      this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
-    }
-    
-    if (nocked.uuidsGenerated) {
-      this.uuidsGenerated = nocked.uuidsGenerated();
-    }
   }
 }
 
@@ -100,7 +91,7 @@ _.extend(CLITest.prototype, {
   },
 
   validateEnvironment: function () {
-    if (this.isMocked && !this.isRecording) {
+    if (this.isPlayback()) {
       return;
     }
 
@@ -144,8 +135,29 @@ _.extend(CLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
-
-    if (!this.isMocked || this.isRecording) {
+    
+    if (this.isPlayback()) {
+      var nocked = require(this.recordingsFile);
+      if (nocked.randomTestIdsGenerated) {
+        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+      }
+      
+      if (nocked.uuidsGenerated) {
+        this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+      
+      if (nocked.getMockedProfile) {
+        profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
+      }
+      
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
+      
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
+    } else {
       this.setEnvironmentDefaults();
     }
 
@@ -167,6 +179,9 @@ _.extend(CLITest.prototype, {
         fs.appendFileSync(this.recordingsFile, '];');
         this.writeGeneratedUuids();
         this.writeGeneratedRandomTestIds();
+      } else {
+        //playback mode
+        adalAuth.tokenCache = this.originalTokenCache;
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -232,7 +247,7 @@ _.extend(CLITest.prototype, {
       cmd.unshift('node');
     }
 
-    if (!this.skipSubscription && this.isMocked && !this.isRecording && cmd[2] != 'vm' && cmd[3] != 'location') {
+    if (!this.skipSubscription && this.isPlayback() && cmd[2] != 'vm' && cmd[3] != 'location') {
       cmd.push('-s');
       cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
     }
@@ -258,7 +273,9 @@ _.extend(CLITest.prototype, {
     if (this.isMocked && this.isRecording) {
       // nock recoding
       nockHelper.nock.recorder.rec(true);
-    } else if (this.isMocked) {
+    }
+    
+    if (this.isPlayback()) {
       // nock playback
       var nocked = require(this.recordingsFile);
 
@@ -270,18 +287,6 @@ _.extend(CLITest.prototype, {
         throw new Error('It appears the ' + this.recordingsFile + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
-
-      if (nocked.getMockedProfile) {
-        profile.current = nocked.getMockedProfile();
-        profile.current.save = function () { };
-      }
-
-      if (nocked.setEnvironment) {
-        nocked.setEnvironment();
-      }
-      
-      this.originalTokenCache = adalAuth.tokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
     }
 
     callback();
@@ -321,10 +326,7 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
-    } else if (this.isMocked) {
-      adalAuth.tokenCache = this.originalTokenCache;
-    }
-
+    } 
     nockHelper.unNockHttp();
 
     callback();
@@ -338,7 +340,10 @@ _.extend(CLITest.prototype, {
       requiredEnvironment: this.requiredEnvironment
     }));
   },
-
+  
+  isPlayback: function (){
+    return this.isMocked && !this.isRecording;
+  },
   /**
   * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
   *
@@ -353,7 +358,7 @@ _.extend(CLITest.prototype, {
     }
     
     var newNumber;
-    if (!this.isMocked || this.isRecording) {
+    if (!this.isPlayback()) {
       newNumber = CLITest.generateRandomId(prefix, currentList);
       if (this.isMocked) {
         this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++] = newNumber;
