@@ -18,29 +18,31 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
-var util = require('util');
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
 var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 
-var expectedSubscriptions = [
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    subscriptionName: 'Account'
-  },
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
-    subscriptionName: 'Other'
-  }
-];
-
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
 
+var expectedSubscriptions = [
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    subscriptionName: 'Account',
+    username: expectedUserName
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    subscriptionName: 'Other',
+    username: expectedUserName
+  }
+];
+
 var expectedToken = {
   accessToken: 'a dummy token',
-  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000)
+  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000),
+  userId: expectedUserName
 };
 
 describe('Environment', function () {
@@ -55,9 +57,11 @@ describe('Environment', function () {
     });
     sinon.stub(environment, 'acquireToken').callsArgWith(3, null, expectedToken);
     sinon.stub(subscriptionUtils, 'getSubscriptions', function (env, username, password, callback) {
+      //TODO:  mock out each individual method used by subscriptionUtils to improve test coverage
       environment.acquireTokenForUser(username, password, '', function (err) { });
+      username = subscriptionUtils.crossCheckUserNameWithToken(username, expectedToken.userId);
       callback(null, expectedSubscriptions);
-    })
+    });
   });
   
   after(function () {
@@ -86,7 +90,7 @@ describe('Environment', function () {
     it('should have passed environment object to the getSubscriptions', function () {
       var env = subscriptionUtils.getSubscriptions.firstCall.args[0];
       env.should.equal(environment);
-    })
+    });
 
     it('should pass expected configuration to token provider', function () {
       var config = environment.acquireToken.firstCall.args[0];
