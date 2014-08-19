@@ -209,10 +209,12 @@ describe('profile', function () {
     });
 
     describe('and logging in to already loaded subscription', function () {
+      var loginUser = 'user';
       var loginSubscriptions = [
       {
         subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-        subscriptionName: 'Account'
+        subscriptionName: 'Account',
+        username: loginUser
       }];
 
       var expectedToken = {
@@ -239,7 +241,7 @@ describe('profile', function () {
 
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
 
-        fakeEnvironment.addAccount('user', 'password', function (err, subscriptions) {
+        fakeEnvironment.addAccount(loginUser, 'password', function (err, subscriptions) {
           subscriptions.forEach(function (s) {
             p.addSubscription(s);
           });
@@ -261,7 +263,7 @@ describe('profile', function () {
       });
 
       it('should have expected username', function () {
-        p.subscriptions[expectedSubscription.name].username.should.equal('user');
+        p.subscriptions[expectedSubscription.name].username.should.equal(loginUser);
       });
     });
   });
