@@ -61,8 +61,11 @@ function CLITest(testPrefix, env, forceMocked) {
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
+  
+  this.randomTestIdsGenerated = [];
+  this.numberOfRandomTestIdGenerated = 0;  
 
-  if (this.isMocked && !this.isRecording) {
+  if (this.isPlayback()) {
     this.setTimeouts();
   }
 }
@@ -88,7 +91,7 @@ _.extend(CLITest.prototype, {
   },
 
   validateEnvironment: function () {
-    if (this.isMocked && !this.isRecording) {
+    if (this.isPlayback()) {
       return;
     }
 
@@ -132,8 +135,29 @@ _.extend(CLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
-
-    if (!this.isMocked || this.isRecording) {
+    
+    if (this.isPlayback()) {
+      var nocked = require(this.recordingsFile);
+      if (nocked.randomTestIdsGenerated) {
+        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+      }
+      
+      if (nocked.uuidsGenerated) {
+        this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+      
+      if (nocked.getMockedProfile) {
+        profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
+      }
+      
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
+      
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
+    } else {
       this.setEnvironmentDefaults();
     }
 
@@ -154,6 +178,10 @@ _.extend(CLITest.prototype, {
       if (this.isRecording) {
         fs.appendFileSync(this.recordingsFile, '];');
         this.writeGeneratedUuids();
+        this.writeGeneratedRandomTestIds();
+      } else {
+        //playback mode
+        adalAuth.tokenCache = this.originalTokenCache;
       }
 
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -178,6 +206,15 @@ _.extend(CLITest.prototype, {
       var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
       fs.appendFileSync(this.recordingsFile, content);
       this.uuidsGenerated.length = 0;
+    }
+  },
+  
+  writeGeneratedRandomTestIds: function () {
+    if (this.randomTestIdsGenerated.length > 0) {
+      var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
+      var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids);
+      fs.appendFileSync(this.recordingsFile, content);
+      this.randomTestIdsGenerated.length = 0;
     }
   },
 
@@ -210,7 +247,7 @@ _.extend(CLITest.prototype, {
       cmd.unshift('node');
     }
 
-    if (!this.skipSubscription && this.isMocked && !this.isRecording && cmd[2] != 'vm' && cmd[3] != 'location') {
+    if (!this.skipSubscription && this.isPlayback() && cmd[2] != 'vm' && cmd[3] != 'location') {
       cmd.push('-s');
       cmd.push(process.env.AZURE_SUBSCRIPTION_ID);
     }
@@ -236,7 +273,9 @@ _.extend(CLITest.prototype, {
     if (this.isMocked && this.isRecording) {
       // nock recoding
       nockHelper.nock.recorder.rec(true);
-    } else if (this.isMocked) {
+    }
+    
+    if (this.isPlayback()) {
       // nock playback
       var nocked = require(this.recordingsFile);
 
@@ -248,22 +287,6 @@ _.extend(CLITest.prototype, {
         throw new Error('It appears the ' + this.recordingsFile + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
-
-      if (nocked.getMockedProfile) {
-        profile.current = nocked.getMockedProfile();
-        profile.current.save = function () { };
-      }
-
-      if (nocked.setEnvironment) {
-        nocked.setEnvironment();
-      }
-      
-      if (nocked.uuidsGenerated) {
-        this.uuidsGenerated = nocked.uuidsGenerated();
-      }
-
-      this.originalTokenCache = adalAuth.tokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
     }
 
     callback();
@@ -303,10 +326,7 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
-    } else if (this.isMocked) {
-      adalAuth.tokenCache = this.originalTokenCache;
-    }
-
+    } 
     nockHelper.unNockHttp();
 
     callback();
@@ -320,7 +340,10 @@ _.extend(CLITest.prototype, {
       requiredEnvironment: this.requiredEnvironment
     }));
   },
-
+  
+  isPlayback: function (){
+    return this.isMocked && !this.isRecording;
+  },
   /**
   * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
   *
@@ -333,25 +356,23 @@ _.extend(CLITest.prototype, {
     if (!currentList) {
       currentList = [];
     }
-
-    while (true) {
-      var newNumber;
+    
+    var newNumber;
+    if (!this.isPlayback()) {
+      newNumber = CLITest.generateRandomId(prefix, currentList);
       if (this.isMocked) {
-        // Predictable
-        newNumber = prefix + (currentList.length + 1);
-        currentList.push(newNumber);
-
-        return newNumber;
+        this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++] = newNumber;
+      }
+    } else {
+      if (this.randomTestIdsGenerated && this.randomTestIdsGenerated.length > 0) {
+        newNumber = this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++];
       } else {
-        // Random
-        newNumber = prefix + Math.floor(Math.random() * 10000);
-        if (currentList.indexOf(newNumber) === -1) {
-          currentList.push(newNumber);
-
-          return newNumber;
-        }
+        //some test might not have recorded generated ids, so we fall back to the old sequential logic
+        newNumber = prefix + (currentList.length + 1);
       }
     }
+    currentList.push(newNumber);
+    return newNumber;    
   },
 
   /**
@@ -480,4 +501,15 @@ _.extend(CLITest.prototype, {
 CLITest.wrap = function wrap(sinonObj, object, property, setup) {
   var original = object[property];
   return sinonObj.stub(object, property, setup(original));
+};
+
+CLITest.generateRandomId = function (prefix, currentList) {
+  var newNumber;
+  while (true) {
+    newNumber = prefix + Math.floor(Math.random() * 10000);
+    if (!currentList || currentList.indexOf(newNumber) === -1) {
+      break;
+    }
+  }
+  return newNumber;
 };

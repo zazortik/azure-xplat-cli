@@ -28,12 +28,11 @@ var testParent;
 var testApiVersion = '2.0';
 var createdGroups = [];
 var createdResources = [];
-var numOfCleanedUpGroups = 0;
 var requiredEnvironment = [
-  'AZURE_AD_TEST_PRINCIPAL_NAME',//admin@aad105.ccsctp.net
-  'AZURE_AD_TEST_PRINCIPAL_ID',//ca7db395-f921-403b-bf5b-acf85bcfce03
-  'AZURE_AD_TEST_GROUP_NAME', //testgroup1
-  'AZURE_AD_TEST_GROUP_OBJECT_ID', //08b96007-f08c-4344-8fe0-3b59dd6a8464
+  { name: 'AZURE_AD_TEST_PRINCIPAL_NAME', defaultValue: 'admin@aad105.ccsctp.net'},
+  { name: 'AZURE_AD_TEST_PRINCIPAL_ID', defaultValue: 'ca7db395-f921-403b-bf5b-acf85bcfce03'},
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1'},
+  { name: 'AZURE_AD_TEST_GROUP_OBJECT_ID', defaultValue: '08b96007-f08c-4344-8fe0-3b59dd6a8464'},
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
@@ -56,7 +55,11 @@ describe('arm', function () {
 
     after(function (done) {
       suite.teardownSuite(function () {
-        cleanup(done);
+        if (!suite.isPlayback()) {
+          cleanup(done);
+        } else {
+          done();
+        }
       });
     });
 
@@ -69,28 +72,34 @@ describe('arm', function () {
     });
 
     function setup(done) {
-      testResourceGroup = suite.generateId('testrg1', createdGroups, suite.isMocked);
-      testSqlServer = suite.generateId('testserver1', createdResources, suite.isMocked);
-      testSqlDb = suite.generateId('testdb1', createdResources, suite.isMocked);
+      testResourceGroup = suite.generateId('testrg1', createdGroups);
+      testSqlServer = suite.generateId('testserver1', createdResources);
+      testSqlDb = suite.generateId('testdb1', createdResources);
       testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
       var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
       var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
       testParent = 'servers/' + testSqlServer;
-      suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
-        result.exitStatus.should.equal(0);
-        suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
-          testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+      
+      if (!suite.isPlayback()) {
+        suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
-            testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+          suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+            testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
             result.exitStatus.should.equal(0);
-            done();
+            suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+              testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
           });
         });
-      });
+      } else {
+        done();
+      }
     }
 
     function cleanup(done) {
+      var numOfCleanedUpGroups = 0;
       function deleteGroups(index, callback) {
         if (index === createdGroups.length) {
           return callback();
