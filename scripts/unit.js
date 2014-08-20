@@ -25,7 +25,7 @@ if (coverageOption !== -1) {
   args.splice(coverageOption, 1);
 }
 
-var reporter = '../../../test/framework/azure-list-reporter';
+var reporter = '../../../test/framework/xcli-test-reporter';
 var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
 if (xunitOption !== -1) {
   reporter = 'xunit';

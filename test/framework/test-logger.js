@@ -35,7 +35,7 @@ function getLogDir() {
 
 //creates the log file if it has not been created
 function createLogFile() {
-  testLogFile = getLogDir() + '/test_log_' + Date.now() + '.log';
+  testLogFile = getLogDir() + '/test_log_' + getTimeStamp() + '.log';
   if(!fs.existsSync(testLogFile)) {
   	fs.writeFileSync(testLogFile,"");
   }
@@ -48,7 +48,14 @@ function appendContent(content) {
     createLogFile();
   }
   fs.appendFileSync(testLogFile, content);
-  return;
+}
+
+//provides current time in custom format that will be used in naming log files
+//example '2014_8_20_15_11_13'
+function getTimeStamp() {
+  var now = new Date();
+  var dArray = [now.getFullYear(), now.getMonth() + 1, now. getDate(), now.getHours(), now.getMinutes(), now.getSeconds()];
+  return dArray.join("_");
 }
 
 /**
@@ -70,9 +77,14 @@ exports.getLogFilePath = function() {
  * @param {Object}   data    Data to be logged
  */
 exports.logData = function(data) {
-  var content = util.inspect(data, {depth: null}) + '\n';
+	var content;
+	if (typeof(data) === 'undefined') {
+		content = '\n';
+	}
+	else {
+		content = util.inspect(data, {depth: null}) + '\n';
+	}
   appendContent(content);
-  return;
 };
 
 /**
@@ -86,5 +98,4 @@ exports.logError = function(err) {
     content += util.inspect(err.stack, {depth: null}) + '\n';
   }
   appendContent(content);
-  return;
 };

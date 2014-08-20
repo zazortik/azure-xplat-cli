@@ -80,10 +80,7 @@ function execute(cmd, cb) {
         throw e;
       }
     }
-    var cmdStr = '';
-    cmd.forEach(function (entry) {
-      cmdStr += ' ' + entry;
-    });
+    var cmdStr = cmd.join(" ");
     testLogger.logData(cmdStr);
     cli.parse(cmd);
   } catch(err) {
