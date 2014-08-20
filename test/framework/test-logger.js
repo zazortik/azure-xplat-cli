@@ -44,11 +44,11 @@ function createLogFile() {
 
 //appends the content to the log file
 function appendContent(content) {
-	if(!fs.existsSync(testLogFile)) {
-		createLogFile();
-	}
-	fs.appendFileSync(testLogFile, content);
-	return;
+  if(!fs.existsSync(testLogFile)) {
+    createLogFile();
+  }
+  fs.appendFileSync(testLogFile, content);
+  return;
 }
 
 /**
@@ -57,12 +57,12 @@ function appendContent(content) {
  * @return {string} test log file path
  */
 exports.getLogFilePath = function() {
-	if(!testLogFile) {
-		return createLogFile();
-	}
-	else {
-		return testLogFile;
-	}
+  if(!testLogFile) {
+    return createLogFile();
+  }
+  else {
+    return testLogFile;
+  }
 };
 /**
  * Logs the data
@@ -70,9 +70,9 @@ exports.getLogFilePath = function() {
  * @param {Object}   data    Data to be logged
  */
 exports.logData = function(data) {
-	var content = util.inspect(data, {depth: null}) + '\n';
-	appendContent(content);
-	return;
+  var content = util.inspect(data, {depth: null}) + '\n';
+  appendContent(content);
+  return;
 };
 
 /**
@@ -81,10 +81,10 @@ exports.logData = function(data) {
  * @param {Object}   err    Error to be logged
  */
 exports.logError = function(err) {
-	var content = '\n' + (new Date()) + ':\n' + util.inspect(err, {depth: null}) + '\n';
-	if(err.stack) {
-		content += util.inspect(err.stack, {depth: null});
-	}
-	appendContent(content);
-	return;
+  var content = '\n' + (new Date()) + ':\n' + util.inspect(err, {depth: null}) + '\n';
+  if(err.stack) {
+    content += util.inspect(err.stack, {depth: null}) + '\n';
+  }
+  appendContent(content);
+  return;
 };
