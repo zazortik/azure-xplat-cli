@@ -37,7 +37,7 @@ function getLogDir() {
 function createLogFile() {
   testLogFile = getLogDir() + '/test_log_' + getTimeStamp() + '.log';
   if(!fs.existsSync(testLogFile)) {
-  	fs.writeFileSync(testLogFile,"");
+    fs.writeFileSync(testLogFile,"");
   }
   return testLogFile;
 }
@@ -77,13 +77,13 @@ exports.getLogFilePath = function() {
  * @param {Object}   data    Data to be logged
  */
 exports.logData = function(data) {
-	var content;
-	if (typeof(data) === 'undefined') {
-		content = '\n';
-	}
-	else {
-		content = util.inspect(data, {depth: null}) + '\n';
-	}
+  var content;
+  if (typeof(data) === 'undefined') {
+    content = '\n';
+  }
+  else {
+    content = util.inspect(data, {depth: null}) + '\n';
+  }
   appendContent(content);
 };
 
