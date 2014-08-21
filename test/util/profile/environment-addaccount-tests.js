@@ -18,6 +18,7 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
+require('streamline').register()
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
@@ -26,7 +27,8 @@ var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
 
-var expectedSubscriptions = [
+var expectedSubscriptions = 
+[
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
     subscriptionName: 'Account',
@@ -36,13 +38,68 @@ var expectedSubscriptions = [
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
     subscriptionName: 'Other',
     username: expectedUserName
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c125e',
+    subscriptionName: 'External',
+    username: expectedUserName
+  }
+];
+
+var testAsmSubscriptions = [
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    subscriptionName: 'Account'
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    subscriptionName: 'Other'
+  }
+];
+
+var testArmSubscriptions = [
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c125e', // a new one, arm specific
+    displayName: 'External'
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c', //this is the duplicate with asm one
+    displayName: 'Account' 
   }
 ];
 
 var expectedToken = {
   accessToken: 'a dummy token',
   expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000),
-  userId: expectedUserName
+  userId: expectedUserName,
+  authenticateRequest: function () { }
+};
+
+var testAsmSubscriptionClient = {
+  subscriptions: {
+    list: function (callback) {
+      callback(null, {subscriptions: testAsmSubscriptions });
+    }
+  }
+};
+
+var testTenantIds = ['2d006e8c-61e7-4cd2-8804-b4177a4341a1'];
+
+var testArmSubscriptionClient = {
+  subscriptions: {
+    list: function (callback) {
+      callback(null, {subscriptions: testArmSubscriptions });
+    }
+  },
+  tenants: {
+    list: function (callback) {
+      callback(null, {
+        tenantIds: testTenantIds.map(function (id) {
+          return { tenantId: id };})
+        }
+      );
+    }
+  }
 };
 
 describe('Environment', function () {
@@ -55,17 +112,11 @@ describe('Environment', function () {
       commonTenantName: 'common',
       activeDirectoryResourceId: 'http://login.notreal.example'
     });
-    sinon.stub(environment, 'acquireToken').callsArgWith(3, null, expectedToken);
-    sinon.stub(subscriptionUtils, 'getSubscriptions', function (env, username, password, callback) {
-      //TODO:  mock out each individual method used by subscriptionUtils to improve test coverage
-      environment.acquireTokenForUser(username, password, '', function (err) { });
-      username = subscriptionUtils.crossCheckUserNameWithToken(username, expectedToken.userId);
-      callback(null, expectedSubscriptions);
-    });
-  });
-  
-  after(function () {
-    subscriptionUtils.getSubscriptions.restore();
+    
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/, 
+      null/*no error*/, expectedToken/*the access token*/);
+    sinon.stub(environment, 'getAsmClient').returns(testAsmSubscriptionClient);
+    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
   });
 
   describe('When creating account', function () {
@@ -78,36 +129,30 @@ describe('Environment', function () {
       });
     });
 
-
     it('should have called the token provider', function () {
       environment.acquireToken.called.should.be.true;
     });
 
-    it('should have listed subscriptions', function () {
-      subscriptionUtils.getSubscriptions.called.should.be.true;
+    it('should have call to get asm client', function () {
+      environment.getAsmClient.called.should.be.true;
     });
     
-    it('should have passed environment object to the getSubscriptions', function () {
-      var env = subscriptionUtils.getSubscriptions.firstCall.args[0];
-      env.should.equal(environment);
+    it('should have call to get arm client', function () {
+      environment.getArmClient.called.should.be.true;
     });
 
     it('should pass expected configuration to token provider', function () {
-      var config = environment.acquireToken.firstCall.args[0];
-
-      config.should.have.properties({
-        authorityUrl: 'http://notreal.example',
-        tenantId: 'common',
-        clientId: constants.XPLAT_CLI_CLIENT_ID,
-        resourceId: environment.activeDirectoryResourceId
-      });
-    });
-
-    it('should pass username and password to getSubscriptions', function() {
-      var username = subscriptionUtils.getSubscriptions.firstCall.args[1];
+      var username = environment.acquireToken.firstCall.args[0];
       username.should.equal(expectedUserName);
-      var password = subscriptionUtils.getSubscriptions.firstCall.args[2];
+
+      var password = environment.acquireToken.firstCall.args[1];
       password.should.equal(expectedPassword);
+
+      var tenantId_1 = environment.acquireToken.firstCall.args[2];
+      tenantId_1.should.equal(''); // '' mean using the common tenant
+
+      var tenantId_2 = environment.acquireToken.secondCall.args[2];
+      tenantId_2.should.equal(testTenantIds[0]);
     });
 
     it('should return a subscription with expected username', function () {
