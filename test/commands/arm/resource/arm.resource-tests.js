@@ -22,7 +22,7 @@ var fs = require('fs');
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-resource-tests';
-
+var utils = require('../../../../lib/util/utils');
 
 var requiredEnvironment = [
   { requiresToken: true },
@@ -79,7 +79,7 @@ describe('arm', function () {
 
               var group = JSON.parse(showResult.text);
               group.resources.some(function (res) {
-                return res.name === resourceName;
+                return res.name === resourceName && utils.stringEndsWith(res.id, resourceName);
               }).should.be.true;
 
               suite.execute('group delete %s --quiet --json', groupName, function () {
@@ -282,6 +282,7 @@ describe('arm', function () {
               resource.location.should.equal(testWebsitesResourceLocation);
               resource.permissions[0].actions[0].should.equal('*');
               resource.permissions[0].notActions.length.should.equal(0);
+              utils.stringEndsWith(resource.id, resourceName).should.be.true;
               suite.execute('group delete %s --quiet --json', groupName, function () {
                 done();
               });
