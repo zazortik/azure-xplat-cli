@@ -146,3 +146,26 @@ exports.getTemplateInfo = function (suite, keyword, callback) {
     }
   });
 };
+
+exports.executeCommand = function(suite, retry, cmd, callback) {
+  var self = this;
+  suite.execute(cmd, function(result) {
+    if (result.exitStatus === 1 && ((result.errorText.indexOf('ECONNRESET') + 1) ||
+      (result.errorText.indexOf('ConflictError') + 1) ||
+      (result.errorText.indexOf('Please try this operation again later') + 1) ||
+      (result.errorText.indexOf('requires exclusive access.') + 1) ||
+      (result.errorText.indexOf('connect ETIMEDOUT') + 1) ||
+      (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
+      (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
+      console.log('Re-executing command. Please wait.');
+      setTimeout(function() {
+        self.executeCommand(suite, retry, cmd, callback);
+      }, 10000);
+    } else {
+      //callback with error
+      //here result can be checked for existstatus but dev will never know what command threw error
+      //while looking at error message
+      callback(result);
+    }
+  });
+};

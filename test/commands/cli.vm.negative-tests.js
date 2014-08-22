@@ -13,47 +13,32 @@
  * limitations under the License.
  */
 var should = require('should');
-var sinon = require('sinon');
-var util = require('util');
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
-var testUtils = require('../util/util');
-var isForceMocked = !process.env.NOCK_OFF;
-
-var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
-var vmPrefix = 'clitestvm';
 var suite;
+var vmPrefix = 'cliNegtestvm';
 var testPrefix = 'cli.vm.negative-tests';
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
 }];
 
-var currentRandom = 0;
-
 describe('cli', function() {
   describe('vm', function() {
-    var location;
+    var location, username = 'azureuser',
+      password = 'Pa$$word@123',
+      vmNegName;
+
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment, isForceMocked);
-
-      if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function() {
-          return (++currentRandom).toString();
-        });
-
-        utils.POLL_REQUEST_INTERVAL = 0;
-      }
-
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        vmNegName = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         done();
       });
     });
@@ -63,19 +48,14 @@ describe('cli', function() {
     });
 
     after(function(done) {
-      if (suite.isMocked) {
-        crypto.randomBytes.restore();
-      }
       suite.teardownSuite(done);
     });
 
     // Negative Test Case by specifying invalid Password
     it('Negative test case for password', function(done) {
-      var vmNegName = 'TestImg';
       getImageName('Linux', function(ImageName) {
-        var location = process.env.AZURE_VM_TEST_LOCATION;
-        suite.execute('vm create %s %s "azureuser" "Coll" --json --location %s',
-          vmNegName, ImageName, location, function(result) {
+        suite.execute('vm create %s %s %s "Coll" --json --location %s',
+          vmNegName, ImageName, username, location, function(result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.include('password must be at least 8 character in length, it must contain a lower case, an upper case, a number and a special character such as !@#$%^&+=');
             done();
@@ -85,11 +65,10 @@ describe('cli', function() {
 
     // Negative Test Case for Vm Create with Invalid Name
     it('Negative Test Case for Vm Create with Invalid name', function(done) {
-      var vmNegName = 'test1@1';
-      var location = process.env.AZURE_VM_TEST_LOCATION;
+      vmNegName = 'test1@1';
       getImageName('Linux', function(ImageName) {
-        suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
-          vmNegName, ImageName, location, function(result) {
+        suite.execute('vm create %s %s %s %s --json --location %s',
+          vmNegName, ImageName, username, password, location, function(result) {
             // check the error code for error
             result.exitStatus.should.equal(1);
             result.errorText.should.include('The hosted service name is invalid.');
@@ -100,10 +79,9 @@ describe('cli', function() {
 
     // Negative Test Case by specifying invalid Location
     it('Negative Test Case for Vm create Location', function(done) {
-      var vmNegName = 'newTestImg';
       getImageName('Linux', function(ImageName) {
-        suite.execute('vm create %s %s "azureuser" "Pa$$word@123" --json --location %s',
-          vmNegName, ImageName, 'SomeLoc', function(result) {
+        suite.execute('vm create %s %s %s %s --json --location %s',
+          vmNegName, ImageName, username, password, 'SomeLoc', function(result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.include(' No location found which has DisplayName or Name same as value of --location');
             done();

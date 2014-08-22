@@ -16,12 +16,13 @@ var should = require('should');
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
+
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
-var suite;
+var suite, vmPrefix;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.create_docker-tests';
+var testPrefix = 'cli.vm.staticvm_docker-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -31,13 +32,12 @@ describe('cli', function() {
   describe('vm', function() {
     var vmName,
       dockerCertDir,
-      dockerCerts,
+      dockerCerts, timeout,
       location, retry = 5,
-      homePath, timeout,
       username = 'azureuser',
-      password = 'Pa$$word@123';
+      password = 'Pa$$word@123',
+      homePath;
 
-    // A common VM used by multiple tests
     var vmToUse = {
       Name: null,
       Created: false,
@@ -47,6 +47,7 @@ describe('cli', function() {
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
+      homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
     });
 
     after(function(done) {
@@ -56,9 +57,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'XplattestVm1' : suite.generateId(vmPrefix, null);
+        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 12000;
-        homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
       });
     });
@@ -110,134 +110,112 @@ describe('cli', function() {
     });
 
     describe('Vm Create: ', function() {
-      it('Create Docker VM with default values should pass', function(done) {
+      it('Create Docker VM with staticip should pass', function(done) {
         dockerCertDir = path.join(homePath, '.docker');
         var dockerPort = 4243;
 
         getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            cmd = util.format('vm show %s --json', vmName).split(' ');
+          getVnet('Created', function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
+            var cmd = util.format('vm docker create %s %s %s %s -a %s --static-ip %s --virtual-network-name %s --json',
+              vmName, ImageName, username, password, affinityName, staticIpToSet, virtualnetName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = checkForDockerCertificates(dockerCertDir);
-              certificatesExist.should.be.true;
-              var createdVM = JSON.parse(result.text);
-              var dockerPortExists = checkForDockerPort(createdVM, dockerPort);
-              dockerPortExists.should.be.true;
-              createdVM.VMName.should.equal(vmName);
-              vmToUse.Name = vmName;
-              vmToUse.Created = true;
-              vmToUse.Delete = true;
-              setTimeout(done, timeout);
+              cmd = util.format('vm show %s --json', vmName).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var certifiatesExist = checkForDockerCertificates(dockerCertDir);
+                certifiatesExist.should.be.true;
+                var cratedVM = JSON.parse(result.text);
+                var dockerPortExists = checkForDockerPort(cratedVM, dockerPort);
+                dockerPortExists.should.be.true;
+
+                cratedVM.VMName.should.equal(vmName);
+                vmToUse.Name = vmName;
+                vmToUse.Created = true;
+                vmToUse.Delete = true;
+                setTimeout(done, timeout);
+              });
             });
           });
         });
       });
 
-      it('Create Docker VM with custom values should pass', function(done) {
-        dockerCertDir = path.join(homePath, '.docker2');
-        var dockerPort = 4113;
-
-        getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh --docker-cert-dir %s --docker-port %s',
-            vmName, ImageName, username, password, dockerCertDir, dockerPort).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            cmd = util.format('vm show %s --json', vmName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              var certificatesExist = checkForDockerCertificates(dockerCertDir);
-              certificatesExist.should.be.true;
-              var createdVM = JSON.parse(result.text);
-              var dockerPortExists = checkForDockerPort(createdVM, dockerPort);
-              dockerPortExists.should.be.true;
-              createdVM.VMName.should.equal(vmName);
-              vmToUse.Name = vmName;
-              vmToUse.Created = true;
-              vmToUse.Delete = true;
-              setTimeout(done, timeout);
-            });
-          });
-        });
-      });
-
-      it('Create Docker VM with duplicate docker port should throw error', function(done) {
-        getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-port 22',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('Port 22 is already in use by one of the endpoints in this deployment');
-            setTimeout(done, timeout);
-          });
-        });
-      });
-
-      it('Create Docker VM with invalid docker port should throw error', function(done) {
-        getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-port 3.2',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('A parameter was incorrect');
-            setTimeout(done, timeout);
-          });
-        });
-      });
-
-      it('Create Docker VM with invalid docker cert dir should throw error', function(done) {
-        getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir D:/foo/bar',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('ENOENT');
-            setTimeout(done, timeout);
-          });
-        });
-      });
     });
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      var imageName;
       var cmd = util.format('vm image list --json').split(' ');
       testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
         var imageList = JSON.parse(result.text);
         imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-            imageName = image.name;
+            vmImgName = image.name;
             return true;
           }
         });
-
-        callBack(imageName);
+        callBack(vmImgName);
       });
     }
 
-    function checkForDockerPort(createdVM, dockerPort) {
+    function getVnet(status, callback) {
+      var cmd;
+      if (getVnet.vnetName) {
+        callback(getVnet.vnetName, getVnet.affinityName, getVnet.staticIpToCreate, getVnet.staticIpToSet);
+      } else {
+        cmd = util.format('network vnet list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var vnetName = JSON.parse(result.text);
+          var found = vnetName.some(function(vnet) {
+            if (vnet.state === status && vnet.affinityGroup !== undefined) {
+              getVnet.vnetName = vnet.name;
+              getVnet.affinityName = vnet.affinityGroup;
+              var address = vnet.addressSpace.addressPrefixes[0];
+              var addressSplit = address.split('/');
+              var staticIpToCreate = addressSplit[0];
+              var n = staticIpToCreate.substring(0, staticIpToCreate.lastIndexOf('.') + 1);
+              var staticIpToSet = n.concat(addressSplit[1]);
+              getVnet.staticIpToCreate = staticIpToCreate;
+              getVnet.staticIpToSet = staticIpToSet;
+              return true;
+            }
+          });
+
+          if (!found) {
+            getAffinityGroup(location, function(affinGrpName) {
+              cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                getVnet.vnetName = vnetName;
+                getVnet.affinityName = affinGrpName;
+                var address = vnet.addressSpace.addressPrefixes[0];
+                var addressSplit = address.split('/');
+                var staticIpToCreate = addressSplit[0];
+                var n = staticIpToCreate.substring(0, staticIpToCreate.lastIndexOf('.') + 1);
+                var staticIpToSet = n.concat(addressSplit[1]);
+                getVnet.staticIpToCreate = staticIpToCreate;
+                getVnet.staticIpToSet = staticIpToSet;
+                callback(getVnet.vnetName, getVnet.affinityName, getVnet.staticIpToCreate, getVnet.staticIpToSet);
+              });
+            });
+          } else {
+            callback(getVnet.vnetName, getVnet.affinityName, getVnet.staticIpToCreate, getVnet.staticIpToSet);
+          }
+        });
+      }
+    }
+
+    function checkForDockerPort(cratedVM, dockerPort) {
       var result = false;
-      if (createdVM.Network && createdVM.Network.Endpoints) {
-        createdVM.Network.Endpoints.forEach(function(element, index, array) {
+      if (cratedVM.Network && cratedVM.Network.Endpoints) {
+        cratedVM.Network.Endpoints.forEach(function(element, index, array) {
           if (element.name === 'docker' && element.port === dockerPort) {
             result = true;
           }
         });
       }
+
       return result;
     }
 
@@ -288,5 +266,6 @@ describe('cli', function() {
 
       return true;
     }
+
   });
 });
