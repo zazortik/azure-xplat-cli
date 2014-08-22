@@ -39,7 +39,7 @@ describe('cli', function() {
       communityImageId,
       timeout,
       retry,
-      customVmName = 'xplattestcommvm',
+      customVmName,
       username = 'azureuser',
       password = 'Pa$$word@123';
 
@@ -70,6 +70,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
+        customVmName = suite.isMocked ? 'xplattestcommvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 5000;
         retry = 5;
         done();
