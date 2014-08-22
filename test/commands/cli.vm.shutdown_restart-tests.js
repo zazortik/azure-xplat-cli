@@ -17,9 +17,10 @@ var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
+// A common VM used by multiple tests
 var suite;
-var vmPrefix = 'ClitestVm';
-var testPrefix = 'cli.vm.create_win_rdp-tests';
+var vmPrefix = 'clitestvm';
+var testPrefix = 'cli.vm.shutdown_restart-tests';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -29,107 +30,73 @@ var requiredEnvironment = [{
 describe('cli', function() {
   describe('vm', function() {
     var vmName,
-      vmImgName,
+      location,
       username = 'azureuser',
-      password = 'PassW0rd$',
-      location, retry = 5;
-
-    var vmToUse = {
-      Name: null,
-      Created: false,
-      Delete: false
-    };
+      password = 'Collabera@01',
+      retry = 5;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
-      vmName = suite.isMocked ? 'XplattestVm1' : suite.generateId(vmPrefix, null);
+      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      deleteUsedVM(function() {
+        suite.teardownSuite(done);
+      });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 30000;
+        timeout = suite.isMocked ? 0 : 5000;
         done();
       });
     });
 
     afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete && !suite.isMocked) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              setTimeout(callback, timeout);
-            });
-          }, timeout);
-        } else {
-          callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function() {
-        suite.teardownTest(done);
-      });
+      suite.teardownTest(done);
     });
 
-    //create a vm with windows image
-    describe('Create:', function() {
-      it('Windows Vm', function(done) {
-        getImageName('Windows', function(ImageName) {
-          var cmd = util.format('vm create %s %s %s %s -r --json',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('-l');
-          cmd.push(location);
+    describe('Vm:', function() {
+      it('Shutdown and start', function(done) {
+        createVM(function() {
+          var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            setTimeout(done, timeout);
+            setTimeout(function() {
+              cmd = util.format('vm start %s --json', vmName).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            }, timeout);
           });
         });
       });
-    });
 
-    //create a vm with connect option
-    describe('Create:', function() {
-      it('with Connect', function(done) {
-        var vmConnect = vmName + '-2';
-        var cmd = util.format('vm create -l %s --connect %s %s %s %s --json',
-          'someLoc', vmName, vmImgName, username, password).split(' ');
-        cmd[3] = location;
+      // VM Restart
+      it('Restart', function(done) {
+        cmd = util.format('vm restart  %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          vmToUse.Name = vmConnect;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
           done();
         });
       });
     });
 
-    // Negative Test Case by specifying VM Name Twice
-    describe('Negative test case:', function() {
-      it('Specifying Vm Name Twice', function(done) {
-        var cmd = util.format('vm create %s %s %s %s --json',
-          vmName, vmImgName, username, password).split(' ');
+    function createVM(callback) {
+      getImageName('Linux', function(imagename) {
+        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
         cmd.push('-l');
         cmd.push(location);
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('A VM with dns prefix "' + vmName + '" already exists');
-          vmToUse.Name = vmName;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+          result.exitStatus.should.equal(0);
+          setTimeout(callback, timeout);
         });
       });
-    });
+    }
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
@@ -145,6 +112,20 @@ describe('cli', function() {
         });
         callBack(vmImgName);
       });
+    }
+
+    function deleteUsedVM(callback) {
+      if (suite.isMocked)
+        callback();
+      else {
+        var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
+        setTimeout(function() {
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            return callback();
+          });
+        }, timeout);
+      }
     }
   });
 });

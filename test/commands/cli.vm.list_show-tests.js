@@ -13,47 +13,23 @@
  * limitations under the License.
  */
 var should = require('should');
-var sinon = require('sinon');
 var util = require('util');
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
-
-var isForceMocked = !process.env.NOCK_OFF;
-
-var utils = require('../../lib/util/utils');
+var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
-var vmPrefix = 'clitestvm';
-var timeout = isForceMocked ? 0 : 5000;
-
 var suite;
-var testPrefix = 'cli.vm.deldisk-tests';
-
-var currentRandom = 0;
+var testPrefix = 'cli.vm.list_show-tests';
 
 describe('cli', function() {
   describe('vm', function() {
-    var diskName = 'xplattestdisk';
+    var vmName, retry = 5;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, [], isForceMocked);
-
-      if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function() {
-          return (++currentRandom).toString();
-        });
-
-        utils.POLL_REQUEST_INTERVAL = 0;
-      }
-
+      suite = new CLITest(testPrefix, []);
       suite.setupSuite(done);
     });
 
     after(function(done) {
-      if (suite.isMocked) {
-        crypto.randomBytes.restore();
-      }
       suite.teardownSuite(done);
     });
 
@@ -65,12 +41,32 @@ describe('cli', function() {
       suite.teardownTest(done);
     });
 
-    //delete the disk
-    describe('Delete:', function() {
-      it('Disk', function(done) {
-        suite.execute('vm disk delete -b %s --json', diskName, function(result) {
+    describe('Vm', function() {
+
+      //location list
+      it('Location List', function(done) {
+        var cmd = util.format('vm location list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
+          result.text.should.not.empty;
+          done();
+        });
+      });
+
+      it('List and Show', function(done) {
+        var cmd = util.format('vm list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var vmList = JSON.parse(result.text);
+          vmList.length.should.be.above(0);
+          vmName = vmList[0].VMName;
+          cmd = util.format('vm show %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var vmObj = JSON.parse(result.text);
+            vmObj.VMName.should.equal(vmName);
+            done();
+          });
         });
       });
     });
