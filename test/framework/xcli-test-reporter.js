@@ -21,19 +21,16 @@ var testLogger = require('./test-logger');
 var Base = require('../../node_modules/mocha/lib/reporters/base')
   , cursor = Base.cursor
   , color = Base.color;
-
-/**
- * Expose `List`.
- */
-
-exports = module.exports = List;
+var util = require('util');
+var _ = require('underscore');
+var ms = require('../../node_modules/mocha/lib/ms');
 
 
 /**
- * Initialize a new `List` test reporter.
+ * Initialize a new `Custom Xcli List` test reporter.
  *
  * @param {Runner} runner
- * @api public
+ * 
  */
 
 function List(runner) {
@@ -42,7 +39,9 @@ function List(runner) {
   var self = this
     , stats = this.stats
     , n = 0;
-
+  var boundEpilogue = self.epilogue.bind(self);
+  var boundXcliEpilogue = self.xcliEpilogue.bind(self);
+  
   runner.on('start', function(){
     console.log();
   });
@@ -77,12 +76,68 @@ function List(runner) {
     testLogger.logData('--End--    ' + n + ')  ' + test.fullTitle());
     testLogger.logData();
   });
-
-  runner.on('end', self.epilogue.bind(self));
+  
+  runner.on('end', function() {
+    boundEpilogue();
+    boundXcliEpilogue();
+  });
 }
 
 /**
  * Inherit from `Base.prototype`.
  */
+util.inherits(List, Base);
 
-List.prototype.__proto__ = Base.prototype;
+_.extend(List.prototype, {
+  xList: function(failures) {
+    testLogger.logData();
+    failures.forEach(function(test, i){
+
+      // msg
+      var err = test.err
+        , message = err.message || ''
+        , stack = err.stack || message
+        , index = stack.indexOf(message) + message.length
+        , msg = stack.slice(0, index);
+
+      // uncaught
+      if (err.uncaught) {
+        msg = 'Uncaught ' + msg;
+      }
+
+      // log the info
+      testLogger.logData((i+1) + ') ' + test.fullTitle());
+      testLogger.logData();
+      testLogger.logData(msg);
+      testLogger.logData();
+      testLogger.logData(stack);
+      testLogger.logData();
+    });
+  },
+
+  xcliEpilogue: function() {
+    var stats = this.stats;
+    var tests;
+    var fmt;
+
+    testLogger.logData();
+
+    // passes
+    var numPass = stats.passes || 0;
+    testLogger.logData(numPass + ' passing (' + ms(stats.duration) + ')');
+  
+    // pending
+    if (stats.pending) {
+      testLogger.logData(stats.pending + ' pending');
+    }
+  
+    // failures
+    if (stats.failures) {
+      testLogger.logData(stats.failures + ' failing');
+      this.xList(this.failures);
+      testLogger.logData();
+    }
+  },
+});
+
+exports = module.exports = List;
