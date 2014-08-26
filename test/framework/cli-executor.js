@@ -53,17 +53,14 @@ function execute(cmd, cb) {
       transport.errorOutput = [];
     }
     sandbox.restore();
-    process.nextTick(function() {
-      try {
-        return cb(result);
-      }
-      catch (err) {
-        testLogger.logError(err);
-        process.nextTick(function() {
-          throw err;
-        });
-      }
-    });
+    try {
+      return cb(result);
+    } catch (err) {
+      testLogger.logError(err);
+      process.nextTick(function() {
+        throw err;
+      });
+    }
   });
 
   if (!process.exit.restore) {
