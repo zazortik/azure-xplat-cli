@@ -63,7 +63,7 @@ describe('cli', function () {
     });
     
     describe('share', function () {
-      var shareName = 'storageclitest1';
+      var shareName = 'storageclitest3';
       describe('create', function () {
         it('should create a new share', function (done) {
           suite.execute('storage share create %s --json', shareName, function (result) {
@@ -137,7 +137,7 @@ describe('cli', function () {
           var buf = new Buffer('HelloWord', 'utf8');
           var file = fs.openSync('localfile.txt', 'w');
           fs.writeSync(file, buf, 0, buf.length, 0);
-          suite.execute('storage file upload localfile.txt %s remotefile --json', shareName, function (result) {
+          suite.execute('storage file upload localfile.txt -q %s remotefile --json', shareName, function (result) {
             result.errorText.should.be.empty;
             fs.unlinkSync('localfile.txt');
             done();
@@ -147,7 +147,7 @@ describe('cli', function () {
       
       describe('download', function () {
         it('should download an existing file', function (done) {
-          suite.execute('storage file download %s remotefile localfile.txt --json', shareName, function (result) {
+          suite.execute('storage file download -q %s remotefile localfile2.txt --json', shareName, function (result) {
             result.errorText.should.be.empty;
             done();
           });
@@ -175,11 +175,11 @@ describe('cli', function () {
             listResult.files.some(function (data) {
               data.name.should.match(/file\d/);
             });
-
+            
             listResult.directories.some(function (data) {
               data.name.should.match(/dir\d/);
             });
-
+            
             done();
           });
         });
