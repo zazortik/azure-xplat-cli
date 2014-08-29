@@ -16,10 +16,12 @@
 # limitations under the License.
 # 
 
-node_exec=`which nodejs`
-if ! [ -z "$node_exec" ]
+if [ -n "$(which nodejs)" ]
 then
     azure-nodejs "$@"
-else
+elif [ -n "$(which node)" ]
+then
     azure-node "$@"
+else
+    echo "Cannot execute Node.js by using either \"node\" or \"nodejs\" command. Please install Node.js first."
 fi
