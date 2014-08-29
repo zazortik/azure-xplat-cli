@@ -20,7 +20,7 @@ var should = require('should');
 var adUtils = require('../../../../lib/commands/arm/ad/adUtils._js');
 
 describe('ad-utils', function () {
-  it('should report error when no value is set', function () {
+  it('should report error when either no values or more than one parameter values provided', function () {
     //throw when no parameter value was provided
     (function () {
       adUtils.validateParameters({ upn: '' });
