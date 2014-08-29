@@ -200,6 +200,47 @@ describe('cli', function () {
           done();
         });
       });
+      
+      var destContainer = 'test';
+      it('should start to copy the blob specified by URI asynchronously', function (done) {
+        var sourceUri = 'https://cliportalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/clitest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D';
+        suite.execute('storage blob copy start %s --dest-container %s --json', sourceUri, destContainer, function (result) {
+          var copy = JSON.parse(result.text);
+          copy.copyId.length.should.greaterThan(0);
+          result.errorText.should.be.empty;
+          done();
+        });
+      });
+
+      it('should start to copy the blob specified by container and blob name asynchronously', function (done) {
+        var sourceContainer = 'vhds';
+        var sourceBlob = 'clitest-2014-07-21.vhd';
+        suite.execute('storage blob copy start --source-container %s --source-blob %s --dest-container %s -q --json', sourceContainer, sourceBlob, destContainer, function (result) {
+          var copy = JSON.parse(result.text);
+          copy.copyId.length.should.greaterThan(0);
+          result.errorText.should.be.empty;
+          done();
+        });
+      });
+
+      var copyid;
+      var destBlob = 'clitest-2014-07-21.vhd';
+      it('should show the copy status of the specified blob', function (done) {
+        suite.execute('storage blob copy show --container %s --blob %s --json', destContainer, destBlob, function (result) {
+          var copy = JSON.parse(result.text);
+          copyid = copy.copyId;
+          copy.copyId.length.should.greaterThan(0);
+          result.errorText.should.be.empty;
+          done();
+        });
+      });
+
+      it('should stop the copy of the specified blob', function (done) {
+        suite.execute('storage blob copy stop --container %s --blob %s --copyid %s --json', destContainer, destBlob, copyid, function (result) {
+          result.errorText.should.be.empty;
+          done();
+        });
+      });
     });
   });
 });
