@@ -26,7 +26,10 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' }, //(must be a member of testgroup1)
   { name: 'AZURE_AD_TEST_USER_OBJECT_ID', defaultValue: 'f09fea55-4947-484b-9b25-c67ddd8795ac' },
   { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@aad105.ccsctp.net' }, //(must be a member of testGroup1, but not of testGroup2)
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net'}
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'rbacApp' },
+  { name: 'AZURE_AD_TEST_SP_NAME', defaultValue: '8f2648ae-3a3c-421b-86ce-5ccd2f7478e2' },
+  { name: 'AZURE_AD_TEST_SP_OBJECT_ID', defaultValue: '2e57b745-7b09-4b74-8645-5fc8a5761469' }
 ];
 
 function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
@@ -75,7 +78,7 @@ describe('arm', function () {
           });
         });
       });
-
+      
       it('should parse the error properly for a non existant user', function (done) {
         suite.execute('ad user show --upn %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
           result.text.should.equal('{}\n');
@@ -101,22 +104,47 @@ describe('arm', function () {
             text = result.text;
             seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
             seemsCorrect.should.equal(true);
-            suite.execute('ad group list --objectId %s --json', memberObjectId, function (result) {
+            suite.execute('ad group member list --objectId %s --json', group1ObjectId, function (result) {
               result.exitStatus.should.equal(0);
               text = result.text;
-              seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
+              seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);
               seemsCorrect.should.equal(true);
-              suite.execute('ad group member list --objectId %s --json', group1ObjectId, function (result) {
-                result.exitStatus.should.equal(0);
-                text = result.text;
-                seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);
-                seemsCorrect.should.equal(true);
-                done();
-              });
+              done();
             });
           });
         });
       });
     });
+    
+    describe('ServicePrincipals', function () {
+      it('should work to list and show service principals', function (done) {
+        function verifyOutputIsCorrect(output, displayName, spn) {
+          return (output.indexOf(displayName) !== -1) && (output.indexOf(spn) !== -1);
+        }
+        var displayName = process.env.AZURE_AD_TEST_SP_DISPLAY_NAME;
+        var spn = process.env.AZURE_AD_TEST_SP_NAME;
+        var objectId = process.env.AZURE_AD_TEST_SP_OBJECT_ID;
+
+        suite.execute('ad servicePrincipal list --json', function (result) {
+          result.exitStatus.should.equal(0);
+          var text = result.text;
+          var seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
+          seemsCorrect.should.equal(true);
+          suite.execute('ad servicePrincipal show --spn %s --json', spn, function (result) {
+            result.exitStatus.should.equal(0);
+            text = result.text;
+            seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
+            seemsCorrect.should.equal(true);
+            suite.execute('ad servicePrincipal show --objectId %s --json', objectId, function (result) {
+              result.exitStatus.should.equal(0);
+              text = result.text;
+              seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);;
+              seemsCorrect.should.equal(true);
+              done();
+            });
+          });
+        });
+      });
+    })
   });
 });

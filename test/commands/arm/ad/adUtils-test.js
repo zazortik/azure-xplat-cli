@@ -17,47 +17,25 @@
 
 var should = require('should');
 
-var CLITest = require('../../../framework/arm-cli-test');
-//var adUtils = require('');
-var testprefix = 'arm-adUtils-tests';
+var adUtils = require('../../../../lib/commands/arm/ad/adUtils._js');
 
-describe('arm', function () {
-  describe('adUtils', function () {
-    var suite;
-    before(function (done) {
-      suite = new CLITest(testprefix);
-      suite.setupSuite(done);
-    });
+describe('ad-utils', function () {
+  it('should report error when no value is set', function () {
+    //throw when no parameter value was provided
+    (function () {
+      adUtils.validateParameters({ upn: '' });
+    }).should.throw();
     
-    after(function (done) {
-      suite.teardownSuite(done);
-    });
-    
-    beforeEach(function (done) {
-      suite.setupTest(done);
-    });
-    
-    afterEach(function (done) {
-      suite.teardownTest(done);
-    });
-    
+    //throw when more than one parameter values were provided
+    (function () {
+      adUtils.validateParameters({ upn: 'test1@foo.com', spn: 'test2@bar.com' });
+    }).should.throw();
 
-    it('should work to list and show users', function (done) {
-      var upn = getTestUPN();
-      var upn2 = getTestUPN2();
-      suite.execute('ad user list --json', function (result) {
-        result.exitStatus.should.equal(0);
-        var text = result.text;
-        var seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) !== -1);
-        seemsCorrect.should.equal(true);
-        suite.execute('ad user show --upn %s --json', upn, function (result) {
-          result.exitStatus.should.equal(0);
-          text = result.text;
-          seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) === -1);
-          seemsCorrect.should.equal(true);
-          done();
-        });
-      });
-    });
+    //No exceptions when there is only one parameter value provided
+    adUtils.validateParameters({ upn: 'test1@foo.com', spn: '' });
+
+    //No exceptions when there is no parameter at all.
+    adUtils.validateParameters({});
+    
   });
 });
