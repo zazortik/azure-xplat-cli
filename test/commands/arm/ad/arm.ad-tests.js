@@ -16,22 +16,23 @@
 'use strict';
 
 var should = require('should');
-var util = require('util');
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
 
 var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
+  { name: 'AZURE_AD_TEST_GROUP_OBJECT_ID', defaultValue: '08b96007-f08c-4344-8fe0-3b59dd6a8464' },
   { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' }, //(must be a member of testgroup1)
-  { name: 'AZURE_AD_TEST_USER_NAME', defaultValue: 'testUser1' },
+  { name: 'AZURE_AD_TEST_USER_OBJECT_ID', defaultValue: 'f09fea55-4947-484b-9b25-c67ddd8795ac' },
   { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@aad105.ccsctp.net' }, //(must be a member of testGroup1, but not of testGroup2)
   { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net'}
 ];
 
 function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
+function getTestGroupObjectId() { return process.env.AZURE_AD_TEST_GROUP_OBJECT_ID; }
 function getTestSubGroupName() { return process.env.AZURE_AD_TEST_SUBGROUP_NAME; }
-function getTestUserName() { return process.env.AZURE_AD_TEST_USER_NAME; }
+function getTestUserObjectId() { return process.env.AZURE_AD_TEST_USER_OBJECT_ID; }
 function getTestUPN() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME; }
 function getTestUPN2() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2; }
 
@@ -65,7 +66,7 @@ describe('arm', function () {
           var text = result.text;
           var seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) !== -1);
           seemsCorrect.should.equal(true);
-          suite.execute('ad user show %s --json', upn, function (result) {
+          suite.execute('ad user show --upn %s --json', upn, function (result) {
             result.exitStatus.should.equal(0);
             text = result.text;
             seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) === -1);
@@ -76,9 +77,8 @@ describe('arm', function () {
       });
 
       it('should parse the error properly for a non existant user', function (done) {
-        suite.execute('ad user show -n %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('Resource \'nonexisitinguser@mywebforum.com\' does not exist or one of its queried reference-property objects are not present.');
+        suite.execute('ad user show --upn %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
+          result.text.should.equal('{}\n');
           done();
         });
       });
@@ -87,24 +87,26 @@ describe('arm', function () {
     describe('Groups', function () {
       it('should work to list and show groups', function (done) {
         var group1 = getTestGroupName();
+        var group1ObjectId = getTestGroupObjectId();
         var group2 = getTestSubGroupName();
         var member1 = getTestUPN();
+        var memberObjectId = getTestUserObjectId();
         suite.execute('ad group list --json', function (result) {
           result.exitStatus.should.equal(0);
           var text = result.text;
           var seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) !== -1);
           seemsCorrect.should.equal(true);
-          suite.execute('ad group show %s --json', group1, function (result) {
+          suite.execute('ad group show --search %s --json', group1, function (result) {
             result.exitStatus.should.equal(0);
             text = result.text;
             seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
             seemsCorrect.should.equal(true);
-            suite.execute('ad group list -p %s --json', member1, function (result) {
+            suite.execute('ad group list --objectId %s --json', memberObjectId, function (result) {
               result.exitStatus.should.equal(0);
               text = result.text;
               seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
               seemsCorrect.should.equal(true);
-              suite.execute('ad group member list %s --json', group1, function (result) {
+              suite.execute('ad group member list --objectId %s --json', group1ObjectId, function (result) {
                 result.exitStatus.should.equal(0);
                 text = result.text;
                 seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);

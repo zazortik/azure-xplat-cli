@@ -145,9 +145,9 @@ describe('arm', function () {
       it('should work', function (done) {
         var principalId = getTestPrincipalId();
         var principal = getTestPrincipalName();
-        suite.execute('role assignment create -p %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
+        suite.execute('role assignment create --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list -p %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
+          suite.execute('role assignment list --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '$';
@@ -155,7 +155,7 @@ describe('arm', function () {
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
+            suite.execute('role assignment delete --upn %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
@@ -169,9 +169,9 @@ describe('arm', function () {
         var principalId = getTestPrincipalId();
         var principal = getTestPrincipalName();
         var resourceGroup = 'rg1';
-        suite.execute('role assignment create -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
+        suite.execute('role assignment create --upn %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list -p %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
+          suite.execute('role assignment list --upn %s -o %s -g %s --json', principal, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
@@ -179,7 +179,7 @@ describe('arm', function () {
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
+            suite.execute('role assignment delete --upn %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, resourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
@@ -190,13 +190,12 @@ describe('arm', function () {
 
     describe('create a role assignment using an ad group', function () {
       it('should work', function (done) {
-        var adGroup = getTestGroupName();
         var resourceGroup = 'rg1';
         var adGroupObjectId = getTestGroupObjectId();
 
-        suite.execute('role assignment create -p %s -o %s -g %s --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (result) {
+        suite.execute('role assignment create --objectId %s -o %s -g %s --json', adGroupObjectId, TEST_ROLE_NAME, resourceGroup, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list -p %s -o %s -g %s --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
+          suite.execute('role assignment list --objectId %s -o %s -g %s --json', adGroupObjectId, TEST_ROLE_NAME, resourceGroup, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
@@ -205,7 +204,7 @@ describe('arm', function () {
             }).should.be.true;
             
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -g %s -q --json', adGroup, TEST_ROLE_NAME, resourceGroup, function (result) {
+            suite.execute('role assignment delete --objectId %s -o %s -g %s -q --json', adGroupObjectId, TEST_ROLE_NAME, resourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
@@ -218,10 +217,10 @@ describe('arm', function () {
       it('as a Reader using separate switches should work', function (done) {
         var principal = getTestPrincipalName();
         var principalId = getTestPrincipalId();
-        suite.execute('role assignment create -p %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
+        suite.execute('role assignment create --upn %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
                       'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list -p %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
+          suite.execute('role assignment list --upn %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
                         'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
@@ -232,7 +231,7 @@ describe('arm', function () {
             }).should.be.true;
 
             //clean up
-            suite.execute('role assignment delete -p %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
+            suite.execute('role assignment delete --upn %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
                           testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
               result.exitStatus.should.equal(0);
               done();
