@@ -3,7 +3,7 @@ Do Not Translate or Localize
 
 This file provides information regarding components that are being relicensed to you by Microsoft under Microsoft's software licensing terms. Microsoft reserves all rights not expressly granted herein.
 
-Microsoft is offering you a license to use the following components, to the extent they are included within the Windows Azure Cross-Platform Command-Line Interface (the "Microsoft Program"), subject to the terms of your license to use the Microsoft Product. Insofar as a component is dual licensed under the GPL and a license that permits relicensing under proprietary terms, Microsoft neither took the code under the GPL nor distributes it thereunder but under the terms of the license that permits relicensing under proprietary terms, as set out below. All notices and licenses set forth below are for informational purposes only.
+Microsoft is offering you a license to use the following components, to the extent they are included within the Microsoft Azure Cross-Platform Command-Line Interface (the "Microsoft Program"), subject to the terms of your license to use the Microsoft Product. Insofar as a component is dual licensed under the GPL and a license that permits relicensing under proprietary terms, Microsoft neither took the code under the GPL nor distributes it thereunder but under the terms of the license that permits relicensing under proprietary terms, as set out below. All notices and licenses set forth below are for informational purposes only.
 
 1.	xml2js version 0.2.7 (https://github.com/Leonidas-from-XIV/node-xml2js)
 2.	sax version 0.5.2 (http://github.com/isaacs/sax-js)
