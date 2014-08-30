@@ -1,3 +1,2 @@
 commands/cli.account-tests.js
-commands/cli.account.storage-tests.js
 commands/cli.sql-tests.js
