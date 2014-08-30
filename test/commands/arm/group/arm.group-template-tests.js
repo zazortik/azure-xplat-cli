@@ -323,7 +323,7 @@ describe('arm', function () {
 
             suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
               result.exitStatus.should.equal(1);
-              result.errorText.should.include('Unable to download deployment template. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
+              result.errorText.should.include('Unable to download deployment content. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
               cleanup(done);
             });
           });
