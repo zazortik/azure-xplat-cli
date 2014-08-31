@@ -10,8 +10,8 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.5",
-  "description": "Windows Azure Cross Platform Command Line tool",
+  "version": "0.8.7",
+  "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
     "cli"
@@ -37,10 +37,11 @@
   "dependencies": {
     "adal-node": "0.1.6",
     "async": "0.2.7",
-    "azure": "0.9.11",
-    "azure-common": "0.9.5",
-    "azure-gallery": "2.0.0-pre.7",
-    "azure-mgmt-resource": "2.0.0-pre.8",
+    "azure": "0.9.13",
+    "azure-common": "0.9.6",
+    "azure-gallery": "2.0.0-pre.8",
+    "azure-mgmt-resource": "2.0.0-pre.9",
+    "azure-storage": "0.3.2",
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
@@ -62,7 +63,8 @@
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
     "readable-stream": "~1.0.0",
-    "openssl-wrapper": "0.2.1"
+    "openssl-wrapper": "0.2.1",
+    "caller-id": "0.1.x"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -82,7 +84,7 @@
     "url": "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "unit-arm": "node scripts/unit.js testlistarm.txt",

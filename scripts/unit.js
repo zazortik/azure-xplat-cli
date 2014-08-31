@@ -16,7 +16,7 @@
 
 var fs = require('fs');
 var profile = require('../lib/util/profile');
-
+var testLogger = require('../test/framework/test-logger');
 var args = (process.ARGV || process.argv);
 
 var coverageOption = Array.prototype.indexOf.call(args, '-coverage');
@@ -25,7 +25,7 @@ if (coverageOption !== -1) {
   args.splice(coverageOption, 1);
 }
 
-var reporter = 'list';
+var reporter = '../../../test/framework/xcli-test-reporter';
 var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
 if (xunitOption !== -1) {
   reporter = 'xunit';

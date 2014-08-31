@@ -10,8 +10,8 @@ exports.getMockedProfile = function () {
     name: 'adminSubscription777',
     username: 'user@domain.example',
     tenantId: '7d669939-8bb1-4bca-ba68-e1b5f52fea41',
-    registeredProviders: ['sqlserver', 'visualstudio.account', 'website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'successbricks.cleardb', 'microsoft.insights', 'microsoft.insights'],
+    registeredProviders: ['sqlserver', 'website', 'visualstudio.account'],
+    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
     isDefault: true
   }, newProfile.environments['rdfenext']));
 
@@ -27,1216 +27,1216 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource208' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource256' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31935',
-  'x-ms-request-id': '3f08e4fe-b564-4826-81bb-4ba4f4cc4441',
-  'x-ms-correlation-request-id': '3f08e4fe-b564-4826-81bb-4ba4f4cc4441',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162055Z:3f08e4fe-b564-4826-81bb-4ba4f4cc4441',
+  'x-ms-ratelimit-remaining-subscription-reads': '31997',
+  'x-ms-request-id': 'e2099fa7-6263-4b8c-8256-bc4939e93132',
+  'x-ms-correlation-request-id': 'e2099fa7-6263-4b8c-8256-bc4939e93132',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022802Z:e2099fa7-6263-4b8c-8256-bc4939e93132',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:20:54 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:02 GMT',
   'content-length': '108' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208\",\"name\":\"xTestResource208\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1174',
-  'x-ms-request-id': '7e201811-52e6-41b5-8725-89926c5bedf6',
-  'x-ms-correlation-request-id': '7e201811-52e6-41b5-8725-89926c5bedf6',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162054Z:7e201811-52e6-41b5-8725-89926c5bedf6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': 'd932d482-c7d4-4ee4-a866-919f34641550',
+  'x-ms-correlation-request-id': 'd932d482-c7d4-4ee4-a866-919f34641550',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022802Z:d932d482-c7d4-4ee4-a866-919f34641550',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:20:54 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:02 GMT',
   'content-length': '195' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208\",\"name\":\"xTestResource208\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31934',
-  'x-ms-request-id': '1d6c99a3-c042-4f29-90d5-a121fd7a5c80',
-  'x-ms-correlation-request-id': '1d6c99a3-c042-4f29-90d5-a121fd7a5c80',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162055Z:1d6c99a3-c042-4f29-90d5-a121fd7a5c80',
+  'x-ms-ratelimit-remaining-subscription-reads': '31996',
+  'x-ms-request-id': 'd9a7ab72-790c-4655-a178-4f5166b7418a',
+  'x-ms-correlation-request-id': 'd9a7ab72-790c-4655-a178-4f5166b7418a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022803Z:d9a7ab72-790c-4655-a178-4f5166b7418a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:20:55 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:02 GMT',
   'content-length': '195' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208/providers/Microsoft.Web//sites/xTestGrpRes6464?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256/providers/Microsoft.Web//sites/xTestGrpRes9333?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '534a1bfb-bc9a-4da6-a67d-60cea5a71d3c',
-  'x-ms-correlation-request-id': '534a1bfb-bc9a-4da6-a67d-60cea5a71d3c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162055Z:534a1bfb-bc9a-4da6-a67d-60cea5a71d3c',
+  'x-ms-request-id': '78fd2452-8d19-4b48-ba42-19e2e0fac099',
+  'x-ms-correlation-request-id': '78fd2452-8d19-4b48-ba42-19e2e0fac099',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022803Z:78fd2452-8d19-4b48-ba42-19e2e0fac099',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:20:54 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:02 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208/providers/Microsoft.Web//sites/xTestGrpRes6464?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208/providers/Microsoft.Web/sites/xTestGrpRes6464\",\"name\":\"xTestGrpRes6464\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6464\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6464.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource208-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource208-SouthCentralUSwebspace/sites/xTestGrpRes6464\",\"repositorySiteName\":\"xTestGrpRes6464\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6464.antares-int.windows-int.net\",\"xtestgrpres6464.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6464.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6464.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:21:02.747\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6464\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256/providers/Microsoft.Web//sites/xTestGrpRes9333?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256/providers/Microsoft.Web/sites/xTestGrpRes9333\",\"name\":\"xTestGrpRes9333\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9333\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9333.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource256-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource256-SouthCentralUSwebspace/sites/xTestGrpRes9333\",\"repositorySiteName\":\"xTestGrpRes9333\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9333.antares-int.windows-int.net\",\"xtestgrpres9333.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9333.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9333.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:28:13.58\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9333\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1742',
+  'content-length': '1741',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0dfa02bf-5e72-417c-953f-a80f7bf6eac2',
+  'x-ms-request-id': '3517955d-b3ee-4756-a15e-8504d60fd1ce',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1176',
-  'x-ms-correlation-request-id': 'be4bcba8-5325-4d63-a5e1-cde4c395a42c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162105Z:be4bcba8-5325-4d63-a5e1-cde4c395a42c',
-  date: 'Wed, 20 Aug 2014 16:21:04 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': 'c7b76b5a-c6ad-45a7-9df8-8fce98d0101a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022817Z:c7b76b5a-c6ad-45a7-9df8-8fce98d0101a',
+  date: 'Sun, 31 Aug 2014 02:28:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208\",\"name\":\"xTestResource208\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31933',
-  'x-ms-request-id': 'a7f276b0-2dbb-4221-94a7-a8e643c14795',
-  'x-ms-correlation-request-id': 'a7f276b0-2dbb-4221-94a7-a8e643c14795',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162105Z:a7f276b0-2dbb-4221-94a7-a8e643c14795',
+  'x-ms-ratelimit-remaining-subscription-reads': '31997',
+  'x-ms-request-id': 'fba15284-8e22-4112-a3fe-a93d8ad4052d',
+  'x-ms-correlation-request-id': 'fba15284-8e22-4112-a3fe-a93d8ad4052d',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022817Z:fba15284-8e22-4112-a3fe-a93d8ad4052d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:04 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:17 GMT',
   'content-length': '195' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208/resources?&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource208/providers/Microsoft.Web/sites/xTestGrpRes6464\",\"name\":\"xTestGrpRes6464\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256/resources?&api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource256/providers/Microsoft.Web/sites/xTestGrpRes9333\",\"name\":\"xTestGrpRes9333\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31942',
-  'x-ms-request-id': 'cb1bb654-8e2b-436d-9e6a-29d4f955b8b3',
-  'x-ms-correlation-request-id': 'cb1bb654-8e2b-436d-9e6a-29d4f955b8b3',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162105Z:cb1bb654-8e2b-436d-9e6a-29d4f955b8b3',
+  'x-ms-ratelimit-remaining-subscription-reads': '31995',
+  'x-ms-request-id': '84da7538-6066-4cae-bafd-6afc1a3e0cb9',
+  'x-ms-correlation-request-id': '84da7538-6066-4cae-bafd-6afc1a3e0cb9',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022817Z:84da7538-6066-4cae-bafd-6afc1a3e0cb9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:04 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:17 GMT',
   'content-length': '242' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
   .reply(200, "{\"value\":[{\"actions\":[\"*\"],\"notActions\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31932',
-  'x-ms-request-id': 'dba23b20-2847-4eea-b228-bd13130277ca',
-  'x-ms-correlation-request-id': 'dba23b20-2847-4eea-b228-bd13130277ca',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162106Z:dba23b20-2847-4eea-b228-bd13130277ca',
+  'x-ms-ratelimit-remaining-subscription-reads': '31996',
+  'x-ms-request-id': '91ca2e46-00cf-4a33-8a80-87de4d896c33',
+  'x-ms-correlation-request-id': '91ca2e46-00cf-4a33-8a80-87de4d896c33',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022817Z:91ca2e46-00cf-4a33-8a80-87de4d896c33',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:06 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:17 GMT',
   'content-length': '45' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource208?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource256?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjA4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjU2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1173',
-  'x-ms-request-id': '8bd6134b-337a-4134-b802-6f1d5f226b49',
-  'x-ms-correlation-request-id': '8bd6134b-337a-4134-b802-6f1d5f226b49',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162105Z:8bd6134b-337a-4134-b802-6f1d5f226b49',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': 'cf907ada-a81f-4ff7-a01f-dbac52a8b3c4',
+  'x-ms-correlation-request-id': 'cf907ada-a81f-4ff7-a01f-dbac52a8b3c4',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022818Z:cf907ada-a81f-4ff7-a01f-dbac52a8b3c4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:05 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:18 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjA4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjU2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjA4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMjU2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0=?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31941',
-  'x-ms-request-id': '9e11e421-8eaf-46b5-80b9-1dc7b14cc12c',
-  'x-ms-correlation-request-id': '9e11e421-8eaf-46b5-80b9-1dc7b14cc12c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162121Z:9e11e421-8eaf-46b5-80b9-1dc7b14cc12c',
+  'x-ms-ratelimit-remaining-subscription-reads': '31995',
+  'x-ms-request-id': '3b90964d-2a50-4043-8d56-2f7997f63cf3',
+  'x-ms-correlation-request-id': '3b90964d-2a50-4043-8d56-2f7997f63cf3',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022833Z:3b90964d-2a50-4043-8d56-2f7997f63cf3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:20 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:33 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource3662' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource60' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31931',
-  'x-ms-request-id': 'c4147ee1-0600-4f77-8751-f5f7231666e2',
-  'x-ms-correlation-request-id': 'c4147ee1-0600-4f77-8751-f5f7231666e2',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162122Z:c4147ee1-0600-4f77-8751-f5f7231666e2',
+  'x-ms-ratelimit-remaining-subscription-reads': '31994',
+  'x-ms-request-id': 'a9e8c68d-6887-4045-abed-754afc2c2547',
+  'x-ms-correlation-request-id': 'a9e8c68d-6887-4045-abed-754afc2c2547',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022833Z:a9e8c68d-6887-4045-abed-754afc2c2547',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:21 GMT',
-  'content-length': '109' });
+  date: 'Sun, 31 Aug 2014 02:28:33 GMT',
+  'content-length': '107' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource3662\",\"name\":\"xTestResource3662\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource60\",\"name\":\"xTestResource60\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1172',
-  'x-ms-request-id': '458100e9-cabd-4f87-8c38-05ddebca73fa',
-  'x-ms-correlation-request-id': '458100e9-cabd-4f87-8c38-05ddebca73fa',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162121Z:458100e9-cabd-4f87-8c38-05ddebca73fa',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': 'e86e3e3f-74d5-4e1a-96f9-6dc1b686db2c',
+  'x-ms-correlation-request-id': 'e86e3e3f-74d5-4e1a-96f9-6dc1b686db2c',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022834Z:e86e3e3f-74d5-4e1a-96f9-6dc1b686db2c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:21 GMT',
-  'content-length': '205' });
+  date: 'Sun, 31 Aug 2014 02:28:33 GMT',
+  'content-length': '201' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662/providers/Microsoft.Web//sites/xTestGrpRes7483?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60/providers/Microsoft.Web//sites/xTestGrpRes3259?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '60c14ade-6dc1-4df1-b18d-00021ed2cb24',
-  'x-ms-correlation-request-id': '60c14ade-6dc1-4df1-b18d-00021ed2cb24',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162122Z:60c14ade-6dc1-4df1-b18d-00021ed2cb24',
+  'x-ms-request-id': '31da68d8-8b7d-4aa1-b15f-e3eb811150f9',
+  'x-ms-correlation-request-id': '31da68d8-8b7d-4aa1-b15f-e3eb811150f9',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022834Z:31da68d8-8b7d-4aa1-b15f-e3eb811150f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:21 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:33 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662/providers/Microsoft.Web//sites/xTestGrpRes7483?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource3662/providers/Microsoft.Web/sites/xTestGrpRes7483\",\"name\":\"xTestGrpRes7483\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes7483\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres7483.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource3662-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource3662-SouthCentralUSwebspace/sites/xTestGrpRes7483\",\"repositorySiteName\":\"xTestGrpRes7483\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres7483.antares-int.windows-int.net\",\"xtestgrpres7483.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres7483.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres7483.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:21:27.19\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes7483\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60/providers/Microsoft.Web//sites/xTestGrpRes3259?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource60/providers/Microsoft.Web/sites/xTestGrpRes3259\",\"name\":\"xTestGrpRes3259\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes3259\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres3259.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource60-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource60-SouthCentralUSwebspace/sites/xTestGrpRes3259\",\"repositorySiteName\":\"xTestGrpRes3259\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres3259.antares-int.windows-int.net\",\"xtestgrpres3259.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres3259.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres3259.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:28:46.58\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes3259\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1744',
+  'content-length': '1738',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '387406eb-b696-432e-af76-57e8b5ec83a9',
+  'x-ms-request-id': '23a29b07-cb7f-4f20-b322-4d86b52164e7',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1171',
-  'x-ms-correlation-request-id': '5d03cc48-f6b6-427d-97aa-7bdecd736c57',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162129Z:5d03cc48-f6b6-427d-97aa-7bdecd736c57',
-  date: 'Wed, 20 Aug 2014 16:21:29 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-correlation-request-id': '4d6d7dd2-e41b-452e-94b5-3359aba0ba0d',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022849Z:4d6d7dd2-e41b-452e-94b5-3359aba0ba0d',
+  date: 'Sun, 31 Aug 2014 02:28:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource3662\",\"name\":\"xTestResource3662\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource60\",\"name\":\"xTestResource60\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31940',
-  'x-ms-request-id': '13f97ede-d78d-4cdc-853a-53352c9999cc',
-  'x-ms-correlation-request-id': '13f97ede-d78d-4cdc-853a-53352c9999cc',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162129Z:13f97ede-d78d-4cdc-853a-53352c9999cc',
+  'x-ms-ratelimit-remaining-subscription-reads': '31992',
+  'x-ms-request-id': 'a227dfb8-4d8d-40f7-b22f-a09c534d0758',
+  'x-ms-correlation-request-id': 'a227dfb8-4d8d-40f7-b22f-a09c534d0758',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022850Z:a227dfb8-4d8d-40f7-b22f-a09c534d0758',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:29 GMT',
-  'content-length': '205' });
+  date: 'Sun, 31 Aug 2014 02:28:50 GMT',
+  'content-length': '201' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource3662/resources?&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource3662/providers/Microsoft.Web/sites/xTestGrpRes7483\",\"name\":\"xTestGrpRes7483\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource60/resources?&api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource60/providers/Microsoft.Web/sites/xTestGrpRes3259\",\"name\":\"xTestGrpRes3259\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31929',
-  'x-ms-request-id': 'dc45dc47-2eab-4a3b-8b49-84b90cdb0ffc',
-  'x-ms-correlation-request-id': 'dc45dc47-2eab-4a3b-8b49-84b90cdb0ffc',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162130Z:dc45dc47-2eab-4a3b-8b49-84b90cdb0ffc',
+  'x-ms-ratelimit-remaining-subscription-reads': '31994',
+  'x-ms-request-id': 'c29fef66-7306-47d3-86de-aa40f1ca3ed9',
+  'x-ms-correlation-request-id': 'c29fef66-7306-47d3-86de-aa40f1ca3ed9',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022850Z:c29fef66-7306-47d3-86de-aa40f1ca3ed9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:30 GMT',
-  'content-length': '243' });
+  date: 'Sun, 31 Aug 2014 02:28:49 GMT',
+  'content-length': '241' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
   .reply(200, "{\"value\":[{\"actions\":[\"*\"],\"notActions\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31939',
-  'x-ms-request-id': '24debb5c-c4b1-4cbe-982f-b998880adbbb',
-  'x-ms-correlation-request-id': '24debb5c-c4b1-4cbe-982f-b998880adbbb',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162130Z:24debb5c-c4b1-4cbe-982f-b998880adbbb',
+  'x-ms-ratelimit-remaining-subscription-reads': '31991',
+  'x-ms-request-id': '88bfe016-e1ad-4014-b33f-c7734ac3b7af',
+  'x-ms-correlation-request-id': '88bfe016-e1ad-4014-b33f-c7734ac3b7af',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022850Z:88bfe016-e1ad-4014-b33f-c7734ac3b7af',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:29 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:50 GMT',
   'content-length': '45' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource3662?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource60?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMzY2Mi1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0=?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1175',
-  'x-ms-request-id': '2b6f78ed-04db-4f57-b16f-4e8248db449c',
-  'x-ms-correlation-request-id': '2b6f78ed-04db-4f57-b16f-4e8248db449c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162131Z:2b6f78ed-04db-4f57-b16f-4e8248db449c',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-request-id': '5c03ff77-b2f8-4476-8250-0cdabd9be8e0',
+  'x-ms-correlation-request-id': '5c03ff77-b2f8-4476-8250-0cdabd9be8e0',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022850Z:5c03ff77-b2f8-4476-8250-0cdabd9be8e0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:30 GMT',
+  date: 'Sun, 31 Aug 2014 02:28:50 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMzY2Mi1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0=?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMzY2Mi1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjAtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0=?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31938',
-  'x-ms-request-id': '55ef4991-01eb-46ca-819d-a7930411524a',
-  'x-ms-correlation-request-id': '55ef4991-01eb-46ca-819d-a7930411524a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162145Z:55ef4991-01eb-46ca-819d-a7930411524a',
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-request-id': '2cab8081-3acd-439c-8f17-ca4e21733af2',
+  'x-ms-correlation-request-id': '2cab8081-3acd-439c-8f17-ca4e21733af2',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022906Z:2cab8081-3acd-439c-8f17-ca4e21733af2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:44 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:06 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource1935' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource8474' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31928',
-  'x-ms-request-id': '8e4d0f69-a0b2-4362-bf09-cbd41305a33e',
-  'x-ms-correlation-request-id': '8e4d0f69-a0b2-4362-bf09-cbd41305a33e',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162147Z:8e4d0f69-a0b2-4362-bf09-cbd41305a33e',
+  'x-ms-ratelimit-remaining-subscription-reads': '31993',
+  'x-ms-request-id': 'fbcaac1a-8424-4b17-b909-f1f5959c932b',
+  'x-ms-correlation-request-id': 'fbcaac1a-8424-4b17-b909-f1f5959c932b',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022906Z:fbcaac1a-8424-4b17-b909-f1f5959c932b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:47 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:06 GMT',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935\",\"name\":\"xTestResource1935\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474\",\"name\":\"xTestResource8474\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1170',
-  'x-ms-request-id': '2cba95de-6211-4694-8e83-506ab6278366',
-  'x-ms-correlation-request-id': '2cba95de-6211-4694-8e83-506ab6278366',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162146Z:2cba95de-6211-4694-8e83-506ab6278366',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-request-id': '86679cd4-e08f-4f64-98df-41038cf64015',
+  'x-ms-correlation-request-id': '86679cd4-e08f-4f64-98df-41038cf64015',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022906Z:86679cd4-e08f-4f64-98df-41038cf64015',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:46 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:06 GMT',
   'content-length': '205' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935\",\"name\":\"xTestResource1935\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474\",\"name\":\"xTestResource8474\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31927',
-  'x-ms-request-id': '6fab0524-9d84-4107-b4aa-5e5af5c4ddfd',
-  'x-ms-correlation-request-id': '6fab0524-9d84-4107-b4aa-5e5af5c4ddfd',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162147Z:6fab0524-9d84-4107-b4aa-5e5af5c4ddfd',
+  'x-ms-ratelimit-remaining-subscription-reads': '31992',
+  'x-ms-request-id': 'd67a4281-c4e7-48ec-9135-4c1a4b9d914c',
+  'x-ms-correlation-request-id': 'd67a4281-c4e7-48ec-9135-4c1a4b9d914c',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022907Z:d67a4281-c4e7-48ec-9135-4c1a4b9d914c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:47 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:06 GMT',
   'content-length': '205' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935/providers/Microsoft.Web//sites/xTestGrpRes9498?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474/providers/Microsoft.Web//sites/xTestGrpRes9629?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7bcdf107-2ddf-4f33-9e3c-555b5192ad90',
-  'x-ms-correlation-request-id': '7bcdf107-2ddf-4f33-9e3c-555b5192ad90',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162147Z:7bcdf107-2ddf-4f33-9e3c-555b5192ad90',
+  'x-ms-request-id': '90918297-e5f6-4114-ac7b-68c4c73f79a2',
+  'x-ms-correlation-request-id': '90918297-e5f6-4114-ac7b-68c4c73f79a2',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022907Z:90918297-e5f6-4114-ac7b-68c4c73f79a2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:46 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:07 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935/providers/Microsoft.Web//sites/xTestGrpRes9498?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935/providers/Microsoft.Web/sites/xTestGrpRes9498\",\"name\":\"xTestGrpRes9498\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9498\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9498.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource1935-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource1935-SouthCentralUSwebspace/sites/xTestGrpRes9498\",\"repositorySiteName\":\"xTestGrpRes9498\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9498.antares-int.windows-int.net\",\"xtestgrpres9498.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9498.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9498.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:21:52.07\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9498\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474/providers/Microsoft.Web//sites/xTestGrpRes9629?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474/providers/Microsoft.Web/sites/xTestGrpRes9629\",\"name\":\"xTestGrpRes9629\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9629\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9629.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource8474-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource8474-SouthCentralUSwebspace/sites/xTestGrpRes9629\",\"repositorySiteName\":\"xTestGrpRes9629\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9629.antares-int.windows-int.net\",\"xtestgrpres9629.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9629.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9629.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:29:09.623\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9629\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1744',
+  'content-length': '1745',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '97251c6f-7859-4e04-8220-185fa60c3499',
+  'x-ms-request-id': '2a263981-e7c5-4e17-af8c-04c8a7cc3006',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1169',
-  'x-ms-correlation-request-id': '248f9baf-4f87-491c-84a7-f546137ff8f4',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162154Z:248f9baf-4f87-491c-84a7-f546137ff8f4',
-  date: 'Wed, 20 Aug 2014 16:21:54 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1192',
+  'x-ms-correlation-request-id': '00565602-f302-4715-bcb0-50870684a12a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022911Z:00565602-f302-4715-bcb0-50870684a12a',
+  date: 'Sun, 31 Aug 2014 02:29:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935/providers/Microsoft.Web//sites/xTestGrpRes9498?api-version=2014-04-01')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935/providers/Microsoft.Web/sites/xTestGrpRes9498\",\"name\":\"xTestGrpRes9498\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9498\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9498.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource1935-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource1935-SouthCentralUSwebspace/sites/xTestGrpRes9498\",\"repositorySiteName\":\"xTestGrpRes9498\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9498.antares-int.windows-int.net\",\"xtestgrpres9498.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9498.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9498.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:21:52.07\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9498\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474/providers/Microsoft.Web//sites/xTestGrpRes9629?api-version=2014-04-01')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474/providers/Microsoft.Web/sites/xTestGrpRes9629\",\"name\":\"xTestGrpRes9629\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9629\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9629.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource8474-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource8474-SouthCentralUSwebspace/sites/xTestGrpRes9629\",\"repositorySiteName\":\"xTestGrpRes9629\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9629.antares-int.windows-int.net\",\"xtestgrpres9629.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9629.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9629.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:29:09.623\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9629\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1744',
+  'content-length': '1745',
   'content-type': 'application/json',
   expires: '-1',
-  etag: '"1CFBC92D9B37E60"',
+  etag: '"1CFC4C3584E5870"',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f48489c8-42f4-46c4-92ed-6fbe344359f0',
+  'x-ms-request-id': '3a903a70-0276-4ddc-8d1e-4d293bcf3b02',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '31936',
-  'x-ms-correlation-request-id': '48390dfc-0e09-49c9-84b7-05a8a29e90af',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162154Z:48390dfc-0e09-49c9-84b7-05a8a29e90af',
-  date: 'Wed, 20 Aug 2014 16:21:54 GMT' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31988',
+  'x-ms-correlation-request-id': 'b855114b-8842-4aa3-8d39-461fa038df90',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022912Z:b855114b-8842-4aa3-8d39-461fa038df90',
+  date: 'Sun, 31 Aug 2014 02:29:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935/providers/Microsoft.Web//sites/xTestGrpRes9498?api-version=2014-04-01')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474/providers/Microsoft.Web//sites/xTestGrpRes9629?api-version=2014-04-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  etag: '"1CFBC92D9B37E60"',
+  etag: '"1CFC4C3584E5870"',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a465643a-c4bd-411b-8a6c-ac2fb5c5a277',
+  'x-ms-request-id': '2bead04f-0412-4082-8fd2-399e7a9fe8ae',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1174',
-  'x-ms-correlation-request-id': '2ef7c5c8-b894-423d-9acf-38ece4a94eb5',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162157Z:2ef7c5c8-b894-423d-9acf-38ece4a94eb5',
-  date: 'Wed, 20 Aug 2014 16:21:57 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1191',
+  'x-ms-correlation-request-id': '365351ac-3118-49d6-9000-bcd11f6a3644',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022914Z:365351ac-3118-49d6-9000-bcd11f6a3644',
+  date: 'Sun, 31 Aug 2014 02:29:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935\",\"name\":\"xTestResource1935\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474\",\"name\":\"xTestResource8474\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31935',
-  'x-ms-request-id': '1c5ee407-4e53-4958-ae84-ddbcbbd2d298',
-  'x-ms-correlation-request-id': '1c5ee407-4e53-4958-ae84-ddbcbbd2d298',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162157Z:1c5ee407-4e53-4958-ae84-ddbcbbd2d298',
+  'x-ms-ratelimit-remaining-subscription-reads': '31987',
+  'x-ms-request-id': 'ed9bf1a2-2a7d-427b-a9a2-e71fc48d9c1c',
+  'x-ms-correlation-request-id': 'ed9bf1a2-2a7d-427b-a9a2-e71fc48d9c1c',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022914Z:ed9bf1a2-2a7d-427b-a9a2-e71fc48d9c1c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:57 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:14 GMT',
   'content-length': '205' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1935/resources?&api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource8474/resources?&api-version=2014-04-01-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31926',
-  'x-ms-request-id': 'bc42b7b0-463e-4ea3-b16a-0087237fd95d',
-  'x-ms-correlation-request-id': 'bc42b7b0-463e-4ea3-b16a-0087237fd95d',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162158Z:bc42b7b0-463e-4ea3-b16a-0087237fd95d',
+  'x-ms-ratelimit-remaining-subscription-reads': '31991',
+  'x-ms-request-id': '473bb867-91dd-48b5-9bbe-28e4e2f880ae',
+  'x-ms-correlation-request-id': '473bb867-91dd-48b5-9bbe-28e4e2f880ae',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022914Z:473bb867-91dd-48b5-9bbe-28e4e2f880ae',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:57 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:14 GMT',
   'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
   .reply(200, "{\"value\":[{\"actions\":[\"*\"],\"notActions\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31934',
-  'x-ms-request-id': '4d4c221c-e9dc-41ae-aad5-d97f26b28f1a',
-  'x-ms-correlation-request-id': '4d4c221c-e9dc-41ae-aad5-d97f26b28f1a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162157Z:4d4c221c-e9dc-41ae-aad5-d97f26b28f1a',
+  'x-ms-ratelimit-remaining-subscription-reads': '31986',
+  'x-ms-request-id': '676d697c-6184-4401-ad3e-a6ce6bf8b19f',
+  'x-ms-correlation-request-id': '676d697c-6184-4401-ad3e-a6ce6bf8b19f',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022914Z:676d697c-6184-4401-ad3e-a6ce6bf8b19f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:57 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:14 GMT',
   'content-length': '45' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1935?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource8474?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTkzNS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFODQ3NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1173',
-  'x-ms-request-id': '64a0cfb8-a3b3-474e-aea0-1b5d1ff4b098',
-  'x-ms-correlation-request-id': '64a0cfb8-a3b3-474e-aea0-1b5d1ff4b098',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162158Z:64a0cfb8-a3b3-474e-aea0-1b5d1ff4b098',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-request-id': '5f6917cc-c5c7-40dd-8e52-e9e3f636d3fd',
+  'x-ms-correlation-request-id': '5f6917cc-c5c7-40dd-8e52-e9e3f636d3fd',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022915Z:5f6917cc-c5c7-40dd-8e52-e9e3f636d3fd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:21:58 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:14 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTkzNS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFODQ3NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTkzNS1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFODQ3NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31925',
-  'x-ms-request-id': 'fb5da90c-7287-45c2-a2d0-cff6cbfa82f5',
-  'x-ms-correlation-request-id': 'fb5da90c-7287-45c2-a2d0-cff6cbfa82f5',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162214Z:fb5da90c-7287-45c2-a2d0-cff6cbfa82f5',
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-request-id': '55e64a33-65b8-4cad-93f8-9027e2c602ef',
+  'x-ms-correlation-request-id': '55e64a33-65b8-4cad-93f8-9027e2c602ef',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022930Z:55e64a33-65b8-4cad-93f8-9027e2c602ef',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:14 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:30 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource9734' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource1534' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31933',
-  'x-ms-request-id': '6e4e13d1-a16b-4c2f-85ff-e43b39467c07',
-  'x-ms-correlation-request-id': '6e4e13d1-a16b-4c2f-85ff-e43b39467c07',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162213Z:6e4e13d1-a16b-4c2f-85ff-e43b39467c07',
+  'x-ms-ratelimit-remaining-subscription-reads': '31985',
+  'x-ms-request-id': '45bfe9f7-bdb7-4d56-91cb-c9f2a2a49fe7',
+  'x-ms-correlation-request-id': '45bfe9f7-bdb7-4d56-91cb-c9f2a2a49fe7',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022930Z:45bfe9f7-bdb7-4d56-91cb-c9f2a2a49fe7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:13 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:30 GMT',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9734\",\"name\":\"xTestResource9734\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1534\",\"name\":\"xTestResource1534\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1172',
-  'x-ms-request-id': '67abb549-bda6-422e-bb0e-d6f1ad2b0ac2',
-  'x-ms-correlation-request-id': '67abb549-bda6-422e-bb0e-d6f1ad2b0ac2',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162215Z:67abb549-bda6-422e-bb0e-d6f1ad2b0ac2',
+  'x-ms-ratelimit-remaining-subscription-writes': '1190',
+  'x-ms-request-id': '9808d941-06bf-4e42-bfd2-92e035135d6a',
+  'x-ms-correlation-request-id': '9808d941-06bf-4e42-bfd2-92e035135d6a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022931Z:9808d941-06bf-4e42-bfd2-92e035135d6a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:14 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:30 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9734\",\"name\":\"xTestResource9734\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1534\",\"name\":\"xTestResource1534\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31932',
-  'x-ms-request-id': '6e9132b2-2295-410a-8fe6-a872be65f746',
-  'x-ms-correlation-request-id': '6e9132b2-2295-410a-8fe6-a872be65f746',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162214Z:6e9132b2-2295-410a-8fe6-a872be65f746',
+  'x-ms-ratelimit-remaining-subscription-reads': '31984',
+  'x-ms-request-id': 'c98708de-cae3-463f-b0f9-7ac4508ca136',
+  'x-ms-correlation-request-id': 'c98708de-cae3-463f-b0f9-7ac4508ca136',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022931Z:c98708de-cae3-463f-b0f9-7ac4508ca136',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:13 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:30 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734/providers/Microsoft.Web//sites/xTestGrpRes9190?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534/providers/Microsoft.Web//sites/xTestGrpRes7029?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e65c0a77-8038-4b4d-b93c-4407325b8d68',
-  'x-ms-correlation-request-id': 'e65c0a77-8038-4b4d-b93c-4407325b8d68',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162215Z:e65c0a77-8038-4b4d-b93c-4407325b8d68',
+  'x-ms-request-id': '9702f742-0e75-4ce5-8e9f-f610314a4592',
+  'x-ms-correlation-request-id': '9702f742-0e75-4ce5-8e9f-f610314a4592',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022931Z:9702f742-0e75-4ce5-8e9f-f610314a4592',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:15 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:31 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734/providers/Microsoft.Web//sites/xTestGrpRes9190?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9734/providers/Microsoft.Web/sites/xTestGrpRes9190\",\"name\":\"xTestGrpRes9190\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes9190\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres9190.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource9734-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource9734-SouthCentralUSwebspace/sites/xTestGrpRes9190\",\"repositorySiteName\":\"xTestGrpRes9190\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres9190.antares-int.windows-int.net\",\"xtestgrpres9190.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres9190.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres9190.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:22:17.903\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes9190\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534/providers/Microsoft.Web//sites/xTestGrpRes7029?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1534/providers/Microsoft.Web/sites/xTestGrpRes7029\",\"name\":\"xTestGrpRes7029\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes7029\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres7029.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource1534-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource1534-SouthCentralUSwebspace/sites/xTestGrpRes7029\",\"repositorySiteName\":\"xTestGrpRes7029\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres7029.antares-int.windows-int.net\",\"xtestgrpres7029.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres7029.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres7029.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:29:34.58\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes7029\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1745',
+  'content-length': '1744',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '25e3becc-69a9-4f48-9bd1-2b5e3fccf224',
+  'x-ms-request-id': 'b5257096-33e3-4519-b83b-1fd6c88fbd58',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1168',
-  'x-ms-correlation-request-id': 'a7d92892-bb6b-47ff-b166-5cc50a631bdd',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162219Z:a7d92892-bb6b-47ff-b166-5cc50a631bdd',
-  date: 'Wed, 20 Aug 2014 16:22:19 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1192',
+  'x-ms-correlation-request-id': '51ce5f3d-db59-4ba0-b6a7-deeab5bc1646',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022935Z:51ce5f3d-db59-4ba0-b6a7-deeab5bc1646',
+  date: 'Sun, 31 Aug 2014 02:29:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9734/resources?&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9734/providers/Microsoft.Web/sites/xTestGrpRes9190\",\"name\":\"xTestGrpRes9190\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1534/resources?&api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1534/providers/Microsoft.Web/sites/xTestGrpRes7029\",\"name\":\"xTestGrpRes7029\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31923',
-  'x-ms-request-id': '2d4aa245-e62c-4cbb-8970-52515abf1da7',
-  'x-ms-correlation-request-id': '2d4aa245-e62c-4cbb-8970-52515abf1da7',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162220Z:2d4aa245-e62c-4cbb-8970-52515abf1da7',
+  'x-ms-ratelimit-remaining-subscription-reads': '31988',
+  'x-ms-request-id': 'a826af9f-8d50-46ae-8d0f-4d09cd21fd3b',
+  'x-ms-correlation-request-id': 'a826af9f-8d50-46ae-8d0f-4d09cd21fd3b',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022935Z:a826af9f-8d50-46ae-8d0f-4d09cd21fd3b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:20 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:35 GMT',
   'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9734?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1534?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTczNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTUzNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1167',
-  'x-ms-request-id': '41a98e32-fc7b-45f7-aaec-4a2c1c3964a0',
-  'x-ms-correlation-request-id': '41a98e32-fc7b-45f7-aaec-4a2c1c3964a0',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162219Z:41a98e32-fc7b-45f7-aaec-4a2c1c3964a0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1191',
+  'x-ms-request-id': 'c18063ae-5206-408b-b157-c9dd233ff59d',
+  'x-ms-correlation-request-id': 'c18063ae-5206-408b-b157-c9dd233ff59d',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022935Z:c18063ae-5206-408b-b157-c9dd233ff59d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:19 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:35 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTczNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTUzNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTczNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTUzNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31922',
-  'x-ms-request-id': '8da50df3-38eb-4065-bf87-087f3bc79d6b',
-  'x-ms-correlation-request-id': '8da50df3-38eb-4065-bf87-087f3bc79d6b',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162235Z:8da50df3-38eb-4065-bf87-087f3bc79d6b',
+  'x-ms-ratelimit-remaining-subscription-reads': '31987',
+  'x-ms-request-id': 'de46f575-8cbe-4761-a88c-23238db29f36',
+  'x-ms-correlation-request-id': 'de46f575-8cbe-4761-a88c-23238db29f36',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022951Z:de46f575-8cbe-4761-a88c-23238db29f36',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:35 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:51 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource6182' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource9121' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31931',
-  'x-ms-request-id': '65f8a998-d327-4372-89c7-3ede331220a4',
-  'x-ms-correlation-request-id': '65f8a998-d327-4372-89c7-3ede331220a4',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162235Z:65f8a998-d327-4372-89c7-3ede331220a4',
+  'x-ms-ratelimit-remaining-subscription-reads': '31983',
+  'x-ms-request-id': '7d693aba-ead2-4fec-9d6c-5f2e0dae8a85',
+  'x-ms-correlation-request-id': '7d693aba-ead2-4fec-9d6c-5f2e0dae8a85',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022951Z:7d693aba-ead2-4fec-9d6c-5f2e0dae8a85',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:35 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:51 GMT',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6182\",\"name\":\"xTestResource6182\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9121\",\"name\":\"xTestResource9121\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1171',
-  'x-ms-request-id': '0377893d-a736-4b73-9087-fb6e686a03e6',
-  'x-ms-correlation-request-id': '0377893d-a736-4b73-9087-fb6e686a03e6',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162236Z:0377893d-a736-4b73-9087-fb6e686a03e6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-request-id': '49fde66a-0d14-4504-8310-fcd9ad5e9825',
+  'x-ms-correlation-request-id': '49fde66a-0d14-4504-8310-fcd9ad5e9825',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022951Z:49fde66a-0d14-4504-8310-fcd9ad5e9825',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:35 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:51 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource1856' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource78' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31930',
-  'x-ms-request-id': 'e2a5a179-1ccc-4972-b2b1-d969423971a4',
-  'x-ms-correlation-request-id': 'e2a5a179-1ccc-4972-b2b1-d969423971a4',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162236Z:e2a5a179-1ccc-4972-b2b1-d969423971a4',
+  'x-ms-ratelimit-remaining-subscription-reads': '31982',
+  'x-ms-request-id': '77f4e5c3-788f-41f4-bded-7df2e11b11c1',
+  'x-ms-correlation-request-id': '77f4e5c3-788f-41f4-bded-7df2e11b11c1',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022952Z:77f4e5c3-788f-41f4-bded-7df2e11b11c1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:35 GMT',
-  'content-length': '109' });
+  date: 'Sun, 31 Aug 2014 02:29:51 GMT',
+  'content-length': '107' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1856\",\"name\":\"xTestResource1856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource78\",\"name\":\"xTestResource78\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1170',
-  'x-ms-request-id': 'ffd739c7-1c8b-46c1-b9c0-c8fa81e31b10',
-  'x-ms-correlation-request-id': 'ffd739c7-1c8b-46c1-b9c0-c8fa81e31b10',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162237Z:ffd739c7-1c8b-46c1-b9c0-c8fa81e31b10',
+  'x-ms-ratelimit-remaining-subscription-writes': '1188',
+  'x-ms-request-id': '62c6f9d8-a3b0-45f8-b13e-2e717c1c399e',
+  'x-ms-correlation-request-id': '62c6f9d8-a3b0-45f8-b13e-2e717c1c399e',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022952Z:62c6f9d8-a3b0-45f8-b13e-2e717c1c399e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:36 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:52 GMT',
+  'content-length': '193' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://api-next.resources.windows-int.net:443')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9121\",\"name\":\"xTestResource9121\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31981',
+  'x-ms-request-id': 'ffd04eeb-9d34-4f2b-a5a7-bdbbd22b7227',
+  'x-ms-correlation-request-id': 'ffd04eeb-9d34-4f2b-a5a7-bdbbd22b7227',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022952Z:ffd04eeb-9d34-4f2b-a5a7-bdbbd22b7227',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 31 Aug 2014 02:29:52 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6182\",\"name\":\"xTestResource6182\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31929',
-  'x-ms-request-id': 'abe07ddb-b202-4de2-a90e-52cc705b05f7',
-  'x-ms-correlation-request-id': 'abe07ddb-b202-4de2-a90e-52cc705b05f7',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162236Z:abe07ddb-b202-4de2-a90e-52cc705b05f7',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:36 GMT',
-  'content-length': '197' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182/providers/Microsoft.Web//sites/xTestGrpRes7228?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121/providers/Microsoft.Web//sites/xTestGrpRes6538?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5d141758-a2ef-4b64-8ea6-d01942ffa992',
-  'x-ms-correlation-request-id': '5d141758-a2ef-4b64-8ea6-d01942ffa992',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162237Z:5d141758-a2ef-4b64-8ea6-d01942ffa992',
+  'x-ms-request-id': '1738e485-5278-4fa6-9458-3bc6b4ef3e40',
+  'x-ms-correlation-request-id': '1738e485-5278-4fa6-9458-3bc6b4ef3e40',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022952Z:1738e485-5278-4fa6-9458-3bc6b4ef3e40',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:36 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:52 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182/providers/Microsoft.Web//sites/xTestGrpRes7228?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6182/providers/Microsoft.Web/sites/xTestGrpRes7228\",\"name\":\"xTestGrpRes7228\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes7228\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres7228.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource6182-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource6182-SouthCentralUSwebspace/sites/xTestGrpRes7228\",\"repositorySiteName\":\"xTestGrpRes7228\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres7228.antares-int.windows-int.net\",\"xtestgrpres7228.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres7228.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres7228.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:22:39.947\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes7228\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121/providers/Microsoft.Web//sites/xTestGrpRes6538?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9121/providers/Microsoft.Web/sites/xTestGrpRes6538\",\"name\":\"xTestGrpRes6538\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6538\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6538.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource9121-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource9121-SouthCentralUSwebspace/sites/xTestGrpRes6538\",\"repositorySiteName\":\"xTestGrpRes6538\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6538.antares-int.windows-int.net\",\"xtestgrpres6538.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6538.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6538.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:29:55.743\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6538\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1745',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '1b08be09-5717-4f10-9862-d4926b6f079a',
+  'x-ms-request-id': 'd81a4d07-536c-4d3d-9519-70376df56ae3',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1166',
-  'x-ms-correlation-request-id': '340d85d6-f621-4102-a64f-e5184006a684',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162241Z:340d85d6-f621-4102-a64f-e5184006a684',
-  date: 'Wed, 20 Aug 2014 16:22:41 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1190',
+  'x-ms-correlation-request-id': 'af81ac57-79c3-4232-ac13-8f443374be6b',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022958Z:af81ac57-79c3-4232-ac13-8f443374be6b',
+  date: 'Sun, 31 Aug 2014 02:29:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1856\",\"name\":\"xTestResource1856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource78\",\"name\":\"xTestResource78\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31920',
-  'x-ms-request-id': '69e61de3-3619-4b0a-a6a4-55f2b6a7d769',
-  'x-ms-correlation-request-id': '69e61de3-3619-4b0a-a6a4-55f2b6a7d769',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162242Z:69e61de3-3619-4b0a-a6a4-55f2b6a7d769',
+  'x-ms-ratelimit-remaining-subscription-reads': '31985',
+  'x-ms-request-id': '53fc9109-9fe5-4615-acb2-4255ba84d274',
+  'x-ms-correlation-request-id': '53fc9109-9fe5-4615-acb2-4255ba84d274',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022959Z:53fc9109-9fe5-4615-acb2-4255ba84d274',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:42 GMT',
-  'content-length': '197' });
+  date: 'Sun, 31 Aug 2014 02:29:59 GMT',
+  'content-length': '193' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856/providers/Microsoft.Web//sites/xTestGrpRes240?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78/providers/Microsoft.Web//sites/xTestGrpRes6372?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b98b2b86-faa0-4a88-b1c6-dbc027045b23',
-  'x-ms-correlation-request-id': 'b98b2b86-faa0-4a88-b1c6-dbc027045b23',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162242Z:b98b2b86-faa0-4a88-b1c6-dbc027045b23',
+  'x-ms-request-id': '8059599c-3b63-425a-b2b3-1f7f0364c2c3',
+  'x-ms-correlation-request-id': '8059599c-3b63-425a-b2b3-1f7f0364c2c3',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T022959Z:8059599c-3b63-425a-b2b3-1f7f0364c2c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:41 GMT',
+  date: 'Sun, 31 Aug 2014 02:29:58 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856/providers/Microsoft.Web//sites/xTestGrpRes240?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource1856/providers/Microsoft.Web/sites/xTestGrpRes240\",\"name\":\"xTestGrpRes240\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes240\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres240.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource1856-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource1856-SouthCentralUSwebspace/sites/xTestGrpRes240\",\"repositorySiteName\":\"xTestGrpRes240\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres240.antares-int.windows-int.net\",\"xtestgrpres240.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres240.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres240.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:22:44.61\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes240\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78/providers/Microsoft.Web//sites/xTestGrpRes6372?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource78/providers/Microsoft.Web/sites/xTestGrpRes6372\",\"name\":\"xTestGrpRes6372\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6372\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6372.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource78-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource78-SouthCentralUSwebspace/sites/xTestGrpRes6372\",\"repositorySiteName\":\"xTestGrpRes6372\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6372.antares-int.windows-int.net\",\"xtestgrpres6372.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6372.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6372.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:30:01.96\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6372\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1733',
+  'content-length': '1738',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '046df485-6459-47d4-b865-d1e886f1f66b',
+  'x-ms-request-id': 'be3a008c-fb82-4a42-a709-375a61ad3acb',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1169',
-  'x-ms-correlation-request-id': '2b01c785-304c-4180-95d5-f17bd3ad35be',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162247Z:2b01c785-304c-4180-95d5-f17bd3ad35be',
-  date: 'Wed, 20 Aug 2014 16:22:47 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1187',
+  'x-ms-correlation-request-id': '946c4420-8c4f-4371-939b-ab12790b715a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023003Z:946c4420-8c4f-4371-939b-ab12790b715a',
+  date: 'Sun, 31 Aug 2014 02:30:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6182/resources?$filter=resourceType%20eq%20%27Microsoft.Web%2Fsites%27&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6182/providers/Microsoft.Web/sites/xTestGrpRes7228\",\"name\":\"xTestGrpRes7228\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9121/resources?$filter=resourceType%20eq%20%27Microsoft.Web%2Fsites%27&api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9121/providers/Microsoft.Web/sites/xTestGrpRes6538\",\"name\":\"xTestGrpRes6538\",\"type\":\"Microsoft.Web/sites\",\"location\":\"southcentralus\",\"tags\":{}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31927',
-  'x-ms-request-id': 'bb0330f9-19a4-4604-9645-b78e248cfebe',
-  'x-ms-correlation-request-id': 'bb0330f9-19a4-4604-9645-b78e248cfebe',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162247Z:bb0330f9-19a4-4604-9645-b78e248cfebe',
+  'x-ms-ratelimit-remaining-subscription-reads': '31979',
+  'x-ms-request-id': '8136cc20-0068-4c0e-a27c-6c8917e08c5d',
+  'x-ms-correlation-request-id': '8136cc20-0068-4c0e-a27c-6c8917e08c5d',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023004Z:8136cc20-0068-4c0e-a27c-6c8917e08c5d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:47 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:04 GMT',
   'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6182?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9121?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjE4Mi1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTEyMS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1168',
-  'x-ms-request-id': '395af66b-9ae1-4925-838c-b9e25b96977e',
-  'x-ms-correlation-request-id': '395af66b-9ae1-4925-838c-b9e25b96977e',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162248Z:395af66b-9ae1-4925-838c-b9e25b96977e',
+  'x-ms-ratelimit-remaining-subscription-writes': '1186',
+  'x-ms-request-id': '6762ed05-08f9-47f1-853e-625399d8896e',
+  'x-ms-correlation-request-id': '6762ed05-08f9-47f1-853e-625399d8896e',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023004Z:6762ed05-08f9-47f1-853e-625399d8896e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:22:47 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:03 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjE4Mi1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTEyMS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjE4Mi1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTEyMS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31926',
-  'x-ms-request-id': 'ae91060f-f2ba-4e29-92c0-f970eb286942',
-  'x-ms-correlation-request-id': 'ae91060f-f2ba-4e29-92c0-f970eb286942',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162303Z:ae91060f-f2ba-4e29-92c0-f970eb286942',
+  'x-ms-ratelimit-remaining-subscription-reads': '31978',
+  'x-ms-request-id': '58d241b8-b55a-4adb-b3d4-d97cd03b6bc3',
+  'x-ms-correlation-request-id': '58d241b8-b55a-4adb-b3d4-d97cd03b6bc3',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023019Z:58d241b8-b55a-4adb-b3d4-d97cd03b6bc3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:03 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:19 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource1856?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource78?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTg1Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1167',
-  'x-ms-request-id': '5379e7da-89e5-4b84-ac6b-c1a48ba3020a',
-  'x-ms-correlation-request-id': '5379e7da-89e5-4b84-ac6b-c1a48ba3020a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162304Z:5379e7da-89e5-4b84-ac6b-c1a48ba3020a',
+  'x-ms-ratelimit-remaining-subscription-writes': '1185',
+  'x-ms-request-id': '8c109993-c6c7-4c1a-91a7-9ae8f750d95e',
+  'x-ms-correlation-request-id': '8c109993-c6c7-4c1a-91a7-9ae8f750d95e',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023020Z:8c109993-c6c7-4c1a-91a7-9ae8f750d95e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:03 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:20 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTg1Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFMTg1Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31925',
-  'x-ms-request-id': '2e62946c-8097-46cd-bd7e-00eefba8e171',
-  'x-ms-correlation-request-id': '2e62946c-8097-46cd-bd7e-00eefba8e171',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162319Z:2e62946c-8097-46cd-bd7e-00eefba8e171',
+  'x-ms-ratelimit-remaining-subscription-reads': '31977',
+  'x-ms-request-id': '81b1b826-d682-4f8f-93c8-50960c51e301',
+  'x-ms-correlation-request-id': '81b1b826-d682-4f8f-93c8-50960c51e301',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023035Z:81b1b826-d682-4f8f-93c8-50960c51e301',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:19 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:35 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource7114' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource6286' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31919',
-  'x-ms-request-id': '72929946-e7a3-432a-b515-7b83d1a96305',
-  'x-ms-correlation-request-id': '72929946-e7a3-432a-b515-7b83d1a96305',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162320Z:72929946-e7a3-432a-b515-7b83d1a96305',
+  'x-ms-ratelimit-remaining-subscription-reads': '31984',
+  'x-ms-request-id': '61a30609-2d56-4766-afe1-097a49e59cf7',
+  'x-ms-correlation-request-id': '61a30609-2d56-4766-afe1-097a49e59cf7',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023035Z:61a30609-2d56-4766-afe1-097a49e59cf7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:20 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:35 GMT',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7114\",\"name\":\"xTestResource7114\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6286\",\"name\":\"xTestResource6286\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1165',
-  'x-ms-request-id': '4869e001-0860-4585-beb4-2895c3f186fd',
-  'x-ms-correlation-request-id': '4869e001-0860-4585-beb4-2895c3f186fd',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162319Z:4869e001-0860-4585-beb4-2895c3f186fd',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-request-id': '94699969-85fc-4af0-a6f2-a293a6b76b76',
+  'x-ms-correlation-request-id': '94699969-85fc-4af0-a6f2-a293a6b76b76',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023035Z:94699969-85fc-4af0-a6f2-a293a6b76b76',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:19 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:35 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7114\",\"name\":\"xTestResource7114\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6286\",\"name\":\"xTestResource6286\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31918',
-  'x-ms-request-id': '63d3f078-bd87-442e-8fab-324c794f1cd3',
-  'x-ms-correlation-request-id': '63d3f078-bd87-442e-8fab-324c794f1cd3',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162320Z:63d3f078-bd87-442e-8fab-324c794f1cd3',
+  'x-ms-ratelimit-remaining-subscription-reads': '31983',
+  'x-ms-request-id': 'b9841fad-b1ed-4255-8213-68f3cb21d653',
+  'x-ms-correlation-request-id': 'b9841fad-b1ed-4255-8213-68f3cb21d653',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023036Z:b9841fad-b1ed-4255-8213-68f3cb21d653',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:20 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:35 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114/providers/Microsoft.Web//sites/xTestGrpRes6232?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286/providers/Microsoft.Web//sites/xTestGrpRes3839?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '63c0fe39-4ae2-40b4-b6f5-9b26680fa4b5',
-  'x-ms-correlation-request-id': '63c0fe39-4ae2-40b4-b6f5-9b26680fa4b5',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162320Z:63c0fe39-4ae2-40b4-b6f5-9b26680fa4b5',
+  'x-ms-request-id': 'cf037e31-dea2-4b2b-8ae6-f45ebc5ceb79',
+  'x-ms-correlation-request-id': 'cf037e31-dea2-4b2b-8ae6-f45ebc5ceb79',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023036Z:cf037e31-dea2-4b2b-8ae6-f45ebc5ceb79',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:20 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:36 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114/providers/Microsoft.Web//sites/xTestGrpRes6232?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7114/providers/Microsoft.Web/sites/xTestGrpRes6232\",\"name\":\"xTestGrpRes6232\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6232\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6232.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource7114-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource7114-SouthCentralUSwebspace/sites/xTestGrpRes6232\",\"repositorySiteName\":\"xTestGrpRes6232\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6232.antares-int.windows-int.net\",\"xtestgrpres6232.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6232.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6232.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:23:24.103\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6232\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286/providers/Microsoft.Web//sites/xTestGrpRes3839?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6286/providers/Microsoft.Web/sites/xTestGrpRes3839\",\"name\":\"xTestGrpRes3839\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes3839\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres3839.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource6286-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource6286-SouthCentralUSwebspace/sites/xTestGrpRes3839\",\"repositorySiteName\":\"xTestGrpRes3839\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres3839.antares-int.windows-int.net\",\"xtestgrpres3839.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres3839.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres3839.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:30:40.12\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes3839\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1745',
+  'content-length': '1744',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '1512a810-7f72-46b7-bfe4-07a514ba1276',
+  'x-ms-request-id': '232c974a-9691-4e34-b43b-f6ff909ab0e6',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1166',
-  'x-ms-correlation-request-id': '295bc8b0-61e1-458b-9959-2bfe29b19ea7',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162326Z:295bc8b0-61e1-458b-9959-2bfe29b19ea7',
-  date: 'Wed, 20 Aug 2014 16:23:26 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1184',
+  'x-ms-correlation-request-id': '80d00bbe-8cee-4f9c-83ab-2fc67e12159b',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023042Z:80d00bbe-8cee-4f9c-83ab-2fc67e12159b',
+  date: 'Sun, 31 Aug 2014 02:30:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114/providers/Microsoft.Web//sites/xTestGrpRes6232?api-version=2014-04-01')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7114/providers/Microsoft.Web/sites/xTestGrpRes6232\",\"name\":\"xTestGrpRes6232\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6232\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6232.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource7114-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource7114-SouthCentralUSwebspace/sites/xTestGrpRes6232\",\"repositorySiteName\":\"xTestGrpRes6232\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6232.antares-int.windows-int.net\",\"xtestgrpres6232.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6232.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6232.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:23:24.103\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6232\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286/providers/Microsoft.Web//sites/xTestGrpRes3839?api-version=2014-04-01')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource6286/providers/Microsoft.Web/sites/xTestGrpRes3839\",\"name\":\"xTestGrpRes3839\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes3839\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres3839.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource6286-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource6286-SouthCentralUSwebspace/sites/xTestGrpRes3839\",\"repositorySiteName\":\"xTestGrpRes3839\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres3839.antares-int.windows-int.net\",\"xtestgrpres3839.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres3839.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres3839.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:30:40.12\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes3839\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1745',
+  'content-length': '1744',
   'content-type': 'application/json',
   expires: '-1',
-  etag: '"1CFBC93108E9D70"',
+  etag: '"1CFC4C38E3F1780"',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9565f4a5-34c4-4fc8-a787-b6dc86c9c8de',
+  'x-ms-request-id': 'c740463a-7182-41cd-bcf4-29bb3f75c10d',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '31923',
-  'x-ms-correlation-request-id': 'd22061ee-21f1-47ad-b909-f40603475c36',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162326Z:d22061ee-21f1-47ad-b909-f40603475c36',
-  date: 'Wed, 20 Aug 2014 16:23:26 GMT' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31975',
+  'x-ms-correlation-request-id': 'f79e3766-57ff-4a87-91b5-20cafa4f6321',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023042Z:f79e3766-57ff-4a87-91b5-20cafa4f6321',
+  date: 'Sun, 31 Aug 2014 02:30:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114/providers/Microsoft.Web//sites/xTestGrpRes6232/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286/providers/Microsoft.Web//sites/xTestGrpRes3839/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
   .reply(200, "{\"value\":[{\"actions\":[\"*\"],\"notActions\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31917',
-  'x-ms-request-id': '4394c333-8abb-48a4-bec6-8d9757d96c37',
-  'x-ms-correlation-request-id': '4394c333-8abb-48a4-bec6-8d9757d96c37',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162327Z:4394c333-8abb-48a4-bec6-8d9757d96c37',
+  'x-ms-ratelimit-remaining-subscription-reads': '31982',
+  'x-ms-request-id': '74650470-359e-4e54-9823-d2da70a82807',
+  'x-ms-correlation-request-id': '74650470-359e-4e54-9823-d2da70a82807',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023042Z:74650470-359e-4e54-9823-d2da70a82807',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:27 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:42 GMT',
   'content-length': '45' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7114?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource6286?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzExNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjI4Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1164',
-  'x-ms-request-id': 'ac60f07d-ea78-4955-8bcd-c00b2fbe92ac',
-  'x-ms-correlation-request-id': 'ac60f07d-ea78-4955-8bcd-c00b2fbe92ac',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162327Z:ac60f07d-ea78-4955-8bcd-c00b2fbe92ac',
+  'x-ms-ratelimit-remaining-subscription-writes': '1188',
+  'x-ms-request-id': '314b36bc-d845-4a5d-9c26-0497c56ccd9f',
+  'x-ms-correlation-request-id': '314b36bc-d845-4a5d-9c26-0497c56ccd9f',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023043Z:314b36bc-d845-4a5d-9c26-0497c56ccd9f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:26 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:42 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzExNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjI4Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzExNC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNjI4Ni1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31922',
-  'x-ms-request-id': '7ed914c4-0c5d-4f99-bf3c-191e5dc3afcf',
-  'x-ms-correlation-request-id': '7ed914c4-0c5d-4f99-bf3c-191e5dc3afcf',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162342Z:7ed914c4-0c5d-4f99-bf3c-191e5dc3afcf',
+  'x-ms-ratelimit-remaining-subscription-reads': '31974',
+  'x-ms-request-id': 'cc72ba4b-0b4d-4d08-9512-6b6ff20e7381',
+  'x-ms-correlation-request-id': 'cc72ba4b-0b4d-4d08-9512-6b6ff20e7381',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023058Z:cc72ba4b-0b4d-4d08-9512-6b6ff20e7381',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:42 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:57 GMT',
   'content-length': '0' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource7707' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource9939' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31916',
-  'x-ms-request-id': 'ba03544d-54be-4951-b047-8b5e5abdc9b0',
-  'x-ms-correlation-request-id': 'ba03544d-54be-4951-b047-8b5e5abdc9b0',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162343Z:ba03544d-54be-4951-b047-8b5e5abdc9b0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31973',
+  'x-ms-request-id': 'b84495c9-b0db-4cbb-8818-b477963f008e',
+  'x-ms-correlation-request-id': 'b84495c9-b0db-4cbb-8818-b477963f008e',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023058Z:b84495c9-b0db-4cbb-8818-b477963f008e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:43 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:58 GMT',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7707\",\"name\":\"xTestResource7707\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9939\",\"name\":\"xTestResource9939\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1163',
-  'x-ms-request-id': '9f6dec36-9587-4988-80be-87bfbc940736',
-  'x-ms-correlation-request-id': '9f6dec36-9587-4988-80be-87bfbc940736',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162343Z:9f6dec36-9587-4988-80be-87bfbc940736',
+  'x-ms-ratelimit-remaining-subscription-writes': '1183',
+  'x-ms-request-id': 'fb9a10cb-e3ea-4c82-a293-419711f14962',
+  'x-ms-correlation-request-id': 'fb9a10cb-e3ea-4c82-a293-419711f14962',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023059Z:fb9a10cb-e3ea-4c82-a293-419711f14962',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:42 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:59 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7707\",\"name\":\"xTestResource7707\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9939\",\"name\":\"xTestResource9939\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31915',
-  'x-ms-request-id': '8c011587-064a-4e85-b2df-c90e409d162a',
-  'x-ms-correlation-request-id': '8c011587-064a-4e85-b2df-c90e409d162a',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162344Z:8c011587-064a-4e85-b2df-c90e409d162a',
+  'x-ms-ratelimit-remaining-subscription-reads': '31981',
+  'x-ms-request-id': '7d81b9bb-fc89-40a4-be9d-0f5fc785e655',
+  'x-ms-correlation-request-id': '7d81b9bb-fc89-40a4-be9d-0f5fc785e655',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023059Z:7d81b9bb-fc89-40a4-be9d-0f5fc785e655',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:43 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:59 GMT',
   'content-length': '197' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707/providers/Microsoft.Web//sites/xTestGrpRes6315?api-version=2014-04-01')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939/providers/Microsoft.Web//sites/xTestGrpRes5004?api-version=2014-04-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"Resource not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '893be43c-b7a8-4a93-b2d6-d8388961f83c',
-  'x-ms-correlation-request-id': '893be43c-b7a8-4a93-b2d6-d8388961f83c',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162343Z:893be43c-b7a8-4a93-b2d6-d8388961f83c',
+  'x-ms-request-id': '0fed4989-5528-4ad4-a03a-6006816cda5a',
+  'x-ms-correlation-request-id': '0fed4989-5528-4ad4-a03a-6006816cda5a',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023059Z:0fed4989-5528-4ad4-a03a-6006816cda5a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:43 GMT',
+  date: 'Sun, 31 Aug 2014 02:30:59 GMT',
   'content-length': '69' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707/providers/Microsoft.Web//sites/xTestGrpRes6315?api-version=2014-04-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7707/providers/Microsoft.Web/sites/xTestGrpRes6315\",\"name\":\"xTestGrpRes6315\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6315\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6315.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource7707-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource7707-SouthCentralUSwebspace/sites/xTestGrpRes6315\",\"repositorySiteName\":\"xTestGrpRes6315\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6315.antares-int.windows-int.net\",\"xtestgrpres6315.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6315.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6315.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:23:46.687\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6315\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939/providers/Microsoft.Web//sites/xTestGrpRes5004?api-version=2014-04-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9939/providers/Microsoft.Web/sites/xTestGrpRes5004\",\"name\":\"xTestGrpRes5004\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes5004\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres5004.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource9939-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource9939-SouthCentralUSwebspace/sites/xTestGrpRes5004\",\"repositorySiteName\":\"xTestGrpRes5004\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres5004.antares-int.windows-int.net\",\"xtestgrpres5004.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres5004.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres5004.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:31:02.493\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes5004\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1745',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '09768333-9d39-4235-877f-1e316f1547da',
+  'x-ms-request-id': '2051ab9e-8a61-4a46-a20c-f8b084ef37e2',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1165',
-  'x-ms-correlation-request-id': '99bd549b-56bb-481f-b67e-9365d7e064fa',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162350Z:99bd549b-56bb-481f-b67e-9365d7e064fa',
-  date: 'Wed, 20 Aug 2014 16:23:50 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1187',
+  'x-ms-correlation-request-id': 'ac22f050-cb61-4c3d-b3fd-4261cbc1e207',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023105Z:ac22f050-cb61-4c3d-b3fd-4261cbc1e207',
+  date: 'Sun, 31 Aug 2014 02:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707/providers/Microsoft.Web//sites/xTestGrpRes6315?api-version=2014-04-01')
-  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource7707/providers/Microsoft.Web/sites/xTestGrpRes6315\",\"name\":\"xTestGrpRes6315\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes6315\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres6315.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource7707-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource7707-SouthCentralUSwebspace/sites/xTestGrpRes6315\",\"repositorySiteName\":\"xTestGrpRes6315\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres6315.antares-int.windows-int.net\",\"xtestgrpres6315.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres6315.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres6315.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-20T16:23:46.687\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes6315\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939/providers/Microsoft.Web//sites/xTestGrpRes5004?api-version=2014-04-01')
+  .reply(200, "{\"id\":\"/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourceGroups/xTestResource9939/providers/Microsoft.Web/sites/xTestGrpRes5004\",\"name\":\"xTestGrpRes5004\",\"type\":\"Microsoft.Web/sites\",\"location\":\"South Central US\",\"tags\":{},\"properties\":{\"name\":\"xTestGrpRes5004\",\"state\":\"Running\",\"hostNames\":[\"xtestgrpres5004.antares-int.windows-int.net\"],\"webSpace\":\"xTestResource9939-SouthCentralUSwebspace\",\"selfLink\":\"https://antpreview1.api.admin-antares-int.windows-int.net:454/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/webspaces/xTestResource9939-SouthCentralUSwebspace/sites/xTestGrpRes5004\",\"repositorySiteName\":\"xTestGrpRes5004\",\"owner\":null,\"usageState\":0,\"enabled\":true,\"adminEnabled\":true,\"enabledHostNames\":[\"xtestgrpres5004.antares-int.windows-int.net\",\"xtestgrpres5004.scm.antares-int.windows-int.net\"],\"siteProperties\":{\"metadata\":null,\"properties\":[],\"appSettings\":null},\"availabilityState\":0,\"sslCertificates\":null,\"csrs\":[],\"cers\":null,\"siteMode\":null,\"hostNameSslStates\":[{\"name\":\"xtestgrpres5004.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0},{\"name\":\"xtestgrpres5004.scm.antares-int.windows-int.net\",\"sslState\":0,\"ipBasedSslResult\":null,\"virtualIP\":null,\"thumbprint\":null,\"toUpdate\":null,\"toUpdateIpBasedSsl\":null,\"ipBasedSslState\":0}],\"computeMode\":null,\"serverFarm\":\"Default1\",\"webHostingPlan\":\"Default1\",\"lastModifiedTimeUtc\":\"2014-08-31T02:31:02.493\",\"storageRecoveryDefaultState\":\"Running\",\"contentAvailabilityState\":0,\"runtimeAvailabilityState\":0,\"siteConfig\":null,\"deploymentId\":\"xTestGrpRes5004\",\"trafficManagerHostNames\":null,\"sku\":\"Free\",\"premiumAppDeployed\":null,\"scmSiteAlsoStopped\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1745',
   'content-type': 'application/json',
   expires: '-1',
-  etag: '"1CFBC931E04A8F0"',
+  etag: '"1CFC4C39B94F0D0"',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '367dee16-64dd-462a-86b4-6d8b78e059df',
+  'x-ms-request-id': 'f216e4fc-2f54-4cb5-825e-891a636b5d6f',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '31920',
-  'x-ms-correlation-request-id': 'a1cffa16-024b-46e5-9b2e-af7dd44a7a47',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162350Z:a1cffa16-024b-46e5-9b2e-af7dd44a7a47',
-  date: 'Wed, 20 Aug 2014 16:23:49 GMT' });
+  'x-ms-ratelimit-remaining-subscription-reads': '31972',
+  'x-ms-correlation-request-id': '3bf231d4-9e59-4603-853b-173ddb7543c5',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023106Z:3bf231d4-9e59-4603-853b-173ddb7543c5',
+  date: 'Sun, 31 Aug 2014 02:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707/providers/Microsoft.Web//sites/xTestGrpRes6315/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939/providers/Microsoft.Web//sites/xTestGrpRes5004/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview')
   .reply(200, "{\"value\":[{\"actions\":[\"*\"],\"notActions\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31914',
-  'x-ms-request-id': 'b4072457-a665-4b16-b213-3d2a3e5c64eb',
-  'x-ms-correlation-request-id': 'b4072457-a665-4b16-b213-3d2a3e5c64eb',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162351Z:b4072457-a665-4b16-b213-3d2a3e5c64eb',
+  'x-ms-ratelimit-remaining-subscription-reads': '31979',
+  'x-ms-request-id': '0064193f-f416-4e7a-aa18-918ca73a5785',
+  'x-ms-correlation-request-id': '0064193f-f416-4e7a-aa18-918ca73a5785',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023106Z:0064193f-f416-4e7a-aa18-918ca73a5785',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:50 GMT',
+  date: 'Sun, 31 Aug 2014 02:31:05 GMT',
   'content-length': '45' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource7707?api-version=2014-04-01-preview')
+  .delete('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/resourcegroups/xTestResource9939?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzcwNy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTkzOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1162',
-  'x-ms-request-id': '6cf89312-7fcc-45e4-9823-2d230e5a254b',
-  'x-ms-correlation-request-id': '6cf89312-7fcc-45e4-9823-2d230e5a254b',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162351Z:6cf89312-7fcc-45e4-9823-2d230e5a254b',
+  'x-ms-ratelimit-remaining-subscription-writes': '1186',
+  'x-ms-request-id': 'f6fe6f8f-462b-49ff-a33e-ae768ba432c1',
+  'x-ms-correlation-request-id': 'f6fe6f8f-462b-49ff-a33e-ae768ba432c1',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023106Z:f6fe6f8f-462b-49ff-a33e-ae768ba432c1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:23:51 GMT',
+  date: 'Sun, 31 Aug 2014 02:31:06 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-next.resources.windows-int.net:443')
-  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzcwNy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTkzOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFNzcwNy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://api-next.resources.windows-int.net/subscriptions/2d006e8c-61e7-4cd2-8804-b4177a4341a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YVEVTVFJFU09VUkNFOTkzOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31913',
-  'x-ms-request-id': 'f69487a1-4d47-4497-99ac-54a1b3e7972b',
-  'x-ms-correlation-request-id': 'f69487a1-4d47-4497-99ac-54a1b3e7972b',
-  'x-ms-routing-request-id': 'CENTRALUS:20140820T162407Z:f69487a1-4d47-4497-99ac-54a1b3e7972b',
+  'x-ms-ratelimit-remaining-subscription-reads': '31978',
+  'x-ms-request-id': 'cc454b21-935e-475d-a877-44a263d79a38',
+  'x-ms-correlation-request-id': 'cc454b21-935e-475d-a877-44a263d79a38',
+  'x-ms-routing-request-id': 'CENTRALUS:20140831T023121Z:cc454b21-935e-475d-a877-44a263d79a38',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 20 Aug 2014 16:24:07 GMT',
+  date: 'Sun, 31 Aug 2014 02:31:21 GMT',
   'content-length': '0' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xTestResource208','xTestGrpRes6464','xTestResource3662','xTestGrpRes7483','xTestResource1935','xTestGrpRes9498','xTestResource9734','xTestGrpRes9190','xTestResource6182','xTestGrpRes7228','xTestResource1856','xTestGrpRes240','xTestResource7114','xTestGrpRes6232','xTestResource7707','xTestGrpRes6315'];};
+ exports.randomTestIdsGenerated = function() { return ['xTestResource256','xTestGrpRes9333','xTestResource60','xTestGrpRes3259','xTestResource8474','xTestGrpRes9629','xTestResource1534','xTestGrpRes7029','xTestResource9121','xTestGrpRes6538','xTestResource78','xTestGrpRes6372','xTestResource6286','xTestGrpRes3839','xTestResource9939','xTestGrpRes5004'];};

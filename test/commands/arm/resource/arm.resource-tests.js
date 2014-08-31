@@ -90,7 +90,7 @@ describe('arm', function () {
         });
       });
       
-      //Migth fail: Tracking: RD Bug 1713392: failed to delete 'Microsoft.Sql/servers/databases' resource
+      //Might fail: Tracking: RD Bug 1713392: failed to delete 'Microsoft.Sql/servers/databases' resource
       //it('should work with switches', function (done) {
       //  var groupName = suite.generateId('xTestResource1', createdGroups, suite.isMocked);
       //  var parentResourceName = suite.generateId('xtestgrpparentresource13', createdResources);
@@ -327,7 +327,7 @@ describe('arm', function () {
     //    suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
     //      result.exitStatus.should.equal(0);
 
-    //      suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1", "siteLocation" : "' + testWebsitesResourceLocation + '"}', function (result) {
+    //      suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1", "siteLocation" : "' + testResourceLocation + '"}', function (result) {
     //        result.exitStatus.should.equal(0);
 
     //        //Make a change to appsettings property of web config
@@ -336,8 +336,13 @@ describe('arm', function () {
 
     //          suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
     //            showResult.exitStatus.should.equal(0);
+                
+    //            //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
+    //            var resource = JSON.parse(showResult.text);
+    //            resource.properties.appSettings[0].name.should.be.equal('testname1');
+    //            resource.properties.appSettings[0].value.should.be.equal('testvalue1');
 
-    //            //Serach for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
+    //            //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
     //            var resource = JSON.parse(showResult.text);
     //            resource.properties.appSettings[0].name.should.be.equal('testname1');
     //            resource.properties.appSettings[0].value.should.be.equal('testvalue1');
