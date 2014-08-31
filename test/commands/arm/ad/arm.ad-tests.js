@@ -125,17 +125,17 @@ describe('arm', function () {
         var spn = process.env.AZURE_AD_TEST_SP_NAME;
         var objectId = process.env.AZURE_AD_TEST_SP_OBJECT_ID;
 
-        suite.execute('ad servicePrincipal list --json', function (result) {
+        suite.execute('ad sp list --json', function (result) {
           result.exitStatus.should.equal(0);
           var text = result.text;
           var seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
           seemsCorrect.should.equal(true);
-          suite.execute('ad servicePrincipal show --spn %s --json', spn, function (result) {
+          suite.execute('ad sp show --spn %s --json', spn, function (result) {
             result.exitStatus.should.equal(0);
             text = result.text;
             seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
             seemsCorrect.should.equal(true);
-            suite.execute('ad servicePrincipal show --objectId %s --json', objectId, function (result) {
+            suite.execute('ad sp show --objectId %s --json', objectId, function (result) {
               result.exitStatus.should.equal(0);
               text = result.text;
               seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);;
