@@ -31,14 +31,14 @@ var testPrefix = 'cli.vm.disk.show-tests';
 
 var currentRandom = 0;
 
-describe('cli', function () {
-  describe('vm', function () {
+describe('cli', function() {
+  describe('vm', function() {
 
-    before(function (done) {
-      suite = new CLITest(testPrefix, isForceMocked);
+    before(function(done) {
+      suite = new CLITest(testPrefix, [], isForceMocked);
 
       if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function () {
+        sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
         });
 
@@ -48,7 +48,7 @@ describe('cli', function () {
       suite.setupSuite(done);
     });
 
-    after(function (done) {
+    after(function(done) {
       if (suite.isMocked) {
         crypto.randomBytes.restore();
       }
@@ -56,29 +56,29 @@ describe('cli', function () {
       suite.teardownSuite(done);
     });
 
-    beforeEach(function (done) {
+    beforeEach(function(done) {
       suite.setupTest(done);
     });
 
-    afterEach(function (done) {
+    afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     //list and show the disk
-    describe('Disk:', function () {
-      it('List and Show', function (done) {
-        suite.execute('vm disk list --json', function (result) {
+    describe('Disk:', function() {
+      it('List and Show', function(done) {
+        suite.execute('vm disk list --json', function(result) {
           result.exitStatus.should.equal(0);
           var diskList = JSON.parse(result.text);
           diskList.length.should.be.above(0);
-          var diskName = ''
-            diskList.some(function (disk) {
-              if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
-                diskName = disk.name;
-              }
-            });
+          var diskName = '';
+          diskList.some(function(disk) {
+            if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
+              diskName = disk.name;
+            }
+          });
 
-          suite.execute('vm disk show %s --json', diskName, function (result) {
+          suite.execute('vm disk show %s --json', diskName, function(result) {
             result.exitStatus.should.equal(0);
             var disk = JSON.parse(result.text);
             disk.name.should.equal(diskName);

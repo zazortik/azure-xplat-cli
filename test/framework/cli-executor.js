@@ -20,6 +20,7 @@ var _ = require('underscore');
 var fs = require('fs');
 var util = require('util');
 var winston = require('winston');
+var testLogger = require('./test-logger');
 require('winston-memory').Memory;
 
 winston.add(winston.transports.Memory);
@@ -51,22 +52,34 @@ function execute(cmd, cb) {
       result.errorText = transport.errorOutput.join('\n') + '\n';
       transport.errorOutput = [];
     }
-
     sandbox.restore();
-
-    return cb(result);
+    try {
+      return cb(result);
+    } catch (err) {
+      testLogger.logError(err);
+      process.nextTick(function() {
+        throw err;
+      });
+    }
   });
 
   if (!process.exit.restore) {
     sandbox.stub(process, 'exit', function (exitStatus) {
       result.exitStatus = exitStatus;
-
       end();
     });
   }
 
   try {
     cli = new AzureCli();
+    if(!AzureCli.prototype.recordError.restore) {
+      var sandbox2 = sinon.sandbox.create();
+      sandbox2.stub(AzureCli.prototype, 'recordError', function (err) {
+        testLogger.logError(err);
+        sandbox2.restore();
+        AzureCli.prototype.recordError(err);
+      });
+    }
     try {
       fs.unlinkSync('azure.err');
     } catch (e) {
@@ -74,6 +87,8 @@ function execute(cmd, cb) {
         throw e;
       }
     }
+    var cmdStr = cmd.join(" ");
+    testLogger.logData(cmdStr);
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;

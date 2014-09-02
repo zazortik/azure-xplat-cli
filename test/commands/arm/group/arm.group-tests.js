@@ -316,7 +316,7 @@ describe('arm', function () {
       function validateLogContent (logs) {
         logs.forEach(function (item) {
           item.resourceGroupName.should.equal(groupName);
-          item.status.value.should.not.match(/^Failed$/i);
+          //item.status.value.should.not.match(/^Failed$/i);
         });
       }
 
@@ -324,7 +324,7 @@ describe('arm', function () {
         suite.execute('group log show -n %s --all --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
           result.text.should.not.be.empty;
-          //validateLogContent(JSON.parse(result.text));
+          validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -333,7 +333,7 @@ describe('arm', function () {
         suite.execute('group log show -n %s --last-deployment --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
           result.text.should.not.be.empty;
-          //validateLogContent(JSON.parse(result.text));
+          validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -342,7 +342,7 @@ describe('arm', function () {
         suite.execute('group log show -n %s --json', groupName, function (result) {
           result.exitStatus.should.equal(0);
           result.text.should.not.be.empty;
-          //validateLogContent(JSON.parse(result.text));
+          validateLogContent(JSON.parse(result.text));
           done();
         });
       });
@@ -351,7 +351,7 @@ describe('arm', function () {
         suite.execute('group log show -n %s -d %s --json', groupName, deploymentName, function (result) {
           result.exitStatus.should.equal(0);
           result.text.should.not.be.empty;
-          //validateLogContent(JSON.parse(result.text));
+          validateLogContent(JSON.parse(result.text));
           done();
         });
       });

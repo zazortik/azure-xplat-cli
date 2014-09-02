@@ -1,3 +1,27 @@
+2014.08.04 Version 0.8.7
+* Fixed issues with vm commands (vm image, vm docket create)
+* Added support for A8, A9 vm sizes in vm create command
+* Fixed user logout scenario issues and bumped up the credential size
+* Rebranding from Windows Azure to Microsoft Azure
+* Test fixes
+
+2014.07.16 Version 0.8.6
+* Store user credentials in the windows credential store
+* Azure Resource Manager Tags (in arm mode)
+  * azure tag create/list/show/delete
+  * tags parameter in azure group create/set and azure resource create/set
+  * tags parameter in azure group list and azure resource list
+* Support PHP version 5.5 for web site options
+
+2014.07.07 Version 0.8.5
+* Active directory authentication support for
+  * azure vm
+  * azure vnet
+  * azure mobile
+* Command to create docker VM in azure
+  * azure vm docker create
+* Store active drectory token in key chain on Mac
+
 2014.05.30 Version 0.8.4
 * Active directory support for AzureChinaCloud
 * Bug fixes for AzureChinaCloud endpoints
@@ -104,7 +128,7 @@
 * Multiple VM fixes
 * New azure site repository sync command to sync the deployment of a website
 * New azure mobile recover command to recover of an unhealthy mobile service
-* Command to list Windows Azure Storage container
+* Command to list Microsoft Azure Storage container
   * azure storage container list
 
 2013.05.13 - version 0.6.16
@@ -132,7 +156,7 @@
 
 2012.12.12 - Version 0.6.11
 * "azure sql" - manage Azure SQL Server servers, databases and firewall rules
-* "azure site log tail" - realtime streaming logs over Windows Azure.
+* "azure site log tail" - realtime streaming logs over Microsoft Azure.
 * "azure mobile script upload" - now supports shared and scheduler scripts #179
 * "azure mobile show" - now displays scale information #139
 * "azure mobile scale" - allows managing scale out for your mobile app #139
