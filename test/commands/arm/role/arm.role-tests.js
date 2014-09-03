@@ -85,16 +85,15 @@ describe('arm', function () {
       if (!suite.isPlayback()) {
         suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          //TODO: uncomment and the related child resource test once figure out why in the internal environment, we can no longer create a sql server when parent resoruce is ''
-          //suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
-          //  testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
-          //  result.exitStatus.should.equal(0);
-          //  suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
-          //    testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
-          //    result.exitStatus.should.equal(0);
+          suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+            testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+            result.exitStatus.should.equal(0);
+            suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+              testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+              result.exitStatus.should.equal(0);
               done();
-          //  });
-          //});
+            });
+          });
         });
       } else {
         done();
@@ -242,32 +241,32 @@ describe('arm', function () {
       });
     });
 
-    //describe('create a role assignment to access a child resource', function () {
-    //  it('as a Reader using separate switches should work', function (done) {
-    //    var principal = getTestPrincipalName();
-    //    var principalId = getTestPrincipalId();
-    //    suite.execute('role assignment create --upn %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
-    //                  'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
-    //      result.exitStatus.should.equal(0);
-    //      suite.execute('role assignment list --upn %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
-    //                    'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (listAssignmentResult) {
-    //        var assignments = JSON.parse(listAssignmentResult.text);
-    //        assignments.some(function (res) {
-    //          var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + 
-    //                             '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb + '$';
-    //          return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId && 
-    //                  res.properties.permissions === "*/read");
-    //        }).should.be.true;
+    describe('create a role assignment to access a child resource', function () {
+      it('as a Reader using separate switches should work', function (done) {
+        var principal = getTestPrincipalName();
+        var principalId = getTestPrincipalId();
+        suite.execute('role assignment create --upn %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
+                      'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('role assignment list --upn %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
+                        'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (listAssignmentResult) {
+            var assignments = JSON.parse(listAssignmentResult.text);
+            assignments.some(function (res) {
+              var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + 
+                                 '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb + '$';
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId && 
+                      res.properties.permissions === "*/read");
+            }).should.be.true;
 
-    //        //clean up
-    //        suite.execute('role assignment delete --upn %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
-    //                      testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
-    //          result.exitStatus.should.equal(0);
-    //          done();
-    //        });
-    //      });
-    //    });
-    //  });
-    //});
+            //clean up
+            suite.execute('role assignment delete --upn %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
+                          testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+    });
   });
 });
