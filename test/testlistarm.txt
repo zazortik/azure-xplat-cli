@@ -10,3 +10,4 @@ commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/adUtils-test.js
+commands/arm/ad/role/roleAssignments-tests.js
