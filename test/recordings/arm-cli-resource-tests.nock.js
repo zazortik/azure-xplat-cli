@@ -11,7 +11,7 @@ exports.getMockedProfile = function () {
     username: 'user@domain.example',
     tenantId: '7d669939-8bb1-4bca-ba68-e1b5f52fea41',
     registeredProviders: ['sqlserver', 'website', 'visualstudio.account'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
+    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights', 'microsoft.cache', 'microsoft.web', 'microsoft.visualstudio'],
     isDefault: true
   }, newProfile.environments['rdfenext']));
 
