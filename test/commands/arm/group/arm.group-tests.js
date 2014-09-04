@@ -32,7 +32,6 @@ var createdDeployments = [];
 
 var requiredEnvironment = [
   { requiresToken: true },
-  'AZURE_ARM_TEST_STORAGEACCOUNT',
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
@@ -43,7 +42,6 @@ describe('arm', function () {
 
   describe('group', function () {
     var suite;
-    var testStorageAccount;
     var testLocation;
     var normalizedTestLocation;
 
@@ -58,7 +56,6 @@ describe('arm', function () {
 
     beforeEach(function (done) {
       suite.setupTest(function () {
-        testStorageAccount = process.env.AZURE_ARM_TEST_STORAGEACCOUNT;
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
         testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
@@ -102,8 +99,8 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json',
-          groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
+        suite.execute('group create %s --location %s -f %s -e %s -d %s --template-version %s --json',
+          groupName, testLocation, templateFile, parameterFile, 'mydepTemplateFile', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
@@ -213,8 +210,8 @@ describe('arm', function () {
 
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
-        suite.execute('group create %s --location %s -f %s -e %s -s %s -d %s --template-version %s --json',
-          groupName, testLocation, templateFile, parameterFile, testStorageAccount, 'mydepTemplateFile', '1.0.0.0', function (result) {
+        suite.execute('group create %s --location %s -f %s -e %s -d %s --template-version %s --json',
+          groupName, testLocation, templateFile, parameterFile, 'mydepTemplateFile', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group show %s --json', groupName, function (showResult) {

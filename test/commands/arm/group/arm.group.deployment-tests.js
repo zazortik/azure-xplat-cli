@@ -26,7 +26,6 @@ var testUtil = require('../../../util/util');
 
 var requiredEnvironment = [
   { requiresToken: true },
-  'AZURE_ARM_TEST_STORAGEACCOUNT',
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
