@@ -31,6 +31,7 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage certificates
     * CloudInit for Ubuntu VM
     * Create and manage Docker host virtual machines
+    * Create and manage VM extensions
 * Network
     * Import and export network configuration
     * Create and manage virtual network
