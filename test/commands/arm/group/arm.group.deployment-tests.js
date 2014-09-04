@@ -40,7 +40,6 @@ var cleanedUpGroups = 0;
 describe('arm', function () {
   describe('deployment', function () {
     var suite;
-    var testStorageAccount;
     var testLocation;
     var normalizedTestLocation;
 
@@ -55,7 +54,6 @@ describe('arm', function () {
 
     beforeEach(function (done) {
       suite.setupTest(function () {
-        testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
         testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
         normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
         testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
@@ -220,8 +218,8 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
-            galleryTemplateUrl, groupName, deploymentName, parameterFile, testStorageAccount);
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+            galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -242,8 +240,8 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -s %s --json -vv',
-            templateFile, groupName, deploymentName, parameterFile, testStorageAccount);
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+            templateFile, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -274,8 +272,8 @@ describe('arm', function () {
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('group deployment create -f %s -g %s -n %s -s %s -p %s --json -vv',
-            templateFile, groupName, deploymentName, testStorageAccount, parameters, function (result) {
+          suite.execute('group deployment create -f %s -g %s -n %s -p %s --json -vv',
+            templateFile, groupName, deploymentName, parameters, function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
@@ -322,8 +320,8 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -y %s -g %s -n %s -e %s -s %s --json',
-            templateFile, galleryTemplateName, groupName, deploymentName, parameterFile, testStorageAccount);
+        var commandToCreateDeployment = util.format('group deployment create -f %s -y %s -g %s -n %s -e %s --json',
+            templateFile, galleryTemplateName, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
