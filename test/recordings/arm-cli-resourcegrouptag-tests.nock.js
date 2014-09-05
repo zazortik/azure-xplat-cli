@@ -14,7 +14,7 @@ exports.getMockedProfile = function () {
     name: 'Node CLI Test',
     username: 'user@domain.example',
     registeredProviders: ['website', 'sqlserver', 'visualstudio.account'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights', 'microsoft.cache', 'microsoft.cache', 'microsoft.cache', 'microsoft.cache', 'microsoft.web'],
+    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights', 'microsoft.cache', 'microsoft.cache', 'microsoft.cache', 'microsoft.cache', 'microsoft.web', 'microsoft.visualstudio'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
