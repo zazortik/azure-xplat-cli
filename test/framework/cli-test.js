@@ -58,13 +58,13 @@ function CLITest(testPrefix, env, forceMocked) {
   // Normalize environment
   this.normalizeEnvironment(env);
   this.validateEnvironment();
-  
+
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
-  
+
   this.randomTestIdsGenerated = [];
-  this.numberOfRandomTestIdGenerated = 0;  
+  this.numberOfRandomTestIdGenerated = 0;
 
   if (this.isPlayback()) {
     this.setTimeouts();
@@ -113,11 +113,11 @@ _.extend(CLITest.prototype, {
 
     if (this.requiresCert && this.requiresToken) {
       messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
-    } else if (this.requiresCert && profile.current.currentSubscription.username) {
+    } else if (this.requiresCert && profile.current.currentSubscription.user) {
       messages.push('This test requires certificate authentication only. The current subscription has an access token. Please switch subscriptions or use azure logout to remove the access token');
     } else if(this.requiresCert && !profile.current.currentSubscription.managementCertificate) {
       messges.push('This test requires certificate authentication but the current subscription does not have a management certificate. Please use azure account import to obtain one.');
-    } else if (this.requiresToken && !profile.current.currentSubscription.username) {
+    } else if (this.requiresToken && !profile.current.currentSubscription.user) {
       messages.push('This test required an access token but the current subscription does not have one. Please use azure login to obtain an access token');
     }
 
@@ -138,26 +138,26 @@ _.extend(CLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
-    
+
     if (this.isPlayback()) {
       var nocked = require(this.recordingsFile);
       if (nocked.randomTestIdsGenerated) {
         this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
       }
-      
+
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
-      
+
       if (nocked.getMockedProfile) {
         profile.current = nocked.getMockedProfile();
         profile.current.save = function () { };
       }
-      
+
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
-      
+
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
     } else {
@@ -202,7 +202,7 @@ _.extend(CLITest.prototype, {
         fs.unlinkSync(path.join(utils.azureDir(), p));
       });
   },
-  
+
   writeGeneratedUuids: function () {
     if (this.uuidsGenerated.length > 0) {
       var uuids = this.uuidsGenerated.map(function (uuid) { return '\'' + uuid + '\''; }).join(',');
@@ -211,7 +211,7 @@ _.extend(CLITest.prototype, {
       this.uuidsGenerated.length = 0;
     }
   },
-  
+
   writeGeneratedRandomTestIds: function () {
     if (this.randomTestIdsGenerated.length > 0) {
       var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
@@ -256,7 +256,7 @@ _.extend(CLITest.prototype, {
     }
 
     this.forceSuiteMode(sinon);
-    
+
     if (this.isMocked){
       this.stubOutUuidGen(sinon);
     }
@@ -277,7 +277,7 @@ _.extend(CLITest.prototype, {
       // nock recoding
       nockHelper.nock.recorder.rec(true);
     }
-    
+
     if (this.isPlayback()) {
       // nock playback
       var nocked = require(this.recordingsFile);
@@ -329,7 +329,7 @@ _.extend(CLITest.prototype, {
       scope += ']';
       fs.appendFileSync(this.recordingsFile, scope);
       nockHelper.nock.recorder.clear();
-    } 
+    }
     nockHelper.unNockHttp();
 
     callback();
@@ -343,7 +343,7 @@ _.extend(CLITest.prototype, {
       requiredEnvironment: this.requiredEnvironment
     }));
   },
-  
+
   isPlayback: function (){
     return this.isMocked && !this.isRecording;
   },
@@ -359,7 +359,7 @@ _.extend(CLITest.prototype, {
     if (!currentList) {
       currentList = [];
     }
-    
+
     var newNumber;
     if (!this.isPlayback()) {
       newNumber = CLITest.generateRandomId(prefix, currentList);
@@ -375,7 +375,7 @@ _.extend(CLITest.prototype, {
       }
     }
     currentList.push(newNumber);
-    return newNumber;    
+    return newNumber;
   },
 
   /**
@@ -434,7 +434,7 @@ _.extend(CLITest.prototype, {
       };
     });
   },
-  
+
   /*
   * for any generated uuids which end up in the rest url, record them, and restore under playback
   */
@@ -443,7 +443,7 @@ _.extend(CLITest.prototype, {
     if (utils.uuidGen.restore) {
       utils.uuidGen.restore();
     }
-    
+
     CLITest.wrap(sinon, utils, 'uuidGen', function (originalUuidGen) {
       return function () {
         var uuid;
