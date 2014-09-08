@@ -29,7 +29,7 @@ var expectedPassword = 'sekretPa$$w0rd';
 
 var testTenantIds = ['2d006e8c-61e7-4cd2-8804-b4177a4341a1'];
 
-var expectedSubscriptions = 
+var expectedSubscriptions =
 [
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
@@ -91,8 +91,8 @@ describe('Environment', function () {
       commonTenantName: 'common',
       activeDirectoryResourceId: 'http://login.notreal.example'
     });
-    
-    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/, 
+
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
       null/*no error*/, expectedToken/*the access token*/);
     sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
   });
@@ -110,7 +110,7 @@ describe('Environment', function () {
     it('should have called the token provider', function () {
       environment.acquireToken.called.should.be.true;
     });
-    
+
     it('should have call to get arm client', function () {
       environment.getArmClient.called.should.be.true;
     });
@@ -130,8 +130,8 @@ describe('Environment', function () {
     });
 
     it('should return a subscription with expected username', function () {
-      should.exist(subscriptions[0].username);
-      subscriptions[0].username.should.equal(expectedUserName);
+      should.exist(subscriptions[0].user);
+      subscriptions[0].user.name.should.equal(expectedUserName);
     });
 
     it('should return listed subscriptions', function () {
@@ -144,7 +144,7 @@ describe('Environment', function () {
 
     it('should have same username for all subscription', function () {
       subscriptions.forEach(function (s) {
-        s.username.should.equal(expectedUserName);
+        s.user.name.should.equal(expectedUserName);
       });
     });
 
