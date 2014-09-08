@@ -1622,5 +1622,6 @@
     "uninstall extension": "uninstall extension",
     "consider only VM for this DNS name": "consider only VM for this DNS name",
     "Disabling vm extension": "Disabling vm extension",
-    "Uninstalling vm extension": "Uninstalling vm extension"
+    "Uninstalling vm extension": "Uninstalling vm extension",
+    "--vm-size has not been specified. Defaulting to \"Small\".": "--vm-size has not been specified. Defaulting to \"Small\"."
 }
