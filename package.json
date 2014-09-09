@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -38,9 +38,9 @@
     "adal-node": "0.1.6",
     "async": "0.2.7",
     "azure": "0.9.13",
-    "azure-common": "0.9.6",
+    "azure-common": "0.9.7",
     "azure-gallery": "2.0.0-pre.8",
-    "azure-mgmt-resource": "2.0.0-pre.9",
+    "azure-mgmt-resource": "2.0.0-pre.10",
     "azure-storage": "0.3.3",
     "colors": "0.x.x",
     "commander": "1.0.4",
