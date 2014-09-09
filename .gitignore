@@ -35,3 +35,6 @@ Thumbs.db
 
 # Linux #
 *.swp
+
+# Test Logs #
+test/output/*

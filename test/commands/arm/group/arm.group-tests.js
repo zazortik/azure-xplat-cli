@@ -23,10 +23,10 @@ var fs = require('fs')
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtil = require('../../../util/util');
+var utils = require('../../../../lib/util/utils');
+
 var testprefix = 'arm-cli-group-tests';
-
 var groupPrefix = 'xplatTestGCreate';
-
 var createdGroups = [];
 var createdDeployments = [];
 
@@ -198,7 +198,8 @@ describe('arm', function () {
             group.name.should.equal(groupName);
             group.resources.length.should.equal(0);
             group.properties.provisioningState.should.equal('Succeeded');
-
+            group.permissions[0].actions[0].should.equal('*');
+            group.permissions[0].notActions.length.should.equal(0);
             suite.execute('group delete %s --json --quiet', groupName, function () {
               done();
             });
@@ -222,6 +223,9 @@ describe('arm', function () {
             var group = JSON.parse(showResult.text);
             group.name.should.equal(groupName);
             group.properties.provisioningState.should.equal('Succeeded');
+            group.permissions[0].actions[0].should.equal('*');
+            group.permissions[0].notActions.length.should.equal(0);
+            utils.stringEndsWith(group.id, groupName).should.be.true;
 
             group.resources.forEach(function (item) {
               item.location.should.equal(testLocation);
@@ -233,8 +237,14 @@ describe('arm', function () {
               }
             });
 
-            suite.execute('group delete %s --json --quiet', groupName, function () {
-              done();
+            suite.execute('group list %s --details --json', groupName, function (detailListResult) {
+              var detailGroups = JSON.parse(detailListResult.text);
+              detailGroups[0].permissions[0].actions[0].should.equal('*');
+              detailGroups[0].permissions[0].notActions.length.should.equal(0);
+              utils.stringEndsWith(detailGroups[0].id, detailGroups[0].name).should.be.true;
+              suite.execute('group delete %s --json --quiet', groupName, function () {
+                done();
+              });
             });
           });
         });
