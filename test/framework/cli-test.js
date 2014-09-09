@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+require('streamline').register();
 // Test includes
 var fs = require('fs');
 var os = require('os');
