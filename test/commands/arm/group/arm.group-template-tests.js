@@ -26,7 +26,6 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testUtil = require('../../../util/util');
 var requiredEnvironment = [
   { requiresToken: true },
-  'AZURE_ARM_TEST_STORAGEACCOUNT',
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
@@ -41,7 +40,6 @@ describe('arm', function () {
     describe('template', function () {
       var suite;
       var testLocation;
-      var testStorageAccount;
       var normalizedTestLocation;
 
       before(function (done) {
@@ -56,7 +54,6 @@ describe('arm', function () {
       beforeEach(function (done) {
         suite.setupTest(function () {
           testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-          testStorageAccount = process.env['AZURE_ARM_TEST_STORAGEACCOUNT'];
           normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
           testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
             if (error) {
@@ -256,21 +253,6 @@ describe('arm', function () {
       });
 
       describe('validate', function () {
-        it('should pass when a valid file template with a storage account, a parameter file and a resource group are provided',  function (done) {
-          var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
-          var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
-          var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-
-          suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
-            result.exitStatus.should.equal(0);
-
-            suite.execute('group template validate -g %s -f %s -e %s -s %s --json', groupName, templateFile, parameterFile, testStorageAccount, function (result) {
-              result.exitStatus.should.equal(0);
-              cleanup(done);
-            });
-          });
-        });
-
         it('should pass when a valid gallery template with a parameter file and a resource group are provided',  function (done) {
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
           var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
@@ -323,7 +305,8 @@ describe('arm', function () {
 
             suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
               result.exitStatus.should.equal(1);
-              result.errorText.should.include('Unable to download deployment content. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
+              //comment out till ARM restores the following good message; rather than the "internal server error"  
+              //result.errorText.should.include('Unable to download deployment content. Status code \'NotFound\'. ReasonPhrase \'NotFound\'.');
               cleanup(done);
             });
           });

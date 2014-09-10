@@ -54,9 +54,9 @@ util/git/linkrevisioncontrol-tests.js
 util/utils-tests.js
 util/set-tests.js
 util/authentication/adalAuth-tests.js
-util/profile/profile-tests.js
 util/profile/publishSettings-tests.js
 util/profile/environment-addaccount-tests.js
+util/profile/profile-tests.js
 hdinsight/unit-cli-setup.js
 hdinsight/unit-list-command.js
 hdinsight/unit-show-command.js

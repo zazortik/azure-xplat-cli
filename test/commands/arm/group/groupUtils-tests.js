@@ -199,7 +199,7 @@ describe('download file name', function () {
   });
 
   describe('when file is not given', function () {
-    var name = testUtil.generateId('template');
+    var name = CLITest.generateRandomId('template');
 
     it('should return name of file in current directory', function (done) {
       groupUtils.normalizeDownloadFileName(name, null, false, no, function (err, result) {
