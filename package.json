@@ -35,12 +35,13 @@
     }
   ],
   "dependencies": {
-    "adal-node": "0.1.6",
+    "adal-node": "0.1.7",
     "async": "0.2.7",
-    "azure": "0.9.13",
-    "azure-common": "0.9.7",
-    "azure-gallery": "2.0.0-pre.8",
-    "azure-mgmt-resource": "2.0.0-pre.10",
+    "azure": "0.9.16",
+    "azure-common": "0.9.8",
+    "azure-gallery": "2.0.0-pre.10",
+    "azure-mgmt-authorization": "0.9.0-pre.1",
+    "azure-mgmt-resource": "2.0.0-pre.11",
     "azure-storage": "0.3.3",
     "colors": "0.x.x",
     "commander": "1.0.4",
