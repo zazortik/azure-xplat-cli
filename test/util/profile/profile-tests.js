@@ -26,6 +26,7 @@ var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 var testFileDir = './test/data';
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
@@ -208,10 +209,12 @@ describe('profile', function () {
     });
 
     describe('and logging in to already loaded subscription', function () {
+      var loginUser = 'user';
       var loginSubscriptions = [
       {
         subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-        subscriptionName: 'Account'
+        subscriptionName: 'Account',
+        username: loginUser
       }];
 
       var expectedToken = {
@@ -219,6 +222,14 @@ describe('profile', function () {
         refreshToken: 'Dummy refresh token',
         expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
       };
+
+      before(function () {
+        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(3, null, loginSubscriptions);
+      });
+
+      after(function () {
+        subscriptionUtils.getSubscriptions.restore();
+      });
 
       beforeEach(function (done) {
         var fakeEnvironment = new profile.Environment({
@@ -229,9 +240,8 @@ describe('profile', function () {
         });
 
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
-        sinon.stub(fakeEnvironment, 'getAccountSubscriptions').callsArgWith(1, null, loginSubscriptions);
 
-        fakeEnvironment.addAccount('user', 'password', function (err, subscriptions) {
+        fakeEnvironment.addAccount(loginUser, 'password', function (err, subscriptions) {
           subscriptions.forEach(function (s) {
             p.addSubscription(s);
           });
@@ -253,7 +263,7 @@ describe('profile', function () {
       });
 
       it('should have expected username', function () {
-        p.subscriptions[expectedSubscription.name].username.should.equal('user');
+        p.subscriptions[expectedSubscription.name].user.name.should.equal(loginUser);
       });
     });
   });
@@ -266,7 +276,8 @@ describe('profile', function () {
       managementCertificate: {
         key: 'to be determined',
         cert: 'to be determined'
-      }
+      },
+      environmentName: 'AzureCloud'
     };
 
     var expectedSubscription2 = {
@@ -277,7 +288,8 @@ describe('profile', function () {
       managementCertificate: {
         key: 'fake key',
         cert: 'fake cert'
-      }
+      },
+      environmentName: 'AzureCloud'
     };
 
     var p;
@@ -423,7 +435,9 @@ describe('profile', function () {
       });
 
       it('should have user name', function () {
-        p.subscriptions[expectedSubscription.name].username.should.equal(expectedSubscription.username);
+        var loadedSubscription = p.subscriptions[expectedSubscription.name];
+        should.exist(loadedSubscription.user);
+        p.subscriptions[expectedSubscription.name].user.name.should.equal(expectedSubscription.username);
       });
 
       it('should have expected cert', function () {
