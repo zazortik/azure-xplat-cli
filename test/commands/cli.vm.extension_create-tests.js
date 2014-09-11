@@ -36,6 +36,10 @@ describe('cli', function() {
       extensionname,
       publishername,
       version,
+      customScript = 'customScript.json',
+      customextension = 'CustomScriptExtension',
+      custompublisher = 'Microsoft.Compute',
+      customversion = '1.*',
       timeout;
 
     before(function(done) {
@@ -77,8 +81,6 @@ describe('cli', function() {
       }, timeout);
     });
 
-
-
     //create a vm with windows image
     describe('Create:', function() {
       it('Windows Vm', function(done) {
@@ -94,7 +96,6 @@ describe('cli', function() {
         });
       });
     });
-
 
     //Set extensions
     describe('Set extensions for the created vm:', function() {
@@ -119,20 +120,27 @@ describe('cli', function() {
       });
     });
 
-    // VM Restart and check
+    // VM extension check
     describe('Check the extension set:', function() {
-      it('Check the set extension after restarting', function(done) {
-        var cmd = util.format('vm restart %s --json', vmName).split(' ');
+      it('Check the set extension', function(done) {
+        var cmd = util.format('vm extension get %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          cmd = util.format('vm extension get %s --json', vmName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var Extensions = JSON.parse(result.text);
-            Extensions[0].publisher.should.equal(publishername);
-            Extensions[0].name.should.equal(extensionname);
-            done();
-          });
+          var Extensions = JSON.parse(result.text);
+          Extensions[0].publisher.should.equal(publishername);
+          Extensions[0].name.should.equal(extensionname);
+          done();
+        });
+      });
+    });
+
+    //Set custom extensions
+    describe('Set custom extensions for the created vm:', function() {
+      it('Set extensions for the created vm', function(done) {
+        var cmd = util.format('vm extension set -C %s %s %s %s %s --json',
+          customScript, vmName, customextension, custompublisher, customversion).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          done();
         });
       });
     });
@@ -148,6 +156,27 @@ describe('cli', function() {
             result.exitStatus.should.equal(0);
             var Extensions = JSON.parse(result.text);
             Extensions[0].state.should.equal('Disable');
+            done();
+          });
+        });
+      });
+    });
+
+    // Uninstall extension and check
+    describe('Uninstall extension:', function() {
+      it('Uninstall extension', function(done) {
+        var cmd = util.format('vm extension set -u %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          cmd = util.format('vm extension get %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            var exts = JSON.parse(result.text);
+            var found = false;
+            var found = exts.some(function(ext) {
+              if (extensionname == ext.name)
+                return true;
+            });
+            found.should.be.false;
             done();
           });
         });
