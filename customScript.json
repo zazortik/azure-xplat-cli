@@ -1,1 +1,1 @@
-{"fileUris":["http://bamurashare.blob.core.windows.net/share/openssh.ps1"], "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file openssh.ps1" }
+{"fileUris":["http://msopentechrelease.blob.core.windows.net/extensionscripts/openssh.ps1"], "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file openssh.ps1" }

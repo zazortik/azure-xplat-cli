@@ -22,77 +22,88 @@ var suite;
 var testPrefix = 'cli.vm.extension_get-tests';
 
 var requiredEnvironment = [{
-  name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'West US'
-}];
+    name : 'AZURE_VM_TEST_LOCATION',
+    defaultValue : 'West US'
+  }
+];
 
-describe('cli', function() {
-  describe('vm', function() {
-    var vmName, extensionList, exteAylist,
-      location,
-      username = 'azureuser',
-      password = 'Collabera@01',
-      retry = 5;
+describe('cli', function () {
+  describe('vm', function () {
+    var extensionList,
+    exteAylist,
+    location,
+    retry = 5;
 
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(function() {
-        getVM(done);
-      });
+      suite.setupSuite(done);
     });
 
-    after(function(done) {
+    after(function (done) {
       suite.teardownSuite(done);
     });
 
-    beforeEach(function(done) {
-      suite.setupTest(function() {
+    beforeEach(function (done) {
+      suite.setupTest(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isMocked ? 0 : 5000;
         done();
       });
     });
 
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('Extension:', function() {
+    describe('Extension:', function () {
 
-      it('get the details of VM', function(done) {
-        var cmd = util.format('vm extension get %s --json', vmName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          extensionList = JSON.parse(result.text);
-          extensionList.length.should.be.above(0);
-          exteAylist = extensionList[0];
-          done();
+      it('get the details of VM', function (done) {
+        getVM(function (vmName) {
+          var cmd = util.format('vm extension get %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            extensionList = JSON.parse(result.text);
+            extensionList.length.should.be.above(0);
+            exteAylist = extensionList[0];
+            done();
+          });
         });
       });
 
       //Get Complete extension output
-      it('get Complete extension output', function(done) {
-        var cmd = util.format('vm extension get %s -n %s -p %s -r %s --json', vmName, exteAylist.name, exteAylist.publisher, exteAylist.referenceName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var ext = JSON.parse(result.text);
-          ext.length.should.be.above(0);
-          ext[0].name.should.equal(exteAylist.name);
-          ext[0].publisher.should.equal(exteAylist.publisher);
-          ext[0].referenceName.should.equal(exteAylist.referenceName);
-          done();
+      it('get Complete extension output', function (done) {
+        getVM(function (vmName) {
+          var cmd = util.format('vm extension get %s -n %s -p %s -r %s --json', vmName, exteAylist.name, exteAylist.publisher, exteAylist.referenceName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var ext = JSON.parse(result.text);
+            ext.length.should.be.above(0);
+            ext[0].name.should.equal(exteAylist.name);
+            ext[0].publisher.should.equal(exteAylist.publisher);
+            ext[0].referenceName.should.equal(exteAylist.referenceName);
+            done();
+          });
         });
       });
     });
 
     function getVM(callback) {
-      var cmd = util.format('vm list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var vmList = JSON.parse(result.text);
-        vmName = vmList[0].VMName;
-        callback();
-      });
+      if (getVM.VMName) {
+        callback(getVM.VMName);
+      } else {
+        var cmd = util.format('vm list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var vmList = JSON.parse(result.text);
+          var found = vmList.some(function (vm) {
+              if (vm.OSDisk.operatingSystem.toLowerCase() === 'windows') {
+                getVM.VMName = vm.VMName;
+                return true;
+              }
+            });
+          callback(getVM.VMName);
+        });
+      }
     }
   });
 });

@@ -20,7 +20,7 @@ var CLITest = require('../framework/cli-test');
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.extension_create-tests';
+var testPrefix = 'cli.vm.extension_set-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -36,16 +36,17 @@ describe('cli', function() {
       extensionname,
       publishername,
       version,
+      referencename,
       customScript = 'customScript.json',
       customextension = 'CustomScriptExtension',
       custompublisher = 'Microsoft.Compute',
+      customereference = 'CustomScriptExtension',
       customversion = '1.*',
       timeout;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
     });
 
     after(function(done) {
@@ -70,12 +71,13 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+		vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 5000;
         done();
       });
     });
 
-    afterEach(function(done) {
+    afterEach(function(done) { 
       setTimeout(function() {
         suite.teardownTest(done);
       }, timeout);
@@ -103,15 +105,16 @@ describe('cli', function() {
         var listcmd = util.format('vm extension list --json').split(' ');
         testUtils.executeCommand(suite, retry, listcmd, function(outerresult) {
           outerresult.exitStatus.should.equal(0);
-          var vnetName = JSON.parse(outerresult.text);
-          var found = vnetName.some(function(vnet) {
-            extensionname = vnet.name;
-            publishername = vnet.publisher;
-            version = vnet.version;
+          var extnarr = JSON.parse(outerresult.text);
+          var found = extnarr.some(function(ext) {
+            extensionname = ext.name;
+            publishername = ext.publisher;
+            version = ext.version;
+            referencename = ext.referencename;
             return true;
           });
-          var cmd = util.format('vm extension set %s %s %s %s --json',
-            vmName, extensionname, publishername, version).split(' ');
+          var cmd = util.format('vm extension set -r %s %s %s %s %s --json',
+            referencename, vmName, extensionname, publishername, version).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -137,8 +140,8 @@ describe('cli', function() {
     //Set custom extensions
     describe('Set custom extensions for the created vm:', function() {
       it('Set extensions for the created vm', function(done) {
-        var cmd = util.format('vm extension set -C %s %s %s %s %s --json',
-          customScript, vmName, customextension, custompublisher, customversion).split(' ');
+        var cmd = util.format('vm extension set -C %s -r %s %s %s %s %s --json',
+          customScript, customereference, vmName, customextension, custompublisher, customversion).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           done();
         });
@@ -172,7 +175,7 @@ describe('cli', function() {
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             var exts = JSON.parse(result.text);
             var found = false;
-            var found = exts.some(function(ext) {
+            found = exts.some(function(ext) {
               if (extensionname == ext.name)
                 return true;
             });
