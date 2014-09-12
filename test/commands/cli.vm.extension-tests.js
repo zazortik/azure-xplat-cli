@@ -70,7 +70,7 @@ describe('cli', function() {
       // list a single extension when filtered for publisher name
       it('should fetch all extensions by a single publisher', function(done) {
 
-       // pick a publisher at random
+        // pick a publisher at random
         var index = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
 
         var cmd = util.format('vm extension list -p %s --json', extensionList[index].publisher).split(' ');
@@ -91,7 +91,7 @@ describe('cli', function() {
       // list a single extension when filtered for extension name
       it('should fetch details for a single extension', function(done) {
 
-      //pick an extension at random
+        //pick an extension at random
         var index = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
 
         var cmd = util.format('vm extension list -n %s --json', extensionList[index].name).split(' ');
@@ -111,14 +111,14 @@ describe('cli', function() {
       // extension name
       it('should fetch extensions matching given publisher or extension name', function(done) {
 
-       //pick two different extensions at random
+        //pick two different extensions at random
         var index1 = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
         var index2 = suite.isMocked ? 1 : Math.random() * extensionList.length >> 0;
         while (index2 === index1) {
           index2 = Math.random() * extensionList.length >> 0;
         }
 
-        var cmd = util.format('vm extension list -p %s -n %s --json', extensionList[index1].publisher,extensionList[index2].name).split(' ');
+        var cmd = util.format('vm extension list -p %s -n %s --json', extensionList[index1].publisher, extensionList[index2].name).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
 
@@ -137,10 +137,10 @@ describe('cli', function() {
       // fetch all versions for a given extension and publisher
       it('should fetch all versions for a given extension and publisher', function(done) {
 
-      // pick an extension at random
+        // pick an extension at random
         var index = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
 
-        var cmd = util.format('vm extension list -p %s -n %s -a --json',extensionList[index].publisher,extensionList[index].name).split(' ');
+        var cmd = util.format('vm extension list -p %s -n %s -a --json', extensionList[index].publisher, extensionList[index].name).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
 
@@ -159,8 +159,8 @@ describe('cli', function() {
       // fetch details a given extension and publisher and version
       it('should fetch details for a given extension, publisher and version', function(done) {
 
-       // pick a version at random
-        var index  = suite.isMocked ? 0 : Math.random() * extensionVersions.Length >> 0;
+        // pick a version at random
+        var index = suite.isMocked ? 0 : Math.random() * extensionVersions.Length >> 0;
         var cmd = util.format('vm extension list -p %s -n %s -e %s --json',
           extensionVersions[index].publisher,
           extensionVersions[index].name,

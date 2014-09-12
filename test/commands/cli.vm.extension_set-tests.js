@@ -71,13 +71,13 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-		vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 5000;
         done();
       });
     });
 
-    afterEach(function(done) { 
+    afterEach(function(done) {
       setTimeout(function() {
         suite.teardownTest(done);
       }, timeout);
