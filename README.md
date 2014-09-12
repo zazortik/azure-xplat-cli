@@ -132,14 +132,10 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
-### azure command usage on Ubuntu with nodejs-legacy
-Starting from 0.8.8, if you are running xplat cli on Ubuntu OS with node-js legacy (a different node installation) then the command usage to manage your services/ applications will be 'azure-nodejs' instead of 'azure'. For example:
+### azure cli on Ubuntu with nodejs-legacy
+If you are running xplat cli on Ubuntu OS with node-js legacy (a different node installation) then you should create a symbolic link between nodejs and node. After doing so, you should be able to execute the azure commands successfully. The command to create the symbolic link is as follows:
 ```bash
-azure-nodejs login -u $username -p $password
-azure-nodejs site create --location "West US" mywebsite
-azure-nodejs site show -n $name
-azure-nodejs vm create ...
-...
+sudo ln –s /usr/bin/nodejs /usr/bin/node
 ```
 
 ## 2 Modes
