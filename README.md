@@ -132,6 +132,16 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure command usage on Ubuntu with nodejs-legacy
+Starting from 0.8.8, if you are running xplat cli on Ubuntu OS with node-js legacy (a different node installation) then the command usage to manage your services/ applications will be 'azure-nodejs' instead of 'azure'. For example:
+```bash
+azure-nodejs login -u $username -p $password
+azure-nodejs site create --location "West US" mywebsite
+azure-nodejs site show -n $name
+azure-nodejs vm create ...
+...
+```
+
 ## 2 Modes
 
 Starting from 0.8.0, we are adding a separate mode for Resource Manager. You can use the following command to switch between the
