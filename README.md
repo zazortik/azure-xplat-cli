@@ -132,10 +132,16 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
-### azure cli on Ubuntu with nodejs-legacy
-If you are running xplat cli on Ubuntu OS with node-js legacy (a different node installation) then you should create a symbolic link between nodejs and node. After doing so, you should be able to execute the azure commands successfully. The command to create the symbolic link is as follows:
+### azure cli on Ubuntu
+If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
+- [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
+- [how to solve the nodejs installation problem on ubuntu](https://github.com/expressjs/keygrip/issues/7)
+
+Please perform the installation steps in following order:
 ```bash
-sudo ln –s /usr/bin/nodejs /usr/bin/node
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+npm install -g azure-cli
 ```
 
 ## 2 Modes
