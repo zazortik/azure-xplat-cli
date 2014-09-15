@@ -45,8 +45,8 @@ fi
 # Ensure that all modules are present
 # -----------------------------------
 pushd ../../
-echo Running npm update to make sure that all modules are present locally...
-npm update
+echo Running npm install to make sure that all modules are present locally...
+npm install
 popd
 
 # Tarball creation
