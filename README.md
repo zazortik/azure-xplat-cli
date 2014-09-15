@@ -132,6 +132,18 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure cli on Ubuntu
+If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
+- [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
+- [how to solve the nodejs installation problem on ubuntu](https://github.com/expressjs/keygrip/issues/7)
+
+Please perform the installation steps in following order:
+```bash
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+npm install -g azure-cli
+```
+
 ## 2 Modes
 
 Starting from 0.8.0, we are adding a separate mode for Resource Manager. You can use the following command to switch between the

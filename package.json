@@ -98,8 +98,6 @@
     "extract-labels": "node scripts/extract-labels"
   },
   "bin": {
-    "azure": "./bin/azure",
-    "azure-node": "./bin/azure-node",
-    "azure-nodejs": "./bin/azure-nodejs"
+    "azure": "./bin/azure"
   }
 }
