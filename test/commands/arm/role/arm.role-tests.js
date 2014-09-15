@@ -202,7 +202,7 @@ describe('arm', function () {
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
               return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId &&
-                      res.properties.permissions === "*");
+                      res.properties.actions === "*");
             }).should.be.true;
             
             //clean up
@@ -228,7 +228,7 @@ describe('arm', function () {
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + resourceGroup + '$';
               return (res.properties.scope.match(scopePattern) && res.properties.principalId === objectId &&
-                      res.properties.permissions === "*");
+                      res.properties.actions === "*");
             }).should.be.true;
             
             //clean up
@@ -255,7 +255,7 @@ describe('arm', function () {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + 
                                  '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb + '$';
               return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId && 
-                      res.properties.permissions === "*/read");
+                      res.properties.actions === "*/read");
             }).should.be.true;
 
             //clean up

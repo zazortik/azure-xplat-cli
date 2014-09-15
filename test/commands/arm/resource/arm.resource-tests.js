@@ -145,25 +145,15 @@ describe('arm', function () {
       //  });
       //});
 
-      it('should create the group if it does not exist', function (done) {
+      it('should fail if the group does not exist', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
         suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
-          result.exitStatus.should.equal(0);
-
-          suite.execute('group show %s --json', groupName, function (showResult) {
-            showResult.exitStatus.should.equal(0);
-
-            var group = JSON.parse(showResult.text);
-            group.resources.some(function (res) {
-              return res.name === resourceName;
-            }).should.be.true;
-
-            suite.execute('group delete %s --quiet --json', groupName, function () {
-              done();
-            });
-          });
+          result.exitStatus.should.equal(1);
+          var expectedError = util.format('Resource group \'%s\' could not be found.', groupName);
+          result.errorText.should.include(expectedError);
+          done();
         });
       });
     });

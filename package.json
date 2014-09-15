@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -35,12 +35,13 @@
     }
   ],
   "dependencies": {
-    "adal-node": "0.1.6",
+    "adal-node": "0.1.7",
     "async": "0.2.7",
-    "azure": "0.9.13",
-    "azure-common": "0.9.6",
-    "azure-gallery": "2.0.0-pre.8",
-    "azure-mgmt-resource": "2.0.0-pre.9",
+    "azure": "0.9.16",
+    "azure-common": "0.9.8",
+    "azure-gallery": "2.0.0-pre.10",
+    "azure-mgmt-authorization": "0.9.0-pre.1",
+    "azure-mgmt-resource": "2.0.0-pre.11",
     "azure-storage": "0.3.3",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -84,7 +85,7 @@
     "url": "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "unit-arm": "node scripts/unit.js testlistarm.txt",
@@ -97,6 +98,8 @@
     "extract-labels": "node scripts/extract-labels"
   },
   "bin": {
-    "azure": "./bin/azure"
+    "azure": "./bin/azure",
+    "azure-node": "./bin/azure-node",
+    "azure-nodejs": "./bin/azure-nodejs"
   }
 }
