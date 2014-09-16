@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.8",
+  "version": "0.8.9",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -98,8 +98,6 @@
     "extract-labels": "node scripts/extract-labels"
   },
   "bin": {
-    "azure": "./bin/azure",
-    "azure-node": "./bin/azure-node",
-    "azure-nodejs": "./bin/azure-nodejs"
+    "azure": "./bin/azure"
   }
 }
