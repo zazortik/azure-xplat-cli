@@ -22,7 +22,7 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
-  process.env['SSHCERT'] = 'F:\azure.pem';
+  process.env['SSHCERT'] = 'test/data/fakeSshcert.pem';
 }
 
 exports.scopes = [[function (nock) { 
