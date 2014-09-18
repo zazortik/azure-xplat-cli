@@ -147,7 +147,7 @@ describe('cli', function () {
         blobService.deleteContainer(containerName, function(){done();});
       });
 
-      it('should upload a basic file to azure storage', null, function(done) {
+      it('should upload a basic file to azure storage', function(done) {
         var buf = new Buffer('HelloWord', 'utf8');
         var fileName = 'hello.tmp.txt';
         var fd = fs.openSync(fileName, 'w');
@@ -164,7 +164,7 @@ describe('cli', function () {
         });
       });
 
-      it('should list all blobs', null, function(done) {
+      it('should list all blobs', function(done) {
         suite.execute('storage blob list %s --json', containerName, function(result) {
           var blobs = JSON.parse(result.text);
           blobs.length.should.greaterThan(0);
