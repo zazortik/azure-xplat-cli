@@ -84,8 +84,8 @@ describe('cli', function() {
     });
 
     //create a vm with windows image
-    describe('Create:', function() {
-      it('Windows Vm', function(done) {
+    describe('Extension', function() {
+      it('Create Windows Vm', function(done) {
         getImageName('Windows', function(ImageName) {
           var cmd = util.format('vm create %s %s %s %s -r --json',
             vmName, ImageName, username, password).split(' ');
@@ -100,7 +100,7 @@ describe('cli', function() {
     });
 
     //Set extensions
-    describe('Set extensions for the created vm:', function() {
+    describe('Extension', function() {
       it('Set extensions for the created vm', function(done) {
         var listcmd = util.format('vm extension list --json').split(' ');
         testUtils.executeCommand(suite, retry, listcmd, function(outerresult) {
@@ -124,7 +124,7 @@ describe('cli', function() {
     });
 
     // VM extension check
-    describe('Check the extension set:', function() {
+    describe('Extension', function() {
       it('Check the set extension', function(done) {
         var cmd = util.format('vm extension get %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -138,7 +138,7 @@ describe('cli', function() {
     });
 
     //Set custom extensions
-    describe('Set custom extensions for the created vm:', function() {
+    describe('Extension', function() {
       it('Set extensions for the created vm', function(done) {
         var cmd = util.format('vm extension set -C %s -r %s %s %s %s %s --json',
           customScript, customereference, vmName, customextension, custompublisher, customversion).split(' ');
@@ -149,7 +149,7 @@ describe('cli', function() {
     });
 
     // Disable extension and check
-    describe('Disable extension:', function() {
+    describe('Extension', function() {
       it('Disable extension', function(done) {
         var cmd = util.format('vm extension set -b %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -166,7 +166,7 @@ describe('cli', function() {
     });
 
     // Uninstall extension and check
-    describe('Uninstall extension:', function() {
+    describe('Extension', function() {
       it('Uninstall extension', function(done) {
         var cmd = util.format('vm extension set -u %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {

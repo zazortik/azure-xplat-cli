@@ -27,7 +27,7 @@ var requiredEnvironment = [{
   defaultValue: 'West US'
 }, {
   name: 'SSHCERT',
-  defaultValue: 'test/data/fakeSshCert.pem'
+  defaultValue: null
 }];
 
 describe('cli', function() {
