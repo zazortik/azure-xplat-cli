@@ -47,6 +47,7 @@ var siteNamePrefix = 'clitests';
 var siteNames = [];
 
 var location;
+var scmSite = process.env.AZURE_SCM_SITE_SUFFIX || '.scm.azurewebsites.net';
 
 describe('cli', function () {
   describe('site', function() {
@@ -185,7 +186,7 @@ describe('cli', function () {
             }, function (err, hooks) {
               var hookExists = hooks.some(function (hook) {
                 var parsedUrl = url.parse(hook.config.url);
-                return parsedUrl.hostname === (siteName + '.scm.azurewebsites.net');
+                return parsedUrl.hostname === (siteName + scmSite);
               });
 
               hookExists.should.be.ok;
@@ -256,7 +257,7 @@ describe('cli', function () {
               }, function (err, hooks) {
                 var hookExists = hooks.some(function (hook) {
                   var parsedUrl = url.parse(hook.config.url);
-                  return parsedUrl.hostname === (siteName + '.scm.azurewebsites.net');
+                  return parsedUrl.hostname === (siteName + scmSite);
                 });
 
                 hookExists.should.be.ok;
