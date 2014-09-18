@@ -47,7 +47,7 @@ describe('Token cache look up', function () {
     }
   ];
   
-  it('should return 1 entry when the query object contains userId', function () {
+  it('should return 1 entry when the query specifies a userId', function () {
     var result = cacheLookup.find(query, entries);
     result.length.should.equal(1);
     result[0]._clientId.should.equal(query._clientId);
@@ -55,12 +55,12 @@ describe('Token cache look up', function () {
     result[0].userId.toLowerCase().should.equal(query.userId.toLowerCase());
   });
   
-  it('should return 1 entry when the query object contains no userId', function () {
+  it('should still match when the query object specifies no userId', function () {
     var result = cacheLookup.find(noUserQuery, entries);
     result.length.should.equal(1);
   });
 
-  it('should return 0 entry whenno match', function () {
+  it('should return 0 entry when no match for the user id', function () {
     var result = cacheLookup.find({foo: 'bar'}, entries);
     result.length.should.equal(0);
   });
