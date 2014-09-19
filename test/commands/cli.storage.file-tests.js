@@ -17,6 +17,8 @@
 var azure = require('azure');
 var should = require('should');
 var fs = require('fs');
+var path = require('path');
+var storage = require('azure-storage');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
@@ -110,9 +112,21 @@ describe('cli', function () {
     describe('directory', function () {
       
       var shareName = 'directorytestshare';
+      var directoryName = 'newdir';
+
+      before(function (done) {
+        var fileService = storage.createFileService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        fileService.createShare(shareName, function () { done(); });
+      });
+      
+      after(function (done) {
+        var fileService = storage.createFileService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        fileService.deleteShare(shareName, function () { done(); });
+      });
+
       describe('create', function () {
         it('should create a new directory', function (done) {
-          suite.execute('storage directory create %s newdir --json', shareName, function (result) {
+          suite.execute('storage directory create %s %s --json', shareName, directoryName, function (result) {
             var directory = JSON.parse(result.text);
             directory.name.should.equal('newdir');
             done();
@@ -122,7 +136,7 @@ describe('cli', function () {
       
       describe('delete', function () {
         it('should delete an existing directory', function (done) {
-          suite.execute('storage directory delete -q %s newdir --json', shareName, function (result) {
+          suite.execute('storage directory delete -q %s %s --json', shareName, directoryName, function (result) {
             done();
           });
         });
@@ -132,37 +146,74 @@ describe('cli', function () {
     describe('file', function () {
       
       var shareName = 'filetestshare';
+      var directoryName = 'newdir';
+      var localFile = 'localfile.txt';
+      var remoteFile = 'remotefile';
+      var testCount = 3;
+      var pushed = 0;
+      var testFiles = [];
+      
+      before(function (done) {
+        var fileService = storage.createFileService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        fileService.createShare(shareName, function () {
+          fileService.createDirectory(shareName, directoryName, function () {
+            var buf = new Buffer('HelloWord', 'utf8');
+            for (var i = 0; i < testCount; i++) {
+              var filePath = path.join(__dirname, i.toString() + localFile);
+              var file = fs.openSync(filePath, 'w');
+              fs.writeSync(file, buf, 0, buf.length, 0);
+              testFiles.push(filePath);
+              fileService.createFileFromLocalFile(shareName, '', i.toString() + remoteFile, filePath, function () {
+                if (++pushed == testCount) {
+                  done();
+                }
+              });
+            }
+          });
+        });
+      });
+      
+      after(function (done) {
+        for (var i = 0; i < testFiles.length; i++) {
+          fs.unlinkSync(testFiles[i]);
+        }
+
+        var fileService = storage.createFileService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        fileService.deleteShare(shareName, function () {
+          fileService.deleteDirectory(shareName, directoryName, function () {
+            done();
+          });
+        });
+      });
+
       describe('upload', function () {
         it('should upload an existing file', function (done) {
-          var buf = new Buffer('HelloWord', 'utf8');
-          var file = fs.openSync('localfile.txt', 'w');
-          fs.writeSync(file, buf, 0, buf.length, 0);
-          suite.execute('storage file upload localfile.txt -q %s remotefile --json', shareName, function (result) {
+          suite.execute('storage file upload %s -q %s %s --json', testFiles[0], shareName, remoteFile, function (result) {
             result.errorText.should.be.empty;
-            fs.unlinkSync('localfile.txt');
             done();
           });
         });
       });
-      
+
       describe('download', function () {
         it('should download an existing file', function (done) {
-          suite.execute('storage file download -q %s remotefile localfile2.txt --json', shareName, function (result) {
+          suite.execute('storage file download -q %s %s %s --json', shareName, remoteFile, localFile, function (result) {
             result.errorText.should.be.empty;
+            fs.unlinkSync(localFile);
             done();
           });
         });
       });
-      
+
       describe('delete', function () {
         it('should delete an existing file', function (done) {
-          suite.execute('storage file delete -q %s remotefile --json', shareName, function (result) {
+          suite.execute('storage file delete -q %s %s --json', shareName, remoteFile, function (result) {
             result.errorText.should.be.empty;
             done();
           });
         });
       });
-      
+
       describe('list', function () {
         it('should list files and directories', function (done) {
           suite.execute('storage file list %s --json', shareName, function (result) {
@@ -170,21 +221,18 @@ describe('cli', function () {
             var listResult = JSON.parse(result.text);
             listResult.should.have.enumerable('files');
             listResult.should.have.enumerable('directories');
-            listResult.files.should.be.lengthOf(3);
-            listResult.directories.should.be.lengthOf(5);
+            listResult.files.should.be.lengthOf(testCount);
+            listResult.directories.should.be.lengthOf(1);
             listResult.files.some(function (data) {
-              data.name.should.match(/file\d/);
+              data.name.should.match(/^.*remotefile$/);
             });
-            
             listResult.directories.some(function (data) {
-              data.name.should.match(/dir\d/);
+              data.name.should.match(/^.*dir$/);
             });
-            
             done();
           });
         });
       });
     });
-
   });
 });

@@ -201,6 +201,7 @@ nock('https://ciserversdk.blob.core.windows.net:443')
   'x-ms-blob-public-access': 'container',
   date: 'Tue, 08 Jul 2014 03:47:25 GMT' });
  return result; }],
+[],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.blob.core.windows.net:443')
@@ -336,6 +337,7 @@ nock('https://ciserversdk.blob.core.windows.net:443')
   'x-ms-blob-type': 'BlockBlob',
   date: 'Tue, 08 Jul 2014 03:47:34 GMT' });
  return result; }],
+[],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.blob.core.windows.net:443')
