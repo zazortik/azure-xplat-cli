@@ -386,7 +386,10 @@ describe('cli', function () {
 
                 Object.keys(site.config).some(function (k) { return k === 'phpVersion'; }).should.equal(false);
 
-                done();
+                suite.execute('site delete %s --quiet --json', siteName, function(result) {
+                  result.exitStatus.should.equal(0);
+                  done();
+                });
               });
             });
           });
