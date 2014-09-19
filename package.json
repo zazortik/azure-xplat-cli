@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.8",
+  "version": "0.8.9",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -65,7 +65,8 @@
     "xmlbuilder": "0.4.x",
     "readable-stream": "~1.0.0",
     "openssl-wrapper": "0.2.1",
-    "caller-id": "0.1.x"
+    "caller-id": "0.1.x",
+    "azure-extra": "~0.1.0"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -98,8 +99,6 @@
     "extract-labels": "node scripts/extract-labels"
   },
   "bin": {
-    "azure": "./bin/azure",
-    "azure-node": "./bin/azure-node",
-    "azure-nodejs": "./bin/azure-nodejs"
+    "azure": "./bin/azure"
   }
 }
