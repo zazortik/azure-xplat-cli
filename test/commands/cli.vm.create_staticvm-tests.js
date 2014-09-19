@@ -152,26 +152,6 @@ describe('cli', function() {
       });
     });
 
-    describe('negative testcase', function() {
-      it('Setting the invalid static ip address', function(done) {
-        var cmd = util.format('vm static-ip set %s ip --json', vmName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('The IP address ip is invalid');
-          done();
-        });
-      });
-
-      it('Setting the invalid vm name', function(done) {
-        var cmd = util.format('vm static-ip set abcd %s --json', staticIpToSet).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('No VMs found');
-          setTimeout(done, timeout);
-        });
-      });
-    });
-
     // Get name of an image of the given category
     function getImageName(category, callBack) {
       var cmd = util.format('vm image list --json').split(' ');

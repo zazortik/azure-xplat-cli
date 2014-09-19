@@ -20,7 +20,7 @@ var CLITest = require('../framework/cli-test');
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.extension_set-tests';
+var testPrefix = 'cli.vm.extension_set-custom_disable';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -33,14 +33,14 @@ describe('cli', function() {
       username = 'azureuser',
       password = 'PassW0rd$',
       retry = 5,
-      extensionname,
-      publishername,
-      version,
+      customScript = 'customScript.json',
+      customextension = 'CustomScriptExtension',
+      custompublisher = 'Microsoft.Compute',
+      customversion = '1.*',
       timeout;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
       suite.setupSuite(done);
     });
 
@@ -66,6 +66,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 5000;
         done();
       });
@@ -77,62 +78,41 @@ describe('cli', function() {
       }, timeout);
     });
 
-    //List extensions
-    describe('Extension', function() {
-      it('List extensions', function(done) {
-        var listcmd = util.format('vm extension list --json').split(' ');
-        testUtils.executeCommand(suite, retry, listcmd, function(outerresult) {
-          outerresult.exitStatus.should.equal(0);
-          var extnarr = JSON.parse(outerresult.text);
-          var found = extnarr.some(function(ext) {
-            extensionname = ext.name;
-            publishername = ext.publisher;
-            version = ext.version;
-            return true;
-          });
-          done();
-        });
-      });
-    });
-
-    //Set extensions
-    describe('Extension', function() {
-      it('Set extensions for the created vm', function(done) {
+    //Set custom extensions
+    describe('extension:', function() {
+      it('Set custom extensions and disable', function(done) {
         createVM(function() {
-          var cmd = util.format('vm extension set %s %s %s %s --json',
-            vmName, extensionname, publishername, version).split(' ');
+          var cmd = util.format('vm extension set -C %s %s %s %s %s --json',
+            customScript, vmName, customextension, custompublisher, customversion).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            done();
-          });
-        });
-      });
-    });
-
-    // VM extension check
-    describe('Extension', function() {
-      it('Uninstall the set extension', function(done) {
-        var cmd = util.format('vm extension get %s --json', vmName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(outerresult) {
-          outerresult.exitStatus.should.equal(0);
-          var cmd = util.format('vm extension set -u %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(innerresult) {
-            innerresult.exitStatus.should.equal(0);
-            cmd = util.format('vm extension get %s --json', vmName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(checkresult) {
-              var exts = JSON.parse(checkresult.text);
-              var found = false;
-              found = exts.some(function(ext) {
-                if (extensionname == ext.name)
-                  return true;
+            cmd = util.format('vm extension set -b %s %s %s %s --json', vmName, customextension, custompublisher, customversion).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              cmd = util.format('vm extension get %s --json', vmName).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var Extensions = JSON.parse(result.text);
+                Extensions[0].state.should.equal('Disable');
+                done();
               });
-              found.should.be.false;
-              done();
             });
           });
         });
       });
     });
+
+    function createVM(callback) {
+      getImageName('Windows', function(imagename) {
+        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
+        cmd.push('-l');
+        cmd.push(location);
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          setTimeout(callback, timeout);
+        });
+      });
+    }
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
@@ -149,18 +129,5 @@ describe('cli', function() {
         callBack(vmImgName);
       });
     }
-
-    function createVM(callback) {
-      getImageName('Windows', function(imagename) {
-        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(callback, timeout);
-        });
-      });
-    }
-
   });
 });

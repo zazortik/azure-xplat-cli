@@ -88,7 +88,6 @@ describe('cli', function() {
 
     //create a vm from role file
     describe('VM:', function() {
-
       it('export and delete', function(done) {
         createVM(function() {
           var cmd = util.format('vm export %s %s  --json', vmName, file).split(' ');
@@ -102,29 +101,49 @@ describe('cli', function() {
       });
 
       it('Create-from a file', function(done) {
-        var Fileresult = fs.readFileSync(file, 'utf8');
-        var obj = JSON.parse(Fileresult);
-        obj['RoleName'] = vmName;
-        var diskName = obj.oSVirtualHardDisk.name;
-        waitForDiskRelease(diskName, function() {
-          var jsonstr = JSON.stringify(obj);
-          fs.writeFileSync(file, jsonstr);
-          var cmd = util.format('vm create-from %s %s --json', vmName, file).split(' ');
-          cmd.push('-l');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            vmToUse.Name = vmName;
-            vmToUse.Created = true;
-            fs.unlinkSync('vminfo.json');
-            vmToUse.Delete = true;
-            vmToUse.blobDelete = true;
-            setTimeout(done, timeout);
+        checkFreeDisk(function(diskname) {
+          var Fileresult = fs.readFileSync(file, 'utf8');
+          var obj = JSON.parse(Fileresult);
+          obj['RoleName'] = vmName;
+          if (diskname)
+            obj.oSVirtualHardDisk.name = diskname;
+          else
+            diskname = obj.oSVirtualHardDisk.name;
+
+          waitForDiskRelease(diskname, function() {
+            var jsonstr = JSON.stringify(obj);
+            fs.writeFileSync(file, jsonstr);
+            var cmd = util.format('vm create-from %s %s --json', vmName, file).split(' ');
+            cmd.push('-l');
+            cmd.push(location);
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              vmToUse.Name = vmName;
+              vmToUse.Created = true;
+              fs.unlinkSync('vminfo.json');
+              vmToUse.Delete = true;
+              vmToUse.blobDelete = true;
+              setTimeout(done, timeout);
+            });
           });
         });
       });
     });
 
+    function checkFreeDisk(callback) {
+      var diskname;
+      var cmd = util.format('vm disk list --json');
+      testUtils.executeCommand(suite, retry, cmd, function(result) {
+        vmDiskObj = JSON.parse(result.text);
+        vmDiskObj.some(function(disk) {
+          if (!disk.usageDetails && disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
+            diskname = disk.name;
+            return true;
+          }
+        });
+        callback(diskname);
+      });
+    }
     //check if disk is released from vm and then if released call callback or else wait till it is released
     function waitForDiskRelease(vmDisk, callback) {
       var vmDiskObj;
