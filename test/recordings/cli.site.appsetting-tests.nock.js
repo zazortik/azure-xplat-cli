@@ -8,9 +8,12 @@ exports.getMockedProfile = function () {
   newProfile.addSubscription(new profile.Subscription({
     id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
     name: 'Azure SDK Powershell Test',
-    user: '[object Object]',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['sqlserver', 'website'],
+    registeredProviders: ['sqlserver', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website', 'website'],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -34,8 +37,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f2907d99b45a1bc2af6748106b01718f',
-  date: 'Fri, 19 Sep 2014 22:28:08 GMT' });
+  'x-ms-request-id': '004ecbdf21d5172c9c1bd8158c177ee5',
+  date: 'Sat, 20 Sep 2014 00:30:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -49,53 +52,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3657d5d7aa371068a83084243450c838',
-  date: 'Fri, 19 Sep 2014 22:28:08 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5fd1601d8dac16a7b94824fd6f67facf',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8d916767a43718ef9181ddfcd62a02c6',
-  date: 'Fri, 19 Sep 2014 22:28:08 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '703b47fb4e2c162bb030253024d2e58f',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '071b59a114c21e46bac0ad43085e207c',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -109,13 +67,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '348ea467a29a177595e6f27b82ee7717',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': 'aacd2b9c857217068ce20e06ac34b48a',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -124,8 +82,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8eacfb839bd61a23952d892c5b7bb0c3',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '7941c8d529ee1615862cafc3547b63d0',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '8a4568e4b60f133e95f5286c936ebe61',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -139,13 +112,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b8f6f37e66721cd8b17605a7ff0e44f1',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '1d0444ec892810529560cefc03345063',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -154,13 +127,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '47aab1ecef8219fbbce04d628fc58f6e',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '324259cbe043169bb1d9afae84990db7',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -169,23 +142,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '05992ceea2c017a6a1c2655bde45f22f',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0de70cd4ed6d16699f1511ab7e4bcb50',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': 'eee38a8aa0781ed3a11da19e93cd2178',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -199,23 +157,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '738633265448133b92eccdfae46db883',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '11f69ec22dae1fb4ba7f4f9945898fc8',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '2b581f5ddb6c19df9b0bfce18fc85ba6',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -229,13 +172,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ee08edd32c3b1ceaa2d402efe3928463',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '44bba8f5257814e4aa9aa3958ddf21d0',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -244,8 +187,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9dbea4ea8f6e14028d6a4fa7bcfd7682',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': '36acaf6812b4138e87eca0a0deb86251',
+  date: 'Sat, 20 Sep 2014 00:30:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c41ec0347ead18f19413568dc400eb7f',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -259,68 +217,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '46708760c9ca1fe6813133024ba75a29',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2926bba332131d41b551195e5137282f',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '18e7c67056061b7f809c58d0ddb2bc3f',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8ed722968ee31d288ac85b3e52239724',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '627cd5a854161484a9e7d327df7e1c65',
-  date: 'Fri, 19 Sep 2014 22:28:09 GMT' });
+  'x-ms-request-id': 'e7092b340c161af4912448d35d01218b',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -334,8 +232,68 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '530ba09afb4c1ed4bdc081033229193b',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'c873645c96e4106cbc83c6ed3d49e4e8',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7d109d44b33f16b3a212a45203a63435',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b6ba5d0a446d15f896de57b2f557a84b',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7cda9dabd9381ae996def01569b6dfd8',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '9d17b629849519fdb17db76757a381ba',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -349,8 +307,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3f3c5b485f581b7cae184b333c4214de',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': '98c851aa25831b799a9021bb90dd7e2f',
+  date: 'Sat, 20 Sep 2014 00:30:55 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f4e57abc36ba122f86ac39010be190c8',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '26ced7610a311843b3cfe30b89b2adab',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -364,53 +352,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '295d408a6c2611d690989098fb0dbae8',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a33b55778eff137f968e10834a473a15',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e14c6106e5fb11ea9fa6e292b31a874a',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '57e5bacde7bd15bb92712f9474461159',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'fe2f623a69ab1f71bac52d6272e7eb25',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -424,13 +367,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '95deed6f863e1da6b003a76432d44155',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': '93af0a55cea2103398b65e19b9a12aaf',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -439,8 +382,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '972c09af645d130ab27285b0decb5f02',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'f31ecb187b1418498af081fcd4653f45',
+  date: 'Sat, 20 Sep 2014 00:30:57 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7493617ea76111a28eb2c848f9cd5ab5',
+  date: 'Sat, 20 Sep 2014 00:30:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -454,13 +412,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7d1c799b06a91142bb9faa8b787e4e61',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': 'ad23eda0ef9612a8aa375f4dee34b343',
+  date: 'Sat, 20 Sep 2014 00:30:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -469,8 +427,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '66522524d3e01aaa851b729439963666',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'a04b9a72cdad1d048b1c1946c100b1ae',
+  date: 'Sat, 20 Sep 2014 00:30:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -484,8 +442,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b340162f2ab01fe5b0a2bb144026c153',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': '898f59b0e53f1cb88b3f12268b93fdaa',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bbf94c98a17912d490acb157692722dc',
+  date: 'Sat, 20 Sep 2014 00:30:57 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '663098d11cdc1aadbfa6d650f2b9a8d7',
+  date: 'Sat, 20 Sep 2014 00:30:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -499,8 +487,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '64914e8e44fc133f8c1e007c23bc8433',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'fab0ff9cc7521d4ba2d50759f28e6e95',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b60c62007d13100f948159a3ce0ce98e',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -514,8 +517,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '82aa4beb827a17b884248b6ef4223b7c',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': '5f9efed5338019b2aea41c155311a792',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -529,23 +532,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '174e4e6d60d01f0a87b0101d014e36cf',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bafa98b827a81d9bb83b33e290cb258d',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': '3d19e4ec22db1fad895500959eb3431b',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -559,38 +547,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4abd285016781e5cbf9df56d257a8ae8',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3f7260ea7199199e918e36f170f7f784',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '34e238249b09160da8a5ba2dfc2493c1',
-  date: 'Fri, 19 Sep 2014 22:28:10 GMT' });
+  'x-ms-request-id': 'c2b57c92e2c315959be8f4e4c24c2a2a',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -604,8 +562,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a68c89b12afa1bd9873c803f8b33c488',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': '5ad6efbfc7081dd99e2af4965ba53a05',
+  date: 'Sat, 20 Sep 2014 00:30:58 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'db5ea8f9eeef1c1d83d41abb1647305b',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -619,8 +592,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cfe59a201bd616b29e9ca864cf9a06c3',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': '582addb691401101bdace72df790ac22',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '2792301cd952181fa6e65bae4a6e8c19',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -634,13 +622,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '870a3cbba6521b0daee33a78daf22587',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': 'dc17e3f44fff1a3d8d5c8f712807ae10',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -649,23 +637,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '761c22110e151dd484e03337c7e9111b',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ab86c8f14831c20adc5515f7911b590',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
+  'x-ms-request-id': 'b19ec35a4ace1a329ca08af481b081f8',
+  date: 'Sat, 20 Sep 2014 00:31:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -679,8 +652,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2393431c13bf18d7ac85a9ce5102a815',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': 'f349db4261c9165680499412f3ae63b1',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '40a4c6bc194314a28f893e29bd718860',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -694,53 +682,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd14f6018971919328789d11468e3e286',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f581bc0084f317d0a19eb94b6aff6bea',
-  date: 'Fri, 19 Sep 2014 22:28:11 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9088f16271231b319055a839066c268b',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '080ac16d6fc519a1842085eb96ad8713',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': '6fee6a39e1731947b491c6c68e262eca',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -754,8 +697,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '17a27e10e8fd1375a07513cd9d11c28f',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': '5ff78e5b65a9184c95cf262877b47c7b',
+  date: 'Sat, 20 Sep 2014 00:30:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -769,13 +712,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '14764d97f7d51c3e833c3c0627c46e35',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': 'bf2008c07a031347867c41dcea1c4fa0',
+  date: 'Sat, 20 Sep 2014 00:31:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -784,13 +727,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0ab06962b1651f0f9ece692249785347',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
+  'x-ms-request-id': 'ceaafad272a81ab6b688afd8d5e501a7',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -799,53 +742,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bbcda8d57ba512d3a86227614b641fd1',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'dc09ace3addd1c589d89d7a08c5b60b5',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4987f072ba30140997773f47dc9e979c',
-  date: 'Fri, 19 Sep 2014 22:28:12 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ffea516ea22919c09e2ebc502d4dd70d',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': '12498f38804815fd8583e6fbb4ba7252',
+  date: 'Sat, 20 Sep 2014 00:31:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -859,13 +757,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2d1baa1edc861bb593dadda64ea95d31',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': 'e099b9dcbcdd16bd9bdb3cf3fbef32e9',
+  date: 'Sat, 20 Sep 2014 00:31:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -874,8 +772,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3a106b5bb10f182897db26f4cfd229c3',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': '4595b328e0ca150daf4bea736b602276',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1aa0cd4aeeb912c9872f745fba5b3df6',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '69eaf47d3fad1c86aeb08a90a5b32325',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '2b4cdcac0e50120eaacae37dd7a8ef13',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -889,13 +832,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c272b43f43b2105982a715032eb82c19',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': 'fe5a59621d2e1b999b99acd67c568c1c',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -904,13 +847,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2cb30c88312a108e9177268be60afe0f',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '784933a2697318079c99e71ab99f20cb',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -919,38 +862,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c60ed0559a041068a2f136366ff9f068',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '46364efb0c4f1b69a38de2f81dbeaaf7',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9af3dc1b46c1199f859d532e68c45e20',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': '577ff4fd166d17a59bff85e797120b83',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -964,13 +877,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '733ac5f3a5fc17b4b4151fa481ca9c23',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': 'dc18962b203a1018bd2592bbde774c19',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -979,8 +892,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c6a3f9d2bae016a18df8803582afdcc3',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '98bdaa5f6df8149d8ef4222572330bc6',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '9382aae64bb91feda9b6c816f852dfb8',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'a8b3d310d99119aeb8ef66ccadf0ba47',
+  date: 'Sat, 20 Sep 2014 00:31:01 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1e0494270df31f369493031c415e0454',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -994,8 +952,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '69ad60090a0915dd96a990a3116b15f4',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': 'a3c8ae1281ee1e54b7fcb5b1cef41046',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'aba26042c200109aa4de4cc495715685',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'ca21f2055eca1638900f3a7008513763',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1009,8 +997,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3d6b8de86e671e66ad270cf9e1c826f5',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '8441365727ae128d8fb7e627d4686040',
+  date: 'Sat, 20 Sep 2014 00:31:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1024,23 +1012,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '407fe95bad661d9296b0fc8d37288a31',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '99141028c83f1398b878fdc0975b5701',
-  date: 'Fri, 19 Sep 2014 22:28:13 GMT' });
+  'x-ms-request-id': 'caf6504b1dc41cc8bbc684af498ea6bb',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1054,8 +1027,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0d42f77439c91af5885b3963a60161be',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '76ea09d135ef1348a736f0791a30b9d0',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1069,13 +1042,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '609ed5e85358138b93e0314ccbdab7a5',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '23b38cc1a6bd123c8ab690e26422e284',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1084,8 +1057,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '165a4cef8f8f1bf4ac47f39fbfc14023',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '51f7554cc8121ec8bf185c7f70f7b16f',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bd0ae5e48b871b2f80caa7d7a828c7f1',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1099,8 +1087,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3aa95c4328831d2faeb487da1b8d6466',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '14a35137187618dc8dde1f17000e647d',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1114,13 +1102,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '40335cba27891e73abfb8214bc21e3e2',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '8ece02482f871b0bbc771333b8164fac',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1129,23 +1117,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ab41592464da16d892d497f4c1cca160',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4a75d0fbff6f17aa8c6ae03ca277b919',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '9f266c378a391ed085d2cb955d98285c',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1159,8 +1132,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0e5b4e92be6e1b1f9128f0faed1b3874',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
+  'x-ms-request-id': '12a63baed05b141297e6330987ad94b4',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1174,13 +1147,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd1688ac42e3b13a2acc9f23fe0be08fe',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '3ca4fc5e9c9e1f2da6220808b9495f58',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1189,8 +1162,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '170ec2ba592e1adfac3d7b8b09b45b8d',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '7f9ade56e03a165ab350dc0d783f68ef',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '864324f2b5c215188c51aab047fbad45',
+  date: 'Sat, 20 Sep 2014 00:31:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1204,13 +1192,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '59323a694c8c1863b921a9e601d0736d',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '3cdc124e745c16ba84ce7a34f04e6740',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1219,23 +1207,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4c68da354474181383b68d6dab88eb92',
-  date: 'Fri, 19 Sep 2014 22:28:14 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd5dd405fc41e1403ba574b550b4b94ea',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': 'ed89a5a1f12b1e4e8a147250d363239e',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1249,8 +1222,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c88b60f915a11704b9177643daa96731',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '8b434efb9bc51d1282e98e05a2ef9366',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c7fda91cfc8816b7920c4cdaf9b76a57',
+  date: 'Sat, 20 Sep 2014 00:31:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1264,8 +1252,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '33dac49ef55f1acf920a3570f1684a48',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '6aefc43c15d618108498848f8784c8ec',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1279,13 +1267,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '93d0ac0a96211c0a8c2c39b7afbd94aa',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '2bd4b9a61b3111f193b77ba8a731221a',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1294,23 +1282,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5a2a35553e5816afa379f5df076dcaa9',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '183c5e0532741f0a8813a16df1db4a1a',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '6dcb37e1e23b1df6b73dbf49b0d617f5',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1324,13 +1297,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7ca35375cf1a14dfa466e6dfb9c81751',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '57ca8ca2d6f012e1bf4fd8db02c48fe3',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1339,53 +1312,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8d491b1524c2153a8b0d9ae7d08861bb',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '488998fbf5ec1955b6aed3e7603827a8',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fe85c57037d113cf8e274cdd31cddbff',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'de3bba694722160097234be72ac2f91c',
-  date: 'Fri, 19 Sep 2014 22:28:15 GMT' });
+  'x-ms-request-id': '9e6beac11ac5109b982d9d45ed133ba1',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1399,13 +1327,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8fb564ffe7a0176f9d754d317f35ac83',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
+  'x-ms-request-id': 'ba4f98f2564a103892394ec5648e9f02',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1414,8 +1342,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'df2b6208534d1f44aae679df2c7d6c4b',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
+  'x-ms-request-id': 'eb6b2492ece81e7c8e97bbf89f4099e3',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f1fdf408eea8140b8085f1dbb6a7273c',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f4124d78ec331855b28b4990eb48da7d',
+  date: 'Sat, 20 Sep 2014 00:31:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1429,38 +1387,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0437b9099c4618d7ab4c70dd8e75c9e7',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '60ea5027461a1d24a5074caef4cc99c6',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5c9a35b55e4e1f8eb9b855fb8cfb1a14',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '6ba302d1db37118788951446951b6da6',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1474,8 +1402,68 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '844e557e53ee116f9db8ce39f49c96a6',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
+  'x-ms-request-id': '6c15aec45fba18c0bbe9cbd39b990af1',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'aa0b320174b31e668d8ab85f59e7a99b',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bec67252c6be1430ab3a18f3e3eb2c7d',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bddbac9f160416818c19741b2813378d',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '08671548c78011e4a9e534543c6fe3c4',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1489,53 +1477,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '793082d29b69122e9092aaa261c7e408',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd23d90e7fe3b167398a092f4be5a1bee',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '26bfb9a673051af6b8638c7f2674f3a8',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cc93a9f1f3b31ef48ce11f3c84ede79e',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '97c83f2c1ff214e7b33fd958df295367',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1549,8 +1492,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9a8bf3ed58611d09a34edf1c1e8b81d8',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
+  'x-ms-request-id': 'b8a9f61cec651e5597f36b24bf713d25',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '3dc7d5a5951a1dfa8b2e148635cd8c05',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1361fecffcf715e8b58619e642e9a534',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c184bfbd6f9812f09661fc4b4b9314d4',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1564,8 +1552,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '28d75168009b1766bb5a1ead9cf9bd31',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '9c80d17a1e74127dad9c7d160f8d5e4e',
+  date: 'Sat, 20 Sep 2014 00:31:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1fcc1288fa25108781c3c93ad08bf842',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1579,8 +1582,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '08c687ad6a2c16a1affcbd52f86e9221',
-  date: 'Fri, 19 Sep 2014 22:28:16 GMT' });
+  'x-ms-request-id': '08c2a5cd275818f7954913ac925c5aa8',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1594,23 +1597,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9df1c9b993d112d99980991536acdfc5',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ddb42f59213b1c0da95c7372861170ad',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '12cac140c26d1419ada1602a9298fde8',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1624,8 +1612,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1649ea66ed271dc7800f9e9f1f88c992',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '1869c5221b1511f3b341675d6bc2cc3b',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '425d06d31a0c1cbaba596f9357a8a021',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1639,68 +1642,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '794de0200f501beb8c11908840af4228',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bc8399408b46165bbeac66451041ea64',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6953434a550915958dc4d348cca165c7',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b823fc1b74701f92acd092af6063ff4e',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7b981f1779111e69b5b7565a4d9d4a2b',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '11d7d0b9f95c100d8df30b2f8dd23b8b',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1714,8 +1657,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b71cab3c648c115e8325e79432a8fce5',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': 'e95f4cfe24261e9f83949185f3179a51',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'dd31d10e098c185cb014641357daeb3c',
+  date: 'Sat, 20 Sep 2014 00:31:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1729,23 +1687,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9e1ab3b78de31e4b99bf01c6f28f7aa0',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1345a25022791b1f8268f8852251907b',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '10d639ebf88c170ea91dae312429d66a',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1759,13 +1702,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6f75543a8eec11cd92af59b7ecb836e1',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '23ee2fbce33c1819abb863c45a84d1a4',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1774,8 +1717,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c87c351cdba31e91af2febd413e88248',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '32334df6a44c1928b078035d1848b3dc',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '5cb898deba48167eb4c94aae84e08936',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1789,8 +1747,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a7615325053514d5ac901ced95cd2f96',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
+  'x-ms-request-id': '3ed27d2a8a8b1278b4e202238c1bf439',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1f0735b7372f12a9936bae498edb9e09',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1804,38 +1777,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3a0e34cc94f2100e9d09b48651c45f10',
-  date: 'Fri, 19 Sep 2014 22:28:17 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '46be59116d231687b04f8342f99a207f',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8ff6434f53051d83b2ffb6b489a0a203',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '65cc009884af1af5be0c35abf5bae724',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1849,8 +1792,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '303cb9cb46281ec6a25c2170e0486ebf',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '956144b1e0421d59be7138c3daf8a474',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f29d85dfe72b1b2dafe8c3c93f2c7d35',
+  date: 'Sat, 20 Sep 2014 00:31:08 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b049b645b0191a3a8a2c3847f1f2b668',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '9a560dc69fe01535a94ff1735057c31a',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1864,8 +1852,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd1faf2446f7b1a56a523e9e21477aa2f',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '9bcb38f8d16115bcabbb956857a03c88',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '490d9fd57593133792db8918ce48d143',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1879,38 +1882,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ec582a204ae1378b7c7e5ef4c4722e0',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '11da97e4a3a31c8a953508b2403497d0',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '476bdee9a86c1a29b7a1a0421f90b3e6',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '34543db0151a151b81aaa549fe404e9e',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1924,8 +1897,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fc32465524b31459b7f5082c92741f08',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': 'a70eaa714b9312e59d6c96e3423bf802',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '8a5c5cf7bfe81aa68fd0166d04960739',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '89860bfe5384146ba727ed90e2a38e33',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1939,23 +1942,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9bd61727fb981725bac6b535ca2d47dd',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3d34dc7b26c51f59a8b880cfbf649911',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': 'd90c5bff2eaa10f4acd2b66f067524ce',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1969,13 +1957,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3fd3e7eed9311dafa1e9f927400726cc',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': 'c82f57910a5919aa930a1080cc8c6ad6',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -1984,23 +1972,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a4f80c4d7891be0b5cc22c48f440f4f',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f74bacc0ee531f4d865bf446101bc49a',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': 'f6ab03a4e8c111ecbed1750d9cc14708',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2014,8 +1987,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd4a220f0534410abb20c70b379b21f9b',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': 'b3fa515307e314698eb61ab884e63538',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2029,13 +2002,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2b39bd5f7fd51f47bdf92d5c7272843f',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '3abf00499f2f1049b57e1c8bbae71d3a',
+  date: 'Sat, 20 Sep 2014 00:31:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2044,8 +2017,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bd3ec92de8231b6d9c3f8b2eb67ceaee',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
+  'x-ms-request-id': '9f446f34d5891037b18e1a5fecca8adf',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1974ca878c831d0994cd486c41c60ae5',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2059,8 +2047,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4eb83b8b6fdc1bd29489a67b65335178',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': 'd81ff0f20fea14c08d870a5fbb138a7d',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2074,13 +2062,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f049d3e3082e15a59064712d86384bd9',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '3d0d007de4341e588151f5a91de772ba',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2089,23 +2077,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b631a0eb4a7014f3ae09f1e1e5ad07f4',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7feb903ab1651ea1a70acc69a0c46f55',
-  date: 'Fri, 19 Sep 2014 22:28:18 GMT' });
+  'x-ms-request-id': '1bb1e22a23d619cc9bed7fdd045c6260',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2119,8 +2092,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1f04877aa16d16a1bf322de3183a3845',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
+  'x-ms-request-id': '96ca55511f2e14aab13e3d872f427340',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2134,8 +2107,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4b981350c57e1ee6a08a3cc89a01ff60',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': 'fabec6e26ac5111f9d5bea06da62e8f2',
+  date: 'Sat, 20 Sep 2014 00:31:10 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '5fd8d971661814f8bab46800f7c41bff',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2149,8 +2137,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3fbf552c170b15bf8835720bd663f9e2',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': 'ae2256b5b4a0195abb7d2132ed1ff987',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2164,53 +2152,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '12cb48e615e013c4b9f9bfbe722cc03a',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ed5ab368d93418c3b61b2693b363eb75',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ee76ee7206a4144b8f8f24eb7786d9e5',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ef10483b6eb3161a9412e3078f174eed',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': '0a0e93464b3312cf93185e3010f9d91d',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2224,8 +2167,68 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f251b511e20b1cbf906eb07d22ea648f',
-  date: 'Fri, 19 Sep 2014 22:28:19 GMT' });
+  'x-ms-request-id': '3650259a038a1bdfa9d82c77b9d36c3c',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'e823bfacdbb719818f35bc6ff3b04246',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b7b76660ea6417f3acf18c50c297a803',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'c18ae9ad05971180bf476eb01ed53236',
+  date: 'Sat, 20 Sep 2014 00:31:12 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1db12301073e1af3ac6fa82cfc4f57b7',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2239,8 +2242,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c37edbab60671fc4b2f7ba07e4cf99e8',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
+  'x-ms-request-id': '18938ef9c40e147e9926654db5352639',
+  date: 'Sat, 20 Sep 2014 00:31:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2254,8 +2257,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '60b42f964a7419118ee24faf644c067a',
-  date: 'Fri, 19 Sep 2014 22:28:21 GMT' });
+  'x-ms-request-id': 'f2f97ddc1b2217a291af93055bb95a9e',
+  date: 'Sat, 20 Sep 2014 00:31:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2269,8 +2272,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c1d2377ee2f81fb48bf7b5e2905108ae',
-  date: 'Fri, 19 Sep 2014 22:28:20 GMT' });
+  'x-ms-request-id': '1e8860ffb51c1bf6b8e2a207e4a4106b',
+  date: 'Sat, 20 Sep 2014 00:31:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2284,8 +2287,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ee5d2df6590a1d068db89f4f7fbc8ecf',
-  date: 'Fri, 19 Sep 2014 22:28:21 GMT' });
+  'x-ms-request-id': '8412f21448fe1a799fdfcd230ab93470',
+  date: 'Sat, 20 Sep 2014 00:31:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2299,60 +2302,60 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3729d458ddf412598374304b596caca8',
-  date: 'Fri, 19 Sep 2014 22:28:23 GMT' });
+  'x-ms-request-id': '7d6583ec7cea138881775fd11324c92c',
+  date: 'Sat, 20 Sep 2014 00:31:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests4526</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4526.azurewebsites.net</a:string><a:string>clitests4526.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4526.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests4526.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests4526.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-09-19T22:28:25.443</LastModifiedTimeUtc><Name>clitests4526</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests4526</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests4526</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site>", { 'cache-control': 'private',
-  'content-length': '2388',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests771</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests771.azurewebsites.net</a:string><a:string>clitests771.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests771.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests771.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests771.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-09-20T00:31:17.92</LastModifiedTimeUtc><Name>clitests771</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests771</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests771</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  'content-length': '2378',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a4cbf87d25916a3bf552afac1cc8f9c',
-  date: 'Fri, 19 Sep 2014 22:28:27 GMT' });
+  'x-ms-request-id': '94d9190308e41d1b815ed14f7db56e0f',
+  date: 'Sat, 20 Sep 2014 00:31:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>Z3MtZAXtMhK60w8wg79RhHbJkDkum8vM6rsnnscFc1ec3lQubtQiixag9u2k</PublishingPassword><PublishingUsername>$clitests4526</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '2369',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>KTRETy8gDbfLomvoLtjAx61Notgva0QseEuCBzmwxsXirpcF6Aoqix25fpmm</PublishingPassword><PublishingUsername>$clitests771</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '2368',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ed4787d37751747bca9ae2aeccfe393',
-  date: 'Fri, 19 Sep 2014 22:28:28 GMT' });
+  'x-ms-request-id': '49e493eae755119e9569a2bb5b651891',
+  date: 'Sat, 20 Sep 2014 00:31:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>Z3MtZAXtMhK60w8wg79RhHbJkDkum8vM6rsnnscFc1ec3lQubtQiixag9u2k</PublishingPassword><PublishingUsername>$clitests4526</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '2369',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>KTRETy8gDbfLomvoLtjAx61Notgva0QseEuCBzmwxsXirpcF6Aoqix25fpmm</PublishingPassword><PublishingUsername>$clitests771</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '2368',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '33697acf19dd1515a2618a1a4a929d8a',
-  date: 'Fri, 19 Sep 2014 22:28:29 GMT' });
+  'x-ms-request-id': 'e4a2ec91a7011a2c8d624d30a4afd267',
+  date: 'Sat, 20 Sep 2014 00:31:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config', '*')
+.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -2360,44 +2363,44 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '10eedf50fd5513d69ff1d5bf4ce28a13',
-  date: 'Fri, 19 Sep 2014 22:28:30 GMT' });
+  'x-ms-request-id': 'c8121d57a6031d2e9619813dcc7a86d9',
+  date: 'Sat, 20 Sep 2014 00:31:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>Z3MtZAXtMhK60w8wg79RhHbJkDkum8vM6rsnnscFc1ec3lQubtQiixag9u2k</PublishingPassword><PublishingUsername>$clitests4526</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '2461',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>KTRETy8gDbfLomvoLtjAx61Notgva0QseEuCBzmwxsXirpcF6Aoqix25fpmm</PublishingPassword><PublishingUsername>$clitests771</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '2460',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5c39a299bfbd133d9b2e63f0d672f07a',
-  date: 'Fri, 19 Sep 2014 22:28:31 GMT' });
+  'x-ms-request-id': '5baef1e32c261c378039f60435db9e51',
+  date: 'Sat, 20 Sep 2014 00:31:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>Z3MtZAXtMhK60w8wg79RhHbJkDkum8vM6rsnnscFc1ec3lQubtQiixag9u2k</PublishingPassword><PublishingUsername>$clitests4526</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '2461',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>KTRETy8gDbfLomvoLtjAx61Notgva0QseEuCBzmwxsXirpcF6Aoqix25fpmm</PublishingPassword><PublishingUsername>$clitests771</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '2460',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '695b524558f31aaca0d90109cd86629a',
-  date: 'Fri, 19 Sep 2014 22:28:32 GMT' });
+  'x-ms-request-id': 'e58d386c5fc41bd98190cf9538d6e3b3',
+  date: 'Sat, 20 Sep 2014 00:31:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config', '*')
+.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -2405,38 +2408,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f8f123396bf210578e345bc25f1d3dd1',
-  date: 'Fri, 19 Sep 2014 22:28:32 GMT' });
+  'x-ms-request-id': '10421357747f1f5fb5bfc8b621eaaf0d',
+  date: 'Sat, 20 Sep 2014 00:31:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair><NameValuePair><Name>mysetting2</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>Z3MtZAXtMhK60w8wg79RhHbJkDkum8vM6rsnnscFc1ec3lQubtQiixag9u2k</PublishingPassword><PublishingUsername>$clitests4526</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
-  'content-length': '2537',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair><NameValuePair><Name>mysetting2</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>KTRETy8gDbfLomvoLtjAx61Notgva0QseEuCBzmwxsXirpcF6Aoqix25fpmm</PublishingPassword><PublishingUsername>$clitests771</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  'content-length': '2536',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0cd8f2b928171ec88296718d4c2b76fc',
-  date: 'Fri, 19 Sep 2014 22:28:34 GMT' });
+  'x-ms-request-id': '23ddee26fae61f0db513cd6db70ae792',
+  date: 'Sat, 20 Sep 2014 00:31:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests4526?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .delete('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests771?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  etag: '"1CFD4590BC5E450"',
+  etag: '"1CFD46A36675FC0"',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '28102896c2b71632b73bb8c2b4609806',
-  date: 'Fri, 19 Sep 2014 22:28:35 GMT' });
+  'x-ms-request-id': '53fb6228cf1c1c2b9cfa9885146287d4',
+  date: 'Sat, 20 Sep 2014 00:31:29 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -2450,38 +2453,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '72c719a05af8196bab282e8ada4356e0',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e15c0346cead18af8979ca9bdace3b81',
-  date: 'Fri, 19 Sep 2014 22:28:36 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0f2b20104810182d956cfde751d8d9ca',
-  date: 'Fri, 19 Sep 2014 22:28:36 GMT' });
+  'x-ms-request-id': '83e6a743e36e144a9aa5dba3edc9f473',
+  date: 'Sat, 20 Sep 2014 00:31:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2495,23 +2468,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '85f5b4b87e88150f94312b70f3621c35',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '05f7813446491e27bba5cc830b536eba',
-  date: 'Fri, 19 Sep 2014 22:28:36 GMT' });
+  'x-ms-request-id': 'dd4f3ef679ca1700be046267e8124346',
+  date: 'Sat, 20 Sep 2014 00:31:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2525,8 +2483,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9c544f75f62617ec8fce162dcdd3af60',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': '179a3e812b441dd1aff7c8f28187d0e7',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2540,8 +2498,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cd7d7fa74f8d1c0aa14dbc731e61ebfe',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': 'ff8db7306f1c1f908a62ab9364e09442',
+  date: 'Sat, 20 Sep 2014 00:31:29 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '43b8d1c4dd28186fa293b683aa24d8a5',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2555,13 +2528,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '179109a7345d1a3486f8871cadf59bad',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': 'f943887dd7e210ce889070c9a46bdabf',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2570,8 +2543,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '55797855fd0912bb94e5413ad9fc22fd',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': '98678eacc05d111faa54d8e615aa1a47',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2585,8 +2558,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '20e2c01e1f861c64b741075793ae3005',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': 'be2964f879ca120e826864ef2e4afe63',
+  date: 'Sat, 20 Sep 2014 00:31:29 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '74ecd3756f18129cbb5af3c76fa98839',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2600,8 +2588,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '23c9998f7fc216c699e879300b441caf',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '1ac75c3bb32917998f7e1e6988b5d14b',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2615,38 +2603,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bacbffd3e8a218a6a9514922f2eae55b',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd160a086dc07100f8051157805b80534',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5596a8add57914d39f22f01db970b2c4',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '9c8e446e45671a1392bb6369f7f14769',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2660,8 +2618,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8cd3fcd9e4fa144bb80737a43627646f',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': '7028de4add321409800e1e6b833df331',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'e061e25c59e216648fe83fbbeb9dd0b2',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd5c021a4b3051c96a7f7d3718b7de0f7',
+  date: 'Sat, 20 Sep 2014 00:31:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2675,23 +2663,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'db6bcb97e39f1078b4c2198d185a38ca',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '098154925371178b90e0c99cbbee21df',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': 'd7fa34af4e29184591820e3ba736bd9d',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2705,8 +2678,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a8e805cf695e1234a1cb2e0169e82904',
-  date: 'Fri, 19 Sep 2014 22:28:37 GMT' });
+  'x-ms-request-id': 'b052ecdcd2a71a758b78664582c27cb6',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'a66adf81b2b516db85f2c0edbd33c35c',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2720,8 +2708,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'be6f57f3098211829186bd0431bad0ec',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '653834e440c313f9932e710224a57ca4',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2735,8 +2723,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '39ac2a57e9c0110ca1f9fe4c7bda7aec',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '8facda9a889c11fe93d04db3b9f93322',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2750,38 +2738,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fae0aa48e6ee1c9ca4e4f3b00900b9aa',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ebaccd338bd10febe51f9fbf6e88045',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '32c585ba178e1eebb698fdbe57fc51fb',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': 'f5b22ad3e6151ff484122ae6aab9c81d',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2795,8 +2753,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '797a8b1a129b11a59593b60bbf075760',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': 'd2378e8a53a118d59344d53b3836b42b',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2810,13 +2768,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '426dbb12fd0e1f76bb56c481931fa088',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '7de341f3483f1de7813cdc5ac905463e',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2825,8 +2783,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'edfcbf4131e918c4b3bee3f268aab89a',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '858df2335d0d151ca6ab719acebf7e6b',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2840,8 +2798,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8b12f3bfb55518b7867fac75c04cacb2',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': '5d767f6ab58d187991bfceff75391fed',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '0208f01979dc1ba9af94ca6c2ede29a3',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2855,8 +2828,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5e5a8283fc371b62b8b91f0aa232e20e',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '2272e100187714c8829f817e45cad191',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd68675f0ef9d100fa0f45949e42e0755',
+  date: 'Sat, 20 Sep 2014 00:31:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2870,8 +2858,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0d40b27df5d01e3ab49649a7a154124a',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': 'f17ae0e557e01d9a92e49a21f777521d',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2885,8 +2873,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '8f66d029a0ff1985883e5c330bb2bcc5',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '419a107117361e0f9c22ff0a6fe035c0',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2900,8 +2888,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0f5e2e74bf4e1954a5e4ecd91946d5be',
-  date: 'Fri, 19 Sep 2014 22:28:38 GMT' });
+  'x-ms-request-id': '8fc0c62a2d1f1aa19e43550e73e82840',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2915,8 +2903,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c34f83bb02b51667b45668b1bb82f8ee',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': '9be0fc01417b1ef18f631d98206d4555',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd7bd3c4d699e1ba3b41a5c46646d93c8',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2930,23 +2933,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '294f717178521764baeeb9a560f249ff',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '228c41ab0e3015008bb245a66518a8f1',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
+  'x-ms-request-id': 'e66d06ef907311c7b3ff243f0ba26424',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2960,23 +2948,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b8eb047c23d8181eaafc064e0d7eca99',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a51611dda73b11a8a7c08e70d658c43f',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': '60899dfe1d021d188812aa6f6830c6c5',
+  date: 'Sat, 20 Sep 2014 00:31:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2990,8 +2963,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5dd42fee5b1a19ebbfd6d587b68a3b60',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
+  'x-ms-request-id': 'bb5888342f0d1357b28234d1d41a72ac',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3005,23 +2978,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e87270f66cfc1e1389eb0c695400da3c',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd02f76a9bc5d1812949a56c710cc609b',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
+  'x-ms-request-id': '929a8a2f6bfe11daad7f867edc24a1a7',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3035,8 +2993,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f3f6a1f669cd1340ac02123412b0837c',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
+  'x-ms-request-id': '489471290b51153d9e2c65008dfaff57',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '1ba334f8358719cf89cf8d15625505e0',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '2faa0179e765136198606e6773b1d097',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '24f89881cc9312d3a3ecdcec2a346133',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3050,143 +3053,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '54fb7ac636fe1f7baef7c8dc3395aded',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd7a8684646ee1abab8ba6e02ec9b0c7f',
-  date: 'Fri, 19 Sep 2014 22:28:39 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '81a1df9147da1cde8a18986460197f14',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3f7c8a0176b51a31b91e4b69c0e2b0b3',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '58f1bdf5e6e21a77a44d7c703d48f4d1',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '72363ac1d26715d3a5208874d55e0dbb',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '97f436bde2f01b4197c31b4cd8cbd18c',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1e774ab1d0e81b38a9c908e673911cd7',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '768f1cc5e1261ae1b7a14cb1f4c0a4a7',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f56c2e42ec761cb2af533bb7cdc32e41',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': 'e6dfbba1d0bb18758d2593c872ae63f1',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3200,13 +3068,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9c1fc138c4ae10739e2bfcb983aeb5e2',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': '585be954a584181b9883cacaf6a096e4',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3215,8 +3083,83 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1ada481734911321bedb1f1b3b9cc2d9',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': 'df4af1bbe5a0192593da4ee8d2acdbbf',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '04e7c58f7d7f189284b28273ae6d207f',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f0a228ea3a20197f899da81291dff9e2',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4b229691d88711ceb3775167fa6908f2',
+  date: 'Sat, 20 Sep 2014 00:31:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'e954a39332f41eac9f98521a2b22bd95',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '976bd63ea5621b3cbbec87d3d14ec669',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3230,8 +3173,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a135158dfaac188d91fd57f7a681bd75',
-  date: 'Fri, 19 Sep 2014 22:28:40 GMT' });
+  'x-ms-request-id': '3202a276734314918c120ae50eddcd90',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7ee0e01ce2fb1226aa225cb8ee8fb97b',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '5564fe4fa92e14de9c5aebd62be82b5e',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '0b550b774ca21836a43f71ac27eb4e2e',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3245,13 +3233,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '26cb3f77f0411d548066b8460c966804',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': 'f0825f44bdc415e7bdf1f1831c8bcb69',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3260,8 +3248,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd59cc12f0c8c1633a20f083d3834d8e6',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': '504f56415e151a6192595f9a8709ccf4',
+  date: 'Sat, 20 Sep 2014 00:31:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3275,23 +3263,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3443e78b95bf1feba35f15f35b6df7d8',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '98e1fa4fc2a61cca9fafe25cae8c4bb7',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': '852203fb3b161603b1f841775a3fd763',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3305,8 +3278,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '032a21c7eeb819f2930610cc4c18dd47',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': 'e2509d9513ea1fe9aa79b96795b9a7b8',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3320,13 +3293,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '89548f7b43751ebdac56cf9557328670',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': 'add7d6bb64921e46b58b96c4e5d8c99c',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3335,13 +3308,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'dc3e1330596a15569edb9cbffdb424a1',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': 'd30d9ef3d2391a038eb75d487115ce99',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3350,38 +3323,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '80e6b510b4801cd2851b458352d255f1',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '872a9fabd2f8120a8b94bd181bd96848',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '48c059287de8169f856b2a7d47ac81f9',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': '206e1545251613de960abd29b934407b',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3395,8 +3338,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd8a43329825f1185998031bc8d53ccad',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': 'f0552b0444a718b3874b3f5bc62153c1',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '0efa0139fe121ae3ac7c4beb1b222500',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'cce692c0aa4b1bca8a87e7c4b45147a2',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7a4a8c7f554e1ba49cad7cec092298a4',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3410,23 +3398,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a43e59ba1ce102c89ff812f7d29837a',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '548501c7c96e145e90e42e9e796fcb80',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': '5d39e880e8671c6ebb8cc9bab34cff5a',
+  date: 'Sat, 20 Sep 2014 00:31:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3440,8 +3413,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1176f3315f561e7f9da1804915938550',
-  date: 'Fri, 19 Sep 2014 22:28:41 GMT' });
+  'x-ms-request-id': 'b8c62ec4f12c1765b669d7ec41e72a15',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3455,8 +3428,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2ac5a530dfb51c8d94bf42bf08b42bd0',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': '03ca7a8cfa7011d388230dde54ebd36d',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f65e0dbe942b1bb1bea7e7efc287e47e',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3470,8 +3458,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3e893a70d50613d89233cf9122e19df1',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': 'b8fd6c70a9021ca4a20e187f6eb6b5eb',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3485,8 +3473,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'adb88bb0e388182388ef68d325e0a7be',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
+  'x-ms-request-id': 'c421acb6754f17359b4fba13c3564439',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3500,38 +3488,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'b53669e8d8891ba88202c5e08c963d77',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2cbe2e63148c1c4db91ed6793ed5c1be',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '91d216e662491925a85e0acc48fac65b',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': 'bcee5c457ff81e60af1728b07569e8d0',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3545,8 +3503,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a647ab61eda41beba40e47f2f2f0e2eb',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': '9f31c6f90f751be6ba6512e15ad6b534',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '173a948a1ee21c1bb27c763f4c7dea0d',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'fc2fdfef219313afaeb78ad67b000ee9',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3560,23 +3548,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '53abdb5814981638b989fa15e522d9c4',
-  date: 'Fri, 19 Sep 2014 22:28:42 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd767adc85d601ecd96831539578d3fe8',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': 'bd4285d272021221aa727e7a225bb669',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3590,8 +3563,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cce55ff6642d1304b1e353e3a7506e39',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': '39e8b614432514e3a8d2424a767e8046',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'a3b7481bd46f1d92ae2f3c464d7a9e66',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3605,13 +3593,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ad28a30519db185ebd6504a6fa4feb4e',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': 'af12f425694f1972a36ebc9f12f9714d',
+  date: 'Sat, 20 Sep 2014 00:31:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3620,53 +3608,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e8c474723fd716a095e1008e46ac6a18',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'c1e45d6058ad152ca8f263eeca781085',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '71659cf7c566183cb54f2f884095629b',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2067da673d851399a075d665f0b04ec5',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '6a3b700b93c6113c917736b5d0c3b9d3',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3680,13 +3623,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '41225f4f3fb8149ea730c1ef1768809b',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': 'a53f94801de9138bbcbd0684f303edb2',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3695,13 +3638,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cc84b715b8841b6780ed87df860af3e3',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '453d5c6ba3ac15d6a7e0b2291ec37cbe',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3710,13 +3653,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ef8cd9c0e551ba58e5924e0a21c5285',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': '61d3bb564eec192eb3f0aba66414c41b',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3725,13 +3668,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f8c4ef916b60177d8818cfdcab6fd4ca',
-  date: 'Fri, 19 Sep 2014 22:28:43 GMT' });
+  'x-ms-request-id': '1446615826ee174bb406642aee6c451b',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3740,8 +3683,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0868384b6d5a1291849535323d664457',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '9701521c745c1bed86ed966200621d60',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3755,8 +3698,68 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '85210717e54014c792d717bbfc9340ee',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '3a4538868f4c19af838f019429b4b365',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'aadb5adb255d1aa8ba0b1b1980d64b2f',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '97e09168c953194b9646c93419b66c53',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '7aae6b99858618aa9cbe937cbb71b361',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '85a1ab9678a51b7f91a1bf701cdd8f6d',
+  date: 'Sat, 20 Sep 2014 00:31:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3770,53 +3773,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '296fb60d1edd13438f37d75e4998ce26',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bf89e790a7881aec81c3b58e65f1b789',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '765ab44e953e17239e46832d7e0c12ce',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '88e19f3c75fa164584e9f438a6dac922',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '43e54d2682cc1a4dba54cb294d8734f2',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3830,13 +3788,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f62dad3d0fdb1055ababb776bc7e2deb',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': 'fc1aac07d16a16ec9caaa4cf9ceccdd1',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3845,8 +3803,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd38b1fd3b2a91fa6b479cb806cac49c1',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'c2fbe030f1c01991bc9a011feef6be44',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '84e064dd3b4813cfaee41381239a065a',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3860,23 +3833,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd9995eeaa4f31108aa7c0ba12d69fffc',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3eac4a0868191da6b4ae91381573d02a',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '81053450556111029ed466c38af7ffda',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3890,8 +3848,53 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7696b9f359071f9eb44d21c7a6a5a3cd',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '9bdcad28b49f1359aac90c1ba2d3003b',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4c3df198ebc41a64be1a090c1f5d7b3d',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'bf87204119c5165b8fd528bf33b4a8b6',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '37f021467c2318d39a07d055a3098a3a',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3905,23 +3908,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '492a1992bf86148e857f190b2b88a401',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f8741a73a4b411f28c4b9a2a1c432159',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '5bdba606ddec1c9299cb82994a37a54c',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3935,8 +3923,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a9217bb10ccf17fcaf92f6132282571c',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': '805519a195bc16caa01da5c0a6c95947',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3950,23 +3938,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5dbede6af100164ebd1f0c1a482b52cc',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fa4e3db394b611f3b5106669837b809c',
-  date: 'Fri, 19 Sep 2014 22:28:44 GMT' });
+  'x-ms-request-id': 'a95d5a1882f11be08d5e393c52332088',
+  date: 'Sat, 20 Sep 2014 00:31:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3980,13 +3953,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2b239853f0c615f6bd618e24372e173f',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'e2a40f26c004109e8195e38b6dbe91ba',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3995,8 +3968,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd3b75df4a31610b4bd8e9dd7bfc8b56e',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'ca4d243740071552aabf609c30602efe',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4010,13 +3983,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a5599790fd361408afe0e83aac85feff',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'a4b3a858df831362a70403f1a46f219a',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4025,53 +3998,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '666298df33d518119eacd09858ca0497',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'db961f9a2bcc12c1beb1bc30437d037c',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7db6ab3e2460172b8535fb554425c307',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5d96591da20c1039a8f2712e4ea4f84b',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': '0618844f6236106195ecdc2682f4e9e4',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4085,13 +4013,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '15357bfa87421c20bf04be619cb1186f',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'c452d307533c134aae2122d493a3c757',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4100,13 +4028,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0548eda28c851139925177cb7bc56b6d',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '3c9d3ae38efc12be86dd08c4a7383f17',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4115,8 +4043,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ad4129b3c25f1b28a434d5b12b844dd2',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'bacd7846cd3c1e3a87ac4b3d7d5eef2e',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '98e04bf10ce9184689fd5bd4b94b5d9e',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '3fcbc26b2b5314ec956c6321d701435c',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4130,8 +4088,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3066148ddc3a1906bda48008b567f5e0',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'b139c576e353152ead312636f4b6fc8e',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '285268636cab1a2b9f871020af5b6fe8',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'f2bf6eec165b1ff0ab74d4780ad094d0',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4145,13 +4133,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'dde3f3ff5e59103fbdfc68c872c68ef0',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'a743821594a21a278a0cce5a28c2c092',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4160,8 +4148,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '89e1b667c5b81a9a802c357379d086cf',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': '4c64e8364951168aac1ddfd5cf13b85d',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4175,8 +4163,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4107c7e877121ed09c508684f3843207',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '9affa015fe1e171db29c98f661cdff08',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '4bdfb5c542951a3da2fc6d0dcb75822f',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4190,8 +4193,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3a53be102c431e6fa1a6e9955d2634c1',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': 'e3bcba7483311bf1a27a9b63e1e04a40',
+  date: 'Sat, 20 Sep 2014 00:31:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4205,38 +4208,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '17455366c2e31e6391d3ac9b19821772',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7e693f33df581ebdb97d6394a3ace215',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e2b0869d45d51ebb93ffa20dbd3fecb8',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': 'a06eb2c40c121effa73b4f892776b662',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4250,13 +4223,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e5736ea36288131e8c4d2b72d71b15a2',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': 'c894d9f6c9111c508a12ef3e66b49302',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4265,13 +4238,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '54cf989b80f61829a9e2844dd9d0f4a3',
-  date: 'Fri, 19 Sep 2014 22:28:45 GMT' });
+  'x-ms-request-id': '0a5eaf08e9a21b82939eac1a9cf92426',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4280,8 +4253,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '55136fd9c56e181981daa833e9140525',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '00bc0a55220810ad9000009cb8817c2d',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4295,13 +4268,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a6cf2f983b931b3386629ff55bcc70c5',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '66c4e188256315b3962960fa02edbf02',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4310,8 +4283,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '70de4f50171b1d6b82ebe013d5fa9053',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '33e9b64f86da123ca3224424742ed11e',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4325,13 +4298,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'ed2425d5140b1d1ea6d320be03089a89',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': '0173ef237b5b17858c63ea0f89e1f9e4',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4340,23 +4313,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bfb5ff1db6ac151db5a718181d093997',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1dd8110dca23197eb4d6fed4a515b634',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '8b5d60bea07b16eabb7c895f445de8cd',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4370,8 +4328,38 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0590b3737981121fa25393f83c344483',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': '7b05a7cfc53416a98740cbe38df2ffbe',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '47a8216b53781b13a2b9d01f87264997',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '6d511ec5798f1daa9197f3134bb56616',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4385,13 +4373,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1a6eba0302d2104daa08a34147dacd35',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
+  'x-ms-request-id': '803f524a41871aebafd4adce5e1d5dfe',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4400,128 +4388,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bf1e3e43e94d1350ad8cf5568a6bda9f',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2a8b1cab6ae214ccbf76a35f606fbeb2',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7b55e658a5f91b46bb6d30568830b2ca',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f0af9db15e381662a55b899e1e5f334a',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '32659b76ffa91f7ba26196c525e18e3b',
-  date: 'Fri, 19 Sep 2014 22:28:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5988580424b41e4089353fcc27a078e2',
-  date: 'Fri, 19 Sep 2014 22:28:48 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '89ab39a489ad18cdbdc2f7d2c39cfe98',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9b337b0a5b841e5fba515f8566c4e3c6',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '272ecfb008b31dd893e681966ad8c169',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': '58048e248a611fd6a9011cf06cb569e2',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4535,8 +4403,143 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '7a71b5daedd8153291adcee0e8b8be53',
-  date: 'Fri, 19 Sep 2014 22:28:48 GMT' });
+  'x-ms-request-id': '71afaf94e263114fbaa9afefe9b0edce',
+  date: 'Sat, 20 Sep 2014 00:31:40 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd296c00f033414758bfd94c64c934bc7',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '73dbc669b589114b9e8a0d6f687d51f0',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'ea784094d2af11ecb315bffdee4c0cf4',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'a79a314d115f1733a36975bc2ab70206',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b8d495dab2741cea9083ef9e148a6e72',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'b9d031c8b1a81bc8b8fae897e0fc42e3',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '95c945075824155d93f68648498326a1',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '5c800f7dd655133f8489e80963683ce3',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': 'd3e20df7694d14838eabd9f0b8cd5c16',
+  date: 'Sat, 20 Sep 2014 00:31:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4550,8 +4553,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '73bcaf6960e41b9b90b523acba50e0cb',
-  date: 'Fri, 19 Sep 2014 22:28:48 GMT' });
+  'x-ms-request-id': 'e4ca46ec330c19bca5f0f6fd44979070',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4565,8 +4568,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6196dcb72848160e85d48d973a7c8765',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': '47626e7c11741d55ac88a1ef1b7b8ab9',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4580,23 +4583,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'aa1e09f1a1071859ba6f76ff82ca222f',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
-  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
-  'content-length': '110',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '34b4f00d55b812358bf9b3e5a4063671',
-  date: 'Fri, 19 Sep 2014 22:28:48 GMT' });
+  'x-ms-request-id': 'cc837e2f936c1d098b0a74841c08b2e0',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4610,13 +4598,13 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd77530d1efe819e0bfdf85da01a9ddf6',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': '5e7c9bd9f0551fec84840827f4afad13',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4625,8 +4613,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '3ff7bd70cdc51b1d87e34674f3cb09ec',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': 'ab8bc60b37af1ab4a69b4030cd863e6b',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4640,8 +4628,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2de960cf25d01c588eda05c72c98ed30',
-  date: 'Fri, 19 Sep 2014 22:28:48 GMT' });
+  'x-ms-request-id': '09cb1c134b7719e98c2c08557f474448',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4655,8 +4643,23 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd76e77af2a3d1885b9126a0beb71442e',
-  date: 'Fri, 19 Sep 2014 22:28:47 GMT' });
+  'x-ms-request-id': 'aafb3f694a431efbb4823f3e9f2b70fd',
+  date: 'Sat, 20 Sep 2014 00:31:43 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
+  'content-length': '110',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-request-id': '155da18473461aaa9bb853555a59fea2',
+  date: 'Sat, 20 Sep 2014 00:31:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4670,8 +4673,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f4f580bb000911ca804ce092ff58036e',
-  date: 'Fri, 19 Sep 2014 22:28:49 GMT' });
+  'x-ms-request-id': '526e8b9ad7551bdca366f61978468913',
+  date: 'Sat, 20 Sep 2014 00:31:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4685,8 +4688,8 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd05ae957f4461c77ba09862c34c5ebe6',
-  date: 'Fri, 19 Sep 2014 22:28:50 GMT' });
+  'x-ms-request-id': '08a18a91df211932921204637b07122c',
+  date: 'Sat, 20 Sep 2014 00:31:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4700,15 +4703,15 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9fbe05b687841b3d8f4ebc9ab3aed481',
-  date: 'Fri, 19 Sep 2014 22:28:50 GMT' });
+  'x-ms-request-id': '89cb409390ac1c6a90975a2f1a4a3326',
+  date: 'Sat, 20 Sep 2014 00:31:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites', '*')
-  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests1111</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1111.azurewebsites.net</a:string><a:string>clitests1111.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1111.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests1111.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests1111.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-09-19T22:28:52.787</LastModifiedTimeUtc><Name>clitests1111</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests1111</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests1111</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site>", { 'cache-control': 'private',
+  .reply(200, "<Site xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode>Shared</ComputeMode><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests5323</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5323.azurewebsites.net</a:string><a:string>clitests5323.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5323.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests5323.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests5323.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-09-20T00:31:48.457</LastModifiedTimeUtc><Name>clitests5323</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests5323</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/20130801/websystems/websites/web/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests5323</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode>Limited</SiteMode><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties/></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site>", { 'cache-control': 'private',
   'content-length': '2388',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4716,14 +4719,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'fbfac4383e8c1a14a04088bfa7bd2871',
-  date: 'Fri, 19 Sep 2014 22:28:57 GMT' });
+  'x-ms-request-id': '4603d67101e110788a9f045d2aac31dc',
+  date: 'Sat, 20 Sep 2014 00:31:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>C2YoxaiS0vSAd7qy4q1TQYfkQXZwLcXkyjgiSMRWQC0xZKetjY9d8l8ZgFqa</PublishingPassword><PublishingUsername>$clitests1111</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>iDyhdvZfJq0FNKqAaJDLLJikZp9z3bcvTpgXyGfxhEmhGg7uHBzQWnxQKcLW</PublishingPassword><PublishingUsername>$clitests5323</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
   'content-length': '2369',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4731,14 +4734,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'd680c3fff9e815a4ad5a8bac8d121cef',
-  date: 'Fri, 19 Sep 2014 22:28:57 GMT' });
+  'x-ms-request-id': '4cae586f3d941935bd1c63e60ebd3296',
+  date: 'Sat, 20 Sep 2014 00:31:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>C2YoxaiS0vSAd7qy4q1TQYfkQXZwLcXkyjgiSMRWQC0xZKetjY9d8l8ZgFqa</PublishingPassword><PublishingUsername>$clitests1111</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>iDyhdvZfJq0FNKqAaJDLLJikZp9z3bcvTpgXyGfxhEmhGg7uHBzQWnxQKcLW</PublishingPassword><PublishingUsername>$clitests5323</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion i:nil=\"true\"/><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
   'content-length': '2369',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4746,14 +4749,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '192d6f71e662122a8221c2961a167f4b',
-  date: 'Fri, 19 Sep 2014 22:28:58 GMT' });
+  'x-ms-request-id': '68550cda91ac1b08a3fffb7e49e23723',
+  date: 'Sat, 20 Sep 2014 00:31:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config', '*')
+.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4761,14 +4764,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bcfc7b18251b10b79abc028a04143450',
-  date: 'Fri, 19 Sep 2014 22:28:59 GMT' });
+  'x-ms-request-id': '2d91d5853be414f8a44acc5352cba161',
+  date: 'Sat, 20 Sep 2014 00:31:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>C2YoxaiS0vSAd7qy4q1TQYfkQXZwLcXkyjgiSMRWQC0xZKetjY9d8l8ZgFqa</PublishingPassword><PublishingUsername>$clitests1111</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>iDyhdvZfJq0FNKqAaJDLLJikZp9z3bcvTpgXyGfxhEmhGg7uHBzQWnxQKcLW</PublishingPassword><PublishingUsername>$clitests5323</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
   'content-length': '2461',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4776,14 +4779,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '62968815805612fbb1b3408301fb26da',
-  date: 'Fri, 19 Sep 2014 22:29:00 GMT' });
+  'x-ms-request-id': 'fdb5eab166781da78e50bff6ed1333b8',
+  date: 'Sat, 20 Sep 2014 00:31:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>C2YoxaiS0vSAd7qy4q1TQYfkQXZwLcXkyjgiSMRWQC0xZKetjY9d8l8ZgFqa</PublishingPassword><PublishingUsername>$clitests1111</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair><NameValuePair><Name>mysetting</Name><Value>myvalue</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>iDyhdvZfJq0FNKqAaJDLLJikZp9z3bcvTpgXyGfxhEmhGg7uHBzQWnxQKcLW</PublishingPassword><PublishingUsername>$clitests5323</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
   'content-length': '2461',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4791,14 +4794,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '4fd3fa17cc6614038256756173ebfe08',
-  date: 'Fri, 19 Sep 2014 22:29:01 GMT' });
+  'x-ms-request-id': '88237821b8fc1739bab53ee801ed92b9',
+  date: 'Sat, 20 Sep 2014 00:31:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config', '*')
+.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config', '*')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4806,14 +4809,14 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '1c52dd00d4f21bf386646ea3bebb3db1',
-  date: 'Fri, 19 Sep 2014 22:29:01 GMT' });
+  'x-ms-request-id': '17a4f2d052bc19fba161bb1aff2fef8d',
+  date: 'Sat, 20 Sep 2014 00:31:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111/config')
-  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>C2YoxaiS0vSAd7qy4q1TQYfkQXZwLcXkyjgiSMRWQC0xZKetjY9d8l8ZgFqa</PublishingPassword><PublishingUsername>$clitests1111</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323/config')
+  .reply(200, "<SiteConfig xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AlwaysOn>false</AlwaysOn><AppSettings><NameValuePair><Name>WEBSITE_NODE_DEFAULT_VERSION</Name><Value>0.10.29</Value></NameValuePair></AppSettings><AutoHealEnabled>false</AutoHealEnabled><AutoHealRules i:nil=\"true\"/><ConnectionStrings/><CustomAppPoolIdentityAdminState>true</CustomAppPoolIdentityAdminState><CustomAppPoolIdentityTenantState>false</CustomAppPoolIdentityTenantState><DefaultDocuments xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>Default.htm</a:string><a:string>Default.html</a:string><a:string>Default.asp</a:string><a:string>index.htm</a:string><a:string>index.html</a:string><a:string>iisstart.htm</a:string><a:string>default.aspx</a:string><a:string>index.php</a:string><a:string>hostingstart.html</a:string></DefaultDocuments><DetailedErrorLoggingEnabled>false</DetailedErrorLoggingEnabled><DocumentRoot i:nil=\"true\"/><Experiments i:nil=\"true\"/><HandlerMappings i:nil=\"true\"/><HttpLoggingEnabled>false</HttpLoggingEnabled><JavaContainer i:nil=\"true\"/><JavaContainerVersion i:nil=\"true\"/><JavaVersion i:nil=\"true\"/><LoadBalancing>LeastRequests</LoadBalancing><LogsDirectorySizeLimit>35</LogsDirectorySizeLimit><ManagedPipelineMode>Integrated</ManagedPipelineMode><Metadata/><NetFrameworkVersion>v4.0</NetFrameworkVersion><NumberOfWorkers>1</NumberOfWorkers><PhpVersion>5.4</PhpVersion><PublishingPassword>iDyhdvZfJq0FNKqAaJDLLJikZp9z3bcvTpgXyGfxhEmhGg7uHBzQWnxQKcLW</PublishingPassword><PublishingUsername>$clitests5323</PublishingUsername><PythonVersion/><RemoteDebuggingEnabled>false</RemoteDebuggingEnabled><RemoteDebuggingVersion>VS2012</RemoteDebuggingVersion><RequestTracingEnabled>false</RequestTracingEnabled><RequestTracingExpirationTime i:nil=\"true\"/><RoutingRules/><RuntimeADUser i:nil=\"true\"/><RuntimeADUserPassword i:nil=\"true\"/><ScmType>None</ScmType><TracingOptions i:nil=\"true\"/><Use32BitWorkerProcess>true</Use32BitWorkerProcess><VirtualApplications><VirtualApplication><PhysicalPath>site\\wwwroot</PhysicalPath><PreloadEnabled>false</PreloadEnabled><VirtualDirectories i:nil=\"true\"/><VirtualPath>/</VirtualPath></VirtualApplication></VirtualApplications><VnetName/><WebSocketsEnabled>false</WebSocketsEnabled><WinAuthAdminState>0</WinAuthAdminState><WinAuthTenantState>0</WinAuthTenantState></SiteConfig>", { 'cache-control': 'private',
   'content-length': '2386',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
@@ -4821,22 +4824,22 @@ nock('https://management.core.windows.net:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '67abb078981a1d30b0a06e382d4fff42',
-  date: 'Fri, 19 Sep 2014 22:29:04 GMT' });
+  'x-ms-request-id': 'b12f92015f1d15ffb8b52958c9589870',
+  date: 'Sat, 20 Sep 2014 00:31:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests1111?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
+  .delete('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites/clitests5323?deleteEmptyServerFarm=true&deleteMetrics=true&deleteAllSlots=true')
   .reply(200, "", { 'cache-control': 'private',
   'transfer-encoding': 'chunked',
-  etag: '"1CFD4591D3823B0"',
+  etag: '"1CFD46A489E0090"',
   server: '1.0.6198.128 (rd_rdfe_stable.140917-1635) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'aae06564d303166283d3f03039b2f92e',
-  date: 'Fri, 19 Sep 2014 22:29:06 GMT' });
+  'x-ms-request-id': '0b2e94afbf1b10c5a205ff87e6528a30',
+  date: 'Sat, 20 Sep 2014 00:31:59 GMT' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['clitests4526','clitests1111'];};
+ exports.randomTestIdsGenerated = function() { return ['clitests771','clitests5323'];};
