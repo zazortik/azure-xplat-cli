@@ -18,8 +18,6 @@ var should = require('should');
 
 var CLITest = require('../framework/cli-test');
 
-var createdSites = [];
-
 var suite;
 var testPrefix = 'cli.site.appsetting-tests';
 
@@ -52,11 +50,11 @@ describe('cli', function () {
 
     afterEach(function (done) {
       function removeSite() {
-        if (createdSites.length === 0) {
+        if (siteNames.length === 0) {
           return suite.teardownTest(done);
         }
 
-        var siteName = createdSites.pop();
+        var siteName = siteNames.pop();
         suite.execute('site delete %s --json --quiet', siteName, function () {
           removeSite();
         });
