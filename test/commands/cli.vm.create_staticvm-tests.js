@@ -96,16 +96,12 @@ describe('cli', function() {
     // VM Restart and check
     describe('StaticIp Show:', function() {
       it('Show the description of the vm with set static ip', function(done) {
-        var cmd = util.format('vm restart %s --json', vmName).split(' ');
+        var cmd = util.format('vm static-ip show %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          cmd = util.format('vm static-ip show %s --json', vmName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var VnetIps = JSON.parse(result.text);
-            VnetIps.Network.StaticIP.should.equal(staticIpavail);
-            done();
-          });
+          var VnetIps = JSON.parse(result.text);
+          VnetIps.Network.StaticIP.should.equal(staticIpavail);
+          done();
         });
       });
     });
@@ -154,18 +150,22 @@ describe('cli', function() {
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      var cmd = util.format('vm image list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var imageList = JSON.parse(result.text);
-        imageList.some(function(image) {
-          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-            vmImgName = image.name;
-            return true;
-          }
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
+      } else {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var imageList = JSON.parse(result.text);
+          imageList.some(function(image) {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+              process.env.VM_WIN_IMAGE = image.name;
+              return true;
+            }
+          });
+          callBack(process.env.VM_WIN_IMAGE);
         });
-        callBack(vmImgName);
-      });
+      }
     }
 
     //get name of a vnet

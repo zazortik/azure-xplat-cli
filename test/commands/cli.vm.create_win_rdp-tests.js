@@ -99,16 +99,18 @@ describe('cli', function() {
     //create a vm with connect option
     describe('Create:', function() {
       it('with Connect', function(done) {
-        var vmConnect = vmName + '-2';
-        var cmd = util.format('vm create -l %s --connect %s %s %s %s --json',
-          'someLoc', vmName, vmImgName, username, password).split(' ');
-        cmd[3] = location;
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          vmToUse.Name = vmConnect;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+        getImageName('Windows', function(vmImgName) {
+          var vmConnect = vmName + '-2';
+          var cmd = util.format('vm create -l %s --connect %s %s %s %s --json',
+            'someLoc', vmName, vmImgName, username, password).split(' ');
+          cmd[3] = location;
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            vmToUse.Name = vmConnect;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
         });
       });
     });
@@ -116,35 +118,41 @@ describe('cli', function() {
     // Negative Test Case by specifying VM Name Twice
     describe('Negative test case:', function() {
       it('Specifying Vm Name Twice', function(done) {
-        var cmd = util.format('vm create %s %s %s %s --json',
-          vmName, vmImgName, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('A VM with dns prefix "' + vmName + '" already exists');
-          vmToUse.Name = vmName;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+        getImageName('Windows', function(vmImgName) {
+          var cmd = util.format('vm create %s %s %s %s --json',
+            vmName, vmImgName, username, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.include('A VM with dns prefix "' + vmName + '" already exists');
+            vmToUse.Name = vmName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
         });
       });
     });
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      var cmd = util.format('vm image list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var imageList = JSON.parse(result.text);
-        imageList.some(function(image) {
-          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-            vmImgName = image.name;
-            return true;
-          }
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
+      } else {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var imageList = JSON.parse(result.text);
+          imageList.some(function(image) {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+              process.env.VM_WIN_IMAGE = image.name;
+              return true;
+            }
+          });
+          callBack(process.env.VM_WIN_IMAGE);
         });
-        callBack(vmImgName);
-      });
+      }
     }
   });
 });
