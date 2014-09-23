@@ -112,23 +112,19 @@ describe('cli', function() {
     // VM extension check
     describe('Extension', function() {
       it('Uninstall the set extension', function(done) {
-        var cmd = util.format('vm extension get %s --json', vmName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(outerresult) {
-          outerresult.exitStatus.should.equal(0);
-          var cmd = util.format('vm extension set -u %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(innerresult) {
-            innerresult.exitStatus.should.equal(0);
-            cmd = util.format('vm extension get %s --json', vmName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(checkresult) {
-              var exts = JSON.parse(checkresult.text);
-              var found = false;
-              found = exts.some(function(ext) {
-                if (extensionname == ext.name)
-                  return true;
-              });
-              found.should.be.false;
-              done();
+        var cmd = util.format('vm extension set -u %s %s %s %s --json', vmName, extensionname, publishername, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(innerresult) {
+          innerresult.exitStatus.should.equal(0);
+          cmd = util.format('vm extension get %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(checkresult) {
+            var exts = JSON.parse(checkresult.text);
+            var found = false;
+            found = exts.some(function(ext) {
+              if (extensionname === ext.name)
+                return true;
             });
+            found.should.be.false;
+            done();
           });
         });
       });
@@ -136,18 +132,22 @@ describe('cli', function() {
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      var cmd = util.format('vm image list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var imageList = JSON.parse(result.text);
-        imageList.some(function(image) {
-          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-            vmImgName = image.name;
-            return true;
-          }
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
+      } else {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var imageList = JSON.parse(result.text);
+          imageList.some(function(image) {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+              process.env.VM_WIN_IMAGE = image.name;
+              return true;
+            }
+          });
+          callBack(process.env.VM_WIN_IMAGE);
         });
-        callBack(vmImgName);
-      });
+      }
     }
 
     function createVM(callback) {

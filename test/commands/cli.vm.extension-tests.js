@@ -67,45 +67,6 @@ describe('cli', function() {
         });
       });
 
-      // list a single extension when filtered for publisher name
-      it('should fetch all extensions by a single publisher', function(done) {
-
-        // pick a publisher at random
-        var index = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
-
-        var cmd = util.format('vm extension list -p %s --json', extensionList[index].publisher).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-
-          var ext = JSON.parse(result.text);
-          ext.length.should.be.above(0);
-
-          ext.forEach(function(e) {
-            e.publisher.should.equal(extensionList[index].publisher);
-          });
-
-          done();
-        });
-      });
-
-      // list a single extension when filtered for extension name
-      it('should fetch details for a single extension', function(done) {
-
-        //pick an extension at random
-        var index = suite.isMocked ? 0 : Math.random() * extensionList.length >> 0;
-
-        var cmd = util.format('vm extension list -n %s --json', extensionList[index].name).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-
-          var ext = JSON.parse(result.text);
-          ext.length.should.equal(1);
-          ext[0].name.should.equal(extensionList[index].name);
-
-          done();
-        });
-      });
-
       // when both publisher name and extension name are given check
       // whether all extensions fetched match given publisher and
       // extension name
