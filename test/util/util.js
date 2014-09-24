@@ -14,6 +14,7 @@
 // limitations under the License.
 // 
 var fs = require('fs');
+var ADGraphClient = require('azure-extra');
 
 var exports = module.exports;
 
@@ -60,6 +61,13 @@ exports.generateRandomString = function (length) {
     randString += chars.substring(randNum, randNum + 1);
   }
   return randString;
+};
+
+exports.getADGraphClient = function (subscription) {
+  var client = new ADGraphClient.createGraphRbacManagementClient(subscription.tenantId,
+      subscription._createCredentials(),
+      subscription.activeDirectoryGraphResourceId);
+  return client;
 };
 
 /**

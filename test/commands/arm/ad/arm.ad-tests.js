@@ -16,9 +16,17 @@
 'use strict';
 
 var should = require('should');
+require('streamline').register();
 
+var testUtil = require('../../../util/util');
+var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
+var util = require('util');
+var subscription = profile.current.getSubscription("Free Trial");
+var graphClient = testUtil.getADGraphClient(subscription);
+
+console.log(util.inspect(graphClient, {depth:null}));
 
 var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
@@ -44,7 +52,16 @@ describe('arm', function () {
     var suite;
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite.setupSuite(function() {
+        graphClient.group.create({displayName: 'testgroup1', 
+                                  mailEnabled: 'false', 
+                                  mailNickname: '',
+                                  securityEnabled: 'true'}, function (err, result) {
+                                    console.log('result is: ' + util.inspect(result, {depth: null}));
+                                    done();
+                                  });
+        
+      });
     });
     
     after(function (done) {
