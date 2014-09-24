@@ -17,6 +17,7 @@
 var azure = require('azure');
 var should = require('should');
 var fs = require('fs');
+var azureCommon = require('azure-common');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
@@ -79,19 +80,30 @@ describe('cli', function () {
               var tables = JSON.parse(result.text);
               tables.length.should.greaterThan(0);
               tables.forEach(function(table) {
-                table.length.should.greaterThan(0);
+                table.name.length.should.greaterThan(0);
               });
-
               done();
             });
         });
       });
 
       describe('show', function() {
-        it('should show details of the specified table --json', function(done) {
+        it('should show details of the specified table', function(done) {
             suite.execute('storage table show %s --json', tableName, function (result) {
               result.errorText.should.be.empty;
               done();
+          });
+        });
+      });
+      
+      describe('sas', function () {
+        it('should create the container sas', function (done) {
+          var expiry = azureCommon.date.minutesFromNow(5).toISOString();
+          suite.execute('storage table sas create %s rau %s --json', tableName, expiry, function (result) {
+            var sas = JSON.parse(result.text);
+            sas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+            done();
           });
         });
       });

@@ -115,6 +115,7 @@ nock('https://xplat.queue.core.windows.net:443')
   'x-ms-version': '2014-02-14',
   date: 'Thu, 07 Aug 2014 03:53:51 GMT' });
  return result; }],
+[],
 [function (nock) { 
 var result = 
 nock('https://xplat.queue.core.windows.net:443')
