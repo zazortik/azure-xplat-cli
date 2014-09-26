@@ -16,56 +16,72 @@
 'use strict';
 
 var should = require('should');
-require('streamline').register();
-
-var testUtil = require('../../../util/util');
-var profile = require('../../../../lib/util/profile');
+var graphUtil = require('../../../util/graphUtils');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
 var util = require('util');
-var subscription = profile.current.getSubscription("Free Trial");
-var graphClient = testUtil.getADGraphClient(subscription);
-
-console.log(util.inspect(graphClient, {depth:null}));
+var AD_USER = 'user';
+var AD_GROUP = 'group';
 
 var requiredEnvironment = [
+  { name: 'AZURE_AD_TEST_PASSWORD' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
-  { name: 'AZURE_AD_TEST_GROUP_OBJECT_ID', defaultValue: '08b96007-f08c-4344-8fe0-3b59dd6a8464' },
-  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' }, //(must be a member of testgroup1)
-  { name: 'AZURE_AD_TEST_USER_OBJECT_ID', defaultValue: 'f09fea55-4947-484b-9b25-c67ddd8795ac' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@aad105.ccsctp.net' }, //(must be a member of testGroup1, but not of testGroup2)
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net' },
+  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@rbactest.onmicrosoft.com' },
   { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'rbacApp' },
-  { name: 'AZURE_AD_TEST_SP_NAME', defaultValue: '8f2648ae-3a3c-421b-86ce-5ccd2f7478e2' },
-  { name: 'AZURE_AD_TEST_SP_OBJECT_ID', defaultValue: '2e57b745-7b09-4b74-8645-5fc8a5761469' }
+  { name: 'AZURE_AD_TEST_SP_NAME', defaultValue: '59253046-1d78-4775-adfd-e0e341daee22' },
+  { name: 'AZURE_AD_TEST_SP_OBJECT_ID', defaultValue: '1ba98b33-f85f-4d78-9938-8c117a5d0bbc' }
 ];
 
 function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
-function getTestGroupObjectId() { return process.env.AZURE_AD_TEST_GROUP_OBJECT_ID; }
+function getTestGroupObjectId() { return graphUtil.getGroupObjectId(process.env.AZURE_AD_TEST_GROUP_NAME); }
 function getTestSubGroupName() { return process.env.AZURE_AD_TEST_SUBGROUP_NAME; }
-function getTestUserObjectId() { return process.env.AZURE_AD_TEST_USER_OBJECT_ID; }
+function getTestUserObjectId() { return graphUtil.getUserObjectId(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME); }
 function getTestUPN() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME; }
 function getTestUPN2() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2; }
+function getTestPwd() { return process.env.AZURE_AD_TEST_PASSWORD; }
 
 describe('arm', function () {
   describe('ad', function () {
     var suite;
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
-        graphClient.group.create({displayName: 'testgroup1', 
-                                  mailEnabled: 'false', 
-                                  mailNickname: '',
-                                  securityEnabled: 'true'}, function (err, result) {
-                                    console.log('result is: ' + util.inspect(result, {depth: null}));
-                                    done();
-                                  });
-        
+      suite.setupSuite(function () {
+        graphUtil.createGroup(getTestGroupName(), function (err, result) {
+          graphUtil.createGroup(getTestSubGroupName(), function (err, result) {
+            graphUtil.createUser(getTestUPN(), getTestPwd(), function (err, result) {
+              graphUtil.createUser(getTestUPN2(), getTestPwd(), function (err, result) {
+                //(testUser1 must be a member of testGroup1, but not of testGroup2)
+                graphUtil.addGroupMember(getTestGroupName(), getTestUPN(), AD_USER, function (err, result) {
+                  //(testgroup2 must be a member of testgroup1)
+                  graphUtil.addGroupMember(getTestGroupName(), getTestSubGroupName(), AD_GROUP, function (err, result) {
+                    done();
+                  });
+                });
+              });
+            });
+          });
+        });
       });
     });
     
     after(function (done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function () {
+        graphUtil.removeMember(getTestGroupName(), getTestUPN(), AD_USER, function (err, result) {
+          graphUtil.removeMember(getTestGroupName(), getTestSubGroupName(), AD_GROUP, function (err, result) {
+            graphUtil.deleteGroup(getTestGroupName(), function (err, result) {
+              graphUtil.deleteGroup(getTestSubGroupName(), function (err, result) {
+                graphUtil.deleteUser(getTestUPN(), function (err, result) {
+                  graphUtil.deleteUser(getTestUPN2(), function (err, result) {
+                    done();
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
     });
     
     beforeEach(function (done) {
@@ -155,7 +171,7 @@ describe('arm', function () {
             suite.execute('ad sp show --objectId %s --json', objectId, function (result) {
               result.exitStatus.should.equal(0);
               text = result.text;
-              seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);;
+              seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
               seemsCorrect.should.equal(true);
               done();
             });
