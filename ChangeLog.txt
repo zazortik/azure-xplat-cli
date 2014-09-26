@@ -1,3 +1,46 @@
+2014.0.10 Version 0.8.8
+* Role-based access control support
+  *  Query role definition
+      Azure role list
+  *  Manage role assignment
+      azure role assignment create
+      azure role assignment list/show
+      azure role assignment delete
+  *  Query Azure AD object
+      azure AD user list/show
+      azure AD group list/show
+      azure AD group member list
+      azure AD SP list/show
+  *  Show user's permissions
+      azure group list/show
+      azure resource list/show
+* Active Directory service principal login support in Azure Resource Manager mode
+      azure login --service-principal -tenant
+* Storage
+  *  Azure File Service support
+      azure storage share create
+      azure storage share list/show
+      azure storage share delete
+      azure storage directory create
+      azure storage directory delete
+      azure storage file upload
+      azure storage file download
+      azure storage file list
+      azure storage file delete
+  *  Azure Blob Service improvements
+      azure storage blob copy start
+      azure storage blob copy stop
+      azure storage blob copy show
+  *  Azure Table Service support
+      azure storage table create
+      azure storage table list/show
+      azure storage table delete
+  *  Azure Queue Service Support
+      azure storage queue create
+      azure storage queue list/show
+      azure storage queue delete
+  *  Switched storage library to Azure storage module
+
 2014.08.04 Version 0.8.7
 * Fixed issues with vm commands (vm image, vm docket create)
 * Added support for A8, A9 vm sizes in vm create command

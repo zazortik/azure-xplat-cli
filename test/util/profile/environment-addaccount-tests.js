@@ -18,27 +18,67 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
-var util = require('util');
+require('streamline').register();
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 
-var expectedSubscriptions = [
+var expectedUserName = 'user@somedomain.example';
+var expectedPassword = 'sekretPa$$w0rd';
+
+var testTenantIds = ['2d006e8c-61e7-4cd2-8804-b4177a4341a1'];
+
+var expectedSubscriptions =
+[
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    subscriptionName: 'Account'
+    displayName: 'Account',
+    username: expectedUserName,
+    activeDirectoryTenantId: testTenantIds[0]
   },
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
-    subscriptionName: 'Other'
+    displayName: 'Other',
+    username: expectedUserName,
+    activeDirectoryTenantId: testTenantIds[0]
+  },
+];
+
+var testSubscriptionsFromTenant = [
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    displayName: 'Account'
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    displayName: 'Other'
   }
 ];
 
-var expectedUserName = 'user@somedomain.example';
-
 var expectedToken = {
   accessToken: 'a dummy token',
-  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000)
+  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000),
+  userId: expectedUserName,
+  authenticateRequest: function () { }
+};
+
+
+var testArmSubscriptionClient = {
+  subscriptions: {
+    list: function (callback) {
+      callback(null, {subscriptions: testSubscriptionsFromTenant });
+    }
+  },
+  tenants: {
+    list: function (callback) {
+      callback(null, {
+        tenantIds: testTenantIds.map(function (id) {
+          return { tenantId: id };})
+        }
+      );
+    }
+  }
 };
 
 describe('Environment', function () {
@@ -51,61 +91,66 @@ describe('Environment', function () {
       commonTenantName: 'common',
       activeDirectoryResourceId: 'http://login.notreal.example'
     });
-    sinon.stub(environment, 'acquireToken').callsArgWith(3, null, expectedToken);
-    sinon.stub(environment, 'getAccountSubscriptions').callsArgWith(1, null, expectedSubscriptions);
+
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
+      null/*no error*/, expectedToken/*the access token*/);
+    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
   });
 
   describe('When creating account', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, 'sekretPa$$w0rd', function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
     });
 
-
     it('should have called the token provider', function () {
       environment.acquireToken.called.should.be.true;
     });
 
-    it('should have listed subscriptions', function () {
-      environment.getAccountSubscriptions.called.should.be.true;
+    it('should have call to get arm client', function () {
+      environment.getArmClient.called.should.be.true;
     });
 
     it('should pass expected configuration to token provider', function () {
-      var config = environment.acquireToken.firstCall.args[0];
+      var username = environment.acquireToken.firstCall.args[0];
+      username.should.equal(expectedUserName);
 
-      config.should.have.properties({
-        authorityUrl: 'http://notreal.example',
-        tenantId: 'common',
-        clientId: constants.XPLAT_CLI_CLIENT_ID,
-        resourceId: environment.activeDirectoryResourceId
-      });
-    });
+      var password = environment.acquireToken.firstCall.args[1];
+      password.should.equal(expectedPassword);
 
-    it('should pass token to get subscriptions', function() {
-      var token = environment.getAccountSubscriptions.firstCall.args[0];
-      token.should.equal(expectedToken);
+      var tenantId1 = environment.acquireToken.firstCall.args[2];
+      tenantId1.should.equal(''); // '' mean using the common tenant
+
+      var tenantId2 = environment.acquireToken.secondCall.args[2];
+      tenantId2.should.equal(testTenantIds[0]);
     });
 
     it('should return a subscription with expected username', function () {
-      should.exist(subscriptions[0].username);
-      subscriptions[0].username.should.equal(expectedUserName);
+      should.exist(subscriptions[0].user);
+      subscriptions[0].user.name.should.equal(expectedUserName);
     });
 
     it('should return listed subscriptions', function () {
       subscriptions.should.have.length(expectedSubscriptions.length);
       for(var i = 0, len = subscriptions.length; i < len; ++i) {
         subscriptions[i].id.should.equal(expectedSubscriptions[i].subscriptionId);
-        subscriptions[i].name.should.equal(expectedSubscriptions[i].subscriptionName);
+        subscriptions[i].name.should.equal(expectedSubscriptions[i].displayName);
       }
     });
 
     it('should have same username for all subscription', function () {
       subscriptions.forEach(function (s) {
-        s.username.should.equal(expectedUserName);
+        s.user.name.should.equal(expectedUserName);
+      });
+    });
+
+    it('should have same tenant id for all subscription', function () {
+      subscriptions.forEach(function (s) {
+        s.tenantId.should.equal(testTenantIds[0]);
       });
     });
   });

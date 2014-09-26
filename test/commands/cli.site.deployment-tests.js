@@ -46,6 +46,7 @@ var requiredEnvironment = [
 ];
 
 var location = process.env.AZURE_SITE_TEST_LOCATION || 'East US';
+var scmSite = process.env.AZURE_SCM_SITE_SUFFIX || '.scm.azurewebsites.net';
 
 var githubUsername;
 var githubPassword;
@@ -179,7 +180,7 @@ describe('cli', function () {
               }, function (err, hooks) {
                 var hookExists = hooks.some(function (hook) {
                   var parsedUrl = url.parse(hook.config.url);
-                  return parsedUrl.hostname === (siteName + '.scm.azurewebsites.net');
+                  return parsedUrl.hostname === (siteName + scmSite);
                 });
 
                 hookExists.should.be.ok;
