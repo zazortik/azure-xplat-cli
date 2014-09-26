@@ -36,6 +36,7 @@ This project provides a cross-platform command line interface for developers and
     * Import and export network configuration
     * Create and manage virtual network
     * Create and manage DNS server
+    * Create and manage reserved IP addresses
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
