@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 var should = require('should');
+var util = require('util');
+var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
@@ -28,7 +30,7 @@ describe('cli', function() {
   describe('vm', function() {
     var location, username = 'azureuser',
       password = 'Pa$$word@123',
-      vmNegName;
+      vmNegName, retry = 5;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
