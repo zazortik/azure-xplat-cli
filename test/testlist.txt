@@ -29,7 +29,7 @@ commands/cli.site.job-tests.js
 # TODO: This suite uses custom recording
 commands/cli.vm.create_affin_vnet_vm-tests.js
 commands/cli.vm.create_loc_vnet_vm-tests.js
-commands/cli.vm.create_win_rdp-tests.js
+#commands/cli.vm.create_win_rdp-tests.js
 commands/cli.vm.disk-tests.js
 commands/cli.vm.disk.attachDetach-tests.js
 commands/cli.vm.disk.attachnew-tests.js
@@ -43,11 +43,11 @@ commands/cli.vm.create_staticvm-tests.js
 commands/cli.vm.create_staticvm_neg-tests.js
 commands/cli.vm.staticvm_create-from-tests.js
 commands/cli.vm.staticvm_docker-tests.js
-commands/cli.vm.create_docker-tests.js
+#commands/cli.vm.create_docker-tests.js
 commands/cli.vm.extension-tests.js
 commands/cli.vm.extension_get-tests.js
 commands/cli.vm.extension_set-tests.js
-commands/cli.vm.extension_set-custom_disable.js
+#commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
