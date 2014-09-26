@@ -35,7 +35,9 @@ describe('cli', function() {
       location, retry = 5,
       homePath, timeout,
       username = 'azureuser',
-      password = 'Pa$$word@123';
+      password = 'Pa$$word@123',
+      ripName = 'clitestrip',
+      ripCreate = false;
 
     // A common VM used by multiple tests
     var vmToUse = {
@@ -50,13 +52,19 @@ describe('cli', function() {
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      if (ripCreate) {
+        deleterip(function() {
+          suite.teardownSuite(done);
+        });
+      } else {
+        suite.teardownSuite(done);
+      }
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'XplattestVm1' : suite.generateId(vmPrefix, null);
+        vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : 12000;
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
@@ -110,30 +118,32 @@ describe('cli', function() {
     });
 
     describe('Vm Create: ', function() {
-      it('Create Docker VM with default values should pass', function(done) {
+      it('Create Docker VM with default values and reserved Ip should pass', function(done) {
         dockerCertDir = path.join(homePath, '.docker');
         var dockerPort = 4243;
 
         getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh',
-            vmName, ImageName, username, password).split(' ');
-          cmd.push('--location');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            cmd = util.format('vm show %s --json', vmName).split(' ');
+          createReservedIp(location, function(ripName) {
+            var cmd = util.format('vm docker create %s %s %s %s -R %s --json --ssh',
+              vmName, ImageName, username, password, ripName).split(' ');
+            cmd.push('--location');
+            cmd.push(location);
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = checkForDockerCertificates(dockerCertDir);
-              certificatesExist.should.be.true;
-              var createdVM = JSON.parse(result.text);
-              var dockerPortExists = checkForDockerPort(createdVM, dockerPort);
-              dockerPortExists.should.be.true;
-              createdVM.VMName.should.equal(vmName);
-              vmToUse.Name = vmName;
-              vmToUse.Created = true;
-              vmToUse.Delete = true;
-              setTimeout(done, timeout);
+              cmd = util.format('vm show %s --json', vmName).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var certificatesExist = checkForDockerCertificates(dockerCertDir);
+                certificatesExist.should.be.true;
+                var createdVM = JSON.parse(result.text);
+                var dockerPortExists = checkForDockerPort(createdVM, dockerPort);
+                dockerPortExists.should.be.true;
+                createdVM.VMName.should.equal(vmName);
+                vmToUse.Name = vmName;
+                vmToUse.Created = true;
+                vmToUse.Delete = true;
+                setTimeout(done, timeout);
+              });
             });
           });
         });
@@ -289,6 +299,45 @@ describe('cli', function() {
       }
 
       return true;
+    }
+    
+    function createReservedIp(location, callback) {
+      if (createReservedIp.ripName) {
+        callback(createReservedIp.ripName);
+      } else {
+        var cmd;
+        cmd = util.format('network reserved-ip list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var ripList = JSON.parse(result.text);
+          var ripfound = ripList.some(function(ripObj) {
+            if (!ripObj.inUse && ripObj.location.toLowerCase() === location.toLowerCase()) {
+              createReservedIp.ripName = ripObj.name;
+              return true;
+            }
+          });
+          if (ripfound) {
+            callback(createReservedIp.ripName);
+          } else {
+            cmd = util.format('network reserved-ip create %s %s --json', ripName, location).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              ripCreate = true;
+              createReservedIp.ripName = ripObj.name;
+              callback(createReservedIp.ripName);
+            });
+          }
+        });
+      }
+    }
+
+    function deleterip(callback) {
+      var cmd = util.format('network reserved-ip delete %s -q --json', ripName).split(' ');
+      testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        ripCreate = false;
+        callback();
+      });
     }
   });
 });
