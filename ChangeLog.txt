@@ -1,4 +1,4 @@
-2014.09.26 Version 0.8.10
+2014.10.02 Version 0.8.10
 * Storage
   * SAS support 
       azure storage container sas create
@@ -8,7 +8,7 @@
   * Storage unit test fixes
 * Moved the GraphRbacManagementClient in a separate module named 'azure-extra' published to npm 
 * Fixed issues in token caching mechanism and the azure login command
-* Fixed issues in npm install azure-cli in Ubuntu OS
+* Fixed issues in npm install azure-cli on Ubuntu OS
 * Fixed website tests
 * Fixed the test recording infrastructure
 * Fixed issues in vm image list command
