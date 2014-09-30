@@ -31,10 +31,12 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage certificates
     * CloudInit for Ubuntu VM
     * Create and manage Docker host virtual machines
+    * Create and manage VM extensions
 * Network
     * Import and export network configuration
     * Create and manage virtual network
     * Create and manage DNS server
+    * Create and manage reserved IP addresses
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
