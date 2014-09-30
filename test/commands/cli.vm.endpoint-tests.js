@@ -36,7 +36,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       vmEndpointName = 'TestEndpoint',
       retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -234,17 +234,17 @@ describe('cli', function() {
     });
 
     function createVM(callback) {
-      getImageName('Linux', function(imagename) {
-        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(callback, timeout);
+        getImageName('Linux', function(imagename) {
+          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(callback, timeout);
+          });
         });
-      });
-    }
-    // Get name of an image of the given category
+      }
+      // Get name of an image of the given category
 
     function getImageName(category, callBack) {
       if (process.env.VM_LINUX_IMAGE) {

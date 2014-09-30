@@ -34,7 +34,7 @@ describe('cli', function() {
       username = 'azureuser',
       password = 'Collabera@01',
       retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);

@@ -37,7 +37,7 @@ describe('cli', function() {
       userName = 'azureuser',
       password = 'Pa$$word@123',
       retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,

@@ -31,7 +31,7 @@ describe('cli', function() {
     var vmImgName,
       location,
       timeout, retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 10000;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -104,7 +104,7 @@ describe('cli', function() {
           imageObj.category.toLowerCase().should.equal('public');
 
           found = null,
-          imageObj = null;
+            imageObj = null;
           found = imageList.some(function(image) {
             if (image.category.toLowerCase() === 'user') {
               imageObj = image;
@@ -115,7 +115,7 @@ describe('cli', function() {
           imageObj.category.toLowerCase().should.equal('user');
 
           found = null,
-          imageObj = null;
+            imageObj = null;
           found = imageList.some(function(image) {
             if (image.category.toLowerCase() === 'user' && image.deploymentName) {
               imageObj = image;

@@ -41,7 +41,7 @@ describe('cli', function() {
       vmsize = 'Small',
       sshPort = '223',
       username = 'azureuser';
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,

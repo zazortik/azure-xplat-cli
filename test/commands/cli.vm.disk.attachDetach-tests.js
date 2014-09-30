@@ -34,7 +34,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       diskName,
       timeout, retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 10000;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

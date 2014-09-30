@@ -32,7 +32,7 @@ describe('cli', function() {
       exteAylist,
       location,
       retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

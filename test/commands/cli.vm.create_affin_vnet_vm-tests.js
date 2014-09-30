@@ -37,7 +37,7 @@ describe('cli', function() {
       password = 'Pa$$word@123',
       timeout,
       retry;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,

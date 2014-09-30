@@ -35,7 +35,7 @@ describe('cli', function() {
   describe('vm', function() {
     var diskSourcePath,
       storageAccountKey, timeout, retry = 5;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

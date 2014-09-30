@@ -16,7 +16,6 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
-
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
@@ -25,7 +24,6 @@ var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
 }];
-
 describe('cli', function() {
   describe('vm', function() {
     var vmName,
@@ -38,13 +36,11 @@ describe('cli', function() {
       custompublisher = 'Microsoft.Compute',
       customversion = '1.*',
       timeout;
-	  testUtils.TIMEOUT_INTERVAL = 5000;
-
+    testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
-
     after(function(done) {
       function deleteUsedVM(callback) {
         if (!suite.isMocked) {
@@ -55,15 +51,12 @@ describe('cli', function() {
               setTimeout(callback, timeout);
             });
           }, timeout);
-        } else
-          callback();
+        } else callback();
       }
-
       deleteUsedVM(function() {
         suite.teardownSuite(done);
       });
     });
-
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
@@ -72,19 +65,16 @@ describe('cli', function() {
         done();
       });
     });
-
     afterEach(function(done) {
       setTimeout(function() {
         suite.teardownTest(done);
       }, timeout);
     });
-
     //Set custom extensions
     describe('extension:', function() {
       it('Set custom extensions and disable', function(done) {
         createVM(function() {
-          var cmd = util.format('vm extension set -c %s %s %s %s %s --json',
-            customScript, vmName, customextension, custompublisher, customversion).split(' ');
+          var cmd = util.format('vm extension set -c %s %s %s %s %s --json', customScript, vmName, customextension, custompublisher, customversion).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             cmd = util.format('vm extension set -b %s %s %s %s --json', vmName, customextension, custompublisher, customversion).split(' ');
@@ -104,18 +94,18 @@ describe('cli', function() {
     });
 
     function createVM(callback) {
-      getImageName('Windows', function(imagename) {
-        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(callback, timeout);
+        getImageName('Windows', function(imagename) {
+          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(callback, timeout);
+          });
         });
-      });
-    }
+      }
+      // Get name of an image of the given category
 
-    // Get name of an image of the given category
     function getImageName(category, callBack) {
       if (process.env.VM_WIN_IMAGE) {
         callBack(process.env.VM_WIN_IMAGE);

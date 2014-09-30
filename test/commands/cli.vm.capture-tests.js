@@ -38,7 +38,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       captureImg = 'xplattestcapimg',
       timeout, retry;
-	  testUtils.TIMEOUT_INTERVAL = 10000;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

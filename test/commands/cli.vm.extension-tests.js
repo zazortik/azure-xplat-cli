@@ -29,7 +29,7 @@ var requiredEnvironment = [{
 describe('cli', function() {
   describe('vm', function() {
     var timeout, retry = 5;
-	testUtils.TIMEOUT_INTERVAL = 10000;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
