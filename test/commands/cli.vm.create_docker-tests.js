@@ -38,6 +38,7 @@ describe('cli', function() {
       password = 'Pa$$word@123',
       ripName = 'clitestrip',
       ripCreate = false;
+	  testUtils.TIMEOUT_INTERVAL = 12000;
 
     // A common VM used by multiple tests
     var vmToUse = {
@@ -65,7 +66,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : 12000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL ;
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
       });

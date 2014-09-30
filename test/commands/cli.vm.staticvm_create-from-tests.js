@@ -35,6 +35,7 @@ describe('cli', function() {
       password = 'Collabera@01',
       retry = 5,
       timeout;
+	  testUtils.TIMEOUT_INTERVAL = 12000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -64,7 +65,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 12000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });

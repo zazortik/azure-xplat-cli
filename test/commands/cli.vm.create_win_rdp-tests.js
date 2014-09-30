@@ -35,6 +35,7 @@ describe('cli', function() {
       location, retry = 5,
       ripName = 'clitestrip',
       ripCreate = false;
+	  testUtils.TIMEOUT_INTERVAL = 30000;
 
     var vmToUse = {
       Name: null,
@@ -61,7 +62,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 30000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });

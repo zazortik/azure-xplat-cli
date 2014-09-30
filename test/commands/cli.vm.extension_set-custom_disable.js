@@ -38,6 +38,7 @@ describe('cli', function() {
       custompublisher = 'Microsoft.Compute',
       customversion = '1.*',
       timeout;
+	  testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -67,7 +68,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -82,7 +83,7 @@ describe('cli', function() {
     describe('extension:', function() {
       it('Set custom extensions and disable', function(done) {
         createVM(function() {
-          var cmd = util.format('vm extension set -C %s %s %s %s %s --json',
+          var cmd = util.format('vm extension set -c %s %s %s %s %s --json',
             customScript, vmName, customextension, custompublisher, customversion).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);

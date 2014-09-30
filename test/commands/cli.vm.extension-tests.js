@@ -29,6 +29,7 @@ var requiredEnvironment = [{
 describe('cli', function() {
   describe('vm', function() {
     var timeout, retry = 5;
+	testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -41,7 +42,7 @@ describe('cli', function() {
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        timeout = suite.isMocked ? 0 : 10000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });

@@ -34,6 +34,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       diskName,
       timeout, retry = 5;
+	  testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -51,7 +52,7 @@ describe('cli', function() {
         vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
         diskName = vmName + 'disk';
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -96,7 +97,7 @@ describe('cli', function() {
         } else {
           setTimeout(function() {
             waitForDiskOp(vmName, DiskAttach, callback);
-          }, 10000);
+          }, TIMEOUT_INTERVAL);
         }
       });
     }

@@ -36,6 +36,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       file = 'vminfo.json',
       retry = 5;
+	  testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,
@@ -57,7 +58,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });

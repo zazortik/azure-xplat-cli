@@ -35,6 +35,7 @@ describe('cli', function() {
   describe('vm', function() {
     var diskSourcePath,
       storageAccountKey, timeout, retry = 5;
+	  testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -49,7 +50,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
