@@ -17,10 +17,10 @@ var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
+// A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.create_loc_vnet_vm-tests';
-
+var testPrefix = 'cli.vm.create_staticvm-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -28,26 +28,18 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var affinityName = 'xplataffintest',
-      vmVnetName,
-      timeout,
-      affinLabel = 'xplatAffinGrp',
-      affinDesc = 'Test Affinty Group for xplat',
+    var vmName,
       location,
-      userName = 'azureuser',
-      password = 'Pa$$word@123',
-      retry = 5;
+      username = 'azureuser',
+      password = 'PassW0rd$',
+      retry = 5,
+      timeout, staticIpavail, staticIpToSet;
     testUtils.TIMEOUT_INTERVAL = 5000;
-
-    var vmToUse = {
-      Name: null,
-      Created: false,
-      Delete: false
-    };
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
+      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
     });
 
     after(function(done) {
@@ -57,68 +49,44 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
         timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
 
     afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              callback();
-            });
-          }, timeout);
-        } else {
-          callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function() {
+      setTimeout(function() {
         suite.teardownTest(done);
-      });
+      }, timeout);
     });
 
-    //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function() {
-      it('Vm should create with vnet and location', function(done) {
-        getImageName('Linux', function(imageName) {
-          getVnet('Created', function(virtualnetName, affinityName) {
-            var cmd = util.format('account affinity-group show %s --json', affinityName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              var vnetObj = JSON.parse(result.text);
-              cmd = util.format('vm create -w %s %s %s %s %s --json', virtualnetName, vmVnetName, imageName, userName, password).split(' ');
-              cmd.push('-l');
-              cmd.push(vnetObj.location);
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                vmToUse.Created = true;
-                vmToUse.Name = vmVnetName;
-                vmToUse.Delete = true;
-                done();
-              });
-            });
+    //check for available static-ips for a vnet
+
+    describe('network:', function() {
+      it('check for available static ips in a vnet', function(done) {
+        getVnet('Created', function(virtualnetName) {
+          var cmd = util.format('network vnet static-ip check %s %s --json', virtualnetName, staticIpavail).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var staticIps = JSON.parse(result.text);
+            staticIps.availableAddresses.length.should.be.above(0);
+            staticIpavail = staticIps.availableAddresses[0];
+            staticIpToSet = staticIps.availableAddresses[1];
+            done();
           });
         });
       });
+    });
 
-      it('Vm should create with vnet', function(done) {
-        getImageName('Linux', function(imageName) {
-          getVnet('Created', function(virtualnetName, affinityName) {
-            var cmd = util.format('vm create --ssh -w %s %s %s %s %s --json',
-              virtualnetName, vmVnetName, imageName, userName, password).split(' ');
+    //create a vm with static-ip set
+    describe('Create a VM with static ip address:', function() {
+      it('Create a VM with static ip address', function(done) {
+        getImageName('Windows', function(ImageName) {
+          getVnet('Created', function(virtualnetName) {
+            var cmd = util.format('vm create --virtual-network-name %s %s %s %s %s --static-ip %s --json',
+              virtualnetName, vmName, ImageName, username, password, staticIpavail).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              vmToUse.Created = true;
-              vmToUse.Name = vmVnetName;
-              vmToUse.Delete = true;
               done();
             });
           });
@@ -126,10 +94,65 @@ describe('cli', function() {
       });
     });
 
+    // VM Restart and check
+    describe('StaticIp Show:', function() {
+      it('Show the description of the vm with set static ip', function(done) {
+        var cmd = util.format('vm static-ip show %s --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var VnetIps = JSON.parse(result.text);
+          VnetIps.Network.StaticIP.should.equal(staticIpavail);
+          done();
+        });
+      });
+    });
+
+    describe('static ip operations:', function() {
+
+      after(function(done) {
+        if (suite.isMocked) {
+          done();
+        } else {
+          var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        }
+      });
+
+      it('Setting the static ip address to the created VM', function(done) {
+        var cmd = util.format('vm static-ip set %s %s --json', vmName, staticIpToSet).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          cmd = util.format('vm show %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(innerresult) {
+            innerresult.exitStatus.should.equal(0);
+            var vmshow = JSON.parse(innerresult.text);
+            vmshow.IPAddress.should.equal(staticIpToSet);
+            done();
+          });
+        });
+      });
+
+      it('Removing the static ip address', function(done) {
+        var cmd = util.format('vm static-ip remove %s --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          cmd = util.format('vm static-ip show %s --json --verbose', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            result.text.should.include('No static IP address set for VM');
+            done();
+          });
+        });
+      });
+    });
+
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      if (process.env.VM_LINUX_IMAGE) {
-        callBack(process.env.VM_LINUX_IMAGE);
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
       } else {
         var cmd = util.format('vm image list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -137,11 +160,11 @@ describe('cli', function() {
           var imageList = JSON.parse(result.text);
           imageList.some(function(image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_LINUX_IMAGE = image.name;
+              process.env.VM_WIN_IMAGE = image.name;
               return true;
             }
           });
-          callBack(process.env.VM_LINUX_IMAGE);
+          callBack(process.env.VM_WIN_IMAGE);
         });
       }
     }
@@ -150,16 +173,17 @@ describe('cli', function() {
     function getVnet(status, callback) {
       var cmd;
       if (getVnet.vnetName) {
-        callback(getVnet.vnetName, getVnet.affinityName);
+        callback(getVnet.vnetName);
       } else {
         cmd = util.format('network vnet list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function(vnet) {
-            if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.affinityGroup !== undefined) {
+            if (vnet.state == status && vnet.affinityGroup) {
               getVnet.vnetName = vnet.name;
-              getVnet.affinityName = vnet.affinityGroup;
+              var address = vnet.addressSpace.addressPrefixes[0];
+              staticIpavail = address.split('/')[0];
               return true;
             }
           });
@@ -169,13 +193,14 @@ describe('cli', function() {
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnetName;
-                getVnet.affinityName = affinGrpName;
-                callback(getVnet.vnetName, getVnet.affinityName);
+                getVnet.vnetName = vnet.name;
+                var address = vnet.addressSpace.addressPrefixes[0];
+                staticIpavail = address.split('/')[0];
+                callback(getVnet.vnetName);
               });
             });
           } else {
-            callback(getVnet.vnetName, getVnet.affinityName);
+            callback(getVnet.vnetName);
           }
         });
       }
@@ -192,7 +217,7 @@ describe('cli', function() {
           result.exitStatus.should.equal(0);
           var affinList = JSON.parse(result.text);
           var found = affinList.some(function(affinGrp) {
-            if (affinGrp.location === location) {
+            if (affinGrp.location == location) {
               getAffinityGroup.affinGrpName = affinGrp.name;
               return true;
             }
