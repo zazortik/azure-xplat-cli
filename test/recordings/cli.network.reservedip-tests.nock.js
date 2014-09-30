@@ -6,7 +6,7 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
@@ -28,7 +28,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/reservedips', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.129 (rd_rdfe_stable.140922-1311) Microsoft-HTTPAPI/2.0',
@@ -39,7 +39,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/4d6c33584d851ce9a352e8d390be21f9')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/4d6c33584d851ce9a352e8d390be21f9')
   .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>4d6c3358-4d85-1ce9-a352-e8d390be21f9</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
@@ -51,7 +51,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/reservedips')
   .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>23.101.198.146</Address><Id>3c41af72-02e8-4b0c-8375-80d339df5270</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>test1</Name><Address>23.100.35.5</Address><Id>a6a93072-8b1e-41f1-b850-a6d6506efeb4</Id><State>Created</State><Location>West US</Location></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
   'content-length': '473',
   'content-type': 'application/xml; charset=utf-8',
@@ -63,7 +63,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/reservedips')
   .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>23.101.198.146</Address><Id>3c41af72-02e8-4b0c-8375-80d339df5270</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>test1</Name><Address>23.100.35.5</Address><Id>a6a93072-8b1e-41f1-b850-a6d6506efeb4</Id><State>Created</State><Location>West US</Location></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
   'content-length': '473',
   'content-type': 'application/xml; charset=utf-8',
@@ -75,7 +75,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips/clitestrip')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/reservedips/clitestrip')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.129 (rd_rdfe_stable.140922-1311) Microsoft-HTTPAPI/2.0',
@@ -86,7 +86,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/7a63503b5152137dbdd2398aa0f47b1d')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/7a63503b5152137dbdd2398aa0f47b1d')
   .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7a63503b-5152-137d-bdd2-398aa0f47b1d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',

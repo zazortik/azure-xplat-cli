@@ -38,6 +38,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       captureImg = 'xplattestcapimg',
       timeout, retry;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -52,7 +53,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 10000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         certFile = process.env.SSHCERT;
         retry = 5;
         done();

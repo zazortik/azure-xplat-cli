@@ -36,6 +36,7 @@ describe('cli', function() {
       password = 'PassW0rd$',
       file = 'vminfo.json',
       retry = 5;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,
@@ -57,7 +58,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -131,20 +132,21 @@ describe('cli', function() {
     });
 
     function checkFreeDisk(callback) {
-      var diskname;
-      var cmd = util.format('vm disk list --json');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        vmDiskObj = JSON.parse(result.text);
-        vmDiskObj.some(function(disk) {
-          if (!disk.usageDetails && disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
-            diskname = disk.name;
-            return true;
-          }
+        var diskname;
+        var cmd = util.format('vm disk list --json');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          vmDiskObj = JSON.parse(result.text);
+          vmDiskObj.some(function(disk) {
+            if (!disk.usageDetails && disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === 'linux') {
+              diskname = disk.name;
+              return true;
+            }
+          });
+          callback(diskname);
         });
-        callback(diskname);
-      });
-    }
-    //check if disk is released from vm and then if released call callback or else wait till it is released
+      }
+      //check if disk is released from vm and then if released call callback or else wait till it is released
+
     function waitForDiskRelease(vmDisk, callback) {
       var vmDiskObj;
       var cmd = util.format('vm disk show %s --json', vmDisk).split(' ');

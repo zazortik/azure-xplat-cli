@@ -35,6 +35,7 @@ describe('cli', function() {
       location, retry = 5,
       ripName = 'clitestrip',
       ripCreate = false;
+    testUtils.TIMEOUT_INTERVAL = 30000;
 
     var vmToUse = {
       Name: null,
@@ -61,7 +62,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 30000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -92,7 +93,7 @@ describe('cli', function() {
     describe('Create:', function() {
       it('Windows Vm with reserved Ip', function(done) {
         getImageName('Windows', function(ImageName) {
-           createReservedIp(location, function(ripName) {
+          createReservedIp(location, function(ripName) {
             var cmd = util.format('vm create %s %s %s %s -R %s -r --json',
               vmName, ImageName, username, password, ripName).split(' ');
             cmd.push('-l');
@@ -164,7 +165,7 @@ describe('cli', function() {
         });
       }
     }
-    
+
     function createReservedIp(location, callback) {
       if (createReservedIp.ripName) {
         callback(createReservedIp.ripName);

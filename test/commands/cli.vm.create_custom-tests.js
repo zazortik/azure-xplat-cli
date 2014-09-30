@@ -41,6 +41,7 @@ describe('cli', function() {
       vmsize = 'Small',
       sshPort = '223',
       username = 'azureuser';
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,
@@ -62,7 +63,7 @@ describe('cli', function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         customVmName = suite.isMocked ? 'xplattestvmcustdata' : suite.generateId(vmPrefix, null) + 'cdata';
         certFile = process.env.SSHCERT;
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
         done();
       });

@@ -16,33 +16,25 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
-
 var suite;
 var testPrefix = 'cli.vm.list_show-tests';
-
 describe('cli', function() {
   describe('vm', function() {
     var vmName, retry = 5;
-
     before(function(done) {
       suite = new CLITest(testPrefix, []);
       suite.setupSuite(done);
     });
-
     after(function(done) {
       suite.teardownSuite(done);
     });
-
     beforeEach(function(done) {
       suite.setupTest(done);
     });
-
     afterEach(function(done) {
       suite.teardownTest(done);
     });
-
     describe('Vm', function() {
-
       //location list
       it('Location List', function(done) {
         var cmd = util.format('vm location list --json').split(' ');
@@ -52,7 +44,6 @@ describe('cli', function() {
           done();
         });
       });
-
       it('List and Show', function(done) {
         var cmd = util.format('vm list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {

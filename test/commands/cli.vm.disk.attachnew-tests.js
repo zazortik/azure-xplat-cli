@@ -32,7 +32,9 @@ describe('cli', function() {
       location,
       username = 'azureuser',
       password = 'PassW0rd$',
+      timeout,
       retry = 5;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -49,7 +51,7 @@ describe('cli', function() {
       suite.setupTest(function() {
         vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : 5000;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -92,23 +94,23 @@ describe('cli', function() {
         } else {
           setTimeout(function() {
             waitForDiskOp(vmName, DiskAttach, callback);
-          }, 10000);
+          }, TIMEOUT_INTERVAL);
         }
       });
     }
 
     function createVM(callback) {
-      getImageName('Linux', function(imagename) {
-        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(callback, timeout);
+        getImageName('Linux', function(imagename) {
+          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(callback, timeout);
+          });
         });
-      });
-    }
-    // Get name of an image of the given category
+      }
+      // Get name of an image of the given category
 
     function getImageName(category, callBack) {
       if (process.env.VM_LINUX_IMAGE) {

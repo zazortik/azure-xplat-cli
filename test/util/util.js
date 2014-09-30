@@ -17,6 +17,9 @@ var fs = require('fs');
 
 var exports = module.exports;
 
+//This is the timeout variable that would be used by all vm set of tests. This timeout value would differ from one test to another.
+exports.TIMEOUT_INTERVAL=10000;
+
 exports.randomFromTo = function (from, to) {
   return Math.floor(Math.random() * (to - from + 1) + from);
 };
@@ -128,7 +131,7 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
       console.log('Re-executing command. Please wait.');
       setTimeout(function() {
         self.executeCommand(suite, retry, cmd, callback);
-      }, 10000);
+      }, TIMEOUT_INTERVAL);
     } else {
       //callback with error
       //here result can be checked for existstatus but dev will never know what command threw error

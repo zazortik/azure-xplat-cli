@@ -13,50 +13,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
 var should = require('should');
-
 var CLITest = require('../framework/cli-test');
-
 var suite;
 var testPrefix = 'cli.network.reservedip-tests';
-
 var requiredEnvironment = [{
   name: 'AZURE_SITE_TEST_LOCATION',
   defaultValue: 'West US'
 }];
-
 describe('cli', function() {
   describe('network', function() {
     var ripname = 'clitestrip',
       location, ripcreated = false;
-
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
-
     after(function(done) {
       suite.teardownSuite(done);
     });
-
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env['AZURE_SITE_TEST_LOCATION'];
         done();
       });
     });
-
     afterEach(function(done) {
       suite.teardownTest(done);
     });
-
     describe('reserved ip:', function() {
-
       it('create list and show', function(done) {
         suite.execute('network reserved-ip create %s %s --json', ripname, location, function(result) {
           result.exitStatus.should.equal(0);
-
           suite.execute('network reserved-ip list --json', function(result) {
             result.exitStatus.should.equal(0);
             var ripList = JSON.parse(result.text);
@@ -79,7 +67,6 @@ describe('cli', function() {
           });
         });
       });
-
       it('delete', function(done) {
         if (ripcreated) {
           suite.execute('network reserved-ip delete %s -q --json', ripname, function(result) {
