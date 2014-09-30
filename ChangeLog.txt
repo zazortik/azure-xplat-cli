@@ -1,4 +1,7 @@
 2014.10.02 Version 0.8.10
+* VM
+  * Create and manage VM extensions
+  * Create and manage reserved IP addresses
 * Storage
   * SAS support 
       azure storage container sas create
