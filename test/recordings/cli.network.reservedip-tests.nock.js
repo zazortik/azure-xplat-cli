@@ -11,7 +11,7 @@ exports.getMockedProfile = function () {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'CollaberaInteropTest',
+    name: 'Azure SDK sandbox',
     registeredProviders: ['sqlserver', 'website'],
     registeredResourceNamespaces: [],
     isDefault: true
