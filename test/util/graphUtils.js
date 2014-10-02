@@ -1,26 +1,36 @@
+/**
+* Copyright (c) Microsoft.  All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+'use strict';
+
 require('streamline').register();
 
 var util = require('util');
-var azurExtra = require('azure-extra');
+var azureExtra = require('azure-extra');
 
 var profile = require('../../lib/util/profile');
 
-var subscription = profile.current.getSubscription(process.env.AZURE_AD_SUBSCRIPTION);
-var graphClient = new azurExtra.createGraphRbacManagementClient(subscription.tenantId, 
+var subscription = profile.current.getSubscription();
+var graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId, 
 	                                                              subscription._createCredentials(),
 	                                                              subscription.activeDirectoryGraphResourceId);
-var groups = {};
-var users = {};
-var sps = {};
 
 var exports = module.exports;
 
 
 exports.createGroup = function (groupName, callback) {
-  if (groups[groupName]) {
-    throw new Error('AD group ' + groupName + ' already exists. Hence cannot recreate it.');
-  }
-
   var createParams = {};
   createParams['displayName'] = groupName;
   createParams['mailEnabled'] = 'false';
@@ -30,47 +40,29 @@ exports.createGroup = function (groupName, callback) {
   var groupInfo = {};
   graphClient.group.create(createParams, function (err, result) {
     if (err) {
-      throw err;
-    }
-    else {
+      return callback(err);
+    } else {
       groupInfo['displayName'] = result['group']['displayName'];
       groupInfo['objectId'] = result['group']['objectId'];
-      groups[groupName] = groupInfo;
-      console.log("groups object after adding group " + groupName + " : " + util.inspect(groups, {depth: null}));
+      groupInfo['objectType'] = 'group';
       return callback(null, groupInfo);
     }
   });
 };
 
-exports.getGroupObjectId = function (groupName) {
-  if (!groups[groupName]) {
-    throw new Error('AD group ' + groupName + ' does not exist.');
-  }
-  return groups[groupName]['objectId'];
-};
-
-exports.deleteGroup = function (groupName, callback) {
-  if (!groups[groupName]) {
-    throw new Error('AD group ' + groupName + ' was not created. Hence cannot delete it.');
-  }
+exports.deleteGroup = function (groupInfo, callback) {
   
-  var groupObjectId = groups[groupName]['objectId'];
+  var groupObjectId = groupInfo['objectId'];
   graphClient.group.delete(groupObjectId, function (err, result) {
     if (err) {
-      throw err;
-    }
-    else {
-      delete groups[groupName];
-      console.log("groups object after removing group " + groupName + " : " + util.inspect(groups, {depth: null}));
+      return callback(err);
+    } else {
       return callback(null, result);
     }
   });
 };
 
 exports.createUser = function (upn, password, callback) {
-  if (users[upn]) {
-    throw new Error('AD user ' + upn + ' already exists. Hence cannot recreate it.');
-  }
   var userParams = {};
   userParams['userPrincipalName'] = upn;
   var username = upn.split('@')[0];
@@ -85,79 +77,33 @@ exports.createUser = function (upn, password, callback) {
   var userInfo = {};
   graphClient.user.create(userParams, function (err, result) {
     if (err) {
-      throw err;
-    }
-    else {
-      console.log('result is: ' + util.inspect(result, {depth: null}));
+      return callback(err);
+    } else {
       userInfo['upn'] = result.user.userPrincipalName;
       userInfo['objectId'] = result.user.objectId;
       userInfo['password'] = password;
-      users[upn] = userInfo;
-      console.log("users object after adding user " + upn + " : " + util.inspect(users, {depth: null}));
+      userInfo['objectType'] = 'user';
       return callback(null, userInfo);
     }
   });
 };
 
-exports.getUserObjectId = function (upn) {
-  if (!users[upn]) {
-    throw new Error('AD user ' + upn + ' does not exist.');
-  }
-  return users[upn]['objectId'];
-};
-
-exports.deleteUser = function (upn, callback) {
-  if (!users[upn]) {
-    throw new Error('AD user ' + upn + ' was not created. Hence cannot delete it.');
-  }
-
+exports.deleteUser = function (userInfo, callback) {
+  var upn = userInfo.upn;
   graphClient.user.delete(upn, function (err, result) {
     if (err) {
-      throw err;
-    }
-    else {
-      delete users[upn];
-      console.log("users object after removing user " + upn + " : " + util.inspect(users, {depth: null}));
+      return callback(err);
+    } else {
       return callback(null, result);
     }
   });
 };
 
-exports.addGroupMember = function (groupName, memberName, memberType, callback) {
-  if (memberType === null || memberType === undefined) {
-    throw new Error('memberType cannot be null. Valid values group or user.')
-  }
-
-  //get the group objectId
-  if(!groups[groupName]) {
-    throw new Error('AD group ' + groupName + ' does not exist. Hence cannot add members to it.');
-  }
-  var groupObjectId = groups[groupName]['objectId'];
+exports.addGroupMember = function (groupInfo, memberInfo, callback) {
+  var groupObjectId = groupInfo['objectId'];
   
-  //get the member objectId
-  var memberInfo = {};
-  var memberObjectId;
-  if (memberType.toLowerCase() === 'user') {
-    if (!users[memberName]) {
-      throw new Error('AD user ' + memberName + ' was not created. Hence cannot add it as a group member.');
-    }
-    else {
-      memberObjectId = users[memberName]['objectId'];
-      memberInfo = users[memberName];
-      memberInfo['memberType'] = memberType;
-    }
-  }
-  else if (memberType.toLowerCase() === 'group') {
-    if (!groups[memberName]) {
-      throw new Error('AD group ' + memberName + ' was not created. Hence cannot add it as a group member.');
-    }
-    else {
-      memberObjectId = groups[memberName]['objectId'];
-      memberInfo = groups[memberName];
-      memberInfo['memberType'] = memberType;
-    }
-  }
-
+  var memberObjectId = memberInfo['objectId'];
+  
   //construct memberUrl
   var memberUrl = graphClient.baseUri + graphClient.tenantID + '/directoryObjects/' + memberObjectId;
   var memberParams = {
@@ -165,51 +111,68 @@ exports.addGroupMember = function (groupName, memberName, memberType, callback) 
   };
   graphClient.group.addMember(groupObjectId, memberParams, function (err, result) {
     if (err) {
-      throw err;
+      return callback(err);
     }
-    groups[groupName]['member'] = {};
-    groups[groupName]['member'][memberName] = memberInfo;
-    console.log("groups object after adding member " + memberName + " : "+ util.inspect(groups, {depth: null}));
+    groupInfo['members'] = groupInfo['members'] || [];
+    groupInfo['members'].push(memberInfo);
     return callback(null, result);
   });
 };
 
-exports.removeMember = function (groupName, memberName, memberType, callback) {
-  if (memberType === null || memberType === undefined) {
-    throw new Error('memberType cannot be null. Valid values group or user.')
-  }
-
-  //get the group objectId
-  if(!groups[groupName]) {
-    throw new Error('AD group ' + groupName + ' does not exist. Hence cannot remove members from it.');
-  }
-  var groupObjectId = groups[groupName]['objectId'];
+exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
+  var groupObjectId = groupInfo['objectId'];
   
-  //get the member objectId
-  var memberObjectId;
-  if (memberType.toLowerCase() === 'user') {
-    if (!users[memberName]) {
-      throw new Error('AD user ' + memberName + ' was not created. Hence cannot remove it as a group member.');
-    }
-    else {
-      memberObjectId = users[memberName]['objectId'];
-    }
-  }
-  else if (memberType.toLowerCase() === 'group') {
-    if (!groups[memberName]) {
-      throw new Error('AD group ' + memberName + ' was not created. Hence cannot remove it as a group member.');
-    }
-    else {
-      memberObjectId = groups[memberName]['objectId'];
-    }
-  }
+  var memberObjectId = memberInfo['objectId'];
 
   graphClient.group.removeMember(groupObjectId, memberObjectId, function (err, result) {
     if (err) {
-      throw err;
+      return callback(err);
     }
-    delete groups[groupName]['member'][memberName];
-    console.log("groups object after removing member " + memberName + " : "+ util.inspect(groups, {depth: null}));
+
+    groupInfo['members'] = groupInfo.members.filter(function (m) { return memberInfo.objectId !== m.objectId; });
     return callback(null, result);
+  });
+};
+
+exports.createSP = function (appName, callback) {
+  var url = 'http://' + appName + '/home';
+  var appParams = {};
+  appParams['availableToOtherTenants'] = 'false';
+  appParams['displayName'] = appName;
+  appParams['homepage'] = url;
+  appParams['identifierUris'] = [url];
+  appParams['replyUrls'] = [url];
+  var spInfo = {};
+  graphClient.application.create(appParams, function (err, appResult) {
+    if (err) {
+      return callback(err);
+    }
+    var spParams = {};
+    spParams['appId'] = appResult['application']['appId'];
+    spParams['accountEnabled'] = 'true';
+    graphClient.servicePrincipal.create(spParams, function (err, spResult) {
+      if (err) {
+        return callback(err);
+      }
+      spInfo = spResult.servicePrincipal;
+      spInfo['application'] = appResult['application'];
+      callback(null, spInfo);
+    })
+  });
+};
+
+exports.deleteSP = function(spInfo, callback) {
+  var spObjectId = spInfo['objectId'];
+  var appObjectId = spInfo['application']['objectId'];
+  graphClient.servicePrincipal.delete(spObjectId, function (err, spResult) {
+    if (err) {
+      return callback(err);
+    }
+    graphClient.application.delete(appObjectId, function (err, appResult) {
+      if (err) {
+        return callback(err);
+      }
+      return callback(null, spResult)
+    });
   });
 };
