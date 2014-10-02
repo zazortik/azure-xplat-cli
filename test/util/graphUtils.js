@@ -24,8 +24,8 @@ var profile = require('../../lib/util/profile');
 
 var subscription = profile.current.getSubscription();
 var graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId, 
-	                                                              subscription._createCredentials(),
-	                                                              subscription.activeDirectoryGraphResourceId);
+                                                                 subscription._createCredentials(),
+                                                                 subscription.activeDirectoryGraphResourceId);
 
 var exports = module.exports;
 
