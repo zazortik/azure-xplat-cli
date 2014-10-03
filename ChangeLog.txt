@@ -2,6 +2,8 @@
 * VM
   * Create and manage VM extensions
   * Create and manage reserved IP addresses
+  * Fixed issues in vm image list command
+  * Fixed issues in --no-ssh-password parameter handling in vm create command
 * Storage
   * SAS support 
       azure storage container sas create
@@ -14,7 +16,6 @@
 * Fixed issues in npm install azure-cli on Ubuntu OS
 * Fixed website tests
 * Fixed the test recording infrastructure
-* Fixed issues in vm image list command
 
 2014.09.10 Version 0.8.8
 * Role-based access control support
