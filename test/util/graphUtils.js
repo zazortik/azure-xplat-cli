@@ -22,15 +22,19 @@ var azureExtra = require('azure-extra');
 
 var profile = require('../../lib/util/profile');
 
-var subscription = profile.current.getSubscription();
-var graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId, 
-                                                                 subscription._createCredentials(),
-                                                                 subscription.activeDirectoryGraphResourceId);
 
+var graphClient;
 var exports = module.exports;
 
+function createGraphClient() {
+  var subscription = profile.current.getSubscription();
+  graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId, 
+                                                                 subscription._createCredentials(),
+                                                                 subscription.activeDirectoryGraphResourceId);
+}
 
 exports.createGroup = function (groupName, callback) {
+  createGraphClient();
   var createParams = {};
   createParams['displayName'] = groupName;
   createParams['mailEnabled'] = 'false';
@@ -51,7 +55,7 @@ exports.createGroup = function (groupName, callback) {
 };
 
 exports.deleteGroup = function (groupInfo, callback) {
-  
+  createGraphClient();
   var groupObjectId = groupInfo['objectId'];
   graphClient.group.delete(groupObjectId, function (err, result) {
     if (err) {
@@ -63,6 +67,7 @@ exports.deleteGroup = function (groupInfo, callback) {
 };
 
 exports.createUser = function (upn, password, callback) {
+  createGraphClient();
   var userParams = {};
   userParams['userPrincipalName'] = upn;
   var username = upn.split('@')[0];
@@ -89,6 +94,7 @@ exports.createUser = function (upn, password, callback) {
 };
 
 exports.deleteUser = function (userInfo, callback) {
+  createGraphClient();
   var upn = userInfo.upn;
   graphClient.user.delete(upn, function (err, result) {
     if (err) {
@@ -100,6 +106,7 @@ exports.deleteUser = function (userInfo, callback) {
 };
 
 exports.addGroupMember = function (groupInfo, memberInfo, callback) {
+  createGraphClient();
   var groupObjectId = groupInfo['objectId'];
   
   var memberObjectId = memberInfo['objectId'];
@@ -120,6 +127,7 @@ exports.addGroupMember = function (groupInfo, memberInfo, callback) {
 };
 
 exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
+  createGraphClient();
   var groupObjectId = groupInfo['objectId'];
   
   var memberObjectId = memberInfo['objectId'];
@@ -135,6 +143,7 @@ exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
 };
 
 exports.createSP = function (appName, callback) {
+  createGraphClient();
   var url = 'http://' + appName + '/home';
   var appParams = {};
   appParams['availableToOtherTenants'] = 'false';
@@ -162,6 +171,7 @@ exports.createSP = function (appName, callback) {
 };
 
 exports.deleteSP = function(spInfo, callback) {
+  createGraphClient();
   var spObjectId = spInfo['objectId'];
   var appObjectId = spInfo['application']['objectId'];
   graphClient.servicePrincipal.delete(spObjectId, function (err, spResult) {
