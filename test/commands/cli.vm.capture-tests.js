@@ -116,7 +116,7 @@ describe('cli', function() {
 
     function createVM(callback) {
       getImageName('Linux', function(imagename) {
-        var cmd = util.format('vm create --ssh-cert %s %s %s %s %s --json', certFile, vmName, imagename, username, password).split(' ');
+        var cmd = util.format('vm create --ssh --ssh-cert %s %s %s %s %s --json', certFile, vmName, imagename, username, password).split(' ');
         cmd.push('-l');
         cmd.push(location);
         testUtils.executeCommand(suite, retry, cmd, function(result) {
