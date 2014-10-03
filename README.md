@@ -31,10 +31,12 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage certificates
     * CloudInit for Ubuntu VM
     * Create and manage Docker host virtual machines
+    * Create and manage VM extensions
 * Network
     * Import and export network configuration
     * Create and manage virtual network
     * Create and manage DNS server
+    * Create and manage reserved IP addresses
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
@@ -130,6 +132,18 @@ azure account import <file location>
 
 # Use the commands to manage your services/applications
 azure site create --location "West US" mywebsite
+```
+
+### azure cli on Ubuntu
+If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
+- [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
+- [how to solve the nodejs installation problem on ubuntu](https://github.com/expressjs/keygrip/issues/7)
+
+Please perform the installation steps in following order:
+```bash
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+npm install -g azure-cli
 ```
 
 ## 2 Modes

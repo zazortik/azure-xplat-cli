@@ -13,61 +13,49 @@
  * limitations under the License.
  */
 var should = require('should');
-var sinon = require('sinon');
 var util = require('util');
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
-
-var isForceMocked = !process.env.NOCK_OFF;
-
-var utils = require('../../lib/util/utils');
+var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
-var vmPrefix = 'clitestvm';
-var timeout = isForceMocked ? 0 : 5000;
-
 var suite;
+var vmPrefix = 'ClitestVm';
 var testPrefix = 'cli.vm.capture-tests';
 
-var currentRandom = 0;
+var requiredEnvironment = [{
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
+}, {
+  name: 'SSHCERT',
+  defaultValue: null
+}];
 
 describe('cli', function() {
   describe('vm', function() {
     var vmName,
-      captureImg = 'xplattestcapimg';
+      certFile,
+      location,
+      username = 'azureuser',
+      password = 'PassW0rd$',
+      captureImg = 'xplattestcapimg',
+      timeout, retry;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, [], isForceMocked);
-
-      if (suite.isMocked) {
-        sinon.stub(crypto, 'randomBytes', function() {
-          return (++currentRandom).toString();
-        });
-
-        utils.POLL_REQUEST_INTERVAL = 0;
-      }
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
     after(function(done) {
-      if (suite.isMocked) {
-        crypto.randomBytes.restore();
-      }
-      if (suite.isMocked)
-        suite.teardownSuite(done);
-      else {
-        suite.execute('service delete %s --quiet --json', vmName, function(result) {
-          result.exitStatus.should.equal(0);
-          suite.teardownSuite(done);
-        });
-      }
-
+      suite.teardownSuite(done);
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        vmName = process.env.TEST_VM_NAME;
+        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        certFile = process.env.SSHCERT;
+        retry = 5;
         done();
       });
     });
@@ -78,28 +66,34 @@ describe('cli', function() {
 
     //shutdown a vm
     describe('Vm:', function() {
-      it('shutdown', function(done) {
-        suite.execute('vm shutdown %s --json', vmName, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
-        });
-      });
-    });
-
-    // VM Capture into a disk
-    describe('Vm:', function() {
-      it('capture', function(done) {
-        suite.execute('vm capture %s %s %s --json --delete', vmName, captureImg, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
+      it('shutdown and capture', function(done) {
+        createVM(function() {
+          var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(function() {
+              cmd = util.format('vm capture %s %s --json --delete', vmName, captureImg).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                setTimeout(function() {
+                  cmd = util.format('service delete %s -q --json', vmName, captureImg).split(' ');
+                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    result.exitStatus.should.equal(0);
+                    done();
+                  });
+                }, timeout);
+              });
+            }, timeout);
+          });
         });
       });
     });
 
     // VM Capture into a disk
     describe('Captured Images:', function() {
-      it('should be listed in images list', function(done) {
-        suite.execute('vm image list --json', function(result) {
+      it('should be listed in images list and delete', function(done) {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var vmImagelist = JSON.parse(result.text);
           var imagefound = false;
@@ -109,19 +103,43 @@ describe('cli', function() {
             }
           });
           imagefound.should.true;
-          setTimeout(done, timeout);
+          setTimeout(function() {
+            cmd = util.format('vm image delete -b %s --json', captureImg).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              setTimeout(done, timeout);
+            });
+          }, timeout);
         });
       });
     });
 
-    //delete the captured disk
-    describe('Vm:', function() {
-      it('delete captured image', function(done) {
-        suite.execute('vm image delete -b %s --json', captureImg, function(result) {
+    function createVM(callback) {
+      getImageName('Linux', function(imagename) {
+        var cmd = util.format('vm create --ssh --ssh-cert %s %s %s %s %s --json', certFile, vmName, imagename, username, password).split(' ');
+        cmd.push('-l');
+        cmd.push(location);
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          setTimeout(done, timeout);
+          setTimeout(callback, timeout);
         });
       });
-    });
+    }
+
+    // Get name of an image of the given category
+    function getImageName(category, callBack) {
+      var cmd = util.format('vm image list --json').split(' ');
+      testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        var imageList = JSON.parse(result.text);
+        imageList.some(function(image) {
+          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+            vmImgName = image.name;
+            return true;
+          }
+        });
+        callBack(vmImgName);
+      });
+    }
   });
 });

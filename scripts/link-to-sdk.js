@@ -18,7 +18,7 @@ var servicePackages = [
   'subscriptionManagement',
   'webSiteManagement',
   'authorizationManagement',
-  'graph.rbac'
+  'extra'
 ];
 
 //

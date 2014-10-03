@@ -54,7 +54,19 @@ exports.getMockedProfile = function () {
 %>    username: 'user@domain.example',
 <%
       break;
-
+    case 'user':
+%>    user: {
+      name: 'user@domain.example',
+<%
+      if(sub.user.type === 'user') {
+%>      type: 'user'
+    },
+<%    } 
+      else if(sub.user.type === 'servicePrincipal') {
+%>      type: 'servicePrincipal'
+    },
+<%    }
+      break;
     case 'accessToken':
 %>    accessToken: {
       accessToken: 'mockedToken',

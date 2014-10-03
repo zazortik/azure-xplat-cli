@@ -17,6 +17,7 @@
 var azure = require('azure');
 var should = require('should');
 var fs = require('fs');
+var azureCommon = require('azure-common');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
@@ -76,14 +77,25 @@ describe('cli', function () {
       describe('list', function() {
         it('should list all storage queues', function(done) {
             suite.execute('storage queue list --json', function (result) {
-              var queues = JSON.parse(result.text);
-              queues.length.should.greaterThan(0);
-              queues.forEach(function(queue) {
-                queue.length.should.greaterThan(0);
-              });
-
-              done();
+            var queues = JSON.parse(result.text);
+            queues.length.should.greaterThan(0);
+            queues.forEach(function (queue) {
+              queue.name.length.should.greaterThan(0);
             });
+            done();
+          });
+        });
+      });
+      
+      describe('sas', function () {
+        it('should create the queue sas', function (done) {
+          var expiry = azureCommon.date.minutesFromNow(5).toISOString();
+          suite.execute('storage queue sas create %s rau %s --json', queueName, expiry, function (result) {
+            var sas = JSON.parse(result.text);
+            sas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+            done();
+          });
         });
       });
 
