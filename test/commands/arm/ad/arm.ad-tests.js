@@ -24,11 +24,11 @@ var calledOnce = false;
 
 var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD' },
-  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
-  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapp9099' },
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'Randomtestgroup1' },
+  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'Randomtestgroup2' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'RandomtestUser1@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'RandomtestUser2@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9099' },
 ];
 
 describe('arm', function () {

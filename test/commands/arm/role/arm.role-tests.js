@@ -18,6 +18,7 @@
 var should = require('should');
 
 var CLITest = require('../../../framework/arm-cli-test');
+var testLogger = require('../../../framework/test-logger');
 var graphUtil = require('../../../util/graphUtils');
 var testprefix = 'arm-cli-role-tests';
 var util = require('util');
@@ -31,11 +32,11 @@ var createdGroups = [];
 var createdResources = [];
 var calledOnce = false;
 var requiredEnvironment = [
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser3@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserRandom3@rbactest.onmicrosoft.com' },
   { name: 'AZURE_AD_TEST_PASSWORD'},
-  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup3' },
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupRandom3' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapp9190' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9190' },
 ];
 
 describe('arm', function () {
@@ -48,13 +49,23 @@ describe('arm', function () {
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite.setupSuite(function () {
+        testResourceGroup = suite.generateId('testrg1', createdGroups);
+        testSqlServer = suite.generateId('testserver1', createdResources);
+        testSqlDb = suite.generateId('testdb1', createdResources);
+        testParent = 'servers/' + testSqlServer;
+        if (!suite.isPlayback()) {
+          setupSql(done);
+        } else {
+          done();
+        }  
+      });
     });
 
     after(function (done) {
       suite.teardownSuite(function () {
         if (!suite.isPlayback()) {
-          cleanup();
+          cleanupSql();
           cleanupCreatedAdObjects(null, done);
         } else {
           done();
@@ -66,7 +77,7 @@ describe('arm', function () {
       suite.setupTest(function () {
         if (!calledOnce) {
           calledOnce = true;
-          setup(done);
+          setupADObjects(done);
         } else {
           done();
         } 
@@ -76,6 +87,64 @@ describe('arm', function () {
     afterEach(function (done) {
       suite.teardownTest(done);
     });
+
+    function setupSql(done) {
+      //create a sql server and a database
+      testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
+      var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
+      var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
+      suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+          testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+            testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+    }
+
+    function cleanupSql () {
+      var numOfCleanedUpGroups = 0;
+      function deleteGroups(index, callback) {
+        if (index === createdGroups.length) {
+          return callback();
+        }
+        suite.execute('group delete %s --quiet -vv', createdGroups[index], function () {
+          deleteGroups(index + 1, callback);
+        });
+      }
+
+      deleteGroups(numOfCleanedUpGroups, function () {
+        numOfCleanedUpGroups = createdGroups.length;
+      });
+    }
+
+    function setupADObjects (done) {
+      //create AD objects
+      graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME, process.env.AZURE_AD_TEST_PASSWORD, function (err, userResult) {
+        if (err) { return cleanupCreatedAdObjects(err, done); }
+        testUsers.push(userResult);
+        listPoll(suite, 3, 'user', userResult.objectId, function (result) {
+          graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, groupResult) {
+            if (err) { return cleanupCreatedAdObjects(err, done); }
+            testGroups.push(groupResult);
+            listPoll(suite, 3, 'group', groupResult.objectId, function (result) {
+              graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, spResult) {
+                if (err) { return cleanupCreatedAdObjects(err, done); }
+                testSPs.push(spResult);
+                listPoll(suite, 3, 'sp', spResult.objectId, function (result) {
+                  done();
+                }); 
+              });
+            });    
+          });
+        });
+      });
+    }
 
     function deleteAdObject(objects, deleteFn, callback) {
       if (objects.length === 0) {
@@ -97,65 +166,32 @@ describe('arm', function () {
       });
     }
 
-    function setup(done) {
-      //create AD objects
-      graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME, process.env.AZURE_AD_TEST_PASSWORD, function (err, result) {
-        if (err) { return cleanupCreatedAdObjects(err, done); }
-        testUsers.push(result);
-        graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, result) {
-          if (err) { return cleanupCreatedAdObjects(err, done); }
-          testGroups.push(result);
-          graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, result) {
-            if (err) { return cleanupCreatedAdObjects(err, done); }
-            testSPs.push(result);
-          });
-        });
-      });
-      //create a sql server and a database
-      testResourceGroup = suite.generateId('testrg1', createdGroups);
-      testSqlServer = suite.generateId('testserver1', createdResources);
-      testSqlDb = suite.generateId('testdb1', createdResources);
-      testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-      var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
-      var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
-      testParent = 'servers/' + testSqlServer;
-
-      if (!suite.isPlayback()) {
-        suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
-          result.exitStatus.should.equal(0);
-          suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
-            testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
-            result.exitStatus.should.equal(0);
-            suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
-              testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
-              result.exitStatus.should.equal(0);
-              done();
-            });
-          });
-        });
-      } else {
-        done();
+    function listPoll(suite, attemptsLeft, objectType, objectId, callback) {
+      if(attemptsLeft === 0) {
+        throw new Error('azure ad ' + objectType + ' list did not receive expected response');
       }
-    }
-
-    function cleanup() {
-      var numOfCleanedUpGroups = 0;
-      function deleteGroups(index, callback) {
-        if (index === createdGroups.length) {
-          return callback();
+      var cmd = 'ad ' + objectType + ' list --json';
+      var objectFound = false;
+      suite.execute(cmd, function (result) {
+        result.exitStatus.should.equal(0);
+        var adObjects = JSON.parse(result.text);
+        objectFound = adObjects.some(function (res) { return res.objectId === objectId; });
+        attemptsLeft -= 1;
+        if (!objectFound) {
+          setTimeout(function () {
+            console.log('Listing ' + objectType + ' with objectId ' + objectId + 
+                        '. '+ attemptsLeft + ' attempt(s) left...');
+            listPoll(suite, attemptsLeft, objectType, objectId, callback);
+          }, 15000);
         }
-        suite.execute('group delete %s --quiet -vv', createdGroups[index], function () {
-          deleteGroups(index + 1, callback);
-        });
-      }
-
-      deleteGroups(numOfCleanedUpGroups, function () {
-        numOfCleanedUpGroups = createdGroups.length;
+        else {
+          callback(objectFound);
+        }
       });
     }
 
-    describe('list all built-in roles', function () {
-      it('should work', function (done) {
+    describe('definition', function () {
+      it('list should work', function (done) {
         suite.execute('role list --json', function (result) {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
@@ -165,10 +201,8 @@ describe('arm', function () {
           done();
         });
       });
-    });
 
-    describe('show a built-in role of Owner', function () {
-      it('should work', function (done) {
+      it('show for Owner role should work', function (done) {
         suite.execute('role show %s --json', TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
           var roles = JSON.parse(result.text);
@@ -180,8 +214,8 @@ describe('arm', function () {
       });
     });
 
-    describe('create a role assignment under subscripton', function () {
-      it('should work', function (done) {
+    describe('create ', function () {
+      it('a role assignment under subscripton should work', function (done) {
         var principalId = testUsers[0].objectId;
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         suite.execute('role assignment create --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
@@ -201,10 +235,8 @@ describe('arm', function () {
           });
         });
       });
-    });
 
-    describe('create a role assignment under resource group', function () {
-      it('should work', function (done) {
+      it('a role assignment under resource group should work', function (done) {
         var principalId = testUsers[0].objectId;
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         suite.execute('role assignment create --upn %s -o %s -g %s --json', principal, TEST_ROLE_NAME, testResourceGroup, function (result) {
@@ -224,15 +256,14 @@ describe('arm', function () {
           });
         });
       });
-    });
 
-    describe('create a role assignment using an ad group', function () {
-      it('should work', function (done) {
+      it('a role assignment using an ad group should work', function (done) {
         var adGroupObjectId = testGroups[0].objectId;
 
         suite.execute('role assignment create --objectId %s -o %s -g %s --json', adGroupObjectId, TEST_ROLE_NAME, testResourceGroup, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list --objectId %s -o %s -g %s --json', adGroupObjectId, TEST_ROLE_NAME, testResourceGroup, function (listAssignmentResult) {
+            
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + '$';
@@ -248,10 +279,8 @@ describe('arm', function () {
           });
         });
       });
-    });
 
-    describe('create a role assignment using an ad service principal', function () {
-      it('should work', function (done) {
+      it('a role assignment using an ad service principal should work', function (done) {
         var spn = testSPs[0].servicePrincipalNames[0];
         var objectId = testSPs[0].objectId;
 
@@ -273,10 +302,8 @@ describe('arm', function () {
           });
         });
       });
-    });
 
-    describe('create a role assignment to access a child resource', function () {
-      it('as a Reader using separate switches should work', function (done) {
+      it('a role assignment to access a child resource as a Reader using separate switches should work', function (done) {
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         var principalId = testUsers[0].objectId;
         suite.execute('role assignment create --upn %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 

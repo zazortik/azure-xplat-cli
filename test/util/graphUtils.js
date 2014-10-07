@@ -21,6 +21,7 @@ var util = require('util');
 var azureExtra = require('azure-extra');
 
 var profile = require('../../lib/util/profile');
+var testLogger = require('../framework/test-logger');
 
 
 var graphClient;
@@ -49,6 +50,8 @@ exports.createGroup = function (groupName, callback) {
       groupInfo['displayName'] = result['group']['displayName'];
       groupInfo['objectId'] = result['group']['objectId'];
       groupInfo['objectType'] = 'group';
+      testLogger.logData("Created AD Group: ");
+      testLogger.logData(groupInfo);
       return callback(null, groupInfo);
     }
   });
@@ -61,6 +64,8 @@ exports.deleteGroup = function (groupInfo, callback) {
     if (err) {
       return callback(err);
     } else {
+      testLogger.logData("Deleted AD Group: ");
+      testLogger.logData(groupInfo);
       return callback(null, result);
     }
   });
@@ -88,6 +93,8 @@ exports.createUser = function (upn, password, callback) {
       userInfo['objectId'] = result.user.objectId;
       userInfo['password'] = password;
       userInfo['objectType'] = 'user';
+      testLogger.logData("Created AD User: ");
+      testLogger.logData(userInfo);
       return callback(null, userInfo);
     }
   });
@@ -100,6 +107,8 @@ exports.deleteUser = function (userInfo, callback) {
     if (err) {
       return callback(err);
     } else {
+      testLogger.logData("Deleted AD User: ");
+      testLogger.logData(userInfo);
       return callback(null, result);
     }
   });
@@ -122,6 +131,7 @@ exports.addGroupMember = function (groupInfo, memberInfo, callback) {
     }
     groupInfo['members'] = groupInfo['members'] || [];
     groupInfo['members'].push(memberInfo);
+    testLogger.logData("Added member " + memberObjectId + ' to group ' + groupObjectId);
     return callback(null, result);
   });
 };
@@ -138,6 +148,7 @@ exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
     }
 
     groupInfo['members'] = groupInfo.members.filter(function (m) { return memberInfo.objectId !== m.objectId; });
+    testLogger.logData("Removed member " + memberObjectId + ' to group ' + groupObjectId);
     return callback(null, result);
   });
 };
@@ -165,6 +176,8 @@ exports.createSP = function (appName, callback) {
       }
       spInfo = spResult.servicePrincipal;
       spInfo['application'] = appResult['application'];
+      testLogger.logData("Created AD SP: ");
+      testLogger.logData(spInfo);
       callback(null, spInfo);
     })
   });
@@ -182,6 +195,8 @@ exports.deleteSP = function(spInfo, callback) {
       if (err) {
         return callback(err);
       }
+      testLogger.logData("Deleted AD SP: ");
+      testLogger.logData(spInfo);
       return callback(null, spResult)
     });
   });
