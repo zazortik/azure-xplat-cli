@@ -88,13 +88,22 @@ describe('cli', function () {
       });
       
       describe('sas', function () {
-        it('should create the queue sas', function (done) {
+        it('should create the queue sas and show the queue with sas', function (done) {
           var expiry = azureCommon.date.minutesFromNow(5).toISOString();
           suite.execute('storage queue sas create %s rau %s --json', queueName, expiry, function (result) {
             var sas = JSON.parse(result.text);
             sas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
-            done();
+
+            if (suite.isMocked && suite.isRecording) { 
+              var account = process.env.AZURE_STORAGE_ACCOUNT;
+              suite.execute('storage queue show %s -a %s --sas %s --json', queueName, account, sas.sas, function (showResult) {
+                showResult.errorText.should.be.empty;
+                done();
+              });
+            } else {
+              done();
+            }
           });
         });
       });
