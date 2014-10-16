@@ -31,6 +31,10 @@ function stripAccessKey(connectionString) {
   return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
 }
 
+function fetchAccountName(connectionString) {
+  return connectionString.match(/AccountName=[^;]+/)[0].split('=')[1];
+}
+
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }
 ];
@@ -136,8 +140,8 @@ describe('cli', function () {
             sas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
 
-            if (suite.isMocked && suite.isRecording) {
-              var account = process.env.AZURE_STORAGE_ACCOUNT;
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage blob list %s -a %s --sas %s --json', containerName, account, sas.sas, function (listResult) {
                 listResult.errorText.should.be.empty;
                 done();
@@ -235,8 +239,8 @@ describe('cli', function () {
             sas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
 
-            if (suite.isMocked && suite.isRecording) {
-              var account = process.env.AZURE_STORAGE_ACCOUNT;
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage blob list %s -a %s --sas %s --json', containerName, account, sas.sas, function (listResult) {
                 var blob = JSON.parse(listResult.text);
                 blob.length.should.equal(1);
@@ -257,8 +261,8 @@ describe('cli', function () {
             sas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
 
-            if (suite.isMocked && suite.isRecording) {
-              var account = process.env.AZURE_STORAGE_ACCOUNT;
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage blob show %s %s -a %s --sas %s --json', containerName, blobName, account, sas.sas, function (showResult) {
                 showResult.errorText.should.be.empty;
                 done();
@@ -287,7 +291,7 @@ describe('cli', function () {
 
         before(function(done) {
           var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
-          if (suite.isMocked && suite.isRecording) {
+          if (!suite.isMocked) {
             blobService.createContainer(sourceContainer, function () {
               blobService.createContainer(destContainer, function () {
                 var buf = new Buffer('HelloWord', 'utf8');
@@ -308,7 +312,7 @@ describe('cli', function () {
 
         after(function(done) {
           var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
-          if (suite.isMocked && suite.isRecording) {
+          if (!suite.isMocked) {
             blobService.deleteContainer(sourceContainer, function () {
               blobService.deleteContainer(destContainer, function () {
                 done();  
@@ -332,8 +336,8 @@ describe('cli', function () {
               destSas.sas.should.not.be.empty;
               result.errorText.should.be.empty;
 
-              if (suite.isMocked && suite.isRecording) {
-                var account = process.env.AZURE_STORAGE_ACCOUNT;
+              if (!suite.isMocked) {
+                var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
                 suite.execute('storage blob copy start --source-container %s --source-blob %s -a %s --source-sas %s --dest-container %s --dest-account-name %s --dest-sas %s --json', 
                   sourceContainer, blobName, account, sourceSas.sas, destContainer, account, destSas.sas, function (result) {
                   var copy = JSON.parse(result.text);
@@ -356,8 +360,8 @@ describe('cli', function () {
             destSas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
 
-            if (suite.isMocked && suite.isRecording) {
-              var account = process.env.AZURE_STORAGE_ACCOUNT;
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage blob copy show --container %s --blob %s -a %s --sas %s --json', destContainer, blobName, account, destSas.sas, function (result) {
                 var copy = JSON.parse(result.text);
                 copy.copyId.length.should.greaterThan(0);
@@ -371,7 +375,7 @@ describe('cli', function () {
         });
 
         it('should start to copy the blob specified by URI asynchronously', function (done) {
-          if (suite.isMocked && !suite.isRecording) {
+          if (!suite.isMocked) {
             var sourceUri = 'https://cliportalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/clitest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D';
             suite.execute('storage blob copy start %s --dest-container %s --json', sourceUri, destContainer, function (result) {
               var copy = JSON.parse(result.text);
@@ -385,7 +389,7 @@ describe('cli', function () {
         });
         
         it('should start to copy the blob specified by container and blob name asynchronously', function (done) {
-          if (suite.isMocked && !suite.isRecording) {
+          if (!suite.isMocked) {
             var sourceContainer = 'vhds';
             var sourceBlob = 'clitest-2014-07-21.vhd';
             suite.execute('storage blob copy start --source-container %s --source-blob %s --dest-container %s -q --json', sourceContainer, sourceBlob, destContainer, function (result) {
@@ -402,7 +406,7 @@ describe('cli', function () {
         var copyid;
         var destBlob = 'clitest-2014-07-21.vhd';
         it('should show the copy status of the specified blob', function (done) {
-          if (suite.isMocked && !suite.isRecording) {
+          if (!suite.isMocked) {
             suite.execute('storage blob copy show --container %s --blob %s --json', destContainer, destBlob, function (result) {
               var copy = JSON.parse(result.text);
               copyid = copy.copyId;
@@ -416,7 +420,7 @@ describe('cli', function () {
         });
         
         it('should stop the copy of the specified blob', function (done) {
-          if (suite.isMocked && !suite.isRecording) {
+          if (!suite.isMocked) {
             suite.execute('storage blob copy stop --container %s --blob %s --copyid %s --json', destContainer, destBlob, copyid, function (result) {
               result.errorText.should.be.empty;
               done();

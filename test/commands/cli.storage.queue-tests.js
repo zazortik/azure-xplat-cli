@@ -30,6 +30,10 @@ function stripAccessKey(connectionString) {
   return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
 }
 
+function fetchAccountName(connectionString) {
+  return connectionString.match(/AccountName=[^;]+/)[0].split('=')[1];
+}
+
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }
 ];
@@ -95,8 +99,8 @@ describe('cli', function () {
             sas.sas.should.not.be.empty;
             result.errorText.should.be.empty;
 
-            if (suite.isMocked && suite.isRecording) { 
-              var account = process.env.AZURE_STORAGE_ACCOUNT;
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage queue show %s -a %s --sas %s --json', queueName, account, sas.sas, function (showResult) {
                 showResult.errorText.should.be.empty;
                 done();
@@ -109,7 +113,7 @@ describe('cli', function () {
       });
 
       describe('show', function() {
-        it('should show details of the specified queue --json', function(done) {
+        it('should show details of the specified queue', function(done) {
             suite.execute('storage queue show %s --json', queueName, function (result) {
               result.errorText.should.be.empty;
               done();
