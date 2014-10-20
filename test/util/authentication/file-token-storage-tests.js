@@ -23,8 +23,12 @@ var uuid = require('node-uuid');
 
 var TokenStore = require('../../../lib/util/authentication/file-token-storage');
 
+// Function to grap temp directory - case of function
+// changed from node 0.8 to 0.10, so grab one or the other.
+var getTmpDir = (os.tmpdir || os.tmpDir).bind(os);
+
 describe ('File token storage', function () {
-	var tempPath = path.join(os.tmpdir(), 'store-' + uuid.v4());
+	var tempPath = path.join(getTmpDir(), 'store-' + uuid.v4());
 
 	after(function() {	
 		//delete file	
