@@ -15,6 +15,7 @@
 
 'use strict';
 
+var os = require('os');
 var should = require('should');
 
 var WinTokenStorage = require('../../../lib/util/authentication/win-token-storage');

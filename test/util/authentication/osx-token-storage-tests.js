@@ -15,13 +15,14 @@
 
 'use strict';
 
+var os = require('os');
 var should = require('should');
 
 var OsxTokenStorage = require('../../../lib/util/authentication/osx-token-storage');
 
-describe ('Win credentials storage', function () {
+describe ('OSX credentials storage', function () {
 	if (os.platform() !== 'darwin') {
-    console.log('These tests only run on Windows');
+    console.log('These tests only run on Mac OSX');
     return;
   }
   
