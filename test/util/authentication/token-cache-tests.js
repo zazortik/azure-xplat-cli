@@ -22,6 +22,7 @@
 
 var _ = require('underscore');
 var should = require('should');
+var sinon = require('sinon');
 
 var TokenCache = require('../../../lib/util/authentication/token-cache');
 
@@ -89,6 +90,23 @@ describe('Token cache', function () {
       cache.find(sampleTokenQueryWithUpperCasing, function (err, tokens) {
         tokens.length.should.equal(1);
         tokens[0].userId.should.equal(testUserId);
+        done();
+      });
+    });
+  });
+
+  describe('clear', function () {
+    var tokenStorage = {
+      loadEntries : function (callback) {
+        callback(null, tokensInCache);
+      },
+      clear : sinon.stub().callsArg(0)
+    };
+    
+    it('calls token storage clear', function(done) {
+      var cache = new TokenCache(tokenStorage);
+      cache.clear(function () {
+        tokenStorage.clear.calledOnce.should.be.true;
         done();
       });
     });
