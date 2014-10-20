@@ -83,3 +83,4 @@
 util/authentication/token-cache-tests.js
 util/authentication/file-token-storage-tests.js
 util/authentication/win-token-storage-tests.js
+util/authentication/osx-token-storage-tests.js

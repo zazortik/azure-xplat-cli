@@ -17,17 +17,17 @@
 
 var should = require('should');
 
-var WinTokenStorage = require('../../../lib/util/authentication/win-token-storage');
+var OsxTokenStorage = require('../../../lib/util/authentication/osx-token-storage');
 
 describe ('Win credentials storage', function () {
-	if (os.platform() !== 'win32') {
+	if (os.platform() !== 'darwin') {
     console.log('These tests only run on Windows');
     return;
   }
   
 	it('is empty after clear is called', function(done) {		
 		//create token storage
-		var storage = new WinTokenStorage();
+		var storage = new OsxTokenStorage();
 		//add item to token storage
 		var newEntries = [{
 		"accessToken" : "ABCD",
