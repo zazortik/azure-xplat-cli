@@ -81,3 +81,6 @@ util/authentication/token-cache-encoding-tests.js
 util/authentication/win-credstore-parser-tests.js
 # Testing token cache class which works with adal-node
 util/authentication/token-cache-tests.js
+util/authentication/file-token-storage-tests.js
+util/authentication/win-token-storage-tests.js
+util/authentication/osx-token-storage-tests.js
