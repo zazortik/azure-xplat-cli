@@ -16,99 +16,165 @@
 'use strict';
 
 var should = require('should');
-
+var graphUtil = require('../../../util/graphUtils');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
+var util = require('util');
+var calledOnce = false;
 
 var requiredEnvironment = [
-  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroup1' },
-  { name: 'AZURE_AD_TEST_GROUP_OBJECT_ID', defaultValue: '08b96007-f08c-4344-8fe0-3b59dd6a8464' },
-  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'testgroup2' }, //(must be a member of testgroup1)
-  { name: 'AZURE_AD_TEST_USER_OBJECT_ID', defaultValue: 'f09fea55-4947-484b-9b25-c67ddd8795ac' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUser1@aad105.ccsctp.net' }, //(must be a member of testGroup1, but not of testGroup2)
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'testUser2@aad105.ccsctp.net' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'rbacApp' },
-  { name: 'AZURE_AD_TEST_SP_NAME', defaultValue: '8f2648ae-3a3c-421b-86ce-5ccd2f7478e2' },
-  { name: 'AZURE_AD_TEST_SP_OBJECT_ID', defaultValue: '2e57b745-7b09-4b74-8645-5fc8a5761469' }
+  { name: 'AZURE_AD_TEST_PASSWORD' },
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'Randomtestgroup1' },
+  { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'Randomtestgroup2' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'RandomtestUser1@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'RandomtestUser2@rbactest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9099' },
 ];
-
-function getTestGroupName() { return process.env.AZURE_AD_TEST_GROUP_NAME; }
-function getTestGroupObjectId() { return process.env.AZURE_AD_TEST_GROUP_OBJECT_ID; }
-function getTestSubGroupName() { return process.env.AZURE_AD_TEST_SUBGROUP_NAME; }
-function getTestUserObjectId() { return process.env.AZURE_AD_TEST_USER_OBJECT_ID; }
-function getTestUPN() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME; }
-function getTestUPN2() { return process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2; }
 
 describe('arm', function () {
   describe('ad', function () {
     var suite;
+    var testGroups = [];
+    var testUsers = [];
+    var testSPs = [];
+
+    function deleteAdObject(objects, deleteFn, callback) {
+      if (objects.length === 0) {
+        return callback();
+      }
+
+      deleteFn(objects[0], function (err, result) {
+        deleteAdObject(objects.slice(1), deleteFn, callback);
+      });
+    }
+
+    function cleanupCreatedAdObjects(err, callback) {
+      deleteAdObject(testGroups, graphUtil.deleteGroup, function (err) {
+        deleteAdObject(testUsers, graphUtil.deleteUser, function (err) {
+          deleteAdObject(testSPs, graphUtil.deleteSP, function (err) {
+            callback(err);
+          });
+        });
+      });
+    }
+
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
       suite.setupSuite(done);
     });
     
     after(function (done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function () {
+        cleanupCreatedAdObjects(null, done);
+      });
     });
     
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        if (!calledOnce) {
+          calledOnce = true;
+          performTestSetup(done);
+        } else {
+          done();
+        }
+      });
     });
     
     afterEach(function (done) {
       suite.teardownTest(done);
     });
     
-    
-    describe('Users', function () {
-      it('should work to list and show users', function (done) {
-        var upn = getTestUPN();
-        var upn2 = getTestUPN2();
-        suite.execute('ad user list --json', function (result) {
-          result.exitStatus.should.equal(0);
-          var text = result.text;
-          var seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) !== -1);
-          seemsCorrect.should.equal(true);
-          suite.execute('ad user show --upn %s --json', upn, function (result) {
-            result.exitStatus.should.equal(0);
-            text = result.text;
-            seemsCorrect = (text.indexOf(upn) !== -1) && (text.indexOf(upn2) === -1);
-            seemsCorrect.should.equal(true);
-            done();
+    function performTestSetup (done) {
+      graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, result) {
+        if (err) { return cleanupCreatedAdObjects(err, done); }
+        testGroups.push(result);
+        graphUtil.createGroup(process.env.AZURE_AD_TEST_SUBGROUP_NAME, function (err, result) {
+          if (err) { return cleanupCreatedAdObjects(err, done); }
+          testGroups.push(result);
+          graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME, process.env.AZURE_AD_TEST_PASSWORD, function (err, result) {
+            if (err) { return cleanupCreatedAdObjects(err, done); }
+            testUsers.push(result);
+            graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2, process.env.AZURE_AD_TEST_PASSWORD, function (err, result) { 
+              if (err) { return cleanupCreatedAdObjects(err, done); }
+              //(testUser1 must be a member of testGroup1, but not of testGroup2)
+              testUsers.push(result);
+              graphUtil.addGroupMember(testGroups[0], testUsers[0], function (err, result) { 
+                if (err) { return cleanupCreatedAdObjects(err, done); }
+                //(testgroup2 must be a member of testgroup1)
+                graphUtil.addGroupMember(testGroups[0], testGroups[1], function (err, result) {
+                  if (err) { return cleanupCreatedAdObjects(err, done); }
+                  graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, result) {
+                    if (err) { return cleanupCreatedAdObjects(err, done); }
+                    testSPs.push(result);
+                    //servicePrincipal mytestapp9099 must be a member of testgroup1
+                    graphUtil.addGroupMember(testGroups[0], testSPs[0], function (err, result) {
+                      if (err) { return cleanupCreatedAdObjects(err, done); }
+                      done();
+                    });
+                  });
+                });
+              });
+            });
           });
         });
       });
-      
+    }
+
+    describe('Users', function () {
+
       it('should parse the error properly for a non existant user', function (done) {
         suite.execute('ad user show --upn %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
-          result.text.should.equal('{}\n');
+          result.exitStatus.should.equal(0);
+          var user = JSON.parse(result.text);
+          var empty = {};
+          user.should.be.empty;
           done();
+        });
+      });
+
+      it('should work to list and show users', function (done) {
+        var upn = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
+        var upn2 = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2;
+        suite.execute('ad user list --json', function (result) {
+          result.exitStatus.should.equal(0);
+          var users = JSON.parse(result.text);
+          users.some(function(user) { return user.userPrincipalName === upn; }).should.be.true;
+          users.some(function(user) { return user.userPrincipalName === upn2; }).should.be.true;
+
+          suite.execute('ad user show --upn %s --json', upn, function (result) {
+            result.exitStatus.should.equal(0);
+            var user = JSON.parse(result.text);
+            user[0].userPrincipalName.should.equal(upn);
+            done();
+          });
         });
       });
     });
     
     describe('Groups', function () {
       it('should work to list and show groups', function (done) {
-        var group1 = getTestGroupName();
-        var group1ObjectId = getTestGroupObjectId();
-        var group2 = getTestSubGroupName();
-        var member1 = getTestUPN();
-        var memberObjectId = getTestUserObjectId();
+        var group1 = process.env.AZURE_AD_TEST_GROUP_NAME;
+        var group1ObjectId = testGroups[0].objectId;
+        var group2 = process.env.AZURE_AD_TEST_SUBGROUP_NAME;
+        var member1 = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
+        var memberGroupObjectId = testGroups[1].objectId;
+        var memberUserObjectId = testUsers[0].objectId;
+        var memberSPObjectId = testSPs[0].objectId;
         suite.execute('ad group list --json', function (result) {
           result.exitStatus.should.equal(0);
-          var text = result.text;
-          var seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) !== -1);
-          seemsCorrect.should.equal(true);
+          var groups = JSON.parse(result.text);
+          groups.some(function(group) { return group.displayName === group1; }).should.be.true;
+          groups.some(function(group) { return group.displayName === group2; }).should.be.true;
           suite.execute('ad group show --search %s --json', group1, function (result) {
             result.exitStatus.should.equal(0);
-            text = result.text;
-            seemsCorrect = (text.indexOf(group1) !== -1) && (text.indexOf(group2) === -1);
-            seemsCorrect.should.equal(true);
+            var groupShowOutput = JSON.parse(result.text);
+            groupShowOutput[0].displayName.should.equal(group1);
             suite.execute('ad group member list --objectId %s --json', group1ObjectId, function (result) {
               result.exitStatus.should.equal(0);
-              text = result.text;
-              seemsCorrect = (text.indexOf(group2) !== -1) && (text.indexOf(member1) !== -1);
-              seemsCorrect.should.equal(true);
+              var members = JSON.parse(result.text);
+              members.some(function(member) { return member.objectId === memberGroupObjectId; }).should.be.true;
+              members.some(function(member) { return member.objectId === memberUserObjectId; }).should.be.true;
+              members.some(function(member) { return member.objectId === memberSPObjectId; }).should.be.true;
               done();
             });
           });
@@ -118,28 +184,21 @@ describe('arm', function () {
     
     describe('ServicePrincipals', function () {
       it('should work to list and show service principals', function (done) {
-        function verifyOutputIsCorrect(output, displayName, spn) {
-          return (output.indexOf(displayName) !== -1) && (output.indexOf(spn) !== -1);
-        }
         var displayName = process.env.AZURE_AD_TEST_SP_DISPLAY_NAME;
-        var spn = process.env.AZURE_AD_TEST_SP_NAME;
-        var objectId = process.env.AZURE_AD_TEST_SP_OBJECT_ID;
+        var spn = testSPs[0].servicePrincipalNames[0];
+        var spObjectId = testSPs[0].objectId;
 
         suite.execute('ad sp list --json', function (result) {
           result.exitStatus.should.equal(0);
-          var text = result.text;
-          var seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
-          seemsCorrect.should.equal(true);
+          var sps = JSON.parse(result.text);
           suite.execute('ad sp show --spn %s --json', spn, function (result) {
             result.exitStatus.should.equal(0);
-            text = result.text;
-            seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);
-            seemsCorrect.should.equal(true);
-            suite.execute('ad sp show --objectId %s --json', objectId, function (result) {
+            var spShowOutput = JSON.parse(result.text);
+            spShowOutput[0].servicePrincipalNames.some(function(rcvdspn) { return rcvdspn === spn; }).should.be.true;
+            suite.execute('ad sp show --objectId %s --json', spObjectId, function (result) {
               result.exitStatus.should.equal(0);
-              text = result.text;
-              seemsCorrect = verifyOutputIsCorrect(text, displayName, spn);;
-              seemsCorrect.should.equal(true);
+              var spShow = JSON.parse(result.text);
+              spShow[0].objectId.should.equal(spObjectId);
               done();
             });
           });
