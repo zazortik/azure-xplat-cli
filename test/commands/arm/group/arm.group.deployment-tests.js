@@ -20,7 +20,6 @@ var should = require('should');
 var util = require('util');
 var fs = require('fs');
 var path = require('path');
-var profile = require('../../../../lib/util/profile');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtil = require('../../../util/util');
 

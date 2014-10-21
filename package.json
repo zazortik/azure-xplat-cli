@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -39,10 +39,14 @@
     "async": "0.2.7",
     "azure": "0.9.16",
     "azure-common": "0.9.8",
+    "azure-extra": "~0.1.0",
     "azure-gallery": "2.0.0-pre.10",
     "azure-mgmt-authorization": "0.9.0-pre.1",
     "azure-mgmt-resource": "2.0.0-pre.11",
     "azure-storage": "0.3.3",
+    "azure-storage-legacy": "0.9.11",
+    "mime": "~1.2.4",
+    "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
@@ -53,6 +57,8 @@
     "moment": "2.6.0",
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
+    "openssl-wrapper": "0.2.1",
+    "readable-stream": "~1.0.0",
     "request": "2.27.0",
     "streamline": "0.4.5",
     "through": "2.3.4",
@@ -66,7 +72,7 @@
     "readable-stream": "~1.0.0",
     "openssl-wrapper": "0.2.1",
     "caller-id": "0.1.x",
-    "azure-extra": "~0.1.0"
+    "azure-extra": "0.1.1"
   },
   "devDependencies": {
     "mocha": "1.16.0",
