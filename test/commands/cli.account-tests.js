@@ -19,7 +19,9 @@ var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 var util = require('util');
+require('streamline').register();
 
+var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 
@@ -60,6 +62,7 @@ describe('cli', function () {
         profile.current = new profile.Profile();
         sandbox.stub(profile.current, 'save');
         clearAzureDir = sandbox.stub(profile, 'clearAzureDir');
+        sandbox.stub(adalAuth.tokenCache, 'clear').callsArg(0);
       });
 
       after(function () {
@@ -80,6 +83,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           _.values(profile.current.subscriptions).should.have.length(0);
           clearAzureDir.callCount.should.equal(1);
+          adalAuth.tokenCache.clear.callCount.should.equal(1);
           done();
         });
       });
