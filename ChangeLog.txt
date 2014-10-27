@@ -3,7 +3,7 @@
   * Clean credential store on account clear command
   * Remove old credential entries on login
 * Storage
-  *	Add new commands to manage Storage logging properties
+  * Add new commands to manage Storage logging properties
       storage logging show [options]
       storage logging set [options]
   * Add new commands to manage Storage metrics properties
