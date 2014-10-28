@@ -1,3 +1,17 @@
+2014.10.27 Version 0.8.11
+* Credential store bug fixes
+  * Clean credential store on account clear command
+  * Remove old credential entries on login
+* Storage
+  * Add new commands to manage Storage logging properties
+      storage logging show [options]
+      storage logging set [options]
+  * Add new commands to manage Storage metrics properties
+      storage metrics show [options]
+      storage metrics set [options]
+  * Add SAS token support for blob download/copy
+* Documentation and helper commands to enable Fiddler tracing
+ 
 2014.10.02 Version 0.8.10
 * VM
   * Create and manage VM extensions
