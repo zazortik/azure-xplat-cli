@@ -42,7 +42,7 @@
     "azure-gallery": "2.0.0-pre.10",
     "azure-mgmt-authorization": "0.9.0-pre.1",
     "azure-mgmt-resource": "2.0.0-pre.11",
-    "azure-storage": "0.3.3",
+    "azure-storage": "0.4.0",
     "colors": "0.x.x",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
