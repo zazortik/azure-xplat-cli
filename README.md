@@ -31,10 +31,12 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage certificates
     * CloudInit for Ubuntu VM
     * Create and manage Docker host virtual machines
+    * Create and manage VM extensions
 * Network
     * Import and export network configuration
     * Create and manage virtual network
     * Create and manage DNS server
+    * Create and manage reserved IP addresses
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
@@ -177,6 +179,15 @@ After the VM is created. It can be used as a Docker host with the `-H` option or
 
 Note: To run docker commands on windows make sure ssl agent is installed.
 	
+## Setting up Fiddler for CLI
+
+You need to set the following environment variables to capture the HTTP traffic generated from the execution of xplat cli commands
+
+```bash
+set NODE_TLS_REJECT_UNAUTHORIZED=0
+set HTTPS_PROXY=http://127.0.0.1:8888
+```
+
 ## Running Tests
 
 See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.

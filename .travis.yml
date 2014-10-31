@@ -9,6 +9,6 @@ matrix:
     - node_js: "0.11"
 
 install:
-  - npm install -g npm
+  - npm install -g npm@1.4.23
   - npm --version
   - npm install
