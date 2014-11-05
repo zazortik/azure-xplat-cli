@@ -37,7 +37,7 @@ describe('cli', function() {
       userName = 'azureuser',
       password = 'Pa$$word@123',
       retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
     var vmToUse = {
       Name: null,
@@ -86,7 +86,7 @@ describe('cli', function() {
     });
 
     //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function() {
+    describe('Create:', function() { 
       it('Vm should create with vnet and location', function(done) {
         getImageName('Linux', function(imageName) {
           getVnet('Created', function(virtualnetName, affinityName) {
