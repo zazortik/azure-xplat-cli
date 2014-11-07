@@ -1680,5 +1680,17 @@
     "VM image must reside in the same location as the reserved ip location. The location of the given reserved ip is %s and VM image is \"%s\"": "VM image must reside in the same location as the reserved ip location. The location of the given reserved ip is %s and VM image is \"%s\"",
     "The cloud service location must be the same as VM image location": "The cloud service location must be the same as VM image location",
     "using the VM image location \"%s\"": "using the VM image location \"%s\"",
-    "filter VMs for the specified DNS name": "filter VMs for the specified DNS name"
+    "filter VMs for the specified DNS name": "filter VMs for the specified DNS name",
+    "vm-name is required": "vm-name is required",
+    "publicip-name is required": "publicip-name is required",
+    "endpoint-name is required": "endpoint-name is required",
+    "order is required": "order is required",
+    "remote-subnet is required": "remote-subnet is required",
+    "the VM name": "the VM name",
+    "the public IP name": "the public IP name",
+    "the ACL rule name": "the ACL rule name",
+    "the ACL rule order": "the ACL rule order",
+    "the ACL rule action": "the ACL rule action",
+    "the ACL rule remote subnet": "the ACL rule remote subnet",
+    "the ACL rule rule description": "the ACL rule rule description"
 }
