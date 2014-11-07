@@ -100,8 +100,8 @@ describe('cli', function() {
         });
       });
 
-      it('Remove the public ip address set on a VM', function(done) {
-        var cmd = util.format('vm public-ip remove %s %s --quiet --json', vmName, publicipname).split(' ');
+      it('Delete the public ip address set on a VM', function(done) {
+        var cmd = util.format('vm public-ip delete %s %s --quiet --json', vmName, publicipname).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var cmd = util.format('vm public-ip list %s --json', vmName).split(' ');
