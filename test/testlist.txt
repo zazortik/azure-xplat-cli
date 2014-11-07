@@ -38,7 +38,6 @@ commands/cli.vm.disk.attachnew-tests.js
 commands/cli.vm.list_show-tests.js
 commands/cli.vm.endpoint-tests.js
 commands/cli.vm.shutdown_restart-tests.js
-#Not recording the call. Have to rerecord the mock and uncomment the capture tests
 commands/cli.vm.capture-tests.js
 commands/cli.vm.image-tests.js
 commands/cli.vm.export_create_from-tests.js

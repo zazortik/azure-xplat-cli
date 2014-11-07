@@ -116,7 +116,7 @@ describe('cli', function() {
       });
 
       it('update an ACL rule for a VM endpoint', function(done) {
-        var cmd = util.format('vm endpoint acl-rule update %s %s %s --new-order %s --json', vmName, endpoint, order, neworder).split(' ');
+        var cmd = util.format('vm endpoint acl-rule set %s %s %s --new-order %s --json', vmName, endpoint, order, neworder).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var cmd = util.format('vm endpoint acl-rule list %s %s --json',
@@ -130,7 +130,7 @@ describe('cli', function() {
         });
       });
 
-      it('Remove a ACL rule for a VM endpoint', function(done) {
+      it('Delete an ACL rule for a VM endpoint', function(done) {
         var cmd = util.format('vm endpoint acl-rule delete %s %s %s --quiet --json',
           vmName, endpoint, neworder).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
