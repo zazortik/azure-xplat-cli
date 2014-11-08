@@ -97,7 +97,7 @@ describe('cli', function() {
         } else {
           setTimeout(function() {
             waitForDiskOp(vmName, DiskAttach, callback);
-          }, TIMEOUT_INTERVAL);
+          }, timeout);
         }
       });
     }
