@@ -1715,5 +1715,7 @@
     "one of the optional argument --subnet-name, --static-virtualnetwork-ipaddress, --remove-subnet or --remove-vnetip is required": "one of the optional argument --subnet-name, --static-virtualnetwork-ipaddress, --remove-subnet or --remove-vnetip is required",
     "--subnet-name or --static-virtualnetwork-ipaddress are not allowed when --remove-subnet is specified": "--subnet-name or --static-virtualnetwork-ipaddress are not allowed when --remove-subnet is specified",
     "--static-virtualnetwork-ipaddress not allowed when --remove-vnetip is specified": "--static-virtualnetwork-ipaddress not allowed when --remove-vnetip is specified",
-    "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address": "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address"
+    "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address": "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address",
+    "the caching behaviour of disk [None, ReadyOnly, ReadWrite]": "the caching behaviour of disk [None, ReadyOnly, ReadWrite]",
+    "Given --host-caching is invalid, supported values are \"%s\"": "Given --host-caching is invalid, supported values are \"%s\""
 }
