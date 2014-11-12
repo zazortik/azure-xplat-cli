@@ -974,6 +974,22 @@ allTests = function (backend) {
     });
   });
 
+  it('push nh disable ' + servicename + ' --json', function (done) {
+      suite.execute('mobile push nh disable %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+      });
+  });
+
+  it('push nh get ' + servicename + ' --json (disabled)', function (done) {
+      suite.execute('mobile push nh get %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          var response = JSON.parse(result.text);
+          JSON.stringify(response.externalPushEntitySettingsPropertyBag).should.equal('{}');
+          done();
+      });
+  });
+
   // Table commands
   it('table list ' + servicename + ' --json (no tables by default)', function (done) {
     suite.execute('mobile table list %s --json', servicename, function (result) {
