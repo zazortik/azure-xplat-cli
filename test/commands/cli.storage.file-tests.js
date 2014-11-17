@@ -195,7 +195,7 @@ describe('cli', function () {
         });
       });
 
-      describe('download', function () {
+      describe.skip('download', function () {
         it('should download an existing file', function (done) {
           suite.execute('storage file download -q %s %s %s --json', shareName, remoteFile, localFile, function (result) {
             result.errorText.should.be.empty;
@@ -205,7 +205,7 @@ describe('cli', function () {
         });
       });
 
-      describe('delete', function () {
+      describe.skip('delete', function () {
         it('should delete an existing file', function (done) {
           suite.execute('storage file delete -q %s %s --json', shareName, remoteFile, function (result) {
             result.errorText.should.be.empty;
