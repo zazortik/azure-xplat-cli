@@ -195,6 +195,7 @@ describe('cli', function () {
         });
       });
 
+      //Disable for pending investigation for a failure on node 0.8, "Error: timeout of 500000ms exceeded"
       describe.skip('download', function () {
         it('should download an existing file', function (done) {
           suite.execute('storage file download -q %s %s %s --json', shareName, remoteFile, localFile, function (result) {
@@ -205,6 +206,7 @@ describe('cli', function () {
         });
       });
 
+      //Disable for pending investigation for a failure on node 0.8, "Error: timeout of 500000ms exceeded"
       describe.skip('delete', function () {
         it('should delete an existing file', function (done) {
           suite.execute('storage file delete -q %s %s --json', shareName, remoteFile, function (result) {
