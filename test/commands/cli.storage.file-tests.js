@@ -207,7 +207,7 @@ describe('cli', function () {
       });
 
       //Disable for pending investigation for a failure on node 0.8, "Error: timeout of 500000ms exceeded"
-      describe.skip('delete', function () {
+      describe('delete', function () {
         it('should delete an existing file', function (done) {
         //  suite.execute('storage file delete -q %s %s --json', shareName, remoteFile, function (result) {
         //    result.errorText.should.be.empty;
