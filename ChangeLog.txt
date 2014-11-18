@@ -1,6 +1,9 @@
 2014.11.12 Version 0.8.12
 * Fix Mobile CLI Tests and recorded mocks
-* Updated azure-storage dependency to 0.4.0
+* Fix for HDInsight commands in Azure China environment
+* Storage
+  * Updated azure-storage dependency to 0.4.0
+  * Improved the blob downloading and uploading speed
 * VM
   * VM create command bug fixes
   * Skip zero blocks when uploading fixed VHD
