@@ -6,7 +6,7 @@ targets/*
 /xPlat.sln
 *.suo
 *.user
-.ntvs_analysis.dat
+.ntvs_analysis.*
 
 # Node #
 node_modules/
@@ -21,6 +21,7 @@ obj/
 out/
 checkstyle-result.xml
 test-result.xml
+iisnode.yml
 
 # Mac OS #
 .DS_Store

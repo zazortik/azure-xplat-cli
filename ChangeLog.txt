@@ -1,3 +1,92 @@
+2014.11.12 Version 0.8.12
+* Fix Mobile CLI Tests and recorded mocks
+* Fix for HDInsight commands in Azure China environment
+* Storage
+  * Updated azure-storage dependency to 0.4.0
+  * Improved the blob downloading and uploading speed
+* VM
+  * VM create command bug fixes
+  * Skip zero blocks when uploading fixed VHD
+  * Commands to manage virtual machine endpoint ACL
+  * Commands to manage virtual machine public IP
+  * Support for creating virtual machine from VM image
+
+2014.10.27 Version 0.8.11
+* Credential store bug fixes
+  * Clean credential store on account clear command
+  * Remove old credential entries on login
+* Storage
+  * Add new commands to manage Storage logging properties
+      storage logging show [options]
+      storage logging set [options]
+  * Add new commands to manage Storage metrics properties
+      storage metrics show [options]
+      storage metrics set [options]
+  * Add SAS token support for blob download/copy
+* Documentation and helper commands to enable Fiddler tracing
+ 
+2014.10.02 Version 0.8.10
+* VM
+  * Create and manage VM extensions
+  * Create and manage reserved IP addresses
+  * Fixed issues in vm image list command
+  * Fixed issues in --no-ssh-password parameter handling in vm create command
+* Storage
+  * SAS support 
+      azure storage container sas create
+      azure storage blob sas create
+      azure storage table sas create
+      azure storage queue sas create
+  * Storage unit test fixes
+* Moved the GraphRbacManagementClient in a separate module named 'azure-extra' published to npm 
+* Fixed issues in token caching mechanism and the azure login command
+* Fixed issues in npm install azure-cli on Ubuntu OS
+* Fixed website tests
+* Fixed the test recording infrastructure
+
+2014.09.10 Version 0.8.8
+* Role-based access control support
+  *  Query role definition
+      Azure role list
+  *  Manage role assignment
+      azure role assignment create
+      azure role assignment list/show
+      azure role assignment delete
+  *  Query Azure AD object
+      azure AD user list/show
+      azure AD group list/show
+      azure AD group member list
+      azure AD SP list/show
+  *  Show user's permissions
+      azure group list/show
+      azure resource list/show
+* Active Directory service principal login support in Azure Resource Manager mode
+      azure login --service-principal -tenant
+* Storage
+  *  Azure File Service support
+      azure storage share create
+      azure storage share list/show
+      azure storage share delete
+      azure storage directory create
+      azure storage directory delete
+      azure storage file upload
+      azure storage file download
+      azure storage file list
+      azure storage file delete
+  *  Azure Blob Service improvements
+      azure storage blob copy start
+      azure storage blob copy stop
+      azure storage blob copy show
+  *  Azure Table Service support
+      azure storage table create
+      azure storage table list/show
+      azure storage table delete
+  *  Azure Queue Service Support
+      azure storage queue create
+      azure storage queue list/show
+      azure storage queue delete
+  *  Switched storage library to Azure storage module
+
 2014.08.04 Version 0.8.7
 * Fixed issues with vm commands (vm image, vm docket create)
 * Added support for A8, A9 vm sizes in vm create command

@@ -1,6 +1,6 @@
 # Microsoft Azure Xplat-CLI for Windows, Mac and Linux
 
-[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-tools-xplat)
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-xplat-cli.png?branch=master)](https://travis-ci.org/Azure/azure-xplat-cli)
 
 This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.
 
@@ -31,10 +31,12 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage certificates
     * CloudInit for Ubuntu VM
     * Create and manage Docker host virtual machines
+    * Create and manage VM extensions
 * Network
     * Import and export network configuration
     * Create and manage virtual network
     * Create and manage DNS server
+    * Create and manage reserved IP addresses
 * Mobile Services
     * Create and manage Mobile Services
     * Manage tables, scripts, and configuration
@@ -69,8 +71,8 @@ npm install -g azure-cli
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-tools-xplat.git
-cd ./azure-sdk-tools-xplat
+git clone https://github.com/Azure/azure-xplat-cli.git
+cd ./azure-xplat-cli
 npm install
 ```
 
@@ -132,6 +134,18 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure cli on Ubuntu
+If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
+- [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
+- [how to solve the nodejs installation problem on ubuntu](https://github.com/expressjs/keygrip/issues/7)
+
+Please perform the installation steps in following order:
+```bash
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+npm install -g azure-cli
+```
+
 ## 2 Modes
 
 Starting from 0.8.0, we are adding a separate mode for Resource Manager. You can use the following command to switch between the
@@ -165,9 +179,18 @@ After the VM is created. It can be used as a Docker host with the `-H` option or
 
 Note: To run docker commands on windows make sure ssl agent is installed.
 	
+## Setting up Fiddler for CLI
+
+You need to set the following environment variables to capture the HTTP traffic generated from the execution of xplat cli commands
+
+```bash
+set NODE_TLS_REJECT_UNAUTHORIZED=0
+set HTTPS_PROXY=http://127.0.0.1:8888
+```
+
 ## Running Tests
 
-See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
+See [this page for instructions](https://github.com/Azure/azure-xplat-cli/wiki/Running-Tests) that describe how to run the test suite.
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
@@ -178,4 +201,4 @@ For more extensive  documentation on the new cross platform CLI tool for Mac and
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-tools-xplat/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-xplat-cli/issues) section of the project.

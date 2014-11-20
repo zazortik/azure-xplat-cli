@@ -1,6 +1,8 @@
 var path = require('path');
 var exec = require('child_process').exec;
 
+var linkToPrivateRepo = (process.argv[2] && process.argv[2].indexOf('pr') === 0);
+
 var servicePackages = [
   'computeManagement',
   'gallery',
@@ -14,8 +16,10 @@ var servicePackages = [
   'sqlManagement',
   'storageManagement',
   'subscriptionManagement',
-  'webSiteManagement'
-]
+  'webSiteManagement',
+  'authorizationManagement',
+  'extra'
+];
 
 //
 // This script assumes that the node sdk is sitting next to
@@ -23,10 +27,9 @@ var servicePackages = [
 // below variable to point to it.
 //
 
-var root = '../azure-sdk-for-node'
+var root = '../' +  (linkToPrivateRepo ? 'azure-sdk-for-node-pr' : 'azure-sdk-for-node');
 
-
-var packagesToLink = [ 'lib/common' ].concat(servicePackages.map(function (p) { return 'lib/services/' + p })).concat('')
+var packagesToLink = [ 'lib/common' ].concat(servicePackages.map(function (p) { return 'lib/services/' + p; })).concat('');
 
 var commands = packagesToLink.map(function (path) {
   return 'npm link ' + root + '/' + path;

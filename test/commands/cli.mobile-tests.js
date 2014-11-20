@@ -48,8 +48,8 @@
 */
 
 var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
-var nodeNockedServiceName = 'clitest4b0f19cd-2fbc-4dbc-b694-60744ed413ad';
-var dotnetNockedServiceName = 'clitest657f33c7-e1db-4efd-8ba3-3e8a8b0be012';
+var nodeNockedServiceName = 'clitest7ebcb98c-f417-4295-a8fd-70625f05654c';
+var dotnetNockedServiceName = 'cliteste97296fa-e760-4a1d-8637-a811c5524f45';
 
 var should = require('should');
 var url = require('url');
@@ -131,8 +131,7 @@ allTests = function (backend) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       Array.isArray(response).should.be.ok;
-      response.should.includeEql({ 'region': 'East US' });
-      response.should.includeEql({ 'region': 'North Europe' });
+      response.should.includeEql({ 'region': location });
       done();
     });
   });
@@ -695,7 +694,7 @@ allTests = function (backend) {
     });
   });
 
-  it('appsetting list ' + servicename + '--json (empty)', function (done) {
+  it('appsetting list ' + servicename + ' --json (empty)', function (done) {
     suite.execute('mobile appsetting list %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
@@ -973,6 +972,22 @@ allTests = function (backend) {
       response.enableUnauthenticatedSettings.should.equal(false);
       done();
     });
+  });
+
+  it('push nh disable ' + servicename + ' --json', function (done) {
+      suite.execute('mobile push nh disable %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+      });
+  });
+
+  it('push nh get ' + servicename + ' --json (disabled)', function (done) {
+      suite.execute('mobile push nh get %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          var response = JSON.parse(result.text);
+          JSON.stringify(response.externalPushEntitySettingsPropertyBag).should.equal('{}');
+          done();
+      });
   });
 
   // Table commands
@@ -2138,30 +2153,41 @@ allTests = function (backend) {
       } else {
         response.should.include({
           "enabled": [],
-          "available": ["SourceControl", "Users"]
+          "available": []
         });
       };
       done();
     });
   });
 
-  it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function (done) {
+  it('preview enable ' + servicename + ' sourcecontrol --json', function (done) {
     suite.execute('mobile preview enable %s sourcecontrol --json', servicename, function (result) {
-      result.exitStatus.should.equal(0);
-      var response = JSON.parse(result.text);
-      response.featureName.should.equal("SourceControl");
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        response.featureName.should.equal("SourceControl");
+      } else {
+        result.exitStatus.should.equal(1);
+      }
       done();
     });
   });
 
-  it('preview list ' + servicename + ' --json (no features enabled)', function (done) {
+  it('preview list ' + servicename + ' --json', function (done) {
     suite.execute('mobile preview list %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
-      response.should.include({
-        "enabled": ["SourceControl"],
-        "available": ["SourceControl", "Users"]
-      });
+      if (backend === 'node') {
+        response.should.include({
+          "enabled": ["SourceControl"],
+          "available": ["SourceControl", "Users"]
+        });
+      } else {
+        response.should.include({
+          "enabled": [],
+          "available": []
+        });
+      }
       done();
     });
   });
@@ -2269,7 +2295,6 @@ allTests = function (backend) {
       done();
     });
   });
-
 }
 
 describe('cli', function () {

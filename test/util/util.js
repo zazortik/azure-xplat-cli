@@ -17,38 +17,8 @@ var fs = require('fs');
 
 var exports = module.exports;
 
-/**
- * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
- *
- * @param {string} prefix          The prefix to use in the identifier.
- * @param {array}  currentList     The current list of identifiers.
- * @param {bool}   isMocked        Boolean flag indicating if the test is mocked or not.
- * @return {string} A new unique identifier.
- */
-exports.generateId = function (prefix, currentList, isMocked) {
-  if (!currentList) {
-    currentList = [];
-  }
-
-  while (true) {
-    var newNumber;
-    if (isMocked) {
-      // Predictable
-      newNumber = prefix + (currentList.length + 1);
-      currentList.push(newNumber);
-
-      return newNumber;
-    } else {
-      // Random
-      newNumber = prefix + Math.floor(Math.random() * 10000);
-      if (currentList.indexOf(newNumber) === -1) {
-        currentList.push(newNumber);
-
-        return newNumber;
-      }
-    }
-  }
-};
+//This is the timeout variable that would be used by all vm set of tests. This timeout value would differ from one test to another.
+exports.TIMEOUT_INTERVAL=10000;
 
 exports.randomFromTo = function (from, to) {
   return Math.floor(Math.random() * (to - from + 1) + from);
@@ -143,6 +113,30 @@ exports.getTemplateInfo = function (suite, keyword, callback) {
     }
     else {
       callback(new Error(result.errorText));
+    }
+  });
+};
+
+exports.executeCommand = function(suite, retry, cmd, callback) {
+  var self = this;
+  suite.execute(cmd, function(result) {
+    if (result.exitStatus === 1 && ((result.errorText.indexOf('ECONNRESET') + 1) ||
+      (result.errorText.indexOf('ConflictError') + 1) ||
+      (result.errorText.indexOf('Please try this operation again later') + 1) ||
+      (result.errorText.indexOf('requires exclusive access.') + 1) ||
+      (result.errorText.indexOf('connect ETIMEDOUT') + 1) ||
+      (result.errorText.indexOf('A concurrency error occurred') + 1) ||
+      (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
+      (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
+      console.log('Re-executing command. Please wait.');
+      setTimeout(function() {
+        self.executeCommand(suite, retry, cmd, callback);
+      }, TIMEOUT_INTERVAL);
+    } else {
+      //callback with error
+      //here result can be checked for existstatus but dev will never know what command threw error
+      //while looking at error message
+      callback(result);
     }
   });
 };
