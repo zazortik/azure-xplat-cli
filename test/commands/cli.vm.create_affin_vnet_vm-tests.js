@@ -105,7 +105,7 @@ describe('cli', function() {
       });
 
       //edge case for vm failure
-      //https://github.com/MSOpenTech/azure-sdk-tools-xplat/issues/7#issuecomment-47410767
+      //https://github.com/MSOpenTech/azure-xplat-cli/issues/7#issuecomment-47410767
       it('should delete cloud service on vm create failure', function(done) {
         getImageName('Linux', function(imageName) {
           var cmd = util.format('vm create -a %s -w %s %s %s %s %s --json',

@@ -1,6 +1,6 @@
 # Microsoft Azure Xplat-CLI for Windows, Mac and Linux
 
-[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-tools-xplat)
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-xplat-cli.png?branch=master)](https://travis-ci.org/Azure/azure-xplat-cli)
 
 This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.
 
@@ -71,8 +71,8 @@ npm install -g azure-cli
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-tools-xplat.git
-cd ./azure-sdk-tools-xplat
+git clone https://github.com/Azure/azure-xplat-cli.git
+cd ./azure-xplat-cli
 npm install
 ```
 
@@ -190,7 +190,7 @@ set HTTPS_PROXY=http://127.0.0.1:8888
 
 ## Running Tests
 
-See [this page for instructions](https://github.com/Azure/azure-sdk-tools-xplat/wiki/Running-Tests) that describe how to run the test suite.
+See [this page for instructions](https://github.com/Azure/azure-xplat-cli/wiki/Running-Tests) that describe how to run the test suite.
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
@@ -201,4 +201,4 @@ For more extensive  documentation on the new cross platform CLI tool for Mac and
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-tools-xplat/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-xplat-cli/issues) section of the project.
