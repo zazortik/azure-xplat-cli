@@ -53,6 +53,7 @@ commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
+# commands/cli.vm.loadbalancer-tests.js  This testcase will be uncommented after the hydra fix 
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js

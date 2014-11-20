@@ -92,7 +92,7 @@ describe('cli', function () {
       });
 
       it('should create vnet, show , import and list', function (done) {
-        suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s',
+        suite.execute('network vnet create %s --address-space 10.0.0.0  --create-new-affinity-group --json --location %s',
           vnetName, testSite, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('network vnet list --json', function (outerresult) {
@@ -125,6 +125,7 @@ describe('cli', function () {
                     var vnet = JSON.parse(result.text);
                     vnet.should.not.equal(null);
                     vnet.state.should.equal('Created');
+                    vnet.affinityGroup.should.not.be.null;
                     vnet.addressSpace.addressPrefixes[0].should.equal('10.0.0.0/8');
                     vnet.subnets[0].name.should.equal('Subnet-1');
                     vnet.subnets[0].addressPrefix.should.equal('10.0.0.0/11');

@@ -89,7 +89,6 @@ describe('cli', function () {
     });
 
     describe('Public ip address :', function () {
-
       it('Vm should create with vnet', function (done) {
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName, subnet) {

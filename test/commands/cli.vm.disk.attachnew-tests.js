@@ -33,6 +33,7 @@ describe('cli', function() {
       username = 'azureuser',
       password = 'PassW0rd$',
       timeout,
+      cachingbehaviour = 'ReadWrite',
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 10000;
 
@@ -67,7 +68,7 @@ describe('cli', function() {
           createVM(function() {
             var domainUrl = 'http://' + diskObj.mediaLinkUri.split('/')[2];
             var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
-            var cmd = util.format('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl).split(' ');
+            var cmd = util.format('vm disk attach-new --host-caching %s %s %s %s --json', cachingbehaviour, vmName, 1, blobUrl).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               waitForDiskOp(vmName, true, function() {
@@ -100,17 +101,17 @@ describe('cli', function() {
     }
 
     function createVM(callback) {
-        getImageName('Linux', function(imagename) {
-          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-          cmd.push('-l');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            setTimeout(callback, timeout);
-          });
+      getImageName('Linux', function(imagename) {
+        var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
+        cmd.push('-l');
+        cmd.push(location);
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          setTimeout(callback, timeout);
         });
-      }
-      // Get name of an image of the given category
+      });
+    }
+    // Get name of an image of the given category
 
     function getImageName(category, callBack) {
       if (process.env.VM_LINUX_IMAGE) {
