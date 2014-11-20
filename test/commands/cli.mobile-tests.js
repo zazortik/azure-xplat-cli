@@ -27,41 +27,43 @@
 
   INSTRUCTIONS FOR RE-GENERATING THE cli.mobile-tests.nock.js FILE:
 
-  1. Make sure the tests are passing against live Windows Azure endpoints:
-  1.0. Remember to register your Windows Azure credentials with `azure account import`
+  1. Make sure the tests are passing against live Microsoft Azure endpoints:
+  1.0. Remember to register your Microsoft Azure credentials with `azure account import`
   1.1. Set the NOCK_OFF environment variable to `true`
   1.2. Run tests with `npm test`
 
-  2. Re-run the tests against the live Windows Azure endpints while capturing the
+  2. Re-run the tests against the live Microsoft Azure endpints while capturing the
      HTTP traffic:
   2.1. Make sure NOCK_OFF is still set to `true`
-  2.2. Set AZURE_MOBILE_NOCK_REC to `true`
+  2.2. Set AZURE_NOCK_RECORD to `true`
   2.3. Run the tests with `npm test`. The new cli.mobile-tests.nock.js will be generated.
-  2.4. Manually update the `nockedSubscriptionId` and `nockedServiceName` variables right below
+  2.4. Manually update the `nockedSubscriptionId`,`nodeNockedServiceName` and `dotnetNockedServiceName` variables right below
      to the values of subscription Id and service name that had been used during the test pass in #2.3.
      The service name should be displayed in the name of every test that executed.
 
   3. Validate the new mocks:
-  3.1. Unset both NOCK_OFF and AZURE_MOBILE_NOCK_REC environment variables
+  3.1. Unset both NOCK_OFF and AZURE_NOCK_RECORD environment variables
   3.2. Run the tests with `npm test`.
 
 */
 
-var nockedSubscriptionId = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var nockedServiceName = 'clitest5c65dc65-bbd1-4393-a0ee-e866158c9309';
+var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
+var nodeNockedServiceName = 'clitest7ebcb98c-f417-4295-a8fd-70625f05654c';
+var dotnetNockedServiceName = 'cliteste97296fa-e760-4a1d-8637-a811c5524f45';
 
-var nockhelper = require('../framework/nock-helper.js');
-var nocked = process.env.NOCK_OFF ? null : require('../recordings/cli.mobile-tests.nock.js');
 var should = require('should');
 var url = require('url');
 var uuid = require('node-uuid');
 var util = require('util');
-var executeCmd = require('../framework/cli-executor').execute;
 var fs = require('fs');
-var sinon = require('sinon');
+var azureCommon = require('azure-common');
+var path = require('path');
 var keyFiles = require('../../lib/util/keyFiles');
 var profile = require('../../lib/util/profile');
-var Channel = require('../../lib/util/channel');
+var PipelineChannel = require('../../lib/commands/asm/mobile/pipelineChannel');
+var utils = require('../../lib/util/utils');
+var CLITest = require('../framework/cli-test');
+var WebResource = azureCommon.WebResource;
 var location = process.env.AZURE_SQL_TEST_LOCATION || 'West US';
 var servicedomain = process.env.SERVICE_DOMAIN || '.azure-mobile.net';
 var scopeWritten;
@@ -70,458 +72,268 @@ var existingServerName;
 var existingContinuationToken;
 var knownRecords;
 
-// polyfill appendFileSync
-if (!fs.appendFileSync) {
-  fs.appendFileSync = function (file, content) {
-    var current = fs.readFileSync(file, 'utf8');
-    current += content;
-    fs.writeFileSync(file, current);
-  };
-}
+var suite;
+var testPrefix = 'cli.mobile-tests';
+var requiredEnvironment = [];
+var testArtifactDir = path.join(__dirname, 'mobile');
 
-var currentTest = 0;
-function setupNock(cmd) {
-  if (process.env.NOCK_OFF) {
-    return [];
-  }
-  else if (currentTest < nocked.scopes.length) {
-    cmd.push('-s');
-    cmd.push(nockedSubscriptionId);
-
-    return nocked.scopes[currentTest++].map(function (createScopeFunc) {
-      return createScopeFunc(nockhelper.nock);
-    });
-  }
-  else {
-    throw new Error('It appears the cli.mobile-tests.js file has more tests than there are mocked tests in cli.mobile-tests.nock.js. '
-      + 'You may need to re-generate the cli.mobile-tests.nock.js using instructions in cli.mobile-test.js.');
-  }
-}
-
-function checkScopes(scopes) {
-  scopes.forEach(function (scope) {
-    scope.isDone().should.be.ok;
-  });
-}
-
-describe('cli', function () {
-  describe('mobile', function () {
-
-    // The hardcoded service name may need to be updated every time before a new NOCK recording is made
-    var servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : nockedServiceName;
-    var existingServiceName = servicename.replace(/clitest/, 'existing');
-
-    function cleanupService(callback) {
-      // make best effort to remove the service in case of a test failure
-      if (process.env.NOCK_OFF) {
-        var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
-        executeCmd(cmd, function (result) {
-          callback();
-        });
-      } else {
-        callback();
-      }
+// Load profile and start recording
+nockStart = function () {
+  before(function (done) {
+    suite = new CLITest(testPrefix, requiredEnvironment);
+    if (suite.isMocked) {
+      utils.POLL_REQUEST_INTERVAL = 0;
     }
 
-    // once before suite runs
-    before(function (done) {
-      process.env.AZURE_ENABLE_STRICT_SSL = false;
+    suite.setupSuite(done);
+  });
 
-      if (process.env.AZURE_MOBILE_NOCK_REC) {
-        fs.writeFileSync(__dirname + '/../recordings/cli.mobile-tests.nock.js',
-          '// This file has been autogenerated.\n' +
-          '// Check out cli.mobile-tests.js for re-generation instructions.\n\n' +
-          'exports.scopes = [');
-      } else if (!process.env.NOCK_OFF) {
-        sinon.stub(keyFiles, 'readFromFile', function () {
-          return {
-            cert: process.env.AZURE_CERTIFICATE,
-            key: process.env.AZURE_CERTIFICATE_KEY
-          };
-        });
+  // Mocha does not invoke "before" if it does not have tests 
+  it('dummy Test', function (done) {
+    done();
+  });
+};
 
-        var originalProfileLoad = profile.load;
-        sinon.stub(profile, 'load', function(fileNameOrData) {
-          if (!fileNameOrData || fileNameOrData === profile.defaultProfileFile) {
-            return originalProfileLoad({
-              environments: [],
-              subscriptions: [
-                {
-                  id: process.env.AZURE_SUBSCRIPTION_ID,
-                  name: 'testAccount',
-                  managementCertificate: {
-                    cert: process.env.AZURE_CERTIFICATE,
-                    key: process.env.AZURE_CERTIFICATE_KEY
-                  },
-                  environmentName: 'AzureCloud'
-                }
-              ]
-            });
-          }
-          return originalProfileLoad(fileNameOrData);
-        });
+nockEnd = function () {
+  after(function (done) {
+    suite.teardownSuite(done);
+  });
 
-        profile.current = profile.load();
-      }
+  // Mocha does not invoke "after" if it does not have tests 
+  it('dummy Test', function (done) {
+    done();
+  });
+};
 
-      sinon.stub(keyFiles, 'writeToFile', function () {});
+allTests = function (backend) {
+  var servicename;
+  // The hardcoded service name may need to be updated every time before a new NOCK recording is made
+  if (backend === 'node') {
+    servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : nodeNockedServiceName;
+  } else {
+    servicename = process.env.NOCK_OFF ? 'clitest' + uuid() : dotnetNockedServiceName;
+  }
 
-      cleanupService(done);
+  var existingServiceName = servicename.replace(/clitest/, 'existing');
+
+  // before every test
+  beforeEach(function (done) {
+    suite.setupTest(done);
+  });
+
+  // after every test
+  afterEach(function (done) {
+    suite.teardownTest(done);
+  });
+
+  it('locations --json (verify the locations provided by mobile service)', function (done) {
+    suite.execute('mobile locations --json', function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response).should.be.ok;
+      response.should.includeEql({ 'region': location });
+      done();
     });
+  });
 
-    // once after suite runs
-    after(function (done) {
-      delete process.env.AZURE_ENABLE_STRICT_SSL;
-
-      if (process.env.AZURE_MOBILE_NOCK_REC) {
-        fs.appendFileSync(__dirname + '/../recordings/cli.mobile-tests.nock.js', '];');
-      }
-
-      cleanupService(function () {
-        if (keyFiles.readFromFile.restore) {
-          keyFiles.readFromFile.restore();
-        }
-
-        if (keyFiles.writeToFile.restore) {
-          keyFiles.writeToFile.restore();
-        }
-
-        if (profile.load.restore) {
-          profile.load.restore();
-        }
-
-        done();
-      });
+  it('create ' + servicename + ' tjanczuk FooBar#12 -b ' + backend + ' --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
+    suite.execute('mobile create %s tjanczuk FooBar#12 -b %s --sqlLocation %s --json', servicename, backend, location, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.should.have.property('Name', servicename + 'mobileservice');
+      response.should.have.property('Label', servicename);
+      response.should.have.property('State', 'Healthy');
+      existingDBName = response.InternalResources.InternalResource[1].Name;
+      existingServerName = response.InternalResources.InternalResource[2].Name;
+      done();
     });
+  });
 
-    // before every test
-    beforeEach(function (done) {
-      nockhelper.nockHttp();
-
-      if (process.env.AZURE_MOBILE_NOCK_REC) {
-        // start nock recoding
-        nockhelper.nock.recorder.rec(true);
-      }
+  it('create ' + existingServiceName + ' -d existingDBName -r existingServerName tjanczuk FooBar#12 --json (create service with existing DB and server)', function (done) {
+    suite.execute('mobile create %s -d %s -r %s tjanczuk FooBar#12 -b %s --json', existingServiceName, existingDBName, existingServerName, backend, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.should.have.property('Name', existingServiceName + 'mobileservice');
+      response.should.have.property('Label', existingServiceName);
+      response.should.have.property('State', 'Healthy');
+      response.InternalResources.InternalResource.Name.should.equal(existingServiceName);
+      Array.isArray(response.ExternalResources.ExternalResource).should.be.ok;
+      response.ExternalResources.ExternalResource.length.should.equal(2);
+      response.ExternalResources.ExternalResource[0].Name.should.equal(existingDBName);
+      response.ExternalResources.ExternalResource[1].Name.should.equal(existingServerName);
 
       done();
     });
+  });
 
-    // after every test
-    afterEach(function (done) {
-      if (process.env.AZURE_MOBILE_NOCK_REC) {
-        // play nock recording
-        var scope = scopeWritten ? ',\n[' : '[';
-        scopeWritten = true;
-        var lineWritten;
-        nockhelper.nock.recorder.play().forEach(function (line) {
-          if (line.indexOf('nock') >= 0) {
-            // skip async tracking operations that are other than success to speed things up
-            if (line.match(/\/operations\//) && !line.match(/\<Status\>Succeeded\<\/Status\>/)) {
-              return;
-            }
-
-            // apply fixups of nock generated mocks
-
-            // do not filter on body of app create request, since it contains random GUIDs that would mismatch
-            line = line.replace(/(\.post\('\/[^\/]*\/applications')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-            // do not filter on body of job create request, since it contains random startTime that would mismatch
-            line = line.replace(/(\.post\('\/[^\/]*\/services\/mobileservices\/mobileservices\/[^\/]*\/scheduler\/jobs')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-            // do not filter on body of job update request, since it contains random startTime that would mismatch
-            line = line.replace(/(\.put\('\/[^\/]*\/services\/mobileservices\/mobileservices\/[^\/]*\/scheduler\/jobs')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-            // do not filter on the body of script upload, since line endings differ between Windows and Mac
-            line = line.replace(/(\.put\('[^\']*')\, \"[^\"]+\"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-            // nock encoding bug
-            var reg = new RegExp(/^([\S\s]*)\.get\(\'(.*?)\'\)([\S\s]*)$/gim);
-            var result = reg.exec(line);
-            if (result !== null) {
-                line = result[1] + ".get('" + result[2].replace(/'/igm, "\\'") + "')" + result[3];
-            }
-
-            line = line.replace("'error'", "\\'error\\'");
-            line = line.replace("'information'", "\\'information\\'");
-            line = line.replace("'warning'", "\\'warning\\'");
-            // nock is loosing the port number
-            line = line.replace("nock('https://management.database.windows.net')", "nock('https://management.database.windows.net:8443')");
-
-            scope += (lineWritten ? ',\n' : '') + 'function (nock) { var result = ' + line + ' return result; }';
-            lineWritten = true;
-          }
-        });
-        scope += ']';
-        fs.appendFileSync(__dirname + '/../recordings/cli.mobile-tests.nock.js', scope);
-        nockhelper.nock.recorder.clear();
-      }
-
-      nockhelper.unNockHttp();
+  it('list --json (contains healthy service)', function (done) {
+    suite.execute('mobile list --json', function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.some(function (service) {
+        return service.name === servicename && service.state === 'Ready';
+      }).should.be.ok;
+      response.some(function (service) {
+        return service.name === existingServiceName && service.state === 'Ready';
+      }).should.be.ok;
 
       done();
     });
+  });
 
-    it('locations --json (verify the locations provided by mobile service)', function (done) {
-          var cmd = ('node cli.js mobile locations --json').split(' ');
-          var scopes = setupNock(cmd);
-          executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response).should.be.ok;
-            response.should.includeEql({ 'region': 'East US' });
-            response.should.includeEql({ 'region': 'North Europe' });
-            checkScopes(scopes);
-            done();
-          });
-        });
+  it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
+    suite.execute('mobile restart %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
 
-    it('create ' + servicename + ' tjanczuk FooBar#12 --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
-      var cmd = ('node cli.js mobile create ' + servicename + ' tjanczuk FooBar#12').split(' ');
-          cmd.push('--sqlLocation');
-          cmd.push(location);
-          cmd.push('--json');
-
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.should.have.property('Name', servicename + 'mobileservice');
-        response.should.have.property('Label', servicename);
-        response.should.have.property('State', 'Healthy');
-        existingDBName = response.InternalResources.InternalResource[1].Name;
-        existingServerName = response.InternalResources.InternalResource[2].Name;
-        checkScopes(scopes);
-        done();
-      });
+      done();
     });
+  });
 
-    it('create ' + existingServiceName + ' -d existingDBName -r existingServerName tjanczuk FooBar#12 --json (create service with existing DB and server)', function (done) {
-        var cmd = ('node cli.js mobile create ' + existingServiceName + ' -d ' + existingDBName + ' -r ' + existingServerName + ' tjanczuk FooBar#12').split(' ');
-        cmd.push('--json');
+  it('show ' + servicename + ' --json (contains healthy service)', function (done) {
+    var cmd = ('mobile show ' + servicename + ' --json').split(' ');
+    suite.execute(cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.service.name.should.equal(servicename);
+      response.service.state.should.equal('Ready');
+      response.application.Name.should.equal(servicename + 'mobileservice');
+      response.application.Label.should.equal(servicename);
+      response.application.State.should.equal('Healthy');
+      response.scalesettings.tier.should.equal('tier1');
+      response.scalesettings.numberOfInstances.should.equal(1);
 
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            response.should.have.property('Name', existingServiceName + 'mobileservice');
-            response.should.have.property('Label', existingServiceName);
-            response.should.have.property('State', 'Healthy');
-            response.InternalResources.InternalResource.Name.should.equal(existingServiceName);
-            Array.isArray(response.ExternalResources.ExternalResource).should.be.ok;
-            response.ExternalResources.ExternalResource.length.should.equal(2);
-            response.ExternalResources.ExternalResource[0].Name.should.equal(existingDBName);
-            response.ExternalResources.ExternalResource[1].Name.should.equal(existingServerName);
-            checkScopes(scopes);
-            done();
-        });
+      done();
     });
+  });
 
-    it('list --json (contains healthy service)', function(done) {
-      var cmd = ('node cli.js mobile list --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.some(function (service) {
-          return service.name === servicename && service.state === 'Ready';
-        }).should.be.ok;
-        response.some(function (service) {
-            return service.name === existingServiceName && service.state === 'Ready';
-        }).should.be.ok;
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (contains no scheduled jobs by default)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(0);
+      done();
     });
+  });
 
-    it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
-        var cmd = ('node cli.js mobile restart ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('{}\n');
-            checkScopes(scopes);
-            done();
-        });
+  it('job create ' + servicename + ' foobar --json (create default scheduled job)', function (done) {
+    suite.execute('mobile job create %s foobar --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('show ' + servicename + ' --json (contains healthy service)', function(done) {
-      var cmd = ('node cli.js mobile show ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.service.name.should.equal(servicename);
-        response.service.state.should.equal('Ready');
-        response.application.Name.should.equal(servicename + 'mobileservice');
-        response.application.Label.should.equal(servicename);
-        response.application.State.should.equal('Healthy');
-        response.scalesettings.tier.should.equal('tier1');
-        response.scalesettings.numberOfInstances.should.equal(1);
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (contains one scheduled job)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('disabled');
+      response[0].intervalUnit.should.equal('minute');
+      response[0].intervalPeriod.should.equal(15);
+      setTimeout(done(), 90000);
     });
+  });
 
-    it('job list --json (contains no scheduled jobs by default)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+  it('job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json (update scheduled job)', function (done) {
+    suite.execute('mobile job update %s foobar -u hour -i 2 -a enabled --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('job create ' + servicename + ' foobar --json (create default scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job create ' + servicename + ' foobar --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (contains updated scheduled job)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('enabled');
+      response[0].intervalUnit.should.equal('hour');
+      response[0].intervalPeriod.should.equal(2);
+      done();
     });
+  });
 
-    it('job list --json (contains one scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(1);
-        response[0].name.should.equal('foobar');
-        response[0].status.should.equal('disabled');
-        response[0].intervalUnit.should.equal('minute');
-        response[0].intervalPeriod.should.equal(15);
-        checkScopes(scopes);
-        done();
-      });
+  it('job update ' + servicename + ' foobar -u none --json (update scheduled job to be on demand)', function (done) {
+    suite.execute('mobile job update %s foobar -u none --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json (update scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u hour -i 2 -a enabled --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (job updated to be on demand)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('disabled');
+      done();
     });
+  });
 
-    it('job list --json (contains updated scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(1);
-        response[0].name.should.equal('foobar');
-        response[0].status.should.equal('enabled');
-        response[0].intervalUnit.should.equal('hour');
-        response[0].intervalPeriod.should.equal(2);
-        checkScopes(scopes);
-        done();
-      });
+  it('job update ' + servicename + ' foobar -u minute -i 20 --json (update on demand job to have schedule)', function (done) {
+    suite.execute('mobile job update %s foobar -u minute -i 20 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('job update ' + servicename + ' foobar -u none --json (update scheduled job to be on demand)', function(done) {
-      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u none --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (job now a scheduled job)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(1);
+      response[0].name.should.equal('foobar');
+      response[0].status.should.equal('disabled');
+      response[0].intervalUnit.should.equal('minute');
+      response[0].intervalPeriod.should.equal(20);
+      response[0].startTime.should.equal('1900-01-01T00:00:00Z');
+      done();
     });
+  });
 
-    it('job list --json (job updated to be on demand)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(1);
-        response[0].name.should.equal('foobar');
-        response[0].status.should.equal('disabled');
-        checkScopes(scopes);
-        done();
-      });
+  // Disable specific scheduler job
+  it('job update ' + servicename + ' -a disabled --json', function (done) {
+    suite.execute('mobile job update %s foobar -a disabled --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+
+      done();
     });
+  });
 
-    it('job update ' + servicename + ' foobar -u minute -i 20 --json (update on demand job to have schedule)', function(done) {
-      var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -u minute -i 20 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+  it('job delete ' + servicename + ' foobar --json (delete scheduled job)', function (done) {
+    suite.execute('mobile job delete %s foobar --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('job list --json (job now a scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(1);
-        response[0].name.should.equal('foobar');
-        response[0].status.should.equal('disabled');
-        response[0].intervalUnit.should.equal('minute');
-        response[0].intervalPeriod.should.equal(20);
-        response[0].startTime.should.equal('1900-01-01T00:00:00Z');
-        checkScopes(scopes);
-        done();
-      });
+  it('job list --json (contains no scheduled jobs after deletion)', function (done) {
+    suite.execute('mobile job list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(0);
+      done();
     });
+  });
 
-      // Disable specific scheduler job
-    it('job update ' + servicename + ' -a disabled --json', function (done) {
-        var cmd = ('node cli.js mobile job update ' + servicename + ' foobar -a disabled --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('job delete ' + servicename + ' foobar --json (delete scheduled job)', function(done) {
-      var cmd = ('node cli.js mobile job delete ' + servicename + ' foobar --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('job list --json (contains no scheduled jobs after deletion)', function(done) {
-      var cmd = ('node cli.js mobile job list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config list ' + servicename + ' --json (default config)', function(done) {
-      var cmd = ('node cli.js mobile config list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        if (response.service && response.service.applicationSystemKey) {
-          response.service.applicationSystemKey = '';
-        }
-
+  it('config list ' + servicename + ' --json (default config)', function (done) {
+    suite.execute('mobile config list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      if (response.service && response.service.applicationSystemKey) {
+        response.service.applicationSystemKey = '';
+      }
+      if (backend === 'node') {
         response.should.include({
           "apns": {
             "mode": "none"
@@ -534,509 +346,698 @@ describe('cli', function () {
           "auth": [],
           "gcm": {}
         });
-
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Facebook settings
-
-    it('config set ' + servicename + ' facebookClientId 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientId 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' facebookClientId --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientId --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.facebookClientId.should.equal('123');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config set ' + servicename + ' facebookClientSecret 456 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' facebookClientSecret 456 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' facebookClientSecret --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientSecret --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.facebookClientSecret.should.equal('456');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Apple Push Notification
-
-    it('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.apns.should.equal('none');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config set ' + servicename + ' apns dev:foobar:' + __dirname + '/mobile/cert.pfx --json (set apns certificate)', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' apns').split(' ');
-      cmd.push('dev:foobar:' + __dirname + '/mobile/cert.pfx');
-      cmd.push('--json');
-
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' apns --json (apns certificate was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' apns --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.apns.should.equal('dev');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Google Cloud Messaging
-
-    it('config set ' + servicename + ' gcm test-0-gcm-key --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' gcm test-0-gcm-key --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' gcm --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' gcm --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.gcm.should.equal('test-0-gcm-key');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Google Settings
-
-    it('config set ' + servicename + ' googleClientId 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientId 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' googleClientId --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientId --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.googleClientId.should.equal('123');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config set ' + servicename + ' googleClientSecret 456 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' googleClientSecret 456 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' googleClientSecret --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' googleClientSecret --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.googleClientSecret.should.equal('456');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Twitter Settings
-
-    it('config set ' + servicename + ' twitterClientId 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientId 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' twitterClientId --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientId --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.twitterClientId.should.equal('123');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config set ' + servicename + ' twitterClientSecret 456 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' twitterClientSecret 456 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' twitterClientSecret --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' twitterClientSecret --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.twitterClientSecret.should.equal('456');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Cross Domain approved list
-
-    it('config set ' + servicename + ' crossDomainWhitelist localhost --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist localhost --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.crossDomainWhitelist.length.should.equal(1);
+      } else {
         response.should.include({
-          "crossDomainWhitelist": [
-            { host: "localhost" }
-          ]
-        });
+          "service": {
+            "remoteDebuggingEnabled": false,
+            "remoteDebuggingVersion": "VS2012",
+            "previewFeatures": []
+          },
+          "live": {},
+          "auth": [],
+          "apns": {
+            "mode": "none"
+          },
+          "gcm": {}
+        }
+        );
+      }
+      done();
+    });
+  });
 
-        response.crossDomainWhitelist[0].host.should.equal('localhost');
-        checkScopes(scopes);
-        done();
+  // Facebook settings
+  it('config set ' + servicename + ' facebookClientId 123 --json', function (done) {
+    suite.execute('mobile config set %s facebookClientId 123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' facebookClientId --json (value was set)', function (done) {
+    suite.execute('mobile config get %s facebookClientId --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.facebookClientId.should.equal('123');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' facebookClientSecret 456 --json', function (done) {
+    suite.execute('mobile config set %s facebookClientSecret 456 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' facebookClientSecret --json (value was set)', function (done) {
+    suite.execute('mobile config get %s facebookClientSecret --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.facebookClientSecret.should.equal('456');
+      done();
+    });
+  });
+
+  // Apple Push Notification
+  it('config get ' + servicename + ' apns --json (by default apns certificate is not set)', function (done) {
+    suite.execute('mobile config get %s apns --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.apns.should.equal('none');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' apns dev:foobar:' + testArtifactDir + '/cert.pfx --json (set apns certificate)', function (done) {
+    suite.execute('mobile config set %s apns dev:foobar:' + testArtifactDir + '/cert.pfx --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' apns --json (apns certificate was set)', function (done) {
+    suite.execute('mobile config get %s apns --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.apns.should.equal('dev');
+      done();
+    });
+  });
+
+  // Google Cloud Messaging
+  it('config set ' + servicename + ' gcm test-0-gcm-key --json', function (done) {
+    suite.execute('mobile config set %s gcm test-0-gcm-key --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' gcm --json (value was set)', function (done) {
+    suite.execute('mobile config get %s gcm --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.gcm.should.equal('test-0-gcm-key');
+      done();
+    });
+  });
+
+  // Google Settings
+  it('config set ' + servicename + ' googleClientId 123 --json', function (done) {
+    suite.execute('mobile config set %s googleClientId 123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' googleClientId --json (value was set)', function (done) {
+    suite.execute('mobile config get %s googleClientId --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.googleClientId.should.equal('123');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' googleClientSecret 456 --json', function (done) {
+    suite.execute('mobile config set %s googleClientSecret 456 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' googleClientSecret --json (value was set)', function (done) {
+    suite.execute('mobile config get %s googleClientSecret --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.googleClientSecret.should.equal('456');
+      done();
+    });
+  });
+
+  // Twitter Settings
+  it('config set ' + servicename + ' twitterClientId 123 --json', function (done) {
+    suite.execute('mobile config set %s twitterClientId 123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' twitterClientId --json (value was set)', function (done) {
+    suite.execute('mobile config get %s twitterClientId --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.twitterClientId.should.equal('123');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' twitterClientSecret 456 --json', function (done) {
+    suite.execute('mobile config set %s twitterClientSecret 456 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' twitterClientSecret --json (value was set)', function (done) {
+    suite.execute('mobile config get %s twitterClientSecret --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.twitterClientSecret.should.equal('456');
+      done();
+    });
+  });
+
+  // Cross Domain approved list
+  it('config set ' + servicename + ' crossDomainWhitelist localhost --json', function (done) {
+    suite.execute('mobile config set %s crossDomainWhitelist localhost --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function (done) {
+    suite.execute('mobile config get %s crossDomainWhitelist --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.crossDomainWhitelist.length.should.equal(1);
+      response.should.include({
+        "crossDomainWhitelist": [
+          { host: "localhost" }
+        ]
       });
-    });
 
-   it('config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
+      response.crossDomainWhitelist[0].host.should.equal('localhost');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' crossDomainWhitelist test.com,127.0.0.1 --json', function (done) {
+    suite.execute('mobile config set %s crossDomainWhitelist test.com,127.0.0.1 --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function (done) {
+    suite.execute('mobile config get %s crossDomainWhitelist --json', servicename, function (result) {
+      result.errorText.should.equal('');
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.crossDomainWhitelist.length.should.equal(2);
+      response.should.include({
+        "crossDomainWhitelist": [
+          { host: "test.com" },
+          { host: "127.0.0.1" }
+        ]
       });
+
+      done();
     });
+  });
 
-    it('config get ' + servicename + ' crossDomainWhitelist --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' crossDomainWhitelist --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.errorText.should.equal('');
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.crossDomainWhitelist.length.should.equal(2);
-        response.should.include({
-          "crossDomainWhitelist": [
-            { host: "test.com" },
-            { host: "127.0.0.1" }
-          ]
-        });
+  // Microsoft (Live) Settings
+  it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function (done) {
+    var cmd = ('mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
+    suite.execute(cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
 
-        checkScopes(scopes);
-        done();
+  it('config get ' + servicename + ' microsoftAccountClientId --json (value was set)', function (done) {
+    suite.execute('mobile config get %s microsoftAccountClientId --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.microsoftAccountClientId.should.equal('123');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' microsoftAccountClientSecret 123 --json', function (done) {
+    suite.execute('mobile config set %s microsoftAccountClientSecret 123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' microsoftAccountClientSecret --json (value was set)', function (done) {
+    suite.execute('mobile config get %s microsoftAccountClientSecret --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.microsoftAccountClientSecret.should.equal('123');
+      done();
+    });
+  });
+
+  it('config set ' + servicename + ' microsoftAccountPackageSID 123 --json', function (done) {
+    suite.execute('mobile config set %s microsoftAccountPackageSID 123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' microsoftAccountPackageSID --json (value was set)', function (done) {
+    suite.execute('mobile config get %s microsoftAccountPackageSID --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.microsoftAccountPackageSID.should.equal('123');
+      done();
+    });
+  });
+
+  // Setting from file
+  it('config set -f ' + testArtifactDir + '/facebookClientId.txt ' + servicename + ' facebookClientId --json', function (done) {
+    suite.execute('mobile config set %s facebookClientId -f ' + testArtifactDir + '/facebookClientId.txt --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('config get ' + servicename + ' facebookClientId --json (set from file)', function (done) {
+    suite.execute('mobile config get %s facebookClientId --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      fs.readFileSync(testArtifactDir + '/facebookClientId.txt', 'utf8', function (err, data) {
+        if (err) {
+          return console.log(err);
+        }
+        response.facebookClientId.should.equal(data);
       });
+      done();
     });
+  });
 
-    // Microsoft (Live) Settings
+  it('appsetting list ' + servicename + '--json (empty)', function (done) {
+    suite.execute('mobile appsetting list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response).should.be.ok;
+      response.length.should.equal(0);
+      done();
+    });
+  });
 
-    it('config set ' + servicename + ' microsoftAccountClientId 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientId 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
+  it('appsetting add ' + servicename + '  testsetting alpha1 --json', function (done) {
+    suite.execute('mobile appsetting add %s testsetting alpha1 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('appsetting show ' + servicename + '  testsetting --json', function (done) {
+    suite.execute('mobile appsetting show %s testsetting --json', servicename, function (result) {
+      var response = JSON.parse(result.text);
+      response.name.should.equal('testsetting');
+      response.value.should.equal('alpha1');
+      done();
+    });
+  });
+
+  it('appsetting list ' + servicename + '--json (empty)', function (done) {
+    suite.execute('mobile appsetting list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response).should.be.ok;
+      response.length.should.equal(1);
+      done();
+    });
+  });
+
+  it('appsetting delete ' + servicename + '  testsetting alpha1 --json', function (done) {
+    suite.execute('mobile appsetting delete %s testsetting --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('appsetting list ' + servicename + ' --json (empty)', function (done) {
+    suite.execute('mobile appsetting list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response).should.be.ok;
+      response.length.should.equal(0);
+      done();
+    });
+  });
+
+  // Auth commands
+  it('auth microsoftaccount set ' + servicename + ' 123 456 --packageSid 789 --json', function (done) {
+    suite.execute('mobile auth microsoftaccount set %s 123 456 --packageSid 789 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount get ' + servicename + ' --json (123 456 789)', function (done) {
+    suite.execute('mobile auth microsoftaccount get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('microsoft');
+      response.appId.should.equal('123');
+      response.secret.should.equal('456');
+      response.packageSid.should.equal('789');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount set ' + servicename + ' 1234 5678 --json', function (done) {
+    var cmd = ('mobile auth microsoftaccount set ' + servicename + ' 1234 5678 --json').split(' ');
+
+    suite.execute(cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+
+      done();
+    });
+  });
+
+  it('auth microsoftaccount get ' + servicename + ' --json (1234 5678 789)', function (done) {
+    suite.execute('mobile auth microsoftaccount get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('microsoft');
+      response.appId.should.equal('1234');
+      response.secret.should.equal('5678');
+      response.packageSid.should.equal('789');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount set ' + servicename + ' --packageSid 123456789 --json', function (done) {
+    suite.execute('mobile auth microsoftaccount set %s --packageSid 123456789 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount get ' + servicename + ' --json (1234 5678 123456789)', function (done) {
+    suite.execute('mobile auth microsoftaccount get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('microsoft');
+      response.appId.should.equal('1234');
+      response.secret.should.equal('5678');
+      response.packageSid.should.equal('123456789');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth microsoftaccount delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth microsoftaccount get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth microsoftaccount get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      // result.text.should.equal('{}\n');
+      done();
+    });
+  });
+
+  it('auth facebook set ' + servicename + ' 1234 5678 --json', function (done) {
+    suite.execute('mobile auth facebook set %s 1234 5678 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth facebook get ' + servicename + ' --json (1234 5678)', function (done) {
+    suite.execute('mobile auth facebook get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('facebook');
+      response.appId.should.equal('1234');
+      response.secret.should.equal('5678');
+      done();
+    });
+  });
+
+  it('auth facebook delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth facebook delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth facebook get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth facebook get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+      done();
+    });
+  });
+
+  it('auth twitter set ' + servicename + ' 12345 6789 --json', function (done) {
+    suite.execute('mobile auth twitter set %s 12345 6789 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth twitter get ' + servicename + ' --json (12345 6789)', function (done) {
+    suite.execute('mobile auth twitter get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('twitter');
+      response.appId.should.equal('12345');
+      response.secret.should.equal('6789');
+      done();
+    });
+  });
+
+  it('auth twitter delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth twitter delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth twitter get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth twitter get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+      done();
+    });
+  });
+
+  it('auth google set ' + servicename + ' 45678 9123 --json', function (done) {
+    suite.execute('mobile auth google set %s 45678 9123 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth google get ' + servicename + ' --json (45678 9123)', function (done) {
+    suite.execute('mobile auth google get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('google');
+      response.appId.should.equal('45678');
+      response.secret.should.equal('9123');
+      done();
+    });
+  });
+
+  it('auth google delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth google delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth google get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth google get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+      done();
+    });
+  });
+
+  it('auth aad set ' + servicename + ' 123456789 --json', function (done) {
+    suite.execute('mobile auth aad set %s 123456789 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth aad get ' + servicename + ' --json (123456789)', function (done) {
+    suite.execute('mobile auth aad get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.provider.should.equal('aad');
+      response.appId.should.equal('123456789');
+      done();
+    });
+  });
+
+  it('auth aad delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth aad delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('auth aad get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth aad get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+      done();
+    });
+  });
+
+  // Push settings
+  it('push nh enable ' + servicename + ' --json', function (done) {
+    suite.execute('mobile push nh enable %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      done();
+    });
+  });
+
+  it('push nh get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile push nh get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.enableExternalPushEntity.should.equal(true);
+      response.externalPushEntitySettingsPropertyBag.externalPushEntityState.should.equal('healthy');
+      done();
+    });
+  });
+
+  it('push mpns set ' + servicename + ' ' + testArtifactDir + '/cert.pfx foobar --enableUnAuthenticatedPush --json', function (done) {
+    suite.execute('mobile push mpns set %s ' + testArtifactDir + '/cert.pfx foobar --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      done();
+    });
+  });
+
+  it('push mpns get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile push mpns get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.certificateKey.should.equal('foobar');
+      response.enableUnauthenticatedSettings.should.equal(true);
+      done();
+    });
+  });
+
+  it('push mpns delete ' + servicename + ' --json', function (done) {
+    suite.execute('mobile push mpns delete %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      done();
+    });
+  });
+
+  it('push mpns get ' + servicename + ' --json', function (done) {
+    suite.execute('mobile push mpns get %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.enableUnauthenticatedSettings.should.equal(false);
+      done();
+    });
+  });
+
+  it('push nh disable ' + servicename + ' --json', function (done) {
+      suite.execute('mobile push nh disable %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
       });
-    });
+  });
 
-    it('config get ' + servicename + ' microsoftAccountClientId --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientId --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.microsoftAccountClientId.should.equal('123');
-        checkScopes(scopes);
-        done();
+  it('push nh get ' + servicename + ' --json (disabled)', function (done) {
+      suite.execute('mobile push nh get %s --json', servicename, function (result) {
+          result.exitStatus.should.equal(0);
+          var response = JSON.parse(result.text);
+          JSON.stringify(response.externalPushEntitySettingsPropertyBag).should.equal('{}');
+          done();
       });
-    });
+  });
 
-    it('config set ' + servicename + ' microsoftAccountClientSecret 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountClientSecret 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' microsoftAccountClientSecret --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountClientSecret --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.microsoftAccountClientSecret.should.equal('123');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config set ' + servicename + ' microsoftAccountPackageSID 123 --json', function(done) {
-      var cmd = ('node cli.js mobile config set ' + servicename + ' microsoftAccountPackageSID 123 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('config get ' + servicename + ' microsoftAccountPackageSID --json (value was set)', function(done) {
-      var cmd = ('node cli.js mobile config get ' + servicename + ' microsoftAccountPackageSID --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.microsoftAccountPackageSID.should.equal('123');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Setting from file
-
-    it('config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json', function(done) {
-        var cmd = ('node cli.js mobile config set -f ' + __dirname + '/mobile/facebookClientId.txt ' + servicename + ' facebookClientId --json').split(' ');
-        var scopes = setupNock(cmd);
-    executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-    });
-    });
-
-    it('config get ' + servicename + ' facebookClientId --json (set from file)', function (done) {
-        var cmd = ('node cli.js mobile config get ' + servicename + ' facebookClientId --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            fs.readFileSync(__dirname + '/mobile/facebookClientId.txt', 'utf8', function (err, data) {
-                if (err) {
-                    return console.log(err);
-                }
-                response.facebookClientId.should.equal(data);
-            });
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('appsetting list ' + servicename + '--json (empty)', function(done) {
-      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  // Table commands
+  it('table list ' + servicename + ' --json (no tables by default)', function (done) {
+    suite.execute('mobile table list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response).should.be.ok;
         response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('appsetting add ' + servicename + '  testsetting alpha1 --json', function(done) {
-      var cmd = ('node cli.js mobile appsetting add ' + servicename + ' testsetting alpha1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table create ' + servicename + ' table1 --json (add first table)', function (done) {
+    suite.execute('mobile table create %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('appsetting show ' + servicename + '  testsetting --json', function(done) {
-      var cmd = ('node cli.js mobile appsetting show ' + servicename + ' testsetting --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        var response = JSON.parse(result.text);
-        response.name.should.equal('testsetting');
-        response.value.should.equal('alpha1');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('appsetting list ' + servicename + '--json (empty)', function(done) {
-      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        Array.isArray(response).should.be.ok;
-        response.length.should.equal(1);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('appsetting delete ' + servicename + '  testsetting alpha1 --json', function(done) {
-      var cmd = ('node cli.js mobile appsetting delete ' + servicename + ' testsetting --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('appsetting list ' + servicename + '--json (empty)', function(done) {
-      var cmd = ('node cli.js mobile appsetting list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        Array.isArray(response).should.be.ok;
-        response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    // Table commands
-
-    it('table list ' + servicename + ' --json (no tables by default)', function(done) {
-      var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        Array.isArray(response).should.be.ok;
-        response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('table create ' + servicename + ' table1 --json (add first table)', function(done) {
-      var cmd = ('node cli.js mobile table create ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('table list ' + servicename + ' --json (contains one table)', function(done) {
-      var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table list ' + servicename + ' --json (contains one table)', function (done) {
+    suite.execute('mobile table list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response).should.be.ok;
         response.length.should.equal(1);
         response[0].name.should.equal('table1');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('table show ' + servicename + ' table1 --json (default table config)', function(done) {
-      var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table show ' + servicename + ' table1 --json (default table config)', function (done) {
+    suite.execute('mobile table show %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         ['insert', 'read', 'update', 'delete'].forEach(function (permission) {
@@ -1047,26 +1048,30 @@ describe('cli', function () {
         response.columns.length.should.equal(4);
         response.columns[0].name.should.equal('id');
         response.columns[0].type.should.equal('string');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table1 or mobile service ' + servicename + ' does not exist');
+      }
+      done();
     });
+  });
 
-    it('table update ' + servicename + ' table1 -p *=admin,insert=public --json (update permissions)', function(done) {
-      var cmd = ('node cli.js mobile table update ' + servicename + ' table1 -p *=admin,insert=public --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table update ' + servicename + ' table1 -p *=admin,insert=public --json (update permissions)', function (done) {
+    suite.execute('mobile table update %s table1 -p *=admin,insert=public --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Not all update operations completed successfully');
+      }
+      done();
     });
+  });
 
-    it('table show ' + servicename + ' table1 --json (updated permissions)', function(done) {
-      var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table show ' + servicename + ' table1 --json (updated permissions)', function (done) {
+    suite.execute('mobile table show %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         ['read', 'update', 'delete'].forEach(function (permission) {
@@ -1077,371 +1082,427 @@ describe('cli', function () {
         Array.isArray(response.columns).should.be.ok;
         response.columns.length.should.equal(4);
         response.columns[0].name.should.equal('id');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('table create ' + servicename + ' table2 --json (add table with specific permission)', function (done) {
-        var cmd = ('node cli.js mobile table create -p insert=public,update=public,read=user,delete=admin ' + servicename + ' table2 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('table show ' + servicename + ' table2 --json (check the specific permission setting)', function (done) {
-        var cmd = ('node cli.js mobile table show ' + servicename + ' table2 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            ['insert', 'update'].forEach(function (permission) {
-                response.permissions[permission].should.equal('public');
-            });
-            response.permissions.read.should.equal('user');
-            response.permissions.delete.should.equal('admin');
-            response.table.name.should.equal('table2');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('table delete ' + servicename + ' table2 -q --json (delete table2)', function (done) {
-        var cmd = ('node cli.js mobile table delete ' + servicename + ' table2 -q --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.text.should.equal('');
-            result.exitStatus.should.equal(0);
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    function insert5Rows(callback) {
-      var success = 0;
-      var failure = 0;
-
-      function tryFinish (error, content, response) {
-        if(error) {
-          failure++;
-        } else {
-          response.statusCode >= 400 ? failure++ : success++;
-        }
-
-        if ((success + failure) < 5) {
-          return;
-        }
-
-        callback(success, failure);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table1 or mobile service ' + servicename + ' does not exist');
       }
-
-      for (var i = 0; i < 5; i++) {
-        var channel = new Channel({
-          host: servicename + servicedomain,
-          port: 443
-        }).path('tables')
-          .path('table1')
-          .header('Content-Type', 'application/json');
-
-        channel.POST(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
-      }
-    };
-
-    it('(add 5 rows of data to table with public insert permission)', function(done) {
-      var scopes = setupNock([]);
-      insert5Rows(function (success, failure) {
-        failure.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+      done();
     });
+  });
 
-    it('table show ' + servicename + ' table1 --json (new rows and columns)', function(done) {
-      var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table create ' + servicename + ' table2 --json (add table with specific permission)', function (done) {
+    suite.execute('mobile table create -p insert=public,update=public,read=user,delete=admin %s table2 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  it('table show ' + servicename + ' table2 --json (check the specific permission setting)', function (done) {
+    suite.execute('mobile table show %s table2 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.table.metrics.recordCount.should.equal(5);
+        ['insert', 'update'].forEach(function (permission) {
+          response.permissions[permission].should.equal('public');
+        });
+        response.permissions.read.should.equal('user');
+        response.permissions.delete.should.equal('admin');
+        response.table.name.should.equal('table2');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table2 or mobile service ' + servicename + ' does not exist');
+      }
+      done();
+    });
+  });
+
+  it('table delete ' + servicename + ' table2 -q --json (delete table2)', function (done) {
+    suite.execute('mobile table delete %s table2 -q --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  function getWebResource(uri) {
+    var httpRequest = new WebResource();
+
+    httpRequest.uri = uri;
+    return httpRequest;
+  }
+
+  function insert5Rows(callback) {
+    var success = 0;
+    var failure = 0;
+
+    function tryFinish(error, content, response) {
+      if (error) {
+        failure++;
+      } else {
+        response.statusCode >= 400 ? failure++ : success++;
+      }
+
+      if ((success + failure) < 5) {
+        return;
+      }
+
+      callback(success, failure);
+    }
+
+    for (var i = 0; i < 5; i++) {
+      var resource = getWebResource('http://' + servicename + servicedomain);
+      var client = azureCommon.requestPipeline.create(
+          utils.createPostBodyFilter(),
+          utils.createFollowRedirectFilter(),
+          utils.createFollowRedirectFilter());
+      var channel = new PipelineChannel(client, resource)
+          .path('tables')
+          .path('table1')
+          .header('Content-Type', 'application/json');
+      channel.post(JSON.stringify({ rowNumber: i, foo: 'foo', bar: 7, baz: true }), tryFinish);
+    }
+  };
+
+  it('(add 5 rows of data to table with public insert permission)', function (done) {
+    if (backend === 'node') {
+      insert5Rows(function (success, failure) {
+        failure.should.equal(0);
+        done();
+      });
+    } else {
+      done();
+    }
+  });
+
+  it('table show ' + servicename + ' table1 --json (new rows and columns)', function (done) {
+    suite.execute('mobile table show %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
         Array.isArray(response.columns).should.be.ok;
         response.columns.length.should.equal(8);
-        [ { name: 'id', indexed: true },
+        [{ name: 'id', indexed: true },
           { name: '__createdAt', indexed: true },
           { name: '__updatedAt', indexed: false },
           { name: '__version', indexed: false },
           { name: 'rowNumber', indexed: false },
           { name: 'foo', indexed: false },
           { name: 'bar', indexed: false },
-          { name: 'baz', indexed: false } ].forEach(function (column, columnIndex) {
+          { name: 'baz', indexed: false }].forEach(function (column, columnIndex) {
             response.columns[columnIndex].name.should.equal(column.name);
             response.columns[columnIndex].indexed.should.equal(column.indexed);
           });
-        checkScopes(scopes);
-        done();
-      });
-    });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table1 or mobile service ' + servicename + ' does not exist');
+      }
 
-    it('data read ' + servicename + ' table1 --json (show 5 rows of data)', function(done) {
-      var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+      done();
+    });
+  });
+
+  it('data read ' + servicename + ' table1 --json (show 5 rows of data)', function (done) {
+    suite.execute('mobile data read %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         knownRecords = JSON.parse(result.text);
         Array.isArray(knownRecords).should.be.ok;
         knownRecords.length.should.equal(5);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('data read ' + servicename + ' table1 --top 1 --json (show top 1 row of data)', function(done) {
-      var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --top 1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('data read ' + servicename + ' table1 --top 1 --json (show top 1 row of data)', function (done) {
+    suite.execute('mobile data read %s table1 --top 1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response).should.be.ok;
         response.length.should.equal(1);
         response[0].id.should.equal(knownRecords[0].id);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('data read ' + servicename + ' table1 --skip 3 --json', function (done) {
-        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 --skip 3 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response).should.be.ok;
-            response.length.should.equal(2);
-            response[0].id.should.equal(knownRecords[3].id);
-            response[1].id.should.equal(knownRecords[4].id);
-            checkScopes(scopes);
-            done();
-        })
+  it('data read ' + servicename + ' table1 --skip 3 --json', function (done) {
+    suite.execute('node clis.js mobile data read %s table1 --skip 3 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(2);
+        response[0].id.should.equal(knownRecords[3].id);
+        response[1].id.should.equal(knownRecords[4].id);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    })
+  });
+
+  it('data read ' + servicename + ' table1 --skip 2 --top 2 --json (skip top 2 row of data to show following 2 records)', function (done) {
+    suite.execute('mobile data read %s table1 --skip 2 --top 2 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(2);
+        response[0].id.should.equal(knownRecords[2].id);
+        response[1].id.should.equal(knownRecords[3].id);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('data read ' + servicename + ' table1 --skip 2 --top 2 --json (skip top 2 row of data to show following 2 records)', function (done) {
-        var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --skip 2 --top 2 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response).should.be.ok;
-            response.length.should.equal(2);
-            response[0].id.should.equal(knownRecords[2].id);
-            response[1].id.should.equal(knownRecords[3].id);
-            checkScopes(scopes);
-            done();
-        });
-    });
+  it('data read ' + servicename + ' table1 $top=2 --json', function (done) {
+    suite.execute('node clis.js mobile data read %s table1 $top=2 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response).should.be.ok;
+        response.length.should.equal(2);
+        response[0].id.should.equal(knownRecords[0].id);
+        response[1].id.should.equal(knownRecords[1].id);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    })
+  });
 
-    it('data read ' + servicename + ' table1 $top=2 --json', function (done) {
-        var cmd = ('node clis.js mobile data read ' + servicename + ' table1 $top=2 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response).should.be.ok;
-            response.length.should.equal(2);
-            response[0].id.should.equal(knownRecords[0].id);
-            response[1].id.should.equal(knownRecords[1].id);
-            checkScopes(scopes);
-            done();
-        })
-    });
-
-    it('table update ' + servicename + ' table1 --deleteColumn foo --addIndex bar,baz -q --json (delete column, add indexes)', function(done) {
-      var cmd = ('node cli.js mobile table update ' + servicename + ' table1  --deleteColumn foo --addIndex bar,baz -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table update ' + servicename + ' table1 --deleteColumn foo --addIndex bar,baz -q --json (delete column, add indexes)', function (done) {
+    suite.execute('mobile table update %s table1  --deleteColumn foo --addIndex bar,baz -q --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Not all update operations completed successfully');
+      }
+      done();
     });
+  });
 
-    it('table show ' + servicename + ' table1 --json (fewer columns, more indexes)', function(done) {
-      var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table show ' + servicename + ' table1 --json (fewer columns, more indexes)', function (done) {
+    suite.execute('mobile table show %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.columns).should.be.ok;
         response.columns.length.should.equal(7);
-        [ { name: 'id', indexed: true },
+        [{ name: 'id', indexed: true },
           { name: '__createdAt', indexed: true },
           { name: '__updatedAt', indexed: false },
           { name: '__version', indexed: false },
           { name: 'rowNumber', indexed: false },
           { name: 'bar', indexed: true },
-          { name: 'baz', indexed: true } ].forEach(function (column, columnIndex) {
+          { name: 'baz', indexed: true }].forEach(function (column, columnIndex) {
             response.columns[columnIndex].name.should.equal(column.name);
             response.columns[columnIndex].indexed.should.equal(column.indexed);
           });
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table1 or mobile service ' + servicename + ' does not exist');
+      }
+      done();
     });
+  });
 
-    it('table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json (delete index)', function (done) {
-        var cmd = ('node cli.js mobile table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('table show ' + servicename + ' table1 --json (remove index on specific column)', function (done) {
-        var cmd = ('node cli.js mobile table show ' + servicename + ' table1 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.columns).should.be.ok;
-            response.columns.length.should.equal(8);
-            [{ name: 'id', indexed: true },
-              { name: '__createdAt', indexed: true },
-              { name: '__updatedAt', indexed: false },
-              { name: '__version', indexed: false },
-              { name: 'rowNumber', indexed: false },
-              { name: 'bar', indexed: false },
-              { name: 'baz', indexed: true },
-              { name: 'custom', indexed: false }].forEach(function (column, columnIndex) {
-                  response.columns[columnIndex].name.should.equal(column.name);
-                  response.columns[columnIndex].indexed.should.equal(column.indexed);
-              });
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('data delete ' + servicename + ' table1 <recordid> -q --json (delete a record)', function(done) {
-      var cmd = ('node cli.js mobile data delete ' + servicename + ' table1 ' + knownRecords[0].id + ' -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table update ' + servicename + ' table1 --deleteIndex bar --addColumn custom=string -q --json (delete index)', function (done) {
+    suite.execute('mobile table update %s table1 --deleteIndex bar --addColumn custom=string -q --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+        result.text.should.equal('');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Not all update operations completed successfully');
+      }
+      done();
     });
+  });
 
-    it('data read ' + servicename + ' table1 --json (show 4 rows of data)', function(done) {
-      var cmd = ('node cli.js mobile data read ' + servicename + ' table1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table show ' + servicename + ' table1 --json (remove index on specific column)', function (done) {
+    suite.execute('mobile table show %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.columns).should.be.ok;
+        response.columns.length.should.equal(8);
+        [{ name: 'id', indexed: true },
+          { name: '__createdAt', indexed: true },
+          { name: '__updatedAt', indexed: false },
+          { name: '__version', indexed: false },
+          { name: 'rowNumber', indexed: false },
+          { name: 'bar', indexed: false },
+          { name: 'baz', indexed: true },
+          { name: 'custom', indexed: false }].forEach(function (column, columnIndex) {
+            response.columns[columnIndex].name.should.equal(column.name);
+            response.columns[columnIndex].indexed.should.equal(column.indexed);
+          });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table1 or mobile service ' + servicename + ' does not exist');
+      }
+      done();
+    });
+  });
+
+  it('data delete ' + servicename + ' table1 <recordid> -q --json (delete a record)', function (done) {
+    suite.execute('mobile data delete %s table1 %s -q --json', servicename, knownRecords[0].id, function (result) {
+      if (backend === 'node') {
+        result.exitStatus.should.equal(0);
+
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  it('data read ' + servicename + ' table1 --json (show 4 rows of data)', function (done) {
+    suite.execute('mobile data read %s table1 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         knownRecords = JSON.parse(result.text);
         Array.isArray(knownRecords).should.be.ok;
         knownRecords.length.should.equal(4);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function(done) {
-      var cmd = ('node cli.js mobile data truncate ' + servicename + ' table1 -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('data truncate ' + servicename + ' table1 -q --json (delete all data from table)', function (done) {
+    suite.execute('mobile data truncate %s table1 -q --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.didTruncate.should.equal(true);
         response.rowCount.should.equal(4);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    // Verify we can create old style tables
-
-    it('table create ' + servicename + ' table3 --integerId --json', function(done) {
-      var cmd = ('node cli.js mobile table create ' + servicename + ' table3 --integerId --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  // Verify we can create old style tables
+  it('table create ' + servicename + ' table3 --integerId --json', function (done) {
+    suite.execute('mobile table create %s table3 --integerId --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('table show ' + servicename + ' table3 --json (fewer columns, more indexes)', function(done) {
-      var cmd = ('node cli.js mobile table show ' + servicename + ' table3 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table show ' + servicename + ' table3 --json (fewer columns, more indexes)', function (done) {
+    suite.execute('mobile table show %s table3 --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.columns).should.be.ok;
         response.columns[0].name.should.equal('id');
         response.columns[0].indexed.should.equal(true);
         response.columns[0].type.should.equal('bigint (MSSQL)');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('Table table3 or mobile service ' + servicename + ' does not exist');
+      }
+      done();
     });
+  });
 
-    it('table delete ' + servicename + ' table3 -q --json (delete table3)', function (done) {
-        var cmd = ('node cli.js mobile table delete ' + servicename + ' table3 -q --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.text.should.equal('');
-            result.exitStatus.should.equal(0);
-            checkScopes(scopes);
-            done();
-        });
+  it('table delete ' + servicename + ' table3 -q --json (delete table3)', function (done) {
+    suite.execute('mobile table delete %s table3 -q --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    /* Custom Api */
-
-    it('api list ' + servicename + ' --json (no apis by default)', function (done) {
-      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  //Custom Api
+  it('api list ' + servicename + ' --json (no apis by default)', function (done) {
+    suite.execute('mobile api list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('api create ' + servicename + ' testapi --json (create first api)', function (done) {
-      var cmd = ('node cli.js mobile api create ' + servicename + ' testapi --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('api create ' + servicename + ' testapi --json (create first api)', function (done) {
+    suite.execute('mobile api create %s testapi --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('api create ' + servicename + ' testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json', function (done) {
-      var cmd = ('node cli.js mobile api create ' + servicename + ' testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('api create ' + servicename + ' testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json', function (done) {
+    suite.execute('mobile api create %s testapitwo --permissions get=public,post=application,put=user,patch=admin,delete=admin --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    // Confirm apis were created
-    it('api list ' + servicename + ' --json', function (done) {
-      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  // Confirm apis were created
+  it('api list ' + servicename + ' --json', function (done) {
+    suite.execute('mobile api list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
 
@@ -1461,38 +1522,44 @@ describe('cli', function () {
           patch: 'admin',
           delete: 'admin'
         });
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('api update ' + servicename + ' testapi --json', function (done) {
-      var cmd = ('node cli.js mobile api update ' + servicename + ' testapi --permissions get=public,post=application,put=user,patch=admin,delete=admin --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('api update ' + servicename + ' testapi --json', function (done) {
+    suite.execute('mobile api update %s testapi --permissions get=public,post=application,put=user,patch=admin,delete=admin --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('api delete ' + servicename + ' testapitwo --json', function (done) {
-      var cmd = ('node cli.js mobile api delete ' + servicename + ' testapitwo --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('api delete ' + servicename + ' testapitwo --json', function (done) {
+    suite.execute('mobile api delete %s testapitwo --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    // Confirm permissions were updated and second api deleted
-    it('api list ' + servicename + ' --json', function (done) {
-      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  // Confirm permissions were updated and second api deleted
+  it('api list ' + servicename + ' --json', function (done) {
+    suite.execute('mobile api list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.should.includeEql({
@@ -1503,723 +1570,743 @@ describe('cli', function () {
           patch: 'admin',
           delete: 'admin'
         });
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('script upload ' + servicename + ' api/testapi.js -f ' + __dirname + '/mobile/testapi.js --json (upload new script)', function(done) {
-      var cmd = ('node cli.js mobile script upload ' + servicename + ' api/testapi.js -f').split(' ');
-      cmd.push(__dirname + '/mobile/testapi.js');
-      cmd.push('--json');
-
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('script upload ' + servicename + ' api/testapi.js -f ' + testArtifactDir + '/testapi.js --json (upload new script)', function (done) {
+    suite.execute('mobile script upload %s api/testapi.js -f ' + testArtifactDir + '/testapi.js --json', servicename, function (result) {
+      if (backend === 'node') {
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('script download ' + servicename + ' api/testapi.js -o -f ' + __dirname + '/mobile/testapicopy.js --json (download script)', function(done) {
-      var cmd = ('node cli.js mobile script download ' + servicename + ' api/testapi.js -o -f').split(' ');
-      cmd.push(__dirname + '/mobile/testapicopy.js');
-      cmd.push('--json');
-
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        try { fs.unlinkSync(__dirname + '/mobile/testapicopy.js'); } catch (e) {}
+  it('script download ' + servicename + ' api/testapi.js -o -f ' + testArtifactDir + '/testapicopy.js --json (download script)', function (done) {
+    suite.execute('mobile script download %s api/testapi.js -o -f ' + testArtifactDir + '/testapicopy.js --json', servicename, testArtifactDir, function (result) {
+      if (backend === 'node') {
+        try { fs.unlinkSync(testArtifactDir + '/testapicopy.js'); } catch (e) { }
 
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('api delete ' + servicename + ' testapi --json', function (done) {
-      var cmd = ('node cli.js mobile api delete ' + servicename + ' testapi --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('api delete ' + servicename + ' testapi --json', function (done) {
+    suite.execute('mobile api delete %s testapi --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    // Confirm no api's exist after delete
-    it('api list ' + servicename + ' --json', function (done) {
-      var cmd = ('node cli.js mobile api list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  // Confirm no api's exist after delete
+  it('api list ' + servicename + ' --json', function (done) {
+    suite.execute('mobile api list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    /* script commands */
-
-    it('script list ' + servicename + ' --json (no scripts by default)', function(done) {
-      var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  //script commands
+  it('script list ' + servicename + ' --json (no scripts by default)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script list %s --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.should.include({
           "table": []
         });
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('script upload ' + servicename + ' table/table1.insert -f ' + __dirname + '/mobile/table1.insert.js --json (upload one script)', function(done) {
-      var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.insert -f').split(' ');
-      cmd.push(__dirname + '/mobile/table1.insert.js');
-      cmd.push('--json');
-
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('script upload ' + servicename + ' table/table1.insert -f ' + testArtifactDir + '/table1.insert.js --json (upload one script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script upload %s table/table1.insert -f ' + testArtifactDir + '/table1.insert.js --json', servicename, function (result) {
         result.errorText.should.equal('');
         result.exitStatus.should.equal(0);
         result.text.should.equal('');
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('script upload ' + servicename + ' table/table1.read -f ' + __dirname + '/mobile/table1.read.js --json (upload one script)', function (done) {
-        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.read -f').split(' ');
-        cmd.push(__dirname + '/mobile/table1.read.js');
-        cmd.push('--json');
+  it('script upload ' + servicename + ' table/table1.read -f ' + testArtifactDir + '/table1.read.js --json (upload one script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script upload %s table/table1.read -f ' + testArtifactDir + '/table1.read.js --json', servicename, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.errorText.should.equal('');
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
+  it('script upload ' + servicename + ' table/table1.update -f ' + testArtifactDir + '/table1.update.js --json (upload one script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script upload %s table/table1.update -f ' + testArtifactDir + '/table1.update.js --json', servicename, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-    it('script upload ' + servicename + ' table/table1.update -f ' + __dirname + '/mobile/table1.update.js --json (upload one script)', function (done) {
-        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.update -f').split(' ');
-        cmd.push(__dirname + '/mobile/table1.update.js');
-        cmd.push('--json');
+  it('script upload ' + servicename + ' table/table1.delete -f ' + testArtifactDir + '/table1.delete.js --json (upload one script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script upload %s table/table1.delete -f ' + testArtifactDir + '/table1.delete.js --json', servicename, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.errorText.should.equal('');
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('script upload ' + servicename + ' table/table1.delete -f ' + __dirname + '/mobile/table1.delete.js --json (upload one script)', function (done) {
-        var cmd = ('node cli.js mobile script upload ' + servicename + ' table/table1.delete -f').split(' ');
-        cmd.push(__dirname + '/mobile/table1.delete.js');
-        cmd.push('--json');
-
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.errorText.should.equal('');
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('script list ' + servicename + ' --json (insert&read&upload&delete scripts uploaded)', function(done) {
-      var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('script list ' + servicename + ' --json (insert&read&upload&delete scripts uploaded)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script list %s --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.table).should.be.ok;
         response.table.length.should.equal(4);
         response.table.forEach(function (item) {
-            switch (item.operation) {
-                case 'insert':
-                    {
-                        item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Insert');
-                        item.should.have.property('sizeBytes');
-                    }
-                    break;
-                case 'update':
-                    {
-                        item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Update');
-                        item.should.have.property('sizeBytes');
-                    }
-                    break;
-                case 'delete':
-                    {
-                        item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Delete');
-                        item.should.have.property('sizeBytes');
-                    }
-                    break;
-                case 'read':
-                    {
-                        item.table.should.equal('table1');
-                        item.selflink.should.include(servicename + '/tables/table1/scripts/Read');
-                        item.should.have.property('sizeBytes');
-                    }
-                    break;
-                default:
-                    {
-                        false.should.not.be.false;
-                    }
-                    break;
-            }
+          switch (item.operation) {
+            case 'insert':
+              {
+                item.table.should.equal('table1');
+                item.selflink.should.include(servicename + '/repository/service/table/table1.insert.js');
+                item.should.have.property('sizeBytes');
+              }
+              break;
+            case 'update':
+              {
+                item.table.should.equal('table1');
+                item.selflink.should.include(servicename + '/repository/service/table/table1.update.js');
+                item.should.have.property('sizeBytes');
+              }
+              break;
+            case 'delete':
+              {
+                item.table.should.equal('table1');
+                item.selflink.should.include(servicename + '/repository/service/table/table1.delete.js');
+                item.should.have.property('sizeBytes');
+              }
+              break;
+            case 'read':
+              {
+                item.table.should.equal('table1');
+                item.selflink.should.include(servicename + '/repository/service/table/table1.read.js');
+                item.should.have.property('sizeBytes');
+              }
+              break;
+            default:
+              {
+                false.should.not.be.false;
+              }
+              break;
+          }
         });
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('script delete ' + servicename + '/mobile/table1.read.js --json (delete read script)', function (done) {
-        var cmd = ('node cli.js mobile script delete ' + servicename + ' table/table1.read --json').split(' ');
+  it('script delete ' + servicename + '/mobile/table1.read.js --json (delete read script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script delete %s table/table1.read --json', servicename, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.errorText.should.equal('');
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
+  it('script upload ' + servicename + ' shared/apnsFeedback -f ' + testArtifactDir + '/feedback_upload.js --json (upload APNS script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script upload %s shared/apnsFeedback -f ' + testArtifactDir + '/feedback_upload.js --json', servicename, function (result) {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+        done();
+      });
+    } else {
+      done();
+    }
+  });
+
+  it('script download ' + servicename + ' shared/apnsFeedback -f -o ' + testArtifactDir + '/feedback_download.js --json (download APNS script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script download %s shared/apnsFeedback -o -f ' + testArtifactDir + '/feedback_download.js --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        result.errorText.should.equal('');
+        result.text.should.equal('');
+        var data_str = null;
+        fs.readFileSync(testArtifactDir + '/feedback_download.js', 'utf8', function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          data_str = data;
         });
-    });
-
-    it('script upload ' + servicename + ' shared/apnsFeedback -f ' + __dirname + '/mobile/feedback_upload.js --json (upload APNS script)', function (done) {
-        var cmd = ('node cli.js mobile script upload ' + servicename + ' shared/apnsFeedback -f').split(' ');
-        cmd.push(__dirname + '/mobile/feedback_upload.js');
-        cmd.push('--json');
-
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.errorText.should.equal('');
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
+        fs.readFileSync(testArtifactDir + '/feedback_upload.js', 'utf8', function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          data.should.equal(data_str);
         });
-    });
 
-    it('script download ' + servicename + ' shared/apnsFeedback -f -o ' + __dirname + '/mobile/feedback_download.js --json (download APNS script)', function (done) {
-        var cmd = ('node cli.js mobile script download ' + servicename + ' shared/apnsFeedback -o -f').split(' ');
-        cmd.push(__dirname + '/mobile/feedback_download.js');
-        cmd.push('--json');
+        try { fs.unlinkSync(testArtifactDir + '/feedback_download.js'); } catch (e) { }
+        done();
+      });
+    } else {
+      done();
+    }
 
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.errorText.should.equal('');
-            result.text.should.equal('');
-            var data_str = null;
-            fs.readFileSync(__dirname + '/mobile/feedback_download.js', 'utf8', function (err, data) {
-                if (err) {
-                    return console.log(err);
-                }
-                data_str = data;
-            });
-            fs.readFileSync(__dirname + '/mobile/feedback_upload.js', 'utf8', function (err, data) {
-                if (err) {
-                    return console.log(err);
-                }
-                data.should.equal(data_str);
-            });
+  });
 
-            try { fs.unlinkSync(__dirname + '/mobile/feedback_download.js'); } catch (e) {}
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('script list ' + servicename + ' --json (with APNS script but without read script)', function (done) {
-        var cmd = ('node cli.js mobile script list ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.shared).should.be.ok;
-            response.shared.length.should.equal(1);
-            response.shared[0].name.should.equal('apnsfeedback.js');
-
-            Array.isArray(response.table).should.be.ok;
-            response.table.length.should.equal(3);
-            response.table.forEach(function (item) {
-                item.operation.should.not.equal('read');
-            });
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('log ' + servicename + ' --json (no logs by default)', function(done) {
-      var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('script list ' + servicename + ' --json (with APNS script but without read script)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile script list %s --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
-        response.should.include({
-          "results": []
+        Array.isArray(response.shared).should.be.ok;
+        response.shared.length.should.equal(1);
+        response.shared[0].name.toLowerCase().should.equal('apnsfeedback.js');
+
+        Array.isArray(response.table).should.be.ok;
+        response.table.length.should.equal(3);
+        response.table.forEach(function (item) {
+          item.operation.should.not.equal('read');
         });
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('(add 5 more rows of data to invoke scripts)', function(done) {
-      var scopes = setupNock([]);
+  it('log ' + servicename + ' --json (no logs by default)', function (done) {
+    suite.execute('mobile log %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.should.include({
+        "results": []
+      });
+      done();
+    });
+  });
+
+  it('(add 5 more rows of data to invoke scripts)', function (done) {
+    if (backend === 'node') {
       insert5Rows(function (success, failure) {
         failure.should.equal(0);
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --json (15 log entries added)', function(done) {
-      var cmd = ('node cli.js mobile log ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('log ' + servicename + ' --json (15 log entries added)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.results).should.be.ok;
         response.results.length.should.equal(10);
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --type information --json (10 information log entries added)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' --type information --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(10);
-            checkScopes(scopes);
-            done();
-        });
-    });
+  it('log ' + servicename + ' --type information --json (10 information log entries added)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --type information --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(10);
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --type warning --json (no warning log entry)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' --type warning --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(0);
-            checkScopes(scopes);
-            done();
-        });
-    });
+  it('log ' + servicename + ' --type warning --json (no warning log entry)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --type warning --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(0);
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --type error --json (5 error log entries added)', function(done) {
-      var cmd = ('node cli.js mobile log ' + servicename + ' --type error --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('log ' + servicename + ' --type error --json (5 error log entries added)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --type error --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.results).should.be.ok;
         response.results.length.should.equal(5);
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --top 3 --json (list 3 top log entries)', function(done) {
-      var cmd = ('node cli.js mobile log ' + servicename + ' --top 3 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('log ' + servicename + ' --top 3 --json (list 3 top log entries)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --top 3 --json', servicename, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.results).should.be.ok;
         response.results.length.should.equal(3);
-        checkScopes(scopes);
         done();
       });
-    });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' -r $top=1 --json (list 1 top log entry)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(1);
-            checkScopes(scopes);
-            done();
+  it('log ' + servicename + ' -r $top=1 --json (list 1 top log entry)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s -r $top=1 --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(1);
+        done();
+      });
+    } else {
+      done();
+    }
+  });
+
+  it('log ' + servicename + ' -r $top=1&$skip=1 --json (list 1 top log entry after skip 1)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s -r $top=1&$skip=1 --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(1);
+        done();
+      });
+    } else {
+      done();
+    }
+  });
+
+  it('log ' + servicename + ' --source /table/table1.insert.js --json (get logs from specific source)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s --source /table/table1.insert.js --json', servicename, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(10);
+        response.results.forEach(function (item) {
+          item.timeCreated.should.not.be.empty;
+          item.type.should.not.be.empty;
+          item.source.should.not.be.empty;
+          item.message.should.not.be.empty;
         });
-    });
+        response.continuationToken.should.not.be.empty;
+        existingContinuationToken = response.continuationToken;
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' -r $top=1&$skip=1 --json (list 1 top log entry after skip 1)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' -r $top=1&$skip=1 --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(1);
-            checkScopes(scopes);
-            done();
+  it('log ' + servicename + ' -c existingContinuationToken --json (get logs by Continuation Token)', function (done) {
+    if (backend === 'node') {
+      suite.execute('mobile log %s -c %s --json', servicename, existingContinuationToken, function (result) {
+        result.exitStatus.should.equal(0);
+        var response = JSON.parse(result.text);
+        Array.isArray(response.results).should.be.ok;
+        response.results.length.should.equal(5);
+        response.results.forEach(function (item) {
+          item.timeCreated.should.not.be.empty;
+          item.type.should.not.be.empty;
+          item.source.should.not.be.empty;
+          item.message.should.not.be.empty;
         });
-    });
+        done();
+      });
+    }
+    else {
+      done();
+    }
+  });
 
-    it('log ' + servicename + ' --source /table/table1.insert.js --json (get logs from specific source)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' --source /table/table1.insert.js --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(10);
-            response.results.forEach(function (item) {
-                item.timeCreated.should.not.be.empty;
-                item.type.should.not.be.empty;
-                item.source.should.not.be.empty;
-                item.message.should.not.be.empty;
-            });
-            response.continuationToken.should.not.be.empty;
-            existingContinuationToken = response.continuationToken;
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('log ' + servicename + ' -c existingContinuationToken --json (get logs by Continuation Token)', function (done) {
-        var cmd = ('node cli.js mobile log ' + servicename + ' -c ' + existingContinuationToken + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.results).should.be.ok;
-            response.results.length.should.equal(6);
-            response.results.forEach(function (item) {
-                item.timeCreated.should.not.be.empty;
-                item.type.should.not.be.empty;
-                item.source.should.not.be.empty;
-                item.message.should.not.be.empty;
-            });
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('table delete ' + servicename + ' table1 -q --json (delete existing table)', function(done) {
-      var cmd = ('node cli.js mobile table delete ' + servicename + ' table1 -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table delete ' + servicename + ' table1 -q --json (delete existing table)', function (done) {
+    suite.execute('mobile table delete %s table1 -q --json', servicename, function (result) {
+      if (backend === 'node') {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    it('table list ' + servicename + ' --json (no tables after table deletion)', function(done) {
-      var cmd = ('node cli.js mobile table list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('table list ' + servicename + ' --json (no tables after table deletion)', function (done) {
+    suite.execute('mobile table list %s --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response).should.be.ok;
         response.length.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('table delete ' + servicename + ' table1 -q --json (delete nonexisting table)', function(done) {
-      var cmd = ('node cli.js mobile table delete ' + servicename + ' table1 -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+      } else {
         result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  it('table delete ' + servicename + ' table1 -q --json (delete nonexisting table)', function (done) {
+    suite.execute('mobile table delete %s table1 -q --json', servicename, function (result) {
+      result.exitStatus.should.equal(1);
+      if (backend === 'node') {
         result.errorText.should.include('The table \'table1\' was not found');
-        checkScopes(scopes);
-        done();
-      });
+      } else {
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
     });
+  });
 
-    // Key Command Tests
-    // Test setting and randomly generating the application key
-    it('key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json', function (done) {
-      var cmd = ('node cli.js mobile key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.applicationKey.should.equal('LengthOfThirtyLettersAndNumber02');
-        checkScopes(scopes);
-        done();
-      });
+  // Key Command Tests
+  // Test setting and randomly generating the application key
+  it('key set ' + servicename + ' application LengthOfThirtyLettersAndNumber02 --json', function (done) {
+    suite.execute('mobile key set %s application LengthOfThirtyLettersAndNumber02 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.applicationKey.should.equal('LengthOfThirtyLettersAndNumber02');
+      done();
     });
+  });
 
-    it('key regenerate ' + servicename + ' application --json', function (done) {
-      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' application --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.applicationKey.length.should.equal(32);
-        response.applicationKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
-        checkScopes(scopes);
-        done();
-      });
+  it('key regenerate ' + servicename + ' application --json', function (done) {
+    suite.execute('mobile key regenerate %s application --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.applicationKey.length.should.equal(32);
+      response.applicationKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+      done();
     });
+  });
 
-    // Repeat test for master key
-    it('key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json', function (done) {
-      var cmd = ('node cli.js mobile key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.masterKey.should.equal('LengthOfThirtyLettersAndNumber02');
-        checkScopes(scopes);
-        done();
-      });
+  // Repeat test for master key
+  it('key set ' + servicename + ' master LengthOfThirtyLettersAndNumber02 --json', function (done) {
+    suite.execute('mobile key set %s master LengthOfThirtyLettersAndNumber02 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.masterKey.should.equal('LengthOfThirtyLettersAndNumber02');
+      done();
     });
+  });
 
-    it('key regenerate ' + servicename + ' master --json', function (done) {
-      var cmd = ('node cli.js mobile key regenerate ' + servicename + ' master --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.masterKey.length.should.equal(32);
-        response.masterKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
-        checkScopes(scopes);
-        done();
-      });
+  it('key regenerate ' + servicename + ' master --json', function (done) {
+    suite.execute('mobile key regenerate %s master --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.masterKey.length.should.equal(32);
+      response.masterKey.should.not.equal('LengthOfThirtyLettersAndNumber02');
+      done();
     });
+  });
 
-    // Scale Tests
-
-    it('scale show ' + servicename + ' --json (show default scale settings)', function(done) {
-      var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.tier.should.equal('tier1');
-        response.numberOfInstances.should.equal(1);
-        checkScopes(scopes);
-        done();
-      });
+  // Scale Tests
+  it('scale show ' + servicename + ' --json (show default scale settings)', function (done) {
+    suite.execute('mobile scale show %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.tier.should.equal('tier1');
+      response.numberOfInstances.should.equal(1);
+      done();
     });
+  });
 
-    it('scale change ' + servicename + ' -t basic -i 2 --json (rescale to 2 basic instances)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t basic -i 2 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
+  it('scale change ' + servicename + ' -t basic -i 2 --json (rescale to 2 basic instances)', function (done) {
+    suite.execute('mobile scale change %s -t basic -i 2 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
     });
+  });
 
-    it('scale show ' + servicename + ' --json (show updated scale settings)', function(done) {
-      var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.tier.should.equal('tier2');
-        response.numberOfInstances.should.equal(2);
-        checkScopes(scopes);
-        done();
-      });
+  it('scale show ' + servicename + ' --json (show updated scale settings)', function (done) {
+    suite.execute('mobile scale show %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.tier.should.equal('tier2');
+      response.numberOfInstances.should.equal(2);
+      done();
     });
+  });
 
-    it('scale change ' + servicename + ' -t standard --json -q (change scale to standard)', function (done) {
-        var cmd = ('node cli.js mobile scale change ' + servicename + ' -t standard --json -q').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            result.text.should.equal('');
-            checkScopes(scopes);
-            done();
+  it('scale change ' + servicename + ' -t standard --json -q (change scale to standard)', function (done) {
+    suite.execute('mobile scale change %s -t standard --json -q',servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('scale show ' + servicename + ' --json (show updated scale settings - premium)', function (done) {
+    suite.execute('mobile scale show %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.tier.should.equal('tier3');
+      response.numberOfInstances.should.equal(2);
+      done();
+    });
+  });
+
+  it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function (done) {
+    suite.execute('mobile scale change %s -t free -i 1 --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    });
+  });
+
+  it('scale show ' + servicename + ' --json (show updated scale settings - free)', function (done) {
+    suite.execute('mobile scale show %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.tier.should.equal('tier1');
+      response.numberOfInstances.should.equal(1);
+      done();
+    });
+  });
+
+  // Preview Features
+  it('preview list ' + servicename + ' --json (no features enabled)', function (done) {
+    suite.execute('mobile preview list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      if (backend === 'node') {
+        response.should.include({
+          "enabled": ["SourceControl"],
+          "available": ["SourceControl", "Users"]
         });
-    });
-
-    it('scale show ' + servicename + ' --json (show updated scale settings - premium)', function (done) {
-        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            response.tier.should.equal('tier3');
-            response.numberOfInstances.should.equal(2);
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('scale change ' + servicename + ' -t free -i 1 --json (rescale back to default)', function(done) {
-      var cmd = ('node cli.js mobile scale change ' + servicename + ' -t free -i 1 --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        result.text.should.equal('');
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('scale show ' + servicename + ' --json (show updated scale settings - free)', function (done) {
-        var cmd = ('node cli.js mobile scale show ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            response.tier.should.equal('tier1');
-            response.numberOfInstances.should.equal(1);
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    // Preview Features
-
-    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
-      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
+      } else {
         response.should.include({
           "enabled": [],
-          "available": [ "SourceControl", "Users" ]
+          "available": []
         });
-        checkScopes(scopes);
-        done();
-      });
+      };
+      done();
     });
+  });
 
-    it('preview enable ' + servicename + ' sourcecontrol --json (no features enabled)', function(done) {
-      var cmd = ('node cli.js mobile preview enable ' + servicename + ' sourcecontrol --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+  it('preview enable ' + servicename + ' sourcecontrol --json', function (done) {
+    suite.execute('mobile preview enable %s sourcecontrol --json', servicename, function (result) {
+      if (backend === 'node') {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         response.featureName.should.equal("SourceControl");
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('preview list ' + servicename + ' --json (no features enabled)', function(done) {
-      var cmd = ('node cli.js mobile preview list ' + servicename + ' --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var response = JSON.parse(result.text);
-        response.should.include({
-          "enabled": [ "SourceControl" ],
-          "available": [ "SourceControl", "Users" ]
-        });
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('delete ' + existingServiceName + ' -d -q --json (delete service without DB)', function (done) {
-        var cmd = ('node cli.js mobile delete ' + existingServiceName + ' -d -q --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.text.should.equal('');
-            result.exitStatus.should.equal(0);
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('list --json (Only leave the service with new DB and server)', function (done) {
-        var cmd = ('node cli.js mobile list --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            response.some(function (service) {
-                return service.name === existingServiceName;
-            }).should.not.be.ok;
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('show ' + servicename + ' --json (verify the existing DB and server exist or not )', function (done) {
-        var cmd = ('node cli.js mobile show ' + servicename + ' --json').split(' ');
-        var scopes = setupNock(cmd);
-        executeCmd(cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var response = JSON.parse(result.text);
-            Array.isArray(response.application.InternalResources.InternalResource).should.be.ok;
-            response.application.InternalResources.InternalResource.length.should.equal(3);
-            response.application.InternalResources.InternalResource[1].Name.should.equal(existingDBName);
-            response.application.InternalResources.InternalResource[2].Name.should.equal(existingServerName);
-            checkScopes(scopes);
-            done();
-        });
-    });
-
-    it('delete ' + servicename + ' -a -q --json (delete existing service)', function(done) {
-      var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('list --json (no services exist)', function(done) {
-      var cmd = ('node cli.js mobile list --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        if (result.text !== '') {
-          var response = JSON.parse(result.text);
-          response.some(function (service) {
-            return service.name === servicename;
-          }).should.not.be.ok;
-        }
-        checkScopes(scopes);
-        done();
-      });
-    });
-
-    it('delete ' + servicename + ' -a -q --json (delete nonexisting service)', function(done) {
-      var cmd = ('node cli.js mobile delete ' + servicename + ' -a -q --json').split(' ');
-      var scopes = setupNock(cmd);
-      executeCmd(cmd, function (result) {
+      } else {
         result.exitStatus.should.equal(1);
-        result.errorText.should.include('The application name was not found');
-        checkScopes(scopes);
-        done();
-      });
+      }
+      done();
     });
   });
+
+  it('preview list ' + servicename + ' --json', function (done) {
+    suite.execute('mobile preview list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      if (backend === 'node') {
+        response.should.include({
+          "enabled": ["SourceControl"],
+          "available": ["SourceControl", "Users"]
+        });
+      } else {
+        response.should.include({
+          "enabled": [],
+          "available": []
+        });
+      }
+      done();
+    });
+  });
+
+  // Source control tests for shared scripts
+  it('script upload ' + servicename + ' shared/test -f ' + testArtifactDir + '/table1.delete.js --json (upload one script)', function (done) {
+    suite.execute('mobile script upload %s shared/test -f ' + testArtifactDir + '/table1.delete.js --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  it('script upload ' + servicename + ' shared/test -f ' + testArtifactDir + '/table1.delete.js --json (change one script)', function (done) {
+    suite.execute('mobile script upload ' + servicename + ' shared/test -f ' + testArtifactDir + '/table1.read.js --json', function (result) {
+      if (backend === 'node') {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  it('script delete ' + servicename + ' shared/test --json (delete one script)', function (done) {
+    suite.execute('mobile script delete %s shared/test --json', servicename, function (result) {
+      if (backend === 'node') {
+        result.errorText.should.equal('');
+        result.exitStatus.should.equal(0);
+        result.text.should.equal('');
+      } else {
+        result.exitStatus.should.equal(1);
+        result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
+      }
+      done();
+    });
+  });
+
+  // delete mobile services
+  it('delete ' + existingServiceName + ' -d -q --json (delete service without DB)', function (done) {
+    suite.execute('mobile delete %s -d -q --json', existingServiceName, function (result) {
+      result.text.should.equal('');
+      result.exitStatus.should.equal(0);
+      done();
+    });
+  });
+
+  it('list --json (Only leave the service with new DB and server)', function (done) {
+    suite.execute('mobile list --json', function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.some(function (service) {
+        return service.name === existingServiceName;
+      }).should.not.be.ok;
+      done();
+    });
+  });
+
+  it('show ' + servicename + ' --json (verify the existing DB and server exist or not )', function (done) {
+    suite.execute('mobile show %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      Array.isArray(response.application.InternalResources.InternalResource).should.be.ok;
+      response.application.InternalResources.InternalResource.length.should.equal(3);
+      response.application.InternalResources.InternalResource[1].Name.should.equal(existingDBName);
+      response.application.InternalResources.InternalResource[2].Name.should.equal(existingServerName);
+      done();
+    });
+  });
+
+  it('delete ' + servicename + ' -a -q --json (delete existing service)', function (done) {
+    suite.execute('mobile delete %s -a -q --json', servicename, function (result) {
+      result.text.should.equal('');
+      result.exitStatus.should.equal(0);
+      done();
+    });
+  });
+
+  it('list --json (no services exist)', function (done) {
+    suite.execute('mobile list --json', function (result) {
+      result.exitStatus.should.equal(0);
+      if (result.text !== '') {
+        var response = JSON.parse(result.text);
+        response.some(function (service) {
+          return service.name === servicename;
+        }).should.not.be.ok;
+      }
+      done();
+    });
+  });
+
+  it('delete ' + servicename + ' -a -q --json (delete nonexisting service)', function (done) {
+    suite.execute('mobile delete %s -a -q --json', servicename, function (result) {
+      result.exitStatus.should.equal(1);
+      result.errorText.should.include('The application name was not found');
+      done();
+    });
+  });
+}
+
+describe('cli', function () {
+  describe('mobile nock', nockStart);
+
+  describe('mobile', function () {
+    allTests('node');
+  });
+
+  describe('mobile-dotNet', function () {
+    allTests('DotNet');
+  });
+
+  describe('mobile nock', nockEnd);
 });

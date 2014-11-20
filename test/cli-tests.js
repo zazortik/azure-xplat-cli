@@ -1,49 +1,76 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 require('should');
+var sinon = require('sinon');
+
+var utils = require('../lib/util/utils');
+
+function wrap(sinonObj, obj, functionName, setup) {
+  var original = obj[functionName];
+  return sinonObj.stub(obj, functionName, setup(original));
+}
 
 var AzureCli = require('../lib/cli');
 
 describe('cli', function(){
+  var sandbox;
+  var results;
+  var originalArgv;
+
+  beforeEach(function () {
+    results = [];
+    originalArgv = process.argv;
+    process.argv = [
+      'azure',
+      '--compbash',
+      '--compgen',
+      '', // fragment
+    ];
+
+    sandbox = sinon.sandbox.create();
+    wrap(sandbox, utils, 'readConfig', function (originalReadConfig) {
+      return function () {
+        var config = originalReadConfig();
+        config.mode = 'asm';
+        return config;
+      };
+    });
+
+    sandbox.stub(console, 'log', function (d) {
+      results.push(d);
+    });
+    sandbox.stub(process, 'exit');
+  });
+
+  afterEach(function () {
+    sandbox.restore();
+    process.argv = originalArgv;
+  });
+
   describe('autocomplete', function() {
     it('should return the categories for top level categories', function (done) {
-      var results = [];
-
-      var original = process.argv;
-      process.argv = [
-        'azure',
-        '--compbash',
-        '--compgen',
-        '', // fragment
+      process.argv = process.argv.concat([
         'azure', // word
         'azure' // line
-      ];
-
-      var originalLog = console.log;
-      console.log = function (d) {
-        results.push(d);
-      };
-
-      var originalExit = process.exit;
-      process.exit = function () {};
+      ]);
 
       var cli = new AzureCli();
 
-      console.log = originalLog;
+      sandbox.restore();
 
       results = results[0].split('\n');
 
@@ -61,37 +88,18 @@ describe('cli', function(){
       results.indexOf('help').should.be.above(-1);
       results.indexOf('portal').should.be.above(-1);
 
-      process.exit = originalExit;
-      process.argv = original;
-
       done();
     });
 
     it('should return the categories for sub categories', function (done) {
-      var results = [];
-
-      var original = process.argv;
-      process.argv = [
-        'azure',
-        'site',
-        '--compbash',
-        '--compgen',
-        '', // fragment
+      process.argv = process.argv.concat([
         'site', // word
         'azure site' // line
-      ];
-
-      var originalLog = console.log;
-      console.log = function (d) {
-        results.push(d);
-      };
-
-      var originalExit = process.exit;
-      process.exit = function () {};
+      ]);
 
       var cli = new AzureCli();
 
-      console.log = originalLog;
+      sandbox.restore();
 
       results = results[0].split('\n');
 
@@ -118,36 +126,18 @@ describe('cli', function(){
       results.indexOf('scale').should.be.above(-1);
       results.indexOf('deploymentscript').should.be.above(-1);
 
-      process.exit = originalExit;
-      process.argv = original;
-
       done();
     });
 
     it('should return the options for a command', function (done) {
-      var results = [];
-
-      var original = process.argv;
-      process.argv = [
-        'azure',
-        '--compbash',
-        '--compgen',
-        '', // fragment
+      process.argv = process.argv.concat([
         'create', // word
         'azure site create' // line
-      ];
-
-      var originalLog = console.log;
-      console.log = function (d) {
-        results.push(d);
-      };
-
-      var originalExit = process.exit;
-      process.exit = function () {};
+      ]);
 
       var cli = new AzureCli();
 
-      console.log = originalLog;
+      sandbox.restore();
 
       results = results[0].split('\n');
 
@@ -163,9 +153,6 @@ describe('cli', function(){
       results.indexOf('--githubusername').should.be.above(-1);
       results.indexOf('--githubpassword').should.be.above(-1);
       results.indexOf('--githubrepository').should.be.above(-1);
-
-      process.exit = originalExit;
-      process.argv = original;
 
       done();
     });

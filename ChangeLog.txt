@@ -1,6 +1,132 @@
+2014.11.12 Version 0.8.12
+* Fix Mobile CLI Tests and recorded mocks
+* Fix for HDInsight commands in Azure China environment
+* Storage
+  * Updated azure-storage dependency to 0.4.0
+  * Improved the blob downloading and uploading speed
+* VM
+  * VM create command bug fixes
+  * Skip zero blocks when uploading fixed VHD
+  * Commands to manage virtual machine endpoint ACL
+  * Commands to manage virtual machine public IP
+  * Support for creating virtual machine from VM image
+
+2014.10.27 Version 0.8.11
+* Credential store bug fixes
+  * Clean credential store on account clear command
+  * Remove old credential entries on login
+* Storage
+  * Add new commands to manage Storage logging properties
+      storage logging show [options]
+      storage logging set [options]
+  * Add new commands to manage Storage metrics properties
+      storage metrics show [options]
+      storage metrics set [options]
+  * Add SAS token support for blob download/copy
+* Documentation and helper commands to enable Fiddler tracing
+ 
+2014.10.02 Version 0.8.10
+* VM
+  * Create and manage VM extensions
+  * Create and manage reserved IP addresses
+  * Fixed issues in vm image list command
+  * Fixed issues in --no-ssh-password parameter handling in vm create command
+* Storage
+  * SAS support 
+      azure storage container sas create
+      azure storage blob sas create
+      azure storage table sas create
+      azure storage queue sas create
+  * Storage unit test fixes
+* Moved the GraphRbacManagementClient in a separate module named 'azure-extra' published to npm 
+* Fixed issues in token caching mechanism and the azure login command
+* Fixed issues in npm install azure-cli on Ubuntu OS
+* Fixed website tests
+* Fixed the test recording infrastructure
+
+2014.09.10 Version 0.8.8
+* Role-based access control support
+  *  Query role definition
+      Azure role list
+  *  Manage role assignment
+      azure role assignment create
+      azure role assignment list/show
+      azure role assignment delete
+  *  Query Azure AD object
+      azure AD user list/show
+      azure AD group list/show
+      azure AD group member list
+      azure AD SP list/show
+  *  Show user's permissions
+      azure group list/show
+      azure resource list/show
+* Active Directory service principal login support in Azure Resource Manager mode
+      azure login --service-principal -tenant
+* Storage
+  *  Azure File Service support
+      azure storage share create
+      azure storage share list/show
+      azure storage share delete
+      azure storage directory create
+      azure storage directory delete
+      azure storage file upload
+      azure storage file download
+      azure storage file list
+      azure storage file delete
+  *  Azure Blob Service improvements
+      azure storage blob copy start
+      azure storage blob copy stop
+      azure storage blob copy show
+  *  Azure Table Service support
+      azure storage table create
+      azure storage table list/show
+      azure storage table delete
+  *  Azure Queue Service Support
+      azure storage queue create
+      azure storage queue list/show
+      azure storage queue delete
+  *  Switched storage library to Azure storage module
+
+2014.08.04 Version 0.8.7
+* Fixed issues with vm commands (vm image, vm docket create)
+* Added support for A8, A9 vm sizes in vm create command
+* Fixed user logout scenario issues and bumped up the credential size
+* Rebranding from Windows Azure to Microsoft Azure
+* Test fixes
+
+2014.07.16 Version 0.8.6
+* Store user credentials in the windows credential store
+* Azure Resource Manager Tags (in arm mode)
+  * azure tag create/list/show/delete
+  * tags parameter in azure group create/set and azure resource create/set
+  * tags parameter in azure group list and azure resource list
+* Support PHP version 5.5 for web site options
+
+2014.07.07 Version 0.8.5
+* Active directory authentication support for
+  * azure vm
+  * azure vnet
+  * azure mobile
+* Command to create docker VM in azure
+  * azure vm docker create
+* Store active drectory token in key chain on Mac
+
+2014.05.30 Version 0.8.4
+* Active directory support for AzureChinaCloud
+* Bug fixes for AzureChinaCloud endpoints
+* Dropped support for Node version 0.6
+* Test system improvements
+
+2014.05.07 Version 0.8.3
+* Bug fixes
+* Engineering and infrastructure improvements
+
+2014.04.10 Version 0.8.2
+* Hotfix to correct issue with azure mobile create command
+
 2014.04.03 Version 0.8.0
 * Azure Resource Manager commands (preview)
-  * "azure config" mode to switch the PowerShell module between service management and resource manager.
+  * "azure config" mode to switch mode between service management and resource manager.
   * Resource groups
     * azure group create/list/show/delete
     * azure group log show
@@ -21,6 +147,7 @@
 2014.01.20 - version 0.7.5
 * Added web site slots support
 * Added web jobs support
+* CloudInit support for Ubuntu VM via "azure vm create -d"
 * Multiple bugfixes
 
 2013.11.13 - version 0.7.4
@@ -90,7 +217,7 @@
 * Multiple VM fixes
 * New azure site repository sync command to sync the deployment of a website
 * New azure mobile recover command to recover of an unhealthy mobile service
-* Command to list Windows Azure Storage container
+* Command to list Microsoft Azure Storage container
   * azure storage container list
 
 2013.05.13 - version 0.6.16
@@ -118,7 +245,7 @@
 
 2012.12.12 - Version 0.6.11
 * "azure sql" - manage Azure SQL Server servers, databases and firewall rules
-* "azure site log tail" - realtime streaming logs over Windows Azure.
+* "azure site log tail" - realtime streaming logs over Microsoft Azure.
 * "azure mobile script upload" - now supports shared and scheduler scripts #179
 * "azure mobile show" - now displays scale information #139
 * "azure mobile scale" - allows managing scale out for your mobile app #139
@@ -135,7 +262,7 @@
 * "azure mobile" - Manages Azure Mobile Services
 * "azure sb namespace" - Manages Service Bus namespaces
 * "azure site deploymentscript" - Generates deployment scripts for customizing your website deployment
-* "azure vm create -o" - Create VMs using community/OSS images 
+* "azure vm create -o" - Create VMs using community/OSS images
 * "azure vm endpoint create-multiple" - Create multiple VM endpoints in one shot.
 
 2012.11.20 - Version 0.6.8

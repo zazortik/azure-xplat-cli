@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define ProductVersion="0.8.0" ?>
+  <?define ProductVersion="0.8.12" ?>
 
-  <?define ProductName = "Windows Azure Command Line Tools" ?>
+  <?define ProductName = "Microsoft Azure Command Line Tools" ?>
   <?define ProductDescription = "Node.js" ?>
   <?define ProductAuthor = "Microsoft Corporation" ?>
   <?define ProductResources = "..\resources\" ?>
@@ -29,11 +29,11 @@
     <Property Id="ARPHELPLINK" Value="http://www.microsoft.com/windowsazure/sdk" />
     <Property Id="ARPURLINFOABOUT" Value="http://www.microsoft.com/windowsazure/support" />
     <Property Id="ARPURLUPDATEINFO" Value="http://www.microsoft.com/windowsazure/sdk" />
-    <Property Id="ApplicationFolderName" Value="Microsoft SDKs\Windows Azure" />
+    <Property Id="ApplicationFolderName" Value="Microsoft SDKs\Azure" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
     <Feature Id="ProductFeature"
-             Title="Windows Azure Command Line Tools"
+             Title="Microsoft Azure Command Line Tools"
              Level="1"
              AllowAdvertise="no">
 			<ComponentGroupRef Id="ProductComponents" />

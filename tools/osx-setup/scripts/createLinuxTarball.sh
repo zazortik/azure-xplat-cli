@@ -1,10 +1,10 @@
 #!/bin/sh
-# Windows Azure OS X Package: Tarball Creation Script #2
-# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+# Microsoft Azure OS X Package: Tarball Creation Script #2
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
 #
 # This script prepares an 'archive' folder that contains the CLI 
 # that is to be packaged in the Mac installer, as well as shipped
-# to the Windows Azure site as a .tar.gz source package.
+# to the Microsoft Azure site as a .tar.gz source package.
 #
 # This script is not packaged or bundled, but rather used when 
 # building the package.
