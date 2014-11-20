@@ -1,6 +1,6 @@
 # Windows Azure Xplat-CLI for Windows, Mac and Linux
 
-[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-tools-xplat)
+[![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-xplat-cli-pr.png?branch=master)](https://travis-ci.org/Azure/azure-xplat-cli-pr)
 
 This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Windows Azure applications.
 
@@ -65,8 +65,8 @@ npm install -g azure-cli
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/WindowsAzure/azure-sdk-tools-xplat.git
-cd ./azure-sdk-tools-xplat
+git clone https://github.com/Azure/azure-xplat-cli-pr.git
+cd ./azure-xplat-cli-pr
 npm install
 ```
 

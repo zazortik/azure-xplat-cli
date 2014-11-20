@@ -68,13 +68,13 @@
     "event-stream": "~3.1.0",
     "cucumber": "~0.3.0"
   },
-  "homepage": "https://github.com/WindowsAzure/azure-sdk-tools-xplat",
+  "homepage": "https://github.com/WindowsAzure/azure-xplat-cli-pr",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-sdk-tools-xplat.git"
+    "url": "git@github.com:WindowsAzure/azure-xplat-cli-pr.git"
   },
   "bugs": {
-    "url": "https://github.com/WindowsAzure/azure-sdk-tools-xplat/issues"
+    "url": "https://github.com/WindowsAzure/azure-xplat-cli-pr/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
