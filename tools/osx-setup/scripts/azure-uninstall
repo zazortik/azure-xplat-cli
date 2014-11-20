@@ -1,6 +1,6 @@
 #!/bin/bash
-# Windows Azure CLI Uninstallation Script
-# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+# Microsoft Azure CLI Uninstallation Script
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
 #
 
 # Check for existance of the SDK
@@ -22,7 +22,7 @@ sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
 
 echo 
 
-echo The Windows Azure Deployment Tool has been removed:
+echo The Microsoft Azure Deployment Tool has been removed:
 echo - /usr/local/azure/ directory removed
 echo - /usr/local/azure script and uninstallation script removed
 echo - packages forgotten

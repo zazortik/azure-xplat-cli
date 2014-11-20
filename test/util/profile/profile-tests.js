@@ -26,6 +26,7 @@ var azure = require('azure');
 
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
 var testFileDir = './test/data';
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
@@ -33,9 +34,7 @@ describe('profile', function () {
 
   describe('default', function () {
     it('should contain public environments', function () {
-      _.keys(profile.current.environments).length.should.equal(profile.Environment.publicEnvironments.length);
-      profile.current.environments.should.have.property('AzureCloud');
-      profile.current.environments.should.have.property('AzureChinaCloud');
+      profile.current.environments.should.have.properties('AzureCloud', 'AzureChinaCloud');
     });
   });
 
@@ -57,13 +56,23 @@ describe('profile', function () {
         environments: [
         {
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         }]
       });
     });
 
-    it('should include loaded and public environmentd', function () {
+    it('should include loaded and public environments', function () {
       p.environments.should.have.properties('TestProfile', 'AzureCloud', 'AzureChinaCloud');
+    });
+
+    it('should read value for custom environment that was set', function () {
+      p.getEnvironment('TestProfile').managementEndpointUrl.should.equal('https://some.site.example');
+    });
+
+    it('should throw when reading endpoint that is not set', function () {
+      (function () {
+        p.getEnvironment('TestProfile').resourceManagerEndpointUrl;
+      }).should.throw(/not defined/);
     });
 
     describe('and saving', function () {
@@ -83,7 +92,7 @@ describe('profile', function () {
 
         customEnvironment.should.have.properties({
           name: 'TestProfile',
-          managementEndpoint: 'https://some.site.example'
+          managementEndpointUrl: 'https://some.site.example'
         });
       });
     });
@@ -200,10 +209,12 @@ describe('profile', function () {
     });
 
     describe('and logging in to already loaded subscription', function () {
+      var loginUser = 'user';
       var loginSubscriptions = [
       {
         subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-        subscriptionName: 'Account'
+        subscriptionName: 'Account',
+        username: loginUser
       }];
 
       var expectedToken = {
@@ -212,12 +223,25 @@ describe('profile', function () {
         expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
       };
 
-      beforeEach(function (done) {
-        var fakeEnvironment = new profile.Environment({name: 'TestEnvironment'});
-        sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
-        sinon.stub(fakeEnvironment, 'getAccountSubscriptions').callsArgWith(1, null, loginSubscriptions);
+      before(function () {
+        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(3, null, loginSubscriptions);
+      });
 
-        fakeEnvironment.addAccount('user', 'password', function (err, subscriptions) {
+      after(function () {
+        subscriptionUtils.getSubscriptions.restore();
+      });
+
+      beforeEach(function (done) {
+        var fakeEnvironment = new profile.Environment({
+          name: 'TestEnvironment',
+          activeDirectoryEndpointUrl: 'http://dummy.example',
+          activeDirectoryResourceId: 'http://login.dummy.example',
+          commonTenantName: 'common'
+        });
+
+        sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
+
+        fakeEnvironment.addAccount(loginUser, 'password', function (err, subscriptions) {
           subscriptions.forEach(function (s) {
             p.addSubscription(s);
           });
@@ -234,16 +258,12 @@ describe('profile', function () {
         should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
       });
 
-      it('should have access token', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
-      });
-
       it('should have expected cert', function () {
         p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties(expectedSubscription.managementCertificate);
       });
 
-      it('should have expected token', function () {
-        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedToken);
+      it('should have expected username', function () {
+        p.subscriptions[expectedSubscription.name].user.name.should.equal(loginUser);
       });
     });
   });
@@ -256,7 +276,8 @@ describe('profile', function () {
       managementCertificate: {
         key: 'to be determined',
         cert: 'to be determined'
-      }
+      },
+      environmentName: 'AzureCloud'
     };
 
     var expectedSubscription2 = {
@@ -267,7 +288,8 @@ describe('profile', function () {
       managementCertificate: {
         key: 'fake key',
         cert: 'fake cert'
-      }
+      },
+      environmentName: 'AzureCloud'
     };
 
     var p;
@@ -383,11 +405,7 @@ describe('profile', function () {
     var expectedSubscription = {
       name: 'Account',
       id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-      accessToken: {
-        accessToken: 'dummy token',
-        refreshToken: 'dummy refresh token',
-        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
-      },
+      username: 'someuser@someorg.example',
       environmentName: 'AzureCloud'
     };
 
@@ -416,16 +434,14 @@ describe('profile', function () {
         should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
       });
 
-      it('should have access token', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].accessToken);
+      it('should have user name', function () {
+        var loadedSubscription = p.subscriptions[expectedSubscription.name];
+        should.exist(loadedSubscription.user);
+        p.subscriptions[expectedSubscription.name].user.name.should.equal(expectedSubscription.username);
       });
 
       it('should have expected cert', function () {
         p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties('cert', 'key');
-      });
-
-      it('should have expected token', function () {
-        p.subscriptions[expectedSubscription.name].accessToken.should.have.properties(expectedSubscription.accessToken);
       });
 
       it('should create token credentials when asked for credentials', function () {

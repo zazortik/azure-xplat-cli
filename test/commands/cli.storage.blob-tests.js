@@ -1,45 +1,52 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
-var azure = require('azure');
+var storage = require('azure-storage');
 var should = require('should');
 var fs = require('fs');
+var assert = require('assert');
+var azureCommon = require('azure-common');
 var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 
 var suite;
 var testPrefix = 'cli.storage.blob-tests';
-var fakeConnectionString = 'DefaultEndpointsProtocol=https;AccountName=ciserversdk;AccountKey=null';
 var crypto = require('crypto');
+
+function stripAccessKey(connectionString) {
+  return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
+}
+
+function fetchAccountName(connectionString) {
+  return connectionString.match(/AccountName=[^;]+/)[0].split('=')[1];
+}
+
+var requiredEnvironment = [
+  { name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }
+];
 
 /**
 * Convert a cmd to azure storge cli
 */
 describe('cli', function () {
   describe('storage', function() {
-    var savedConnectionString = '';
 
     before(function (done) {
-      if (!process.env.AZURE_NOCK_RECORD) {
-        savedConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-        process.env.AZURE_STORAGE_CONNECTION_STRING = fakeConnectionString;
-      }
-
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(testPrefix, requiredEnvironment);
       suite.skipSubscription = true;
 
       if (suite.isMocked) {
@@ -50,9 +57,6 @@ describe('cli', function () {
     });
 
     after(function (done) {
-      if (!process.env.AZURE_NOCK_RECORD) {
-        process.env.AZURE_STORAGE_CONNECTION_STRING = savedConnectionString;
-      }
       suite.teardownSuite(done);
     });
 
@@ -107,7 +111,7 @@ describe('cli', function () {
       });
 
       describe('show', function() {
-        it('should show details of the specified container --json', function(done) {
+        it('should show details of the specified container', function(done) {
           suite.execute('storage container show %s --json', containerName, function(result) {
             var container = JSON.parse(result.text);
             container.name.should.equal(containerName);
@@ -127,6 +131,28 @@ describe('cli', function () {
         });
       });
 
+      describe('sas', function () {
+        it('should create the container sas with list permission and list blobs', function (done) {
+          var start = new Date('2014-10-01').toISOString();
+          var expiry = new Date('2099-12-31').toISOString();
+          suite.execute('storage container sas create %s rl %s --start %s --json', containerName, expiry, start, function (result) {
+            var sas = JSON.parse(result.text);
+            sas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
+              suite.execute('storage blob list %s -a %s --sas %s --json', containerName, account, sas.sas, function (listResult) {
+                listResult.errorText.should.be.empty;
+                done();
+              });
+            } else {
+              done();
+            }
+          });
+        });
+      });
+
       describe('delete', function() {
         it('should delete the specified container', function(done) {
           suite.execute('storage container delete %s -q --json', containerName, function(result) {
@@ -136,70 +162,274 @@ describe('cli', function () {
       });
     });
 
-    describe('blob', function() {
+    //skipping the test suite as the storage test to upload the blob timesout and successive tests are 
+    //dependent on the first test
+    describe.skip('blob', function() {
       var containerName = 'storage-cli-blob-test';
       var blobName = 'blobname';
       before(function(done) {
-        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
         blobService.createContainer(containerName, function(){done();});
       });
 
       after(function(done) {
-        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+        var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
         blobService.deleteContainer(containerName, function(){done();});
       });
-
-      it('should upload a basic file to azure storage', function(done) {
-        var buf = new Buffer('HelloWord', 'utf8');
-        var fileName = 'hello.tmp.txt';
-        var fd = fs.openSync(fileName, 'w');
-        fs.writeSync(fd, buf, 0, buf.length, 0);
-        var md5Hash = crypto.createHash('md5');
-        md5Hash.update(buf);
-        var contentMD5 = md5Hash.digest('base64');
-        suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blobName, function(result) {
-          var blob = JSON.parse(result.text);
-          blob.blob.should.equal(blobName);
-          blob.contentMD5.should.equal(contentMD5);
-          fs.unlinkSync(fileName);
-          done();
+      
+      describe('upload', function () {
+        it('should upload a basic file to azure storage', function (done) {
+          var buf = new Buffer('HelloWord', 'utf8');
+          var fileName = 'hello.tmp.txt';
+          var fd = fs.openSync(fileName, 'w');
+          fs.writeSync(fd, buf, 0, buf.length, 0);
+          var md5Hash = crypto.createHash('md5');
+          md5Hash.update(buf);
+          var contentMD5 = md5Hash.digest('base64');
+          suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blobName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.blob.should.equal(blobName);
+            blob.contentMD5.should.equal(contentMD5);
+            fs.unlinkSync(fileName);
+            done();
+          });
         });
       });
-
-      it('should list all blobs', function(done) {
-        suite.execute('storage blob list %s --json', containerName, function(result) {
-          var blobs = JSON.parse(result.text);
-          blobs.length.should.greaterThan(0);
-          blobs.some(function(blob) {
-            return blob.name === blobName;
-          }).should.be.true;
-          done();
+      
+      describe('list', function () {
+        it('should list all blobs', function (done) {
+          suite.execute('storage blob list %s --json', containerName, function (result) {
+            var blobs = JSON.parse(result.text);
+            blobs.length.should.greaterThan(0);
+            blobs.some(function (blob) {
+              return blob.name === blobName;
+            }).should.be.true;
+            done();
+          });
         });
       });
-
-      it('should show specified blob', function(done) {
-        suite.execute('storage blob show %s %s --json', containerName, blobName, function(result) {
-          var blob = JSON.parse(result.text);
-          blob.blob.should.equal(blobName);
-          done();
+      
+      describe('show', function () {
+        it('should show specified blob', function (done) {
+          suite.execute('storage blob show %s %s --json', containerName, blobName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.blob.should.equal(blobName);
+            done();
+          });
         });
       });
-
-      it('should download the specified blob', function(done) {
-        var fileName = 'hello.download.txt';
-        suite.execute('storage blob download %s %s %s -q -m --json', containerName, blobName, fileName, function(result) {
-          var blob = JSON.parse(result.text);
-          blob.blob.should.equal(blobName);
-          blob.fileName.should.equal(fileName);
-          fs.unlinkSync(fileName);
-          done();
+      
+      describe('download', function () {
+        it('should download the specified blob', function (done) {
+          var fileName = 'hello.download.txt';
+          suite.execute('storage blob download %s %s %s -q -m --json', containerName, blobName, fileName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.blob.should.equal(blobName);
+            blob.fileName.should.equal(fileName);
+            fs.unlinkSync(fileName);
+            done();
+          });
         });
       });
+      
+      describe('sas', function () {
+        it('should list the blobs with sas', function (done) {
+          var start = new Date('2014-10-01').toISOString();
+          var expiry = new Date('2099-12-31').toISOString();
+          suite.execute('storage container sas create %s l %s --start %s --json', containerName, expiry, start, function (result) {
+            var sas = JSON.parse(result.text);
+            sas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
 
-      it('should delete the specified blob', function(done) {
-        suite.execute('storage blob delete %s %s --json', containerName, blobName, function(result) {
-          result.errorText.should.be.empty;
-          done();
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
+              suite.execute('storage blob list %s -a %s --sas %s --json', containerName, account, sas.sas, function (listResult) {
+                var blob = JSON.parse(listResult.text);
+                blob.length.should.equal(1);
+                listResult.errorText.should.be.empty;
+                done();
+              });
+            } else {
+              done();
+            }
+          });
+        });
+
+        it('should create the sas of the blob and show the blob', function (done) {
+          var start = new Date('2014-10-01').toISOString();
+          var expiry = new Date('2099-12-31').toISOString();
+          suite.execute('storage blob sas create %s %s rw %s --start %s --json', containerName, blobName, expiry, start, function (result) {
+            var sas = JSON.parse(result.text);
+            sas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
+              suite.execute('storage blob show %s %s -a %s --sas %s --json', containerName, blobName, account, sas.sas, function (showResult) {
+                showResult.errorText.should.be.empty;
+                done();
+              });
+            } else {
+              done();
+            }
+          });
+        });
+      });
+      
+      describe('delete', function () {
+        it('should delete the specified blob', function (done) {
+          suite.execute('storage blob delete %s %s --json', containerName, blobName, function (result) {
+            result.errorText.should.be.empty;
+            done();
+          });
+        });
+      });
+      
+      describe('copy', function () {
+        var destContainer = 'testblobcopydest';
+        var sourceContainer = 'testblobcopysource';
+        var blobName = 'toCopy';
+        var fileName = 'copy.tmp.txt'; 
+
+        before(function(done) {
+          var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+          if (!suite.isMocked) {
+            blobService.createContainer(sourceContainer, function () {
+              blobService.createContainer(destContainer, function () {
+                var buf = new Buffer('HelloWord', 'utf8');
+                var fd = fs.openSync(fileName, 'w');
+                fs.writeSync(fd, buf, 0, buf.length, 0);
+
+                blobService.createBlockBlobFromLocalFile(sourceContainer, blobName, fileName, function (err) {
+                  assert.equal(err, null);
+                  fs.unlinkSync(fileName);
+                  done();
+                });
+              });
+            });
+          } else {
+            done();
+          }
+        });
+
+        after(function(done) {
+          var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+          if (!suite.isMocked) {
+            blobService.deleteContainer(sourceContainer, function () {
+              blobService.deleteContainer(destContainer, function () {
+                done();  
+              });            
+            });
+          } else {
+            done();
+          }
+        });
+
+        it('should start to copy the blob specified by SAS asynchronously', function (done) {
+          var start = new Date('2014-10-01').toISOString();
+          var expiry = new Date('2099-12-31').toISOString();
+          suite.execute('storage container sas create %s r %s --start %s --json', sourceContainer, expiry, start, function (result) {
+            var sourceSas = JSON.parse(result.text);
+            sourceSas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+
+            suite.execute('storage container sas create %s w %s --json', destContainer, expiry, function (result) {
+              var destSas = JSON.parse(result.text);
+              destSas.sas.should.not.be.empty;
+              result.errorText.should.be.empty;
+
+              if (!suite.isMocked) {
+                var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
+                suite.execute('storage blob copy start --source-container %s --source-blob %s -a %s --source-sas %s --dest-container %s --dest-account-name %s --dest-sas %s --json', 
+                  sourceContainer, blobName, account, sourceSas.sas, destContainer, account, destSas.sas, function (result) {
+                  var copy = JSON.parse(result.text);
+                  copy.copyId.length.should.greaterThan(0);
+                  result.errorText.should.be.empty;
+                  done();
+                });
+              } else {
+                done();
+              }
+            })
+          });          
+        });
+
+        it('should show the copy status of the specified blob with SAS', function (done) {
+          var start = new Date('2014-10-01').toISOString();
+          var expiry = new Date('2099-12-31').toISOString();
+          suite.execute('storage container sas create %s r %s --start %s --json', destContainer, expiry, start, function (result) {
+            var destSas = JSON.parse(result.text);
+            destSas.sas.should.not.be.empty;
+            result.errorText.should.be.empty;
+
+            if (!suite.isMocked) {
+              var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
+              suite.execute('storage blob copy show --container %s --blob %s -a %s --sas %s --json', destContainer, blobName, account, destSas.sas, function (result) {
+                var copy = JSON.parse(result.text);
+                copy.copyId.length.should.greaterThan(0);
+                result.errorText.should.be.empty;
+                done();
+              });
+            } else {
+              done();
+            }
+          });
+        });
+
+        it('should start to copy the blob specified by URI asynchronously', function (done) {
+          if (!suite.isMocked) {
+            var sourceUri = 'https://cliportalvhdsglh0yqqb13w7g.blob.core.windows.net/vhds/clitest-2014-07-21.vhd?se=2014-08-05T09%3A35%3A10Z&sp=r&sv=2014-02-14&sr=b&sig=%2Btmf9%2F2ka6X9IKgD%2FiM4oGH7x6Qr0TBd8ywq2LyDaEY%3D';
+            suite.execute('storage blob copy start %s --dest-container %s --json', sourceUri, destContainer, function (result) {
+              var copy = JSON.parse(result.text);
+              copy.copyId.length.should.greaterThan(0);
+              result.errorText.should.be.empty;
+              done();
+            });
+          } else {
+            done();
+          }
+        });
+        
+        it('should start to copy the blob specified by container and blob name asynchronously', function (done) {
+          if (!suite.isMocked) {
+            var sourceContainer = 'vhds';
+            var sourceBlob = 'clitest-2014-07-21.vhd';
+            suite.execute('storage blob copy start --source-container %s --source-blob %s --dest-container %s -q --json', sourceContainer, sourceBlob, destContainer, function (result) {
+              var copy = JSON.parse(result.text);
+              copy.copyId.length.should.greaterThan(0);
+              result.errorText.should.be.empty;
+              done();
+            });
+          } else {
+            done();
+          }
+        });
+        
+        var copyid;
+        var destBlob = 'clitest-2014-07-21.vhd';
+        it('should show the copy status of the specified blob', function (done) {
+          if (!suite.isMocked) {
+            suite.execute('storage blob copy show --container %s --blob %s --json', destContainer, destBlob, function (result) {
+              var copy = JSON.parse(result.text);
+              copyid = copy.copyId;
+              copy.copyId.length.should.greaterThan(0);
+              result.errorText.should.be.empty;
+              done();
+            });
+          } else {
+            done();
+          }
+        });
+        
+        it('should stop the copy of the specified blob', function (done) {
+          if (!suite.isMocked) {
+            suite.execute('storage blob copy stop --container %s --blob %s --copyid %s --json', destContainer, destBlob, copyid, function (result) {
+              result.errorText.should.be.empty;
+              done();
+            });
+          } else {
+            done();
+          }
         });
       });
     });
