@@ -51,6 +51,7 @@ var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
 var nodeNockedServiceName = 'clitest7ebcb98c-f417-4295-a8fd-70625f05654c';
 var dotnetNockedServiceName = 'cliteste97296fa-e760-4a1d-8637-a811c5524f45';
 
+var _ = require('underscore');
 var should = require('should');
 var url = require('url');
 var uuid = require('node-uuid');
@@ -77,10 +78,48 @@ var testPrefix = 'cli.mobile-tests';
 var requiredEnvironment = [];
 var testArtifactDir = path.join(__dirname, 'mobile');
 
+function PrettyPrintJSON(obj, indent)
+{
+  var result = "";
+  if (indent == null) indent = "";
+
+  for (var property in obj)
+  {
+    var value = obj[property];
+    if (typeof value == 'string')
+      value = "'" + value + "'";
+    else if (typeof value == 'object')
+    {
+      if (value instanceof Array)
+      {
+        value = "[ " + value + " ]";
+      }
+      else
+      {
+        var inner = PrettyPrintJSON(value, indent + "  ");
+        value = "\n" + indent + "{\n" + inner + "\n" + indent + "}";
+      }
+    }
+    result += indent + "'" + property + "' : " + value + ",\n";
+  }
+  return result.replace(/,\n$/, "");
+}
+
 // Load profile and start recording
 nockStart = function () {
   before(function (done) {
     suite = new CLITest(testPrefix, requiredEnvironment);
+
+    var previousExecute = suite.execute;
+    suite.execute = _.bind(function() {
+      var testCallback = arguments[arguments.length-1];
+      arguments[arguments.length-1] = function(result) {
+        console.log("\n" + PrettyPrintJSON(result, "  "));
+        testCallback(result);
+      };
+      previousExecute.apply(suite, arguments);
+    }, suite);
+
     if (suite.isMocked) {
       utils.POLL_REQUEST_INTERVAL = 0;
     }
