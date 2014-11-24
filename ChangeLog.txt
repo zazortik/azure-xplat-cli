@@ -1,3 +1,16 @@
+2014.11.12 Version 0.8.12
+* Fix Mobile CLI Tests and recorded mocks
+* Fix for HDInsight commands in Azure China environment
+* Storage
+  * Updated azure-storage dependency to 0.4.0
+  * Improved the blob downloading and uploading speed
+* VM
+  * VM create command bug fixes
+  * Skip zero blocks when uploading fixed VHD
+  * Commands to manage virtual machine endpoint ACL
+  * Commands to manage virtual machine public IP
+  * Support for creating virtual machine from VM image
+
 2014.10.27 Version 0.8.11
 * Credential store bug fixes
   * Clean credential store on account clear command

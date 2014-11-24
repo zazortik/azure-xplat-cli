@@ -5970,7 +5970,46 @@ nock('https://management.core.windows.net:443')
   'x-powered-by': 'ASP.NET',
   'x-ms-request-id': '4484738806552202b9221721bc8e373f',
   date: 'Wed, 22 Oct 2014 23:33:47 GMT' });
- return result; }],
+return result;
+}],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .filteringRequestBody(function (path) { return '*'; })
+  .put('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitest7ebcb98c-f417-4295-a8fd-70625f05654c/pushentity', '*')
+    .reply(200, "{\"externalPushEntitySettingsPropertyBag\":{}}", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'content-length': '44',
+      'content-type': 'application/json; charset=utf-8',
+      expires: '-1',
+      server: '1.0.6198.159 (rd_rdfe_stable.141110-2158) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'f79a86631c542a7e96e74a1205e9bbd3',
+      date: 'Wed, 12 Nov 2014 21:37:15 GMT'
+    });
+  return result;
+}],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .get('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitest7ebcb98c-f417-4295-a8fd-70625f05654c/pushentity')
+    .reply(200, "{\"externalPushEntitySettingsPropertyBag\":{}}", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'content-length': '44',
+      'content-type': 'application/json; charset=utf-8',
+      expires: '-1',
+      server: '1.0.6198.159 (rd_rdfe_stable.141110-2158) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'f1b2bc45c8522f5ca79f425ec5cadc0d',
+      date: 'Wed, 12 Nov 2014 21:37:17 GMT'
+    });
+  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
@@ -12086,7 +12125,46 @@ nock('https://management.core.windows.net:443')
   'x-powered-by': 'ASP.NET',
   'x-ms-request-id': '34078564577323fb91387268faac0343',
   date: 'Wed, 22 Oct 2014 23:44:47 GMT' });
- return result; }],
+return result;
+}],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .filteringRequestBody(function (path) { return '*'; })
+  .put('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/cliteste97296fa-e760-4a1d-8637-a811c5524f45/pushentity', '*')
+    .reply(200, "{\"externalPushEntitySettingsPropertyBag\":{}}", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'content-length': '44',
+      'content-type': 'application/json; charset=utf-8',
+      expires: '-1',
+      server: '1.0.6198.159 (rd_rdfe_stable.141110-2158) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'd1412f8cee7c22a2bb1c8a198a385a86',
+      date: 'Wed, 12 Nov 2014 21:39:08 GMT'
+    });
+  return result;
+}],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .get('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/cliteste97296fa-e760-4a1d-8637-a811c5524f45/pushentity')
+    .reply(200, "{\"externalPushEntitySettingsPropertyBag\":{}}", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'content-length': '44',
+      'content-type': 'application/json; charset=utf-8',
+      expires: '-1',
+      server: '1.0.6198.159 (rd_rdfe_stable.141110-2158) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'eab51f4d09a6284184cbe873255048dd',
+      date: 'Wed, 12 Nov 2014 21:39:09 GMT'
+    });
+  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
