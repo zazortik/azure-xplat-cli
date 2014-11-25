@@ -78,43 +78,66 @@ var testPrefix = 'cli.mobile-tests';
 var requiredEnvironment = [];
 var testArtifactDir = path.join(__dirname, 'mobile');
 
-function PrettyPrintJSON(obj, indent)
-{
-  var result = "";
-  if (indent == null) indent = "";
+var testLogFile = '';
 
-  for (var property in obj)
-  {
-    var value = obj[property];
-    if (typeof value == 'string')
-      value = "'" + value + "'";
-    else if (typeof value == 'object')
-    {
-      if (value instanceof Array)
-      {
-        value = "[ " + value + " ]";
-      }
-      else
-      {
-        var inner = PrettyPrintJSON(value, indent + "  ");
-        value = "\n" + indent + "{\n" + inner + "\n" + indent + "}";
-      }
-    }
-    result += indent + "'" + property + "' : " + value + ",\n";
+function createDirIfNotExists(directory) {
+  if(!fs.existsSync(directory)) {
+    fs.mkdir(directory);
   }
-  return result.replace(/,\n$/, "");
+  return directory;
+};
+
+function getTestOutputDir(){
+  var testLogDir = createDirIfNotExists(path.resolve(__dirname, '..', 'output'));
+  testLogDir = createDirIfNotExists(path.resolve(testLogDir, 'mobile-tests'));
+  return testLogDir;
+}
+
+//creates log file in output/mobile-tests/ which contains test result data for debugging purposes
+function createLogFile() {
+  testLogFile = path.resolve(getTestOutputDir(), 'mobile_' + getTimeStamp() + '.log');
+  if(!fs.existsSync(testLogFile)) {
+    fs.writeFileSync(testLogFile,"");
+  }
+  return testLogFile;
+}
+
+//appends the content to the log file
+function appendContent(content) {
+  if(!fs.existsSync(testLogFile)) {
+    createLogFile();
+  }
+  fs.appendFileSync(testLogFile, content);
+}
+
+//provides current time in custom format that will be used in naming log files
+//example '2014_8_20_15_11_13'
+function getTimeStamp() {
+  var now = new Date();
+  var dArray = [now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()];
+  return dArray.join("_");
 }
 
 // Load profile and start recording
 nockStart = function () {
   before(function (done) {
     suite = new CLITest(testPrefix, requiredEnvironment);
+    testLogFile = createLogFile();
 
+    //wrapper function around suite.execute to capture result info
     var previousExecute = suite.execute;
     suite.execute = _.bind(function() {
       var testCallback = arguments[arguments.length-1];
+
+      //get arguments for current test call
+      var argArray = Array.prototype.slice.call(arguments);
+
+      //set wrapper callback to output test results to file
       arguments[arguments.length-1] = function(result) {
-        console.log("\n" + PrettyPrintJSON(result, "  "));
+        appendContent('\n\nTest Call: ' + argArray.slice(0, argArray.length - 1).join(' '));
+        appendContent('\nTimestamp: ' + new Date().toString());
+        appendContent('\nExit Status: ' + result.exitStatus);
+        appendContent('\nResult Text:\n' + result.text);
         testCallback(result);
       };
       previousExecute.apply(suite, arguments);
