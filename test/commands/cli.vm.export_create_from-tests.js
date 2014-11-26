@@ -34,6 +34,7 @@ describe('cli', function() {
       timeout,
       username = 'azureuser',
       password = 'PassW0rd$',
+	  diskreleasetimeout = 200000,
       file = 'vminfo.json',
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 5000;
@@ -171,11 +172,11 @@ describe('cli', function() {
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
           setTimeout(function() {
             waitForDiskRelease(vmDisk, callback);
-          }, 10000);
+          }, timeout);
         } else {
           setTimeout(function() {
             callback();
-          }, 200000);
+          }, diskreleasetimeout);
         }
       });
     }

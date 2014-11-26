@@ -20,7 +20,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.pip-tests';
+var testPrefix = 'cli.vm.loadbalancer-tests';
 var requiredEnvironment = [{
     name : 'AZURE_VM_TEST_LOCATION',
     defaultValue : 'West US'
@@ -92,10 +92,6 @@ describe('cli', function () {
       it('Vm should create with vnet', function (done) {
         getImageName('Linux', function (imageName) {
           getVnet('Created', function (virtualnetName, affinityName, subnet) {
-            console.log(vmVnetName);
-            console.log(virtualnetName);
-            console.log(imageName);
-            console.log(userName);
             var cmd = util.format('vm create %s --virtual-network-name %s %s %s %s --json',
                 vmVnetName, virtualnetName, imageName, userName, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -115,24 +111,22 @@ describe('cli', function () {
             subNet, vmVnetName, loadname).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-
           done();
         });
       });
 
       it('Load balancer list', function (done) {
-        var cmd = util.format('service internal-load-balancer list OffshoreTt --json').split(' ');
+        var cmd = util.format('service internal-load-balancer list %s --json',vmVnetName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var loadlist = JSON.parse(result.text);
           loadlist[0].name.should.equal('testload');
-
           done();
         });
       });
 
       it('Load balancer update', function (done) {
-        var cmd = util.format('service internal-load-balancer set OffshoreTt -n --json', updateloadname).split(' ');
+        var cmd = util.format('service internal-load-balancer set %s -n %s --json', vmVnetName, updateloadname).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var loadlist = JSON.parse(result.text);
@@ -141,9 +135,8 @@ describe('cli', function () {
       });
 
       it('Load balancer delete', function (done) {
-        var cmd = util.format('service internal-load-balancer delete OffshoreTt testload --json').split(' ');
+        var cmd = util.format('service internal-load-balancer delete %s testload --json',vmVnetName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
-          console.log('hello');
           result.exitStatus.should.equal(0);
           done();
         });
@@ -222,11 +215,9 @@ describe('cli', function () {
       } else {
         var cmd = util.format('vm image list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
-          console.log('22');
           result.exitStatus.should.equal(0);
           var imageList = JSON.parse(result.text);
           imageList.some(function (image) {
-            console.log('222');
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
               process.env.VM_WIN_IMAGE = image.name;
               return true;

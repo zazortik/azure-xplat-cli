@@ -98,7 +98,6 @@ describe('cli', function () {
           suite.execute('network vnet list --json', function (outerresult) {
             outerresult.exitStatus.should.equal(0);
             outerresult.text.should.not.be.null;
-
             suite.execute('network export %s --json', networkconfig, function (result) {
               result.exitStatus.should.equal(0);
               cmd = util.format('network vnet delete %s --quiet --json', vnetName).split(' ');
@@ -117,7 +116,6 @@ describe('cli', function () {
                   vnet.addressSpace.addressPrefixes[0].should.equal('10.0.0.0/8');
                   vnet.subnets[0].name.should.equal('Subnet-1');
                   vnet.subnets[0].addressPrefix.should.equal('10.0.0.0/11');
-
                   suite.execute('network vnet show %s --json', vnetName, function (result) {
                     result.exitStatus.should.equal(0);
                     result.text.should.not.be.null;
@@ -129,7 +127,6 @@ describe('cli', function () {
                     vnet.addressSpace.addressPrefixes[0].should.equal('10.0.0.0/8');
                     vnet.subnets[0].name.should.equal('Subnet-1');
                     vnet.subnets[0].addressPrefix.should.equal('10.0.0.0/11');
-
                     done();
                   });
                 });
