@@ -36,6 +36,7 @@ describe('cli', function () {
     password = 'Collabera@01',
     retry = 5,
     subNet,
+    internalLBName = 'duplicateloadname',
     loadname = 'testload',
     updateloadname = 'updateload',
     timeout;
@@ -60,7 +61,6 @@ describe('cli', function () {
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
               vm.Name = null;
-              //vm.Created = vm.Delete = false;
               callback();
             });
           }, timeout);
@@ -115,8 +115,18 @@ describe('cli', function () {
         });
       });
 
+      it('Negative Load balance add', function (done) {
+        var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
+            subNet, vmVnetName, internalLBName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('LoadBalancer already exists: testload. Only one internal load balancer allowed per deployment');
+          done();
+        });
+      });
+
       it('Load balancer list', function (done) {
-        var cmd = util.format('service internal-load-balancer list %s --json',vmVnetName).split(' ');
+        var cmd = util.format('service internal-load-balancer list %s --json', vmVnetName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var loadlist = JSON.parse(result.text);
@@ -135,7 +145,7 @@ describe('cli', function () {
       });
 
       it('Load balancer delete', function (done) {
-        var cmd = util.format('service internal-load-balancer delete %s testload --json',vmVnetName).split(' ');
+        var cmd = util.format('service internal-load-balancer delete %s testload --quiet --json', vmVnetName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
