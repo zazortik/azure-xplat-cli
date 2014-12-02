@@ -14,13 +14,13 @@
  */
 var should = require('should');
 var util = require('util');
+var fs = require('fs');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.create_loc_vnet_vm-tests';
-
+var testPrefix = 'cli.vm.loadbalancer-tests';
 var requiredEnvironment = [{
     name : 'AZURE_VM_TEST_LOCATION',
     defaultValue : 'West US'
@@ -29,18 +29,18 @@ var requiredEnvironment = [{
 
 describe('cli', function () {
   describe('vm', function () {
-    var affinityName = 'xplataffintest',
-    vmVnetName,
-    timeout,
-    affinLabel = 'xplatAffinGrp',
-    affinDesc = 'Test Affinty Group for xplat',
+    var vmName,
     location,
+    vmVnetName,
     userName = 'azureuser',
-    password = 'Pa$$word@123',
-    vmSize = 'ExtraSmall',
-    retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 10000;
-
+    password = 'Collabera@01',
+    retry = 5,
+    subNet,
+    internalLBName = 'duplicateloadname',
+    loadname = 'testload',
+    updateloadname = 'updateload',
+    timeout;
+    testUtils.TIMEOUT_INTERVAL = 12000;
     var vmToUse = {
       Name : null,
       Created : false,
@@ -50,30 +50,17 @@ describe('cli', function () {
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
+      vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
     });
 
     after(function (done) {
-      suite.teardownSuite(done);
-    });
-
-    beforeEach(function (done) {
-      suite.setupTest(function () {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
-    });
-
-    afterEach(function (done) {
       function deleteUsedVM(vm, callback) {
         if (vm.Created && vm.Delete) {
           setTimeout(function () {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
+            var cmd = util.format('vm show %s --json', vm.Name).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
               vm.Name = null;
-              vm.Created = vm.Delete = false;
               callback();
             });
           }, timeout);
@@ -87,37 +74,29 @@ describe('cli', function () {
       });
     });
 
-    //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function () {
-      it('Vm should create with vnet and location', function (done) {
-        getImageName('Linux', function (imageName) {
-          getVnet('Created', function (virtualnetName, affinityName) {
-            var cmd = util.format('account affinity-group show %s --json', affinityName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function (result) {
-              result.exitStatus.should.equal(0);
-              var vnetObj = JSON.parse(result.text);
-              cmd = util.format('vm create -w %s %s %s %s %s --json', virtualnetName, vmVnetName, imageName, userName, password).split(' ');
-              cmd.push('-l');
-              cmd.push(vnetObj.location);
-              testUtils.executeCommand(suite, retry, cmd, function (result) {
-                result.exitStatus.should.equal(0);
-                vmToUse.Created = true;
-                vmToUse.Name = vmVnetName;
-                vmToUse.Delete = true;
-                done();
-              });
-            });
-          });
-        });
+    beforeEach(function (done) {
+      suite.setupTest(function () {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        done();
       });
+    });
 
+    afterEach(function (done) {
+      setTimeout(function () {
+        suite.teardownTest(done);
+      }, timeout);
+    });
+
+    describe('Public ip address :', function () {
       it('Vm should create with vnet', function (done) {
         getImageName('Linux', function (imageName) {
-          getVnet('Created', function (virtualnetName, affinityName) {
-            var cmd = util.format('vm create --ssh -w %s %s %s %s %s --json',
-                virtualnetName, vmVnetName, imageName, userName, password).split(' ');
+          getVnet('Created', function (virtualnetName, affinityName, subnet) {
+            var cmd = util.format('vm create %s --virtual-network-name %s %s %s %s --json',
+                vmVnetName, virtualnetName, imageName, userName, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
+              subNet = subnet;
               vmToUse.Created = true;
               vmToUse.Name = vmVnetName;
               vmToUse.Delete = true;
@@ -127,39 +106,52 @@ describe('cli', function () {
         });
       });
 
-      it('Windows Vm with Vm size', function (done) {
-        getImageName('Windows', function (ImageName) {
-          var cmd = util.format('vm create -z %s %s %s %s %s --json',
-              vmSize, vmVnetName, ImageName, userName, password).split(' ');
-          cmd.push('-l');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            setTimeout(done, timeout);
-          });
+      it('Load balancer', function (done) {
+        var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
+            subNet, vmVnetName, loadname).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('Negative Load balance add', function (done) {
+        var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
+            subNet, vmVnetName, internalLBName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('LoadBalancer already exists: testload. Only one internal load balancer allowed per deployment');
+          done();
+        });
+      });
+
+      it('Load balancer list', function (done) {
+        var cmd = util.format('service internal-load-balancer list %s --json', vmVnetName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var loadlist = JSON.parse(result.text);
+          loadlist[0].name.should.equal('testload');
+          done();
+        });
+      });
+
+      it('Load balancer update', function (done) {
+        var cmd = util.format('service internal-load-balancer set %s -n %s --json', vmVnetName, updateloadname).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var loadlist = JSON.parse(result.text);
+          done();
+        });
+      });
+
+      it('Load balancer delete', function (done) {
+        var cmd = util.format('service internal-load-balancer delete %s testload --quiet --json', vmVnetName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
         });
       });
     });
-
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      if (process.env.VM_LINUX_IMAGE) {
-        callBack(process.env.VM_LINUX_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function (image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_LINUX_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_LINUX_IMAGE);
-        });
-      }
-    }
 
     //get name of a vnet
     function getVnet(status, callback) {
@@ -222,6 +214,26 @@ describe('cli', function () {
             });
           } else
             callBack(getAffinityGroup.affinGrpName);
+        });
+      }
+    }
+
+    // Get name of an image of the given category
+    function getImageName(category, callBack) {
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
+      } else {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var imageList = JSON.parse(result.text);
+          imageList.some(function (image) {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+              process.env.VM_WIN_IMAGE = image.name;
+              return true;
+            }
+          });
+          callBack(process.env.VM_WIN_IMAGE);
         });
       }
     }

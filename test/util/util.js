@@ -127,6 +127,8 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
       (result.errorText.indexOf('connect ETIMEDOUT') + 1) ||
       (result.errorText.indexOf('A concurrency error occurred') + 1) ||
       (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
+	  (result.errorText.indexOf('Too many requests received') + 1) ||
+	   (result.errorText.indexOf('Windows Azure is currently performing an operation on this hosted service that requires exclusive access') + 1) ||
       (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
       console.log('Re-executing command. Please wait.');
       setTimeout(function() {

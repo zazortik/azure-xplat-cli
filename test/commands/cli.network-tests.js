@@ -67,14 +67,12 @@ describe('cli', function () {
       it('should create and list', function (done) {
         suite.execute('network dnsserver register %s --json', dnsIp, function (result) {
           result.exitStatus.should.equal(0);
-
           suite.execute('network dnsserver list --json', function (result) {
             result.exitStatus.should.equal(0);
             var dnsServers = JSON.parse(result.text);
             var exists = dnsServers.some(function (v) {
                 return v.IPAddress === dnsIp;
               });
-
             exists.should.equal(true);
             done();
           });
@@ -92,13 +90,13 @@ describe('cli', function () {
       });
 
       it('should create vnet, show , import and list', function (done) {
-        suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s',
-          vnetName, testSite, function (result) {
+        suite.execute('network vnet create %s --address-space 10.0.0.0  --create-new-affinity-group --json --location %s',
+          vnetName, testSite,
+          function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('network vnet list --json', function (outerresult) {
             outerresult.exitStatus.should.equal(0);
             outerresult.text.should.not.be.null;
-
             suite.execute('network export %s --json', networkconfig, function (result) {
               result.exitStatus.should.equal(0);
               cmd = util.format('network vnet delete %s --quiet --json', vnetName).split(' ');
@@ -106,7 +104,6 @@ describe('cli', function () {
                 result.exitStatus.should.equal(0);
                 suite.execute('network import %s --json', networkconfig, function (result) {
                   result.exitStatus.should.equal(0);
-
                   var vnets = JSON.parse(outerresult.text);
                   var vnet = vnets.filter(function (v) {
                       return v.name === vnetName;
@@ -117,18 +114,16 @@ describe('cli', function () {
                   vnet.addressSpace.addressPrefixes[0].should.equal('10.0.0.0/8');
                   vnet.subnets[0].name.should.equal('Subnet-1');
                   vnet.subnets[0].addressPrefix.should.equal('10.0.0.0/11');
-
                   suite.execute('network vnet show %s --json', vnetName, function (result) {
                     result.exitStatus.should.equal(0);
                     result.text.should.not.be.null;
-
                     var vnet = JSON.parse(result.text);
                     vnet.should.not.equal(null);
                     vnet.state.should.equal('Created');
+                    vnet.affinityGroup.should.not.be.null;
                     vnet.addressSpace.addressPrefixes[0].should.equal('10.0.0.0/8');
                     vnet.subnets[0].name.should.equal('Subnet-1');
                     vnet.subnets[0].addressPrefix.should.equal('10.0.0.0/11');
-
                     done();
                   });
                 });
@@ -141,36 +136,28 @@ describe('cli', function () {
       it('should create vnet with dns-server-id option and show', function (done) {
         suite.execute('network dnsserver register %s --json --dns-id %s', dnsIp, dnsId, function (result) {
           result.exitStatus.should.equal(0);
-
           suite.execute('network dnsserver list --json', function (result) {
             result.exitStatus.should.equal(0);
-
             var dnsServers = JSON.parse(result.text);
             var dnsServer = dnsServers.filter(function (v) {
                 return v.Name === dnsId;
               })[0];
-
             dnsServer.should.not.equal(null);
-
             suite.execute('network vnet create %s --address-space 10.0.0.0 --json --location %s --dns-server-id %s',
               vnetName, testSite, dnsId,
               function (result) {
-
               result.text.should.not.be.null;
               result.exitStatus.should.equal(0);
-
               suite.execute('network vnet show %s --json', vnetName, function (result) {
                 result.exitStatus.should.equal(0);
                 result.text.should.not.be.null;
-
                 var vnet = JSON.parse(result.text);
                 vnet.should.not.equal(null);
                 vnet.state.should.equal('Created');
                 vnet.dnsServers[0].name.should.equal(dnsId);
-
                 suite.execute('network vnet delete %s --quiet --json', vnetName, function () {
                   suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function () {
-                    done();
+                  done();
                   });
                 })
               });
