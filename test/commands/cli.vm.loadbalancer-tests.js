@@ -109,8 +109,8 @@ describe('cli', function () {
       });
 
       it('Load balance add on a created cloudservice', function (done) {
-        var cmd = util.format('service internal-load-balancer add -t %s %s %s -a %s --json',
-            subNet, vmVnetName, loadname, Subnetip).split(' ');
+        var cmd = util.format('service internal-load-balancer add  %s %s -t %s -a %s --json',
+			vmVnetName, loadname,subNet,Subnetip).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
@@ -118,8 +118,8 @@ describe('cli', function () {
       });
 
       it('Add loadbalancer to existing loadbalanced deployment', function (done) {
-        var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
-            subNet, vmVnetName, internalLBName).split(' ');
+        var cmd = util.format('service internal-load-balancer add %s %s -t %s --json',
+            vmVnetName, internalLBName, subNet).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(1);
           result.errorText.should.include('LoadBalancer already exists: testload. Only one internal load balancer allowed per deployment');
