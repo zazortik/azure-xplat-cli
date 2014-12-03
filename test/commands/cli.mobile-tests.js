@@ -51,6 +51,7 @@ var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
 var nodeNockedServiceName = 'clitest7ebcb98c-f417-4295-a8fd-70625f05654c';
 var dotnetNockedServiceName = 'cliteste97296fa-e760-4a1d-8637-a811c5524f45';
 
+var _ = require('underscore');
 var should = require('should');
 var url = require('url');
 var uuid = require('node-uuid');
@@ -77,10 +78,71 @@ var testPrefix = 'cli.mobile-tests';
 var requiredEnvironment = [];
 var testArtifactDir = path.join(__dirname, 'mobile');
 
+var testLogFile = '';
+
+function createDirIfNotExists(directory) {
+  if(!fs.existsSync(directory)) {
+    fs.mkdir(directory);
+  }
+  return directory;
+};
+
+function getTestOutputDir(){
+  var testLogDir = createDirIfNotExists(path.resolve(__dirname, '..', 'output'));
+  testLogDir = createDirIfNotExists(path.resolve(testLogDir, 'mobile-tests'));
+  return testLogDir;
+}
+
+//creates log file in output/mobile-tests/ which contains test result data for debugging purposes
+function createLogFile() {
+  testLogFile = path.resolve(getTestOutputDir(), 'mobile_' + getTimeStamp() + '.log');
+  if(!fs.existsSync(testLogFile)) {
+    fs.writeFileSync(testLogFile,"");
+  }
+  return testLogFile;
+}
+
+//appends the content to the log file
+function appendContent(content) {
+  if(!fs.existsSync(testLogFile)) {
+    createLogFile();
+  }
+  fs.appendFileSync(testLogFile, content);
+}
+
+//provides current time in custom format that will be used in naming log files
+//example '2014_8_20_15_11_13'
+function getTimeStamp() {
+  var now = new Date();
+  var dArray = [now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds()];
+  return dArray.join("_");
+}
+
 // Load profile and start recording
 nockStart = function () {
   before(function (done) {
     suite = new CLITest(testPrefix, requiredEnvironment);
+    testLogFile = createLogFile();
+
+    //wrapper function around suite.execute to capture result info
+    var previousExecute = suite.execute;
+    suite.execute = _.bind(function() {
+      var testCallback = arguments[arguments.length-1];
+
+      //get arguments for current test call
+      var argArray = Array.prototype.slice.call(arguments);
+
+      //set wrapper callback to output test results to file
+      arguments[arguments.length-1] = function(result) {
+        appendContent('\n\nTest Call: ' + argArray.slice(0, argArray.length - 1).join(' '));
+        appendContent('\nTimestamp: ' + new Date().toString());
+        appendContent('\nExit Status: ' + result.exitStatus);
+        appendContent('\nResult Text:\n' + result.text);
+        testCallback(result);
+      };
+      previousExecute.apply(suite, arguments);
+    }, suite);
+
     if (suite.isMocked) {
       utils.POLL_REQUEST_INTERVAL = 0;
     }
