@@ -36,6 +36,7 @@ describe('cli', function () {
     password = 'Collabera@01',
     retry = 5,
     subNet,
+    Subnetip,
     internalLBName = 'duplicateloadname',
     loadname = 'testload',
     updateloadname = 'updateload',
@@ -55,22 +56,20 @@ describe('cli', function () {
 
     after(function (done) {
       function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
+        if (!suite.isMocked) {
           setTimeout(function () {
-            var cmd = util.format('vm show %s --json', vm.Name).split(' ');
+            var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
-              vm.Name = null;
-              callback();
+              setTimeout(callback, timeout);
             });
           }, timeout);
-        } else {
+        } else
           callback();
-        }
       }
 
       deleteUsedVM(vmToUse, function () {
-        suite.teardownTest(done);
+        suite.teardownSuite(done);
       });
     });
 
@@ -88,15 +87,18 @@ describe('cli', function () {
       }, timeout);
     });
 
-    describe('Public ip address :', function () {
+    describe('Load balancer :', function () {
       it('Vm should create with vnet', function (done) {
         getImageName('Linux', function (imageName) {
-          getVnet('Created', function (virtualnetName, affinityName, subnet) {
+          getVnet('Created', function (virtualnetName, location, subnetname, subnetip) {
             var cmd = util.format('vm create %s --virtual-network-name %s %s %s %s --json',
                 vmVnetName, virtualnetName, imageName, userName, password).split(' ');
+            cmd.push('-l');
+            cmd.push(location);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
-              subNet = subnet;
+              subNet = subnetname;
+              Subnetip = subnetip;
               vmToUse.Created = true;
               vmToUse.Name = vmVnetName;
               vmToUse.Delete = true;
@@ -106,16 +108,16 @@ describe('cli', function () {
         });
       });
 
-      it('Load balancer', function (done) {
-        var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
-            subNet, vmVnetName, loadname).split(' ');
+      it('Load balance add on a created vnet', function (done) {
+        var cmd = util.format('service internal-load-balancer add -t %s %s %s -a %s --json',
+            subNet, vmVnetName, loadname, Subnetip).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
 
-      it('Negative Load balance add', function (done) {
+      it('Add loadbalancer to existing loadbalanced deployment', function (done) {
         var cmd = util.format('service internal-load-balancer add -n %s %s %s --json',
             subNet, vmVnetName, internalLBName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -135,15 +137,6 @@ describe('cli', function () {
         });
       });
 
-      it('Load balancer update', function (done) {
-        var cmd = util.format('service internal-load-balancer set %s -n %s --json', vmVnetName, updateloadname).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var loadlist = JSON.parse(result.text);
-          done();
-        });
-      });
-
       it('Load balancer delete', function (done) {
         var cmd = util.format('service internal-load-balancer delete %s testload --quiet --json', vmVnetName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -157,16 +150,23 @@ describe('cli', function () {
     function getVnet(status, callback) {
       var cmd;
       if (getVnet.vnetName) {
-        callback(getVnet.vnetName, getVnet.affinityName);
+        callback(getVnet.vnetName, getVnet.location, getVnet.subnetname, getVnet.subnetaddress);
       } else {
         cmd = util.format('network vnet list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function (vnet) {
-              if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.affinityGroup !== undefined) {
+              if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.location !== undefined) {
                 getVnet.vnetName = vnet.name;
-                getVnet.affinityName = vnet.affinityGroup;
+                getVnet.location = vnet.location;
+                getVnet.subnetname = vnet.subnets[0].name;
+                var address = vnet.subnets[0].addressPrefix;
+                var addressSplit = address.split('/');
+                var firstip = addressSplit[0];
+                var n = firstip.substring(0, firstip.lastIndexOf('.') + 1);
+                var secondip = n.concat(addressSplit[1]);
+                getVnet.subnetaddress = secondip;
                 return true;
               }
             });
@@ -178,11 +178,11 @@ describe('cli', function () {
                 result.exitStatus.should.equal(0);
                 getVnet.vnetName = vnetName;
                 getVnet.affinityName = affinGrpName;
-                callback(getVnet.vnetName, getVnet.affinityName);
+                callback(getVnet.vnetName, getVnet.location);
               });
             });
           } else {
-            callback(getVnet.vnetName, getVnet.affinityName);
+            callback(getVnet.vnetName, getVnet.location, getVnet.subnetname, getVnet.subnetaddress);
           }
         });
       }
