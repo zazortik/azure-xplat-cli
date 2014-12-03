@@ -37,7 +37,7 @@ describe('cli', function() {
       diskreleasetimeout = 200000,
       file = 'vminfo.json',
       retry = 5;
-      testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
     var vmToUse = {
       Name: null,

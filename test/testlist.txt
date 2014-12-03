@@ -9,7 +9,7 @@ commands/cli.account.affinitygroup-tests.js
 commands/cli.site.deployment-tests.js
 # cli.site.domain-tests can only be run mocked, do not try to run live
 # TODO: Mocks are broken.
-#commands/cli.site.domain-tests.js
+# commands/cli.site.domain-tests.js
 commands/cli.site.handler-tests.js
 commands/cli.mobile-tests.js
 commands/cli.mobilerecover-tests.js
@@ -53,6 +53,7 @@ commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
+# TODO: Load balancer set test is not included in the test run. This is due to an exception caused due to hyak version not being updated to latest version.
 commands/cli.vm.loadbalancer-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
@@ -75,7 +76,7 @@ util/profile/publishSettings-tests.js
 util/profile/environment-addaccount-tests.js
 util/profile/profile-tests.js
 # TODO: Not recording call to log service properly, disabling
-#commands/cli.site.log.tail-tests.js
+# commands/cli.site.log.tail-tests.js
 # Testing macos token management stuff
 util/authentication/osx-keychain-parser-tests.js
 util/authentication/token-cache-encoding-tests.js
