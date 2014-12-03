@@ -108,7 +108,7 @@ describe('cli', function () {
         });
       });
 
-      it('Load balance add on a created vnet', function (done) {
+      it('Load balance add on a created cloudservice', function (done) {
         var cmd = util.format('service internal-load-balancer add -t %s %s %s -a %s --json',
             subNet, vmVnetName, loadname, Subnetip).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
