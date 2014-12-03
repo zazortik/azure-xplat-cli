@@ -90,12 +90,12 @@ describe('cli', function () {
     describe('Load balancer :', function () {
       it('Vm should create with vnet', function (done) {
         getImageName('Linux', function (imageName) {
-          getVnet('Created', function (virtualnetName, location, subnetname, subnetip) {
+          getVnet('Created', function (virtualnetName, location, subnetname, subnetip) { 
             var cmd = util.format('vm create %s --virtual-network-name %s %s %s %s --json',
                 vmVnetName, virtualnetName, imageName, userName, password).split(' ');
             cmd.push('-l');
             cmd.push(location);
-            testUtils.executeCommand(suite, retry, cmd, function (result) {
+            testUtils.executeCommand(suite, retry, cmd, function (result) { 
               result.exitStatus.should.equal(0);
               subNet = subnetname;
               Subnetip = subnetip;
@@ -108,10 +108,10 @@ describe('cli', function () {
         });
       });
 
-      it('Load balance add on a created cloudservice', function (done) {
-        var cmd = util.format('service internal-load-balancer add  %s %s -t %s -a %s --json',
+      it('Load balance add on a created cloudservice', function (done) { 
+        var cmd = util.format('service internal-load-balancer add %s %s -t %s -a %s --json',
 			vmVnetName, loadname,subNet,Subnetip).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) { 
           result.exitStatus.should.equal(0);
           done();
         });
