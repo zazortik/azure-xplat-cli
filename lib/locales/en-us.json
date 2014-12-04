@@ -1718,7 +1718,7 @@
   "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address": "no existing subnet defined for this internal load balancer, --subnet-name is required to set static virtual network ip address",
   "the caching behaviour of disk [None, ReadOnly, ReadWrite]": "the caching behaviour of disk [None, ReadOnly, ReadWrite]",
   "Given --host-caching is invalid, supported values are \"%s\"": "Given --host-caching is invalid, supported values are \"%s\"",
-  "creates a new affinity group in the location specified in --location": "creates a new affinity group in the location specified in --location",
+  "creates a new affinity group at the location specified in --location": "creates a new affinity group at the location specified in --location",
   "You can either create a \"regional VNet\" using --location (recommended) or \"affinity group specific VNet\" using --location and --create-new-affinity-group (deprecated)": "You can either create a \"regional VNet\" using --location (recommended) or \"affinity group specific VNet\" using --location and --create-new-affinity-group (deprecated)",
   "--create-new-affinity-group can be used only with --location": "--create-new-affinity-group can be used only with --location",
   "the OS state [Specialized, Generalized], required for capturing VM as VM Image": "the OS state [Specialized, Generalized], required for capturing VM as VM Image",
