@@ -48,8 +48,8 @@
 */
 
 var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
-var nodeNockedServiceName = 'clitest7ebcb98c-f417-4295-a8fd-70625f05654c';
-var dotnetNockedServiceName = 'cliteste97296fa-e760-4a1d-8637-a811c5524f45';
+var nodeNockedServiceName = 'clitestdb9d284f-7691-4640-9086-81d40a2fce98';
+var dotnetNockedServiceName = 'clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d';
 
 var _ = require('underscore');
 var should = require('should');
@@ -134,10 +134,10 @@ nockStart = function () {
 
       //set wrapper callback to output test results to file
       arguments[arguments.length-1] = function(result) {
-        appendContent('\n\nTest Call: ' + argArray.slice(0, argArray.length - 1).join(' '));
-        appendContent('\nTimestamp: ' + new Date().toString());
-        appendContent('\nExit Status: ' + result.exitStatus);
-        appendContent('\nResult Text:\n' + result.text);
+        appendContent('\r\n\r\nTest Call: ' + argArray.slice(0, argArray.length - 1).join(' '));
+        appendContent('\r\nTimestamp: ' + new Date().toString());
+        appendContent('\r\nExit Status: ' + result.exitStatus);
+        appendContent('\r\nResult Text: ' + result.text);
         testCallback(result);
       };
       previousExecute.apply(suite, arguments);
@@ -1892,7 +1892,7 @@ allTests = function (backend) {
       done();
     }
   });
-
+  
   it('log ' + servicename + ' --json (no logs by default)', function (done) {
     suite.execute('mobile log %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
@@ -2035,9 +2035,9 @@ allTests = function (backend) {
     }
   });
 
-  it('log ' + servicename + ' -c existingContinuationToken --json (get logs by Continuation Token)', function (done) {
+  it('log ' + servicename + ' -c existingContinuationToken --source /table/table1.insert.js --json (get logs by Continuation Token)', function (done) {
     if (backend === 'node') {
-      suite.execute('mobile log %s -c %s --json', servicename, existingContinuationToken, function (result) {
+      suite.execute('mobile log %s -c %s --source /table/table1.insert.js --json', servicename, existingContinuationToken, function (result) {
         result.exitStatus.should.equal(0);
         var response = JSON.parse(result.text);
         Array.isArray(response.results).should.be.ok;
@@ -2329,8 +2329,8 @@ allTests = function (backend) {
     });
   });
 
-  it('delete ' + servicename + ' -a -q --json (delete existing service)', function (done) {
-    suite.execute('mobile delete %s -a -q --json', servicename, function (result) {
+  it('delete ' + servicename + ' -a -n -q --json (delete existing service)', function (done) {
+    suite.execute('mobile delete %s -a -n -q --json', servicename, function (result) {
       result.text.should.equal('');
       result.exitStatus.should.equal(0);
       done();
