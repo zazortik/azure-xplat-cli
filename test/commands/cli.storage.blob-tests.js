@@ -162,9 +162,7 @@ describe('cli', function () {
       });
     });
 
-    //skipping the test suite as the storage test to upload the blob timesout and successive tests are 
-    //dependent on the first test
-    describe.skip('blob', function() {
+    describe('blob', function() {
       var containerName = 'storage-cli-blob-test';
       var blobName = 'blobname';
       before(function(done) {
