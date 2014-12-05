@@ -94,7 +94,7 @@ describe('cli', function () {
 
       it('should not be able to set instances on a free site', function (done) {
         suite.execute('site scale instances 2 --size small %s --json ', siteName, function (result) {
-          result.errorText.indexOf('Instances can only be changed for sites in standard mode').should.not.equal(-1);
+          result.errorText.indexOf('Instances cannot be changed for sites in a Free or Shared SKU.').should.not.equal(-1);
           result.exitStatus.should.equal(1);
 
           done();
