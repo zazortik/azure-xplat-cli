@@ -6,10 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    name: 'Azure Storage DM Dev',
-    username: 'user@domain.example',
-    registeredProviders: ['sqlserver', 'website'],
+    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
+    name: 'Azure SDK Powershell Test',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    registeredProviders: ['website'],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -18,96 +22,96 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=xplat;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage101;AccountKey=null';
 }
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://xplat.table.core.windows.net/Tables(\'storageclitesttable\')',
+  location: 'https://teststorage101.table.core.windows.net/Tables(\'storageclitesttable\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '00ffb562-e8d5-4c61-b609-8173700b8012',
+  'x-ms-request-id': '94b6fc2b-0002-0059-0e57-a72ea8000000',
   'x-ms-version': '2014-02-14',
   'x-content-type-options': 'nosniff',
   'preference-applied': 'return-no-content',
-  dataserviceid: 'https://xplat.table.core.windows.net/Tables(\'storageclitesttable\')',
-  date: 'Thu, 07 Aug 2014 03:53:27 GMT' });
+  dataserviceid: 'https://teststorage101.table.core.windows.net/Tables(\'storageclitesttable\')',
+  date: 'Fri, 05 Dec 2014 18:54:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .get('/Tables(%27storageclitesttable%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('storageclitesttable')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('storageclitesttable')\" /><title /><updated>2014-08-07T03:53:29Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>storageclitesttable</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://teststorage101.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://teststorage101.table.core.windows.net/Tables('storageclitesttable')</id><category term=\"teststorage101.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('storageclitesttable')\" /><title /><updated>2014-12-05T18:54:07Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>storageclitesttable</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0406e93d-4cd6-47fb-a5d9-d637da20024d',
+  'x-ms-request-id': 'a8c9774a-0002-0066-4850-b56e79000000',
   'x-ms-version': '2014-02-14',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 07 Aug 2014 03:53:28 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .get('/storageclitesttable?comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8412cfa3-b7dc-4f60-85ef-92ed4641b463',
+  'x-ms-request-id': '3534bae9-0002-000e-0129-7404cd000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 07 Aug 2014 03:53:29 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:06 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "{\"odata.metadata\":\"https://xplat.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"storageclitesttable\"},{\"TableName\":\"table01\"},{\"TableName\":\"table011\"},{\"TableName\":\"table02\"},{\"TableName\":\"table03\"},{\"TableName\":\"table04\"},{\"TableName\":\"table05\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"odata.metadata\":\"https://teststorage101.table.core.windows.net/$metadata#Tables\",\"value\":[{\"TableName\":\"storageclitesttable\"}]}", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8fe24c3b-5596-4a53-88a1-0f404ab58782',
+  'x-ms-request-id': 'd2609a00-0002-006b-195d-c901b6000000',
   'x-ms-version': '2014-02-14',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 07 Aug 2014 03:53:29 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .get('/Tables(%27storageclitesttable%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://xplat.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://xplat.table.core.windows.net/Tables('storageclitesttable')</id><category term=\"xplat.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('storageclitesttable')\" /><title /><updated>2014-08-07T03:53:31Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>storageclitesttable</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xml:base=\"https://teststorage101.table.core.windows.net/\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"><id>https://teststorage101.table.core.windows.net/Tables('storageclitesttable')</id><category term=\"teststorage101.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /><link rel=\"edit\" title=\"Tables\" href=\"Tables('storageclitesttable')\" /><title /><updated>2014-12-05T18:54:08Z</updated><author><name /></author><content type=\"application/xml\"><m:properties><d:TableName>storageclitesttable</d:TableName></m:properties></content></entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '46ab9b0d-d16c-4514-b3b3-5a0219ae7dc6',
+  'x-ms-request-id': '8c862de8-0002-0014-6628-5d3b43000000',
   'x-ms-version': '2014-02-14',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 07 Aug 2014 03:53:30 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .get('/storageclitesttable?comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'be677d03-d2b0-4523-839b-ff34cf8108cd',
+  'x-ms-request-id': '2c6e5b73-0002-0084-2529-223acd000000',
   'x-ms-version': '2014-02-14',
-  date: 'Thu, 07 Aug 2014 03:53:31 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:07 GMT' });
  return result; }],
 [],
 [function (nock) { 
 var result = 
-nock('https://xplat.table.core.windows.net:443')
+nock('https://teststorage101.table.core.windows.net:443')
   .delete('/Tables(%27storageclitesttable%27)')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '03fea895-4c90-4780-be95-fd343acb9498',
+  'x-ms-request-id': 'c5719dea-0002-007d-5f19-7f3772000000',
   'x-ms-version': '2014-02-14',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 07 Aug 2014 03:53:31 GMT' });
+  date: 'Fri, 05 Dec 2014 18:54:08 GMT' });
  return result; }]];
