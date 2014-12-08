@@ -217,7 +217,7 @@ describe('cli', function () {
         });
       });
       
-      describe('download', function () {
+      describe.skip('download', function () {
         it('should download the specified blob', function (done) {
           var fileName = 'hello.download.txt';
           suite.execute('storage blob download %s %s %s -q -m --json', containerName, blobName, fileName, function (result) {
@@ -230,7 +230,7 @@ describe('cli', function () {
         });
       });
       
-      describe('sas', function () {
+      describe.skip('sas', function () {
         it('should list the blobs with sas', function (done) {
           var start = new Date('2014-10-01').toISOString();
           var expiry = new Date('2099-12-31').toISOString();

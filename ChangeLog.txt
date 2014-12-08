@@ -1,4 +1,7 @@
 2014.12.05 Version 0.8.13
+* Fixed the sites cli to work with latest breaking changes in the Azure Web Sites API.
+* Fixed the storage cli to work with latest breaking changes in the Azure Storage API.
+* Added an option to delete SB Namepsace in mobile delete command
 * VM
   * Support for capturing VM as VM image
   * Disk host caching while attaching disk
