@@ -18,21 +18,21 @@ var fs = require('fs');
 var exports = module.exports;
 
 //This is the timeout variable that would be used by all vm set of tests. This timeout value would differ from one test to another.
-exports.TIMEOUT_INTERVAL=10000;
+exports.TIMEOUT_INTERVAL = 10000;
 
-exports.randomFromTo = function (from, to) {
+exports.randomFromTo = function(from, to) {
   return Math.floor(Math.random() * (to - from + 1) + from);
 };
 
-exports.libFolder = function () {
+exports.libFolder = function() {
   return process.env['AZURE_LIB_PATH'] ? process.env['AZURE_LIB_PATH'] : 'lib';
 };
 
-exports.libRequire = function (path) {
+exports.libRequire = function(path) {
   return require('../../' + exports.libFolder() + '/' + path);
 };
 
-exports.getCertificateKey = function () {
+exports.getCertificateKey = function() {
   if (process.env['AZURE_CERTIFICATE_KEY']) {
     return process.env['AZURE_CERTIFICATE_KEY'];
   } else if (process.env['AZURE_CERTIFICATE_KEY_FILE']) {
@@ -42,7 +42,7 @@ exports.getCertificateKey = function () {
   return null;
 };
 
-exports.getCertificate = function () {
+exports.getCertificate = function() {
   if (process.env['AZURE_CERTIFICATE']) {
     return process.env['AZURE_CERTIFICATE'];
   } else if (process.env['AZURE_CERTIFICATE_FILE']) {
@@ -53,7 +53,7 @@ exports.getCertificate = function () {
 };
 
 //generate a random string
-exports.generateRandomString = function (length) {
+exports.generateRandomString = function(length) {
   var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz0123456789';
   var randString = '',
     randNum = '';
@@ -73,15 +73,20 @@ exports.generateRandomString = function (length) {
  * @param {callback} callback  callback
  * @return {Object} A JSON object with templateName, templateUrl, publisher and version as its properties.
  */
-exports.getTemplateInfo = function (suite, keyword, callback) {
+exports.getTemplateInfo = function(suite, keyword, callback) {
   var templates = [];
   var error;
-  var templateInfo = {'templateName' : '', 'templateUrl' : '', 'publisher' : '', 'version' : ''};
-  suite.execute('group template list --json', function (result) {
+  var templateInfo = {
+    'templateName': '',
+    'templateUrl': '',
+    'publisher': '',
+    'version': ''
+  };
+  suite.execute('group template list --json', function(result) {
     if (result.exitStatus === 0) {
       templates = JSON.parse(result.text);
       var templateNotFound = true;
-      templates.forEach(function (item) {
+      templates.forEach(function(item) {
         var regex = new RegExp(keyword, 'i');
         if (item.identity.match(regex)) {
           templateNotFound = false;
@@ -89,29 +94,27 @@ exports.getTemplateInfo = function (suite, keyword, callback) {
           templateInfo.publisher = item.publisher;
           templateInfo.version = item.version;
           var urlKeys = Object.keys(item.definitionTemplates.deploymentTemplateFileUrls);
-          if(urlKeys.length > 0) {
+          if (urlKeys.length > 0) {
             var urlKeyNotFound = true;
-              urlKeys.forEach(function (urlKey) {
+            urlKeys.forEach(function(urlKey) {
               if (urlKey.match(/Default/)) {
-                urlKeyNotFound = false; 
+                urlKeyNotFound = false;
                 templateInfo.templateUrl = item.definitionTemplates.deploymentTemplateFileUrls[urlKey];
               }
             });
-              if(urlKeyNotFound) {
-                callback(new Error('Cannot find the default template url'));
-              }
-          }
-          else {
+            if (urlKeyNotFound) {
+              callback(new Error('Cannot find the default template url'));
+            }
+          } else {
             callback(new Error('The template ' + item.identity + ' does not have any deployment template urls.'));
           }
         }
       });
-      if(templateNotFound) {
+      if (templateNotFound) {
         callback(new Error('Cannot find a template name with the given keyword ' + keyword));
       }
       callback(error, templateInfo);
-    }
-    else {
+    } else {
       callback(new Error(result.errorText));
     }
   });
@@ -121,13 +124,15 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
   var self = this;
   suite.execute(cmd, function(result) {
     if (result.exitStatus === 1 && ((result.errorText.indexOf('ECONNRESET') + 1) ||
-      (result.errorText.indexOf('ConflictError') + 1) ||
-      (result.errorText.indexOf('Please try this operation again later') + 1) ||
-      (result.errorText.indexOf('requires exclusive access.') + 1) ||
-      (result.errorText.indexOf('connect ETIMEDOUT') + 1) ||
-      (result.errorText.indexOf('A concurrency error occurred') + 1) ||
-      (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
-      (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
+        (result.errorText.indexOf('ConflictError') + 1) ||
+        (result.errorText.indexOf('Please try this operation again later') + 1) ||
+        (result.errorText.indexOf('requires exclusive access.') + 1) ||
+        (result.errorText.indexOf('connect ETIMEDOUT') + 1) ||
+        (result.errorText.indexOf('A concurrency error occurred') + 1) ||
+        (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
+        (result.errorText.indexOf('Too many requests received') + 1) ||
+        (result.errorText.indexOf('Windows Azure is currently performing an operation on this hosted service that requires exclusive access') + 1) ||
+        (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
       console.log('Re-executing command. Please wait.');
       setTimeout(function() {
         self.executeCommand(suite, retry, cmd, callback);

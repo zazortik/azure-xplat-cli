@@ -1,3 +1,14 @@
+2014.12.05 Version 0.8.13
+* VM
+  * Support for capturing VM as VM image
+  * Disk host caching while attaching disk
+* NETWORK
+  * Support for region wise VNet 
+  * Bug fix: unable to create affinity group as a part of vnet creation 
+  * Bug fix: don't re-throw 404 error from get network config
+* SERVICE
+  * Support for internal load balancer  
+
 2014.11.12 Version 0.8.12
 * Fix Mobile CLI Tests and recorded mocks
 * Fix for HDInsight commands in Azure China environment
