@@ -57,7 +57,7 @@ describe('cli', function() {
       function deleteUsedVM(vm, callback) {
         if (!suite.isMocked) {
           setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
+            var cmd = util.format('vm delete %s -b -q --json', vmVnetName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               setTimeout(callback, timeout);
@@ -135,6 +135,14 @@ describe('cli', function() {
           done();
         });
       });
+	  
+	  it('Load balancer update', function (done) {
+        var cmd = util.format('service internal-load-balancer set %s %s -t %s -a %s --json', vmVnetName, updateloadname, subNet, Subnetip).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });	  
 
       it('Load balancer delete', function(done) {
         var cmd = util.format('service internal-load-balancer delete %s testload --quiet --json', vmVnetName).split(' ');

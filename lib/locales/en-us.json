@@ -1705,6 +1705,7 @@
   "Internal Load Balancer name: ": "Internal Load Balancer name: ",
   "--subnet-name is required when --static-virtualnetwork-ipaddress is specified": "--subnet-name is required when --static-virtualnetwork-ipaddress is specified",
   "Adding internal load balancer": "Adding internal load balancer",
+  "Updating internal load balancer": "Updating internal load balancer",  
   "Delete an internal load balancer for a cloud service deployment": "Delete an internal load balancer for a cloud service deployment",
   "Delete internal load balancer with name \"%s\"? [y/n] ": "Delete internal load balancer with name \"%s\"? [y/n] ",
   "Deleting internal load balancer": "Deleting internal load balancer",
