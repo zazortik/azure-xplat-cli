@@ -57,7 +57,7 @@ describe('cli', function() {
       function deleteUsedVM(vm, callback) {
         if (!suite.isMocked) {
           setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
+            var cmd = util.format('vm delete %s -b -q --json', vmVnetName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               setTimeout(callback, timeout);
