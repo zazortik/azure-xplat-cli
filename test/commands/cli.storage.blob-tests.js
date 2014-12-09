@@ -248,10 +248,11 @@ describe('cli', function () {
                 listResult.errorText.should.be.empty;
                 done();
               });
-            } else {*/
+            } else {
               done();
-            //}
-          });
+            }
+          });*/
+          done();
         });
 
         it('should create the sas of the blob and show the blob', function (done) {
