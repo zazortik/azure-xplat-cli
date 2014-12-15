@@ -252,6 +252,15 @@ allTests = function (backend) {
     });
   });
 
+  it('redeploy ' + servicename + ' --json (Redeploy specific service)', function (done) {
+    suite.execute('mobile redeploy %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+
+      done();
+    });
+  });
+
   it('show ' + servicename + ' --json (contains healthy service)', function (done) {
     var cmd = ('mobile show ' + servicename + ' --json').split(' ');
     suite.execute(cmd, function (result) {

@@ -3332,7 +3332,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitestdb9d284f-7691-4640-9086-81d40a2fce98/redeploy')
+  .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitestdb9d284f-7691-4640-9086-81d40a2fce98/restart')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
@@ -3344,6 +3344,22 @@ nock('https://management.core.windows.net:443')
   'x-ms-request-id': 'dda3ffc7a1563353af30982a3621f9a7',
   date: 'Thu, 04 Dec 2014 02:00:21 GMT' });
  return result; }],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitestdb9d284f-7691-4640-9086-81d40a2fce98/redeploy')
+    .reply(200, "", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'transfer-encoding': 'chunked',
+      expires: '-1',
+      server: '1.0.6198.165 (rd_rdfe_stable.141121-1215) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'dda3ffc7a1563353af30982a3621f9a7',
+      date: 'Thu, 04 Dec 2014 02:00:21 GMT' });
+  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
@@ -10032,7 +10048,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d/redeploy')
+  .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d/restart')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
@@ -10044,6 +10060,22 @@ nock('https://management.core.windows.net:443')
   'x-ms-request-id': 'eaa966de151834ed8b3b4b162dac1fca',
   date: 'Thu, 04 Dec 2014 02:11:12 GMT' });
  return result; }],
+[function (nock) {
+  var result =
+  nock('https://management.core.windows.net:443')
+    .post('/f82cd983-da22-464f-8edd-31c8f4888e6b/services/mobileservices/mobileservices/clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d/redeploy')
+    .reply(200, "", {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'transfer-encoding': 'chunked',
+      expires: '-1',
+      server: '1.0.6198.165 (rd_rdfe_stable.141121-1215) Microsoft-HTTPAPI/2.0',
+      'x-ms-servedbyregion': 'ussouth2',
+      'strict-transport-security': 'max-age=31536000; includeSubDomains',
+      'x-powered-by': 'ASP.NET',
+      'x-ms-request-id': 'eaa966de151834ed8b3b4b162dac1fca',
+      date: 'Thu, 04 Dec 2014 02:11:12 GMT' });
+  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
