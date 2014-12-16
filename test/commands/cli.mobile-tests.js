@@ -473,8 +473,8 @@ allTests = function (backend) {
     });
   });
 
-  it('config set ' + servicename + ' apns dev:foobar:' + testArtifactDir + '/cert.pfx --json (set apns certificate)', function (done) {
-    suite.execute('mobile config set %s apns dev:foobar:' + testArtifactDir + '/cert.pfx --json', servicename, function (result) {
+  it('config set ' + servicename + ' apns dev:password:' + testArtifactDir + '/cert.pfx --json (set apns certificate)', function (done) {
+    suite.execute('mobile config set %s apns dev:password:' + testArtifactDir + '/cert.pfx --json', servicename, function (result) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
@@ -493,8 +493,8 @@ allTests = function (backend) {
   });
 
   // Google Cloud Messaging
-  it('config set ' + servicename + ' gcm test-0-gcm-key --json', function (done) {
-    suite.execute('mobile config set %s gcm test-0-gcm-key --json', servicename, function (result) {
+  it('config set ' + servicename + ' gcm AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc --json', function (done) {
+    suite.execute('mobile config set %s gcm AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc --json', servicename, function (result) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
@@ -507,7 +507,7 @@ allTests = function (backend) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
-      response.gcm.should.equal('test-0-gcm-key');
+      response.gcm.should.equal('AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc');
       done();
     });
   });
