@@ -53,14 +53,10 @@ var dotnetNockedServiceName = 'clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d';
 
 var _ = require('underscore');
 var should = require('should');
-var url = require('url');
 var uuid = require('node-uuid');
-var util = require('util');
 var fs = require('fs');
 var azureCommon = require('azure-common');
 var path = require('path');
-var keyFiles = require('../../lib/util/keyFiles');
-var profile = require('../../lib/util/profile');
 var PipelineChannel = require('../../lib/commands/asm/mobile/pipelineChannel');
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
@@ -243,15 +239,6 @@ allTests = function (backend) {
     });
   });
 
-  it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
-    suite.execute('mobile restart %s --json', servicename, function (result) {
-      result.exitStatus.should.equal(0);
-      result.text.should.equal('{}\n');
-
-      done();
-    });
-  });
-
   it('redeploy ' + servicename + ' --json (Redeploy specific service)', function (done) {
     suite.execute('mobile redeploy %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
@@ -260,7 +247,7 @@ allTests = function (backend) {
       done();
     });
   });
-
+  
   it('show ' + servicename + ' --json (contains healthy service)', function (done) {
     var cmd = ('mobile show ' + servicename + ' --json').split(' ');
     suite.execute(cmd, function (result) {
@@ -2302,6 +2289,15 @@ allTests = function (backend) {
         result.exitStatus.should.equal(1);
         result.errorText.should.include('This operation is not valid for mobile services using the DotNet runtime');
       }
+      done();
+    });
+  });
+
+  it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
+    suite.execute('mobile restart %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+
       done();
     });
   });
