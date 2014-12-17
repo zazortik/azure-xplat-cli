@@ -79,13 +79,13 @@
     "winston-memory": "*",
     "cucumber": "~0.3.0"
   },
-  "homepage": "https://github.com/WindowsAzure/azure-xplat-cli",
+  "homepage": "https://github.com/Azure/azure-xplat-cli",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-xplat-cli.git"
+    "url": "git@github.com:Azure/azure-xplat-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/WindowsAzure/azure-xplat-cli/issues"
+    "url": "https://github.com/Azure/azure-xplat-cli/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
