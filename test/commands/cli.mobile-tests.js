@@ -1003,8 +1003,8 @@ allTests = function (backend) {
     });
   });
 
-  it('push mpns set ' + servicename + ' ' + testArtifactDir + '/cert.pfx foobar --enableUnAuthenticatedPush --json', function (done) {
-    suite.execute('mobile push mpns set %s ' + testArtifactDir + '/cert.pfx foobar --json', servicename, function (result) {
+  it('push mpns set ' + servicename + ' ' + testArtifactDir + '/cert.pfx password --enableUnAuthenticatedPush --json', function (done) {
+    suite.execute('mobile push mpns set %s ' + testArtifactDir + '/cert.pfx password --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       done();
     });
@@ -1014,7 +1014,7 @@ allTests = function (backend) {
     suite.execute('mobile push mpns get %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
-      response.certificateKey.should.equal('foobar');
+      response.certificateKey.should.equal('password');
       response.enableUnauthenticatedSettings.should.equal(true);
       done();
     });
