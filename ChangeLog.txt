@@ -11,6 +11,8 @@
   * Bug fix: don't re-throw 404 error from get network config
 * SERVICE
   * Support for internal load balancer  
+* MOBILE SERVIE
+  * Update restart to only restart service. Add redpeloy command to ensure mobile service runtime is using latest.
 
 2014.11.12 Version 0.8.12
 * Fix Mobile CLI Tests and recorded mocks
