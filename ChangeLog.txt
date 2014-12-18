@@ -1,3 +1,8 @@
+Version 0.8.14
+* MOBILE SERVICE
+  * Update restart to only restart service. Add redeploy command to ensure mobile service runtime is using latest.
+  * Add new required --push parameter to azure mobile create to specify push mode for node services. Options are legacy and nh.
+
 2014.12.05 Version 0.8.13
 * Upgraded the sites cli to work with latest breaking changes in the Azure Web Sites API.
 * Upgraded the storage cli to work with latest breaking changes in the Azure Storage API.
