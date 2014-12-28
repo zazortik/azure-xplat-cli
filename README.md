@@ -61,7 +61,7 @@ npm install -g azure-cli
 ```
 
 ### Install on Ubuntu
-The Xplat-CLI requires the Node.js. Installation varies slightly by Ubuntu version.
+The Xplat-CLI requires Node.js. Installation varies slightly by Ubuntu version.
 
 **Ubuntu 14.04 Trusty Tahr**
 
