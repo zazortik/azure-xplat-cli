@@ -164,7 +164,7 @@ azure config mode asm # service management
 azure config mode arm # resource manager
 ```
 
-**For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
+**For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/)**
 
 ## Docker
 
@@ -198,8 +198,6 @@ See [this page for instructions](https://github.com/Azure/azure-xplat-cli/wiki/R
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
-
-For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
 
 ## Contribute Code or Provide Feedback
 
