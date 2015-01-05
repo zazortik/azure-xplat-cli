@@ -47,20 +47,16 @@
 
 */
 
-var nockedSubscriptionId = 'f82cd983-da22-464f-8edd-31c8f4888e6b';
-var nodeNockedServiceName = 'clitestdb9d284f-7691-4640-9086-81d40a2fce98';
-var dotnetNockedServiceName = 'clitest1f0b9371-9ed5-4d3f-8b27-f925cecf007d';
+var nockedSubscriptionId = '1bf890dd-ee1e-45b8-a870-34e6279ffaba';
+var nodeNockedServiceName = 'clitestab9d284f-7691-4640-9086-81d40a2fce98';
+var dotnetNockedServiceName = 'clitest2f0b9371-9ed5-4d3f-8b27-f925cecf007d';
 
 var _ = require('underscore');
 var should = require('should');
-var url = require('url');
 var uuid = require('node-uuid');
-var util = require('util');
 var fs = require('fs');
 var azureCommon = require('azure-common');
 var path = require('path');
-var keyFiles = require('../../lib/util/keyFiles');
-var profile = require('../../lib/util/profile');
 var PipelineChannel = require('../../lib/commands/asm/mobile/pipelineChannel');
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
@@ -198,8 +194,8 @@ allTests = function (backend) {
     });
   });
 
-  it('create ' + servicename + ' tjanczuk FooBar#12 -b ' + backend + ' --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
-    suite.execute('mobile create %s tjanczuk FooBar#12 -b %s --sqlLocation %s --json', servicename, backend, location, function (result) {
+  it('create ' + servicename + ' tjanczuk FooBar#12 -b ' + backend + ' -p legacy --sqlLocation "' + location + '" --json (create new service and get its server, DB name)', function (done) {
+    suite.execute('mobile create %s tjanczuk FooBar#12 -b %s -p legacy --sqlLocation %s --json', servicename, backend, location, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.should.have.property('Name', servicename + 'mobileservice');
@@ -211,8 +207,8 @@ allTests = function (backend) {
     });
   });
 
-  it('create ' + existingServiceName + ' -d existingDBName -r existingServerName tjanczuk FooBar#12 --json (create service with existing DB and server)', function (done) {
-    suite.execute('mobile create %s -d %s -r %s tjanczuk FooBar#12 -b %s --json', existingServiceName, existingDBName, existingServerName, backend, function (result) {
+  it('create ' + existingServiceName + ' -d existingDBName -r existingServerName tjanczuk FooBar#12 -b ' + backend + ' --push nh --json (create service with existing DB and server)', function (done) {
+    suite.execute('mobile create %s -d %s -r %s tjanczuk FooBar#12 -b %s --push nh --json', existingServiceName, existingDBName, existingServerName, backend, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.should.have.property('Name', existingServiceName + 'mobileservice');
@@ -243,14 +239,6 @@ allTests = function (backend) {
     });
   });
 
-  it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
-    suite.execute('mobile restart %s --json', servicename, function (result) {
-      result.exitStatus.should.equal(0);
-      result.text.should.equal('{}\n');
-
-      done();
-    });
-  });
 
   it('show ' + servicename + ' --json (contains healthy service)', function (done) {
     var cmd = ('mobile show ' + servicename + ' --json').split(' ');
@@ -388,6 +376,15 @@ allTests = function (backend) {
     });
   });
 
+  it('redeploy ' + servicename + ' --json (Redeploy specific service)', function (done) {
+    suite.execute('mobile redeploy %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+
+      done();
+    });
+  });
+
   it('config list ' + servicename + ' --json (default config)', function (done) {
     suite.execute('mobile config list %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
@@ -473,8 +470,8 @@ allTests = function (backend) {
     });
   });
 
-  it('config set ' + servicename + ' apns dev:foobar:' + testArtifactDir + '/cert.pfx --json (set apns certificate)', function (done) {
-    suite.execute('mobile config set %s apns dev:foobar:' + testArtifactDir + '/cert.pfx --json', servicename, function (result) {
+  it('config set ' + servicename + ' apns dev:password:' + testArtifactDir + '/cert.pfx --json (set apns certificate)', function (done) {
+    suite.execute('mobile config set %s apns dev:password:' + testArtifactDir + '/cert.pfx --json', servicename, function (result) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
@@ -493,8 +490,8 @@ allTests = function (backend) {
   });
 
   // Google Cloud Messaging
-  it('config set ' + servicename + ' gcm test-0-gcm-key --json', function (done) {
-    suite.execute('mobile config set %s gcm test-0-gcm-key --json', servicename, function (result) {
+  it('config set ' + servicename + ' gcm AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc --json', function (done) {
+    suite.execute('mobile config set %s gcm AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc --json', servicename, function (result) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
@@ -507,7 +504,7 @@ allTests = function (backend) {
       result.errorText.should.equal('');
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
-      response.gcm.should.equal('test-0-gcm-key');
+      response.gcm.should.equal('AIzaSyCLQM-YbdtwFx32h4Dp8PJ-3J_7PhxUxrc');
       done();
     });
   });
@@ -1003,8 +1000,8 @@ allTests = function (backend) {
     });
   });
 
-  it('push mpns set ' + servicename + ' ' + testArtifactDir + '/cert.pfx foobar --enableUnAuthenticatedPush --json', function (done) {
-    suite.execute('mobile push mpns set %s ' + testArtifactDir + '/cert.pfx foobar --json', servicename, function (result) {
+  it('push mpns set ' + servicename + ' ' + testArtifactDir + '/cert.pfx password --enableUnAuthenticatedPush --json', function (done) {
+    suite.execute('mobile push mpns set %s ' + testArtifactDir + '/cert.pfx password --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       done();
     });
@@ -1014,7 +1011,7 @@ allTests = function (backend) {
     suite.execute('mobile push mpns get %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
-      response.certificateKey.should.equal('foobar');
+      response.certificateKey.should.equal('password');
       response.enableUnauthenticatedSettings.should.equal(true);
       done();
     });
@@ -2297,9 +2294,18 @@ allTests = function (backend) {
     });
   });
 
+  it('restart ' + servicename + ' --json (Restart specific service)', function (done) {
+    suite.execute('mobile restart %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('{}\n');
+
+      done();
+    });
+  });
+
   // delete mobile services
-  it('delete ' + existingServiceName + ' -d -q --json (delete service without DB)', function (done) {
-    suite.execute('mobile delete %s -d -q --json', existingServiceName, function (result) {
+  it('delete ' + existingServiceName + ' -d -n -q --json (delete service, but do not delete DB)', function (done) {
+    suite.execute('mobile delete %s -d -n -q --json', existingServiceName, function (result) {
       result.text.should.equal('');
       result.exitStatus.should.equal(0);
       done();
@@ -2329,8 +2335,8 @@ allTests = function (backend) {
     });
   });
 
-  it('delete ' + servicename + ' -a -n -q --json (delete existing service)', function (done) {
-    suite.execute('mobile delete %s -a -n -q --json', servicename, function (result) {
+  it('delete ' + servicename + ' -a -q -n --json (delete existing service)', function (done) {
+    suite.execute('mobile delete %s -a -q -n --json', servicename, function (result) {
       result.text.should.equal('');
       result.exitStatus.should.equal(0);
       done();

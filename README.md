@@ -143,7 +143,7 @@ Please perform the installation steps in following order:
 ```bash
 sudo apt-get install nodejs-legacy
 sudo apt-get install npm
-npm install -g azure-cli
+sudo npm install -g azure-cli
 ```
 
 ## 2 Modes
