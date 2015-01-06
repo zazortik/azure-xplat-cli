@@ -65,7 +65,7 @@ The Xplat-CLI requires Node.js. Installation varies slightly by Ubuntu version.
 
 **Ubuntu 14.04 Trusty Tahr**
 
-On Ubuntu 14, the Node.js package is called nodejs-legacy. The npm package is the Node Package Manager used to install the CLI.
+On Ubuntu 14, the Node.js package is called nodejs-legacy. The npm package is installed first to get the Node Package Manager used to install the CLI.
 
 ```bash
 sudo apt-get install nodejs-legacy
@@ -74,7 +74,7 @@ sudo npm install -g azure-cli
 ```
 **Ubuntu 12.04 Precise Pangolin**
 
-On Ubuntu 12, the version of Node.package available in the default package manager is too old. You can use the Personal Package Archive feature to install a current binary distribution. First, install the curl package to easily retrieve the install script.
+On Ubuntu 12, the version of Node.js available in the default package manager is too old. You can use the Personal Package Archive feature to install the current binary distribution. First, install the curl package to easily retrieve the install script.
 
 ```bash
 sudo apt-get install curl
