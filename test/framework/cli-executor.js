@@ -21,6 +21,7 @@ var fs = require('fs');
 var util = require('util');
 var winston = require('winston');
 var testLogger = require('./test-logger');
+
 require('winston-memory').Memory;
 
 winston.add(winston.transports.Memory);
@@ -81,7 +82,7 @@ function execute(cmd, cb) {
       });
     }
     try {
-      fs.unlinkSync('azure.err');
+      fs.unlinkSync(AzureCli.prototype.getErrorFile());
     } catch (e) {
       if (e.code !== 'ENOENT') {
         throw e;
