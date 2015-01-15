@@ -24,6 +24,7 @@ var stream = require('stream');
 var util = require('util');
 var azure = require('azure');
 
+var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
 var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
@@ -306,6 +307,35 @@ describe('profile', function () {
 
     it('should have expected default subscription', function () {
       p.currentSubscription.id.should.equal(expectedSubscription2.id);
+    });
+
+    describe('with the same name', function () {
+      var expectedSubscription3 = {
+        name: 'Other',
+        id: 'db1ab6f0-4769-4b27-930e-01e2ef9c125e',
+        managementEndpointUrl: 'https://management.core.windows.net/',
+        isDefault: false,
+        managementCertificate: {
+          key: 'fake key',
+          cert: 'fake cert'
+        },
+        environmentName: 'AzureCloud'
+      };
+
+      beforeEach(function () {
+        p = profile.load({
+          subscriptions: [ expectedSubscription1, expectedSubscription2, expectedSubscription3 ]
+        });
+        p.currentSubscription = p.subscriptions[expectedSubscription1.id];
+      });
+
+      it('should get all the subscriptions when searching on subscription name and returnAllMatched is set to true', function () {
+        var subs = p.getSubscription(expectedSubscription3.name, true);
+        subs.length.should.equal(2);
+        subs.some(function (s) { return utils.ignoreCaseEquals(s.id, expectedSubscription2.id); }).should.be.true;
+        subs.some(function (s) { return utils.ignoreCaseEquals(s.id, expectedSubscription3.id); }).should.be.true;
+      });
+
     });
 
     describe('when setting current subscription', function () {
