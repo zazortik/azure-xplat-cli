@@ -24,6 +24,7 @@ var stream = require('stream');
 var util = require('util');
 var azure = require('azure');
 
+var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
 var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
@@ -107,7 +108,7 @@ describe('profile', function () {
       });
 
       it('should have loaded first subscription', function () {
-        p.subscriptions['Account'].should.have.properties({
+        p.subscriptions['db1ab6f0-4769-4b27-930e-01e2ef9c123c'].should.have.properties({
           name: 'Account',
           id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
           managementEndpointUrl: 'https://management.core.windows.net/'
@@ -148,13 +149,13 @@ describe('profile', function () {
     });
 
     it('should contain the named subscription', function () {
-      should.exist(p.subscriptions['Account']);
+      p.subscriptions[expectedSubscription.id].name.should.equal('Account');
     });
 
     it('should have expected properties', function () {
-      p.subscriptions['Account'].should.have.properties(
+      p.subscriptions[expectedSubscription.id].should.have.properties(
         _.omit(expectedSubscription, 'environmentName'));
-      p.subscriptions.Account.environment.should.equal(p.environments.AzureCloud);
+      p.subscriptions[expectedSubscription.id].environment.should.equal(p.environments.AzureCloud);
     });
 
     describe('and saving', function () {
@@ -173,7 +174,7 @@ describe('profile', function () {
 
     describe('and changing an endpoint specifically', function () {
       beforeEach(function () {
-        p.subscriptions.Account.managementEndpointUrl = 'http://some.new.url.example';
+        p.subscriptions[expectedSubscription.id].managementEndpointUrl = 'http://some.new.url.example';
       });
 
       it('should save updated endpoint with subscription', function (done) {
@@ -204,7 +205,7 @@ describe('profile', function () {
       });
 
       it('should remove default flag on old subscription', function () {
-        p.subscriptions.Account.isDefault.should.be.false;
+        p.subscriptions[expectedSubscription.id].isDefault.should.be.false;
       });
     });
 
@@ -255,15 +256,15 @@ describe('profile', function () {
       });
 
       it('should have management cert', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
+        should.exist(p.subscriptions[expectedSubscription.id].managementCertificate);
       });
 
       it('should have expected cert', function () {
-        p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties(expectedSubscription.managementCertificate);
+        p.subscriptions[expectedSubscription.id].managementCertificate.should.have.properties(expectedSubscription.managementCertificate);
       });
 
       it('should have expected username', function () {
-        p.subscriptions[expectedSubscription.name].user.name.should.equal(loginUser);
+        p.subscriptions[expectedSubscription.id].user.name.should.equal(loginUser);
       });
     });
   });
@@ -308,9 +309,38 @@ describe('profile', function () {
       p.currentSubscription.id.should.equal(expectedSubscription2.id);
     });
 
+    describe('with the same name', function () {
+      var expectedSubscription3 = {
+        name: 'Other',
+        id: 'db1ab6f0-4769-4b27-930e-01e2ef9c125e',
+        managementEndpointUrl: 'https://management.core.windows.net/',
+        isDefault: false,
+        managementCertificate: {
+          key: 'fake key',
+          cert: 'fake cert'
+        },
+        environmentName: 'AzureCloud'
+      };
+
+      beforeEach(function () {
+        p = profile.load({
+          subscriptions: [ expectedSubscription1, expectedSubscription2, expectedSubscription3 ]
+        });
+        p.currentSubscription = p.subscriptions[expectedSubscription1.id];
+      });
+
+      it('should get all the subscriptions when searching on subscription name and returnAllMatched is set to true', function () {
+        var subs = p.getSubscription(expectedSubscription3.name, true);
+        subs.length.should.equal(2);
+        subs.some(function (s) { return utils.ignoreCaseEquals(s.id, expectedSubscription2.id); }).should.be.true;
+        subs.some(function (s) { return utils.ignoreCaseEquals(s.id, expectedSubscription3.id); }).should.be.true;
+      });
+
+    });
+
     describe('when setting current subscription', function () {
       beforeEach(function () {
-        p.currentSubscription = p.subscriptions[expectedSubscription1.name];
+        p.currentSubscription = p.subscriptions[expectedSubscription1.id];
       });
 
       it('should set current subscription', function () {
@@ -359,7 +389,7 @@ describe('profile', function () {
 
     describe('when deleting the Account subscription', function () {
       beforeEach(function () {
-        p.deleteSubscription('Account');
+        p.deleteSubscription(expectedSubscription1.id);
       });
 
       it('should have one subscription left', function () {
@@ -373,7 +403,7 @@ describe('profile', function () {
 
     describe('when deleting the default subscription', function () {
       beforeEach(function () {
-        p.deleteSubscription('Other');
+        p.deleteSubscription(expectedSubscription2.id);
       });
 
       it('should have one subscription left', function () {
@@ -387,8 +417,8 @@ describe('profile', function () {
 
     describe('when deleting all subscriptions', function () {
       beforeEach(function () {
-        p.deleteSubscription('Account');
-        p.deleteSubscription('Other');
+        p.deleteSubscription(expectedSubscription1.id);
+        p.deleteSubscription(expectedSubscription2.id);
       });
 
       it('should have no subscriptions left', function () {
@@ -431,21 +461,21 @@ describe('profile', function () {
       });
 
       it('should have management cert', function () {
-        should.exist(p.subscriptions[expectedSubscription.name].managementCertificate);
+        should.exist(p.subscriptions[expectedSubscription.id].managementCertificate);
       });
 
       it('should have user name', function () {
-        var loadedSubscription = p.subscriptions[expectedSubscription.name];
+        var loadedSubscription = p.subscriptions[expectedSubscription.id];
         should.exist(loadedSubscription.user);
-        p.subscriptions[expectedSubscription.name].user.name.should.equal(expectedSubscription.username);
+        p.subscriptions[expectedSubscription.id].user.name.should.equal(expectedSubscription.username);
       });
 
       it('should have expected cert', function () {
-        p.subscriptions[expectedSubscription.name].managementCertificate.should.have.properties('cert', 'key');
+        p.subscriptions[expectedSubscription.id].managementCertificate.should.have.properties('cert', 'key');
       });
 
       it('should create token credentials when asked for credentials', function () {
-        p.subscriptions[expectedSubscription.name]._createCredentials()
+        p.subscriptions[expectedSubscription.id]._createCredentials()
           .should.be.instanceof(AccessTokenCloudCredentials);
       });
     });
