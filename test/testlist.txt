@@ -1,6 +1,3 @@
-# cli.site.cert-tests can only be run mocked, do not try to run live
-# TODO: Mocks are broken
-# commands/cli.site.cert-tests.js
 # cli.site.domain-tests can only be run mocked, do not try to run live
 # TODO: Mocks are broken.
 #commands/cli.site.domain-tests.js
