@@ -9,7 +9,6 @@
   * Updated mobile tests for new gcm string and notification hub errors
 * Websites
   * Fixed issues in site log set command with storage account option
-  * Removed site cert commands
 * VM
   * Fixed azure vm create issue because of required storage account type
 * General Fixes
