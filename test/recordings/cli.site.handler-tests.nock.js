@@ -2575,7 +2575,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2590,7 +2590,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2605,7 +2605,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2620,7 +2620,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2635,7 +2635,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1203-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1203-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2650,7 +2650,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2665,7 +2665,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2680,7 +2680,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2695,7 +2695,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2710,7 +2710,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2725,7 +2725,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2740,7 +2740,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5671-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5671-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2755,7 +2755,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2770,7 +2770,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/footemptst01-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/footemptst01-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2785,7 +2785,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2800,7 +2800,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2815,7 +2815,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1339-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1339-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2830,7 +2830,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2845,7 +2845,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2860,7 +2860,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mynewrg001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mynewrg001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2875,7 +2875,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2890,7 +2890,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2905,7 +2905,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2920,7 +2920,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2935,7 +2935,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2950,7 +2950,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg020-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg020-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2965,7 +2965,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2980,7 +2980,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -2995,7 +2995,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3010,7 +3010,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3025,7 +3025,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk638-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk638-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3040,7 +3040,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3055,7 +3055,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3070,7 +3070,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg003-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg003-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3085,7 +3085,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/japaneastwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/japaneastwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3100,7 +3100,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3115,7 +3115,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3130,7 +3130,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg002-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3145,7 +3145,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg016-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg016-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3160,7 +3160,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3175,7 +3175,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2552-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2552-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3190,7 +3190,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3205,7 +3205,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3220,7 +3220,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3235,7 +3235,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3250,7 +3250,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3265,7 +3265,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3280,7 +3280,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3295,7 +3295,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3310,7 +3310,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3325,7 +3325,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3340,7 +3340,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3355,7 +3355,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3370,7 +3370,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3385,7 +3385,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3400,7 +3400,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk636-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk636-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3415,7 +3415,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3430-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3430-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3430,7 +3430,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3445,7 +3445,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3460,7 +3460,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests444</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests444.azurewebsites.net</a:string><a:string>clitests444.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><HostType>Standard</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests444.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><HostType>Repository</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests444.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests444.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-12-03T22:46:56.603</LastModifiedTimeUtc><Name>clitests444</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests444</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates i:nil=\"true\"/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests444</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests444.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests444</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>AuNY3keigqppcNFu3PZxM75zbgwXk1ZdJhEkxjS0qBJNvHCD8TdWNznoQT8G</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>ygtest12</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>ygtest12.azurewebsites.net</a:string><a:string>ygtest12.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><HostType>Standard</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>ygtest12.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><HostType>Repository</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>ygtest12.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>ygtest12.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-12-03T23:35:21.867</LastModifiedTimeUtc><Name>ygtest12</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>ygtest12</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates i:nil=\"true\"/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/ygtest12</SelfLink><ServerFarm>DefaultServerFarm</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://ygtest12.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$ygtest12</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>kQMEEtR2Mg6f4isWjGPueErX63dpc0MxacbARZzWKn2o8ZM7ntxPlqp9arwy</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
   'content-length': '5409',
   'content-type': 'application/xml; charset=utf-8',
@@ -3475,7 +3475,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3490,7 +3490,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3505,7 +3505,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6944-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6944-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3520,7 +3520,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3535,7 +3535,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup9498-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup9498-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3550,7 +3550,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3565,7 +3565,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3580,7 +3580,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5901-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5901-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3595,7 +3595,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4702-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4702-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3610,7 +3610,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3661-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3661-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3625,7 +3625,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3640,7 +3640,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3655,7 +3655,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3670,7 +3670,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3685,7 +3685,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4080-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4080-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3700,7 +3700,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3715,7 +3715,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2672-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2672-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3730,7 +3730,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestRG-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3745,7 +3745,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup291-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup291-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3760,7 +3760,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8503-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8503-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3775,7 +3775,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3790,7 +3790,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3929-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3929-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3805,7 +3805,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3838-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3838-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3820,7 +3820,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3835,7 +3835,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3850,7 +3850,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4815-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4815-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3865,7 +3865,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup5153-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup5153-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3880,7 +3880,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3895,7 +3895,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3910,7 +3910,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1340-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3925,7 +3925,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3940,7 +3940,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3955,7 +3955,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3970,7 +3970,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1981-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1981-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -3985,7 +3985,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3818-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3818-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4000,7 +4000,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4015,7 +4015,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4030,7 +4030,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5095-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5095-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4045,7 +4045,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp53-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp53-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4060,7 +4060,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4075,7 +4075,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4090,7 +4090,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4105,7 +4105,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4120,7 +4120,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6655-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4135,7 +4135,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4150,7 +4150,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4165,7 +4165,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4180,7 +4180,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4195,7 +4195,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4210,7 +4210,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4225,7 +4225,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5633-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5633-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4240,7 +4240,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4255,7 +4255,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5653-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5653-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4270,7 +4270,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4285,7 +4285,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4300,7 +4300,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3485-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3485-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4315,7 +4315,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9361-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9361-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4330,7 +4330,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4345,7 +4345,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4360,7 +4360,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4319-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4319-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4375,7 +4375,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4898-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4898-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4390,7 +4390,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4405,7 +4405,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4420,7 +4420,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4435,7 +4435,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4450,7 +4450,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4465,7 +4465,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource735-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource735-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4480,7 +4480,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4495,7 +4495,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4510,7 +4510,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4525,7 +4525,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2373-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2373-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4540,7 +4540,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9046-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9046-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4555,7 +4555,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5928-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5928-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4570,7 +4570,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4585,7 +4585,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4600,7 +4600,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1656-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1656-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4615,7 +4615,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4630,7 +4630,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource987-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource987-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4645,7 +4645,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5040-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5040-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4660,7 +4660,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4675,7 +4675,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4690,7 +4690,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4705,7 +4705,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9849-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9849-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4720,7 +4720,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3946-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3946-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4735,7 +4735,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4750,7 +4750,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8049-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8049-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4765,7 +4765,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4780,7 +4780,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4795,7 +4795,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4810,7 +4810,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4825,7 +4825,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4840,7 +4840,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1300-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1300-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4855,7 +4855,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1382-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1382-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4870,7 +4870,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4885,7 +4885,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4900,7 +4900,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1475-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1475-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4915,7 +4915,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9979-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9979-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4930,7 +4930,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4945,7 +4945,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource945-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource945-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4960,7 +4960,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1681-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1681-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4975,7 +4975,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1809-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1809-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -4990,7 +4990,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1820-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1820-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5005,7 +5005,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1850-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1850-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5020,7 +5020,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5035,7 +5035,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2271-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2271-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5050,7 +5050,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2749-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2749-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5065,7 +5065,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2794-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2794-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5080,7 +5080,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5095,7 +5095,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2762-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2762-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5110,7 +5110,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5125,7 +5125,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3107-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3107-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5140,7 +5140,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3632-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3632-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5155,7 +5155,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3520-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3520-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5170,7 +5170,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3940-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3940-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5185,7 +5185,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4064-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4064-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5200,7 +5200,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3329-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3329-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5215,7 +5215,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource467-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource467-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5230,7 +5230,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4996-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4996-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5245,7 +5245,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5500-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5500-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5260,7 +5260,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4477-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4477-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5275,7 +5275,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5574-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5574-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5290,7 +5290,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5898-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5898-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5305,7 +5305,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6112-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6112-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5320,7 +5320,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5335,7 +5335,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6180-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6180-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5350,7 +5350,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource60-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource60-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5365,7 +5365,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6032-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6032-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5380,7 +5380,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6114-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6114-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5395,7 +5395,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6361-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6361-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5410,7 +5410,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5425,7 +5425,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6207-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6207-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5440,7 +5440,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6607-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6607-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5455,7 +5455,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6940-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6940-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5470,7 +5470,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6967-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6967-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5485,7 +5485,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5500,7 +5500,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8176-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8176-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5515,7 +5515,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5530,7 +5530,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7175-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7175-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5545,7 +5545,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8460-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8460-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5560,7 +5560,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource909-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource909-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5575,7 +5575,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9184-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9184-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5590,7 +5590,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5605,7 +5605,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9183-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9183-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5620,7 +5620,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7864-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7864-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5635,7 +5635,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9586-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9586-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5650,7 +5650,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9621-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9621-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5665,7 +5665,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9360-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9360-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5680,7 +5680,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9320-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9320-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5695,7 +5695,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9926-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9926-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -5710,7 +5710,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9760-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9760-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8354,7 +8354,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foorg016-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8369,7 +8369,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastuswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8384,7 +8384,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1203-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1203-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8399,7 +8399,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg017-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8414,7 +8414,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp340-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8429,7 +8429,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1856-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8444,7 +8444,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1930-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8459,7 +8459,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3084-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8474,7 +8474,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/eastasiawebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8489,7 +8489,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5671-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5671-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8504,7 +8504,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3737-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8519,7 +8519,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7724-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8534,7 +8534,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5428-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8549,7 +8549,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg004-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8564,7 +8564,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg021-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8579,7 +8579,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg030-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8594,7 +8594,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg005-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8609,7 +8609,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6802-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8624,7 +8624,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mynewrg001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mynewrg001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8639,7 +8639,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk4713-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8654,7 +8654,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk638-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk638-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8669,7 +8669,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/footemptst01-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/footemptst01-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8684,7 +8684,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8699,7 +8699,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mccake001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8714,7 +8714,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg020-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg020-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8729,7 +8729,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg040-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8744,7 +8744,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/foozappa002-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8759,7 +8759,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1339-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1339-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8774,7 +8774,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk5710-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8789,7 +8789,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcnjs001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8804,7 +8804,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/japaneastwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/japaneastwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8819,7 +8819,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8299-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8834,7 +8834,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2655-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8849,7 +8849,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg002-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg002-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8864,7 +8864,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg003-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg003-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8879,7 +8879,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mytestg1210-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8894,7 +8894,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/WordPress-Group-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8909,7 +8909,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg016-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg016-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8924,7 +8924,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcgh001-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8939,7 +8939,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg001-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg001-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8954,7 +8954,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6705-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8969,7 +8969,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk6958-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8984,7 +8984,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2552-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2552-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -8999,7 +8999,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate2881-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9014,7 +9014,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3409-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9029,7 +9029,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8376-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9044,7 +9044,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3690-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9059,7 +9059,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup7264-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9074,7 +9074,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate843-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9089,7 +9089,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northcentraluswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9104,7 +9104,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8520-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9119,7 +9119,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/mcrg018-EastAsiawebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9134,7 +9134,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/northeuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9149,7 +9149,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7147-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9164,7 +9164,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk7953-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9179,7 +9179,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk9006-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9194,7 +9194,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westuswebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>cli797</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>cli797.azurewebsites.net</a:string><a:string>cli797.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><HostType>Standard</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>cli797.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><HostType>Repository</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>cli797.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>cli797.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-12-05T21:03:50.527</LastModifiedTimeUtc><Name>cli797</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>cli797</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates i:nil=\"true\"/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/cli797</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://cli797.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$cli797</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>mL6C0byxbon0kbu90auso8MSG4J0mZPqzuJgqbPzkNAQ6ausJWQASuRxwEg4</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>clitests444</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests444.azurewebsites.net</a:string><a:string>clitests444.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><HostType>Standard</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests444.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><HostType>Repository</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>clitests444.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>clitests444.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-12-03T22:46:56.603</LastModifiedTimeUtc><Name>clitests444</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>clitests444</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates i:nil=\"true\"/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/clitests444</SelfLink><ServerFarm>Default1</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://clitests444.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$clitests444</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>AuNY3keigqppcNFu3PZxM75zbgwXk1ZdJhEkxjS0qBJNvHCD8TdWNznoQT8G</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site><Site><AdminEnabled>true</AdminEnabled><AvailabilityState>Normal</AvailabilityState><Cers i:nil=\"true\"/><ComputeMode i:nil=\"true\"/><ContentAvailabilityState>Normal</ContentAvailabilityState><Csrs/><DeploymentId>ygtest12</DeploymentId><Enabled>true</Enabled><EnabledHostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>ygtest12.azurewebsites.net</a:string><a:string>ygtest12.scm.azurewebsites.net</a:string></EnabledHostNames><HostNameSslStates><HostNameSslState><HostType>Standard</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>ygtest12.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState><HostNameSslState><HostType>Repository</HostType><IPBasedSslState>NotConfigured</IPBasedSslState><IpBasedSslResult i:nil=\"true\"/><Name>ygtest12.scm.azurewebsites.net</Name><SslState>Disabled</SslState><Thumbprint i:nil=\"true\"/><ToUpdate i:nil=\"true\"/><ToUpdateIpBasedSsl i:nil=\"true\"/><VirtualIP i:nil=\"true\"/></HostNameSslState></HostNameSslStates><HostNames xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"><a:string>ygtest12.azurewebsites.net</a:string></HostNames><LastModifiedTimeUtc>2014-12-03T23:35:21.867</LastModifiedTimeUtc><Name>ygtest12</Name><Owner i:nil=\"true\"/><PremiumAppDeployed i:nil=\"true\"/><RepositorySiteName>ygtest12</RepositorySiteName><RuntimeAvailabilityState>Normal</RuntimeAvailabilityState><SKU>Free</SKU><SSLCertificates i:nil=\"true\"/><ScmSiteAlsoStopped>false</ScmSiteAlsoStopped><SelfLink>https://waws-prod-bay-013.api.azurewebsites.windows.net:454/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/webspaces/westuswebspace/sites/ygtest12</SelfLink><ServerFarm>DefaultServerFarm</ServerFarm><SiteConfig i:nil=\"true\"/><SiteMode i:nil=\"true\"/><SiteProperties><AppSettings i:nil=\"true\"/><Metadata i:nil=\"true\"/><Properties><NameValuePair><Name>RepositoryUri</Name><Value>https://ygtest12.scm.azurewebsites.net</Value></NameValuePair><NameValuePair><Name>PublishingUsername</Name><Value>$ygtest12</Value></NameValuePair><NameValuePair><Name>PublishingPassword</Name><Value>kQMEEtR2Mg6f4isWjGPueErX63dpc0MxacbARZzWKn2o8ZM7ntxPlqp9arwy</Value></NameValuePair></Properties></SiteProperties><State>Running</State><StorageRecoveryDefaultState>Running</StorageRecoveryDefaultState><TrafficManagerHostNames i:nil=\"true\" xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"/><UsageState>Normal</UsageState><WebHostingPlan i:nil=\"true\"/><WebSpace>westuswebspace</WebSpace></Site></Sites>", { 'cache-control': 'private',
   'content-length': '8012',
   'content-type': 'application/xml; charset=utf-8',
@@ -9209,7 +9209,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk636-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk636-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9224,7 +9224,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3430-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3430-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9239,7 +9239,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6944-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6944-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9254,7 +9254,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestParmsRG-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9269,7 +9269,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6297-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9284,7 +9284,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9690-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9299,7 +9299,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup9498-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup9498-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9314,7 +9314,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6718-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9329,7 +9329,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8985-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9344,7 +9344,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1759-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9359,7 +9359,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/onesdk3202-WestUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9374,7 +9374,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3661-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate3661-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9389,7 +9389,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate1643-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9404,7 +9404,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/westeuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9419,7 +9419,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate9383-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9434,7 +9434,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4080-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4080-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9449,7 +9449,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestRG-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/TestRG-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9464,7 +9464,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4702-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4702-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9479,7 +9479,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate4806-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9494,7 +9494,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup291-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup291-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9509,7 +9509,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup1948-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9524,7 +9524,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3838-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3838-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9539,7 +9539,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2672-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup2672-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9554,7 +9554,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3929-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3929-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9569,7 +9569,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4815-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup4815-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9584,7 +9584,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8539-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9599,7 +9599,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5760-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9614,7 +9614,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup3623-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9629,7 +9629,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5901-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate5901-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9644,7 +9644,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup6495-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9659,7 +9659,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate6545-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9674,7 +9674,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate7729-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9689,7 +9689,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1340-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1340-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9704,7 +9704,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate8254-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9719,7 +9719,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup5153-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup5153-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9734,7 +9734,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatTestGCreate489-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9749,7 +9749,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp135-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9764,7 +9764,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1981-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp1981-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9779,7 +9779,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3818-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3818-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9794,7 +9794,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8503-NorthEuropewebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xDeploymentTestGroup8503-NorthEuropewebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9809,7 +9809,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5095-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5095-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9824,7 +9824,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5885-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9839,7 +9839,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp53-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp53-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9854,7 +9854,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3343-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9869,7 +9869,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9884,7 +9884,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4434-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9899,7 +9899,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6303-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9914,7 +9914,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4604-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9929,7 +9929,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5336-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9944,7 +9944,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet6505-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9959,7 +9959,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet7162-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9974,7 +9974,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2239-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -9989,7 +9989,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9568-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10004,7 +10004,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6655-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6655-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10019,7 +10019,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8452-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10034,7 +10034,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4319-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp4319-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10049,7 +10049,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp6693-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10064,7 +10064,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9361-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9361-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10079,7 +10079,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5633-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5633-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10094,7 +10094,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3485-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3485-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10109,7 +10109,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5653-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5653-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10124,7 +10124,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9699-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10139,7 +10139,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4058-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10154,7 +10154,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4898-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4898-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10169,7 +10169,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6138-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10184,7 +10184,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6209-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10199,7 +10199,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5615-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10214,7 +10214,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6706-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10229,7 +10229,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8901-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10244,7 +10244,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource735-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource735-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10259,7 +10259,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8487-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10274,7 +10274,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9276-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10289,7 +10289,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2373-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp2373-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10304,7 +10304,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3946-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3946-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10319,7 +10319,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9046-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9046-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10334,7 +10334,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5928-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5928-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10349,7 +10349,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp3350-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10364,7 +10364,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1656-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1656-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10379,7 +10379,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5040-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5040-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10394,7 +10394,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource987-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource987-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10409,7 +10409,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8049-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp8049-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10424,7 +10424,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1703-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10439,7 +10439,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet2395-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10454,7 +10454,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4982-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10469,7 +10469,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp5984-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10484,7 +10484,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9849-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9849-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10499,7 +10499,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9621-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10514,7 +10514,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9979-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xplatResourceTagGrp9979-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10529,7 +10529,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1759-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10544,7 +10544,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9972-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10559,7 +10559,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9273-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10574,7 +10574,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9603-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10589,7 +10589,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3872-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10604,7 +10604,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource945-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource945-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10619,7 +10619,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1222-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10634,7 +10634,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResourceSet3835-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10649,7 +10649,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1382-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1382-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10664,7 +10664,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1300-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1300-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10679,7 +10679,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1474-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10694,7 +10694,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1475-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1475-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10709,7 +10709,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1681-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1681-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10724,7 +10724,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1730-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10739,7 +10739,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1453-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10754,7 +10754,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1850-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1850-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10769,7 +10769,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1820-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1820-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10784,7 +10784,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource189-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10799,7 +10799,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1809-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource1809-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10814,7 +10814,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2271-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2271-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10829,7 +10829,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2794-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2794-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10844,7 +10844,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2762-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2762-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10859,7 +10859,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2749-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2749-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10874,7 +10874,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3107-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3107-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10889,7 +10889,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3329-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3329-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10904,7 +10904,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3513-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10919,7 +10919,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource2933-EastUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10934,7 +10934,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3520-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3520-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10949,7 +10949,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3309-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10964,7 +10964,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3940-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3940-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10979,7 +10979,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3632-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource3632-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -10994,7 +10994,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4064-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4064-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11009,7 +11009,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource467-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource467-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11024,7 +11024,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4477-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4477-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11039,7 +11039,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5842-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11054,7 +11054,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4996-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource4996-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11069,7 +11069,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6032-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6032-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11084,7 +11084,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5574-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5574-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11099,7 +11099,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5898-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5898-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11114,7 +11114,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6112-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6112-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11129,7 +11129,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5500-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource5500-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11144,7 +11144,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6114-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6114-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11159,7 +11159,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource60-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource60-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11174,7 +11174,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6361-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6361-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11189,7 +11189,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6607-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6607-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11204,7 +11204,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6940-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6940-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11219,7 +11219,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6961-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11234,7 +11234,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6967-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6967-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11249,7 +11249,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6552-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11264,7 +11264,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7175-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7175-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11279,7 +11279,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6207-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6207-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11294,7 +11294,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7864-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7864-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11309,7 +11309,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8176-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8176-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11324,7 +11324,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource7771-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11339,7 +11339,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8460-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource8460-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11354,7 +11354,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource909-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource909-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11369,7 +11369,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9183-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9183-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11384,7 +11384,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9184-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9184-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11399,7 +11399,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9320-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9320-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11414,7 +11414,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9586-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9586-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11429,7 +11429,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9360-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9360-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11444,7 +11444,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9760-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9760-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11459,7 +11459,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9926-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9926-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11474,7 +11474,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6180-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource6180-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',
@@ -11489,7 +11489,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9621-SouthCentralUSwebspace/sites?&propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/WebSpaces/xTestResource9621-SouthCentralUSwebspace/sites?propertiesToInclude=repositoryuri%2Cpublishingpassword%2Cpublishingusername')
   .reply(200, "<Sites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'private',
   'content-length': '110',
   'content-type': 'application/xml; charset=utf-8',

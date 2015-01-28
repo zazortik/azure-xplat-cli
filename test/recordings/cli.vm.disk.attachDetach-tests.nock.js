@@ -808,7 +808,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/XplattestVm/deployments/XplattestVm/roles/XplattestVm/DataDisks/0?')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/XplattestVm/deployments/XplattestVm/roles/XplattestVm/DataDisks/0')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.113 (rd_rdfe_stable.140814-1543) Microsoft-HTTPAPI/2.0',
