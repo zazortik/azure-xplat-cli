@@ -46,7 +46,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid$')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The affinity group does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',
@@ -82,7 +82,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid$')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The affinity group name is invalid.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '194',
   'content-type': 'application/xml; charset=utf-8',
