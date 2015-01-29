@@ -203,6 +203,11 @@ You need to set the following environment variables to capture the HTTP traffic 
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
 ```
+## Want to know the underlying HTTP taffic when you execute the command
+You can use the -vv option to see the actual REST requests on the console.
+```bash
+azure site create --location "West US" mytestsite -vv
+```
 
 ## Running Tests
 
