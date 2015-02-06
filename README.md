@@ -42,6 +42,7 @@ This project provides a cross-platform command line interface for developers and
     * Manage tables, scripts, and configuration
     * Access logs
     * Access data
+    * Add custom domains and enable SSL
 * Service Bus
     * Create and manage Service Bus namespaces
 * SQL Database
