@@ -36,6 +36,7 @@ describe('cli', function() {
       location,
       userName = 'azureuser',
       password = 'Pa$$word@123',
+      vmSize = 'ExtraSmall',
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 10000;
 
@@ -86,7 +87,7 @@ describe('cli', function() {
     });
 
     //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function() { 
+    describe('Create:', function() {
       it('Vm should create with vnet and location', function(done) {
         getImageName('Linux', function(imageName) {
           getVnet('Created', function(virtualnetName, affinityName) {
@@ -121,6 +122,19 @@ describe('cli', function() {
               vmToUse.Delete = true;
               done();
             });
+          });
+        });
+      });
+
+      it('Windows Vm with Vm size', function(done) {
+        getImageName('Windows', function(ImageName) {
+          var cmd = util.format('vm create -z %s %s %s %s %s --json',
+            vmSize, vmVnetName, ImageName, userName, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(done, timeout);
           });
         });
       });
