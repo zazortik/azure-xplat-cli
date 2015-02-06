@@ -95,6 +95,92 @@ describe('cli', function () {
           });
         });
       });
+
+      describe('stored access policy', function () {
+        var policyName1 = 'tablepolicy01';
+        var policyName2 = 'tablepolicy02';
+        var start = new Date('2014-12-01').toISOString();
+        var expiry = new Date('2099-12-31').toISOString();
+        var permissions = 'ad';
+
+        it('should create the table policy with list permission', function (done) {
+          suite.execute('storage table policy create %s %s --permissions %s --start %s --expiry %s --json', tableName, policyName1, permissions, start, expiry, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var found = false;
+            for (var index in policies) {
+              if (policies[index].Id === policyName1) {
+                found = true;
+                break;
+              }
+            }
+            found.should.be.true;
+            done();
+          });
+        });
+
+        it('should show the created policy', function (done) {
+          suite.execute('storage table policy show %s %s --json', tableName, policyName1, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var policy;
+            for (var index in policies) {
+              policy = policies[index];
+              if (policy.Id === policyName1) {
+                break;
+              }
+            }
+            policy.Id.should.equal(policyName1);
+            policy.AccessPolicy.Permissions.should.equal(permissions);
+            policy.AccessPolicy.Start.should.equal(start);
+            policy.AccessPolicy.Expiry.should.equal(expiry);
+            done();
+          });
+        });
+
+        it('should list the policies', function (done) {
+          suite.execute('storage table policy create %s %s --permissions %s --start %s --expiry %s --json', tableName, policyName2, permissions, start, expiry, function (result) {
+            suite.execute('storage table policy list %s --json', tableName, function (result) {
+              var policies = JSON.parse(result.text);
+              policies.length.should.equal(2);
+              done();
+            });
+          });
+        });
+
+        it('should set the policy', function (done) {
+          var newPermissions = 'raud';
+          var newStart = new Date('2015-12-01').toISOString();
+          var newExpiry = new Date('2100-12-31').toISOString();
+          suite.execute('storage table policy set %s %s --permissions %s --start %s --expiry %s --json', tableName, policyName1, newPermissions, newStart, newExpiry, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var policy;
+            for (var index in policies) {
+              policy = policies[index];
+              if (policy.Id === policyName1) {
+                break;
+              }
+            }
+            policy.Id.should.equal(policyName1);
+            policy.AccessPolicy.Permissions.should.equal(newPermissions);
+            policy.AccessPolicy.Start.should.equal(newStart);
+            policy.AccessPolicy.Expiry.should.equal(newExpiry);
+            done();
+          });
+        });
+
+        it('should delete the policy', function (done) {
+          suite.execute('storage table policy delete %s %s --json', tableName, policyName1, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+            done();
+          });
+        });
+      });
       
       describe('sas', function () {
         it('should create the container sas', function (done) {

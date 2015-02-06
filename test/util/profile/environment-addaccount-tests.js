@@ -20,6 +20,7 @@ var should = require('should');
 var sinon = require('sinon');
 require('streamline').register();
 
+
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
 var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
@@ -45,6 +46,20 @@ var expectedSubscriptions =
   },
 ];
 
+var expectedASMSubscriptions =
+[
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    subscriptionName: 'Mooncake Account',
+    username: expectedUserName
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    subscriptionName: 'Mooncake Other',
+    username: expectedUserName
+  },
+];
+
 var testSubscriptionsFromTenant = [
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
@@ -55,6 +70,18 @@ var testSubscriptionsFromTenant = [
     displayName: 'Other'
   }
 ];
+
+var testSubscriptionsFromASM = [
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+    subscriptionName: 'Mooncake Account'
+  },
+  {
+    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
+    subscriptionName: 'Mooncake Other'
+  }
+];
+
 
 var expectedToken = {
   accessToken: 'a dummy token',
@@ -81,6 +108,15 @@ var testArmSubscriptionClient = {
   }
 };
 
+var testAsmSubscriptionClient = {
+  subscriptions: {
+    list: function (callback) {
+      console.log('ASM list subscriptions invoked');
+      callback(null, {subscriptions: testSubscriptionsFromASM });
+    }
+  }
+};
+
 describe('Environment', function () {
   var environment;
 
@@ -89,6 +125,7 @@ describe('Environment', function () {
       name: 'TestEnvironment',
       activeDirectoryEndpointUrl: 'http://notreal.example',
       commonTenantName: 'common',
+      resourceManagerEndpointUrl: 'https://login.notreal.example/',
       activeDirectoryResourceId: 'http://login.notreal.example'
     });
 
@@ -151,6 +188,59 @@ describe('Environment', function () {
     it('should have same tenant id for all subscription', function () {
       subscriptions.forEach(function (s) {
         s.tenantId.should.equal(testTenantIds[0]);
+      });
+    });
+  });
+});
+
+describe('Environment without resource manager endpoint (like AzureChinaCloud)', function () {
+  var environment;
+
+  before(function () {
+    environment = new profile.Environment({
+      name: 'TestEnvironment',
+      activeDirectoryEndpointUrl: 'http://notreal.example',
+      commonTenantName: 'common',
+      activeDirectoryResourceId: 'http://login.notreal.example'
+    });
+
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
+      null/*no error*/, expectedToken/*the access token*/);
+    sinon.stub(environment, 'getAsmClient').returns(testAsmSubscriptionClient);
+
+  });
+
+  describe('When creating account', function () {
+    var subscriptions;
+
+    beforeEach(function (done) {
+      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
+        subscriptions = newSubscriptions;
+        done();
+      });
+    });
+
+    it('should have call to get asm client', function () {
+      environment.getAsmClient.called.should.be.true;
+    });
+
+    
+    it('should return a subscription with expected username', function () {
+      should.exist(subscriptions[0].user);
+      subscriptions[0].user.name.should.equal(expectedUserName);
+    });
+
+    it('should return listed subscriptions', function () {
+      subscriptions.should.have.length(expectedASMSubscriptions.length);
+      for(var i = 0, len = subscriptions.length; i < len; ++i) {
+        subscriptions[i].id.should.equal(expectedASMSubscriptions[i].subscriptionId);
+        subscriptions[i].name.should.equal(expectedASMSubscriptions[i].subscriptionName);
+      }
+    });
+
+    it('should have same username for all subscription', function () {
+      subscriptions.forEach(function (s) {
+        s.user.name.should.equal(expectedUserName);
       });
     });
   });
