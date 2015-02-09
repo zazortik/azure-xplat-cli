@@ -10,6 +10,7 @@ commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
 commands/cli.mobile-tests.js
+commands/cli.mobile.domain-tests.js
 commands/cli.mobilerecover-tests.js
 commands/cli.network-tests.js
 commands/cli.network.reservedip-tests.js
