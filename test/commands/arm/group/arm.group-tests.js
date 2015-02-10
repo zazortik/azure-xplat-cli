@@ -354,21 +354,21 @@ describe('arm', function () {
         });
       });
 
-      it('should fail when an invalid resource group is provided', function (done) {
-        suite.execute('group log show -n %s --json', 'random_group_name', function (result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('Resource group \'random_group_name\' could not be found.');
-          done();
-        });
-      });
+      //it('should fail when an invalid resource group is provided', function (done) {
+      //  suite.execute('group log show -n %s --json', 'random_group_name', function (result) {
+      //    result.exitStatus.should.equal(1);
+      //    result.errorText.should.include('Resource group \'random_group_name\' could not be found.');
+      //    done();
+      //  });
+      //});
 
-      it('should fail when an invalid deployment name is provided', function (done) {
-        suite.execute('group log show -n %s -d %s --json', groupName, 'random_deployment_name', function (result) {
-          result.exitStatus.should.equal(1);
-          result.errorText.should.include('Deployment \'random_deployment_name\' could not be found.');
-          done();
-        });
-      });
+      //it('should fail when an invalid deployment name is provided', function (done) {
+      //  suite.execute('group log show -n %s -d %s --json', groupName, 'random_deployment_name', function (result) {
+      //    result.exitStatus.should.equal(1);
+      //    result.errorText.should.include('Deployment \'random_deployment_name\' could not be found.');
+      //    done();
+      //  });
+      //});
     });
   });
 });
