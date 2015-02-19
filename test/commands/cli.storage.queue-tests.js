@@ -90,6 +90,92 @@ describe('cli', function () {
           });
         });
       });
+
+      describe('stored access policy', function () {
+        var policyName1 = 'queuepolicy01';
+        var policyName2 = 'queuepolicy02';
+        var start = new Date('2014-12-01').toISOString();
+        var expiry = new Date('2099-12-31').toISOString();
+        var permissions = 'au';
+
+        it('should create the queue policy with list permission', function (done) {
+          suite.execute('storage queue policy create %s %s --permissions %s --start %s --expiry %s --json', queueName, policyName1, permissions, start, expiry, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var found = false;
+            for (var index in policies) {
+              if (policies[index].Id === policyName1) {
+                found = true;
+                break;
+              }
+            }
+            found.should.be.true;
+            done();
+          });
+        });
+
+        it('should show the created policy', function (done) {
+          suite.execute('storage queue policy show %s %s --json', queueName, policyName1, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var policy;
+            for (var index in policies) {
+              policy = policies[index];
+              if (policy.Id === policyName1) {
+                break;
+              }
+            }
+            policy.Id.should.equal(policyName1);
+            policy.AccessPolicy.Permissions.should.equal(permissions);
+            policy.AccessPolicy.Start.should.equal(start);
+            policy.AccessPolicy.Expiry.should.equal(expiry);
+            done();
+          });
+        });
+
+        it('should list the policies', function (done) {
+          suite.execute('storage queue policy create %s %s --permissions %s --start %s --expiry %s --json', queueName, policyName2, permissions, start, expiry, function (result) {
+            suite.execute('storage queue policy list %s --json', queueName, function (result) {
+              var policies = JSON.parse(result.text);
+              policies.length.should.equal(2);
+              done();
+            });
+          });
+        });
+
+        it('should set the policy', function (done) {
+          var newPermissions = 'raup';
+          var newStart = new Date('2015-12-01').toISOString();
+          var newExpiry = new Date('2100-12-31').toISOString();
+          suite.execute('storage queue policy set %s %s --permissions %s --start %s --expiry %s --json', queueName, policyName1, newPermissions, newStart, newExpiry, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+
+            var policy;
+            for (var index in policies) {
+              policy = policies[index];
+              if (policy.Id === policyName1) {
+                break;
+              }
+            }
+            policy.Id.should.equal(policyName1);
+            policy.AccessPolicy.Permissions.should.equal(newPermissions);
+            policy.AccessPolicy.Start.should.equal(newStart);
+            policy.AccessPolicy.Expiry.should.equal(newExpiry);
+            done();
+          });
+        });
+
+        it('should delete the policy', function (done) {
+          suite.execute('storage queue policy delete %s %s --json', queueName, policyName1, function (result) {
+            var policies = JSON.parse(result.text);
+            policies.length.should.greaterThan(0);
+            done();
+          });
+        });
+      });
       
       describe('sas', function () {
         it('should create the queue sas and show the queue with sas', function (done) {

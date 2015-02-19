@@ -1,4 +1,27 @@
+2015.01.22 Version 0.8.14
+* Storage
+  * Added support for storage "stored access policy" and update storage SDK
+  * Added support for creating XIO storage accounts
+  * Added support for "Premium_LRS" storage account type
+* Mobile Service
+  * Updated restart to only restart service. Add redeploy command to ensure mobile service runtime is using latest.
+  * Added new required --push parameter to azure mobile create to specify push mode for node services. Options are legacy and nh.
+  * Updated mobile tests for new gcm string and notification hub errors
+* Websites
+  * Fixed issues in site log set command with storage account option
+* VM
+  * Fixed azure vm create issue because of required storage account type
+* General Fixes
+  * Fixed azure login issues in AzureChinaCloud
+  * Added location Australia, Australia South East, Japan East, Japan West and East US 2 for resource group
+  * Moved azure.err file to user's home directory/.azure/azure.err
+  * Fixed managing two subscriptions with same name issue
+  * Updated Readme.md with Ubuntu installation instructions
+
 2014.12.05 Version 0.8.13
+* Upgraded the sites cli to work with latest breaking changes in the Azure Web Sites API.
+* Upgraded the storage cli to work with latest breaking changes in the Azure Storage API.
+* Added an option to delete SB Namepsace in mobile delete command
 * VM
   * Support for capturing VM as VM image
   * Disk host caching while attaching disk

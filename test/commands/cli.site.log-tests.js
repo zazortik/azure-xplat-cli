@@ -17,8 +17,11 @@
 var should = require('should');
 
 var CLITest = require('../framework/cli-test');
+var util = require('util');
 
 var gitUsername;
+var storageAccountName;
+var storageAccountKey;
 var location;
 var suite;
 var testPrefix = 'cli.site.log-tests';
@@ -31,7 +34,9 @@ var requiredEnvironment = [
   {
     name: 'AZURE_SITE_TEST_LOCATION',
     defaultValue: 'East US'
-  }
+  }, 
+  'AZURE_STORAGE_ACCOUNT',
+  'AZURE_STORAGE_ACCESS_KEY'
 ];
 
 describe('cli', function () {
@@ -51,6 +56,8 @@ describe('cli', function () {
       suite.setupTest(function () {
         gitUsername = process.env.AZURE_GIT_USERNAME;
         location = process.env.AZURE_SITE_TEST_LOCATION;
+        storageAccountName = process.env.AZURE_STORAGE_ACCOUNT;
+        storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY;
         done();
       });
     });
@@ -70,7 +77,7 @@ describe('cli', function () {
         createSite(siteName, done);
       });
 
-      it('should allow setting everything', function (done) {
+      it('should allow setting everything with output as file', function (done) {
         suite.execute('site log set %s --application -o file -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json',
           siteName,
           function (result) {
@@ -91,6 +98,42 @@ describe('cli', function () {
             site.config.detailedErrorLoggingEnabled.should.equal(true);
 
             done();
+          });
+        });
+      });
+
+      it('should allow setting everything with output as storage', function (done) {
+        suite.execute('site log set %s --application -o storage -t %s -l error --web-server-logging --detailed-error-messages --failed-request-tracing --json',
+          siteName, storageAccountName,
+          function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          suite.execute('storage account show %s --json', storageAccountName, function(accountResult){
+            accountResult.exitStatus.should.equal(0);
+            var accountInfo = JSON.parse(accountResult.text);
+
+            var connectionString = util.format('AccountName=%s;AccountKey=%s;BlobEndpoint=%s;QueueEndpoint=%s;TableEndpoint=%s',
+              storageAccountName,
+              storageAccountKey,
+              accountInfo.properties.endpoints[0],
+              accountInfo.properties.endpoints[1],
+              accountInfo.properties.endpoints[2]);
+
+            showSite(siteName, function (result) {
+              result.exitStatus.should.equal(0);
+              var site = JSON.parse(result.text);
+
+              site.diagnosticsSettings.AzureDriveEnabled.should.equal(false);
+              site.diagnosticsSettings.AzureDriveTraceLevel.should.equal('Error');
+
+              site.config.requestTracingEnabled.should.equal(true);
+              site.config.httpLoggingEnabled.should.equal(true);
+              site.config.detailedErrorLoggingEnabled.should.equal(true);
+              site.config.connectionStrings[0].connectionString.should.equal(connectionString);
+
+              done();
+            });
           });
         });
       });
@@ -128,7 +171,7 @@ describe('cli', function () {
     }
 
     function showSite(siteName, callback) {
-      suite.execute('node cli.js site show %s --json', siteName, callback);
+      suite.execute('node cli.js site show -d %s --json', siteName, callback);
     }
 
     function deleteSite(siteName, callback) {

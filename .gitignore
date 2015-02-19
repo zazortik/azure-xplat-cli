@@ -7,6 +7,7 @@ targets/*
 *.suo
 *.user
 .ntvs_analysis.*
+*.njsproj
 
 # Node #
 node_modules/

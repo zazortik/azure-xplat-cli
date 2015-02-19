@@ -42,6 +42,7 @@ This project provides a cross-platform command line interface for developers and
     * Manage tables, scripts, and configuration
     * Access logs
     * Access data
+    * Add custom domains and enable SSL
 * Service Bus
     * Create and manage Service Bus namespaces
 * SQL Database
@@ -60,15 +61,38 @@ You can install the azure-cli npm package directly.
 npm install -g azure-cli
 ```
 
+### Install on Ubuntu
+The Xplat-CLI requires Node.js. Installation varies slightly by Ubuntu version.
+
+**Ubuntu 14.04 Trusty Tahr**
+
+On Ubuntu 14, the Node.js package is called nodejs-legacy. The npm package is installed first to get the Node Package Manager used to install the CLI.
+
+```bash
+sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+sudo npm install -g azure-cli
+```
+**Ubuntu 12.04 Precise Pangolin**
+
+On Ubuntu 12, the version of Node.js available in the default package manager is too old. You can use the Personal Package Archive feature to install the current binary distribution. First, install the curl package to easily retrieve the install script.
+
+```bash
+sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install -y nodejs
+sudo npm install -g azure-cli
+```
+
 ### Pre-compiled installers
 
-* Windows
-* Mac
-* Linux
+* [Windows](http://go.microsoft.com/fwlink/?linkid=254279)
+* [Mac](http://go.microsoft.com/fwlink/?Linkid=252249) 
+* [Linux](http://go.microsoft.com/fwlink/?linkid=253472)
 
 ### Download Source Code
 
-To get the source code of the SDK via **git** just type:
+You can also install the Azure Xplat-CLI from sources using **git**  and **npm**.
 
 ```bash
 git clone https://github.com/Azure/azure-xplat-cli.git
@@ -95,18 +119,11 @@ echo 'source ~/azure.completion.sh' >> .bash_profile
 
 ## Get Started
 
-In general, following are the steps:
-
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/).
-  * Option 1: Login with your Organizational account. Azure Active Directory authentication is used in this case. No management certificate is needed. **Note**: Microsoft account is not supported in this approach right now. You can create an Organizational account from the Azure portal for free.
+* First, get authenticated with Microsoft Azure. For details, read [this article](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/).
+  * Option 1: Login with your Organizational account. Azure Active Directory authentication is used in this case. No management certificate is needed. **Note**: Authentication with a Microsoft account is not supported at this time. You can create a free Organizational account in the Azure portal for use in the CLI.
   * Option 2: Download and import a publish settings file which contains a management certificate.
-* Use the commands
 
-The first step can be different for different environment you are targeting. Following are detail instructions for each supported environment.
-
-### Microsoft Azure
-
-If you use both mechanisms on the same subscription, Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
+If you use both mechanisms on the same subscription, Azure Active Directory authentication will be used by default. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
 
 #### Login directly from xplat-cli (Azure Active Directory authentication)
 
@@ -143,7 +160,7 @@ Please perform the installation steps in following order:
 ```bash
 sudo apt-get install nodejs-legacy
 sudo apt-get install npm
-npm install -g azure-cli
+sudo npm install -g azure-cli
 ```
 
 ## 2 Modes
@@ -160,7 +177,7 @@ azure config mode asm # service management
 azure config mode arm # resource manager
 ```
 
-**For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)**
+**For more details on the commands, please see the [command line tool reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/)**
 
 ## Docker
 
@@ -187,6 +204,11 @@ You need to set the following environment variables to capture the HTTP traffic 
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
 ```
+## Want to know the underlying HTTP taffic when you execute the command
+You can use the -vv option to see the actual REST requests on the console.
+```bash
+azure site create --location "West US" mytestsite -vv
+```
 
 ## Running Tests
 
@@ -194,8 +216,6 @@ See [this page for instructions](https://github.com/Azure/azure-xplat-cli/wiki/R
 
 ## Learn More
 For documentation on how to host Node.js applications on Microsoft Azure, please see the [Microsoft Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
-
-For more extensive  documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
 
 ## Contribute Code or Provide Feedback
 

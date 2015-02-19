@@ -1,22 +1,23 @@
-# cli.site.cert-tests can only be run mocked, do not try to run live
-# TODO: Mocks are broken
-# commands/cli.site.cert-tests.js
+# cli.site.domain-tests can only be run mocked, do not try to run live
+# TODO: Mocks are broken.
+#commands/cli.site.domain-tests.js
+# TODO: Not recording call to log service properly, disabling
+#commands/cli.site.log.tail-tests.js
+# TODO: This suite uses custom recording
 cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
-commands/cli.site.deployment-tests.js
-# cli.site.domain-tests can only be run mocked, do not try to run live
-# TODO: Mocks are broken.
-# commands/cli.site.domain-tests.js
-commands/cli.site.handler-tests.js
 commands/cli.mobile-tests.js
+commands/cli.mobile.domain-tests.js
 commands/cli.mobilerecover-tests.js
 commands/cli.network-tests.js
 commands/cli.network.reservedip-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
+commands/cli.site.deployment-tests.js
+commands/cli.site.handler-tests.js
 commands/cli.site-tests.js
 commands/cli.site.appsetting-tests.js
 commands/cli.site.connectionstring-tests.js
@@ -26,7 +27,6 @@ commands/cli.site.log-tests.js
 commands/cli.site.scale-tests.js
 commands/cli.site.slots-tests.js
 commands/cli.site.job-tests.js
-# TODO: This suite uses custom recording
 commands/cli.vm.capture-tests.js
 commands/cli.vm.acl-tests.js
 commands/cli.vm.pip-tests.js
@@ -74,8 +74,6 @@ util/authentication/adalAuth-tests.js
 util/profile/publishSettings-tests.js
 util/profile/environment-addaccount-tests.js
 util/profile/profile-tests.js
-# TODO: Not recording call to log service properly, disabling
-# commands/cli.site.log.tail-tests.js
 # Testing macos token management stuff
 util/authentication/osx-keychain-parser-tests.js
 util/authentication/token-cache-encoding-tests.js
