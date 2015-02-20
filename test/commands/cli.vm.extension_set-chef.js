@@ -24,6 +24,7 @@ var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
 }];
+var vmCreated=false;
 describe('cli', function() {
   describe('vm', function() {
     var vmName,
@@ -51,7 +52,7 @@ describe('cli', function() {
             });
           }, timeout);
         } else callback();
-      }
+      }      
       deleteUsedVM(function() {
         suite.teardownSuite(done);
       });
@@ -59,7 +60,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+        vmName = suite.isMocked ? 'xchefextnvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
@@ -95,16 +96,19 @@ describe('cli', function() {
     });
 
     function createVM(callback) {
+      if (!vmCreated) {
         getImageName('Windows', function(imagename) {
           var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
           cmd.push('-l');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
+            vmCreated = true;
             setTimeout(callback, timeout);
           });
         });
-      }
+      } else { callback(); }
+    }
       // Get name of an image of the given category
 
     function getImageName(category, callBack) {

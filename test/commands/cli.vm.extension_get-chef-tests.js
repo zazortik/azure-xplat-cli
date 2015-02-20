@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
@@ -20,7 +21,8 @@ var CLITest = require('../framework/cli-test');
 // A common VM used by multiple tests
 var suite;
 var testPrefix = 'cli.vm.extension_get-chef-tests';
-
+var vmPrefix = 'clitestvm';
+var vmCreated;
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -28,7 +30,8 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var extensionList,
+    var testVMName,
+      extensionList,
       exteAylist,
       location,
       retry = 5;
@@ -36,11 +39,27 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
+      testVMName = suite.isMocked ? 'xchefextn' : suite.generateId(vmPrefix, null);
       suite.setupSuite(done);
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      function deleteUsedVM(callback) {
+        if ( vmCreated || !suite.isMocked ) {
+          setTimeout(function() {
+            var cmd = util.format('vm delete %s -b -q --json', testVMName).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              setTimeout(callback, timeout);
+            });
+          }, timeout);
+        } else
+          callback();
+      }
+
+      deleteUsedVM(function() {
+        suite.teardownSuite(done);
+      });
     });
 
     beforeEach(function(done) {
@@ -87,6 +106,37 @@ describe('cli', function() {
       });
     });
 
+    function getImageName(category, callBack) {
+      if (process.env.VM_WIN_IMAGE) {
+        callBack(process.env.VM_WIN_IMAGE);
+      } else {
+        var cmd = util.format('vm image list --json').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var imageList = JSON.parse(result.text);
+          imageList.some(function(image) {
+            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
+              process.env.VM_WIN_IMAGE = image.name;
+              return true;
+            }
+          });
+          callBack(process.env.VM_WIN_IMAGE);
+        });
+      }
+    }
+
+    function createVM(callback) {
+      getImageName('Windows', function(imagename) {
+        var cmd = util.format('vm create %s %s %s %s --json', testVMName, imagename, 'azure', 'Azure@123').split(' ');
+        cmd.push('-l');
+        cmd.push(location);
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          setTimeout(callback, timeout);
+        });
+      });
+    }
+
     function getVM(callback) {
       if (getVM.VMName) {
         callback(getVM.VMName);
@@ -101,6 +151,13 @@ describe('cli', function() {
               return true;
             }
           });
+
+          if (!found) {
+            createVM(function() {
+              vmCreated = true;
+              getVM.VMName = testVMName;
+            });
+          }
           callback(getVM.VMName);
         });
       }
