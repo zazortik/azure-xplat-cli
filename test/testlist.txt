@@ -62,12 +62,13 @@ commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
 commands/cli.storage.service-tests.js
 util/git/linkrevisioncontrol-tests.js
-hdinsight/unit-cli-setup.js
-hdinsight/unit-list-command.js
-hdinsight/unit-show-command.js
-hdinsight/unit-delete-command.js
-hdinsight/unit-create-command.js
-hdinsight/unit-config-commands.js
+#to remove once the new hdinsighs commands checked in
+#hdinsight/unit-cli-setup.js
+#hdinsight/unit-list-command.js
+#hdinsight/unit-show-command.js
+#hdinsight/unit-delete-command.js
+#hdinsight/unit-create-command.js
+#hdinsight/unit-config-commands.js
 util/utils-tests.js
 util/set-tests.js
 util/authentication/adalAuth-tests.js
