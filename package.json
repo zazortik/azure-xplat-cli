@@ -59,7 +59,7 @@
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
     "request": "2.27.0",
-    "streamline": "0.10.16",
+    "streamline": "0.10.17",
     "streamline-streams": "0.1.5",
     "through": "2.3.4",
     "tunnel": "0.0.2",
