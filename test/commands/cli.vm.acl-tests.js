@@ -32,14 +32,15 @@ describe('cli', function() {
       vmName,
       location,
       endpoint = 'rdp'
-      remotesubnet = '23.99.18.228/31',
+    remotesubnet = '23.99.18.228/31',
       username = 'azureuser',
       password = 'Collabera@01',
       order = 1,
       neworder = 2,
       retry = 5,
-      action = 'permit';
-      testUtils.TIMEOUT_INTERVAL = 12000;
+      description = "testing description"
+    action = 'permit';
+    testUtils.TIMEOUT_INTERVAL = 12000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
@@ -95,9 +96,9 @@ describe('cli', function() {
         });
       });
 
-      it('Create an ACL rule for a VM endpoint', function(done) {
-        var cmd = util.format('vm endpoint acl-rule create %s %s %s %s %s --json',
-          vmName, endpoint, order, action, remotesubnet).split(' ');
+      it('Create an ACL rule for a VM endpoint with description', function(done) {
+        var cmd = util.format('vm endpoint acl-rule create %s %s %s %s %s -r %s--json',
+          vmName, endpoint, order, action, remotesubnet, description).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
