@@ -151,7 +151,7 @@ describe('cli', function() {
       });
 
       it('Create Docker VM with custom values should pass', function(done) {
-        dockerCertDir = path.join(homePath, '.docker2');
+        dockerCertDir = path.join(homePath, '.docker');
         var dockerPort = 4113;
 
         getImageName('Linux', function(ImageName) {
