@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "mocha": "1.16.0",
-    "jshint": ">= 2.1.4",
+    "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
     "nock": "0.16",
