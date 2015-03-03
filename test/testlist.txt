@@ -1,8 +1,8 @@
 # cli.site.domain-tests can only be run mocked, do not try to run live
 # TODO: Mocks are broken.
-#commands/cli.site.domain-tests.js
+# commands/cli.site.domain-tests.js
 # TODO: Not recording call to log service properly, disabling
-#commands/cli.site.log.tail-tests.js
+# commands/cli.site.log.tail-tests.js
 # TODO: This suite uses custom recording
 cli-tests.js
 commands/cli.account-tests.js
@@ -40,8 +40,10 @@ commands/cli.vm.image-tests.js
 commands/cli.vm.create_staticvm_neg-tests.js
 commands/cli.vm.extension-tests.js
 commands/cli.vm.extension_get-tests.js
+commands/cli.vm.extension_get-chef-tests.js
 commands/cli.vm.extension_set-tests.js
 commands/cli.vm.extension_set-custom_disable.js
+commands/cli.vm.extension_set-chef.js
 commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
