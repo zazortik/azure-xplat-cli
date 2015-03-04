@@ -1,19 +1,31 @@
-2015.03.04 Version 0.8.15
-Issue fixes to address the following IAAS related issues
+2015.03.04 Version 0.8.16
 * VM
-	azure vm endpoint acl-rule create parser error: --description is incorrectly a bool #1500
-	azure vm create fails for specialized image: Cannot set property 'mediaLink' of undefined #1516
-	Azure vm disk attach properties (such as host-caching) not discoverable #1554
-	Can not copy a image blob between storage accounts #1565
-	-u is used for username as well as blob-url in the vm create command #1566 
-	error: undefined is not a function #1575
-	Add support for changing cache policy of attached disk #1583 
-	azure vm endpoint create fails with lb-set option #1594 
+  * Feature
+    * azure vm extension set-chef
+    * azure vm extension get-chef
+  * Issue fixes to address the following IAAS related issues
+  	* azure vm endpoint acl-rule create parser error: --description is incorrectly a bool #1500
+  	* azure vm create fails for specialized image: Cannot set property 'mediaLink' of undefined #1516
+  	* Azure vm disk attach properties (such as host-caching) not discoverable #1554
+  	* Can not copy a image blob between storage accounts #1565
+  	* -u is used for username as well as blob-url in the vm create command #1566 
+  	* error: undefined is not a function #1575
+  	* Add support for changing cache policy of attached disk #1583 
+  	* azure vm endpoint create fails with lb-set option #1594 
 * NETWORK
-	network import doesn't pass LocalNetworkSites #1416
-	network vnet create destroys subscription's "local network" #1569 
-	azure network vnet create - Error - Cannot read property #1589 
-	
+  * Issue fixes to address the following IAAS related issues
+  	* network import doesn't pass LocalNetworkSites #1416
+  	* network vnet create destroys subscription's "local network" #1569 
+  	* azure network vnet create - Error - Cannot read property #1589 
+* General Fixes
+  * use streamline version 0.10.17 to make it work for node version 0.12.0 upward
+  * Restricted use of jshint to version <= 2.6.0 due to issues with later versions
+  * Fixed issues when azure cli is used via proxy
+
+2015.02.17 Version 0.8.15
+* Used "Microsoft Azure Client Library for node" version 0.10.4
+* Added custom domains functionality to mobile service commands
+
 2015.01.22 Version 0.8.14
 * Storage
   * Added support for storage "stored access policy" and update storage SDK
