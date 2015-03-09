@@ -78,7 +78,7 @@ var testLogFile = '';
 
 function createDirIfNotExists(directory) {
   if(!fs.existsSync(directory)) {
-      fs.mkdirSync(directory);
+    fs.mkdirSync(directory);
   }
   return directory;
 };
