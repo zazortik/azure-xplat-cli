@@ -22,6 +22,7 @@ var sinon = require('sinon');
 var util = require('util');
 var _ = require('underscore');
 
+var testLogger = require('./test-logger');
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
@@ -41,8 +42,7 @@ function CLITest(testPrefix, env, forceMocked) {
 
   this.testPrefix = testPrefix;
   this.currentTest = 0;
-  this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
-
+  this.setRecordingsDirectory(__dirname + '/../recordings/' + this.testPrefix + '/');
   if (forceMocked) {
     this.isMocked = true;
   } else {
@@ -74,6 +74,23 @@ function CLITest(testPrefix, env, forceMocked) {
 }
 
 _.extend(CLITest.prototype, {
+  getRecordingsDirectory: function() {
+    return this.recordingsDirectory;
+  },
+
+  setRecordingsDirectory: function(dir) {
+    if(!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    this.recordingsDirectory = dir;
+  },
+
+  getRecordingsFile: function() {
+    this.recordingsFile = this.getRecordingsDirectory() + 
+      testLogger.getCurrentTest().split(" ").join("_") + ".nock.js";
+    return this.recordingsFile;
+  },
+
   normalizeEnvironment: function (env) {
     env = env.filter(function (e) {
       if (e.requiresCert || e.requiresToken) {
@@ -138,36 +155,7 @@ _.extend(CLITest.prototype, {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
-
-    if (this.isPlayback()) {
-      var nocked = require(this.recordingsFile);
-      if (nocked.randomTestIdsGenerated) {
-        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
-      }
-
-      if (nocked.uuidsGenerated) {
-        this.uuidsGenerated = nocked.uuidsGenerated();
-      }
-
-      if (nocked.getMockedProfile) {
-        profile.current = nocked.getMockedProfile();
-        profile.current.save = function () { };
-      }
-
-      if (nocked.setEnvironment) {
-        nocked.setEnvironment();
-      }
-
-      this.originalTokenCache = adalAuth.tokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
-    } else {
-      this.setEnvironmentDefaults();
-    }
-
-    if (this.isRecording) {
-        this.writeRecordingHeader();
-    }
-
+    
     // Remove any existing cache files before starting the test
     this.removeCacheFiles();
 
@@ -175,18 +163,7 @@ _.extend(CLITest.prototype, {
   },
 
   teardownSuite: function (callback) {
-    this.currentTest = 0;
-
     if (this.isMocked) {
-      if (this.isRecording) {
-        fs.appendFileSync(this.recordingsFile, '];');
-        this.writeGeneratedUuids();
-        this.writeGeneratedRandomTestIds();
-      } else {
-        //playback mode
-        adalAuth.tokenCache = this.originalTokenCache;
-      }
-
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
 
@@ -207,7 +184,7 @@ _.extend(CLITest.prototype, {
     if (this.uuidsGenerated.length > 0) {
       var uuids = this.uuidsGenerated.map(function (uuid) { return '\'' + uuid + '\''; }).join(',');
       var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
-      fs.appendFileSync(this.recordingsFile, content);
+      fs.appendFileSync(this.getRecordingsFile(), content);
       this.uuidsGenerated.length = 0;
     }
   },
@@ -216,7 +193,7 @@ _.extend(CLITest.prototype, {
     if (this.randomTestIdsGenerated.length > 0) {
       var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
       var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids);
-      fs.appendFileSync(this.recordingsFile, content);
+      fs.appendFileSync(this.getRecordingsFile(), content);
       this.randomTestIdsGenerated.length = 0;
     }
   },
@@ -272,73 +249,103 @@ _.extend(CLITest.prototype, {
 
   setupTest: function (callback) {
     nockHelper.nockHttp();
-
     if (this.isMocked && this.isRecording) {
-      // nock recoding
+      // nock recording
+      this.writeRecordingHeader();
       nockHelper.nock.recorder.rec(true);
     }
 
     if (this.isPlayback()) {
       // nock playback
-      var nocked = require(this.recordingsFile);
+      var nocked = require(this.getRecordingsFile());
+      if (nocked.randomTestIdsGenerated) {
+        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+      }
+
+      if (nocked.uuidsGenerated) {
+        this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+
+      if (nocked.getMockedProfile) {
+        profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
+      }
+
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
+
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
 
       if (this.currentTest < nocked.scopes.length) {
         nocked.scopes[this.currentTest++].forEach(function (createScopeFunc) {
           createScopeFunc(nockHelper.nock);
         });
       } else {
-        throw new Error('It appears the ' + this.recordingsFile + ' file has more tests than there are mocked tests. ' +
+        throw new Error('It appears the ' + this.getRecordingsFile() + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
+    }
+    else {
+      this.setEnvironmentDefaults();
     }
 
     callback();
   },
 
   teardownTest: function (callback) {
-    if (this.isMocked && this.isRecording) {
-      // play nock recording
-      var scope = this.scopeWritten ? ',\n[' : '[';
-      this.scopeWritten = true;
-      var lineWritten;
-      nockHelper.nock.recorder.play().forEach(function (line) {
-        if (line.indexOf('nock') >= 0) {
-          // apply fixups of nock generated mocks
+    this.currentTest = 0;
+    if (this.isMocked) {
+      if (this.isRecording) {
+        // play nock recording
+        var scope = '[';
+        this.scopeWritten = true;
+        var lineWritten;
+        nockHelper.nock.recorder.play().forEach(function (line) {
+          if (line.indexOf('nock') >= 0) {
+            // apply fixups of nock generated mocks
 
-          // do not filter on body as they usual have time related stamps
-          line = line.replace(/(\.post\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.get\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.put\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.delete\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-          line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            // do not filter on body as they usual have time related stamps
+            line = line.replace(/(\.post\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            line = line.replace(/(\.get\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            line = line.replace(/(\.put\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            line = line.replace(/(\.delete\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+            line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
-          // put deployment have a timestamp in the url
-          line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
-            '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
+            // put deployment have a timestamp in the url
+            line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
+              '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
 
-          // Requests to logging service contain timestamps in url query params, filter them out too
-          line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
-            '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
+            // Requests to logging service contain timestamps in url query params, filter them out too
+            line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
+              '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
 
-          scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
-            'var result = ' + line + ' return result; }';
-          lineWritten = true;
-        }
-      });
-      scope += ']';
-      fs.appendFileSync(this.recordingsFile, scope);
-      nockHelper.nock.recorder.clear();
+            scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
+              'var result = ' + line + ' return result; }';
+            lineWritten = true;
+          }
+        });
+        scope += ']';
+        fs.appendFileSync(this.getRecordingsFile(), scope);
+        fs.appendFileSync(this.getRecordingsFile(), '];');
+        this.writeGeneratedUuids();
+        this.writeGeneratedRandomTestIds();
+        nockHelper.nock.recorder.clear();
+      } else {
+        //playback mode
+        adalAuth.tokenCache = this.originalTokenCache;
+      }
     }
     nockHelper.unNockHttp();
-
     callback();
   },
 
   writeRecordingHeader: function () {
     var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
 
-    fs.writeFileSync(this.recordingsFile, _.template(template, {
+    fs.writeFileSync(this.getRecordingsFile(), _.template(template, {
       sub: profile.current.currentSubscription,
       requiredEnvironment: this.requiredEnvironment
     }));

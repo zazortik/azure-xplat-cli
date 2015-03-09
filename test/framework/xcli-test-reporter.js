@@ -48,6 +48,7 @@ function List(runner) {
   
   runner.on('test', function(test){
     process.stdout.write(color('pass', '    ' + test.fullTitle() + ': '));
+    testLogger.setCurrentTest(test.fullTitle());
     testLogger.logData();
     testLogger.logData('--Start--    ' + test.fullTitle() + ': ');
   });
