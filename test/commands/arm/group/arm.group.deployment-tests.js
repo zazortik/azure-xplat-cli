@@ -86,12 +86,15 @@ describe('arm', function () {
     }
 
     function setUniqParameterNames(suite, filename) {
-      var parameters = JSON.parse(fs.readFileSync(filename).toString());
-      var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
-      var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
-      parameters.siteName.value = siteName;
-      parameters.hostingPlanName.value = hostingPlanName;
-      fs.writeFileSync(filename, JSON.stringify(parameters, null, 2));
+      //no need to create unique parameter values in playbackmode
+      if (!suite.isPlayback()) {
+        var parameters = JSON.parse(fs.readFileSync(filename).toString());
+        var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
+        var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
+        parameters.siteName.value = siteName;
+        parameters.hostingPlanName.value = hostingPlanName;
+        fs.writeFileSync(filename, JSON.stringify(parameters, null, 2));
+      }
     }
 
     describe('list and show', function () {
