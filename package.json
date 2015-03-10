@@ -54,7 +54,7 @@
     "event-stream": "3.1.5",
     "eyes": "0.x.x",
     "github": "0.1.6",
-    "kuduscript": "0.1.11",
+    "kuduscript": "0.2.2",
     "moment": "2.6.0",
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
