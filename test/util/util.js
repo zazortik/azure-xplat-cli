@@ -120,6 +120,58 @@ exports.getTemplateInfo = function(suite, keyword, callback) {
   });
 };
 
+/**
+ * Provides information about the template based on the specified exact template name
+ * We do a template show based on the provided template name
+ * @param {Object}   suite     The CLI Test suite object
+ * @param {string}   name      The exact template name
+ * @param {callback} callback  callback
+ * @return {Object} A JSON object with templateName, templateUrl, publisher and version as its properties.
+ */
+exports.getTemplateInfoByName = function(suite, name, callback) {
+  var error;
+  var templateInfo = {
+    'templateName': '',
+    'templateUrl': '',
+    'publisher': '',
+    'version': ''
+  };
+  suite.execute('group template show %s --json', name, function(result) {
+    if (result.exitStatus === 0) {
+      var template = JSON.parse(result.text);
+      var templateNotFound = true;
+      var regex = new RegExp(name, 'i');
+      if (template.identity.match(regex)) {
+        templateNotFound = false;
+        templateInfo.templateName = template.identity;
+        templateInfo.publisher = template.publisher;
+        templateInfo.version = template.version;
+        var urlKeys = Object.keys(template.definitionTemplates.deploymentTemplateFileUrls);
+        if (urlKeys.length > 0) {
+          var urlKeyNotFound = true;
+          urlKeys.forEach(function(urlKey) {
+            if (urlKey.match(/Default/)) {
+              urlKeyNotFound = false;
+              templateInfo.templateUrl = template.definitionTemplates.deploymentTemplateFileUrls[urlKey];
+            }
+          });
+          if (urlKeyNotFound) {
+            callback(new Error('Cannot find the default template url'));
+          }
+        } else {
+          callback(new Error('The template ' + template.identity + ' does not have any deployment template urls.'));
+        }
+      }
+      if (templateNotFound) {
+        callback(new Error('Cannot find a template name with the given name ' + name));
+      }
+      callback(error, templateInfo);
+    } else {
+      callback(new Error(result.errorText));
+    }
+  });
+};
+
 exports.executeCommand = function(suite, retry, cmd, callback) {
   var self = this;
   suite.execute(cmd, function(result) {
