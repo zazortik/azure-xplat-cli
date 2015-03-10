@@ -8,9 +8,11 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>" 
   ],
-  "version": "0.8.12",
+  "version": "0.8.15",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -37,14 +39,14 @@
   "dependencies": {
     "adal-node": "0.1.7",
     "async": "0.2.7",
-    "azure": "0.10.1",
-    "azure-common": "0.9.9",
-    "azure-gallery": "2.0.0-pre.11",
-    "azure-mgmt-authorization": "0.9.0-pre.2",
-    "azure-mgmt-resource": "2.0.0-pre.12",
-    "azure-storage": "0.4.0",
-    "azure-storage-legacy": "0.9.11",
-    "azure-extra": "0.1.3",
+    "azure": "0.10.4",
+    "azure-common": "0.9.10",
+    "azure-gallery": "2.0.0-pre.14",
+    "azure-mgmt-authorization": "0.9.0-pre.5",
+    "azure-mgmt-resource": "2.0.0-pre.15",
+    "azure-storage": "0.4.1",
+    "azure-storage-legacy": "0.9.13",
+    "azure-extra": "0.1.6",
     "mime": "~1.2.4",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -57,7 +59,8 @@
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
     "request": "2.27.0",
-    "streamline": "0.4.5",
+    "streamline": "0.10.17",
+    "streamline-streams": "0.1.5",
     "through": "2.3.4",
     "tunnel": "0.0.2",
     "underscore": "1.4.x",
@@ -72,20 +75,20 @@
   },
   "devDependencies": {
     "mocha": "1.16.0",
-    "jshint": ">= 2.1.4",
+    "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
     "nock": "0.16",
     "winston-memory": "*",
     "cucumber": "~0.3.0"
   },
-  "homepage": "https://github.com/WindowsAzure/azure-xplat-cli",
+  "homepage": "https://github.com/Azure/azure-xplat-cli",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-xplat-cli.git"
+    "url": "git@github.com:Azure/azure-xplat-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/WindowsAzure/azure-xplat-cli/issues"
+    "url": "https://github.com/Azure/azure-xplat-cli/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",

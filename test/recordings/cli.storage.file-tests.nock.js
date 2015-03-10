@@ -6,13 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'f82cd983-da22-464f-8edd-31c8f4888e6b',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
+    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
+    name: 'Azure SDK Powershell Test',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
     },
-    name: 'testAccount',
-    registeredProviders: ['sqlserver', 'website', 'Mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice', 'mobileservice'],
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    registeredProviders: ['website'],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,201 +22,178 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=xplat;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=aztestore;AccountKey=null';
 }
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .put('/storageclitest3?restype=share')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:38:58 GMT',
-  etag: '"0x8D1A069F533F711"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:42 GMT',
+  etag: '"0x8D1DED7B230AD11"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '89b500e0-001a-0033-6a2f-bf9431000000',
+  'x-ms-request-id': 'cb9b8209-001a-0106-5286-d03632000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:38:57 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/storageclitest3?restype=share')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:38:58 GMT',
-  etag: '"0x8D1A069F533F711"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:42 GMT',
+  etag: '"0x8D1DED7B230AD11"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5449e1ef-001a-0014-1c94-f76220000000',
+  'x-ms-request-id': '92cd39e0-001a-0126-4ee6-5fe5bb000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:38:59 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:41 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\"><Shares><Share><Name>abc12345</Name><Properties><Last-Modified>Fri, 01 Aug 2014 06:34:57 GMT</Last-Modified><Etag>\"0x8D17B69D9139830\"</Etag></Properties></Share><Share><Name>storageclitest</Name><Properties><Last-Modified>Fri, 01 Aug 2014 06:57:27 GMT</Last-Modified><Etag>\"0x8D17B6CFDBBC14B\"</Etag></Properties></Share><Share><Name>storageclitest1</Name><Properties><Last-Modified>Fri, 01 Aug 2014 07:01:04 GMT</Last-Modified><Etag>\"0x8D17B6D7EEE68CA\"</Etag></Properties></Share><Share><Name>storageclitest2</Name><Properties><Last-Modified>Fri, 01 Aug 2014 07:05:29 GMT</Last-Modified><Etag>\"0x8D17B6E1C903856\"</Etag></Properties></Share><Share><Name>storageclitest3</Name><Properties><Last-Modified>Wed, 17 Sep 2014 08:38:58 GMT</Last-Modified><Etag>\"0x8D1A069F533F711\"</Etag></Properties></Share></Shares><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://aztestore.file.core.windows.net/\"><Shares><Share><Name>storageclitest3</Name><Properties><Last-Modified>Fri, 05 Dec 2014 19:20:42 GMT</Last-Modified><Etag>\"0x8D1DED7B230AD11\"</Etag></Properties></Share></Shares><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '586cd33e-001a-000e-599a-ffcf29000000',
+  'x-ms-request-id': '15b85358-001a-0031-4389-0c0a6d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:00 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:43 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/storageclitest3?restype=share')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:38:58 GMT',
-  etag: '"0x8D1A069F533F711"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:42 GMT',
+  etag: '"0x8D1DED7B230AD11"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0fc85356-001a-0029-793e-a027ad000000',
+  'x-ms-request-id': '57437548-001a-011a-186e-46fae3000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:01 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:43 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .delete('/storageclitest3?restype=share')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2885c7ea-001a-000a-5fa6-ad6d74000000',
+  'x-ms-request-id': '2b5932ba-001a-00d6-2c11-d1031d000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:02 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:44 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .put('/directorytestshare/newdir?restype=directory')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:14 GMT',
-  etag: '"0x8D1A069FF377FAE"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:47 GMT',
+  etag: '"0x8D1DED7B4E2C29F"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ff293db0-001a-003e-1fad-bd58c3000000',
+  'x-ms-request-id': 'df8e36bb-001a-009c-082b-cf7e5a000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:14 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:46 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .delete('/directorytestshare/newdir?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6fc4e6ce-001a-0046-76dd-b86e48000000',
+  'x-ms-request-id': '6894c668-001a-0027-724d-5de8d0000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:15 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:46 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/filetestshare/remotefile')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '60b6c2a4-001a-0028-2119-e8c82a000000',
+  'x-ms-request-id': 'd14c55e2-001a-00db-176c-dd8423000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:22 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/filetestshare/remotefile?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd4d06126-001a-0031-1b4d-ff05ff000000',
+  'x-ms-request-id': '6131a095-001a-00b8-57bc-07d1f9000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:23 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/filetestshare?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:23 GMT',
-  etag: '"0x8D1A06A049402F0"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:49 GMT',
+  etag: '"0x8D1DED7B6A1E660"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b37670ec-001a-0012-39fa-7d3c44000000',
+  'x-ms-request-id': '04f8c46f-001a-013d-19e5-001b15000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:23 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .head('/filetestshare/remotefile')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d3513fc-001a-002d-029f-4f1411000000',
+  'x-ms-request-id': '5f4610c2-001a-00c7-7f2f-d5e4ee000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:25 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .put('/filetestshare/remotefile')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:25 GMT',
-  etag: '"0x8D1A06A057DF3BD"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:50 GMT',
+  etag: '"0x8D1DED7B6E9C727"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8a26d761-001a-0036-6e78-45182c000000',
+  'x-ms-request-id': 'c7126e35-001a-0040-594e-bbd548000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:25 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/filetestshare/remotefile?comp=range', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'BLb4bUlxavjU8u3wGjCfyA==',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:26 GMT',
-  etag: '"0x8D1A06A06222731"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:50 GMT',
+  etag: '"0x8D1DED7B6FEFD8E"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a0b5ea8f-001a-002b-7457-c2f70b000000',
+  'x-ms-request-id': '0fd33abc-001a-00c5-76a0-beea66000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:26 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .put('/filetestshare/remotefile?comp=properties')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:27 GMT',
-  etag: '"0x8D1A06A0696E4FE"',
+  'last-modified': 'Fri, 05 Dec 2014 19:20:51 GMT',
+  etag: '"0x8D1DED7B748B322"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85ff571a-001a-0020-6382-59dc5b000000',
+  'x-ms-request-id': 'b9e360e2-001a-0013-1f0a-2a7e46000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:27 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:51 GMT' });
  return result; }],
+[],
+[],
 [function (nock) { 
 var result = 
-nock('https://xplat.file.core.windows.net:443')
-  .get('/filetestshare/remotefile')
-  .reply(200, "HelloWord", { 'content-length': '9',
-  'content-md5': 'BLb4bUlxavjU8u3wGjCfyA==',
-  'last-modified': 'Wed, 17 Sep 2014 08:39:27 GMT',
-  'accept-ranges': 'bytes',
-  etag: '"0x8D1A06A0696E4FE"',
-  server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd3be92aa-001a-0001-5c70-6e9468000000',
-  'x-ms-version': '2014-02-14',
-  'x-ms-type': 'File',
-  date: 'Wed, 17 Sep 2014 08:39:27 GMT' });
- return result; }],
-[function (nock) { 
-var result = 
-nock('https://xplat.file.core.windows.net:443')
-  .delete('/filetestshare/remotefile')
-  .reply(202, "", { 'transfer-encoding': 'chunked',
-  server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ef331a97-001a-0032-7811-12db57000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:29 GMT' });
- return result; }],
-[function (nock) { 
-var result = 
-nock('https://xplat.file.core.windows.net:443')
+nock('https://aztestore.file.core.windows.net:443')
   .get('/filetestshare?restype=directory&comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.file.core.windows.net/\" ShareName=\"filetestshare\" DirectoryPath=\"\"><Entries><File><Name>0remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><File><Name>1remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><File><Name>2remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><Directory><Name>newdir</Name><Properties /></Directory></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://aztestore.file.core.windows.net/\" ShareName=\"filetestshare\" DirectoryPath=\"\"><Entries><File><Name>0remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><File><Name>1remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><File><Name>2remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File><Directory><Name>newdir</Name><Properties /></Directory><File><Name>remotefile</Name><Properties><Content-Length>9</Content-Length></Properties></File></Entries><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a1bedd4b-001a-0013-7132-5c3a0c000000',
+  'x-ms-request-id': 'd12f6024-001a-011c-1475-981da1000000',
   'x-ms-version': '2014-02-14',
-  date: 'Wed, 17 Sep 2014 08:39:30 GMT' });
+  date: 'Fri, 05 Dec 2014 19:20:51 GMT' });
  return result; }]];

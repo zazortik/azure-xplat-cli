@@ -385,8 +385,6 @@ describe('cli', function () {
                 site.config.netFrameworkVersion.should.equal('v2.0');
                 site.config.webSocketsEnabled.should.equal(false);
 
-                Object.keys(site.config).some(function (k) { return k === 'phpVersion'; }).should.equal(false);
-
                 suite.execute('site delete %s --quiet --json', siteName, function(result) {
                   result.exitStatus.should.equal(0);
                   done();

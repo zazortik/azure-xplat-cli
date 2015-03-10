@@ -88,65 +88,164 @@ describe('cli', function () {
         });
       });
     });
-  });
 
-  describe('set', function () {
-    var sandbox;
-    var originalProfile;
+    describe('show', function () {
+      var sandbox;
+      var originalProfile;
 
-    before(function () {
-      sandbox = sinon.sandbox.create();
-      originalProfile = profile.current;
-      profile.current = new profile.Profile();
-      profile.current.addSubscription(new profile.Subscription({
-        id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
-        name: 'testAccount',
-        isDefault: true,
-        managementCertificate: {
-          cert: process.env.AZURE_CERTIFICATE,
-          key: process.env.AZURE_CERTIFICATE_KEY
-        }
-      }, profile.current.getEnvironment('AzureCloud')));
+      before(function () {
+        sandbox = sinon.sandbox.create();
+        originalProfile = profile.current;
+        profile.current = new profile.Profile();
+        profile.current.addSubscription(new profile.Subscription({
+          id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
+          name: 'testAccount',
+          isDefault: true,
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
 
-      profile.current.addSubscription(new profile.Subscription({
-        id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
-        name: 'Other',
-        managementCertificate: {
-          cert: process.env.AZURE_CERTIFICATE,
-          key: process.env.AZURE_CERTIFICATE_KEY
-        }
-      }, profile.current.getEnvironment('AzureCloud')));
+        profile.current.addSubscription(new profile.Subscription({
+          id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
+          name: 'Other',
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
 
-      sandbox.stub(profile.current, 'save');
-    });
+        profile.current.addSubscription(new profile.Subscription({
+          id: '2874827f-25c8-4195-ad6d-6c267ce32b27',
+          name: 'Other',
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
 
-    after(function () {
-      sandbox.restore();
-      profile.current = originalProfile;
-    });
+        sandbox.stub(profile.current, 'save');
+      });
 
-    it('should have two subscriptions', function (done) {
-      suite.execute('account list --json', function (result) {
-        result.exitStatus.should.equal(0);
-        subscriptions = JSON.parse(result.text);
-        subscriptions.should.have.length(2);
-        done();
+      after(function () {
+        sandbox.restore();
+        profile.current = originalProfile;
+      });
+
+      it('should show the subscription by id', function (done) {
+        suite.execute('account show %s -d --json', 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c', function (result) {
+          result.exitStatus.should.equal(0);
+          subscriptions = JSON.parse(result.text);
+          subscriptions[0].id.should.equal('d3649b6d-2d60-40fc-aa54-8fda443c3c2c');
+          subscriptions[0].name.should.equal('testAccount');
+          subscriptions[0].isDefault.should.be.true;
+          done();
+        });
+      });
+
+      it('should show information about all the subscriptions that match the provided name', function (done) {
+        suite.execute('account show %s -d --json', 'Other', function (result) {
+          result.exitStatus.should.equal(0);
+          subscriptions = JSON.parse(result.text);
+          subscriptions.should.have.length(2);
+          subscriptions.some(function (s) { 
+            return (utils.ignoreCaseEquals(s.id, '9274827f-25c8-4195-ad6d-6c267ce32b27') && s.name === 'Other'); 
+          }).should.be.true;
+          subscriptions.some(function (s) { 
+            return (utils.ignoreCaseEquals(s.id, '2874827f-25c8-4195-ad6d-6c267ce32b27') && s.name === 'Other'); 
+          }).should.be.true;
+          done();
+        });
       });
     });
 
-    it('should set default', function (done) {
-      suite.execute('account set Other', function (result) {
-        result.exitStatus.should.equal(0);
+    describe('set', function () {
+      var sandbox;
+      var originalProfile;
 
+      before(function () {
+        sandbox = sinon.sandbox.create();
+        originalProfile = profile.current;
+        profile.current = new profile.Profile();
+        profile.current.addSubscription(new profile.Subscription({
+          id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
+          name: 'testAccount',
+          isDefault: true,
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
+
+        profile.current.addSubscription(new profile.Subscription({
+          id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
+          name: 'Other',
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
+
+        profile.current.addSubscription(new profile.Subscription({
+          id: '2874827f-25c8-4195-ad6d-6c267ce32b27',
+          name: 'Other',
+          managementCertificate: {
+            cert: process.env.AZURE_CERTIFICATE,
+            key: process.env.AZURE_CERTIFICATE_KEY
+          }
+        }, profile.current.getEnvironment('AzureCloud')));
+
+        sandbox.stub(profile.current, 'save');
+      });
+
+      after(function () {
+        sandbox.restore();
+        profile.current = originalProfile;
+      });
+
+      it('should have three subscriptions', function (done) {
         suite.execute('account list --json', function (result) {
           result.exitStatus.should.equal(0);
-
-          var subscriptions = JSON.parse(result.text);
-          var subsByName = _.object(subscriptions.map(function (s) { return s.name; }), subscriptions);
-
-          subsByName['testAccount'].isDefault.should.be.false;
-          subsByName['Other'].isDefault.should.be.true;
+          subscriptions = JSON.parse(result.text);
+          subscriptions.should.have.length(3);
           done();
+        });
+      });
+
+      it('should set subscription by id', function (done) {
+        suite.execute('account set 2874827f-25c8-4195-ad6d-6c267ce32b27', function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('account list --json', function (result) {
+            result.exitStatus.should.equal(0);
+
+            var subscriptions = JSON.parse(result.text);
+            var subsById = _.object(subscriptions.map(function (s) { return s.id; }), subscriptions);
+
+            subsById['2874827f-25c8-4195-ad6d-6c267ce32b27'].isDefault.should.be.true;
+            subsById['9274827f-25c8-4195-ad6d-6c267ce32b27'].isDefault.should.be.false;
+            subsById['d3649b6d-2d60-40fc-aa54-8fda443c3c2c'].isDefault.should.be.false;
+            done();
+          });
+        });
+      });
+
+      it('with 2 subscriptions by same name should set first subscription if subscription name is provided', function (done) {
+        suite.execute('account set Other', function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('account list --json', function (result) {
+            result.exitStatus.should.equal(0);
+
+            var subscriptions = JSON.parse(result.text);
+            var subsById = _.object(subscriptions.map(function (s) { return s.id; }), subscriptions);
+
+            subsById['2874827f-25c8-4195-ad6d-6c267ce32b27'].isDefault.should.be.false;
+            subsById['9274827f-25c8-4195-ad6d-6c267ce32b27'].isDefault.should.be.true;
+            subsById['d3649b6d-2d60-40fc-aa54-8fda443c3c2c'].isDefault.should.be.false;
+            done();
+          });
         });
       });
     });

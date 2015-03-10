@@ -208,6 +208,9 @@ describe('cli', function () {
           suite.execute('site job show %s %s %s --json', jobs[0].name, jobs[0].type, siteName, function (result) {
             result.exitStatus.should.equal(0);
 
+            var job = JSON.parse(result.text);
+            job.name.should.equal('myjob1');
+
             done();
           });
         });
@@ -215,7 +218,7 @@ describe('cli', function () {
 
       it('should stop and start a continuous web job for a site', function (done) {
         function waitForJobReady(callback) {
-          suite.execute('site job list %s --json', siteName, function (result) {
+          suite.execute('site job list %s --json', siteName, function(result) {
             result.exitStatus.should.equal(0);
 
             var jobs = JSON.parse(result.text);
@@ -224,7 +227,7 @@ describe('cli', function () {
             } else {
               callback(jobs);
             }
-          })
+          });
         }
 
         waitForJobReady(function (jobs) {
@@ -295,6 +298,9 @@ describe('cli', function () {
 
           suite.execute('site job show %s %s %s --json', jobs[0].name, jobs[0].type, siteName, function (result) {
             result.exitStatus.should.equal(0);
+
+            var job = JSON.parse(result.text);
+            job.name.should.equal('myjob');
 
             done();
           });

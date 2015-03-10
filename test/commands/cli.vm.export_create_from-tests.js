@@ -34,6 +34,7 @@ describe('cli', function() {
       timeout,
       username = 'azureuser',
       password = 'PassW0rd$',
+      diskreleasetimeout = 200000,
       file = 'vminfo.json',
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 5000;
@@ -90,13 +91,21 @@ describe('cli', function() {
     //create a vm from role file
     describe('VM:', function() {
       it('export and delete', function(done) {
-        createVM(function() {
-          var cmd = util.format('vm export %s %s  --json', vmName, file).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            fs.existsSync(file).should.equal(true);
-            vmToUse.Delete = true;
-            setTimeout(done, timeout);
+        ListDisk('Linux', function(diskObj) {
+          createVM(function() {
+            var domainUrl = 'http://' + diskObj.mediaLinkUri.split('/')[2];
+            var blobUrl = domainUrl + '/disks/' + suite.generateId(vmPrefix, null) + '.vhd';
+            var cmd1 = util.format('vm disk attach-new %s %s %s --json', vmName, 1, blobUrl).split(' ');
+            testUtils.executeCommand(suite, retry, cmd1, function(innerresult) {
+              innerresult.exitStatus.should.equal(0);
+              var cmd = util.format('vm export %s %s  --json', vmName, file).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                fs.existsSync(file).should.equal(true);
+                vmToUse.Delete = true;
+                setTimeout(done, timeout);
+              });
+            });
           });
         });
       });
@@ -119,12 +128,18 @@ describe('cli', function() {
             cmd.push(location);
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              vmToUse.Name = vmName;
-              vmToUse.Created = true;
-              fs.unlinkSync('vminfo.json');
-              vmToUse.Delete = true;
-              vmToUse.blobDelete = true;
-              setTimeout(done, timeout);
+              cmd = util.format('vm show %s --json', obj['roleName']).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var vmObj = JSON.parse(result.text);
+                vmObj.DataDisks[0].should.not.be.null;
+                vmToUse.Name = vmName;
+                vmToUse.Created = true;
+                fs.unlinkSync('vminfo.json');
+                vmToUse.Delete = true;
+                vmToUse.blobDelete = true;
+                setTimeout(done, timeout);
+              });
             });
           });
         });
@@ -156,10 +171,29 @@ describe('cli', function() {
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
           setTimeout(function() {
             waitForDiskRelease(vmDisk, callback);
-          }, 10000);
+          }, timeout);
         } else {
-          callback();
+          setTimeout(function() {
+            callback();
+          }, diskreleasetimeout);
         }
+      });
+    }
+
+    function ListDisk(OS, callback) {
+      var diskObj;
+      var cmd = util.format('vm disk list --json').split(' ');
+      testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        var diskList = JSON.parse(result.text);
+        diskList.some(function(disk) {
+          if ((disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) &&
+            (disk.location && disk.location.toLowerCase() === location.toLowerCase())) {
+            diskObj = disk;
+            return true;
+          }
+        });
+        callback(diskObj);
       });
     }
 

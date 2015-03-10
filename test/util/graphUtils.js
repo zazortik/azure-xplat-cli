@@ -29,7 +29,7 @@ var exports = module.exports;
 
 function createGraphClient() {
   var subscription = profile.current.getSubscription();
-  graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId, 
+  graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId,
                                                                  subscription._createCredentials(),
                                                                  subscription.activeDirectoryGraphResourceId);
 }
@@ -60,7 +60,7 @@ exports.createGroup = function (groupName, callback) {
 exports.deleteGroup = function (groupInfo, callback) {
   createGraphClient();
   var groupObjectId = groupInfo['objectId'];
-  graphClient.group.delete(groupObjectId, function (err, result) {
+  graphClient.group.deleteMethod(groupObjectId, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -83,7 +83,7 @@ exports.createUser = function (upn, password, callback) {
   pwdProfileParams['password'] = password;
   pwdProfileParams['forceChangePasswordNextLogin'] = 'false';
   userParams['passwordProfileSettings'] = pwdProfileParams;
-  
+
   var userInfo = {};
   graphClient.user.create(userParams, function (err, result) {
     if (err) {
@@ -103,7 +103,7 @@ exports.createUser = function (upn, password, callback) {
 exports.deleteUser = function (userInfo, callback) {
   createGraphClient();
   var upn = userInfo.upn;
-  graphClient.user.delete(upn, function (err, result) {
+  graphClient.user.deleteMethod(upn, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -117,9 +117,9 @@ exports.deleteUser = function (userInfo, callback) {
 exports.addGroupMember = function (groupInfo, memberInfo, callback) {
   createGraphClient();
   var groupObjectId = groupInfo['objectId'];
-  
+
   var memberObjectId = memberInfo['objectId'];
-  
+
   //construct memberUrl
   var memberUrl = graphClient.baseUri + graphClient.tenantID + '/directoryObjects/' + memberObjectId;
   var memberParams = {
@@ -139,7 +139,7 @@ exports.addGroupMember = function (groupInfo, memberInfo, callback) {
 exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
   createGraphClient();
   var groupObjectId = groupInfo['objectId'];
-  
+
   var memberObjectId = memberInfo['objectId'];
 
   graphClient.group.removeMember(groupObjectId, memberObjectId, function (err, result) {
@@ -187,11 +187,11 @@ exports.deleteSP = function(spInfo, callback) {
   createGraphClient();
   var spObjectId = spInfo['objectId'];
   var appObjectId = spInfo['application']['objectId'];
-  graphClient.servicePrincipal.delete(spObjectId, function (err, spResult) {
+  graphClient.servicePrincipal.deleteMethod(spObjectId, function (err, spResult) {
     if (err) {
       return callback(err);
     }
-    graphClient.application.delete(appObjectId, function (err, appResult) {
+    graphClient.application.deleteMethod(appObjectId, function (err, appResult) {
       if (err) {
         return callback(err);
       }
