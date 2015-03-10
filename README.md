@@ -42,6 +42,7 @@ This project provides a cross-platform command line interface for developers and
     * Manage tables, scripts, and configuration
     * Access logs
     * Access data
+    * Add custom domains and enable SSL
 * Service Bus
     * Create and manage Service Bus namespaces
 * SQL Database
@@ -203,7 +204,7 @@ You need to set the following environment variables to capture the HTTP traffic 
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
 ```
-## Want to know the underlying HTTP taffic when you execute the command
+## Want to know the underlying HTTP traffic when you execute the command
 You can use the -vv option to see the actual REST requests on the console.
 ```bash
 azure site create --location "West US" mytestsite -vv

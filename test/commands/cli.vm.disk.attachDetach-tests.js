@@ -119,7 +119,7 @@ describe('cli', function() {
         var diskSourcePath = diskObj.mediaLinkUri;
         var domainUrl = 'http://' + diskSourcePath.split('/')[2];
         var blobUrl = domainUrl + '/disks/' + diskName;
-        var cmd = util.format('vm disk create %s %s -u %s --json', diskName, diskSourcePath, blobUrl).split(' ');
+        var cmd = util.format('vm disk create %s %s -u %s -o %s --json', diskName, diskSourcePath, blobUrl, "Linux").split(' ');
         cmd.push('-l');
         cmd.push(location);
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -151,6 +151,7 @@ describe('cli', function() {
 
     // Get name of an disk of the given category
     function getDiskName(OS, callBack) {
+      var diskObj;
       var cmd = util.format('vm disk list --json').split(' ');
       testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
