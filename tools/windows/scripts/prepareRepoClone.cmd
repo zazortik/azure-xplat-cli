@@ -76,6 +76,7 @@ echo Compiling streamline files...
 pushd %TEMP_REPO%
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c lib
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline\lib\streams
+.\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline-streams\lib
 popd
 
 echo Removing unneeded files from azure module...
