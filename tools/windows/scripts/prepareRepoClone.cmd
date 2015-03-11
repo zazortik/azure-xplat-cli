@@ -34,6 +34,7 @@ if not exist %TEMP_REPO% goto CLONE_REPO
 echo Temporary clone of the repo already exists. Removing it...
 pushd %TEMP_REPO%\..\
 if exist %TEMP_REPO_FOLDER% rmdir /s /q %TEMP_REPO_FOLDER%
+::rmdir always returns 0, so check folder's existence 
 if exist %TEMP_REPO_FOLDER% goto ERROR
 popd
 
@@ -105,7 +106,7 @@ for %%i in (
 ) do (
     if exist %%i (
         echo Deleting %%i...
-        rd /s /q %%i
+        rmdir /s /q %%i
     )
 )
 
@@ -122,7 +123,7 @@ for %%i in (
 ) do (
     if exist %%i (
         echo Deleting %%i...
-        rd /s /q %%i
+        rmdir /s /q %%i
     )
 )
 
