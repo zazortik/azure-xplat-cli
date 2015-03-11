@@ -223,7 +223,7 @@ describe('cli', function () {
 
             var jobs = JSON.parse(result.text);
             if (jobs[0].status === 'Initializing') {
-              setTimeout(waitForJobReady.bind(null, callback), 5000);
+              setTimeout(waitForJobReady.bind(null, callback), suite.isPlayback() ? 0 : 5000);
             } else {
               callback(jobs);
             }
