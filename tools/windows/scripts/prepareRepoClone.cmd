@@ -6,7 +6,7 @@
 :: heat.exe from the WiX toolset is used for this.
 ::
 
-rem to avoid https://github.com/npm/npm/issues/6438
+:: to avoid https://github.com/npm/npm/issues/6438
 chcp 850 
 
 set NODE_VERSION=0.10.23
@@ -41,9 +41,8 @@ popd
 mkdir %TEMP_REPO%
 echo Cloning the repo elsewhere on disk...
 pushd ..\..\
-echo copying to %TEMP_REPO% 
 robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test node_modules /NFL /NDL /NJH /NJS
-if %errorlevel% neq 0 goto ERROR
+if %errorlevel% geq 8 goto ERROR
 popd
 
 echo Downloading node and npm...
