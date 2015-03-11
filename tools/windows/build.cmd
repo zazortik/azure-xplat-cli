@@ -7,6 +7,7 @@ pushd %~dp0
 
 echo Creating a local close of the current repo bits...
 CALL scripts\prepareRepoClone.cmd
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 echo Building MSI...
 msbuild /t:rebuild /p:Configuration=Release
