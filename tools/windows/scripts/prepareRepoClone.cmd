@@ -35,7 +35,10 @@ echo Temporary clone of the repo already exists. Removing it...
 pushd %TEMP_REPO%\..\
 if exist %TEMP_REPO_FOLDER% rmdir /s /q %TEMP_REPO_FOLDER%
 ::rmdir always returns 0, so check folder's existence 
-if exist %TEMP_REPO_FOLDER% goto ERROR
+if exist %TEMP_REPO_FOLDER% (
+    echo Failed to delete %TEMP_REPO_FOLDER%.
+    goto ERROR
+)
 popd
 
 :CLONE_REPO
@@ -43,7 +46,11 @@ mkdir %TEMP_REPO%
 echo Cloning the repo elsewhere on disk...
 pushd ..\..\
 robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test node_modules /NFL /NDL /NJH /NJS
-if %errorlevel% geq 8 goto ERROR
+::robocopy emits error code greater or equal than 8(most other commands use any non-zero values)
+if %errorlevel% geq 8 (
+    echo Robocopy failed to copy xplat sources to the %TEMP_REPO%.
+    goto ERROR
+)
 popd
 
 echo Downloading node and npm...
@@ -170,7 +177,7 @@ echo Looks good.
 goto END
 
 :ERROR
-echo Something happened. And this script just can't continue.
+echo Error occurred, please check the output for details.
 exit /b 1
 
 :END
