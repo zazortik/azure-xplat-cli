@@ -231,6 +231,9 @@ _.extend(CLITest.prototype, {
       filename = filename || this.getTestRecordingsFile();
       console.log("Writing to file:  " + filename);
       fs.appendFileSync(filename, content);
+      var template = fs.readFileSync(filename, { encoding: 'utf8' });
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+      console.log(util.inspect(template, {depth: null}));
       this.randomTestIdsGenerated.length = 0;
     }
   },

@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: '3ca49042-782a-4cc9-89b5-ee1b487fe115',
+    name: 'AzSdkCore1',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '1449d5b7-8a83-47db-ae4c-9b03e888bad0',
     registeredProviders: ['website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights', 'microsoft.web', 'microsoft.visualstudio', 'microsoft.Sql'],
+    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb', 'microsoft.web'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -38,68 +38,68 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=32bf79eba97d42da83c9bb446e69f401; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=025c95bddacf48b4984d409f9251ae89; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 11 Mar 2015 18:36:55 GMT',
+  date: 'Thu, 12 Mar 2015 17:56:08 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '625e929c86717badb7c06890fe63ac83',
-  date: 'Wed, 11 Mar 2015 18:36:55 GMT' });
+  'x-ms-request-id': '1545f31244ab7ad58fb1d05c3fa49a4e',
+  date: 'Thu, 12 Mar 2015 17:56:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/xDeploymentTestGroup3382?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xDeploymentTestGroup3382' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xDeploymentTestGroup944?api-version=2014-04-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xDeploymentTestGroup944' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31975',
-  'x-ms-request-id': '957b9ae9-08cf-4fb1-aeda-f4eb718bce13',
-  'x-ms-correlation-request-id': '957b9ae9-08cf-4fb1-aeda-f4eb718bce13',
-  'x-ms-routing-request-id': 'WESTUS:20150311T183656Z:957b9ae9-08cf-4fb1-aeda-f4eb718bce13',
+  'x-ms-ratelimit-remaining-subscription-reads': '31988',
+  'x-ms-request-id': 'a9f2dbca-ba42-45a9-ae29-286d514f270e',
+  'x-ms-correlation-request-id': 'a9f2dbca-ba42-45a9-ae29-286d514f270e',
+  'x-ms-routing-request-id': 'WESTUS:20150312T175609Z:a9f2dbca-ba42-45a9-ae29-286d514f270e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 Mar 2015 18:36:55 GMT',
-  'content-length': '116' });
+  date: 'Thu, 12 Mar 2015 17:56:08 GMT',
+  'content-length': '115' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '0a782ddaa93c741d86800f8e2348ac1c',
-  date: 'Wed, 11 Mar 2015 18:36:56 GMT' });
+  'x-ms-request-id': '966e5bf7fe7272828cd70f4e698ad33b',
+  date: 'Thu, 12 Mar 2015 17:56:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/xDeploymentTestGroup3382?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/xDeploymentTestGroup3382\",\"name\":\"xDeploymentTestGroup3382\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xDeploymentTestGroup944?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xDeploymentTestGroup944\",\"name\":\"xDeploymentTestGroup944\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '219',
+  'content-length': '217',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1181',
-  'x-ms-request-id': '06933cac-244c-42f2-9dc2-e912d58f716a',
-  'x-ms-correlation-request-id': '06933cac-244c-42f2-9dc2-e912d58f716a',
-  'x-ms-routing-request-id': 'WESTUS:20150311T183657Z:06933cac-244c-42f2-9dc2-e912d58f716a',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-request-id': 'ff22e0b2-734a-4621-b88c-e3eef1fa13cd',
+  'x-ms-correlation-request-id': 'ff22e0b2-734a-4621-b88c-e3eef1fa13cd',
+  'x-ms-routing-request-id': 'WESTUS:20150312T175611Z:ff22e0b2-734a-4621-b88c-e3eef1fa13cd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 Mar 2015 18:36:56 GMT' });
+  date: 'Thu, 12 Mar 2015 17:56:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -114,10 +114,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=4bceb4fea926423793dc0c47ee6243c4; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=477c70d106794c0aa1442096dd9e642d; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 11 Mar 2015 18:36:57 GMT',
+  date: 'Thu, 12 Mar 2015 17:56:11 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
@@ -131,99 +131,99 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Fri, 10 Oct 2014 00:34:18 GMT',
   etag: '0x8D1B239101DC53B',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '021ffb23-0001-003a-1a26-092b28000000',
+  'x-ms-request-id': 'ad85b945-0001-0003-374b-ec6cf0000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Wed, 11 Mar 2015 18:36:57 GMT' });
+  date: 'Thu, 12 Mar 2015 17:56:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(503, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>TooManyRequests</Code><Message>Too many requests received. Retry after some time.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '214',
+  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '5bd9b5fb391a7c02b63134d895202b22',
-  date: 'Wed, 11 Mar 2015 18:36:58 GMT' });
+  'x-ms-request-id': 'cde599d6ca637b0c9a1e64590c53052a',
+  date: 'Thu, 12 Mar 2015 17:56:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/xDeploymentTestGroup3382/deployments/Deploy14108/validate?api-version=2014-04-01-preview', '*')
+.post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xDeploymentTestGroup944/deployments/Deploy18468/validate?api-version=2014-04-01-preview', '*')
   .reply(400, "{\"error\":{\"code\":\"InvalidTemplate\",\"message\":\"Deployment template validation failed: 'The value for the template parameter 'siteLocation' at line '1' and column '248' is not provided.'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1180',
-  'x-ms-request-id': '29a20c41-7280-4387-98b5-5817f2dba98b',
-  'x-ms-correlation-request-id': '29a20c41-7280-4387-98b5-5817f2dba98b',
-  'x-ms-routing-request-id': 'WESTUS:20150311T183658Z:29a20c41-7280-4387-98b5-5817f2dba98b',
+  'x-ms-ratelimit-remaining-subscription-writes': '1186',
+  'x-ms-request-id': '76f11ad3-b928-4f4c-802b-972f23da1d91',
+  'x-ms-correlation-request-id': '76f11ad3-b928-4f4c-802b-972f23da1d91',
+  'x-ms-routing-request-id': 'WESTUS:20150312T175613Z:76f11ad3-b928-4f4c-802b-972f23da1d91',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 Mar 2015 18:36:58 GMT',
+  date: 'Thu, 12 Mar 2015 17:56:13 GMT',
   'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'e07d55304b167487ae2127377b29b84f',
-  date: 'Wed, 11 Mar 2015 18:36:59 GMT' });
+  'x-ms-request-id': 'ac56f8cf5aa177d79211bb059c87a506',
+  date: 'Thu, 12 Mar 2015 17:56:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/xDeploymentTestGroup3382?api-version=2014-04-01-preview')
+  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xDeploymentTestGroup944?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDMzODItU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview',
+  location: 'https://management.azure.com/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDk0NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1179',
-  'x-ms-request-id': '5d0ea6ad-b7e2-4525-9369-717d8d9095cb',
-  'x-ms-correlation-request-id': '5d0ea6ad-b7e2-4525-9369-717d8d9095cb',
-  'x-ms-routing-request-id': 'WESTUS:20150311T183701Z:5d0ea6ad-b7e2-4525-9369-717d8d9095cb',
+  'x-ms-ratelimit-remaining-subscription-writes': '1188',
+  'x-ms-request-id': '160d5f3c-672a-474d-ac71-1104a3de0f48',
+  'x-ms-correlation-request-id': '160d5f3c-672a-474d-ac71-1104a3de0f48',
+  'x-ms-routing-request-id': 'WESTUS:20150312T175614Z:160d5f3c-672a-474d-ac71-1104a3de0f48',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 Mar 2015 18:37:01 GMT',
+  date: 'Thu, 12 Mar 2015 17:56:14 GMT',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '58945d9fd0d0787f8d04f79a7cbadc58',
-  date: 'Wed, 11 Mar 2015 18:37:18 GMT' });
+  'x-ms-request-id': '9598369ec9f9726f8877e5f5b4550213',
+  date: 'Thu, 12 Mar 2015 17:56:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDMzODItU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDk0NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2014-04-01-preview')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDMzODItU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview',
+  location: 'https://management.azure.com/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YREVQTE9ZTUVOVFRFU1RHUk9VUDk0NC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2014-04-01-preview',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31974',
-  'x-ms-request-id': '32a0e1a0-b54e-40e4-b7fe-53db3585b015',
-  'x-ms-correlation-request-id': '32a0e1a0-b54e-40e4-b7fe-53db3585b015',
-  'x-ms-routing-request-id': 'WESTUS:20150311T183718Z:32a0e1a0-b54e-40e4-b7fe-53db3585b015',
+  'x-ms-ratelimit-remaining-subscription-reads': '31986',
+  'x-ms-request-id': '92a99fb3-e986-4724-be32-c09eabde6891',
+  'x-ms-correlation-request-id': '92a99fb3-e986-4724-be32-c09eabde6891',
+  'x-ms-routing-request-id': 'WESTUS:20150312T175630Z:92a99fb3-e986-4724-be32-c09eabde6891',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 Mar 2015 18:37:17 GMT',
+  date: 'Thu, 12 Mar 2015 17:56:30 GMT',
   'content-length': '0' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xDeploymentTestGroup3382','Deploy14108'];};
+ exports.randomTestIdsGenerated = function() { return ['xDeploymentTestGroup944','Deploy18468'];};
