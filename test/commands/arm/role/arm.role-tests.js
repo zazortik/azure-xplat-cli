@@ -54,6 +54,10 @@ describe('arm', function () {
         testSqlServer = suite.generateId('testserver1', createdResources);
         testSqlDb = suite.generateId('testdb1', createdResources);
         testParent = 'servers/' + testSqlServer;
+        console.log("testResourceGroup " + testResourceGroup);
+        console.log("testSqlServer " + testSqlServer);
+        console.log("testSqlDb " + testSqlDb);
+        console.log("testParent " + testParent);
         if (!suite.isPlayback()) {
           setupSql(done);
         } else {

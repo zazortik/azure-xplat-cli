@@ -48,10 +48,11 @@ function CLITest(testPrefix, env, forceMocked) {
   } else {
     this.isMocked = testPrefix && !process.env.NOCK_OFF;
   }
-
+  this.suiteRecordingsFile = this.getRecordingsDirectory() + 'suite.' + this.testPrefix + '.nock.js';
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&this.suiteRecordingsFile  " + this.suiteRecordingsFile);
   this.isRecording = process.env.AZURE_NOCK_RECORD;
   this.skipSubscription = true;
-
+  
   // change this in derived classes to switch mode
   this.commandMode = 'asm';
 
@@ -85,10 +86,14 @@ _.extend(CLITest.prototype, {
     this.recordingsDirectory = dir;
   },
 
-  getRecordingsFile: function() {
-    this.recordingsFile = this.getRecordingsDirectory() + 
+  getTestRecordingsFile: function() {
+    this.testRecordingsFile = this.getRecordingsDirectory() + 
       testLogger.getCurrentTest().split(" ").join("_") + ".nock.js";
-    return this.recordingsFile;
+    return this.testRecordingsFile;
+  },
+
+   getSuiteRecordingsFile: function() {
+    return this.suiteRecordingsFile;
   },
 
   normalizeEnvironment: function (env) {
@@ -152,17 +157,39 @@ _.extend(CLITest.prototype, {
   },
 
   setupSuite: function (callback) {
+    // Remove any existing cache files before starting the test
+    this.removeCacheFiles();
+    
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
     
-    // Remove any existing cache files before starting the test
-    this.removeCacheFiles();
+    if (this.isPlayback()) {
+      // retrive recorded testids and uuids if any
+      console.log(">>>>>>>>setupSuite in playback, testRecordingsFile" + util.inspect(this.getSuiteRecordingsFile(), {depth: null}));
+      var nocked = require(this.getSuiteRecordingsFile());
+      if (nocked.randomTestIdsGenerated) {
+        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+        console.log(">>>>>>>>setupSuite in playback, this.randomTestIdsGenerated" + util.inspect(this.randomTestIdsGenerated, {depth: null}));
+      }
+
+      if (nocked.uuidsGenerated) {
+        this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+    }
 
     callback();
+    //write the testids and uuids to a suite recordings file
+    if (this.isMocked && this.isRecording) {
+      this.writeRecordingHeader(this.getSuiteRecordingsFile());
+      fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
+      this.writeGeneratedUuids(this.getSuiteRecordingsFile());
+      this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
+    }
   },
 
   teardownSuite: function (callback) {
+    this.curentTest = 0;
     if (this.isMocked) {
       delete process.env.AZURE_ENABLE_STRICT_SSL;
     }
@@ -180,20 +207,30 @@ _.extend(CLITest.prototype, {
       });
   },
 
-  writeGeneratedUuids: function () {
+  writeGeneratedUuids: function (filename) {
     if (this.uuidsGenerated.length > 0) {
       var uuids = this.uuidsGenerated.map(function (uuid) { return '\'' + uuid + '\''; }).join(',');
+      console.log("^^^^^^^^^^^^^^^^ uuids -- " + util.inspect(uuids, {depth: null}));
       var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
-      fs.appendFileSync(this.getRecordingsFile(), content);
+      filename = filename || this.getTestRecordingsFile();
+      fs.appendFileSync(filename, content);
       this.uuidsGenerated.length = 0;
     }
   },
 
-  writeGeneratedRandomTestIds: function () {
+  writeGeneratedRandomTestIds: function (filename) {
+    console.log(">>>>>>>>randomTestIdsGenerated -- " + util.inspect(this.randomTestIdsGenerated, {depth: null}));
     if (this.randomTestIdsGenerated.length > 0) {
-      var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
+      var ida = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; });
+      console.log(">>>>>>>>ida -- " + util.inspect(ida, {depth: null}));
+      var ids = ida.join(',');
+      console.log(">>>>>>>>ids -- " + util.inspect(ids, {depth: null}));
       var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids);
-      fs.appendFileSync(this.getRecordingsFile(), content);
+      console.log(">>>>>>>>content -- " + util.inspect(content, {depth: null}));
+      console.log("recieved filename:  " + filename);
+      filename = filename || this.getTestRecordingsFile();
+      console.log("Writing to file:  " + filename);
+      fs.appendFileSync(filename, content);
       this.randomTestIdsGenerated.length = 0;
     }
   },
@@ -248,6 +285,9 @@ _.extend(CLITest.prototype, {
   },
 
   setupTest: function (callback) {
+    this.currentTest += 1;
+    this.numberOfRandomTestIdGenerated = 0;
+    this.currentUuid = 0;
     nockHelper.nockHttp();
     if (this.isMocked && this.isRecording) {
       // nock recording
@@ -257,9 +297,10 @@ _.extend(CLITest.prototype, {
 
     if (this.isPlayback()) {
       // nock playback
-      var nocked = require(this.getRecordingsFile());
+      var nocked = require(this.getTestRecordingsFile());
       if (nocked.randomTestIdsGenerated) {
         this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
+        console.log(">>>>>>>>setupTest in playback, this.randomTestIdsGenerated" + util.inspect(this.randomTestIdsGenerated, {depth: null}));
       }
 
       if (nocked.uuidsGenerated) {
@@ -278,12 +319,12 @@ _.extend(CLITest.prototype, {
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
 
-      if (this.currentTest < nocked.scopes.length) {
-        nocked.scopes[this.currentTest++].forEach(function (createScopeFunc) {
+      if (nocked.scopes.length === 1) {
+        nocked.scopes[0].forEach(function (createScopeFunc) {
           createScopeFunc(nockHelper.nock);
         });
       } else {
-        throw new Error('It appears the ' + this.getRecordingsFile() + ' file has more tests than there are mocked tests. ' +
+        throw new Error('It appears the ' + this.getTestRecordingsFile() + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
     }
@@ -295,7 +336,6 @@ _.extend(CLITest.prototype, {
   },
 
   teardownTest: function (callback) {
-    this.currentTest = 0;
     if (this.isMocked) {
       if (this.isRecording) {
         // play nock recording
@@ -328,8 +368,8 @@ _.extend(CLITest.prototype, {
           }
         });
         scope += ']';
-        fs.appendFileSync(this.getRecordingsFile(), scope);
-        fs.appendFileSync(this.getRecordingsFile(), '];');
+        fs.appendFileSync(this.getTestRecordingsFile(), scope);
+        fs.appendFileSync(this.getTestRecordingsFile(), '];');
         this.writeGeneratedUuids();
         this.writeGeneratedRandomTestIds();
         nockHelper.nock.recorder.clear();
@@ -342,10 +382,10 @@ _.extend(CLITest.prototype, {
     callback();
   },
 
-  writeRecordingHeader: function () {
+  writeRecordingHeader: function (filename) {
     var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
-
-    fs.writeFileSync(this.getRecordingsFile(), _.template(template, {
+    filename = filename || this.getTestRecordingsFile();
+    fs.writeFileSync(filename, _.template(template, {
       sub: profile.current.currentSubscription,
       requiredEnvironment: this.requiredEnvironment
     }));
@@ -363,6 +403,8 @@ _.extend(CLITest.prototype, {
   * @return {string} A new unique identifier.
   */
   generateId: function (prefix, currentList) {
+    console.log(">>>>>>>>prefix at start of generateId" + util.inspect(prefix, {depth: null}));
+    console.log(">>>>>>>>current list at start of generateId" + util.inspect(currentList, {depth: null}));
     if (!currentList) {
       currentList = [];
     }
@@ -370,18 +412,29 @@ _.extend(CLITest.prototype, {
     var newNumber;
     if (!this.isPlayback()) {
       newNumber = CLITest.generateRandomId(prefix, currentList);
+      console.log(">>>>>>>>generating new number if not in playback" + util.inspect(newNumber, {depth: null}));
       if (this.isMocked) {
+        console.log(">>>>>>>>in Record index in array: " + util.inspect(this.numberOfRandomTestIdGenerated, {depth: null}));
         this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++] = newNumber;
+        console.log(">>>>>>>>in Record after assignment index in array: " + util.inspect(this.numberOfRandomTestIdGenerated, {depth: null}));
+        console.log(">>>>>>>>in Record: " + util.inspect(this.randomTestIdsGenerated, {depth: null}));
       }
     } else {
       if (this.randomTestIdsGenerated && this.randomTestIdsGenerated.length > 0) {
+        console.log(">>>>>>>>in playback numberOfRandomTestIdGenerated" + util.inspect(this.numberOfRandomTestIdGenerated, {depth: null}));
+        console.log(">>>>>>>>in playback randomTestIdsGenerated" + util.inspect(this.randomTestIdsGenerated, {depth: null}));
         newNumber = this.randomTestIdsGenerated[this.numberOfRandomTestIdGenerated++];
+        console.log(">>>>>>>>in playback after assignment numberOfRandomTestIdGenerated" + util.inspect(this.numberOfRandomTestIdGenerated, {depth: null}));
+        console.log(">>>>>>>>in playback newNumber" + util.inspect(newNumber, {depth: null}));
       } else {
         //some test might not have recorded generated ids, so we fall back to the old sequential logic
         newNumber = prefix + (currentList.length + 1);
       }
     }
+
     currentList.push(newNumber);
+    console.log(">>>>>>>>in any mode current list after pushing new number" + util.inspect(currentList, {depth: null}));
+    console.log(">>>>>>>>returning new number" + util.inspect(newNumber, {depth: null}));
     return newNumber;
   },
 
@@ -456,10 +509,16 @@ _.extend(CLITest.prototype, {
         var uuid;
         if (self.isMocked) {
           if (!self.isRecording) {
+            console.log("^^^^^^^^^^^^^^^In playback  before assignment self.currentUuid " + self.currentUuid);
+            console.log("^^^^^^^^^^^^^^^In playback  sself.uuidsGenerated " + util.inspect(self.uuidsGenerated, {depth : null}));
             uuid = self.uuidsGenerated[self.currentUuid++];
+            console.log("^^^^^^^^^^^^^^^In playback  after assignment self.currentUuid " + self.currentUuid);
+            console.log("^^^^^^^^^^^^^^^In playback  uuid " + uuid);
           } else {
             uuid = originalUuidGen();
+            console.log("^^^^^^^^^^^^^^^uuid = originalUuidGen();  " + uuid);
             self.uuidsGenerated.push(uuid);
+            console.log("^^^^^^^^^^^^^^^^^self.uuidsGenerated after push         " + util.inspect(self.uuidsGenerated, {depth : null}));
           }
         }
         return uuid;
