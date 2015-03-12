@@ -34,7 +34,6 @@ var galleryTemplateName;
 var galleryTemplateUrl;
 var createdGroups = [];
 var cleanedUpGroups = 0;
-var count = 0;
 
 describe('arm', function () {
   describe('group', function () {
@@ -44,10 +43,7 @@ describe('arm', function () {
       var normalizedTestLocation;
 
       before(function (done) {
-        count++;
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Creating a new suite " + count + " times.");
         suite = new CLITest(testprefix, requiredEnvironment);
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@The new suite looks like: " + util.inspect(suite, {depth: null}));
         suite.setupSuite(done);     
       });
 
@@ -301,19 +297,13 @@ describe('arm', function () {
         });
 
         it('should fail when an invalid template uri is provided', function (done) {
-          console.log(">>>>>>>>createdGroups before generating id " + util.inspect(createdGroups, {depth: null}));
           var groupName = suite.generateId('xplatTestGCreate', createdGroups, suite.isMocked);
-          console.log(">>>>>>>>groupName" + util.inspect(groupName, {depth: null}));
-          console.log(">>>>>>>>createdGroups after generating id " + util.inspect(createdGroups, {depth: null}));
           var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
           var invalidTemplateUrl = 'https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-windowsazure-gallery/8D6B920B-10F4-4B5A-B3DA-9D398FBCF3EE.PUBLICGALLERYITEMS.MICROSOFT.ASPNETSTARTERSITE.0.1.0-PREVIEW1/DeploymentTemplates/Website_NewHostingPla.json';
           suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
-
             suite.execute('group template validate -g %s --template-uri %s -p %s --json', groupName, invalidTemplateUrl, parameterString, function (result) {
-              console.log(">>>>>>>>>>>>>>>>>>>>>>" + util.inspect(result, {depth : null}));
-              result.exitStatus.should.equal(1);
-              //comment out till ARM restores the following good message; rather than the "internal server error"  
+              result.exitStatus.should.equal(1); 
               result.errorText.should.match(/.*Unable to download deployment content.*/i);
               cleanup(done);
             });
@@ -322,14 +312,10 @@ describe('arm', function () {
 
         it('should fail when a parameter for template is missing', function (done) {
           var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"sku\":{ \"value\":\"Free\" }, \"workerSize\":{ \"value\":\"0\" }}";
-          console.log(">>>>>>>>createdGroups before generating id " + util.inspect(createdGroups, {depth: null}));
           var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
-          console.log(">>>>>>>>groupName" + util.inspect(groupName, {depth: null}));
-          console.log(">>>>>>>>createdGroups after generating id " + util.inspect(createdGroups, {depth: null}));
 
           suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
-
             suite.execute('group template validate -g %s -y %s -p %s --json', groupName, galleryTemplateName, parameterString, function (result) {
               result.exitStatus.should.equal(1);
               result.errorText.should.match(/.*Deployment template validation failed.*/i);
@@ -340,10 +326,7 @@ describe('arm', function () {
 
         it('should fail when an invalid value (Free12) for template parameter (sku) is provided', function (done) {
           var parameterString = "{ \"siteName\":{\"value\":\"xDeploymentTestSite1\"}, \"hostingPlanName\":{ \"value\":\"xDeploymentTestHost1\" }, \"siteLocation\":{ \"value\":\"West US\" }, \"sku\":{ \"value\":\"Free12\" }, \"workerSize\":{ \"value\":\"0\" }}";
-          console.log(">>>>>>>>createdGroups before generating id " + util.inspect(createdGroups, {depth: null}));
           var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
-          console.log(">>>>>>>>groupName" + util.inspect(groupName, {depth: null}));
-          console.log(">>>>>>>>createdGroups after generating id " + util.inspect(createdGroups, {depth: null}));
 
           suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
             result.exitStatus.should.equal(0);
