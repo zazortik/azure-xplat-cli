@@ -35,7 +35,7 @@ describe('cli', function() {
       password = 'Collabera@01',
       retry = 5,
       timeout;
-    testUtils.TIMEOUT_INTERVAL = 12000;
+      testUtils.TIMEOUT_INTERVAL = 12000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

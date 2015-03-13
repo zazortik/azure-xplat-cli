@@ -89,7 +89,7 @@ describe('cli', function () {
     }
 
     function connectLogStream(siteName, callback) {
-      setTimeout(function () { process.exit(0); }, 5000);
+      setTimeout(function () { process.exit(0); }, suite.isPlayback() ? 0 : 5000);
       suite.execute('node cli.js site log tail %s --log', siteName, callback);
     }
   });
