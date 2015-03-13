@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,7 +54,7 @@ describe('arm', function () {
       suite.setupTest(function () {
         testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
         normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+        testUtil.getTemplateInfoByName(suite, 'Microsoft.ASPNETStarterSite.0.2.2-preview', function(error, templateInfo) {
           if (error) {
             return done(new Error('Could not get template info: ' + error));
           }
@@ -85,14 +85,26 @@ describe('arm', function () {
       });
     }
 
+    function setUniqParameterNames(suite, filename) {
+      //no need to create unique parameter values in playbackmode
+      var parameters = JSON.parse(fs.readFileSync(filename).toString());
+      var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
+      var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
+      parameters.siteName.value = siteName;
+      parameters.hostingPlanName.value = hostingPlanName;
+      if (!suite.isPlayback()) {
+        fs.writeFileSync(filename, JSON.stringify(parameters, null, 2));
+      }
+    }
+
     describe('list and show', function () {
-      it('should all work with switches', function (done) {
-        var deploymentState = 'Accepted';
+      it('should work properly', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
             templateFile, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
@@ -104,37 +116,11 @@ describe('arm', function () {
               showResult.exitStatus.should.equal(0);
               showResult.text.indexOf(deploymentName).should.be.above(-1);
 
-              suite.execute('group deployment list -g %s --state %s --json', groupName, deploymentState, function (listResult) {
+              suite.execute('group deployment list -g %s --state %s --json', groupName, 'Running', function (listResult) {
                 listResult.exitStatus.should.equal(0);
-                listResult.text.indexOf(deploymentName).should.be.above(-1);
-                cleanup(done);
-              });
-            });
-          });
-        });
-      });
-
-      it('should all work without switches', function (done) {
-        var deploymentState = 'Accepted';
-        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
-        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
-        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = 'https://testtemplates.blob.core.windows.net/templates/good-website.js';
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
-            templateFile, groupName, deploymentName, parameterFile);
-
-        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
-          result.exitStatus.should.equal(0);
-          suite.execute(commandToCreateDeployment, function (result) {
-            result.exitStatus.should.equal(0);
-
-            suite.execute('group deployment show %s %s --json', groupName, deploymentName, function (showResult) {
-              showResult.exitStatus.should.equal(0);
-              showResult.text.indexOf(deploymentName).should.be.above(-1);
-
-              suite.execute('group deployment list %s %s --json', groupName, deploymentState, function (listResult) {
-                listResult.exitStatus.should.equal(0);
-                listResult.text.indexOf(deploymentName).should.be.above(-1);
+                if (JSON.parse(listResult.text).length !== 0) {
+                  listResult.text.indexOf(deploymentName).should.be.above(-1);
+                }
                 cleanup(done);
               });
             });
@@ -146,9 +132,10 @@ describe('arm', function () {
     describe('stop', function () {
       it('should work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --json',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s %s --json', groupName, testLocation, function (result) {
@@ -167,9 +154,10 @@ describe('arm', function () {
 
       it('should stop the currently running deployment when deployment name is not provided and only 1 deployment is currently running', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --json',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
@@ -188,17 +176,18 @@ describe('arm', function () {
 
       it('should fail when the deployment name is not provided and more than 1 deployment is currently running', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var deploymentName1 = suite.generateId('Deploy2', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --json',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('group deployment create -f %s -g %s -n %s -e %s --json -vv', galleryTemplateUrl, groupName, deploymentName1, parameterFile, function (result2) {
+            suite.execute('group deployment create --template-uri %s -g %s -n %s -e %s --json -vv', galleryTemplateUrl, groupName, deploymentName1, parameterFile, function (result2) {
               result2.exitStatus.should.equal(0);
               suite.execute('group deployment stop -g %s -q --json', groupName, function (listResult) {
                 listResult.exitStatus.should.equal(1);
@@ -214,9 +203,10 @@ describe('arm', function () {
     describe('create', function () {
       it('should work with a remote file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
@@ -235,10 +225,11 @@ describe('arm', function () {
 
       it('should all work with a local file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
             templateFile, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
@@ -261,7 +252,9 @@ describe('arm', function () {
       });
 
       it('should all work with a string for parameters', function (done) {
-        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/arm-deployment-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
+        var parameters = fs.readFileSync(parameterFile).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
@@ -289,7 +282,9 @@ describe('arm', function () {
       });
 
       it('should all work with a gallery template and a string for parameters', function (done) {
-        var parameters = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
+        var parameters = fs.readFileSync(parameterFile).toString().replace(/\n/g, '').replace(/\r/g, '');
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
 
@@ -315,6 +310,7 @@ describe('arm', function () {
 
       it('should fail when both gallery template and file template are provided', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
@@ -333,6 +329,7 @@ describe('arm', function () {
 
       it('should fail when an incorrect gallery template is provided', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var galleryTemplate = 'Microsoft.ASPNETStarterSite.0.1.0-preview101ABC';
@@ -358,7 +355,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -n %s -p %s --json', galleryTemplateName, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
-            result.errorText.should.include('Deployment template validation failed: \'The value for the template parameter \'siteLocation\' is not provided.\'.');
+            result.errorText.should.include('Deployment template validation failed: \'The value for the template parameter \'siteLocation\' at line \'1\' and column \'248\' is not provided.\'.');
             cleanup(done);
           });
         });

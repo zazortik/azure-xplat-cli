@@ -36,7 +36,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD'},
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupRandom3' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9190' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9365' },
 ];
 
 describe('arm', function () {
@@ -126,15 +126,27 @@ describe('arm', function () {
     function setupADObjects (done) {
       //create AD objects
       graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME, process.env.AZURE_AD_TEST_PASSWORD, function (err, userResult) {
-        if (err) { return cleanupCreatedAdObjects(err, done); }
+        if (err) { 
+          testLogger.logData("create user error : ");
+          testLogger.logData(err); 
+          return cleanupCreatedAdObjects(err, done); 
+        }
         testUsers.push(userResult);
         listPoll(suite, 3, 'user', userResult.objectId, function (result) {
           graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, groupResult) {
-            if (err) { return cleanupCreatedAdObjects(err, done); }
+            if (err) {
+              testLogger.logData("create group error : ");
+              testLogger.logData(err);
+              return cleanupCreatedAdObjects(err, done); 
+            }
             testGroups.push(groupResult);
             listPoll(suite, 3, 'group', groupResult.objectId, function (result) {
               graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, spResult) {
-                if (err) { return cleanupCreatedAdObjects(err, done); }
+                if (err) { 
+                  testLogger.logData("create sp error : ");
+                  testLogger.logData(err);
+                  return cleanupCreatedAdObjects(err, done); 
+                }
                 testSPs.push(spResult);
                 listPoll(suite, 3, 'sp', spResult.objectId, function (result) {
                   done();
