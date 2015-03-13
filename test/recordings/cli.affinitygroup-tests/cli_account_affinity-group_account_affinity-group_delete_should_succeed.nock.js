@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,23 +28,23 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '56a128a8d662767f96e8cea50e07a1b7',
-  date: 'Fri, 13 Mar 2015 02:24:08 GMT' });
+  'x-ms-request-id': '7f1e8a5239877ace8d3b498e0a01891a',
+  date: 'Fri, 13 Mar 2015 19:24:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroups/xplat-afg-9110')
+  .delete('/00977cdb-163f-435f-9c32-39ec8ae61f4d/affinitygroups/xplat-afg-1483')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '5f795dc6da52743ba43c04676ab72e82',
-  date: 'Fri, 13 Mar 2015 02:24:10 GMT' });
+  'x-ms-request-id': 'aad5e08b1bf0799385e64afa8f8e05f8',
+  date: 'Fri, 13 Mar 2015 19:24:52 GMT' });
  return result; }]];

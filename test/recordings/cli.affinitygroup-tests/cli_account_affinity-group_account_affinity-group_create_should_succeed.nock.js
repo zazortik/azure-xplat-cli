@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,37 +28,37 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '13c62caf42637961872d0d0d7b00668e',
-  date: 'Fri, 13 Mar 2015 02:24:01 GMT' });
+  'x-ms-request-id': '356b2c9ce9807dd891d5d98cd758ffed',
+  date: 'Fri, 13 Mar 2015 19:24:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=website&action=register')
+  .put('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services?service=website&action=register')
   .reply(409, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ConflictError</Code><Message>The resource type website is already registered for this subscription.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '664bb82dec79760380a4b3b7794e8a55',
-  date: 'Fri, 13 Mar 2015 02:24:02 GMT' });
+  'x-ms-request-id': '33921520000e76c3a52617b31bbba32a',
+  date: 'Fri, 13 Mar 2015 19:24:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroups', '*')
+.post('/00977cdb-163f-435f-9c32-39ec8ae61f4d/affinitygroups', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroup/xplat-afg-9110',
+  location: 'https://management.core.windows.net/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/affinitygroup/xplat-afg-1483',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '92c5014124b87c6998953ca021b801cf',
-  date: 'Fri, 13 Mar 2015 02:24:02 GMT' });
+  'x-ms-request-id': '950c43e34c5778c886021fe9318c5f83',
+  date: 'Fri, 13 Mar 2015 19:24:44 GMT' });
  return result; }]];

@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,24 +28,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '64d593cf35a57dfd9c16d31100fc996e',
-  date: 'Fri, 13 Mar 2015 02:24:05 GMT' });
+  'x-ms-request-id': '575db4363dd47150b71d9d3b072a5698',
+  date: 'Fri, 13 Mar 2015 19:24:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroups/xplat-afg-9110')
-  .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplat-afg-9110</Name><Label>eHBsYXQtYWZnLTkxMTA=</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2015-03-13T02:24:03Z</CreatedTime></AffinityGroup>", { 'cache-control': 'no-cache',
+  .get('/00977cdb-163f-435f-9c32-39ec8ae61f4d/affinitygroups/xplat-afg-1483')
+  .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>xplat-afg-1483</Name><Label>eHBsYXQtYWZnLTE0ODM=</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2015-03-13T19:24:44Z</CreatedTime></AffinityGroup>", { 'cache-control': 'no-cache',
   'content-length': '444',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '4f5911b741517897b5571c793367a350',
-  date: 'Fri, 13 Mar 2015 02:24:05 GMT' });
+  'x-ms-request-id': 'e31bfb83a2c57494af0c11aca489804a',
+  date: 'Fri, 13 Mar 2015 19:24:47 GMT' });
  return result; }]];
