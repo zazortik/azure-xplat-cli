@@ -14,40 +14,33 @@
  */
 var should = require('should');
 var util = require('util');
-var fs = require('fs');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
-
+// A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
-var testPrefix = 'cli.vm.acl-tests';
+var testPrefix = 'cli.vm.extension_set-chef';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
 }];
-
+var vmCreated=false;
 describe('cli', function() {
   describe('vm', function() {
-    var timeout,
-      vmName,
+    var vmName,
       location,
-      endpoint = 'rdp'
-    remotesubnet = '23.99.18.228/31',
       username = 'azureuser',
-      password = 'Collabera@01',
-      order = 1,
-      neworder = 2,
+      password = 'PassW0rd$',
       retry = 5,
-      description = "testing description"
-    action = 'permit';
-    testUtils.TIMEOUT_INTERVAL = 12000;
-
+      clientconfig = 'test/data/set-chef-extension-client-config.rb',
+      validationpem = 'test/data/set-chef-extension-validation.pem',
+      chefversion = '11.*',
+      timeout;
+    testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplatestvm' : suite.generateId(vmPrefix, null);
     });
-
     after(function(done) {
       function deleteUsedVM(callback) {
         if (!suite.isMocked) {
@@ -58,97 +51,66 @@ describe('cli', function() {
               setTimeout(callback, timeout);
             });
           }, timeout);
-        } else
-          callback();
-      }
-
+        } else callback();
+      }      
       deleteUsedVM(function() {
         suite.teardownSuite(done);
       });
     });
-
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        vmName = suite.isMocked ? 'xchefextnvm' : suite.generateId(vmPrefix, null);
         timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
-
     afterEach(function(done) {
       setTimeout(function() {
         suite.teardownTest(done);
       }, timeout);
     });
+    //Set Chef extensions test
+    describe('extension:', function() {
+      it('Set Chef extensions fail without client config and validation pem', function(done) {
+        createVM(function() {
+          var cmd = util.format('vm extension set-chef %s -V %s --json', vmName, chefversion).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.errorText.should.containEql('error: Required --validation-pem and --client-config options');
+            result.exitStatus.should.equal(1);
+            done();
+          });
+        });
+      });
 
-    describe('ACL :', function() {
+      it('Set Chef extensions', function(done) {
+        createVM(function() {
+          var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s --json', vmName, chefversion, clientconfig, validationpem).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
 
-      it('Create a VM', function(done) {
-        getImageName('Windows', function(ImageName) {
-          var cmd = util.format('vm create %s %s %s %s -r --json',
-            vmName, ImageName, username, password).split(' ');
+    });
+
+    function createVM(callback) {
+      if (!vmCreated) {
+        getImageName('Windows', function(imagename) {
+          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
           cmd.push('-l');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            done();
+            vmCreated = true;
+            setTimeout(callback, timeout);
           });
         });
-      });
+      } else { callback(); }
+    }
+      // Get name of an image of the given category
 
-      it('Create an ACL rule for a VM endpoint with description', function(done) {
-        var cmd = util.format('vm endpoint acl-rule create %s %s %s %s %s -r %s--json',
-          vmName, endpoint, order, action, remotesubnet, description).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-
-      it('list an ACL rule for a VM endpoint', function(done) {
-        var cmd = util.format('vm endpoint acl-rule list %s %s --json',
-          vmName, endpoint).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var publicipList = JSON.parse(result.text);
-          publicipList[0].order.should.not.be.null;
-          done();
-        });
-      });
-
-      it('update an ACL rule for a VM endpoint', function(done) {
-        var cmd = util.format('vm endpoint acl-rule set %s %s %s --new-order %s --json', vmName, endpoint, order, neworder).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var cmd = util.format('vm endpoint acl-rule list %s %s --json',
-            vmName, endpoint).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var publicipList = JSON.parse(result.text);
-            publicipList[0].order.should.equal(neworder);
-            done();
-          });
-        });
-      });
-
-      it('Delete an ACL rule for a VM endpoint', function(done) {
-        var cmd = util.format('vm endpoint acl-rule delete %s %s %s --quiet --json',
-          vmName, endpoint, neworder).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var cmd = util.format('vm endpoint acl-rule list %s %s --json',
-            vmName, endpoint).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var publicipList = JSON.parse(result.text);
-            publicipList.length.should.be.zero;
-            done();
-          });
-        });
-      });
-    });
-
-    // Get name of an image of the given category
     function getImageName(category, callBack) {
       if (process.env.VM_WIN_IMAGE) {
         callBack(process.env.VM_WIN_IMAGE);

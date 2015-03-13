@@ -204,7 +204,7 @@ You need to set the following environment variables to capture the HTTP traffic 
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
 ```
-## Want to know the underlying HTTP taffic when you execute the command
+## Want to know the underlying HTTP traffic when you execute the command
 You can use the -vv option to see the actual REST requests on the console.
 ```bash
 azure site create --location "West US" mytestsite -vv
@@ -220,5 +220,7 @@ For documentation on how to host Node.js applications on Microsoft Azure, please
 ## Contribute Code or Provide Feedback
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+
+Please send pull requests only to the **Dev branch**. Please make sure that you have checked in tests and recorded them live for your contribution. **Pull requests without sufficient tests will not be accepted.**
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-xplat-cli/issues) section of the project.
