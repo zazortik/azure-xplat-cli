@@ -28,7 +28,7 @@ exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME'] = 'RandomtestUser1@rbactest.onmicrosoft.com';
   process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME2'] = 'RandomtestUser2@rbactest.onmicrosoft.com';
   process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'Randommytestapp9045';
-}
+};
 
 exports.scopes = [[function (nock) { 
 var result = 

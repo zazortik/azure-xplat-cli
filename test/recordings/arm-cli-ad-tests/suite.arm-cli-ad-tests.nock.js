@@ -23,11 +23,11 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_PASSWORD'] = 'Pa$$w0rd';
-  process.env['AZURE_AD_TEST_GROUP_NAME'] = 'undefined';
-  process.env['AZURE_AD_TEST_SUBGROUP_NAME'] = 'undefined';
-  process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME'] = 'undefined';
-  process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME2'] = 'undefined';
-  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'undefined';
+  process.env['AZURE_AD_TEST_GROUP_NAME'] = 'Randomtestgroup1';
+  process.env['AZURE_AD_TEST_SUBGROUP_NAME'] = 'Randomtestgroup2';
+  process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME'] = 'RandomtestUser1@rbactest.onmicrosoft.com';
+  process.env['AZURE_AD_TEST_USER_PRINCIPAL_NAME2'] = 'RandomtestUser2@rbactest.onmicrosoft.com';
+  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'Randommytestapp9045';
 }
 
 exports.scopes = [];
