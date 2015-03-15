@@ -58,13 +58,13 @@ function CLITest(testPrefix, env, forceMocked) {
     env = [];
   }
 
-  this.testPrefix = testPrefix;
+  this.testPrefix = this.normalizeTestName(testPrefix);
   this.currentTest = 0;
   this.setRecordingsDirectory(__dirname + '/../recordings/' + this.testPrefix + '/');
   if (forceMocked) {
     this.isMocked = true;
   } else {
-    this.isMocked = testPrefix && !process.env.NOCK_OFF;
+    this.isMocked = this.testPrefix && !process.env.NOCK_OFF;
   }
 
   this.suiteRecordingsFile = this.getRecordingsDirectory() + 'suite.' + this.testPrefix + '.nock.js';
@@ -121,8 +121,12 @@ _.extend(CLITest.prototype, {
   */
   getTestRecordingsFile: function() {
     this.testRecordingsFile = this.getRecordingsDirectory() + 
-      testLogger.getCurrentTest().split(" ").join("_") + ".nock.js";
+      this.normalizeTestName(testLogger.getCurrentTest()) + ".nock.js";
     return this.testRecordingsFile;
+  },
+
+  normalizeTestName: function(str) {
+    return str.replace(/[{}\[\]'";\(\)#@~`!%&\^\$\+=,\/\\?<>\|\*:]/ig, '').replace(/(\s+)/ig, '_');
   },
 
   /**
@@ -212,6 +216,20 @@ _.extend(CLITest.prototype, {
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
+
+      if (nocked.getMockedProfile) {
+        profile.current = nocked.getMockedProfile();
+        profile.current.save = function () { };
+      }
+
+      if (nocked.setEnvironment) {
+        nocked.setEnvironment();
+      }
+
+      this.originalTokenCache = adalAuth.tokenCache;
+      adalAuth.tokenCache = new MockTokenCache();
+    } else {
+      this.setEnvironmentDefaults();
     }
 
     callback();
@@ -286,9 +304,6 @@ _.extend(CLITest.prototype, {
         throw new Error('It appears the ' + this.getTestRecordingsFile() + ' file has more tests than there are mocked tests. ' +
           'You may need to re-generate it.');
       }
-    }
-    else {
-      this.setEnvironmentDefaults();
     }
 
     callback();
@@ -453,7 +468,6 @@ _.extend(CLITest.prototype, {
       var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids); 
       filename = filename || this.getTestRecordingsFile();
       fs.appendFileSync(filename, content);
-      var template = fs.readFileSync(filename, { encoding: 'utf8' });
       this.randomTestIdsGenerated.length = 0;
     }
   },
