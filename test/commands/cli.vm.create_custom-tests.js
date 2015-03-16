@@ -19,7 +19,8 @@ var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
-var vmPrefix = 'clitestvm';
+var vmPrefix = 'clitestvm_cdata';
+var createdVms = [];
 var testPrefix = 'cli.vm.create_custom-tests';
 
 var requiredEnvironment = [{
@@ -61,9 +62,9 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        customVmName = suite.isMocked ? 'xplattestvmcustdata' : suite.generateId(vmPrefix, null) + 'cdata';
+        customVmName = suite.generateId(vmPrefix, createdVms);
         certFile = process.env.SSHCERT;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
         done();
       });

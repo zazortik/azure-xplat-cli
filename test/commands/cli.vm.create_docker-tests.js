@@ -21,6 +21,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVMs = [];
 var testPrefix = 'cli.vm.create_docker-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -65,8 +66,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        vmName = suite.generateId(vmPrefix, createdVMs);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
       });

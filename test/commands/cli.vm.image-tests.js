@@ -20,6 +20,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var vmPrefix = 'clitestvm';
 var testPrefix = 'cli.vm.image-tests';
+var createdVmImages = [];
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -35,8 +36,10 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmImgName = suite.generateId(vmPrefix, null) + 'image';
+      suite.setupSuite(function() {
+        vmImgName = suite.generateId(vmPrefix, createdVmImages);
+        done();
+      });
     });
 
     after(function(done) {
@@ -46,7 +49,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });

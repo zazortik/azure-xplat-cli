@@ -20,6 +20,8 @@ var CLITest = require('../framework/cli-test');
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
+var createdVnets = [];
 var testPrefix = 'cli.vm.create_staticvm-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -38,18 +40,29 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function (){
+        if(!suite.isPlayback()) {
+          createdVnets.forEach(function (item) {
+            suite.execute('network vnet delete %s -q --json', item, function (result) {
+              result.exitStatus.should.equal(0);
+            });
+          });
+        }
+        done();
+      });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -110,7 +123,7 @@ describe('cli', function() {
     describe('static ip operations:', function() {
 
       after(function(done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           done();
         } else {
           var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
@@ -178,6 +191,7 @@ describe('cli', function() {
         cmd = util.format('network vnet list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
+          console.log(">>>>>>>>>>>>result " + util.inspect(result, {depth : null}));
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function(vnet) {
             if (vnet.state == status && vnet.affinityGroup) {
@@ -190,11 +204,13 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnet.name;
-                var address = vnet.addressSpace.addressPrefixes[0];
+                var vnet = JSON.parse(result.text);
+                getVnet.vnetName = vnet[0].name;
+                var address = vnet[0].addressSpace.addressPrefixes[0];
                 staticIpavail = address.split('/')[0];
                 callback(getVnet.vnetName);
               });

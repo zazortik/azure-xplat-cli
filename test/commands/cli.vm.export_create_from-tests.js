@@ -20,6 +20,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'ClitestVm';
+var createdVms = [];
 var testPrefix = 'cli.vm.export_create_from-tests';
 
 var requiredEnvironment = [{
@@ -57,10 +58,10 @@ describe('cli', function() {
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+        vmName = suite.generateId(vmPrefix, createdVms);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
-        diskreleasetimeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        diskreleasetimeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -91,7 +92,7 @@ describe('cli', function() {
 
     //create a vm from role file
     describe('VM:', function() {
-      it('export and delete', function(done) {
+      it('export and delete', null, function(done) {
         ListDisk('Linux', function(diskObj) {
           createVM(function() {
             var domainUrl = 'http://' + diskObj.mediaLinkUri.split('/')[2];
