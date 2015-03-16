@@ -111,7 +111,7 @@ describe('cli', function() {
         });
       });
 
-      it('VM Create-from a file and assert the static ip', function(done) {
+      it('VM Create-from a file and assert the static ip', null, function(done) {
         var Fileresult = fs.readFileSync(file, 'utf8');
         var obj = JSON.parse(Fileresult);
         obj['RoleName'] = vmName;
