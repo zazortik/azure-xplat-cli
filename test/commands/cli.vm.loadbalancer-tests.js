@@ -197,9 +197,20 @@ describe('cli', function() {
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnetName;
-                getVnet.affinityName = affinGrpName;
-                callback(getVnet.vnetName, getVnet.location);
+                suite.execute('network vnet show %s --json', vnetName, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var vnet = JSON.parse(result.text);
+                  getVnet.vnetName = vnet.name;
+                  getVnet.location = location;
+                  getVnet.subnetname = vnet.subnets[0].name;
+                  var address = vnet.subnets[0].addressPrefix;
+                  var addressSplit = address.split('/');
+                  var firstip = addressSplit[0];
+                  var n = firstip.substring(0, firstip.lastIndexOf('.') + 1);
+                  var secondip = n.concat(addressSplit[1]);
+                  getVnet.subnetaddress = secondip;
+                  callback(getVnet.vnetName, getVnet.location, getVnet.subnetname, getVnet.subnetaddress);
+                });
               });
             });
           } else {
