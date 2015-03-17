@@ -355,7 +355,7 @@ _.extend(CLITest.prototype, {
         //playback mode
         adalAuth.tokenCache = this.originalTokenCache;
       }
-      nockHelper.nock.recorder.clear();
+      nockHelper.nock.cleanAll();
     }
     nockHelper.unNockHttp();
     callback();
