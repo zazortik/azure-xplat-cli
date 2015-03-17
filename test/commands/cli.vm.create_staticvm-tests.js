@@ -92,7 +92,7 @@ describe('cli', function() {
     });
 
     //create a vm with static-ip set
-    describe('Create a VM with static ip address:', function() {
+    describe.skip('Create a VM with static ip address:', function() {
       it('Create a VM with static ip address', function(done) {
         getImageName('Windows', function(ImageName) {
           getVnet('Created', function(virtualnetName) {
@@ -108,7 +108,7 @@ describe('cli', function() {
     });
 
     // VM Restart and check
-    describe('StaticIp Show:', function() {
+    describe.skip('StaticIp Show:', function() {
       it('Show the description of the vm with set static ip', function(done) {
         var cmd = util.format('vm static-ip show %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -120,7 +120,7 @@ describe('cli', function() {
       });
     });
 
-    describe('static ip operations:', function() {
+    describe.skip('static ip operations:', function() {
 
       after(function(done) {
         if (suite.isPlayback()) {
@@ -191,7 +191,6 @@ describe('cli', function() {
         cmd = util.format('network vnet list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          console.log(">>>>>>>>>>>>result " + util.inspect(result, {depth : null}));
           var vnetName = JSON.parse(result.text);
           var found = vnetName.some(function(vnet) {
             if (vnet.state == status && vnet.affinityGroup) {
@@ -208,8 +207,7 @@ describe('cli', function() {
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var vnet = JSON.parse(result.text);
-                getVnet.vnetName = vnet[0].name;
+                getVnet.vnetName = vnetName;
                 var address = vnet[0].addressSpace.addressPrefixes[0];
                 staticIpavail = address.split('/')[0];
                 callback(getVnet.vnetName);

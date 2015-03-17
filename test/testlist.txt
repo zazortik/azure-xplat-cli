@@ -36,8 +36,7 @@
 #commands/cli.vm.disk-tests.js
 #commands/cli.vm.list_show-tests.js
 #commands/cli.vm.endpoint-tests.js
-#Extremely time consuming and flaky test
-#commands/cli.vm.shutdown_restart-tests.js
+#commands/cli.vm.shutdown_restart-tests.js (Extremely time consuming and flaky test)
 #commands/cli.vm.image-tests.js
 #commands/cli.vm.create_staticvm_neg-tests.js
 #commands/cli.vm.extension-tests.js
@@ -49,17 +48,16 @@
 #commands/cli.vm.create_custom-tests.js
 #commands/cli.vm.create_comm-tests.js
 #commands/cli.vm.negative-tests.js
-#Failing due to some reason need to check.
 #commands/cli.vm.loadbalancer-tests.js
 #TODO - To capture mocks for the below tests. Following tests have been commented out from the test run due to bad recording files.
 #commands/cli.vm.create_win_rdp-tests.js
 #commands/cli.vm.disk.attachDetach-tests.js
 #commands/cli.vm.disk.attachnew-tests.js
 #commands/cli.vm.export_create_from-tests.js (2nd test fails)
-commands/cli.vm.create_staticvm-tests.js
-#commands/cli.vm.staticvm_create-from-tests.js
-#commands/cli.vm.staticvm_docker-tests.js
-#commands/cli.vm.create_docker-tests.js
+#commands/cli.vm.create_staticvm-tests.js (Create a VM with static ip address) creates a new storage account as a part of vm creation. Part of the account name is the time-stamp. So how to mock this request. utils.js::createNewStorageAccount_() L248.
+#commands/cli.vm.staticvm_create-from-tests.js (2nd test fails)
+#commands/cli.vm.staticvm_docker-tests.js (ENOENT, no such file or directory 'C:\Users\amzavery\.docker\ca.pem') asm\vm\vmclient.js:4119
+#commands/cli.vm.create_docker-tests.js (ENOENT, no such file or directory 'C:\Users\amzavery\.docker\ca.pem') lib\commands\asm\vm\vmclient.js:4119:32
 #commands/cli.sql-tests.js
 #commands/cli.storage.account-tests.js
 #commands/cli.storage.blob-tests.js

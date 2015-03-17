@@ -43,8 +43,10 @@ describe('cli', function() {
     before(function(done) {
 
       suite = new CLITest(testPrefix, requiredEnvironment);
-      vmName = suite.generateId(vmPrefix, createdVms);
-      suite.setupSuite(done);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {

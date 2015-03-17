@@ -72,7 +72,7 @@ describe('cli', function() {
 
     afterEach(function(done) {
       function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete && !suite.isPlayback()) {
+        if (vm.Created && vm.Delete) {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {

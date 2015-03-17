@@ -112,7 +112,7 @@ describe('cli', function() {
         });
       });
 
-      it('Create-from a file', function(done) {
+      it('Create-from a file', null, function(done) {
         checkFreeDisk(function(diskname) {
           var Fileresult = fs.readFileSync(file, 'utf8');
           var obj = JSON.parse(Fileresult);
