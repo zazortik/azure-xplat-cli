@@ -252,8 +252,8 @@ describe('cli', function() {
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      if (process.env.VM_WIN_IMAGE) {
-        callBack(process.env.VM_WIN_IMAGE);
+      if (process.env.VM_LINUX_IMAGE) {
+        callBack(process.env.VM_LINUX_IMAGE);
       } else {
         var cmd = util.format('vm image list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -261,11 +261,11 @@ describe('cli', function() {
           var imageList = JSON.parse(result.text);
           imageList.some(function(image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_WIN_IMAGE = image.name;
+              process.env.VM_LINUX_IMAGE = image.name;
               return true;
             }
           });
-          callBack(process.env.VM_WIN_IMAGE);
+          callBack(process.env.VM_LINUX_IMAGE);
         });
       }
     }

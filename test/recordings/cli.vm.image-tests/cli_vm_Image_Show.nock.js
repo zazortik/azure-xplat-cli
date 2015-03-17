@@ -38,8 +38,8 @@ nock('https://management.core.windows.net:443')
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '21449b1e89f7891aa6e3480f85a87665',
-  date: 'Mon, 16 Mar 2015 01:01:41 GMT' });
+  'x-ms-request-id': 'dff7baefbe8a815daea14b64a6320d53',
+  date: 'Tue, 17 Mar 2015 17:57:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -50,20 +50,20 @@ nock('https://management.core.windows.net:443')
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '3dd6dbb3760981f3bd9710e0e0a0070b',
-  date: 'Mon, 16 Mar 2015 01:01:41 GMT' });
+  'x-ms-request-id': 'c698b82bf37984c78f8e915adb017746',
+  date: 'Tue, 17 Mar 2015 17:57:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/images/clitestvm4728')
-  .reply(200, "<OSImage xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Category>User</Category><Label>clitestvm4728</Label><Location>West US</Location><LogicalSizeInGB>30</LogicalSizeInGB><MediaLink>https://azsmnet7371.blob.core.windows.net/vm-images/clitestvm4728</MediaLink><Name>clitestvm4728</Name><OS>Linux</OS><IsPremium>false</IsPremium><OSState>Generalized</OSState><IOType>Standard</IOType></OSImage>", { 'cache-control': 'no-cache',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/images/clitestvm2663')
+  .reply(200, "<OSImage xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Category>User</Category><Label>clitestvm2663</Label><Location>West US</Location><LogicalSizeInGB>30</LogicalSizeInGB><MediaLink>https://azsmnet7371.blob.core.windows.net/vm-images/clitestvm2663</MediaLink><Name>clitestvm2663</Name><OS>Linux</OS><IsPremium>false</IsPremium><OSState>Generalized</OSState><IOType>Standard</IOType></OSImage>", { 'cache-control': 'no-cache',
   'content-length': '450',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '058e5b493b6a88dfa4a4e8f1281a9e60',
-  date: 'Mon, 16 Mar 2015 01:01:40 GMT' });
+  'x-ms-request-id': '034e3c7330c282e48db0d884c53c02c7',
+  date: 'Tue, 17 Mar 2015 17:57:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -74,6 +74,6 @@ nock('https://management.core.windows.net:443')
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'b82745c899c283e4a2dbbea7c3ca67aa',
-  date: 'Mon, 16 Mar 2015 01:01:41 GMT' });
+  'x-ms-request-id': '406f826d702c8332adfef9d324272184',
+  date: 'Tue, 17 Mar 2015 17:57:13 GMT' });
  return result; }]];
