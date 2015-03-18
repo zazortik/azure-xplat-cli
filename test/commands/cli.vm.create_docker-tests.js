@@ -210,8 +210,9 @@ describe('cli', function() {
 
       it('Create Docker VM with invalid docker cert dir should throw error', function(done) {
         getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir D:/foo/bar',
-            vmName, ImageName, username, password).split(' ');
+          var randomPath = __dirname + "/hello/test";
+          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir %s',
+            vmName, ImageName, username, password, randomPath).split(' ');
           cmd.push('--location');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
