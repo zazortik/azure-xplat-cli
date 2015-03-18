@@ -266,43 +266,52 @@ _.extend(CLITest.prototype, {
     this.currentTest += 1;
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
-    nockHelper.nockHttp();
-    if (this.isMocked && this.isRecording) {
-      // nock recording
-      this.writeRecordingHeader();
-      nockHelper.nock.recorder.rec(true);
-    }
-
-    if (this.isPlayback()) {
-      // nock playback
-      var nocked = require(this.getTestRecordingsFile());
-      if (nocked.randomTestIdsGenerated) {
-        this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();  
-      }
-
-      if (nocked.uuidsGenerated) {
-        this.uuidsGenerated = nocked.uuidsGenerated();
-      }
-
-      if (nocked.getMockedProfile) {
-        profile.current = nocked.getMockedProfile();
-        profile.current.save = function () { };
-      }
-
-      if (nocked.setEnvironment) {
-        nocked.setEnvironment();
-      }
-
-      this.originalTokenCache = adalAuth.tokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
-
-      if (nocked.scopes.length === 1) {
-        nocked.scopes[0].forEach(function (createScopeFunc) {
-          createScopeFunc(nockHelper.nock);
+    //nockHelper.nockHttp();
+    if (this.isMocked) {
+      nockHelper.nock.restore();
+      nockHelper.nock.recorder.clear();
+      nockHelper.nock.cleanAll();
+      nockHelper.nock.activate();
+      if (this.isRecording) {
+        this.writeRecordingHeader();
+        nockHelper.nock.enableNetConnect();
+        //start the recording
+        nockHelper.nock.recorder.rec({
+          dont_print: true
         });
-      } else {
-        throw new Error('It appears the ' + this.getTestRecordingsFile() + ' file has more tests than there are mocked tests. ' +
-          'You may need to re-generate it.');
+      }
+      if (this.isPlayback()) {
+        nockHelper.nock.disableNetConnect();
+        var nocked = require(this.getTestRecordingsFile());
+        if (nocked.randomTestIdsGenerated) {
+          this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();  
+        }
+
+        if (nocked.uuidsGenerated) {
+          this.uuidsGenerated = nocked.uuidsGenerated();
+        }
+
+        if (nocked.getMockedProfile) {
+          profile.current = nocked.getMockedProfile();
+          profile.current.save = function () { };
+        }
+
+        if (nocked.setEnvironment) {
+          nocked.setEnvironment();
+        }
+
+        this.originalTokenCache = adalAuth.tokenCache;
+        adalAuth.tokenCache = new MockTokenCache();
+
+        if (nocked.scopes.length === 1) {
+          nocked.scopes[0].forEach(function (createScopeFunc) {
+            createScopeFunc(nockHelper.nock);
+          });
+        } else {
+          throw new Error('It appears the ' + this.getTestRecordingsFile() + 
+            ' file has more tests than there are mocked tests. ' +
+            'You may need to re-generate it.');
+        }
       }
     }
 
@@ -351,13 +360,14 @@ _.extend(CLITest.prototype, {
         fs.appendFileSync(this.getTestRecordingsFile(), '];');
         this.writeGeneratedUuids();
         this.writeGeneratedRandomTestIds();
+        //nockHelper.nock.recorder.clear();
       } else {
         //playback mode
         adalAuth.tokenCache = this.originalTokenCache;
       }
-      nockHelper.nock.cleanAll();
+      //nockHelper.nock.cleanAll();
     }
-    nockHelper.unNockHttp();
+    //nockHelper.unNockHttp();
     callback();
   },
 
