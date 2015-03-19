@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>" 
   ],
-  "version": "0.8.15",
+  "version": "0.8.16",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -59,7 +59,8 @@
     "node-uuid": "1.2.0",
     "omelette": "0.1.0",
     "request": "2.27.0",
-    "streamline": "0.4.5",
+    "streamline": "0.10.17",
+    "streamline-streams": "0.1.5",
     "through": "2.3.4",
     "tunnel": "0.0.2",
     "underscore": "1.4.x",
@@ -74,7 +75,7 @@
   },
   "devDependencies": {
     "mocha": "1.16.0",
-    "jshint": ">= 2.1.4",
+    "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
     "nock": "0.16",

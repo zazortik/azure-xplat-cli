@@ -294,7 +294,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           counter = counter + 1;
           if (result.text === '' && counter <= 3) {
-            setTimeout(function () { poll(counter, done); }, 20000);
+            setTimeout(function () { poll(counter, done); }, suite.isPlayback() ? 0 : 20000);
           } else if (result.text === '' && counter >= 3) {
             throw new Error("group log show command is taking forever, bail out!!");
           } else {

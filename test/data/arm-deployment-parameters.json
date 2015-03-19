@@ -1,18 +1,12 @@
 {
   "siteName": {
-    "value": "xDeploymentTestSite1"
+    "value": "xDeploymentTestSite209"
   },
   "hostingPlanName": {
-    "value": "xDeploymentTestHost1"
-  },
-  "siteMode": {
-    "value": "Limited"
-  },
-  "computeMode": {
-    "value": "Shared"
+    "value": "xDeploymentTestHost209"
   },
   "siteLocation": {
-    "value": "North Europe"
+    "value": "West US"
   },
   "sku": {
     "value": "Free"
