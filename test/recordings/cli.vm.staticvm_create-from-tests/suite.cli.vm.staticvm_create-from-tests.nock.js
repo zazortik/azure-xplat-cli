@@ -7,6 +7,10 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
     name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
@@ -27,4 +31,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['clitestvm8160'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestvm8091'];};
