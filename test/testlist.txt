@@ -4,86 +4,91 @@
 # TODO: Not recording call to log service properly, disabling
 # commands/cli.site.log.tail-tests.js
 # TODO: This suite uses custom recording
-#cli-tests.js
-#commands/cli.account-tests.js
-#commands/cli.account.cert-tests.js
-#commands/cli.account.environment-tests.js
-#commands/cli.account.affinitygroup-tests.js
+cli-tests.js
+commands/cli.account-tests.js
+commands/cli.account.cert-tests.js
+commands/cli.account.environment-tests.js
+commands/cli.account.affinitygroup-tests.js
 #commands/cli.mobile-tests.js
 #commands/cli.mobile.domain-tests.js
 #commands/cli.mobilerecover-tests.js
-#commands/cli.sb-tests.js
-#commands/cli.service-tests.js
-#commands/cli.site.deployment-tests.js
-#commands/cli.site.handler-tests.js
-#commands/cli.site-tests.js
-#commands/cli.site.appsetting-tests.js
-#commands/cli.site.connectionstring-tests.js
-#commands/cli.site.defaultdocument-tests.js
-#commands/cli.site.deploymentscript-tests.js
-#commands/cli.site.log-tests.js
-#commands/cli.site.scale-tests.js
-#commands/cli.site.slots-tests.js
-#commands/cli.site.job-tests.js
-#commands/cli.network-tests.js
-#commands/cli.network.reservedip-tests.js
-#commands/cli.vm.capture-tests.js (how to get certificate)
-#commands/cli.vm.acl-tests.js
-#commands/cli.vm.pip-tests.js
-#commands/cli.vm.create_affin_vnet_vm-tests.js
-#commands/cli.vm.create_loc_vnet_vm-tests.js
-#A lame test. The test should be able to create a vm and delete it. It expects a vm is already there. The number of tests can be reduced by creatting a vm and then doing different disk list and show test. disk create requires ostype which is not provided
-#commands/cli.vm.disk-tests.js
-#commands/cli.vm.list_show-tests.js
-#commands/cli.vm.endpoint-tests.js
-#commands/cli.vm.shutdown_restart-tests.js (Extremely time consuming and flaky test)
-#commands/cli.vm.image-tests.js
-#commands/cli.vm.create_staticvm_neg-tests.js
-#commands/cli.vm.extension-tests.js
-#commands/cli.vm.extension_get-tests.js
-#commands/cli.vm.extension_get-chef-tests.js
-#commands/cli.vm.extension_set-tests.js
-#commands/cli.vm.extension_set-custom_disable.js
-#commands/cli.vm.extension_set-chef.js
-#commands/cli.vm.create_custom-tests.js
-#commands/cli.vm.create_comm-tests.js
-#commands/cli.vm.negative-tests.js
-#commands/cli.vm.loadbalancer-tests.js
-#TODO - To capture mocks for the below tests. Following tests have been commented out from the test run due to bad recording files.
-#commands/cli.vm.create_win_rdp-tests.js
-#commands/cli.vm.disk.attachDetach-tests.js
-#commands/cli.vm.disk.attachnew-tests.js
-#commands/cli.vm.export_create_from-tests.js (2nd test fails)
-#commands/cli.vm.create_staticvm-tests.js (Create a VM with static ip address) creates a new storage account as a part of vm creation. Part of the account name is the time-stamp. So how to mock this request. utils.js::createNewStorageAccount_() L248.
-#commands/cli.vm.staticvm_create-from-tests.js (2nd test fails)
-#commands/cli.vm.staticvm_docker-tests.js (ENOENT, no such file or directory 'C:\Users\amzavery\.docker\ca.pem') asm\vm\vmclient.js:4119
-#commands/cli.vm.create_docker-tests.js (ENOENT, no such file or directory 'C:\Users\amzavery\.docker\ca.pem') lib\commands\asm\vm\vmclient.js:4119:32
-#commands/cli.sql-tests.js
-#commands/cli.storage.account-tests.js
-#commands/cli.storage.blob-tests.js
+commands/cli.sb-tests.js
+commands/cli.service-tests.js
+commands/cli.site.deployment-tests.js
+commands/cli.site.handler-tests.js
+commands/cli.site-tests.js
+commands/cli.site.appsetting-tests.js
+commands/cli.site.connectionstring-tests.js
+commands/cli.site.defaultdocument-tests.js
+commands/cli.site.deploymentscript-tests.js
+commands/cli.site.log-tests.js
+commands/cli.site.scale-tests.js
+commands/cli.site.slots-tests.js
+commands/cli.site.job-tests.js
+commands/cli.network-tests.js
+commands/cli.network.reservedip-tests.js
+# How to get certificate
+#commands/cli.vm.capture-tests.js
+commands/cli.vm.acl-tests.js
+commands/cli.vm.pip-tests.js
+commands/cli.vm.create_affin_vnet_vm-tests.js
+commands/cli.vm.create_loc_vnet_vm-tests.js
+# A lame test. The test should be able to create a vm and delete it. It expects a vm is already there. The number of tests can be reduced by creatting a vm and then doing different disk list and show test. disk create requires ostype which is not provided
+commands/cli.vm.disk-tests.js
+commands/cli.vm.list_show-tests.js
+commands/cli.vm.endpoint-tests.js
+# Extremely time consuming and flaky test
+#commands/cli.vm.shutdown_restart-tests.js
+commands/cli.vm.image-tests.js
+commands/cli.vm.create_staticvm_neg-tests.js
+commands/cli.vm.extension-tests.js
+commands/cli.vm.extension_get-tests.js
+commands/cli.vm.extension_get-chef-tests.js
+commands/cli.vm.extension_set-tests.js
+commands/cli.vm.extension_set-custom_disable.js
+commands/cli.vm.extension_set-chef.js
+commands/cli.vm.create_custom-tests.js
+commands/cli.vm.create_comm-tests.js
+commands/cli.vm.negative-tests.js
+commands/cli.vm.loadbalancer-tests.js
+# TODO - To capture mocks for the below tests. Following tests have been commented out from the test run due to bad recording files.
+commands/cli.vm.create_win_rdp-tests.js
+commands/cli.vm.disk.attachDetach-tests.js
+commands/cli.vm.disk.attachnew-tests.js
+# 2nd test fails
+#commands/cli.vm.export_create_from-tests.js
+# Create a VM with static ip address. Creates a new storage account as a part of vm creation. Part of the account name is the time-stamp. So how to mock this request. utils.js::createNewStorageAccount_() L248.
+#commands/cli.vm.create_staticvm-tests.js
+# 2nd test fails
+#commands/cli.vm.staticvm_create-from-tests.js
+commands/cli.vm.staticvm_docker-tests.js
+commands/cli.vm.create_docker-tests.js
+commands/cli.sql-tests.js
+commands/cli.storage.account-tests.js
+commands/cli.storage.blob-tests.js
 #commands/cli.storage.file-tests.js
-#commands/cli.storage.table-tests.js
-#commands/cli.storage.queue-tests.js
-#commands/cli.storage.service-tests.js
-#util/git/linkrevisioncontrol-tests.js
-#to remove once the new hdinsighs commands checked in
+commands/cli.storage.table-tests.js
+commands/cli.storage.queue-tests.js
+commands/cli.storage.service-tests.js
+util/git/linkrevisioncontrol-tests.js
+# To remove once the new hdinsights commands checked in
 #hdinsight/unit-cli-setup.js
 #hdinsight/unit-list-command.js
 #hdinsight/unit-show-command.js
 #hdinsight/unit-delete-command.js
 #hdinsight/unit-create-command.js
 #hdinsight/unit-config-commands.js
-#util/utils-tests.js
-#util/set-tests.js
-#util/authentication/adalAuth-tests.js
-#util/profile/publishSettings-tests.js
-#util/profile/environment-addaccount-tests.js
-#util/profile/profile-tests.js
+util/utils-tests.js
+util/set-tests.js
+util/authentication/adalAuth-tests.js
+util/profile/publishSettings-tests.js
+util/profile/environment-addaccount-tests.js
+util/profile/profile-tests.js
 # Testing macos token management stuff
-#util/authentication/osx-keychain-parser-tests.js
-#util/authentication/token-cache-encoding-tests.js
+util/authentication/osx-keychain-parser-tests.js
+util/authentication/token-cache-encoding-tests.js
 # Testing windows token management stuff
-#util/authentication/win-credstore-parser-tests.js
+util/authentication/win-credstore-parser-tests.js
 # Testing token cache class which works with adal-node
-#util/authentication/token-cache-tests.js
-#util/authentication/token-storage-tests.js
+util/authentication/token-cache-tests.js
+util/authentication/token-storage-tests.js
