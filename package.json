@@ -78,7 +78,7 @@
     "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
-    "nock": "1.2.0",
+    "nock": "0.16",
     "winston-memory": "*",
     "cucumber": "~0.3.0"
   },
