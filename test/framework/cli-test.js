@@ -346,9 +346,8 @@ _.extend(CLITest.prototype, {
             lineWritten = true;
           }
         });
-        scope += ']';
+        scope += ']];';
         fs.appendFileSync(this.getTestRecordingsFile(), scope);
-        fs.appendFileSync(this.getTestRecordingsFile(), '];');
         this.writeGeneratedUuids();
         this.writeGeneratedRandomTestIds();
         nockHelper.nock.recorder.clear();
