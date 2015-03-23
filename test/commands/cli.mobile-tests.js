@@ -956,14 +956,41 @@ allTests = function (backend) {
     });
   });
 
+  it('auth aad tenant add ' + servicename + ' tenant.com --json', function (done) {
+    suite.execute('mobile auth aad tenant add %s tenant.com --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    })
+  });
+
   it('auth aad get ' + servicename + ' --json (123456789)', function (done) {
     suite.execute('mobile auth aad get %s --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       var response = JSON.parse(result.text);
       response.provider.should.equal('aad');
       response.appId.should.equal('123456789');
+      response.tenants.length.should.equal(1);
+      response.tenants[0].should.equal('tenant.com');
       done();
     });
+  });
+
+  it('auth aad tenant remove ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth aad tenant remove %s tenant.com --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      result.text.should.equal('');
+      done();
+    })
+  });
+
+  it('auth aad tenant list ' + servicename + ' --json', function (done) {
+    suite.execute('mobile auth aad tenant list %s --json', servicename, function (result) {
+      result.exitStatus.should.equal(0);
+      var response = JSON.parse(result.text);
+      response.length.should.equal(0);
+      done();
+    })
   });
 
   it('auth aad delete ' + servicename + ' --json', function (done) {
