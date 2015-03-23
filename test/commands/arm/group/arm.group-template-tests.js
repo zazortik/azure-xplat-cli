@@ -55,7 +55,7 @@ describe('arm', function () {
         suite.setupTest(function () {
           testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
           normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-          testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+          testUtil.getTemplateInfoByName(suite, 'Microsoft.ASPNETStarterSite.0.2.2-preview', function(error, templateInfo) {
             if (error) {
               return done(new Error('Could not get template info: ' + error));
             }
@@ -87,41 +87,6 @@ describe('arm', function () {
       }
 
       describe('list', function () {
-        it('should list all templates from gallery', function (done) {
-          suite.execute('group template list --json', function (result) {
-            if (result.exitStatus === 0) {
-              result.exitStatus.should.equal(0);
-
-              var templates = JSON.parse(result.text);
-              templates.length.should.be.above(0);
-              done();
-            }
-          });
-        });
-
-        it('should list all templates published by Microsoft from gallery', function (done) {
-          suite.execute('group template list --publisher %s --json', 'Microsoft', function (result) {
-            result.exitStatus.should.equal(0);
-
-            var templates = JSON.parse(result.text);
-            templates.length.should.be.above(0);
-            templates.every(function (t) { return t.publisher === 'Microsoft'; }).should.be.true;
-
-            done();
-          });
-        });
-
-        it('should list templates in web category from gallery', function (done) {
-          suite.execute('group template list -c %s --json', 'web', function (result) {
-            result.exitStatus.should.equal(0);
-            var templates = JSON.parse(result.text);
-            templates.length.should.be.above(0);
-            templates.every(function (t) { return t.categoryIds.indexOf('web') != -1}).should.be.true;
-
-            done();
-          });
-        });
-
         it('should list templates from Microsoft in web category from gallery', function (done) {
           suite.execute('group template list -p %s -c %s --json', 'Microsoft', 'web', function (result) {
             result.exitStatus.should.equal(0);
