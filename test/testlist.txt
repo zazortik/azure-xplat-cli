@@ -1,14 +1,16 @@
 # cli.site.domain-tests can only be run mocked, do not try to run live
 # TODO: Mocks are broken.
-# commands/cli.site.domain-tests.js
+#commands/cli.site.domain-tests.js
 # TODO: Not recording call to log service properly, disabling
-# commands/cli.site.log.tail-tests.js
+#commands/cli.site.log.tail-tests.js
 # TODO: This suite uses custom recording
 cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
+# TODO: mobile tests need to restructured. Shorter test names and removal of file path names from the test.
+# cli.mobile-tests.js cannot be recorded or run mocked. However, they can be run in live mode. 
 #commands/cli.mobile-tests.js
 commands/cli.mobile.domain-tests.js
 commands/cli.mobilerecover-tests.js
@@ -33,7 +35,8 @@ commands/cli.vm.acl-tests.js
 commands/cli.vm.pip-tests.js
 commands/cli.vm.create_affin_vnet_vm-tests.js
 commands/cli.vm.create_loc_vnet_vm-tests.js
-# A lame test. The test should be able to create a vm and delete it. It expects a vm is already there. The number of tests can be reduced by creatting a vm and then doing different disk list and show test. disk create requires ostype which is not provided
+# TODO: The test should be able to create a vm and delete it. It expects a vm is already there.
+# The number of tests can be reduced by creatting a vm and then doing different disk list and show test.
 commands/cli.vm.disk-tests.js
 commands/cli.vm.list_show-tests.js
 commands/cli.vm.endpoint-tests.js
@@ -51,21 +54,20 @@ commands/cli.vm.create_custom-tests.js
 commands/cli.vm.create_comm-tests.js
 commands/cli.vm.negative-tests.js
 commands/cli.vm.loadbalancer-tests.js
-# TODO - To capture mocks for the below tests. Following tests have been commented out from the test run due to bad recording files.
 commands/cli.vm.create_win_rdp-tests.js
 commands/cli.vm.disk.attachDetach-tests.js
 commands/cli.vm.disk.attachnew-tests.js
-# 2nd test fails
-#commands/cli.vm.export_create_from-tests.js
-# Create a VM with static ip address. Creates a new storage account as a part of vm creation. Part of the account name is the time-stamp. So how to mock this request. utils.js::createNewStorageAccount_() L248.
+commands/cli.vm.export_create_from-tests.js
+# TODO: Figure out a way to mock the request for storage account creation as a part of vm creation.
+# Part of the account name is the time-stamp ==> utils.js::createNewStorageAccount_() L248
 #commands/cli.vm.create_staticvm-tests.js
-# 2nd test fails
-#commands/cli.vm.staticvm_create-from-tests.js
+commands/cli.vm.staticvm_create-from-tests.js
 commands/cli.vm.staticvm_docker-tests.js
 commands/cli.vm.create_docker-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
+# TODO: Storage team should record the storage.file-tests as they should have subscription with file storage enabled.
 #commands/cli.storage.file-tests.js
 commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
