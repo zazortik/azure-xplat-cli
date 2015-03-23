@@ -92,7 +92,7 @@ describe('cli', function() {
 
     //create a vm from role file
     describe('VM:', function() {
-      it('export and delete', null, function(done) {
+      it('export and delete', function(done) {
         ListDisk('Linux', function(diskObj) {
           createVM(function() {
             var domainUrl = 'http://' + diskObj.mediaLinkUri.split('/')[2];
@@ -112,7 +112,7 @@ describe('cli', function() {
         });
       });
 
-      it('Create-from a file', null, function(done) {
+      it('Create-from a file', function(done) {
         checkFreeDisk(function(diskname) {
           var Fileresult = fs.readFileSync(file, 'utf8');
           var obj = JSON.parse(Fileresult);
