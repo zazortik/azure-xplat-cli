@@ -6,65 +6,69 @@
 :: heat.exe from the WiX toolset is used for this.
 ::
 
-SET NODE_VERSION=0.10.23
-SET NPM_VERSION=1.3.17
+:: to avoid https://github.com/npm/npm/issues/6438
+chcp 850 
+
+set NODE_VERSION=0.10.23
+set NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
 :: and not a Git bash shell... We also need the gnu toolchain (for curl & unzip)
-SET PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
+set PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
 
-SET NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
-SET NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
+set NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
+set NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
 
-:CLEAN_OUTPUT_DIRECTORY
-IF NOT EXIST .\out\ GOTO OUTPUT_DIRECTORY_CREATE
 echo Cleaning previous build artifacts...
-rmdir /s /q .\out\azure-cli
-IF NOT ERRORLEVEL 0 GOTO ERROR
 
+set OUTPUT_FOLDER=.\out
+if exist %OUTPUT_FOLDER% rmdir /s /q %OUTPUT_FOLDER%
+mkdir %OUTPUT_FOLDER%
 
-:OUTPUT_DIRECTORY_CREATE
-REM echo Creating output directory 'out'...
-REM mkdir .\out
-IF NOT ERRORLEVEL 0 GOTO ERROR
+set TEMP_REPO_FOLDER=azure-cli
+set TEMP_REPO=%temp%\%TEMP_REPO_FOLDER%
+if not exist %TEMP_REPO% goto CLONE_REPO
 
-
-SET TEMP_REPO_FOLDER=azure-cli
-SET TEMP_REPO=%temp%\%TEMP_REPO_FOLDER%
-IF NOT EXIST %TEMP_REPO% GOTO CLONE_REPO
 echo Temporary clone of the repo already exists. Removing it...
 pushd %TEMP_REPO%\..\
-rmdir /s /q %TEMP_REPO_FOLDER%
+if exist %TEMP_REPO_FOLDER% rmdir /s /q %TEMP_REPO_FOLDER%
+::rmdir always returns 0, so check folder's existence 
+if exist %TEMP_REPO_FOLDER% (
+    echo Failed to delete %TEMP_REPO_FOLDER%.
+    goto ERROR
+)
 popd
-
 
 :CLONE_REPO
 mkdir %TEMP_REPO%
 echo Cloning the repo elsewhere on disk...
 pushd ..\..\
 robocopy . %TEMP_REPO% /MIR /XD .git tools features scripts test node_modules /NFL /NDL /NJH /NJS
-IF NOT ERRORLEVEL 0 GOTO ERROR
-echo.
+::robocopy emits error code greater or equal than 8(most other commands use any non-zero values)
+if %errorlevel% geq 8 (
+    echo Robocopy failed to copy xplat sources to the %TEMP_REPO%.
+    goto ERROR
+)
 popd
 
 echo Downloading node and npm...
 pushd %TEMP_REPO%\bin
 curl -o node.exe %NODE_DOWNLOAD_URL%
-IF NOT ERRORLEVEL 0 GOTO ERROR
+if %errorlevel% neq 0 goto ERROR
 curl -o npm.zip %NPM_DOWNLOAD_URL%
-IF NOT ERRORLEVEL 0 GOTO ERROR
+if %errorlevel% neq 0 goto ERROR
 unzip -q npm.zip
-IF NOT ERRORLEVEL 0 GOTO ERROR
+if %errorlevel% neq 0 goto ERROR
 del npm.zip
 popd
 
 echo Running npm install...
 pushd %TEMP_REPO%
-CALL bin/npm.cmd install --production
+call bin/npm.cmd install --production
 echo.
-echo IF YOU SEE A FAILURE AT THE BOTTOM OF THE NPM OUTPUT:
+echo if YOU SEE A FAILURE AT THE BOTTOM OF THE NPM OUTPUT:
 echo If you do not have Node.js installed on this local machine, the Azure
 echo postinstall command run by npm will fail.
 echo.
@@ -75,74 +79,95 @@ popd
 echo Compiling streamline files...
 pushd %TEMP_REPO%
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c lib
+if %errorlevel% neq 0 goto ERROR
 .\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline\lib\streams
+if %errorlevel% neq 0 goto ERROR
+.\bin\node.exe node_modules\streamline\bin\_node --verbose -c node_modules\streamline-streams\lib
+if %errorlevel% neq 0 goto ERROR
 popd
 
 echo Removing unneeded files from azure module...
 pushd %TEMP_REPO%\node_modules\azure
-rd /s/q packages
-rd /s/q scripts
-rd /s/q test
-rd /s/q tasks
-rd /s/q examples
-rd /s/q jsdoc
 
-cd lib
-rd /s/q common
-
-cd services
-rd /s/q gallery
-rd /s/q management
-rd /s/q computeManagement
-rd /s/q resourceManagement
-rd /s/q serviceBusManagement
-rd /s/q schedulerManagement
-rd /s/q sqlManagement
-rd /s/q storageManagement
-rd /s/q storeManagement
-rd /s/q subscriptionManagement
-rd /s/q networkManagement
-rd /s/q webSiteManagement
-rd /s/q scheduler
+for %%i in (
+    packages
+    scripts
+    test
+    tasks
+    examples
+    jsdoc
+    lib\common
+    lib\services\gallery
+    lib\services\management
+    lib\services\computeManagement
+    lib\services\resourceManagement
+    lib\services\serviceBusManagement
+    lib\services\schedulerManagement
+    lib\services\sqlManagement
+    lib\services\storageManagement
+    lib\services\storeManagement
+    lib\services\subscriptionManagement
+    lib\services\networkManagement
+    lib\services\webSiteManagement
+    lib\services\scheduler
+) do (
+    if exist %%i (
+        echo Deleting %%i...
+        rmdir /s /q %%i
+    )
+)
 
 popd
 
 echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
-rmdir /s /q .idea
-rmdir /s /q __temp
-del /q *.md
-del *.git*
-del *.npm*
-del azure_error
-del azure.err
-del checkstyle-result.xml
-del test-result.xml
-del .travis.yml
-del .jshintrc
-del .gitattributes
-del .gitignore
-del ChangeLog.txt
-cd bin
-rmdir /s /q node_modules
-del npm.cmd
+
+for %%i in (
+    .idea
+    __temp
+    bin\node_modules
+) do (
+    if exist %%i (
+        echo Deleting %%i...
+        rmdir /s /q %%i
+    )
+)
+
+for %%i in (
+    *.md
+    *.git*
+    *.npm*
+    azure_error
+    azure.err
+    checkstyle-result.xml
+    test-result.xml
+    .travis.yml
+    .jshintrc
+    .gitattributes
+    .gitignore
+    ChangeLog.txt
+    bin\npm.cmd
+    LICENSE.txt
+) do (
+    if exist %%i (
+        echo Deleting %%i...
+        del /q %%i
+    )
+)
+
 echo.
 popd
-
-
 
 echo Creating the wbin (Windows binaries) folder that will be added to the path...
 mkdir %TEMP_REPO%\wbin
 copy .\scripts\azure.cmd %TEMP_REPO%\wbin\
-IF NOT ERRORLEVEL 0 GOTO ERROR
-
+if %errorlevel% neq 0 goto ERROR
 echo Adding license documents...
 copy ..\resources\*.rtf %TEMP_REPO%
+if %errorlevel% neq 0 goto ERROR
 copy ..\resources\ThirdPartyNotices.txt %TEMP_REPO%
-del %TEMP_REPO%\LICENSE.txt
-
-IF NOT ERRORLEVEL 0 GOTO ERROR
+if %errorlevel% neq 0 goto ERROR
 
 echo.
 
@@ -152,8 +177,9 @@ echo Looks good.
 goto END
 
 :ERROR
-echo Something happened. And this script just can't continue.
-set ERRORLEVEL=1
+echo Error occurred, please check the output for details.
+exit /b 1
 
 :END
+exit /b 0
 popd
