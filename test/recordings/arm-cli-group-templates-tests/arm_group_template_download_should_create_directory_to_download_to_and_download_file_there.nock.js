@@ -14,7 +14,7 @@ exports.getMockedProfile = function () {
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: ['website'],
-    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb'],
+    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb', 'microsoft.web', 'microsoft.web', 'microsoft.sql'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -38,10 +38,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=fafae0533fda476988c012287991adfa; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=310dc182c0e24fcbaa5af6e14b6cde2f; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 23 Mar 2015 00:12:25 GMT',
+  date: 'Mon, 23 Mar 2015 01:00:30 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
@@ -57,10 +57,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=45dcbb190da5426ab61217c491e2d52d; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=23e4c8c849724c86994996ccaa36366d; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Mon, 23 Mar 2015 00:12:25 GMT',
+  date: 'Mon, 23 Mar 2015 01:00:30 GMT',
   'content-length': '4865' });
  return result; },
 function (nock) { 
@@ -74,11 +74,11 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Fri, 10 Oct 2014 00:53:53 GMT',
   etag: '0x8D1B23BCC4A128D',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7933b0a2-0001-0055-1930-a252bb000000',
+  'x-ms-request-id': '0ecfa8d3-0001-004e-6150-a61c02000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Mon, 23 Mar 2015 00:12:25 GMT' });
+  date: 'Mon, 23 Mar 2015 01:00:31 GMT' });
  return result; }]];
