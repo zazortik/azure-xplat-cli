@@ -1,8 +1,8 @@
 # cli.site.domain-tests can only be run mocked, do not try to run live
 # TODO: Mocks are broken.
-#commands/cli.site.domain-tests.js
+# commands/cli.site.domain-tests.js
 # TODO: Not recording call to log service properly, disabling
-#commands/cli.site.log.tail-tests.js
+# commands/cli.site.log.tail-tests.js
 # TODO: This suite uses custom recording
 cli-tests.js
 commands/cli.account-tests.js
@@ -67,8 +67,7 @@ commands/cli.vm.create_docker-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
-# TODO: Storage team should record the storage.file-tests as they should have subscription with file storage enabled.
-#commands/cli.storage.file-tests.js
+commands/cli.storage.file-tests.js
 commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
 commands/cli.storage.service-tests.js
