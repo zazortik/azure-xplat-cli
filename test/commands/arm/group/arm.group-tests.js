@@ -58,7 +58,7 @@ describe('arm', function () {
       suite.setupTest(function () {
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+        testUtil.getTemplateInfoByName(suite, 'Microsoft.ASPNETStarterSite.0.2.2-preview', function(error, templateInfo) {
           if (error) {
             return done(new Error('Could not get template info: ' + error));
           }
