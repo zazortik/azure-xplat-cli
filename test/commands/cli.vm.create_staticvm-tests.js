@@ -16,6 +16,8 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var sinon = require('sinon');
+var blobUtils = require('../../lib/util/blobUtils');
 
 // A common VM used by multiple tests
 var suite;
@@ -42,12 +44,26 @@ describe('cli', function() {
       suite = new CLITest(testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
+        //Record + Playback
+        if (suite.isMocked) {
+          //mock the behavior to provide a predictable storage account name 
+          //in record and playback mode
+          sinon.stub(blobUtils, "normalizeServiceName", function () {
+            return vmName + "14264783346";
+          });
+        }
         done();
       });
     });
 
     after(function(done) {
       suite.teardownSuite(function (){
+        //Record + Playback
+        if (suite.isMocked) {
+          //restore the normalization of storage account name to the original behavior
+          blobUtils.normalizeServiceName.restore();
+        }
+        //Run delete calls only in Live and Record mode
         if(!suite.isPlayback()) {
           createdVnets.forEach(function (item) {
             suite.execute('network vnet delete %s -q --json', item, function (result) {
@@ -92,7 +108,7 @@ describe('cli', function() {
     });
 
     //create a vm with static-ip set
-    describe.skip('Create a VM with static ip address:', function() {
+    describe('Create a VM with static ip address:', function() {
       it('Create a VM with static ip address', function(done) {
         getImageName('Windows', function(ImageName) {
           getVnet('Created', function(virtualnetName) {
@@ -108,7 +124,7 @@ describe('cli', function() {
     });
 
     // VM Restart and check
-    describe.skip('StaticIp Show:', function() {
+    describe('StaticIp Show:', function() {
       it('Show the description of the vm with set static ip', function(done) {
         var cmd = util.format('vm static-ip show %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -120,7 +136,7 @@ describe('cli', function() {
       });
     });
 
-    describe.skip('static ip operations:', function() {
+    describe('static ip operations:', function() {
 
       after(function(done) {
         if (suite.isPlayback()) {

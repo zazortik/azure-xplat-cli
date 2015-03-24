@@ -57,9 +57,7 @@ commands/cli.vm.create_win_rdp-tests.js
 commands/cli.vm.disk.attachDetach-tests.js
 commands/cli.vm.disk.attachnew-tests.js
 commands/cli.vm.export_create_from-tests.js
-# TODO: Figure out a way to mock the request for storage account creation as a part of vm creation.
-# Part of the account name is the time-stamp ==> utils.js::createNewStorageAccount_() L248
-#commands/cli.vm.create_staticvm-tests.js
+commands/cli.vm.create_staticvm-tests.js
 commands/cli.vm.staticvm_create-from-tests.js
 commands/cli.vm.staticvm_docker-tests.js
 commands/cli.vm.create_docker-tests.js
