@@ -1,3 +1,16 @@
+2015.03.27 Version 0.8.17
+*  General Fixes
+  * Fixed Improper JSON for vm image show #1611
+  * Fixed account-affinitygroup show command #1633
+  * Fixed an issue in vm export command #1635, #1514
+  * Updated kuduscript for website deployment
+  * Fixed Sql Server deletion issue in mobile service commands
+  * Updated default docker extension version to 0.6
+  * Fixed issues in windows and mac installer
+* Test Infrastructure Optimization
+  * Reduced the time to run mocked tests
+  * Every test can be recorded to its individual test file
+
 2015.03.04 Version 0.8.16
 * VM
   * Feature
