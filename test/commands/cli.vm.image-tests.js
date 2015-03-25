@@ -84,6 +84,7 @@ describe('cli', function() {
           var vmImageObj = JSON.parse(result.text);
           vmImageObj.name.should.equal(vmImgName);
           vmImageObj.operatingSystemType.should.equal('Linux');
+          Array.isArray(vmImageObj.location).should.be.true;
           done();
         });
       });
