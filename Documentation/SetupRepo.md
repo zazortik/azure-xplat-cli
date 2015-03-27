@@ -29,4 +29,4 @@ azure -v # It should display the current version number of xplat cli, mentioned 
 azure -h # It should display the help for different commands supported by xplat cli
 ```
 
-Now, the CLI is ready for executing current commands and developing new commands
+Now, the CLI is ready for executing current commands and developing new commands.
