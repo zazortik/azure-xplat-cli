@@ -6,13 +6,13 @@ This will execute all the tests mentioned in tests/testlist.txt and tests/testli
 npm test
 ```
 
-* Running ASM tests:
+* Running **ASM** tests:
 This will execute all the tests mentioned in tests/testlist.txt
 ```
 npm -s run-script unit
 ```
 
-* Running ARM tests:
+* Running **ARM** tests:
 This will execute all the tests mentioned in tests/testlistarm.txt
 ```
 npm -s run-script unit-arm
