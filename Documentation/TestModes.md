@@ -78,8 +78,9 @@ describe.skip('list', function () {
 ```
 * Skipping a particular test in a suite. This can be achieved by passing null as the second argument to the test.
 ```js
-describe.skip('list', function () {
-  it('should work', function (done) {
+describe('list', function () {
+  //The first test will not be run as null is provided as the second argument to the test function.
+  it('should work', null, function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(0);
       //verify the command indeed produces something valid such as a well known provider: sql provider
@@ -90,9 +91,8 @@ describe.skip('list', function () {
       done();
     });
   });
-   
-  //The second test will not be run
-  it('should not work', null, function (done) {
+  
+  it('should not work', function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(1);
       //verify the command indeed produces something valid such as a well known provider: sql provider
