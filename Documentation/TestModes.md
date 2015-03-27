@@ -18,13 +18,12 @@ set AZURE_NOCK_RECORD=true
 
 * **PLAYBACK**
 Tests will run against the previously recorded HTTP traffic, vs a Live Service. The Travis CI runs tests in this mode.
-## Record HTTP Traffic to run mock tests later
 To run tests in **PLAYBACK** mode, unset the following environment variables:
 ```
 set NOCK_OFF=
 set AZURE_NOCK_RECORD=
 ```
-The recordings will get saved in azure-xplat-cli/test/recordings directory
+The recordings will get saved in azure-xplat-cli/test/recordings/{test-suite} directory
 
 ## Partial recordings
 
@@ -79,8 +78,9 @@ describe.skip('list', function () {
 ```
 * Skipping a particular test in a suite. This can be achieved by passing null as the second argument to the test.
 ```js
-describe.skip('list', function () {
-  it('should work', function (done) {
+describe('list', function () {
+  //The first test will not be run as null is provided as the second argument to the test function.
+  it('should work', null, function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(0);
       //verify the command indeed produces something valid such as a well known provider: sql provider
@@ -91,9 +91,8 @@ describe.skip('list', function () {
       done();
     });
   });
-   
-  //The second test will not be run
-  it('should not work', null, function (done) {
+  
+  it('should not work', function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(1);
       //verify the command indeed produces something valid such as a well known provider: sql provider
