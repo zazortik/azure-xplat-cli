@@ -18,13 +18,12 @@ set AZURE_NOCK_RECORD=true
 
 * **PLAYBACK**
 Tests will run against the previously recorded HTTP traffic, vs a Live Service. The Travis CI runs tests in this mode.
-## Record HTTP Traffic to run mock tests later
 To run tests in **PLAYBACK** mode, unset the following environment variables:
 ```
 set NOCK_OFF=
 set AZURE_NOCK_RECORD=
 ```
-The recordings will get saved in azure-xplat-cli/test/recordings directory
+The recordings will get saved in azure-xplat-cli/test/recordings/{test-suite} directory
 
 ## Partial recordings
 
