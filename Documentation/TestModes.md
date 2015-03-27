@@ -4,9 +4,8 @@ Tests can be executed in three different modes as follows:
 * **LIVE**
 Tests will be run against the Live Service, no recording happens
 To run the tests in **LIVE** mode, set the following environment variable:
-```
-set NOCK_OFF=true 
-```
+  * Windows ```cmd set NOCK_OFF=true ```
+  * OSX, Linux 
 
 * **RECORD**
 Tests will be run against the Live Service and the HTTP traffic will be recorded to a file at "azure-xplat-cli/tests/recordings/{test-suite}/{full-test-title}.nock.js"
