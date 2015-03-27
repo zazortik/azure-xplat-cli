@@ -2,8 +2,7 @@
 
 1. [Setting up the repo](./SetupRepo.md)
 2. [Authentication and Account Setup](./Authentication.md)
-3. Testing the CLI
-
+3. [Testing the CLI]()
 	a.	[Setting up the Environment Variables](./EnvironmentVariables.md)
    	b.	[Test Modes & Recording Infrastructure](./TestModes.md)
    	c.	[Running Tests](./RunTests.md)
