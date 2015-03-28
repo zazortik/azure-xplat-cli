@@ -102,7 +102,7 @@ describe('cli', function() {
     });
 
     //Create vm with custom data
-    describe('Create:', function() {
+    describe.skip('Create:', function() {
       it('with community data', function(done) {
         var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
           customVmName, communityImageId, username, password).split(' ');
