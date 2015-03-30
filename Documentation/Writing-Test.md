@@ -1,5 +1,18 @@
+#### Writing tests
 
-Let us take an example of a test to explain best practices. Please follow the comments made at important sections to highlight the best practices.
+##### Where to put a test in the repository
+
+- **ASM** mode:
+  -  Test file should be put here - "/test/commands/"
+  -  Add a reference to the testfile in "/test/testlist.txt"
+- **ARM** mode:
+  - Test file should be put here - "/test/commands/arm/{category-of-the-command}"
+    - For example: All the tests related to the group category ```azure group -h" were put here "/test/commands/arm/group"
+  - Add a  reference to the testfile in "/test/testlist**arm**.txt"
+
+##### Structure of a test
+Let us take an example of a test to explain the test structure. Please pay close attention to the comments in the following test snippet.
+
 ```javascript
 'use strict';
 //"should.js" (http://unitjs.com/guide/should-js.html) is used for asserting the outcomes.
