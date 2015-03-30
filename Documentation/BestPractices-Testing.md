@@ -1,7 +1,7 @@
 ### Best Practices for writing tests
 
 Let us take an example of a test to explain best practices. Please follow the comments made at important sections to highlight the best practices.
-```js
+```javascript
 'use strict';
 //"should.js" (http://unitjs.com/guide/should-js.html) is used for asserting the outcomes.
 var should = require('should');
@@ -120,7 +120,7 @@ describe('arm', function () {
       });
       
       //negative test
-      it('should fail when an invalid resource group is provided', function (done/*Always provide the done callback as a parameter*/) {
+      it('should fail when an invalid resource group is provided', function (done /*Always provide the done callback as a parameter*/) {
         suite.execute('group log show -n %s --json', 'random_group_name', function (result) {
           result.exitStatus.should.equal(1);
           //errorText property of result will contain the expected error message. Doing a Regex match 
