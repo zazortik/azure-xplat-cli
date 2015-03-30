@@ -23,7 +23,7 @@ azure account set "Subsciption Name"
 
 ## Different Modes
 One can flip between two modes of execution
-ARM - Azure Resource Manager
-ASM - Azure Service Management
+- ARM - Azure Resource Manager
+- ASM - Azure Service Management
 
 ```azure config mode [arm|asm] ```
