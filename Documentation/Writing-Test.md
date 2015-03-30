@@ -145,3 +145,14 @@ describe('arm', function () {
   });
 });
 ```
+
+#### Test Recording Structure
+
+Steps to set the **RECORD** mode and selective test recording can be found [here](./TestModes.md).
+
+- **Suite**
+  - There is a **"suite-*"** recording file for the test file.
+  - Ids of the artifacts generated during setupSuite() are recorded in this file and retrived during playback
+- **Test**
+  - Every test is recorded in a separate file. This makes it easier to re-record selective tests due to failures or server side changes.
+    - **Note** If the test is using an artifact, created during **setupSuite()** then all the tests in the suite will have to be re-recorded
