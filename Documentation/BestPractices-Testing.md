@@ -102,14 +102,32 @@ describe('arm', function () {
     });
 
     describe('list', function () {
-      it('should work', function (done) {
+      //positive test
+      it('should work', function (done /*Always provide the done callback as a parameter*/) {
+        //execute the command
+        //It is very important to use the --json switch as it becomes easy to parse the output.
         suite.execute('location list --json', function (result) {
+        //check for zero exit code if you are expecting a success or 1 if you are expecting a failure
           result.exitStatus.should.equal(0);
-          //verify the command indeed produces something valid such as a well known provider: sql provider
+          //parse the expected output from the text property of the result
           var allResources = JSON.parse(result.text);
           allResources.some(function (res) {
             return res.name.match(/Microsoft.Sql\/servers/gi);
           }).should.be.true;
+          //do not forget the done() callback.
+          done();
+        });
+      });
+      
+      //negative test
+      it('should fail when an invalid resource group is provided', function (done/*Always provide the done callback as a parameter*/) {
+        suite.execute('group log show -n %s --json', 'random_group_name', function (result) {
+          result.exitStatus.should.equal(1);
+          //errorText property of result will contain the expected error message. Doing a Regex match 
+          //is always the best option, as one need not change the test if there is a minor modification
+          //in the error message from the server side.
+          result.errorText.should.match(/.*Resource group \'random_group_name\' could not be found.*/ig);
+          //do not forget the done() callback.
           done();
         });
       });
