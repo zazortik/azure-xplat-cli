@@ -102,20 +102,23 @@ describe('cli', function() {
     });
 
     //Create vm with custom data
-    describe('Create:', function() {
-      it('with community data', function(done) {
-        var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
+    describe('Create:', function () {
+      //this tests only runs live, because it downloads data from a live site, taking 4 minutes
+      if (process.env.NOCK_OFF) {
+        it('with community data', function (done) {
+          var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
           customVmName, communityImageId, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          vmToUse.Name = customVmName;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            vmToUse.Name = customVmName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
         });
-      });
+      }
     });
   });
 });
