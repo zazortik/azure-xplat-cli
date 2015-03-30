@@ -16,10 +16,14 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var sinon = require('sinon');
+var blobUtils = require('../../lib/util/blobUtils');
 
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
+var createdVnets = [];
 var testPrefix = 'cli.vm.create_staticvm-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -34,22 +38,47 @@ describe('cli', function() {
       password = 'PassW0rd$',
       retry = 5,
       timeout, staticIpavail, staticIpToSet;
-    testUtils.TIMEOUT_INTERVAL = 5000;
+      testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        //Record + Playback
+        if (suite.isMocked) {
+          //mock the behavior to provide a predictable storage account name 
+          //in record and playback mode
+          sinon.stub(blobUtils, "normalizeServiceName", function () {
+            return vmName + "14264783346";
+          });
+        }
+        done();
+      });
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function (){
+        //Record + Playback
+        if (suite.isMocked) {
+          //restore the normalization of storage account name to the original behavior
+          blobUtils.normalizeServiceName.restore();
+        }
+        //Run delete calls only in Live and Record mode
+        if(!suite.isPlayback()) {
+          createdVnets.forEach(function (item) {
+            suite.execute('network vnet delete %s -q --json', item, function (result) {
+              result.exitStatus.should.equal(0);
+            });
+          });
+        }
+        done();
+      });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -110,7 +139,7 @@ describe('cli', function() {
     describe('static ip operations:', function() {
 
       after(function(done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           done();
         } else {
           var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
@@ -190,11 +219,12 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnet.name;
-                var address = vnet.addressSpace.addressPrefixes[0];
+                getVnet.vnetName = vnetName;
+                var address = vnet[0].addressSpace.addressPrefixes[0];
                 staticIpavail = address.split('/')[0];
                 callback(getVnet.vnetName);
               });

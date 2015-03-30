@@ -35,9 +35,10 @@ describe('cli', function () {
 
     before(function (done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
-
-      suite.setupSuite(done);
+      suite.setupSuite(function(){
+        affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
+        done();
+      });
     });
 
     after(function (done) {

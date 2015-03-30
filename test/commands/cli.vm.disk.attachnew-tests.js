@@ -19,6 +19,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
 var testPrefix = 'cli.vm.disk.attachnew-tests';
 
 var requiredEnvironment = [{
@@ -50,9 +51,9 @@ describe('cli', function() {
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
+        vmName = suite.generateId(vmPrefix, createdVms);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -150,7 +151,7 @@ describe('cli', function() {
     }
 
     function deleteUsedVM(callback) {
-      if (suite.isMocked)
+      if (suite.isPlayback())
         callback();
       else {
         var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');

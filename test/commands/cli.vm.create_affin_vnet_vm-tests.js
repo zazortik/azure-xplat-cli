@@ -18,8 +18,10 @@ var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
-var vmPrefix = 'clitestvm';
+var vmPrefix = 'clitestvmVnet';
 var testPrefix = 'cli.vm.create_affin_vnet_vm-tests';
+var createdVms = [];
+var createdVnets = [];
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -47,7 +49,6 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
       suite.setupSuite(done);
     });
 
@@ -58,7 +59,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
         done();
       });
@@ -81,19 +82,29 @@ describe('cli', function() {
         }
       }
 
-      deleteUsedVM(vmToUse, function() {
-        suite.teardownTest(done);
+      deleteUsedVM(vmToUse, function () {
+        suite.teardownTest(function (){
+          if(!suite.isPlayback()) {
+            createdVnets.forEach(function (item) {
+              suite.execute('network vnet delete %s -q --json', item, function (result) {
+                result.exitStatus.should.equal(0);
+              });
+            });
+          }
+          done();
+        });
       });
     });
 
     //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function() {
-      it('Vm with affinity, vnet and availibilty set', function(done) {
-        getImageName('Linux', function(imageName) {
-          getVnet('Created', function(virtualnetName, affinityName) {
+    describe('Create:', function () {
+      it('Vm with affinity, vnet and availibilty set', function (done) {
+        vmVnetName = suite.generateId(vmPrefix, createdVms);
+        getImageName('Linux', function (imageName) {
+          getVnet('Created', function (virtualnetName, affinityName) {
             var cmd = util.format('vm create -A %s -n %s -a %s -w %s %s %s %s %s --json',
               availSetName, vmVnetName, affinityName, virtualnetName, vmVnetName, imageName, userName, password).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               vmToUse.Created = true;
               vmToUse.Name = vmVnetName;
@@ -106,14 +117,15 @@ describe('cli', function() {
 
       //edge case for vm failure
       //https://github.com/MSOpenTech/azure-xplat-cli/issues/7#issuecomment-47410767
-      it('should delete cloud service on vm create failure', function(done) {
-        getImageName('Linux', function(imageName) {
+      it('should delete cloud service on vm create failure', function (done) {
+        vmVnetName = suite.generateId(vmPrefix, createdVms);
+        getImageName('Linux', function (imageName) {
           var cmd = util.format('vm create -a %s -w %s %s %s %s %s --json',
             'some_name', 'some_name', vmVnetName, imageName, userName, password).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(1);
             cmd = util.format('service show %s --json', vmVnetName).split(' ')
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
+            testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(1);
               done();
             });
@@ -162,6 +174,7 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
