@@ -30,6 +30,7 @@ var createdAffinityGroups = [];
 
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West Europe' },
+  { name: 'AZURE_STORAGE_TEST_TYPE', defaultValue: 'LRS' },
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'West Europe' }
 ];
 
@@ -39,6 +40,7 @@ var testPrefix = 'cli.storage.account-tests';
 describe('cli', function () {
   describe('storage account', function () {
     var storageName;
+    var accountType;
     var affinityGroupName;
     var primaryKey;
 
@@ -67,6 +69,7 @@ describe('cli', function () {
     beforeEach(function (done) {
       suite.setupTest(function () {
         storageLocation = process.env.AZURE_STORAGE_TEST_LOCATION;
+        accountType = process.env.AZURE_STORAGE_TEST_TYPE;
         siteLocation = process.env.AZURE_SITE_TEST_LOCATION;
         done();
       });
@@ -79,8 +82,9 @@ describe('cli', function () {
     it('should create a storage account with location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
-      suite.execute('storage account create %s --json --location %s',
+      suite.execute('storage account create %s --json --type %s --location %s',
         storageName,
+        accountType,
         storageLocation,
         function (result) {
         result.text.should.equal('');
@@ -102,8 +106,9 @@ describe('cli', function () {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('storage account create %s --json -a %s',
+        suite.execute('storage account create %s --type %s --json -a %s',
           storageName,
+          accountType,          
           affinityGroupName,
           function (result) {
           result.text.should.equal('');

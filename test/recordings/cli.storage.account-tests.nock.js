@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,300 +22,641 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SITE_TEST_LOCATION'] = 'West US';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
+  process.env['AZURE_SITE_TEST_LOCATION'] = 'West Europe';
 }
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '361efb15ede534579befdbc8a06d9bda',
-  date: 'Fri, 05 Dec 2014 18:52:35 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '44a6dfd2a4788530ac4082aeb7e39df5',
+  date: 'Mon, 30 Mar 2015 06:47:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '44a6dfd2a4788530ac4082aeb7e39df5',
+  date: 'Mon, 30 Mar 2015 06:47:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices', '*')
+  .reply(202, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/storage/xcliaccount182',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '7d526f1903358a1f94c104aa79dec158',
+  date: 'Mon, 30 Mar 2015 06:47:43 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices', '*')
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/storage/xcliaccount4177',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'f1dba434855b3fbc941da7a8a6540a04',
-  date: 'Fri, 05 Dec 2014 18:52:36 GMT' });
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/storage/xcliaccount182',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '7d526f1903358a1f94c104aa79dec158',
+  date: 'Mon, 30 Mar 2015 06:47:43 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '31ecc529531a3d6a91ad2235256b9ba6',
-  date: 'Fri, 05 Dec 2014 18:53:07 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '72f317fb52cb8242a9ee2dcfab08c8e4',
+  date: 'Mon, 30 Mar 2015 06:48:15 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/operations/f1dba434855b3fbc941da7a8a6540a04')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f1dba434-855b-3fbc-941d-a7a8a6540a04</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '72f317fb52cb8242a9ee2dcfab08c8e4',
+  date: 'Mon, 30 Mar 2015 06:48:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/7d526f1903358a1f94c104aa79dec158')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7d526f19-0335-8a1f-94c1-04aa79dec158</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'a84054f36aed3520b6e8c6c0983edca8',
-  date: 'Fri, 05 Dec 2014 18:53:08 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'c04793e211c181fab337f08e4cf77245',
+  date: 'Mon, 30 Mar 2015 06:48:16 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/7d526f1903358a1f94c104aa79dec158')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7d526f19-0335-8a1f-94c1-04aa79dec158</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  'content-length': '232',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'c04793e211c181fab337f08e4cf77245',
+  date: 'Mon, 30 Mar 2015 06:48:16 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'f2312c84192d3baa9b3b05b1284281ff',
-  date: 'Fri, 05 Dec 2014 18:53:08 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '23690edba88086c298b64f9184782e94',
+  date: 'Mon, 30 Mar 2015 06:48:17 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '23690edba88086c298b64f9184782e94',
+  date: 'Mon, 30 Mar 2015 06:48:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroups', '*')
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroups', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/affinitygroup/xcliaffinity8676',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '983fd02077e5380781389138852ce408',
-  date: 'Fri, 05 Dec 2014 18:53:09 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'ebac1d77967131939b983a37741dab81',
-  date: 'Fri, 05 Dec 2014 18:53:09 GMT' });
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroup/xcliaffinity7861',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'fb2988a0fa27837487edc3e5adcaae09',
+  date: 'Mon, 30 Mar 2015 06:48:19 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices', '*')
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroups', '*')
+  .reply(201, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroup/xcliaffinity7861',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'fb2988a0fa27837487edc3e5adcaae09',
+  date: 'Mon, 30 Mar 2015 06:48:19 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '8c50db234319824fbe15e339e3049e7e',
+  date: 'Mon, 30 Mar 2015 06:48:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '8c50db234319824fbe15e339e3049e7e',
+  date: 'Mon, 30 Mar 2015 06:48:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/storage/xcliaccount9170',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '457c8e27098534e4aad9c5e6bf14874b',
-  date: 'Fri, 05 Dec 2014 18:53:11 GMT' });
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/storage/xcliaccount2900',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'f53fed2b32f586b6ac73463ba0e0adab',
+  date: 'Mon, 30 Mar 2015 06:48:27 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices', '*')
+  .reply(202, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  location: 'https://management.core.windows.net/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/storage/xcliaccount2900',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'f53fed2b32f586b6ac73463ba0e0adab',
+  date: 'Mon, 30 Mar 2015 06:48:27 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '1f65a72d230830b993108281a787fb3a',
-  date: 'Fri, 05 Dec 2014 18:53:42 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '88395637ad028ba0ab704cc2b56d70ad',
+  date: 'Mon, 30 Mar 2015 06:48:58 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/operations/457c8e27098534e4aad9c5e6bf14874b')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>457c8e27-0985-34e4-aad9-c5e6bf14874b</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '88395637ad028ba0ab704cc2b56d70ad',
+  date: 'Mon, 30 Mar 2015 06:48:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/f53fed2b32f586b6ac73463ba0e0adab')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f53fed2b-32f5-86b6-ac73-463ba0e0adab</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'a6ddcb9027043072882bd585d4d843d0',
-  date: 'Fri, 05 Dec 2014 18:53:43 GMT' });
- return result; }],
-[function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'bb1379c81d563697b0263d58fe425667',
-  date: 'Fri, 05 Dec 2014 18:53:43 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '2b2b36055f0a8aa8a5a1bd54d6cc5845',
+  date: 'Mon, 30 Mar 2015 06:48:59 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/aztestore</Url><ServiceName>aztestore</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>YXp0ZXN0b3Jl</Label><Status>Created</Status><Endpoints><Endpoint>https://aztestore.blob.core.windows.net/</Endpoint><Endpoint>https://aztestore.queue.core.windows.net/</Endpoint><Endpoint>https://aztestore.table.core.windows.net/</Endpoint><Endpoint>https://aztestore.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-05T01:46:14Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/portalvhdsffdjf5kr5d8vg</Url><ServiceName>portalvhdsffdjf5kr5d8vg</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>West US</Location><Label>cG9ydGFsdmhkc2ZmZGpmNWtyNWQ4dmc=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsffdjf5kr5d8vg.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsffdjf5kr5d8vg.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsffdjf5kr5d8vg.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsffdjf5kr5d8vg.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-12-01T22:35:51Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/portalvhdszs2pgwr9fqy3q</Url><ServiceName>portalvhdszs2pgwr9fqy3q</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>South Central US</Location><Label>cG9ydGFsdmhkc3pzMnBnd3I5ZnF5M3E=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdszs2pgwr9fqy3q.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdszs2pgwr9fqy3q.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdszs2pgwr9fqy3q.table.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-09-15T22:50:34Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-SouthCentralUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>South Central US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/test1208</Url><ServiceName>test1208</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>d29ybGQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://test1208.blob.core.windows.net/</Endpoint><Endpoint>https://test1208.queue.core.windows.net/</Endpoint><Endpoint>https://test1208.table.core.windows.net/</Endpoint><Endpoint>https://test1208.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-11-19T04:02:18Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/teststorage101</Url><ServiceName>teststorage101</ServiceName><StorageServiceProperties><Description/><Location>West US</Location><Label>dGVzdHN0b3JhZ2UxMDE=</Label><Status>Created</Status><Endpoints><Endpoint>https://teststorage101.blob.core.windows.net/</Endpoint><Endpoint>https://teststorage101.queue.core.windows.net/</Endpoint><Endpoint>https://teststorage101.table.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-05-15T22:09:51Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount4177</Url><ServiceName>xcliaccount4177</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eGNsaWFjY291bnQ0MTc3</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount4177.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4177.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4177.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4177.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-12-05T18:52:37Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><ServiceName>xcliaccount9170</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity8676</AffinityGroup><Label>eGNsaWFjY291bnQ5MTcw</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount9170.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-12-05T18:53:11Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService></StorageServices>", { 'cache-control': 'no-cache',
-  'content-length': '8142',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/f53fed2b32f586b6ac73463ba0e0adab')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f53fed2b-32f5-86b6-ac73-463ba0e0adab</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '6f42f6c0a7b639b880785f17019609cf',
-  date: 'Fri, 05 Dec 2014 18:53:45 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '2b2b36055f0a8aa8a5a1bd54d6cc5845',
+  date: 'Mon, 30 Mar 2015 06:48:59 GMT',
+  connection: 'close' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '9425fc0b7609310d9e4353339c282e81',
-  date: 'Fri, 05 Dec 2014 18:53:46 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '252b5e6db0a78fa2ad6091197869b1cf',
+  date: 'Mon, 30 Mar 2015 06:49:01 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '252b5e6db0a78fa2ad6091197869b1cf',
+  date: 'Mon, 30 Mar 2015 06:49:01 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/eeee</Url><ServiceName>eeee</ServiceName><StorageServiceProperties><Description>d1</Description><Location>West US</Location><Label>bGFiZWwx</Label><Status>Created</Status><Endpoints><Endpoint>https://eeee.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-01-04T05:27:30Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmafile</Url><ServiceName>emmafile</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>ZW1tYWZpbGU=</Label><Status>Created</Status><Endpoints><Endpoint>https://emmafile.blob.core.windows.net/</Endpoint><Endpoint>https://emmafile.queue.core.windows.net/</Endpoint><Endpoint>https://emmafile.table.core.windows.net/</Endpoint><Endpoint>https://emmafile.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-24T06:48:55Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmafile-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmafile-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmafile-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmahk</Url><ServiceName>emmahk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>ZW1tYWhr</Label><Status>Created</Status><Endpoints><Endpoint>https://emmahk.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk.table.core.windows.net/</Endpoint><Endpoint>https://emmahk.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-20T08:18:43Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmahk-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmahk2</Url><ServiceName>emmahk2</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>ZW1tYWhrMg==</Label><Status>Created</Status><Endpoints><Endpoint>https://emmahk2.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk2.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk2.table.core.windows.net/</Endpoint><Endpoint>https://emmahk2.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-20T08:19:14Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmahk2-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk2-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk2-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/huili</Url><ServiceName>huili</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>aHVpbGk=</Label><Status>Created</Status><Endpoints><Endpoint>https://huili.blob.core.windows.net/</Endpoint><Endpoint>https://huili.queue.core.windows.net/</Endpoint><Endpoint>https://huili.table.core.windows.net/</Endpoint><Endpoint>https://huili.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-09-12T07:38:16Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://huili-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://huili-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://huili-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/jiyangxio</Url><ServiceName>jiyangxio</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>aml5YW5neGlv</Label><Status>Created</Status><Endpoints><Endpoint>https://jiyangxio.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-03-23T04:06:11Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/longlutest</Url><ServiceName>longlutest</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>bG9uZ2x1dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://longlutest.blob.core.windows.net/</Endpoint><Endpoint>https://longlutest.queue.core.windows.net/</Endpoint><Endpoint>https://longlutest.table.core.windows.net/</Endpoint><Endpoint>https://longlutest.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-24T09:46:48Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://longlutest-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://longlutest-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://longlutest-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsfztxc9kn3g21h</Url><ServiceName>portalvhdsfztxc9kn3g21h</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>East Asia</Location><Label>cG9ydGFsdmhkc2Z6dHhjOWtuM2cyMWg=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsfztxc9kn3g21h.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-23T05:50:28Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsglh0yqqb13w7g</Url><ServiceName>portalvhdsglh0yqqb13w7g</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>West US</Location><Label>cG9ydGFsdmhkc2dsaDB5cXFiMTN3N2c=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsglh0yqqb13w7g.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-21T08:52:50Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsgs28bnvq8f9j4</Url><ServiceName>portalvhdsgs28bnvq8f9j4</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>South Central US</Location><Label>cG9ydGFsdmhkc2dzMjhibnZxOGY5ajQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsgs28bnvq8f9j4.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-10-21T02:13:26Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-SouthCentralUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>South Central US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/testforxplat</Url><ServiceName>testforxplat</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>dGVzdGZvcnhwbGF0</Label><Status>Created</Status><Endpoints><Endpoint>https://testforxplat.blob.core.windows.net/</Endpoint><Endpoint>https://testforxplat.queue.core.windows.net/</Endpoint><Endpoint>https://testforxplat.table.core.windows.net/</Endpoint><Endpoint>https://testforxplat.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-04T02:14:24Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/vijiang1</Url><ServiceName>vijiang1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>dmlqaWFuZzE=</Label><Status>Created</Status><Endpoints><Endpoint>https://vijiang1.blob.core.windows.net/</Endpoint><Endpoint>https://vijiang1.queue.core.windows.net/</Endpoint><Endpoint>https://vijiang1.table.core.windows.net/</Endpoint><Endpoint>https://vijiang1.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-26T13:26:55Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount182</Url><ServiceName>xcliaccount182</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West Europe</Location><Label>eGNsaWFjY291bnQxODI=</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount182.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:47:43Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2836</Url><ServiceName>xcliaccount2836</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West Europe</Location><Label>eGNsaWFjY291bnQyODM2</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2836.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:38:59Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><ServiceName>xcliaccount2900</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity7861</AffinityGroup><Label>eGNsaWFjY291bnQyOTAw</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2900.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:48:26Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xdmtestdev</Url><ServiceName>xdmtestdev</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eGRtdGVzdGRldg==</Label><Status>Created</Status><Endpoints><Endpoint>https://xdmtestdev.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.table.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-11T09:10:05Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xdmtestdev-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xdmtestdevsea</Url><ServiceName>xdmtestdevsea</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>Southeast Asia</Location><Label>eGRtdGVzdGRldnNlYQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://xdmtestdevsea.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.table.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>Southeast Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-18T11:56:32Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xdmtestdevsea-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-SoutheastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>Southeast Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xplat</Url><ServiceName>xplat</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>eHBsYXQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://xplat.blob.core.windows.net/</Endpoint><Endpoint>https://xplat.queue.core.windows.net/</Endpoint><Endpoint>https://xplat.table.core.windows.net/</Endpoint><Endpoint>https://xplat.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-21T09:23:42Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xplat-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xplat-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xplat-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xplatus</Url><ServiceName>xplatus</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eHBsYXR1cw==</Label><Status>Created</Status><Endpoints><Endpoint>https://xplatus.blob.core.windows.net/</Endpoint><Endpoint>https://xplatus.queue.core.windows.net/</Endpoint><Endpoint>https://xplatus.table.core.windows.net/</Endpoint><Endpoint>https://xplatus.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-10-21T03:05:18Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclp</Url><ServiceName>xsnclp</ServiceName><StorageServiceProperties><Description>xsnclp</Description><Location>West US</Location><Label>eHNuY2xw</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclp.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-01-13T05:14:29Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclr</Url><ServiceName>xsnclr</ServiceName><StorageServiceProperties><Description>xsnclr</Description><Location>West US</Location><Label>eHNuY2xy</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclr.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclr.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclr.table.core.windows.net/</Endpoint><Endpoint>https://xsnclr.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-13T13:27:37Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xsnclr-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclr-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclr-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclvhdl</Url><ServiceName>xsnclvhdl</ServiceName><StorageServiceProperties><Description>xsnclvhdl</Description><Location>West US</Location><Label>eHNuY2x2aGRs</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclvhdl.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.table.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-02-06T03:22:06Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/yanhfiletest</Url><ServiceName>yanhfiletest</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>eWFuaGZpbGV0ZXN0</Label><Status>Created</Status><Endpoints><Endpoint>https://yanhfiletest.blob.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.queue.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.table.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-08-04T05:36:24Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/zhalufile</Url><ServiceName>zhalufile</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>emhhbHVmaWxl</Label><Status>Created</Status><Endpoints><Endpoint>https://zhalufile.blob.core.windows.net/</Endpoint><Endpoint>https://zhalufile.queue.core.windows.net/</Endpoint><Endpoint>https://zhalufile.table.core.windows.net/</Endpoint><Endpoint>https://zhalufile.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-10T03:51:46Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://zhalufile-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://zhalufile-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://zhalufile-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/zhaluzrs</Url><ServiceName>zhaluzrs</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>emhhbHV6cnM=</Label><Status>Created</Status><Endpoints><Endpoint>https://zhaluzrs.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2014-08-04T02:25:24Z</CreationTime><CustomDomains/><AccountType>Standard_ZRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  'content-length': '30240',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '44ec4508156786f69391addeef5bd266',
+  date: 'Mon, 30 Mar 2015 06:49:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/eeee</Url><ServiceName>eeee</ServiceName><StorageServiceProperties><Description>d1</Description><Location>West US</Location><Label>bGFiZWwx</Label><Status>Created</Status><Endpoints><Endpoint>https://eeee.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-01-04T05:27:30Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmafile</Url><ServiceName>emmafile</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>ZW1tYWZpbGU=</Label><Status>Created</Status><Endpoints><Endpoint>https://emmafile.blob.core.windows.net/</Endpoint><Endpoint>https://emmafile.queue.core.windows.net/</Endpoint><Endpoint>https://emmafile.table.core.windows.net/</Endpoint><Endpoint>https://emmafile.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-24T06:48:55Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmafile-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmafile-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmafile-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmahk</Url><ServiceName>emmahk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>ZW1tYWhr</Label><Status>Created</Status><Endpoints><Endpoint>https://emmahk.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk.table.core.windows.net/</Endpoint><Endpoint>https://emmahk.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-20T08:18:43Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmahk-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/emmahk2</Url><ServiceName>emmahk2</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>ZW1tYWhrMg==</Label><Status>Created</Status><Endpoints><Endpoint>https://emmahk2.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk2.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk2.table.core.windows.net/</Endpoint><Endpoint>https://emmahk2.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-20T08:19:14Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://emmahk2-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://emmahk2-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://emmahk2-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/huili</Url><ServiceName>huili</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>aHVpbGk=</Label><Status>Created</Status><Endpoints><Endpoint>https://huili.blob.core.windows.net/</Endpoint><Endpoint>https://huili.queue.core.windows.net/</Endpoint><Endpoint>https://huili.table.core.windows.net/</Endpoint><Endpoint>https://huili.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-09-12T07:38:16Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://huili-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://huili-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://huili-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/jiyangxio</Url><ServiceName>jiyangxio</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>aml5YW5neGlv</Label><Status>Created</Status><Endpoints><Endpoint>https://jiyangxio.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-03-23T04:06:11Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/longlutest</Url><ServiceName>longlutest</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>bG9uZ2x1dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://longlutest.blob.core.windows.net/</Endpoint><Endpoint>https://longlutest.queue.core.windows.net/</Endpoint><Endpoint>https://longlutest.table.core.windows.net/</Endpoint><Endpoint>https://longlutest.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-24T09:46:48Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://longlutest-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://longlutest-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://longlutest-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsfztxc9kn3g21h</Url><ServiceName>portalvhdsfztxc9kn3g21h</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>East Asia</Location><Label>cG9ydGFsdmhkc2Z6dHhjOWtuM2cyMWg=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsfztxc9kn3g21h.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsfztxc9kn3g21h.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-23T05:50:28Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsglh0yqqb13w7g</Url><ServiceName>portalvhdsglh0yqqb13w7g</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>West US</Location><Label>cG9ydGFsdmhkc2dsaDB5cXFiMTN3N2c=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsglh0yqqb13w7g.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsglh0yqqb13w7g.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-21T08:52:50Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/portalvhdsgs28bnvq8f9j4</Url><ServiceName>portalvhdsgs28bnvq8f9j4</ServiceName><StorageServiceProperties><Description>Implicitly created storage service</Description><Location>South Central US</Location><Label>cG9ydGFsdmhkc2dzMjhibnZxOGY5ajQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhdsgs28bnvq8f9j4.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.table.core.windows.net/</Endpoint><Endpoint>https://portalvhdsgs28bnvq8f9j4.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-10-21T02:13:26Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-SouthCentralUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>South Central US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/testforxplat</Url><ServiceName>testforxplat</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>dGVzdGZvcnhwbGF0</Label><Status>Created</Status><Endpoints><Endpoint>https://testforxplat.blob.core.windows.net/</Endpoint><Endpoint>https://testforxplat.queue.core.windows.net/</Endpoint><Endpoint>https://testforxplat.table.core.windows.net/</Endpoint><Endpoint>https://testforxplat.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-04T02:14:24Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/vijiang1</Url><ServiceName>vijiang1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>dmlqaWFuZzE=</Label><Status>Created</Status><Endpoints><Endpoint>https://vijiang1.blob.core.windows.net/</Endpoint><Endpoint>https://vijiang1.queue.core.windows.net/</Endpoint><Endpoint>https://vijiang1.table.core.windows.net/</Endpoint><Endpoint>https://vijiang1.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-26T13:26:55Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount182</Url><ServiceName>xcliaccount182</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West Europe</Location><Label>eGNsaWFjY291bnQxODI=</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount182.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount182.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:47:43Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2836</Url><ServiceName>xcliaccount2836</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West Europe</Location><Label>eGNsaWFjY291bnQyODM2</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2836.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2836.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:38:59Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><ServiceName>xcliaccount2900</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity7861</AffinityGroup><Label>eGNsaWFjY291bnQyOTAw</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2900.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:48:26Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xdmtestdev</Url><ServiceName>xdmtestdev</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eGRtdGVzdGRldg==</Label><Status>Created</Status><Endpoints><Endpoint>https://xdmtestdev.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.table.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-11T09:10:05Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xdmtestdev-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdev-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xdmtestdevsea</Url><ServiceName>xdmtestdevsea</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>Southeast Asia</Location><Label>eGRtdGVzdGRldnNlYQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://xdmtestdevsea.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.table.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>Southeast Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-18T11:56:32Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xdmtestdevsea-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xdmtestdevsea-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-SoutheastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>Southeast Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xplat</Url><ServiceName>xplat</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>eHBsYXQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://xplat.blob.core.windows.net/</Endpoint><Endpoint>https://xplat.queue.core.windows.net/</Endpoint><Endpoint>https://xplat.table.core.windows.net/</Endpoint><Endpoint>https://xplat.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-07-21T09:23:42Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xplat-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xplat-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xplat-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xplatus</Url><ServiceName>xplatus</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>eHBsYXR1cw==</Label><Status>Created</Status><Endpoints><Endpoint>https://xplatus.blob.core.windows.net/</Endpoint><Endpoint>https://xplatus.queue.core.windows.net/</Endpoint><Endpoint>https://xplatus.table.core.windows.net/</Endpoint><Endpoint>https://xplatus.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-10-21T03:05:18Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclp</Url><ServiceName>xsnclp</ServiceName><StorageServiceProperties><Description>xsnclp</Description><Location>West US</Location><Label>eHNuY2xw</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclp.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2015-01-13T05:14:29Z</CreationTime><CustomDomains/><AccountType>Premium_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclr</Url><ServiceName>xsnclr</ServiceName><StorageServiceProperties><Description>xsnclr</Description><Location>West US</Location><Label>eHNuY2xy</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclr.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclr.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclr.table.core.windows.net/</Endpoint><Endpoint>https://xsnclr.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-13T13:27:37Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://xsnclr-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclr-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclr-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xsnclvhdl</Url><ServiceName>xsnclvhdl</ServiceName><StorageServiceProperties><Description>xsnclvhdl</Description><Location>West US</Location><Label>eHNuY2x2aGRs</Label><Status>Created</Status><Endpoints><Endpoint>https://xsnclvhdl.blob.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.queue.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.table.core.windows.net/</Endpoint><Endpoint>https://xsnclvhdl.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-02-06T03:22:06Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>xsncl</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>westus</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/yanhfiletest</Url><ServiceName>yanhfiletest</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>eWFuaGZpbGV0ZXN0</Label><Status>Created</Status><Endpoints><Endpoint>https://yanhfiletest.blob.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.queue.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.table.core.windows.net/</Endpoint><Endpoint>https://yanhfiletest.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-08-04T05:36:24Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/zhalufile</Url><ServiceName>zhalufile</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>emhhbHVmaWxl</Label><Status>Created</Status><Endpoints><Endpoint>https://zhalufile.blob.core.windows.net/</Endpoint><Endpoint>https://zhalufile.queue.core.windows.net/</Endpoint><Endpoint>https://zhalufile.table.core.windows.net/</Endpoint><Endpoint>https://zhalufile.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>Southeast Asia</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-11-10T03:51:46Z</CreationTime><CustomDomains/><SecondaryEndpoints><Endpoint>https://zhalufile-secondary.blob.core.windows.net/</Endpoint><Endpoint>https://zhalufile-secondary.queue.core.windows.net/</Endpoint><Endpoint>https://zhalufile-secondary.table.core.windows.net/</Endpoint></SecondaryEndpoints><AccountType>Standard_RAGRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/zhaluzrs</Url><ServiceName>zhaluzrs</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East Asia</Location><Label>emhhbHV6cnM=</Label><Status>Created</Status><Endpoints><Endpoint>https://zhaluzrs.blob.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East Asia</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><CreationTime>2014-08-04T02:25:24Z</CreationTime><CustomDomains/><AccountType>Standard_ZRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastAsia</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East Asia</Value></ExtendedProperty></ExtendedProperties></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  'content-length': '30240',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '44ec4508156786f69391addeef5bd266',
+  date: 'Mon, 30 Mar 2015 06:49:06 GMT',
+  connection: 'close' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-ms-request-id': 'de60b1cbdf0e8e8c873a3cfb1dfaf896',
+  date: 'Mon, 30 Mar 2015 06:49:08 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth2',
+  'x-ms-request-id': 'de60b1cbdf0e8e8c873a3cfb1dfaf896',
+  date: 'Mon, 30 Mar 2015 06:49:08 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '1f573e2cb76432aba4ea5715811caae8',
-  date: 'Fri, 05 Dec 2014 18:53:46 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'd29d2cea407833f6a7d8c2b47c655edd',
-  date: 'Fri, 05 Dec 2014 18:53:47 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><ServiceName>xcliaccount9170</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity8676</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount9170.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount9170.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2014-12-05T18:53:11Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West US</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
-  'content-length': '1300',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'a0b48cc759ab327791a467907c779edb',
-  date: 'Fri, 05 Dec 2014 18:53:48 GMT' });
- return result; }],
-[function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '0027546ec6ef3d8ea2c462d5c57b2e2d',
-  date: 'Fri, 05 Dec 2014 18:53:48 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><StorageServiceKeys><Primary>dlDNbv0eFWcsIr4iIg6VmoETNVFSIr/whE5meHDpylslbCRGZjrYbrDfGbNCf/1FmcVWn2oMSoxfhvHAoX5w2g==</Primary><Secondary>/FPIpKDf32kR6g+xFXuVcBvMqJzaAhP0/vdOgX13sM3sq4DKL5ueYidhBDxfXQq9cnOM1SHsbbdR6DAYoRZT5Q==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
-  'content-length': '518',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '47a5eebe1f49323db071b65c53b399b9',
-  date: 'Fri, 05 Dec 2014 18:53:49 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'fb4e971fada43497a92858816ef88a52',
-  date: 'Fri, 05 Dec 2014 18:53:50 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '98dae562e3f28cd4aa8cca6a982e93a8',
+  date: 'Mon, 30 Mar 2015 06:49:10 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170/keys?action=regenerate', '*')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><StorageServiceKeys><Primary>jOmmGOTUVmLgrnTwmQZ5iIcbuDGhwNxHNZkftfTZaildU7ZgYl9Lwsd582DzJ13jVOsVYg7VTFRSldSWZgs7bg==</Primary><Secondary>/FPIpKDf32kR6g+xFXuVcBvMqJzaAhP0/vdOgX13sM3sq4DKL5ueYidhBDxfXQq9cnOM1SHsbbdR6DAYoRZT5Q==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
-  'content-length': '518',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '52ed4c191361309091be4ea575293b09',
-  date: 'Fri, 05 Dec 2014 18:53:51 GMT' });
- return result; }],
-[function (nock) { 
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900', '*')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '98dae562e3f28cd4aa8cca6a982e93a8',
+  date: 'Mon, 30 Mar 2015 06:49:10 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '4e787065ad623ceba2ec14072901d8b4',
-  date: 'Fri, 05 Dec 2014 18:53:52 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'f94983809cfc8b34999045e6d4703589',
+  date: 'Mon, 30 Mar 2015 06:49:11 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><StorageServiceKeys><Primary>jOmmGOTUVmLgrnTwmQZ5iIcbuDGhwNxHNZkftfTZaildU7ZgYl9Lwsd582DzJ13jVOsVYg7VTFRSldSWZgs7bg==</Primary><Secondary>/FPIpKDf32kR6g+xFXuVcBvMqJzaAhP0/vdOgX13sM3sq4DKL5ueYidhBDxfXQq9cnOM1SHsbbdR6DAYoRZT5Q==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
-  'content-length': '518',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'd3ef2fbc76343ef6b298c0df20bca244',
-  date: 'Fri, 05 Dec 2014 18:53:51 GMT' });
- return result; }],
-[function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .put('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services?service=sqlserver&action=register')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '193',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '5adf5529f7e8305b83c54b66b2d00510',
-  date: 'Fri, 05 Dec 2014 18:53:53 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'f94983809cfc8b34999045e6d4703589',
+  date: 'Mon, 30 Mar 2015 06:49:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><ServiceName>xcliaccount2900</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity7861</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2900.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:48:26Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '1312',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'ade2e235624a8594bb80d42904ac860f',
+  date: 'Mon, 30 Mar 2015 06:49:13 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/storageservices/xcliaccount9170</Url><StorageServiceKeys><Primary>jOmmGOTUVmLgrnTwmQZ5iIcbuDGhwNxHNZkftfTZaildU7ZgYl9Lwsd582DzJ13jVOsVYg7VTFRSldSWZgs7bg==</Primary><Secondary>/FPIpKDf32kR6g+xFXuVcBvMqJzaAhP0/vdOgX13sM3sq4DKL5ueYidhBDxfXQq9cnOM1SHsbbdR6DAYoRZT5Q==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><ServiceName>xcliaccount2900</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity7861</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount2900.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount2900.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-03-30T06:48:26Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '1312',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'ade2e235624a8594bb80d42904ac860f',
+  date: 'Mon, 30 Mar 2015 06:49:13 GMT',
+  connection: 'close' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'b25478be5ea1802493fa1e58acc0728a',
+  date: 'Mon, 30 Mar 2015 06:49:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'b25478be5ea1802493fa1e58acc0728a',
+  date: 'Mon, 30 Mar 2015 06:49:15 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>yWNGGDQrgu6Vw96+Ph6IF1ryCDn165UnoCgWbTYXcphcUF5f8aTyNW0HV7/1xtbe+5dJVsh13xJ0RonnsPwaeg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '518',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.167 (rd_rdfe_stable.141203-1417) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'fa66195fa8d73840b8fe26ad011d07db',
-  date: 'Fri, 05 Dec 2014 18:53:54 GMT' });
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '297e71e2933489fdb83fd750c1e073dd',
+  date: 'Mon, 30 Mar 2015 06:49:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>yWNGGDQrgu6Vw96+Ph6IF1ryCDn165UnoCgWbTYXcphcUF5f8aTyNW0HV7/1xtbe+5dJVsh13xJ0RonnsPwaeg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '297e71e2933489fdb83fd750c1e073dd',
+  date: 'Mon, 30 Mar 2015 06:49:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '74d55394d7ba886d846e02008985635e',
+  date: 'Mon, 30 Mar 2015 06:49:18 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '74d55394d7ba886d846e02008985635e',
+  date: 'Mon, 30 Mar 2015 06:49:18 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys?action=regenerate', '*')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '6630d84ea93981ad86e011492b376a15',
+  date: 'Mon, 30 Mar 2015 06:49:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys?action=regenerate', '*')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '6630d84ea93981ad86e011492b376a15',
+  date: 'Mon, 30 Mar 2015 06:49:21 GMT',
+  connection: 'close' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'af01e7bca3ec811792cb66cf8b2713be',
+  date: 'Mon, 30 Mar 2015 06:49:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'af01e7bca3ec811792cb66cf8b2713be',
+  date: 'Mon, 30 Mar 2015 06:49:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '5d5216d73a2185a2a38690e160d1b5b3',
+  date: 'Mon, 30 Mar 2015 06:49:24 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '5d5216d73a2185a2a38690e160d1b5b3',
+  date: 'Mon, 30 Mar 2015 06:49:24 GMT',
+  connection: 'close' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '743faef0440d8dee962b2498be7f9ce7',
+  date: 'Mon, 30 Mar 2015 06:49:26 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services?service=sqlserver&action=register')
+  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
+  'content-length': '193',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '743faef0440d8dee962b2498be7f9ce7',
+  date: 'Mon, 30 Mar 2015 06:49:26 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '66aff1c565f08fe09074438d1f424711',
+  date: 'Mon, 30 Mar 2015 06:49:27 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount2900</Url><StorageServiceKeys><Primary>UuBcUWonaXEtaPfp6sBi+Y8S/XaBngjq9Ew173Y49vPscVwhq2kmT74LQAChoZBfBB9PYTW9gOMcRyJphLHXAg==</Primary><Secondary>wLsqkJK4nZlTwYRehsnORvoPmfu1khD5ACvY7/xkW9V9kl3Ulahry+Y7ahej/Y+MI5QF9IL2oRnkxBiA8IRG1g==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '66aff1c565f08fe09074438d1f424711',
+  date: 'Mon, 30 Mar 2015 06:49:27 GMT',
+  connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xcliaccount4177','xcliaccount9170','xcliaffinity8676'];};
+ exports.randomTestIdsGenerated = function() { return ['xcliaccount182','xcliaccount2900','xcliaffinity7861'];};
