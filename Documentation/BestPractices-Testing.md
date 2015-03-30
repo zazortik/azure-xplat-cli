@@ -34,11 +34,12 @@ describe('arm', function () {
     //before is executed once at the start of the this test-suite.
     before(function (done) {
       suite = new CLITest(testprefix, requiredEnvironment);
-      
+      //setupSuite is a hook provided for the developer to perform steps that 
+      //need to be performed once before the first test gets executed.
       //A. If nothing needs to be performed then setupSuite() needs to be called as follows:
       suite.setupSuite(done);
       
-      //B. Let us assume that a test needs to create a new site that will be used by every test. 
+      //B. Let us assume that a new site needs to be created once, that will be used by every test. 
       //Then we shall do something like this:
       suite.setupSuite(function () {
         
@@ -49,10 +50,11 @@ describe('arm', function () {
           createdSites /*An array to maintain the list of created sites. 
                        This is useful to delete the list of created sites in teardown*/ );
         
-        suite.execute("site create --location %s %s" /*Azure command to execute*/, 
+        suite.execute("site create --location %s %s --json" /*Azure command to execute*/, 
               process.env.AZURE_SITE_TEST_LOCATION, 
               sitename, 
               function (result) {
+          //test to verify the successful execution of the command
           result.exitStatus.should.equal(0);
           //done is an important callback that signals mocha that the current phase in the 
           //test is complete and the mocha runner should move to the next phase in the test 
@@ -63,14 +65,30 @@ describe('arm', function () {
     
     //after is execute once at the end of this test-suite
     after(function (done) {
+      //teardownSuite is a hook provided for the developer to perform steps that 
+      //need to be performed once after the execution of the entire test-suite is complete.
+      //A. If nothing needs to be performed then setupSuite() needs to be called as follows:
       suite.teardownSuite(done);
+      
+      //B. The created artifacts in setupSuite() need to be deleted, so that the suite leaves the 
+      //environment in a consistent state.
+      //Then we shall do something like this:
+      suite.teardownSuite(function () {
+        //delete all the artifacts that were created during setup
+        createdSites.forEach(function (item) {
+          suite.execute('site delete %s -q --json', item, function (result) {
+            result.exitStatus.should.equal(0);
+          });
+        });
+        done();
+      });
     });
 
     //beforeEach is executed everytime before the test starts
     beforeEach(function (done) {
       //setupTest is a hook provided for the developer to perform steps that 
       //need to be performed before every test
-      //Mechanism to add custom steps is the same that is explained above in setupSuite()
+      //Mechanism to add custom steps for setupTest() is the same that is explained above in setupSuite()
       suite.setupTest(done);
     });
     
@@ -79,6 +97,7 @@ describe('arm', function () {
     afterEach(function (done) {
       //teardownTest is a hook provided for the developer to perform steps that 
       //need to performed after every test
+      //Mechanism to add custom steps for teardownTest() is the same that is explained above in teardownSuite()
       suite.teardownTest(done);
     });
 
