@@ -22,6 +22,6 @@ azure account set "Subsciption Name"
 ```
 
 ## Different Modes
-One can flip between two modes of execution: **ASM|ARM**
+One can flip between two modes of execution: **ASM | ARM**
 
 ```azure config mode [arm|asm] ```
