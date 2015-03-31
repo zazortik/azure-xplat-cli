@@ -8,7 +8,7 @@ Make sure to use a testPrefix while creating a new suite (test/framework.cli-tes
   - For the generated random Ids to be saved in the recording files, suite.generateId() should be called **inside** "setupSuite()", "setupTest()" or inside your actual test "it()"
 - Deleting created artifacts
   - Declare arrays in the test file to store ids created for different types of artifacts. These arrays are passed as second argument to the suite.generateId() method. During teardownTest(), teardownSuite() or at the end of your test, one can iterate over the arrays of respective items and delete the created items. This ensures leaving the environment in a clean state
-  ```
+  ```javascript
   var createdSites = [];
   var sitePrefix = "test-site";
   . . .
@@ -38,7 +38,27 @@ Make sure to use a testPrefix while creating a new suite (test/framework.cli-tes
     });
   . . .
 ```
+
 ###### Ways to reduce playback time
 
-
-
+It is usually not important to playback the creation/deletion of Artifacts during setupSuite(), setupTest(), teardownSuite(), teardownTest(). These can be easily skipped during playback as follows, thus reducing the playback time:
+```javascript
+. . .
+ before(function (done) {
+    suite = new CLITest(testprefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      sitename = suite.generateId(sitePrefix, createdSites);
+      //the following code will not be run during playback mode
+      if (!suite.isPlayback()) {
+        suite.execute("site create --location %s %s --json", process.env.AZURE_SITE_TEST_LOCATION, 
+          sitename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      } else {
+        done();
+      }
+    });
+  });
+. . .
+```
