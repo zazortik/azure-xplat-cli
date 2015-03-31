@@ -18,7 +18,7 @@ One can list the available subscriptions associated with an account and set a su
 
 ```
 azure account list
-azure account set "Subsciption Name"
+azure account set "Subscription Name"
 ```
 
 ## Different Modes
