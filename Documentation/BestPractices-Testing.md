@@ -62,3 +62,9 @@ It is usually not important to playback the creation/deletion of Artifacts durin
   });
 . . .
 ```
+
+###### suite.isMocked v/s suite.isRecording v/s suite.isPlayback()
+
+- suite.isMocked : This property has a boolean value. If true, it means that the suite is not running in **LIVE** mode. It could either be **PLAYBACK** or **RECORD** mode.
+- suite.isRecording : This proerty has a boolean value. If true, it means that the suite is running in **RECORD** mode only.
+- suite.isPlayback() : This function returns a boolean value. If true, it means that the suite is running **PLAYBACK** mode only.
