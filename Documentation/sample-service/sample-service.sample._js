@@ -13,12 +13,22 @@
 * limitations under the License.
 */
 
+/*
+* You can test sample commands get loaded by xplat by following steps:
+* a. Copy the folder to '<repository root>\lib\commands\arm'
+* b. Under <repository root>, run 'node bin/azure config mode arm'
+* c. Run 'node bin/azure', you should see 'sample' listed as a command set
+* d. Run 'node bin/azure', you should see 'create', "delete", etc 
+      showing up in the help text 
+*/
+
 'use strict';
+
+var util = require('util');
 
 var profile = require('../../../util/profile');
 var utils = require('../../../util/utils');
 
-// This assumes a file called ./sampleUtils.js is already there
 var sampleUtils = require('./sampleUtils');
 
 var $ = utils.getLocaleString;
@@ -31,12 +41,12 @@ exports.init = function (cli) {
 
   sample.command('create [sampleName]')
     .description($('Create a sample'))
-	.option('--sampleName <sampleName>', $('the name of the new sample'))
+    .option('--sampleName <sampleName>', $('the name of the new sample'))
     .execute(function (sampleName, options, _) {
       var subscription = profile.current.getSubscription(options.subscription);
       var client = utils.getSampleClient(subscription);
 
-	  if (!sampleName) {
+      if (!sampleName) {
         return cli.missingArgument('sampleName');
       }
 
@@ -48,37 +58,36 @@ exports.init = function (cli) {
         progress.end();
       }
 
-	  var samples = [];
-	  sample.push(result.sample);
-	  cli.interaction.formatOutput(samples, function (data) {
-        if (data.length === 0) {
-          log.info($('No samples defined'));
-        } else {
-          log.table(data, displayASample);
-        }
+      var samples = [];
+      sample.push(result.sample);
+      cli.interaction.formatOutput(samples, function (data) {
+          if (data.length === 0) {
+            log.info($('No samples defined'));
+          } else {
+            log.table(data, displayASample);
+          }
       });
     });
 
   sample.command('delete [sampleName]')
     .description($('Create a sample'))
-	.option('--sampleName <sampleName>', $('the name of the sample to delete'))
+    .option('--sampleName <sampleName>', $('the name of the sample to delete'))
     .execute(function (sampleName, options, _) {
       var subscription = profile.current.getSubscription(options.subscription);
       var client = utils.getSampleClient(subscription);
       
-	  if (!sampleName) {
+      if (!sampleName) {
         return cli.missingArgument('sampleName');
       }
 
-	  var progress = cli.interaction.progress(util.format($('Deleting sample %s'), sampleName));
+      var progress = cli.interaction.progress(util.format($('Deleting sample %s'), sampleName));
 
-	  var result;
+      var result;
       try {
         result = client.samples.delete(sampleName, _);
       } finally {
         progress.end();
       }
-
     });
 
   sample.command('list')
@@ -115,7 +124,6 @@ exports.init = function (cli) {
     var progress = cli.interaction.progress($('Getting sample'));
     var result;
     try {
-      //'sample.get' only takes guid, so we just do list and find by name ourselves
       result = client.sample.list(_);
     } finally {
       progress.end();
@@ -137,6 +145,6 @@ exports.init = function (cli) {
 
 function displayASample(row, sample) {
   row.cell($('Name'), sample.properties.sampleName);
-  var sampleDetails = sampleUtils.getsampleDetails(sample.properties.details);
+  var sampleDetails = sampleUtils.getsampleDetails(sample);
   row.cell($('Properties'), sampleDetails.properties);
 }
