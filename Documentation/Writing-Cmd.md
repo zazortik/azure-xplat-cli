@@ -5,7 +5,7 @@ Depends on what mode your cmds in choose appropriate folder:
 
 ## What your code will look like
 * Copy the `sample-service` [folder](./sample-service) under the directory chosen from previous step.
-* Look at the sample folder that has `sample-service.sample._js` and replace the work `sample` with your actual entity name (i.e. storage account) and add code accordingly
+* Look at the `sample-service.sample._js` in the above mentioned folder and replace the word `sample` with your actual entity name (i.e. storage account) and add code accordingly
 
 ## Notes
 * Use file extensions `._js` so that you leverage node streamline package to write async code with synchronized coding style
