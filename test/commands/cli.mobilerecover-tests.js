@@ -30,7 +30,7 @@ describe('cli', function () {
 
       before(function (done) {
         suite = new CLITest(testPrefix, requiredEnvironment);
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           suite.setupSuite(done);
         } else {
           done();
@@ -38,7 +38,7 @@ describe('cli', function () {
       });
 
       after(function (done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           suite.teardownSuite(done);
         } else {
           done();
@@ -46,7 +46,7 @@ describe('cli', function () {
       });
 
       beforeEach(function (done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           suite.setupTest(done);
         } else {
           done();
@@ -54,7 +54,7 @@ describe('cli', function () {
       });
 
       afterEach(function (done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           suite.teardownTest(done);
         } else {
           done();
@@ -62,7 +62,7 @@ describe('cli', function () {
       });
 
       it('should recover successfully', function (done) {
-        if (suite.isMocked) {
+        if (suite.isPlayback()) {
           suite.execute('node cli.js mobile recover foo bar -q -s f82cd983-da22-464f-8edd-31c8f4888e6b --json', function (result) {
             result.exitStatus.should.equal(0);
             done();

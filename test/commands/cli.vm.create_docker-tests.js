@@ -21,6 +21,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVMs = [];
 var testPrefix = 'cli.vm.create_docker-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -65,8 +66,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'XplattestVm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        vmName = suite.generateId(vmPrefix, createdVMs);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
       });
@@ -209,8 +210,9 @@ describe('cli', function() {
 
       it('Create Docker VM with invalid docker cert dir should throw error', function(done) {
         getImageName('Linux', function(ImageName) {
-          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir D:/foo/bar',
-            vmName, ImageName, username, password).split(' ');
+          var randomPath = __dirname + "/hello/test";
+          var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir %s',
+            vmName, ImageName, username, password, randomPath).split(' ');
           cmd.push('--location');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {

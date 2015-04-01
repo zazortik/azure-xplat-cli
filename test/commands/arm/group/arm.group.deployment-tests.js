@@ -355,7 +355,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           suite.execute('group deployment create -y %s -g %s -n %s -p %s --json', galleryTemplateName, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
-            result.errorText.should.include('Deployment template validation failed: \'The value for the template parameter \'siteLocation\' at line \'1\' and column \'248\' is not provided.\'.');
+            result.errorText.should.match(/.*Deployment template validation failed.*/i);
             cleanup(done);
           });
         });

@@ -21,6 +21,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
 var testPrefix = 'cli.vm.create_comm-tests';
 
 var requiredEnvironment = [{
@@ -71,8 +72,8 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
-        customVmName = suite.isMocked ? 'xplattestcommvm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        customVmName = suite.generateId(vmPrefix, createdVms);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
         done();
       });
@@ -101,20 +102,23 @@ describe('cli', function() {
     });
 
     //Create vm with custom data
-    describe('Create:', function() {
-      it('with community data', function(done) {
-        var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
+    describe('Create:', function () {
+      //this tests only runs live, because it downloads data from a live site, taking 4 minutes
+      if (process.env.NOCK_OFF) {
+        it('with community data', function (done) {
+          var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
           customVmName, communityImageId, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          vmToUse.Name = customVmName;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            vmToUse.Name = customVmName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
         });
-      });
+      }
     });
   });
 });

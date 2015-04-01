@@ -19,7 +19,9 @@ var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
-var vmPrefix = 'clitestvm';
+var vmPrefix = 'clitestvmVnet';
+var createdVms = [];
+var createdVnets = [];
 var testPrefix = 'cli.vm.loadbalancer-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -49,8 +51,10 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
+      suite.setupSuite(function() {
+        vmVnetName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {
@@ -68,14 +72,23 @@ describe('cli', function() {
       }
 
       deleteUsedVM(vmToUse, function() {
-        suite.teardownSuite(done);
+        suite.teardownSuite(function (){
+          if(!suite.isPlayback()) {
+            createdVnets.forEach(function (item) {
+              suite.execute('network vnet delete %s -q --json', item, function (result) {
+                result.exitStatus.should.equal(0);
+              });
+            });
+          }
+          done();
+        });
       });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -180,12 +193,24 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnetName;
-                getVnet.affinityName = affinGrpName;
-                callback(getVnet.vnetName, getVnet.location);
+                suite.execute('network vnet show %s --json', vnetName, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var vnet = JSON.parse(result.text);
+                  getVnet.vnetName = vnet.name;
+                  getVnet.location = location;
+                  getVnet.subnetname = vnet.subnets[0].name;
+                  var address = vnet.subnets[0].addressPrefix;
+                  var addressSplit = address.split('/');
+                  var firstip = addressSplit[0];
+                  var n = firstip.substring(0, firstip.lastIndexOf('.') + 1);
+                  var secondip = n.concat(addressSplit[1]);
+                  getVnet.subnetaddress = secondip;
+                  callback(getVnet.vnetName, getVnet.location, getVnet.subnetname, getVnet.subnetaddress);
+                });
               });
             });
           } else {
@@ -227,8 +252,8 @@ describe('cli', function() {
 
     // Get name of an image of the given category
     function getImageName(category, callBack) {
-      if (process.env.VM_WIN_IMAGE) {
-        callBack(process.env.VM_WIN_IMAGE);
+      if (process.env.VM_LINUX_IMAGE) {
+        callBack(process.env.VM_LINUX_IMAGE);
       } else {
         var cmd = util.format('vm image list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -236,11 +261,11 @@ describe('cli', function() {
           var imageList = JSON.parse(result.text);
           imageList.some(function(image) {
             if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_WIN_IMAGE = image.name;
+              process.env.VM_LINUX_IMAGE = image.name;
               return true;
             }
           });
-          callBack(process.env.VM_WIN_IMAGE);
+          callBack(process.env.VM_LINUX_IMAGE);
         });
       }
     }

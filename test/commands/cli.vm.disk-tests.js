@@ -19,7 +19,10 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var diskPrefix = 'clitestdisk'
 var testPrefix = 'cli.vm.disk-tests';
+var createdVms = [];
+var createdDisks = [];
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -49,8 +52,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        storageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -60,8 +63,8 @@ describe('cli', function() {
     });
 
     //list and show the disk
-    describe('Disk:', function() {
-      it('List and Show', function(done) {
+    describe('Disk list and show', function() {
+      it('should work', function(done) {
         var cmd = util.format('vm disk list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -84,7 +87,7 @@ describe('cli', function() {
         });
       });
 
-      it('show vm disk', function(done) {
+      it('should filter by vm name', function(done) {
         var diskName, vmname;
         var cmd = util.format('vm list --json').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -110,13 +113,14 @@ describe('cli', function() {
 
     //create and delete
     describe('Disk:', function() {
-      it('create and delete', function(done) {
-        var diskName = suite.isMocked ? 'xplatestdisk' : suite.generateId(vmPrefix, null) + 'disk';
-        getDiskName('Linux', function(diskObj) {
+      it('create and delete should work', function(done) {
+        var diskName = suite.generateId(diskPrefix, createdDisks);
+        var osType = 'Linux';
+        getDiskName(osType, function(diskObj) {
           diskSourcePath = diskObj.mediaLinkUri;
-          var domainUrl = 'http://' + diskSourcePath.split('/')[2];
+          var domainUrl = 'https://' + diskSourcePath.split('/')[2];
           var blobUrl = domainUrl + '/disks/' + diskName;
-          var cmd = util.format('vm disk create %s %s -u %s --json', diskName, diskSourcePath, blobUrl).split(' ');
+          var cmd = util.format('vm disk create %s %s -u %s -o %s --json', diskName, diskSourcePath, blobUrl, osType).split(' ');
           cmd.push('-l');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -138,7 +142,7 @@ describe('cli', function() {
         });
       });
 
-      it('Upload', function(done) {
+      it('Upload should work', function(done) {
         var sourcePath = suite.isMocked ? diskSourcePath : (process.env.BLOB_SOURCE_PATH || diskSourcePath);
         var blobUrl = sourcePath.substring(0, sourcePath.lastIndexOf('/')) + '/' + suite.generateId(vmPrefix, null) + '.vhd';
         var cmd = util.format('vm disk upload %s %s %s --json', sourcePath, blobUrl, storageAccountKey).split(' ');
