@@ -42,6 +42,7 @@ exports.init = function (cli) {
   sample.command('create [sampleName]')
     .description($('Create a sample'))
     .option('--sampleName <sampleName>', $('the name of the new sample'))
+    .option('--subscription <subscription>', $('the subscription identifier'))
     .execute(function (sampleName, options, _) {
       var subscription = profile.current.getSubscription(options.subscription);
       var client = utils.getSampleClient(subscription);
@@ -72,6 +73,7 @@ exports.init = function (cli) {
   sample.command('delete [sampleName]')
     .description($('Create a sample'))
     .option('--sampleName <sampleName>', $('the name of the sample to delete'))
+    .option('--subscription <subscription>', $('the subscription identifier'))
     .execute(function (sampleName, options, _) {
       var subscription = profile.current.getSubscription(options.subscription);
       var client = utils.getSampleClient(subscription);
@@ -115,6 +117,7 @@ exports.init = function (cli) {
   sample.command('show [name]')
     .description($('Get an available sample'))
     .option('-n --name <name>', $('the sample name'))
+    .option('--subscription <subscription>', $('the subscription identifier'))
     .execute(function (name, options, _) {
     if (!name) {
       return cli.missingArgument('name');
