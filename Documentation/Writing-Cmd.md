@@ -11,7 +11,7 @@ Depends on what mode your cmds in choose appropriate folder:
 * While developing the commands, the command can be executed from the root folder of the cloned repo like this: ```node bin\azure sample create . . .```
   * Once the development of command is complete install the source code from the root folder of your cloned repo at the global location for installing node modules ```npm install . -g```
   * Now you can execute your developed command using azure like this: ```azure sample create . . .```
-* Use file extensions `._js` so that you leverage node streamline package to write async code with synchronized coding style
+* Use file extensions `._js` so that you leverage node streamline package to write async code with synchronized coding style. More information about streamline can be found [here](http://blog.rivaliq.com/develop-double-time-node-plus-streamline/) and [here](http://www.stateofcode.com/2011/05/bruno-jouhier/).
 * Create util function under the same folder of `sample-service`
 * For the new service to onboard, please update utils.js file to add method to create your client and make sure that your service is registered as part of calling this method
 * You command will inherit several arguments
