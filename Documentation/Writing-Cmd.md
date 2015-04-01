@@ -8,9 +8,9 @@ Depends on what mode your cmds in choose appropriate folder:
 * Look at the `sample-service.sample._js` in the above mentioned folder and replace the word `sample` with your actual entity name (i.e. storage account) and add code accordingly
 
 ## Notes
-* While developing the commands, the command can be executed from the root folder of the cloned repo like this: ```javascript node bin\azure sample create . . .```
-  * Once the development of command is complete install the source code from the root folder of your cloned repo at the global location for installing node modules ```javascript npm install . -g```
-  * Now you can execute your developed command using azure. ```javascript azure sample create . . .```
+* While developing the commands, the command can be executed from the root folder of the cloned repo like this: ```node bin\azure sample create . . .```
+  * Once the development of command is complete install the source code from the root folder of your cloned repo at the global location for installing node modules ```npm install . -g```
+  * Now you can execute your developed command using azure. ```azure sample create . . .```
 * Use file extensions `._js` so that you leverage node streamline package to write async code with synchronized coding style
 * Create util function under the same folder of `sample-service`
 * For the new service to onboard, please update utils.js file to add method to create your client and make sure that your service is registered as part of calling this method
