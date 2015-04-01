@@ -15,6 +15,7 @@ Depends on what mode your cmds in choose appropriate folder:
    ** --subscription : If the user does not provide the subscription then the current subscription from the azureProfile.json will be used to execute the command. This file is saved under %USERPROFILE%.azure folder. It acts as a repository of the subscriptions associated with a particular user/account)
    ** -vv : verbose and log http traffic to console
    ** -h  : provide help information
+   ** --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
 
 ## Commands Design Guidelines
 * Naming for the regular verb is: create, set, list, show and delete.
