@@ -15,10 +15,10 @@ Depends on what mode your cmds in choose appropriate folder:
 * Create util function under the same folder of `sample-service`
 * For the new service to onboard, please update utils.js file to add method to create your client and make sure that your service is registered as part of calling this method
 * You command will inherit several arguments
-   ** --subscription : If the user does not provide the subscription then the current subscription from the azureProfile.json will be used to execute the command. This file is saved under ```%USERPROFILE%/.azure``` folder. It acts as a repository of the subscriptions associated with a particular user/account)
-   ** -vv : verbose and log http traffic to console
-   ** -h  : provide help information
-   ** --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
+  * --subscription : If the user does not provide the subscription then the current subscription from the azureProfile.json will be used to execute the command. This file is saved under ```%USERPROFILE%/.azure``` folder. It acts as a repository of the subscriptions associated with a particular user/account)
+  * -vv : verbose and log http traffic to console
+  * -h  : provide help information
+  * --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
 
 ## Command Design Guidelines
 * Regular verb usage for basic [CRUD] operations is: 
