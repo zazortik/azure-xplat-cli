@@ -4,7 +4,7 @@ Depends on what mode your cmds in choose appropriate folder:
 * In case of Resource Manager (CSM): lib\commands\arm
 
 ## What your code will look like
-* Copy [`sample-service`](./sample-service) folder under the directory chosen from previous step.
+* Copy the `sample-service` [folder](./sample-service) under the directory chosen from previous step.
 * Look at the sample folder that has `sample-service.sample._js` and replace the work `sample` with your actual entity name (i.e. storage account) and add code accordingly
 
 ## Notes
@@ -18,5 +18,10 @@ Depends on what mode your cmds in choose appropriate folder:
    ** --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
 
 ## Commands Design Guidelines
-* Naming for the regular verb is: create, set, list, show and delete.
-* While creating the argument/parameters for your command, please make sure that the switch name does not conflict with already used switches in the same command
+* Regular verb usage for basic [CRUD] operations is: 
+  * create - create a new entity
+  * set - update an existing enity
+  * list - list all the entities
+  * show - provide more information about the spoecified entity
+  * delete - delete the specified entity
+* While creating arguments/parameters for your command, please make sure that the switch name (long version "--username" and short version "-u") does not conflict with already used switches in the same command
