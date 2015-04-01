@@ -8,7 +8,7 @@
     - [Running Tests](./RunTests.md)
     - [How to Write a Test](./Writing-Test.md)
     - [Best Practices while writing Tests](./BestPractices-Testing.md)
-4. [Developing the cmds]
+4. [Developing the cmds] (./Writing-Cmd.md)
 5. [Release Process](./ReleaseProcess.md)
 5. [Debugging Commands and Tests](./Debugging.md)
 6. [Generating Self Signed Certificates for Testing Purpose](./DummyCerts.md)
