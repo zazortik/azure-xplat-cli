@@ -94,6 +94,7 @@ exports.init = function (cli) {
 
   sample.command('list')
     .description($('Get all available samples'))
+    .option('--subscription <subscription>', $('the subscription identifier'))
     .execute(function (options, _) {
       var subscription = profile.current.getSubscription(options.subscription);
       var client = utils.getSampleClient(subscription);
