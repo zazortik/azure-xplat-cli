@@ -7,13 +7,15 @@ Depends on what mode your cmds in choose appropriate folder:
 * Copy `sample-service` folder under the directory chosen from previous step.
 * Look at the sample folder that has `sample-service.sample._js` and replace the work `sample` with your actual entity name (i.e. storage account) and add code accordingly
 
-## Hints
-* Use file extensions `._js` so that you leverage node streamline package to write async code with sync code style
+## Notes
+* Use file extensions `._js` so that you leverage node streamline package to write async code with synchronized coding style
 * Create util function under the same folder of `sample-service`
 * For new on boarded service, please update utils.js file to add method to create your client and make sure that your service is registered as part of calling this method
-* There's a file created under %USERPROFILE%\.azure that called `azureProfile.json` which hold all the imported and authenticated subscriptions and environments.
-* Reserved arguments: -v: verbose, -h: help, -vv: debug by showing http traffic and -s: subscription.
+* You command will inherit several arguments
+   ** --subscription : If the user does not provide the subscription then the current subscription from the azureProfile.json will be used to execute the command. This file is saved under %USERPROFILE%.azure folder. It acts as a repository of the subscriptions associated with a particular user/account)
+   ** -vv : verbose and log http traffic to console
+   ** -h  : provide help information
 
 ## Commands Design Guidelines
-* Naming for the regular verb is: create, update, list, show and delete.
-* You can create the actual cmd argument but make sure it does not conflict with reserved words (like -v, -h, -s, etc ...)
+* Naming for the regular verb is: create, set, list, show and delete.
+* You can create the actual cmd argument but it should not conflict with already used switches in the same command

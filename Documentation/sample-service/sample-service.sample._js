@@ -29,6 +29,58 @@ exports.init = function (cli) {
   var sample = cli.category('sample')
     .description($('Commands to manage your Azure samples'));
 
+  sample.command('create [sampleName]')
+    .description($('Create a sample'))
+	.option('--sampleName <sampleName>', $('the name of the new sample'))
+    .execute(function (sampleName, options, _) {
+      var subscription = profile.current.getSubscription(options.subscription);
+      var client = utils.getSampleClient(subscription);
+
+	  if (!sampleName) {
+        return cli.missingArgument('sampleName');
+      }
+
+      var progress = cli.interaction.progress(util.format($('Creating sample %s'), sampleName));
+      var result;
+      try {
+        result = client.samples.create(sampleName, _);
+      } finally {
+        progress.end();
+      }
+
+	  var samples = [];
+	  sample.push(result.sample);
+	  cli.interaction.formatOutput(samples, function (data) {
+        if (data.length === 0) {
+          log.info($('No samples defined'));
+        } else {
+          log.table(data, displayASample);
+        }
+      });
+    });
+
+  sample.command('delete [sampleName]')
+    .description($('Create a sample'))
+	.option('--sampleName <sampleName>', $('the name of the sample to delete'))
+    .execute(function (sampleName, options, _) {
+      var subscription = profile.current.getSubscription(options.subscription);
+      var client = utils.getSampleClient(subscription);
+      
+	  if (!sampleName) {
+        return cli.missingArgument('sampleName');
+      }
+
+	  var progress = cli.interaction.progress(util.format($('Deleting sample %s'), sampleName));
+
+	  var result;
+      try {
+        result = client.samples.delete(sampleName, _);
+      } finally {
+        progress.end();
+      }
+
+    });
+
   sample.command('list')
     .description($('Get all available samples'))
     .execute(function (options, _) {
