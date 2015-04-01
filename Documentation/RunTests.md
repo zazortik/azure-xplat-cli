@@ -24,9 +24,7 @@ This will execute all the tests mentioned in tests/testlistarm.txt
 npm -s run-script unit-arm
 ```
 
-* Running selective tests.
-Comment unrequired tests in test/testlist.txt or test/testlistarm.txt depending on which tests need to be run.
-A test can be commented by putting **#** at the start of a line in testlist[arm].txt
+* Running selective tests: Comment unrequired tests in test/testlist.txt or test/testlistarm.txt depending on which tests need to be run. A test can be commented by putting **#** at the start of a line in testlist[arm].txt.
 
 #### Test Logs
 Logs for each test run can be found in a time stamped .lof file under the **"/test/output/"** directory.
