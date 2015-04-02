@@ -31,8 +31,8 @@ var testSite;
 describe('cli', function() {
   describe('network', function() {
     var networkconfig = 'netconfig.json';
-    var dnsIp = '66.77.88.99';
-    var dnsId = 'dns-cli-0';
+    var dnsIp = '66.77.88.98';
+    var dnsId = 'dns-cli-1';
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);

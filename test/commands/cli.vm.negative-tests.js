@@ -19,6 +19,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'cliNegtestvm';
+var createdVms = [];
 var testPrefix = 'cli.vm.negative-tests';
 
 var requiredEnvironment = [{
@@ -40,7 +41,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmNegName = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
+        vmNegName = suite.generateId(vmPrefix, createdVms);
         done();
       });
     });

@@ -20,6 +20,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var vmPrefix = 'clitestvm';
 var testPrefix = 'cli.vm.extension_set-chef';
+var createdVms = [];
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -43,7 +44,7 @@ describe('cli', function() {
     });
     after(function(done) {
       function deleteUsedVM(callback) {
-        if (!suite.isMocked) {
+        if (!suite.isPlayback()) {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -60,8 +61,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'xchefextnvm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        vmName = suite.generateId(vmPrefix, createdVms);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -72,18 +73,16 @@ describe('cli', function() {
     });
     //Set Chef extensions test
     describe('extension:', function() {
-      it('Set Chef extensions fail without client config and validation pem', function(done) {
-        createVM(function() {
-          var cmd = util.format('vm extension set-chef %s -V %s --json', vmName, chefversion).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.errorText.should.containEql('error: Required --validation-pem and --client-config options');
-            result.exitStatus.should.equal(1);
-            done();
-          });
+      it('Set Chef extension should fail without client config and validation pem', function(done) {
+        var cmd = util.format('vm extension set-chef %s -V %s --json', vmName, chefversion).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.errorText.should.containEql('error: Required --validation-pem and --client-config options');
+          result.exitStatus.should.equal(1);
+          done();
         });
       });
 
-      it('Set Chef extensions', function(done) {
+      it('Set Chef extension should pass', function(done) {
         createVM(function() {
           var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s --json', vmName, chefversion, clientconfig, validationpem).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
