@@ -50,10 +50,6 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
-    afterEach(function (done) {
-      suite.teardownTest(done);
-    });
-
     describe('managing tag end to end testing', function () {
       it('should create a tag with value and delete them when done', function (done) {
         var tagName = suite.generateId(groupPrefix, createdTags, suite.isMocked);

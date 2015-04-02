@@ -107,32 +107,33 @@ suite('site deploymentscript', function () {
   test('generate batch python deployment script (--python -r) should generate deploy.cmd', function (done) {
     testSettings.cmd = ('node cli.js site deploymentscript -t batch --python -r ' + testDir).split(' ');
 
-    runBasicSiteDeploymentScriptScenario(done, testSettings);
+    runPythonSiteDeploymentScriptScenario(done, testSettings);
   });
 
   test('generate batch python deployment script twice with -y (--python -y -r) should generate deploy.cmd', function (done) {
     testSettings.cmd = ('node cli.js site deploymentscript --python -t batch -y -r ' + testDir).split(' ');
 
-    runBasicSiteDeploymentScriptScenario(function () {
-      runBasicSiteDeploymentScriptScenario(done, testSettings);
+    runPythonSiteDeploymentScriptScenario(function () {
+      runPythonSiteDeploymentScriptScenario(done, testSettings);
     }, testSettings);
   });
 
-  test('generate bash python deployment script (--python --scriptType bash -r) should generate deploy.sh', function (done) {
+  test('generate bash python deployment script (--python --scriptType bash -r) should fail', function (done) {
     testSettings.cmd = ('node cli.js site deploymentscript --python --scriptType bash -r ' + testDir).split(' ');
     testSettings.bash = true;
+    testSettings.errorMessage = 'Only batch script files are supported for python Web Site';
 
-    runBasicSiteDeploymentScriptScenario(done, testSettings);
+    runErrorScenario(done, testSettings);
   });
 
-  test('generate default (depending on os) python deployment script (--python -r) should generate deploy.sh', function (done) {
-    testSettings.cmd = ('node cli.js site deploymentscript --python -r ' + testDir).split(' ');
+  test('generate default (depending on os) php deployment script (--php -r) should generate deploy.sh', function (done) {
+    testSettings.cmd = ('node cli.js site deploymentscript --php -r ' + testDir).split(' ');
     testSettings.bash = !isWindows;
 
     runBasicSiteDeploymentScriptScenario(done, testSettings);
   });
 
-  test('generate default (depending on os) python deployment script (--node -r) should generate deploy.sh', function (done) {
+  test('generate default (depending on os) node deployment script (--node -r) should generate deploy.sh', function (done) {
     testSettings.cmd = ('node cli.js site deploymentscript --node -r ' + testDir).split(' ');
     testSettings.bash = !isWindows;
 
@@ -232,39 +233,39 @@ suite('site deploymentscript', function () {
     runBasicSiteDeploymentScriptScenario(done, testSettings);
   });
 
-  test('generate batch php site deployment script with sitePath fullpath (--php -p site\\site2 -r) should generate deploy.cmd', function (done) {
-    var siteDir = pathUtil.join('site', 'site2');
+  test('generate bash php site deployment script with sitePath fullpath (--php -p site\\site2 -r) should generate deploy.cmd', function (done) {
+    var siteDir = 'site';
     var siteDirPath = pathUtil.resolve(pathUtil.join(testDir, siteDir));
 
-    var cmd = 'node cli.js site deploymentscript -t batch --php -p'.split(' ');
+    var cmd = 'node cli.js site deploymentscript -t bash --php -p'.split(' ');
+    testSettings.bash = true;
     cmd.push(siteDirPath);
     cmd.push('-r');
     cmd.push(testDir);
     testSettings.cmd = cmd;
 
     testSettings.siteDirPath = siteDir;
-    testSettings.siteDir = '%\\site\\site2';
-
-    runBasicSiteDeploymentScriptScenario(done, testSettings);
-  });
-
-  test('generate bash python site deployment script with sitePath (--python -t bash --sitePath site -r) should generate deploy.sh', function (done) {
-    var siteDir = 'site';
-    var siteDirPath = pathUtil.join(testDir, siteDir);
-
-    testSettings.cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
-    testSettings.bash = true;
-    testSettings.siteDirPath = siteDir;
     testSettings.siteDir = '$DEPLOYMENT_SOURCE/site';
 
     runBasicSiteDeploymentScriptScenario(done, testSettings);
   });
 
-  test('generate bash python site deployment script with sitePath (--python -t bash --sitePath site\\site2 -r) should generate deploy.sh', function (done) {
+  test('generate batch python site deployment script with sitePath (--python -t batch --sitePath site -r) should generate deploy.sh', function (done) {
     var siteDir = pathUtil.join('site', 'site2');
     var siteDirPath = pathUtil.join(testDir, siteDir);
 
-    testSettings.cmd = format('node cli.js site deploymentscript --python -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+    testSettings.cmd = format('node cli.js site deploymentscript --python -t batch --sitePath %s -r %s', siteDirPath, testDir).split(' ');
+    testSettings.siteDirPath = siteDir;
+    testSettings.siteDir = '%\\site\\site2';
+
+    runPythonSiteDeploymentScriptScenario(done, testSettings);
+  });
+
+  test('generate bash php site deployment script with sitePath (--php -t bash --sitePath site\\site2 -r) should generate deploy.sh', function (done) {
+    var siteDir = pathUtil.join('site', 'site2');
+    var siteDirPath = pathUtil.join(testDir, siteDir);
+
+    testSettings.cmd = format('node cli.js site deploymentscript --php -t bash --sitePath %s -r %s', siteDirPath, testDir).split(' ');
     testSettings.bash = true;
     testSettings.siteDirPath = siteDir;
     testSettings.siteDir = '$DEPLOYMENT_SOURCE/site/site2';
@@ -360,21 +361,16 @@ suite('site deploymentscript', function () {
     runErrorScenario(done, testSettings);
   });
 
-  //Comment out, becuase with node 0.12.0, it broke the controlled test formatted output
-  //and causes all commands output dumped to the console.
-  //The likely cause is that the "kuduscript" package uses older streamline with 
-  //a known issue, https://github.com/Sage/streamlinejs/issues/242
+  test('generate batch aspWAP without a solution file path (--aspWAP projectFile.csproj -r) should fail', function (done) {
+    var projectFile = 'projectFile.csproj';
+    var projectFilePath = pathUtil.join(testDir, projectFile);
 
-  //test('generate batch aspWAP without a solution file path (--aspWAP projectFile.csproj -r) should fail', function (done) {
-  //  var projectFile = 'projectFile.csproj';
-  //  var projectFilePath = pathUtil.join(testDir, projectFile);
+    testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
+    testSettings.projectFile = projectFile;
+    testSettings.errorMessage = 'Missing solution file path';
 
-  //  testSettings.cmd = format('node cli.js site deploymentscript --aspWAP %s -r %s', projectFilePath, testDir).split(' ');
-  //  testSettings.projectFile = projectFile;
-  //  testSettings.errorMessage = 'Missing solution file path';
-
-  //  runErrorScenario(done, testSettings);
-  //});
+    runErrorScenario(done, testSettings);
+  });
 });
 
 function runAspWebSiteDeploymentScriptScenario(callback, settings) {
@@ -412,6 +408,17 @@ function runBasicSiteDeploymentScriptScenario(callback, settings) {
   settings.siteDirPath = settings.siteDirPath || settings.siteDir;
   settings.outputContains = settings.outputContains || ['Generating deployment script for Web Site', 'Generated deployment script'];
   settings.scriptContains = settings.scriptContains || ['echo Handling Basic Web Site deployment.', settings.scriptExtraInclude, settings.siteDir];
+
+  runSiteDeploymentScriptScenario(callback, settings);
+}
+
+function runPythonSiteDeploymentScriptScenario(callback, settings) {
+  settings.scriptFileName = settings.bash ? 'deploy.sh' : 'deploy.cmd';
+  settings.scriptExtraInclude = settings.bash ? '#!/bin/bash' : '@echo off';
+  settings.siteDir = settings.siteDir || '';
+  settings.siteDirPath = settings.siteDirPath || settings.siteDir;
+  settings.outputContains = settings.outputContains || ['Generating deployment script for python Web Site', 'Generated deployment script'];
+  settings.scriptContains = settings.scriptContains || ['Handling python deployment.', settings.scriptExtraInclude, settings.siteDir];
 
   runSiteDeploymentScriptScenario(callback, settings);
 }

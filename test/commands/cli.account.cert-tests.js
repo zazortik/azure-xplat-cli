@@ -19,7 +19,8 @@ var path = require('path');
 var should = require('should');
 
 var CLITest = require('../framework/cli-test');
-var suite = new CLITest();
+var testPrefix = 'cli.account.cert-tests';
+var suite = new CLITest(testPrefix);
 
 describe('cli', function () {
   describe('account cert', function () {

@@ -48,7 +48,7 @@ describe('arm', function () {
           //verify the command indeed produces something valid such as a well known provider: sql provider
           var allResources = JSON.parse(result.text);
           allResources.some(function (res) {
-            return res.name === 'Microsoft.Sql/servers';
+            return res.name.match(/Microsoft.Sql\/servers/gi);
           }).should.be.true;
           done();
         });

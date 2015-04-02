@@ -24,6 +24,7 @@ var util = require('util');
 var exports = module.exports;
 var testLogDir = path.resolve(__dirname, '..', 'output');
 var testLogFile = '';
+var currentTest = '';
 
 //provides the log directory where the test logs would reside 
 function getLogDir() {
@@ -98,4 +99,13 @@ exports.logError = function(err) {
     content += util.inspect(err.stack, {depth: null}) + '\n';
   }
   appendContent(content);
+};
+
+exports.setCurrentTest = function(test) {
+  currentTest = test;
+};
+
+
+exports.getCurrentTest = function() {
+  return currentTest;
 };

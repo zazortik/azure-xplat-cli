@@ -20,6 +20,8 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
+var createdVnets = [];
 var testPrefix = 'cli.vm.staticvm_create-from-tests';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -35,17 +37,19 @@ describe('cli', function() {
       password = 'Collabera@01',
       retry = 5,
       timeout;
-    testUtils.TIMEOUT_INTERVAL = 12000;
+      testUtils.TIMEOUT_INTERVAL = 12000;
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {
       function deleteUsedVM(callback) {
-        if (!suite.isMocked) {
+        if (!suite.isPlayback()) {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -58,14 +62,23 @@ describe('cli', function() {
       }
 
       deleteUsedVM(function() {
-        suite.teardownSuite(done);
+        suite.teardownSuite(function (){
+          if(!suite.isPlayback()) {
+            createdVnets.forEach(function (item) {
+              suite.execute('network vnet delete %s -q --json', item, function (result) {
+                result.exitStatus.should.equal(0);
+              });
+            });
+          }
+          done();
+        });
       });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -188,6 +201,7 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
