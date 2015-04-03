@@ -44,11 +44,8 @@ describe('arm', function () {
     it('list should work', function (done) {
       suite.execute('provider list --json', function (result) {
         result.exitStatus.should.equal(0);
-        //verify the command indeed produces something valid such as a well known provider: sql provider
-        var allResources = JSON.parse(result.text);
-        allResources.some(function (res) {
-          return res.name.match(/Microsoft.Sql\/servers/gi);
-        }).should.be.true;
+        var providers = JSON.parse(result.text);
+        providers.length.should.be.above(0);
         done();
       });
     });
@@ -56,11 +53,8 @@ describe('arm', function () {
     it('show should work', function (done) {
       suite.execute('provider show %s --json', 'Microsoft.web', function (result) {
         result.exitStatus.should.equal(0);
-        //verify the command indeed produces something valid such as a well known provider: sql provider
-        var allResources = JSON.parse(result.text);
-        allResources.some(function (res) {
-          return res.name.match(/Microsoft.Sql\/servers/gi);
-        }).should.be.true;
+        var provider = JSON.parse(result.text);
+        provider.namespace.should.match(/^Microsoft.Web$/ig);
         done();
       });
     });
@@ -68,24 +62,26 @@ describe('arm', function () {
     it('register should work', function (done) {
       suite.execute('provider register %s --json', 'Microsoft.AppService', function (result) {
         result.exitStatus.should.equal(0);
-        //verify the command indeed produces something valid such as a well known provider: sql provider
-        var allResources = JSON.parse(result.text);
-        allResources.some(function (res) {
-          return res.name.match(/Microsoft.Sql\/servers/gi);
-        }).should.be.true;
-        done();
+        suite.execute('provider show %s --json', 'Microsoft.AppService', function (result) {
+          result.exitStatus.should.equal(0);
+          var provider = JSON.parse(result.text);
+          provider.namespace.should.match(/^Microsoft.AppService$/ig);
+          provider.registrationState.should.match(/.*register.*/ig);
+          done();
+        });
       });
     });
 
     it('unregister should work', function (done) {
       suite.execute('provider unregister %s --json', 'Microsoft.AppService', function (result) {
         result.exitStatus.should.equal(0);
-        //verify the command indeed produces something valid such as a well known provider: sql provider
-        var allResources = JSON.parse(result.text);
-        allResources.some(function (res) {
-          return res.name.match(/Microsoft.Sql\/servers/gi);
-        }).should.be.true;
-        done();
+        suite.execute('provider show %s --json', 'Microsoft.AppService', function (result) {
+          result.exitStatus.should.equal(0);
+          var provider = JSON.parse(result.text);
+          provider.namespace.should.match(/^Microsoft.AppService$/ig);
+          provider.registrationState.should.match(/.*unregister.*/ig);
+          done();
+        });
       });
     });
   });
