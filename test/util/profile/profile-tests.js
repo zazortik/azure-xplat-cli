@@ -356,37 +356,6 @@ describe('profile', function () {
       });
     });
 
-    describe('when creating service', function () {
-      var fakeService = { withFilter: function () { return this; } };
-      var factory = sinon.stub().returns(fakeService);
-      var created;
-
-      beforeEach(function () {
-        created = p.currentSubscription.createClient(factory);
-      });
-
-      it('should have called the factory', function () {
-        factory.calledOnce.should.be.true;
-      });
-
-      it('should call factory with expected subscription id', function () {
-        var credentials = factory.args[0][0];
-        credentials.subscriptionId.should.equal(p.currentSubscription.id);
-      });
-
-      it('should have correct key and cert', function () {
-        var credentials = factory.args[0][0];
-        credentials.credentials.should.have.properties({
-          key: p.currentSubscription.managementCertificate.key,
-          cert: p.currentSubscription.managementCertificate.cert
-        });
-      });
-
-      it('should pass CloudCertificateCredentials', function () {
-        factory.args[0][0].should.be.instanceOf(azure.CertificateCloudCredentials);
-      });
-    });
-
     describe('when deleting the Account subscription', function () {
       beforeEach(function () {
         p.deleteSubscription(expectedSubscription1.id);

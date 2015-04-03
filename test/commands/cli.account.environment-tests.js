@@ -20,7 +20,8 @@ var _ = require('underscore');
 var profile = require('../../lib/util/profile');
 
 var CLITest = require('../framework/cli-test');
-var suite = new CLITest();
+var testPrefix = 'cli.account.environment-tests';
+var suite = new CLITest(testPrefix);
 
 describe('cli', function () {
   describe('account env', function () {

@@ -19,6 +19,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'ClitestVm';
+var createdVms = [];
 var testPrefix = 'cli.vm.create_win_rdp-tests';
 
 var requiredEnvironment = [{
@@ -45,8 +46,10 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmName = suite.isMocked ? 'XplattestVm1' : suite.generateId(vmPrefix, null);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {
@@ -62,14 +65,14 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
 
     afterEach(function(done) {
       function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete && !suite.isMocked) {
+        if (vm.Created && vm.Delete) {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {

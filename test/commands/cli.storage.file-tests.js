@@ -222,8 +222,7 @@ describe('cli', function () {
             var listResult = JSON.parse(result.text);
             listResult.should.have.enumerable('files');
             listResult.should.have.enumerable('directories');
-            //commenting this assertion as it is failing. It is expecting the count to be 3 however the actual count is 4.
-            //listResult.files.should.be.lengthOf(testCount);
+            listResult.files.should.be.lengthOf(testCount);
             listResult.directories.should.be.lengthOf(1);
             listResult.files.some(function (data) {
               data.name.should.match(/^.*remotefile$/);
