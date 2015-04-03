@@ -6,14 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    name: 'Azure Storage DM Dev',
+    registeredProviders: [],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -22,31 +21,34 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SITE_TEST_LOCATION'] = 'West US';
-}
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
+  process.env['AZURE_SITE_TEST_LOCATION'] = 'West Europe';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
+nock('http://management.core.windows.net:443')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831</Url><StorageServiceKeys><Primary>b/DmJa1VVc+1krJDlLuJ3etPKFU1wgoImGx6trUIKzJ+HVJeAc0WhirmW3P81jLG5J9wi4IGFIm8z4AcSrvceg==</Primary><Secondary>p1Bl/oTIAqR6wMQFRuzb4rM3P9pNIHIfWdoKecAE2ad7fhN3rXP3gHdiXZLnbOLoE3XtyWbsmcK1KWx0w2KAKQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  'content-length': '518',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '4029c53b1727738981dfa714c37c6ebf',
-  date: 'Fri, 13 Mar 2015 09:07:43 GMT' });
+  'x-ms-request-id': 'e7642e02a548822b8882cbb1bf83dfbc',
+  date: 'Fri, 03 Apr 2015 14:11:29 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/xcliaccount1151/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/xcliaccount1151</Url><StorageServiceKeys><Primary>6TbeRCiJyY2x/KRwFVXkgvib9IRA4imDAnm8BdkXlgnz0YfJNWOfCi+X5TeTdC0QQypleZ1vxPzUjkmMa7+HCw==</Primary><Secondary>H9xFMshKeP5xdF/5xBOwR2OJU608yXu2BJUIamAgvBwv1K3WQDufEeY0pO1GOvZGTALZZQXBZ7m1mryObIyr1w==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831</Url><StorageServiceKeys><Primary>b/DmJa1VVc+1krJDlLuJ3etPKFU1wgoImGx6trUIKzJ+HVJeAc0WhirmW3P81jLG5J9wi4IGFIm8z4AcSrvceg==</Primary><Secondary>p1Bl/oTIAqR6wMQFRuzb4rM3P9pNIHIfWdoKecAE2ad7fhN3rXP3gHdiXZLnbOLoE3XtyWbsmcK1KWx0w2KAKQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '518',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '46fe048cd9a97936bc3c88fd4549da0b',
-  date: 'Fri, 13 Mar 2015 09:07:44 GMT' });
+  'x-ms-request-id': 'e7642e02a548822b8882cbb1bf83dfbc',
+  date: 'Fri, 03 Apr 2015 14:11:29 GMT',
+  connection: 'close' });
  return result; }]];
