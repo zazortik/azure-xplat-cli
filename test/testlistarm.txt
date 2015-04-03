@@ -1,4 +1,5 @@
 commands/arm/group/groupUtils-tests.js
+commands/arm/provider/arm.provider-tests.js
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group-template-tests.js
 commands/arm/group/arm.group.deployment-tests.js
