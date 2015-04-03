@@ -2,7 +2,7 @@
 
 Currently token based and cert based authentication mechanisms are supported in Xplat CLI.
 
-* **Token** based authentication works in both **ARM** and **ASM** mode
+* **Token** based authentication works in both **ASM** (Azure Service Management) & **ARM** (Azure Resource Manager) mode
   * Currently, only organizational accounts are supported. One cannot use an outlook, gmail, etc. account for authentication
   
 ```azure login -u $username -p $password```
@@ -18,12 +18,10 @@ One can list the available subscriptions associated with an account and set a su
 
 ```
 azure account list
-azure account set "Subsciption Name"
+azure account set "Subscription Name"
 ```
 
 ## Different Modes
-One can flip between two modes of execution
-- ARM - Azure Resource Manager
-- ASM - Azure Service Management
+One can flip between two modes of execution: **ASM | ARM**
 
-```azure config mode [arm|asm] ```
+```azure config mode [asm|arm] ```
