@@ -80,9 +80,7 @@ describe('arm', function () {
           var provider = JSON.parse(result.text);
           provider.namespace.should.match(/^Microsoft.AppService$/ig);
           provider.registrationState.should.match(/.*unregister.*/ig);
-          suite.execute('resource create -g mytesttag1 -l \'%s\' Microsoft.AppService/apiapps 2015-03-01-preview -n myapiapp -p  ', function (result){
-            done();
-          })
+          done();
         });
       });
     });

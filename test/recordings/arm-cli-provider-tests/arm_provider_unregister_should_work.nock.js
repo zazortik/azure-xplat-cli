@@ -13,8 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights', 'Microsoft.AppService'],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,18 +25,53 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://management.azure.com:443')
+  .post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService/unregister?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistering\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': '3a6d1a25-836b-41ac-b985-4ae9539a9e31',
+  'x-ms-correlation-request-id': '3a6d1a25-836b-41ac-b985-4ae9539a9e31',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042307Z:3a6d1a25-836b-41ac-b985-4ae9539a9e31',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:07 GMT',
+  connection: 'close',
+  'content-length': '1251' });
+ return result; },
+function (nock) { 
+var result = 
 nock('https://management.azure.com:443')
   .post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService/unregister?api-version=2014-04-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistering\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'f903dc55-6fe4-44a3-a83f-59015218d2a1',
-  'x-ms-correlation-request-id': 'f903dc55-6fe4-44a3-a83f-59015218d2a1',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164538Z:f903dc55-6fe4-44a3-a83f-59015218d2a1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': '3a6d1a25-836b-41ac-b985-4ae9539a9e31',
+  'x-ms-correlation-request-id': '3a6d1a25-836b-41ac-b985-4ae9539a9e31',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042307Z:3a6d1a25-836b-41ac-b985-4ae9539a9e31',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:38 GMT',
+  date: 'Sun, 05 Apr 2015 04:23:07 GMT',
+  connection: 'close',
+  'content-length': '1251' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistering\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31993',
+  'x-ms-request-id': 'ee5c2674-05cd-4cba-87f8-7c83f775b7db',
+  'x-ms-correlation-request-id': 'ee5c2674-05cd-4cba-87f8-7c83f775b7db',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042308Z:ee5c2674-05cd-4cba-87f8-7c83f775b7db',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:08 GMT',
+  connection: 'close',
   'content-length': '1251' });
  return result; },
 function (nock) { 
@@ -48,11 +82,80 @@ nock('https://management.azure.com:443')
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31997',
-  'x-ms-request-id': '8a0923e3-e751-4a9c-9c92-d8efd8dc636c',
-  'x-ms-correlation-request-id': '8a0923e3-e751-4a9c-9c92-d8efd8dc636c',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164539Z:8a0923e3-e751-4a9c-9c92-d8efd8dc636c',
+  'x-ms-ratelimit-remaining-subscription-reads': '31993',
+  'x-ms-request-id': 'ee5c2674-05cd-4cba-87f8-7c83f775b7db',
+  'x-ms-correlation-request-id': 'ee5c2674-05cd-4cba-87f8-7c83f775b7db',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042308Z:ee5c2674-05cd-4cba-87f8-7c83f775b7db',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:38 GMT',
+  date: 'Sun, 05 Apr 2015 04:23:08 GMT',
+  connection: 'close',
   'content-length': '1251' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31992',
+  'x-ms-request-id': 'a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'x-ms-correlation-request-id': 'a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042319Z:a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:18 GMT',
+  connection: 'close',
+  'content-length': '1250' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31992',
+  'x-ms-request-id': 'a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'x-ms-correlation-request-id': 'a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042319Z:a276c954-dbb4-405b-8fbf-64c80e39ab47',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:18 GMT',
+  connection: 'close',
+  'content-length': '1250' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31995',
+  'x-ms-request-id': 'a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'x-ms-correlation-request-id': 'a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042320Z:a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:20 GMT',
+  connection: 'close',
+  'content-length': '1250' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Unregistered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '31995',
+  'x-ms-request-id': 'a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'x-ms-correlation-request-id': 'a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'x-ms-routing-request-id': 'EASTUS:20150405T042320Z:a5ca89c1-e23f-4dc7-a883-af53e7ea835a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 05 Apr 2015 04:23:20 GMT',
+  connection: 'close',
+  'content-length': '1250' });
  return result; }]];
