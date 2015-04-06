@@ -121,7 +121,7 @@ _.extend(CLITest.prototype, {
   */
   getTestRecordingsFile: function() {
     this.testRecordingsFile = this.getRecordingsDirectory() + 
-      this.normalizeTestName(testLogger.getCurrentTest()) + ".nock.js";
+    this.normalizeTestName(testLogger.getCurrentTest()) + ".nock.js";
     return this.testRecordingsFile;
   },
 
