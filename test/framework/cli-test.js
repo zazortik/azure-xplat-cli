@@ -121,7 +121,7 @@ _.extend(CLITest.prototype, {
   */
   getTestRecordingsFile: function() {
     this.testRecordingsFile = this.getRecordingsDirectory() + 
-    this.normalizeTestName(testLogger.getCurrentTest()) + ".nock.js";
+    this.normalizeTestName(this.currentTest) + ".nock.js";
     return this.testRecordingsFile;
   },
 
@@ -262,8 +262,8 @@ _.extend(CLITest.prototype, {
   *
   * @param {function} callback  A hook to provide the steps to execute before the test starts execution
   */
-  setupTest: function (callback) {
-    this.currentTest += 1;
+  setupTest: function (currentTest, callback) {
+    this.currentTest = currentTest;
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
     nockHelper.nockHttp();

@@ -43,7 +43,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         location = process.env.AZURE_SITE_TEST_LOCATION;
         gitUsername = process.env.AZURE_GIT_USERNAME;
         done();

@@ -41,7 +41,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
+      suite.setupTest(this.currentTest.fullTitle(), function() {
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });

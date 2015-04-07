@@ -65,7 +65,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         storageLocation = process.env.AZURE_STORAGE_TEST_LOCATION;
         siteLocation = process.env.AZURE_SITE_TEST_LOCATION;
         done();

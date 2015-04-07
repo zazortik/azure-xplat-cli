@@ -176,7 +176,7 @@ allTests = function (backend) {
 
   // before every test
   beforeEach(function (done) {
-    suite.setupTest(done);
+    suite.setupTest(this.currentTest.fullTitle(), done);
   });
 
   // after every test

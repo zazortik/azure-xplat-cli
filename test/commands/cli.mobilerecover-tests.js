@@ -47,7 +47,7 @@ describe('cli', function () {
 
       beforeEach(function (done) {
         if (suite.isPlayback()) {
-          suite.setupTest(done);
+          suite.setupTest(this.currentTest.fullTitle(), done);
         } else {
           done();
         }

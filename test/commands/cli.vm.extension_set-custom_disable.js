@@ -59,7 +59,7 @@ describe('cli', function() {
       });
     });
     beforeEach(function(done) {
-      suite.setupTest(function() {
+      suite.setupTest(this.currentTest.fullTitle(), function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         vmName = suite.generateId(vmPrefix, createdVms);
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;

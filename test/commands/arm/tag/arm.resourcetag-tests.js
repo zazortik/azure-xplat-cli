@@ -51,7 +51,7 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
         testResourceLocation = process.env['AZURE_ARM_TEST_RESOURCE_LOCATION'];
         done();

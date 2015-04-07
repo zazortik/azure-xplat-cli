@@ -61,7 +61,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         location = process.env['AZURE_SITE_TEST_LOCATION'];
         githubUsername = process.env['AZURE_GITHUB_USERNAME'];
         githubPassword = process.env['AZURE_GITHUB_PASSWORD'];

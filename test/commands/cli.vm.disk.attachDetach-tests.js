@@ -49,7 +49,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
+      suite.setupTest(this.currentTest.fullTitle(), function() {
         vmName = suite.generateId(vmPrefix, createdVms);
         diskName = vmName + 'disk';
         location = process.env.AZURE_VM_TEST_LOCATION;

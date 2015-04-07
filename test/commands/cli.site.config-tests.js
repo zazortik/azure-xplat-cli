@@ -41,7 +41,7 @@ describe('cli', function(){
     });
 
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(this.currentTest.fullTitle(), done);
     });
 
     afterEach(function (done) {

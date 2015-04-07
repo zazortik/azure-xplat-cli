@@ -74,7 +74,7 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         if (!calledOnce) {
           calledOnce = true;
           setupADObjects(done);

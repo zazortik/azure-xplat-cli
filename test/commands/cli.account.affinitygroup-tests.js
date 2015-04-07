@@ -46,7 +46,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest( function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION;
         done();
       });

@@ -43,7 +43,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupTest(this.currentTest.fullTitle(), function () {
         location = process.env.AZURE_CLOUD_SERVICE_TEST_LOCATION;
         done();
       });
