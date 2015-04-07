@@ -20,6 +20,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var vmPrefix = 'ClitestVm';
 var testPrefix = 'cli.vm.capture-tests';
+var createdVms = [];
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -51,7 +52,7 @@ describe('cli', function() {
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+        vmName = suite.generateId(vmPrefix, createdVms);
         location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         certFile = process.env.SSHCERT;

@@ -18,9 +18,10 @@ var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 
 var suite;
-var vmPrefix = 'clitestvm';
+var vmPrefix = 'clitestVnetVm';
 var testPrefix = 'cli.vm.create_loc_vnet_vm-tests';
-
+var createdVms = [];
+var createdVnets = [];
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -52,14 +53,23 @@ describe('cli', function() {
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      suite.teardownSuite(function (){
+        if(!suite.isPlayback()) {
+          createdVnets.forEach(function (item) {
+            suite.execute('network vnet delete %s -q --json', item, function (result) {
+              result.exitStatus.should.equal(0);
+            });
+          });
+        }
+        done();
+      });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmVnetName = suite.isMocked ? 'xplattestvmVnet' : suite.generateId(vmPrefix, null) + 'Vnet';
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        vmVnetName = suite.generateId(vmPrefix, createdVms);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -180,6 +190,7 @@ describe('cli', function() {
 
           if (!found) {
             getAffinityGroup(location, function(affinGrpName) {
+              vnetName = suite.generateId('testvnet', createdVnets);
               cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);

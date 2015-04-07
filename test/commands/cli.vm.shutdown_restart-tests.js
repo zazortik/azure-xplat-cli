@@ -21,6 +21,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var vmPrefix = 'clitestvm';
 var testPrefix = 'cli.vm.shutdown_restart-tests';
+var createdVms = [];
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -37,8 +38,10 @@ describe('cli', function() {
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
       suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-      vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        done();
+      });
     });
 
     after(function(done) {
@@ -50,7 +53,7 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -60,7 +63,7 @@ describe('cli', function() {
     });
 
     describe('Vm:', function() {
-      it('Shutdown and start', function(done) {
+      it('Shutdown and start should work', function(done) {
         createVM(function() {
           var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -77,7 +80,7 @@ describe('cli', function() {
       });
 
       // VM Restart
-      it('Restart', function(done) {
+      it('Restart should work', function(done) {
         cmd = util.format('vm restart  %s --json', vmName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);

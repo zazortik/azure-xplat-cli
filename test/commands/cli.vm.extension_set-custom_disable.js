@@ -19,6 +19,7 @@ var CLITest = require('../framework/cli-test');
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
 var testPrefix = 'cli.vm.extension_set-custom_disable';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -43,7 +44,7 @@ describe('cli', function() {
     });
     after(function(done) {
       function deleteUsedVM(callback) {
-        if (!suite.isMocked) {
+        if (!suite.isPlayback()) {
           setTimeout(function() {
             var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -60,8 +61,8 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        vmName = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        vmName = suite.generateId(vmPrefix, createdVms);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -72,7 +73,7 @@ describe('cli', function() {
     });
     //Set custom extensions
     describe('extension:', function() {
-      it('Set custom extensions and disable', function(done) {
+      it('should set custom extensions and disable', function(done) {
         createVM(function() {
           var cmd = util.format('vm extension set -c %s %s %s %s %s --json', customScript, vmName, customextension, custompublisher, customversion).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {

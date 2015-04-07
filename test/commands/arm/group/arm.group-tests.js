@@ -58,7 +58,7 @@ describe('arm', function () {
       suite.setupTest(function () {
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-        testUtil.getTemplateInfo(suite, 'Microsoft.ASPNETStarterSite', function(error, templateInfo) {
+        testUtil.getTemplateInfoByName(suite, 'Microsoft.ASPNETStarterSite.0.2.2-preview', function(error, templateInfo) {
           if (error) {
             return done(new Error('Could not get template info: ' + error));
           }
@@ -294,7 +294,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           counter = counter + 1;
           if (result.text === '' && counter <= 3) {
-            setTimeout(function () { poll(counter, done); }, 20000);
+            setTimeout(function () { poll(counter, done); }, suite.isPlayback() ? 0 : 20000);
           } else if (result.text === '' && counter >= 3) {
             throw new Error("group log show command is taking forever, bail out!!");
           } else {
