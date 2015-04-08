@@ -14,6 +14,7 @@ commands/cli.account.affinitygroup-tests.js
 #commands/cli.mobile-tests.js
 commands/cli.mobile.domain-tests.js
 commands/cli.mobilerecover-tests.js
+commands/cli.mobile.migration-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
 commands/cli.site.deployment-tests.js
