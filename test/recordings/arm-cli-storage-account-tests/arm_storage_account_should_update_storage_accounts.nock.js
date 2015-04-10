@@ -12,8 +12,12 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'Azure Storage DM Dev',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
     registeredProviders: [],
-    registeredResourceNamespaces: [],
+    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,9 +25,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
-  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
-  process.env['AZURE_SITE_TEST_LOCATION'] = 'West Europe';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'GRS';
+  process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
 };
 
 exports.scopes = [[]];

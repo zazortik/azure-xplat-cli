@@ -34,8 +34,9 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'West Europe' }
 ];
 
-var suite;
 var testPrefix = 'cli.storage.account-tests';
+var suite = new CLITest(testPrefix, requiredEnvironment);
+var liveOnly = suite.isMocked ? it.skip : it;
 
 describe('cli', function () {
   describe('storage account', function () {
@@ -45,8 +46,6 @@ describe('cli', function () {
     var primaryKey;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
@@ -144,7 +143,7 @@ describe('cli', function () {
       });
     });
 
-    it('should renew storage keys', function(done) {
+    liveOnly('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
         storageAccountKeys.primaryKey.should.not.be.null;
@@ -162,7 +161,7 @@ describe('cli', function () {
       });
     });
     
-    it('should show connecting string', function(done) {
+    liveOnly('should show connecting string', function(done) {
       suite.execute('storage account connectionstring show %s --json', storageName, function(result) {
         var connectionString = JSON.parse(result.text);
         var desiredConnectionString = 'DefaultEndpointsProtocol=https;AccountName=' + storageName + ';AccountKey=' + primaryKey;
@@ -172,7 +171,7 @@ describe('cli', function () {
       });
     });
     
-    it('should show connecting string with endpoints', function (done) {
+    liveOnly('should show connecting string with endpoints', function (done) {
       suite.execute('storage account connectionstring show --use-http --blob-endpoint myBlob.ep --queue-endpoint 10.0.0.10 --table-endpoint mytable.core.windows.net %s --json', storageName, function(result) {
         var connectionString = JSON.parse(result.text);
         var desiredConnectionString = 'DefaultEndpointsProtocol=http;BlobEndpoint=myBlob.ep;QueueEndpoint=10.0.0.10;TableEndpoint=mytable.core.windows.net;AccountName='+ storageName + ';AccountKey=' + primaryKey;
