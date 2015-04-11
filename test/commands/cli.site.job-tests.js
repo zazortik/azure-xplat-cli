@@ -163,8 +163,8 @@ describe('cli', function () {
       var siteName;
 
       beforeEach(function (done) {
-        siteName = suite.generateId(createdSitesPrefix, createdSites);
         suite.setupTest(function () {
+          siteName = suite.generateId(createdSitesPrefix, createdSites);
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
 
@@ -223,7 +223,7 @@ describe('cli', function () {
 
             var jobs = JSON.parse(result.text);
             if (jobs[0].status === 'Initializing') {
-              setTimeout(waitForJobReady.bind(null, callback), 5000);
+              setTimeout(waitForJobReady.bind(null, callback), suite.isPlayback() ? 0 : 5000);
             } else {
               callback(jobs);
             }
@@ -261,8 +261,8 @@ describe('cli', function () {
     describe('list, show and delete a triggered web job for a site', function () {
       var siteName;
       beforeEach(function (done) {
-        siteName = suite.generateId(createdSitesPrefix, createdSites);
         suite.setupTest(function () {
+          siteName = suite.generateId(createdSitesPrefix, createdSites);
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
 

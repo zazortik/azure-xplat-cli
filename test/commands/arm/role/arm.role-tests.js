@@ -36,7 +36,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD'},
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupRandom3' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9365' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9234' },
 ];
 
 describe('arm', function () {

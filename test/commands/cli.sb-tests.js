@@ -70,7 +70,7 @@ describe('cli', function () {
             console.log('delete failed, waiting to retry');
             setTimeout(function () {
               deleteNamespaces(namespaces, callback);
-            }, 5000);
+            }, suite.isPlayback() ? 0 : 5000);
           } else {
             deleteNamespaces(namespaces.slice(1), callback);
           }
