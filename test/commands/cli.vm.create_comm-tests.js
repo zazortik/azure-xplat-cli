@@ -21,6 +21,7 @@ var CLITest = require('../framework/cli-test');
 
 var suite;
 var vmPrefix = 'clitestvm';
+var createdVms = [];
 var testPrefix = 'cli.vm.create_comm-tests';
 
 var requiredEnvironment = [{
@@ -71,8 +72,8 @@ describe('cli', function() {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
-        customVmName = suite.isMocked ? 'xplattestcommvm' : suite.generateId(vmPrefix, null);
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
+        customVmName = suite.generateId(vmPrefix, createdVms);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
         done();
       });

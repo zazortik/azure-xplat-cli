@@ -121,7 +121,7 @@ describe('cli', function () {
       });
     });
 
-    it('cert add ' + certPath + ' ' + certKey, function(done) {
+    it('cert add mobiledomaincert.pfx' + certKey, function(done) {
       suite.execute('mobile cert add %s %s %s --json ', serviceName, certPath, certKey, function (result) {
         result.exitStatus.should.equal(0);
 

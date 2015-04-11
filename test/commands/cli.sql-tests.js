@@ -305,7 +305,7 @@ describe('cli', function () {
             // let firewall rule create
             setTimeout(function () {
               done();
-            }, (suite.isMocked && !suite.isRecording) ? 0 : 5000);
+            }, suite.isPlayback() ? 0 : 5000);
           });
         });
       });

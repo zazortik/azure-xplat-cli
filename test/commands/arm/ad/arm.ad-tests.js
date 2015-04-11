@@ -17,6 +17,7 @@
 
 var should = require('should');
 var graphUtil = require('../../../util/graphUtils');
+var testLogger = require('../../../framework/test-logger');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-tests';
 var util = require('util');
@@ -28,7 +29,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'Randomtestgroup2' },
   { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'RandomtestUser1@rbactest.onmicrosoft.com' },
   { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'RandomtestUser2@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9099' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9045' },
 ];
 
 describe('arm', function () {
@@ -86,29 +87,61 @@ describe('arm', function () {
     
     function performTestSetup (done) {
       graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, result) {
-        if (err) { return cleanupCreatedAdObjects(err, done); }
+        if (err) { 
+          testLogger.logData("create group1 " + process.env.AZURE_AD_TEST_GROUP_NAME + " error : ");
+          testLogger.logData(err);
+          return cleanupCreatedAdObjects(err, done);
+        }
         testGroups.push(result);
         graphUtil.createGroup(process.env.AZURE_AD_TEST_SUBGROUP_NAME, function (err, result) {
-          if (err) { return cleanupCreatedAdObjects(err, done); }
+          if (err) { 
+            testLogger.logData("create group2 " + process.env.AZURE_AD_TEST_SUBGROUP_NAME + " error : ");
+            testLogger.logData(err);
+            return cleanupCreatedAdObjects(err, done); 
+          }
           testGroups.push(result);
           graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME, process.env.AZURE_AD_TEST_PASSWORD, function (err, result) {
-            if (err) { return cleanupCreatedAdObjects(err, done); }
+            if (err) { 
+              testLogger.logData("create user1 " + process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME + " error : ");
+              testLogger.logData(err); 
+              return cleanupCreatedAdObjects(err, done);
+            }
             testUsers.push(result);
             graphUtil.createUser(process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2, process.env.AZURE_AD_TEST_PASSWORD, function (err, result) { 
-              if (err) { return cleanupCreatedAdObjects(err, done); }
+              if (err) {
+                testLogger.logData("create user2 " + process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2 + " error : ");
+                testLogger.logData(err);
+                return cleanupCreatedAdObjects(err, done);
+              }
               //(testUser1 must be a member of testGroup1, but not of testGroup2)
               testUsers.push(result);
               graphUtil.addGroupMember(testGroups[0], testUsers[0], function (err, result) { 
-                if (err) { return cleanupCreatedAdObjects(err, done); }
+                if (err) { 
+                  testLogger.logData("add user1 to group1 error : ");
+                  testLogger.logData(err); 
+                  return cleanupCreatedAdObjects(err, done); 
+                }
                 //(testgroup2 must be a member of testgroup1)
                 graphUtil.addGroupMember(testGroups[0], testGroups[1], function (err, result) {
-                  if (err) { return cleanupCreatedAdObjects(err, done); }
+                  if (err) { 
+                    testLogger.logData("add user2 to group2 error : ");
+                    testLogger.logData(err);
+                    return cleanupCreatedAdObjects(err, done); 
+                  }
                   graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, result) {
-                    if (err) { return cleanupCreatedAdObjects(err, done); }
+                    if (err) { 
+                      testLogger.logData("create sp " + process.env.AZURE_AD_TEST_SP_DISPLAY_NAME + "error : ");
+                      testLogger.logData(err);
+                      return cleanupCreatedAdObjects(err, done);
+                    }
                     testSPs.push(result);
-                    //servicePrincipal mytestapp9099 must be a member of testgroup1
+                    //servicePrincipal mytestapp9045 must be a member of testgroup1
                     graphUtil.addGroupMember(testGroups[0], testSPs[0], function (err, result) {
-                      if (err) { return cleanupCreatedAdObjects(err, done); }
+                      if (err) { 
+                        testLogger.logData("add sp to group1 error : ");
+                        testLogger.logData(err);
+                        return cleanupCreatedAdObjects(err, done);
+                      }
                       done();
                     });
                   });
