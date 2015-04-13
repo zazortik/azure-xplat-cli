@@ -26,32 +26,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode7872/authsettings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode7762/authsettings')
   .reply(200, "[{\"packageSid\":\"123456789\",\"provider\":\"microsoft\",\"appId\":\"1234\",\"secret\":\"5678\"}]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '82',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
+  server: '1.0.6198.216 (rd_rdfe_stable.150408-1309) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'cc9ec4bd61ec81ffb9d29dc45390a71a',
-  date: 'Wed, 08 Apr 2015 21:47:07 GMT' });
+  'x-ms-request-id': 'cc9e929418e1921685b273c4d02c9aae',
+  date: 'Mon, 13 Apr 2015 23:08:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode7872/authsettings', '*')
+.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode7762/authsettings', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
+  server: '1.0.6198.216 (rd_rdfe_stable.150408-1309) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'a640afb5ae878cdc9bc28b126c3427db',
-  date: 'Wed, 08 Apr 2015 21:47:08 GMT' });
+  'x-ms-request-id': '0fe9cc27782094a8a909b66bb717a50b',
+  date: 'Mon, 13 Apr 2015 23:08:10 GMT' });
  return result; }]];

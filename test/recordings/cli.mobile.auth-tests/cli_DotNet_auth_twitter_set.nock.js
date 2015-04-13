@@ -26,32 +26,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4318/authsettings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet1969/authsettings')
   .reply(200, "[{\"packageSid\":\"123456789\",\"provider\":\"microsoft\",\"appId\":\"1234\",\"secret\":\"5678\"}]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '82',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.216 (rd_rdfe_stable.150408-1309) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'e953678da4068d689c1a5abc6044e1cf',
-  date: 'Wed, 08 Apr 2015 21:48:59 GMT' });
+  'x-ms-request-id': '6dc495fcaf319c2cbd897384df370e18',
+  date: 'Mon, 13 Apr 2015 23:09:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4318/authsettings', '*')
+.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet1969/authsettings', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.216 (rd_rdfe_stable.150408-1309) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '6583181df1b08a36b9f5fbb2da18f29a',
-  date: 'Wed, 08 Apr 2015 21:49:01 GMT' });
+  'x-ms-request-id': 'bb5b2073e60d94818dc877993bc3c4b2',
+  date: 'Mon, 13 Apr 2015 23:10:00 GMT' });
  return result; }]];

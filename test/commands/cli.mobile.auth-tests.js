@@ -258,8 +258,8 @@ function testAuth(service) {
     });
   });
 
-  it('auth aad tenant remove', function (done) {
-    suite.execute('mobile auth aad tenant remove %s tenant.com --json', servicename, function (result) {
+  it('auth aad tenant delete', function (done) {
+    suite.execute('mobile auth aad tenant delete %s tenant.com --json', servicename, function (result) {
       result.exitStatus.should.equal(0);
       result.text.should.equal('');
       done();
