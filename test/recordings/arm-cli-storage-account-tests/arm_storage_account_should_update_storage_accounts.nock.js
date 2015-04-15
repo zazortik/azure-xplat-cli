@@ -7,17 +7,14 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
     name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
-    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights'],
+    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,8 +23,42 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_STORAGE_TEST_TYPE'] = 'GRS';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
 };
 
-exports.scopes = [[]];
+exports.scopes = [[function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.patch('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6123/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8037?api-version=2014-12-01-preview', '*')
+  .reply(200, "{\"properties\":{\"accountType\":\"Standard_RAGRS\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '47',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '97ef1986-5039-4844-968e-28867aebafba',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-correlation-request-id': '2b732ed1-2137-4ced-b19f-e5e7b448e1cf',
+  'x-ms-routing-request-id': 'JAPANEAST:20150415T035233Z:2b732ed1-2137-4ced-b19f-e5e7b448e1cf',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Wed, 15 Apr 2015 03:52:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6123/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8037?api-version=2014-12-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6123/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8037\",\"name\":\"armclistorageaccount8037\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"accountType\":\"Standard_RAGRS\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount8037.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount8037.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount8037.table.core.windows.net/\"},\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount8037-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount8037-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount8037-secondary.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"secondaryLocation\":\"East US\",\"statusOfSecondary\":\"Available\",\"creationTime\":\"2015-04-15T03:51:55.4092950Z\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '983',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '28ebe331-32fb-4785-9c23-95866dc72c69',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31989',
+  'x-ms-correlation-request-id': '11e6b949-439c-4fc1-b478-427f02654df0',
+  'x-ms-routing-request-id': 'JAPANEAST:20150415T035234Z:11e6b949-439c-4fc1-b478-427f02654df0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Wed, 15 Apr 2015 03:52:33 GMT' });
+ return result; }]];

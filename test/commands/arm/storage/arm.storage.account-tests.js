@@ -28,13 +28,14 @@ var resourceGroupLocation;
 
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_STORAGE_TEST_TYPE', defaultValue: 'GRS' },
+  { name: 'AZURE_STORAGE_TEST_TYPE', defaultValue: 'LRS' },
   { name: 'AZURE_RESOURCE_GROUP_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
 var testPrefix = 'arm-cli-storage-account-tests';
 var suite = new CLITest(testPrefix, requiredEnvironment);
 var liveOnly = suite.isMocked ? it.skip : it;
+var timeBeforeSetAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
 
 describe('arm', function () {
   describe('storage account', function () {
@@ -93,17 +94,6 @@ describe('arm', function () {
       });
     });
 
-    it('should list storage accounts within the resource group', function(done) {
-      suite.execute('storage account list --resource-group %s --json', resrouceGroupName, function (result) {
-        var storageAccounts = JSON.parse(result.text);
-        storageAccounts.some(function (account) {
-          return account.name === storageName;
-        }).should.be.true;
-
-        done();
-      });
-    })
-
     it('should list storage accounts within the subscription', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
       resrouceGroupName = suite.generateId(storageNamesPrefix, createdResourceGroups);
@@ -128,18 +118,32 @@ describe('arm', function () {
       });
     });
 
-    it.skip('should update storage accounts', function(done) {
-      suite.execute('storage account set %s --resource-group %s --type RAGRS --json', storageName, resrouceGroupName, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
+    it('should list storage accounts within the resource group', function(done) {
+      suite.execute('storage account list --resource-group %s --json', resrouceGroupName, function (result) {
+        var storageAccounts = JSON.parse(result.text);
+        storageAccounts.some(function (account) {
+          return account.name === storageName;
+        }).should.be.true;
 
-        suite.execute('storage account show %s --resource-group %s --json', storageName, resrouceGroupName, function (result) {
-          var storageAccount = JSON.parse(result.text);
-          storageAccount.accountType.should.equal('Standard_RAGRS');
-
-          done();
-        });
+        done();
       });
+    })
+
+    // Wait for the created account becoming available to change
+    it('should update storage accounts', function(done) {
+      setTimeout(function () {
+        suite.execute('storage account set %s --resource-group %s --type RAGRS --json', storageName, resrouceGroupName, function (result) {
+          result.text.should.equal('');
+          result.exitStatus.should.equal(0);
+
+          suite.execute('storage account show %s --resource-group %s --json', storageName, resrouceGroupName, function (result) {
+            var storageAccount = JSON.parse(result.text);
+            storageAccount.accountType.should.equal('Standard_RAGRS');
+
+            done();
+          });
+        });
+      }, timeBeforeSetAvailable);
     });
 
     liveOnly('should renew storage keys', function(done) {

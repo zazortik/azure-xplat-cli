@@ -52,7 +52,6 @@
     "commander": "1.0.4",
     "easy-table": "0.0.1",
     "event-stream": "3.1.5",
-    "extend": "~1.2.1",
     "eyes": "0.x.x",
     "github": "0.1.6",
     "kuduscript": "0.2.2",

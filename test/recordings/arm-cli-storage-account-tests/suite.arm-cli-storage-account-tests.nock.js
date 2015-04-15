@@ -7,17 +7,14 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
     name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
-    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights'],
+    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,7 +23,7 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_STORAGE_TEST_TYPE'] = 'GRS';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
 };
 
