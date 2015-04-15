@@ -34,7 +34,7 @@ describe('arm', function () {
     var suite;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
+      suite = new CLITest(this, testprefix);
       suite.setupSuite(done);
     });
 
@@ -43,7 +43,7 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {

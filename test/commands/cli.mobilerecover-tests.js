@@ -29,7 +29,7 @@ describe('cli', function () {
     describe('recover', function () {
 
       before(function (done) {
-        suite = new CLITest(testPrefix, requiredEnvironment);
+        suite = new CLITest(this, testPrefix, requiredEnvironment);
         if (suite.isPlayback()) {
           suite.setupSuite(done);
         } else {
@@ -47,7 +47,7 @@ describe('cli', function () {
 
       beforeEach(function (done) {
         if (suite.isPlayback()) {
-          suite.setupTest(this.currentTest.fullTitle(), done);
+          suite.setupTest(done);
         } else {
           done();
         }

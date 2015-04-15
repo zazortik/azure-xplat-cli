@@ -32,7 +32,7 @@ describe('cli', function(){
   describe('config', function() {
 
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(this, testPrefix);
       suite.setupSuite(done);
     });
 
@@ -41,7 +41,7 @@ describe('cli', function(){
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {

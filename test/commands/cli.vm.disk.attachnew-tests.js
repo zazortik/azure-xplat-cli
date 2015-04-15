@@ -39,7 +39,7 @@ describe('cli', function() {
     testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -50,7 +50,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(this.currentTest.fullTitle(), function() {
+      suite.setupTest(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
         location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;

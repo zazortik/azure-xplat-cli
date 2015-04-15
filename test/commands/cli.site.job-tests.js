@@ -46,7 +46,7 @@ function deleteSite(siteName, callback) {
 describe('cli', function () {
   describe('job', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironmentVariables);
+      suite = new CLITest(this, testPrefix, requiredEnvironmentVariables);
       suite.setupSuite(done);
     });
 
@@ -56,7 +56,7 @@ describe('cli', function () {
 
     describe('upload', function () {
       beforeEach(function (done) {
-        suite.setupTest(this.currentTest.fullTitle(), done);
+        suite.setupTest(done);
       });
 
       afterEach(function (done) {
@@ -125,7 +125,7 @@ describe('cli', function () {
 
     describe('site slot', function () {
       beforeEach(function (done) {
-        suite.setupTest(this.currentTest.fullTitle(), done);
+        suite.setupTest(done);
       });
 
       afterEach(function (done) {
@@ -163,7 +163,7 @@ describe('cli', function () {
       var siteName;
 
       beforeEach(function (done) {
-        suite.setupTest(this.currentTest.fullTitle(), function () {
+        suite.setupTest(function () {
           siteName = suite.generateId(createdSitesPrefix, createdSites);
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);
@@ -261,7 +261,7 @@ describe('cli', function () {
     describe('list, show and delete a triggered web job for a site', function () {
       var siteName;
       beforeEach(function (done) {
-        suite.setupTest(this.currentTest.fullTitle(), function () {
+        suite.setupTest(function () {
           siteName = suite.generateId(createdSitesPrefix, createdSites);
           suite.execute('site create %s --git --gitusername %s --json --location %s', siteName, gitUsername(), location(), function (result) {
             result.exitStatus.should.equal(0);

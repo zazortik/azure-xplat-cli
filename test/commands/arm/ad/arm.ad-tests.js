@@ -60,7 +60,7 @@ describe('arm', function () {
     }
 
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(done);
     });
     
@@ -71,7 +71,7 @@ describe('arm', function () {
     });
     
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         if (!calledOnce) {
           calledOnce = true;
           performTestSetup(done);

@@ -53,6 +53,7 @@ exports = module.exports = CLITest;
  *                                suite will always run mocked True - Always mocked.
  */
 function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
+  //mochaSuiteObject could be 'null' when a suite doesn't have recording for playback.
   this.mochaSuiteObject = mochaSuiteObject;
   if (!Array.isArray(env)) {
     forceMocked = env;
@@ -263,6 +264,7 @@ _.extend(CLITest.prototype, {
   * @param {function} callback  A hook to provide the steps to execute before the test starts execution
   */
   setupTest: function (callback) {
+    console.log('AAAA' + this.mochaSuiteObject);
     this.currentTest = this.mochaSuiteObject.currentTest.fullTitle();
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;

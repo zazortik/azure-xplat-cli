@@ -40,7 +40,7 @@ describe('cli', function(){
   describe('site connectionstring', function() {
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -49,7 +49,7 @@ describe('cli', function(){
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         location = process.env.AZURE_SITE_TEST_LOCATION;
         done();
       });

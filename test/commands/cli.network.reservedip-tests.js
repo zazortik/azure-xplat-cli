@@ -26,14 +26,14 @@ describe('cli', function() {
     var ripname = 'clitestrip',
       location, ripcreated = false;
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
     after(function(done) {
       suite.teardownSuite(done);
     });
     beforeEach(function(done) {
-      suite.setupTest(this.currentTest.fullTitle(), function() {
+      suite.setupTest(function() {
         location = process.env['AZURE_SITE_TEST_LOCATION'];
         done();
       });

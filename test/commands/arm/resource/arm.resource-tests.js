@@ -43,7 +43,7 @@ describe('arm', function () {
     var testWebsitesResourceLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -52,7 +52,7 @@ describe('arm', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
         testSqlResourceLocation = process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'];
         testWebsitesResourceLocation = process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION'];

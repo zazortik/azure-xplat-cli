@@ -43,7 +43,7 @@ describe('cli', function () {
     var primaryKey;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
 
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
@@ -65,7 +65,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         storageLocation = process.env.AZURE_STORAGE_TEST_LOCATION;
         siteLocation = process.env.AZURE_SITE_TEST_LOCATION;
         done();

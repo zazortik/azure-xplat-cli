@@ -42,7 +42,7 @@ describe('cli', function () {
   describe('storage', function () {
     
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.skipSubscription = true;
       
       if (suite.isMocked) {
@@ -57,7 +57,7 @@ describe('cli', function () {
     });
     
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), done);
+      suite.setupTest(done);
     });
     
     afterEach(function (done) {

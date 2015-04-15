@@ -34,12 +34,12 @@ describe('cli', function() {
       vmNegName, retry = 5;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
     beforeEach(function(done) {
-      suite.setupTest(this.currentTest.fullTitle(), function() {
+      suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         vmNegName = suite.generateId(vmPrefix, createdVms);
         done();

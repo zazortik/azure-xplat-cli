@@ -44,7 +44,7 @@ describe('cli', function () {
     var createdSites = [];
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -53,7 +53,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         gitUsername = process.env.AZURE_GIT_USERNAME;
         location = process.env.AZURE_SITE_TEST_LOCATION;
         storageAccountName = process.env.AZURE_STORAGE_ACCOUNT;

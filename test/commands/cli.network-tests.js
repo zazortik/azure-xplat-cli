@@ -35,7 +35,7 @@ describe('cli', function() {
     var dnsId = 'dns-cli-1';
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -44,7 +44,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(this.currentTest.fullTitle(), function() {
+      suite.setupTest(function() {
         testSite = process.env['AZURE_SITE_TEST_LOCATION'];
         done();
       });

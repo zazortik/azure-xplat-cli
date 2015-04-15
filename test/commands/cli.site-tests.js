@@ -52,7 +52,7 @@ var scmSite = process.env.AZURE_SCM_SITE_SUFFIX || '.scm.azurewebsites.net';
 describe('cli', function () {
   describe('site', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -61,7 +61,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), function () {
+      suite.setupTest(function () {
         location = process.env['AZURE_SITE_TEST_LOCATION'];
         githubUsername = process.env['AZURE_GITHUB_USERNAME'];
         githubPassword = process.env['AZURE_GITHUB_PASSWORD'];

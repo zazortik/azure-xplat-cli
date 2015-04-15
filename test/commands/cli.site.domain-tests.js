@@ -32,7 +32,7 @@ var siteName = 'asdqweq';
 describe('cli', function () {
   describe('site domain', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, true);
+      suite = new CLITest(this, testPrefix, true);
       suite.setupSuite(done);
     });
 
@@ -41,7 +41,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest(this.currentTest.fullTitle(), done);
+      suite.setupTest(done);
     });
 
     afterEach(function (done) {

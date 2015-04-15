@@ -52,7 +52,7 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
@@ -69,7 +69,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(this.currentTest.fullTitle(), function() {
+      suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
         customVmName = suite.generateId(vmPrefix, createdVms);
