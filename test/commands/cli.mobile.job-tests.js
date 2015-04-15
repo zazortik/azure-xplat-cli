@@ -61,7 +61,7 @@ function jobTests(service) {
       response[0].status.should.equal('disabled');
       response[0].intervalUnit.should.equal('minute');
       response[0].intervalPeriod.should.equal(15);
-      setTimeout(done(), 90000);
+      mobileTest.setTimeout(done, 90000);
     });
   });
 

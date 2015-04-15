@@ -286,3 +286,7 @@ MobileTest.prototype.getMobileCreateArgs = function (service, func) {
 	args.push(func);
 	return args;
 };
+
+MobileTest.prototype.setTimeout = function (func, time) {
+	setTimeout(func, this.suite.isPlayback() ? 0 : time);
+};

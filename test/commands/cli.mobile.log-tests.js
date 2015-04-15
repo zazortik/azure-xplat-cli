@@ -72,7 +72,7 @@ function logTests(service) {
       failure.should.equal(0);
 
       //wait to ensure log entries updated
-      setTimeout(done, 5000);
+      mobileTest.setTimeout(done, 5000);
     });
   });
 

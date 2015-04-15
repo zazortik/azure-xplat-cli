@@ -77,7 +77,7 @@ function configTests(service) {
     };
 
     //push settings are not immediately available after mobile service creation for DotNet
-    setTimeout(test, 30000);
+    mobileTest.setTimeout(test, 30000);
   });
 
   // Facebook settings
