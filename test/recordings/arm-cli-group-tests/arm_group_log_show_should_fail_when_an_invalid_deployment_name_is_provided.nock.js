@@ -38,26 +38,26 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=ce2c149699c64500a6e2455c59e6cbab; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=66ab91e65c6b4d1d9cc127ba87af2ad1; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Tue, 14 Apr 2015 20:32:37 GMT',
+  date: 'Wed, 15 Apr 2015 20:01:29 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourcegroups/xDeploymentTestGroup1690/deployments/random_deployment_name?api-version=2014-04-01-preview')
+  .get('/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourcegroups/xDeploymentTestGroup9786/deployments/random_deployment_name?api-version=2014-04-01-preview')
   .reply(404, "{\"error\":{\"code\":\"DeploymentNotFound\",\"message\":\"Deployment 'random_deployment_name' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '31849',
-  'x-ms-request-id': '10fd9bcd-7f61-46e5-91be-151179cb9b50',
-  'x-ms-correlation-request-id': '10fd9bcd-7f61-46e5-91be-151179cb9b50',
-  'x-ms-routing-request-id': 'WESTUS:20150414T203237Z:10fd9bcd-7f61-46e5-91be-151179cb9b50',
+  'x-ms-ratelimit-remaining-subscription-reads': '31995',
+  'x-ms-request-id': '1ac8c15e-377b-4236-80c3-515d1c326ce1',
+  'x-ms-correlation-request-id': '1ac8c15e-377b-4236-80c3-515d1c326ce1',
+  'x-ms-routing-request-id': 'WESTUS:20150415T200129Z:1ac8c15e-377b-4236-80c3-515d1c326ce1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 14 Apr 2015 20:32:37 GMT',
+  date: 'Wed, 15 Apr 2015 20:01:29 GMT',
   'content-length': '107' });
  return result; }]];
