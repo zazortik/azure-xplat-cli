@@ -229,7 +229,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -r --json',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
             templateFile, groupName, deploymentName, parameterFile);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
