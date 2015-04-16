@@ -27,7 +27,7 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 var testPrefix = 'cli.account-tests';
-var suite = new CLITest(testPrefix);
+var suite = new CLITest(null, testPrefix);
 
 var testFile = './test/data/account-credentials.publishSettings';
 

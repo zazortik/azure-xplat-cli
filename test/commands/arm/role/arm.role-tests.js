@@ -48,7 +48,7 @@ describe('arm', function () {
     var TEST_ROLE_NAME = 'Owner';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function () {
         testResourceGroup = suite.generateId('testrg1', createdGroups);
         testSqlServer = suite.generateId('testserver1', createdResources);

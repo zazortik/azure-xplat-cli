@@ -52,14 +52,15 @@ exports = module.exports = CLITest;
  * @param {boolean} forceMocked - (Optional) A boolean value that specifies whether the 
  *                                suite will always run mocked True - Always mocked.
  */
-function CLITest(testPrefix, env, forceMocked) {
+function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
+  //mochaSuiteObject could be 'null' when a suite doesn't have recording for playback.
+  this.mochaSuiteObject = mochaSuiteObject;
   if (!Array.isArray(env)) {
     forceMocked = env;
     env = [];
   }
 
   this.testPrefix = this.normalizeTestName(testPrefix);
-  this.currentTest = 0;
   this.setRecordingsDirectory(__dirname + '/../recordings/' + this.testPrefix + '/');
   if (forceMocked) {
     this.isMocked = true;
@@ -121,7 +122,7 @@ _.extend(CLITest.prototype, {
   */
   getTestRecordingsFile: function() {
     this.testRecordingsFile = this.getRecordingsDirectory() + 
-    this.normalizeTestName(testLogger.getCurrentTest()) + ".nock.js";
+    this.normalizeTestName(this.currentTest) + ".nock.js";
     return this.testRecordingsFile;
   },
 
@@ -263,7 +264,7 @@ _.extend(CLITest.prototype, {
   * @param {function} callback  A hook to provide the steps to execute before the test starts execution
   */
   setupTest: function (callback) {
-    this.currentTest += 1;
+    this.currentTest = this.mochaSuiteObject.currentTest.fullTitle();
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
     nockHelper.nockHttp();

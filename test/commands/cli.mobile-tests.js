@@ -117,7 +117,7 @@ function getTimeStamp() {
 // Load profile and start recording
 nockStart = function () {
   before(function (done) {
-    suite = new CLITest(testPrefix, requiredEnvironment);
+    suite = new CLITest(this, testPrefix, requiredEnvironment);
     testLogFile = createLogFile();
 
     //wrapper function around suite.execute to capture result info
