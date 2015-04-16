@@ -11,3 +11,17 @@ commands/arm/role/arm.role-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
+commands/arm/vm/arm.vm-create-tests.js
+commands/arm/vm/arm.vm-stop-restart-tests.js
+commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
+commands/arm/network/arm.network.publicip-tests.js
+commands/arm/network/arm.network.nsg-tests.js
+commands/arm/network/arm.network.nsg-rule-tests.js
+commands/arm/network/arm.network.vnet-tests.js
+commands/arm/network/arm.network.subnet-tests.js
+commands/arm/network/arm.network.nic-tests.js
+commands/arm/network/arm.network.lb_inboundrule-tests.js
+commands/arm/network/arm.network.lb-tests.js
+commands/arm/network/arm.network.lb-probe-tests.js
+commands/arm/network/arm.network.lb-address-pool-tests.js
+commands/arm/network/arm.network.lb-rule-tests.js
