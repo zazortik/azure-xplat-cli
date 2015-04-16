@@ -1,3 +1,8 @@
+//To Release - Version 0.8.18
+* VM
+  * Chef Extension
+    * Implemented new option --bootstrap-options for set-chef extension commands
+
 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611
