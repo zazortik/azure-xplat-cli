@@ -169,7 +169,7 @@ MobileTest.prototype.runTests = function (tests) {
 	var self = this;
 	describe('cli', function () {
     before(function (done) {
-      self.suite = new CLITest(path.basename(self.testfile, '.js'), self.requiredEnvironments);
+      self.suite = new CLITest(this, path.basename(self.testfile, '.js'), self.requiredEnvironments);
       self.suite.setupSuite(function () {
       	if (self.suite.isPlayback()) {
       		utils.POLL_REQUEST_INTERVAL = 0;
