@@ -13,3 +13,4 @@ commands/arm/role/arm.role-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
+commands/arm/apiapp/lib/lib-tests.js

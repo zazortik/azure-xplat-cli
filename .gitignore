@@ -23,6 +23,7 @@ out/
 checkstyle-result.xml
 test-result.xml
 iisnode.yml
+*.nupkg
 
 # Mac OS #
 .DS_Store
