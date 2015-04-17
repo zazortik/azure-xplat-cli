@@ -17,10 +17,12 @@
 
 var should = require('should');
 var util = require('util');
+var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-subnet-tests';
 var vnetPrefix = 'xplatTestVnet';     
-var subnetprefix ='xplatTestSubnet';   
+var subnetprefix ='xplatTestSubnet'; 
+var AddPrefix ='10.0.0.0/24';  
 var createdVnets=[],createdGroups=[],createdSubnets = [];
 var groupName,location,
 	groupPrefix = 'xplatTestGCreateSubnet';
@@ -28,12 +30,12 @@ var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'eastus'
 }];
-
-	
+var nsgID,nsgName;	
 
 describe('arm', function () {
 	describe('network vnet', function () {
-	var suite;
+	var suite,
+		retry = 5;
 
 		before(function (done) {
 			suite = new CLITest(testprefix, requiredEnvironment);
@@ -64,17 +66,21 @@ describe('arm', function () {
 			it('create', function (done) {
 				createGroup(function(){
 					createVnet(function(){
-						var cmd = util.format('network vnet subnet create %s %s %s ',groupName,vnetPrefix,subnetprefix ).split(' ');
-						suite.execute(cmd,  function (result) {
-						result.exitStatus.should.equal(0);
-						done();
+						createNSG(function(){
+							showNSG(function(){
+								var cmd = util.format('network vnet subnet create %s %s %s -a %s -w %s -o %s',groupName, vnetPrefix, subnetprefix,AddPrefix,nsgID,nsgName).split(' ');
+								testUtils.executeCommand(suite, retry, cmd, function (result) {
+								result.exitStatus.should.equal(0);
+								done();
+								});
+							});
 						});
-					
 					});
 				});
 			}); 
 			it('list', function (done) {
-				suite.execute('network vnet subnet list %s %s --json',groupName,vnetPrefix ,function (result) {
+				var cmd = util.format('network vnet subnet list %s %s --json',groupName, vnetPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allResources = JSON.parse(result.text);
 					allResources.some(function (res) {
@@ -84,13 +90,15 @@ describe('arm', function () {
 				});					
 			});
 			it('set', function (done) {
-				suite.execute('network vnet subnet set -a 10.0.1.0/24 %s %s %s --json', groupName, vnetPrefix,subnetprefix, function (result) {
+				var cmd = util.format('network vnet subnet set -a 10.0.1.0/24 %s %s %s -w %s -o %s --json', groupName, vnetPrefix, subnetprefix,nsgID,'NoSuchNSGExist').split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
 			it('show', function (done) {
-				suite.execute('network vnet subnet show %s %s %s --json ',groupName,vnetPrefix,subnetprefix,function (result) {
+				var cmd = util.format('network vnet subnet show %s %s %s --json ',groupName, vnetPrefix, subnetprefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allresources = JSON.parse(result.text);
 					allresources.name.should.equal(subnetprefix) ;
@@ -98,7 +106,8 @@ describe('arm', function () {
 				});
 			});
 			it('delete', function (done) {
-				suite.execute('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix,subnetprefix,function (result) {
+				var cmd = util.format('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix, subnetprefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
@@ -107,21 +116,61 @@ describe('arm', function () {
 		});
 	
 		function createGroup(callback) {
-			suite.execute('group create %s --location %s --json', groupName, location, function (result) {
+			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+				callback();
+			});
+		}
+		function deleteUsedGroup(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					callback();
+				});
+			}
+			else
+				callback();
+		} 
+		function createNSG(callback) {
+			var cmd = util.format('network nsg create %s %s %s --json', groupName, nsgName, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
 			    result.exitStatus.should.equal(0);
 			    callback();
 			});
-		}  
+		}
+		function showNSG(callback) {
+			var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0); 
+				var allResources = JSON.parse(result.text);
+				nsgID = allResources.id;
+				callback();
+			});	
+		}	
+		function deleteNSG(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network nsg delete %s %s %s --quiet', groupName, nsgName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+				    result.exitStatus.should.equal(0);
+				    callback();
+				});
+			}
+			else
+				callback();
+		}
 		function createVnet(callback) {
 			var cmd = util.format('network vnet create %s %s %s ',groupName,vnetPrefix,location).split(' ');
-			suite.execute(cmd, function (result) {
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);
 			    callback();
 			});      
 		} 
 		function deleteVnet(callback) {
 			if (!suite.isPlayback()) {
-				suite.execute('network vnet delete %s %s --quiet', groupName, vnetPrefix, function (result) {
+				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    callback();
 				});
@@ -129,16 +178,6 @@ describe('arm', function () {
 			else
 				callback();
 		} 
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				suite.execute('group delete %s --quiet', groupName, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}   
 	
     });
 });

@@ -16,13 +16,14 @@
 'use strict';
 
 var should = require('should');
-
+var util = require('util');
+var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-publicip-tests';
 var groupPrefix = 'xplatTestGCreate';
 var dnsPrefix = 'dnstestpubip';
 var dnsPrefix1 = 'dnstestpubip1';
-var groupName, dnsName, dnsName1, location, reversefqdn;
+var groupName, dnsName, dnsName1, location, reversefqdn, reversefqdn1;
 var allocationMethod = 'Static';
 var idleTimeout = '4';
 var tags = 'tag1=testValue1';
@@ -33,7 +34,8 @@ var tags = 'tag1=testValue1';
 
 describe('arm', function () {
     describe('network', function () {
-    var suite;
+    var suite, 
+		retry = 5;
 	var publicipName = 'armpublicip';
 	var publicipNameNew = 'armpublicipnew';
 	
@@ -65,7 +67,8 @@ describe('arm', function () {
 		
 			it('create', function (done) {
 				createGroup(function(){
-					suite.execute('network public-ip create -g %s -n %s -d %s -l %s -a %s -i %s -t %s --json', groupName, publicipName, dnsName, location, allocationMethod, idleTimeout, tags, function (result) {
+					var cmd = util.format('network public-ip create -g %s -n %s -d %s -l %s -a %s -i %s -t %s --json', groupName, publicipName, dnsName, location, allocationMethod, idleTimeout, tags).split(' ');
+					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						result.text.should.not.be.null;
 						var allResources = JSON.parse(result.text);
@@ -75,21 +78,31 @@ describe('arm', function () {
 				});
 			});
 			it('should create', function (done) {
-				suite.execute('network public-ip create -g %s -n %s -l %s -d %s -f %s --json', groupName, publicipNameNew, location, dnsPrefix1, reversefqdn, function (result) {
+				var cmd = util.format('network public-ip create -g %s -n %s -l %s -d %s -f %s --json', groupName, publicipNameNew, location, dnsName1, reversefqdn).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
+					var allResources = JSON.parse(result.text);
+						reversefqdn1 = allResources.dnsSettings.fqdn;
 					done();
 				});
 			});
 			it('set', function (done) {
-				createGroup(function(){
-					suite.execute('network public-ip set -g %s -n %s -d %s -a %s -i %s -t %s', groupName, publicipName, dnsPrefix, 'Dynamic', '5', 'tag1=testValue1;tag2=testValue2',  function (result) {
-						result.exitStatus.should.equal(0);
-						done();
-					});
+				var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s -f %s -t %s', groupName, publicipName, dnsPrefix, 'Dynamic', '5', reversefqdn1, 'tag1=testValue1;tag2=testValue2').split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					done();
+				});
+			});
+			it('should set', function (done) {
+				var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s --no-tags', groupName, publicipName, dnsPrefix, 'Static', '6').split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					done();
 				});
 			});
 			it('show', function (done) {
-				suite.execute('network public-ip show %s %s --json', groupName, publicipName, function (result) {
+				var cmd = util.format('network public-ip show %s %s --json', groupName, publicipName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allResources = JSON.parse(result.text);
 					allResources.name.should.equal(publicipName);
@@ -97,7 +110,8 @@ describe('arm', function () {
 				});
 			});
 			it('list', function (done) {
-				suite.execute('network public-ip list %s --json', groupName, function (result) {
+				var cmd = util.format('network public-ip list %s --json', groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allResources = JSON.parse(result.text);
 					allResources.some(function (res) {
@@ -107,13 +121,15 @@ describe('arm', function () {
 				});
 			});
 			it('delete', function (done) {
-				suite.execute('network public-ip delete %s %s --quiet', groupName, publicipName, function (result) {
+				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
 			it('should delete', function (done) {
-				suite.execute('network public-ip delete %s %s --quiet', groupName, publicipNameNew, function (result) {
+				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipNameNew).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
@@ -122,14 +138,16 @@ describe('arm', function () {
 		});
 	
 		function createGroup(callback) {
-			suite.execute('group create %s --location %s --json', groupName, location, function (result) {
+			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);
 				callback();
 			});
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				suite.execute('group delete %s --quiet', groupName, function (result) {
+				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});
