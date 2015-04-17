@@ -74,14 +74,14 @@ describe('arm', function () {
           });
 
           it('should work', function(done) {
-            suite.execute('insights logs correlationId list %s -s %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function(result) {
+            suite.execute('insights logs correlationId list %s -b %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function(result) {
               result.exitStatus.should.equal(0);
               done();
             });
           });
 
           it('should fail if the start date is later than Now', function(done) {
-            suite.execute('insights logs correlationId list %s -s %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2100-01-01T01:00:00', function(result) {
+            suite.execute('insights logs correlationId list %s -b %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2100-01-01T01:00:00', function(result) {
               result.exitStatus.should.equal(1);
               var expectedError = util.format('Start date is later than Now');
               result.errorText.should.include(expectedError);
@@ -90,7 +90,7 @@ describe('arm', function () {
           });
 
           it('should fail if the end date is earlier than the start date', function(done) {
-            suite.execute('insights logs correlationId list %s -s %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-03-02T13:00:00', '2015-03-01T13:00:00', function(result) {
+            suite.execute('insights logs correlationId list %s -b %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-03-02T13:00:00', '2015-03-01T13:00:00', function(result) {
               result.exitStatus.should.equal(1);
               var expectedError = util.format('End date is earlier than start date');
               result.errorText.should.include(expectedError);
@@ -99,7 +99,7 @@ describe('arm', function () {
           });
 
           it('should fail if the end date and the start date are too far apart', function(done) {
-            suite.execute('insights logs correlationId list %s -s %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-03-01T13:00:00', '2015-04-01T13:00:00', function(result) {
+            suite.execute('insights logs correlationId list %s -b %s -e %s -d', '8ca345e1-409c-4183-930f-8150396513ed', '2015-03-01T13:00:00', '2015-04-01T13:00:00', function(result) {
               result.exitStatus.should.equal(1);
               var expectedError = util.format('Time range exceeds maximum allowed');
               result.errorText.should.include(expectedError);
