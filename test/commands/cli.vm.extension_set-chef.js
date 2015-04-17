@@ -39,7 +39,7 @@ describe('cli', function() {
       timeout;
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
     after(function(done) {
@@ -92,6 +92,16 @@ describe('cli', function() {
         });
       });
 
+      it('Set Chef extensions with json attributes', function(done) {
+        vmCreated = false;
+        createVM(function() {
+          var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s -j %s --json', vmName, chefversion, clientconfig, validationpem, '{"chef_node_name":"mynode"}').split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
     });
 
     function createVM(callback) {

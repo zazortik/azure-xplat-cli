@@ -33,7 +33,7 @@ describe('cli', function () {
   describe('site handler', function() {
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
