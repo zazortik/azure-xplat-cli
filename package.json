@@ -42,6 +42,7 @@
     "azure": "0.10.5",
     "azure-common": "0.9.11",
     "azure-gallery": "2.0.0-pre.15",
+    "azure-insights": "0.7.7-pre",
     "azure-mgmt-authorization": "0.9.0-pre.6",
     "azure-mgmt-resource": "2.0.0-pre.16",
     "azure-storage": "0.4.1",
