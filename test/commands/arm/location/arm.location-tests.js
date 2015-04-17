@@ -25,7 +25,7 @@ describe('arm', function () {
     var suite;
 
     before(function (done) {
-      suite = new CLITest(testprefix);
+      suite = new CLITest(this, testprefix);
       suite.setupSuite(done);
     });
 

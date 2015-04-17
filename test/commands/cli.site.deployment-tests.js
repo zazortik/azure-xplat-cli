@@ -56,7 +56,7 @@ var githubClient;
 describe('cli', function () {
   describe('site deployment', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 

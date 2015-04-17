@@ -80,7 +80,7 @@ function deleteService(serviceName, callback) {
 describe('cli', function () {
   describe('mobile', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix);
+      suite = new CLITest(this, testPrefix);
       suite.setupSuite(function() {
         if (!suite.isPlayback()) {
           async.series([

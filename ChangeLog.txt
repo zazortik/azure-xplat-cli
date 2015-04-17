@@ -2,6 +2,22 @@
 *  ApiApps
   * Added apiapp package create command to build apiapp packages.
 
+* VM
+  * Chef Extension
+    * Implemented new option --bootstrap-options for set-chef extension commands
+* Mobile
+	* Features
+		* Added support for AAD Tenants
+		* Added support for proxies / fiddler
+		* Improved custom domain, certificate, and SSL error handling
+	* Issues
+		* Fixed 'log is undefined' bug
+		* Fixed connection issues with mobile pipeline
+	* Test Infrastructure
+		* Updated common mobile test infrastructure
+		* Refactored mobile tests into separate files
+		* Optimized mocked test time run for mobile tests
+
 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611

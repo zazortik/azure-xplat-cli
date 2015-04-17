@@ -52,7 +52,7 @@ var scmSite = process.env.AZURE_SCM_SITE_SUFFIX || '.scm.azurewebsites.net';
 describe('cli', function () {
   describe('site', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 

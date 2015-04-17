@@ -32,7 +32,7 @@ var siteName = 'asdqweq';
 describe('cli', function () {
   describe('site domain', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, true);
+      suite = new CLITest(this, testPrefix, true);
       suite.setupSuite(done);
     });
 
