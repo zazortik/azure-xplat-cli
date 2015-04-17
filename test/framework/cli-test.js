@@ -39,6 +39,8 @@ exports = module.exports = CLITest;
  * Initializes a new instance of the CLITest class.
  * @constructor
  * 
+ * @param {object} mochaSuiteObject - The mocha suite object
+ *
  * @param {string} testPrefix - The prefix to use for the test suite
  * 
  * @param {Array} env - (Optional) Array of environment variables required by the test
