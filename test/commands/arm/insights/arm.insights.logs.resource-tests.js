@@ -45,7 +45,7 @@ describe('arm', function () {
         var resourceId = '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1/events/2fc383ab-a60b-4334-abb2-ef47ce36f112/ticks/635635968009558815';
 
         before(function(done) {
-          suite = new CLITest(testprefix, requiredEnvironment);
+          suite = new CLITest(this, testprefix, requiredEnvironment);
           suite.setupSuite(done);
         });
 
