@@ -20,8 +20,9 @@ commands/arm/network/arm.network.nsg-rule-tests.js
 commands/arm/network/arm.network.vnet-tests.js
 commands/arm/network/arm.network.subnet-tests.js
 commands/arm/network/arm.network.nic-tests.js
-commands/arm/network/arm.network.lb_inboundrule-tests.js
+commands/arm/network/arm.network.lb-inboundrule-tests.js
 commands/arm/network/arm.network.lb-tests.js
 commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
+commands/arm/network/arm.network.lb-vip-tests.js

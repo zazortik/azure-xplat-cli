@@ -22,42 +22,42 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet7673/providers/microsoft.network/virtualnetworks?api-version=2014-12-01-preview')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatTestVnet7528\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet7673/providers/Microsoft.Network/virtualNetworks/xplatTestVnet7528\",\r\n      \"etag\": \"W/\\\"a0c32f8a-1b6f-44bf-8c18-f7967b504f14\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/12\"\r\n          ]\r\n        },\r\n        \"dhcpOptions\": {\r\n          \"dnsServers\": [\r\n            \"8.8.4.4\"\r\n          ]\r\n        }\r\n      },\r\n      \"location\": \"eastus\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet661/providers/microsoft.network/virtualnetworks?api-version=2014-12-01-preview')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatTestVnet8035\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet661/providers/Microsoft.Network/virtualNetworks/xplatTestVnet8035\",\r\n      \"etag\": \"W/\\\"5065e587-dcef-4d27-92cf-e96a1a01000b\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/12\"\r\n          ]\r\n        },\r\n        \"dhcpOptions\": {\r\n          \"dnsServers\": [\r\n            \"8.8.8.8\",\r\n            \"8.8.4.4\"\r\n          ]\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '638',
+  'content-length': '668',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'cdc6c426-df41-4ca7-91f2-de094bf65d1b',
+  'x-ms-request-id': 'c7caa2f9-c0de-427b-8923-d64e8d9e4a35',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31924',
-  'x-ms-correlation-request-id': '23caea89-a339-44fb-9958-daae62b97cdf',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150415T124152Z:23caea89-a339-44fb-9958-daae62b97cdf',
-  date: 'Wed, 15 Apr 2015 12:41:52 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31888',
+  'x-ms-correlation-request-id': 'f5093764-2878-49e7-88b6-f43da7ed2194',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150417T185757Z:f5093764-2878-49e7-88b6-f43da7ed2194',
+  date: 'Fri, 17 Apr 2015 18:57:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet7673/providers/microsoft.network/virtualnetworks?api-version=2014-12-01-preview')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatTestVnet7528\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet7673/providers/Microsoft.Network/virtualNetworks/xplatTestVnet7528\",\r\n      \"etag\": \"W/\\\"a0c32f8a-1b6f-44bf-8c18-f7967b504f14\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/12\"\r\n          ]\r\n        },\r\n        \"dhcpOptions\": {\r\n          \"dnsServers\": [\r\n            \"8.8.4.4\"\r\n          ]\r\n        }\r\n      },\r\n      \"location\": \"eastus\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet661/providers/microsoft.network/virtualnetworks?api-version=2014-12-01-preview')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatTestVnet8035\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreatevnet661/providers/Microsoft.Network/virtualNetworks/xplatTestVnet8035\",\r\n      \"etag\": \"W/\\\"5065e587-dcef-4d27-92cf-e96a1a01000b\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/12\"\r\n          ]\r\n        },\r\n        \"dhcpOptions\": {\r\n          \"dnsServers\": [\r\n            \"8.8.8.8\",\r\n            \"8.8.4.4\"\r\n          ]\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '638',
+  'content-length': '668',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'cdc6c426-df41-4ca7-91f2-de094bf65d1b',
+  'x-ms-request-id': 'c7caa2f9-c0de-427b-8923-d64e8d9e4a35',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31924',
-  'x-ms-correlation-request-id': '23caea89-a339-44fb-9958-daae62b97cdf',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150415T124152Z:23caea89-a339-44fb-9958-daae62b97cdf',
-  date: 'Wed, 15 Apr 2015 12:41:52 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31888',
+  'x-ms-correlation-request-id': 'f5093764-2878-49e7-88b6-f43da7ed2194',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150417T185757Z:f5093764-2878-49e7-88b6-f43da7ed2194',
+  date: 'Fri, 17 Apr 2015 18:57:57 GMT',
   connection: 'close' });
  return result; }]];
