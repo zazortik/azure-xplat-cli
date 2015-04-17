@@ -17,26 +17,31 @@
 
 var should = require('should');
 var util = require('util');
-
+var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nic-tests';
-var groupName,
-	groupPrefix = 'xplatTestGCreateNic' ,
+var privateIP='10.31.255.250',privateIP2='10.31.254.254';
+var groupName,nsgName,
+	groupPrefix = 'xplatTestGrpCreateNic' ,
 	vnetPrefix = 'xplatTestVnetNIc' ,    
 	subnetprefix ='xplatTestSubnetNIc' ,
 	nicPrefix = 'xplatTestNic' ,
-	location ;
+	publicipPrefix = 'xplatTestIpNic' ,
+	nsgPrefix='xplatTestNSGNic',
+	location;
+	
 	
 var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'eastus'
 }];
 
-var subnetId;
+var subnetId,publicIpId,nsgId;
 	
 describe('arm', function () {
 	describe('network', function () {
-	var suite;
+	var suite,
+		retry = 5;
 			
 		before(function (done) {
 		suite = new CLITest(testprefix, requiredEnvironment);
@@ -46,14 +51,20 @@ describe('arm', function () {
 				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
 				subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
 				nicPrefix = suite.isMocked ? nicPrefix : suite.generateId(nicPrefix, null);	
+				publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
+                nsgName	= suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);			
 				done();
 			});
 		});
 		after(function (done) {
 			deleteUsedSubnet(function() {
 				deleteUsedVnet(function() {
-					deleteUsedGroup(function() {	
-						suite.teardownSuite(done);
+					deleteUsedPublicIp(function(){
+						deleteUsedNsg(function(){
+							deleteUsedGroup(function() {	
+						       suite.teardownSuite(done);
+							});
+						});
 					});
 				});
 			});
@@ -72,9 +83,19 @@ describe('arm', function () {
 					createVnet(function(){
 						createSubnet(function(){
 							showSubnet(function(){
-								suite.execute('network nic create %s %s %s -u %s ', groupName, nicPrefix, location, subnetId, function (result) {
-									result.exitStatus.should.equal(0);
-									done();
+								createPublicIp(function(){
+									showPublicIp(function(){
+										createNSG(function(){
+											showNSG(function(){
+												var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -p %s -i %s -w %s -o %s -a %s', 
+														  groupName,nicPrefix,location,subnetId,subnetprefix,vnetPrefix,publicipPrefix,publicIpId,nsgId,nsgName,privateIP).split(' ');
+												testUtils.executeCommand(suite, retry, cmd, function (result) {
+													result.exitStatus.should.equal(0);
+													done();
+												});
+											});
+										});
+								    });
 								});
 							});	
 						});	
@@ -82,13 +103,15 @@ describe('arm', function () {
 				});
 			});
 			it('set', function (done) {
-				suite.execute('network nic set %s %s -t priority=high ', groupName, nicPrefix,function (result) {
+				var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -i %s -p %s -a %s -u %s -k %s --no-tags' , groupName, nicPrefix,nsgId,'NoSuchNSGExists',publicIpId,'NoSuchPublicIpExist',privateIP2,subnetId , 'NoSuchSubnetExists').split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
 			it('show', function (done) {
-				suite.execute('network nic show %s %s --json', groupName, nicPrefix, function (result) {
+				var cmd = util.format('network nic show %s %s --json', groupName, nicPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allresources = JSON.parse(result.text);
 					allresources.name.should.equal(nicPrefix);
@@ -96,7 +119,8 @@ describe('arm', function () {
 				});
 			});
 			it('list', function (done) {
-				suite.execute('network nic list %s --json',groupName, function (result) {
+				var cmd = util.format('network nic list %s --json',groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					var allResources = JSON.parse(result.text);
 					allResources.some(function (res) {
@@ -106,7 +130,8 @@ describe('arm', function () {
 				});
 			});
 			it('delete', function (done) {
-				suite.execute('network nic delete %s %s --quiet', groupName, nicPrefix, function (result) {
+				var cmd = util.format('network nic delete %s %s --quiet', groupName, nicPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
@@ -114,29 +139,24 @@ describe('arm', function () {
 
 		});
 	
-		function createGroup(callback) {
-			suite.execute('group create %s --location %s --json', groupName, location, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});	
-		} 
+		
 		function createVnet(callback) {
 			var cmd = util.format('network vnet create %s %s %s ',groupName,vnetPrefix,location).split(' ');
-				suite.execute(cmd,  function (result) {
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});      
 		} 
 		function createSubnet(callback) {
 			var cmd = util.format('network vnet subnet create %s %s %s ',groupName,vnetPrefix,subnetprefix).split(' ');
-				suite.execute(cmd,  function (result) {
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});      
 		} 
 		function showSubnet(callback) {
 			var cmd = util.format('network vnet subnet show %s %s %s --json ',groupName,vnetPrefix,subnetprefix).split(' ');
-				suite.execute(cmd,  function (result) {
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0); 
 					var allResources = JSON.parse(result.text);
 					subnetId = allResources.id;
@@ -145,7 +165,8 @@ describe('arm', function () {
 		}
 		function deleteUsedSubnet(callback) {
 			if (!suite.isPlayback()) {
-				suite.execute('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix, subnetprefix, function (result) {
+				var cmd = util.format('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix, subnetprefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});
@@ -153,9 +174,64 @@ describe('arm', function () {
 			else
 				callback();	
 		}
+		function createPublicIp(callback) {
+			var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);;
+				callback();
+			});	
+		}
+		function showPublicIp(callback) {
+			var cmd = util.format('network public-ip show %s %s --json', groupName, publicipPrefix).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0); 
+				var allResources = JSON.parse(result.text);
+				publicIpId = allResources.id;
+				callback();
+			});	
+		}	
+		function deleteUsedPublicIp(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					callback();
+				});
+			}
+			else
+				callback();
+		}
+		function createNSG(callback) {
+			var cmd = util.format('network nsg create %s %s %s',groupName,nsgName,location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);;
+				callback();
+			});	
+		}
+		function showNSG(callback) {
+			var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0); 
+				var allResources = JSON.parse(result.text);
+				nsgId = allResources.id;
+				callback();
+			});	
+		}	
+		function deleteUsedNsg(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network nsg delete %s %s --quiet', groupName, nsgName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					callback();
+				});
+			}
+			else
+				callback();
+		}
 		function deleteUsedVnet(callback) {
 			if (!suite.isPlayback()) {
-				suite.execute('network vnet delete %s %s --quiet', groupName, vnetPrefix, function (result) {
+				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});
@@ -163,15 +239,23 @@ describe('arm', function () {
 			else
 				callback();	
 		}   
+		function createGroup(callback) {
+			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+				callback();
+			});
+		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				suite.execute('group delete %s --quiet', groupName, function (result) {
+				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});
 			}
 			else
-				callback();	
+				callback();
 		} 
 	
 	});
