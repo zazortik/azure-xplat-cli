@@ -16,7 +16,6 @@
 
 var should = require('should');
 var utils = require('../../lib/util/utils');
-
 var CLITest = require('../framework/cli-test');
 
 var storageNamesPrefix = 'xcliaccount';
@@ -36,7 +35,7 @@ var requiredEnvironment = [
 
 var testPrefix = 'cli.storage.account-tests';
 var suite;
-var liveOnly = suite.isMocked ? it.skip : it;
+var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 
 describe('cli', function () {
   describe('storage account', function () {
@@ -47,7 +46,6 @@ describe('cli', function () {
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
-
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
