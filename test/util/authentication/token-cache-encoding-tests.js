@@ -74,6 +74,15 @@ describe('Token cache encoding', function () {
         cacheEncoding.encodeObject(obj).should.equal(encoding);
       });
     });
+    
+    it('should encode objects with property that has no value', function () {
+      objects.forEach(function (pair) {
+        var refreshToken; //leave it uninitialized so to use the undefined status
+        var fakedTokenPair = { a: 'faked access token', r: refreshToken };
+        var encoding = cacheEncoding.encodeObject(fakedTokenPair);
+        encoding.should.equal('a:faked access token::r:');
+      });
+    });
 
     it('should decode objects correctly', function () {
       objects.forEach(function (pair) {

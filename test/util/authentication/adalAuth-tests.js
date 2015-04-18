@@ -23,14 +23,42 @@ describe('tenant from username', function () {
   it('should return everything after @ if present', function () {
     adalAuth.tenantIdForUser('user@sometenant.testorg.example').should.equal('sometenant.testorg.example');
   });
-
+  
   it('should append onmicrosoft.com if no domain present', function () {
     adalAuth.tenantIdForUser('user@sometenant').should.equal('sometenant.onmicrosoft.com');
   });
-
+  
   it('should throw if no domain is present', function () {
     (function () {
       return adalAuth.tenantIdForUser('user');
     }).should.throw();
+  });
+});
+
+describe('login as service principal', function () {
+  it('should invoke callback on error', function (done) {
+    //arrange 
+    var config = {
+      resourceId: 'https://res123',
+      authorityUrl: 'https://authority123'
+    };
+    var accessToken = '123';
+    var tokenMatched = false;
+    adalAuth.tokenCache.find = function (query, callback) {
+      callback(null, [{ 'accessToken' : accessToken}]);
+    }
+    adalAuth.tokenCache.remove = function (entries, callback) {
+      tokenMatched = (entries.length === 1 && entries[0].accessToken === accessToken);
+      callback(null);
+    }
+    //action
+    var token = new adalAuth.ServicePrincipalAccessToken(config, 'apid123');
+    token.authenticateRequest(function (err) {
+      //assert
+      var errorFired = (!!err);
+      errorFired.should.be.true;
+      tokenMatched.should.be.true;
+      done();
+    })
   });
 });

@@ -46,6 +46,8 @@ describe('cli', function () {
     var primaryKey;
 
     before(function (done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
