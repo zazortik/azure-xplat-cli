@@ -46,7 +46,7 @@ describe('arm', function () {
     var normalizedTestLocation;
 
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(done);     
     });
 
@@ -275,7 +275,7 @@ describe('arm', function () {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json -vv',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --nowait --json -vv',
             galleryTemplateUrl, groupName, deploymentName, parameterFile);
 
         console.log('  . Creating setup for running group log show tests');

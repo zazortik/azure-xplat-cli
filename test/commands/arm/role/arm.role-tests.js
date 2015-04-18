@@ -48,7 +48,7 @@ describe('arm', function () {
     var TEST_ROLE_NAME = 'Owner';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function () {
         testResourceGroup = suite.generateId('testrg1', createdGroups);
         testSqlServer = suite.generateId('testserver1', createdResources);
@@ -239,10 +239,16 @@ describe('arm', function () {
               return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
 
-            //clean up
-            suite.execute('role assignment delete --upn %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
-              result.exitStatus.should.equal(0);
-              done();
+            //simple assignment list should also work
+            suite.execute('role assignment list --json', function (listResult) {
+              listResult.exitStatus.should.equal(0);
+              var assignments = JSON.parse(listResult.text);
+              assignments.length.should.be.above(-1);
+              //clean up
+              suite.execute('role assignment delete --upn %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
             });
           });
         });

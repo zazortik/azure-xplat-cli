@@ -34,7 +34,7 @@ describe('cli', function () {
     var affinityGroupName;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function(){
         affinityGroupName = suite.generateId(AFFINITYGROUP_NAME_PREFIX, createdAffinityGroups);
         done();
@@ -46,7 +46,7 @@ describe('cli', function () {
     });
 
     beforeEach(function (done) {
-      suite.setupTest( function () {
+      suite.setupTest(function () {
         AFFINITYGROUP_LOCATION = process.env.AZURE_SITE_TEST_LOCATION;
         done();
       });

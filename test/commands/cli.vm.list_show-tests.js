@@ -22,7 +22,7 @@ describe('cli', function() {
   describe('vm', function() {
     var vmName, retry = 5;
     before(function(done) {
-      suite = new CLITest(testPrefix, []);
+      suite = new CLITest(this, testPrefix, []);
       suite.setupSuite(done);
     });
     after(function(done) {
