@@ -35,7 +35,7 @@ var requiredEnvironment = [
 ];
 
 var testPrefix = 'cli.storage.account-tests';
-var suite = new CLITest(testPrefix, requiredEnvironment);
+var suite;
 var liveOnly = suite.isMocked ? it.skip : it;
 
 describe('cli', function () {
