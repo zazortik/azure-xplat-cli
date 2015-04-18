@@ -6,14 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    name: 'Azure Storage DM Dev',
+    registeredProviders: [],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -22,8 +21,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SITE_TEST_LOCATION'] = 'West US';
-}
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
+  process.env['AZURE_SITE_TEST_LOCATION'] = 'West Europe';
+};
 
 exports.scopes = [];
