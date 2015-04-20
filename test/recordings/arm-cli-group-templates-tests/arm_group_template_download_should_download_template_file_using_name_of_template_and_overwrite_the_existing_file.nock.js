@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    name: 'Azure Storage DM Dev',
+    id: '38b598fc-e57a-423f-b2e7-dc0ddb631f1f',
+    name: 'Visual Studio Ultimate with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
-    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights'],
+    registeredProviders: ['website'],
+    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights', 'successbricks.cleardb'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -38,10 +38,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=7db82a5394ee4c1f9dcb1db875c2e172; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=2df38eb289fa4aee82c86691e70f87a3; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 15 Apr 2015 08:00:48 GMT',
+  date: 'Wed, 15 Apr 2015 18:56:39 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
@@ -57,10 +57,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=77820cef709543d9b4aaca36d637183e; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=0a5398f59c9043b688a0b040e3060d71; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 15 Apr 2015 08:00:49 GMT',
+  date: 'Wed, 15 Apr 2015 18:56:40 GMT',
   'content-length': '4844' });
  return result; },
 function (nock) { 
@@ -74,13 +74,13 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Tue, 14 Apr 2015 22:30:50 GMT',
   etag: '0x8D24519CB5A882E',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '77847fcf-0001-0043-337b-21f686000000',
+  'x-ms-request-id': 'bf2e8ea5-0001-0025-3c3c-ee3c11000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Wed, 15 Apr 2015 08:00:50 GMT' });
+  date: 'Wed, 15 Apr 2015 18:56:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -95,10 +95,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=550817fd2db14b2bb847dcf789170264; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=cc7cb7ab71814204a8c55d24f4dd0d1c; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 15 Apr 2015 08:00:51 GMT',
+  date: 'Wed, 15 Apr 2015 18:56:40 GMT',
   'content-length': '4844' });
  return result; },
 function (nock) { 
@@ -112,11 +112,11 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Tue, 14 Apr 2015 22:30:50 GMT',
   etag: '0x8D24519CB5A882E',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '40c892a1-0001-0007-3cb8-ef1c90000000',
+  'x-ms-request-id': '703e7414-0001-0075-1fe4-d4c444000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Wed, 15 Apr 2015 08:00:51 GMT' });
+  date: 'Wed, 15 Apr 2015 18:56:40 GMT' });
  return result; }]];

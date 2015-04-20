@@ -52,7 +52,7 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();

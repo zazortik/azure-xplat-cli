@@ -21,7 +21,7 @@ var profile = require('../../lib/util/profile');
 
 var CLITest = require('../framework/cli-test');
 var testPrefix = 'cli.account.environment-tests';
-var suite = new CLITest(testPrefix);
+var suite = new CLITest(null, testPrefix);
 
 describe('cli', function () {
   describe('account env', function () {

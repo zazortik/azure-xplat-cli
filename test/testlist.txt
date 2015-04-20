@@ -9,11 +9,22 @@ commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
-# TODO: mobile tests need to restructured. Shorter test names and removal of file path names from the test.
-# cli.mobile-tests.js cannot be recorded or run mocked. However, they can be run in live mode. 
-#commands/cli.mobile-tests.js
+commands/cli.mobile-tests.js
+commands/cli.mobile.api-tests.js
+commands/cli.mobile.appsetting-tests.js
+commands/cli.mobile.auth-tests.js
+commands/cli.mobile.config-tests.js
 commands/cli.mobile.domain-tests.js
+commands/cli.mobile.job-tests.js
+commands/cli.mobile.key-tests.js
+commands/cli.mobile.log-tests.js
+commands/cli.mobile.preview-tests.js
+commands/cli.mobile.push-tests.js
+commands/cli.mobile.scale-tests.js
+commands/cli.mobile.script-tests.js
+commands/cli.mobile.table-tests.js
 commands/cli.mobilerecover-tests.js
+commands/cli.mobile.migration-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
 commands/cli.site.deployment-tests.js
