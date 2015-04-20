@@ -22,9 +22,6 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION'] = 'South Central US';
 };
 
 exports.scopes = [[function (nock) { 
@@ -39,12 +36,12 @@ nock('http://management.azure.com:443')
   expires: '-1',
   vary: 'Accept-Encoding',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'WestUS_18c3ed5ce2f6487d88cc922cf7699168_635649002690840488',
+  'x-ms-request-id': 'WestUS_90f32ba61d7c4dbcb8d7ff214cfe5830_635651656092673696',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-reads': '31857',
-  'x-ms-correlation-request-id': '5a44ae4a-4e29-47c5-a50b-4a5a5aff3046',
-  'x-ms-routing-request-id': 'WESTUS:20150417T204428Z:5a44ae4a-4e29-47c5-a50b-4a5a5aff3046',
-  date: 'Fri, 17 Apr 2015 20:44:27 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31836',
+  'x-ms-correlation-request-id': '0f5f7388-6bd2-45c8-8ce3-7ad6805e911d',
+  'x-ms-routing-request-id': 'WESTUS:20150420T222649Z:0f5f7388-6bd2-45c8-8ce3-7ad6805e911d',
+  date: 'Mon, 20 Apr 2015 22:26:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -59,11 +56,11 @@ nock('https://management.azure.com:443')
   expires: '-1',
   vary: 'Accept-Encoding',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'WestUS_18c3ed5ce2f6487d88cc922cf7699168_635649002690840488',
+  'x-ms-request-id': 'WestUS_90f32ba61d7c4dbcb8d7ff214cfe5830_635651656092673696',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-reads': '31857',
-  'x-ms-correlation-request-id': '5a44ae4a-4e29-47c5-a50b-4a5a5aff3046',
-  'x-ms-routing-request-id': 'WESTUS:20150417T204428Z:5a44ae4a-4e29-47c5-a50b-4a5a5aff3046',
-  date: 'Fri, 17 Apr 2015 20:44:27 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31836',
+  'x-ms-correlation-request-id': '0f5f7388-6bd2-45c8-8ce3-7ad6805e911d',
+  'x-ms-routing-request-id': 'WESTUS:20150420T222649Z:0f5f7388-6bd2-45c8-8ce3-7ad6805e911d',
+  date: 'Mon, 20 Apr 2015 22:26:49 GMT',
   connection: 'close' });
  return result; }]];
