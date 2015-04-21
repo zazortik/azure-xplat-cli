@@ -16,3 +16,6 @@ commands/arm/ad/role/roleAssignments-tests.js
 #apiapp suite is unreliable, particular running in -pr repo
 #commands/arm/apiapp/lib/lib-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
+commands/arm/vault/arm.vault-tests.js
+# TODO: vault key tests disabled due to dependency on azure-keyvault, which was not added to azure SDK yet.
+# commands/arm/vault/arm.vault-key-tests.js
