@@ -146,7 +146,7 @@ describe('arm', function () {
       }, timeBeforeSetAvailable);
     });
 
-    liveOnly('should renew storage keys', function(done) {
+    it('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --resource-group %s --json', storageName, resrouceGroupName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
         storageAccountKeys.storageAccountKeys.key1.should.not.be.null;
@@ -164,7 +164,7 @@ describe('arm', function () {
       });
     });
     
-    liveOnly('should show connecting string', function(done) {
+    it('should show connecting string', function(done) {
       suite.execute('storage account connectionstring show %s --resource-group %s --json', storageName, resrouceGroupName, function(result) {
         var connectionString = JSON.parse(result.text);
         var desiredConnectionString = 'DefaultEndpointsProtocol=https;AccountName=' + storageName + ';AccountKey=' + primaryKey;
@@ -174,7 +174,7 @@ describe('arm', function () {
       });
     });
     
-    liveOnly('should show connecting string with endpoints', function (done) {
+    it('should show connecting string with endpoints', function (done) {
       suite.execute('storage account connectionstring show --use-http --blob-endpoint myBlob.ep --queue-endpoint 10.0.0.10 --table-endpoint mytable.core.windows.net %s --resource-group %s --json',
         storageName, 
         resrouceGroupName, 
