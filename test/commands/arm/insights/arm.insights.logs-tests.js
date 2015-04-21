@@ -28,10 +28,7 @@ var utils = require('../../../../lib/util/utils');
 var insightsUtils = require('../../../../lib/commands/arm/insights/insights.utils');
 
 var requiredEnvironment = [
-  { requiresToken: true } /*,
-  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_ARM_TEST_SQL_RESOURCE_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION', defaultValue: 'South Central US' } */
+  { requiresToken: true }
 ];
 
 var createdGroups = [];
@@ -41,10 +38,6 @@ describe('arm', function () {
   describe('insights', function() {
     describe('logs', function() {
       var suite;
-      var testGroupLocation;
-      var testSqlResourceLocation;
-      var testWebsitesResourceLocation;
-
       var resourceId;
 
       before(function(done) {
@@ -58,10 +51,6 @@ describe('arm', function () {
 
       beforeEach(function(done) {
         suite.setupTest(function() {
-          /*testGroupLocation = process.env['AZURE_ARM_TEST_LOCATION'];
-          testSqlResourceLocation = process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'];
-          testWebsitesResourceLocation = process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION']; */
-
           resourceId = '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1/events/2fc383ab-a60b-4334-abb2-ef47ce36f112/ticks/635635968009558815';
           done();
         });
