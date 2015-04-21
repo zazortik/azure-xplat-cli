@@ -1803,5 +1803,5 @@
   "The time aggregation operator.": "The time aggregation operator.",
   "The time window size.": "The time window size.",
   "The type of the rule (Event, Metric, Webtest).": "The type of the rule (Event, Metric, Webtest).",
-  "Time range exceeds maximum allowed. Start date: %s, end date: %s": "Time range exceeds maximum allowed. Start date: %s, end date: %s"
+  "Time range exceeds maximum allowed of %s days. Start date: %s, end date: %s": "Time range exceeds maximum allowed of %s days. Start date: %s, end date: %s"
 }
