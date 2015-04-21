@@ -260,7 +260,7 @@ describe('arm', function () {
 
         // Testing for resource
         it('resource should work without options', function (done) {
-          suite.execute('insights logs list -r %s --json', resourceId, function (result) {
+          suite.execute('insights logs list -i %s --json', resourceId, function (result) {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
@@ -271,7 +271,7 @@ describe('arm', function () {
         });
         
         it('resource should work', function (done) {
-          suite.execute('insights logs list -r %s -b %s -e %s -d --json', resourceId, '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
+          suite.execute('insights logs list -i %s -b %s -e %s -d --json', resourceId, '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
