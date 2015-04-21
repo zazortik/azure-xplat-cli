@@ -20,6 +20,7 @@ var utils = require('../../../../lib/util/utils');
 var CLITest = require('../../../framework/arm-cli-test');
 
 var storageNamesPrefix = 'armclistorageaccount';
+var storageGroupPrefix = 'armclistorageGroup';
 var storageNames = [];
 var storagePairs = [];
 var createdResourceGroups = [];
@@ -55,15 +56,21 @@ describe('arm', function () {
     });
 
     after(function (done) {
-      if (!suite.isMocked || suite.isRecording) {
-        suite.forEachName(storagePairs, 'storage account delete %s --resource-group %s --json -q', function () {
-          suite.forEachName(createdResourceGroups, 'group delete %s --json -q', function () {
-            suite.teardownSuite(done);
+      suite.teardownSuite(function() {
+        if (!suite.isPlayback()) {
+          storagePairs.forEach(function(pair) {
+            suite.execute('storage account delete %s --resource-group %s --json -q', pair[0], pair[1], function (result) {
+              result.exitStatus.should.equal(0);
+              suite.execute('group delete %s --json -q', pair[1], function (result) {
+                result.exitStatus.should.equal(0);
+                done();
+              })
+            });
           });
-        });
-      } else {
-        suite.teardownSuite(done);
-      }
+        } else {
+          done();
+        }
+      });
     });
 
     beforeEach(function (done) {
@@ -81,7 +88,7 @@ describe('arm', function () {
 
     it('should create a storage account with resource group and location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
-      resrouceGroupName = suite.generateId(storageNamesPrefix, createdResourceGroups);
+      resrouceGroupName = suite.generateId(storageGroupPrefix, createdResourceGroups);
       storagePairs.push([storageName, resrouceGroupName]);
 
       suite.execute('group create %s --location %s --json', resrouceGroupName, resourceGroupLocation, function (result) {
@@ -98,7 +105,7 @@ describe('arm', function () {
 
     it('should list storage accounts within the subscription', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
-      resrouceGroupName = suite.generateId(storageNamesPrefix, createdResourceGroups);
+      resrouceGroupName = suite.generateId(storageGroupPrefix, createdResourceGroups);
       storagePairs.push([storageName, resrouceGroupName]);
 
       suite.execute('group create %s --location %s --json', resrouceGroupName, resourceGroupLocation, function (result) {
