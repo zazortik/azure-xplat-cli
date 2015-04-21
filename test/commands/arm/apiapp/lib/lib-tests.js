@@ -31,6 +31,7 @@ describe('apiapp', function () {
         var packageRoot = path.join(packageDataRoot, 'validPackage');
         packageLib.validate(packageRoot, function (err, result) {
           should.not.exist(err);
+          should.not.exist(result.errors);
           result.isValid.should.be.true;
           done(err);
         });
@@ -40,6 +41,7 @@ describe('apiapp', function () {
         var packageRoot = path.join(packageDataRoot, 'validPackageStaticSwagger');
         packageLib.validate(packageRoot, function (err, result) {
           should.not.exist(err);
+          should.not.exist(result.errors);
           result.isValid.should.be.true;
           done(err);
         });
