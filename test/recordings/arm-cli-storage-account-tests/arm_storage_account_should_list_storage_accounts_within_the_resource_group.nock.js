@@ -29,18 +29,37 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6123/providers/Microsoft.Storage/storageAccounts?api-version=2014-12-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6123/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8037\",\"name\":\"armclistorageaccount8037\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"properties\":{\"provisioningState\":\"ResolvingDns\",\"accountType\":\"Standard_LRS\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount8037.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount8037.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount8037.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"secondaryLocation\":\"\",\"creationTime\":\"2015-04-15T03:51:55.4092950Z\"}}],\"nextLink\":\"\"}", { 'cache-control': 'no-cache',
+nock('http://management.azure.com:443')
+  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6534/providers/Microsoft.Storage/storageAccounts?api-version=2015-05-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6534/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2416\",\"name\":\"armclistorageaccount2416\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"properties\":{\"provisioningState\":\"ResolvingDns\",\"accountType\":\"Standard_LRS\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount2416.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount2416.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount2416.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"secondaryLocation\":\"\",\"creationTime\":\"2015-04-21T03:00:44.0754296Z\"}}],\"nextLink\":\"\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '719',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '567e8fbd-394b-431f-a249-07cb0f24d1ee',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31994',
-  'x-ms-correlation-request-id': '1ac6e4ac-ec4e-4569-b924-47e20295e68b',
-  'x-ms-routing-request-id': 'JAPANEAST:20150415T035201Z:1ac6e4ac-ec4e-4569-b924-47e20295e68b',
+  'x-ms-request-id': '5f630d90-dc43-482b-93a4-0d35774d093a',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-correlation-request-id': '510f8157-0c73-434d-b029-2ddbca60afb7',
+  'x-ms-routing-request-id': 'JAPANEAST:20150421T030050Z:510f8157-0c73-434d-b029-2ddbca60afb7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 15 Apr 2015 03:52:01 GMT' });
+  date: 'Tue, 21 Apr 2015 03:00:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6534/providers/Microsoft.Storage/storageAccounts?api-version=2015-05-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageaccount6534/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2416\",\"name\":\"armclistorageaccount2416\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"properties\":{\"provisioningState\":\"ResolvingDns\",\"accountType\":\"Standard_LRS\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount2416.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount2416.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount2416.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"secondaryLocation\":\"\",\"creationTime\":\"2015-04-21T03:00:44.0754296Z\"}}],\"nextLink\":\"\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '719',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '5f630d90-dc43-482b-93a4-0d35774d093a',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31990',
+  'x-ms-correlation-request-id': '510f8157-0c73-434d-b029-2ddbca60afb7',
+  'x-ms-routing-request-id': 'JAPANEAST:20150421T030050Z:510f8157-0c73-434d-b029-2ddbca60afb7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 21 Apr 2015 03:00:50 GMT',
+  connection: 'close' });
  return result; }]];
