@@ -43,7 +43,7 @@ describe('arm', function () {
     var suite;
     //before is executed once at the start of the this test-suite.
     before(function (done) {
-      suite = new CLITest(testprefix, requiredEnvironment);
+      suite = new CLITest(this, testprefix, requiredEnvironment);
       //setupSuite is a hook provided for the developer to perform steps that 
       //need to be performed once before the first test gets executed.
       //A. If nothing needs to be performed then setupSuite() needs to be called as follows:
