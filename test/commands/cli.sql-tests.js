@@ -35,7 +35,7 @@ describe('cli', function () {
     var administratorLoginPassword = 'SQLR0cks!999';
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 

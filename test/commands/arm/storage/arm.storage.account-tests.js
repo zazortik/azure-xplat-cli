@@ -33,9 +33,9 @@ var requiredEnvironment = [
 ];
 
 var testPrefix = 'arm-cli-storage-account-tests';
-var suite = new CLITest(testPrefix, requiredEnvironment);
-var liveOnly = suite.isMocked ? it.skip : it;
-var timeBeforeSetAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
+var suite;
+var liveOnly = process.env.NOCK_OFF ? it : it.skip;
+var timeBeforeSetAvailable;
 
 describe('arm', function () {
   describe('storage account', function () {
@@ -45,6 +45,8 @@ describe('arm', function () {
     var primaryKey;
 
     before(function (done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      timeBeforeSetAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
