@@ -59,8 +59,8 @@ describe('arm', function () {
               result.exitStatus.should.equal(0);
               suite.execute('ad app delete %s -q', appObjectId, function (result) {
                 result.exitStatus.should.equal(0);
+                done();
               });
-              done();
             });
           });
         });
