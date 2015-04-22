@@ -32,10 +32,10 @@ var createdGroups = [];
 var createdDeployments = [];
 
 var requiredEnvironment = [{
-    requiresToken: true
+  requiresToken: true
 }, {
-    name: 'AZURE_ARM_TEST_VAULT',
-    defaultValue: 'XplatTestVault'
+  name: 'AZURE_ARM_TEST_VAULT',
+  defaultValue: 'XplatTestVault'
 }];
 
 var galleryTemplateName;
@@ -43,71 +43,71 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-    describe('vault-key', function() {
-        var suite;
-        var testVault;
+  describe('vault-key', function() {
+    var suite;
+    var testVault;
 
-        before(function(done) {
-            suite = new CLITest(testprefix, requiredEnvironment);
-            suite.setupSuite(done);
-        });
+    before(function(done) {
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(done);
+    });
 
-        after(function(done) {
-            suite.teardownSuite(done);
-        });
+    after(function(done) {
+      suite.teardownSuite(done);
+    });
 
-        beforeEach(function(done) {
-            suite.setupTest(function() {
-                testVault = process.env.AZURE_ARM_TEST_VAULT;
-                done();
-            });
-        });
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        testVault = process.env.AZURE_ARM_TEST_VAULT;
+        done();
+      });
+    });
 
-        afterEach(function(done) {
-            suite.teardownTest(done);
-        });
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
 
-        describe('basic', function() {
-            it('key management commands should work', function(done) {
+    describe('basic', function() {
+      it('key management commands should work', function(done) {
 
-                var keyName = suite.generateId(keyPrefix, createdGroups, suite.isMocked);
-                createKeyMustSucceed();
+        var keyName = suite.generateId(keyPrefix, createdGroups, suite.isMocked);
+        createKeyMustSucceed();
 
-                function createKeyMustSucceed() {
-                    suite.execute('vault key create %s %s --destination Software --json', testVault, keyName, function(result) {
-                        result.exitStatus.should.be.equal(0);
-                        showKeyMustSucceed();
-                    });
-                }
+        function createKeyMustSucceed() {
+          suite.execute('vault key create %s %s --destination Software --json', testVault, keyName, function(result) {
+            result.exitStatus.should.be.equal(0);
+            showKeyMustSucceed();
+          });
+        }
 
-                function showKeyMustSucceed() {
-                    suite.execute('vault key show %s %s --json', testVault, keyName, function(result) {
-                        result.exitStatus.should.be.equal(0);
-                        var key = JSON.parse(result.text);
-                        key.should.have.property('key');
-                        key.key.should.have.property('kid');
-                        key.key.kid.should.include(util.format('https://%s.vault.azure.net/keys/%s/', testVault.toLowerCase(), keyName));
-                        deleteKeyMustSucceed();
-                    });
-                }
+        function showKeyMustSucceed() {
+          suite.execute('vault key show %s %s --json', testVault, keyName, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var key = JSON.parse(result.text);
+            key.should.have.property('key');
+            key.key.should.have.property('kid');
+            key.key.kid.should.include(util.format('https://%s.vault.azure.net/keys/%s/', testVault.toLowerCase(), keyName));
+            deleteKeyMustSucceed();
+          });
+        }
 
-                function deleteKeyMustSucceed() {
-                    suite.execute('vault key delete %s %s --quiet', testVault, keyName, function() {
-                        showKeyMustFail();
-                    });
-                }
+        function deleteKeyMustSucceed() {
+          suite.execute('vault key delete %s %s --quiet', testVault, keyName, function() {
+            showKeyMustFail();
+          });
+        }
 
-                function showKeyMustFail() {
-                    suite.execute('vault key show %s %s', testVault, keyName, function(result) {
-                        result.exitStatus.should.equal(1);
-                        result.errorText.should.include(util.format('Key %s not found', keyName));
-                        done();
-                    });
-                }
+        function showKeyMustFail() {
+          suite.execute('vault key show %s %s', testVault, keyName, function(result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.include(util.format('Key %s not found', keyName));
+            done();
+          });
+        }
 
-            });
-
-        });
+      });
 
     });
+
+  });
 });

@@ -32,13 +32,13 @@ var createdGroups = [];
 var createdDeployments = [];
 
 var requiredEnvironment = [{
-    requiresToken: true
+  requiresToken: true
 }, {
-    name: 'AZURE_ARM_TEST_LOCATION',
-    defaultValue: 'West US'
+  name: 'AZURE_ARM_TEST_LOCATION',
+  defaultValue: 'West US'
 }, {
-    name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
-    defaultValue: 'XplatTestVaultRG'
+  name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
+  defaultValue: 'XplatTestVaultRG'
 }];
 
 var galleryTemplateName;
@@ -46,74 +46,74 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-    describe('vault', function() {
-        var suite;
-        var testLocation;
-        var testResourceGroup;
-        var normalizedTestLocation;
+  describe('vault', function() {
+    var suite;
+    var testLocation;
+    var testResourceGroup;
+    var normalizedTestLocation;
 
-        before(function(done) {
-            suite = new CLITest(testprefix, requiredEnvironment);
-            suite.setupSuite(done);
-        });
+    before(function(done) {
+      suite = new CLITest(testprefix, requiredEnvironment);
+      suite.setupSuite(done);
+    });
 
-        after(function(done) {
-            suite.teardownSuite(done);
-        });
+    after(function(done) {
+      suite.teardownSuite(done);
+    });
 
-        beforeEach(function(done) {
-            suite.setupTest(function() {
-                testLocation = process.env.AZURE_ARM_TEST_LOCATION;
-                testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
-                normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-                done();
-            });
-        });
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        done();
+      });
+    });
 
-        afterEach(function(done) {
-            suite.teardownTest(done);
-        });
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
 
-        describe('basic', function() {
-            it('management commands should work', function(done) {
+    describe('basic', function() {
+      it('management commands should work', function(done) {
 
-                var vaultName = suite.generateId(vaultPrefix, createdGroups, suite.isMocked);
-                createVaultMustSucceed();
+        var vaultName = suite.generateId(vaultPrefix, createdGroups, suite.isMocked);
+        createVaultMustSucceed();
 
-                function createVaultMustSucceed() {
-                    suite.execute('vault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
-                        result.exitStatus.should.be.equal(0);
-                        showVaultMustSucceed();
-                    });
-                }
+        function createVaultMustSucceed() {
+          suite.execute('vault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
+            result.exitStatus.should.be.equal(0);
+            showVaultMustSucceed();
+          });
+        }
 
-                function showVaultMustSucceed() {
-                    suite.execute('vault show %s --resource-group %s --json', vaultName, testResourceGroup, function(result) {
-                        result.exitStatus.should.be.equal(0);
-                        var vault = JSON.parse(result.text);
-                        vault.should.have.property('name');
-                        vault.name.should.be.equal(vaultName);
-                        deleteVaultMustSucceed();
-                    });
-                }
+        function showVaultMustSucceed() {
+          suite.execute('vault show %s --resource-group %s --json', vaultName, testResourceGroup, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.should.have.property('name');
+            vault.name.should.be.equal(vaultName);
+            deleteVaultMustSucceed();
+          });
+        }
 
-                function deleteVaultMustSucceed() {
-                    suite.execute('vault delete %s --json --quiet', vaultName, function() {
-                        showVaultMustFail();
-                    });
-                }
+        function deleteVaultMustSucceed() {
+          suite.execute('vault delete %s --json --quiet', vaultName, function() {
+            showVaultMustFail();
+          });
+        }
 
-                function showVaultMustFail() {
-                    suite.execute('vault show %s --resource-group %s', vaultName, testResourceGroup, function(result) {
-                        result.exitStatus.should.equal(1);
-                        result.errorText.should.include('Vault not found');
-                        done();
-                    });
-                }
+        function showVaultMustFail() {
+          suite.execute('vault show %s --resource-group %s', vaultName, testResourceGroup, function(result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.include('Vault not found');
+            done();
+          });
+        }
 
-            });
-
-        });
+      });
 
     });
+
+  });
 });
