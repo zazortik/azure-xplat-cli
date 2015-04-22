@@ -40,7 +40,6 @@ describe('arm', function () {
 	var publicipNameNew = 'armpublicipnew';
 	
 		before(function (done) {
-			//suite = new CLITest(testprefix, requiredEnvironment);
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				dnsName = suite.generateId(dnsPrefix.toLowerCase(), null);

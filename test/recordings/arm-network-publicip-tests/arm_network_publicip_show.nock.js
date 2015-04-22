@@ -13,7 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    registeredProviders: ['mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,44 +21,44 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946/?api-version=2015-05-01-preview')
-  .reply(200, "{\r\n  \"name\": \"armpublicip5946\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946\",\r\n  \"etag\": \"W/\\\"6816b719-423b-4202-8b3f-68c57fd0a151\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipAddress\": \"104.40.91.89\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 6,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"dnstestpubip\",\r\n      \"fqdn\": \"dnstestpubip.westus.cloudapp.azure.com.\",\r\n      \"reverseFqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\"\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip2751/?api-version=2015-05-01-preview')
+  .reply(200, "{\r\n  \"name\": \"armpublicip2751\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip2751\",\r\n  \"etag\": \"W/\\\"0e97a2a2-ee50-48f9-9920-681005d854dc\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipAddress\": \"23.101.132.202\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 6,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"dnstestpubip\",\r\n      \"fqdn\": \"dnstestpubip.eastus.cloudapp.azure.com.\",\r\n      \"reverseFqdn\": \"dnstestpubip19272.eastus.cloudapp.azure.com.\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '647',
+  'content-length': '649',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  etag: 'W/"6816b719-423b-4202-8b3f-68c57fd0a151"',
-  'x-ms-request-id': 'b7cb3652-f38c-4c96-aaec-e36fbe4abb8d',
+  etag: 'W/"0e97a2a2-ee50-48f9-9920-681005d854dc"',
+  'x-ms-request-id': '23a286b9-67de-4762-bcb6-898a52f1f769',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31893',
-  'x-ms-correlation-request-id': '24a7caec-bc53-44ab-925f-88b07cacb7d4',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T115956Z:24a7caec-bc53-44ab-925f-88b07cacb7d4',
-  date: 'Wed, 22 Apr 2015 11:59:55 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31987',
+  'x-ms-correlation-request-id': '703189cd-e4ae-4ce4-ba56-5a9e75bd62b9',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173455Z:703189cd-e4ae-4ce4-ba56-5a9e75bd62b9',
+  date: 'Wed, 22 Apr 2015 17:34:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946/?api-version=2015-05-01-preview')
-  .reply(200, "{\r\n  \"name\": \"armpublicip5946\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946\",\r\n  \"etag\": \"W/\\\"6816b719-423b-4202-8b3f-68c57fd0a151\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipAddress\": \"104.40.91.89\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 6,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"dnstestpubip\",\r\n      \"fqdn\": \"dnstestpubip.westus.cloudapp.azure.com.\",\r\n      \"reverseFqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\"\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip2751/?api-version=2015-05-01-preview')
+  .reply(200, "{\r\n  \"name\": \"armpublicip2751\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip2751\",\r\n  \"etag\": \"W/\\\"0e97a2a2-ee50-48f9-9920-681005d854dc\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"ipAddress\": \"23.101.132.202\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 6,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"dnstestpubip\",\r\n      \"fqdn\": \"dnstestpubip.eastus.cloudapp.azure.com.\",\r\n      \"reverseFqdn\": \"dnstestpubip19272.eastus.cloudapp.azure.com.\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '647',
+  'content-length': '649',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  etag: 'W/"6816b719-423b-4202-8b3f-68c57fd0a151"',
-  'x-ms-request-id': 'b7cb3652-f38c-4c96-aaec-e36fbe4abb8d',
+  etag: 'W/"0e97a2a2-ee50-48f9-9920-681005d854dc"',
+  'x-ms-request-id': '23a286b9-67de-4762-bcb6-898a52f1f769',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31893',
-  'x-ms-correlation-request-id': '24a7caec-bc53-44ab-925f-88b07cacb7d4',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T115956Z:24a7caec-bc53-44ab-925f-88b07cacb7d4',
-  date: 'Wed, 22 Apr 2015 11:59:55 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31987',
+  'x-ms-correlation-request-id': '703189cd-e4ae-4ce4-ba56-5a9e75bd62b9',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173455Z:703189cd-e4ae-4ce4-ba56-5a9e75bd62b9',
+  date: 'Wed, 22 Apr 2015 17:34:55 GMT',
   connection: 'close' });
  return result; }]];
