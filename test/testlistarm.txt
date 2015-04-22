@@ -15,3 +15,4 @@ commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
 #apiapp suite is unreliable, particular running in -pr repo
 #commands/arm/apiapp/lib/lib-tests.js
+commands/arm/insights/arm.insights.logs-tests.js

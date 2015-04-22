@@ -17,7 +17,10 @@
 		* Updated common mobile test infrastructure
 		* Refactored mobile tests into separate files
 		* Optimized mocked test time run for mobile tests
-
+* Insights
+	* Features
+		* Added commands to retrieve event/operation logs from Event Service. Commands added: insights logs subId list, insights logs correlationId list, insights logs group list, insights logs resource list, and insights logs provider list
+		
 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611
