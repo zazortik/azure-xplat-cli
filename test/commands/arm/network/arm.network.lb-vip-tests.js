@@ -41,7 +41,7 @@ describe('arm', function () {
     var suite, retry = 5;
 	
 		before(function (done) {
-			suite = new CLITest(testprefix, requiredEnvironment);
+			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				groupName = suite.isMocked ? 'armrestestingvipgrp' : suite.generateId(groupPrefix, null)
 				publicipPrefix = suite.isMocked ? 'xplatTestIp' : suite.generateId(publicipPrefix, null);

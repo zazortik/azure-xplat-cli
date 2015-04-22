@@ -44,7 +44,7 @@ describe('arm', function () {
 		testUtils.TIMEOUT_INTERVAL = 5000;
 			
 		before(function (done) {
-			suite = new CLITest(testprefix, requiredEnvironment);
+			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	
@@ -82,7 +82,7 @@ describe('arm', function () {
 						createPublicIp(function(){
 							showPublicIp(function(){
 								createFrontendIp(function(){
-									var cmd = util.format('network lb probe create %s %s %s -p %s -o %s -t %s -i %s -c %s  --json',
+									var cmd = util.format('network lb probe create %s %s %s -p %s -o %s -f %s -i %s -c %s  --json',
 											  groupName, LBName, lbprobePrefix, protocol, port, path, interval, count).split(' ');	
 									testUtils.executeCommand(suite, retry, cmd, function (result) {
 										result.exitStatus.should.equal(0);
@@ -106,7 +106,7 @@ describe('arm', function () {
 				});
 			});
 			it('set', function (done) {
-				var cmd = util.format('network lb probe set %s %s %s  -p %s -o %s -t %s -i %s -c %s --json', groupName, LBName, lbprobePrefix,protocolNew,portNew,pathNew,intervalNew,countNew).split(' ');
+				var cmd = util.format('network lb probe set %s %s %s  -p %s -o %s -f %s -i %s -c %s --json', groupName, LBName, lbprobePrefix,protocolNew,portNew,pathNew,intervalNew,countNew).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();

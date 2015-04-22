@@ -44,7 +44,7 @@ describe('arm', function () {
 		retry = 5;
 			
 		before(function (done) {
-		suite = new CLITest(testprefix, requiredEnvironment);
+		suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	
