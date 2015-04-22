@@ -40,7 +40,7 @@ describe('arm', function () {
 			retry = 5;
 
 		before(function (done) {
-			suite = new CLITest(testprefix, requiredEnvironment);
+			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	
@@ -97,7 +97,7 @@ describe('arm', function () {
 				});
 			});
 			it('set', function (done) {
-			    var cmd = util.format('network lb inbound-nat-rule set %s %s %s -f 3381 -b 3381 -e false', groupName, LBName, lbinboundprefix).split(' ');
+			    var cmd = util.format('network lb inbound-nat-rule set %s %s %s -p udp -f 3381 -b 3381 -e false', groupName, LBName, lbinboundprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();

@@ -14,7 +14,6 @@ exports.getMockedProfile = function () {
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: ['website'],
-    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,42 +21,42 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/microsoft.network/publicIPAddresses?api-version=2014-12-01-preview')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"armpublicip6968\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip6968\",\r\n      \"etag\": \"W/\\\"de8290a3-2b20-429e-a33f-a802842bed1c\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"ipAddress\": \"111.221.90.145\",\r\n        \"publicIPAllocationMethod\": \"Static\",\r\n        \"idleTimeoutInMinutes\": 6,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip\",\r\n          \"fqdn\": \"dnstestpubip.southeastasia.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip19897.southeastasia.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    },\r\n    {\r\n      \"name\": \"armpublicipnew4401\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicipnew4401\",\r\n      \"etag\": \"W/\\\"0601e964-c956-427a-a7e3-199c2af0e503\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publicIPAllocationMethod\": \"Dynamic\",\r\n        \"idleTimeoutInMinutes\": 4,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip19897\",\r\n          \"fqdn\": \"dnstestpubip19897.southeastasia.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip2386.southeastasia.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses?api-version=2015-05-01-preview')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"armpublicip5946\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946\",\r\n      \"etag\": \"W/\\\"6816b719-423b-4202-8b3f-68c57fd0a151\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"ipAddress\": \"104.40.91.89\",\r\n        \"publicIPAllocationMethod\": \"Static\",\r\n        \"idleTimeoutInMinutes\": 6,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip\",\r\n          \"fqdn\": \"dnstestpubip.westus.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"name\": \"armpublicipnew8182\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicipnew8182\",\r\n      \"etag\": \"W/\\\"54620afe-41d9-425b-8e30-899c23142636\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publicIPAllocationMethod\": \"Dynamic\",\r\n        \"idleTimeoutInMinutes\": 4,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip17754\",\r\n          \"fqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip1625.westus.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"westus\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1499',
+  'content-length': '1455',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '68a4f988-19bb-4fcc-8372-80ef813fdc10',
+  'x-ms-request-id': '1cdce256-177e-4874-a250-d132770e9406',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31910',
-  'x-ms-correlation-request-id': '82438a32-949a-4266-a6ab-624486c65708',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150417T184922Z:82438a32-949a-4266-a6ab-624486c65708',
-  date: 'Fri, 17 Apr 2015 18:49:22 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31909',
+  'x-ms-correlation-request-id': '56d6f95f-1032-4fa4-95ae-641767240e91',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T115957Z:56d6f95f-1032-4fa4-95ae-641767240e91',
+  date: 'Wed, 22 Apr 2015 11:59:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/microsoft.network/publicIPAddresses?api-version=2014-12-01-preview')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"armpublicip6968\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip6968\",\r\n      \"etag\": \"W/\\\"de8290a3-2b20-429e-a33f-a802842bed1c\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"ipAddress\": \"111.221.90.145\",\r\n        \"publicIPAllocationMethod\": \"Static\",\r\n        \"idleTimeoutInMinutes\": 6,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip\",\r\n          \"fqdn\": \"dnstestpubip.southeastasia.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip19897.southeastasia.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    },\r\n    {\r\n      \"name\": \"armpublicipnew4401\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicipnew4401\",\r\n      \"etag\": \"W/\\\"0601e964-c956-427a-a7e3-199c2af0e503\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publicIPAllocationMethod\": \"Dynamic\",\r\n        \"idleTimeoutInMinutes\": 4,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip19897\",\r\n          \"fqdn\": \"dnstestpubip19897.southeastasia.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip2386.southeastasia.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"southeastasia\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses?api-version=2015-05-01-preview')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"armpublicip5946\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicip5946\",\r\n      \"etag\": \"W/\\\"6816b719-423b-4202-8b3f-68c57fd0a151\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"ipAddress\": \"104.40.91.89\",\r\n        \"publicIPAllocationMethod\": \"Static\",\r\n        \"idleTimeoutInMinutes\": 6,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip\",\r\n          \"fqdn\": \"dnstestpubip.westus.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"name\": \"armpublicipnew8182\",\r\n      \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/armrestestingpubgrp/providers/Microsoft.Network/publicIPAddresses/armpublicipnew8182\",\r\n      \"etag\": \"W/\\\"54620afe-41d9-425b-8e30-899c23142636\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publicIPAllocationMethod\": \"Dynamic\",\r\n        \"idleTimeoutInMinutes\": 4,\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"dnstestpubip17754\",\r\n          \"fqdn\": \"dnstestpubip17754.westus.cloudapp.azure.com.\",\r\n          \"reverseFqdn\": \"dnstestpubip1625.westus.cloudapp.azure.com.\"\r\n        }\r\n      },\r\n      \"location\": \"westus\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1499',
+  'content-length': '1455',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '68a4f988-19bb-4fcc-8372-80ef813fdc10',
+  'x-ms-request-id': '1cdce256-177e-4874-a250-d132770e9406',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31910',
-  'x-ms-correlation-request-id': '82438a32-949a-4266-a6ab-624486c65708',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150417T184922Z:82438a32-949a-4266-a6ab-624486c65708',
-  date: 'Fri, 17 Apr 2015 18:49:22 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '31909',
+  'x-ms-correlation-request-id': '56d6f95f-1032-4fa4-95ae-641767240e91',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T115957Z:56d6f95f-1032-4fa4-95ae-641767240e91',
+  date: 'Wed, 22 Apr 2015 11:59:57 GMT',
   connection: 'close' });
  return result; }]];
