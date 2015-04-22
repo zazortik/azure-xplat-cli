@@ -47,6 +47,16 @@ describe('apiapp', function () {
         });
       });
 
+      it('should succeed for valid package with no metadata', function (done) {
+        var packageRoot = path.join(packageDataRoot, 'validPackageNoSwagger');
+        packageLib.validate(packageRoot, function (err, result) {
+          should.not.exist(err);
+          should.not.exist(result.errors);
+          result.isValid.should.be.true;
+          done(err);
+        });
+      });
+
       it('should fail for package missing manifest', function (done) {
         var packageRoot = path.join(packageDataRoot, 'noManifest');
         packageLib.validate(packageRoot, function (err, result) {

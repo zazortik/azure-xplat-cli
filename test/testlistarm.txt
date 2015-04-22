@@ -16,3 +16,4 @@ commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/storage/arm.storage.account-tests.js
+commands/arm/insights/arm.insights.logs-tests.js
