@@ -49,6 +49,34 @@ In the above example only the cli.site-tests.js tests would be run.
 
 A test-file can have multiple suites and multiple tests within a suite.
 
+* Executing a specific test from the entire suite: "it.only()"
+```js
+describe.('list', function () {
+  it.only('should work', function (done) {
+    suite.execute('location list --json', function (result) {
+      result.exitStatus.should.equal(0);
+      //verify the command indeed produces something valid such as a well known provider: sql provider
+      var allResources = JSON.parse(result.text);
+      allResources.some(function (res) {
+        return res.name.match(/Microsoft.Sql\/servers/gi);
+      }).should.be.true;
+      done();
+    });
+  });
+
+  it('should not work', function (done) {
+    suite.execute('location list --json', function (result) {
+      result.exitStatus.should.equal(1);
+      //verify the command indeed produces something valid such as a well known provider: sql provider
+      var allResources = JSON.parse(result.text);
+      allResources.some(function (res) {
+        return res.name.match(/Microsoft.Sql\/servers/gi);
+      }).should.be.false;
+      done();
+    });
+  });
+});
+```
 * Skipping an entire suite, will not execute the entire suite. This can de achieved by using the "skip" keyword 
 ```js
 describe.skip('list', function () {
@@ -77,11 +105,13 @@ describe.skip('list', function () {
   });
 });
 ```
-* Skipping a particular test in a suite. This can be achieved by passing null as the second argument to the test.
+* Skipping a particular test in a suite. This can be achieved in two ways
+  * it.skip() **OR**
+  * passing null as the second argument to the test
 ```js
 describe('list', function () {
-  //The first test will not be run as null is provided as the second argument to the test function.
-  it('should work', null, function (done) {
+  //The first test will not be run as it is marked skip
+  it.skip('should work', null, function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(0);
       //verify the command indeed produces something valid such as a well known provider: sql provider
@@ -92,10 +122,22 @@ describe('list', function () {
       done();
     });
   });
-  
-  it('should not work', function (done) {
+  //The second test will not be run as null is provided as the second argument to the test function.
+  it('should not work', null, function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(1);
+      //verify the command indeed produces something valid such as a well known provider: sql provider
+      var allResources = JSON.parse(result.text);
+      allResources.some(function (res) {
+        return res.name.match(/Microsoft.Sql\/servers/gi);
+      }).should.be.false;
+      done();
+    });
+  });
+  
+  it('should always work', unction (done) {
+    suite.execute('location list --json', function (result) {
+      result.exitStatus.should.equal(0);
       //verify the command indeed produces something valid such as a well known provider: sql provider
       var allResources = JSON.parse(result.text);
       allResources.some(function (res) {

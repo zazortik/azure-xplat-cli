@@ -48,7 +48,7 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
       homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
     });
