@@ -18,6 +18,9 @@ commands/arm/storage/arm.storage.account-tests.js
 #commands/arm/vm/arm.vm-create-tests.js
 #commands/arm/vm/arm.vm-stop-restart-tests.js
 #commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
+#commands/arm/vm/arm.vm-docker-tests.js
+#commands/arm/vm/arm.vm.extension-tests.js
+#commands/arm/vm/arm.vm-quickcreate-tests.js
 commands/arm/vm/arm.availset-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/network/arm.network.publicip-tests.js

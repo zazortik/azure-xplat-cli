@@ -90,7 +90,7 @@ describe('arm', function () {
 			});
 			
 			
-			it('image list-publishers ', function(done) {
+			it('image list ', function(done) {
 				var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function(result) {
 					result.exitStatus.should.equal(0);

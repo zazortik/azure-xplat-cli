@@ -13,7 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
+    registeredProviders: ['mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -33,13 +33,13 @@ nock('http://management.azure.com:443')
   'content-length': '755',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '65123ca1-059a-4112-83fa-84d859710bc5',
+  'x-ms-request-id': 'dfd5fc8c-44f5-4e92-8b84-f2eedf205056',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31864',
-  'x-ms-correlation-request-id': '7d2acd12-49c1-4260-906e-a3bb3c816ecf',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T125014Z:7d2acd12-49c1-4260-906e-a3bb3c816ecf',
+  'x-ms-ratelimit-remaining-subscription-reads': '31989',
+  'x-ms-correlation-request-id': '18cf6fa7-0def-42c3-9875-124f0c614f1f',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173321Z:18cf6fa7-0def-42c3-9875-124f0c614f1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 22 Apr 2015 12:50:14 GMT',
+  date: 'Wed, 22 Apr 2015 17:33:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -51,12 +51,12 @@ nock('https://management.azure.com:443')
   'content-length': '755',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '65123ca1-059a-4112-83fa-84d859710bc5',
+  'x-ms-request-id': 'dfd5fc8c-44f5-4e92-8b84-f2eedf205056',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31864',
-  'x-ms-correlation-request-id': '7d2acd12-49c1-4260-906e-a3bb3c816ecf',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T125014Z:7d2acd12-49c1-4260-906e-a3bb3c816ecf',
+  'x-ms-ratelimit-remaining-subscription-reads': '31989',
+  'x-ms-correlation-request-id': '18cf6fa7-0def-42c3-9875-124f0c614f1f',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173321Z:18cf6fa7-0def-42c3-9875-124f0c614f1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 22 Apr 2015 12:50:14 GMT',
+  date: 'Wed, 22 Apr 2015 17:33:21 GMT',
   connection: 'close' });
  return result; }]];
