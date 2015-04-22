@@ -29,7 +29,7 @@ describe('cli', function () {
     describe('recover', function () {
 
       before(function (done) {
-        suite = new CLITest(testPrefix, requiredEnvironment);
+        suite = new CLITest(this, testPrefix, requiredEnvironment);
         if (suite.isPlayback()) {
           suite.setupSuite(done);
         } else {

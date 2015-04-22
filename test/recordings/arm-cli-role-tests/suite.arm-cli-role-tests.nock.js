@@ -13,8 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '1449d5b7-8a83-47db-ae4c-9b03e888bad0',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -30,5 +29,5 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [];
- 
-exports.randomTestIdsGenerated = function() { return ['testrg17967','testserver1612','testdb19331'];};
+
+ exports.randomTestIdsGenerated = function() { return ['testrg11154','testserver13106','testdb14267'];};

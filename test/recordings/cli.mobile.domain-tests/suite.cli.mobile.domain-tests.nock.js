@@ -6,14 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
+    id: '5e7d1bb6-4953-44fe-8a54-43fbdb53b989',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['mobileservice', 'mobileservice', 'website', 'mobileservice', 'mobileservice'],
+    name: 'Mobilytics Test1',
+    registeredProviders: ['website', 'mobileservice'],
     registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
