@@ -17,3 +17,24 @@ commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/storage/arm.storage.account-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
+# vm create tests commented from the test run due to CRP/NRP/SRP errors. Will turn it ON post fixes.
+#commands/arm/vm/arm.vm-create-tests.js
+#commands/arm/vm/arm.vm-stop-restart-tests.js
+#commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
+#commands/arm/vm/arm.vm-docker-tests.js
+#commands/arm/vm/arm.vm.extension-tests.js
+#commands/arm/vm/arm.vm-quickcreate-tests.js
+commands/arm/vm/arm.availset-tests.js
+commands/arm/vm/arm.vm-image-list-tests.js
+commands/arm/network/arm.network.publicip-tests.js
+commands/arm/network/arm.network.nsg-tests.js
+commands/arm/network/arm.network.nsg-rule-tests.js
+commands/arm/network/arm.network.vnet-tests.js
+commands/arm/network/arm.network.subnet-tests.js
+commands/arm/network/arm.network.nic-tests.js
+commands/arm/network/arm.network.lb-inboundrule-tests.js
+commands/arm/network/arm.network.lb-tests.js
+commands/arm/network/arm.network.lb-probe-tests.js
+commands/arm/network/arm.network.lb-address-pool-tests.js
+commands/arm/network/arm.network.lb-rule-tests.js
+commands/arm/network/arm.network.lb-vip-tests.js
