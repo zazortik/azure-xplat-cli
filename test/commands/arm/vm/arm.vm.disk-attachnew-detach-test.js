@@ -18,7 +18,7 @@
 var should = require('should');
 var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testUtil = require('../../../util/util');
+var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-disk-attachnew-detach-tests';
 var groupPrefix = 'xplatTestGCreateDisk';
 var createdGroups = [];
@@ -39,13 +39,12 @@ var requiredEnvironment = [{
 }];
 
 var groupName, timeout,
-	vmPrefix = 'xplattestvmDk',
+	vmPrefix = 'xplatvmDk',
 	nicName = 'xplattestnicDk',
 	location,
-	//os = 'Windows',
 	username = 'azureuser',
 	password = 'Brillio@2015' ,
-	//VMImage = 'ad072bd3082149369c449ba5832401ae__Windows-Server-Remote-Desktop-Session-Host-on-Windows-Server-2012-R2-20140514-1852',
+	VMImage = 'ad072bd3082149369c449ba5832401ae__Windows-Server-RDSHwO365P-on-Windows-Server-2012-R2-20150128-0010',
 	storageAccount = 'xplatteststorage',
 	storageCont= 'xplatteststoragecnt',
 	osdiskvhd= 'xplattestvhdDk',	
@@ -59,18 +58,18 @@ describe('arm', function () {
 	describe('compute', function () {
 	
 		var suite, retry = 5;
-		testUtil.TIMEOUT_INTERVAL = 5000;
+		testUtils.TIMEOUT_INTERVAL = 5000;
 
 		before(function (done) {
-		  suite = new CLITest(testprefix, requiredEnvironment);
+		  suite = new CLITest(this, testprefix, requiredEnvironment);
 		  suite.setupSuite(function() {	
 			  location = process.env.AZURE_VM_TEST_LOCATION;
-			  timeout = suite.isMocked ? 0 : testUtil.TIMEOUT_INTERVAL;		  
+			  timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;		  
 			  groupName =  suite.isMocked ? 'xplatTestGCreateDisk' : suite.generateId(groupPrefix, null);	  
-			  vmPrefix = suite.isMocked ? 'xplattestvmDk' : suite.generateId(vmPrefix, null);
+			  vmPrefix = suite.isMocked ? 'xplatvmDk' : suite.generateId(vmPrefix, null);
 			  nicName = suite.isMocked ? 'xplattestnicDk' : suite.generateId(nicName, null);
-			  storageAccount = suite.isMocked ? 'xplatteststoragedk' : suite.generateId(storageAccount, null);
-			  storageCont = suite.isMocked ? 'xplatteststoragecntdk' : suite.generateId(storageCont, null);
+			  storageAccount = suite.generateId(storageAccount, null);
+			  storageCont = suite.generateId(storageCont, null);
 			  osdiskvhd = suite.isMocked ? 'xplattestvhddk' : suite.generateId(osdiskvhd, null);
 			  vNetPrefix = suite.isMocked ? 'xplattestvnetDk' : suite.generateId(vNetPrefix, null);	
 			  subnetName = suite.isMocked ? 'xplattestsubnetDk' : suite.generateId(subnetName, null);
@@ -99,12 +98,10 @@ describe('arm', function () {
 		describe('vm', function () {
 			it('create for disk attach and detach', function (done) {
 				createGroup(function(){
-					var cmd = util.format('vm create %s %s eastus Windows -f %s -u %s -p %s -o %s -R %s -c %s -d %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
-							groupName, vmPrefix, nicName, username, password, storageAccount, 
-							storageCont, 'None', osdiskvhd+'.vhd', vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24',
-							publicipName, dnsPrefix).split(' ');
-								
-					suite.execute(cmd,  function (result) {
+					var cmd = util.format('vm create %s %s %s Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
+								groupName, vmPrefix, location, nicName,VMImage, username, password, storageAccount, storageCont, 
+								vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
+					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
 					});
@@ -114,7 +111,7 @@ describe('arm', function () {
 		it('disk attachnew', function(done) {
 		  diskPrefix = diskPrefix + '.vhd';
           var cmd = util.format('vm disk attach-new %s %s 1 %s --json', groupName, vmPrefix, diskPrefix).split(' ');
-          testUtil.executeCommand(suite, retry, cmd, function(result) {
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
 			done();
           });
@@ -123,7 +120,7 @@ describe('arm', function () {
 	  // VM Restart
       it('disk detach', function(done) {
         var cmd = util.format('vm disk detach %s %s 0 --json', groupName, vmPrefix).split(' ');
-        testUtil.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
@@ -132,24 +129,20 @@ describe('arm', function () {
 	});
 	
 		function createGroup(callback) {
-			suite.execute('group create %s --location %s --json', groupName,location, function (result) {
+			var cmd = util.format('group create %s --location %s --json', groupName,location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
 			  result.exitStatus.should.equal(0);
 			  callback();
 			});
 		}
-	
 		function deleteUsedGroup(callback) {
-				//suite.execute('vm delete %s %s --quiet', groupName,vmPrefix, function (result) {
-				//result.exitStatus.should.equal(0);
-				if(!suite.isPlayback()) {
-					suite.execute('group delete %s --quiet', groupName, function (result) {
-						result.exitStatus.should.equal(0);
-						callback();
-					});
-				} else callback();
-			//});
-			
-			
+			if(!suite.isPlayback()) {
+				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					callback();
+				});
+			} else callback();
 		}
 	});
 });

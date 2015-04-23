@@ -82,8 +82,8 @@ describe('arm', function () {
 		
 			it('create for stop and restart', function (done) {
 				createGroup(function(){
-					var cmd = util.format('vm create %s %s eastus Windows -f %s -q %s -u %s -p %s -o %s -R %s -c %s -d %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
-							groupName, vmPrefix, nicName,VMImage, username, password, storageAccount,storageCont, 'None', osdiskvhd+'.vhd', vNetPrefix,
+					var cmd = util.format('vm create %s %s eastus Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
+							groupName, vmPrefix, nicName,VMImage, username, password, storageAccount,storageCont, vNetPrefix,
 							'10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
