@@ -87,29 +87,24 @@ if %errorlevel% neq 0 goto ERROR
 popd
 
 echo Removing unneeded files from azure module...
-pushd %TEMP_REPO%\node_modules\azure
+pushd %TEMP_REPO%
 
 for %%i in (
-    packages
-    scripts
-    test
-    tasks
-    examples
-    jsdoc
-    lib\common
-    lib\services\gallery
-    lib\services\management
-    lib\services\computeManagement
-    lib\services\resourceManagement
-    lib\services\serviceBusManagement
-    lib\services\schedulerManagement
-    lib\services\sqlManagement
-    lib\services\storageManagement
-    lib\services\storeManagement
-    lib\services\subscriptionManagement
-    lib\services\networkManagement
-    lib\services\webSiteManagement
-    lib\services\scheduler
+    node_modules\azure\packages
+    node_modules\azure\scripts
+    node_modules\azure\test
+    node_modules\azure\tasks
+    node_modules\azure\examples
+    node_modules\azure\jsdoc
+    node_modules\azure\lib\common
+    node_modules\azure\lib\services
+    node_modules\azure-mgmt-authorization\node_modules\azure-common
+	node_modules\azure-mgmt-resource\node_modules\azure-common
+	node_modules\azure-storage-legacy\node_modules\azure-common
+	node_modules\azure-gallery\node_modules\azure-common
+	node_modules\azure-insights\node_modules\azure-common
+	node_modules\azure-extra\node_modules\azure-common
+	node_modules\azure\node_modules\azure-common
 ) do (
     if exist %%i (
         echo Deleting %%i...
