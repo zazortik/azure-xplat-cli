@@ -1,4 +1,38 @@
 Version 0.9.0
+
+* Virtual machines 
+  * Support for managing virtual machine resource in CRP stack, this include commands to
+    * Create VM with options to configure availability set and network resources
+    * Quick create VM
+    * Create docker VM
+    * Delete, start, stop, generalize and capture VM
+    * Manage VM extensions
+    * Manage VM data disks
+    * Manage VM images
+    * Update VM to add and remove NICs
+    * VM instance view
+    * VM show commands which supports --depth option to fetch associated resources
+    * Reset VM access credentails
+
+* Network
+  * Support for managing network resources in NRP stack, this include commands to
+    * Manage virtual network
+    * Manage virtual network subnet
+    * Manage load balancer
+    * Manage load balancer child resources
+      * Probes
+      * VIP configuration
+      * Address pool
+      * load balancing rules
+      * Inbount NAT rules
+    * Manage NIC
+    * Manage PublicIP
+    * Manage traffic manager
+    * Manage security group
+
+* Availability set resource in CRP stack
+  * Commands to manage availability set.
+
 *  ApiApps
   * Added apiapp package create command to build apiapp packages.
 
