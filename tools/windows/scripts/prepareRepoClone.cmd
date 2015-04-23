@@ -99,12 +99,12 @@ for %%i in (
     node_modules\azure\lib\common
     node_modules\azure\lib\services
     node_modules\azure-mgmt-authorization\node_modules\azure-common
-	node_modules\azure-mgmt-resource\node_modules\azure-common
-	node_modules\azure-storage-legacy\node_modules\azure-common
-	node_modules\azure-gallery\node_modules\azure-common
-	node_modules\azure-insights\node_modules\azure-common
-	node_modules\azure-extra\node_modules\azure-common
-	node_modules\azure\node_modules\azure-common
+    node_modules\azure-mgmt-resource\node_modules\azure-common
+    node_modules\azure-storage-legacy\node_modules\azure-common
+    node_modules\azure-gallery\node_modules\azure-common
+    node_modules\azure-insights\node_modules\azure-common
+    node_modules\azure-extra\node_modules\azure-common
+    node_modules\azure\node_modules\azure-common
 ) do (
     if exist %%i (
         echo Deleting %%i...
