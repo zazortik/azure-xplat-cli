@@ -1,31 +1,59 @@
-<TODO: fill in date> Version 0.9.1
+Version 0.9.1
 * Key Vault
   * Features
     * Added commands to manage vaults, keys and secrets (azure vault).
+
+Version 0.9.0
+* ARM
+  * Virtual machines 
+    * Support for managing virtual machine resource in CRP stack, this includes commands to
+      * Create VM with options to configure availability set and network resources
+      * Quick create VM
+      * Create docker VM
+      * Delete, start, stop, generalize and capture VM
+      * Manage VM extensions
+      * Manage VM data disks
+      * Manage VM images
+      * Update VM to add and remove NICs
+      * VM instance view
+      * VM show commands which supports --depth option to fetch associated resources
+      * Reset VM access credentials
+  * Network
+    * Support for managing network resources in NRP stack, this includes commands to
+      * Manage virtual network
+      * Manage virtual network subnet
+      * Manage load balancer
+      * Manage load balancer child resources
+        * Probes
+        * VIP configuration
+        * Address pool
+        * load balancing rules
+        * Inbount NAT rules
+      * Manage NIC
+      * Manage PublicIP
+      * Manage traffic manager
+      * Manage security group
+  * Availability set resource in CRP stack
+    * Commands to manage availability set
+  * Insights
+    * Added commands to retrieve event/operation logs from Event Service
+*ASM
+  * VM
+    * Chef Extension
+      * Implemented new option --bootstrap-options for set-chef extension commands
+  * Mobile
+    * Features
+        * Added support for AAD Tenants
+        * Added support for proxies / fiddler
+        * Improved custom domain, certificate, and SSL error handling
+    * Issues
+        * Fixed 'log is undefined' bug
+        * Fixed connection issues with mobile pipeline
+    * Test Infrastructure
+        * Updated common mobile test infrastructure
+        * Refactored mobile tests into separate files
+        * Optimized mocked test time run for mobile tests
     
-<TODO: fill in date>Version 0.9.0
-* ApiApps
-  * Added apiapp package create command to build apiapp packages.
-* VM
-  * Chef Extension
-    * Implemented new option --bootstrap-options for set-chef extension commands
-* Mobile
-  * Features
-    * Added support for AAD Tenants
-    * Added support for proxies / fiddler
-    * Improved custom domain, certificate, and SSL error handling
-  * Issues
-    * Fixed 'log is undefined' bug
-    * Fixed connection issues with mobile pipeline
-  * Test Infrastructure
-    * Updated common mobile test infrastructure
-    * Refactored mobile tests into separate files
-    * Optimized mocked test time run for mobile tests
-* Insights
-  * Features
-    * Added commands to retrieve event/operation logs from Event Service. Commands added: insights logs subId list, insights logs correlationId list, insights logs group list, insights logs resource list, and insights logs provider list
-
-
 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611
