@@ -27,7 +27,7 @@ var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
 var testprefix = 'arm-cli-vault-tests';
-var keyPrefix = 'xplatTestVaultKey';
+var secretPrefix = 'xplatTestVaultSecret';
 var createdGroups = [];
 var createdDeployments = [];
 
@@ -43,7 +43,7 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-  describe('vault-key', function() {
+  describe('vault-secret', function() {
     var suite;
     var testVault;
 
@@ -68,64 +68,66 @@ describe('arm', function() {
     });
 
     describe('basic', function() {
-      it('key management commands should work', function(done) {
+      it('secret management commands should work', function(done) {
 
-        var keyName = suite.generateId(keyPrefix, createdGroups, suite.isMocked);
-        var keyId;
-        createKeyMustSucceed();
+        var secretName = suite.generateId(secretPrefix, createdGroups, suite.isMocked);
+        var secretValue = 'Chocolate_is_hidden_in_toothpaste_cabinet';
+        var secretId;
+        setSecretMustSucceed();
 
-        function createKeyMustSucceed() {
-          suite.execute('vault key create %s %s --destination Software --json', testVault, keyName, function(result) {
+        function setSecretMustSucceed() {
+          suite.execute('vault secret set %s %s %s', testVault, secretName, secretValue, function(result) {
             result.exitStatus.should.be.equal(0);
-            showKeyMustSucceed();
+            showSecretMustSucceed();
           });
         }
 
-        function showKeyMustSucceed() {
-          suite.execute('vault key show %s %s --json', testVault, keyName, function(result) {
+        function showSecretMustSucceed() {
+          suite.execute('vault secret show %s %s --json', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
-            var key = JSON.parse(result.text);
-            key.should.have.property('key');
-            key.key.should.have.property('kid');
-            keyId = key.key.kid;
-            keyId.should.include(util.format('https://%s.vault.azure.net/keys/%s/', testVault.toLowerCase(), keyName));
-            listKeysMustSucceed();
+            var secret = JSON.parse(result.text);
+            secret.should.have.property('id');
+            secretId = secret.id;
+            secretId.should.include(util.format('https://%s.vault.azure.net/secrets/%s/', testVault.toLowerCase(), secretName));
+            secret.should.have.property('value');
+            secret.value.should.be.equal(secretValue);
+            listSecretsMustSucceed();
           });
         }
 
-        function listKeysMustSucceed() {
-          suite.execute('vault key list %s --json', testVault, function(result) {
+        function listSecretsMustSucceed() {
+          suite.execute('vault secret list %s --json', testVault, function(result) {
             result.exitStatus.should.be.equal(0);
-            var keys = JSON.parse(result.text);
-            keys.some(function(key) {
-              return keyId.indexOf(key.kid + '/') === 0;
+            var secrets = JSON.parse(result.text);
+            secrets.some(function(secret) {
+              return secretId.indexOf(secret.id + '/') === 0;
             }).should.be.true;
-            listKeyVersionsMustSucceed();
+            listSecretVersionsMustSucceed();
           });
         }
 
-        function listKeyVersionsMustSucceed() {
-          suite.execute('vault key list-versions %s -k %s --json', testVault, keyName, function(result) {
+        function listSecretVersionsMustSucceed() {
+          suite.execute('vault secret list-versions %s -s %s --json', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
-            var keys = JSON.parse(result.text);
-            keys.some(function(key) {
-              return key.kid === keyId;
+            var secrets = JSON.parse(result.text);
+            secrets.some(function(secret) {
+              return secret.id === secretId;
             }).should.be.true;
-            deleteKeyMustSucceed();
+            deleteSecretMustSucceed();
           });
         }
 
-        function deleteKeyMustSucceed() {
-          suite.execute('vault key delete %s %s --quiet', testVault, keyName, function(result) {
+        function deleteSecretMustSucceed() {
+          suite.execute('vault secret delete %s %s --quiet', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
-            showKeyMustFail();
+            showSecretMustFail();
           });
         }
 
-        function showKeyMustFail() {
-          suite.execute('vault key show %s %s', testVault, keyName, function(result) {
-            result.exitStatus.should.equal(1);
-            result.errorText.should.include(util.format('Key %s not found', keyName));
+        function showSecretMustFail() {
+          suite.execute('vault secret show %s %s', testVault, secretName, function(result) {
+            result.exitStatus.should.be.equal(1);
+            result.errorText.should.include(util.format('Secret not found: %s', secretName));
             done();
           });
         }

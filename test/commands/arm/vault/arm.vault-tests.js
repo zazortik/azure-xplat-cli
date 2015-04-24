@@ -98,15 +98,71 @@ describe('arm', function() {
         }
 
         function deleteVaultMustSucceed() {
-          suite.execute('vault delete %s --json --quiet', vaultName, function() {
+          suite.execute('vault delete %s --json --quiet', vaultName, function(result) {
+            result.exitStatus.should.be.equal(0);
             showVaultMustFail();
           });
         }
 
         function showVaultMustFail() {
           suite.execute('vault show %s --resource-group %s', vaultName, testResourceGroup, function(result) {
-            result.exitStatus.should.equal(1);
+            result.exitStatus.should.be.equal(1);
             result.errorText.should.include('Vault not found');
+            done();
+          });
+        }
+
+      });
+
+      it('set-policy should work', function(done) {
+
+        var vaultName = suite.generateId(vaultPrefix, createdGroups, suite.isMocked);
+        var objectId = '00000000-0000-0000-0000-000000000001';
+        
+        createVaultMustSucceed();
+
+        function createVaultMustSucceed() {
+          suite.execute('vault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
+            result.exitStatus.should.be.equal(0);
+            setPolicySomePermsMustSucceed();
+          });
+        }
+
+        function setPolicySomePermsMustSucceed() {
+          suite.execute('vault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --json', vaultName, objectId, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.properties.accessPolicies.some(function(policy) {
+              return policy.objectId.toLowerCase() === objectId.toLowerCase();
+            }).should.be.true;
+            setPolicyEmptyKeyPermsMustSucceedAndLetObjectIdThere();
+          });
+        }
+
+        function setPolicyEmptyKeyPermsMustSucceedAndLetObjectIdThere() {
+          suite.execute('vault set-policy %s --object-id %s --perms-to-keys [] --json', vaultName, objectId, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.properties.accessPolicies.some(function(policy) {
+              return policy.objectId.toLowerCase() === objectId.toLowerCase();
+            }).should.be.true;
+            setPolicyEmptySecretPermsMustSucceedAndKillObjectId();
+          });
+        }
+
+        function setPolicyEmptySecretPermsMustSucceedAndKillObjectId() {
+          suite.execute('vault set-policy %s --object-id %s --perms-to-secrets [] --json', vaultName, objectId, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.properties.accessPolicies.some(function(policy) {
+              return policy.objectId.toLowerCase() === objectId.toLowerCase();
+            }).should.be.false;
+            deleteVaultMustSucceed();
+          });
+        }
+        
+        function deleteVaultMustSucceed() {
+          suite.execute('vault delete %s --json --quiet', vaultName, function(result) {
             done();
           });
         }
