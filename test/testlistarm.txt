@@ -17,6 +17,13 @@ commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/storage/arm.storage.account-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
+commands/arm/insights/arm.insights.metrics-tests.js
+commands/arm/insights/arm.insights.metrics.definition-tests.js
+commands/arm/insights/arm.insights.autoscale-tests.js
+commands/arm/insights/arm.insights.autoscale.setting-tests.js
+commands/arm/insights/arm.insights.alerts-tests.js
+commands/arm/insights/arm.insights.alerts.rule-tests.js
+commands/arm/insights/arm.insights.usage-tests.js
 commands/arm/vault/arm.vault-tests.js
 # vm create tests commented from the test run due to CRP/NRP/SRP errors. Will turn it ON post fixes.
 #commands/arm/vm/arm.vm-create-tests.js
