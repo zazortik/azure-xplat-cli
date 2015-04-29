@@ -28,8 +28,7 @@ var utils = require('../../../../lib/util/utils');
 
 var testprefix = 'arm-cli-vault-tests';
 var secretPrefix = 'xplatTestVaultSecret';
-var createdGroups = [];
-var createdDeployments = [];
+var knownNames = [];
 
 var requiredEnvironment = [{
   requiresToken: true
@@ -70,7 +69,7 @@ describe('arm', function() {
     describe('basic', function() {
       it('secret management commands should work', function(done) {
 
-        var secretName = suite.generateId(secretPrefix, createdGroups, suite.isMocked);
+        var secretName = suite.generateId(secretPrefix, knownNames);
         var secretValue = 'Chocolate_is_hidden_in_toothpaste_cabinet';
         var secretId;
         setSecretMustSucceed();

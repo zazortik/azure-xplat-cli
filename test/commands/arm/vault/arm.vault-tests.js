@@ -26,19 +26,16 @@ var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
-var testprefix = 'arm-cli-vault-tests';
+var testPrefix = 'arm-cli-vault-tests';
+var testResourceGroup = 'xplatTestVaultRG';
 var vaultPrefix = 'xplatTestVault';
-var createdGroups = [];
-var createdDeployments = [];
+var knownNames = [];
 
 var requiredEnvironment = [{
   requiresToken: true
 }, {
   name: 'AZURE_ARM_TEST_LOCATION',
   defaultValue: 'West US'
-}, {
-  name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
-  defaultValue: 'XplatTestVaultRG'
 }];
 
 var galleryTemplateName;
@@ -49,25 +46,26 @@ describe('arm', function() {
   describe('vault', function() {
     var suite;
     var testLocation;
-    var testResourceGroup;
-    var normalizedTestLocation;
 
     before(function(done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() { 
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        testLocation = testLocation.toLowerCase().replace(/ /g, '');
+        suite.execute('group create %s --location %s', testResourceGroup, testLocation, function() {
+          done();
+        });      
+      });
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      suite.execute('group delete %s --quiet', testResourceGroup, function() {
+        suite.teardownSuite(done);
+      });
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
-        testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
-        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {
@@ -77,7 +75,7 @@ describe('arm', function() {
     describe('basic', function() {
       it('management commands should work', function(done) {
 
-        var vaultName = suite.generateId(vaultPrefix, createdGroups, suite.isMocked);
+        var vaultName = suite.generateId(vaultPrefix, knownNames);
         createVaultMustSucceed();
 
         function createVaultMustSucceed() {
@@ -116,9 +114,8 @@ describe('arm', function() {
 
       it('set-policy should work', function(done) {
 
-        var vaultName = suite.generateId(vaultPrefix, createdGroups, suite.isMocked);
+        var vaultName = suite.generateId(vaultPrefix, knownNames);
         var objectId = '00000000-0000-0000-0000-000000000001';
-        
         createVaultMustSucceed();
 
         function createVaultMustSucceed() {

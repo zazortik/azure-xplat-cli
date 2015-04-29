@@ -28,8 +28,7 @@ var utils = require('../../../../lib/util/utils');
 
 var testprefix = 'arm-cli-vault-tests';
 var keyPrefix = 'xplatTestVaultKey';
-var createdGroups = [];
-var createdDeployments = [];
+var knownNames = [];
 
 var requiredEnvironment = [{
   requiresToken: true
@@ -70,7 +69,7 @@ describe('arm', function() {
     describe('basic', function() {
       it('key management commands should work', function(done) {
 
-        var keyName = suite.generateId(keyPrefix, createdGroups, suite.isMocked);
+        var keyName = suite.generateId(keyPrefix, knownNames);
         var keyId;
         createKeyMustSucceed();
 
