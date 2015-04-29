@@ -26,7 +26,7 @@ var groupName, protocol= 'tcp', fport ='80', bport ='80', enafip = 'true', idle 
 	LBName = 'armEmptyLB',
 	LBAddPool = 'LB-AddPool',
 	LBRuleName= 'LB-Rule',
-	VipName = 'xplattestVipName',
+	FrontendIpName = 'xplattestFrontendIpName',
 	LBProbe='LB-Probe',
 	location;
 var publicIpId;
@@ -50,7 +50,7 @@ describe('arm', function () {
 				LBAddPool = suite.generateId(LBAddPool, null);
 				LBRuleName = suite.generateId(LBRuleName, null);
 				LBProbe = suite.generateId(LBProbe,null);
-				VipName = suite.isMocked ? VipName : suite.generateId(VipName, null);
+				FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
 				done();
 			});
 		});
@@ -77,7 +77,7 @@ describe('arm', function () {
 		  
 		describe('lb rule', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					createLB (function(){
 						createPublicIp(function(){
@@ -85,8 +85,8 @@ describe('arm', function () {
 								createFrontendIp(function(){
 									createLBAddPool (function(){
 										createLBProbe(function(){
-											var cmd = util.format('network lb rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -o %s -a %s --json', 
-													  groupName, LBName, LBRuleName, protocol, fport, bport, enafip, idle, LBAddPool, LBProbe).split(' ');
+											var cmd = util.format('network lb rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -o %s -a %s -t %s --json', 
+													  groupName, LBName, LBRuleName, protocol, fport, bport, enafip, idle, LBAddPool, LBProbe, FrontendIpName).split(' ');
 											testUtils.executeCommand(suite, retry, cmd, function (result) {
 												result.exitStatus.should.equal(0);
 												done();
@@ -99,14 +99,15 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('set', function (done) {
-				var cmd = util.format('network lb rule set -g %s -l %s -n %s -r %s -p %s -f %s -b %s -i %s -o %s -a %s --json', groupName, LBName, LBRuleName, "TestLBRuleName", protocol, '82', '82', '5', LBAddPool,LBProbe).split(' ');
+			it('set should modify lb rule ', function (done) {
+				var cmd = util.format('network lb rule set -g %s -l %s -n %s -r %s -p %s -f %s -b %s -i %s -o %s -a %s -t %s --json',
+						  groupName, LBName, LBRuleName, "TestLBRuleName", protocol, '82', '82', '5', LBAddPool, LBProbe, FrontendIpName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should display all rules from load balancer', function (done) {
 				var cmd = util.format('network lb rule list -g %s -l %s --json', groupName, LBName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -115,7 +116,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
+			it('delete should delete rule', function (done) {
 				var cmd = util.format('network lb rule delete %s %s %s --quiet --json', groupName, LBName, "TestLBRuleName").split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -134,7 +135,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -161,7 +162,7 @@ describe('arm', function () {
 		}	
 		function deleteUsedPublicIp(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipPrefix).split(' ');
+				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -225,7 +226,7 @@ describe('arm', function () {
 				callback();
 		}
 		function createFrontendIp(callback){
-			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s',groupName, LBName, VipName, publicIpId).split(' ');
+			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s --json',groupName, LBName, FrontendIpName, publicIpId).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);
 				callback();

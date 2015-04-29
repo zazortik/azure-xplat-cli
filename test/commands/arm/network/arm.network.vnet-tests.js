@@ -21,7 +21,6 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-vnet-tests';
 var vnetPrefix = 'xplatTestVnet';
-var createdGroups = [];
 var groupName,location,
 	groupPrefix = 'xplatTestGCreatevnet',
 	dnsAdd='8.8.8.8',dnsAdd1='8.8.4.4',AddPrefix='10.0.0.0/12';
@@ -29,7 +28,7 @@ var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'eastus'
 }];
-
+var skiptest = it.skip;
 describe('arm', function () {
     describe('network', function () {
     var suite,
@@ -39,8 +38,8 @@ describe('arm', function () {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-				vnetPrefix = suite.generateId(vnetPrefix, createdGroups, suite.isMocked);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
 				done();
 		   });
 		});
@@ -58,23 +57,24 @@ describe('arm', function () {
 
 		describe('vnet', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
-					var cmd = util.format('network vnet create %s %s %s -a %s -t priority=low;size=small -d %s', groupName, vnetPrefix,location, AddPrefix,dnsAdd).split(' ');
+					var cmd = util.format('network vnet create %s %s %s -a %s -t priority=low;size=small -d %s --json', groupName, vnetPrefix,location, AddPrefix,dnsAdd).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
 					});
 				});
 			});
-			it('set', function (done) {
+			it('set should modify vnet', function (done) {
+				
 				 var cmd = util.format('network vnet set %s %s -d %s --no-tags --json', groupName, vnetPrefix,dnsAdd1).split(' ');
 				 testUtils.executeCommand(suite, retry, cmd, function (result) {
 					 result.exitStatus.should.equal(0);
 					 done();
 				 });
 			});
-			it('show', function (done) {
+			it('show should display details of vnet', function (done) {
 				var cmd = util.format('network vnet show %s %s --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -83,7 +83,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should dispaly all vnets from resource group', function (done) {
 				var cmd = util.format('network vnet list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -94,8 +94,8 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
-				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+			it('delete should delete vnet', function (done) {
+				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
@@ -113,7 +113,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

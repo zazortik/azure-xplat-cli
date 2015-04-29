@@ -78,7 +78,7 @@ describe('arm', function () {
 
 		describe('nic', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					createVnet(function(){
 						createSubnet(function(){
@@ -87,7 +87,7 @@ describe('arm', function () {
 									showPublicIp(function(){
 										createNSG(function(){
 											showNSG(function(){
-												var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -p %s -i %s -w %s -o %s -a %s', 
+												var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -p %s -i %s -w %s -o %s -a %s --json', 
 														  groupName,nicPrefix,location,subnetId,subnetprefix,vnetPrefix,publicipPrefix,publicIpId,nsgId,nsgName,privateIP).split(' ');
 												testUtils.executeCommand(suite, retry, cmd, function (result) {
 													result.exitStatus.should.equal(0);
@@ -102,14 +102,14 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('set', function (done) {
-				var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -i %s -p %s -a %s -u %s -k %s --no-tags' , groupName, nicPrefix,nsgId,'NoSuchNSGExists',publicIpId,'NoSuchPublicIpExist',privateIP2,subnetId , 'NoSuchSubnetExists').split(' ');
+			it('set should modify nic', function (done) {
+				var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -i %s -p %s -a %s -u %s -k %s --no-tags --json' , groupName, nicPrefix,nsgId,'NoSuchNSGExists',publicIpId,'NoSuchPublicIpExist',privateIP2,subnetId , 'NoSuchSubnetExists').split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
-			it('show', function (done) {
+			it('show should display details about nic', function (done) {
 				var cmd = util.format('network nic show %s %s --json', groupName, nicPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -118,7 +118,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should display all nic in group', function (done) {
 				var cmd = util.format('network nic list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -129,8 +129,8 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
-				var cmd = util.format('network nic delete %s %s --quiet', groupName, nicPrefix).split(' ');
+			it('delete should delete nic', function (done) {
+				var cmd = util.format('network nic delete %s %s --quiet --json', groupName, nicPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
@@ -141,14 +141,14 @@ describe('arm', function () {
 	
 		
 		function createVnet(callback) {
-			var cmd = util.format('network vnet create %s %s %s ',groupName,vnetPrefix,location).split(' ');
+			var cmd = util.format('network vnet create %s %s %s --json',groupName,vnetPrefix,location).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});      
 		} 
 		function createSubnet(callback) {
-			var cmd = util.format('network vnet subnet create %s %s %s ',groupName,vnetPrefix,subnetprefix).split(' ');
+			var cmd = util.format('network vnet subnet create %s %s %s --json',groupName,vnetPrefix,subnetprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -165,7 +165,7 @@ describe('arm', function () {
 		}
 		function deleteUsedSubnet(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix, subnetprefix).split(' ');
+				var cmd = util.format('network vnet subnet delete %s %s %s --quiet --json', groupName, vnetPrefix, subnetprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -192,7 +192,7 @@ describe('arm', function () {
 		}	
 		function deleteUsedPublicIp(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipPrefix).split(' ');
+				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -202,7 +202,7 @@ describe('arm', function () {
 				callback();
 		}
 		function createNSG(callback) {
-			var cmd = util.format('network nsg create %s %s %s',groupName,nsgName,location).split(' ');
+			var cmd = util.format('network nsg create %s %s %s --json',groupName,nsgName,location).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);;
 				callback();
@@ -219,7 +219,7 @@ describe('arm', function () {
 		}	
 		function deleteUsedNsg(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network nsg delete %s %s --quiet', groupName, nsgName).split(' ');
+				var cmd = util.format('network nsg delete %s %s --quiet --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -230,7 +230,7 @@ describe('arm', function () {
 		}
 		function deleteUsedVnet(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -248,7 +248,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

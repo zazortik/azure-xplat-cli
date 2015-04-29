@@ -13,7 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['mobileservice'],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,9 +21,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['dnstestpubip9501','dnstestpubip19272','armpublicip2751','armpublicipnew7314'];};
+ exports.randomTestIdsGenerated = function() { return ['dnstestpubip5416','dnstestpubip1805','armpublicip5044','armpublicipnew4966'];};
