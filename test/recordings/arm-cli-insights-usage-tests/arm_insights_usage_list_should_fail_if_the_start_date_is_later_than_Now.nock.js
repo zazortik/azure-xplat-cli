@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c2619f08-57f7-492b-a9c3-45dee233805b',
-    name: 'kmsngtu Key Vault Account',
+    id: 'b67f7fec-69fc-4974-9099-a26bd6ffeda3',
+    name: 'Monitoring vNext Test Environment Services 02',
     user: {
-      name: 'kmsngtu@microsoft.com',
+      name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
+    registeredProviders: ['website'],
+    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,7 +22,6 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
 };
 
-exports.scopes = [];
+exports.scopes = [[]];
