@@ -17,23 +17,26 @@
 
 var should = require('should');
 var util = require('util');
-var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
-var utils = require('../../../../lib/util/utils');
+var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-lb-frontend-ip-tests';
-var groupPrefix = 'xplatTestGCreate';
+var groupPrefix = 'xplatTestGCreateFronIp';
 var createdGroups = [];
 var groupName,
 	publicipPrefix = 'xplatTestIp' , 
 	LBName = 'armEmptyLB',
-	LBAddPool = 'LB-AddPoll',
 	FrontendIpName = 'xplattestFrontendIpName',
-	location = "southeastasia";
-	var publicIpId, publicIpName;
+	LBNameSV = 'armEmptyLBSV',
+	FrontendIpSV = 'xplatTestFrontendIpSV' ;	
+var location;	
+var publicIpId, publicIpName;
+
+var vnetPrefix = 'xplatTestVnetFrontIp';     
+var subnetprefix ='xplatTestSubnetFrontIp'; 
 	
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'southeastasia'
+  defaultValue: 'eastus'
 }];
 
 describe('arm', function () {
@@ -43,24 +46,36 @@ describe('arm', function () {
 		before(function (done) {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
-				groupName = suite.isMocked ? 'armrestestingvipgrp' : suite.generateId(groupPrefix, null)
+				location = process.env.AZURE_VM_TEST_LOCATION;
+				groupName = suite.isMocked ? 'xplatTestGCreateFronIp' : suite.generateId(groupPrefix, null)
 				publicipPrefix = suite.isMocked ? 'xplatTestIp' : suite.generateId(publicipPrefix, null);
 				LBName = suite.isMocked ? 'armEmptyLB' : suite.generateId(LBName, null);
-				LBAddPool = suite.isMocked ? 'LB-AddPoll' : suite.generateId(LBAddPool, null);
 				FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
+				LBNameSV = suite.isMocked ? 'armEmptyLBSV' : suite.generateId(LBNameSV, null);
+				FrontendIpSV = suite.isMocked ? FrontendIpSV : suite.generateId(FrontendIpSV, null);
+				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+				subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
 				done();
 			});
 		});
 		
+		
 		after(function (done) {
 			deleteUsedLB ( function() {
 				deleteUsedPublicIp ( function() {
-					deleteUsedGroup(function() {
-						suite.teardownSuite(done);  
+					deleteUsedLBSV ( function() {
+						deleteUsedSubnet ( function() {
+							deleteUsedVnet ( function() {
+								deleteUsedGroup(function() {
+									suite.teardownSuite(done);  
+								});
+							});	
+						});
 					});
 				});
-			});
+			});	
 		});
+		
 		
 		beforeEach(function (done) {
 			suite.setupTest(done);
@@ -70,7 +85,8 @@ describe('arm', function () {
 		});
 
 		describe('lb frontend-ip', function () {
-		
+			
+		// frontend-ip create using public-ip id
 			it('create should pass', function (done) {
 				createGroup(function(){
 					createPublicIp(function(){
@@ -86,12 +102,33 @@ describe('arm', function () {
 					});
 				});
 			});
+			
+			
+			//frontend-ip create using subnet & vnet
+			it('create using subnet & vnet should pass', function (done) {
+				
+					createVnet(function(){
+						createSubnet(function(){
+							createLBSV(function(){
+								var cmd = util.format('network lb frontend-ip create %s %s %s -e %s -m %s --json',groupName, LBNameSV, FrontendIpSV, subnetprefix,vnetPrefix).split(' ');	
+								testUtils.executeCommand(suite, retry, cmd, function (result) {
+									result.exitStatus.should.equal(0);
+									done();
+								});
+							});
+						});
+					});
+					
+			});
+			
+			
 		  it('set should modify forntend-ip', function (done) {
 			  suite.execute('network lb frontend-ip set -g %s -l %s -n %s -u %s -o %s --json', groupName, LBName, FrontendIpName,publicIpId,'Dynamic',function (result) {
 			  result.exitStatus.should.equal(0);
 			  done();
 			});
 		  });
+		  
 			it('list should display all frontend-ips from load balancer ', function (done) {
 				var cmd = util.format('network lb frontend-ip list -g %s -l %s --json', groupName, LBName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -101,6 +138,7 @@ describe('arm', function () {
 					done();
 				});
 			});
+			
 		  // it('delete should delete frontend-ip', function (done) {
 			  // suite.execute('network lb frontend-ip delete -g %s -l %s %s -q --json', groupName, LBName, FrontendIpName, function (result) {
 			  // result.exitStatus.should.equal(0);
@@ -128,6 +166,7 @@ describe('arm', function () {
 			else
 				callback();
 		}
+		
 		function createPublicIp(callback) {
 			var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -144,7 +183,7 @@ describe('arm', function () {
 				publicIpName = allResources.name;
 				callback();
 			});	
-		}	
+		}
 		function deleteUsedPublicIp(callback) {
 			if (!suite.isPlayback()) {
 				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
@@ -156,6 +195,7 @@ describe('arm', function () {
 			else
 				callback();
 		}
+		
 		function createLB(callback){
 			var cmd = util.format('network lb create %s %s %s --json', groupName, LBName, location).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -174,6 +214,65 @@ describe('arm', function () {
 			else
 				callback();
 		}	
-	
+		
+		
+		function createLBSV(callback){
+			var cmd = util.format('network lb create %s %s %s --json', groupName, LBNameSV, location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+				callback();
+			});
+		}
+		function deleteUsedLBSV(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network lb delete %s %s --quiet --json',groupName, LBNameSV).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					callback();
+				});
+			}
+			else
+				callback();
+		}
+		
+		function createVnet(callback) {
+			var cmd = util.format('network vnet create %s %s %s --json',groupName,vnetPrefix,location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+			    callback();
+			});      
+		} 
+		
+		function createSubnet(callback) {
+			var cmd = util.format('network vnet subnet create %s %s %s --json',groupName, vnetPrefix, subnetprefix).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+			    callback();
+			});      
+		} 
+		function deleteUsedSubnet(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network vnet subnet delete %s %s %s --quiet --json', groupName, vnetPrefix, subnetprefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+				    result.exitStatus.should.equal(0);
+				    callback();
+				});
+			}
+			else
+				callback();
+		}
+		
+		function deleteUsedVnet(callback) {
+			if (!suite.isPlayback()) {
+				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+				    result.exitStatus.should.equal(0);
+				    callback();
+				});
+			}
+			else
+				callback();
+		}
+			
   });
 });
