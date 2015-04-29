@@ -58,23 +58,23 @@ describe('arm', function () {
 
 		describe('vnet', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
-					var cmd = util.format('network vnet create %s %s %s -a %s -t priority=low;size=small -d %s', groupName, vnetPrefix,location, AddPrefix,dnsAdd).split(' ');
+					var cmd = util.format('network vnet create %s %s %s -a %s -t priority=low;size=small -d %s --json', groupName, vnetPrefix,location, AddPrefix,dnsAdd).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
 					});
 				});
 			});
-			it('set', function (done) {
+			it('set should modify vnet', function (done) {
 				 var cmd = util.format('network vnet set %s %s -d %s --no-tags --json', groupName, vnetPrefix,dnsAdd1).split(' ');
 				 testUtils.executeCommand(suite, retry, cmd, function (result) {
 					 result.exitStatus.should.equal(0);
 					 done();
 				 });
 			});
-			it('show', function (done) {
+			it('show should display details of vnet', function (done) {
 				var cmd = util.format('network vnet show %s %s --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -83,7 +83,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should dispaly all vnets from resource group', function (done) {
 				var cmd = util.format('network vnet list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -94,8 +94,8 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
-				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+			it('delete should delete vnet', function (done) {
+				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
@@ -113,7 +113,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

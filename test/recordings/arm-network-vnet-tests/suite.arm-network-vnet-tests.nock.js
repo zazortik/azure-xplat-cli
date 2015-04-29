@@ -13,7 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,4 +26,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGCreatevnet5917','xplatTestVnet9519'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGCreatevnet9369','xplatTestVnet8041'];};

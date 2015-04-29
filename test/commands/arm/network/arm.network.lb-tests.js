@@ -66,9 +66,9 @@ describe('arm', function () {
 
 		describe('lb', function () {
 				
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
-					var cmd = util.format('network lb create %s %s -l %s -t %s=%s;%s=', groupName, lbPrefix, location, tag1, value1, tag2).split(' ');
+					var cmd = util.format('network lb create %s %s -l %s -t %s=;%s=%s --json', groupName, lbPrefix, location, tag1, tag2,value1).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
@@ -76,7 +76,7 @@ describe('arm', function () {
 						
 				});
 			});  
-			it('show', function (done) {
+			it('show should display details of load balancer', function (done) {
 				var cmd = util.format('network lb show %s %s --json', groupName, lbPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -85,7 +85,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should display all load balancers in resource group', function (done) {
 			  var cmd = util.format('network lb list %s --json',groupName).split(' ');
 			  testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
@@ -96,8 +96,8 @@ describe('arm', function () {
 				    done();
 				});
 			});
-			it('delete', function (done) {
-			  var cmd = util.format('network lb delete %s %s --quiet', groupName, lbPrefix).split(' ');
+			it('delete should delete load balancer', function (done) {
+			  var cmd = util.format('network lb delete %s %s --quiet --json', groupName, lbPrefix).split(' ');
 			  testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();
@@ -115,7 +115,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

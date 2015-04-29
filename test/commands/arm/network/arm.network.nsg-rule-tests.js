@@ -27,8 +27,8 @@ var groupName,location, nsgName, nsgRule,
 	groupPrefix = 'xplatGroupNsgRule',
 	nsgPrefix = 'xplatTestNsg', 
 	nsgRulePrefix = 'xplatTestNsgRule';
-var proto='tcp',saprefix='10.0.0.0/24',spr='200',daprefix='10.0.0.0/12',dprange='250',access='Allow',priority='250',direction='Inbound';
-var proto1='udp',saprefix1='10.0.0.0/8',spr1='250',daprefix1='10.0.0.0/16',dprange1='300',access1='Deny',priority1='300',direction1='outbound';    
+var proto='tcp',saprefix='10.0.0.0/24',spr='200',daprefix='10.0.0.0/12',dprange='250',access='Allow',priority='250',direction='Inbound',description='NsgRule';
+var proto1='udp',saprefix1='10.0.0.0/8',spr1='250',daprefix1='10.0.0.0/16',dprange1='300',access1='Deny',priority1='300',direction1='outbound',description1='NsgRuleSetting';    
 
    var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
@@ -67,10 +67,11 @@ describe('arm', function () {
 
 		describe('nsg rule', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					createNSG(function() {
-						var cmd = util.format('network nsg rule create %s %s %s -p %s -f %s -o %s -e %s -u %s -c %s -y %s ',groupName,nsgName,nsgRule,proto,saprefix,spr,daprefix,dprange,access,priority,direction).split(' ');
+						var cmd = util.format('network nsg rule create %s %s %s -p %s -f %s -o %s -e %s -u %s -c %s -y %s -r %s -d %s --json',
+								  groupName,nsgName,nsgRule,proto,saprefix,spr,daprefix,dprange,access,priority,direction,description).split(' ');
 						testUtils.executeCommand(suite, retry, cmd, function (result) {
 							result.exitStatus.should.equal(0);
 							done();
@@ -78,14 +79,15 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('set', function (done) {
-				var cmd = util.format('network nsg rule set %s %s %s --json', groupName, nsgName,nsgRule,proto1,saprefix1,spr1,daprefix1,dprange1,access1,priority1,direction1).split(' ');
+			it('set should modify nsg rule', function (done) {
+				var cmd = util.format('network nsg rule set %s %s %s -p %s -f %s -o %s -e %s -u %s -c %s -y %s -r %s -d %s --json',
+						  groupName, nsgName,nsgRule,proto1,saprefix1,spr1,daprefix1,dprange1,access1,priority1,direction1,description1).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
-			it('show', function (done) {
+			it('show should display details about nsg rule ', function (done) {
 			    var cmd = util.format('network nsg rule show %s %s %s --json', groupName, nsgName, nsgRule).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -94,7 +96,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should display all rules in the nsg', function (done) {
 			    var cmd = util.format('network nsg rule list %s %s --json',groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
@@ -105,8 +107,8 @@ describe('arm', function () {
 				    done();
 				});
 			});
-			it('delete', function (done) {
-			    var cmd = util.format('network nsg rule delete %s %s %s --quiet', groupName, nsgName, nsgRule).split(' ');
+			it('delete should delete rules', function (done) {
+			    var cmd = util.format('network nsg rule delete %s %s %s --quiet --json', groupName, nsgName, nsgRule).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();
@@ -124,7 +126,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -142,7 +144,7 @@ describe('arm', function () {
 		}
 		function deleteNSG(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network nsg delete %s %s %s --quiet', groupName, nsgName).split(' ');
+				var cmd = util.format('network nsg delete %s %s %s --quiet --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    callback();
