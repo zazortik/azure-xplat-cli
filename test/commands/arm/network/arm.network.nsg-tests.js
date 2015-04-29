@@ -20,8 +20,6 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nsg-tests';
-var createdGroups = [];
-var createdNSGs = [];
 var tags = 'tag1=testValue1';
 var groupName, nsgName, location,
 	groupPrefix = 'xplatTestGCreateNsg',
@@ -40,8 +38,8 @@ describe('arm', function () {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-				nsgName = suite.generateId(nsgPrefix, createdNSGs, suite.isMocked);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+				nsgName = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
 				done();
 		  });
 		});
@@ -59,30 +57,30 @@ describe('arm', function () {
 
 		describe('nsg', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
-					var cmd = util.format('network nsg create %s %s %s -t %s',groupName, nsgName, location, tags).split(' ');
+					var cmd = util.format('network nsg create %s %s %s -t %s --json',groupName, nsgName, location, tags).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						 result.exitStatus.should.equal(0);
 						 done();
 					});
 				});
 			});
-			it('set', function (done) {
+			it('set should modify nsg set', function (done) {
 				var cmd = util.format('network nsg set -t age=old %s %s --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					 result.exitStatus.should.equal(0);
 					 done();
 				});
 			});
-			it('should set', function (done) {
+			it('set with no tags should remove tags from nsg ', function (done) {
 				var cmd = util.format('network nsg set %s %s --no-tags --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					 result.exitStatus.should.equal(0);
 					 done();
 				});
 			});
-			it('show', function (done) {
+			it('show should display details about nsg', function (done) {
 				var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -91,7 +89,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('list', function (done) {
+			it('list should display all nsg in resource group', function (done) {
 				var cmd = util.format('network nsg list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -102,8 +100,8 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
-				var cmd = util.format('network nsg delete %s %s --quiet', groupName, nsgName).split(' ');
+			it('delete should delete the nsg', function (done) {
+				var cmd = util.format('network nsg delete %s %s --quiet --json', groupName, nsgName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
@@ -121,7 +119,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
