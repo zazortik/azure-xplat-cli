@@ -61,7 +61,8 @@ var UserInteractor = function() {
     'Metastore Server: ' : 'server1',
     'Metastore Database: ' : 'database1',
     'Metastore user: ' : 'user1',
-    'Metastore password: ' : 'password'
+    'Metastore password: ' : 'password',
+	'Data center location: ' : 'East US'
   };
   this.promptIfNotGiven = function(name, value, callback) {
     var retval;
@@ -74,7 +75,7 @@ var UserInteractor = function() {
         throw new Error('mocker was unable to locate a parameter return value for ' + name);
       }
     }
-    if (callback) {
+    if (callback && callback != _) {
       callback(null, retval);
     }
     else {

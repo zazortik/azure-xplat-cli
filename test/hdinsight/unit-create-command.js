@@ -30,13 +30,7 @@ var GetCommand = require('./util-GetCommand.js');
 describe('HDInsight create command (under unit test)', function() {
   it('should call startProgress with the correct statement', function(done) {
     var command = new GetCommand();
-    var options = {
-      clusterName : 'test1',
-      nodes : 4,
-      location : 'East US',
-      subscription: 'testId'
-    };
-    command.hdinsight.createClusterCommand(undefined, options);
+    command.hdinsight.createClusterCommand(undefined, 'windows', 'teststorage', 'fakekey', 'default', 4, 'A3', 'A3', 'East US', 'admin', 'Password01!', '', '', _);
     command.user.startProgress.firstCall.args[0].should.be.equal('Creating HDInsight Cluster');
     done();
   });
