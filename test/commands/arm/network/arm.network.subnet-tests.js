@@ -41,9 +41,9 @@ describe('arm', function () {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {	
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-				vnetPrefix = suite.generateId(vnetPrefix, createdVnets, suite.isMocked);
-				subnetprefix = suite.generateId(subnetprefix,createdSubnets, suite.isMocked);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	 
+				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+				subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix,null);
 				done();
 			});
 		});

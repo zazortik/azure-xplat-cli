@@ -21,7 +21,6 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-vnet-tests';
 var vnetPrefix = 'xplatTestVnet';
-var createdGroups = [];
 var groupName,location,
 	groupPrefix = 'xplatTestGCreatevnet',
 	dnsAdd='8.8.8.8',dnsAdd1='8.8.4.4',AddPrefix='10.0.0.0/12';
@@ -29,7 +28,7 @@ var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'eastus'
 }];
-
+var skiptest = it.skip;
 describe('arm', function () {
     describe('network', function () {
     var suite,
@@ -39,8 +38,8 @@ describe('arm', function () {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-				vnetPrefix = suite.generateId(vnetPrefix, createdGroups, suite.isMocked);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
 				done();
 		   });
 		});
@@ -68,6 +67,7 @@ describe('arm', function () {
 				});
 			});
 			it('set should modify vnet', function (done) {
+				
 				 var cmd = util.format('network vnet set %s %s -d %s --no-tags --json', groupName, vnetPrefix,dnsAdd1).split(' ');
 				 testUtils.executeCommand(suite, retry, cmd, function (result) {
 					 result.exitStatus.should.equal(0);

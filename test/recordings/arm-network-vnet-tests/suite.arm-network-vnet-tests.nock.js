@@ -21,9 +21,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
 };
 
 exports.scopes = [];
-
- exports.randomTestIdsGenerated = function() { return ['xplatTestGCreatevnet9369','xplatTestVnet8041'];};

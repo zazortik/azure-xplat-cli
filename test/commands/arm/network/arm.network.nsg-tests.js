@@ -20,8 +20,6 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nsg-tests';
-var createdGroups = [];
-var createdNSGs = [];
 var tags = 'tag1=testValue1';
 var groupName, nsgName, location,
 	groupPrefix = 'xplatTestGCreateNsg',
@@ -40,8 +38,8 @@ describe('arm', function () {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-				nsgName = suite.generateId(nsgPrefix, createdNSGs, suite.isMocked);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+				nsgName = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
 				done();
 		  });
 		});

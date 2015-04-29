@@ -45,9 +45,9 @@ describe('arm', function () {
 		    suite = new CLITest(this, testprefix, requiredEnvironment);
 		    suite.setupSuite(function() {
 			    location = process.env.AZURE_VM_TEST_LOCATION;
-			    groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-			    nsgName = suite.generateId(nsgPrefix, createdNSGs, suite.isMocked);
-			    nsgRule = suite.generateId(nsgRulePrefix, createdNSGRules, suite.isMocked);
+			    groupName =  suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+			    nsgName =  suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
+			    nsgRule = suite.isMocked ? nsgRulePrefix : suite.generateId(nsgRulePrefix, null);
 			    done();
 		    });
 		});
