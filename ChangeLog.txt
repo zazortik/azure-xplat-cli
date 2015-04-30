@@ -5,7 +5,9 @@ Version 0.9.1
 * Insights
   * Features
     * Added commands to handle alerts and alert rules, autoscale events and autoscale settings, list metrics and metrics definitions, and list usage metrics.
-
+* ARM
+  * Network
+    * Commands to manage DNS Zone and DNS Zone recordset
 Version 0.9.0
 * ARM
   * Virtual machines 
