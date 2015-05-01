@@ -26,7 +26,7 @@ var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
-var testprefix = 'arm-cli-vault-tests';
+var testprefix = 'arm-cli-keyvault-tests';
 var secretPrefix = 'xplatTestVaultSecret';
 var knownNames = [];
 
@@ -42,7 +42,7 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-  describe('vault-secret', function() {
+  describe('keyvault-secret', function() {
     var suite;
     var testVault;
 
@@ -75,14 +75,14 @@ describe('arm', function() {
         setSecretMustSucceed();
 
         function setSecretMustSucceed() {
-          suite.execute('vault secret set %s %s %s', testVault, secretName, secretValue, function(result) {
+          suite.execute('keyvault secret set %s %s %s', testVault, secretName, secretValue, function(result) {
             result.exitStatus.should.be.equal(0);
             showSecretMustSucceed();
           });
         }
 
         function showSecretMustSucceed() {
-          suite.execute('vault secret show %s %s --json', testVault, secretName, function(result) {
+          suite.execute('keyvault secret show %s %s --json', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
             var secret = JSON.parse(result.text);
             secret.should.have.property('id');
@@ -95,7 +95,7 @@ describe('arm', function() {
         }
 
         function listSecretsMustSucceed() {
-          suite.execute('vault secret list %s --json', testVault, function(result) {
+          suite.execute('keyvault secret list %s --json', testVault, function(result) {
             result.exitStatus.should.be.equal(0);
             var secrets = JSON.parse(result.text);
             secrets.some(function(secret) {
@@ -106,7 +106,7 @@ describe('arm', function() {
         }
 
         function listSecretVersionsMustSucceed() {
-          suite.execute('vault secret list-versions %s -s %s --json', testVault, secretName, function(result) {
+          suite.execute('keyvault secret list-versions %s -s %s --json', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
             var secrets = JSON.parse(result.text);
             secrets.some(function(secret) {
@@ -117,14 +117,14 @@ describe('arm', function() {
         }
 
         function deleteSecretMustSucceed() {
-          suite.execute('vault secret delete %s %s --quiet', testVault, secretName, function(result) {
+          suite.execute('keyvault secret delete %s %s --quiet', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(0);
             showSecretMustFail();
           });
         }
 
         function showSecretMustFail() {
-          suite.execute('vault secret show %s %s', testVault, secretName, function(result) {
+          suite.execute('keyvault secret show %s %s', testVault, secretName, function(result) {
             result.exitStatus.should.be.equal(1);
             result.errorText.should.include(util.format('Secret not found: %s', secretName));
             done();
