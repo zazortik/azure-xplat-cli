@@ -98,28 +98,6 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('add should attach nic to address-pool', function (done) {
-				createVnet(function(){
-					createSubnet(function(){
-						showSubnet(function(){
-							createNic(function(){
-								var cmd = util.format('network lb address-pool add -g %s -l %s %s -a %s --json', groupName, LBName, LBAddPool, NicName).split(' ');
-								testUtils.executeCommand(suite, retry, cmd, function (result) {
-									result.exitStatus.should.equal(0);
-									done();
-								});
-							});
-						});
-					});	
-				});
-			});
-			it('remove should detach nic from address-pool', function (done) {
-				var cmd = util.format('network lb address-pool remove -g %s -l %s %s -a %s --json', groupName, LBName, LBAddPool, NicName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					done();
-				});
-			});
 			it('list should display all address-pool in load balancer', function (done) {
 				var cmd = util.format('network lb address-pool list -g %s -l %s --json', groupName, LBName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
