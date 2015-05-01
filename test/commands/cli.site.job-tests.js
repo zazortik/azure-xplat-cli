@@ -46,7 +46,7 @@ function deleteSite(siteName, callback) {
 describe('cli', function () {
   describe('job', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironmentVariables);
+      suite = new CLITest(this, testPrefix, requiredEnvironmentVariables);
       suite.setupSuite(done);
     });
 

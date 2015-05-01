@@ -16,7 +16,6 @@
 
 var should = require('should');
 var utils = require('../../lib/util/utils');
-
 var CLITest = require('../framework/cli-test');
 
 var storageNamesPrefix = 'xcliaccount';
@@ -30,21 +29,23 @@ var createdAffinityGroups = [];
 
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West Europe' },
+  { name: 'AZURE_STORAGE_TEST_TYPE', defaultValue: 'LRS' },
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'West Europe' }
 ];
 
-var suite;
 var testPrefix = 'cli.storage.account-tests';
+var suite;
+var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 
 describe('cli', function () {
   describe('storage account', function () {
     var storageName;
+    var accountType;
     var affinityGroupName;
     var primaryKey;
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
@@ -67,6 +68,7 @@ describe('cli', function () {
     beforeEach(function (done) {
       suite.setupTest(function () {
         storageLocation = process.env.AZURE_STORAGE_TEST_LOCATION;
+        accountType = process.env.AZURE_STORAGE_TEST_TYPE;
         siteLocation = process.env.AZURE_SITE_TEST_LOCATION;
         done();
       });
@@ -79,8 +81,9 @@ describe('cli', function () {
     it('should create a storage account with location', function(done) {
       storageName = suite.generateId(storageNamesPrefix, storageNames);
 
-      suite.execute('storage account create %s --json --location %s',
+      suite.execute('storage account create %s --json --type %s --location %s',
         storageName,
+        accountType,
         storageLocation,
         function (result) {
         result.text.should.equal('');
@@ -102,8 +105,9 @@ describe('cli', function () {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('storage account create %s --json -a %s',
+        suite.execute('storage account create %s --type %s --json -a %s',
           storageName,
+          accountType,          
           affinityGroupName,
           function (result) {
           result.text.should.equal('');
@@ -139,7 +143,7 @@ describe('cli', function () {
       });
     });
 
-    it('should renew storage keys', function(done) {
+    liveOnly('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --json', storageName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
         storageAccountKeys.primaryKey.should.not.be.null;
@@ -157,7 +161,7 @@ describe('cli', function () {
       });
     });
     
-    it('should show connecting string', function(done) {
+    liveOnly('should show connecting string', function(done) {
       suite.execute('storage account connectionstring show %s --json', storageName, function(result) {
         var connectionString = JSON.parse(result.text);
         var desiredConnectionString = 'DefaultEndpointsProtocol=https;AccountName=' + storageName + ';AccountKey=' + primaryKey;
@@ -167,7 +171,7 @@ describe('cli', function () {
       });
     });
     
-    it('should show connecting string with endpoints', function (done) {
+    liveOnly('should show connecting string with endpoints', function (done) {
       suite.execute('storage account connectionstring show --use-http --blob-endpoint myBlob.ep --queue-endpoint 10.0.0.10 --table-endpoint mytable.core.windows.net %s --json', storageName, function(result) {
         var connectionString = JSON.parse(result.text);
         var desiredConnectionString = 'DefaultEndpointsProtocol=http;BlobEndpoint=myBlob.ep;QueueEndpoint=10.0.0.10;TableEndpoint=mytable.core.windows.net;AccountName='+ storageName + ';AccountKey=' + primaryKey;

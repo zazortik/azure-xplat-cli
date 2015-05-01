@@ -43,7 +43,7 @@ describe('arm', function () {
       var normalizedTestLocation;
 
       before(function (done) {
-        suite = new CLITest(testprefix, requiredEnvironment);
+        suite = new CLITest(this, testprefix, requiredEnvironment);
         suite.setupSuite(done);     
       });
 
