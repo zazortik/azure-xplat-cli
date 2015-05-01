@@ -26,7 +26,7 @@ var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
-var testPrefix = 'arm-cli-vault-tests';
+var testPrefix = 'arm-cli-keyvault-tests';
 var testResourceGroup = 'xplatTestVaultRG';
 var vaultPrefix = 'xplatTestVault';
 var knownNames = [];
@@ -43,7 +43,7 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-  describe('vault', function() {
+  describe('keyvault', function() {
     var suite;
     var testLocation;
 
@@ -79,14 +79,14 @@ describe('arm', function() {
         createVaultMustSucceed();
 
         function createVaultMustSucceed() {
-          suite.execute('vault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
+          suite.execute('keyvault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
             result.exitStatus.should.be.equal(0);
             showVaultMustSucceed();
           });
         }
 
         function showVaultMustSucceed() {
-          suite.execute('vault show %s --resource-group %s --json', vaultName, testResourceGroup, function(result) {
+          suite.execute('keyvault show %s --resource-group %s --json', vaultName, testResourceGroup, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.should.have.property('name');
@@ -96,14 +96,14 @@ describe('arm', function() {
         }
 
         function deleteVaultMustSucceed() {
-          suite.execute('vault delete %s --json --quiet', vaultName, function(result) {
+          suite.execute('keyvault delete %s --json --quiet', vaultName, function(result) {
             result.exitStatus.should.be.equal(0);
             showVaultMustFail();
           });
         }
 
         function showVaultMustFail() {
-          suite.execute('vault show %s --resource-group %s', vaultName, testResourceGroup, function(result) {
+          suite.execute('keyvault show %s --resource-group %s', vaultName, testResourceGroup, function(result) {
             result.exitStatus.should.be.equal(1);
             result.errorText.should.include('Vault not found');
             done();
@@ -119,14 +119,14 @@ describe('arm', function() {
         createVaultMustSucceed();
 
         function createVaultMustSucceed() {
-          suite.execute('vault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
+          suite.execute('keyvault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
             result.exitStatus.should.be.equal(0);
             setPolicySomePermsMustSucceed();
           });
         }
 
         function setPolicySomePermsMustSucceed() {
-          suite.execute('vault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --json', vaultName, objectId, function(result) {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {
@@ -137,7 +137,7 @@ describe('arm', function() {
         }
 
         function setPolicyEmptyKeyPermsMustSucceedAndLetObjectIdThere() {
-          suite.execute('vault set-policy %s --object-id %s --perms-to-keys [] --json', vaultName, objectId, function(result) {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys [] --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {
@@ -148,7 +148,7 @@ describe('arm', function() {
         }
 
         function setPolicyEmptySecretPermsMustSucceedAndKillObjectId() {
-          suite.execute('vault set-policy %s --object-id %s --perms-to-secrets [] --json', vaultName, objectId, function(result) {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-secrets [] --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {
@@ -159,7 +159,7 @@ describe('arm', function() {
         }
         
         function deleteVaultMustSucceed() {
-          suite.execute('vault delete %s --json --quiet', vaultName, function(result) {
+          suite.execute('keyvault delete %s --json --quiet', vaultName, function(result) {
             done();
           });
         }

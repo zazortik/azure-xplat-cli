@@ -26,7 +26,7 @@ var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
-var testprefix = 'arm-cli-vault-tests';
+var testprefix = 'arm-cli-keyvault-tests';
 var keyPrefix = 'xplatTestVaultKey';
 var knownNames = [];
 
@@ -42,7 +42,7 @@ var galleryTemplateUrl;
 
 describe('arm', function() {
 
-  describe('vault-key', function() {
+  describe('keyvault-key', function() {
     var suite;
     var testVault;
 
@@ -74,14 +74,14 @@ describe('arm', function() {
         createKeyMustSucceed();
 
         function createKeyMustSucceed() {
-          suite.execute('vault key create %s %s --destination Software --json', testVault, keyName, function(result) {
+          suite.execute('keyvault key create %s %s --destination Software --json', testVault, keyName, function(result) {
             result.exitStatus.should.be.equal(0);
             showKeyMustSucceed();
           });
         }
 
         function showKeyMustSucceed() {
-          suite.execute('vault key show %s %s --json', testVault, keyName, function(result) {
+          suite.execute('keyvault key show %s %s --json', testVault, keyName, function(result) {
             result.exitStatus.should.be.equal(0);
             var key = JSON.parse(result.text);
             key.should.have.property('key');
@@ -93,7 +93,7 @@ describe('arm', function() {
         }
 
         function listKeysMustSucceed() {
-          suite.execute('vault key list %s --json', testVault, function(result) {
+          suite.execute('keyvault key list %s --json', testVault, function(result) {
             result.exitStatus.should.be.equal(0);
             var keys = JSON.parse(result.text);
             keys.some(function(key) {
@@ -104,7 +104,7 @@ describe('arm', function() {
         }
 
         function listKeyVersionsMustSucceed() {
-          suite.execute('vault key list-versions %s -k %s --json', testVault, keyName, function(result) {
+          suite.execute('keyvault key list-versions %s -k %s --json', testVault, keyName, function(result) {
             result.exitStatus.should.be.equal(0);
             var keys = JSON.parse(result.text);
             keys.some(function(key) {
@@ -115,14 +115,14 @@ describe('arm', function() {
         }
 
         function deleteKeyMustSucceed() {
-          suite.execute('vault key delete %s %s --quiet', testVault, keyName, function(result) {
+          suite.execute('keyvault key delete %s %s --quiet', testVault, keyName, function(result) {
             result.exitStatus.should.be.equal(0);
             showKeyMustFail();
           });
         }
 
         function showKeyMustFail() {
-          suite.execute('vault key show %s %s', testVault, keyName, function(result) {
+          suite.execute('keyvault key show %s %s', testVault, keyName, function(result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.include(util.format('Key %s not found', keyName));
             done();
