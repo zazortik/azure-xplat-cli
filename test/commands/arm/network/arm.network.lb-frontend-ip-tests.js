@@ -92,7 +92,7 @@ describe('arm', function () {
 					createPublicIp(function(){
 						showPublicIp(function(){
 							createLB(function(){
-								var cmd = util.format('network lb frontend-ip create %s %s %s -u %s -o %s --json',groupName, LBName, FrontendIpName, publicIpId,'Dynamic').split(' ');	
+								var cmd = util.format('network lb frontend-ip create %s %s %s -u %s  --json',groupName, LBName, FrontendIpName, publicIpId).split(' ');
 								testUtils.executeCommand(suite, retry, cmd, function (result) {
 									result.exitStatus.should.equal(0);
 									done();
@@ -122,8 +122,8 @@ describe('arm', function () {
 			});
 			
 			
-		  it('set should modify forntend-ip', function (done) {
-			  suite.execute('network lb frontend-ip set -g %s -l %s -n %s -u %s -o %s --json', groupName, LBName, FrontendIpName,publicIpId,'Dynamic',function (result) {
+		  it('set should modify frontend-ip', function (done) {
+			  suite.execute('network lb frontend-ip set -g %s -l %s -n %s -u %s  --json', groupName, LBName, FrontendIpName,publicIpId,function (result) {
 			  result.exitStatus.should.equal(0);
 			  done();
 			});
