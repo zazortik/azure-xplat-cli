@@ -40,7 +40,7 @@ var groupName,
 	subnetName = 'xplattestsubnet',
 	publicipName= 'xplattestip',
 	dnsPrefix = 'xplattestipdns', 
-	vmImage='ad072bd3082149369c449ba5832401ae__Windows-Server-RDSHwO365P-on-Windows-Server-2012-R2-20150128-0010';
+	vmImage='bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-v5.8.8.11';
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -77,7 +77,7 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					var cmd = util.format('vm create %s %s %s Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
 								groupName, vmPrefix, location, nicName,vmImage, username, password, storageAccount, storageCont, 
@@ -89,7 +89,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('list', function (done) {
+			it('list should display all VMs in resource group', function (done) {
 				var cmd = util.format('vm list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					  result.exitStatus.should.equal(0);
@@ -100,7 +100,7 @@ describe('arm', function () {
 					  done();
 				});					
 			});
-			it('show', function (done) {
+			it('show should display details about VM', function (done) {
 				var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);  
@@ -110,7 +110,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('get instance view', function (done) {
+			it('get-instance-view should get instance view of the VM', function (done) {
 				var cmd = util.format('vm get-instance-view %s %s --json', groupName, vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0); 
@@ -118,8 +118,8 @@ describe('arm', function () {
 				});
 			});
 		
-			// it('delete', function (done) {
-				// var cmd = util.format('vm delete  %s %s --quiet', groupName,vmPrefix).split(' ');
+			// it('delete should delete VM', function (done) {
+				// var cmd = util.format('vm delete  %s %s --quiet --json', groupName,vmPrefix).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
 					// result.exitStatus.should.equal(0);
 					// done();
@@ -137,7 +137,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

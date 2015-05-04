@@ -44,7 +44,7 @@ var groupName, timeout,
 	location,
 	username = 'azureuser',
 	password = 'Brillio@2015' ,
-	VMImage = 'ad072bd3082149369c449ba5832401ae__Windows-Server-RDSHwO365P-on-Windows-Server-2012-R2-20150128-0010',
+	VMImage = 'bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-v5.8.8.11',
 	storageAccount = 'xplatteststorage',
 	storageCont= 'xplatteststoragecnt',
 	osdiskvhd= 'xplattestvhdDk',	
@@ -96,7 +96,7 @@ describe('arm', function () {
 		});
 
 		describe('vm', function () {
-			it('create for disk attach and detach', function (done) {
+			it('create for disk attach and detach should pass', function (done) {
 				createGroup(function(){
 					var cmd = util.format('vm create %s %s %s Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
 								groupName, vmPrefix, location, nicName,VMImage, username, password, storageAccount, storageCont, 
@@ -108,7 +108,7 @@ describe('arm', function () {
 				});
 			});
 					
-		it('disk attachnew', function(done) {
+		it('disk attachnew should attach new data disk to the VM', function(done) {
 		  diskPrefix = diskPrefix + '.vhd';
           var cmd = util.format('vm disk attach-new %s %s 1 %s --json', groupName, vmPrefix, diskPrefix).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -116,9 +116,8 @@ describe('arm', function () {
 			done();
           });
       });
-	  
-	  // VM Restart
-      it('disk detach', function(done) {
+	 
+      it('disk detach should detach the data disk from VM', function(done) {
         var cmd = util.format('vm disk detach %s %s 0 --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -137,7 +136,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

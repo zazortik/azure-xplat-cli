@@ -39,21 +39,21 @@ var requiredEnvironment = [{
 }];
 var groupName,
 	vmPrefix = 'xplatvmExt',
-	nicName = 'xplattestnicExt',
+	nicName = 'xplatnicExt',
 	location,
 	username = 'azureuser',
 	password = 'Brillio@2015' ,
-	storageAccount = 'xplatteststoragext',
-	storageCont= 'xplatteststoragecntext',
-	osdiskvhd= 'xplattestvhdext',	
-	vNetPrefix = 'xplattestvnetExt',
-	subnetName = 'xplattestsubnetExt',
-	publicipName= 'xplattestipExt',
-	dnsPrefix = 'xplattestdnsext' ,
-	extension = 'VS14CTPDebugger' ,
-	publisher = 'Microsoft.VisualStudio.Azure.RemoteDebug',
-	version = '1.0',
-	vmImage='ad072bd3082149369c449ba5832401ae__Windows-Server-RDSHwO365P-on-Windows-Server-2012-R2-20150128-0010';
+	storageAccount = 'xplatstoragext',
+	storageCont= 'xplatstoragecntext',
+	osdiskvhd= 'xplatvhdext',	
+	vNetPrefix = 'xplatvnetExt',
+	subnetName = 'xplatsubnetExt',
+	publicipName= 'xplatipExt',
+	dnsPrefix = 'xplatdnsext' ,
+	extension = 'VMAccessAgent' ,
+	publisher = 'Microsoft.Compute',
+	version = '2.0',
+	vmImage='bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-v5.8.8.11';
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -66,15 +66,15 @@ describe('arm', function () {
 				  location = process.env.AZURE_VM_TEST_LOCATION;
 				  
 				  groupName =  suite.isMocked ? 'xplatTestGExtension' : suite.generateId(groupPrefix, null);	  
-				  vmPrefix = suite.isMocked ? 'xplattestvmExt' : suite.generateId(vmPrefix, null);
-				  nicName = suite.isMocked ? 'xplattestnicExt' : suite.generateId(nicName, null);
+				  vmPrefix = suite.isMocked ? 'xplatvmExt' : suite.generateId(vmPrefix, null);
+				  nicName = suite.isMocked ? 'xplatnicExt' : suite.generateId(nicName, null);
 				  storageAccount = suite.generateId(storageAccount, null);
 				  storageCont = suite.generateId(storageCont, null);
-				  osdiskvhd = suite.isMocked ? 'xplattestvhdext' : suite.generateId(osdiskvhd, null);
-				  vNetPrefix = suite.isMocked ? 'xplattestvnetExt' : suite.generateId(vNetPrefix, null);	
-				  subnetName = suite.isMocked ? 'xplattestsubnetExt' : suite.generateId(subnetName, null);
-				  publicipName = suite.isMocked ? 'xplattestipExt' : suite.generateId(publicipName, null);
-				  dnsPrefix = suite.isMocked ? 'xplattestdnsext' : suite.generateId(dnsPrefix, null);
+				  osdiskvhd = suite.isMocked ? 'xplatvhdext' : suite.generateId(osdiskvhd, null);
+				  vNetPrefix = suite.isMocked ? 'xplatvnetExt' : suite.generateId(vNetPrefix, null);	
+				  subnetName = suite.isMocked ? 'xplatsubnetExt' : suite.generateId(subnetName, null);
+				  publicipName = suite.isMocked ? 'xplatipExt' : suite.generateId(publicipName, null);
+				  dnsPrefix = suite.isMocked ? 'xplatdnsext' : suite.generateId(dnsPrefix, null);
 				 				  
 				  done();
 		  });
@@ -109,7 +109,7 @@ describe('arm', function () {
 			
 					 //Set extensions
 					it('Set extensions for the created vm', function (done) {
-						var cmd = util.format('vm extension set %s %s %s %s %s ',groupName,vmPrefix,extension,publisher,version).split(' ');
+						var cmd = util.format('vm extension set %s %s %s %s %s --json',groupName,vmPrefix,extension,publisher,version).split(' ');
 								testUtils.executeCommand(suite, retry, cmd, function (result) {
 									result.exitStatus.should.equal(0);
 									done();
@@ -120,35 +120,18 @@ describe('arm', function () {
 						var cmd = util.format('vm extension get %s %s --json',groupName,vmPrefix).split(' ');
 						testUtils.executeCommand(suite, retry, cmd, function (result) {
 							result.exitStatus.should.equal(0);
-							var allResources = JSON.parse(result.text);
-								allResources.some(function (res) {
-								return res.extension === extension;
-							}).should.be.true;
-							
+						
 							done();
 						});						
 					});
 					
-					it('Uninstall the set extension', function (done) {
-						var cmd = util.format('vm extension set %s %s  %s %s %s -u --json',groupName,vmPrefix,extension,publisher,version).split(' ');
-						testUtils.executeCommand(suite, retry, cmd, function (result) {
-							result.exitStatus.should.equal(0);
-							cmd = util.format('vm extension get %s %s --json',groupName,vmPrefix).split(' ');
-							testUtils.executeCommand(suite, retry, cmd, function(checkresult) {
-								var exts = JSON.parse(checkresult.text);
-								var found = false;
-								found = exts.some(function(ext) {
-								  if (extensionname === ext.name)
-									return true;
-								});
-								found.should.be.false;
-								done();
-							});
+					// it('Uninstall the set extension', function (done) {
+						// var cmd = util.format('vm extension set %s %s %s %s %s -u --json',groupName,vmPrefix,extension,publisher,version).split(' ');
+						// testUtils.executeCommand(suite, retry, cmd, function (result) {
+							// result.exitStatus.should.equal(0);
 							
-						});						
-					});
-					
-					
+						// });						
+					// });
 					
 		  
 		});
@@ -162,7 +145,7 @@ describe('arm', function () {
 		
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				suite.execute('group delete %s --quiet', groupName, function (result) {
+				suite.execute('group delete %s --quiet --json', groupName, function (result) {
 				  result.exitStatus.should.equal(0);
 				  callback();
 				});

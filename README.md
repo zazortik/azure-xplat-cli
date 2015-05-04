@@ -51,6 +51,10 @@ This project provides a cross-platform command line interface for developers and
     * Manage resource groups and deployments
     * Query and download gallery templates
     * Manage individual resources
+* Key Vault
+    * Create and manage vaults, assign permissions to vaults
+    * Create and manage vault keys, import PEM files into a vault key, obtain key backups
+    * Create and manage secrets, set and retrieve secret values
 
 ## Installation
 

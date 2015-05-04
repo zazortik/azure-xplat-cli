@@ -33,7 +33,7 @@ var groupName, timeout,
 	//os = 'Windows',
 	username = 'azureuser',
 	password = 'Brillio@2015' ,
-	VMImage = 'ad072bd3082149369c449ba5832401ae__Windows-Server-RDSHwO365P-on-Windows-Server-2012-R2-20150128-0010',
+	VMImage = 'bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-v5.8.8.11',
 	storageAccount = 'xplattstoragestsp',
 	storageCont= 'xplatteststoragecntstsp',
 	osdiskvhd= 'xplattestvhdstsp',	
@@ -48,7 +48,7 @@ describe('arm', function () {
 	testUtils.TIMEOUT_INTERVAL = 5000;
 	
 		before(function (done) {
-		  suite = new CLITest(testprefix, requiredEnvironment);
+		  suite = new CLITest(this, testprefix, requiredEnvironment);
 		  suite.setupSuite(function() {		 
 				  location = process.env.AZURE_VM_TEST_LOCATION;	  
 				  groupName =  suite.isMocked ? 'xplatTestGVMStart' : suite.generateId(groupPrefix, null);	  
@@ -80,7 +80,7 @@ describe('arm', function () {
 
 		describe('vm', function () {
 		
-			it('create for stop and restart', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					var cmd = util.format('vm create %s %s eastus Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
 							groupName, vmPrefix, nicName,VMImage, username, password, storageAccount,storageCont, vNetPrefix,
@@ -91,7 +91,7 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('Stop and start', function(done) {
+			it('Stop and start VM should work', function(done) {
 				var cmd = util.format('vm stop %s %s --json', groupName, vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function(result) {
 					result.exitStatus.should.equal(0);
@@ -105,14 +105,14 @@ describe('arm', function () {
 				});
 			});
 			// VM Restart
-			it('Restart', function(done) {
+			it('Restart should restart the VM', function(done) {
 				var cmd = util.format('vm restart %s %s --json', groupName, vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function(result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
-			it('Deallocate', function(done) {
+			it('Deallocate should release the compute resources', function(done) {
 				var cmd = util.format('vm deallocate %s %s --json', groupName, vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function(result) {
 					result.exitStatus.should.equal(0);
@@ -131,7 +131,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
