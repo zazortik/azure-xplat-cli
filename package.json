@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -48,6 +48,7 @@
     "azure-mgmt-resource": "2.0.0-pre.17",
     "azure-storage": "0.4.1",
     "azure-storage-legacy": "0.9.13",
+    "azure-keyvault": "0.9.2",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -78,7 +79,8 @@
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
-    "xmlbuilder": "0.4.x"
+    "xmlbuilder": "0.4.x",
+    "node-forge": "0.6.23"
   },
   "devDependencies": {
     "mocha": "1.16.0",

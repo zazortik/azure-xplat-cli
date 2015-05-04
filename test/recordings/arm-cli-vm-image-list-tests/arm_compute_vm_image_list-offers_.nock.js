@@ -13,7 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['mobileservice'],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,36 +27,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/alertlogic/artifacttypes/vmimage/offers?api-version=2015-05-01-preview')
-  .reply(200, "[\r\n  {\r\n    \"$type\": \"Microsoft.WindowsAzure.PlatformImageRepository.ArtifactService.API.Consumption.VMImageOffer, PIR.ArtifactService\",\r\n    \"location\": \"eastus\",\r\n    \"name\": \"alert-logic-tm\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/alertlogic/ArtifactTypes/VMImage/Offers/alert-logic-tm\"\r\n  },\r\n  {\r\n    \"$type\": \"Microsoft.WindowsAzure.PlatformImageRepository.ArtifactService.API.Consumption.VMImageOffer, PIR.ArtifactService\",\r\n    \"location\": \"eastus\",\r\n    \"name\": \"alert-logic-wsm\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/alertlogic/ArtifactTypes/VMImage/Offers/alert-logic-wsm\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers?api-version=2015-05-01-preview')
+  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"a10-vthunder-adc\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '755',
+  'content-length': '253',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'dfd5fc8c-44f5-4e92-8b84-f2eedf205056',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31989',
-  'x-ms-correlation-request-id': '18cf6fa7-0def-42c3-9875-124f0c614f1f',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173321Z:18cf6fa7-0def-42c3-9875-124f0c614f1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 22 Apr 2015 17:33:21 GMT',
+  'x-ms-request-id': 'bc958840-16db-4f76-b837-7a6533e11ec9',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31974',
+  'x-ms-correlation-request-id': 'ff25c94f-453f-4228-a812-52ebe1ad51f5',
+  'x-ms-routing-request-id': 'EASTASIA:20150427T150106Z:ff25c94f-453f-4228-a812-52ebe1ad51f5',
+  date: 'Mon, 27 Apr 2015 15:01:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/alertlogic/artifacttypes/vmimage/offers?api-version=2015-05-01-preview')
-  .reply(200, "[\r\n  {\r\n    \"$type\": \"Microsoft.WindowsAzure.PlatformImageRepository.ArtifactService.API.Consumption.VMImageOffer, PIR.ArtifactService\",\r\n    \"location\": \"eastus\",\r\n    \"name\": \"alert-logic-tm\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/alertlogic/ArtifactTypes/VMImage/Offers/alert-logic-tm\"\r\n  },\r\n  {\r\n    \"$type\": \"Microsoft.WindowsAzure.PlatformImageRepository.ArtifactService.API.Consumption.VMImageOffer, PIR.ArtifactService\",\r\n    \"location\": \"eastus\",\r\n    \"name\": \"alert-logic-wsm\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/alertlogic/ArtifactTypes/VMImage/Offers/alert-logic-wsm\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers?api-version=2015-05-01-preview')
+  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"a10-vthunder-adc\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '755',
+  'content-length': '253',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'dfd5fc8c-44f5-4e92-8b84-f2eedf205056',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31989',
-  'x-ms-correlation-request-id': '18cf6fa7-0def-42c3-9875-124f0c614f1f',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150422T173321Z:18cf6fa7-0def-42c3-9875-124f0c614f1f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 22 Apr 2015 17:33:21 GMT',
+  'x-ms-request-id': 'bc958840-16db-4f76-b837-7a6533e11ec9',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '31974',
+  'x-ms-correlation-request-id': 'ff25c94f-453f-4228-a812-52ebe1ad51f5',
+  'x-ms-routing-request-id': 'EASTASIA:20150427T150106Z:ff25c94f-453f-4228-a812-52ebe1ad51f5',
+  date: 'Mon, 27 Apr 2015 15:01:06 GMT',
   connection: 'close' });
  return result; }]];

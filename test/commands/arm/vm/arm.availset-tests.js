@@ -61,7 +61,7 @@ describe('arm', function () {
 		
 			
 			
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					var cmd = util.format('availset create %s %s %s  --json', groupName, availprefix, location ).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -71,7 +71,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('list', function (done) {
+			it('list should display all availability sets in a resource group', function (done) {
 				var cmd = util.format('availset list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					  result.exitStatus.should.equal(0);
@@ -82,7 +82,7 @@ describe('arm', function () {
 					  done();
 				});					
 			});
-			it('show', function (done) {
+			it('show should display details about the availability set', function (done) {
 				var cmd = util.format('availset show %s %s --json', groupName, availprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);  
@@ -94,8 +94,8 @@ describe('arm', function () {
 			
 		
 		//Currently giving error :The api-version '2015-05-01-preview' is invalid.
-			// it('delete', function (done) {
-				// var cmd = util.format('availset delete  %s %s --quiet', groupName,availprefix).split(' ');
+			// it('delete should delete the availability set', function (done) {
+				// var cmd = util.format('availset delete  %s %s --quiet --json', groupName,availprefix).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
 					// result.exitStatus.should.equal(0);
 					// done();
@@ -113,7 +113,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
