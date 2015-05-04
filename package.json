@@ -39,7 +39,6 @@
   "dependencies": {
     "adal-node": "0.1.12",
     "async": "0.2.7",
-    "azure": "0.10.5",
     "azure-common": "0.9.12",
     "azure-extra": "0.1.7",
     "azure-gallery": "2.0.0-pre.15",
@@ -47,6 +46,7 @@
     "azure-mgmt": "0.9.16",
     "azure-mgmt-authorization": "0.9.0-pre.6",
     "azure-mgmt-compute": "0.9.16",
+    "azure-mgmt-hdinsight": "0.9.16",
     "azure-mgmt-vnet": "0.9.17",
     "azure-mgmt-resource": "2.0.0-pre.17",
     "azure-mgmt-sb": "0.9.16",
@@ -95,8 +95,7 @@
     "sinon": "*",
     "should": "3.3.2",
     "nock": "0.16",
-    "winston-memory": "*",
-    "cucumber": "~0.3.0"
+    "winston-memory": "*"
   },
   "homepage": "https://github.com/Azure/azure-xplat-cli",
   "repository": {
