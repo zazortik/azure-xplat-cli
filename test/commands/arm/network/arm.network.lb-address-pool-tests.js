@@ -25,7 +25,7 @@ var groupName,
 	publicipPrefix = 'xplatTestIpAP' , 
 	LBName = 'armEmptyLB',
 	LBAddPool = 'LB-AddPoll',
-	VipName = 'xplattestVipName',
+	FrontendIpName = 'xplattestFrontendIpName',
 	NicName = 'xplatNicName',
 	vnetPrefix = 'xplatTestVnetNIc' ,    
 	subnetprefix ='xplatTestSubnetNIc' ,
@@ -50,7 +50,7 @@ describe('arm', function () {
 				publicipPrefix = suite.isMocked ? 'xplatTestIpAP' : suite.generateId(publicipPrefix, null);
 				LBName = suite.isMocked ? 'armEmptyLB' : suite.generateId(LBName, null);
 				LBAddPool = suite.isMocked ? 'LB-AddPoll' : suite.generateId(LBAddPool, null);
-				VipName = suite.isMocked ? VipName : suite.generateId(VipName, null);
+				FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
 				NicName = suite.isMocked ? NicName : suite.generateId(NicName, null);
 				vnetPrefix = (suite.isMocked) ? vnetPrefix : suite.generateId(vnetPrefix, null);
 				subnetprefix = (suite.isMocked) ? subnetprefix : suite.generateId(subnetprefix, null);
@@ -81,7 +81,7 @@ describe('arm', function () {
 
 		describe('lb address-pool', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					createLB (function(){
 						createPublicIp(function(){
@@ -98,29 +98,7 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('add', function (done) {
-				createVnet(function(){
-					createSubnet(function(){
-						showSubnet(function(){
-							createNic(function(){
-								var cmd = util.format('network lb address-pool add -g %s -l %s %s -a %s --json', groupName, LBName, LBAddPool, NicName).split(' ');
-								testUtils.executeCommand(suite, retry, cmd, function (result) {
-									result.exitStatus.should.equal(0);
-									done();
-								});
-							});
-						});
-					});	
-				});
-			});
-			it('remove', function (done) {
-				var cmd = util.format('network lb address-pool remove -g %s -l %s %s -a %s --json', groupName, LBName, LBAddPool, NicName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					done();
-				});
-			});
-			it('list', function (done) {
+			it('list should display all address-pool in load balancer', function (done) {
 				var cmd = util.format('network lb address-pool list -g %s -l %s --json', groupName, LBName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -129,7 +107,7 @@ describe('arm', function () {
 					done();
 				});
 			});
-			it('delete', function (done) {
+			it('delete should delete address-pool', function (done) {
 				var cmd = util.format('network lb address-pool delete -g %s -l %s %s -q --json', groupName, LBName, LBAddPool).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -148,7 +126,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -166,7 +144,7 @@ describe('arm', function () {
 		}
 		function deleteUsedNic(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network nic delete %s %s --quiet', groupName, NicName).split(' ');
+				var cmd = util.format('network nic delete %s %s --quiet --json', groupName, NicName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -193,7 +171,7 @@ describe('arm', function () {
 		}	
 		function deleteUsedPublicIp(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipPrefix).split(' ');
+				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -221,21 +199,21 @@ describe('arm', function () {
 				callback();
 		}
 		function createFrontendIp(callback){
-			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s',groupName, LBName, VipName, publicIpId).split(' ');
+			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s --json',groupName, LBName, FrontendIpName, publicIpId).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);
 				callback();
 			});
 		}
 		function createVnet(callback) {
-			var cmd = util.format('network vnet create %s %s %s ',groupName,vnetPrefix,location).split(' ');
+			var cmd = util.format('network vnet create %s %s %s --json',groupName,vnetPrefix,location).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
 				});      
 		} 
 		function createSubnet(callback) {
-			var cmd = util.format('network vnet subnet create %s %s %s ',groupName,vnetPrefix,subnetprefix).split(' ');
+			var cmd = util.format('network vnet subnet create %s %s %s --json',groupName,vnetPrefix,subnetprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -252,7 +230,7 @@ describe('arm', function () {
 		}
 		function deleteUsedSubnet(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet subnet delete %s %s %s --quiet', groupName, vnetPrefix, subnetprefix).split(' ');
+				var cmd = util.format('network vnet subnet delete %s %s %s --quiet --json', groupName, vnetPrefix, subnetprefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -263,7 +241,7 @@ describe('arm', function () {
 		}
 		function deleteUsedVnet(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet delete %s %s --quiet', groupName, vnetPrefix).split(' ');
+				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();

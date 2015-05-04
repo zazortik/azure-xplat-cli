@@ -26,7 +26,7 @@ var groupName,
 	groupPrefix = 'xplatTestGCreateLbProbe',
 	publicipPrefix = 'xplatTestIpLbProbe' , 
 	LBName = 'xplattestlbLbProbe',
-	VipName = 'xplattestVipName',
+	FrontendIpName = 'xplattestFrontendIpName',
 	lbprobePrefix = 'xplatTestLbProbe' ;
 var publicIpId;
 var  protocol= 'http', port ='80', path ='healthcheck.aspx', interval = '5', count = '2';
@@ -51,7 +51,7 @@ describe('arm', function () {
 				publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
 				LBName = suite.isMocked ? LBName : suite.generateId(LBName, null);
 				lbprobePrefix = suite.isMocked ? lbprobePrefix : suite.generateId(lbprobePrefix, null);
-				VipName = suite.isMocked ? VipName : suite.generateId(VipName, null);
+				FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
 				done();
 			});
 		});
@@ -76,7 +76,7 @@ describe('arm', function () {
 
 		describe('lb probe', function () {
 		
-			it('create', function (done) {
+			it('create should pass', function (done) {
 				createGroup(function(){
 					createLB (function(){
 						createPublicIp(function(){
@@ -94,7 +94,7 @@ describe('arm', function () {
 					});
 				});
 			});
-			it('list', function (done) {
+			it('list should dispaly all probes in load balancer', function (done) {
 				var cmd = util.format('network lb probe list %s %s --json', groupName, LBName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
@@ -105,14 +105,14 @@ describe('arm', function () {
 				    done();
 				});
 			});
-			it('set', function (done) {
+			it('set should modify probe', function (done) {
 				var cmd = util.format('network lb probe set %s %s %s  -p %s -o %s -f %s -i %s -c %s --json', groupName, LBName, lbprobePrefix,protocolNew,portNew,pathNew,intervalNew,countNew).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();
 				});
 			});
-			it('delete', function (done) {
+			it('delete should delete the probe', function (done) {
 				var cmd = util.format('network lb probe delete %s %s %s --quiet --json', groupName, LBName, lbprobePrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -131,7 +131,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				setTimeout(function(){
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
@@ -160,7 +160,7 @@ describe('arm', function () {
 		}	
 		function deleteUsedPublicIp(callback) {
 			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet', groupName, publicipPrefix).split(' ');
+				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
@@ -188,7 +188,7 @@ describe('arm', function () {
 				callback();
 		}
 		function createFrontendIp(callback){
-			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s',groupName, LBName, VipName, publicIpId).split(' ');
+			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s --json',groupName, LBName, FrontendIpName, publicIpId).split(' ');
 			testUtils.executeCommand(suite, retry, cmd, function (result) {
 				result.exitStatus.should.equal(0);
 				callback();

@@ -24,12 +24,13 @@ var groupPrefix = 'xplatTestGVMQuick';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'eastus'
+  defaultValue: 'westus'
 }];
 
 var groupName,
 	vmPrefix = 'xplatvmquick',
-	location, imageurn = 'Canonical:Ubuntu15.04:15.04:15.04.20150422', 
+	location, imageurn = 'Canonical:UbuntuServer:15.04:15.04.201504220', 
+						  
 	username = 'azureuser',
 	password = 'Brillio@2015';
 
@@ -38,7 +39,7 @@ describe('arm', function () {
 		var suite, retry = 5;
 
 		before(function (done) {
-				suite = new CLITest(testprefix, requiredEnvironment);
+				suite = new CLITest(this, testprefix, requiredEnvironment);
 				suite.setupSuite(function() {		  
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				groupName =  suite.isMocked ? 'xplatTestGVMQCreate' : suite.generateId(groupPrefix, null);	  
@@ -63,6 +64,7 @@ describe('arm', function () {
 				createGroup(function(){
 					var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json', 
 								groupName, vmPrefix, location, imageurn, username, password).split(' ');
+					
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
@@ -70,7 +72,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('list', function (done) {
+			it('list should work', function (done) {
 				var cmd = util.format('vm list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					  result.exitStatus.should.equal(0);
@@ -83,13 +85,13 @@ describe('arm', function () {
 			});
 			
 		
-			// it('delete', function (done) {
-				// var cmd = util.format('vm delete  %s %s --quiet', groupName,vmPrefix).split(' ');
-				// testUtils.executeCommand(suite, retry, cmd, function (result) {
-					// result.exitStatus.should.equal(0);
-					// done();
-				// });
-			// });
+			it('delete', function (done) {
+				var cmd = util.format('vm delete %s %s --quiet --json', groupName,vmPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					done();
+				});
+			});
 		  
 		});
 	
@@ -102,7 +104,7 @@ describe('arm', function () {
 		}
 		function deleteUsedGroup(callback) {
 			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
+				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					callback();
