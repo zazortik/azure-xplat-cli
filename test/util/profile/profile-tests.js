@@ -22,7 +22,6 @@ var should = require('should');
 var sinon = require('sinon');
 var stream = require('stream');
 var util = require('util');
-var azure = require('azure');
 
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');

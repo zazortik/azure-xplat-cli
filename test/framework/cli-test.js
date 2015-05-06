@@ -26,7 +26,6 @@ var testLogger = require('./test-logger');
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
-var pluginCache = require('../../lib/util/pluginCache');
 
 var executeCommand = require('./cli-executor').execute;
 var MockTokenCache = require('./mock-token-cache');
@@ -39,6 +38,8 @@ exports = module.exports = CLITest;
  * Initializes a new instance of the CLITest class.
  * @constructor
  * 
+ * @param {object} mochaSuiteObject - The mocha suite object
+ *
  * @param {string} testPrefix - The prefix to use for the test suite
  * 
  * @param {Array} env - (Optional) Array of environment variables required by the test
@@ -89,8 +90,6 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   if (this.isPlayback()) {
     this.setTimeouts();
   }
-
-  pluginCache.clear();
 }
 
 _.extend(CLITest.prototype, {
