@@ -28,9 +28,9 @@ var CliStub = require('./stub-cli.js');
 var util = testutil.libRequire('util/utils');
 var hdInsightCli = require('../../lib/commands/asm/hdinsight._js');
 
-describe('HDInsight command line (under unit test)', function() {
+describe('HDInsight command line (under unit test)', function () {
 
-  it('should define the correct categories', function(done) {
+  it('should define the correct categories', function (done) {
     var cli = new CliStub();
     cli.should.not.equal(null);
     hdInsightCli.init(cli);
@@ -39,7 +39,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the hdinsight category', function(done) {
+  it('should define the correct description for the hdinsight category', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     hdinsight = cli.categories['hdinsight'];
@@ -47,7 +47,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the cluster category', function(done) {
+  it('should define the correct description for the cluster category', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -55,7 +55,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct commands for the cluster category', function(done) {
+  it('should define the correct commands for the cluster category', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -66,7 +66,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct positional arguments for the list command', function(done) {
+  it('should define the correct positional arguments for the list command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -75,7 +75,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the list command', function(done) {
+  it('should define the correct description for the list command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -84,7 +84,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct usage for the list command', function(done) {
+  it('should define the correct usage for the list command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -93,7 +93,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct positional arguments for the show command', function(done) {
+  it('should define the correct positional arguments for the show command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -102,7 +102,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the show command', function(done) {
+  it('should define the correct description for the show command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -111,7 +111,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct usage for the show command', function(done) {
+  it('should define the correct usage for the show command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -120,7 +120,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct options for the show command', function(done) {
+  it('should define the correct options for the show command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -130,12 +130,12 @@ describe('HDInsight command line (under unit test)', function() {
     command.options['-s, --subscription <id>'].should.be.equal('the subscription id');
     command.options['--clusterName <clusterName>'].should.not.equal(null);
     command.options['--clusterName <clusterName>'].should.be.equal('the HdInsight cluster name');
-	command.options['--osType <osType>'].should.not.equal(null);
-	command.options['--osType <osType>'].should.be.equal('the HdInsight cluster operating system: windows OR linux');
+    command.options['--osType <osType>'].should.not.equal(null);
+    command.options['--osType <osType>'].should.be.equal('the HdInsight cluster operating system: windows OR linux');
     done();
   });
 
-  it('should define the correct positional arguments for the delete command', function(done) {
+  it('should define the correct positional arguments for the delete command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -144,7 +144,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the delete command', function(done) {
+  it('should define the correct description for the delete command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -153,7 +153,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct usage for the delete command', function(done) {
+  it('should define the correct usage for the delete command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -162,7 +162,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct options for the delete command', function(done) {
+  it('should define the correct options for the delete command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -172,12 +172,12 @@ describe('HDInsight command line (under unit test)', function() {
     command.options['-s, --subscription <id>'].should.be.equal('the subscription id');
     command.options['--clusterName <clusterName>'].should.not.equal(null);
     command.options['--clusterName <clusterName>'].should.be.equal('Cluster name');
-	command.options['--osType <osType>'].should.not.equal(null);
-	command.options['--osType <osType>'].should.be.equal('Cluster OS type');
+    command.options['--osType <osType>'].should.not.equal(null);
+    command.options['--osType <osType>'].should.be.equal('Cluster OS type');
     done();
   });
 
-  it('should define the correct positional arguments for the create command', function(done) {
+  it('should define the correct positional arguments for the create command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -186,7 +186,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct description for the create command', function(done) {
+  it('should define the correct description for the create command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -195,7 +195,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct usage for the create command', function(done) {
+  it('should define the correct usage for the create command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
@@ -204,7 +204,7 @@ describe('HDInsight command line (under unit test)', function() {
     done();
   });
 
-  it('should define the correct options for the create command', function(done) {
+  it('should define the correct options for the create command', function (done) {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];

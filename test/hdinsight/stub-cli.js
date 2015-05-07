@@ -15,14 +15,12 @@
 // 
 
 var sinon = require('sinon');
-//var Interaction = require('../../lib/util/interaction');
 
 var CliStub = function() {
   this.categories = { };
   this.commands = { };
   this.options = { };
   this.optionCount = 0;
-  //this.interaction = new Interaction(this);
 
   this.output = sinon.spy();
   this.category = function(name) {
