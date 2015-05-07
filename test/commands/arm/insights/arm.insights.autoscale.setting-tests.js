@@ -38,6 +38,8 @@ describe('arm', function () {
         var suite;
         var resourceGroup;
         var settingName;
+        var resourceId;
+        var profiles;
 
         before(function(done) {
           suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -52,6 +54,9 @@ describe('arm', function () {
           suite.setupTest(function () {
             resourceGroup = 'Default-Web-BrazilSouth';
             settingName = 'Default1-Default-Web-BrazilSouth';
+            resourceId = '/subscriptions/3b94e3c2-9f5b-4a1e-9999-3e0945b88aa9/resourceGroups/Default-Web-WestUS/providers/microsoft.web/serverFarms/DefaultServerFarm';
+            profiles = '[{"name":"adios","capacity":{"default":"1","minimum":"1","maximum":"10"},"fixedDate":{"start":"2015-03-05T14:00:00.000Z","end":"2015-03-05T14:30:00.000Z","timeZone":"GMT"},"recurrence":null,"rules":[{"metricTrigger":{"metricName":"Requests","metricResourceUri":"/subscriptions/3b94e3c2-9f5b-4a1e-9999-3e0945b88aa9/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/misitiooelnuestro","operator":"GreaterThan","statistic":"Average","threshold":10,"timeAggregation":"Average","timeGrain":"PT1M","timeWindow":"PT5M"},"scaleAction":{"cooldown":"PT5M","direction":"Increase","type":"ChangeCount","value":"2"}}]}]';
+
             done();
           });
         });
@@ -64,12 +69,12 @@ describe('arm', function () {
           it('should work with rg only', function(done) {
             suite.execute('insights autoscale setting list %s --json', resourceGroup, function(result) {
               result.exitStatus.should.equal(0);
-              
+
               var response = JSON.parse(result.text);
               response.length.should.equal(1);
 
               var record = response[0];
-              record.name.should.equal('Default1-Default-Web-BrazilSouth');
+              record.name.should.equal(settingName);
 
               done();
             });
@@ -81,13 +86,27 @@ describe('arm', function () {
               
               var response = JSON.parse(result.text);
               response.length.should.equal(1);
-              
+
               var record = response[0];
-              record.name.should.equal('Default1-Default-Web-BrazilSouth');
+              record.name.should.equal(settingName);
 
               done();
             });
-          });      
+          });
+        });
+
+        describe('set', function() {
+          it('should create a setting', function(done) {
+            // Assume profile is created
+            suite.execute('insights autoscale setting set %s -l %s -n %s -i %s -a %s --json', 'Default-Web-WestUS', 'West US', 'MySetting', resourceId, profiles, function(result) {
+              result.exitStatus.should.equal(0);
+
+              var response = JSON.parse(result.text);
+              response.statusCode.should.equal(200);
+
+              done();
+            });
+          });
         });
       });
     });
