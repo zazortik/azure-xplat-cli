@@ -43,7 +43,7 @@ describe('HDInsight command line (under unit test)', function () {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     hdinsight = cli.categories['hdinsight'];
-    hdinsight.description.firstCall.args[0].should.be.equal('Commands to manage your HDInsight clusters and jobs');
+    hdinsight.description.firstCall.args[0].should.be.equal('Commands to manage HDInsight clusters and jobs');
     done();
   });
 
@@ -51,7 +51,7 @@ describe('HDInsight command line (under unit test)', function () {
     var cli = new CliStub();
     hdInsightCli.init(cli);
     var cluster = cli.categories['hdinsight'].categories['cluster'];
-    cluster.description.firstCall.args[0].should.be.equal('Commands to manage your HDInsight clusters');
+    cluster.description.firstCall.args[0].should.be.equal('Commands to manage HDInsight clusters');
     done();
   });
 
