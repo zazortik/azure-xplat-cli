@@ -215,7 +215,7 @@ describe('HDInsight command line (under unit test)', function () {
     command.options['--clusterName <clusterName>'].should.not.equal(null);
     command.options['--clusterName <clusterName>'].should.be.equal('HDInsight cluster name');
     command.options['--storageAccountName <storageAccountName>'].should.not.equal(null);
-    command.options['--storageAccountName <storageAccountName>'].should.be.equal('Storage account to use for default HDInsight storage');
+    command.options['--storageAccountName <storageAccountName>'].should.be.equal('Storage account url to use for default HDInsight storage');
     command.options['--storageAccountKey <storageAccountKey>'].should.not.equal(null);
     command.options['--storageAccountKey <storageAccountKey>'].should.be.equal('Key to the storage account to use for default HDInsight storage');
     command.options['--storageContainer <storageContainer>'].should.not.equal(null);
