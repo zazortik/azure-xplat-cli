@@ -18,7 +18,8 @@ var servicePackages = [
   'subscriptionManagement',
   'webSiteManagement',
   'authorizationManagement',
-  'extra'
+  'extra',
+  'hdinsight'
 ];
 
 //

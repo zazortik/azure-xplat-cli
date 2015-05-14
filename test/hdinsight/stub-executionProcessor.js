@@ -21,7 +21,7 @@ var ExecutionProcessor = function() {
   var self = this;
   this.filterCluster = sinon.spy();
   this.createClusterResults = 200;
-  this.createCluster = function(creationObject, subscriptionId, callback) {
+  this.createCluster = function(regionCloudServiceName, clusterName, clusterCreationPayload, callback) {
     if (callback) {
       callback(null, { statusCode : self.createClusterResults });
     }
@@ -30,6 +30,16 @@ var ExecutionProcessor = function() {
     }
   };
   sinon.spy(this, 'createCluster');
+  
+  this.createCluster2 = function(regionCloudServiceName, clusterName, clusterCreationPayload, callback) {
+    if (callback) {
+      callback(null, { statusCode : self.createClusterResults });
+    }
+    else {
+      return { statusCode : self.createClusterResults };
+    }
+  };
+  sinon.spy(this, 'createCluster2');
 
   this.getCluster = function(clusterName, subscriptionId, callback) {
     var list = this.listResultsForEachCall[this.listClustersCallCount++];

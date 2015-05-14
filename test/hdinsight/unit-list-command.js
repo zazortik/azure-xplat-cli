@@ -41,32 +41,15 @@ describe('HDInsight list command (under unit test)', function() {
   it('should call startProgress with the correct statement', function(done) {
     var command = new GetCommand();
     command.hdinsight.listClustersCommand.should.not.equal(null);
-    command.hdinsight.listClustersCommand({});
+    command.hdinsight.listClustersCommand({}, _);
     command.user.startProgress.firstCall.args[0].should.be.equal('Getting HDInsight servers');
-    done();
-  });
-
-  it('should call endProgress', function(done) {
-    var command = new GetCommand();
-    command.hdinsight.listClustersCommand.should.not.equal(null);
-    command.hdinsight.listClustersCommand({});
-    command.user.endProgress.firstCall.should.not.equal(null);
-    done();
-  });
-
-  it('should call logList with the received result', function(done) {
-    var command = new GetCommand();
-    command.hdinsight.listClustersCommand.should.not.equal(null);
-    command.hdinsight.listClustersCommand({});
-    command.user.logList.firstCall.should.not.equal(null);
-    command.user.logList.firstCall.args[0].should.be.equal(command.processor.listResultsForEachCall[0].body.clusters);
     done();
   });
 
   it('should call listClusters with the supplied subscriptionId (when none is supplied)', function(done) {
     var command = new GetCommand();
     command.hdinsight.listClustersCommand.should.not.equal(null);
-    command.hdinsight.listClustersCommand({});
+    command.hdinsight.listClustersCommand({}, _);
     command.processor.listClusters.firstCall.should.not.equal(null);
     (command.processor.listClusters.firstCall.args[0] === undefined).should.equal(true);
     done();
@@ -75,7 +58,7 @@ describe('HDInsight list command (under unit test)', function() {
   it('should call listClusters with the supplied subscriptionId (when one is supplied)', function(done) {
     var command = new GetCommand();
     command.hdinsight.listClustersCommand.should.not.equal(null);
-    command.hdinsight.listClustersCommand({ subscription: 'test1' });
+    command.hdinsight.listClustersCommand({ subscription: 'test1' }, _);
     command.processor.listClusters.firstCall.should.not.equal(null);
     command.processor.listClusters.firstCall.args[0].should.not.equal(null);
     command.processor.listClusters.firstCall.args[0].should.be.equal('test1');

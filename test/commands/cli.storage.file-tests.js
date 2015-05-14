@@ -14,7 +14,6 @@
 // limitations under the License.
 //
 
-var azure = require('azure');
 var should = require('should');
 var fs = require('fs');
 var path = require('path');

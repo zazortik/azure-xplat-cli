@@ -26,7 +26,6 @@ var testLogger = require('./test-logger');
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
-var pluginCache = require('../../lib/util/pluginCache');
 
 var executeCommand = require('./cli-executor').execute;
 var MockTokenCache = require('./mock-token-cache');
@@ -91,8 +90,6 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   if (this.isPlayback()) {
     this.setTimeouts();
   }
-
-  pluginCache.clear();
 }
 
 _.extend(CLITest.prototype, {
