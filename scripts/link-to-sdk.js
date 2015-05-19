@@ -19,7 +19,8 @@ var servicePackages = [
   'webSiteManagement',
   'authorizationManagement',
   'extra',
-  'hdinsight'
+  'hdinsight',
+  'apiAppManagement'
 ];
 
 //
