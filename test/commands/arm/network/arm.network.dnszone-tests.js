@@ -20,10 +20,12 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-dns-zone-tests';
+var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName,
 	location , 
 	groupPrefix = 'xplatTestGCreateDns',
-	dnszonePrefix = 'xplatTestdns' ;
+	dnszonePrefix = 'xplattestgcreatedns.xplattestdns',
+	tag = 'priority=medium;size=high';
 var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'southeastasia'
@@ -31,22 +33,21 @@ var requiredEnvironment = [{
 
 
 describe('arm', function () {
-	describe('network dns-zone', function () {
+	describe('network', function () {
 		var suite,
 			retry = 5;
-
+		var networkUtil = new networkTestUtil();
 		before(function (done) {
 		  suite = new CLITest(this, testprefix, requiredEnvironment);
 		  suite.setupSuite(function() {
 			  location = process.env.AZURE_VM_TEST_LOCATION;
 			  groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	
-			  dnszonePrefix = suite.isMocked ? dnszonePrefix : suite.generateId(dnszonePrefix, null);
-			 			  
+			  dnszonePrefix = suite.isMocked ? dnszonePrefix : suite.generateId(dnszonePrefix, null);		  
 			  done();
 		  });
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			networkUtil.deleteUsedGroup(groupName, suite, function() {
 				suite.teardownSuite(done);
 			});
 		});
@@ -57,10 +58,9 @@ describe('arm', function () {
 		  suite.teardownTest(done);
 		});
 
-		describe('lb', function () {
-				
-			it('create', function (done) {
-				createGroup(function(){
+		describe('dns-zone', function () {	
+			it('create should pass', function (done) {
+				networkUtil.createGroup(groupName, location, suite, function(){
 					var cmd = util.format('network dns-zone create %s %s --json', groupName, dnszonePrefix).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
@@ -70,15 +70,15 @@ describe('arm', function () {
 				});
 			});  
 			
-			it('set', function (done) {
-			  var cmd = util.format('network dns-zone set %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
+			it('set should set dns-zone', function (done) {
+			  var cmd = util.format('network dns-zone set %s %s %s --json', groupName, dnszonePrefix, tag).split(' ');
 			  testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
 				    done();
 				});
 			});
 			
-			it('show', function (done) {
+			it('show should display dns-zone', function (done) {
 				var cmd = util.format('network dns-zone show %s %s --json', groupName, dnszonePrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
@@ -88,7 +88,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('list', function (done) {
+			it('list should display all dns-zones', function (done) {
 			  var cmd = util.format('network dns-zone list %s --json',groupName).split(' ');
 			  testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
@@ -100,7 +100,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('delete', function (done) {
+			it('delete should delete dns-zone', function (done) {
 			  var cmd = util.format('network dns-zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
 			  testUtils.executeCommand(suite, retry, cmd, function (result) {
 				    result.exitStatus.should.equal(0);
@@ -110,24 +110,5 @@ describe('arm', function () {
 	  
 		});
 	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-			
 	});
 });

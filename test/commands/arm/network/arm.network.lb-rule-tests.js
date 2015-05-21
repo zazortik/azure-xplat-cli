@@ -20,7 +20,8 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-lb-rule-tests';
-var groupPrefix = 'xplatTestGCreate';
+var groupPrefix = 'xplatTestGCreateLBRule';
+var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName, protocol= 'tcp', fport ='80', bport ='80', enafip = 'true', idle = '4',
 	publicipPrefix = 'xplatTestIpRule',
 	LBName = 'armEmptyLB',
@@ -39,13 +40,13 @@ describe('arm', function () {
     describe('network', function () {
     var suite,
 		retry = 5;
-	
+	var networkUtil = new networkTestUtil();
 		before(function (done) {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.isMocked ? 'armrestestingrulegrp' : suite.generateId(groupPrefix, null);
-				publicipPrefix = suite.isMocked ? 'xplatTestIpRule' : suite.generateId(publicipPrefix, null);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+				publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
 				LBName = suite.generateId(LBName, null);
 				LBAddPool = suite.generateId(LBAddPool, null);
 				LBRuleName = suite.generateId(LBRuleName, null);
@@ -55,11 +56,11 @@ describe('arm', function () {
 			});
 		});
 		after(function (done) {
-			deleteLBAddPool ( function() {
-				deleteLBProbe(function(){
-				deleteUsedLB ( function() {
-					deleteUsedPublicIp ( function() {
-						deleteUsedGroup(function() {
+			networkUtil.deleteLBAddPool(groupName, LBName, LBAddPool, suite, function() {
+				networkUtil.deleteLBProbe(groupName, LBName, LBProbe, suite, function(){
+				networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
+					networkUtil.deleteUsedPublicIp (groupName, publicipPrefix, suite, function() {
+						networkUtil.deleteUsedGroup(groupName, suite, function() {
 							suite.teardownSuite(done);  
 							});
 						});
@@ -74,17 +75,16 @@ describe('arm', function () {
 			suite.teardownTest(done);
 		});
 
-		  
 		describe('lb rule', function () {
 		
 			it('create should pass', function (done) {
-				createGroup(function(){
-					createLB (function(){
-						createPublicIp(function(){
-							showPublicIp(function(){
-								createFrontendIp(function(){
-									createLBAddPool (function(){
-										createLBProbe(function(){
+				networkUtil.createGroup(groupName, location, suite, function(){
+					networkUtil.createLB (groupName, LBName, location, suite, function(){
+						networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function(){
+							networkUtil.showPublicIp(groupName, publicipPrefix, suite, function(){
+								networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function(){
+									networkUtil.createLbAddressPool(groupName, LBName, LBAddPool, suite, function(){
+										networkUtil.createLBProbe(groupName, LBName, LBProbe,suite, function(){
 											var cmd = util.format('network lb rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -o %s -a %s -t %s --json', 
 													  groupName, LBName, LBRuleName, protocol, fport, bport, enafip, idle, LBAddPool, LBProbe, FrontendIpName).split(' ');
 											testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -125,113 +125,6 @@ describe('arm', function () {
 			});
 		  
 		});
-	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-		function createPublicIp(callback) {
-			var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);;
-				callback();
-			});	
-		}	
-		function showPublicIp(callback) {
-			var cmd = util.format('network public-ip show %s %s --json', groupName, publicipPrefix).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0); 
-				var allResources = JSON.parse(result.text);
-				publicIpId = allResources.id;
-				callback();
-			});	
-		}	
-		function deleteUsedPublicIp(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-		function createLB(callback){
-			var cmd = util.format('network lb create %s %s %s --json', groupName, LBName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedLB(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network lb delete %s %s --quiet --json',groupName, LBName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}	
-		function createLBAddPool(callback){
-			var cmd = util.format('network lb address-pool create %s %s %s --json', groupName, LBName, LBAddPool).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function createLBProbe(callback){
-			var cmd = util.format('network lb probe create %s %s %s --json', groupName, LBName, LBProbe).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteLBProbe(callback){
-			if (!suite.isPlayback()) {
-			var cmd = util.format('network lb probe delete %s %s %s --quiet --json', groupName, LBName, LBProbe).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-			}
-			else
-				callback();
-		}
-		function deleteLBAddPool(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network lb address-pool delete %s %s %s -q --json', groupName, LBName, LBAddPool).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-		function createFrontendIp(callback){
-			var cmd = util.format('network lb frontend-ip create %s %s %s -u %s --json',groupName, LBName, FrontendIpName, publicIpId).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}	
 	
 	});
 });

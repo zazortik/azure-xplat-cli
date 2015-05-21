@@ -23,7 +23,7 @@ var testprefix = 'arm-cli-vm-docker-tests';
 var groupPrefix = 'xplatTestGVMDocker';
 var path = require('path');
 var fs = require('fs');
-
+var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
@@ -32,7 +32,7 @@ var requiredEnvironment = [{
   defaultValue: 'test/myCert.pem'
 }];
 
-var groupName,
+var groupName = 'xplatTestGVMDocker',
 	vmPrefix = 'xplatvmdocker',
 	nicName = 'xplatnicdocker',
 	location, homePath, timeout,
@@ -45,28 +45,27 @@ var groupName,
 	subnetName = 'xplatdockersubnet',
 	publicipName= 'xplatdockerip',
 	dnsPrefix = 'xplatdockeripdns', 
-	sshcert,
-	vmImage='b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB';
+	sshcert, testtimeout=800000;
 
 describe('arm', function () {
 	describe('compute', function () {
-		var suite, retry = 5, dockerCertDir,
-		dockerCerts;
+		var suite, retry = 5, dockerCertDir,dockerCertFol='.docker';
+		var vmTest = new VMTestUtil();
 		testUtils.TIMEOUT_INTERVAL = 12000;
 		before(function (done) {
 				suite = new CLITest(this,testprefix, requiredEnvironment);
 				suite.setupSuite(function() {		  
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName =  suite.isMocked ? 'xplatTestGVMDocker' : suite.generateId(groupPrefix, null);	  
-				vmPrefix = suite.isMocked ? 'xplatvmdocker' : suite.generateId(vmPrefix, null);
-				nicName = suite.isMocked ? 'xplatnicdocker' : suite.generateId(nicName, null);
+				groupName =  suite.isMocked ? groupName : suite.generateId(groupPrefix, null);	  
+				vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
+				nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
 				storageAccount = suite.generateId(storageAccount, null);
 				storageCont = suite.generateId(storageCont, null);
-				osdiskvhd = suite.isMocked ? 'xplatdockervhd' : suite.generateId(osdiskvhd, null);
-				vNetPrefix = suite.isMocked ? 'xplatdockervnet' : suite.generateId(vNetPrefix, null);	
-				subnetName = suite.isMocked ? 'xplatdockersubnet' : suite.generateId(subnetName, null);
-				publicipName = suite.isMocked ? 'xplatdockerip' : suite.generateId(publicipName, null);
-				dnsPrefix = suite.isMocked ? 'xplatdockeripdns' : suite.generateId(dnsPrefix, null);	
+				osdiskvhd = suite.isMocked ? osdiskvhd : suite.generateId(osdiskvhd, null);
+				vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);	
+				subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
+				publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
+				dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);	
 				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;	
 				homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
 				sshcert =  process.env.SSHCERT;
@@ -74,7 +73,8 @@ describe('arm', function () {
 			});
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			vmTest.deleteUsedGroup(groupName, suite, function(result) {
+				vmTest.deleteDockerCertificates();
 				suite.teardownSuite(done);
 			});
 		});
@@ -87,17 +87,23 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			it('docker create should pass', function (done) {
-				createGroup(function(){
-					dockerCertDir = path.join(homePath, '.docker');
-					var dockerPort = 4243;
-					var cmd = util.format('vm docker create %s %s %s Linux -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -T %s -O %s --json', 
-								groupName, vmPrefix, location, nicName,vmImage, username, password, storageAccount, storageCont, 
-								vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, dockerPort, dockerCertDir).split(' ');
-					testUtils.executeCommand(suite, retry, cmd, function (result) {
-						result.exitStatus.should.equal(0);
-						done();
-					});
-				});
+				this.timeout(testtimeout);
+				vmTest.createGroup(groupName, location, suite, function (result) {
+						vmTest.GetDockerLinuxImageList(location, suite, function(result) {
+							dockerCertDir = path.join(homePath, dockerCertFol);
+							var dockerPort = 4243;
+							var cmd = util.format('vm docker create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -T %s -O %s --json', 
+										groupName, vmPrefix, location, nicName,VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont, 
+										vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, dockerPort, dockerCertDir).split(' ');
+							testUtils.executeCommand(suite, retry, cmd, function (result) {
+								result.exitStatus.should.equal(0);
+								var certifiatesExist = vmTest.checkForDockerCertificates(dockerCertDir);
+								certifiatesExist.should.be.true;
+								done();
+							});
+						});
+					
+				});	
 			});
 			
 			it('show should show created Docker VM', function (done) {
@@ -109,46 +115,6 @@ describe('arm', function () {
 			});
 			
 		});
-	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName,location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-			  result.exitStatus.should.equal(0);
-			  callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if(!suite.isPlayback()) {
-				deleteDockerCertificates();
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			} else callback();
-		}
-		function deleteDockerCertificates() {
-        if (!dockerCertDir || !dockerCerts) {
-          return;
-        }
-
-        fs.exists(dockerCertDir, function(exists) {
-          if (!exists) {
-            return;
-          }
-
-          fs.unlinkSync(dockerCerts.caKey);
-          fs.unlinkSync(dockerCerts.ca);
-          fs.unlinkSync(dockerCerts.serverKey);
-          fs.unlinkSync(dockerCerts.server);
-          fs.unlinkSync(dockerCerts.serverCert);
-          fs.unlinkSync(dockerCerts.clientKey);
-          fs.unlinkSync(dockerCerts.client);
-          fs.unlinkSync(dockerCerts.clientCert);
-          fs.unlinkSync(dockerCerts.extfile);
-          fs.rmdirSync(dockerCertDir);
-        });
-      }
 		
 	});
 });

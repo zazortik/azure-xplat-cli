@@ -19,35 +19,38 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-traffic-manager-tests';
+var testprefix = 'arm-cli-traffic-manager-profile-tests';
 var groupPrefix = 'xplatTestGTMPCreate';
+var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName,
 	location ,
-	trafficMPPrefix = 'xplatTestTrafficMP' ;
-//Need to assign appropriate value
-var reldns;
+	trafficMPPrefix = 'xplatTestTrafficMP' ,
+	reldns='xplatTMPdns' ;
+var profile_status = 'Enabled',routing_method = 'Performance' , time_to_live = '300' , monitor_protocol = 'http' , monitor_path = '/index.html' , monitor_port= '80' ;
+
 var requiredEnvironment = [{
-  name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'eastus'
-}];
-	
+    name: 'AZURE_VM_TEST_LOCATION',
+    defaultValue: 'southeastasia'
+    }];
+
 
 describe('arm', function () {
-	describe('compute', function () {
-		var suite, retry = 5;
-
+	describe('network', function () {
+		var suite,
+			retry = 5;
+		var networkUtil = new networkTestUtil();
 		before(function (done) {
-				suite = new CLITest(testprefix, requiredEnvironment);
-				suite.setupSuite(function() {		  
-				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName =  suite.isMocked ? 'xplatTestGTMPCreate' : suite.generateId(groupPrefix, null);	  		  
-				trafficMPPrefix =  suite.isMocked ? 'xplatTestTrafficMP' : suite.generateId(trafficMPPrefix, null);
-			
-				done();
-			});
+		  suite = new CLITest(this, testprefix, requiredEnvironment);
+		  suite.setupSuite(function() {
+			location = process.env.AZURE_VM_TEST_LOCATION;
+			groupName =  suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	  		  
+			trafficMPPrefix =  suite.isMocked ? trafficMPPrefix : suite.generateId(trafficMPPrefix, null);
+			reldns =  suite.isMocked ? reldns : suite.generateId(reldns, null);
+			done();
+		  });
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			networkUtil.deleteUsedGroup(groupName, suite, function(){
 				suite.teardownSuite(done);
 			});
 		});
@@ -58,13 +61,11 @@ describe('arm', function () {
 		  suite.teardownTest(done);
 		});
 
-		describe(' network ', function () {
-		
-			
-			
-			it('create', function (done) {
-				createGroup(function(){
-					var cmd = util.format('network traffic-manager profile create %s %s --json', groupName, trafficMPPrefix).split(' ');
+		describe('traffic-manager profile', function () {
+					
+			it('create should pass', function (done) {
+				networkUtil.createGroup(groupName, location, suite, function(){
+					var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method , reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
 						done();
@@ -72,7 +73,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('list', function (done) {
+			it('list should pass', function (done) {
 				var cmd = util.format('network traffic-manager profile list %s --json',groupName).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					  result.exitStatus.should.equal(0);
@@ -84,8 +85,8 @@ describe('arm', function () {
 				});					
 			});
 			
-			it('set', function (done) {
-				var cmd = util.format('network traffic-manager profile set %s %s --json', groupName, trafficMPPrefix).split(' ');
+			it('set should pass', function (done) {
+				var cmd = util.format('network traffic-manager profile set %s %s -u %s -m %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);  
 					var allResources = JSON.parse(result.text);
@@ -94,7 +95,7 @@ describe('arm', function () {
 				});
 			});
 			
-			it('show', function (done) {
+			it('show should pass', function (done) {
 				var cmd = util.format('network traffic-manager profile show %s %s --json', groupName, trafficMPPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);  
@@ -104,43 +105,24 @@ describe('arm', function () {
 				});
 			});
 			
-		
+			
 			it('is-dns-available', function (done) {
 				var cmd = util.format('network traffic-manager profile is-dns-available %s %s --json', groupName, reldns).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);  
 					var allResources = JSON.parse(result.text);
-					allResources.name.should.equal(trafficMPPrefix);
+					allResources.isAvailable='false';
 					done();
 				});
 			});
 		
 			it('delete', function (done) {
-				var cmd = util.format('network traffic-manager profile delete  %s %s --quiet', groupName, trafficMPPrefix).split(' ');
+				var cmd = util.format('network traffic-manager profile delete %s %s -q --json', groupName, trafficMPPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);
 					done();
 				});
 			});
-		  
 		});
-	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName,location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-			  result.exitStatus.should.equal(0);
-			  callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			} else callback();
-		}
-		
 	});
 });

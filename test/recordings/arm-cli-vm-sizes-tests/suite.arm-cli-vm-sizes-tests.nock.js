@@ -22,8 +22,9 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
+  process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatteststoragsz5888','xplatteststoragecntsz8413'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatteststoragsz195','xplatteststoragecntsz2511'];};
