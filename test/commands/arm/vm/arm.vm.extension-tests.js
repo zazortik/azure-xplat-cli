@@ -126,19 +126,18 @@ describe('arm', function () {
 						var cmd = util.format('vm extension get %s %s --json',groupName,vmPrefix).split(' ');
 						testUtils.executeCommand(suite, retry, cmd, function (result) {
 							result.exitStatus.should.equal(0);
-						
 							done();
 						});						
 					});
 					
-					// it('Uninstall the set extension', function (done) {
-						// this.timeout(testtimeout);
-						// var cmd = util.format('vm extension set %s %s %s %s %s -u -q --json',groupName,vmPrefix,extension,publisherExt,version).split(' ');
-						// testUtils.executeCommand(suite, retry, cmd, function (result) {
-							// result.exitStatus.should.equal(0);
-							
-						// });						
-					// });
+					it('Uninstall the set extension', function (done) {
+						this.timeout(testtimeout);
+						var cmd = util.format('vm extension set %s %s %s %s %s -u -q --json',groupName,vmPrefix,extension,publisherExt,version).split(' ');
+						testUtils.executeCommand(suite, retry, cmd, function (result) {
+							result.exitStatus.should.equal(0);
+							done();
+						});						
+					});
 					
 		});
 	});
