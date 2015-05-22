@@ -21,6 +21,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nsg-tests';
 var tags = 'tag1=testValue1';
+var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName, nsgName, location,
 	groupPrefix = 'xplatTestGCreateNsg',
 	nsgPrefix = 'xplatTestNsg';
@@ -33,7 +34,7 @@ describe('arm', function () {
     describe('network', function () {
     var suite,
 		retry = 5;
-
+	var networkUtil = new networkTestUtil();
 		before(function (done) {
 			suite = new CLITest(this, testprefix, requiredEnvironment);
 			suite.setupSuite(function() {
@@ -44,7 +45,7 @@ describe('arm', function () {
 		  });
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			networkUtil.deleteUsedGroup(groupName, suite, function(result) {
 				suite.teardownSuite(done);
 			});
 		});
@@ -58,7 +59,7 @@ describe('arm', function () {
 		describe('nsg', function () {
 		
 			it('create should pass', function (done) {
-				createGroup(function(){
+				networkUtil.createGroup(groupName, location, suite, function(result) {
 					var cmd = util.format('network nsg create %s %s %s -t %s --json',groupName, nsgName, location, tags).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						 result.exitStatus.should.equal(0);
@@ -110,24 +111,5 @@ describe('arm', function () {
 		  
 		});
 		
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-	
 	});
 });

@@ -27,36 +27,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers/a10-vthunder-adc/skus/vthunder_byol/versions?api-version=2015-05-01-preview')
-  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"1.0.0\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc/Skus/vthunder_byol/Versions/1.0.0\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers/a10-vthunder-adc/skus/vthunder_100mbps/versions?api-version=2015-05-01-preview')
+  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"1.0.0\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc/Skus/vthunder_100mbps/Versions/1.0.0\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '276',
+  'content-length': '279',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f4570b59-810f-46c8-b645-03b9af8dc717',
+  'x-ms-request-id': '7d12bb37-77f3-4cc9-a2b7-815b67e18e8c',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31983',
-  'x-ms-correlation-request-id': 'da44fa08-43fe-4c1c-bf49-06d2231e252e',
-  'x-ms-routing-request-id': 'EASTASIA:20150427T150110Z:da44fa08-43fe-4c1c-bf49-06d2231e252e',
-  date: 'Mon, 27 Apr 2015 15:01:09 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14946',
+  'x-ms-correlation-request-id': '04090d58-8a23-45b7-aaa9-9ab6bea9b3c5',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150521T115852Z:04090d58-8a23-45b7-aaa9-9ab6bea9b3c5',
+  date: 'Thu, 21 May 2015 11:58:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers/a10-vthunder-adc/skus/vthunder_byol/versions?api-version=2015-05-01-preview')
-  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"1.0.0\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc/Skus/vthunder_byol/Versions/1.0.0\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/a10networks/artifacttypes/vmimage/offers/a10-vthunder-adc/skus/vthunder_100mbps/versions?api-version=2015-05-01-preview')
+  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"1.0.0\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/a10networks/ArtifactTypes/VMImage/Offers/a10-vthunder-adc/Skus/vthunder_100mbps/Versions/1.0.0\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '276',
+  'content-length': '279',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f4570b59-810f-46c8-b645-03b9af8dc717',
+  'x-ms-request-id': '7d12bb37-77f3-4cc9-a2b7-815b67e18e8c',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '31983',
-  'x-ms-correlation-request-id': 'da44fa08-43fe-4c1c-bf49-06d2231e252e',
-  'x-ms-routing-request-id': 'EASTASIA:20150427T150110Z:da44fa08-43fe-4c1c-bf49-06d2231e252e',
-  date: 'Mon, 27 Apr 2015 15:01:09 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14946',
+  'x-ms-correlation-request-id': '04090d58-8a23-45b7-aaa9-9ab6bea9b3c5',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150521T115852Z:04090d58-8a23-45b7-aaa9-9ab6bea9b3c5',
+  date: 'Thu, 21 May 2015 11:58:52 GMT',
   connection: 'close' });
  return result; }]];

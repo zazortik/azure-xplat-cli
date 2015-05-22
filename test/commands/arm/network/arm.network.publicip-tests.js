@@ -20,13 +20,14 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-publicip-tests';
-var groupPrefix = 'xplatTestGCreate';
+var groupPrefix = 'xplatTestGCreatePubip';
 var dnsPrefix = 'dnstestpubip';
 var dnsPrefix1 = 'dnstestpubip1';
 var groupName, dnsName, dnsName1, location, reversefqdn, reversefqdn1;
 var allocationMethod = 'Static';
 var idleTimeout = '4';
 var tags = 'tag1=testValue1';
+var networkTestUtil = require('../../../util/networkTestUtil');
  var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'westus'
@@ -36,6 +37,7 @@ describe('arm', function () {
     describe('network', function () {
     var suite, 
 		retry = 5;
+	var networkUtil = new networkTestUtil();
 	var publicipName = 'armpublicip';
 	var publicipNameNew = 'armpublicipnew';
 	
@@ -44,7 +46,7 @@ describe('arm', function () {
 			suite.setupSuite(function() {
 				dnsName = suite.generateId(dnsPrefix.toLowerCase(), null);
 				dnsName1 = suite.generateId(dnsPrefix1.toLowerCase(), null);
-				groupName = suite.isMocked ? 'armrestestingpubgrp' : suite.generateId(groupPrefix, null);
+				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
 				publicipName = suite.generateId(publicipName, null);
 				publicipNameNew = suite.generateId(publicipNameNew, null);
 				location = process.env.AZURE_VM_TEST_LOCATION;
@@ -52,7 +54,7 @@ describe('arm', function () {
 			});
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			networkUtil.deleteUsedGroup(groupName, suite, function(result) {
 				suite.teardownSuite(done);
 			});
 		});
@@ -66,7 +68,7 @@ describe('arm', function () {
 		describe('publicip', function () {
 		
 			it('create should pass', function (done) {
-				createGroup(function(){
+				networkUtil.createGroup(groupName, location, suite, function(result) {
 					var cmd = util.format('network public-ip create -g %s -n %s -d %s -l %s -a %s -i %s -t %s --json', groupName, publicipName, dnsName, location, allocationMethod, idleTimeout, tags).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function (result) {
 						result.exitStatus.should.equal(0);
@@ -136,25 +138,6 @@ describe('arm', function () {
 			});
 		  
 		});
-	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
 	
 	});
 });
