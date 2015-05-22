@@ -45,7 +45,7 @@ var groupName, timeout,
 	publicipName= 'xplattestipDk',
 	dnsPrefix = 'xplattestipdnsdk',
 	diskPrefix = 'xplatdiskdk' , 
-	sshcert, testtimeout=800000;
+	sshcert;
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -90,10 +90,10 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			it('create for disk attach and detach should pass', function (done) {
-				this.timeout(testtimeout);
+				this.timeout(vmTest.timeoutLarge);
 				vmTest.checkImagefile(function(){
 					vmTest.createGroup(groupName, location, suite, function (result) {
-						if(VMTestUtil.linuxImageUrn == '' || VMTestUtil.linuxImageUrn == undefined) {
+						if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
 							vmTest.GetLinuxSkusList(location, suite, function (result) {
 								vmTest.GetLinuxImageList(location, suite,function(result) {
 									var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json', 

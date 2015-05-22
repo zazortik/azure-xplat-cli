@@ -46,7 +46,7 @@ var groupName,
 	subnetName = 'xplattestsubnet',
 	publicipName= 'xplattestip',
 	dnsPrefix = 'xplattestipdns', 
-	sshcert, testtimeout=800000;
+	sshcert;
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -86,10 +86,10 @@ describe('arm', function () {
 		describe('vm', function () {
 			
 			it('create should pass', function (done) {
-				this.timeout(testtimeout);
+				this.timeout(vmTest.timeoutLarge);
 				vmTest.checkImagefile(function(){
 					vmTest.createGroup(groupName, location, suite, function (result) {
-						if(VMTestUtil.linuxImageUrn == '') {
+						if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
 							vmTest.GetLinuxSkusList(location, suite, function (result) {
 								vmTest.GetLinuxImageList(location, suite,function(result) {
 									var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json', 
@@ -145,7 +145,7 @@ describe('arm', function () {
 			});
 		
 			it('delete should delete VM', function (done) {
-				this.timeout(testtimeout);
+				this.timeout(vmTest.timeoutLarge);
 				var cmd = util.format('vm delete %s %s --quiet --json', groupName,vmPrefix).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
 					result.exitStatus.should.equal(0);

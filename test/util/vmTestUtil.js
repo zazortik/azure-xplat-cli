@@ -47,6 +47,8 @@ function VMTestUtil() {
 	this.winOffer = 'WindowsServer';
 	this.winSkus;
 	this.winImageUrn;
+	this.timeoutLarge = 800000;
+	this.timeoutMedium = 600000; 
 }
 
 VMTestUtil.prototype.createGroup = function (groupName, location, suite, callback) {

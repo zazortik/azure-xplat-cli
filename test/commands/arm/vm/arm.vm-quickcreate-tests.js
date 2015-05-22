@@ -36,7 +36,7 @@ var groupName,
 	location, 						  
 	username = 'azureuser',
 	password = 'Brillio@2015',
-	sshcert, testtimeout=600000;
+	sshcert;
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -67,10 +67,10 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			it('Quick create should create a VM', function (done) {
-				this.timeout(testtimeout);
+				this.timeout(vmTest.timeoutLarge);
 				vmTest.checkImagefile(function(){
 					vmTest.createGroup(groupName, location, suite, function (result) {
-						if(VMTestUtil.linuxImageUrn == '' || VMTestUtil.linuxImageUrn == undefined) {
+						if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
 						vmTest.GetLinuxSkusList(location, suite, function (result) {
 							vmTest.GetLinuxImageList(location, suite,function(result) {
 								var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json', 

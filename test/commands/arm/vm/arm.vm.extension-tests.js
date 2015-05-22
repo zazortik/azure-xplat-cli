@@ -41,7 +41,7 @@ var groupName,
 	dnsPrefix = 'xplatdnsext' ,
 	extension = 'VMAccessAgent' ,
 	publisherExt = 'Microsoft.Compute',
-	version = '2.0', testtimeout=800000;
+	version = '2.0';
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -84,10 +84,10 @@ describe('arm', function () {
 		describe('vm', function () {
 					
 			it('create for extension get and set', function (done) {
-				this.timeout(testtimeout);		
+				this.timeout(vmTest.timeoutLarge);		
 				vmTest.checkImagefile(function(){
 					vmTest.createGroup(groupName, location, suite, function (result) {
-						if(VMTestUtil.winImageUrn == '' || VMTestUtil.winImageUrn == undefined || VMTestUtil.winImageUrn == "undefined") {
+						if(VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined || VMTestUtil.winImageUrn === "undefined") {
 							vmTest.GetWindowsSkusList(location, suite, function (result) {
 								vmTest.GetWindowsImageList(location, suite,function(result) {
 									var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
@@ -131,7 +131,7 @@ describe('arm', function () {
 					});
 					
 					it('Uninstall the set extension', function (done) {
-						this.timeout(testtimeout);
+						this.timeout(vmTest.timeoutLarge);
 						var cmd = util.format('vm extension set %s %s %s %s %s -u -q --json',groupName,vmPrefix,extension,publisherExt,version).split(' ');
 						testUtils.executeCommand(suite, retry, cmd, function (result) {
 							result.exitStatus.should.equal(0);

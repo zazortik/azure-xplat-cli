@@ -42,8 +42,7 @@ var groupName = 'xplatTestGSz',
 	vNetPrefix = 'xplattestvnetsz',
 	subnetName = 'xplattestsubnetsz',
 	publicipName= 'xplattestipsz',
-	dnsPrefix = 'xplattestdnssz' ,
-	timeout = 800000,
+	dnsPrefix = 'xplattestdnssz',
 	sshcert;
 
 describe('arm', function () {
@@ -65,8 +64,7 @@ describe('arm', function () {
 				  vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);	
 				  subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
 				  publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
-				  dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
-				 				  
+				  dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);			  
 				  done();
 		  });
 		});
@@ -88,10 +86,10 @@ describe('arm', function () {
 		describe('vm', function () {
 			
 				it('create for vm sizes should pass', function (done) {
-					this.timeout(timeout);
+					this.timeout(vmTest.timeoutLarge);
 					vmTest.checkImagefile(function(){
 						vmTest.createGroup(groupName, location, suite, function (result) {
-							if(VMTestUtil.linuxImageUrn == '' || VMTestUtil.linuxImageUrn == undefined) {
+							if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
 								vmTest.GetLinuxSkusList(location, suite, function (result) {
 									vmTest.GetLinuxImageList(location, suite,function(result) {
 										var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json', 

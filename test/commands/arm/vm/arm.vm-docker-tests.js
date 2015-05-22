@@ -45,7 +45,7 @@ var groupName = 'xplatTestGVMDocker',
 	subnetName = 'xplatdockersubnet',
 	publicipName= 'xplatdockerip',
 	dnsPrefix = 'xplatdockeripdns', 
-	sshcert, testtimeout=800000;
+	sshcert, dockerPort = 4243;
 
 describe('arm', function () {
 	describe('compute', function () {
@@ -87,11 +87,10 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			it('docker create should pass', function (done) {
-				this.timeout(testtimeout);
+				this.timeout(vmTest.timeoutLarge);
 				vmTest.createGroup(groupName, location, suite, function (result) {
 						vmTest.GetDockerLinuxImageList(location, suite, function(result) {
 							dockerCertDir = path.join(homePath, dockerCertFol);
-							var dockerPort = 4243;
 							var cmd = util.format('vm docker create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -T %s -O %s --json', 
 										groupName, vmPrefix, location, nicName,VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont, 
 										vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, dockerPort, dockerCertDir).split(' ');
