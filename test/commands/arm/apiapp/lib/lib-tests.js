@@ -76,7 +76,24 @@ describe('apiapp', function () {
           done(err);
         });
       });
-    });
 
+      it('should succeed for UIDefinition with constraints', function (done) {
+        var packageRoot = path.join(packageDataRoot, 'allUIDefinitionConstraints');
+        packageLib.validate(packageRoot, function (err, result) {
+          should.not.exist(err);
+          result.isValid.should.be.true;
+          done(err);
+        });
+      });
+
+      it('should fail for UIDefinition with bad constraints', function (done) {
+        var packageRoot = path.join(packageDataRoot, 'badUIDefinitionConstraints');
+        packageLib.validate(packageRoot, function (err, result) {
+          should.not.exist(err);
+          result.isValid.should.not.be.true;
+          done(err);
+        });
+      });
+    });
   });
 });
