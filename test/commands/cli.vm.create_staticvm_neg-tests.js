@@ -29,7 +29,7 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var vmName,
+    var vmName, vmName1 = 'abcd',
       location,
       username = 'azureuser',
       password = 'PassW0rd$',
@@ -74,10 +74,10 @@ describe('cli', function() {
       });
 
       it('Setting the invalid vm name', function(done) {
-        var cmd = util.format('vm static-ip set abcd %s --json', staticIpToSet).split(' ');
+        var cmd = util.format('vm static-ip set %s %s --json', vmName1, staticIpToSet).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(1);
-          result.errorText.should.include('No VMs found');
+          result.errorText.should.include('No VM with name ' + '"' + vmName1 + '"' + ' found');
           setTimeout(done, timeout);
         });
       });
