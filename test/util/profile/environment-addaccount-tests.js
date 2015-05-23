@@ -191,7 +191,21 @@ describe('Environment', function () {
       });
     });
   });
+});
 
+describe('Environment', function () {
+  var environment;
+  
+  before(function () {
+    environment = new profile.Environment({
+      name: 'TestEnvironment'
+    });
+    
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
+      null/*no error*/, expectedToken/*the access token*/);
+    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
+  });
+  
   describe('When creating account with tenant specified', function () {
     var subscriptions;
     
