@@ -16,16 +16,22 @@
 'use strict';
 
 var should = require('should');
+var path = require('path');
+var fs = require('fs');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-vm-create-tests';
 var groupPrefix = 'xplatTestGVMCreate';
-
+var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
-}];
+},{
+  name: 'SSHCERT',
+  defaultValue: 'test/myCert.pem'
+}
+];
 
 var groupName,
 	vmPrefix = 'xplattestvm',
@@ -40,31 +46,33 @@ var groupName,
 	subnetName = 'xplattestsubnet',
 	publicipName= 'xplattestip',
 	dnsPrefix = 'xplattestipdns', 
-	vmImage='bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-v5.8.8.11';
+	sshcert;
 
 describe('arm', function () {
 	describe('compute', function () {
 		var suite, retry = 5;
-
+		var vmTest = new VMTestUtil();
 		before(function (done) {
 				suite = new CLITest(this, testprefix, requiredEnvironment);
 				suite.setupSuite(function() {		  
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName =  suite.isMocked ? 'xplatTestGVMCreate' : suite.generateId(groupPrefix, null);	  
-				vmPrefix = suite.isMocked ? 'xplattestvm' : suite.generateId(vmPrefix, null);
-				nicName = suite.isMocked ? 'xplattestnic' : suite.generateId(nicName, null);
+				sshcert =  process.env.SSHCERT;
+				groupName =  suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	  
+				vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
+				nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
 				storageAccount = suite.generateId(storageAccount, null);
 				storageCont = suite.generateId(storageCont, null);
-				osdiskvhd = suite.isMocked ? 'xplattestvhd' : suite.generateId(osdiskvhd, null);
-				vNetPrefix = suite.isMocked ? 'xplattestvnet' : suite.generateId(vNetPrefix, null);	
-				subnetName = suite.isMocked ? 'xplattestsubnet' : suite.generateId(subnetName, null);
-				publicipName = suite.isMocked ? 'xplattestip' : suite.generateId(publicipName, null);
-				dnsPrefix = suite.isMocked ? 'xplattestipdns' : suite.generateId(dnsPrefix, null);		  
+				osdiskvhd = suite.isMocked ? osdiskvhd : suite.generateId(osdiskvhd, null);
+				vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);	
+				subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
+				publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
+				dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+				
 				done();
 			});
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			vmTest.deleteUsedGroup(groupName, suite, function(result) {
 				suite.teardownSuite(done);
 			});
 		});
@@ -78,14 +86,32 @@ describe('arm', function () {
 		describe('vm', function () {
 			
 			it('create should pass', function (done) {
-				createGroup(function(){
-					var cmd = util.format('vm create %s %s %s Windows -f %s -q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json', 
-								groupName, vmPrefix, location, nicName,vmImage, username, password, storageAccount, storageCont, 
-								vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
-					testUtils.executeCommand(suite, retry, cmd, function (result) {
-						result.exitStatus.should.equal(0);
-						done();
-					});
+				this.timeout(vmTest.timeoutLarge);
+				vmTest.checkImagefile(function(){
+					vmTest.createGroup(groupName, location, suite, function (result) {
+						if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
+							vmTest.GetLinuxSkusList(location, suite, function (result) {
+								vmTest.GetLinuxImageList(location, suite,function(result) {
+									var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json', 
+												groupName, vmPrefix, location, nicName,VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont, 
+												vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+									testUtils.executeCommand(suite, retry, cmd, function (result) {
+										result.exitStatus.should.equal(0);								
+										done();
+									});
+								});
+							});
+						}
+						else {
+							var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json', 
+										groupName, vmPrefix, location, nicName,VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont, 
+										vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+							testUtils.executeCommand(suite, retry, cmd, function (result) {
+								result.exitStatus.should.equal(0);								
+								done();
+							});						
+						}
+					});	
 				});
 			});
 			
@@ -118,32 +144,16 @@ describe('arm', function () {
 				});
 			});
 		
-			// it('delete should delete VM', function (done) {
-				// var cmd = util.format('vm delete  %s %s --quiet --json', groupName,vmPrefix).split(' ');
-				// testUtils.executeCommand(suite, retry, cmd, function (result) {
-					// result.exitStatus.should.equal(0);
-					// done();
-				// });
-			// });
+			it('delete should delete VM', function (done) {
+				this.timeout(vmTest.timeoutLarge);
+				var cmd = util.format('vm delete %s %s --quiet --json', groupName,vmPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					done();
+				});
+			});
 		  
 		});
 	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName,location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-			  result.exitStatus.should.equal(0);
-			  callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			} else callback();
-		}
-		
 	});
 });

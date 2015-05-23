@@ -21,34 +21,40 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-vm-quickcreate-tests';
 var groupPrefix = 'xplatTestGVMQuick';
-
+var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'westus'
-}];
+  defaultValue: 'eastus'
+},{
+  name: 'SSHCERT',
+  defaultValue: 'test/myCert.pem'
+}
+];
 
 var groupName,
 	vmPrefix = 'xplatvmquick',
-	location, imageurn = 'Canonical:UbuntuServer:15.04:15.04.201504220', 
-						  
+	location, 						  
 	username = 'azureuser',
-	password = 'Brillio@2015';
+	password = 'Brillio@2015',
+	sshcert;
 
 describe('arm', function () {
 	describe('compute', function () {
 		var suite, retry = 5;
+		
+		var vmTest = new VMTestUtil();
 
 		before(function (done) {
-				suite = new CLITest(this, testprefix, requiredEnvironment);
-				suite.setupSuite(function() {		  
+			suite = new CLITest(this, testprefix, requiredEnvironment);
+			suite.setupSuite(function() {		  
 				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName =  suite.isMocked ? 'xplatTestGVMQCreate' : suite.generateId(groupPrefix, null);	  
-				vmPrefix = suite.isMocked ? 'xplatvmquick' : suite.generateId(vmPrefix, null);	  
+				groupName =  suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	  
+				vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);	  
 				done();
 			});
 		});
 		after(function (done) {
-			deleteUsedGroup(function() {
+			vmTest.deleteUsedGroup(groupName, suite, function(result) {
 				suite.teardownSuite(done);
 			});
 		});
@@ -61,13 +67,31 @@ describe('arm', function () {
 
 		describe('vm', function () {
 			it('Quick create should create a VM', function (done) {
-				createGroup(function(){
-					var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json', 
-								groupName, vmPrefix, location, imageurn, username, password).split(' ');
-					
-					testUtils.executeCommand(suite, retry, cmd, function (result) {
-						result.exitStatus.should.equal(0);
-						done();
+				this.timeout(vmTest.timeoutLarge);
+				vmTest.checkImagefile(function(){
+					vmTest.createGroup(groupName, location, suite, function (result) {
+						if(VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
+						vmTest.GetLinuxSkusList(location, suite, function (result) {
+							vmTest.GetLinuxImageList(location, suite,function(result) {
+								var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json', 
+												groupName, vmPrefix, location, VMTestUtil.linuxImageUrn, username, password).split(' ');
+									
+								testUtils.executeCommand(suite, retry, cmd, function (result) {
+									result.exitStatus.should.equal(0);
+									done();
+								});
+							});
+						});
+						}
+						else {
+							var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json', 
+											groupName, vmPrefix, location, VMTestUtil.linuxImageUrn, username, password).split(' ');
+								
+							testUtils.executeCommand(suite, retry, cmd, function (result) {
+								result.exitStatus.should.equal(0);
+								done();
+							});
+						}
 					});
 				});
 			});
@@ -83,34 +107,7 @@ describe('arm', function () {
 					  done();
 				});					
 			});
-			
-		
-			it('delete', function (done) {
-				var cmd = util.format('vm delete %s %s --quiet --json', groupName,vmPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					done();
-				});
-			});
-		  
 		});
-	
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName,location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-			  result.exitStatus.should.equal(0);
-			  callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if(!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			} else callback();
-		}
 		
 	});
 });
