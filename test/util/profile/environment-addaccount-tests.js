@@ -138,7 +138,7 @@ describe('Environment', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, '', false, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
@@ -160,7 +160,7 @@ describe('Environment', function () {
       password.should.equal(expectedPassword);
 
       var tenantId1 = environment.acquireToken.firstCall.args[2];
-      tenantId1.should.equal(''); // '' mean using the common tenant
+      tenantId1.should.equal(''); // null or '' mean using the common tenant
 
       var tenantId2 = environment.acquireToken.secondCall.args[2];
       tenantId2.should.equal(testTenantIds[0]);
@@ -232,7 +232,7 @@ describe('Environment without resource manager endpoint (like AzureChinaCloud)',
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, null, false, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
