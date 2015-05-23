@@ -191,6 +191,24 @@ describe('Environment', function () {
       });
     });
   });
+
+  describe('When creating account with tenant specified', function () {
+    var subscriptions;
+    
+    beforeEach(function (done) {
+      environment.addAccount(expectedUserName, expectedPassword, 'niceTenant', false, function (err, newSubscriptions) {
+        subscriptions = newSubscriptions;
+        done();
+      });
+    });
+    
+    it('should pass expected configuration to token provider', function () {
+      //we should only invoke acquireToken Once because the tenant is provided.
+      var tenantId = environment.acquireToken.firstCall.args[2];
+      tenantId.should.equal('niceTenant');
+      (!!environment.acquireToken.secondCall).should.be.false;
+    });
+  });
 });
 
 describe('Environment without resource manager endpoint (like AzureChinaCloud)', function () {
