@@ -18,12 +18,10 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
-require('streamline').register();
-
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
 
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
@@ -198,7 +196,8 @@ describe('Environment', function () {
   
   before(function () {
     environment = new profile.Environment({
-      name: 'TestEnvironment'
+      name: 'TestEnvironment',
+      resourceManagerEndpointUrl: 'https://login.notreal.example/'
     });
     
     sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
