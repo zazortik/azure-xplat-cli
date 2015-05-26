@@ -19,7 +19,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-traffic-manager-profile-tests';
+var testprefix = 'arm-network-traffic-manager-tests';
 var groupPrefix = 'xplatTestGTMPCreate';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName,

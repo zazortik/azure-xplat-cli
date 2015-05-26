@@ -19,7 +19,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-traffic-manager-endpoint-tests';
+var testprefix = 'arm-network-traffic-manager-endpoint-tests';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var groupPrefix = 'xplatTestGTMPEndpt';
 var groupName,
@@ -27,7 +27,7 @@ var groupName,
 	trafficMPPrefix = 'xplatTestTMPE' ,
 	trafficMPEndPtPrefix = 'xplatTestTMPEndPoint' , 
 	reldns = 'xplatTMPEndptdns' ;
-var profile_status = 'Enabled',routing_method = 'Performance' , time_to_live = '300' , monitor_protocol = 'http' , monitor_path = '/index.html' , monitor_port= '80' ;
+var profile_status = 'Enabled',routing_method = 'Weighted' , time_to_live = '300' , monitor_protocol = 'http' , monitor_path = '/index.html' , monitor_port= '80' ;
 
 var endptType = 'externalEndpoint' , endptTarget = reldns + '.azure.com' , endpointStatus = 'Enabled' , endptWeight = '100' , endptPriority = '322' ;
 var endptTypeN= 'externalEndpoint', endptTargetN = reldns + '.foo.com', endpointStatusN = 'Disabled' , endptWeightN = '120' , endptPriorityN = '300';
