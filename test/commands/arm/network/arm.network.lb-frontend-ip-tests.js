@@ -22,11 +22,11 @@ var testprefix = 'arm-network-lb-frontend-ip-tests';
 var groupPrefix = 'xplatTestGCreateFronIp';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName,
-    publicipPrefix = 'xplatTestIp',
-    LBName = 'armEmptyLB',
-    FrontendIpName = 'xplattestFrontendIpName',
-    LBNameSV = 'armEmptyLBSV',
-    FrontendIpSV = 'xplatTestFrontendIpSV';
+  publicipPrefix = 'xplatTestIp',
+  LBName = 'armEmptyLB',
+  FrontendIpName = 'xplattestFrontendIpName',
+  LBNameSV = 'armEmptyLBSV',
+  FrontendIpSV = 'xplatTestFrontendIpSV';
 var location;
 var publicIpId, publicIpName;
 
@@ -34,118 +34,118 @@ var vnetPrefix = 'xplatTestVnetFrontIp';
 var subnetprefix = 'xplatTestSubnetFrontIp';
 
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'eastus'
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'eastus'
 }];
 
 describe('arm', function() {
-    describe('network', function() {
-        var suite, retry = 5;
-        var networkUtil = new networkTestUtil();
-        before(function(done) {
-            suite = new CLITest(this, testprefix, requiredEnvironment);
-            suite.setupSuite(function() {
-                location = process.env.AZURE_VM_TEST_LOCATION;
-                groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null)
-                publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
-                LBName = suite.isMocked ? LBName : suite.generateId(LBName, null);
-                FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
-                LBNameSV = suite.isMocked ? LBNameSV : suite.generateId(LBNameSV, null);
-                FrontendIpSV = suite.isMocked ? FrontendIpSV : suite.generateId(FrontendIpSV, null);
-                vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-                subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
-                done();
-            });
-        });
+  describe('network', function() {
+    var suite, retry = 5;
+    var networkUtil = new networkTestUtil();
+    before(function(done) {
+      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null)
+        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
+        LBName = suite.isMocked ? LBName : suite.generateId(LBName, null);
+        FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
+        LBNameSV = suite.isMocked ? LBNameSV : suite.generateId(LBNameSV, null);
+        FrontendIpSV = suite.isMocked ? FrontendIpSV : suite.generateId(FrontendIpSV, null);
+        vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+        subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
+        done();
+      });
+    });
 
 
-        after(function(done) {
-            networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
-                networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-                    networkUtil.deleteUsedLB(groupName, LBNameSV, suite, function() {
-                        networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function() {
-                            networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function() {
-                                networkUtil.deleteUsedGroup(groupName, suite, function() {
-                                    suite.teardownSuite(done);
-                                });
-                            });
-                        });
-                    });
+    after(function(done) {
+      networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
+        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
+          networkUtil.deleteUsedLB(groupName, LBNameSV, suite, function() {
+            networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function() {
+              networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function() {
+                networkUtil.deleteUsedGroup(groupName, suite, function() {
+                  suite.teardownSuite(done);
                 });
+              });
             });
+          });
         });
+      });
+    });
 
 
-        beforeEach(function(done) {
-            suite.setupTest(done);
-        });
-        afterEach(function(done) {
-            suite.teardownTest(done);
-        });
+    beforeEach(function(done) {
+      suite.setupTest(done);
+    });
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
 
-        describe('lb frontend-ip', function() {
+    describe('lb frontend-ip', function() {
 
-            // frontend-ip create using public-ip id
-            it('create should pass', function(done) {
-                networkUtil.createGroup(groupName, location, suite, function() {
-                    networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-                        networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                            networkUtil.createLB(groupName, LBName, location, suite, function() {
-                                var cmd = util.format('network lb frontend-ip create %s %s %s -u %s  --json', groupName, LBName, FrontendIpName, networkTestUtil.publicIpId).split(' ');
-                                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                                    result.exitStatus.should.equal(0);
-                                    done();
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-
-
-            //frontend-ip create using subnet & vnet
-            it('create using subnet & vnet should pass', function(done) {
-
-                networkUtil.createVnet(groupName, vnetPrefix, location, suite, function() {
-                    networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function() {
-                        networkUtil.createLB(groupName, LBNameSV, location, suite, function() {
-                            var cmd = util.format('network lb frontend-ip create %s %s %s -e %s -m %s --json', groupName, LBNameSV, FrontendIpSV, subnetprefix, vnetPrefix).split(' ');
-                            testUtils.executeCommand(suite, retry, cmd, function(result) {
-                                result.exitStatus.should.equal(0);
-                                done();
-                            });
-                        });
-                    });
-                });
-
-            });
-
-
-            it('set should modify frontend-ip', function(done) {
-                suite.execute('network lb frontend-ip set -g %s -l %s -n %s -u %s  --json', groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, function(result) {
-                    result.exitStatus.should.equal(0);
-                    done();
-                });
-            });
-
-            it('list should display all frontend-ips from load balancer ', function(done) {
-                var cmd = util.format('network lb frontend-ip list -g %s -l %s --json', groupName, LBName).split(' ');
+      // frontend-ip create using public-ip id
+      it('create should pass', function(done) {
+        networkUtil.createGroup(groupName, location, suite, function() {
+          networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
+            networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
+              networkUtil.createLB(groupName, LBName, location, suite, function() {
+                var cmd = util.format('network lb frontend-ip create %s %s %s -u %s  --json', groupName, LBName, FrontendIpName, networkTestUtil.publicIpId).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
-                    result.exitStatus.should.equal(0);
-                    var allResources = JSON.parse(result.text);
-                    allResources[0].name.should.equal(FrontendIpName);
-                    done();
+                  result.exitStatus.should.equal(0);
+                  done();
                 });
+              });
             });
-
-            // it('delete should delete frontend-ip', function (done) {
-            // suite.execute('network lb frontend-ip delete -g %s -l %s %s -q --json', groupName, LBName, FrontendIpName, function (result) {
-            // result.exitStatus.should.equal(0);
-            // done();
-            // });
-            // });
-
+          });
         });
+      });
+
+
+      //frontend-ip create using subnet & vnet
+      it('create using subnet & vnet should pass', function(done) {
+
+        networkUtil.createVnet(groupName, vnetPrefix, location, suite, function() {
+          networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function() {
+            networkUtil.createLB(groupName, LBNameSV, location, suite, function() {
+              var cmd = util.format('network lb frontend-ip create %s %s %s -e %s -m %s --json', groupName, LBNameSV, FrontendIpSV, subnetprefix, vnetPrefix).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            });
+          });
+        });
+
+      });
+
+
+      it('set should modify frontend-ip', function(done) {
+        suite.execute('network lb frontend-ip set -g %s -l %s -n %s -u %s  --json', groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('list should display all frontend-ips from load balancer ', function(done) {
+        var cmd = util.format('network lb frontend-ip list -g %s -l %s --json', groupName, LBName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].name.should.equal(FrontendIpName);
+          done();
+        });
+      });
+
+      // it('delete should delete frontend-ip', function (done) {
+      // suite.execute('network lb frontend-ip delete -g %s -l %s %s -q --json', groupName, LBName, FrontendIpName, function (result) {
+      // result.exitStatus.should.equal(0);
+      // done();
+      // });
+      // });
 
     });
+
+  });
 });
