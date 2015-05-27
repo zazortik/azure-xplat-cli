@@ -1,4 +1,28 @@
-Version 0.9.2
+2015.05.29 Version 0.9.3
+* General Fixes
+  * Performance improvement of general command loading
+  * Support login with partner tenant
+* ARM
+  * VM
+    * Bug fixes for Issues #1726, #1731, #1761
+  * Network
+    * Bug fixes for Issues #1763, #1764, #1769, #1770, #1771, #1773, #1775, #1776, #1777, #1780, #1781, #1783
+  * Monitoring
+    * Moved events client out of Azure rollup into its own package
+  * Insights
+    * Added last Insights autoscale command
+  * ApiApp
+    * Added improved UIDefinition constraint validation
+* ASM
+  * HDInsight
+    * Fixed the bug on listCluster command which shows duplicate items
+    * Fixed parameter description for storageAccountName
+  * VM
+    * Bug fixes for Issues #1566, #1600, #1759
+    * Chef Extension
+      * Implemented new option --delete-chef-config for set-chef extension commands
+
+2015.05.04 Version 0.9.2
 * ARM
   * Network
     * Commands to manage DNS Zone and DNS Zone recordset
@@ -8,10 +32,7 @@ Version 0.9.2
     * Added commands to handle alerts and alert rules, autoscale events and autoscale settings, list metrics and metrics definitions, and list usage metrics
   * ApiApp
     * Added package create command
-*ASM
-  * VM
-    * Chef Extension
-      * Implemented new option --delete-chef-config for set-chef extension commands
+
 Version 0.9.1
 * ARM
   * Virtual machines 
