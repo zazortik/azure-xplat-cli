@@ -1,18 +1,17 @@
 /**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
-
+ * Copyright (c) Microsoft.  All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 'use strict';
 
 var should = require('should');
@@ -20,243 +19,153 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nic-tests';
-var privateIP='10.31.255.250',privateIP2='10.31.254.254';
-var groupName,nsgName,
-	groupPrefix = 'xplatTestGrpCreateNic' ,
-	vnetPrefix = 'xplatTestVnetNIc' ,    
-	subnetprefix ='xplatTestSubnetNIc' ,
-	nicPrefix = 'xplatTestNic' ,
-	publicipPrefix = 'xplatTestIpNic' ,
-	nsgPrefix='xplatTestNSGNic',
-	location;
-	
-	
+var privateIP = '10.31.255.250',
+  privateIP2 = '10.31.254.254';
+var networkTestUtil = require('../../../util/networkTestUtil');
+var groupName, nsgName,
+  groupPrefix = 'xplatTestGrpCreateNic',
+  vnetPrefix = 'xplatTestVnetNIc',
+  subnetprefix = 'xplatTestSubnetNIc',
+  nicPrefix = 'xplatTestNic',
+  publicipPrefix = 'xplatTestIpNic',
+  nsgPrefix = 'xplatTestNSGNic',
+  location;
+
+var LBName = 'xplattestlbnic',
+  FrontendIpName = 'xplattestFrontendIpnic',
+  LBAddPool = 'LBAddPollnic',
+  lbinboundprefix = 'xplattestInboundnic';
+
+var protocol = 'tcp',
+  frontendport = '3380',
+  backendport = '3380',
+  enablefloatingip = 'true';
+
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'eastus'
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'eastus'
 }];
 
-var subnetId,publicIpId,nsgId;
-	
-describe('arm', function () {
-	describe('network', function () {
-	var suite,
-		retry = 5;
-			
-		before(function (done) {
-		suite = new CLITest(this, testprefix, requiredEnvironment);
-			suite.setupSuite(function() {
-				location = process.env.AZURE_VM_TEST_LOCATION;
-				groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);	
-				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-				subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
-				nicPrefix = suite.isMocked ? nicPrefix : suite.generateId(nicPrefix, null);	
-				publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
-                nsgName	= suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);			
-				done();
-			});
-		});
-		after(function (done) {
-			deleteUsedSubnet(function() {
-				deleteUsedVnet(function() {
-					deleteUsedPublicIp(function(){
-						deleteUsedNsg(function(){
-							deleteUsedGroup(function() {	
-						       suite.teardownSuite(done);
-							});
-						});
-					});
-				});
-			});
-		});
-		beforeEach(function (done) {
-		  suite.setupTest(done);
-		});
-		afterEach(function (done) {
-		  suite.teardownTest(done);
-		});
+describe('arm', function() {
+  describe('network', function() {
+    var suite,
+      retry = 5;
+    var networkUtil = new networkTestUtil();
+    before(function(done) {
+      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+        vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+        subnetprefix = suite.isMocked ? subnetprefix : suite.generateId(subnetprefix, null);
+        nicPrefix = suite.isMocked ? nicPrefix : suite.generateId(nicPrefix, null);
+        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
+        nsgName = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
 
-		describe('nic', function () {
-		
-			it('create should pass', function (done) {
-				createGroup(function(){
-					createVnet(function(){
-						createSubnet(function(){
-							showSubnet(function(){
-								createPublicIp(function(){
-									showPublicIp(function(){
-										createNSG(function(){
-											showNSG(function(){
-												var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -p %s -i %s -w %s -o %s -a %s --json', 
-														  groupName,nicPrefix,location,subnetId,subnetprefix,vnetPrefix,publicipPrefix,publicIpId,nsgId,nsgName,privateIP).split(' ');
-												testUtils.executeCommand(suite, retry, cmd, function (result) {
-													result.exitStatus.should.equal(0);
-													done();
-												});
-											});
-										});
-								    });
-								});
-							});	
-						});	
-					});
-				});
-			});
-			it('set should modify nic', function (done) {
-				var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -i %s -p %s -a %s -u %s -k %s --no-tags --json' , groupName, nicPrefix,nsgId,'NoSuchNSGExists',publicIpId,'NoSuchPublicIpExist',privateIP2,subnetId , 'NoSuchSubnetExists').split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					done();
-				});
-			});
-			it('show should display details about nic', function (done) {
-				var cmd = util.format('network nic show %s %s --json', groupName, nicPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					var allresources = JSON.parse(result.text);
-					allresources.name.should.equal(nicPrefix);
-					done();
-				});
-			});
-			it('list should display all nic in group', function (done) {
-				var cmd = util.format('network nic list %s --json',groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					var allResources = JSON.parse(result.text);
-					allResources.some(function (res) {
-					return res.name === nicPrefix;
-					}).should.be.true;
-					done();
-				});
-			});
-			it('delete should delete nic', function (done) {
-				var cmd = util.format('network nic delete %s %s --quiet --json', groupName, nicPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					done();
-				});
-			});
+        LBName = suite.isMocked ? LBName : suite.generateId(LBName, null);
+        FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
+        LBAddPool = suite.isMocked ? LBAddPool : suite.generateId(LBAddPool, null);
+        lbinboundprefix = suite.isMocked ? lbinboundprefix : suite.generateId(lbinboundprefix, null);
 
-		});
-	
-		
-		function createVnet(callback) {
-			var cmd = util.format('network vnet create %s %s %s --json',groupName,vnetPrefix,location).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});      
-		} 
-		function createSubnet(callback) {
-			var cmd = util.format('network vnet subnet create %s %s %s --json',groupName,vnetPrefix,subnetprefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});      
-		} 
-		function showSubnet(callback) {
-			var cmd = util.format('network vnet subnet show %s %s %s --json ',groupName,vnetPrefix,subnetprefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0); 
-					var allResources = JSON.parse(result.text);
-					subnetId = allResources.id;
-					callback();
-				});      
-		}
-		function deleteUsedSubnet(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet subnet delete %s %s %s --quiet --json', groupName, vnetPrefix, subnetprefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();	
-		}
-		function createPublicIp(callback) {
-			var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);;
-				callback();
-			});	
-		}
-		function showPublicIp(callback) {
-			var cmd = util.format('network public-ip show %s %s --json', groupName, publicipPrefix).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0); 
-				var allResources = JSON.parse(result.text);
-				publicIpId = allResources.id;
-				callback();
-			});	
-		}	
-		function deleteUsedPublicIp(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-		function createNSG(callback) {
-			var cmd = util.format('network nsg create %s %s %s --json',groupName,nsgName,location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);;
-				callback();
-			});	
-		}
-		function showNSG(callback) {
-			var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0); 
-				var allResources = JSON.parse(result.text);
-				nsgId = allResources.id;
-				callback();
-			});	
-		}	
-		function deleteUsedNsg(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network nsg delete %s %s --quiet --json', groupName, nsgName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		}
-		function deleteUsedVnet(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();	
-		}   
-		function createGroup(callback) {
-			var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function (result) {
-				result.exitStatus.should.equal(0);
-				callback();
-			});
-		}
-		function deleteUsedGroup(callback) {
-			if (!suite.isPlayback()) {
-				var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
-				testUtils.executeCommand(suite, retry, cmd, function (result) {
-					result.exitStatus.should.equal(0);
-					callback();
-				});
-			}
-			else
-				callback();
-		} 
-	
-	});
+        done();
+      });
+    });
+
+    after(function(done) {
+      networkUtil.deleteUsedLB(groupName, LBName, suite, function(result) {
+        networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
+          networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function(result) {
+            networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function(result) {
+              networkUtil.deleteUsedNsg(groupName, nsgName, suite, function(result) {
+                networkUtil.deleteUsedGroup(groupName, suite, function(result) {
+                  suite.teardownSuite(done);
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    beforeEach(function(done) {
+      suite.setupTest(done);
+    });
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
+
+    describe('nic', function() {
+
+      it('create should pass', function(done) {
+        networkUtil.createGroup(groupName, location, suite, function(result) {
+          networkUtil.createVnet(groupName, vnetPrefix, location, suite, function(result) {
+            networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
+              networkUtil.showSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
+                networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function(result) {
+                  networkUtil.showPublicIp(groupName, publicipPrefix, suite, function(result) {
+                    networkUtil.createLB(groupName, LBName, location, suite, function(result) {
+                      networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function(result) {
+                        networkUtil.createLbInboundNatRule(groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName, suite, function(result) {
+                          networkUtil.createLbAddressPool(groupName, LBName, LBAddPool, suite, function(result) {
+                            networkUtil.showLB(groupName, LBName, suite, function(result) {
+                              networkUtil.createNSG(groupName, nsgName, location, suite, function(result) {
+                                networkUtil.showNSG(groupName, nsgName, suite, function(result) {
+                                  var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -w %s -o %s -a %s -d %s -e %s --json',
+                                    groupName, nicPrefix, location, networkTestUtil.subnetId, subnetprefix, vnetPrefix, networkTestUtil.nsgId, nsgName, privateIP, networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId).split(' ');
+                                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                    result.exitStatus.should.equal(0);
+                                    done();
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+
+      it('set should modify nic', function(done) {
+        var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -a %s -u %s -k %s -d %s -e %s --no-tags --json', groupName, nicPrefix, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('show should display details about nic', function(done) {
+        var cmd = util.format('network nic show %s %s --json', groupName, nicPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allresources = JSON.parse(result.text);
+          allresources.name.should.equal(nicPrefix);
+          done();
+        });
+      });
+      it('list should display all nic in group', function(done) {
+        var cmd = util.format('network nic list %s --json', groupName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            return res.name === nicPrefix;
+          }).should.be.true;
+          done();
+        });
+      });
+      it('delete should delete nic', function(done) {
+        var cmd = util.format('network nic delete %s %s --quiet --json', groupName, nicPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+    });
+  });
 });
