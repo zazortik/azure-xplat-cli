@@ -8,7 +8,10 @@ Version 0.9.2
     * Added commands to handle alerts and alert rules, autoscale events and autoscale settings, list metrics and metrics definitions, and list usage metrics
   * ApiApp
     * Added package create command
-
+*ASM
+  * VM
+    * Chef Extension
+      * Implemented new option --delete-chef-config for set-chef extension commands
 Version 0.9.1
 * ARM
   * Virtual machines 

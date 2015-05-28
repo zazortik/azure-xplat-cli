@@ -138,7 +138,7 @@ describe('Environment', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, '', false, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
@@ -160,7 +160,7 @@ describe('Environment', function () {
       password.should.equal(expectedPassword);
 
       var tenantId1 = environment.acquireToken.firstCall.args[2];
-      tenantId1.should.equal(''); // '' mean using the common tenant
+      tenantId1.should.equal(''); // null or '' mean using the common tenant
 
       var tenantId2 = environment.acquireToken.secondCall.args[2];
       tenantId2.should.equal(testTenantIds[0]);
@@ -193,6 +193,38 @@ describe('Environment', function () {
   });
 });
 
+describe('Environment', function () {
+  var environment;
+  
+  before(function () {
+    environment = new profile.Environment({
+      name: 'TestEnvironment'
+    });
+    
+    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
+      null/*no error*/, expectedToken/*the access token*/);
+    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
+  });
+  
+  describe('When creating account with tenant specified', function () {
+    var subscriptions;
+    
+    beforeEach(function (done) {
+      environment.addAccount(expectedUserName, expectedPassword, 'niceTenant', false, function (err, newSubscriptions) {
+        subscriptions = newSubscriptions;
+        done();
+      });
+    });
+    
+    it('should pass expected configuration to token provider', function () {
+      //we should only invoke acquireToken Once because the tenant is provided.
+      var tenantId = environment.acquireToken.firstCall.args[2];
+      tenantId.should.equal('niceTenant');
+      (!!environment.acquireToken.secondCall).should.be.false;
+    });
+  });
+});
+
 describe('Environment without resource manager endpoint (like AzureChinaCloud)', function () {
   var environment;
 
@@ -214,7 +246,7 @@ describe('Environment without resource manager endpoint (like AzureChinaCloud)',
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, function (err, newSubscriptions) {
+      environment.addAccount(expectedUserName, expectedPassword, null, false, function (err, newSubscriptions) {
         subscriptions = newSubscriptions;
         done();
       });
