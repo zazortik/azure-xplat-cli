@@ -22,7 +22,6 @@ var should = require('should');
 var sinon = require('sinon');
 var stream = require('stream');
 var util = require('util');
-var azure = require('azure');
 
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
@@ -225,7 +224,7 @@ describe('profile', function () {
       };
 
       before(function () {
-        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(3, null, loginSubscriptions);
+        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(4, null, loginSubscriptions);
       });
 
       after(function () {
@@ -242,7 +241,7 @@ describe('profile', function () {
 
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
 
-        fakeEnvironment.addAccount(loginUser, 'password', function (err, subscriptions) {
+        fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, subscriptions) {
           subscriptions.forEach(function (s) {
             p.addSubscription(s);
           });

@@ -18,7 +18,7 @@ var sinon = require('sinon');
 var should = require('should');
 var _ = require('underscore');
 
-var UserInteractor = function() {
+var UserInteractor = function () {
   var self = this;
 
 
@@ -27,8 +27,8 @@ var UserInteractor = function() {
   this.logData = sinon.spy();
   this.logList = sinon.spy();
 
-  this.config = { version : 1.0 };
-  this.readConfig = function(path) {
+  this.config = { version: 1.0 };
+  this.readConfig = function (path) {
     return this.config;
   };
 
@@ -36,7 +36,7 @@ var UserInteractor = function() {
   this.writeConfig = sinon.spy();
 
   this.compatResult = true;
-  this.verifyCompat = function(creationObject, version) {
+  this.verifyCompat = function (creationObject, version) {
     creationObject.should.be.eql(this.config);
     return this.compatResult;
   };
@@ -46,24 +46,25 @@ var UserInteractor = function() {
   this.checkpoint = sinon.spy();
 
   this.promptResults = {
-    'Config File Path: ' : 'test.json',
-    'Storage Account Name: ' : 'account1',
-    'Storage Account Key: ' : 'key1',
-    'Cluster name: ' : 'test1',
-    'Nodes: ' : 4,
-    'Location: ' : 'East US',
-    'Storage acount name: ' : 'storageAccount',
-    'Storage account key: ' : 'storageAccountKey',
-    'Storage container: ' : 'storageContainer',
-    'Username: ' : 'username',
-    'Password: ' : 'password',
-    'Metastore Type: ' : 'hive',
-    'Metastore Server: ' : 'server1',
-    'Metastore Database: ' : 'database1',
-    'Metastore user: ' : 'user1',
-    'Metastore password: ' : 'password'
+    'Config File Path: ': 'test.json',
+    'Storage Account Name: ': 'account1',
+    'Storage Account Key: ': 'key1',
+    'Cluster name: ': 'test1',
+    'Nodes: ': 4,
+    'Location: ': 'East US',
+    'Storage acount name: ': 'storageAccount',
+    'Storage account key: ': 'storageAccountKey',
+    'Storage container: ': 'storageContainer',
+    'Username: ': 'username',
+    'Password: ': 'password',
+    'Metastore Type: ': 'hive',
+    'Metastore Server: ': 'server1',
+    'Metastore Database: ': 'database1',
+    'Metastore user: ': 'user1',
+    'Metastore password: ': 'password',
+    'Data center location: ': 'East US'
   };
-  this.promptIfNotGiven = function(name, value, callback) {
+  this.promptIfNotGiven = function (name, value, callback) {
     var retval;
     if (!_.isUndefined(value)) {
       retval = value;
@@ -74,7 +75,7 @@ var UserInteractor = function() {
         throw new Error('mocker was unable to locate a parameter return value for ' + name);
       }
     }
-    if (callback) {
+    if (callback && callback != _) {
       callback(null, retval);
     }
     else {
