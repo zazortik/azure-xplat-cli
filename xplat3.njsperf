@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectTarget>
+    <TargetProject>16a676ef-f003-4fa0-bd0a-982d87b6b852</TargetProject>
+    <FriendlyName>xplat</FriendlyName>
+  </ProjectTarget>
+  <Reports>
+    <Report>
+      <Filename>C:\SDK\azure-sdk-tools-xplat\xplat3_20150502.vspx</Filename>
+    </Report>
+    <Report>
+      <Filename>C:\Users\yugangw\AppData\Local\Temp\xplat3_20150502(1).vspx</Filename>
+    </Report>
+  </Reports>
+</ProfilingTarget>
