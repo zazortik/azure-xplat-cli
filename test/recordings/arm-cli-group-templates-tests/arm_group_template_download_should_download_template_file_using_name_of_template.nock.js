@@ -37,10 +37,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=de6490b510ad4227a1d6ad27bd9dfb27; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=daf1d0dcabdb4a40a3e93237bc591230; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 05 Jun 2015 21:41:44 GMT',
+  date: 'Sat, 06 Jun 2015 00:35:37 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
@@ -56,10 +56,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=48fb3118ff3d4cd7ba1f53c5319010c0; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=1e5a77098d284f9498dcf184c720d378; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 05 Jun 2015 21:41:44 GMT',
+  date: 'Sat, 06 Jun 2015 00:35:37 GMT',
   'content-length': '5025' });
  return result; },
 function (nock) { 
@@ -73,11 +73,11 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Fri, 05 Jun 2015 18:17:48 GMT',
   etag: '0x8D26DD30FB40C9C',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c213c8eb-0001-007f-73d8-9f1796000000',
+  'x-ms-request-id': 'bcaced93-0001-0056-10f0-9f61d4000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Fri, 05 Jun 2015 21:41:45 GMT' });
+  date: 'Sat, 06 Jun 2015 00:35:40 GMT' });
  return result; }]];

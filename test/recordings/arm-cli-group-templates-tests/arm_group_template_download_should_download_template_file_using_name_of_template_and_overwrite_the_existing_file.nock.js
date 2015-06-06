@@ -37,10 +37,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=2c1832ecc4384f62b3e948e548f095b6; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=e9a6ddc06980404ca56c1a457fbd6587; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 05 Jun 2015 21:41:46 GMT',
+  date: 'Sat, 06 Jun 2015 00:35:39 GMT',
   'content-length': '2978' });
  return result; },
 function (nock) { 
@@ -56,10 +56,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=52990f42647b40f69c016fac2a00a90d; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=d9f2ca9482d64500910d8fe492bbddce; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 05 Jun 2015 21:41:46 GMT',
+  date: 'Sat, 06 Jun 2015 00:35:40 GMT',
   'content-length': '5025' });
  return result; },
 function (nock) { 
@@ -73,13 +73,13 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Fri, 05 Jun 2015 18:17:48 GMT',
   etag: '0x8D26DD30FB40C9C',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7bb23873-0001-0045-6ad8-9f5435000000',
+  'x-ms-request-id': '3c4e128a-0001-0024-1ef0-9f10ea000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Fri, 05 Jun 2015 21:41:49 GMT' });
+  date: 'Sat, 06 Jun 2015 00:35:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -94,10 +94,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=deb2f3baf5e54ca0ac64b23e2d5f9f4a; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=b92033d7becf4c8a90d68875fff290ba; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 05 Jun 2015 21:41:50 GMT',
+  date: 'Sat, 06 Jun 2015 00:35:41 GMT',
   'content-length': '5025' });
  return result; },
 function (nock) { 
@@ -111,11 +111,11 @@ nock('https://gallerystoreprodch.blob.core.windows.net:443')
   'last-modified': 'Fri, 05 Jun 2015 18:17:48 GMT',
   etag: '0x8D26DD30FB40C9C',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7c424e59-0001-0026-1bd8-9f1210000000',
+  'x-ms-request-id': 'f09bbee0-0001-0077-0ff0-9f0ce5000000',
   'x-ms-version': '2009-09-19',
   'x-ms-lease-status': 'unlocked',
   'x-ms-blob-type': 'BlockBlob',
   'access-control-expose-headers': 'x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,Last-Modified,ETag,Content-MD5,x-ms-lease-status,x-ms-blob-type',
   'access-control-allow-origin': '*',
-  date: 'Fri, 05 Jun 2015 21:41:48 GMT' });
+  date: 'Sat, 06 Jun 2015 00:35:41 GMT' });
  return result; }]];
