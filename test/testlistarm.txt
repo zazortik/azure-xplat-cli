@@ -2,8 +2,7 @@ commands/arm/feature/arm.feature-tests.js
 commands/arm/group/groupUtils-tests.js
 commands/arm/provider/arm.provider-tests.js
 commands/arm/group/arm.group-tests.js
-#disable arm.group-template-tests.js, because the recorded nock file is not correct
-#commands/arm/group/arm.group-template-tests.js
+commands/arm/group/arm.group-template-tests.js
 commands/arm/group/arm.group.deployment-tests.js
 commands/arm/resource/arm.resource-tests.js
 commands/arm/location/arm.location-tests.js
@@ -31,6 +30,7 @@ commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
 commands/arm/vm/arm.vm-docker-tests.js
 commands/arm/vm/arm.vm.extension-tests.js
+commands/arm/vm/arm.vm.size-tests.js
 # vm quick create tests commented from the test run due to CRP/NRP/SRP errors during recording. Will turn it ON post fixes.
 #commands/arm/vm/arm.vm-quickcreate-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
@@ -47,8 +47,9 @@ commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
 commands/arm/network/arm.network.lb-frontend-ip-tests.js
-# Dns and traffic manager tests would be enabled once the service is turned to production and rerecording mock files against production end point.
-#commands/arm/network/arm.network.dnszone-tests.js
+commands/arm/network/arm.network.dnszone-tests.js
+#dns record set tests are getting timedout. Have to rerecord. Post rerecording this tests will be included.
 #commands/arm/network/arm.network.dnszone-recordset-tests.js
-#commands/arm/network/arm.network.traffic-manager-tests.js
-#commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
+commands/arm/network/arm.network.traffic-manager-tests.js
+commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
+commands/arm/apiapp/lib/lib-tests.js
