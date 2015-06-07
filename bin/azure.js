@@ -25,7 +25,7 @@ if (process.argv[2] !== '--gen') {
     cli.parse(['', '', '-h']);
   }
 } else {
-  cli = new AzureCli(null, null, true, 'arm');
+  cli = new AzureCli(null, null, true, 'arm');//TODO simplify
   cli = new AzureCli(null, null, true, 'asm');
   return;
 }
