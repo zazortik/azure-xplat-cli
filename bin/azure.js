@@ -15,9 +15,17 @@
 // 
 
 var AzureCli = require('../lib/cli');
+var cli;
+var generateMetadata = (process.argv[2] === '--gen');
 
-var cli = new AzureCli();
-cli.parse(process.argv);
-if (cli.args.length === 0) {
-  cli.parse(['', '', '-h']);
+if (process.argv[2] !== '--gen') {
+  cli = new AzureCli();
+  cli.parse(process.argv);
+  if (cli.args.length === 0) {
+    cli.parse(['', '', '-h']);
+  }
+} else {
+  cli = new AzureCli(null, null, true, 'arm');
+  cli = new AzureCli(null, null, true, 'asm');
+  return;
 }
