@@ -24,7 +24,7 @@ function wrap(sinonObj, obj, functionName, setup) {
   return sinonObj.stub(obj, functionName, setup(original));
 }
 
-var AzureCli = require('../lib/cli');
+var AutoComplete = require('../lib/autocomplete');
 
 describe('cli', function(){
   var sandbox;
@@ -68,7 +68,7 @@ describe('cli', function(){
         'azure' // line
       ]);
 
-      var cli = new AzureCli();
+      var cli = new AutoComplete();
 
       sandbox.restore();
 
@@ -97,7 +97,7 @@ describe('cli', function(){
         'azure site' // line
       ]);
 
-      var cli = new AzureCli();
+      var cli = new AutoComplete();
 
       sandbox.restore();
 
@@ -135,7 +135,7 @@ describe('cli', function(){
         'azure site create' // line
       ]);
 
-      var cli = new AzureCli();
+      var cli = new AutoComplete();
 
       sandbox.restore();
 
