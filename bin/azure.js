@@ -18,8 +18,8 @@
 var AutoComplete = require('../lib/autocomplete');
 var cli;
 var generateMetadata = (process.argv[2] === '--gen');
-complete = new AutoComplete(generateMetadata, 'asm');
-complete = new AutoComplete(generateMetadata, 'arm');
+new AutoComplete('asm');
+new AutoComplete('arm');
 
 var AzureCli = require('../lib/cli');
 cli = new AzureCli();
