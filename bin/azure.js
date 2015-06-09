@@ -14,18 +14,15 @@
 // limitations under the License.
 // 
 
-var AzureCli = require('../lib/cli');
+
+var AutoComplete = require('../lib/autocomplete');
 var cli;
 var generateMetadata = (process.argv[2] === '--gen');
+new AutoComplete();
 
-if (process.argv[2] !== '--gen') {
-  cli = new AzureCli();
-  cli.parse(process.argv);
-  if (cli.args.length === 0) {
-    cli.parse(['', '', '-h']);
-  }
-} else {
-  cli = new AzureCli(null, null, true, 'arm');//TODO simplify
-  cli = new AzureCli(null, null, true, 'asm');
-  return;
+var AzureCli = require('../lib/cli');
+cli = new AzureCli();
+cli.parse(process.argv);
+if (cli.args.length === 0) {
+  cli.parse(['', '', '-h']);
 }
