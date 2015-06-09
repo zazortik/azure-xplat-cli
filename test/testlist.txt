@@ -4,7 +4,7 @@
 # TODO: Not recording call to log service properly, disabling
 # commands/cli.site.log.tail-tests.js
 # TODO: This suite uses custom recording
-cli-tests.js
+#cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
