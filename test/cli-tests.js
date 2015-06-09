@@ -17,7 +17,7 @@
 require('should');
 var sinon = require('sinon');
 
-var utils = require('../lib/util/utils');
+var utils = require('../lib/util/utilsCore');
 
 function wrap(sinonObj, obj, functionName, setup) {
   var original = obj[functionName];
