@@ -15,6 +15,8 @@
 // 
 
 var AutoComplete = require('../lib/autocomplete');
+//load the autocomplete, so that rest code in the file will not execute 
+//till the command gets committed. This gets autocomplete faster
 new AutoComplete();
 
 var AzureCli = require('../lib/cli');
