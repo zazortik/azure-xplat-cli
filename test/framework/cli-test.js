@@ -25,6 +25,8 @@ var testLogger = require('./test-logger');
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
+var utilsCore = require('../../lib/util/utilsCore');
+
 
 var executeCommand = require('./cli-executor').execute;
 var MockTokenCache = require('./mock-token-cache');
@@ -183,7 +185,7 @@ _.extend(CLITest.prototype, {
     }
 
     executeCommand(cmd, function (result) {
-      utils.readConfig.restore();
+      utilsCore.readConfig.restore();
       if (this.isMocked){
         utils.uuidGen.restore();
       }
@@ -617,13 +619,13 @@ _.extend(CLITest.prototype, {
   forceSuiteMode: function (sinonObj) {
     // Possible it's already wrapped from a previous failed
     // execution. If so, unwrap then rewrap.
-    if (utils.readConfig.restore) {
-      utils.readConfig.restore();
+    if (utilsCore.readConfig.restore) {
+      utilsCore.readConfig.restore();
     }
 
     // Force mode regardless of current stored setting
     var commandMode = this.commandMode;
-    CLITest.wrap(sinonObj, utils, 'readConfig', function (originalReadConfig) {
+    CLITest.wrap(sinonObj, utilsCore, 'readConfig', function (originalReadConfig) {
       return function () {
         var config = originalReadConfig();
         config.mode = commandMode;

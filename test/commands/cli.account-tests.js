@@ -36,8 +36,6 @@ describe('cli', function () {
       describe('list', function () {
         it('should include default environments', function (done) {
           suite.execute('account env list --json', function (result) {
-            console.log('>>>Dump out for debugging: [do not check in]');
-            console.log(util.inspect(result, { showHidden: true, depth: null }));
             result.exitStatus.should.equal(0);
             var environments = JSON.parse(result.text);
 

@@ -17,7 +17,7 @@
 require('should');
 var sinon = require('sinon');
 
-var utils = require('../lib/util/utils');
+var utilsCore = require('../lib/util/utilsCore');
 
 function wrap(sinonObj, obj, functionName, setup) {
   var original = obj[functionName];
@@ -42,7 +42,7 @@ describe('cli', function(){
     ];
 
     sandbox = sinon.sandbox.create();
-    wrap(sandbox, utils, 'readConfig', function (originalReadConfig) {
+    wrap(sandbox, utilsCore, 'readConfig', function (originalReadConfig) {
       return function () {
         var config = originalReadConfig();
         config.mode = 'asm';
