@@ -23,7 +23,6 @@ var profile = require('../../../../../lib/util/profile');
 var utils = require('../../../../../lib/util/utils');
 var testUtils = require('../../../../util/util');
 var CLITest = require('../../../../framework/arm-cli-test');
-var testprefix = 'arm-apiapp-deploylib-tests';
 
 var deployLib = require('../../../../../lib/commands/arm/apiapp/lib/deployLib');
 
@@ -32,8 +31,7 @@ var requiredEnvironment = [{
   defaultValue: 'westus'
 }];
 
-var retry = 5;
-var testPrefix = 'apiappDeploy'
+var testPrefix = 'xplatapiappDeploy'
 
 describe('apiapp', function () {
   describe('deployLib', function () {
@@ -44,7 +42,7 @@ describe('apiapp', function () {
     var resourceClient;
 
     before(function(done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_APIAPP_TEST_LOCATION;
         subscription = profile.current.getSubscription();
