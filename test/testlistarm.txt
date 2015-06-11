@@ -14,7 +14,6 @@ commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
 commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
-commands/arm/apiapp/lib/lib-tests.js
 commands/arm/storage/arm.storage.account-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
 commands/arm/insights/arm.insights.metrics-tests.js
@@ -53,3 +52,6 @@ commands/arm/network/arm.network.dnszone-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
 commands/arm/apiapp/lib/lib-tests.js
+commands/arm/apiapp/lib/deployLib-tests.js
+commands/arm/apiapp/lib/propertyPrompts-tests.js
+commands/arm/apiapp/arm.apiapp-tests.js
