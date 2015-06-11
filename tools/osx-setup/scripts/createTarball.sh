@@ -146,6 +146,11 @@ node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline-streams/lib
 popd
 
+# generate command metadata file
+pushd /tmp/azureInstallerTemporary
+node bin/azure --gen
+popd
+
 # Copy licensing files
 cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
 cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
