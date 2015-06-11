@@ -62,7 +62,7 @@ rm -rf .git
 popd
 
 pushd /tmp/azureInstallerTemporary/node_modules/azure
-for PACKAGE in packages scripts test tasks examples jsdoc
+for PACKAGE in packages test tasks examples jsdoc
 do
 	rm -rf $PACKAGE
 done
