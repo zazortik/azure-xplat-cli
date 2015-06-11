@@ -58,6 +58,7 @@
     "azure-storage": "0.4.1",
     "azure-storage-legacy": "0.9.13",
     "azure-keyvault": "0.9.2",
+    "azure-arm-apiapp": "0.1.2",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
