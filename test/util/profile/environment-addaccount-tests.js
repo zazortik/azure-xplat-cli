@@ -18,12 +18,10 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
-require('streamline').register();
-
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
 
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
@@ -198,7 +196,8 @@ describe('Environment', function () {
   
   before(function () {
     environment = new profile.Environment({
-      name: 'TestEnvironment'
+      name: 'TestEnvironment',
+      resourceManagerEndpointUrl: 'https://login.notreal.example/'
     });
     
     sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
@@ -221,59 +220,6 @@ describe('Environment', function () {
       var tenantId = environment.acquireToken.firstCall.args[2];
       tenantId.should.equal('niceTenant');
       (!!environment.acquireToken.secondCall).should.be.false;
-    });
-  });
-});
-
-describe('Environment without resource manager endpoint (like AzureChinaCloud)', function () {
-  var environment;
-
-  before(function () {
-    environment = new profile.Environment({
-      name: 'TestEnvironment',
-      activeDirectoryEndpointUrl: 'http://notreal.example',
-      commonTenantName: 'common',
-      activeDirectoryResourceId: 'http://login.notreal.example'
-    });
-
-    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
-      null/*no error*/, expectedToken/*the access token*/);
-    sinon.stub(environment, 'getAsmClient').returns(testAsmSubscriptionClient);
-
-  });
-
-  describe('When creating account', function () {
-    var subscriptions;
-
-    beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, null, false, function (err, newSubscriptions) {
-        subscriptions = newSubscriptions;
-        done();
-      });
-    });
-
-    it('should have call to get asm client', function () {
-      environment.getAsmClient.called.should.be.true;
-    });
-
-    
-    it('should return a subscription with expected username', function () {
-      should.exist(subscriptions[0].user);
-      subscriptions[0].user.name.should.equal(expectedUserName);
-    });
-
-    it('should return listed subscriptions', function () {
-      subscriptions.should.have.length(expectedASMSubscriptions.length);
-      for(var i = 0, len = subscriptions.length; i < len; ++i) {
-        subscriptions[i].id.should.equal(expectedASMSubscriptions[i].subscriptionId);
-        subscriptions[i].name.should.equal(expectedASMSubscriptions[i].subscriptionName);
-      }
-    });
-
-    it('should have same username for all subscription', function () {
-      subscriptions.forEach(function (s) {
-        s.user.name.should.equal(expectedUserName);
-      });
     });
   });
 });
