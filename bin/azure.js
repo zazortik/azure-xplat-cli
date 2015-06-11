@@ -29,6 +29,10 @@ if (process.argv[2] !== '--gen') {
     cli.parse(['', '', '-h']);
   }
 } else {
-  cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
-  cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+  if (process.argv[3]) {
+    cli = new AzureCli(null, null, process.argv[3]);
+  } else {
+    cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
+    cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+  }
 }
