@@ -40,8 +40,8 @@ describe('cli', function() {
       testUtils.TIMEOUT_INTERVAL = 12000;
 
     before(function(done) {
-      timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
       suite = new CLITest(this, testPrefix, requiredEnvironment);
+      timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
         done();
