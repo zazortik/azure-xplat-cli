@@ -8,6 +8,10 @@ targets/*
 *.user
 .ntvs_analysis.*
 *.njsproj
+*.etl
+*.etl.tmp
+*.vspx
+*.njsperf
 
 # Node #
 node_modules/

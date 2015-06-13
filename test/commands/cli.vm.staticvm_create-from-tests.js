@@ -41,6 +41,7 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
+      timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
         done();
@@ -78,7 +79,6 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -147,7 +147,7 @@ describe('cli', function() {
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
           setTimeout(function() {
             waitForDiskRelease(vmDisk, callback);
-          }, 10000);
+          }, timeout);
         } else {
           callback();
         }
