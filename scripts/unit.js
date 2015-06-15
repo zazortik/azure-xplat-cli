@@ -13,8 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-require('streamline').register();
-
 var fs = require('fs');
 var profile = require('../lib/util/profile');
 var testLogger = require('../test/framework/test-logger');

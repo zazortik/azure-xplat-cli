@@ -14,10 +14,25 @@
 // limitations under the License.
 // 
 
-var AzureCli = require('../lib/cli');
+var AutoComplete = require('../lib/autocomplete');
+//load the autocomplete, so that rest code in the file will not execute 
+//till the command gets committed. This gets autocomplete faster
+new AutoComplete();
 
-var cli = new AzureCli();
-cli.parse(process.argv);
-if (cli.args.length === 0) {
-  cli.parse(['', '', '-h']);
+var AzureCli = require('../lib/cli');
+var Constants = require('../lib/util/constants');
+
+if (process.argv[2] !== '--gen') {
+  cli = new AzureCli();
+  cli.parse(process.argv);
+  if (cli.args.length === 0) {
+    cli.parse(['', '', '-h']);
+  }
+} else {
+  if (process.argv[3]) {
+    cli = new AzureCli(null, null, process.argv[3]);
+  } else {
+    cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
+    cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+  }
 }

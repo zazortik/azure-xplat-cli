@@ -19,7 +19,6 @@ var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 var util = require('util');
-require('streamline').register();
 
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');

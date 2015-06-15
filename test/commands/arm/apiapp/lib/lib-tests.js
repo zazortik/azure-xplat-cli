@@ -20,7 +20,7 @@ var path = require('path');
 var should = require('should');
 var sinon = require('sinon');
 
-var packageLib = require('../../../../../lib/commands/arm/apiapp/lib');
+var packageLib = require('../../../../../lib/commands/arm/apiapp/lib/packaging');
 var packageDataRoot = path.join(__dirname, 'testpackages');
 
 describe('apiapp', function () {
