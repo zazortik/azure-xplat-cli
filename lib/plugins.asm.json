@@ -542,12 +542,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -582,12 +582,12 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 },
                 {
                   "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
@@ -622,12 +622,12 @@
                   "description": "the Active Directory resource ID"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 }
               ]
             },
@@ -672,12 +672,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -712,12 +712,12 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
@@ -752,12 +752,12 @@
                   "description": "the Active Directory resource ID"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 }
               ]
             },
@@ -12750,6 +12750,256 @@
             }
           ],
           "categories": {}
+        },
+        "load-balanced-set": {
+          "name": "load-balanced-set",
+          "description": "Commands to manage load balanced set for a Cloud Service Deployment",
+          "fullName": "service load-balanced-set",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "Get all load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set list",
+              "usage": "[options] <serviceName>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get a load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set show",
+              "usage": "[options] <serviceName>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load balanced set name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set set",
+              "usage": "[options] <serviceName> <load-balanced-set-name>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load balanced set name"
+                },
+                {
+                  "flags": "-l, --public-port <public-port>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--public-port",
+                  "description": "the load balanced endpoint public port"
+                },
+                {
+                  "flags": "-k, --local-port <local-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--local-port",
+                  "description": "the load balanced endpoint local port"
+                },
+                {
+                  "flags": "-o, --protocol <protocol>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--protocol",
+                  "description": "the transport layer protocol for the load balanced set endpoint (tcp or udp)"
+                },
+                {
+                  "flags": "-m, --idle-timeout <idle-timeout>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--idle-timeout",
+                  "description": "load balanced set endpoint connection timeout for tcp idle connection, specified in minutes"
+                },
+                {
+                  "flags": "-t, --probe-port <probe-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--probe-port",
+                  "description": "the virtual machine port to use to inspect the availability status"
+                },
+                {
+                  "flags": "-r, --probe-protocol <probe-protocol>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--probe-protocol",
+                  "description": "the protocol to use to inspect the availability status"
+                },
+                {
+                  "flags": "-p, --probe-path <probe-path>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--probe-path",
+                  "description": "the relative path to inspect the availability status"
+                },
+                {
+                  "flags": "-u, --direct-server-return <direct-server-return>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--direct-server-return",
+                  "description": "enable or disable direct server return on the load balanced set endpoint, valid values are [Enabled, Disabled] Disabled by default"
+                },
+                {
+                  "flags": "-i, --internal-load-balancer-name <internal-load-balancer-name>",
+                  "required": -35,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--internal-load-balancer-name",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-a, --load-balancer-distribution <load-balancer-distribution>",
+                  "required": -34,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--load-balancer-distribution",
+                  "description": "the load balancer distribution, valid values are [sourceIP, sourceIPProtocol, None]"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         }
       }
     },
@@ -16917,7 +17167,7 @@
               "description": "the ssh port to enable [22]"
             },
             {
-              "flags": "-t, --ssh-cert <pem-file|fingerprint>",
+              "flags": "-t, --ssh-cert <openssh-rsa-file|pem-file|fingerprint>",
               "required": -16,
               "optional": 0,
               "bool": true,
@@ -18007,7 +18257,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--docker-port",
-                  "description": "Port to use for docker [4243]"
+                  "description": "Port to use for docker [2376]"
                 },
                 {
                   "flags": "-C, --docker-cert-dir [dir]",
@@ -18588,7 +18838,7 @@
               "name": "create",
               "description": "Create a VM endpoint",
               "fullName": "vm endpoint create",
-              "usage": "[options] <vm-name> <lb-port> [vm-port]",
+              "usage": "[options] <vm-name> <public-port> [local-port]",
               "filePath": "commands/asm/vm._js",
               "options": [
                 {
@@ -18615,25 +18865,43 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--dns-name",
-                  "description": "only show VMs for this DNS name"
+                  "description": "filter VMs for the specified DNS name"
                 },
                 {
-                  "flags": "-n, --endpoint-name <name>",
-                  "required": -21,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-n",
-                  "long": "--endpoint-name",
+                  "long": "--name",
                   "description": "the endpoint name"
                 },
                 {
-                  "flags": "-b, --lb-set-name <name>",
-                  "required": -19,
+                  "flags": "-k, --local-port <local-port>",
+                  "required": -18,
                   "optional": 0,
                   "bool": true,
-                  "short": "-b",
-                  "long": "--lb-set-name",
-                  "description": "the load-balancer set name"
+                  "short": "-k",
+                  "long": "--local-port",
+                  "description": "the local port"
+                },
+                {
+                  "flags": "-o, --protocol <protocol>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--protocol",
+                  "description": "the transport layer protocol for the endpoint (tcp or udp)"
+                },
+                {
+                  "flags": "-m, --idle-timeout <idle-timeout>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--idle-timeout",
+                  "description": "timeout for tcp idle connection specified in minutes"
                 },
                 {
                   "flags": "-t, --probe-port <port>",
@@ -18642,7 +18910,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--probe-port",
-                  "description": "the virtual machine port to use to inspect the role availability status"
+                  "description": "the virtual machine port to use to inspect the availability status"
                 },
                 {
                   "flags": "-r, --probe-protocol <protocol>",
@@ -18651,7 +18919,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--probe-protocol",
-                  "description": "the protocol to use to inspect the role availability status"
+                  "description": "the protocol to use to inspect the availability status"
                 },
                 {
                   "flags": "-p, --probe-path <path>",
@@ -18660,25 +18928,25 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--probe-path",
-                  "description": "the relative path to inspect the role availability status"
+                  "description": "the relative path to inspect the availability status"
                 },
                 {
-                  "flags": "-o, --endpoint-protocol <protocol>",
-                  "required": -25,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--endpoint-protocol",
-                  "description": "the transport layer protocol for port (tcp or udp)"
-                },
-                {
-                  "flags": "-u, --enable-direct-server-return",
-                  "required": 0,
+                  "flags": "-u, --direct-server-return <direct-server-return>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
                   "short": "-u",
-                  "long": "--enable-direct-server-return",
-                  "description": "whether to enable direct server return on this endpoint, disabled by default"
+                  "long": "--direct-server-return",
+                  "description": "enable or disable direct server return on this endpoint, valid values are [Enabled, Disabled] Disabled by default"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load-balancer set name"
                 },
                 {
                   "flags": "-i, --internal-load-balancer-name <name>",
@@ -18688,6 +18956,15 @@
                   "short": "-i",
                   "long": "--internal-load-balancer-name",
                   "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-a, --load-balancer-distribution <load-balancer-distribution>",
+                  "required": -34,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--load-balancer-distribution",
+                  "description": "the load balancer distribution, valid values are [sourceIP, sourceIPProtocol, None]"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -18704,7 +18981,7 @@
               "name": "create-multiple",
               "description": "Create multiple VM endpoints",
               "fullName": "vm endpoint create-multiple",
-              "usage": "[options] <vm-name> <lb-port>[:<vm-port>[:<protocol>[:<enable-direct-server-return>[:<lb-set-name>[:<probe-protocol>[:<probe-port>[:<probe-path>[:<internal-lb-name>]]]]]]]] {1-*}",
+              "usage": "[options] <vm-name> <endpoints-config>",
               "filePath": "commands/asm/vm._js",
               "options": [
                 {
@@ -18731,7 +19008,16 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--dns-name",
-                  "description": "consider VM hosted in this DNS name"
+                  "description": "filter VMs for the specified DNS name"
+                },
+                {
+                  "flags": "-c, --endpoints-config <endpoints-config>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--endpoints-config",
+                  "description": "comma seperated list of endpoint configurations, each configuration must have the format <public-port>:<local-port>:<protocol>:<idle-timeout>:<direct-server-return>:<probe-protocol>:<probe-port>:<probe-path>:<load-balanced-set-name>:<internal-load-balancer-name>:<load-balancer-distribution>"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -18775,7 +19061,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--dns-name",
-                  "description": "only consider VMs for this DNS name"
+                  "description": "filter VMs for the specified DNS name"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -18789,10 +19075,162 @@
               ]
             },
             {
-              "name": "update",
+              "name": "set",
               "description": "Update a VM endpoint",
-              "fullName": "vm endpoint update",
+              "fullName": "vm endpoint set",
               "usage": "[options] <vm-name> <endpoint-name>",
+              "filePath": "commands/asm/vm._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-d, --dns-name <name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--dns-name",
+                  "description": "filter VMs for the specified DNS name"
+                },
+                {
+                  "flags": "-n, --new-endpoint-name <new-endpoint-name>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--new-endpoint-name",
+                  "description": "the new name for the endpoint"
+                },
+                {
+                  "flags": "-l, --public-port <public-port>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--public-port",
+                  "description": "the public port"
+                },
+                {
+                  "flags": "-c, --local-port <local-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--local-port",
+                  "description": "the local port"
+                },
+                {
+                  "flags": "-o, --protocol <protocol>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--protocol",
+                  "description": "the transport layer protocol for the endpoint (tcp or udp)"
+                },
+                {
+                  "flags": "-m, --idle-timeout <idle-timeout>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--idle-timeout",
+                  "description": "connection timeout for tcp idle connection, specified in minutes"
+                },
+                {
+                  "flags": "-t, --probe-port <probe-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--probe-port",
+                  "description": "the virtual machine port to use to inspect the availability status"
+                },
+                {
+                  "flags": "-r, --probe-protocol <probe-protocol>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--probe-protocol",
+                  "description": "the protocol to use to inspect the availability status"
+                },
+                {
+                  "flags": "-p, --probe-path <probe-path>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--probe-path",
+                  "description": "the relative path to inspect the availability status"
+                },
+                {
+                  "flags": "-u, --direct-server-return <direct-server-return>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--direct-server-return",
+                  "description": "enable or disable direct server return on endpoint, valid values are [Enabled, Disabled] Disabled by default"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load balanced set name"
+                },
+                {
+                  "flags": "-i, --internal-load-balancer-name <internal-load-balancer-name>",
+                  "required": -35,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--internal-load-balancer-name",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-a, --load-balancer-distribution <load-balancer-distribution>",
+                  "required": -34,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--load-balancer-distribution",
+                  "description": "the load balancer distribution, valid values are [sourceIP, sourceIPProtocol, None]"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Get all endpoints in a VM",
+              "fullName": "vm endpoint list",
+              "usage": "[options] <vm-name>",
               "filePath": "commands/asm/vm._js",
               "options": [
                 {
@@ -18822,86 +19260,6 @@
                   "description": "only consider VM for this DNS name"
                 },
                 {
-                  "flags": "-n, --new-endpoint-name <name>",
-                  "required": -25,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--new-endpoint-name",
-                  "description": "the new endpoint name"
-                },
-                {
-                  "flags": "-l, --lb-port <port>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--lb-port",
-                  "description": "the new load balancer port"
-                },
-                {
-                  "flags": "-t, --vm-port <port>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--vm-port",
-                  "description": "the new local port port"
-                },
-                {
-                  "flags": "-o, --endpoint-protocol <protocol>",
-                  "required": -25,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--endpoint-protocol",
-                  "description": "the new transport layer protocol for port (tcp or udp)"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "List a VM endpoints",
-              "fullName": "vm endpoint list",
-              "usage": "[options] <vm-name>",
-              "filePath": "commands/asm/vm._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-d, --dns-name <name>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--dns-name",
-                  "description": "only show VMs for this DNS name"
-                },
-                {
                   "flags": "-s, --subscription <id>",
                   "required": -20,
                   "optional": 0,
@@ -18914,9 +19272,9 @@
             },
             {
               "name": "show",
-              "description": "Show details of VM endpoint",
+              "description": "Get a endpoint in a VM",
               "fullName": "vm endpoint show",
-              "usage": "[options] <vm-name>",
+              "usage": "[options] <vm-name> <endpoint-name>",
               "filePath": "commands/asm/vm._js",
               "options": [
                 {
@@ -18937,22 +19295,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-e, --endpoint-name <name>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--endpoint-name",
-                  "description": "only show details of this endpoint"
-                },
-                {
                   "flags": "-d, --dns-name <name>",
                   "required": -16,
                   "optional": 0,
                   "bool": true,
                   "short": "-d",
                   "long": "--dns-name",
-                  "description": "only show VMs for this DNS name"
+                  "description": "filter VMs for the specified DNS name"
                 },
                 {
                   "flags": "-s, --subscription <id>",

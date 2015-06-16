@@ -19481,13 +19481,13 @@
               "description": "the password\n      This parameter is valid for a VM created from an image (image-name, image-ur) and ignored when VM is based on existing disk"
             },
             {
-              "flags": "-M, --ssh-publickey-pem-file <ssh-publickey-pem-file>",
-              "required": -30,
+              "flags": "-M, --ssh-publickey-file <openssh-rsa-file|pem-file>",
+              "required": -26,
               "optional": 0,
               "bool": true,
               "short": "-M",
-              "long": "--ssh-publickey-pem-file",
-              "description": "path to public key PEM file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+              "long": "--ssh-publickey-file",
+              "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
             },
             {
               "flags": "-z, --vm-size <vm-size>",
@@ -21240,7 +21240,7 @@
                   "bool": true,
                   "short": "-T",
                   "long": "--docker-port",
-                  "description": "Port to use for docker [4243]"
+                  "description": "Port to use for docker [2376]"
                 },
                 {
                   "flags": "-O, --docker-cert-dir <dir>",
@@ -21351,13 +21351,13 @@
                   "description": "the password\n      This parameter is valid for a VM created from an image (image-name, image-urn) and ignored when VM is based on disk (os-disk-*)"
                 },
                 {
-                  "flags": "-M, --ssh-publickey-pem-file <ssh-publickey-pem-file>",
-                  "required": -30,
+                  "flags": "-M, --ssh-publickey-file <openssh-rsa-file|pem-file>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
                   "short": "-M",
-                  "long": "--ssh-publickey-pem-file",
-                  "description": "path to public key PEM file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+                  "long": "--ssh-publickey-file",
+                  "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
                 },
                 {
                   "flags": "-z, --vm-size <vm-size>",
