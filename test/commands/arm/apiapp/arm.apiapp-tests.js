@@ -92,61 +92,73 @@ describe('arm', function () {
       var plan;
       var apiappName = 'listtest1';
 
-      // Deploy something so we can list it.
-      // Don't need to explicitly delete, it'll be
-      // cleaned by the master after handler in the
-      // outer suite.
-      before(function (done) {
-        createGroupAndPlan(function (err, az) {
-          if (err) { return done(err); }
-          group = az.group;
-          plan = az.plan;
+      // Would normally do this in a before handler, but that
+      // screws up the mock recording.
+      // No need to explicitly delete anything, the outer suite's
+      // after handler will delete the created resource group.
+      function createAndDeploy(done) {
+        if (!group) {
+          createGroupAndPlan(function (err, az) {
+            if (err) { return done(err); }
+            group = az.group;
+            plan = az.plan;
 
-          var cmd = 'apiapp create -g %s -n %s -p %s -u %s --json';
-          suite.execute(cmd, group, apiappName, plan, benchPackageId, function (result) {
-            if (result.exitStatus !== 0) {
-              return done(new Error('could not deploy apiapp for list test'));
-            }
+            var cmd = 'apiapp create -g %s -n %s -p %s -u %s --json';
+            suite.execute(cmd, group, apiappName, plan, benchPackageId, function (result) {
+              if (result.exitStatus !== 0) {
+                return done(new Error('could not deploy apiapp for list test'));
+              }
+              done();
+            });
+          });
+        } else {
+          done();
+        }
+      }
+
+      it('should list deployed apiapp when listing all in subscription', function (done) {
+        createAndDeploy(function () {
+          suite.execute('apiapp list --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.some(function (apiapp) { return apiapp.name === apiappName; }).should.be.true;
             done();
           });
         });
       });
 
-      it('should list deployed apiapp when listing all in subscription', function (done) {
-        suite.execute('apiapp list --json', function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.some(function (apiapp) { return apiapp.name === apiappName; }).should.be.true;
-          done();
-        });
-      });
-
       it('should not include package version or auth setting by default', function (done) {
-        suite.execute('apiapp list --json', function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.every(function (apiapp) { return _.isUndefined(apiapp.package.version); }).should.be.true;
-          output.every(function (apiapp) { return _.isUndefined(apiapp.accessLevel); }).should.be.true;
-          done();
+        createAndDeploy(function () {
+          suite.execute('apiapp list --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.every(function (apiapp) { return _.isUndefined(apiapp.package.version); }).should.be.true;
+            output.every(function (apiapp) { return _.isUndefined(apiapp.accessLevel); }).should.be.true;
+            done();
+          });
         });
       });
 
       it('should list expected apiapp when listing by resource group', function (done) {
-        suite.execute('apiapp list %s --json', group, function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.should.have.length(1);
-          output[0].name.should.equal(apiappName);
-          done();
+        createAndDeploy(function () {
+          suite.execute('apiapp list %s --json', group, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.have.length(1);
+            output[0].name.should.equal(apiappName);
+            done();
+          });
         });
       });
 
       it('should include package version and auth setting when -d flag is given', function (done) {
-        suite.execute('apiapp list -d --json', function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.every(function (apiapp) { return !_.isUndefined(apiapp.package.version) && !_.isUndefined(apiapp.accessLevel); }).should.be.true;
-          done();
+        createAndDeploy(function () {
+          suite.execute('apiapp list -d --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.every(function (apiapp) { return !_.isUndefined(apiapp.package.version) && !_.isUndefined(apiapp.accessLevel); }).should.be.true;
+            done();
+          });
         });
       });
 
