@@ -54,6 +54,7 @@
     "azure-mgmt-sql": "0.9.17",
     "azure-mgmt-storage": "0.9.16",
     "azure-mgmt-website": "0.9.16",
+    "azure-arm-website": "0.10.0",
     "azure-monitoring": "0.10.0",
     "azure-storage": "0.4.1",
     "azure-storage-legacy": "0.9.13",

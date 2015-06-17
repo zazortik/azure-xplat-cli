@@ -21856,6 +21856,435 @@
           "categories": {}
         }
       }
+    },
+    "webapp": {
+      "name": "webapp",
+      "description": "Commands to manage your Azure webapps",
+      "fullName": "webapp",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "create a web app",
+          "fullName": "webapp create",
+          "usage": "[options] [resourcegroup] [name] [location] [plan]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to create"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot"
+            },
+            {
+              "flags": "--location <location>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "long": "--location",
+              "description": "the geographic region to create the webapp"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "the name of the app service plan eg: Default1."
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "stop",
+          "description": "Stop a web app",
+          "fullName": "webapp stop",
+          "usage": "[options] [resourcegroup] [name]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to stop"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "start",
+          "description": "Start a web app",
+          "fullName": "webapp start",
+          "usage": "[options] [resourcegroup] [name]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to start"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "restart",
+          "description": "Stop and then start a web app",
+          "fullName": "webapp restart",
+          "usage": "[options] [resourcegroup] [name]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to restart"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete a webapp",
+          "fullName": "webapp delete",
+          "usage": "[options] [resourcegroup] [name]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to delete"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot to be deleted"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for delete confirmation"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List your webapps",
+          "fullName": "webapp list",
+          "usage": "[options] [resourcegroup]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get an available webapp",
+          "fullName": "webapp show",
+          "usage": "[options] [resourcegroup] [name]",
+          "filePath": "commands/arm/webapp/webapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--resourcegroup <resourcegroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--resourcegroup",
+              "description": "the name of the resourceGroup"
+            },
+            {
+              "flags": "--name <name>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--name",
+              "description": "the name of the webapp to show"
+            },
+            {
+              "flags": "--slot <slot>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--slot",
+              "description": "the name of the slot to show"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
     }
   }
 }
