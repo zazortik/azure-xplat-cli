@@ -12380,7 +12380,7 @@
               "bool": true,
               "short": "-t",
               "long": "--start-time",
-              "description": "the start time"
+              "description": "the start time specified in UTC e.g. 2015-06-17T17:58:50.4290652Z, 2015-06-17"
             },
             {
               "flags": "-e, --end-time <end-time>",
@@ -12389,7 +12389,7 @@
               "bool": true,
               "short": "-e",
               "long": "--end-time",
-              "description": "the end time"
+              "description": "the end time specified in UTC"
             },
             {
               "flags": "-s, --subscription <id>",
