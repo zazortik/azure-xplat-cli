@@ -6924,7 +6924,69 @@
               "bool": true,
               "short": "-s",
               "long": "--subscription",
-              "description": "The subscription identifier."
+              "description": "The subscription identifier"
+            },
+            {
+              "flags": "-d --detailed",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--detailed",
+              "description": "Include ApiApp package version and auth setting (call will be slower)"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get detailed information about a deployed ApiApp",
+          "fullName": "apiapp show",
+          "usage": "[options] [resource-group] [name]",
+          "filePath": "commands/arm/apiapp/apiapp._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group containing the ApiApp"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the ApiApp"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
             }
           ]
         },
