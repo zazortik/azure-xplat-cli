@@ -12365,29 +12365,29 @@
               "description": "the cloud service name"
             },
             {
-              "flags": "d, --deployment-name <deployment-name>",
-              "required": -22,
+              "flags": "-d, --deployment-name <deployment-name>",
+              "required": -23,
               "optional": 0,
               "bool": true,
-              "short": "d",
+              "short": "-d",
               "long": "--deployment-name",
               "description": "the deployment name"
             },
             {
-              "flags": "t, --start-time <start-time>",
-              "required": -17,
+              "flags": "-t, --start-time <start-time>",
+              "required": -18,
               "optional": 0,
               "bool": true,
-              "short": "t",
+              "short": "-t",
               "long": "--start-time",
               "description": "the start time"
             },
             {
-              "flags": "e, --end-time <end-time>",
-              "required": -15,
+              "flags": "-e, --end-time <end-time>",
+              "required": -16,
               "optional": 0,
               "bool": true,
-              "short": "e",
+              "short": "-e",
               "long": "--end-time",
               "description": "the end time"
             },
