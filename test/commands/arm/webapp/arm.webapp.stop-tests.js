@@ -83,31 +83,39 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  describe('create', function () {
-    it('should create webapp', function (done) {
-      createGroupAndPlan(function (err, az) {
-        if (err) { return done(err); }
-        var sitename2 = suite.generateId('webapp-tst', createdResources);
-        var n = az.plan.lastIndexOf("resourceGroups");
-        var cmd = 'webapp create --resourcegroup %s --name %s --location %s --plan %s --json';
-        suite.execute(cmd, az.group, sitename2, location, createdResources[0], function (result) {
-          result.exitStatus.should.equal(0);
-          suite.execute('webapp list --resourcegroup %s --json', az.group, function (result) {
-            result.exitStatus.should.equal(0);
-            var webapps = JSON.parse(result.text);
-            // May be more than one if running live, but there has to be at least one.
-            webapps.length.should.be.above(0);
-            webapps.some(function (app) {
-              return app.name === sitename2;
-            }).should.be.true;
-            done();
-          });
-        });
-      });
-    });
-  });
+  //describe('create', function () {
+  //  it('should create webapp', function (done) {
+  //    createGroupAndPlan(function (err, az) {
+  //      if (err) { return done(err); }
+  //      var sitename2 = suite.generateId('webapp-tst', createdResources);
+  //      var n = az.plan.lastIndexOf("resourceGroups");
+  //      var cmd = 'webapp create --resourcegroup %s --name %s --location %s --plan %s --json';
+  //      suite.execute(cmd, az.group, sitename2, location, createdResources[0], function (result) {
+  //        result.exitStatus.should.equal(0);
+  //        suite.execute('webapp list --resourcegroup %s --json', az.group, function (result) {
+  //          result.exitStatus.should.equal(0);
+  //          var webapps = JSON.parse(result.text);
+  //          // May be more than one if running live, but there has to be at least one.
+  //          webapps.length.should.be.above(0);
+  //          webapps.some(function (app) {
+  //            return app.name === sitename2;
+  //          }).should.be.true;
+  //          done();
+  //        });
+  //      });
+  //    });
+  //  });
+  //});
 
   describe('webapp', function () {
+
+    it('create should work', function (done) {
+      suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json', resourcegroupName, sitename, location, planName, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
     it('stop should work', function (done) {
       suite.execute('webapp stop --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
@@ -124,6 +132,13 @@ describe('arm', function () {
 
     it('restart should work', function (done) {
       suite.execute('webapp restart --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    it('delete should work', function (done) {
+      suite.execute('webapp delete --resourcegroup %s --name %s -q --json', resourcegroupName, createdSites[0], function (result) {
         result.exitStatus.should.equal(0);
         done();
       });

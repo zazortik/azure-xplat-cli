@@ -25,39 +25,19 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .post('/subscriptions/e1b1b954-c500-427b-8cb1-ff8d47c39c17/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/webapp-tst8593/restart?api-version=2014-06-01')
-  .reply(200, "", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '0',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '6e778928-03d4-4a08-b4dd-14d6f9a4e09d',
-  server: 'Microsoft-IIS/8.0',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1179',
-  'x-ms-correlation-request-id': '55d34338-99fe-4d2c-8b73-4f942d4f3e02',
-  'x-ms-routing-request-id': 'WESTUS:20150617T185951Z:55d34338-99fe-4d2c-8b73-4f942d4f3e02',
-  date: 'Wed, 17 Jun 2015 18:59:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/e1b1b954-c500-427b-8cb1-ff8d47c39c17/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/webapp-tst8593/restart?api-version=2014-06-01')
+  .post('/subscriptions/e1b1b954-c500-427b-8cb1-ff8d47c39c17/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/webapp-tst8148/restart?api-version=2014-06-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '6e778928-03d4-4a08-b4dd-14d6f9a4e09d',
+  'x-ms-request-id': 'd096348e-0287-4cbc-b26e-021e7b965a8b',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1179',
-  'x-ms-correlation-request-id': '55d34338-99fe-4d2c-8b73-4f942d4f3e02',
-  'x-ms-routing-request-id': 'WESTUS:20150617T185951Z:55d34338-99fe-4d2c-8b73-4f942d4f3e02',
-  date: 'Wed, 17 Jun 2015 18:59:51 GMT',
-  connection: 'close' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '88b24008-0a26-4ae0-b7d8-c510310e0aad',
+  'x-ms-routing-request-id': 'WESTUS:20150618T014812Z:88b24008-0a26-4ae0-b7d8-c510310e0aad',
+  date: 'Thu, 18 Jun 2015 01:48:12 GMT' });
  return result; }]];
