@@ -38,6 +38,7 @@ describe('arm', function () {
   before(function (done) {
     suite = new CLITest(this, testPrefix);
     suite.setupSuite(function () {
+      sitename = suite.generateId('webappclitest', createdSites);
       groupName = suite.generateId('testrg1', createdGroups);
       if (!suite.isPlayback()) {
         suite.execute('group create %s --location %s --json', groupName, location, function (result) {
@@ -82,6 +83,24 @@ describe('arm', function () {
     it('create should work', function (done) {
       suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
         result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    it('list should work', function (done) {
+      suite.execute('webapp list --resourcegroup %s --json', groupName, function (result) {
+        result.exitStatus.should.equal(0);
+        var output = JSON.parse(result.text);
+        output.length.should.be.above(0);
+        done();
+      });
+    });
+
+    it('show should work', function (done) {
+      suite.execute('webapp show --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
+        result.exitStatus.should.equal(0);
+        var webapp = JSON.parse(result.text);
+        webapp.webSite.name.should.equal(sitename);
         done();
       });
     });
