@@ -23,22 +23,4 @@ exports.getMockedProfile = function () {
 exports.setEnvironment = function() {
 };
 
-exports.scopes = [[function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .delete('/subscriptions/e1b1b954-c500-427b-8cb1-ff8d47c39c17/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/webapp-tst8148?api-version=2014-06-01&deleteEmptyServerFarm=false&deleteMetrics=true&deleteAllSlots=true')
-  .reply(200, "", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '0',
-  expires: '-1',
-  etag: '"1D0A968D5698660"',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '98605a42-d546-4493-b547-b967b414cc90',
-  server: 'Microsoft-IIS/8.0',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': 'fd0a79e0-9977-4db1-957f-9b40f3ea5d83',
-  'x-ms-routing-request-id': 'WESTUS:20150618T014814Z:fd0a79e0-9977-4db1-957f-9b40f3ea5d83',
-  date: 'Thu, 18 Jun 2015 01:48:13 GMT' });
- return result; }]];
+exports.scopes = [[]];

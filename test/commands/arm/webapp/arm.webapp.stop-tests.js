@@ -25,13 +25,12 @@ var testPrefix = 'arm-cli-webapp-tests';
 
 var sitename;
 var createdSites = [];
-var resourcegroupName = 'Default-Web-WestUS';
-var planName = 'Default1';
-var location = "westus";
+var location = 'West US';
 var createdGroups = [];
 var createdResources = [];
 var subscription = profile.current.getSubscription();
 var resourceClient = utils.createResourceClient(subscription);
+var hostingPlanName, groupName;
 
 describe('arm', function () {
   var suite;
@@ -39,40 +38,35 @@ describe('arm', function () {
   before(function (done) {
     suite = new CLITest(this, testPrefix);
     suite.setupSuite(function () {
-      sitename = suite.generateId('webapp-tst', createdSites);
+      groupName = suite.generateId('testrg1', createdGroups);
       if (!suite.isPlayback()) {
-        suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json',
-              resourcegroupName,
-              sitename,
-              location,
-              planName,
-              function (result) {
-                result.exitStatus.should.equal(0);
-                done();
-              });
+        suite.execute('group create %s --location %s --json', groupName, location, function (result) {
+          result.exitStatus.should.equal(0);
+          createHostingPlan(groupName, function (err, planId) {
+            if (err) { return done(err); }
+            done();
+          });
+        });
       } else {
         done();
       }
+
     });
   });
 
   after(function (done) {
     suite.teardownSuite(function () {
       if (!suite.isPlayback()) {
-        suite.forEachName(createdGroups, function (groupName, next) {
-          resourceClient.resourceGroups.deleteMethod(groupName, next);
-        }, done);
-        suite.forEachName(createdSites, function (item, next) {
-          suite.execute('webapp delete --resourcegroup %s --name %s -q --json', resourcegroupName, item, function (result) {
+        createdGroups.forEach(function (item) {
+          suite.execute('group delete %s --quiet --json', item, function (result) {
             result.exitStatus.should.equal(0);
-            next();
-          });
-        }, done);
+            done();
+          })
+        });
       } else {
         done();
-      };
+      }
     });
-
   });
 
   beforeEach(function (done) {
@@ -83,62 +77,38 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  //describe('create', function () {
-  //  it('should create webapp', function (done) {
-  //    createGroupAndPlan(function (err, az) {
-  //      if (err) { return done(err); }
-  //      var sitename2 = suite.generateId('webapp-tst', createdResources);
-  //      var n = az.plan.lastIndexOf("resourceGroups");
-  //      var cmd = 'webapp create --resourcegroup %s --name %s --location %s --plan %s --json';
-  //      suite.execute(cmd, az.group, sitename2, location, createdResources[0], function (result) {
-  //        result.exitStatus.should.equal(0);
-  //        suite.execute('webapp list --resourcegroup %s --json', az.group, function (result) {
-  //          result.exitStatus.should.equal(0);
-  //          var webapps = JSON.parse(result.text);
-  //          // May be more than one if running live, but there has to be at least one.
-  //          webapps.length.should.be.above(0);
-  //          webapps.some(function (app) {
-  //            return app.name === sitename2;
-  //          }).should.be.true;
-  //          done();
-  //        });
-  //      });
-  //    });
-  //  });
-  //});
-
   describe('webapp', function () {
 
     it('create should work', function (done) {
-      suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json', resourcegroupName, sitename, location, planName, function (result) {
+      suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('stop should work', function (done) {
-      suite.execute('webapp stop --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
+      suite.execute('webapp stop --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('start should work', function (done) {
-      suite.execute('webapp start --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
+      suite.execute('webapp start --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('restart should work', function (done) {
-      suite.execute('webapp restart --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
+      suite.execute('webapp restart --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('delete should work', function (done) {
-      suite.execute('webapp delete --resourcegroup %s --name %s -q --json', resourcegroupName, createdSites[0], function (result) {
+      suite.execute('webapp delete --resourcegroup %s --name %s -q --json', groupName, createdSites[0], function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
@@ -155,15 +125,8 @@ describe('arm', function () {
     });
   }
 
-  function createGroup(done) {
-    var groupName = suite.generateId(testPrefix, createdGroups);
-    resourceClient.resourceGroups.createOrUpdate(groupName, { location: location }, function (err) {
-      return done(err, groupName);
-    });
-  }
-
   function createHostingPlan(groupName, done) {
-    var hostingPlanName = suite.generateId(testPrefix, createdResources);
+    hostingPlanName = suite.generateId(testPrefix, createdResources);
     var planToCreate = {
       resourceName: hostingPlanName,
       resourceProviderNamespace: 'Microsoft.Web',
@@ -186,13 +149,3 @@ describe('arm', function () {
     });
   }
 });
-
-function resourceGroupFromId(id) {
-  var re = /^\/subscriptions\/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\/resourcegroups\/([^/]+)\//;
-  var match = id.match(re);
-  if (match) {
-    return match[1];
-  }
-  throw new Error('Resource id does not match:', id);
-}
-
