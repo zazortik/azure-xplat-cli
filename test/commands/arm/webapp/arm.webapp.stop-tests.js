@@ -57,7 +57,7 @@ describe('arm', function () {
   });
 
   after(function (done) {
-    suite.teardownSuite(function () {   
+    suite.teardownSuite(function () {
       if (!suite.isPlayback()) {
         suite.forEachName(createdGroups, function (groupName, next) {
           resourceClient.resourceGroups.deleteMethod(groupName, next);
