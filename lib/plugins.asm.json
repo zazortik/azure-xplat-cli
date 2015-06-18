@@ -12331,6 +12331,76 @@
               "description": "the subscription id"
             }
           ]
+        },
+        {
+          "name": "get-deployment-event",
+          "description": "Get details of deployment events.",
+          "fullName": "service get-deployment-event",
+          "usage": "[options] <serviceName> <startTime> <endTime>",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--service-name <service-name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--service-name",
+              "description": "the cloud service name"
+            },
+            {
+              "flags": "-d, --deployment-name <deployment-name>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--deployment-name",
+              "description": "the deployment name"
+            },
+            {
+              "flags": "-t, --start-time <start-time>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--start-time",
+              "description": "the start time specified in UTC e.g. 2015-06-17T17:58:50.4290652Z, 2015-06-17"
+            },
+            {
+              "flags": "-e, --end-time <end-time>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--end-time",
+              "description": "the end time specified in UTC"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
         }
       ],
       "categories": {
