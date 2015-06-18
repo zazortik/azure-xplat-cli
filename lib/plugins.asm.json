@@ -12961,6 +12961,24 @@
                   "description": "the relative path to inspect the availability status"
                 },
                 {
+                  "flags": "-k, --probe-interval <probe-interval>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--probe-interval",
+                  "description": "the availability status check interval specified in seconds"
+                },
+                {
+                  "flags": "-c, --probe-timeout <probe-timeout>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--probe-timeout",
+                  "description": "the availability status check timeout specified in seconds"
+                },
+                {
                   "flags": "-u, --direct-server-return <direct-server-return>",
                   "required": -28,
                   "optional": 0,
@@ -18931,6 +18949,24 @@
                   "description": "the relative path to inspect the availability status"
                 },
                 {
+                  "flags": "-k, --probe-interval <probe-interval>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--probe-interval",
+                  "description": "the availability status check interval specified in seconds"
+                },
+                {
+                  "flags": "-c, --probe-timeout <probe-timeout>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--probe-timeout",
+                  "description": "the availability status check timeout specified in seconds"
+                },
+                {
                   "flags": "-u, --direct-server-return <direct-server-return>",
                   "required": -28,
                   "optional": 0,
@@ -19178,6 +19214,24 @@
                   "short": "-p",
                   "long": "--probe-path",
                   "description": "the relative path to inspect the availability status"
+                },
+                {
+                  "flags": "-k, --probe-interval <probe-interval>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--probe-interval",
+                  "description": "the availability status check interval specified in seconds"
+                },
+                {
+                  "flags": "-c, --probe-timeout <probe-timeout>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--probe-timeout",
+                  "description": "the availability status check timeout specified in seconds"
                 },
                 {
                   "flags": "-u, --direct-server-return <direct-server-return>",
