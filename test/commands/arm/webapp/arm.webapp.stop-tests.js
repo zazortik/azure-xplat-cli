@@ -57,16 +57,16 @@ describe('arm', function () {
   });
 
   after(function (done) {
-    suite.teardownSuite(function () {
-      suite.forEachName(createdSites, function (item, next) {
-        suite.execute('webapp delete --resourcegroup %s --name %s -q --json', resourcegroupName, item, function (result) {
-          result.exitStatus.should.equal(0);
-          next();
-        });
-      }, done);
+    suite.teardownSuite(function () {   
       if (!suite.isPlayback()) {
         suite.forEachName(createdGroups, function (groupName, next) {
           resourceClient.resourceGroups.deleteMethod(groupName, next);
+        }, done);
+        suite.forEachName(createdSites, function (item, next) {
+          suite.execute('webapp delete --resourcegroup %s --name %s -q --json', resourcegroupName, item, function (result) {
+            result.exitStatus.should.equal(0);
+            next();
+          });
         }, done);
       } else {
         done();
@@ -114,18 +114,14 @@ describe('arm', function () {
         done();
       });
     });
-  });
 
-  describe('webapp', function () {
     it('start should work', function (done) {
       suite.execute('webapp start --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
-  });
 
-  describe('webapp', function () {
     it('restart should work', function (done) {
       suite.execute('webapp restart --resourcegroup %s --name %s --json', resourcegroupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
@@ -133,6 +129,7 @@ describe('arm', function () {
       });
     });
   });
+
   function createGroupAndPlan(done) {
     createGroup(function (err, groupName) {
       if (err) { return done(err); }
