@@ -90,9 +90,9 @@ sudo npm install -g azure-cli
 
 ### Pre-compiled installers
 
-* [Windows](http://go.microsoft.com/fwlink/?linkid=254279)
-* [Mac](http://go.microsoft.com/fwlink/?Linkid=252249) 
-* [Linux](http://go.microsoft.com/fwlink/?linkid=253472)
+* [Windows](http://go.microsoft.com/fwlink/?LinkID=275464&clcid=0x409)
+* [Mac](http://go.microsoft.com/fwlink/?LinkID=253471&clcid=0x409) 
+* [Linux](http://go.microsoft.com/fwlink/?LinkID=253472&clcid=0x409)
 
 ### Download Source Code
 
