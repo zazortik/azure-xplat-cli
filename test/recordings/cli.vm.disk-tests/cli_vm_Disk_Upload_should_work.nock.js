@@ -6,17 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'Node CLI Test',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    name: 'CollaberaInteropTest',
     registeredProviders: ['website', 'website'],
     registeredResourceNamespaces: [],
     isDefault: true
@@ -27,33 +22,62 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_STORAGE_ACCESS_KEY'] = 'VziajzvLTkInp+ATITNj/xT5FpBzGbjwA25LnyPavG5fktKJq2csE4fJLzLY0c2Z5cEWgaN/PAK2PBJC4zPAKA==';
-  process.env['BLOB_SOURCE_PATH'] = 'https://teststorage1220.blob.core.windows.net/myvhds/testsvc1683.vhd';
+  process.env['AZURE_STORAGE_ACCESS_KEY'] = 'cYTfOc5q67OX4jAkvh3IQ1Th9aDDlvNFWUJkDsgA1MFobYOeBtQQxM4mK+XJtpIqkQff2PX4Q+FGGmIcWHVs/g==';
+  process.env['BLOB_SOURCE_PATH'] = 'https://acsforsdk2.blob.core.windows.net/disks/disknewupload12.vhd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://azsmnet7371.blob.core.windows.net:80')
-  .put('/myvhds?restype=container')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:5f668c6e-0001-0049-0571-682291000000\nTime:2015-03-15T03:55:02.9022000Z</Message></Error>", { 'content-length': '230',
+nock('http://aaa4junestrgeacct.blob.core.windows.net:443')
+  .put('/vhd-store?restype=container')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:f1da3546-0001-0093-058b-a28756000000\nTime:2015-06-09T08:12:03.1487684Z</Message></Error>", { 'content-length': '230',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5f668c6e-0001-0049-0571-682291000000',
+  'x-ms-request-id': 'f1da3546-0001-0093-058b-a28756000000',
   'x-ms-version': '2012-02-12',
-  date: 'Sun, 15 Mar 2015 03:55:02 GMT' });
+  date: 'Tue, 09 Jun 2015 08:12:02 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://azsmnet7371.blob.core.windows.net:80')
-  .put('/myvhds/clitestvm1674.vhd')
-  .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 15 Mar 2015 03:55:03 GMT',
-  etag: '"0x8D22CEAF385498E"',
+nock('https://aaa4junestrgeacct.blob.core.windows.net:443')
+  .put('/vhd-store?restype=container')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:f1da3546-0001-0093-058b-a28756000000\nTime:2015-06-09T08:12:03.1487684Z</Message></Error>", { 'content-length': '230',
+  'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a8ee60f-0001-0071-783f-baba4d000000',
+  'x-ms-request-id': 'f1da3546-0001-0093-058b-a28756000000',
   'x-ms-version': '2012-02-12',
-  'x-ms-copy-id': '09fdd0ca-9cf7-4276-953d-cae6074b3989',
+  date: 'Tue, 09 Jun 2015 08:12:02 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://aaa4junestrgeacct.blob.core.windows.net:443')
+  .put('/vhd-store/clitestvm9281.vhd')
+  .reply(202, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Tue, 09 Jun 2015 08:12:04 GMT',
+  etag: '"0x8D270A31AA174E1"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '913d53a1-0001-00f1-7d8b-a2c08e000000',
+  'x-ms-version': '2012-02-12',
+  'x-ms-copy-id': 'f48ac7e1-a0e0-4362-b390-a1bf71509390',
   'x-ms-copy-status': 'success',
-  date: 'Sun, 15 Mar 2015 03:55:02 GMT' });
+  date: 'Tue, 09 Jun 2015 08:12:03 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://aaa4junestrgeacct.blob.core.windows.net:443')
+  .put('/vhd-store/clitestvm9281.vhd')
+  .reply(202, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Tue, 09 Jun 2015 08:12:04 GMT',
+  etag: '"0x8D270A31AA174E1"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '913d53a1-0001-00f1-7d8b-a2c08e000000',
+  'x-ms-version': '2012-02-12',
+  'x-ms-copy-id': 'f48ac7e1-a0e0-4362-b390-a1bf71509390',
+  'x-ms-copy-status': 'success',
+  date: 'Tue, 09 Jun 2015 08:12:03 GMT',
+  connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['clitestvm1674'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestvm9281'];};
