@@ -40,6 +40,7 @@ describe('apiapp', function () {
     var createdGroups = [];
     var subscription;
     var resourceClient;
+    var originalSetTimeout = setTimeout;
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
@@ -47,6 +48,11 @@ describe('apiapp', function () {
         location = process.env.AZURE_APIAPP_TEST_LOCATION;
         subscription = profile.current.getSubscription();
         resourceClient = utils.createResourceClient(subscription);
+        if (suite.isPlayback()) {
+          setTimeout = function (action, timeout) {
+            process.nextTick(action);
+          };
+        }
         done();
       });
     });
@@ -60,6 +66,7 @@ describe('apiapp', function () {
             resourceClient.resourceGroups.deleteMethod(groupName, next);
           }, done);
         } else {
+          setTimeout = originalSetTimeout;
           done();
         }
       });
