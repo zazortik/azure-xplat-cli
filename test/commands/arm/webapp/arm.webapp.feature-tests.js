@@ -28,9 +28,8 @@ var createdSites = [];
 var location = 'West US';
 var createdGroups = [];
 var createdResources = [];
-var subscription = profile.current.getSubscription();
-var resourceClient = utils.createResourceClient(subscription);
 var hostingPlanName, groupName;
+var resourceClient;
 
 describe('arm', function () {
   var suite;
@@ -40,6 +39,8 @@ describe('arm', function () {
     suite.setupSuite(function () {
       sitename = suite.generateId('webappclitest', createdSites);
       groupName = suite.generateId('testrg1', createdGroups);
+      var subscription = profile.current.getSubscription();
+      resourceClient = utils.createResourceClient(subscription);
       if (!suite.isPlayback()) {
         suite.execute('group create %s --location %s --json', groupName, location, function (result) {
           result.exitStatus.should.equal(0);
