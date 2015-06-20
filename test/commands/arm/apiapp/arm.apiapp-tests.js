@@ -45,6 +45,7 @@ describe('arm', function () {
   var subscription;
   var resourceClient;
   var deploymentNameStub;
+  var originalSetTimeout = setTimeout;
 
   before(function (done) {
     // Stub deployLib's createDeploymentName function so that
@@ -57,6 +58,11 @@ describe('arm', function () {
       location = process.env.AZURE_APIAPP_TEST_LOCATION;
       subscription = profile.current.getSubscription();
       resourceClient = utils.createResourceClient(subscription);
+      if (suite.isPlayback()) {
+        setTimeout = function (action, timeout) {
+          process.nextTick(action);
+        };
+      }
       done();
     });
   });
@@ -72,6 +78,7 @@ describe('arm', function () {
           resourceClient.resourceGroups.deleteMethod(groupName, next);
         }, done);
       } else {
+        setTimeout = originalSetTimeout;
         done();
       }
     });
