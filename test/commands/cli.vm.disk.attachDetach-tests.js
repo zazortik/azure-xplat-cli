@@ -23,74 +23,74 @@ var createdVms = [];
 var testPrefix = 'cli.vm.disk.attachDetach-tests';
 
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
 }];
 
 describe('cli', function() {
-    describe('vm', function() {
-        var vmUtil = new vmTestUtil();
-        var vmName,
-            location,
-            username = 'azureuser',
-            password = 'PassW0rd$',
-            diskName,
-            timeout, retry = 5;
-        testUtils.TIMEOUT_INTERVAL = 10000;
+  describe('vm', function() {
+    var vmUtil = new vmTestUtil();
+    var vmName,
+      location,
+      username = 'azureuser',
+      password = 'PassW0rd$',
+      diskName,
+      timeout, retry = 5;
+    testUtils.TIMEOUT_INTERVAL = 10000;
 
-        before(function(done) {
-            suite = new CLITest(this, testPrefix, requiredEnvironment);
-            suite.setupSuite(function() {
-				location = process.env.AZURE_VM_TEST_LOCATION;
-				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-				done();
-			});	
-        });
-
-        after(function(done) {
-            if (suite.isPlayback())
-                suite.teardownSuite(done);
-            else {
-                vmUtil.deleteVM(vmName, timeout, suite, function() {
-                    suite.teardownSuite(done);
-                });
-            }
-        });
-
-        beforeEach(function(done) {
-            suite.setupTest(function() {
-                vmName = suite.generateId(vmPrefix, createdVms);
-                diskName = vmName + 'disk';
-                done();
-            });
-        });
-
-        afterEach(function(done) {
-            suite.teardownTest(done);
-        });
-
-        //attach a disk and if successfull detaches the attached disk
-        describe('Disk:', function() {
-            it('Attach & Detach', function(done) {
-                vmUtil.createDisk(diskName, location, suite, function() {
-                    vmUtil.createLinuxVM(vmName, username, password, location, timeout, suite, function() {
-                        var cmd = util.format('vm disk attach %s %s --json', vmName, diskName).split(' ');
-                        testUtils.executeCommand(suite, retry, cmd, function(result) {
-                            result.exitStatus.should.equal(0);
-                            vmUtil.waitForDiskOp(vmName, true, timeout, suite, function(vmObj) {
-                                vmObj.DataDisks[0].name.should.equal(diskName);
-                                cmd = util.format('vm disk detach %s 0 --json', vmName).split(' ');
-                                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                                    result.exitStatus.should.equal(0);
-                                    vmUtil.waitForDiskOp(vmName, false, timeout, suite, function(vmObj) {
-                                        done();
-                                    });
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
+    before(function(done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        done();
+      });
     });
+
+    after(function(done) {
+      if (suite.isPlayback())
+        suite.teardownSuite(done);
+      else {
+        vmUtil.deleteVM(vmName, timeout, suite, function() {
+          suite.teardownSuite(done);
+        });
+      }
+    });
+
+    beforeEach(function(done) {
+      suite.setupTest(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        diskName = vmName + 'disk';
+        done();
+      });
+    });
+
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
+
+    //attach a disk and if successfull detaches the attached disk
+    describe('Disk:', function() {
+      it('Attach & Detach', function(done) {
+        vmUtil.createDisk(diskName, location, suite, function() {
+          vmUtil.createLinuxVM(vmName, username, password, location, timeout, suite, function() {
+            var cmd = util.format('vm disk attach %s %s --json', vmName, diskName).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              vmUtil.waitForDiskOp(vmName, true, timeout, suite, function(vmObj) {
+                vmObj.DataDisks[0].name.should.equal(diskName);
+                cmd = util.format('vm disk detach %s 0 --json', vmName).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  result.exitStatus.should.equal(0);
+                  vmUtil.waitForDiskOp(vmName, false, timeout, suite, function(vmObj) {
+                    done();
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 });

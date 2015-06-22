@@ -23,60 +23,60 @@ var vmPrefix = 'clitestvm';
 var createdVms = [];
 var testPrefix = 'cli.vm.create_staticvm_neg-tests';
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
 }];
 
 describe('cli', function() {
-    describe('vm', function() {
-        var vmName, vmName1 = 'abcd',
-            location,
-            retry = 5,
-            timeout, staticIpToSet = "10.0.1.1";
-        testUtils.TIMEOUT_INTERVAL = 5000;
+  describe('vm', function() {
+    var vmName, vmName1 = 'abcd',
+      location,
+      retry = 5,
+      timeout, staticIpToSet = "10.0.1.1";
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
-        before(function(done) {
-            suite = new CLITest(this, testPrefix, requiredEnvironment);
-            suite.setupSuite(function() {
-                vmName = suite.generateId(vmPrefix, createdVms);
-				location = process.env.AZURE_VM_TEST_LOCATION;
-                timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-                done();
-            });
-        });
-
-        after(function(done) {
-            suite.teardownSuite(done);
-        });
-
-        beforeEach(function(done) {
-            suite.setupTest(done);
-        });
-
-        afterEach(function(done) {
-            setTimeout(function() {
-                suite.teardownTest(done);
-            }, timeout);
-        });
-
-        describe('negative testcase', function() {
-            it('Setting the invalid static ip address', function(done) {
-                var cmd = util.format('vm static-ip set %s ip --json', vmName).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                    result.exitStatus.should.equal(1);
-                    result.errorText.should.include('The IP address ip is invalid');
-                    done();
-                });
-            });
-
-            it('Setting the invalid vm name', function(done) {
-                var cmd = util.format('vm static-ip set %s %s --json', vmName1, staticIpToSet).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                    result.exitStatus.should.equal(1);
-                    result.errorText.should.include('No VM with name ' + '"' + vmName1 + '"' + ' found');
-                    setTimeout(done, timeout);
-                });
-            });
-        });
+    before(function(done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        done();
+      });
     });
+
+    after(function(done) {
+      suite.teardownSuite(done);
+    });
+
+    beforeEach(function(done) {
+      suite.setupTest(done);
+    });
+
+    afterEach(function(done) {
+      setTimeout(function() {
+        suite.teardownTest(done);
+      }, timeout);
+    });
+
+    describe('negative testcase', function() {
+      it('Setting the invalid static ip address', function(done) {
+        var cmd = util.format('vm static-ip set %s ip --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('The IP address ip is invalid');
+          done();
+        });
+      });
+
+      it('Setting the invalid vm name', function(done) {
+        var cmd = util.format('vm static-ip set %s %s --json', vmName1, staticIpToSet).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.include('No VM with name ' + '"' + vmName1 + '"' + ' found');
+          setTimeout(done, timeout);
+        });
+      });
+    });
+  });
 });
