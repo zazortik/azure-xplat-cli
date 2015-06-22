@@ -25,94 +25,94 @@ var createdVms = [];
 var vmCreated;
 var getVM = new Object();
 var requiredEnvironment = [{
-    name: 'AZURE_VM_TEST_LOCATION',
-    defaultValue: 'West US'
+  name: 'AZURE_VM_TEST_LOCATION',
+  defaultValue: 'West US'
 }];
 
 describe('cli', function() {
-    describe('vm', function() {
-        var vmUtil = new vmTestUtil();
-        var vmName,
-            location,
-            timeout,
-            username = 'azureuser',
-            password = 'PassW0rd$',
-            extensionList,
-            exteAylist,
-            retry = 5,
-			publisher = 'Chef.Bootstrap.WindowsAzure';
-			
-        testUtils.TIMEOUT_INTERVAL = 5000;
+  describe('vm', function() {
+    var vmUtil = new vmTestUtil();
+    var vmName,
+      location,
+      timeout,
+      username = 'azureuser',
+      password = 'PassW0rd$',
+      extensionList,
+      exteAylist,
+      retry = 5,
+      publisher = 'Chef.Bootstrap.WindowsAzure';
 
-        before(function(done) {
-            suite = new CLITest(this, testPrefix, requiredEnvironment);
-            suite.setupSuite(function() {
-                vmName = suite.generateId(vmPrefix, createdVms);
-				location = process.env.AZURE_VM_TEST_LOCATION;
-                timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-                done();
-            });
-        });
+    testUtils.TIMEOUT_INTERVAL = 5000;
 
-        after(function(done) {
-            if (suite.isMocked)
-                suite.teardownSuite(done);
-            else {
-                vmUtil.deleteVM(vmName, timeout, suite, function() {
-                    suite.teardownSuite(done);
-                });
-            }
-        });
-
-        beforeEach(function(done) {
-            suite.setupTest(done);
-        });
-
-        afterEach(function(done) {
-            suite.teardownTest(done);
-        });
-
-        describe('Extension:', function() {
-
-            it('get the details of VM', function(done) {
-                vmUtil.getVM(getVM, vmName, username, password, location, timeout, suite, function(vmName) {
-                    var cmd = util.format('vm extension get %s --json', vmName).split(' ');
-                    testUtils.executeCommand(suite, retry, cmd, function(result) {
-                        result.exitStatus.should.equal(0);
-                        extensionList = JSON.parse(result.text);
-                        if (extensionList.length === 0) {
-                            done();
-                        } else {
-                            extensionList.length.should.be.above(0);
-                            exteAylist = extensionList.filter(function(ex) {
-                                return ex.publisher == publisher;
-                            })[0]
-                            done();
-                        }
-
-                    });
-                });
-            });
-
-            //Get Complete extension output
-            it('get chef extension output', function(done) {
-                vmUtil.getVM(getVM, vmName, username, password, location, timeout, suite, function(vmName) {
-                    var cmd = util.format('vm extension get-chef --json', vmName).split(' ');
-                    testUtils.executeCommand(suite, retry, cmd, function(result) {
-                        result.exitStatus.should.equal(0);
-                        var ext = JSON.parse(result.text);
-                        if (ext.length === 0) {
-                            done();
-                        } else {
-                            ext.length.should.be.above(0);
-                            ext[0].name.should.equal(exteAylist.name);
-                            ext[0].publisher.should.equal(exteAylist.publisher);
-                            ext[0].referenceName.should.equal(exteAylist.referenceName);
-                            done();
-                        }
-                    });
-                });
-            });
-        });
+    before(function(done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        vmName = suite.generateId(vmPrefix, createdVms);
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        done();
+      });
     });
+
+    after(function(done) {
+      if (suite.isMocked)
+        suite.teardownSuite(done);
+      else {
+        vmUtil.deleteVM(vmName, timeout, suite, function() {
+          suite.teardownSuite(done);
+        });
+      }
+    });
+
+    beforeEach(function(done) {
+      suite.setupTest(done);
+    });
+
+    afterEach(function(done) {
+      suite.teardownTest(done);
+    });
+
+    describe('Extension:', function() {
+
+      it('get the details of VM', function(done) {
+        vmUtil.getVM(getVM, vmName, username, password, location, timeout, suite, function(vmName) {
+          var cmd = util.format('vm extension get %s --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            extensionList = JSON.parse(result.text);
+            if (extensionList.length === 0) {
+              done();
+            } else {
+              extensionList.length.should.be.above(0);
+              exteAylist = extensionList.filter(function(ex) {
+                return ex.publisher == publisher;
+              })[0]
+              done();
+            }
+
+          });
+        });
+      });
+
+      //Get Complete extension output
+      it('get chef extension output', function(done) {
+        vmUtil.getVM(getVM, vmName, username, password, location, timeout, suite, function(vmName) {
+          var cmd = util.format('vm extension get-chef --json', vmName).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var ext = JSON.parse(result.text);
+            if (ext.length === 0) {
+              done();
+            } else {
+              ext.length.should.be.above(0);
+              ext[0].name.should.equal(exteAylist.name);
+              ext[0].publisher.should.equal(exteAylist.publisher);
+              ext[0].referenceName.should.equal(exteAylist.referenceName);
+              done();
+            }
+          });
+        });
+      });
+    });
+  });
 });
