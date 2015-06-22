@@ -19,14 +19,14 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-image-list-tests';
-
+var validPublisher = 'MicrosoftSQLServer' ;
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
 
 var location, publisher, offer, sku;
-
+var hasValue = false;
 describe('arm', function() {
   describe('compute', function() {
     var suite, retry = 5;
@@ -54,19 +54,18 @@ describe('arm', function() {
     });
 
     describe('vm', function() {
-
-      it('image list-publishers ', function(done) {
-        var cmd = util.format('vm image list-publishers %s --json', location).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          publisher = allResources[0].name;
-          done();
-        });
-      });
-
-
-
+		it('image list-publishers ', function(done) {
+			var cmd = util.format('vm image list-publishers %s --json', location).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function(result) {
+			  result.exitStatus.should.equal(0);
+			  var allResources = JSON.parse(result.text);
+				allResources.some(function(res) {
+					publisher = res.name;
+					return res.name === validPublisher;
+				}).should.be.true;
+			  done();
+			});
+		});
       it('image list-offers ', function(done) {
         var cmd = util.format('vm image list-offers %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -76,8 +75,6 @@ describe('arm', function() {
           done();
         });
       });
-
-
       it('image list-skus ', function(done) {
         var cmd = util.format('vm image list-skus %s %s %s --json', location, publisher, offer).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -87,8 +84,6 @@ describe('arm', function() {
           done();
         });
       });
-
-
       it('image list ', function(done) {
         var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {

@@ -25,4 +25,4 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [[]];
- exports.randomTestIdsGenerated = function() { return ['clitestvm2018'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestvm5741'];};
