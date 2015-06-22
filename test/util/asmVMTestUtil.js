@@ -98,7 +98,7 @@ asmVMTestUtil.prototype.getDiskName = function(OS, location, suite, callback) {
 
 };
 asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
-  if (category == 'Windows') {
+  if (category === 'Windows') {
     if (process.env.VM_WIN_IMAGE && process.env.VM_WIN_IMAGE !== undefined) {
       callback(process.env.VM_WIN_IMAGE);
     } else {
@@ -110,7 +110,7 @@ asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
         imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             this.vmImgName = image.name;
-            process.env.VM_WIN_IMAGE = (category == 'Windows') ? image.name : process.env.VM_WIN_IMAGE;
+            process.env.VM_WIN_IMAGE = (category === 'Windows') ? image.name : process.env.VM_WIN_IMAGE;
             return true;
           }
         });
@@ -118,7 +118,7 @@ asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
       });
 
     }
-  } else if (category == 'Linux') {
+  } else if (category === 'Linux') {
     if (process.env.VM_LINUX_IMAGE && process.env.VM_LINUX_IMAGE !== undefined) {
       callback(process.env.VM_LINUX_IMAGE);
     } else {
