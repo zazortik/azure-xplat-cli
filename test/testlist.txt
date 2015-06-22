@@ -43,6 +43,8 @@ commands/cli.network.reservedip-tests.js
 commands/cli.network-nsg-tests.js
 commands/cli.network-nsg-rule-tests.js
 commands/cli.network-subnet-tests.js
+commands/cli.network.local-network.js
+commands/cli.network.gateway-test.js
 commands/cli.vm.create_vnet_multi_nic-tests.js
 commands/cli.vm.capture-tests.js
 commands/cli.vm.acl-tests.js
