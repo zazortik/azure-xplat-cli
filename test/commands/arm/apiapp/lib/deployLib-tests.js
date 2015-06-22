@@ -15,6 +15,7 @@
 
 'use strict';
 
+var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
 var util = require('util');
@@ -159,15 +160,15 @@ describe('apiapp', function () {
             parameters: []
           }
         };
+        deployer.parameters = deployer.packageMetadata.metadata.parameters;
 
         valueProviderStub.callsArgWith(1, null, 'a name');
         deployer.gatherParameters(function (err) {
           should.not.exist(err);
-          var values = deployer.parameterValues;
-          Object.keys(values).should.have.length(1);
-          values.should.have.property(packageId);
-          values[packageId].should.have.property('$apiAppName');
-          values[packageId]['$apiAppName'].should.equal('a name');
+          var values = deployer.parameters;
+          values.should.have.length(1);
+          values[0].name.should.equal('$apiAppName');
+          values[0].value.should.equal('a name');
 
           // Should have been passed a default to value provider
           valueProviderStub.firstCall.args[0].defaultValue.should.equal(packageId);
@@ -198,6 +199,7 @@ describe('apiapp', function () {
             ]
           }
         };
+        deployer.parameters = deployer.packageMetadata.metadata.parameters;
 
         var expectedValues = {
           '$apiAppName': 'someName',
@@ -207,7 +209,12 @@ describe('apiapp', function () {
 
         deployer.gatherParameters(function(err) {
           should.not.exist(err);
-          deployer.parameterValues[packageId].should.have.properties(expectedValues);
+          deployer.parameters.should.have.length(3);
+          deployer.parameters.reduce(
+            function (acc, p) {
+              acc[p.name] = p.value;
+              return acc;
+            }, {}).should.have.properties(expectedValues);
           done();
         });
       });
@@ -223,6 +230,7 @@ describe('apiapp', function () {
             parameters: [ { name: 'aLabel' }]
           }
         };
+        deployer.parameters = deployer.packageMetadata.metadata.parameters;
 
         deployer.gatherParameters(function(err) {
           should.exist(err);
