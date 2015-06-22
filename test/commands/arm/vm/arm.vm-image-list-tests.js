@@ -19,7 +19,7 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-image-list-tests';
-var validPublisher = 'MicrosoftSQLServer' ;
+var validPublisher = 'MicrosoftSQLServer';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
@@ -54,18 +54,18 @@ describe('arm', function() {
     });
 
     describe('vm', function() {
-		it('image list-publishers ', function(done) {
-			var cmd = util.format('vm image list-publishers %s --json', location).split(' ');
-			testUtils.executeCommand(suite, retry, cmd, function(result) {
-			  result.exitStatus.should.equal(0);
-			  var allResources = JSON.parse(result.text);
-				allResources.some(function(res) {
-					publisher = res.name;
-					return res.name === validPublisher;
-				}).should.be.true;
-			  done();
-			});
-		});
+      it('image list-publishers ', function(done) {
+        var cmd = util.format('vm image list-publishers %s --json', location).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            publisher = res.name;
+            return res.name === validPublisher;
+          }).should.be.true;
+          done();
+        });
+      });
       it('image list-offers ', function(done) {
         var cmd = util.format('vm image list-offers %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
