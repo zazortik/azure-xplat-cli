@@ -28,9 +28,8 @@ var createdSites = [];
 var location = 'West US';
 var createdGroups = [];
 var createdResources = [];
-var subscription = profile.current.getSubscription();
-var resourceClient = utils.createResourceClient(subscription);
 var hostingPlanName, groupName;
+var resourceClient;
 
 describe('arm', function () {
   var suite;
@@ -40,6 +39,8 @@ describe('arm', function () {
     suite.setupSuite(function () {
       sitename = suite.generateId('webappclitest', createdSites);
       groupName = suite.generateId('testrg1', createdGroups);
+      var subscription = profile.current.getSubscription();
+      resourceClient = utils.createResourceClient(subscription);
       if (!suite.isPlayback()) {
         suite.execute('group create %s --location %s --json', groupName, location, function (result) {
           result.exitStatus.should.equal(0);
@@ -81,14 +82,14 @@ describe('arm', function () {
   describe('webapp', function () {
 
     it('create should work', function (done) {
-      suite.execute('webapp create --resourcegroup %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
+      suite.execute('webapp create --resource-group %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('list should work', function (done) {
-      suite.execute('webapp list --resourcegroup %s --json', groupName, function (result) {
+      suite.execute('webapp list --resource-group %s --json', groupName, function (result) {
         result.exitStatus.should.equal(0);
         var output = JSON.parse(result.text);
         output.length.should.be.above(0);
@@ -97,7 +98,7 @@ describe('arm', function () {
     });
 
     it('show should work', function (done) {
-      suite.execute('webapp show --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
+      suite.execute('webapp show --resource-group %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         var webapp = JSON.parse(result.text);
         webapp.webSite.name.should.equal(sitename);
@@ -106,28 +107,28 @@ describe('arm', function () {
     });
 
     it('stop should work', function (done) {
-      suite.execute('webapp stop --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
+      suite.execute('webapp stop --resource-group %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('start should work', function (done) {
-      suite.execute('webapp start --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
+      suite.execute('webapp start --resource-group %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('restart should work', function (done) {
-      suite.execute('webapp restart --resourcegroup %s --name %s --json', groupName, sitename, function (result) {
+      suite.execute('webapp restart --resource-group %s --name %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
     it('delete should work', function (done) {
-      suite.execute('webapp delete --resourcegroup %s --name %s -q --json', groupName, createdSites[0], function (result) {
+      suite.execute('webapp delete --resource-group %s --name %s -q --json', groupName, createdSites[0], function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
