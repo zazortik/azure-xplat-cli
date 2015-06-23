@@ -46,7 +46,7 @@ describe('asm', function () {
 				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
 				accountType = process.env.AZURE_STORAGE_TEST_TYPE;
 				vnetPrefix1 = suite.isMocked ? vnetPrefix1 : suite.generateId(vnetPrefix1, null);
-			    locNetPrefix2 = suite.isMocked ? locNetPrefix2 : suite.generateId(locNetPrefix2, null);
+				locNetPrefix2 = suite.isMocked ? locNetPrefix2 : suite.generateId(locNetPrefix2, null);
 				storagePrefix = suite.isMocked ? storagePrefix : suite.generateId(storagePrefix, null);
 				storageContPrefix = suite.isMocked ? storageContPrefix : suite.generateId(storageContPrefix, null);
 			    done();

@@ -12,6 +12,10 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'CollaberaInteropTest',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -28,25 +32,25 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.core.windows.net:443')
   .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet1/gateway')
-  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet1</Message><Timestamp>2015-06-18T14:22:10.3511303Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>23.99.28.86</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>9913c98f-fe67-4cc9-bdaa-7920b4980d33</GatewayId></Gateway>", { 'cache-control': 'no-cache',
-  'content-length': '519',
+  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet1</Message><Timestamp>2015-06-23T13:32:33.1913702Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>104.209.39.124</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>8b12e2aa-4cab-45a7-953f-ac92254dbcd0</GatewayId></Gateway>", { 'cache-control': 'no-cache',
+  'content-length': '522',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '9ef3790d081cbe4aa51f3f7be8bdb54d',
-  date: 'Thu, 18 Jun 2015 14:22:35 GMT',
+  'x-ms-request-id': 'e28536eedf3cb6e69265a6564f91958c',
+  date: 'Tue, 23 Jun 2015 13:32:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet1/gateway')
-  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet1</Message><Timestamp>2015-06-18T14:22:10.3511303Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>23.99.28.86</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>9913c98f-fe67-4cc9-bdaa-7920b4980d33</GatewayId></Gateway>", { 'cache-control': 'no-cache',
-  'content-length': '519',
+  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet1</Message><Timestamp>2015-06-23T13:32:33.1913702Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>104.209.39.124</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>8b12e2aa-4cab-45a7-953f-ac92254dbcd0</GatewayId></Gateway>", { 'cache-control': 'no-cache',
+  'content-length': '522',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '9ef3790d081cbe4aa51f3f7be8bdb54d',
-  date: 'Thu, 18 Jun 2015 14:22:35 GMT',
+  'x-ms-request-id': 'e28536eedf3cb6e69265a6564f91958c',
+  date: 'Tue, 23 Jun 2015 13:32:58 GMT',
   connection: 'close' });
  return result; }]];

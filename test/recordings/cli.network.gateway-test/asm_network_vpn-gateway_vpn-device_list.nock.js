@@ -12,6 +12,10 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'CollaberaInteropTest',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -33,8 +37,8 @@ nock('http://management.core.windows.net:443')
   'content-type': 'application/octet-stream',
   server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'bd97fa01a62ab5ba98d482a015376838',
-  date: 'Thu, 18 Jun 2015 14:24:32 GMT',
+  'x-ms-request-id': '03a6379e443cb28f8a6b52273fd8c87f',
+  date: 'Tue, 23 Jun 2015 13:34:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,7 +50,7 @@ nock('https://management.core.windows.net:443')
   'content-type': 'application/octet-stream',
   server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'bd97fa01a62ab5ba98d482a015376838',
-  date: 'Thu, 18 Jun 2015 14:24:32 GMT',
+  'x-ms-request-id': '03a6379e443cb28f8a6b52273fd8c87f',
+  date: 'Tue, 23 Jun 2015 13:34:19 GMT',
   connection: 'close' });
  return result; }]];

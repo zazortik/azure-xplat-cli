@@ -44,21 +44,20 @@ describe('asm', function () {
 		    suite.setupSuite(function() {
 			    locNetPrefix = suite.isMocked ? locNetPrefix : suite.generateId(locNetPrefix, null);
 				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+				location = process.env.AZURE_VM_TEST_LOCATION;
+				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
 			    done();
 		    });
 		});
 		after(function (done) { 
-			//networkUtil.deleteVnet(vnetPrefix, suite, function() {
+			networkUtil.deleteVnet(vnetPrefix, suite, function() {
 				suite.teardownSuite(function() {
 					done();
 				});
-			//});
+			});
 		});
 		beforeEach(function(done) {
-			suite.setupTest(function() {
-				location = process.env.AZURE_VM_TEST_LOCATION;
-				done();
-			});
+			suite.setupTest(done);	
 		});
 		afterEach(function (done) {
 		  suite.teardownTest(done);
@@ -73,17 +72,17 @@ describe('asm', function () {
 					done();
 				});
 			});
-			// it('add should add local-network to a vnet', function (done) {
-				// networkUtil.createVnet(vnetPrefix, vnetAddrSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, function() {
-					// networkUtil.createGatewaySubnet(vnetPrefix, subnetPrefix, subnetAddPrefix, timeout, suite, function() {
-						// var cmd = util.format('network vnet local-network add -n %s -l %s --json', vnetPrefix, locNetPrefix).split(' ');
-						// testUtils.executeCommand(suite, retry, cmd, function (result) {
-							// result.exitStatus.should.equal(0);
-							// done();
-						// });
-					// });
-				// });
-			// });
+			it('add should add local-network to a vnet', function (done) {
+				networkUtil.createVnet(vnetPrefix, vnetAddrSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, function() {
+					networkUtil.createGatewaySubnet(vnetPrefix, subnetPrefix, subnetAddPrefix, timeout, suite, function() {
+						var cmd = util.format('network vnet local-network add -n %s -l %s --json', vnetPrefix, locNetPrefix).split(' ');
+						testUtils.executeCommand(suite, retry, cmd, function (result) {
+							result.exitStatus.should.equal(0);
+							done();
+						});
+					});
+				});
+			});
 			it('list should display all local-network in network', function (done) {
 				var cmd = util.format('network local-network list --json').split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -98,13 +97,13 @@ describe('asm', function () {
 					done();
 				});
 			});
-			// it('remove should remove a local-network from a vnet', function (done) {
-				// var cmd = util.format('network vnet local-network remove -n %s -l %s --json', vnetPrefix, locNetPrefix).split(' ');
-				// testUtils.executeCommand(suite, retry, cmd, function (result) {
-					// result.exitStatus.should.equal(0);
-					// done();
-				// });
-			// });
+			it('remove should remove a local-network from a vnet', function (done) {
+				var cmd = util.format('network vnet local-network remove -n %s -l %s --json', vnetPrefix, locNetPrefix).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function (result) {
+					result.exitStatus.should.equal(0);
+					done();
+				});
+			});
 			it('set should modify local-network', function (done) {
 				var cmd = util.format('network local-network set -n %s -a %s -w %s --json', locNetPrefix, AddressPrefixNew, vpnGatewayAddressNew).split(' ');
 				testUtils.executeCommand(suite, retry, cmd, function (result) {

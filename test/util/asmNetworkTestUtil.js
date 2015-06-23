@@ -34,16 +34,16 @@ var retry = 5;
  * 
  */
 function asmNetworkTestUtil() {
-	this.timeout = 4000000;
+	this.timeout = 3000000;
 }
 //Start Of Gateway
 asmNetworkTestUtil.prototype.createVnetForGateway = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, timeout, suite, callback) {
 	var cmd = util.format('network vnet create %s -e %s -i %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr).split(' ');
-    cmd.push('-l');
-    cmd.push(location);
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
+	cmd.push('-l');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
-        setTimeout(callback, timeout);
+	    setTimeout(callback, timeout);
     });
 };
 
