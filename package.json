@@ -91,7 +91,9 @@
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x",
-    "node-forge": "0.6.23"
+    "node-forge": "0.6.23",
+    "ssh-key-to-pem": "0.11.0",
+    "jsrsasign": "4.8.2 "
   },
   "devDependencies": {
     "mocha": "1.16.0",

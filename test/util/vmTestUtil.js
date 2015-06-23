@@ -95,7 +95,7 @@ VMTestUtil.prototype.GetWindowsSkusList = function(location, suite, callback) {
 	suite.execute('vm image list-skus %s %s %s --json', location, this.winPublisher, this.winOffer, function(result) {
 		result.exitStatus.should.equal(0);
 		var allResources = JSON.parse(result.text);
-		VMTestUtil.winSkus = allResources[0].name;
+		VMTestUtil.winSkus = allResources[1].name;
 		callback();
 	});
 };
