@@ -58,15 +58,15 @@ describe('cli', function() {
       var dnsIp = '10.0.0.1';
 
       afterEach(function(done) {
-        suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function() {
+        suite.execute('network dns-server unregister %s --quiet --json', dnsIp, function() {
           done();
         });
       });
 
       it('should create and list', function(done) {
-        suite.execute('network dnsserver register %s --json', dnsIp, function(result) {
+        suite.execute('network dns-server register %s --json', dnsIp, function(result) {
           result.exitStatus.should.equal(0);
-          suite.execute('network dnsserver list --json', function(result) {
+          suite.execute('network dns-server list --json', function(result) {
             result.exitStatus.should.equal(0);
             var dnsServers = JSON.parse(result.text);
             var exists = dnsServers.some(function(v) {
@@ -133,9 +133,9 @@ describe('cli', function() {
       });
 
       it('should create vnet with dns-server-id option and show', function(done) {
-        suite.execute('network dnsserver register %s --json --dns-id %s', dnsIp, dnsId, function(result) {
+        suite.execute('network dns-server register %s --json --dns-id %s', dnsIp, dnsId, function(result) {
           result.exitStatus.should.equal(0);
-          suite.execute('network dnsserver list --json', function(result) {
+          suite.execute('network dns-server list --json', function(result) {
             result.exitStatus.should.equal(0);
             var dnsServers = JSON.parse(result.text);
             var dnsServer = dnsServers.filter(function(v) {
@@ -155,7 +155,7 @@ describe('cli', function() {
                   vnet.state.should.equal('Created');
                   vnet.dnsServers[0].name.should.equal(dnsId);
                   suite.execute('network vnet delete %s --quiet --json', vnetName, function() {
-                    suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function() {
+                    suite.execute('network dns-server unregister %s --quiet --json', dnsIp, function() {
                       done();
                     });
                   })
