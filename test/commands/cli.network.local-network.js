@@ -38,7 +38,8 @@ describe('asm', function () {
     describe('network', function () {
     var suite, timeout, retry = 5;
 	var networkUtil = new networkTestUtil();
-
+	testUtils.TIMEOUT_INTERVAL = 5000;
+	
 		before(function (done) {
 		    suite = new CLITest(this, testprefix, requiredEnvironment);
 		    suite.setupSuite(function() {

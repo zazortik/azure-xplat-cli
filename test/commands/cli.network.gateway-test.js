@@ -130,7 +130,7 @@ describe('asm', function () {
 					done();
 				});
 			});
-			//Blocked.Marked as External
+			//Blocked- https://github.com/MSOpenTech/azure-xplat-cli/issues/258
 			// it('default-site set should pass', function (done) {
 				// var cmd = util.format('network vpn-gateway default-site set %s %s --json', vnetPrefix1, locNetPrefix2).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -145,6 +145,7 @@ describe('asm', function () {
 					// done();
 				// });
 			// });
+			//Blocked - https://github.com/MSOpenTech/azure-xplat-cli/issues/264
 			// it('vpn-device get-script', function (done) {
 				// var cmd = util.format('network vpn-gateway device get-script -n %s -o %s -p %s -f %s --json', vnetPrefix1, vendor, platform, osFamily).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -152,6 +153,7 @@ describe('asm', function () {
 					// done();
 				// });
 			// });
+			//Blocked- https://github.com/MSOpenTech/azure-xplat-cli/issues/244
 			// it('resize should resize gateway in a vnet', function (done) {
 				// var cmd = util.format('network vpn-gateway resize %s %s --json', vnetPrefix1, sku).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -159,6 +161,7 @@ describe('asm', function () {
 					// done();
 				// });
 			// });
+			//Blocked- https://github.com/MSOpenTech/azure-xplat-cli/issues/243
 			// it('reset should reset gateway in a vnet', function (done) {
 				// var cmd = util.format('network vpn-gateway reset %s --json', vnetPrefix1).split(' ');
 				// testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -166,7 +169,6 @@ describe('asm', function () {
 					// done();
 				// });
 			// });
-			//End of Blocked
 			it('diagnostics start should pass', function (done) {
 				networkUtil.createStorage(storagePrefix, location, accountType, timeout, suite, function() {
 					networkUtil.listStorageKey(storagePrefix, timeout, suite, function(primaryKey) {

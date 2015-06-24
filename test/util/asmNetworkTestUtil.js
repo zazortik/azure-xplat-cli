@@ -147,7 +147,15 @@ asmNetworkTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace,
         callback();
     });
 };
-
+asmNetworkTestUtil.prototype.createVnetMin = function(vnetPrefix, subnetPrefix, location, suite, callback) {
+	var cmd = util.format('network vnet create --vnet %s -n %s --json', vnetPrefix, subnetPrefix).split(' ');
+    cmd.push('-l');
+    cmd.push(location);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        callback();
+    });
+};
 asmNetworkTestUtil.prototype.deleteVnet = function(vnetPrefix, suite, callback) {
 	if (!suite.isPlayback()) {
         var cmd = util.format('network vnet delete %s --quiet --json', vnetPrefix).split(' ');
@@ -177,6 +185,15 @@ asmNetworkTestUtil.prototype.deleteNSG = function(nsgPrefix, suite, callback) {
 	} else
 		callback();
 };
+asmNetworkTestUtil.prototype.createEmptySubVnet = function(vnetPrefix, subnetPrefix, location, suite, callback) {
+	var cmd = util.format('network vnet create --vnet %s -n %s --json', vnetPrefix, subnetPrefix).split(' ');
+	cmd.push('-l');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		callback();
+	});
+};
 asmNetworkTestUtil.prototype.deleteSubnet = function(vnetPrefix,subnetPrefix, suite, callback) {		
 	if (!suite.isPlayback()) {		
 		var cmd = util.format('network vnet subnet delete %s --quiet --json', vnetPrefix,subnetPrefix).split(' ');		
@@ -186,4 +203,25 @@ asmNetworkTestUtil.prototype.deleteSubnet = function(vnetPrefix,subnetPrefix, su
 		});		
 	} else		
 		callback();		
+};
+asmNetworkTestUtil.prototype.createGateway = function(appGatePrefix, vnetPrefix, subnetPrefix, instanceCount, gatewaySize, description, suite, callback) {
+    var cmd = util.format('network application-gateway create -n %s -e %s -t %s -c %s -z %s --json',
+        appGatePrefix, vnetPrefix, subnetPrefix, instanceCount, gatewaySize).split(' ');
+    cmd.push('-d');
+    cmd.push(description);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+		callback();
+    });
+};
+asmNetworkTestUtil.prototype.deleteGateway = function(appGatePrefix, suite, callback) {
+	if (!suite.isPlayback()) {
+		var cmd = util.format('network application-gateway delete %s --quiet --json', appGatePrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	}
+	else
+		callback();
 };
