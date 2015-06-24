@@ -18,6 +18,7 @@ var path = require('path');
 var fs = require('fs');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
 var vmPrefix = 'clitestvm';
@@ -28,7 +29,7 @@ var requiredEnvironment = [{
   defaultValue: 'West US'
 }, {
   name: 'SSHCERT',
-  defaultValue: null
+  defaultValue: 'test/myCert.pem'
 }];
 
 describe('cli', function() {
@@ -39,6 +40,7 @@ describe('cli', function() {
       username = 'azureuser',
       certFile;
     testUtils.TIMEOUT_INTERVAL = 12000;
+    var vmUtil = new vmTestUtil();
 
     // A common VM used by multiple tests
     var vmToUse = {
@@ -49,7 +51,13 @@ describe('cli', function() {
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite.setupSuite(function() {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
+        certFile = process.env.SSHCERT;
+        done()
+      });
     });
 
     after(function(done) {
@@ -58,40 +66,20 @@ describe('cli', function() {
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
         vmName = suite.generateId(vmPrefix, createdVMs);
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-        certFile = process.env.SSHCERT;
         done();
       });
     });
 
     afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b --quiet --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              return callback();
-            });
-          }, timeout);
-        } else {
-          return callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function() {
+      vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
       });
     });
 
     describe('Vm Create: ', function() {
       it('Create VM with ssh cert, no ssh endpoint and no ssh password should pass', function(done) {
-        getImageName('Linux', function(ImageName) {
+        vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm create %s %s %s --ssh-cert %s --no-ssh-password --no-ssh-endpoint --json',
             vmName, ImageName, username, certFile).split(' ');
           cmd.push('--location');
@@ -111,9 +99,9 @@ describe('cli', function() {
           });
         });
       });
-      
+
       it('Create VM with ssh cert and no ssh password, but no ssh endpoint or explicit disabled ssh endpoint should throw error', function(done) {
-        getImageName('Linux', function(ImageName) {
+        vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm create %s %s %s --ssh-cert %s --no-ssh-password --json',
             vmName, ImageName, username, certFile).split(' ');
           cmd.push('--location');
@@ -127,24 +115,5 @@ describe('cli', function() {
       });
     });
 
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      if (process.env.VM_LINUX_IMAGE) {
-        callBack(process.env.VM_LINUX_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function(image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_LINUX_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_LINUX_IMAGE);
-        });
-      }
-    }
   });
 });

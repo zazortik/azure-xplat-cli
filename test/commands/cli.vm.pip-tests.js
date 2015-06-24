@@ -17,6 +17,7 @@ var util = require('util');
 var fs = require('fs');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
 var vmPrefix = 'clitestvm';
@@ -37,15 +38,18 @@ describe('cli', function() {
       password = 'Collabera@01',
       retry = 5,
       timeout;
-      testUtils.TIMEOUT_INTERVAL = 12000;
+    testUtils.TIMEOUT_INTERVAL = 12000;
+    var vmUtil = new vmTestUtil();
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
-      
+
     });
 
     after(function(done) {
@@ -68,11 +72,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {
@@ -83,7 +83,7 @@ describe('cli', function() {
 
     describe('Public ip address :', function() {
       it('Create a VM with public ip address', function(done) {
-        getImageName('Windows', function(ImageName) {
+        vmUtil.getImageName('Windows', suite, function(ImageName) {
           var cmd = util.format('vm create -i %s %s %s %s %s --json',
             publicipname, vmName, ImageName, username, password).split(' ');
           cmd.push('-l');
@@ -132,24 +132,5 @@ describe('cli', function() {
       });
     });
 
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      if (process.env.VM_WIN_IMAGE) {
-        callBack(process.env.VM_WIN_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function(image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_WIN_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_WIN_IMAGE);
-        });
-      }
-    }
   });
 });
