@@ -70,7 +70,13 @@ asmNetworkTestUtil.prototype.addLocalNetwork = function(vnetPrefix, localnetwork
 		setTimeout(callback, timeout);
 	});
 };
-
+asmNetworkTestUtil.prototype.removeLocalNetwork = function(vnetPrefix, localnetworkPrefix, timeout, suite, callback) {
+	var cmd = util.format('network vnet local-network remove -n %s -l %s --json', vnetPrefix, localnetworkPrefix).split(' ');
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		setTimeout(callback, timeout);
+	});
+};
 asmNetworkTestUtil.prototype.createStorage = function(storagePrefix, storageLocation, accountType, timeout, suite, callback) {
 	var cmd = util.format('storage account create %s --type %s --json',storagePrefix, accountType).split(' ');
 	cmd.push('-l');
@@ -138,13 +144,14 @@ asmNetworkTestUtil.prototype.createSubnetVnet = function(vnetPrefix, vnetAddress
 		callback();
 	});
 };
-asmNetworkTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, callback) {
+asmNetworkTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, timeout, suite, callback) {
 	var cmd = util.format('network vnet create %s -e %s -i %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr).split(' ');
     cmd.push('-l');
     cmd.push(location);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
-        callback();
+        //callback();
+		setTimeout(callback, timeout);
     });
 };
 asmNetworkTestUtil.prototype.createVnetMin = function(vnetPrefix, subnetPrefix, location, suite, callback) {

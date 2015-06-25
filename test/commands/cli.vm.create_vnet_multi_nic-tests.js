@@ -61,9 +61,9 @@ describe('asm', function() {
             });
         });
         after(function(done) {
-            vmUtil.deleteVnet(vnetPrefix, suite, function() {
+            setTimeout(vmUtil.deleteVnet(vnetPrefix, suite, function() {
                 suite.teardownSuite(done);
-            });
+            }), timeout);
         });
         beforeEach(function(done) {
             suite.setupTest(function() {
@@ -76,7 +76,7 @@ describe('asm', function() {
         });
 
         describe('vm', function() {
-            it('create should pass', function(done) {
+            it('create with multi nic should pass', function(done) {
                 vmUtil.createSubnetVnet(vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr, location, suite, function() {
                     vmUtil.getImageName('Linux', suite, function(imagename) {
                         var cmd = util.format('vm create %s %s %s %s -z %s --virtual-network-name %s --subnet-names %s --nic-config %s:%s:::%s,%s:%s:::%s --json', vmPrefix, imagename, username, password, vmSize, vnetPrefix, subnetPrefix, nicPrefix1, subnetPrefix, ipForwardingVal, nicPrefix2, subnetPrefix, ipForwardingVal).split(' ');
@@ -90,7 +90,7 @@ describe('asm', function() {
                 });
             });
 
-            it('delete should pass', function(done) {
+            it('delete with multi nic should pass', function(done) {
                 var cmd = util.format('vm delete %s --quiet --json', vmPrefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
