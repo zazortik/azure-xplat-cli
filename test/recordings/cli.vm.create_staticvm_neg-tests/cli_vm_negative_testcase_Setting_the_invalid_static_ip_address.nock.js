@@ -12,7 +12,8 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'CollaberaInteropTest',
-    registeredProviders: [],
+    registeredProviders: ['website', 'website'],
+    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 

@@ -26,7 +26,7 @@ var util = require('util');
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils._js');
+var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
 var testFileDir = './test/data';
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 

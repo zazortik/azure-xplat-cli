@@ -1,3 +1,16 @@
+2015.06.26 Version 0.9.5
+* ARM
+  * WebApp
+    * Added create, delete, show, list, start, stop and restart commands
+  * ApiApp
+    * Added create command
+  * Key Vault
+    * Commands now use Key Vault REST API v2015-06-01
+* ASM
+  * site
+    * Bug fixes for Issues #1666, Added support for PHP version 5.6
+    * Remove support PHP version 5.3 for web site options
+
 2015.06.05 Version 0.9.4
 * ARM
   * Fix group deployment create bug. Users should now be able to successfully submit template deployments
@@ -31,7 +44,7 @@
   * Network
     * Commands to manage DNS Zone and DNS Zone recordset
   * Key Vault
-    * Added commands to manage vaults, keys and secrets (azure vault)
+    * Added commands to manage vaults, keys and secrets (azure keyvault)
   * Insights
     * Added commands to handle alerts and alert rules, autoscale events and autoscale settings, list metrics and metrics definitions, and list usage metrics
   * ApiApp
@@ -39,7 +52,7 @@
 
 Version 0.9.1
 * ARM
-  * Virtual machines 
+  * Virtual machines
     * Support for managing virtual machine resource in CRP stack, this includes commands to
       * Create VM with options to configure availability set and network resources
       * Quick create VM
@@ -87,7 +100,7 @@ Version 0.9.1
         * Updated common mobile test infrastructure
         * Refactored mobile tests into separate files
         * Optimized mocked test time run for mobile tests
-    
+
 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611

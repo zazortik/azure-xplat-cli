@@ -70,8 +70,7 @@ commands/cli.vm.export_create_from-tests.js
 commands/cli.vm.create_staticvm-tests.js
 commands/cli.vm.staticvm_create-from-tests.js
 commands/cli.vm.staticvm_docker-tests.js
-#commenting out docker tests to handle bad recordings.Post rerecording we will include #this test case in the CI run.
-#commands/cli.vm.create_docker-tests.js
+commands/cli.vm.create_docker-tests.js
 commands/cli.vm.create_ssh-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js

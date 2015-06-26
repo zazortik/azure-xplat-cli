@@ -16,6 +16,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
 var vmPrefix = 'clitestvm';
@@ -33,11 +34,14 @@ describe('cli', function() {
       location,
       timeout, retry = 5;
     testUtils.TIMEOUT_INTERVAL = 10000;
+    var vmUtil = new vmTestUtil();
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmImgName = suite.generateId(vmPrefix, createdVmImages);
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        location = process.env.AZURE_VM_TEST_LOCATION;
         done();
       });
     });
@@ -47,11 +51,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {
@@ -61,7 +61,7 @@ describe('cli', function() {
     //create a image
     describe('Image:', function() {
       it('Create', function(done) {
-        getDiskName('Linux', function(diskObj) {
+        vmUtil.getDiskName('Linux', location, suite, function(diskObj) {
           var imageSourcePath = diskObj.mediaLinkUri;
           var domainUrl = 'http://' + imageSourcePath.split('/')[2];
           var blobUrl = domainUrl + '/vm-images/' + vmImgName;
@@ -108,7 +108,7 @@ describe('cli', function() {
           imageObj.category.toLowerCase().should.equal('public');
 
           found = null,
-          imageObj = null;
+            imageObj = null;
           found = imageList.some(function(image) {
             if (image.category.toLowerCase() === 'user') {
               imageObj = image;
@@ -143,20 +143,5 @@ describe('cli', function() {
       });
     });
 
-    // Get name of an disk of the given category
-    function getDiskName(OS, callBack) {
-      var cmd = util.format('vm disk list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var diskList = JSON.parse(result.text);
-        diskList.some(function(disk) {
-          if (disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) {
-            diskObj = disk;
-            return true;
-          }
-        });
-        callBack(diskObj);
-      });
-    }
   });
 });

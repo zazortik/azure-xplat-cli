@@ -86,6 +86,11 @@ if %errorlevel% neq 0 goto ERROR
 if %errorlevel% neq 0 goto ERROR
 popd
 
+echo Generating streamline files...
+pushd %TEMP_REPO%
+.\bin\node.exe bin\azure --gen
+popd
+
 echo Removing unneeded files from azure module...
 pushd %TEMP_REPO%
 

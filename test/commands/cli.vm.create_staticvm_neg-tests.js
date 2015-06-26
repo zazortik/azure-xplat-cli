@@ -31,16 +31,16 @@ describe('cli', function() {
   describe('vm', function() {
     var vmName, vmName1 = 'abcd',
       location,
-      username = 'azureuser',
-      password = 'PassW0rd$',
       retry = 5,
-      timeout, staticIpavail, staticIpToSet = "10.0.1.1";
+      timeout, staticIpToSet = "10.0.1.1";
     testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
@@ -50,11 +50,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {

@@ -16,12 +16,12 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
 var vmPrefix = 'clitestvm';
 var diskPrefix = 'clitestdisk'
 var testPrefix = 'cli.vm.disk-tests';
-var createdVms = [];
 var createdDisks = [];
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -36,6 +36,7 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
+    var vmUtil = new vmTestUtil();
     var diskSourcePath,
       storageAccountKey, timeout, retry = 5;
     testUtils.TIMEOUT_INTERVAL = 5000;
@@ -116,7 +117,7 @@ describe('cli', function() {
       it('create and delete should work', function(done) {
         var diskName = suite.generateId(diskPrefix, createdDisks);
         var osType = 'Linux';
-        getDiskName(osType, function(diskObj) {
+        vmUtil.getDiskName(osType, location, suite, function(diskObj) {
           diskSourcePath = diskObj.mediaLinkUri;
           var domainUrl = 'https://' + diskSourcePath.split('/')[2];
           var blobUrl = domainUrl + '/disks/' + diskName;
@@ -153,22 +154,5 @@ describe('cli', function() {
       });
     });
 
-    // Get name of an disk of the given category
-    function getDiskName(OS, callBack) {
-      var diskObj;
-      var cmd = util.format('vm disk list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var diskList = JSON.parse(result.text);
-        diskList.some(function(disk) {
-          if ((disk.operatingSystemType && disk.operatingSystemType.toLowerCase() === OS.toLowerCase()) &&
-            (disk.location && disk.location.toLowerCase() === location.toLowerCase())) {
-            diskObj = disk;
-            return true;
-          }
-        });
-        callBack(diskObj);
-      });
-    }
   });
 });

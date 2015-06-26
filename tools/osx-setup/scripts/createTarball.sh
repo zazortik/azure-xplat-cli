@@ -61,42 +61,45 @@ pushd /tmp/azureInstallerTemporary/node_modules/azure
 rm -rf .git
 popd
 
-pushd /tmp/azureInstallerTemporary/node_modules/azure
-for PACKAGE in packages scripts test tasks examples jsdoc
-do
-	rm -rf $PACKAGE
-done
-
-cd lib
-rm -rf common
-
-cd services
-packages=( gallery
-	management
-	computeManagement
-	resourceManagement
-	serviceBusManagement
-	schedulerManagement
-	sqlManagement
-	storageManagement
-	subscriptionManagement
-	networkManagement
-	webSiteManagement
-	scheduler
-)
-
-for PACKAGE in ${packages[@]}
-do
-	rm -rf $PACKAGE
-done
-popd
-
-pushd /tmp/azureInstallerTemporary/node_modules
-for PACKAGE in azure-gallery azure-mgmt-resource
-do
-	rm -rf $PACKAGE/node_modules/azure-common
-done
-popd
+# L67-L102 are commented temporarily until the versions of azure-common
+# are unified across all packages
+# 
+# pushd /tmp/azureInstallerTemporary/node_modules/azure
+# for PACKAGE in packages test tasks examples jsdoc
+# do
+# 	rm -rf $PACKAGE
+# done
+# 
+# cd lib
+# rm -rf common
+# 
+# cd services
+# packages=( gallery
+# 	management
+# 	computeManagement
+# 	resourceManagement
+# 	serviceBusManagement
+# 	schedulerManagement
+# 	sqlManagement
+# 	storageManagement
+# 	subscriptionManagement
+# 	networkManagement
+# 	webSiteManagement
+# 	scheduler
+# )
+# 
+# for PACKAGE in ${packages[@]}
+# do
+# 	rm -rf $PACKAGE
+# done
+# popd
+# 
+# pushd /tmp/azureInstallerTemporary/node_modules
+# for PACKAGE in azure-gallery azure-mgmt-resource
+# do
+# 	rm -rf $PACKAGE/node_modules/azure-common
+# done
+# popd
 
 # Remove dev dependencies from azure module
 pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
@@ -144,6 +147,11 @@ pushd /tmp/azureInstallerTemporary
 node node_modules/streamline/bin/_node --verbose -c lib
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline-streams/lib
+popd
+
+# generate command metadata file
+pushd /tmp/azureInstallerTemporary
+node bin/azure --gen
 popd
 
 # Copy licensing files

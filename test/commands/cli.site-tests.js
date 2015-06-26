@@ -363,7 +363,7 @@ describe('cli', function () {
       });
 
       it('sets all properties', function (done) {
-        suite.execute('site set --net-version 3.5 --php-version 5.3 --web-socket %s --json', siteName, function (result) {
+        suite.execute('site set --net-version 3.5 --php-version 5.4 --web-socket %s --json', siteName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
