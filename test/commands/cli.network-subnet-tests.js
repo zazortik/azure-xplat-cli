@@ -38,15 +38,17 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
     describe('network', function() {
-        var suite, retry = 5;
+        var suite, timeout, retry = 5;
+		testUtils.TIMEOUT_INTERVAL = 10000;
 		var networkUtil = new networkTestUtil();
 
         before(function(done) {
             suite = new CLITest(this, testprefix, requiredEnvironment);
             suite.setupSuite(function() {
-                vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-                subnetPrefix = suite.isMocked ? subnetPrefix : suite.generateId(subnetPrefix, null);
-                nsgPrefix = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
+                vnetPrefix = suite.generateId(vnetPrefix, null);
+                subnetPrefix = suite.generateId(subnetPrefix, null);
+                nsgPrefix = suite.generateId(nsgPrefix, null);
+				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
                 done();
             });
         });
@@ -67,10 +69,10 @@ describe('cli', function() {
             suite.teardownTest(done);
         });
 
-        describe('subnet', function() {
+        describe('vnet subnet', function() {
 
             it('create should pass', function(done) {
-                networkUtil.createVnet(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, function() {
+                networkUtil.createVnet(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, timeout, suite, function() {
                     var cmd = util.format('network vnet subnet create %s %s -a %s --json', vnetPrefix, subnetPrefix, subnetAddressPrefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                         result.exitStatus.should.equal(0);

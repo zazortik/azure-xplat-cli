@@ -62,16 +62,8 @@ asmNetworkTestUtil.prototype.createLocalNetwork = function(localnetworkPrefix, l
 		setTimeout(callback, timeout);
 	});
 };
-
 asmNetworkTestUtil.prototype.addLocalNetwork = function(vnetPrefix, localnetworkPrefix, timeout, suite, callback) {
 	var cmd = util.format('network vnet local-network add -n %s -l %s --json', vnetPrefix, localnetworkPrefix).split(' ');
-	testUtils.executeCommand(suite, retry, cmd, function(result) {
-		result.exitStatus.should.equal(0);
-		setTimeout(callback, timeout);
-	});
-};
-asmNetworkTestUtil.prototype.removeLocalNetwork = function(vnetPrefix, localnetworkPrefix, timeout, suite, callback) {
-	var cmd = util.format('network vnet local-network remove -n %s -l %s --json', vnetPrefix, localnetworkPrefix).split(' ');
 	testUtils.executeCommand(suite, retry, cmd, function(result) {
 		result.exitStatus.should.equal(0);
 		setTimeout(callback, timeout);
@@ -133,6 +125,16 @@ asmNetworkTestUtil.prototype.deleteGatewayVnet = function(vnetPrefix, timeout, s
 		});
 	} else
 		callback();
+};
+asmNetworkTestUtil.prototype.removeLocalNetwork = function(vnetPrefix, localnetworkPrefix, timeout, suite, callback) {
+	if (!suite.isPlayback()) {
+		var cmd = util.format('network vnet local-network remove -n %s -l %s --json', vnetPrefix, localnetworkPrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			setTimeout(callback, timeout);
+		});
+	}
+	else callback();
 };
 //End Of Gateway
 asmNetworkTestUtil.prototype.createSubnetVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr, location, suite, callback) {

@@ -12,10 +12,6 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'CollaberaInteropTest',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -31,26 +27,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet1/gateway/publicdiagnostics')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet8230/gateway/publicdiagnostics')
   .reply(200, "<GatewayPublicDiagnosticsStatus xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><PublicDiagnosticsUrl/><State>StopInProgress</State></GatewayPublicDiagnosticsStatus>", { 'cache-control': 'no-cache',
   'content-length': '219',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78ac4cf74931b040a5165aca712199ef',
-  date: 'Tue, 23 Jun 2015 13:36:54 GMT',
+  'x-ms-request-id': '8ae4d9ba0506b54397dd52e2acb15673',
+  date: 'Fri, 26 Jun 2015 06:47:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet1/gateway/publicdiagnostics')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet8230/gateway/publicdiagnostics')
   .reply(200, "<GatewayPublicDiagnosticsStatus xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><PublicDiagnosticsUrl/><State>StopInProgress</State></GatewayPublicDiagnosticsStatus>", { 'cache-control': 'no-cache',
   'content-length': '219',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78ac4cf74931b040a5165aca712199ef',
-  date: 'Tue, 23 Jun 2015 13:36:54 GMT',
+  'x-ms-request-id': '8ae4d9ba0506b54397dd52e2acb15673',
+  date: 'Fri, 26 Jun 2015 06:47:47 GMT',
   connection: 'close' });
  return result; }]];
