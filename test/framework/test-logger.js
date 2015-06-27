@@ -29,7 +29,7 @@ var currentTest = '';
 //provides the log directory where the test logs would reside 
 function getLogDir() {
   if(!fs.existsSync(testLogDir)) {
-    fs.mkdir(testLogDir);
+    fs.mkdirSync(testLogDir);
   }
   return testLogDir;
 };
