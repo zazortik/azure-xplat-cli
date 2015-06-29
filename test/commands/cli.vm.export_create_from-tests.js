@@ -121,7 +121,7 @@ describe('cli', function() {
             obj.oSVirtualHardDisk.name = diskname;
           else
             diskname = obj.oSVirtualHardDisk.name;
-
+			diskname = obj.dataVirtualHardDisks[0].name;
           waitForDiskRelease(diskname, function() {
             var jsonstr = JSON.stringify(obj);
             fs.writeFileSync(file, jsonstr);
