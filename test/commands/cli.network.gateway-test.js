@@ -22,9 +22,9 @@ var CLITest = require('../framework/cli-test');
 var testprefix = 'cli.network.gateway-test';
 var networkTestUtil = require('../util/asmNetworkTestUtil');
 
-var vnetPrefix1 = 'CliGtTestVnet1', vnetAddrSpace1 = '10.1.0.0', vnetCidr1 = '16', subnetStartIp1 = '10.1.0.0', subnetCidr1 = '19';	
+var vnetPrefix1 = 'CliGtTestVnet', vnetAddrSpace1 = '10.1.0.0', vnetCidr1 = '16', subnetStartIp1 = '10.1.0.0', subnetCidr1 = '19';	
 var subnetPrefix1 = 'GatewaySubnet', subnetAddPrefix1 = '10.1.32.0/29';	
-var locNetPrefix2 = 'CliGtTestLocNetwork2', vpnGatewayAddress2 = '200.200.200.200', LocNetAddressPrefix2 = '10.2.0.0/16';
+var locNetPrefix2 = 'CliGtTestLocNetwork', vpnGatewayAddress2 = '200.200.200.200', LocNetAddressPrefix2 = '10.2.0.0/16';
 var type = 'DynamicRouting' , sku = 'Default', KeyValue= 'abcd', KeyLength = '123', vendor, platform, osFamily ;
 var location, storagePrefix = 'clivpnstorage' , accountType , storageContPrefix = 'clivpncont', duration = '300'; 
 var requiredEnvironment = [
@@ -45,21 +45,22 @@ describe('asm', function () {
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
 				accountType = process.env.AZURE_STORAGE_TEST_TYPE;
-				vnetPrefix1 = suite.isMocked ? vnetPrefix1 : suite.generateId(vnetPrefix1, null);
-				locNetPrefix2 = suite.isMocked ? locNetPrefix2 : suite.generateId(locNetPrefix2, null);
-				storagePrefix = suite.isMocked ? storagePrefix : suite.generateId(storagePrefix, null);
-				storageContPrefix = suite.isMocked ? storageContPrefix : suite.generateId(storageContPrefix, null);
+				vnetPrefix1 = suite.generateId(vnetPrefix1, null);
+				locNetPrefix2 = suite.generateId(locNetPrefix2, null);
+				storagePrefix = suite.generateId(storagePrefix, null);
+				storageContPrefix = suite.generateId(storageContPrefix, null);
 			    done();
 		    });
 		});
 		after(function(done) {
-			networkUtil.deleteGatewayVnet(vnetPrefix1, timeout, suite, function() {
-				networkUtil.deleteStorage(storagePrefix, timeout, suite, function() {
-					networkUtil.deleteLocalNetwork(locNetPrefix2, timeout, suite, function() {
-						suite.teardownSuite(done);	
+			networkUtil.removeLocalNetwork(vnetPrefix1, locNetPrefix2, timeout, suite, function() {
+				networkUtil.deleteGatewayVnet(vnetPrefix1, timeout, suite, function() {
+					networkUtil.deleteStorage(storagePrefix, timeout, suite, function() {
+						networkUtil.deleteLocalNetwork(locNetPrefix2, timeout, suite, function() {
+							suite.teardownSuite(done);
+						});
 					});
-				});						
-							
+				});
 			});				
 		});
 		

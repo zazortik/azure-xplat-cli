@@ -12,10 +12,6 @@ exports.getMockedProfile = function () {
       cert: 'mockedCert'
     },
     name: 'CollaberaInteropTest',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -29,3 +25,5 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [];
+
+ exports.randomTestIdsGenerated = function() { return ['CliGtTestVnet8230','CliGtTestLocNetwork5435','clivpnstorage2139','clivpncont5407'];};

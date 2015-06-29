@@ -43,8 +43,8 @@ describe('asm', function () {
 		before(function (done) {
 		    suite = new CLITest(this, testprefix, requiredEnvironment);
 		    suite.setupSuite(function() {
-			    locNetPrefix = suite.isMocked ? locNetPrefix : suite.generateId(locNetPrefix, null);
-				vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+			    locNetPrefix = suite.generateId(locNetPrefix, null);
+				vnetPrefix = suite.generateId(vnetPrefix, null);
 				location = process.env.AZURE_VM_TEST_LOCATION;
 				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
 			    done();
@@ -74,7 +74,7 @@ describe('asm', function () {
 				});
 			});
 			it('add should add local-network to a vnet', function (done) {
-				networkUtil.createVnet(vnetPrefix, vnetAddrSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, function() {
+				networkUtil.createVnet(vnetPrefix, vnetAddrSpace, vnetCidr, subnetStartIp, subnetCidr, location, timeout, suite, function() {
 					networkUtil.createGatewaySubnet(vnetPrefix, subnetPrefix, subnetAddPrefix, timeout, suite, function() {
 						var cmd = util.format('network vnet local-network add -n %s -l %s --json', vnetPrefix, locNetPrefix).split(' ');
 						testUtils.executeCommand(suite, retry, cmd, function (result) {
