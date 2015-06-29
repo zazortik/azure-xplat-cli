@@ -90,7 +90,7 @@ describe('cli', function() {
       it('Create a VM', function(done) {
         getImageName('Windows', function(ImageName) {
           var cmd = util.format('vm create %s %s %s %s -r --json',
-            vmName, ImageName, username, password).split(' ');
+		  vmName, ImageName, username, password).split(' ');
           cmd.push('-l');
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {

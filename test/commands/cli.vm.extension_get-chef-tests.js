@@ -80,7 +80,7 @@ describe('cli', function() {
 
     describe('Extension:', function() {
 
-      it('get the details of VM', function(done) {
+      it('get the details of the extensions of VM', function(done) {
         getVM(function(vmName) {
           var cmd = util.format('vm extension get %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
