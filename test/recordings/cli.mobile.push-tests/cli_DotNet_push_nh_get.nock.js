@@ -13,7 +13,6 @@ exports.getMockedProfile = function () {
     },
     name: 'Mobilytics Test1',
     registeredProviders: ['website', 'mobileservice'],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,16 +25,16 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
-  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"healthy\",\"pushEntityNamespace\":\"clitestDotNet119Hub-ns\",\"pushEntityPath\":\"clitestDotNet119Hub\",\"pushEntityConnectionString\":\"Endpoint=sb:\\/\\/clitestdotnet119hub-ns.servicebus.windows.net\\/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=VH\\/WgpFzjl9YpzpMoJFwJG8lp9ed2iNtq1a4b0hvTiY=\",\"namespaceCreated\":true,\"pushEntityCreated\":true}}", { 'cache-control': 'no-cache',
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
+  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"healthy\",\"pushEntityNamespace\":\"clitestDotNet4789Hub-ns\",\"pushEntityPath\":\"clitestDotNet4789Hub\",\"pushEntityConnectionString\":\"Endpoint=sb:\\/\\/clitestdotnet4789hub-ns.servicebus.windows.net\\/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=\\/JiVQL4bRloEtiWAKosxRPH\\/vctFi6nIJOtd6jyCiGM=\",\"namespaceCreated\":true,\"pushEntityCreated\":true}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '456',
+  'content-length': '460',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'f14dd2cf89618c95812cbba5c7c52e37',
-  date: 'Wed, 08 Apr 2015 01:25:17 GMT' });
+  'x-ms-request-id': '60c1d17ecd26b35e9d07e9e530587c53',
+  date: 'Mon, 29 Jun 2015 22:15:03 GMT' });
  return result; }]];
