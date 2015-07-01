@@ -45,17 +45,17 @@ var requiredEnvironment = [{
 }];
 
 
-describe('asm', function() {
-    describe('compute', function() {
+describe('cli', function() {
+    describe('vm', function() {
         var suite;
 		var vmUtil = new vmTestUtil();
 		
         before(function(done) {
             suite = new CLITest(this, testprefix, requiredEnvironment);
             suite.setupSuite(function() {
-                vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
-                vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-                subnetPrefix = suite.isMocked ? subnetPrefix : suite.generateId(subnetPrefix, null);
+                vmPrefix = suite.generateId(vmPrefix, null);
+                vnetPrefix = suite.generateId(vnetPrefix, null);
+                subnetPrefix = suite.generateId(subnetPrefix, null);
                 timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
                 done();
             });
@@ -75,7 +75,7 @@ describe('asm', function() {
             suite.teardownTest(done);
         });
 
-        describe('vm', function() {
+        describe('Vm Create:', function() {
             it('create with multi nic should pass', function(done) {
                 vmUtil.createSubnetVnet(vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr, location, suite, function() {
                     vmUtil.getImageName('Linux', suite, function(imagename) {

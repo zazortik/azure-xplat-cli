@@ -24,3 +24,5 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [];
+
+ exports.randomTestIdsGenerated = function() { return ['ClitestVmVnet688','CliTestVnetVm7513','CliTestSubnetVm5845'];};

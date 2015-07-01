@@ -23,7 +23,7 @@ var retry = 5;
 var createReservedIp = new Object();
 //var getVnet = new Object();
 //var getAffinityGroup = new Object();
-var getVM = new Object();
+//var getVM = new Object();
 var affinityName = 'xplataffintest',
     affinLabel = 'xplatAffinGrp',
     affinDesc = 'Test Affinty Group for xplat';
@@ -46,10 +46,9 @@ function asmVMTestUtil() {
     this.staticIpavail;
 	this.staticIpToSet;
 }
-asmVMTestUtil.prototype.getVM = function(vmName, username, password, location, timeout, suite, callback) {
+asmVMTestUtil.prototype.getVM = function(getVM, vmName, username, password, location, timeout, suite, callback) {
 
     if (getVM.VMName) {
-
         callback(getVM.VMName);
     } else {
         var cmd = util.format('vm list --json').split(' ');
@@ -63,8 +62,7 @@ asmVMTestUtil.prototype.getVM = function(vmName, username, password, location, t
                 }
             });
             if (!found) {
-                this.createWindowsVM(vmName, username, password, location, timeout, suite, function() {
-                    //vmCreated = true;		
+                this.createWindowsVM(vmName, username, password, location, timeout, suite, function() {	
                     getVM.VMName = vmName;
                 });
             }
@@ -321,6 +319,13 @@ asmVMTestUtil.prototype.getVnetStaticIP = function(status, getVnet, getAffinityG
         });
     }
 };
+asmVMTestUtil.prototype.createVMEndPt = function(vmName, publicport, localoport, vmEndpointName, protocol, idletimeout, probeport, probeprotocol, probPathName, lbSetName, dirctserverreturn, timeout, suite, callback) {
+        var cmd = util.format('vm endpoint create %s %s -k %s -n %s -o %s -m %s -t %s -r %s -p %s -b %s -u %s --json',vmName, publicport, localoport, vmEndpointName, protocol, idletimeout, probeport, probeprotocol, probPathName, lbSetName, dirctserverreturn).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            setTimeout(callback, timeout);
+        });
+};
 asmVMTestUtil.prototype.deleteUsedVM = function(vm, timeout, suite, callback) {
     if (vm.Created && vm.Delete) {
         setTimeout(function() {
@@ -425,8 +430,9 @@ asmVMTestUtil.prototype.createDisk = function(diskName, location, suite, callbac
         });
     });
 };
-asmVMTestUtil.prototype.waitForDiskOp = function(vmName, DiskAttach, suite, callback) {
+asmVMTestUtil.prototype.waitForDiskOp = function(vmName, DiskAttach, timeout, suite, callback) {
     var vmObj;
+	var VMTestUtil = this;
     var cmd = util.format('vm show %s --json', vmName).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
@@ -435,7 +441,7 @@ asmVMTestUtil.prototype.waitForDiskOp = function(vmName, DiskAttach, suite, call
             callback(vmObj);
         } else {
             setTimeout(function() {
-                this.waitForDiskOp(vmName, DiskAttach, suite, callback);
+                VMTestUtil.waitForDiskOp(vmName, DiskAttach, timeout, suite, callback);
             }, timeout);
         }
     });
@@ -470,15 +476,16 @@ asmVMTestUtil.prototype.checkFreeDisk = function(suite, callback) {
         callback(diskname);
     });
 };
-asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, diskreleasetimeout, timeout, suite, callback) {
+asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, timeout, diskreleasetimeout, suite, callback) {
     var vmDiskObj;
+	var VMTestUtil = this;
     var cmd = util.format('vm disk show %s --json', vmDisk).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
         vmDiskObj = JSON.parse(result.text);
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
             setTimeout(function() {
-                asmVMTestUtil.prototype.waitForDiskRelease.call(vmDisk, diskreleasetimeout, timeout, suite, callback);
+				VMTestUtil.waitForDiskRelease(vmDisk, timeout, diskreleasetimeout, suite, callback);
             }, timeout);
         } else {
             setTimeout(function() {
