@@ -28,72 +28,72 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179\",\"name\":\"arm-apiapp-tests4179\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340\",\"name\":\"arm-apiapp-tests6340\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '193',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1188',
-  'x-ms-request-id': '0a2953f3-62c4-43cb-a874-cf74b1322d5e',
-  'x-ms-correlation-request-id': '0a2953f3-62c4-43cb-a874-cf74b1322d5e',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234152Z:0a2953f3-62c4-43cb-a874-cf74b1322d5e',
+  'x-ms-ratelimit-remaining-subscription-writes': '1180',
+  'x-ms-request-id': '5ce9ce17-3541-46c4-8ec3-bb60a6d36336',
+  'x-ms-correlation-request-id': '5ce9ce17-3541-46c4-8ec3-bb60a6d36336',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014133Z:5ce9ce17-3541-46c4-8ec3-bb60a6d36336',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:41:52 GMT' });
+  date: 'Sat, 20 Jun 2015 01:41:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.Web//serverFarms/arm-apiapp-tests5307?api-version=2014-06-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/serverfarms/arm-apiapp-tests5307\",\"name\":\"arm-apiapp-tests5307\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":null,\"location\":\"westus\",\"tags\":null,\"plan\":null,\"properties\":{\"name\":\"arm-apiapp-tests5307\",\"sku\":\"Free\",\"workerSize\":0,\"workerSizeId\":0,\"numberOfWorkers\":0,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":0,\"webSpace\":\"arm-apiapp-tests4179-WestUSwebspace\",\"subscription\":\"2804ae14-b835-4630-ac14-44f01a5a8c28\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"maximumNumberOfWorkers\":0,\"planName\":null,\"perSiteScaling\":false,\"hostingEnvironmentId\":null}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.Web//serverFarms/arm-apiapp-tests1945?api-version=2014-06-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/serverfarms/arm-apiapp-tests1945\",\"name\":\"arm-apiapp-tests1945\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":null,\"location\":\"westus\",\"tags\":null,\"plan\":null,\"properties\":{\"name\":\"arm-apiapp-tests1945\",\"sku\":\"Free\",\"workerSize\":0,\"workerSizeId\":0,\"numberOfWorkers\":0,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":0,\"webSpace\":\"arm-apiapp-tests6340-WestUSwebspace\",\"subscription\":\"2804ae14-b835-4630-ac14-44f01a5a8c28\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"maximumNumberOfWorkers\":0,\"planName\":null,\"perSiteScaling\":false,\"hostingEnvironmentId\":null}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '712',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ea2dedfc-4c4e-4311-800b-244e99b3a306',
+  'x-ms-request-id': '65f6dfc8-d9b0-45a4-9e26-a8b3a300d94f',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '159fdeab-8398-4859-a916-171863a1ce7a',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234200Z:159fdeab-8398-4859-a916-171863a1ce7a',
-  date: 'Wed, 10 Jun 2015 23:42:00 GMT' });
+  'x-ms-ratelimit-remaining-subscription-writes': '1180',
+  'x-ms-correlation-request-id': '194c00b8-44e2-4239-884c-180268c71efb',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014136Z:194c00b8-44e2-4239-884c-180268c71efb',
+  date: 'Sat, 20 Jun 2015 01:41:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .head('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179?api-version=2014-04-01-preview')
+  .head('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340?api-version=2014-04-01-preview')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-request-id': '77f4b848-d31f-48a7-8114-5e0c12e8d988',
-  'x-ms-correlation-request-id': '77f4b848-d31f-48a7-8114-5e0c12e8d988',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234200Z:77f4b848-d31f-48a7-8114-5e0c12e8d988',
+  'x-ms-ratelimit-remaining-subscription-reads': '14886',
+  'x-ms-request-id': '0ba94520-c7f0-4dc0-8db7-bbdd5cdd501b',
+  'x-ms-correlation-request-id': '0ba94520-c7f0-4dc0-8db7-bbdd5cdd501b',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014137Z:0ba94520-c7f0-4dc0-8db7-bbdd5cdd501b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:41:59 GMT' });
+  date: 'Sat, 20 Jun 2015 01:41:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.Web//serverFarms/arm-apiapp-tests5307?api-version=2014-06-01')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/serverfarms/arm-apiapp-tests5307\",\"name\":\"arm-apiapp-tests5307\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":null,\"location\":\"West US\",\"tags\":null,\"plan\":null,\"properties\":{\"name\":\"arm-apiapp-tests5307\",\"sku\":\"Free\",\"workerSize\":0,\"workerSizeId\":0,\"numberOfWorkers\":0,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":0,\"webSpace\":\"arm-apiapp-tests4179-WestUSwebspace\",\"subscription\":\"2804ae14-b835-4630-ac14-44f01a5a8c28\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"maximumNumberOfWorkers\":1,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"hostingEnvironmentId\":null}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.Web//serverFarms/arm-apiapp-tests1945?api-version=2014-06-01')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/serverfarms/arm-apiapp-tests1945\",\"name\":\"arm-apiapp-tests1945\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":null,\"location\":\"West US\",\"tags\":null,\"plan\":null,\"properties\":{\"name\":\"arm-apiapp-tests1945\",\"sku\":\"Free\",\"workerSize\":0,\"workerSizeId\":0,\"numberOfWorkers\":0,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":0,\"webSpace\":\"arm-apiapp-tests6340-WestUSwebspace\",\"subscription\":\"2804ae14-b835-4630-ac14-44f01a5a8c28\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"maximumNumberOfWorkers\":1,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"hostingEnvironmentId\":null}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '731',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '44725c90-16d3-4b4b-b6a8-21f2183f90ba',
+  'x-ms-request-id': 'e7563267-5dac-46a4-a19b-bedad4e1211c',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-correlation-request-id': 'e8f1e140-7c37-4bee-8ee1-2257fc72f0a8',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234201Z:e8f1e140-7c37-4bee-8ee1-2257fc72f0a8',
-  date: 'Wed, 10 Jun 2015 23:42:01 GMT' });
+  'x-ms-ratelimit-remaining-subscription-reads': '14872',
+  'x-ms-correlation-request-id': '50ef568c-8d29-40b4-ac68-50cd5a434bb7',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014137Z:50ef568c-8d29-40b4-ac68-50cd5a434bb7',
+  date: 'Sat, 20 Jun 2015 01:41:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -104,797 +104,1201 @@ nock('https://management.azure.com:443')
   'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '22739c4e-277d-4b12-b5ce-4f24152f2b98',
-  'x-rp-requesturi': 'https://apiapp-rp-prod-all.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/deploymenttemplates/Microsoft.Azure.AppService.ApiApps.TestBench/listmetadata?api-version=2015-03-01-preview',
+  'x-ms-request-id': '6f9a7c1c-bc62-4ed4-91f0-9479b032b384',
+  'x-rp-requesturi': 'https://apiapp-rp-prod-all.msp.windows.net/routingtypes/proxyonly/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/deploymenttemplates/Microsoft.Azure.AppService.ApiApps.TestBench/listmetadata?api-version=2015-03-01-preview',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '72ecb923-c3f8-42b2-9431-d000e87a4ab4',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234201Z:72ecb923-c3f8-42b2-9431-d000e87a4ab4',
+  'x-ms-ratelimit-remaining-subscription-reads': '14878',
+  'x-ms-correlation-request-id': 'c50946c3-ae61-40e0-a1ed-442c820c95bd',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014137Z:c50946c3-ae61-40e0-a1ed-442c820c95bd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:00 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .post('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/deploymenttemplates/Microsoft.Azure.AppService.ApiApps.TestBench/listmetadata?api-version=2015-03-01-preview')
-  .reply(200, "{\"value\":{\"microserviceId\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"displayName\":\"Test Bench\",\"appSettings\":[],\"dependsOn\":[]}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '134',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'eeca9e49-ec0a-419a-805c-e16459fa49b8',
-  'x-rp-requesturi': 'https://apiapp-rp-prod-all.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/deploymenttemplates/Microsoft.Azure.AppService.ApiApps.TestBench/listmetadata?api-version=2015-03-01-preview',
-  server: 'Microsoft-IIS/8.0',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '58dfd731-fc58-4f8f-9121-bf7f4206dd54',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234202Z:58dfd731-fc58-4f8f-9121-bf7f4206dd54',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:01 GMT' });
+  date: 'Sat, 20 Jun 2015 01:41:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.AppService/deploymenttemplates/generate?api-version=2015-03-01-preview', '*')
-  .reply(200, "{\"value\":{\"$schema\":\"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json\",\"contentVersion\":\"1.0.0.0\",\"parameters\":{\"location\":{\"type\":\"String\",\"defaultValue\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"defaultValue\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\"}},\"variables\":{\"hostingPlanId\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.Web/serverfarms/arm-apiapp-tests5307\"},\"resources\":[{\"type\":\"Microsoft.Resources/deployments\",\"apiVersion\":\"2015-01-01\",\"name\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"dependsOn\":[],\"properties\":{\"templateLink\":{\"uri\":\"https://prodapiappartifactswus.blob.core.windows.net/templates/2804ae14-b835-4630-ac14-44f01a5a8c28/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5.template.json?sv=2014-02-14&sr=b&sig=hYr%2Bpg2ctz5RNKlsEFogwjhs%2B8D7LlQ99y5Ee7v5zVU%3D&st=2015-06-10T23:37:02Z&se=2015-06-11T11:42:02Z&sp=r\"},\"parameters\":{\"$system\":{\"value\":{\"gatewaySiteName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"gatewayName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"location\":\"[parameters('location')]\",\"appServicePlanId\":\"[variables('hostingPlanId')]\",\"hostingEnvironmentName\":\"[parameters('hostingPlan').hostingEnvironment]\",\"id\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"apiVersion\":\"2015-03-01-preview\"}}},\"mode\":\"Incremental\"}},{\"type\":\"Microsoft.Resources/deployments\",\"apiVersion\":\"2015-01-01\",\"name\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"dependsOn\":[\"[resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5')]\"],\"properties\":{\"templateLink\":{\"uri\":\"https://prodapiappartifactswus.blob.core.windows.net/templates/2804ae14-b835-4630-ac14-44f01a5a8c28/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a.template.json?sv=2014-02-14&sr=b&sig=Y4pp26re8uymBHIqX6vMxfa7gChYPphIAF2EQqqdwJY%3D&st=2015-06-10T23:37:03Z&se=2015-06-11T11:42:03Z&sp=r\"},\"parameters\":{\"$system\":{\"value\":{\"apiAppName\":\"[parameters('Microsoft.Azure.AppService.ApiApps.TestBench').$apiAppName]\",\"gatewaySiteName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"gatewayName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"gatewayUri\":\"[reference(resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5')).outputs.gatewayUrl.value]\",\"location\":\"[parameters('location')]\",\"siteName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"siteExtensionName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"appServicePlanName\":\"[parameters('hostingPlan').hostingPlanName]\",\"appServicePlanId\":\"[variables('hostingPlanId')]\",\"hostingEnvironmentName\":\"[parameters('hostingPlan').hostingEnvironment]\",\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"secret\":\"dbbda9bb61ebeba9d23c6849bf3b3de79015c568e7670f4a6c6a294f709de903\",\"signingKey\":\"[reference(resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5')).outputs.signingKey.value]\",\"apiVersion\":\"2015-03-01-preview\"}},\"$dependencies\":{\"value\":[]}},\"mode\":\"Incremental\"}}],\"outputs\":{}}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/deploymenttemplates/generate?api-version=2015-03-01-preview', '*')
+  .reply(200, "{\"value\":{\"$schema\":\"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json\",\"contentVersion\":\"1.0.0.0\",\"parameters\":{\"location\":{\"type\":\"String\",\"defaultValue\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"defaultValue\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\"}},\"variables\":{\"hostingPlanId\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.Web/serverfarms/arm-apiapp-tests1945\"},\"resources\":[{\"type\":\"Microsoft.Resources/deployments\",\"apiVersion\":\"2015-01-01\",\"name\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"dependsOn\":[],\"properties\":{\"templateLink\":{\"uri\":\"https://prodapiappartifactswus.blob.core.windows.net/templates/2804ae14-b835-4630-ac14-44f01a5a8c28/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213.template.json?sv=2014-02-14&sr=b&sig=CC7yM89jw2eYz0jZN6fvDLehTWsOvrNTxL3Ev9SPNZY%3D&st=2015-06-20T01:36:39Z&se=2015-06-20T13:41:39Z&sp=r\"},\"parameters\":{\"$system\":{\"value\":{\"gatewaySiteName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"gatewayName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"location\":\"[parameters('location')]\",\"appServicePlanId\":\"[variables('hostingPlanId')]\",\"hostingEnvironmentName\":\"[parameters('hostingPlan').hostingEnvironment]\",\"id\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"apiVersion\":\"2015-03-01-preview\"}}},\"mode\":\"Incremental\"}},{\"type\":\"Microsoft.Resources/deployments\",\"apiVersion\":\"2015-01-01\",\"name\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"dependsOn\":[\"[resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213')]\"],\"properties\":{\"templateLink\":{\"uri\":\"https://prodapiappartifactswus.blob.core.windows.net/templates/2804ae14-b835-4630-ac14-44f01a5a8c28/ApiAppDeployment_33ced85a8177497797538b97c6b03feb.template.json?sv=2014-02-14&sr=b&sig=nYkhFFInAgrvI6x1aWYiv35%2B9vGZAjPeKxfmuSdPvbA%3D&st=2015-06-20T01:36:39Z&se=2015-06-20T13:41:39Z&sp=r\"},\"parameters\":{\"$system\":{\"value\":{\"apiAppName\":\"[parameters('Microsoft.Azure.AppService.ApiApps.TestBench').$apiAppName]\",\"gatewaySiteName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"gatewayName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"gatewayUri\":\"[reference(resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213')).outputs.gatewayUrl.value]\",\"location\":\"[parameters('location')]\",\"siteName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"siteExtensionName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"appServicePlanName\":\"[parameters('hostingPlan').hostingPlanName]\",\"appServicePlanId\":\"[variables('hostingPlanId')]\",\"hostingEnvironmentName\":\"[parameters('hostingPlan').hostingEnvironment]\",\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"secret\":\"e2c551237db50b33be2e29742fde52a0a1485d0585077c847876df10e821068b\",\"signingKey\":\"[reference(resourceId('Microsoft.Resources/deployments', 'Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213')).outputs.signingKey.value]\",\"apiVersion\":\"2015-03-01-preview\"}},\"$dependencies\":{\"value\":[]}},\"mode\":\"Incremental\"}}],\"outputs\":{}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '3319',
+  'content-length': '3317',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '9475cbdb-acd8-462d-b525-c815d5de0299',
-  'x-rp-requesturi': 'https://apiapp-rp-prod-all.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.AppService/deploymenttemplates/generate?api-version=2015-03-01-preview',
+  'x-ms-request-id': '0277ad53-acfe-4a55-ae5a-48e0144610bc',
+  'x-rp-requesturi': 'https://apiapp-rp-prod-all.msp.windows.net/routingtypes/proxyonly/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/deploymenttemplates/generate?api-version=2015-03-01-preview',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1187',
-  'x-ms-correlation-request-id': '79849904-f005-4f2f-bc06-a9781b2dd70b',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234203Z:79849904-f005-4f2f-bc06-a9781b2dd70b',
+  'x-ms-ratelimit-remaining-subscription-writes': '1182',
+  'x-ms-correlation-request-id': '73c23cdd-7228-4d4d-8655-8c43fb9db56e',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014139Z:73c23cdd-7228-4d4d-8655-8c43fb9db56e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:02 GMT' });
+  date: 'Sat, 20 Jun 2015 01:41:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2015-06-10T23:42:04.446542Z\",\"duration\":\"PT0.3073426S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview', '*')
+  .reply(201, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2015-06-20T01:41:41.278808Z\",\"duration\":\"PT1.4541918S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '6c1b3268-d98f-4ed1-8103-a3df5a6389fa',
-  'x-ms-correlation-request-id': '6c1b3268-d98f-4ed1-8103-a3df5a6389fa',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234204Z:6c1b3268-d98f-4ed1-8103-a3df5a6389fa',
+  'x-ms-ratelimit-remaining-subscription-writes': '1179',
+  'x-ms-request-id': '5da41275-aeba-4690-9c96-ed2989db2073',
+  'x-ms-correlation-request-id': '5da41275-aeba-4690-9c96-ed2989db2073',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014141Z:5da41275-aeba-4690-9c96-ed2989db2073',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:04 GMT',
+  date: 'Sat, 20 Jun 2015 01:41:41 GMT',
   'content-length': '1559' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2015-06-10T23:42:04.446542Z\",\"duration\":\"PT0.3073426S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Accepted\",\"timestamp\":\"2015-06-20T01:41:41.278808Z\",\"duration\":\"PT1.4541918S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-request-id': '55dcdcad-5f6c-4cf5-94c9-9fd338c6e2f2',
-  'x-ms-correlation-request-id': '55dcdcad-5f6c-4cf5-94c9-9fd338c6e2f2',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234204Z:55dcdcad-5f6c-4cf5-94c9-9fd338c6e2f2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14869',
+  'x-ms-request-id': '8737bb51-2bc8-4c4e-813d-2cbf8cd9846d',
+  'x-ms-correlation-request-id': '8737bb51-2bc8-4c4e-813d-2cbf8cd9846d',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014141Z:8737bb51-2bc8-4c4e-813d-2cbf8cd9846d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:04 GMT',
+  date: 'Sat, 20 Jun 2015 01:41:40 GMT',
   'content-length': '1559' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14951',
-  'x-ms-request-id': '0c82bdf5-e0c4-45a5-bf04-23bb86cb11ca',
-  'x-ms-correlation-request-id': '0c82bdf5-e0c4-45a5-bf04-23bb86cb11ca',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234205Z:0c82bdf5-e0c4-45a5-bf04-23bb86cb11ca',
+  'x-ms-ratelimit-remaining-subscription-reads': '14885',
+  'x-ms-request-id': '5dc1c869-bf8c-44c9-b664-d2ff4f379f2c',
+  'x-ms-correlation-request-id': '5dc1c869-bf8c-44c9-b664-d2ff4f379f2c',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014142Z:5dc1c869-bf8c-44c9-b664-d2ff4f379f2c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:04 GMT',
+  date: 'Sat, 20 Jun 2015 01:41:41 GMT',
   'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-request-id': '3b25e872-6626-43b3-ad1f-65dc10267a75',
-  'x-ms-correlation-request-id': '3b25e872-6626-43b3-ad1f-65dc10267a75',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234210Z:3b25e872-6626-43b3-ad1f-65dc10267a75',
+  'x-ms-ratelimit-remaining-subscription-reads': '14877',
+  'x-ms-request-id': '96f50568-3179-4114-aa24-529ce81eece2',
+  'x-ms-correlation-request-id': '96f50568-3179-4114-aa24-529ce81eece2',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014147Z:96f50568-3179-4114-aa24-529ce81eece2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:09 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:41:46 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:09.920346Z\",\"duration\":\"PT4.9809617S\",\"trackingId\":\"03bd79f0-df5b-453a-b594-c259362a0ae5\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-request-id': 'f840724d-6507-429f-886e-89ad39b38a9e',
-  'x-ms-correlation-request-id': 'f840724d-6507-429f-886e-89ad39b38a9e',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234210Z:f840724d-6507-429f-886e-89ad39b38a9e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:10 GMT',
-  'content-length': '752' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-request-id': '8982ca84-1c6f-4a02-9c5e-4131f2ca79b0',
-  'x-ms-correlation-request-id': '8982ca84-1c6f-4a02-9c5e-4131f2ca79b0',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234210Z:8982ca84-1c6f-4a02-9c5e-4131f2ca79b0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14885',
+  'x-ms-request-id': '4c62fee2-2867-4e50-8487-d1e06f1a9b99',
+  'x-ms-correlation-request-id': '4c62fee2-2867-4e50-8487-d1e06f1a9b99',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014147Z:4c62fee2-2867-4e50-8487-d1e06f1a9b99',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:09 GMT',
+  date: 'Sat, 20 Jun 2015 01:41:47 GMT',
   'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14952',
-  'x-ms-request-id': 'd0957b7f-97e4-4b82-be57-b2df2e0fc6fa',
-  'x-ms-correlation-request-id': 'd0957b7f-97e4-4b82-be57-b2df2e0fc6fa',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234216Z:d0957b7f-97e4-4b82-be57-b2df2e0fc6fa',
+  'x-ms-ratelimit-remaining-subscription-reads': '14866',
+  'x-ms-request-id': 'd2a4002a-9451-44a4-9ca8-c336117df066',
+  'x-ms-correlation-request-id': 'd2a4002a-9451-44a4-9ca8-c336117df066',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014152Z:d2a4002a-9451-44a4-9ca8-c336117df066',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:15 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:41:52 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:15.8094117Z\",\"duration\":\"PT10.8700274S\",\"trackingId\":\"45ec09d5-f954-4ffb-a068-099d53c68668\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-request-id': '49f6e7e1-8b44-4350-8a1b-5bf76bcd49a8',
-  'x-ms-correlation-request-id': '49f6e7e1-8b44-4350-8a1b-5bf76bcd49a8',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234216Z:49f6e7e1-8b44-4350-8a1b-5bf76bcd49a8',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:15 GMT',
-  'content-length': '754' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14950',
-  'x-ms-request-id': '0fb9b145-2892-4c64-b738-d0d3345ff906',
-  'x-ms-correlation-request-id': '0fb9b145-2892-4c64-b738-d0d3345ff906',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234216Z:0fb9b145-2892-4c64-b738-d0d3345ff906',
+  'x-ms-ratelimit-remaining-subscription-reads': '14868',
+  'x-ms-request-id': 'a5942fa5-d4cc-473a-9a62-1356e1ba2d33',
+  'x-ms-correlation-request-id': 'a5942fa5-d4cc-473a-9a62-1356e1ba2d33',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014153Z:a5942fa5-d4cc-473a-9a62-1356e1ba2d33',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:16 GMT',
+  date: 'Sat, 20 Jun 2015 01:41:52 GMT',
   'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-request-id': '5f071813-9931-4fb4-9f2d-14dd84098731',
-  'x-ms-correlation-request-id': '5f071813-9931-4fb4-9f2d-14dd84098731',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234221Z:5f071813-9931-4fb4-9f2d-14dd84098731',
+  'x-ms-ratelimit-remaining-subscription-reads': '14884',
+  'x-ms-request-id': '257a949f-5580-4f13-b4e0-b259b88e12fd',
+  'x-ms-correlation-request-id': '257a949f-5580-4f13-b4e0-b259b88e12fd',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014158Z:257a949f-5580-4f13-b4e0-b259b88e12fd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:21 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:41:57 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:21.6100818Z\",\"duration\":\"PT16.6706975S\",\"trackingId\":\"3bfa49c8-2089-4fe0-8b21-435646e06009\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-request-id': '3c9b12aa-bbb7-4d1e-9209-cac2f4f2a8d2',
-  'x-ms-correlation-request-id': '3c9b12aa-bbb7-4d1e-9209-cac2f4f2a8d2',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234221Z:3c9b12aa-bbb7-4d1e-9209-cac2f4f2a8d2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14871',
+  'x-ms-request-id': '9d9e6ecd-f54a-410f-bc10-aa1ea176dda2',
+  'x-ms-correlation-request-id': '9d9e6ecd-f54a-410f-bc10-aa1ea176dda2',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014158Z:9d9e6ecd-f54a-410f-bc10-aa1ea176dda2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:21 GMT',
-  'content-length': '754' });
+  date: 'Sat, 20 Jun 2015 01:41:57 GMT',
+  'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14951',
-  'x-ms-request-id': '80da13fe-3435-450f-8d79-95f1d64749b3',
-  'x-ms-correlation-request-id': '80da13fe-3435-450f-8d79-95f1d64749b3',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234222Z:80da13fe-3435-450f-8d79-95f1d64749b3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14883',
+  'x-ms-request-id': '42cb880b-2164-415f-aba1-817e9d4ccc44',
+  'x-ms-correlation-request-id': '42cb880b-2164-415f-aba1-817e9d4ccc44',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014203Z:42cb880b-2164-415f-aba1-817e9d4ccc44',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:21 GMT',
-  'content-length': '725' });
+  date: 'Sat, 20 Jun 2015 01:42:03 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-request-id': 'dc79cb7f-9a2d-45af-9e09-ccd71c58b1cc',
-  'x-ms-correlation-request-id': 'dc79cb7f-9a2d-45af-9e09-ccd71c58b1cc',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234227Z:dc79cb7f-9a2d-45af-9e09-ccd71c58b1cc',
+  'x-ms-ratelimit-remaining-subscription-reads': '14870',
+  'x-ms-request-id': '229c534c-0117-4e23-81b1-f30a1af9a88d',
+  'x-ms-correlation-request-id': '229c534c-0117-4e23-81b1-f30a1af9a88d',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014203Z:229c534c-0117-4e23-81b1-f30a1af9a88d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:27 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:42:03 GMT',
+  'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:25.3007536Z\",\"duration\":\"PT20.3613693S\",\"trackingId\":\"8657c917-8ee4-4201-aea0-95877ab508b7\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14949',
-  'x-ms-request-id': '17cf9f47-8c3c-4f2e-8f9d-86d05d5a3214',
-  'x-ms-correlation-request-id': '17cf9f47-8c3c-4f2e-8f9d-86d05d5a3214',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234227Z:17cf9f47-8c3c-4f2e-8f9d-86d05d5a3214',
+  'x-ms-ratelimit-remaining-subscription-reads': '14876',
+  'x-ms-request-id': 'c3a8b032-a670-4e96-887e-aeb08c57b75c',
+  'x-ms-correlation-request-id': 'c3a8b032-a670-4e96-887e-aeb08c57b75c',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014209Z:c3a8b032-a670-4e96-887e-aeb08c57b75c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:26 GMT',
-  'content-length': '754' });
+  date: 'Sat, 20 Jun 2015 01:42:08 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-request-id': '124bc29f-73bd-4af3-9ce9-72f2642e85bc',
-  'x-ms-correlation-request-id': '124bc29f-73bd-4af3-9ce9-72f2642e85bc',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234227Z:124bc29f-73bd-4af3-9ce9-72f2642e85bc',
+  'x-ms-ratelimit-remaining-subscription-reads': '14884',
+  'x-ms-request-id': '398fd5a6-2377-43f7-b49c-71a6c30bdadd',
+  'x-ms-correlation-request-id': '398fd5a6-2377-43f7-b49c-71a6c30bdadd',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014209Z:398fd5a6-2377-43f7-b49c-71a6c30bdadd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:27 GMT',
-  'content-length': '1532' });
+  date: 'Sat, 20 Jun 2015 01:42:08 GMT',
+  'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-request-id': '68320c4b-4c88-476d-b566-78f8ee5084d5',
-  'x-ms-correlation-request-id': '68320c4b-4c88-476d-b566-78f8ee5084d5',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234233Z:68320c4b-4c88-476d-b566-78f8ee5084d5',
+  'x-ms-ratelimit-remaining-subscription-reads': '14865',
+  'x-ms-request-id': '3313b9aa-b2f4-40ef-89d4-547dc45da612',
+  'x-ms-correlation-request-id': '3313b9aa-b2f4-40ef-89d4-547dc45da612',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014214Z:3313b9aa-b2f4-40ef-89d4-547dc45da612',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:32 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:42:13 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:30.316728Z\",\"duration\":\"PT25.3773437S\",\"trackingId\":\"3bdb2353-536f-4cf6-97ff-af827176de7c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-request-id': '7fe94fed-81d8-4bfa-8567-7e43ed8e6742',
-  'x-ms-correlation-request-id': '7fe94fed-81d8-4bfa-8567-7e43ed8e6742',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234233Z:7fe94fed-81d8-4bfa-8567-7e43ed8e6742',
+  'x-ms-ratelimit-remaining-subscription-reads': '14867',
+  'x-ms-request-id': 'a8a70d70-cf1e-4549-afba-51023c51f088',
+  'x-ms-correlation-request-id': 'a8a70d70-cf1e-4549-afba-51023c51f088',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014215Z:a8a70d70-cf1e-4549-afba-51023c51f088',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:32 GMT',
+  date: 'Sat, 20 Jun 2015 01:42:14 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14882',
+  'x-ms-request-id': 'c7349b64-5ec2-4c3c-85cd-95897ab0d94c',
+  'x-ms-correlation-request-id': 'c7349b64-5ec2-4c3c-85cd-95897ab0d94c',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014220Z:c7349b64-5ec2-4c3c-85cd-95897ab0d94c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:19 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14869',
+  'x-ms-request-id': 'e3cf7bd7-c835-4c44-80ff-e4fa3a9a638b',
+  'x-ms-correlation-request-id': 'e3cf7bd7-c835-4c44-80ff-e4fa3a9a638b',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014220Z:e3cf7bd7-c835-4c44-80ff-e4fa3a9a638b',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:20 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14875',
+  'x-ms-request-id': '1b3f3278-1c28-481e-b4d8-f74976888b71',
+  'x-ms-correlation-request-id': '1b3f3278-1c28-481e-b4d8-f74976888b71',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014225Z:1b3f3278-1c28-481e-b4d8-f74976888b71',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:24 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14883',
+  'x-ms-request-id': '185c6bdb-55e1-4237-93f2-2ec4fda9c4c8',
+  'x-ms-correlation-request-id': '185c6bdb-55e1-4237-93f2-2ec4fda9c4c8',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014226Z:185c6bdb-55e1-4237-93f2-2ec4fda9c4c8',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:25 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14864',
+  'x-ms-request-id': 'dde49f90-a1e0-4d48-ac6e-ee84cfc6a00b',
+  'x-ms-correlation-request-id': 'dde49f90-a1e0-4d48-ac6e-ee84cfc6a00b',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014231Z:dde49f90-a1e0-4d48-ac6e-ee84cfc6a00b',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:30 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14868',
+  'x-ms-request-id': 'd8b04059-9e75-4a6e-af5a-bb6e759f50e6',
+  'x-ms-correlation-request-id': 'd8b04059-9e75-4a6e-af5a-bb6e759f50e6',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014231Z:d8b04059-9e75-4a6e-af5a-bb6e759f50e6',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:31 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14882',
+  'x-ms-request-id': '0e45aa03-0537-4d8b-9772-2e0b0071fc0b',
+  'x-ms-correlation-request-id': '0e45aa03-0537-4d8b-9772-2e0b0071fc0b',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014236Z:0e45aa03-0537-4d8b-9772-2e0b0071fc0b',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:36 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14863',
+  'x-ms-request-id': '16ca9731-034f-4b52-8e70-b006b4bbaf6a',
+  'x-ms-correlation-request-id': '16ca9731-034f-4b52-8e70-b006b4bbaf6a',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014237Z:16ca9731-034f-4b52-8e70-b006b4bbaf6a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:36 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14866',
+  'x-ms-request-id': '6a556a4b-da4d-4051-810d-f067fdabffc6',
+  'x-ms-correlation-request-id': '6a556a4b-da4d-4051-810d-f067fdabffc6',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014242Z:6a556a4b-da4d-4051-810d-f067fdabffc6',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:42 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14881',
+  'x-ms-request-id': '2a716d73-3e0b-42df-a9ff-351747434525',
+  'x-ms-correlation-request-id': '2a716d73-3e0b-42df-a9ff-351747434525',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014242Z:2a716d73-3e0b-42df-a9ff-351747434525',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:42 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14862',
+  'x-ms-request-id': '7c91f618-4aa7-4995-84b7-74857436482d',
+  'x-ms-correlation-request-id': '7c91f618-4aa7-4995-84b7-74857436482d',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014247Z:7c91f618-4aa7-4995-84b7-74857436482d',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:47 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:42:47.6573589Z\",\"duration\":\"PT3.1326211S\",\"trackingId\":\"d40c18bb-7ae3-48a0-88be-f4c61350d850\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14865',
+  'x-ms-request-id': '30184685-25a5-4950-8a02-f11e152e1749',
+  'x-ms-correlation-request-id': '30184685-25a5-4950-8a02-f11e152e1749',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014248Z:30184685-25a5-4950-8a02-f11e152e1749',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:47 GMT',
   'content-length': '753' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14949',
-  'x-ms-request-id': 'f19eedff-4a6f-4304-a1fa-8f2fe5c7890e',
-  'x-ms-correlation-request-id': 'f19eedff-4a6f-4304-a1fa-8f2fe5c7890e',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234233Z:f19eedff-4a6f-4304-a1fa-8f2fe5c7890e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:32 GMT',
-  'content-length': '2272' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-request-id': '8e40da4a-ed81-4a67-ac8b-3aebe1bd0a36',
-  'x-ms-correlation-request-id': '8e40da4a-ed81-4a67-ac8b-3aebe1bd0a36',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234238Z:8e40da4a-ed81-4a67-ac8b-3aebe1bd0a36',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:38 GMT',
-  'content-length': '1559' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14948',
-  'x-ms-request-id': 'e488a9c3-b1b2-4ee5-a79a-2364bca10266',
-  'x-ms-correlation-request-id': 'e488a9c3-b1b2-4ee5-a79a-2364bca10266',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234239Z:e488a9c3-b1b2-4ee5-a79a-2364bca10266',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:39 GMT',
-  'content-length': '756' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-request-id': '7f0aabca-9ed0-4047-8688-1b6c821d10df',
-  'x-ms-correlation-request-id': '7f0aabca-9ed0-4047-8688-1b6c821d10df',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234239Z:7f0aabca-9ed0-4047-8688-1b6c821d10df',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:38 GMT',
-  'content-length': '3899' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-request-id': 'f23227c7-0b8f-4d90-8ed4-99d562846183',
-  'x-ms-correlation-request-id': 'f23227c7-0b8f-4d90-8ed4-99d562846183',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234244Z:f23227c7-0b8f-4d90-8ed4-99d562846183',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:44 GMT',
-  'content-length': '1559' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:44.8745624Z\",\"duration\":\"PT6.2794748S\",\"trackingId\":\"ae6ad972-5ae5-4138-8cf7-f8252fbcd3ac\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14953',
-  'x-ms-request-id': '12ab97a6-b188-48d5-a6dd-e16884e56af4',
-  'x-ms-correlation-request-id': '12ab97a6-b188-48d5-a6dd-e16884e56af4',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234245Z:12ab97a6-b188-48d5-a6dd-e16884e56af4',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:44 GMT',
-  'content-length': '1490' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14948',
-  'x-ms-request-id': 'b2ebb777-8a4b-442b-bc40-84816130c392',
-  'x-ms-correlation-request-id': 'b2ebb777-8a4b-442b-bc40-84816130c392',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234245Z:b2ebb777-8a4b-442b-bc40-84816130c392',
+  'x-ms-ratelimit-remaining-subscription-reads': '14880',
+  'x-ms-request-id': 'ddebf37f-d4a3-4d34-aab0-2538e745ba34',
+  'x-ms-correlation-request-id': 'ddebf37f-d4a3-4d34-aab0-2538e745ba34',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014248Z:ddebf37f-d4a3-4d34-aab0-2538e745ba34',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:45 GMT',
+  date: 'Sat, 20 Jun 2015 01:42:47 GMT',
   'content-length': '12' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14953',
-  'x-ms-request-id': '0b62ef3e-2bcc-4f6c-9856-ae90764b5d68',
-  'x-ms-correlation-request-id': '0b62ef3e-2bcc-4f6c-9856-ae90764b5d68',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234245Z:0b62ef3e-2bcc-4f6c-9856-ae90764b5d68',
+  'x-ms-ratelimit-remaining-subscription-reads': '14867',
+  'x-ms-request-id': '6cf4581e-c2b4-4fc7-b0c3-2cf01023d64c',
+  'x-ms-correlation-request-id': '6cf4581e-c2b4-4fc7-b0c3-2cf01023d64c',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014253Z:6cf4581e-c2b4-4fc7-b0c3-2cf01023d64c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:44 GMT',
-  'content-length': '3899' });
+  date: 'Sat, 20 Jun 2015 01:42:52 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:42:53.1563373Z\",\"duration\":\"PT8.6315995S\",\"trackingId\":\"ff934af3-7ad0-47c1-b286-7601e898cb7a\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-request-id': '68aed19b-3aca-4ca8-9479-863483f3e594',
-  'x-ms-correlation-request-id': '68aed19b-3aca-4ca8-9479-863483f3e594',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234250Z:68aed19b-3aca-4ca8-9479-863483f3e594',
+  'x-ms-ratelimit-remaining-subscription-reads': '14874',
+  'x-ms-request-id': 'b37d2475-b9c2-4de8-95f9-84b72b5a7e1a',
+  'x-ms-correlation-request-id': 'b37d2475-b9c2-4de8-95f9-84b72b5a7e1a',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014253Z:b37d2475-b9c2-4de8-95f9-84b72b5a7e1a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:50 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:42:53 GMT',
+  'content-length': '753' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:51.0013583Z\",\"duration\":\"PT12.4062707S\",\"trackingId\":\"5b6ce372-b3fe-4eb9-b3e7-b2c3b2b68df8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14953',
-  'x-ms-request-id': '32883ee2-20e7-42cb-8595-a03e009333f9',
-  'x-ms-correlation-request-id': '32883ee2-20e7-42cb-8595-a03e009333f9',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234251Z:32883ee2-20e7-42cb-8595-a03e009333f9',
+  'x-ms-ratelimit-remaining-subscription-reads': '14881',
+  'x-ms-request-id': '3895e87a-3e3c-486d-b712-459a096a249f',
+  'x-ms-correlation-request-id': '3895e87a-3e3c-486d-b712-459a096a249f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014254Z:3895e87a-3e3c-486d-b712-459a096a249f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:50 GMT',
+  date: 'Sat, 20 Jun 2015 01:42:53 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14861',
+  'x-ms-request-id': '625f3a94-66fe-4e19-9034-6813c0ec2661',
+  'x-ms-correlation-request-id': '625f3a94-66fe-4e19-9034-6813c0ec2661',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014259Z:625f3a94-66fe-4e19-9034-6813c0ec2661',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:58 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:42:58.4614203Z\",\"duration\":\"PT13.9366825S\",\"trackingId\":\"0a6b6bcd-4c20-4a2d-afe2-f94d8fb277db\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14864',
+  'x-ms-request-id': 'fa9948a2-05be-49e4-b1f7-9c9b6f32c890',
+  'x-ms-correlation-request-id': 'fa9948a2-05be-49e4-b1f7-9c9b6f32c890',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014259Z:fa9948a2-05be-49e4-b1f7-9c9b6f32c890',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:58 GMT',
+  'content-length': '754' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14879',
+  'x-ms-request-id': '74c9dac6-40f4-4249-bfce-bec1eecd31d9',
+  'x-ms-correlation-request-id': '74c9dac6-40f4-4249-bfce-bec1eecd31d9',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014259Z:74c9dac6-40f4-4249-bfce-bec1eecd31d9',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:42:59 GMT',
+  'content-length': '1531' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14872',
+  'x-ms-request-id': '576a71ce-69a1-4e06-8521-ae396eedeeb8',
+  'x-ms-correlation-request-id': '576a71ce-69a1-4e06-8521-ae396eedeeb8',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014305Z:576a71ce-69a1-4e06-8521-ae396eedeeb8',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:04 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:04.1950074Z\",\"duration\":\"PT19.6702696S\",\"trackingId\":\"c24e0c81-76da-48e1-9162-441e6f403f1d\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14880',
+  'x-ms-request-id': '9abcf7ed-9dda-4e3b-89f3-04b7c021030f',
+  'x-ms-correlation-request-id': '9abcf7ed-9dda-4e3b-89f3-04b7c021030f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014305Z:9abcf7ed-9dda-4e3b-89f3-04b7c021030f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:05 GMT',
+  'content-length': '754' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14860',
+  'x-ms-request-id': '41034a1c-b014-4949-844d-20521c04f1a1',
+  'x-ms-correlation-request-id': '41034a1c-b014-4949-844d-20521c04f1a1',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014305Z:41034a1c-b014-4949-844d-20521c04f1a1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:04 GMT',
+  'content-length': '3104' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14862',
+  'x-ms-request-id': 'fd7faf8d-326f-44fe-8388-60dc1388e2c1',
+  'x-ms-correlation-request-id': 'fd7faf8d-326f-44fe-8388-60dc1388e2c1',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014310Z:fd7faf8d-326f-44fe-8388-60dc1388e2c1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:10 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14878',
+  'x-ms-request-id': '77c1493e-8fbd-4da9-9b5e-8553f3713aa6',
+  'x-ms-correlation-request-id': '77c1493e-8fbd-4da9-9b5e-8553f3713aa6',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014311Z:77c1493e-8fbd-4da9-9b5e-8553f3713aa6',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:10 GMT',
+  'content-length': '756' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14865',
+  'x-ms-request-id': '4634d061-1908-42c8-ba46-ce4f5072b8d7',
+  'x-ms-correlation-request-id': '4634d061-1908-42c8-ba46-ce4f5072b8d7',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014311Z:4634d061-1908-42c8-ba46-ce4f5072b8d7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:11 GMT',
+  'content-length': '3895' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14871',
+  'x-ms-request-id': '21977bf9-45dd-4adf-b090-29267f6a1c93',
+  'x-ms-correlation-request-id': '21977bf9-45dd-4adf-b090-29267f6a1c93',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014316Z:21977bf9-45dd-4adf-b090-29267f6a1c93',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:15 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:16.6354571Z\",\"duration\":\"PT6.7477034S\",\"trackingId\":\"78d7696e-9256-4f54-a407-e1e70ac79693\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14879',
+  'x-ms-request-id': 'a97f56e6-be2e-4ff3-bb5f-72e7f418c884',
+  'x-ms-correlation-request-id': 'a97f56e6-be2e-4ff3-bb5f-72e7f418c884',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014317Z:a97f56e6-be2e-4ff3-bb5f-72e7f418c884',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:16 GMT',
+  'content-length': '1490' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14859',
+  'x-ms-request-id': 'a6b6648e-d5b0-445c-b049-76363b2b4120',
+  'x-ms-correlation-request-id': 'a6b6648e-d5b0-445c-b049-76363b2b4120',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014317Z:a6b6648e-d5b0-445c-b049-76363b2b4120',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:17 GMT',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14861',
+  'x-ms-request-id': '1c9d7167-c267-4fb6-b286-296d5f180260',
+  'x-ms-correlation-request-id': '1c9d7167-c267-4fb6-b286-296d5f180260',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014317Z:1c9d7167-c267-4fb6-b286-296d5f180260',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:17 GMT',
+  'content-length': '3895' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14870',
+  'x-ms-request-id': 'a2209fcc-eb09-40d3-9ea9-9c66ebe162cb',
+  'x-ms-correlation-request-id': 'a2209fcc-eb09-40d3-9ea9-9c66ebe162cb',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014322Z:a2209fcc-eb09-40d3-9ea9-9c66ebe162cb',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:22 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:22.792328Z\",\"duration\":\"PT12.9045743S\",\"trackingId\":\"46457c16-12b6-4a06-8730-ed9cd28739d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14878',
+  'x-ms-request-id': '1b235294-1345-4a85-8ae1-277e8d633de3',
+  'x-ms-correlation-request-id': '1b235294-1345-4a85-8ae1-277e8d633de3',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014323Z:1b235294-1345-4a85-8ae1-277e8d633de3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:22 GMT',
+  'content-length': '1490' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14858',
+  'x-ms-request-id': '1b36dccc-1a4f-4444-a7ec-74e02af5e7b3',
+  'x-ms-correlation-request-id': '1b36dccc-1a4f-4444-a7ec-74e02af5e7b3',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014323Z:1b36dccc-1a4f-4444-a7ec-74e02af5e7b3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:23 GMT',
+  'content-length': '737' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14860',
+  'x-ms-request-id': '3b44c8c3-db5d-472c-8187-7859ca995d0f',
+  'x-ms-correlation-request-id': '3b44c8c3-db5d-472c-8187-7859ca995d0f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014323Z:3b44c8c3-db5d-472c-8187-7859ca995d0f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:23 GMT',
+  'content-length': '3895' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14877',
+  'x-ms-request-id': '0a3c11a8-3a41-4435-8936-003e5a56b89f',
+  'x-ms-correlation-request-id': '0a3c11a8-3a41-4435-8936-003e5a56b89f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014328Z:0a3c11a8-3a41-4435-8936-003e5a56b89f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:28 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:28.5998227Z\",\"duration\":\"PT18.712069S\",\"trackingId\":\"2a96f289-5b1e-41d3-b60a-56c937ddaa13\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14864',
+  'x-ms-request-id': '66643ecc-9979-4513-af34-072ed6a5cb2d',
+  'x-ms-correlation-request-id': '66643ecc-9979-4513-af34-072ed6a5cb2d',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014329Z:66643ecc-9979-4513-af34-072ed6a5cb2d',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:28 GMT',
+  'content-length': '1490' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/5AC68010FBF91023\",\"operationId\":\"5AC68010FBF91023\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:25.3299455Z\",\"duration\":\"PT2.314114S\",\"trackingId\":\"5a029159-0f5e-49a8-8831-60ce396233e3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14869',
+  'x-ms-request-id': '0a26f8f6-f578-435c-8be2-63cd22b8002c',
+  'x-ms-correlation-request-id': '0a26f8f6-f578-435c-8be2-63cd22b8002c',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014329Z:0a26f8f6-f578-435c-8be2-63cd22b8002c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:29 GMT',
+  'content-length': '1553' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14877',
+  'x-ms-request-id': 'b3889527-487a-4e4e-8990-e1a4eae6b875',
+  'x-ms-correlation-request-id': 'b3889527-487a-4e4e-8990-e1a4eae6b875',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014329Z:b3889527-487a-4e4e-8990-e1a4eae6b875',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:28 GMT',
+  'content-length': '3895' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14857',
+  'x-ms-request-id': '32fa5bc1-cdd5-4424-bccd-e45f24bd8a50',
+  'x-ms-correlation-request-id': '32fa5bc1-cdd5-4424-bccd-e45f24bd8a50',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014334Z:32fa5bc1-cdd5-4424-bccd-e45f24bd8a50',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:34 GMT',
+  'content-length': '1558' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:33.7007589Z\",\"duration\":\"PT23.8130052S\",\"trackingId\":\"43863e43-1dba-451f-84c8-d31c2aa476cc\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14859',
+  'x-ms-request-id': '19a8cb27-df15-47bf-92a2-b1141a6c6977',
+  'x-ms-correlation-request-id': '19a8cb27-df15-47bf-92a2-b1141a6c6977',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014335Z:19a8cb27-df15-47bf-92a2-b1141a6c6977',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:34 GMT',
   'content-length': '1491' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/D01E8929C5D4E803\",\"operationId\":\"D01E8929C5D4E803\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:48.9558312Z\",\"duration\":\"PT1.9013247S\",\"trackingId\":\"1710fab5-e7dc-4fb0-a778-856ae3033ea3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/0742E1DC5A7D9376\",\"operationId\":\"0742E1DC5A7D9376\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:46.9507422Z\",\"duration\":\"PT4.6337752S\",\"trackingId\":\"c64fc958-6c0e-4c68-81ba-95aa3a2e43e8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/1977F6556257FD3F\",\"operationId\":\"1977F6556257FD3F\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:32.7026607Z\",\"duration\":\"PT9.6877036S\",\"trackingId\":\"7d3d3e00-fc97-41ab-8503-ef181b3c9a51\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/5AC68010FBF91023\",\"operationId\":\"5AC68010FBF91023\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:25.3299455Z\",\"duration\":\"PT2.314114S\",\"trackingId\":\"5a029159-0f5e-49a8-8831-60ce396233e3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14952',
-  'x-ms-request-id': 'e6370908-8ac2-4853-afa5-a716ab63746c',
-  'x-ms-correlation-request-id': 'e6370908-8ac2-4853-afa5-a716ab63746c',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234251Z:e6370908-8ac2-4853-afa5-a716ab63746c',
+  'x-ms-ratelimit-remaining-subscription-reads': '14876',
+  'x-ms-request-id': '65c428c2-7336-488e-8d7b-f49358c2b001',
+  'x-ms-correlation-request-id': '65c428c2-7336-488e-8d7b-f49358c2b001',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014335Z:65c428c2-7336-488e-8d7b-f49358c2b001',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:50 GMT',
-  'content-length': '1554' });
+  date: 'Sat, 20 Jun 2015 01:43:34 GMT',
+  'content-length': '2399' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14947',
-  'x-ms-request-id': 'c8f813bc-69c9-4369-adca-d3aa6e27eb84',
-  'x-ms-correlation-request-id': 'c8f813bc-69c9-4369-adca-d3aa6e27eb84',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234251Z:c8f813bc-69c9-4369-adca-d3aa6e27eb84',
+  'x-ms-ratelimit-remaining-subscription-reads': '14863',
+  'x-ms-request-id': '81e3eee2-322d-4433-a503-ad617124adf5',
+  'x-ms-correlation-request-id': '81e3eee2-322d-4433-a503-ad617124adf5',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014335Z:81e3eee2-322d-4433-a503-ad617124adf5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:51 GMT',
-  'content-length': '3899' });
+  date: 'Sat, 20 Jun 2015 01:43:34 GMT',
+  'content-length': '3895' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14947',
-  'x-ms-request-id': '31cfebc6-18e5-4673-b26b-333b594254e6',
-  'x-ms-correlation-request-id': '31cfebc6-18e5-4673-b26b-333b594254e6',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234257Z:31cfebc6-18e5-4673-b26b-333b594254e6',
+  'x-ms-ratelimit-remaining-subscription-reads': '14868',
+  'x-ms-request-id': '101a88f9-2038-40b5-9f82-5c8b1b0cba77',
+  'x-ms-correlation-request-id': '101a88f9-2038-40b5-9f82-5c8b1b0cba77',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014341Z:101a88f9-2038-40b5-9f82-5c8b1b0cba77',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:56 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:43:40 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:55.8594919Z\",\"duration\":\"PT17.2644043S\",\"trackingId\":\"58fd48fe-fa04-40f4-847f-cbeb0ed4785d\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:43:39.5411498Z\",\"duration\":\"PT29.6533961S\",\"trackingId\":\"902548d5-2a9a-48c2-ad6c-1d9748066c8a\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-request-id': '958d0f52-5f32-4d4a-93e0-9d0c8e3c9337',
-  'x-ms-correlation-request-id': '958d0f52-5f32-4d4a-93e0-9d0c8e3c9337',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234257Z:958d0f52-5f32-4d4a-93e0-9d0c8e3c9337',
+  'x-ms-ratelimit-remaining-subscription-reads': '14876',
+  'x-ms-request-id': '023ffeb6-2063-4fa7-bfda-bc78cfde50ae',
+  'x-ms-correlation-request-id': '023ffeb6-2063-4fa7-bfda-bc78cfde50ae',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014341Z:023ffeb6-2063-4fa7-bfda-bc78cfde50ae',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:57 GMT',
+  date: 'Sat, 20 Jun 2015 01:43:41 GMT',
   'content-length': '1491' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/D01E8929C5D4E803\",\"operationId\":\"D01E8929C5D4E803\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:48.9558312Z\",\"duration\":\"PT1.9013247S\",\"trackingId\":\"1710fab5-e7dc-4fb0-a778-856ae3033ea3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/0742E1DC5A7D9376\",\"operationId\":\"0742E1DC5A7D9376\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:46.9507422Z\",\"duration\":\"PT4.6337752S\",\"trackingId\":\"c64fc958-6c0e-4c68-81ba-95aa3a2e43e8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/9936902E40B07678\",\"operationId\":\"9936902E40B07678\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:38.9509185Z\",\"duration\":\"PT1.5557197S\",\"trackingId\":\"fd9282ba-b8d3-400b-9d9e-538b3663db34\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench/providers/Microsoft.Resources/links/apiAppSite\",\"resourceType\":\"Microsoft.AppService/apiapps/providers/links\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench/Microsoft.Resources/apiAppSite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58941CCC87156260\",\"operationId\":\"58941CCC87156260\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:37.2727268Z\",\"duration\":\"PT4.0413479S\",\"trackingId\":\"993c4e5f-992f-455e-8717-b81a5fab4062\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/1977F6556257FD3F\",\"operationId\":\"1977F6556257FD3F\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:32.7026607Z\",\"duration\":\"PT9.6877036S\",\"trackingId\":\"7d3d3e00-fc97-41ab-8503-ef181b3c9a51\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/5AC68010FBF91023\",\"operationId\":\"5AC68010FBF91023\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:25.3299455Z\",\"duration\":\"PT2.314114S\",\"trackingId\":\"5a029159-0f5e-49a8-8831-60ce396233e3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14952',
-  'x-ms-request-id': '5230b8de-c27f-458f-9f33-c74fbdc62d68',
-  'x-ms-correlation-request-id': '5230b8de-c27f-458f-9f33-c74fbdc62d68',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234257Z:5230b8de-c27f-458f-9f33-c74fbdc62d68',
+  'x-ms-ratelimit-remaining-subscription-reads': '14855',
+  'x-ms-request-id': '2043a905-8040-4151-8fd1-ba71a5cc604f',
+  'x-ms-correlation-request-id': '2043a905-8040-4151-8fd1-ba71a5cc604f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014341Z:2043a905-8040-4151-8fd1-ba71a5cc604f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:57 GMT',
-  'content-length': '1554' });
+  date: 'Sat, 20 Jun 2015 01:43:40 GMT',
+  'content-length': '3927' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14951',
-  'x-ms-request-id': 'fa42d168-2d6e-464c-8537-b41cbe458530',
-  'x-ms-correlation-request-id': 'fa42d168-2d6e-464c-8537-b41cbe458530',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234257Z:fa42d168-2d6e-464c-8537-b41cbe458530',
+  'x-ms-ratelimit-remaining-subscription-reads': '14858',
+  'x-ms-request-id': '3490f2fb-390c-496c-ad8a-acb85d06aba9',
+  'x-ms-correlation-request-id': '3490f2fb-390c-496c-ad8a-acb85d06aba9',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014341Z:3490f2fb-390c-496c-ad8a-acb85d06aba9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:42:57 GMT',
-  'content-length': '3899' });
+  date: 'Sat, 20 Jun 2015 01:43:41 GMT',
+  'content-length': '3895' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-20T01:41:43.1307102Z\",\"duration\":\"PT3.306094S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14945',
-  'x-ms-request-id': '7e355a50-2dc8-4d4c-9a78-9c0f553ccbae',
-  'x-ms-correlation-request-id': '7e355a50-2dc8-4d4c-9a78-9c0f553ccbae',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234303Z:7e355a50-2dc8-4d4c-9a78-9c0f553ccbae',
+  'x-ms-ratelimit-remaining-subscription-reads': '14875',
+  'x-ms-request-id': '1d915d67-b1c9-4b65-8dac-a5b47bf668ec',
+  'x-ms-correlation-request-id': '1d915d67-b1c9-4b65-8dac-a5b47bf668ec',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014346Z:1d915d67-b1c9-4b65-8dac-a5b47bf668ec',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:02 GMT',
-  'content-length': '1559' });
+  date: 'Sat, 20 Jun 2015 01:43:45 GMT',
+  'content-length': '1558' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:43:00.2722358Z\",\"duration\":\"PT21.6771482S\",\"trackingId\":\"d708a711-c6d9-4b7c-83ef-b1d9dc7d7a45\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:44.0069869Z\",\"duration\":\"PT34.1192332S\",\"trackingId\":\"e78de830-c23b-4166-b382-06ba7ec95857\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14952',
-  'x-ms-request-id': 'ee962a28-f447-45e8-86cf-75130ebc2cbb',
-  'x-ms-correlation-request-id': 'ee962a28-f447-45e8-86cf-75130ebc2cbb',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234303Z:ee962a28-f447-45e8-86cf-75130ebc2cbb',
+  'x-ms-ratelimit-remaining-subscription-reads': '14861',
+  'x-ms-request-id': '7e262655-0544-45cd-893b-52e648c02eca',
+  'x-ms-correlation-request-id': '7e262655-0544-45cd-893b-52e648c02eca',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014347Z:7e262655-0544-45cd-893b-52e648c02eca',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:03 GMT',
-  'content-length': '1491' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/082F020947410B8D\",\"operationId\":\"082F020947410B8D\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:01.3172468Z\",\"duration\":\"PT2.7031129S\",\"trackingId\":\"ac464c31-e029-420b-8f70-beaa85add1f1\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/51C1556314FEE8F5\",\"operationId\":\"51C1556314FEE8F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:58.034104Z\",\"duration\":\"PT10.9851136S\",\"trackingId\":\"07234c94-1668-4b9f-a7b1-4e1584184ef0\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/D01E8929C5D4E803\",\"operationId\":\"D01E8929C5D4E803\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:48.9558312Z\",\"duration\":\"PT1.9013247S\",\"trackingId\":\"1710fab5-e7dc-4fb0-a778-856ae3033ea3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/0742E1DC5A7D9376\",\"operationId\":\"0742E1DC5A7D9376\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:46.9507422Z\",\"duration\":\"PT4.6337752S\",\"trackingId\":\"c64fc958-6c0e-4c68-81ba-95aa3a2e43e8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14946',
-  'x-ms-request-id': '98201c51-7676-40e6-b616-ef97823612fd',
-  'x-ms-correlation-request-id': '98201c51-7676-40e6-b616-ef97823612fd',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234303Z:98201c51-7676-40e6-b616-ef97823612fd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:03 GMT',
-  'content-length': '3117' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14953',
-  'x-ms-request-id': 'eb5c3d75-507a-4a4a-b86e-a4295493711f',
-  'x-ms-correlation-request-id': 'eb5c3d75-507a-4a4a-b86e-a4295493711f',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234304Z:eb5c3d75-507a-4a4a-b86e-a4295493711f',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:03 GMT',
-  'content-length': '3899' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Running\",\"timestamp\":\"2015-06-10T23:42:04.7551196Z\",\"duration\":\"PT0.6159202S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}]}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14950',
-  'x-ms-request-id': '69eaa85c-7171-4e3f-ba4d-b1543d873ff4',
-  'x-ms-correlation-request-id': '69eaa85c-7171-4e3f-ba4d-b1543d873ff4',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234309Z:69eaa85c-7171-4e3f-ba4d-b1543d873ff4',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:08 GMT',
-  'content-length': '1559' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:09.1168014Z\",\"duration\":\"PT30.5217138S\",\"trackingId\":\"d6187e11-83fb-47f3-b626-bd38c996e8c8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14950',
-  'x-ms-request-id': 'd3dd9e38-dbbb-44e5-bc9f-e2a5f2abdf6e',
-  'x-ms-correlation-request-id': 'd3dd9e38-dbbb-44e5-bc9f-e2a5f2abdf6e',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234309Z:d3dd9e38-dbbb-44e5-bc9f-e2a5f2abdf6e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:09 GMT',
+  date: 'Sat, 20 Jun 2015 01:43:46 GMT',
   'content-length': '1493' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/298DEAE8D2054B29\",\"operationId\":\"298DEAE8D2054B29\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:03.4557593Z\",\"duration\":\"PT2.0764616S\",\"trackingId\":\"3d9bc674-4537-4a3c-b36c-99a32b84203e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench/providers/Microsoft.Resources/links/apiAppSite\",\"resourceType\":\"Microsoft.AppService/apiapps/providers/links\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench/Microsoft.Resources/apiAppSite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/082F020947410B8D\",\"operationId\":\"082F020947410B8D\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:01.3172468Z\",\"duration\":\"PT2.7031129S\",\"trackingId\":\"ac464c31-e029-420b-8f70-beaa85add1f1\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/51C1556314FEE8F5\",\"operationId\":\"51C1556314FEE8F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:58.034104Z\",\"duration\":\"PT10.9851136S\",\"trackingId\":\"07234c94-1668-4b9f-a7b1-4e1584184ef0\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/D01E8929C5D4E803\",\"operationId\":\"D01E8929C5D4E803\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:48.9558312Z\",\"duration\":\"PT1.9013247S\",\"trackingId\":\"1710fab5-e7dc-4fb0-a778-856ae3033ea3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/0742E1DC5A7D9376\",\"operationId\":\"0742E1DC5A7D9376\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:46.9507422Z\",\"duration\":\"PT4.6337752S\",\"trackingId\":\"c64fc958-6c0e-4c68-81ba-95aa3a2e43e8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/9936902E40B07678\",\"operationId\":\"9936902E40B07678\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:38.9509185Z\",\"duration\":\"PT1.5557197S\",\"trackingId\":\"fd9282ba-b8d3-400b-9d9e-538b3663db34\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench/providers/Microsoft.Resources/links/apiAppSite\",\"resourceType\":\"Microsoft.AppService/apiapps/providers/links\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench/Microsoft.Resources/apiAppSite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58941CCC87156260\",\"operationId\":\"58941CCC87156260\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:37.2727268Z\",\"duration\":\"PT4.0413479S\",\"trackingId\":\"993c4e5f-992f-455e-8717-b81a5fab4062\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/1977F6556257FD3F\",\"operationId\":\"1977F6556257FD3F\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:32.7026607Z\",\"duration\":\"PT9.6877036S\",\"trackingId\":\"7d3d3e00-fc97-41ab-8503-ef181b3c9a51\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/5AC68010FBF91023\",\"operationId\":\"5AC68010FBF91023\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:25.3299455Z\",\"duration\":\"PT2.314114S\",\"trackingId\":\"5a029159-0f5e-49a8-8831-60ce396233e3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14944',
-  'x-ms-request-id': 'e38d716c-f356-4494-9264-190467a047f4',
-  'x-ms-correlation-request-id': 'e38d716c-f356-4494-9264-190467a047f4',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234309Z:e38d716c-f356-4494-9264-190467a047f4',
+  'x-ms-ratelimit-remaining-subscription-reads': '14867',
+  'x-ms-request-id': '5900b377-6151-42a0-9b8d-0952b1e59e45',
+  'x-ms-correlation-request-id': '5900b377-6151-42a0-9b8d-0952b1e59e45',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014347Z:5900b377-6151-42a0-9b8d-0952b1e59e45',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:09 GMT',
-  'content-length': '3928' });
+  date: 'Sat, 20 Jun 2015 01:43:46 GMT',
+  'content-length': '3927' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14951',
-  'x-ms-request-id': 'eb806ab1-e1bc-4afc-aa3c-adb8487ac8f7',
-  'x-ms-correlation-request-id': 'eb806ab1-e1bc-4afc-aa3c-adb8487ac8f7',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234310Z:eb806ab1-e1bc-4afc-aa3c-adb8487ac8f7',
+  'x-ms-ratelimit-remaining-subscription-reads': '14875',
+  'x-ms-request-id': '87096438-b561-4562-9bd3-6f9d62dc81c0',
+  'x-ms-correlation-request-id': '87096438-b561-4562-9bd3-6f9d62dc81c0',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014347Z:87096438-b561-4562-9bd3-6f9d62dc81c0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:09 GMT',
-  'content-length': '3899' });
+  date: 'Sat, 20 Jun 2015 01:43:47 GMT',
+  'content-length': '3895' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests5307\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests4179\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:11.9115366Z\",\"duration\":\"PT1M7.7723372S\",\"correlationId\":\"6c1b3268-d98f-4ed1-8103-a3df5a6389fa\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}],\"outputs\":{}}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"name\":\"AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6\",\"properties\":{\"parameters\":{\"location\":{\"type\":\"String\",\"value\":\"West US\"},\"hostingPlan\":{\"type\":\"Object\",\"value\":{\"isNewHostingPlan\":false,\"hostingPlanName\":\"arm-apiapp-tests1945\",\"hostingEnvironment\":\"\",\"resourceGroup\":\"arm-apiapp-tests6340\"}},\"microsoft.Azure.AppService.ApiApps.TestBench\":{\"type\":\"Object\",\"value\":{\"$apiAppName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},\"mode\":\"Incremental\",\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:48.1926037Z\",\"duration\":\"PT2M8.3679875S\",\"correlationId\":\"5da41275-aeba-4690-9c96-ed2989db2073\",\"providers\":[{\"namespace\":\"Microsoft.Resources\",\"resourceTypes\":[{\"resourceType\":\"deployments\",\"locations\":[null]}]}],\"dependencies\":[{\"dependsOn\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}],\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}],\"outputs\":{}}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14945',
-  'x-ms-request-id': 'ad7262b8-62ec-4788-82e1-f86e6c2554c3',
-  'x-ms-correlation-request-id': 'ad7262b8-62ec-4788-82e1-f86e6c2554c3',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234315Z:ad7262b8-62ec-4788-82e1-f86e6c2554c3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14854',
+  'x-ms-request-id': '533acaa8-4033-4e6a-af87-157ddc8a0585',
+  'x-ms-correlation-request-id': '533acaa8-4033-4e6a-af87-157ddc8a0585',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014353Z:533acaa8-4033-4e6a-af87-157ddc8a0585',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:14 GMT',
+  date: 'Sat, 20 Jun 2015 01:43:53 GMT',
   'content-length': '1576' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/7A1D17EAAB82B64D\",\"operationId\":\"7A1D17EAAB82B64D\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:09.1168014Z\",\"duration\":\"PT30.5217138S\",\"trackingId\":\"d6187e11-83fb-47f3-b626-bd38c996e8c8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/A29C6F7753963C52\",\"operationId\":\"A29C6F7753963C52\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:38.3950219Z\",\"duration\":\"PT33.4556376S\",\"trackingId\":\"4341baf9-df13-4e81-865f-d800650949f3\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/70AB0D7926E7C699\",\"operationId\":\"70AB0D7926E7C699\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:44.0069869Z\",\"duration\":\"PT34.1192332S\",\"trackingId\":\"e78de830-c23b-4166-b382-06ba7ec95857\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"ApiAppDeployment_33ced85a8177497797538b97c6b03feb\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/AppServiceDeployment_4cbe452f-2fba-4583-9177-0361dcd143e6/operations/0D4D661C480186D0\",\"operationId\":\"0D4D661C480186D0\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:09.3468922Z\",\"duration\":\"PT24.8221544S\",\"trackingId\":\"ce7b2a04-3a16-447b-83e9-f6e91ed7230f\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Resources/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\",\"resourceType\":\"Microsoft.Resources/deployments\",\"resourceName\":\"Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14952',
-  'x-ms-request-id': 'da83f0fd-70fc-4c2a-aa4c-9fcd7edb75ff',
-  'x-ms-correlation-request-id': 'da83f0fd-70fc-4c2a-aa4c-9fcd7edb75ff',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234315Z:da83f0fd-70fc-4c2a-aa4c-9fcd7edb75ff',
+  'x-ms-ratelimit-remaining-subscription-reads': '14857',
+  'x-ms-request-id': '2df31c08-5336-4ddf-a6c1-c508dd40c4c8',
+  'x-ms-correlation-request-id': '2df31c08-5336-4ddf-a6c1-c508dd40c4c8',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014353Z:2df31c08-5336-4ddf-a6c1-c508dd40c4c8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:15 GMT',
+  date: 'Sat, 20 Jun 2015 01:43:52 GMT',
   'content-length': '1493' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/298DEAE8D2054B29\",\"operationId\":\"298DEAE8D2054B29\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:03.4557593Z\",\"duration\":\"PT2.0764616S\",\"trackingId\":\"3d9bc674-4537-4a3c-b36c-99a32b84203e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench/providers/Microsoft.Resources/links/apiAppSite\",\"resourceType\":\"Microsoft.AppService/apiapps/providers/links\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench/Microsoft.Resources/apiAppSite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/082F020947410B8D\",\"operationId\":\"082F020947410B8D\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:43:01.3172468Z\",\"duration\":\"PT2.7031129S\",\"trackingId\":\"ac464c31-e029-420b-8f70-beaa85add1f1\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/51C1556314FEE8F5\",\"operationId\":\"51C1556314FEE8F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:58.034104Z\",\"duration\":\"PT10.9851136S\",\"trackingId\":\"07234c94-1668-4b9f-a7b1-4e1584184ef0\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/D01E8929C5D4E803\",\"operationId\":\"D01E8929C5D4E803\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:48.9558312Z\",\"duration\":\"PT1.9013247S\",\"trackingId\":\"1710fab5-e7dc-4fb0-a778-856ae3033ea3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/ApiAppDeployment_75403bf33d0748ce83a12272f41ad19a/operations/0742E1DC5A7D9376\",\"operationId\":\"0742E1DC5A7D9376\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:46.9507422Z\",\"duration\":\"PT4.6337752S\",\"trackingId\":\"c64fc958-6c0e-4c68-81ba-95aa3a2e43e8\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-A933f1e55c1fa4c3c9a30b4ef7b56e239\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/9936902E40B07678\",\"operationId\":\"9936902E40B07678\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:38.9509185Z\",\"duration\":\"PT1.5557197S\",\"trackingId\":\"fd9282ba-b8d3-400b-9d9e-538b3663db34\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench/providers/Microsoft.Resources/links/apiAppSite\",\"resourceType\":\"Microsoft.AppService/apiapps/providers/links\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench/Microsoft.Resources/apiAppSite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58941CCC87156260\",\"operationId\":\"58941CCC87156260\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:37.2727268Z\",\"duration\":\"PT4.0413479S\",\"trackingId\":\"993c4e5f-992f-455e-8717-b81a5fab4062\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.AppService/apiapps\",\"resourceName\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/1977F6556257FD3F\",\"operationId\":\"1977F6556257FD3F\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:32.7026607Z\",\"duration\":\"PT9.6877036S\",\"trackingId\":\"7d3d3e00-fc97-41ab-8503-ef181b3c9a51\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/siteextensions/Microsoft.Azure.AppService.ApiApps.TestBench\",\"resourceType\":\"Microsoft.Web/sites/siteextensions\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Azure.AppService.ApiApps.TestBench\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/5AC68010FBF91023\",\"operationId\":\"5AC68010FBF91023\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:25.3299455Z\",\"duration\":\"PT2.314114S\",\"trackingId\":\"5a029159-0f5e-49a8-8831-60ce396233e3\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/providers/Microsoft.Resources/links/apiApp\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39/Microsoft.Resources/apiApp\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/ApiAppDeployment_33ced85a8177497797538b97c6b03feb/operations/58DA2A9A1BEA4B27\",\"operationId\":\"58DA2A9A1BEA4B27\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:22.4769191Z\",\"duration\":\"PT8.4994214S\",\"trackingId\":\"36652b85-4046-4212-99e4-6519d7aeb199\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"Microsoft-Azure-AppService-Ac93942e4111c4d05abf9712e9096fa39\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14949',
-  'x-ms-request-id': '16148146-c373-423b-9f8d-6bac5e70c89d',
-  'x-ms-correlation-request-id': '16148146-c373-423b-9f8d-6bac5e70c89d',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234316Z:16148146-c373-423b-9f8d-6bac5e70c89d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14874',
+  'x-ms-request-id': '0365f9a0-8b03-482c-a27a-36809d9ab6ae',
+  'x-ms-correlation-request-id': '0365f9a0-8b03-482c-a27a-36809d9ab6ae',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014353Z:0365f9a0-8b03-482c-a27a-36809d9ab6ae',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:15 GMT',
-  'content-length': '3928' });
+  date: 'Sat, 20 Jun 2015 01:43:53 GMT',
+  'content-length': '3927' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/F7D8F38593BFD5EC\",\"operationId\":\"F7D8F38593BFD5EC\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.4274969Z\",\"duration\":\"PT5.0080659S\",\"trackingId\":\"a24c280c-b947-48bf-8922-da23691d861c\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/C5FC527EAE880A39\",\"operationId\":\"C5FC527EAE880A39\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:34.3819235Z\",\"duration\":\"PT4.9612777S\",\"trackingId\":\"ac22d9c5-4f63-4fd1-87e2-7d7fc59475c5\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/9A0E85DF52CF6F35\",\"operationId\":\"9A0E85DF52CF6F35\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:28.8723193Z\",\"duration\":\"PT11.0051536S\",\"trackingId\":\"9010e3b0-1281-42cd-bb28-15096697d71a\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/0CEAADD98372E6A1\",\"operationId\":\"0CEAADD98372E6A1\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:22.3458269Z\",\"duration\":\"PT4.4177937S\",\"trackingId\":\"d14e0a17-f2b7-43d1-8a1a-c23ce00a25b4\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/deployments/Gateway_PreInstalled_f7e55708898a43bc9f48dc373090fcd5/operations/D472BC309223C1C9\",\"operationId\":\"D472BC309223C1C9\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-10T23:42:17.2990763Z\",\"duration\":\"PT7.9830668S\",\"trackingId\":\"6be02f7e-3a81-45db-aea0-9d42124b0b40\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/1363636D992637F5\",\"operationId\":\"1363636D992637F5\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:05.9405682Z\",\"duration\":\"PT4.160359S\",\"trackingId\":\"347c17d3-6f0c-441a-acdb-7e6cbea6d075\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"actionName\":\"listKeys\",\"apiVersion\":\"2015-03-01-preview\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/276142FE82474514\",\"operationId\":\"276142FE82474514\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:04.738748Z\",\"duration\":\"PT2.9563667S\",\"trackingId\":\"5841abda-2ea6-4c38-9ed0-2bfe7a1631cc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gatewaySite\",\"resourceType\":\"Microsoft.AppService/gateways/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gatewaySite\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/CE72B4E70DAD1FB7\",\"operationId\":\"CE72B4E70DAD1FB7\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:43:01.2529462Z\",\"duration\":\"PT6.2756405S\",\"trackingId\":\"6d4a0e68-2727-47b2-a4a2-b91836c309fc\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/76C9C67DDA781231\",\"operationId\":\"76C9C67DDA781231\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:56.7002611Z\",\"duration\":\"PT1.733226S\",\"trackingId\":\"34152160-00f8-40cc-b3a1-c5bc73071c7e\",\"statusCode\":\"Created\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/providers/Microsoft.Resources/links/gateway\",\"resourceType\":\"Microsoft.Web/sites/providers/links\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28/Microsoft.Resources/gateway\"}}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/deployments/Gateway_PreInstalled_f7fadc6ac55a499a8a9dca4ea80ba213/operations/7A95847E19D9C9EA\",\"operationId\":\"7A95847E19D9C9EA\",\"properties\":{\"provisioningState\":\"Succeeded\",\"timestamp\":\"2015-06-20T01:42:54.4435351Z\",\"duration\":\"PT5.9932946S\",\"trackingId\":\"a2710dec-cff5-4ca9-86ee-d4e259b3d4d1\",\"statusCode\":\"OK\",\"targetResource\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.Web/sites\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\"}}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '14949',
-  'x-ms-request-id': '70b51ad7-0553-41ec-97f3-b488b40c5fac',
-  'x-ms-correlation-request-id': '70b51ad7-0553-41ec-97f3-b488b40c5fac',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234316Z:70b51ad7-0553-41ec-97f3-b488b40c5fac',
+  'x-ms-ratelimit-remaining-subscription-reads': '14860',
+  'x-ms-request-id': '7c5fa525-4e0c-4542-bfa5-94f9c20cd272',
+  'x-ms-correlation-request-id': '7c5fa525-4e0c-4542-bfa5-94f9c20cd272',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014353Z:7c5fa525-4e0c-4542-bfa5-94f9c20cd272',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:15 GMT',
-  'content-length': '3899' });
+  date: 'Sat, 20 Jun 2015 01:43:53 GMT',
+  'content-length': '3895' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/apiapps?api-version=2015-03-01-preview')
-  .reply(200, "{\"value\":[{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.AppService/apiapps/microsoft.azure.appservice.apiapps.testbench\",\"name\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-a933f1e55c1fa4c3c9a30b4ef7b56e239.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.Web/sites/microsoft-azure-appservice-a933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceName\":\"microsoft-azure-appservice-a933f1e55c1fa4c3c9a30b4ef7b56e239\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests4179/providers/Microsoft.AppService/gateways/arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"arm-apiapp-tests41792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests7740/providers/Microsoft.AppService/apiapps/deployapp1\",\"name\":\"deployApp1\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-ac4458224a87847939c466bd85cc76c5f.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests7740/providers/Microsoft.Web/sites/microsoft-azure-appservice-ac4458224a87847939c466bd85cc76c5f\",\"resourceName\":\"microsoft-azure-appservice-ac4458224a87847939c466bd85cc76c5f\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests7740/providers/Microsoft.AppService/gateways/arm-apiapp-tests77402804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"arm-apiapp-tests77402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/blahdeblah\",\"name\":\"blahdeblah\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"version\":\"0.9.52\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-a6f61c1766e00470ea33780e198f643bf.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/microsoft-azure-appservice-a6f61c1766e00470ea33780e198f643bf\",\"resourceName\":\"microsoft-azure-appservice-a6f61c1766e00470ea33780e198f643bf\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/salesforce2\",\"name\":\"salesforce2\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"SalesforceConnector\",\"version\":\"0.0.534\"},\"api\":{\"endpoint\":\"https://salesforceconnectora488a55e848448c291521992f1c26fe2.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/salesforceconnectora488a55e848448c291521992f1c26fe2\",\"resourceName\":\"salesforceconnectora488a55e848448c291521992f1c26fe2\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/salesforceconnector\",\"name\":\"SalesforceConnector\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"SalesforceConnector\",\"version\":\"0.0.534\"},\"api\":{\"endpoint\":\"https://salesforceconnector883a52bcaf9a41888e9189e40343e2a6.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/salesforceconnector883a52bcaf9a41888e9189e40343e2a6\",\"resourceName\":\"salesforceconnector883a52bcaf9a41888e9189e40343e2a6\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/smtpconnector\",\"name\":\"SmtpConnector\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"SMTPConnector\",\"version\":\"0.0.438\"},\"api\":{\"endpoint\":\"https://smtpconnector48c7cc7381f54659bcf43afe89d9c110.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/smtpconnector48c7cc7381f54659bcf43afe89d9c110\",\"resourceName\":\"smtpconnector48c7cc7381f54659bcf43afe89d9c110\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/smtpconnector2\",\"name\":\"smtpconnector2\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"SMTPConnector\",\"version\":\"0.0.438\"},\"api\":{\"endpoint\":\"https://smtpconnectora44e816b6dcc49419da3e46f33001bf2.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/smtpconnectora44e816b6dcc49419da3e46f33001bf2\",\"resourceName\":\"smtpconnectora44e816b6dcc49419da3e46f33001bf2\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/testbench\",\"name\":\"testbench\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"version\":\"0.9.52\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-aa48701935a3546b08efbd1b2cbd70bb3.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/microsoft-azure-appservice-aa48701935a3546b08efbd1b2cbd70bb3\",\"resourceName\":\"microsoft-azure-appservice-aa48701935a3546b08efbd1b2cbd70bb3\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/testbench5\",\"name\":\"testbench5\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-a80eb085dd4d942b0bbf438ea707c5aaf.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/microsoft-azure-appservice-a80eb085dd4d942b0bbf438ea707c5aaf\",\"resourceName\":\"microsoft-azure-appservice-a80eb085dd4d942b0bbf438ea707c5aaf\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/apiapps/testbench6\",\"name\":\"testbench6\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-a73680a2a5c184de192a6c4ca9a028bdd.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.Web/sites/microsoft-azure-appservice-a73680a2a5c184de192a6c4ca9a028bdd\",\"resourceName\":\"microsoft-azure-appservice-a73680a2a5c184de192a6c4ca9a028bdd\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/fooble234/providers/Microsoft.AppService/gateways/fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"fooble2342804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups?api-version=2014-04-01-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests2479\",\"name\":\"arm-apiapp-tests2479\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6321\",\"name\":\"arm-apiapp-tests6321\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourceGroups/arm-apiapp-tests6340\",\"name\":\"arm-apiapp-tests6340\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '10653',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '25ba2bea-b09c-41fb-8b4d-47a7baaea0c4',
-  'x-rp-requesturi': 'https://apiapp-rp-prod-wus.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/providers/Microsoft.AppService/apiapps?api-version=2015-03-01-preview',
+  'x-ms-ratelimit-remaining-subscription-reads': '14866',
+  'x-ms-request-id': 'e6a69696-12f4-4fe0-8b64-b5ad2e841760',
+  'x-ms-correlation-request-id': 'e6a69696-12f4-4fe0-8b64-b5ad2e841760',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014354Z:e6a69696-12f4-4fe0-8b64-b5ad2e841760',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:53 GMT',
+  'content-length': '593' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests2479/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview')
+  .reply(200, "{\"value\":[{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests2479/providers/Microsoft.AppService/apiapps/listtest1\",\"name\":\"listtest1\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-afa82934f13ad4b19959f699fe166afbe.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests2479/providers/Microsoft.Web/sites/microsoft-azure-appservice-afa82934f13ad4b19959f699fe166afbe\",\"resourceName\":\"microsoft-azure-appservice-afa82934f13ad4b19959f699fe166afbe\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests2479/providers/Microsoft.AppService/gateways/arm-apiapp-tests24792804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"arm-apiapp-tests24792804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '1121',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'a1e138c1-90de-4672-8795-a0b6967a78a8',
+  'x-rp-requesturi': 'https://apiapp-rp-prod-wus.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests2479/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14943',
-  'x-ms-correlation-request-id': '588021ff-6a0f-4f50-b73b-044db5baaeea',
-  'x-ms-routing-request-id': 'WESTUS:20150610T234317Z:588021ff-6a0f-4f50-b73b-044db5baaeea',
+  'x-ms-ratelimit-remaining-subscription-reads': '14874',
+  'x-ms-correlation-request-id': 'f016015f-7b65-4ffa-9519-e48fd295d634',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014354Z:f016015f-7b65-4ffa-9519-e48fd295d634',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 10 Jun 2015 23:43:16 GMT' });
+  date: 'Sat, 20 Jun 2015 01:43:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6321/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview')
+  .reply(200, "{\"value\":[{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6321/providers/Microsoft.AppService/apiapps/deployapp1\",\"name\":\"deployApp1\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-a2253fd8d845f46ab92ed477d50062c8c.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6321/providers/Microsoft.Web/sites/microsoft-azure-appservice-a2253fd8d845f46ab92ed477d50062c8c\",\"resourceName\":\"microsoft-azure-appservice-a2253fd8d845f46ab92ed477d50062c8c\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6321/providers/Microsoft.AppService/gateways/arm-apiapp-tests63212804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"arm-apiapp-tests63212804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '1123',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'b3e4b8ab-76e6-402d-9288-f443f3ade97a',
+  'x-rp-requesturi': 'https://apiapp-rp-prod-wus.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6321/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview',
+  server: 'Microsoft-IIS/8.0',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14853',
+  'x-ms-correlation-request-id': 'a27dd22e-a2ca-4d7a-a444-20f18293f434',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014354Z:a27dd22e-a2ca-4d7a-a444-20f18293f434',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview')
+  .reply(200, "{\"value\":[{\"type\":\"Microsoft.AppService/apiapps\",\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps/microsoft.azure.appservice.apiapps.testbench\",\"name\":\"Microsoft.Azure.AppService.ApiApps.TestBench\",\"location\":\"West US\",\"properties\":{\"package\":{\"id\":\"Microsoft.Azure.AppService.ApiApps.TestBench\"},\"api\":{\"endpoint\":\"https://microsoft-azure-appservice-ac93942e4111c4d05abf9712e9096fa39.azurewebsites.net\",\"hasDefinition\":false},\"host\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.Web/sites/microsoft-azure-appservice-ac93942e4111c4d05abf9712e9096fa39\",\"resourceName\":\"microsoft-azure-appservice-ac93942e4111c4d05abf9712e9096fa39\",\"resourceType\":\"Microsoft.Web/sites\"},\"gateway\":{\"id\":\"/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/gateways/arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceName\":\"arm-apiapp-tests63402804ae14b8354630ac1444f01a5a8c28\",\"resourceType\":\"Microsoft.AppService/gateways\"},\"dependencies\":[],\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '1191',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'b39cef59-5b2c-4a46-8d9e-bb09b3bb0f68',
+  'x-rp-requesturi': 'https://apiapp-rp-prod-wus.msp.windows.net/subscriptions/2804ae14-b835-4630-ac14-44f01a5a8c28/resourcegroups/arm-apiapp-tests6340/providers/Microsoft.AppService/apiapps?$expand=basic&api-version=2015-03-01-preview',
+  server: 'Microsoft-IIS/8.0',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14856',
+  'x-ms-correlation-request-id': '87ec5faf-56b7-4062-81a1-bd175f6b049f',
+  'x-ms-routing-request-id': 'WESTUS:20150620T014354Z:87ec5faf-56b7-4062-81a1-bd175f6b049f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 20 Jun 2015 01:43:53 GMT' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['arm-apiapp-tests4179','arm-apiapp-tests5307'];};
+ exports.randomTestIdsGenerated = function() { return ['arm-apiapp-tests6340','arm-apiapp-tests1945'];};

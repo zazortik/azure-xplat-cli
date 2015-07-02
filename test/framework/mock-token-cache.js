@@ -17,11 +17,25 @@
 
 var _ = require('underscore');
 var util = require('util');
+
 //
 // An Adal token cache implementation that serves up fake
 // tokens, used in mock test playback. Always returns a
 // cache hit on find, ignores add and remove calls.
 //
+
+function createSearchEntry(resource, query) {
+  var entry = {
+    resource: resource,
+    accessToken: 'fakeToken',
+    refreshToken: 'fakeToken',
+    expiresIn: 24 * 60 * 60, // seconds until expiration
+    expiresOn: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    isMRRT: true
+  };
+  _.extend(entry, query);
+  return entry;
+}
 
 function MockTokenCache() {
 }
@@ -36,18 +50,12 @@ _.extend(MockTokenCache.prototype, {
   },
 
   find: function (query, callback) {
-    var entry = {
-      resource: 'https://management.core.windows.net/',
-      accessToken: 'fakeToken',
-      refreshToken: 'fakeToken',
-      expiresIn: 24 * 60 * 60, // seconds until expiration
-      expiresOn: new Date(Date.now() + 24 * 60 * 60 * 1000),
-      isMRRT: true
-    };
-
-    _.extend(entry, query);
+    // Used by most management commands.
+    var mgmtEntry = createSearchEntry('https://management.core.windows.net/', query);
+    // Used by keyvault 'key' and 'secret' commands, which access the Data Plane service.
+    var keyVaultEntry = createSearchEntry('https://vault.azure.net', query);
     process.nextTick(function () {
-      callback(null, [entry]);
+      callback(null, [mgmtEntry, keyVaultEntry]);
     });
   }
 });

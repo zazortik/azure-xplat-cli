@@ -13,7 +13,6 @@ exports.getMockedProfile = function () {
     },
     name: 'Mobilytics Test1',
     registeredProviders: ['website', 'mobileservice'],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,113 +25,113 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
   .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '114',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'be57d24ae51488488cdf50a6e1029fc1',
-  date: 'Wed, 08 Apr 2015 01:24:47 GMT' });
+  'x-ms-request-id': 'ba8e90041e84bfc3a61cd5aa7ab2ee05',
+  date: 'Mon, 29 Jun 2015 22:14:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity', '*')
+.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity', '*')
   .reply(202, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '114',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '941bb731b2378822a3ce1b92e57535cc',
-  date: 'Wed, 08 Apr 2015 01:24:51 GMT' });
+  'x-ms-request-id': '1ddec4ae5834baacbd09a3af856b12dc',
+  date: 'Mon, 29 Jun 2015 22:14:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
   .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '114',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5240a79085a38500b070b6edd27f5a2d',
-  date: 'Wed, 08 Apr 2015 01:24:51 GMT' });
+  'x-ms-request-id': '84d7ab3441aaba60b115cf23fb88f7dc',
+  date: 'Mon, 29 Jun 2015 22:14:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
   .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '114',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5e9349386f3c85ac9ffc718c3dc41d0b',
-  date: 'Wed, 08 Apr 2015 01:24:57 GMT' });
+  'x-ms-request-id': 'bd6484379046b44fb4fcba38e39e3300',
+  date: 'Mon, 29 Jun 2015 22:14:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
   .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '114',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bf8b37daaceb8db99c4eec0c2db4ad76',
-  date: 'Wed, 08 Apr 2015 01:25:03 GMT' });
+  'x-ms-request-id': 'a44da998fbb1b2c0a634f805fc33ae81',
+  date: 'Mon, 29 Jun 2015 22:14:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
-  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\"}}", { 'cache-control': 'no-cache',
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
+  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"activating\",\"pushEntityNamespace\":\"clitestDotNet4789Hub-ns\",\"pushEntityPath\":\"clitestDotNet4789Hub\",\"pushEntityConnectionString\":\"Endpoint=sb:\\/\\/clitestdotnet4789hub-ns.servicebus.windows.net\\/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=\\/JiVQL4bRloEtiWAKosxRPH\\/vctFi6nIJOtd6jyCiGM=\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '114',
+  'content-length': '414',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'bdfc48dd590a868694e9bc0588359f01',
-  date: 'Wed, 08 Apr 2015 01:25:09 GMT' });
+  'x-ms-request-id': 'b6bca1c1a81ab9218b500aeec3451911',
+  date: 'Mon, 29 Jun 2015 22:14:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet119/pushentity')
-  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"healthy\",\"pushEntityNamespace\":\"clitestDotNet119Hub-ns\",\"pushEntityPath\":\"clitestDotNet119Hub\",\"pushEntityConnectionString\":\"Endpoint=sb:\\/\\/clitestdotnet119hub-ns.servicebus.windows.net\\/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=VH\\/WgpFzjl9YpzpMoJFwJG8lp9ed2iNtq1a4b0hvTiY=\",\"namespaceCreated\":true,\"pushEntityCreated\":true}}", { 'cache-control': 'no-cache',
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet4789/pushentity')
+  .reply(200, "{\"enableExternalPushEntity\":true,\"externalPushEntitySettingsPropertyBag\":{\"externalPushEntityState\":\"healthy\",\"pushEntityNamespace\":\"clitestDotNet4789Hub-ns\",\"pushEntityPath\":\"clitestDotNet4789Hub\",\"pushEntityConnectionString\":\"Endpoint=sb:\\/\\/clitestdotnet4789hub-ns.servicebus.windows.net\\/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=\\/JiVQL4bRloEtiWAKosxRPH\\/vctFi6nIJOtd6jyCiGM=\",\"namespaceCreated\":true,\"pushEntityCreated\":true}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '456',
+  'content-length': '460',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '023311933f258c0ab0981e0539c6d102',
-  date: 'Wed, 08 Apr 2015 01:25:15 GMT' });
+  'x-ms-request-id': '0981acc2b939bc1aa1e4e42538499275',
+  date: 'Mon, 29 Jun 2015 22:15:01 GMT' });
  return result; }]];

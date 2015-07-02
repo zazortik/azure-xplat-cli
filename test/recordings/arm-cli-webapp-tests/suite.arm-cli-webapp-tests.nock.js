@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2804ae14-b835-4630-ac14-44f01a5a8c28',
-    name: 'Windows Azure MSDN - Visual Studio Ultimate',
+    id: 'e1b1b954-c500-427b-8cb1-ff8d47c39c17',
+    name: 'Visual Studio Ultimate with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '4b1066c2-4cbb-4eda-800a-78581bcb602b',
+    tenantId: '82dc2e83-ff62-4cea-bc70-15c9386f0d72',
     registeredProviders: ['website'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,7 +21,8 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_APIAPP_TEST_LOCATION'] = 'westus';
 };
 
 exports.scopes = [];
+
+ exports.randomTestIdsGenerated = function() { return ['webappclitest3619','testrg13424'];};

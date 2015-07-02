@@ -15,6 +15,7 @@
 
 'use strict';
 
+var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
 var path = require('path');
@@ -44,6 +45,7 @@ describe('arm', function () {
   var subscription;
   var resourceClient;
   var deploymentNameStub;
+  var originalSetTimeout = setTimeout;
 
   before(function (done) {
     // Stub deployLib's createDeploymentName function so that
@@ -56,6 +58,11 @@ describe('arm', function () {
       location = process.env.AZURE_APIAPP_TEST_LOCATION;
       subscription = profile.current.getSubscription();
       resourceClient = utils.createResourceClient(subscription);
+      if (suite.isPlayback()) {
+        setTimeout = function (action, timeout) {
+          process.nextTick(action);
+        };
+      }
       done();
     });
   });
@@ -71,6 +78,7 @@ describe('arm', function () {
           resourceClient.resourceGroups.deleteMethod(groupName, next);
         }, done);
       } else {
+        setTimeout = originalSetTimeout;
         done();
       }
     });
@@ -86,12 +94,87 @@ describe('arm', function () {
   });
 
   describe('apiapp', function () {
-    describe('list', function () {
-      it('should succeed', function (done) {
-        var cmd = util.format('apiapp list --json');
-        suite.execute(cmd, function (result) {
-          // Can't test more until we have deploy working
+    describe('list and show', function () {
+      var group;
+      var plan;
+      var apiappName = 'listtest1';
+
+      // Would normally do this in a before handler, but that
+      // screws up the mock recording.
+      // No need to explicitly delete anything, the outer suite's
+      // after handler will delete the created resource group.
+      function createAndDeploy(done) {
+        if (!group) {
+          createGroupAndPlan(function (err, az) {
+            if (err) { return done(err); }
+            group = az.group;
+            plan = az.plan;
+
+            var cmd = 'apiapp create -g %s -n %s -p %s -u %s --json';
+            suite.execute(cmd, group, apiappName, plan, benchPackageId, function (result) {
+              if (result.exitStatus !== 0) {
+                return done(new Error('could not deploy apiapp for list test'));
+              }
+              done();
+            });
+          });
+        } else {
+          done();
+        }
+      }
+
+      it('should list deployed apiapp when listing all in subscription', function (done) {
+        createAndDeploy(function () {
+          suite.execute('apiapp list --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.some(function (apiapp) { return apiapp.name === apiappName; }).should.be.true;
+            done();
+          });
+        });
+      });
+
+      it('should not include package version or auth setting by default', function (done) {
+        createAndDeploy(function () {
+          suite.execute('apiapp list --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.every(function (apiapp) { return _.isUndefined(apiapp.package.version); }).should.be.true;
+            output.every(function (apiapp) { return _.isUndefined(apiapp.accessLevel); }).should.be.true;
+            done();
+          });
+        });
+      });
+
+      it('should list expected apiapp when listing by resource group', function (done) {
+        createAndDeploy(function () {
+          suite.execute('apiapp list %s --json', group, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.have.length(1);
+            output[0].name.should.equal(apiappName);
+            done();
+          });
+        });
+      });
+
+      it('should include package version and auth setting when -d flag is given', function (done) {
+        createAndDeploy(function () {
+          suite.execute('apiapp list -d --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.every(function (apiapp) { return !_.isUndefined(apiapp.package.version) && !_.isUndefined(apiapp.accessLevel); }).should.be.true;
+            done();
+          });
+        });
+      });
+
+      it('should retrieve information about package when doing show', function (done) {
+        suite.execute('apiapp show %s %s --json', group, apiappName, function (result) {
           result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(apiappName);
+          output.accessLevel.should.equal('Internal');
           done();
         });
       });
@@ -198,7 +281,8 @@ describe('arm', function () {
     };
 
     resourceClient.resources.createOrUpdate(groupName, planToCreate, planParameters, function (err, planResource) {
-      return done(err, planResource.resource.id);
+      if (err) { return done(err); }
+      return done(null, planResource.resource.id);
     });
   }
 });

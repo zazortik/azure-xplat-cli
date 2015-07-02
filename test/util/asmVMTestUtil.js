@@ -31,20 +31,20 @@ var affinityName = 'xplataffintest',
  * @class
  * Initializes a new instance of the asmVMTestUtil class.
  * @constructor
- * 
+ *
  * Example use of this class:
  *
  * //creates mobile test class
  * var vmUtil = new asmVMTestUtil();
- * // use the methods 
- * 
+ * // use the methods
+ *
  */
 function asmVMTestUtil() {
     this.vmSize;
     this.vmImgName;
     this.ripCreate = false;
     this.staticIpavail;
-	this.staticIpToSet;
+    this.staticIpToSet;
 }
 asmVMTestUtil.prototype.getVM = function(getVM, vmName, username, password, location, timeout, suite, callback) {
 
@@ -62,7 +62,7 @@ asmVMTestUtil.prototype.getVM = function(getVM, vmName, username, password, loca
                 }
             });
             if (!found) {
-                this.createWindowsVM(vmName, username, password, location, timeout, suite, function() {	
+                this.createWindowsVM(vmName, username, password, location, timeout, suite, function() {
                     getVM.VMName = vmName;
                 });
             }
@@ -320,11 +320,11 @@ asmVMTestUtil.prototype.getVnetStaticIP = function(status, getVnet, getAffinityG
     }
 };
 asmVMTestUtil.prototype.createVMEndPt = function(vmName, publicport, localoport, vmEndpointName, protocol, idletimeout, probeport, probeprotocol, probPathName, lbSetName, dirctserverreturn, timeout, suite, callback) {
-        var cmd = util.format('vm endpoint create %s %s -k %s -n %s -o %s -m %s -t %s -r %s -p %s -b %s -u %s --json',vmName, publicport, localoport, vmEndpointName, protocol, idletimeout, probeport, probeprotocol, probPathName, lbSetName, dirctserverreturn).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            setTimeout(callback, timeout);
-        });
+    var cmd = util.format('vm endpoint create %s %s -k %s -n %s -o %s -m %s -t %s -r %s -p %s -b %s -u %s --json',vmName, publicport, localoport, vmEndpointName, protocol, idletimeout, probeport, probeprotocol, probPathName, lbSetName, dirctserverreturn).split(' ');
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        setTimeout(callback, timeout);
+    });
 };
 asmVMTestUtil.prototype.deleteUsedVM = function(vm, timeout, suite, callback) {
     if (vm.Created && vm.Delete) {
@@ -432,7 +432,7 @@ asmVMTestUtil.prototype.createDisk = function(diskName, location, suite, callbac
 };
 asmVMTestUtil.prototype.waitForDiskOp = function(vmName, DiskAttach, timeout, suite, callback) {
     var vmObj;
-	var VMTestUtil = this;
+    var VMTestUtil = this;
     var cmd = util.format('vm show %s --json', vmName).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
@@ -478,14 +478,14 @@ asmVMTestUtil.prototype.checkFreeDisk = function(suite, callback) {
 };
 asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, timeout, diskreleasetimeout, suite, callback) {
     var vmDiskObj;
-	var VMTestUtil = this;
+    var VMTestUtil = this;
     var cmd = util.format('vm disk show %s --json', vmDisk).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
         result.exitStatus.should.equal(0);
         vmDiskObj = JSON.parse(result.text);
         if (vmDiskObj.usageDetails && vmDiskObj.usageDetails.deploymentName) {
             setTimeout(function() {
-				VMTestUtil.waitForDiskRelease(vmDisk, timeout, diskreleasetimeout, suite, callback);
+                VMTestUtil.waitForDiskRelease(vmDisk, timeout, diskreleasetimeout, suite, callback);
             }, timeout);
         } else {
             setTimeout(function() {
@@ -644,16 +644,16 @@ asmVMTestUtil.prototype.deleteVMCreatedByStatisIp = function(vmName, timeout, su
         callback();
 };
 asmVMTestUtil.prototype.createSubnetVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr, location, suite, callback) {
-	var cmd = util.format('network vnet create %s -e %s -i %s -n %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr).split(' ');
-	cmd.push('-l');
-	cmd.push(location);
-	testUtils.executeCommand(suite, retry, cmd, function(result) {
-		result.exitStatus.should.equal(0);
-		callback();
-	});
+    var cmd = util.format('network vnet create %s -e %s -i %s -n %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetPrefix, subnetStartIp, subnetCidr).split(' ');
+    cmd.push('-l');
+    cmd.push(location);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        callback();
+    });
 };
 asmVMTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, suite, callback) {
-	var cmd = util.format('network vnet create %s -e %s -i %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr).split(' ');
+    var cmd = util.format('network vnet create %s -e %s -i %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr).split(' ');
     cmd.push('-l');
     cmd.push(location);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -663,7 +663,7 @@ asmVMTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace, vnet
 };
 
 asmVMTestUtil.prototype.deleteVnet = function(vnetPrefix, suite, callback) {
-	if (!suite.isPlayback()) {
+    if (!suite.isPlayback()) {
         var cmd = util.format('network vnet delete %s --quiet --json', vnetPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
@@ -673,21 +673,21 @@ asmVMTestUtil.prototype.deleteVnet = function(vnetPrefix, suite, callback) {
         callback();
 };
 asmVMTestUtil.prototype.createNSG = function(nsgPrefix, location, suite, callback) {
-	var cmd = util.format('network nsg create %s --json', nsgPrefix).split(' ');
-	cmd.push('-l');
-	cmd.push(location);
-	testUtils.executeCommand(suite, retry, cmd, function(result) {
-		result.exitStatus.should.equal(0);
-		callback();
-	});
+    var cmd = util.format('network nsg create %s --json', nsgPrefix).split(' ');
+    cmd.push('-l');
+    cmd.push(location);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        callback();
+    });
 };
 asmVMTestUtil.prototype.deleteNSG = function(nsgPrefix, suite, callback) {
-	if (!suite.isPlayback()) {
-		var cmd = util.format('network nsg delete %s --quiet --json', nsgPrefix).split(' ');
-		testUtils.executeCommand(suite, retry, cmd, function(result) {
-			result.exitStatus.should.equal(0);
-			callback();
-		});
-	} else
-		callback();
+    if (!suite.isPlayback()) {
+        var cmd = util.format('network nsg delete %s --quiet --json', nsgPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            callback();
+        });
+    } else
+        callback();
 };
