@@ -6,15 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '3cb7bdf0-b668-451c-8e69-e76c66a6acaa',
-    name: 'Azure Xplat CLI Test',
+    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    name: 'CollaberaInteropTest',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '92b1c82c-10a6-40ec-8b2e-1e63eeb29438',
-    registeredProviders: ['website', 'website'],
-    registeredResourceNamespaces: [],
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,7 +22,7 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
-  process.env['SSHCERT'] = 'test/data/fakeSshcert.pem';
+  process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];

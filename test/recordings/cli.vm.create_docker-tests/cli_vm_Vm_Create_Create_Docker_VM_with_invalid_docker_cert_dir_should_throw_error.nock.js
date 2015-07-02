@@ -21,8 +21,8 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
-  process.env['SSHCERT'] = 'C:\myCert.pem';
+  process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [[]];
- exports.randomTestIdsGenerated = function() { return ['clitestvm207'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestvm6100'];};
