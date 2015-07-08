@@ -40,7 +40,7 @@ describe('cli', function() {
             location, retry = 5,
             username = 'azureuser',
             password = 'Pa$$word@123',
-            homePath, dockerPort = 4243;
+            homePath, dockerPort = 2376;
         testUtils.TIMEOUT_INTERVAL = 12000;
         var vmUtil = new vmTestUtil();
 

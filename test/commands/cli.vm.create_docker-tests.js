@@ -91,7 +91,7 @@ describe('cli', function() {
         describe('Vm Create: ', function() {
             it('Create Docker VM with default values and reserved Ip should pass', function(done) {
                 dockerCertDir = path.join(homePath, '.docker');
-                var dockerPort = 4243;
+                var dockerPort = 2376;
 
                 vmUtil.getImageName('Linux', suite, function(ImageName) {
                     vmUtil.createReservedIp(location, suite, function(ripName) {
@@ -151,7 +151,7 @@ describe('cli', function() {
 
             it('Create Docker VM with ssh cert, no ssh endpoint and no ssh password should pass', function(done) {
                 dockerCertDir = path.join(homePath, '.docker');
-                var dockerPort = 4243;
+                var dockerPort = 2376;
 
                 vmUtil.getImageName('Linux', suite, function(ImageName) {
                     var cmd = util.format('vm docker create %s %s %s --ssh-cert %s --no-ssh-password --no-ssh-endpoint --json',

@@ -14,8 +14,8 @@
  */
 var should = require('should');
 var util = require('util');
-var fs = require('fs')
-var testUtils = require('../util/util');;
+var fs = require('fs');
+var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 var vmTestUtil = require('../util/asmVMTestUtil');
 
@@ -28,6 +28,8 @@ var requiredEnvironment = [{
     name: 'AZURE_VM_TEST_LOCATION',
     defaultValue: 'West US'
 }];
+
+
 
 describe('cli', function() {
     describe('vm', function() {
@@ -51,7 +53,8 @@ describe('cli', function() {
 
         before(function(done) {
             suite = new CLITest(this, testPrefix, requiredEnvironment);
-			location = process.env.AZURE_VM_TEST_LOCATION;
+			//location = process.env.AZURE_VM_TEST_LOCATION;
+			location = 'West US';
             timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
             diskreleasetimeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
             suite.setupSuite(done);
