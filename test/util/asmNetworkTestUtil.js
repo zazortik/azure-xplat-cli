@@ -234,3 +234,22 @@ asmNetworkTestUtil.prototype.deleteGateway = function(appGatePrefix, suite, call
 	else
 		callback();
 };
+asmNetworkTestUtil.prototype.createService = function(servicePrefix, location, suite, callback) {
+	var cmd = util.format('service create %s --json', servicePrefix).split(' ');
+    cmd.push('--location');
+    cmd.push(location);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+        result.exitStatus.should.equal(0);
+        callback();
+    });
+};
+asmNetworkTestUtil.prototype.deleteService = function(servicePrefix, suite, callback) {
+	if (!suite.isPlayback()) {		
+		var cmd = util.format('service delete %s --quiet --json', servicePrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {		
+			result.exitStatus.should.equal(0);		
+			callback();		
+		});		
+	} else		
+		callback();	
+};
