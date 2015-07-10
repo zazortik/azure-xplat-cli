@@ -115,7 +115,7 @@ describe('cli', function() {
         });
       });
       it('set', function(done) {
-        var cmd = util.format('vm endpoint set %s %s -l %s -c %s -n %s -o %s -m %s -t %s -r %s -p %s -b %s --json', vmName, vmEndpointName, publicportN, localoportN, vmEndpointNameN, protocolN, idletimeoutN, probeportN, probeprotocolN, probPathNameN, lbSetNameN).split(' ');
+        var cmd = util.format('vm endpoint set %s %s -l %s -k %s -n %s -o %s -m %s -t %s -r %s -p %s -b %s --json', vmName, vmEndpointName, publicportN, localoportN, vmEndpointNameN, protocolN, idletimeoutN, probeportN, probeprotocolN, probPathNameN, lbSetNameN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
@@ -131,7 +131,7 @@ describe('cli', function() {
         });
       });
       it('create-multiple', function(done) {
-        var cmd = util.format('vm endpoint create-multiple %s -c %s:%s:::::::::,%s:%s:%s:%s::%s:%s:%s:%s:: --json', vmName, publicportM1, localportM1, publicportM2, localportM2, protocolM2, idletimeoutM2, probeprotocolM2, probeportM2, probPathNameM2, lbSetNameM2).split(' ');
+        var cmd = util.format('vm endpoint create-multiple %s -c %s:%s:::::::::::,%s:%s:%s:%s::%s:%s:%s:::%s:: --json', vmName, publicportM1, localportM1, publicportM2, localportM2, protocolM2, idletimeoutM2, probeprotocolM2, probeportM2, probPathNameM2, lbSetNameM2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done, timeout);
