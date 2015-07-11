@@ -79,8 +79,8 @@ commands/cli.vm.disk.attachnew-tests.js
 commands/cli.vm.export_create_from-tests.js
 commands/cli.vm.create_staticvm-tests.js
 commands/cli.vm.staticvm_create-from-tests.js
-commands/cli.vm.staticvm_docker-tests.js
-commands/cli.vm.create_docker-tests.js
+#commands/cli.vm.staticvm_docker-tests.js
+#commands/cli.vm.create_docker-tests.js
 commands/cli.vm.create_ssh-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
