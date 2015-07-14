@@ -28,95 +28,95 @@ var vmPrefix = 'clitestvm';
 var createdVnets = [];
 var testPrefix = 'cli.vm.staticvm_docker-tests';
 var requiredEnvironment = [{
-  name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'West US'
+    name: 'AZURE_VM_TEST_LOCATION',
+    defaultValue: 'West US'
 }];
 
 describe('cli', function() {
-  describe('vm', function() {
-    var vmName,
-      dockerCertDir,
-      timeout,
-      location, retry = 5,
-      username = 'azureuser',
-      password = 'Pa$$word@123',
-      homePath, dockerPort = 2376;
-    testUtils.TIMEOUT_INTERVAL = 12000;
-    var vmUtil = new vmTestUtil();
+    describe('vm', function() {
+        var vmName,
+            dockerCertDir,
+            timeout,
+            location, retry = 5,
+            username = 'azureuser',
+            password = 'Pa$$word@123',
+            homePath, dockerPort = 2376;
+        testUtils.TIMEOUT_INTERVAL = 12000;
+        var vmUtil = new vmTestUtil();
 
-    var vmToUse = {
-      Name: null,
-      Created: false,
-      Delete: false
-    };
+        var vmToUse = {
+            Name: null,
+            Created: false,
+            Delete: false
+        };
 
-    before(function(done) {
-      suite = new CLITest(this, testPrefix, requiredEnvironment);
-      suite.setupSuite(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
-      homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-    });
-
-    after(function(done) {
-      if (suite.isMocked)
-        suite.teardownSuite(done);
-      else {
-        suite.teardownSuite(function() {
-          createdVnets.forEach(function(item) {
-            suite.execute('network vnet delete %s -q --json', item, function(result) {
-              result.exitStatus.should.equal(0);
-            });
-          });
-          done();
+        before(function(done) {
+            suite = new CLITest(this, testPrefix, requiredEnvironment);
+            suite.setupSuite(function() {
+				location = process.env.AZURE_VM_TEST_LOCATION;
+				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+				done();
+			});
+            homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         });
-      }
-    });
 
-    beforeEach(function(done) {
-      suite.setupTest(function() {
-        vmName = suite.generateId(vmPrefix, null);
-        done();
-      });
-    });
+		after(function(done) {
+			if (suite.isMocked)
+				suite.teardownSuite(done);
+			else {
+				suite.teardownSuite(function() {
+					createdVnets.forEach(function(item) {
+						suite.execute('network vnet delete %s -q --json', item, function(result) {
+							result.exitStatus.should.equal(0);
+						});
+					});
+					done();
+				});
+			}
+		});
 
-    afterEach(function(done) {
-      vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
-        suite.teardownTest(done);
-        vmUtil.deleteDockerCertificates(dockerCertDir);
-      });
-    });
-
-    describe('Vm Create: ', function() {
-      it('Create Docker VM with staticip should pass', function(done) {
-        dockerCertDir = path.join(homePath, '.docker');
-        vmUtil.getImageName('Linux', suite, function(ImageName) {
-          vmUtil.getVnetStaticIP('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
-            var cmd = util.format('vm docker create %s %s %s %s -a %s --static-ip %s --virtual-network-name %s --json',
-              vmName, ImageName, username, password, affinityName, staticIpToSet, virtualnetName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              cmd = util.format('vm show %s --json', vmName).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                var certifiatesExist = vmUtil.checkForDockerCertificates(dockerCertDir);
-                certifiatesExist.should.be.true;
-                var cratedVM = JSON.parse(result.text);
-                var dockerPortExists = vmUtil.checkForDockerPort(cratedVM, dockerPort);
-                dockerPortExists.should.be.true;
-
-                cratedVM.VMName.should.equal(vmName);
-                vmToUse.Name = vmName;
-                vmToUse.Created = true;
-                vmToUse.Delete = true;
-                setTimeout(done, timeout);
-              });
+        beforeEach(function(done) {
+            suite.setupTest(function() {
+                vmName = suite.generateId(vmPrefix, null);
+                done();
             });
-          });
         });
-      });
+
+        afterEach(function(done) {
+            vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
+                suite.teardownTest(done);
+                vmUtil.deleteDockerCertificates(dockerCertDir);
+            });
+        });
+
+        describe('Vm Create: ', function() {
+            it('Create Docker VM with staticip should pass', function(done) {
+                dockerCertDir = path.join(homePath, '.docker');
+                vmUtil.getImageName('Linux', suite, function(ImageName) {
+                    vmUtil.getVnetStaticIP('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
+                        var cmd = util.format('vm docker create %s %s %s %s -a %s --static-ip %s --virtual-network-name %s --json',
+                            vmName, ImageName, username, password, affinityName, staticIpToSet, virtualnetName).split(' ');
+                        testUtils.executeCommand(suite, retry, cmd, function(result) {
+                            result.exitStatus.should.equal(0);
+                            cmd = util.format('vm show %s --json', vmName).split(' ');
+                            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                result.exitStatus.should.equal(0);
+                                var certifiatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+                                certifiatesExist.should.be.true;
+                                var cratedVM = JSON.parse(result.text);
+                                var dockerPortExists = vmUtil.checkForDockerPort(cratedVM, dockerPort);
+                                dockerPortExists.should.be.true;
+
+                                cratedVM.VMName.should.equal(vmName);
+                                vmToUse.Name = vmName;
+                                vmToUse.Created = true;
+                                vmToUse.Delete = true;
+                                setTimeout(done, timeout);
+                            });
+                        });
+                    });
+                });
+            });
+        });
     });
-  });
 });

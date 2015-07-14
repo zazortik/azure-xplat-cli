@@ -33,7 +33,7 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var vmUtil = new vmTestUtil();
+	var vmUtil = new vmTestUtil();
     var vmName,
       location,
       file = 'vminfo.json',
@@ -41,32 +41,32 @@ describe('cli', function() {
       password = 'Collabera@01',
       retry = 5,
       timeout;
-    testUtils.TIMEOUT_INTERVAL = 12000;
-
-
+      testUtils.TIMEOUT_INTERVAL = 12000;
+	  
+	
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+		timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
 
-    after(function(done) {
-      if (suite.isMocked)
-        suite.teardownSuite(done);
-      else {
-        suite.teardownSuite(function() {
-          createdVnets.forEach(function(item) {
-            suite.execute('network vnet delete %s -q --json', item, function(result) {
-              result.exitStatus.should.equal(0);
-            });
-          });
-          done();
-        });
-      }
-    });
+	after(function(done) {
+		if (suite.isMocked)
+			suite.teardownSuite(done);
+		else {
+			suite.teardownSuite(function() {
+				createdVnets.forEach(function(item) {
+					suite.execute('network vnet delete %s -q --json', item, function(result) {
+						result.exitStatus.should.equal(0);
+					});
+				});
+				done();
+			});
+		}
+	});
 
     beforeEach(function(done) {
       suite.setupTest(function() {
@@ -76,16 +76,16 @@ describe('cli', function() {
     });
 
     afterEach(function(done) {
-      vmUtil.deleteVMCreatedByStatisIp(vmName, timeout, suite, function() {
-        suite.teardownTest(done);
-      });
-
+		vmUtil.deleteVMCreatedByStatisIp(vmName, timeout, suite, function() {
+			suite.teardownTest(done);
+		});
+		
     });
 
     describe('Create a VM with static ip address:', function() {
       it('Create a VM with static ip address', function(done) {
-        vmUtil.getImageName('Windows', suite, function(imagename) {
-          vmUtil.getVnetStaticIP('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
+		vmUtil.getImageName('Windows', suite, function(imagename) {
+        vmUtil.getVnetStaticIP('Created',getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
             var cmd = util.format('vm create --virtual-network-name %s -n %s --affinity-group %s %s %s %s %s --static-ip %s --json',
               virtualnetName, vmName, affinityName, vmName, imagename, username, password, staticIpToSet).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -93,7 +93,7 @@ describe('cli', function() {
               cmd = util.format('vm export %s %s --json', vmName, file).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                done();
+                 done();
               });
             });
           });
@@ -105,11 +105,11 @@ describe('cli', function() {
         var obj = JSON.parse(Fileresult);
         obj['RoleName'] = vmName;
         var diskName = obj.oSVirtualHardDisk.name;
-        //diskname = obj.dataVirtualHardDisks[0].name;
-        vmUtil.waitForDiskRelease(diskName, timeout, timeout, suite, function() {
+		//diskname = obj.dataVirtualHardDisks[0].name;
+      vmUtil.waitForDiskRelease(diskName, timeout, timeout, suite, function() {
           var jsonstr = JSON.stringify(obj);
           fs.writeFileSync(file, jsonstr);
-          vmUtil.getVnetStaticIP('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
+          vmUtil.getVnetStaticIP('Created',getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, staticIpToCreate, staticIpToSet) {
             var cmd = util.format('vm create-from %s %s --virtual-network-name %s --affinity-group %s --json', vmName, file, virtualnetName, affinityName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
