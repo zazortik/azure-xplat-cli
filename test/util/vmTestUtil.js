@@ -152,13 +152,13 @@ VMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir) {
       fs.rmdirSync(dockerCertDir);
     });
 };
-VMTestUtil.prototype.checkForDockerCertificates = function(dockerCertDir) {
+VMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCertDir) {
 	 dockerCerts = {
 			caKey: path.join(dockerCertDir, 'ca-key.pem'),
 			ca: path.join(dockerCertDir, 'ca.pem'),
-			serverKey: path.join(dockerCertDir, 'server-key.pem'),
-			server: path.join(dockerCertDir, 'server.csr'),
-			serverCert: path.join(dockerCertDir, 'server-cert.pem'),
+			serverKey: path.join(dockerCertDir, vmName + '-server-key.pem'),
+			server: path.join(dockerCertDir, vmName + '-server.csr'),
+			serverCert: path.join(dockerCertDir, vmName + '-server-cert.pem'),
 			clientKey: path.join(dockerCertDir, 'key.pem'),
 			client: path.join(dockerCertDir, 'client.csr'),
 			clientCert: path.join(dockerCertDir, 'cert.pem'),
