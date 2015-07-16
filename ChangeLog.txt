@@ -1,9 +1,9 @@
 2015.07.17 Version 0.9.6
 * ASM
   *  Network
-    *  Added commands to manage routes and route table
-    *  Added commands to manage local network
-    *  Added commands to manage application gateway
+    * Added commands to manage routes and route table
+    * Added commands to manage local network
+    * Added commands to manage application gateway
     * Added commands to manage traffic manager
     * Added commands to manage virtual network gateway
     * Reduced command load time by splitting network commands to separate files
