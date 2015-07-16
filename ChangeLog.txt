@@ -13,6 +13,8 @@
     * Added support to set remote-subnet for an endpoint ACL rule
     * Added command to fetch deployment event
     * Enhanced docker create vm command to pass certificate CN
+  * Site
+    * Fixed issues with azure site commands 
 
 2015.06.26 Version 0.9.5
 * ARM
