@@ -46,29 +46,6 @@ nock('https://gallery.azure.com:443')
  return result; },
 function (nock) { 
 var result = 
-nock('https://login.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/common/oauth2/token', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"expires_on\":\"1429131553\",\"not_before\":\"1429127653\",\"resource\":\"https://management.core.windows.net/\",\"scope\":\"user_impersonation\",\"pwd_exp\":\"30226603\",\"pwd_url\":\"https://portal.microsoftonline.com/ChangePassword.aspx\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '1e244255-ed13-4b6f-b2ee-444a2a23bf1e',
-  'client-request-id': 'ef0b813c-3229-423d-bbb3-5b47bf06ef3b',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_11',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Wed, 15 Apr 2015 19:59:13 GMT',
-  'content-length': '2339' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/38b598fc-e57a-423f-b2e7-dc0ddb631f1f/resourcegroups/xplatTestGCreate3363?api-version=2014-04-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGCreate3363' could not be found.\"}}", { 'cache-control': 'no-cache',

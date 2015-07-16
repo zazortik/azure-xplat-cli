@@ -27,54 +27,6 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://login.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/common/oauth2/token', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1432289562\",\"not_before\":\"1432285662\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDMyMjg1NjYyLCJuYmYiOjE0MzIyODU2NjIsImV4cCI6MTQzMjI4OTU2MiwidmVyIjoiMS4wIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3Iiwib2lkIjoiYzA3MjA3YTUtNWUzNi00NzcxLTgwMmUtMGZiYzMzOTNiYjhlIiwidXBuIjoidi1zcmViYW5AbWljcm9zb2Z0LmNvbSIsInB1aWQiOiIxMDAzM0ZGRjhENzVDNzk0Iiwic3ViIjoiUGIzbnRtN0Y5R3JGSmVDSVQzT0VXT2cwZ0xJSV9WVk4tMjUwRThZanhXVSIsImdpdmVuX25hbWUiOiJTcmVla2FudGgiLCJmYW1pbHlfbmFtZSI6IkJhbmRhcnUiLCJuYW1lIjoiU3JlZWthbnRoIEJhbmRhcnUgKEJSSUxMSU8gTExDKSIsImFtciI6WyJwd2QiXSwiZ3JvdXBzIjpbIjdjOGFjYjRjLWRhM2UtNDc4ZS1hYTkyLWVjMmZkMzU4ZjkyZCIsImNjOWY4YTZjLWU5YzEtNGUzNC05ZWEwLTJjMTUxZGZhNjNmYiIsImEzNDY5ZDVkLTg1M2EtNDkyYi05NjVmLWZlZDdhYzI4NTk1YSIsIjBjY2ZkNzA1LTM1MTktNDU1OC05NDc0LWNiOTQzNmRhMGU4ZiIsIjZjZWQyZmQ1LTkzMTAtNDdmNy1iNjBjLTUyN2NlOWI3NzFlZSIsIjdkYjNlOTYzLTAyNGItNGU0NS1hZWQ3LTU0YzAzMDBmMWNhNiIsImNmOWU2ZTYyLTczNGQtNDgxYS1hMTJhLTNkYzQ3NzZlZGNkYiIsImE3MTAyNjhkLTUxYTktNDQ0Ny1iZjIwLTVjNDI4ZmQ3MDQ3YyIsImYwNjU2NTY4LWY1OWMtNDA1Mi05ZjFjLTk5NDIxNjVmNTdkYSIsIjNjNGZjZTQ2LTUzYzktNDlmNy05YmNjLWU5OTdkYzU2OGMwOSIsImY0NDQ0ZGFlLTRiY2UtNDAyZi1iNTRiLWYxMjQ2MWEzNmJiYyIsImU3NmFiMzFlLWRkNTgtNDBlMi1hN2MxLTNlYmIwMjkyMTIxMSIsIjJjYzE4NzVlLWUzZmItNDFlYS04MzcyLWI1NjkwZThjOTQyMSIsIjIwNjUxMzVkLTUxNjUtNDFkNi05Mjc3LThlMTQ5ZmMzM2VmOCIsIjZlZGFmNDQwLTZmOTQtNDY5Ni04OTQ5LWI2ZDRmZWM3MDkzMCIsIjBkODY0Njc2LTdmNTUtNDY5NC05MGYyLTViNzVlYjc3YjM0MiJdLCJ1bmlxdWVfbmFtZSI6InYtc3JlYmFuQG1pY3Jvc29mdC5jb20iLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsImFjciI6IjEifQ.jvNPMcC0bdcJ3NO_rY9F8X4PmX7tNi_0YB4rSdWK5EP4ANnqwOaHwE34gS1ToMQJdt4KQTTRh2yLiax3kw3Ubim2kocvvWAjC0_VlCJrfZ1vyMzCasNXt37YV2Hc3GKwG-nTIKonLAi08re9t-SXf5eI1ze7DuK9KRo9CdNXshkJiBaG050HtKdzbJ18pejvY8G5dr9Ut2QtH76yyCuc0wsOUzGzn5vKqJxI9gMrHywNMymZ4_O_E1c8xYofcJ5rAiOjDiPKoovOaPUqEK9UzPYC3IgmQTj_kt2nACe7t7RG9KVH8BTCTcIa8OiWbuzp49r8jLCW8cZzehq-H0iOVg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLVAKPlvChCXdzlgr9NIPjNk-HyEUxQt9Xj4zrrX3nbzxUg1qev-dDdtO3R1nAY1Myr9vyeuPw3X01WvnqQ81EYNmjKkNU3-QnYMsDiq6w0pW5KT6L-yHl-RZo8rK-u5eoQrGN6xH1uQU71ljXClQoyUG59JRKEKRn608xNcbs_jbkCL6Bo-yXAeEo-Fyic2N_oXhvxkM8XBXc1IAdFKMkl2r4g96vUOhFERU6WKTGz7hailivyxnsKqoGiuiFPRR_Gn0ZtD4Bd8HQL4Fz_yfWdHyt7QBBmRkYhQ-Sf2johEZwxFOqmXlO-EkSpHONAU0-bKdwAr6vUsWMx4a2zp54QtDRDUjzkLwKcVyHuqxXn_WBAd53SsN6aG5V84EkVuR9a1Xvq9-ZYpMnZItQM-aQkJQiLbVx3oglLmIHt1uFnPVr_1pIa4jZbX_sMGE9DbO0Cs-xBk8lTZoGUtY_wCdOZO0UP2ImW5YhF2x1SjoDTgFPZrCVial5ZFxax15T1fLWAQQJT7QD-rraxYeRv5i0fkgAA\",\"scope\":\"user_impersonation\",\"pwd_exp\":\"29474458\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'a82bd6aa-53de-4b65-bc76-c454c0809229',
-  'client-request-id': 'd19602e9-ae50-4e9a-845f-f6cbd016dcb5',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_5',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Fri, 22 May 2015 09:12:42 GMT',
-  connection: 'close',
-  'content-length': '2948' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://login.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/common/oauth2/token', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1432289562\",\"not_before\":\"1432285662\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDMyMjg1NjYyLCJuYmYiOjE0MzIyODU2NjIsImV4cCI6MTQzMjI4OTU2MiwidmVyIjoiMS4wIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3Iiwib2lkIjoiYzA3MjA3YTUtNWUzNi00NzcxLTgwMmUtMGZiYzMzOTNiYjhlIiwidXBuIjoidi1zcmViYW5AbWljcm9zb2Z0LmNvbSIsInB1aWQiOiIxMDAzM0ZGRjhENzVDNzk0Iiwic3ViIjoiUGIzbnRtN0Y5R3JGSmVDSVQzT0VXT2cwZ0xJSV9WVk4tMjUwRThZanhXVSIsImdpdmVuX25hbWUiOiJTcmVla2FudGgiLCJmYW1pbHlfbmFtZSI6IkJhbmRhcnUiLCJuYW1lIjoiU3JlZWthbnRoIEJhbmRhcnUgKEJSSUxMSU8gTExDKSIsImFtciI6WyJwd2QiXSwiZ3JvdXBzIjpbIjdjOGFjYjRjLWRhM2UtNDc4ZS1hYTkyLWVjMmZkMzU4ZjkyZCIsImNjOWY4YTZjLWU5YzEtNGUzNC05ZWEwLTJjMTUxZGZhNjNmYiIsImEzNDY5ZDVkLTg1M2EtNDkyYi05NjVmLWZlZDdhYzI4NTk1YSIsIjBjY2ZkNzA1LTM1MTktNDU1OC05NDc0LWNiOTQzNmRhMGU4ZiIsIjZjZWQyZmQ1LTkzMTAtNDdmNy1iNjBjLTUyN2NlOWI3NzFlZSIsIjdkYjNlOTYzLTAyNGItNGU0NS1hZWQ3LTU0YzAzMDBmMWNhNiIsImNmOWU2ZTYyLTczNGQtNDgxYS1hMTJhLTNkYzQ3NzZlZGNkYiIsImE3MTAyNjhkLTUxYTktNDQ0Ny1iZjIwLTVjNDI4ZmQ3MDQ3YyIsImYwNjU2NTY4LWY1OWMtNDA1Mi05ZjFjLTk5NDIxNjVmNTdkYSIsIjNjNGZjZTQ2LTUzYzktNDlmNy05YmNjLWU5OTdkYzU2OGMwOSIsImY0NDQ0ZGFlLTRiY2UtNDAyZi1iNTRiLWYxMjQ2MWEzNmJiYyIsImU3NmFiMzFlLWRkNTgtNDBlMi1hN2MxLTNlYmIwMjkyMTIxMSIsIjJjYzE4NzVlLWUzZmItNDFlYS04MzcyLWI1NjkwZThjOTQyMSIsIjIwNjUxMzVkLTUxNjUtNDFkNi05Mjc3LThlMTQ5ZmMzM2VmOCIsIjZlZGFmNDQwLTZmOTQtNDY5Ni04OTQ5LWI2ZDRmZWM3MDkzMCIsIjBkODY0Njc2LTdmNTUtNDY5NC05MGYyLTViNzVlYjc3YjM0MiJdLCJ1bmlxdWVfbmFtZSI6InYtc3JlYmFuQG1pY3Jvc29mdC5jb20iLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsImFjciI6IjEifQ.jvNPMcC0bdcJ3NO_rY9F8X4PmX7tNi_0YB4rSdWK5EP4ANnqwOaHwE34gS1ToMQJdt4KQTTRh2yLiax3kw3Ubim2kocvvWAjC0_VlCJrfZ1vyMzCasNXt37YV2Hc3GKwG-nTIKonLAi08re9t-SXf5eI1ze7DuK9KRo9CdNXshkJiBaG050HtKdzbJ18pejvY8G5dr9Ut2QtH76yyCuc0wsOUzGzn5vKqJxI9gMrHywNMymZ4_O_E1c8xYofcJ5rAiOjDiPKoovOaPUqEK9UzPYC3IgmQTj_kt2nACe7t7RG9KVH8BTCTcIa8OiWbuzp49r8jLCW8cZzehq-H0iOVg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLVAKPlvChCXdzlgr9NIPjNk-HyEUxQt9Xj4zrrX3nbzxUg1qev-dDdtO3R1nAY1Myr9vyeuPw3X01WvnqQ81EYNmjKkNU3-QnYMsDiq6w0pW5KT6L-yHl-RZo8rK-u5eoQrGN6xH1uQU71ljXClQoyUG59JRKEKRn608xNcbs_jbkCL6Bo-yXAeEo-Fyic2N_oXhvxkM8XBXc1IAdFKMkl2r4g96vUOhFERU6WKTGz7hailivyxnsKqoGiuiFPRR_Gn0ZtD4Bd8HQL4Fz_yfWdHyt7QBBmRkYhQ-Sf2johEZwxFOqmXlO-EkSpHONAU0-bKdwAr6vUsWMx4a2zp54QtDRDUjzkLwKcVyHuqxXn_WBAd53SsN6aG5V84EkVuR9a1Xvq9-ZYpMnZItQM-aQkJQiLbVx3oglLmIHt1uFnPVr_1pIa4jZbX_sMGE9DbO0Cs-xBk8lTZoGUtY_wCdOZO0UP2ImW5YhF2x1SjoDTgFPZrCVial5ZFxax15T1fLWAQQJT7QD-rraxYeRv5i0fkgAA\",\"scope\":\"user_impersonation\",\"pwd_exp\":\"29474458\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'a82bd6aa-53de-4b65-bc76-c454c0809229',
-  'client-request-id': 'd19602e9-ae50-4e9a-845f-f6cbd016dcb5',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_5',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Fri, 22 May 2015 09:12:42 GMT',
-  connection: 'close',
-  'content-length': '2948' });
- return result; },
-function (nock) { 
-var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGVMCreate?api-version=2014-04-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGVMCreate' could not be found.\"}}", { 'cache-control': 'no-cache',
