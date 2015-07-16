@@ -196,15 +196,15 @@ describe('profile', function () {
       });
 
       beforeEach(function () {
-        p.addSubscription(newSub, p.getEnvironment('AzureCloud'));
+        p.addOrUpdateSubscription(newSub, p.getEnvironment('AzureCloud'));
       });
-
-      it('should reset the current subscription', function () {
-        p.currentSubscription.should.be.exactly(newSub);
-      });
-
-      it('should remove default flag on old subscription', function () {
-        p.subscriptions[expectedSubscription.id].isDefault.should.be.false;
+      
+      //There are no end user scenarios that new subscriptions added with 
+      //"isDefault" be 'true', because this field doesn't come from the wire.
+      //So we will respect the existing default one, rather the new one.
+      it('should not reset the current subscription', function () {
+        p.subscriptions[expectedSubscription.id].isDefault.should.be.true;
+        p.currentSubscription.should.be.exactly(p.subscriptions[expectedSubscription.id]);
       });
     });
 
@@ -243,7 +243,7 @@ describe('profile', function () {
 
         fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, subscriptions) {
           subscriptions.forEach(function (s) {
-            p.addSubscription(s);
+            p.addOrUpdateSubscription(s);
           });
 
           done();
