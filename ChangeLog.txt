@@ -1,4 +1,4 @@
-2015.07.17 Version 0.9.6
+2015.07.20 Version 0.9.6
 * ASM
   *  Network
     * Added commands to manage routes and route table

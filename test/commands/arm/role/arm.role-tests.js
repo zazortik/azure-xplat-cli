@@ -227,7 +227,7 @@ describe('arm', function () {
     });
 
     describe('create ', function () {
-      it('a role assignment under subscripton should work', function (done) {
+      it('a role assignment under subscription should work', function (done) {
         var principalId = testUsers[0].objectId;
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         suite.execute('role assignment create --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
