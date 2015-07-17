@@ -62,3 +62,31 @@ describe('login as service principal', function () {
     })
   });
 });
+
+describe('logoutUser', function () {
+  it('remove cached tokens', function (done) {
+    //arrange 
+    var timesTokenFindGetsInvoked = 0;
+    var timesTokenRemoveGetsInvoked = 0;
+    var entriesToRemove;
+    var tokenCache = {
+      find: function (query, callback) { 
+        timesTokenFindGetsInvoked++;
+        callback(null, [{foo: timesTokenFindGetsInvoked}]);
+      },
+      remove: function (entries, callback) {
+        timesTokenRemoveGetsInvoked++;
+        entriesToRemove = entries;
+        callback();
+      }
+    };
+    //action
+    adalAuth.logoutUser('dummyUser', tokenCache, function (err) {
+      //verify
+      timesTokenFindGetsInvoked.should.equal(3);
+      timesTokenRemoveGetsInvoked.should.equal(1);
+      entriesToRemove.length.should.equal(3);
+      done();
+    });
+  });
+});
