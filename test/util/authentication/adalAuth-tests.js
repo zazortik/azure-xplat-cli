@@ -64,27 +64,28 @@ describe('login as service principal', function () {
 });
 
 describe('logoutUser', function () {
-  it('remove cached tokens if the user is a service principal ', function (done) {
+  it('remove cached tokens', function (done) {
     //arrange 
     var timesTokenFindGetsInvoked = 0;
     var timesTokenRemoveGetsInvoked = 0;
+    var entriesToRemove;
     var tokenCache = {
       find: function (query, callback) { 
         timesTokenFindGetsInvoked++;
-        if (!query._clientId && !query.servicePrincipalId) {
-          callback('Invalid query object');
-        } else {
-          callback(null, []);
-        }
+        callback(null, [{foo: timesTokenFindGetsInvoked}]);
       },
-      remove: function (token, callback) {
+      remove: function (entries, callback) {
         timesTokenRemoveGetsInvoked++;
+        entriesToRemove = entries;
         callback();
       }
     };
-    adalAuth.logoutUser('dummyUser', true, tokenCache, function (err) {
-      timesTokenFindGetsInvoked.should.equal(2);
+    //action
+    adalAuth.logoutUser('dummyUser', tokenCache, function (err) {
+      //verify
+      timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);
+      entriesToRemove.length.should.equal(3);
       done();
     });
   });
