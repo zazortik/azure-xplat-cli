@@ -46,6 +46,7 @@
     "azure-mgmt": "0.9.16",
     "azure-mgmt-authorization": "0.9.0-pre.6",
     "azure-mgmt-compute": "0.9.16",
+    "azure-arm-commerce": "0.1.0",
     "azure-arm-network": "0.10.4",
     "azure-arm-trafficmanager": "0.10.2",
     "azure-asm-hdinsight": "0.10.1",
