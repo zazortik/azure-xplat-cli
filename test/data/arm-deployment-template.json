@@ -22,11 +22,11 @@
       "defaultValue": "Free"
     },
     "workerSize": {
-      "type": "int",
+      "type": "string",
       "allowedValues": [
-        0,
-        1,
-        2
+        "0",
+        "1",
+        "2"
       ],
       "defaultValue": 0
     }
