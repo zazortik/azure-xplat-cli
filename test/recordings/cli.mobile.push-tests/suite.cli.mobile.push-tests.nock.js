@@ -13,7 +13,6 @@ exports.getMockedProfile = function () {
     },
     name: 'Mobilytics Test1',
     registeredProviders: ['website', 'mobileservice'],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -25,4 +24,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['clitestnode1914','clitestDotNet119'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestnode940','clitestDotNet4789'];};

@@ -33,7 +33,7 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var vmUtil = new vmTestUtil();
+	var vmUtil = new vmTestUtil();
     var vmName,
       location,
       vmVnetName,
@@ -47,7 +47,7 @@ describe('cli', function() {
       updateloadname = 'updateload',
       timeout;
     testUtils.TIMEOUT_INTERVAL = 12000;
-
+	
     var vmToUse = {
       Name: null,
       Created: false,
@@ -58,29 +58,29 @@ describe('cli', function() {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmVnetName = suite.generateId(vmPrefix, createdVms);
-        location = process.env.AZURE_VM_TEST_LOCATION;
+		location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
 
-    after(function(done) {
-      if (suite.isMocked)
-        suite.teardownSuite(done);
-      else {
-        vmUtil.deleteVM(vmVnetName, timeout, suite, function() {
-          suite.teardownSuite(function() {
-            createdVnets.forEach(function(item) {
-              suite.execute('network vnet delete %s -q --json', item, function(result) {
-                result.exitStatus.should.equal(0);
-              });
-            });
-            done();
-          });
-        });
-      }
-    });
-
+	after(function(done) {
+		  if (suite.isMocked)
+			suite.teardownSuite(done);
+		  else {
+			vmUtil.deleteVM(vmVnetName, timeout, suite, function() {
+				suite.teardownSuite(function (){
+					createdVnets.forEach(function (item) {
+						suite.execute('network vnet delete %s -q --json', item, function (result) {
+							result.exitStatus.should.equal(0);
+						});
+					});
+					done();
+				});
+			});
+		  }
+	});
+	
     beforeEach(function(done) {
       suite.setupTest(done);
     });
@@ -93,7 +93,7 @@ describe('cli', function() {
 
     describe('Load balancer :', function() {
       it('Vm should create with vnet', function(done) {
-        vmUtil.getImageName('Linux', suite, function(imageName) {
+		vmUtil.getImageName('Linux', suite, function(imageName) {
           vmUtil.getVnetForLb('Created', getVnetLB, getAffinityGroup, createdVnets, suite, function(virtualnetName, location, subnetname, subnetip) {
             var cmd = util.format('vm create %s --virtual-network-name %s %s %s %s --json',
               vmVnetName, virtualnetName, imageName, userName, password).split(' ');
@@ -137,14 +137,14 @@ describe('cli', function() {
           done();
         });
       });
-
-      it('Load balancer update', function(done) {
+	  
+	  it('Load balancer update', function (done) {
         var cmd = util.format('service internal-load-balancer set %s %s -t %s -a %s --json', vmVnetName, updateloadname, subNet, Subnetip).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
-      });
+      });	  
 
       it('Load balancer delete', function(done) {
         var cmd = util.format('service internal-load-balancer delete %s testload --quiet --json', vmVnetName).split(' ');

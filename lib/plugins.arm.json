@@ -10647,7 +10647,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--key-ops",
-                  "description": "JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, wrap, unwrap, sign, verify, backup, restore]"
+                  "description": "JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, sign, verify, wrapKey, unwrapKey]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -10769,7 +10769,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--key-ops",
-                  "description": "JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, wrap, unwrap, sign, verify, backup, restore]"
+                  "description": "JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, sign, verify, wrapKey, unwrapKey]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -10866,7 +10866,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--key-ops",
-                  "description": "if informed, command will change valid operations; must be JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, wrap, unwrap, sign, verify, backup, restore]"
+                  "description": "if informed, command will change valid operations; must be JSON-encoded array of strings representing key operations; each string can be one of [encrypt, decrypt, sign, verify, wrapKey, unwrapKey]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -15057,7 +15057,7 @@
           "categories": {
             "address-pool": {
               "name": "address-pool",
-              "description": "Commands to manage backend address pools of the NIC",
+              "description": "Commands to manage backend address pools of the network interface",
               "fullName": "network nic address-pool",
               "usage": "[options] [command]",
               "options": [],
@@ -17332,7 +17332,7 @@
         },
         "traffic-manager": {
           "name": "traffic-manager",
-          "description": "Commands to manage traffic manager",
+          "description": "Commands to manage Traffic Manager",
           "fullName": "network traffic-manager",
           "usage": "[options]",
           "options": [],
@@ -17340,14 +17340,14 @@
           "categories": {
             "profile": {
               "name": "profile",
-              "description": "Commands to manage traffic manager profile",
+              "description": "Commands to manage Traffic Manager profile",
               "fullName": "network traffic-manager profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "create",
-                  "description": "Create a traffic manager profile",
+                  "description": "Create a Traffic Manager profile",
                   "fullName": "network traffic-manager profile create",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -17472,7 +17472,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Set a traffic manager profile",
+                  "description": "Set a Traffic Manager profile",
                   "fullName": "network traffic-manager profile set",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -17596,7 +17596,7 @@
                 },
                 {
                   "name": "list",
-                  "description": "Get all traffic manager profiles",
+                  "description": "Get all Traffic Manager profiles",
                   "fullName": "network traffic-manager profile list",
                   "usage": "[options] <resource-group>",
                   "filePath": "commands/arm/network/network._js",
@@ -17640,7 +17640,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Get a traffic manager profile",
+                  "description": "Get a Traffic Manager profile",
                   "fullName": "network traffic-manager profile show",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -17693,7 +17693,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete a traffic manager profile",
+                  "description": "Delete a Traffic Manager profile",
                   "fullName": "network traffic-manager profile delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -17755,7 +17755,7 @@
                 },
                 {
                   "name": "is-dns-available",
-                  "description": "Checks whether the specified DNS prefix is available for creating a traffic manager profile",
+                  "description": "Checks whether the specified DNS prefix is available for creating a Traffic Manager profile",
                   "fullName": "network traffic-manager profile is-dns-available",
                   "usage": "[options] <resource-group> <relative-dns-name> ",
                   "filePath": "commands/arm/network/network._js",
@@ -17810,14 +17810,14 @@
               "categories": {
                 "endpoint": {
                   "name": "endpoint",
-                  "description": "Commands to manage traffic manager endpoints",
+                  "description": "Commands to manage Traffic Manager endpoints",
                   "fullName": "network traffic-manager profile endpoint",
                   "usage": "[options] [command]",
                   "options": [],
                   "commands": [
                     {
                       "name": "create",
-                      "description": "Create an endpoint in traffic manager profile",
+                      "description": "Create an endpoint in Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint create",
                       "usage": "[options] <resource-group> <profile-name> <name> <endpoint-location>",
                       "filePath": "commands/arm/network/network._js",
@@ -17933,7 +17933,7 @@
                     },
                     {
                       "name": "set",
-                      "description": "Set an endpoint in a traffic manager profile",
+                      "description": "Set an endpoint in a Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint set",
                       "usage": "[options] <resource-group> <profile-name> <name>",
                       "filePath": "commands/arm/network/network._js",
@@ -18040,7 +18040,7 @@
                     },
                     {
                       "name": "delete",
-                      "description": "Delete an endpoint from a traffic manager profile",
+                      "description": "Delete an endpoint from a Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint delete",
                       "usage": "[options] <resource-group> <profile-name> <name>",
                       "filePath": "commands/arm/network/network._js",
@@ -21323,6 +21323,15 @@
                   "description": "Version of Docker Azure extension [0.6]"
                 },
                 {
+                  "flags": "-c, --docker-cert-cn [CN]",
+                  "required": 0,
+                  "optional": -22,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--docker-cert-cn",
+                  "description": "Docker server certificate's CN. Can be set if you are using --tlsverify option for Docker connections. Default value is [*]"
+                },
+                {
                   "flags": "-D, --nic-id <nic-id>",
                   "required": -14,
                   "optional": 0,
@@ -21868,7 +21877,7 @@
           "name": "create",
           "description": "create a web app",
           "fullName": "webapp create",
-          "usage": "[options] [resourcegroup] [name] [location] [plan]",
+          "usage": "[options] [resource-group] [name] [location] [plan]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -21889,18 +21898,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to create"
             },
@@ -21913,18 +21924,20 @@
               "description": "the name of the slot"
             },
             {
-              "flags": "--location <location>",
-              "required": -12,
+              "flags": "-l --location <location>",
+              "required": -15,
               "optional": 0,
               "bool": true,
+              "short": "-l",
               "long": "--location",
               "description": "the geographic region to create the webapp"
             },
             {
-              "flags": "--plan <plan>",
-              "required": -8,
+              "flags": "-p --plan <plan>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-p",
               "long": "--plan",
               "description": "the name of the app service plan eg: Default1."
             },
@@ -21943,7 +21956,7 @@
           "name": "stop",
           "description": "Stop a web app",
           "fullName": "webapp stop",
-          "usage": "[options] [resourcegroup] [name]",
+          "usage": "[options] [resource-group] [name]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -21964,18 +21977,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to stop"
             },
@@ -22002,7 +22017,7 @@
           "name": "start",
           "description": "Start a web app",
           "fullName": "webapp start",
-          "usage": "[options] [resourcegroup] [name]",
+          "usage": "[options] [resource-group] [name]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -22023,18 +22038,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to start"
             },
@@ -22061,7 +22078,7 @@
           "name": "restart",
           "description": "Stop and then start a web app",
           "fullName": "webapp restart",
-          "usage": "[options] [resourcegroup] [name]",
+          "usage": "[options] [resource-group] [name]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -22082,18 +22099,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to restart"
             },
@@ -22120,7 +22139,7 @@
           "name": "delete",
           "description": "Delete a webapp",
           "fullName": "webapp delete",
-          "usage": "[options] [resourcegroup] [name]",
+          "usage": "[options] [resource-group] [name]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -22141,18 +22160,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to delete"
             },
@@ -22174,10 +22195,11 @@
               "description": "quiet mode, do not ask for delete confirmation"
             },
             {
-              "flags": "--subscription <subscription>",
-              "required": -16,
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
               "optional": 0,
               "bool": true,
+              "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
             }
@@ -22187,7 +22209,7 @@
           "name": "list",
           "description": "List your webapps",
           "fullName": "webapp list",
-          "usage": "[options] [resourcegroup]",
+          "usage": "[options] [resource-group]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -22208,18 +22230,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
             },
             {
-              "flags": "--subscription <subscription>",
-              "required": -16,
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
               "optional": 0,
               "bool": true,
+              "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
             }
@@ -22229,7 +22253,7 @@
           "name": "show",
           "description": "Get an available webapp",
           "fullName": "webapp show",
-          "usage": "[options] [resourcegroup] [name]",
+          "usage": "[options] [resource-group] [name]",
           "filePath": "commands/arm/webapp/webapp._js",
           "options": [
             {
@@ -22250,18 +22274,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--resourcegroup <resourcegroup>",
-              "required": -17,
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
               "optional": 0,
               "bool": true,
-              "long": "--resourcegroup",
-              "description": "the name of the resourceGroup"
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
             },
             {
-              "flags": "--name <name>",
-              "required": -8,
+              "flags": "-n --name <name>",
+              "required": -11,
               "optional": 0,
               "bool": true,
+              "short": "-n",
               "long": "--name",
               "description": "the name of the webapp to show"
             },
@@ -22274,10 +22300,11 @@
               "description": "the name of the slot to show"
             },
             {
-              "flags": "--subscription <subscription>",
-              "required": -16,
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
               "optional": 0,
               "bool": true,
+              "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
             }

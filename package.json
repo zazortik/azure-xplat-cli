@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -37,7 +37,7 @@
     }
   ],
   "dependencies": {
-    "adal-node": "0.1.12",
+    "adal-node": "0.1.13",
     "async": "0.2.7",
     "azure-common": "0.9.12",
     "azure-extra": "0.1.7",
@@ -46,7 +46,10 @@
     "azure-mgmt": "0.9.16",
     "azure-mgmt-authorization": "0.9.0-pre.6",
     "azure-mgmt-compute": "0.9.16",
+    "azure-arm-network": "0.10.4",
+    "azure-arm-trafficmanager": "0.10.2",
     "azure-asm-hdinsight": "0.10.1",
+    "azure-asm-trafficmanager": "0.10.3",
     "azure-mgmt-vnet": "0.9.17",
     "azure-mgmt-resource": "2.0.0-pre.17",
     "azure-mgmt-sb": "0.9.16",

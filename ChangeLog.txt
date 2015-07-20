@@ -1,3 +1,21 @@
+2015.07.20 Version 0.9.6
+* ASM
+  *  Network
+    * Added commands to manage routes and route table
+    * Added commands to manage local network
+    * Added commands to manage application gateway
+    * Added commands to manage traffic manager
+    * Added commands to manage virtual network gateway
+    * Reduced command load time by splitting network commands to separate files
+  * Compute
+    * Updated VM endpoint command to support probe interval and timeout
+    * The endpoint create-multiple command has breaking change due to the accommodation of probe interval and timeout
+    * Added support to set remote-subnet for an endpoint ACL rule
+    * Added command to fetch deployment event
+    * Enhanced docker create vm command to pass certificate CN
+  * Site
+    * Fixed streamline precompiler issues with azure site commands 
+
 2015.06.26 Version 0.9.5
 * ARM
   * WebApp

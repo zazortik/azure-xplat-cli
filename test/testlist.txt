@@ -40,6 +40,16 @@ commands/cli.site.slots-tests.js
 commands/cli.site.job-tests.js
 commands/cli.network-tests.js
 commands/cli.network.reservedip-tests.js
+commands/cli.network-nsg-tests.js
+commands/cli.network-nsg-rule-tests.js
+commands/cli.network-subnet-tests.js
+commands/cli.network.local-network.js
+commands/cli.network.gateway-test.js
+commands/cli.network.application-gateway.js
+commands/cli.network.application.gateway-config.js
+commands/cli.network.route-table.js
+commands/cli.network.traffic-manager-profile.js
+commands/cli.vm.create_vnet_multi_nic-tests.js
 commands/cli.vm.capture-tests.js
 commands/cli.vm.acl-tests.js
 commands/cli.vm.pip-tests.js

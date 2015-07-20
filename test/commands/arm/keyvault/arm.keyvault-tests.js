@@ -27,7 +27,6 @@ var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
 var testPrefix = 'arm-cli-keyvault-tests';
-var testResourceGroup = 'xplatTestVaultRG';
 var vaultPrefix = 'xplatTestVault';
 var knownNames = [];
 
@@ -36,7 +35,11 @@ var requiredEnvironment = [{
 }, {
   name: 'AZURE_ARM_TEST_LOCATION',
   defaultValue: 'West US'
-}];
+}, {
+  name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
+  defaultValue: 'xplatTestVaultRG'
+} 
+];
 
 var galleryTemplateName;
 var galleryTemplateUrl;
@@ -46,12 +49,14 @@ describe('arm', function() {
   describe('keyvault', function() {
     var suite;
     var testLocation;
+    var testResourceGroup;
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() { 
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         testLocation = testLocation.toLowerCase().replace(/ /g, '');
+        testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
         suite.execute('group create %s --location %s', testResourceGroup, testLocation, function() {
           done();
         });      
