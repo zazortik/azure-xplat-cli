@@ -19403,6 +19403,90 @@
       ],
       "categories": {}
     },
+    "usage": {
+      "name": "usage",
+      "description": "Commands to view your aggregated Azure usage data",
+      "fullName": "usage",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "list",
+          "description": "List the usage aggregates for a provided time range",
+          "fullName": "usage list",
+          "usage": "[options] [reportedStartTime] [reportedEndTime]",
+          "filePath": "commands/arm/usage/usage.js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--reportedStartTime <reportedStartTime>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "long": "--reportedStartTime",
+              "description": "The start of the time range to retrieve data for."
+            },
+            {
+              "flags": "--reportedEndTime <reportedEndTime>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "long": "--reportedEndTime",
+              "description": "The end of the time range to retrieve data for."
+            },
+            {
+              "flags": "--granularity <daily/hourly>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--granularity",
+              "description": "Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour."
+            },
+            {
+              "flags": "--showDetails <bool>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--showDetails",
+              "description": "When set to true (default), the aggregates are broken down into the instance metadata which is more granular."
+            },
+            {
+              "flags": "--continuationToken <url>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "long": "--continuationToken",
+              "description": "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged."
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "vm": {
       "name": "vm",
       "description": "Commands to manage your virtual machines",
