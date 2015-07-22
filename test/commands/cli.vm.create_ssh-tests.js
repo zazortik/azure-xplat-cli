@@ -108,7 +108,7 @@ describe('cli', function() {
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('--no-ssh-password and --ssh-cert can only be used with --ssh or --no-ssh-endpoint parameter');
+            result.errorText.should.include('--no-ssh-password, --ssh-cert and --generate-ssh-keys can only be used with --ssh or --no-ssh-endpoint parameter');
             setTimeout(done, timeout);
           });
         });
