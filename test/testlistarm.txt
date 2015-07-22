@@ -51,6 +51,8 @@ commands/arm/network/arm.network.dnszone-tests.js
 commands/arm/network/arm.network.dnszone-recordset-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
+commands/arm/network/arm.network.route-table-tests.js
+commands/arm/network/arm.network.route-table-routes-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
