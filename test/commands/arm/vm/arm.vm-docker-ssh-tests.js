@@ -18,37 +18,33 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-vm-docker-tests';
-var groupPrefix = 'xplatTestGVMDocker';
+var testprefix = 'arm-cli-vm-docker-generate-sshkeys-tests';
 var path = require('path');
 var fs = require('fs');
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/myCert.pem'
 }];
 
-var groupName = 'xplatTestGVMDocker',
-  vmPrefix = 'xplatvmdocker',
-  nicName = 'xplatnicdocker',
+var groupName = 'xplatTestGVMDockerSSH',
+  vmPrefix = 'xplatvmdockssh',
+  nicName = 'xplatnicdockssh',
   location, homePath, timeout,
   username = 'azureuser',
   password = 'Brillio@2015',
-  storageAccount = 'xplatstdocker',
-  storageCont = 'xplatscntdocker',
-  osdiskvhd = 'xplatdockervhd',
-  vNetPrefix = 'xplatdockervnet',
-  subnetName = 'xplatdockersubnet',
-  publicipName = 'xplatdockerip',
-  dnsPrefix = 'xplatdockeripdns',
-  sshcert, dockerPort = 4243;
+  storageAccount = 'xplatstdockssh',
+  storageCont = 'xplatscntdockssh',
+  osdiskvhd = 'xplatdocksshvhd',
+  vNetPrefix = 'xplatdocksshvnet',
+  subnetName = 'xplatdocksshsubnet',
+  publicipName = 'xplatdocksship',
+  dnsPrefix = 'xplatdocksshipdns';
 
 describe('arm', function() {
   describe('compute', function() {
-    var suite, retry = 5, dockerCertDir, dockerCertFol = '.docker';
+    var suite, retry = 5,
+      dockerCertDir, dockerCertFol = '.docker', SSHKeyDir, SSHKeyFolder = '.azure/ssh';
     var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 12000;
     before(function(done) {
@@ -67,13 +63,13 @@ describe('arm', function() {
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-        sshcert = process.env.SSHCERT;
         done();
       });
     });
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
         vmTest.deleteDockerCertificates(dockerCertDir);
+		vmTest.deleteSSHKeys(SSHKeyDir);
         suite.teardownSuite(done);
       });
     });
@@ -85,18 +81,21 @@ describe('arm', function() {
     });
 
     describe('vm', function() {
-      it('docker create should pass', function(done) {
+      it('docker create with generate ssh keys option should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.createGroup(groupName, location, suite, function(result) {
           vmTest.GetDockerLinuxImageList(location, suite, function(result) {
             dockerCertDir = path.join(homePath, dockerCertFol);
-            var cmd = util.format('vm docker create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -T %s -O %s --json',
+			SSHKeyDir = path.join(homePath, SSHKeyFolder);
+            var cmd = util.format('vm docker create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -G --json',
               groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-              vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, dockerPort, dockerCertDir).split(' ');
+              vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               var certifiatesExist = vmTest.checkForDockerCertificates(vmPrefix, dockerCertDir);
               certifiatesExist.should.be.true;
+			  var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+			  SSHkeysExist.should.be.true;
               done();
             });
           });
@@ -104,7 +103,7 @@ describe('arm', function() {
         });
       });
 
-      it('show should show created Docker VM', function(done) {
+      it('show should display created Docker VM', function(done) {
         var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);

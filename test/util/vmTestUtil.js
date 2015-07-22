@@ -18,6 +18,7 @@ var async = require('async');
 var path = require('path');
 var fs = require('fs');
 var dockerCerts;
+var sshKeys;
 var ImageUrnPath = './test/data/imageUrn.json';
 var Imagejsontext = '{"ImageUrn":[' +
 		'{"Windows":""},' +
@@ -149,7 +150,7 @@ VMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir) {
       fs.unlinkSync(dockerCerts.client);
       fs.unlinkSync(dockerCerts.clientCert);
       fs.unlinkSync(dockerCerts.extfile);
-      fs.rmdirSync(dockerCertDir);
+      //fs.rmdirSync(dockerCertDir);
     });
 };
 VMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCertDir) {
@@ -215,4 +216,35 @@ VMTestUtil.prototype.checkImagefile = function(callback) {
 			}
 		callback();	
 	});
-}
+};
+VMTestUtil.prototype.checkForSSHKeys = function(vmName, SSHKeyDir) {
+	 sshKeys = {
+			certKey: path.join(SSHKeyDir, vmName + '-cert.pem'),
+			key: path.join(SSHKeyDir, vmName + '-key.pem')
+		  };
+
+		  if (!fs.existsSync(sshKeys.certKey)) {
+			return false;
+		  }
+
+		  if (!fs.existsSync(sshKeys.key)) {
+			return false;
+		  }
+
+		  return true;
+};
+VMTestUtil.prototype.deleteSSHKeys = function(SSHKeyDir) {
+	if (!SSHKeyDir || !sshKeys) {
+      return;
+    }
+
+    fs.exists(SSHKeyDir, function(exists) {
+      if (!exists) {
+        return;
+      }
+
+      fs.unlinkSync(sshKeys.certKey);
+      fs.unlinkSync(sshKeys.key);
+      //fs.rmdirSync(SSHKeyDir);
+    });
+};

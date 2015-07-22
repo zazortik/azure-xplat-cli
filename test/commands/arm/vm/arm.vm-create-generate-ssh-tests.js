@@ -15,50 +15,41 @@
 'use strict';
 
 var should = require('should');
+var path = require('path');
+var fs = require('fs');
 var util = require('util');
-var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
-var testprefix = 'arm-cli-vm-disk-attachnew-detach-tests';
-var groupPrefix = 'xplatTestGCreateDisk';
+var CLITest = require('../../../framework/arm-cli-test');
+var testprefix = 'arm-cli-vm-create-generate-sshkeys-tests';
+var groupPrefix = 'xplatTestGVMCreateSSH';
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/myCert.pem'
 }];
 
-var groupName, timeout,
-  vmPrefix = 'xplatvmDk',
-  nicName = 'xplattestnicDk',
-  location,
+var groupName,
+  vmPrefix = 'xplatsshvm',
+  nicName = 'xplatsshnic',
+  location, homePath,
   username = 'azureuser',
   password = 'Brillio@2015',
-  storageAccount = 'xplatteststorage',
-  storageCont = 'xplatteststoragecnt',
-  osdiskvhd = 'xplattestvhdDk',
-  vNetPrefix = 'xplattestvnetDk',
-  subnetName = 'xplattestsubnetDk',
-  publicipName = 'xplattestipDk',
-  dnsPrefix = 'xplattestipdnsdk',
-  diskPrefix = 'xplatdiskdk',
-  diskPrefixvhd , 
-  lun = '0',
-  sshcert;
+  storageAccount = 'xplatsshstorage1',
+  storageCont = 'xplatsshstoragecnt1',
+  osdiskvhd = 'xplatsshvhd',
+  vNetPrefix = 'xplatsshvnet',
+  subnetName = 'xplatsshsubnet',
+  publicipName = 'xplatsship',
+  dnsPrefix = 'xplatsshipdns';
 
 describe('arm', function() {
   describe('compute', function() {
+    var suite, retry = 5, SSHKeyDir, SSHKeyFolder = '.azure/ssh';
     var vmTest = new VMTestUtil();
-    var suite, retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 5000;
-
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
@@ -69,48 +60,52 @@ describe('arm', function() {
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
-        diskPrefix = suite.isMocked ? diskPrefix : suite.generateId(diskPrefix, null);
+		homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
         done();
       });
     });
-
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
         suite.teardownSuite(done);
       });
     });
-
     beforeEach(function(done) {
       suite.setupTest(done);
     });
-
     afterEach(function(done) {
       suite.teardownTest(done);
     });
 
     describe('vm', function() {
-      it('create for disk attach and detach should pass', function(done) {
+
+      it('create with generate ssh keys option should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json',
+				  SSHKeyDir = path.join(homePath, SSHKeyFolder);
+                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -G --json',
                     groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
+					var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+					SSHkeysExist.should.be.true;
                     done();
                   });
                 });
               });
             } else {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json',
+			  SSHKeyDir = path.join(homePath, SSHKeyFolder);
+              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -G --json',
                 groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
+				var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+				SSHkeysExist.should.be.true;
                 done();
               });
             }
@@ -118,33 +113,17 @@ describe('arm', function() {
         });
       });
 
-      it('disk attachnew should attach new data disk to the VM', function(done) {
-        diskPrefixvhd = diskPrefix + '.vhd';
-        var cmd = util.format('vm disk attach-new %s %s 1 %s -l %s --json', groupName, vmPrefix, diskPrefixvhd, lun).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-	
-	 it('show should display name of the data disk attached to a VM', function(done) {
+     
+      it('show should display details about VM', function(done) {
         var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-		  allResources.storageProfile.dataDisks[0].name.should.equal(diskPrefix);
           allResources.name.should.equal(vmPrefix);
           done();
         });
-     });
-      it('disk detach should detach the data disk from VM', function(done) {
-        var cmd = util.format('vm disk detach %s %s 0 --json', groupName, vmPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
       });
-
     });
+
   });
 });

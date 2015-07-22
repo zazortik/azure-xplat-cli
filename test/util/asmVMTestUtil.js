@@ -18,6 +18,7 @@ var path = require('path');
 var fs = require('fs');
 var util = require('util');
 var testUtils = require('../util/util');
+var dockerCerts,sshKeys;
 exports = module.exports = asmVMTestUtil;
 var retry = 5;
 var createReservedIp = new Object();
@@ -494,7 +495,7 @@ asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, timeout, diskrelea
         }
     });
 };
-asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, dockerCerts) {
+asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir) {
     if (!dockerCertDir || !dockerCerts) {
         return;
     }
@@ -503,7 +504,6 @@ asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, docke
         if (!exists) {
             return;
         }
-
         fs.unlinkSync(dockerCerts.caKey);
         fs.unlinkSync(dockerCerts.ca);
         fs.unlinkSync(dockerCerts.serverKey);
@@ -513,7 +513,7 @@ asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, docke
         fs.unlinkSync(dockerCerts.client);
         fs.unlinkSync(dockerCerts.clientCert);
         fs.unlinkSync(dockerCerts.extfile);
-        fs.rmdirSync(dockerCertDir);
+        //fs.rmdirSync(dockerCertDir);
     });
 };
 asmVMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCertDir) {
@@ -562,6 +562,35 @@ asmVMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCert
     }
 
     return true;
+};
+asmVMTestUtil.prototype.checkForSSHKeys = function(vmName, SSHKeyDir) {
+	 sshKeys = {
+			certKey: path.join(SSHKeyDir, vmName + '-cert.pem'),
+			key: path.join(SSHKeyDir, vmName + '-key.pem')
+		  };
+		  if (!fs.existsSync(sshKeys.certKey)) {
+			return false;
+		  }
+		  
+		  if (!fs.existsSync(sshKeys.key)) {
+			return false;
+		  }
+
+		  return true;
+};
+asmVMTestUtil.prototype.deleteSSHKeys = function(SSHKeyDir) {
+	if (!SSHKeyDir || !sshKeys) {
+      return;
+    }
+    fs.exists(SSHKeyDir, function(exists) {
+      if (!exists) {
+        return;
+      }
+
+      fs.unlinkSync(sshKeys.certKey);
+      fs.unlinkSync(sshKeys.key);
+      //fs.rmdirSync(SSHKeyDir);
+    });
 };
 asmVMTestUtil.prototype.checkForDockerPort = function(cratedVM, dockerPort) {
     var result = false;

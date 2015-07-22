@@ -7,12 +7,15 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
     name: 'CollaberaInteropTest',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -27,4 +30,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatteststorage957','xplatteststoragecnt9144'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatteststorage1520','xplatteststoragecnt7096'];};
