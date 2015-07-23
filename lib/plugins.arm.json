@@ -14715,6 +14715,24 @@
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                 },
                 {
+                  "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--internal-dns-name-label",
+                  "description": "the internal DNS name label"
+                },
+                {
+                  "flags": "-f, --enable-ip-forwarding <enable-ip-forwarding>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--enable-ip-forwarding",
+                  "description": "the ip forwarding, valid values are [true, false]"
+                },
+                {
                   "flags": "-t, --tags <tags>",
                   "required": -12,
                   "optional": 0,
@@ -14865,6 +14883,24 @@
                   "short": "-e",
                   "long": "--lb-inbound-nat-rule-ids",
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
+                },
+                {
+                  "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--internal-dns-name-label",
+                  "description": "the internal DNS name label"
+                },
+                {
+                  "flags": "-f, --enable-ip-forwarding <enable-ip-forwarding>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--enable-ip-forwarding",
+                  "description": "the ip forwarding, valid values are [true, false]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
