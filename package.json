@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -46,7 +46,7 @@
     "azure-arm-website": "0.10.0",
     "azure-asm-hdinsight": "0.10.1",
     "azure-asm-trafficmanager": "0.10.3",
-    "azure-common": "0.9.12",
+    "azure-common": "0.9.13",
     "azure-extra": "0.1.7",
     "azure-gallery": "2.0.0-pre.15",
     "azure-insights": "0.7.7-pre",
