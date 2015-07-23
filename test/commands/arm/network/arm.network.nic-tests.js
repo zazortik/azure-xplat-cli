@@ -29,8 +29,13 @@ var groupName, nsgName,
   nicPrefix = 'xplatTestNic',
   publicipPrefix = 'xplatTestIpNic',
   nsgPrefix = 'xplatTestNSGNic',
+  tagVal = 'priority=low',
+  tagValN = 'priority=high',
   location;
-var internalDnsLable = 'internlDns', enableIpForwarding = 'true', internalDnsLableN = 'internlDnsN', enableIpForwardingN = 'false';
+var internalDnsLable = 'internlDns',
+  enableIpForwarding = 'true',
+  internalDnsLableN = 'internlDnsN',
+  enableIpForwardingN = 'false';
 var LBName = 'xplattestlbnic',
   FrontendIpName = 'xplattestFrontendIpnic',
   LBAddPool = 'LBAddPollnic',
@@ -48,8 +53,7 @@ var requiredEnvironment = [{
 
 describe('arm', function() {
   describe('network', function() {
-    var suite,
-      retry = 5;
+    var suite, retry = 5;
     var networkUtil = new networkTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -109,8 +113,8 @@ describe('arm', function() {
                             networkUtil.showLB(groupName, LBName, suite, function(result) {
                               networkUtil.createNSG(groupName, nsgName, location, suite, function(result) {
                                 networkUtil.showNSG(groupName, nsgName, suite, function(result) {
-                                  var cmd = util.format('network nic create %s %s %s -t priority=low -u %s -k %s -m %s -w %s -o %s -a %s -d %s -e %s -r %s -f %s --json',
-                                    groupName, nicPrefix, location, networkTestUtil.subnetId, subnetprefix, vnetPrefix, networkTestUtil.nsgId, nsgName, privateIP, networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLable, enableIpForwarding).split(' ');
+                                  var cmd = util.format('network nic create %s %s %s -t %s -u %s -k %s -m %s -w %s -o %s -a %s -d %s -e %s -r %s -f %s --json',
+                                    groupName, nicPrefix, location, tagVal, networkTestUtil.subnetId, subnetprefix, vnetPrefix, networkTestUtil.nsgId, nsgName, privateIP, networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLable, enableIpForwarding).split(' ');
                                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                                     result.exitStatus.should.equal(0);
                                     done();
@@ -131,7 +135,7 @@ describe('arm', function() {
       });
 
       it('set should modify nic', function(done) {
-        var cmd = util.format('network nic set %s %s -t priority=high -w %s -o %s -a %s -u %s -k %s -d %s -e %s --no-tags -r %s -f %s --json', groupName, nicPrefix, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLableN, enableIpForwardingN).split(' ');
+        var cmd = util.format('network nic set %s %s -t %s -w %s -o %s -a %s -u %s -k %s -d %s -e %s --no-tags -r %s -f %s --json', groupName, nicPrefix, tagValN, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLableN, enableIpForwardingN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
