@@ -19405,7 +19405,7 @@
     },
     "usage": {
       "name": "usage",
-      "description": "Commands to view your aggregated Azure usage data",
+      "description": "Command to view your aggregated Azure usage data",
       "fullName": "usage",
       "usage": "[options] [command]",
       "options": [],
