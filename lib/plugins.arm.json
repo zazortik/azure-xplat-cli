@@ -19415,7 +19415,7 @@
           "description": "List the usage aggregates for a provided time range",
           "fullName": "usage list",
           "usage": "[options] [reportedStartTime] [reportedEndTime]",
-          "filePath": "commands/arm/usage/usage.js",
+          "filePath": "commands/arm/usage/usage._js",
           "options": [
             {
               "flags": "-v, --verbose",
