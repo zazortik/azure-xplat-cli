@@ -60,10 +60,10 @@ describe('arm', function () {
   describe('usage', function () {
         
     it('list should work', function (done) {
-      suite.execute('usage list 5/5/2015 5/7/2015 --json', groupName, function (result) {
+      suite.execute('usage list 5/5/2015 5/7/2015 --json', function (result) {
         result.exitStatus.should.equal(0);
-        var output = JSON.parse(result.text);
-        output.length.should.be.above(0);
+        result.text.length.should.be.above(0);
+        
         done();
       });
     });
