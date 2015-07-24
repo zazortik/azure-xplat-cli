@@ -44,7 +44,8 @@ var groupName = 'xplatTestGVMDockerSSH',
 describe('arm', function() {
   describe('compute', function() {
     var suite, retry = 5,
-      dockerCertDir, dockerCertFol = '.docker', SSHKeyDir, SSHKeyFolder = '.azure/ssh';
+      dockerCertDir, dockerCertFol = '.docker',
+      SSHKeyDir, SSHKeyFolder = '.azure/ssh';
     var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 12000;
     before(function(done) {
@@ -69,7 +70,7 @@ describe('arm', function() {
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
         vmTest.deleteDockerCertificates(dockerCertDir);
-		vmTest.deleteSSHKeys(SSHKeyDir);
+        vmTest.deleteSSHKeys(SSHKeyDir);
         suite.teardownSuite(done);
       });
     });
@@ -86,7 +87,7 @@ describe('arm', function() {
         vmTest.createGroup(groupName, location, suite, function(result) {
           vmTest.GetDockerLinuxImageList(location, suite, function(result) {
             dockerCertDir = path.join(homePath, dockerCertFol);
-			SSHKeyDir = path.join(homePath, SSHKeyFolder);
+            SSHKeyDir = path.join(homePath, SSHKeyFolder);
             var cmd = util.format('vm docker create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -G --json',
               groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
@@ -94,8 +95,8 @@ describe('arm', function() {
               result.exitStatus.should.equal(0);
               var certifiatesExist = vmTest.checkForDockerCertificates(vmPrefix, dockerCertDir);
               certifiatesExist.should.be.true;
-			  var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
-			  SSHkeysExist.should.be.true;
+              var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+              SSHkeysExist.should.be.true;
               done();
             });
           });
