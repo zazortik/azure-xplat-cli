@@ -189,14 +189,14 @@ Usage is same as standard vm create.
 
     azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
-This command only supports Ubuntu 14.04 based images. Docker is configured on the VM using HTTPS as described here: http://docs.docker.io/articles/https/ By default, certificates are put in `~/.docker`, and Docker is configured to run on port 4243. These can be configured using new options:
+This command only supports Ubuntu 14.04+ and CoreOS based images. Docker is configured on the VM using HTTPS as described here: https://docs.docker.com/articles/https/ By default, generated TLS certificates are placed in the `~/.docker` directory, and Docker is configured to run on port 2376. These can be configured using new options:
 
-    -dp, --docker-port [port]              Port to use for docker [4243]
-    -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
+    -dp, --docker-port [port]              Port to use for docker [2376]
+    -dc, --docker-cert-dir [dir]           Directory containing docker certs [~/.docker/]
 	
 After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
 
-    docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
+    docker --tls -H tcp://<my-host>.cloudapp.net:2376 info
 
 Note: To run docker commands on windows make sure ssl agent is installed.
 	
