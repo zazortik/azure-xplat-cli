@@ -57,3 +57,4 @@ commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
 commands/arm/apiapp/arm.apiapp-tests.js
+commands/arm/usage/arm.usage.feature-tests.js
