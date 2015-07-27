@@ -73,6 +73,22 @@ networkTestUtil.prototype.deleteRouteTable = function (groupName, RouteTablePref
 			});
 	} else callback();
 };
+networkTestUtil.prototype.createRouteTable = function (groupName, RouteTablePrefix, location, suite, callback) {
+	var cmd = util.format('network route-table create -g %s -n %s -l %s --json', groupName, RouteTablePrefix, location).split(' ');
+	testUtils.executeCommand(suite, retry, cmd, function (result) {
+		result.exitStatus.should.equal(0);
+		callback();
+	});
+};
+networkTestUtil.prototype.deleteRouteTable = function (groupName, RouteTablePrefix, suite, callback) {
+	if(!suite.isPlayback()) {
+		var cmd = util.format('network route-table delete -g %s -n %s -q --json', groupName, RouteTablePrefix).split(' ');
+			testUtils.executeCommand(suite, retry, cmd, function (result) {
+				result.exitStatus.should.equal(0);
+				callback();
+			});
+	} else callback();
+};
 networkTestUtil.prototype.createVnet = function(groupName, vnetPrefix, location, suite, callback) {
 	var cmd = util.format('network vnet create %s %s %s --json',groupName,vnetPrefix,location).split(' ');
 		testUtils.executeCommand(suite, retry, cmd, function (result) {
