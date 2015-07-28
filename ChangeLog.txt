@@ -1,3 +1,8 @@
+2015.07.?? Version 0.9.7
+* ARM
+  * Usage
+    * Added command to list Azure resource usage information for a subscription
+
 2015.07.20 Version 0.9.6
 * ASM
   *  Network

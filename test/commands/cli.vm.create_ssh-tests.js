@@ -35,9 +35,11 @@ var requiredEnvironment = [{
 describe('cli', function() {
   describe('vm', function() {
     var vmName,
+      SSHKeyDir, SSHKeyFolder = '.azure/ssh',
       location, retry = 5,
       homePath, timeout,
       username = 'azureuser',
+      password = 'Pa$$word@123',
       certFile;
     testUtils.TIMEOUT_INTERVAL = 12000;
     var vmUtil = new vmTestUtil();
@@ -74,11 +76,13 @@ describe('cli', function() {
     afterEach(function(done) {
       vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
+        vmUtil.deleteSSHKeys(SSHKeyDir);
       });
     });
 
     describe('Vm Create: ', function() {
       it('Create VM with ssh cert, no ssh endpoint and no ssh password should pass', function(done) {
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm create %s %s %s --ssh-cert %s --no-ssh-password --no-ssh-endpoint --json',
             vmName, ImageName, username, certFile).split(' ');
@@ -100,7 +104,33 @@ describe('cli', function() {
         });
       });
 
+      it('Create VM with generate ssh keys option should pass', function(done) {
+        vmUtil.getImageName('Linux', suite, function(ImageName) {
+          SSHKeyDir = path.join(homePath, SSHKeyFolder);
+          var cmd = util.format('vm create %s %s %s %s --ssh --generate-ssh-keys --json',
+            vmName, ImageName, username, password).split(' ');
+          cmd.push('--location');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            cmd = util.format('vm show %s --json', vmName).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var createdVM = JSON.parse(result.text);
+              createdVM.VMName.should.equal(vmName);
+              var SSHkeysExist = vmUtil.checkForSSHKeys(vmName, SSHKeyDir);
+              SSHkeysExist.should.be.true;
+              vmToUse.Name = vmName;
+              vmToUse.Created = true;
+              vmToUse.Delete = true;
+              setTimeout(done, timeout);
+            });
+          });
+        });
+      });
+
       it('Create VM with ssh cert and no ssh password, but no ssh endpoint or explicit disabled ssh endpoint should throw error', function(done) {
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm create %s %s %s --ssh-cert %s --no-ssh-password --json',
             vmName, ImageName, username, certFile).split(' ');
@@ -108,7 +138,7 @@ describe('cli', function() {
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('--no-ssh-password and --ssh-cert can only be used with --ssh or --no-ssh-endpoint parameter');
+            result.errorText.should.include('--no-ssh-password, --ssh-cert and --generate-ssh-keys can only be used with --ssh or --no-ssh-endpoint parameter');
             setTimeout(done, timeout);
           });
         });
