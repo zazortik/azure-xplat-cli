@@ -7657,7 +7657,8 @@
               "bool": true,
               "short": "-e",
               "long": "--parameters-file",
-              "description": "a file containing parameters"
+              "description": "a file containing parameters",
+              "fileRelatedOption": true
             },
             {
               "flags": "-t --tags <tags>",
