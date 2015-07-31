@@ -7614,7 +7614,8 @@
               "bool": true,
               "short": "-f",
               "long": "--template-file",
-              "description": "the path to the template file in the file system"
+              "description": "the path to the template file in the file system",
+              "fileRelatedOption": true
             },
             {
               "flags": "--template-uri <template-uri>",
@@ -7657,7 +7658,8 @@
               "bool": true,
               "short": "-e",
               "long": "--parameters-file",
-              "description": "a file containing parameters"
+              "description": "a file containing parameters",
+              "fileRelatedOption": true
             },
             {
               "flags": "-t --tags <tags>",
@@ -8033,7 +8035,8 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--template-file",
-                  "description": "the path to the template file in the file system"
+                  "description": "the path to the template file in the file system",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--template-uri <template-uri>",
@@ -8076,7 +8079,8 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--parameters-file",
-                  "description": "a file containing parameters"
+                  "description": "a file containing parameters",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--nowait",
@@ -8475,7 +8479,8 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--template-file",
-                  "description": "the path to the template file in the file system"
+                  "description": "the path to the template file in the file system",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--template-uri <template-uri>",
@@ -8518,7 +8523,8 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--parameters-file",
-                  "description": "a file containing parameters"
+                  "description": "a file containing parameters",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--subscription <subscription>",
