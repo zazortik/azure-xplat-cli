@@ -2231,4 +2231,4 @@ nock('https://management.azure.com:443')
   'x-ms-routing-request-id': 'WESTUS:20150731T223302Z:94ce2865-5a4e-44cf-82fb-3ff6ab9ff50f',
   date: 'Fri, 31 Jul 2015 22:33:01 GMT',
   connection: 'close' });
- return result; }]];
+ return result; }
