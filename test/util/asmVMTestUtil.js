@@ -18,9 +18,13 @@ var path = require('path');
 var fs = require('fs');
 var util = require('util');
 var testUtils = require('../util/util');
+var dockerCerts, sshKeys;
 exports = module.exports = asmVMTestUtil;
 var retry = 5;
 var createReservedIp = new Object();
+//var getVnet = new Object();
+//var getAffinityGroup = new Object();
+//var getVM = new Object();
 var affinityName = 'xplataffintest',
   affinLabel = 'xplatAffinGrp',
   affinDesc = 'Test Affinty Group for xplat';
@@ -28,13 +32,13 @@ var affinityName = 'xplataffintest',
  * @class
  * Initializes a new instance of the asmVMTestUtil class.
  * @constructor
- * 
+ *
  * Example use of this class:
  *
  * //creates mobile test class
  * var vmUtil = new asmVMTestUtil();
- * // use the methods 
- * 
+ * // use the methods
+ *
  */
 function asmVMTestUtil() {
   this.vmSize;
@@ -98,7 +102,7 @@ asmVMTestUtil.prototype.getDiskName = function(OS, location, suite, callback) {
 
 };
 asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
-  if (category === 'Windows') {
+  if (category == 'Windows') {
     if (process.env.VM_WIN_IMAGE && process.env.VM_WIN_IMAGE !== undefined) {
       callback(process.env.VM_WIN_IMAGE);
     } else {
@@ -110,7 +114,7 @@ asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
         imageList.some(function(image) {
           if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
             this.vmImgName = image.name;
-            process.env.VM_WIN_IMAGE = (category === 'Windows') ? image.name : process.env.VM_WIN_IMAGE;
+            process.env.VM_WIN_IMAGE = (category == 'Windows') ? image.name : process.env.VM_WIN_IMAGE;
             return true;
           }
         });
@@ -118,7 +122,7 @@ asmVMTestUtil.prototype.getImageName = function(category, suite, callback) {
       });
 
     }
-  } else if (category === 'Linux') {
+  } else if (category == 'Linux') {
     if (process.env.VM_LINUX_IMAGE && process.env.VM_LINUX_IMAGE !== undefined) {
       callback(process.env.VM_LINUX_IMAGE);
     } else {
@@ -491,7 +495,7 @@ asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, timeout, diskrelea
     }
   });
 };
-asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, dockerCerts) {
+asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir) {
   if (!dockerCertDir || !dockerCerts) {
     return;
   }
@@ -500,7 +504,6 @@ asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, docke
     if (!exists) {
       return;
     }
-
     fs.unlinkSync(dockerCerts.caKey);
     fs.unlinkSync(dockerCerts.ca);
     fs.unlinkSync(dockerCerts.serverKey);
@@ -510,16 +513,17 @@ asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir, docke
     fs.unlinkSync(dockerCerts.client);
     fs.unlinkSync(dockerCerts.clientCert);
     fs.unlinkSync(dockerCerts.extfile);
-    fs.rmdirSync(dockerCertDir);
+    //Commenting because ~/.docker folder will have separate server docker certificates for each created VM
+    //fs.rmdirSync(dockerCertDir);
   });
 };
-asmVMTestUtil.prototype.checkForDockerCertificates = function(dockerCertDir) {
+asmVMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCertDir) {
   dockerCerts = {
     caKey: path.join(dockerCertDir, 'ca-key.pem'),
     ca: path.join(dockerCertDir, 'ca.pem'),
-    serverKey: path.join(dockerCertDir, 'server-key.pem'),
-    server: path.join(dockerCertDir, 'server.csr'),
-    serverCert: path.join(dockerCertDir, 'server-cert.pem'),
+    serverKey: path.join(dockerCertDir, vmName + '-server-key.pem'),
+    server: path.join(dockerCertDir, vmName + '-server.csr'),
+    serverCert: path.join(dockerCertDir, vmName + '-server-cert.pem'),
     clientKey: path.join(dockerCertDir, 'key.pem'),
     client: path.join(dockerCertDir, 'client.csr'),
     clientCert: path.join(dockerCertDir, 'cert.pem'),
@@ -560,6 +564,34 @@ asmVMTestUtil.prototype.checkForDockerCertificates = function(dockerCertDir) {
 
   return true;
 };
+asmVMTestUtil.prototype.checkForSSHKeys = function(vmName, SSHKeyDir) {
+  sshKeys = {
+    certKey: path.join(SSHKeyDir, vmName + '-cert.pem'),
+    key: path.join(SSHKeyDir, vmName + '-key.pem')
+  };
+  if (!fs.existsSync(sshKeys.certKey)) {
+    return false;
+  }
+
+  if (!fs.existsSync(sshKeys.key)) {
+    return false;
+  }
+
+  return true;
+};
+asmVMTestUtil.prototype.deleteSSHKeys = function(SSHKeyDir) {
+  if (!SSHKeyDir || !sshKeys) {
+    return;
+  }
+  fs.exists(SSHKeyDir, function(exists) {
+    if (!exists) {
+      return;
+    }
+
+    fs.unlinkSync(sshKeys.certKey);
+    fs.unlinkSync(sshKeys.key);
+  });
+};
 asmVMTestUtil.prototype.checkForDockerPort = function(cratedVM, dockerPort) {
   var result = false;
   if (cratedVM.Network && cratedVM.Network.Endpoints) {
@@ -569,7 +601,6 @@ asmVMTestUtil.prototype.checkForDockerPort = function(cratedVM, dockerPort) {
       }
     });
   }
-
   return result;
 };
 asmVMTestUtil.prototype.generateFile = function(filename, fileSizeinBytes, data) {

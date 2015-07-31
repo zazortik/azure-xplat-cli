@@ -25,76 +25,74 @@ var testPrefix = 'cli.vm.shutdown_restart-tests';
 var createdVms = [];
 
 var requiredEnvironment = [{
-  name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'West US'
+    name: 'AZURE_VM_TEST_LOCATION',
+    defaultValue: 'West US'
 }];
 
 describe('cli', function() {
-  describe('vm', function() {
-    var vmUtil = new vmTestUtil();
-    var vmName,
-      location,
-      username = 'azureuser',
-      password = 'Collabera@01',
-      retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 5000;
-    before(function(done) {
-      suite = new CLITest(this, testPrefix, requiredEnvironment);
-      suite.setupSuite(function() {
-        vmName = suite.generateId(vmPrefix, createdVms);
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
-    });
+    describe('vm', function() {
+        var vmUtil = new vmTestUtil();
+        var vmName,
+            location,
+            username = 'azureuser',
+            password = 'Collabera@01',
+            retry = 5;
+        testUtils.TIMEOUT_INTERVAL = 5000;
+        before(function(done) {
+			suite = new CLITest(this, testPrefix, requiredEnvironment);
+			suite.setupSuite(function(){
+				vmName = suite.generateId(vmPrefix, createdVms);
+				location = process.env.AZURE_VM_TEST_LOCATION;
+				timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+				done();
+			});
+		});
 
-    after(function(done) {
-      if (suite.isMocked)
-        suite.teardownSuite(done);
-      else {
-        vmUtil.deleteVM(vmName, timeout, suite, function() {
-          suite.teardownSuite(done);
+        after(function(done) {
+            if (suite.isMocked)
+                suite.teardownSuite(done);
+            else {
+                vmUtil.deleteVM(vmName, timeout, suite, function() {
+                    suite.teardownSuite(done);
+                });
+            }
+
         });
-      }
 
-    });
+		beforeEach(function(done) {
+		  suite.setupTest(done);
+		});
 
-    beforeEach(function(done) {
-      suite.setupTest(done);
-    });
-
-    afterEach(function(done) {
-      suite.teardownTest(done);
-    });
-
-    describe('Vm:', function() {
-      it('Shutdown and start should work', function(done) {
-        vmUtil.createVMShutdown(vmName, username, password, location, timeout, suite, function() {
-          var vmLower = vmName.toLowerCase();
-          var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            setTimeout(function() {
-              cmd = util.format('vm start %s --json', vmLower).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                done();
-              });
-            }, timeout);
-          });
+        afterEach(function(done) {
+            suite.teardownTest(done);
         });
-      });
 
-      // VM Restart
-      it('Restart should work', function(done) {
-        var vmUpper = vmName.toUpperCase();
-        cmd = util.format('vm restart  %s --json', vmUpper).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
+        describe('Vm:', function() {
+            it('Shutdown and start should work', function(done) {
+                vmUtil.createVMShutdown(vmName, username, password, location, timeout, suite, function() {
+                    var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
+                    testUtils.executeCommand(suite, retry, cmd, function(result) {
+                        result.exitStatus.should.equal(0);
+                        setTimeout(function() {
+                            cmd = util.format('vm start %s --json', vmName).split(' ');
+                            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                result.exitStatus.should.equal(0);
+                                done();
+                            });
+                        }, timeout);
+                    });
+                });
+            });
+
+            // VM Restart
+            it('Restart should work', function(done) {
+                cmd = util.format('vm restart  %s --json', vmName).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    result.exitStatus.should.equal(0);
+                    done();
+                });
+            });
         });
-      });
-    });
 
-  });
+    });
 });

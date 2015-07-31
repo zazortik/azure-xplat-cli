@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -22,11 +22,11 @@
       "defaultValue": "Free"
     },
     "workerSize": {
-      "type": "int",
+      "type": "string",
       "allowedValues": [
-        0,
-        1,
-        2
+        "0",
+        "1",
+        "2"
       ],
       "defaultValue": 0
     }

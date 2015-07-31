@@ -36,7 +36,8 @@ describe('cli', function() {
   describe('vm', function() {
     var vmName,
       dockerCertDir,
-      dockerCerts,
+      //dockerCerts,sshKeys,
+      SSHKeyDir, SSHKeyFolder = '.azure/ssh',
       location, retry = 5,
       homePath, timeout,
       username = 'azureuser',
@@ -84,7 +85,8 @@ describe('cli', function() {
     afterEach(function(done) {
       vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
-        vmUtil.deleteDockerCertificates(dockerCertDir, dockerCerts);
+        vmUtil.deleteDockerCertificates(dockerCertDir);
+        vmUtil.deleteSSHKeys(SSHKeyDir);
       });
     });
 
@@ -104,7 +106,7 @@ describe('cli', function() {
               cmd = util.format('vm show %s --json', vmName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var certificatesExist = vmUtil.checkForDockerCertificates(dockerCertDir);
+                var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
                 certificatesExist.should.be.true;
                 var createdVM = JSON.parse(result.text);
                 var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -134,7 +136,7 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = vmUtil.checkForDockerCertificates(dockerCertDir);
+              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
               certificatesExist.should.be.true;
               var createdVM = JSON.parse(result.text);
               var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -163,7 +165,7 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = vmUtil.checkForDockerCertificates(dockerCertDir);
+              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
               certificatesExist.should.be.true;
               var createdVM = JSON.parse(result.text);
               var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -178,7 +180,41 @@ describe('cli', function() {
         });
       });
 
+      it('Create Docker VM with generate ssh keys option should pass', function(done) {
+        dockerCertDir = path.join(homePath, '.docker');
+        var dockerPort = 2376,
+          SSHKeyFolder = '.azure/ssh';
+        SSHKeyDir = path.join(homePath, SSHKeyFolder);
+        vmUtil.getImageName('Linux', suite, function(ImageName) {
+          var cmd = util.format('vm docker create %s %s %s --ssh --generate-ssh-keys --json',
+            vmName, ImageName, username, password).split(' ');
+          cmd.push('--location');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            cmd = util.format('vm show %s --json', vmName).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+              certificatesExist.should.be.true;
+              var createdVM = JSON.parse(result.text);
+              var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
+              dockerPortExists.should.be.true;
+              var SSHkeysExist = vmUtil.checkForSSHKeys(vmName, SSHKeyDir);
+              SSHkeysExist.should.be.true;
+              createdVM.VMName.should.equal(vmName);
+              vmToUse.Name = vmName;
+              vmToUse.Created = true;
+              vmToUse.Delete = true;
+              setTimeout(done, timeout);
+            });
+          });
+        });
+      });
+
       it('Create Docker VM with ssh cert and no ssh password, but no ssh endpoint or explicit disabled ssh endpoint should throw error', function(done) {
+        dockerCertDir = null;
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm docker create %s %s %s --ssh-cert %s --no-ssh-password --json',
             vmName, ImageName, username, certFile).split(' ');
@@ -186,7 +222,7 @@ describe('cli', function() {
           cmd.push(location);
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.not.equal(0);
-            result.errorText.should.include('--no-ssh-password and --ssh-cert can only be used with --ssh or --no-ssh-endpoint parameter');
+            result.errorText.should.include('--no-ssh-password, --ssh-cert and --generate-ssh-keys can only be used with --ssh or --no-ssh-endpoint parameter');
             setTimeout(done, timeout);
           });
         });
@@ -194,6 +230,8 @@ describe('cli', function() {
 
 
       it('Create Docker VM with duplicate docker port should throw error', function(done) {
+        dockerCertDir = null;
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-port 22',
             vmName, ImageName, username, password).split(' ');
@@ -208,6 +246,8 @@ describe('cli', function() {
       });
 
       it('Create Docker VM with invalid docker port should throw error', function(done) {
+        dockerCertDir = null;
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-port 3.2',
             vmName, ImageName, username, password).split(' ');
@@ -222,6 +262,8 @@ describe('cli', function() {
       });
 
       it('Create Docker VM with invalid docker cert dir should throw error', function(done) {
+        dockerCertDir = null;
+        SSHKeyDir = null;
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           var randomPath = __dirname + "/hello/test";
           var cmd = util.format('vm docker create %s %s %s %s --json --ssh 22 --docker-cert-dir %s',

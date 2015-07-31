@@ -48,8 +48,7 @@ var groupName = 'xplatTestGVMDocker',
 
 describe('arm', function() {
   describe('compute', function() {
-    var suite, retry = 5,
-      dockerCertDir, dockerCertFol = '.docker';
+    var suite, retry = 5, dockerCertDir, dockerCertFol = '.docker';
     var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 12000;
     before(function(done) {
@@ -74,7 +73,7 @@ describe('arm', function() {
     });
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
-        vmTest.deleteDockerCertificates();
+        vmTest.deleteDockerCertificates(dockerCertDir);
         suite.teardownSuite(done);
       });
     });
@@ -96,7 +95,7 @@ describe('arm', function() {
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, dockerPort, dockerCertDir).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certifiatesExist = vmTest.checkForDockerCertificates(dockerCertDir);
+              var certifiatesExist = vmTest.checkForDockerCertificates(vmPrefix, dockerCertDir);
               certifiatesExist.should.be.true;
               done();
             });
