@@ -44,6 +44,3 @@ Thumbs.db
 
 # Test Logs #
 test/output/*
-
-# Test Files#
-netconfig.json

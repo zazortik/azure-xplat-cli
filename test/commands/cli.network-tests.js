@@ -13,8 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-var should = require('should');
+
+var path = require('path');
 var util = require('util');
+
+var should = require('should');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 var suite;
@@ -29,8 +32,10 @@ var requiredEnvironment = [{
 var testSite;
 
 describe('cli', function() {
-  describe('network', function() {
-    var networkconfig = 'netconfig.json';
+  describe('network', function () {
+    //put the json file under same folder of the test file; 
+    //rather under repo root.
+    var networkconfig = path.join(__dirname, '/../output', 'netconfig.json');
     var dnsIp = '66.77.88.98';
     var dnsId = 'dns-cli-1';
     testUtils.TIMEOUT_INTERVAL = 5000;
