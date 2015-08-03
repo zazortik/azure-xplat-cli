@@ -232,7 +232,6 @@ describe('arm', function () {
         suite.execute('role create -f %s --json', filePath, function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
-          console.log(JSON.stringify(createdRole));
           createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
           createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
           createdRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/c36958e0-4307-409e-a493-eaaafd0ee20a");
@@ -244,7 +243,7 @@ describe('arm', function () {
         });
       });
 
-      it('create new role with non-existent file should not work', function (done) {
+      it.only('create new role with non-existent file should not work', function (done) {
         var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
         suite.execute('role create -f %s --json', filePath, function (result) {
           result.exitStatus.should.equal(1);
@@ -254,10 +253,9 @@ describe('arm', function () {
       });
 
       it('create new role with no input should not work', function (done) {
-        var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
         suite.execute('role create --json', function (result) {
           result.exitStatus.should.equal(1);
-          result.errorText.should.containEql("At least one of --file or --roledefinition need to be specified");
+          result.errorText.should.containEql("At least one of inputfile or roledefinition need to be specified");
           done();
         });
       });

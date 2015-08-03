@@ -43,6 +43,8 @@ var groupName, timeout,
   publicipName = 'xplattestipDk',
   dnsPrefix = 'xplattestipdnsdk',
   diskPrefix = 'xplatdiskdk',
+  diskPrefixvhd,
+  lun = '0',
   sshcert;
 
 describe('arm', function() {
@@ -117,14 +119,24 @@ describe('arm', function() {
       });
 
       it('disk attachnew should attach new data disk to the VM', function(done) {
-        diskPrefix = diskPrefix + '.vhd';
-        var cmd = util.format('vm disk attach-new %s %s 1 %s --json', groupName, vmPrefix, diskPrefix).split(' ');
+        diskPrefixvhd = diskPrefix + '.vhd';
+        var cmd = util.format('vm disk attach-new %s %s 1 %s -l %s --json', groupName, vmPrefix, diskPrefixvhd, lun).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
 
+      it('show should display name of the data disk attached to a VM', function(done) {
+        var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.storageProfile.dataDisks[0].name.should.equal(diskPrefix);
+          allResources.name.should.equal(vmPrefix);
+          done();
+        });
+      });
       it('disk detach should detach the data disk from VM', function(done) {
         var cmd = util.format('vm disk detach %s %s 0 --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
