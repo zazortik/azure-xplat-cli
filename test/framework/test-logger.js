@@ -101,6 +101,11 @@ exports.logError = function(err) {
   appendContent(content);
 };
 
+exports.logSillyError = function(err) {
+  var content = '\n' + err + '\n';
+  appendContent(content);
+};
+
 exports.setCurrentTest = function(test) {
   currentTest = test;
 };
