@@ -44,7 +44,7 @@
     "azure-gallery": "2.0.0-pre.15",
     "azure-insights": "0.7.7-pre",
     "azure-mgmt": "0.9.16",
-    "azure-mgmt-authorization": "0.9.0-pre.6",
+    "azure-arm-authorization": "0.10.2",
     "azure-mgmt-compute": "0.9.16",
     "azure-arm-network": "0.10.4",
     "azure-arm-trafficmanager": "0.10.2",

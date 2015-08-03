@@ -22,6 +22,8 @@ var testLogger = require('../../../framework/test-logger');
 var graphUtil = require('../../../util/graphUtils');
 var testprefix = 'arm-cli-role-tests';
 var util = require('util');
+var path = require('path');
+
 var testResourceGroup;
 var testSqlServer;
 var testSqlDb;
@@ -221,6 +223,41 @@ describe('arm', function () {
           roles.some(function (res) {
             return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
+          done();
+        });
+      });
+
+      it('create new role should work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        suite.execute('role create -f %s --json', filePath, function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          console.log(JSON.stringify(createdRole));
+          createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
+          createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+          createdRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/c36958e0-4307-409e-a493-eaaafd0ee20a");
+          createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
+          createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+          
+          // TODO: Clean up role after delete is implemented
+          done();
+        });
+      });
+
+      it('create new role with non-existent file should not work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
+        suite.execute('role create -f %s --json', filePath, function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("NonExistenRoleFile.json does not exist");
+          done();
+        });
+      });
+
+      it('create new role with no input should not work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
+        suite.execute('role create --json', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("At least one of --file or --roledefinition need to be specified");
           done();
         });
       });
