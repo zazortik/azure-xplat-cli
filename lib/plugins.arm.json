@@ -6421,7 +6421,7 @@
                   "description": "the start date after which password or key would be valid. Default value is current time"
                 },
                 {
-                  "flags": "--end-date <start-date>",
+                  "flags": "--end-date <end-date>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
