@@ -6421,7 +6421,7 @@
                   "description": "the start date after which password or key would be valid. Default value is current time"
                 },
                 {
-                  "flags": "--end-date <start-date>",
+                  "flags": "--end-date <end-date>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -20525,6 +20525,14 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--tags <tags>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--tags",
+              "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             }
           ]
         },
