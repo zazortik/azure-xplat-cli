@@ -1,9 +1,9 @@
 {
   "siteName": {
-    "value": "xDeploymentTestSite14615"
+    "value": "xDeploymentTestSite128"
   },
   "hostingPlanName": {
-    "value": "xDeploymentTestHost24908"
+    "value": "xDeploymentTestHost28950"
   },
   "siteLocation": {
     "value": "West US"
@@ -12,6 +12,6 @@
     "value": "Free"
   },
   "workerSize": {
-    "value": 0
+    "value": "0"
   }
 }
