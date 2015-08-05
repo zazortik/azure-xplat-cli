@@ -19471,6 +19471,22 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--custom",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--custom",
+              "description": "If given, display only the custom roles instead of all role definitions"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "Subscription id or name of where the role assignment is from."
             }
           ]
         },
@@ -19506,6 +19522,14 @@
               "short": "-n",
               "long": "--name",
               "description": "the role definition name"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "Subscription id or name of where the role assignment is from."
             }
           ]
         }
