@@ -32,9 +32,9 @@ var createdGroups = [];
 var createdResources = [];
 var calledOnce = false;
 var requiredEnvironment = [
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserRandom3@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_PASSWORD'},
-  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupRandom3' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserAuto@rbacCliTest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
   { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9234' },
 ];
@@ -132,7 +132,7 @@ describe('arm', function () {
           return cleanupCreatedAdObjects(err, done); 
         }
         testUsers.push(userResult);
-        listPoll(suite, 3, 'user', userResult.objectId, function (result) {
+        listPoll(suite, 5, 'user', userResult.objectId, function (result) {
           graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, groupResult) {
             if (err) {
               testLogger.logData("create group error : ");
@@ -140,7 +140,7 @@ describe('arm', function () {
               return cleanupCreatedAdObjects(err, done); 
             }
             testGroups.push(groupResult);
-            listPoll(suite, 3, 'group', groupResult.objectId, function (result) {
+            listPoll(suite, 5, 'group', groupResult.objectId, function (result) {
               graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, spResult) {
                 if (err) { 
                   testLogger.logData("create sp error : ");
@@ -148,7 +148,7 @@ describe('arm', function () {
                   return cleanupCreatedAdObjects(err, done); 
                 }
                 testSPs.push(spResult);
-                listPoll(suite, 3, 'sp', spResult.objectId, function (result) {
+                listPoll(suite, 5, 'sp', spResult.objectId, function (result) {
                   done();
                 }); 
               });
