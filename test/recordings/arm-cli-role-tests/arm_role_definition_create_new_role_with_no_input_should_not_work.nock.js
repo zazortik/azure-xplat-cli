@@ -28,6 +28,4 @@ exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandom9234';
 };
 
-exports.scopes = [];
-
- exports.randomTestIdsGenerated = function() { return ['testrg1428','testserver12035','testdb1797'];};
+exports.scopes = [[]];

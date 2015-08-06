@@ -96,19 +96,18 @@ describe('arm', function () {
       testLocation = process.env['AZURE_ARM_TEST_LOCATION'];
       var serverParams = "{\"administratorLogin\": \"testadmin\", \"administratorLoginPassword\": \"Pa$$word1234\"}";
       var dbParams = "{\"maxSizeBytes\": \"1073741824\", \"edition\" : \"Web\", \"collation\": \"SQL_1xcompat_CP850_CI_AS\"}";
-      //suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
-      //  result.exitStatus.should.equal(0);
-      //  suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
-      //    testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
-      //    result.exitStatus.should.equal(0);
-      //    suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
-      //      testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
-      //      result.exitStatus.should.equal(0);
-      //      done();
-      //    });
-      //  });
-      //}); 
-      done();
+      suite.execute('group create -n %s -l %s --json', testResourceGroup, testLocation, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('resource create -g %s -n %s -l %s -r %s -p %s -o %s', testResourceGroup, testSqlServer, 
+          testLocation, 'Microsoft.Sql/servers', serverParams, testApiVersion, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute('resource create -g %s -n %s -l %s --parent %s -r %s -p %s -o %s', testResourceGroup, 
+            testSqlDb, testLocation, testParent, 'Microsoft.Sql/servers/databases', dbParams, testApiVersion, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      }); 
     }
 
     function cleanupSql () {
@@ -229,15 +228,14 @@ describe('arm', function () {
         });
       });
 
-      it.only('create new role should work', function (done) {
+      it('create new role should work', function (done) {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         suite.execute('role create -f %s --json', filePath, function (result) {
           result.exitStatus.should.equal(0);
-          console.log(result);
           var createdRole = JSON.parse(result.text);
           createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
           createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-          createdRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/c36958e0-4307-409e-a493-eaaafd0ee20a");
+          createdRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f");
           createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
           createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
             
@@ -266,12 +264,12 @@ describe('arm', function () {
 
     describe('update role definition', function() {
       it('basic update should work', function(done) {
-        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValidForUpdate.json');
         suite.execute('role create -f %s --json', filePath, function(result) {
           result.exitStatus.should.equal(0);
           console.log("Role created. Now trying to update");
           var createdRole = JSON.parse(result.text);
-
+          
           var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
           roleToUpdate.id = createdRole.roleDefinition.id;
           roleToUpdate.name = "Updated Role Name";
@@ -283,7 +281,7 @@ describe('arm', function () {
             updatedRole.roleDefinition.properties.roleName.should.equal("Updated Role Name");
             updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
             updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/c36958e0-4307-409e-a493-eaaafd0ee20a");
+            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f");
             updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
             updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
 
@@ -297,7 +295,8 @@ describe('arm', function () {
       it('fails to update non-existent role', function(done) {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
-        roleToUpdate.id = "/subscriptions/c36958e0-4307-409e-a493-eaaafd0ee20a/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
+        // random GUID for role id
+        roleToUpdate.id = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
 
         suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
           updatedResult.exitStatus.should.equal(1);
