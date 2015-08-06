@@ -3,6 +3,7 @@
   * Display Outputs section from a template when submitting new deployments
   * group delete command will now block until the resource group is deleted
   * Support for submitting deployments with v2 version of template parameters
+  * Remove register calls to providers for group deployment create
 
 2015.07.?? Version 0.9.7
 * ARM
