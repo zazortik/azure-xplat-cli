@@ -19550,6 +19550,14 @@
               "short": "-r",
               "long": "--roledefinition",
               "description": "A JSON-formatted string containing the role definition"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "Subscription id or name of where the role definition will be created."
             }
           ]
         },
@@ -19594,6 +19602,14 @@
               "short": "-r",
               "long": "--roledefinition",
               "description": "A JSON-formatted string containing the role definition"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "Subscription id or name of where the role definition will be updated."
             }
           ]
         }
