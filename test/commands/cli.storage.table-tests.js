@@ -22,6 +22,7 @@ var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
 var suite;
+var aclTimeout;
 var testPrefix = 'cli.storage.table-tests';
 var crypto = require('crypto');
 
@@ -42,6 +43,7 @@ describe('cli', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.skipSubscription = true;
+      aclTimeout = (suite.isRecording || !suite.isMocked) ? 30000 : 10;
 
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
@@ -102,7 +104,7 @@ describe('cli', function () {
         var expiry = new Date('2099-12-31').toISOString();
         var permissions = 'ad';
 
-        it('should create the table policy with list permission', function (done) {
+        it('should create the table policy with add and delete permission', function (done) {
           suite.execute('storage table policy create %s %s --permissions %s --start %s --expiry %s --json', tableName, policyName1, permissions, start, expiry, function (result) {
             var policies = JSON.parse(result.text);
             policies.length.should.greaterThan(0);
@@ -120,32 +122,36 @@ describe('cli', function () {
         });
 
         it('should show the created policy', function (done) {
-          suite.execute('storage table policy show %s %s --json', tableName, policyName1, function (result) {
-            var policies = JSON.parse(result.text);
-            policies.length.should.greaterThan(0);
+          setTimeout(function() {
+            suite.execute('storage table policy show %s %s --json', tableName, policyName1, function (result) {
+              var policies = JSON.parse(result.text);
+              policies.length.should.greaterThan(0);
 
-            var policy;
-            for (var index in policies) {
-              policy = policies[index];
-              if (policy.Id === policyName1) {
-                break;
+              var policy;
+              for (var index in policies) {
+                policy = policies[index];
+                if (policy.Id === policyName1) {
+                  break;
+                }
               }
-            }
-            policy.Id.should.equal(policyName1);
-            policy.AccessPolicy.Permissions.should.equal(permissions);
-            policy.AccessPolicy.Start.should.equal(start);
-            policy.AccessPolicy.Expiry.should.equal(expiry);
-            done();
-          });
+              policy.Id.should.equal(policyName1);
+              policy.AccessPolicy.Permissions.should.equal(permissions);
+              policy.AccessPolicy.Start.should.equal(start);
+              policy.AccessPolicy.Expiry.should.equal(expiry);
+              done();
+            });
+          }, aclTimeout);
         });
 
         it('should list the policies', function (done) {
           suite.execute('storage table policy create %s %s --permissions %s --start %s --expiry %s --json', tableName, policyName2, permissions, start, expiry, function (result) {
-            suite.execute('storage table policy list %s --json', tableName, function (result) {
-              var policies = JSON.parse(result.text);
-              policies.length.should.equal(2);
-              done();
-            });
+            setTimeout(function() {
+              suite.execute('storage table policy list %s --json', tableName, function (result) {
+                var policies = JSON.parse(result.text);
+                policies.length.should.equal(2);
+                done();
+              });
+            }, aclTimeout);
           });
         });
 
