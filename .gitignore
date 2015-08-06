@@ -13,6 +13,9 @@ targets/*
 *.vspx
 *.njsperf
 
+# Visual Studio Code
+.settings/
+
 # Node #
 node_modules/
 npm-debug.log
