@@ -19552,6 +19552,50 @@
               "description": "A JSON-formatted string containing the role definition"
             }
           ]
+        },
+        {
+          "name": "set",
+          "description": "update an existing role definition",
+          "fullName": "role set",
+          "usage": "[options] [inputfile] [roledefinition]",
+          "filePath": "commands/arm/role/role.definition._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-f --inputfile <inputfile>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-f",
+              "long": "--inputfile",
+              "description": "File name containing a single role definition."
+            },
+            {
+              "flags": "-r --roledefinition <roledefinition>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-r",
+              "long": "--roledefinition",
+              "description": "A JSON-formatted string containing the role definition"
+            }
+          ]
         }
       ],
       "categories": {
