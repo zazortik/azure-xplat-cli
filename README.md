@@ -155,6 +155,13 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure cli with China Cloud
+```bash
+# This will log you into the China Cloud environment.
+# You can use same set of commands to manage your service/applications
+azure login -u <your organizational ID email address> -e AzureChinaCloud
+```
+
 ### azure cli on Ubuntu
 If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
 - [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
