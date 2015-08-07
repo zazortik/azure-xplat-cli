@@ -37,7 +37,7 @@
     }
   ],
   "dependencies": {
-    "adal-node": "0.1.13",
+    "adal-node": "0.1.15",
     "async": "0.2.7",
     "azure-common": "0.9.13",
     "azure-arm-apiapp": "0.1.3",
