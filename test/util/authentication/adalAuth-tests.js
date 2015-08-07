@@ -36,12 +36,13 @@ describe('tenant from username', function () {
 });
 
 describe('login as service principal', function () {
+  var config = {
+    resourceId: 'https://res123',
+    authorityUrl: 'https://authority123'
+  };
+  
   it('should invoke callback on error', function (done) {
     //arrange 
-    var config = {
-      resourceId: 'https://res123',
-      authorityUrl: 'https://authority123'
-    };
     var accessToken = '123';
     var tokenMatched = false;
     adalAuth.tokenCache.find = function (query, callback) {
@@ -59,7 +60,24 @@ describe('login as service principal', function () {
       errorFired.should.be.true;
       tokenMatched.should.be.true;
       done();
-    })
+    });
+  });
+  
+  it('should not add empty refresh token to credentails cache', function (done) {
+    //arrange 
+    var addInvoked = false;
+    var hasRefreshToken = false;
+    adalAuth.tokenCache.add = function (entries, callback) {
+      addInvoked = true;
+      hasRefreshToken == !!(entries[0].refreshToken);
+      callback(null);
+    }
+    //action
+    adalAuth.acquireServicePrincipalToken(config, 'https://myapp1', 'Secret', function(){
+      addInvoked.should.be.true;
+      hasRefreshToken.should.be.false;
+      done();
+    });
   });
 });
 
