@@ -46,6 +46,7 @@ describe('arm', function () {
     var testUsers = [];
     var testSPs = [];
     var TEST_ROLE_NAME = 'Owner';
+    var BUILT_IN_ROLE_TYPE = 'BuiltInRole';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -210,6 +211,17 @@ describe('arm', function () {
           roles.some(function (res) {
             return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
+          done();
+        });
+      });
+
+      it('list for custom roles should work', function (done) {
+        suite.execute('role list --custom --json', function (result) {
+          result.exitStatus.should.equal(0);
+          var roles = JSON.parse(result.text);
+          roles.some(function (res) {
+            return res.properties.type === BUILT_IN_ROLE_TYPE;
+          }).should.be.false;
           done();
         });
       });
