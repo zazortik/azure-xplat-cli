@@ -19471,6 +19471,22 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--custom",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--custom",
+              "description": "If given, display only the custom roles instead of all role definitions"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
             }
           ]
         },
@@ -19506,6 +19522,14 @@
               "short": "-n",
               "long": "--name",
               "description": "the role definition name"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
             }
           ]
         },
@@ -19549,7 +19573,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",
@@ -19557,7 +19581,7 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "Subscription id or name of where the role definition will be created."
+              "description": "The subscription identifier"
             }
           ]
         },
@@ -19601,7 +19625,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",
@@ -19609,7 +19633,7 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "Subscription id or name of where the role definition will be updated."
+              "description": "The subscription identifier"
             }
           ]
         }

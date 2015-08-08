@@ -24,6 +24,7 @@ var testprefix = 'arm-cli-role-tests';
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
+var profile = require('../../../../lib/util/profile');
 
 var testResourceGroup;
 var testSqlServer;
@@ -49,6 +50,7 @@ describe('arm', function () {
     var testUsers = [];
     var testSPs = [];
     var TEST_ROLE_NAME = 'Owner';
+    var BUILT_IN_ROLE_TYPE = 'BuiltInRole';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -107,7 +109,7 @@ describe('arm', function () {
             done();
           });
         });
-      }); 
+      });
     }
 
     function cleanupSql () {
@@ -217,6 +219,17 @@ describe('arm', function () {
         });
       });
 
+      it('list for custom roles should work', function (done) {
+        suite.execute('role list --custom --json', function (result) {
+          result.exitStatus.should.equal(0);
+          var roles = JSON.parse(result.text);
+          roles.some(function (res) {
+            return res.properties.type === BUILT_IN_ROLE_TYPE;
+          }).should.be.false;
+          done();
+        });
+      });
+
       it('show for Owner role should work', function (done) {
         suite.execute('role show %s --json', TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
@@ -230,12 +243,20 @@ describe('arm', function () {
 
       it('create new role should work', function (done) {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
-        suite.execute('role create -f %s --json', filePath, function (result) {
+        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+        
+        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+        roleToCreate.AssignableScopes = [];
+        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+        roleToCreate.AssignableScopes[0] = assignableScope;
+    
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
           createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
           createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-          createdRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f");
+
+          createdRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
           createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
           createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
             
@@ -265,7 +286,15 @@ describe('arm', function () {
     describe('update role definition', function() {
       it('basic update should work', function(done) {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValidForUpdate.json');
-        suite.execute('role create -f %s --json', filePath, function(result) {
+        
+        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+        
+        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+        roleToCreate.AssignableScopes = [];
+        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+        roleToCreate.AssignableScopes[0] = assignableScope;
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function(result) {
           result.exitStatus.should.equal(0);
           console.log("Role created. Now trying to update");
           var createdRole = JSON.parse(result.text);
@@ -281,7 +310,7 @@ describe('arm', function () {
             updatedRole.roleDefinition.properties.roleName.should.equal("Updated Role Name");
             updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
             updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal("/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f");
+            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
             updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
             updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
 
@@ -296,7 +325,7 @@ describe('arm', function () {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
         // random GUID for role id
-        roleToUpdate.id = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
+        roleToUpdate.id = "/subscriptions/" + profile.current.getSubscription().id+ "/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
 
         suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
           updatedResult.exitStatus.should.equal(1);

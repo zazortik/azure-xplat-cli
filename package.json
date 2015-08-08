@@ -30,14 +30,9 @@
   "engines": {
     "node": ">= 0.8.26"
   },
-  "licenses": [
-    {
-      "type": "Apache",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
-    "adal-node": "0.1.13",
+    "adal-node": "0.1.15",
     "async": "0.2.7",
     "azure-common": "0.9.13",
     "azure-arm-apiapp": "0.1.3",
