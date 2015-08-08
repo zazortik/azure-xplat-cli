@@ -234,11 +234,14 @@ describe('arm', function () {
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
             templateFile, groupName, deploymentName, parameterFile);
+        var templateContent = JSON.parse(testUtil.stripBOM(fs.readFileSync(templateFile)));
+        var outputTextToValidate = Object.keys(templateContent.outputs)[0];
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
+            result.text.indexOf(outputTextToValidate).should.be.above(-1);
 
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
               showResult.exitStatus.should.equal(0);
