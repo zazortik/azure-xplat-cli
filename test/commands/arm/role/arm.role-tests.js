@@ -22,6 +22,10 @@ var testLogger = require('../../../framework/test-logger');
 var graphUtil = require('../../../util/graphUtils');
 var testprefix = 'arm-cli-role-tests';
 var util = require('util');
+var path = require('path');
+var fs = require('fs');
+var profile = require('../../../../lib/util/profile');
+
 var testResourceGroup;
 var testSqlServer;
 var testSqlDb;
@@ -233,6 +237,110 @@ describe('arm', function () {
           roles.some(function (res) {
             return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
+          done();
+        });
+      });
+
+      it('create new role should work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+        
+        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+        roleToCreate.AssignableScopes = [];
+        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+        roleToCreate.AssignableScopes[0] = assignableScope;
+    
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
+          createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+
+          createdRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
+          createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
+          createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+            
+          // TODO: Clean up role after delete is implemented
+          done();
+        });
+      });
+
+      it('create new role with non-existent file should not work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
+        suite.execute('role create -f %s --json', filePath, function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("NonExistenRoleFile.json does not exist");
+          done();
+        });
+      });
+
+      it('create new role with no input should not work', function (done) {
+        suite.execute('role create --json', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("At least one of inputfile or roledefinition need to be specified");
+          done();
+        });
+      });
+    });
+
+    describe('update role definition', function() {
+      it('basic update should work', function(done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValidForUpdate.json');
+        
+        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+        
+        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+        roleToCreate.AssignableScopes = [];
+        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+        roleToCreate.AssignableScopes[0] = assignableScope;
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function(result) {
+          result.exitStatus.should.equal(0);
+          console.log("Role created. Now trying to update");
+          var createdRole = JSON.parse(result.text);
+          
+          var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
+          roleToUpdate.id = createdRole.roleDefinition.id;
+          roleToUpdate.name = "Updated Role Name";
+          roleToUpdate.description = "Updated Role Description";
+
+          suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
+            updatedResult.exitStatus.should.equal(0);
+            var updatedRole = JSON.parse(updatedResult.text);
+            updatedRole.roleDefinition.properties.roleName.should.equal("Updated Role Name");
+            updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
+            updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
+            updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
+            updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+
+            // TODO: Clean up role after delete is implemented
+
+            done();
+          });
+        });
+      });
+
+      it('fails to update non-existent role', function(done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
+        // random GUID for role id
+        roleToUpdate.id = "/subscriptions/" + profile.current.getSubscription().id+ "/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
+
+        suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
+          updatedResult.exitStatus.should.equal(1);
+          updatedResult.errorText.should.containEql("The role definition \'43367f6e-e106-480d-a448-2a393ea5eb21\' could not be found");
+
+          done();
+        });
+      });
+
+      it('fails to update role with no Id specified', function (done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        suite.execute('role set -f %s --json', filePath, function (updatedResult) {
+          updatedResult.exitStatus.should.equal(1);
+          updatedResult.errorText.should.containEql("roleDefinitionId cannot be null");
+          
           done();
         });
       });

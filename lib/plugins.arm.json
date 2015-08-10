@@ -19486,7 +19486,7 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "Subscription id or name of where the role assignment is from."
+              "description": "the subscription identifier"
             }
           ]
         },
@@ -19529,7 +19529,111 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "Subscription id or name of where the role assignment is from."
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "create a new role definition",
+          "fullName": "role create",
+          "usage": "[options] [inputfile] [roledefinition]",
+          "filePath": "commands/arm/role/role.definition._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-f --inputfile <inputfile>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-f",
+              "long": "--inputfile",
+              "description": "File name containing a single role definition."
+            },
+            {
+              "flags": "-r --roledefinition <roledefinition>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-r",
+              "long": "--roledefinition",
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "update an existing role definition",
+          "fullName": "role set",
+          "usage": "[options] [inputfile] [roledefinition]",
+          "filePath": "commands/arm/role/role.definition._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-f --inputfile <inputfile>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-f",
+              "long": "--inputfile",
+              "description": "File name containing a single role definition."
+            },
+            {
+              "flags": "-r --roledefinition <roledefinition>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-r",
+              "long": "--roledefinition",
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "The subscription identifier"
             }
           ]
         }
