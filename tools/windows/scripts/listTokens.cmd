@@ -4,4 +4,4 @@
 :: Copyright (C) Microsoft Corporation. All Rights Reserved.
 ::
 
-..\..\..\bin\windows\creds.exe -s -t AzureXplatCli:target=* -g
+%~dp0..\..\..\bin\windows\creds.exe -s -t AzureXplatCli:target=* -g

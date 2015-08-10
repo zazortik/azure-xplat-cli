@@ -6421,7 +6421,7 @@
                   "description": "the start date after which password or key would be valid. Default value is current time"
                 },
                 {
-                  "flags": "--end-date <start-date>",
+                  "flags": "--end-date <end-date>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -7614,7 +7614,8 @@
               "bool": true,
               "short": "-f",
               "long": "--template-file",
-              "description": "the path to the template file in the file system"
+              "description": "the path to the template file in the file system",
+              "fileRelatedOption": true
             },
             {
               "flags": "--template-uri <template-uri>",
@@ -7657,7 +7658,8 @@
               "bool": true,
               "short": "-e",
               "long": "--parameters-file",
-              "description": "a file containing parameters"
+              "description": "a file containing parameters",
+              "fileRelatedOption": true
             },
             {
               "flags": "-t --tags <tags>",
@@ -7666,7 +7668,7 @@
               "bool": true,
               "short": "-t",
               "long": "--tags",
-              "description": "Tags to set to the resource group. Can be mutliple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+              "description": "Tags to set to the resource group. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
             },
             {
               "flags": "--subscription <subscription>",
@@ -8033,7 +8035,8 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--template-file",
-                  "description": "the path to the template file in the file system"
+                  "description": "the path to the template file in the file system",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--template-uri <template-uri>",
@@ -8076,7 +8079,8 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--parameters-file",
-                  "description": "a file containing parameters"
+                  "description": "a file containing parameters",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--nowait",
@@ -8475,7 +8479,8 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--template-file",
-                  "description": "the path to the template file in the file system"
+                  "description": "the path to the template file in the file system",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--template-uri <template-uri>",
@@ -8518,7 +8523,8 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--parameters-file",
-                  "description": "a file containing parameters"
+                  "description": "a file containing parameters",
+                  "fileRelatedOption": true
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -11975,6 +11981,24 @@
                       "description": "the network security group name"
                     },
                     {
+                      "flags": "-i, --route-table-id <route-table-id>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--route-table-id",
+                      "description": "the route table identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/routeTables/<route-table-name>"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the route table name"
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -12062,6 +12086,24 @@
                       "short": "-o",
                       "long": "--network-security-group-name",
                       "description": "the network security group name"
+                    },
+                    {
+                      "flags": "-i, --route-table-id <route-table-id>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--route-table-id",
+                      "description": "the route table identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/routeTables/<route-table-name>"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the route table name"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -14715,6 +14757,24 @@
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                 },
                 {
+                  "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--internal-dns-name-label",
+                  "description": "the internal DNS name label"
+                },
+                {
+                  "flags": "-f, --enable-ip-forwarding <enable-ip-forwarding>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--enable-ip-forwarding",
+                  "description": "the ip forwarding, valid values are [true, false]"
+                },
+                {
                   "flags": "-t, --tags <tags>",
                   "required": -12,
                   "optional": 0,
@@ -14865,6 +14925,24 @@
                   "short": "-e",
                   "long": "--lb-inbound-nat-rule-ids",
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
+                },
+                {
+                  "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--internal-dns-name-label",
+                  "description": "the internal DNS name label"
+                },
+                {
+                  "flags": "-f, --enable-ip-forwarding <enable-ip-forwarding>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--enable-ip-forwarding",
+                  "description": "the ip forwarding, valid values are [true, false]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -18115,6 +18193,621 @@
               }
             }
           }
+        },
+        "route-table": {
+          "name": "route-table",
+          "description": "Commands to manage Route Table",
+          "fullName": "network route-table",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a Route Table",
+              "fullName": "network route-table create",
+              "usage": "[options] <resource-group> <name> <location>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location, this must be same as the location of the virtual network containing the subnet(s) on which this Route Table needs to be applied"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get a Route Table",
+              "fullName": "network route-table show",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Get all Route Tables",
+              "fullName": "network route-table list",
+              "usage": "[options] <resource-group>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete a Route Table",
+              "fullName": "network route-table delete",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "route": {
+              "name": "route",
+              "description": "Commands to manage Route Table routes",
+              "fullName": "network route-table route",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create route in a Route Table",
+                  "fullName": "network route-table route create",
+                  "usage": "[options] <resource-group> <route-table-name> <name> <address-prefix> <next-hop-type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-a, --address-prefix <address-prefix>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-prefix",
+                      "description": "the route address prefix e.g. 0.0.0.0/0"
+                    },
+                    {
+                      "flags": "-y, --next-hop-type <next-hop-type>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--next-hop-type",
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,Null]"
+                    },
+                    {
+                      "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--next-hop-ip-address",
+                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirtualAppliance"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set route in a Route Table",
+                  "fullName": "network route-table route set",
+                  "usage": "[options] <resource-group> <route-table-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-a, --address-prefix <address-prefix>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-prefix",
+                      "description": "the route address prefix e.g. 0.0.0.0/0"
+                    },
+                    {
+                      "flags": "-y, --next-hop-type <next-hop-type>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--next-hop-type",
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,Null]"
+                    },
+                    {
+                      "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--next-hop-ip-address",
+                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirualAppliance"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List all routes in a Route Table",
+                  "fullName": "network route-table route list",
+                  "usage": "[options] <resource-group> <route-table-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show details about route in a Route Table",
+                  "fullName": "network route-table route show",
+                  "usage": "[options] <resource-group> <route-table-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete route from a Route Table",
+                  "fullName": "network route-table route delete",
+                  "usage": "[options] <resource-group> <route-table-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
@@ -19403,6 +20096,90 @@
       ],
       "categories": {}
     },
+    "usage": {
+      "name": "usage",
+      "description": "Command to view your aggregated Azure usage data",
+      "fullName": "usage",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "list",
+          "description": "List the usage aggregates for a provided time range",
+          "fullName": "usage list",
+          "usage": "[options] [reportedStartTime] [reportedEndTime]",
+          "filePath": "commands/arm/usage/usage._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--reportedStartTime <reportedStartTime>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "long": "--reportedStartTime",
+              "description": "The start of the time range to retrieve data for."
+            },
+            {
+              "flags": "--reportedEndTime <reportedEndTime>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "long": "--reportedEndTime",
+              "description": "The end of the time range to retrieve data for."
+            },
+            {
+              "flags": "--granularity <daily/hourly>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--granularity",
+              "description": "Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour."
+            },
+            {
+              "flags": "--showDetails <bool>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--showDetails",
+              "description": "When set to true (default), the aggregates are broken down into the instance metadata which is more granular."
+            },
+            {
+              "flags": "--continuationToken <url>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "long": "--continuationToken",
+              "description": "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged."
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "vm": {
       "name": "vm",
       "description": "Commands to manage your virtual machines",
@@ -19550,6 +20327,15 @@
               "short": "-M",
               "long": "--ssh-publickey-file",
               "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+            },
+            {
+              "flags": "-G, --generate-ssh-keys",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-G",
+              "long": "--generate-ssh-keys",
+              "description": "Auto generate SSH keys, will be ignored if --ssh-publickey-file is specified. This parameter is valid only when os-type is \"Linux\""
             },
             {
               "flags": "-z, --vm-size <vm-size>",
@@ -19739,6 +20525,14 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--tags <tags>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--tags",
+              "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             }
           ]
         },
@@ -20832,6 +21626,15 @@
                   "description": "the storage account container name [vhds]"
                 },
                 {
+                  "flags": "-l, --lun <lun>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lun",
+                  "description": "zero based logical unit number of the data disk"
+                },
+                {
                   "flags": "-s, --subscription <id>",
                   "required": -20,
                   "optional": 0,
@@ -20963,6 +21766,15 @@
                   "short": "-c",
                   "long": "--host-caching",
                   "description": "the caching behaviour of disk [None, ReadOnly, ReadWrite]"
+                },
+                {
+                  "flags": "-l, --lun <lun>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lun",
+                  "description": "zero based logical unit number of the data disk"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -21429,6 +22241,15 @@
                   "short": "-M",
                   "long": "--ssh-publickey-file",
                   "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+                },
+                {
+                  "flags": "-G, --generate-ssh-keys",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-G",
+                  "long": "--generate-ssh-keys",
+                  "description": "Auto generate SSH keys, --ssh-publickey-file will be ignored. This parameter is valid only when os-type is \"Linux\""
                 },
                 {
                   "flags": "-z, --vm-size <vm-size>",

@@ -48,8 +48,7 @@ var groupName = 'xplatTestGVMDocker',
 
 describe('arm', function() {
   describe('compute', function() {
-    var suite, retry = 5,
-      dockerCertDir, dockerCertFol = '.docker';
+    var suite, retry = 5, dockerCertDir, dockerCertFol = '.docker';
     var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 12000;
     before(function(done) {
@@ -74,7 +73,7 @@ describe('arm', function() {
     });
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
-        vmTest.deleteDockerCertificates();
+        vmTest.deleteDockerCertificates(dockerCertDir);
         suite.teardownSuite(done);
       });
     });

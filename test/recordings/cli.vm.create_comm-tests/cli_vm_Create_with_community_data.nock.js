@@ -1817,29 +1817,6 @@ nock('https://azsmnet4404.blob.core.windows.net:443')
  return result; },
 function (nock) { 
 var result = 
-nock('https://login.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/common/oauth2/token', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"expires_on\":\"1426474768\",\"not_before\":\"1426470868\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDI2NDcwODY4LCJuYmYiOjE0MjY0NzA4NjgsImV4cCI6MTQyNjQ3NDc2OCwidmVyIjoiMS4wIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwiYW1yIjpbInB3ZCJdLCJvaWQiOiIxOTYxZWFiZi0yMTU3LTRjNDMtOTQ0MS1hNmQwNDlkMDVjZGEiLCJ1cG4iOiJhbXphdmVyeUBtaWNyb3NvZnQuY29tIiwicHVpZCI6IjEwMDMwMDAwODVCMzJDNTUiLCJzdWIiOiJrUzVhZGt6bXJiSDZuOUhCY0RzbVRQTmlFX0pIeHhOazRIUGpCUWQ5WkcwIiwiZ2l2ZW5fbmFtZSI6IkFtYXIiLCJmYW1pbHlfbmFtZSI6IlphdmVyeSIsIm5hbWUiOiJBbWFyIFphdmVyeSIsIl9jbGFpbV9uYW1lcyI6eyJncm91cHMiOiJzcmMxIn0sIl9jbGFpbV9zb3VyY2VzIjp7InNyYzEiOnsiZW5kcG9pbnQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycy8xOTYxZWFiZi0yMTU3LTRjNDMtOTQ0MS1hNmQwNDlkMDVjZGEvZ2V0TWVtYmVyT2JqZWN0cyJ9fSwidW5pcXVlX25hbWUiOiJhbXphdmVyeUBtaWNyb3NvZnQuY29tIiwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.TDJyvdrc3Bup0kr-7_BNAun0Y_N76tn2SR2UCy9tUE4mNVNOp0EAQS_4_7uNW_98b_akkHeo8KQnFqQGMyfRvaJ3doneNuxjTeFsiZFQPpSlwysXYhmIYhRK0WCPKy_1t6NqZBQzBg41r8849a8_hCxdiRXPj3k8Gt5WapCro8Ryk746jtes2La0lyI5SRFraNqD_aRxM5wJf7QOIrMx88mxzsDdwlrUIHaCwPLawALQndj87yhhHDwqF0V1s0yBlx4yrMkueKSWt8rLpQp9K-62HiR_INiNdX8BtBbGW5MtL1Z4ILSQA3lUqTiI3387m1-ZKh-Ksee8dPTB88htDA\",\"refresh_token\":\"AAABAAAAvPM1KaPlrEqdFSBzjqfTGFyLYHgFB3sHc4F5a32umME7UV9WViIiZWnn5mmAWXhi0HcZLQJtQg_vPQYaPb1I-tz3tVKW45t4RhBbbHDHyTqwbDOiNqiMFEk1cV0r50-mgaQ1HaSD2soVETfO4VWO6vgTZhGfbxngjVSfnkLAxttwIujobDxXsF6dwFSzhgfzgjJJfZ0UEZj1yBSv1fAG_rOw3D10M7fjIIHq8Qg5l_a6tPqIrmX10UtGCR7EY5s2CDOTlN2nx-Bt0Z7ur1OeQ6msk1FTsYUB6cEr0GHKxNIKF4xUaOpfxTRVQRsVGk2c6i5-VL6_YXHOMmrha_PmiBlEtpIKX3-ls5uyh5FjFVcyKCwSGmAy4SRDmS58dwxoBfvRSRsArrv970ets4aEAjFrrra8lWsfCDJXMuWdjdYo3ckRALreJ_wSE-so-ZlwB4nTdQ-IHMefIlXuPRfmc0GfyX0uNuw8u0E8plblBcm_AviOH6t3XBCNmLS8f4UuPHGRIFDkOhOHp0jknCpisSAA\",\"refresh_token_expires_in\":\"1209600\",\"scope\":\"user_impersonation\",\"pwd_exp\":\"27444743\",\"pwd_url\":\"https://portal.microsoftonline.com/ChangePassword.aspx\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '6fa750f8-2cb1-4058-acfc-351b69bdca4d',
-  'client-request-id': '8f067f20-5a8b-425f-b87d-11063d739b2a',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_19',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Mon, 16 Mar 2015 01:59:28 GMT',
-  'content-length': '2363' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.core.windows.net:443')
   .put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services?service=sqlserver&action=register')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',

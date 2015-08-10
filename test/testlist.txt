@@ -3,12 +3,15 @@
 #commands/cli.site.domain-tests.js
 # TODO: Not recording call to log service properly, disabling
 # commands/cli.site.log.tail-tests.js
+# Disabling, do not want this run in automated test runs
+# commands/cli.mobile.migration-tests.js
 # TODO: This suite uses custom recording
 cli-tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
+commands/cli.help-tests.js
 commands/cli.mobile-tests.js
 commands/cli.mobile.api-tests.js
 commands/cli.mobile.appsetting-tests.js
@@ -24,7 +27,6 @@ commands/cli.mobile.scale-tests.js
 commands/cli.mobile.script-tests.js
 commands/cli.mobile.table-tests.js
 commands/cli.mobilerecover-tests.js
-commands/cli.mobile.migration-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
 commands/cli.site.deployment-tests.js

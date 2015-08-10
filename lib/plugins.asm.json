@@ -22445,6 +22445,15 @@
               "description": "indicates that no public SSH endpoint should be created"
             },
             {
+              "flags": "-G, --generate-ssh-keys",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-G",
+              "long": "--generate-ssh-keys",
+              "description": "Auto generate SSH keys, will be ignored if --ssh-cert is specified."
+            },
+            {
               "flags": "-r, --rdp [port]",
               "required": 0,
               "optional": -11,
@@ -23626,6 +23635,15 @@
                   "short": "-E",
                   "long": "--no-ssh-endpoint",
                   "description": "indicates that no public SSH endpoint should be created"
+                },
+                {
+                  "flags": "-G, --generate-ssh-keys",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-G",
+                  "long": "--generate-ssh-keys",
+                  "description": "Auto generate SSH keys, will be ignored if --ssh-cert is specified."
                 },
                 {
                   "flags": "-w, --virtual-network-name <name>",
