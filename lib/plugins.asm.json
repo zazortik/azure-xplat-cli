@@ -3133,7 +3133,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--blobtype",
-                  "description": "the storage blob type(Page, Block)"
+                  "description": "the storage blob type(block, page, append)"
                 },
                 {
                   "flags": "-p, --properties <properties>",
@@ -3339,7 +3339,7 @@
               "commands": [
                 {
                   "name": "start",
-                  "description": "Start to copy the specified storage blob which completes asynchronously",
+                  "description": "Start to copy the resource to the specified storage blob which completes asynchronously",
                   "fullName": "storage blob copy start",
                   "usage": "[options] [sourceUri] [destContainer]",
                   "filePath": "commands/storage/storage.blob._js",
@@ -3362,20 +3362,20 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--sas-token <sasToken>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--sas-token",
-                      "description": "deprecated. This option is deprecated and will be removed in a future version. Please use \"--source-sas\" instead"
-                    },
-                    {
                       "flags": "--source-sas <sourceSas>",
                       "required": -14,
                       "optional": 0,
                       "bool": true,
                       "long": "--source-sas",
                       "description": "the shared access signature of the source storage"
+                    },
+                    {
+                      "flags": "--source-uri <sourceUri>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-uri",
+                      "description": "the source storage blob or file absolute uri"
                     },
                     {
                       "flags": "--source-container <sourceContainer>",
@@ -3392,14 +3392,6 @@
                       "bool": true,
                       "long": "--source-blob",
                       "description": "the source storage blob name"
-                    },
-                    {
-                      "flags": "--source-uri <sourceUri>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--source-uri",
-                      "description": "the source storage blob absolute uri"
                     },
                     {
                       "flags": "--dest-account-name <destAccountName>",
@@ -3426,20 +3418,20 @@
                       "description": "the destination storage connection string"
                     },
                     {
-                      "flags": "--dest-container <destContainer>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--dest-container",
-                      "description": "the destination storage container name"
-                    },
-                    {
                       "flags": "--dest-sas <destSas>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
                       "long": "--dest-sas",
                       "description": "the shared access signature of the destination storage container or blob"
+                    },
+                    {
+                      "flags": "--dest-container <destContainer>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-container",
+                      "description": "the destination storage container name"
                     },
                     {
                       "flags": "--dest-blob <destBlob>",
@@ -3541,7 +3533,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--sas",
-                      "description": "the shared access signature of the destination storage containe or blob"
+                      "description": "the shared access signature of the destination storage container or blob"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",
@@ -3829,6 +3821,14 @@
                   "description": "the storage file share name"
                 },
                 {
+                  "flags": "--quota <quota>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--quota",
+                  "description": "the storage file share quota (in GB)"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -3896,6 +3896,83 @@
                   "bool": true,
                   "long": "--share",
                   "description": "the storage file share name"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set properties of the storage file share",
+              "fullName": "storage share set",
+              "usage": "[options] [share]",
+              "filePath": "commands/storage/storage.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--share <share>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--share",
+                  "description": "the storage file share name"
+                },
+                {
+                  "flags": "--quota <quota>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--quota",
+                  "description": "the storage file share quota (in GB)"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -4083,7 +4160,554 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "sas": {
+              "name": "sas",
+              "description": "Commands to manage shared access signatures of your Storage file shares",
+              "fullName": "storage share sas",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Generate shared access signature of storage share",
+                  "fullName": "storage share sas create",
+                  "usage": "[options] [share] [permissions] [expiry]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the SAS becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the SAS expires"
+                    },
+                    {
+                      "flags": "--policy <policy>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--policy",
+                      "description": "the stored access policy identifier"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "policy": {
+              "name": "policy",
+              "description": "Commands to manage stored access policies of your Storage file share",
+              "fullName": "storage share policy",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create a stored access policy on the share",
+                  "fullName": "storage share policy create",
+                  "usage": "[options] [share] [name]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "--name <name>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--name",
+                      "description": "the policy name"
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the policy becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the policy expires"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a stored access policy on the share",
+                  "fullName": "storage share policy show",
+                  "usage": "[options] [share] [name]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "--name <name>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--name",
+                      "description": "the policy name"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List stored access policies on the share",
+                  "fullName": "storage share policy list",
+                  "usage": "[options] [share]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set a stored access policy on the share",
+                  "fullName": "storage share policy set",
+                  "usage": "[options] [share] [name]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "--name <name>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--name",
+                      "description": "the policy name"
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the policy becomes valid and passing two spaces means to remove the existing setting"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the policy expires and passing two spaces means to remove the existing setting"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List) and passing two spaces means to remove the existing setting"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a stored access policy on the share",
+                  "fullName": "storage share policy delete",
+                  "usage": "[options] [share] [name]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "--name <name>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--name",
+                      "description": "the policy name"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "file": {
           "name": "file",
@@ -4132,6 +4756,14 @@
                   "short": "-p",
                   "long": "--path",
                   "description": "the path to be listed"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -4219,6 +4851,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "remove the specified storage file without confirmation"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -4323,6 +4963,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "overwrite the specified storage file without confirmation"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -4430,6 +5078,14 @@
                   "description": "overwrite the destination file without confirmation"
                 },
                 {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -4467,7 +5123,458 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "copy": {
+              "name": "copy",
+              "description": "Commands to manage your file copy operations",
+              "fullName": "storage file copy",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "start",
+                  "description": "Start to copy the resource to the specified storage file which completes asynchronously",
+                  "fullName": "storage file copy start",
+                  "usage": "[options] [sourceUri] [destShare]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--source-sas <sourceSas>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-sas",
+                      "description": "the shared access signature of the source storage"
+                    },
+                    {
+                      "flags": "--source-uri <sourceUri>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-uri",
+                      "description": "the source storage blob or file absolute uri"
+                    },
+                    {
+                      "flags": "--source-share <sourceShare>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-share",
+                      "description": "the source storage share name"
+                    },
+                    {
+                      "flags": "--source-path <sourcePath>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-path",
+                      "description": "the source storage file path"
+                    },
+                    {
+                      "flags": "--dest-account-name <destAccountName>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-account-name",
+                      "description": "the destination storage account name"
+                    },
+                    {
+                      "flags": "--dest-account-key <destAccountKey>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-account-key",
+                      "description": "the destination storage account key"
+                    },
+                    {
+                      "flags": "--dest-connection-string <destConnectionString>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-connection-string",
+                      "description": "the destination storage connection string"
+                    },
+                    {
+                      "flags": "--dest-sas <destSas>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-sas",
+                      "description": "the shared access signature of the destination storage share or file"
+                    },
+                    {
+                      "flags": "--dest-share <destShare>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-share",
+                      "description": "the destination storage share name"
+                    },
+                    {
+                      "flags": "--dest-path <destPath>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-path",
+                      "description": "the destination storage file path"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "overwrite the destination file without confirmation"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show the copy status",
+                  "fullName": "storage file copy show",
+                  "usage": "[options] [share] [path]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the destination share in the file copy start operation"
+                    },
+                    {
+                      "flags": "--path <path>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--path",
+                      "description": "the destination file path in the file copy start operation"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature of the destination storage share or file"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "stop",
+                  "description": "Stop the copy operation",
+                  "fullName": "storage file copy stop",
+                  "usage": "[options] [share] [path] [copyid]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the destination share in the file copy start operation"
+                    },
+                    {
+                      "flags": "--path <path>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--path",
+                      "description": "the destination file path in the file copy start operation"
+                    },
+                    {
+                      "flags": "--copyid <copyid>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--copyid",
+                      "description": "the copy ID which is returned from file copy start operation"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "sas": {
+              "name": "sas",
+              "description": "Commands to manage shared access signatures of your Storage file",
+              "fullName": "storage file sas",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Generate shared access signature of storage file",
+                  "fullName": "storage file sas create",
+                  "usage": "[options] [share] [path] [permissions] [expiry]",
+                  "filePath": "commands/storage/storage.file._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--share <share>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--share",
+                      "description": "the storage share name"
+                    },
+                    {
+                      "flags": "-p, --path <path>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the path to the storage file"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the SAS becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the SAS expires"
+                    },
+                    {
+                      "flags": "--policy <policy>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--policy",
+                      "description": "the stored access policy identifier"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "directory": {
           "name": "directory",
@@ -4516,6 +5623,14 @@
                   "short": "-p",
                   "long": "--path",
                   "description": "the path to the storage file directory to be created"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -4603,6 +5718,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "remove the specified storage file directory without confirmation"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature of the storage file share"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -5942,6 +7065,303 @@
                   "bool": true,
                   "long": "--api-off",
                   "description": "exclude API from metrics"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "cors": {
+          "name": "cors",
+          "description": "Commands to manage your Storage CORS (Cross-Origin Resource Sharing)",
+          "fullName": "storage cors",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set the CORS rules of the storage service",
+              "fullName": "storage cors set",
+              "usage": "[options]",
+              "filePath": "commands/storage/storage.service._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--blob",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--blob",
+                  "description": "set CORS rules for blob service"
+                },
+                {
+                  "flags": "--table",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--table",
+                  "description": "set CORS rules for table service"
+                },
+                {
+                  "flags": "--queue",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--queue",
+                  "description": "set CORS rules for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "set CORS rules for file service"
+                },
+                {
+                  "flags": "--cors <cors>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--cors",
+                  "description": "the CORS rules array in json format"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show the CORS rules of the storage service",
+              "fullName": "storage cors show",
+              "usage": "[options]",
+              "filePath": "commands/storage/storage.service._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--blob",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--blob",
+                  "description": "show CORS rules for blob service"
+                },
+                {
+                  "flags": "--table",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--table",
+                  "description": "show CORS rules for table service"
+                },
+                {
+                  "flags": "--queue",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--queue",
+                  "description": "show CORS rules for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "show CORS rules for file service"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete all the CORS rules of the storage service",
+              "fullName": "storage cors delete",
+              "usage": "[options]",
+              "filePath": "commands/storage/storage.service._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--blob",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--blob",
+                  "description": "delete CORS rules for blob service"
+                },
+                {
+                  "flags": "--table",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--table",
+                  "description": "delete CORS rules for table service"
+                },
+                {
+                  "flags": "--queue",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--queue",
+                  "description": "delete CORS rules for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "delete CORS rules for file service"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",

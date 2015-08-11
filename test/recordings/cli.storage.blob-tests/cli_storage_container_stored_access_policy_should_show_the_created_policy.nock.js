@@ -6,15 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,19 +21,19 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage101;AccountKey=null';
-}
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://teststorage101.blob.core.windows.net:443')
+nock('http://xplat.blob.core.windows.net:80')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>containerpolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Fri, 13 Mar 2015 03:50:52 GMT',
-  etag: '"0x8D22B5809242CBE"',
+  'last-modified': 'Wed, 01 Jul 2015 06:33:27 GMT',
+  etag: '"0x8D281DEF91B960B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6a9e0e00-0001-0002-30ea-a0a17a000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:50:53 GMT' });
+  'x-ms-request-id': '96f12fa2-0001-002a-5fc7-b3e342000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Wed, 01 Jul 2015 06:33:57 GMT' });
  return result; }]];

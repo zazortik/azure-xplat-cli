@@ -6,15 +6,18 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,52 +25,52 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage101;AccountKey=null';
-}
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://teststorage101.queue.core.windows.net:443')
+nock('http://xplat.queue.core.windows.net:80')
   .put('/storageclitestqueue')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0e37bd78-0003-0029-2e59-05afe7000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:51:02 GMT' });
+  'x-ms-request-id': '5bcb7113-0003-0031-4162-81cdd0000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Tue, 28 Apr 2015 03:22:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://teststorage101.queue.core.windows.net:443')
+nock('http://xplat.queue.core.windows.net:80')
   .head('/storageclitestqueue?comp=metadata')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e9a04389-0003-0065-0d45-2fdd7c000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': 'dd439ed4-0003-000d-0e62-81790b000000',
+  'x-ms-version': '2015-02-21',
   'x-ms-approximate-messages-count': '0',
-  date: 'Fri, 13 Mar 2015 03:51:02 GMT' });
+  date: 'Tue, 28 Apr 2015 03:22:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://teststorage101.queue.core.windows.net:443')
+nock('http://xplat.queue.core.windows.net:80')
   .get('/storageclitestqueue?comp=metadata')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '64634122-0003-0051-6f2d-01dd6e000000',
-  'x-ms-version': '2014-02-14',
+  'x-ms-request-id': '8907b911-0003-003a-5762-81d5a4000000',
+  'x-ms-version': '2015-02-21',
   'x-ms-approximate-messages-count': '0',
-  date: 'Fri, 13 Mar 2015 03:51:02 GMT' });
+  date: 'Tue, 28 Apr 2015 03:22:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://teststorage101.queue.core.windows.net:443')
+nock('http://xplat.queue.core.windows.net:80')
   .get('/storageclitestqueue?comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bae13609-0003-003e-4456-38716e000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:51:02 GMT' });
+  'x-ms-request-id': '94e63630-0003-0037-5b62-813aa8000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Tue, 28 Apr 2015 03:22:28 GMT' });
  return result; }]];

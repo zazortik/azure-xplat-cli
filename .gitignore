@@ -2,6 +2,7 @@ projects/*
 targets/*
 
 # Visual Studio #
+.settings/
 /app.js
 /xPlat.sln
 *.suo
