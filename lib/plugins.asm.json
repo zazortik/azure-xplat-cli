@@ -30,6 +30,14 @@
           "description": "use verbose output"
         },
         {
+          "flags": "-vv",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "-vv",
+          "description": "more verbose with debug output"
+        },
+        {
           "flags": "--json",
           "required": 0,
           "optional": 0,
@@ -54,6 +62,14 @@
           "short": "-v",
           "long": "--verbose",
           "description": "use verbose output"
+        },
+        {
+          "flags": "-vv",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "-vv",
+          "description": "more verbose with debug output"
         },
         {
           "flags": "--json",
@@ -134,6 +150,14 @@
           "description": "use verbose output"
         },
         {
+          "flags": "-vv",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "-vv",
+          "description": "more verbose with debug output"
+        },
+        {
           "flags": "--json",
           "required": 0,
           "optional": 0,
@@ -167,6 +191,14 @@
           "short": "-v",
           "long": "--verbose",
           "description": "use verbose output"
+        },
+        {
+          "flags": "-vv",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "-vv",
+          "description": "more verbose with debug output"
         },
         {
           "flags": "--json",
@@ -222,6 +254,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -246,6 +286,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -292,6 +340,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -316,6 +372,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -371,6 +435,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -403,6 +475,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -458,6 +538,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -482,6 +570,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -516,6 +612,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -648,6 +752,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -778,6 +890,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -822,6 +942,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -855,6 +983,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -919,6 +1055,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -952,6 +1096,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -1006,6 +1158,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -1072,6 +1232,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -1096,6 +1264,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -1124,6 +1300,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -1148,6 +1332,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -1194,6 +1386,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1229,6 +1429,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1262,6 +1470,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -1343,6 +1559,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1404,6 +1628,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1457,6 +1689,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -1490,6 +1730,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -1551,6 +1799,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -6636,6 +6892,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -6775,6 +7039,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -6834,6 +7106,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -6885,6 +7165,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -6919,6 +7207,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -7018,6 +7314,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -7125,6 +7429,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -7258,6 +7570,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -7323,6 +7643,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -7396,6 +7724,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7429,6 +7765,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -7519,6 +7863,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7590,6 +7942,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7623,6 +7983,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -7660,6 +8028,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7695,6 +8071,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7728,6 +8112,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -7809,6 +8201,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -7851,6 +8251,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -7906,6 +8314,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -7939,6 +8355,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -7986,6 +8410,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -8019,6 +8451,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -8063,6 +8503,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -8119,6 +8567,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -8154,6 +8610,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -8187,6 +8651,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -8233,6 +8705,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8268,6 +8748,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8301,6 +8789,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8350,6 +8846,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -8385,6 +8889,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -8418,6 +8930,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -8473,6 +8993,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8506,6 +9034,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8549,6 +9085,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8596,6 +9140,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8631,6 +9183,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8664,6 +9224,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8711,6 +9279,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8755,6 +9331,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8797,6 +9381,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8844,6 +9436,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8888,6 +9488,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -8921,6 +9529,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -8968,6 +9584,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9003,6 +9627,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9036,6 +9668,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9093,6 +9733,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9126,6 +9774,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9169,6 +9825,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9216,6 +9880,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9251,6 +9923,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9284,6 +9964,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9331,6 +10019,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9366,6 +10062,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9399,6 +10103,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9446,6 +10158,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9481,6 +10201,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9514,6 +10242,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9561,6 +10297,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9596,6 +10340,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -9629,6 +10381,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -9675,6 +10435,14 @@
                           "description": "use verbose output"
                         },
                         {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
                           "flags": "--json",
                           "required": 0,
                           "optional": 0,
@@ -9710,6 +10478,14 @@
                           "description": "use verbose output"
                         },
                         {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
                           "flags": "--json",
                           "required": 0,
                           "optional": 0,
@@ -9743,6 +10519,14 @@
                           "short": "-v",
                           "long": "--verbose",
                           "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
                         },
                         {
                           "flags": "--json",
@@ -9794,6 +10578,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -9829,6 +10621,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -9862,6 +10662,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -9914,6 +10722,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10001,6 +10817,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10053,6 +10877,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10117,6 +10949,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10159,6 +10999,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10215,6 +11063,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10248,6 +11104,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10312,6 +11176,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10354,6 +11226,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10401,6 +11281,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10434,6 +11322,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10508,6 +11404,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10541,6 +11445,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10603,6 +11515,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10676,6 +11596,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10721,6 +11649,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10754,6 +11690,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10801,6 +11745,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10834,6 +11786,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10878,6 +11838,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -10933,6 +11901,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -10978,6 +11954,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -11011,6 +11995,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11048,6 +12040,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -11081,6 +12081,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11130,6 +12138,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -11163,6 +12179,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -11209,6 +12233,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -11242,6 +12274,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11295,6 +12335,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11367,6 +12415,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11511,6 +12567,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -11544,6 +12608,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11587,6 +12659,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -11650,6 +12730,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -11701,6 +12789,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -11766,6 +12862,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -11809,6 +12913,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -11882,6 +12994,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -11944,6 +13064,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -11986,6 +13114,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -12039,6 +13175,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -12112,6 +13256,14 @@
                           "description": "use verbose output"
                         },
                         {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
                           "flags": "--json",
                           "required": 0,
                           "optional": 0,
@@ -12172,6 +13324,14 @@
                           "short": "-v",
                           "long": "--verbose",
                           "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
                         },
                         {
                           "flags": "--json",
@@ -12243,6 +13403,14 @@
                           "short": "-v",
                           "long": "--verbose",
                           "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
                         },
                         {
                           "flags": "--json",
@@ -12321,6 +13489,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -12365,6 +13541,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -12400,6 +13584,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -12433,6 +13625,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -12487,6 +13687,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -12551,6 +13759,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -12584,6 +13800,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -12628,6 +13852,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -12690,6 +13922,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -12817,6 +14057,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -12942,6 +14190,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -12984,6 +14240,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -13037,6 +14301,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -13111,6 +14383,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -13171,6 +14451,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -13256,6 +14544,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -13316,6 +14612,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -13380,6 +14684,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -13413,6 +14725,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -13457,6 +14777,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -13522,6 +14850,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -13584,6 +14920,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -13626,6 +14970,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -13681,6 +15033,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -13732,6 +15092,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -13787,6 +15155,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -13838,6 +15214,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -13892,6 +15276,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -13954,6 +15346,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -14028,6 +15428,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -14082,6 +15490,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -14115,6 +15531,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -14198,6 +15622,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -14278,6 +15710,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -14320,6 +15760,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -14376,6 +15824,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -14440,6 +15896,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -14484,6 +15948,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -14517,6 +15989,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -14579,6 +16059,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -14661,6 +16149,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -14733,6 +16229,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -14824,6 +16328,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -14913,6 +16425,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -14946,6 +16466,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -14990,6 +16518,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -15045,6 +16581,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -15087,6 +16631,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -15142,6 +16694,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -15184,6 +16744,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15237,6 +16805,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15302,6 +16878,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -15362,6 +16946,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15434,6 +17026,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15516,6 +17116,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -15588,6 +17196,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -15657,6 +17273,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15731,6 +17355,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -15791,6 +17423,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15863,6 +17503,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -15954,6 +17602,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16024,6 +17680,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -16115,6 +17779,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16187,6 +17859,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16256,6 +17936,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -16338,6 +18026,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -16438,6 +18134,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16527,6 +18231,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16571,6 +18283,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16604,6 +18324,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -16659,6 +18387,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -16701,6 +18437,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -16754,6 +18498,14 @@
                           "short": "-v",
                           "long": "--verbose",
                           "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
                         },
                         {
                           "flags": "--json",
@@ -16854,6 +18606,14 @@
                           "description": "use verbose output"
                         },
                         {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
                           "flags": "--json",
                           "required": 0,
                           "optional": 0,
@@ -16952,6 +18712,14 @@
                           "description": "use verbose output"
                         },
                         {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
                           "flags": "--json",
                           "required": 0,
                           "optional": 0,
@@ -17038,6 +18806,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17071,6 +18847,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -17108,6 +18892,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17141,6 +18933,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -17194,6 +18994,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -17258,6 +19066,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -17305,6 +19121,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -17382,6 +19206,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -17415,6 +19247,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -17458,6 +19298,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -17510,6 +19358,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -17591,6 +19447,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17634,6 +19498,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17667,6 +19539,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -17732,6 +19612,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17774,6 +19662,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -17847,6 +19743,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -17907,6 +19811,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -18008,6 +19920,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -18050,6 +19970,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -18103,6 +20031,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -18278,6 +20214,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18311,6 +20255,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -18432,6 +20384,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -18594,6 +20554,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18701,6 +20669,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18742,6 +20718,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -18796,6 +20780,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18848,6 +20840,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18890,6 +20890,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -18935,6 +20943,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -18976,6 +20992,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -19030,6 +21054,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19064,6 +21096,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19109,6 +21149,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19150,6 +21198,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19202,6 +21258,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19257,6 +21321,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19298,6 +21370,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19343,6 +21423,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19384,6 +21472,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19439,6 +21535,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19480,6 +21584,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19552,6 +21664,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19611,6 +21731,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19675,6 +21803,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19716,6 +21852,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19777,6 +21921,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19850,6 +22002,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -19900,6 +22060,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -19954,6 +22122,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20004,6 +22180,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20082,6 +22266,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -20147,6 +22339,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20188,6 +22388,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20240,6 +22448,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20313,6 +22529,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20354,6 +22578,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20424,6 +22656,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20497,6 +22737,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20546,6 +22794,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20605,6 +22861,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20675,6 +22939,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20742,6 +23014,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -20799,6 +23079,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -20861,6 +23149,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -20910,6 +23206,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -20983,6 +23287,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21033,6 +23345,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21102,6 +23422,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21256,6 +23584,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21297,6 +23633,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21351,6 +23695,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21392,6 +23744,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21437,6 +23797,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21488,6 +23856,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21569,6 +23945,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21636,6 +24020,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21679,6 +24071,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21712,6 +24112,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21774,6 +24182,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -21843,6 +24259,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21894,6 +24318,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -21935,6 +24367,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -22005,6 +24445,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -22106,6 +24554,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -22163,6 +24619,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -22230,6 +24694,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -22318,6 +24790,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -22562,6 +25042,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -22642,6 +25130,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -22686,6 +25182,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -22728,6 +25232,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -22792,6 +25304,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -22836,6 +25356,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -22878,6 +25406,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -22931,6 +25467,14 @@
               "short": "-v",
               "long": "--verbose",
               "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
             },
             {
               "flags": "--json",
@@ -23004,6 +25548,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -23055,6 +25607,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23126,6 +25686,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23233,6 +25801,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23369,6 +25945,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -23440,6 +26024,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -23501,6 +26093,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23737,6 +26337,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -23780,6 +26388,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23826,6 +26442,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -23868,6 +26492,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -23924,6 +26556,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -23975,6 +26615,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -24046,6 +26694,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -24127,6 +26783,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -24290,6 +26954,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -24343,6 +27015,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -24385,6 +27065,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -24557,6 +27245,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -24599,6 +27295,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -24652,6 +27356,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -24752,6 +27464,14 @@
                       "description": "use verbose output"
                     },
                     {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
                       "flags": "--json",
                       "required": 0,
                       "optional": 0,
@@ -24812,6 +27532,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -24892,6 +27620,14 @@
                       "short": "-v",
                       "long": "--verbose",
                       "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
                     },
                     {
                       "flags": "--json",
@@ -25013,6 +27749,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25048,6 +27792,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25081,6 +27833,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -25125,6 +27885,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -25271,6 +28039,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25304,6 +28080,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -25350,6 +28134,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25392,6 +28184,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -25528,6 +28328,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25608,6 +28416,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25659,6 +28475,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -25714,6 +28538,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -25756,6 +28588,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
