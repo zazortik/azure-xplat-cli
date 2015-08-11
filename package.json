@@ -68,6 +68,7 @@
     "eyes": "0.x.x",
     "github": "0.1.6",
     "image-size": "^0.3.5",
+    "js2xmlparser": "1.0.0",
     "jsrsasign": "4.8.2 ",
     "jszip": "^2.5.0",
     "kuduscript": "0.2.2",
