@@ -37,10 +37,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=a852110c740546cc9c7d2ae02fd0af09; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=c485ae456bc24ee8a87f475e7ae63295; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Wed, 05 Aug 2015 23:34:48 GMT',
+  date: 'Wed, 12 Aug 2015 19:53:15 GMT',
   'content-length': '2773' });
  return result; },
 function (nock) { 
@@ -52,11 +52,11 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-request-id': '6985e7e3-fb60-40a8-80b3-d931ec41810d',
-  'x-ms-correlation-request-id': '6985e7e3-fb60-40a8-80b3-d931ec41810d',
-  'x-ms-routing-request-id': 'WESTUS:20150805T233449Z:6985e7e3-fb60-40a8-80b3-d931ec41810d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14954',
+  'x-ms-request-id': '0b92b215-80f9-441c-88a4-f49d0af84ad8',
+  'x-ms-correlation-request-id': '0b92b215-80f9-441c-88a4-f49d0af84ad8',
+  'x-ms-routing-request-id': 'SOUTHCENTRALUS:20150812T195316Z:0b92b215-80f9-441c-88a4-f49d0af84ad8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 05 Aug 2015 23:34:48 GMT',
+  date: 'Wed, 12 Aug 2015 19:53:15 GMT',
   'content-length': '109' });
  return result; }]];
