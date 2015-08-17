@@ -269,14 +269,14 @@ networkTestUtil.prototype.deleteUsedNic = function(groupName, NicName, suite, ca
     callback();
 };
 networkTestUtil.prototype.createDnszone = function(groupName, dnszonePrefix, suite, callback) {
-  var cmd = util.format('network dns-zone create %s %s --json', groupName, dnszonePrefix).split(' ');
+  var cmd = util.format('network dns zone create %s %s --json', groupName, dnszonePrefix).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
   });
 };
 networkTestUtil.prototype.createDnszone = function(groupName, dnszonePrefix, suite, callback) {
-  var cmd = util.format('network dns-zone create %s %s --json', groupName, dnszonePrefix).split(' ');
+  var cmd = util.format('network dns zone create %s %s --json', groupName, dnszonePrefix).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
@@ -284,7 +284,7 @@ networkTestUtil.prototype.createDnszone = function(groupName, dnszonePrefix, sui
 };
 networkTestUtil.prototype.deleteUsedDns = function(groupName, dnszonePrefix, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('network dns-zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
+    var cmd = util.format('network dns zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();
