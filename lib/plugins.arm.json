@@ -19367,12 +19367,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -19464,12 +19464,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -19569,12 +19569,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -19639,12 +19639,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -19718,12 +19718,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -19806,12 +19806,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
@@ -20056,12 +20056,12 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-z, --dns-zone <dns-zone>",
-                      "required": -16,
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-z",
-                      "long": "--dns-zone",
+                      "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
                     },
                     {
