@@ -22038,7 +22038,70 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": {
+        "operations": {
+          "name": "operations",
+          "description": "Commands to get the operations or actions allowed by an Azure resource provider.",
+          "fullName": "provider operations",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Show providerOperations for the requested provider actionString",
+              "fullName": "provider operations show",
+              "usage": "[options] <actionString>",
+              "filePath": "commands/arm/providers/provider.operations._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-a --actionString <actionString>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--actionString",
+                  "description": "the provider action string (with possible wildcard (*) characters)"
+                },
+                {
+                  "flags": "-s --subscription <subscription",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "subscription to show provider operations for"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
     },
     "resource": {
       "name": "resource",
