@@ -3383,7 +3383,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-container",
-                      "description": "the source storage container name"
+                      "description": "the source storage container name when copies a blob to a blob"
                     },
                     {
                       "flags": "--source-blob <sourceBlob>",
@@ -3391,7 +3391,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-blob",
-                      "description": "the source storage blob name"
+                      "description": "the source storage blob name when copies a blob to a blob"
+                    },
+                    {
+                      "flags": "--source-share <sourceShare>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-share",
+                      "description": "the source storage share name when copies a file to a blob"
+                    },
+                    {
+                      "flags": "--source-path <sourcePath>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-path",
+                      "description": "the source storage file path when copies a file to a blob"
                     },
                     {
                       "flags": "--dest-account-name <destAccountName>",
@@ -5177,7 +5193,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-share",
-                      "description": "the source storage share name"
+                      "description": "the source storage share name when copies a file to a blob"
                     },
                     {
                       "flags": "--source-path <sourcePath>",
@@ -5185,7 +5201,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-path",
-                      "description": "the source storage file path"
+                      "description": "the source storage file path when copies a file to a blob"
+                    },
+                    {
+                      "flags": "--source-container <sourceContainer>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-container",
+                      "description": "the source storage container name when copies a blob to a blob"
+                    },
+                    {
+                      "flags": "--source-blob <sourceBlob>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-blob",
+                      "description": "the source storage blob name when copies a blob to a blob"
                     },
                     {
                       "flags": "--dest-account-name <destAccountName>",
@@ -7362,6 +7394,15 @@
                   "bool": true,
                   "long": "--file",
                   "description": "delete CORS rules for file service"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the CORS rules without confirmation"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",

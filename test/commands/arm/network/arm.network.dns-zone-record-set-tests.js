@@ -61,13 +61,12 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('dns-record-set', function() {
+    describe('dns record-set', function() {
 
-		it('create should create a dns-record-set', function(done) {
-			this.timeout(networkUtil.timeout);
+		it('create should create a dns record-set', function(done) {
 			networkUtil.createGroup(groupName, location, suite, function() {
 				networkUtil.createDnszone(groupName, dnszonePrefix, suite, function() {
-					var cmd = util.format('network dns-record-set create %s %s %s -y %s --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+					var cmd = util.format('network dns record-set create %s %s %s -y %s --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
 					testUtils.executeCommand(suite, retry, cmd, function(result) {
 						result.exitStatus.should.equal(0);
 						done();
@@ -75,8 +74,8 @@ describe('arm', function() {
 				});
 			});
 		});
-      it('list should display all dns-record-set', function(done) {
-        var cmd = util.format('network dns-record-set list %s %s --json', groupName, dnszonePrefix).split(' ');
+      it('list should display all dns record-set', function(done) {
+        var cmd = util.format('network dns record-set list %s %s --json', groupName, dnszonePrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -86,15 +85,15 @@ describe('arm', function() {
           done();
         });
       });
-      it('set should set a dns-record-set', function(done) {
-        var cmd = util.format('network dns-record-set set %s %s %s %s -l 255 --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+      it('set should set a dns record-set', function(done) {
+        var cmd = util.format('network dns record-set set %s %s %s %s -l 255 --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-      it('show should display details of a dns-record-set', function(done) {
-        var cmd = util.format('network dns-record-set show %s %s %s %s --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+      it('show should display details of a dns record-set', function(done) {
+        var cmd = util.format('network dns record-set show %s %s %s %s --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allresources = JSON.parse(result.text);
@@ -104,7 +103,7 @@ describe('arm', function() {
       });
 
       // it('add-record should add a record in dns-record-set', function (done) {
-      // var cmd = util.format('network dns-record-set add-record %s %s %s %s -a 10.0.0.0 --json',groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+      // var cmd = util.format('network dns record-set add-record %s %s %s %s -a 10.0.0.0 --json',groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
       // testUtils.executeCommand(suite, retry, cmd, function (result) {
       // result.exitStatus.should.equal(0);
       // done();
@@ -112,16 +111,16 @@ describe('arm', function() {
       // });
 
 
-      it('delete-record should delete a record from dns-record-set', function(done) {
-        var cmd = util.format('network dns-record-set delete-record %s %s %s %s -a 10.0.0.0 -q --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+      it('delete-record should delete a record from dns record-set', function(done) {
+        var cmd = util.format('network dns record-set delete-record %s %s %s %s -a 10.0.0.0 -q --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
 
-      it('delete should delete dns-record-set', function(done) {
-        var cmd = util.format('network dns-record-set delete %s %s %s %s --quiet --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
+      it('delete should delete dns record-set', function(done) {
+        var cmd = util.format('network dns record-set delete %s %s %s %s --quiet --json', groupName, dnszonePrefix, dnszoneRecPrefix, Dnstype).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

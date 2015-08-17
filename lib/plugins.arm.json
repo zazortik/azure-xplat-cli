@@ -3028,7 +3028,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-container",
-                      "description": "the source storage container name"
+                      "description": "the source storage container name when copies a blob to a blob"
                     },
                     {
                       "flags": "--source-blob <sourceBlob>",
@@ -3036,7 +3036,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-blob",
-                      "description": "the source storage blob name"
+                      "description": "the source storage blob name when copies a blob to a blob"
+                    },
+                    {
+                      "flags": "--source-share <sourceShare>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-share",
+                      "description": "the source storage share name when copies a file to a blob"
+                    },
+                    {
+                      "flags": "--source-path <sourcePath>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-path",
+                      "description": "the source storage file path when copies a file to a blob"
                     },
                     {
                       "flags": "--dest-account-name <destAccountName>",
@@ -4822,7 +4838,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-share",
-                      "description": "the source storage share name"
+                      "description": "the source storage share name when copies a file to a blob"
                     },
                     {
                       "flags": "--source-path <sourcePath>",
@@ -4830,7 +4846,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-path",
-                      "description": "the source storage file path"
+                      "description": "the source storage file path when copies a file to a blob"
+                    },
+                    {
+                      "flags": "--source-container <sourceContainer>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-container",
+                      "description": "the source storage container name when copies a blob to a blob"
+                    },
+                    {
+                      "flags": "--source-blob <sourceBlob>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-blob",
+                      "description": "the source storage blob name when copies a blob to a blob"
                     },
                     {
                       "flags": "--dest-account-name <destAccountName>",
@@ -7007,6 +7039,15 @@
                   "bool": true,
                   "long": "--file",
                   "description": "delete CORS rules for file service"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the CORS rules without confirmation"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -18928,1241 +18969,1251 @@
             }
           }
         },
-        "dns-zone": {
-          "name": "dns-zone",
-          "description": "Commands to manage DNS zone",
-          "fullName": "network dns-zone",
-          "usage": "[options] [command]",
+        "dns": {
+          "name": "dns",
+          "description": "Commands to manage DNS",
+          "fullName": "network dns",
+          "usage": "[options]",
           "options": [],
-          "commands": [
-            {
-              "name": "create",
-              "description": "Create a DNS zone",
-              "fullName": "network dns-zone create",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
+          "commands": [],
+          "categories": {
+            "zone": {
+              "name": "zone",
+              "description": "Commands to manage DNS zone",
+              "fullName": "network dns zone",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
                 {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
+                  "name": "create",
+                  "description": "Create a DNS zone",
+                  "fullName": "network dns zone create",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
+                  "name": "set",
+                  "description": "Set a DNS zone",
+                  "fullName": "network dns zone set",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
+                  "name": "list",
+                  "description": "Get all DNS zones",
+                  "fullName": "network dns zone list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
+                  "name": "show",
+                  "description": "Get a DNS zone",
+                  "fullName": "network dns zone show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone\n   You can specify \"*\" (in quotes) for this parameter"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
+                  "name": "delete",
+                  "description": "Delete a DNS zone",
+                  "fullName": "network dns zone delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
-              ]
+              ],
+              "categories": {}
             },
-            {
-              "name": "set",
-              "description": "Set a DNS zone",
-              "fullName": "network dns-zone set",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
+            "record-set": {
+              "name": "record-set",
+              "description": "Commands to manage record sets in DNS zone",
+              "fullName": "network dns record-set",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
                 {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
+                  "name": "create",
+                  "description": "Create a DNS zone record set",
+                  "fullName": "network dns record-set create",
+                  "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the relative name of the record set within the DNS zone"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
+                    },
+                    {
+                      "flags": "-l, --ttl <ttl>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--ttl",
+                      "description": "time to live specified in seconds"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
+                  "name": "set",
+                  "description": "Set a DNS zone record set",
+                  "fullName": "network dns record-set set",
+                  "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the relative name of the record set within the DNS zone"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
+                    },
+                    {
+                      "flags": "-l, --ttl <ttl>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--ttl",
+                      "description": "time to live specified in seconds"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
+                  "name": "list",
+                  "description": "Get all record sets in a DNS zone",
+                  "fullName": "network dns record-set list",
+                  "usage": "[options] <resource-group> <dns-zone-name> [type]",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
+                  "name": "show",
+                  "description": "Get a record set in a DNS zone",
+                  "fullName": "network dns record-set show",
+                  "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the relative name of the record set within the DNS zone"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the DNS zone"
+                  "name": "delete",
+                  "description": "Delete a record set from a DNS zone",
+                  "fullName": "network dns record-set delete",
+                  "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the relative name of the record set within the DNS zone"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "name": "add-record",
+                  "description": "Add a record in a record set under a DNS zone",
+                  "fullName": "network dns record-set add-record",
+                  "usage": "[options] <resource-group> <dns-zone-name> <record-set-name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --record-set-name <record-set-name>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--record-set-name",
+                      "description": "the name of the record set"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\n\nThe record type A \n\n"
+                    },
+                    {
+                      "flags": "-a  --ipv4-address <ipv4-address>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--ipv4-address",
+                      "description": "the IPv4 address attribute\n\nRecord type AAAA \n\n"
+                    },
+                    {
+                      "flags": "-b  --ipv6-address <ipv6-address>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--ipv6-address",
+                      "description": "the IPv6 address attribute\n\nRecord type CNAME\n\n"
+                    },
+                    {
+                      "flags": "-c  --cname <cname>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cname",
+                      "description": "the canonical name (target)\n\nRecord type NS\n\n"
+                    },
+                    {
+                      "flags": "-d  --nsdname <nsdname>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--nsdname",
+                      "description": "the domain name attribute\n\nRecord type MX\n\n"
+                    },
+                    {
+                      "flags": "-f, --preference <preference>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--preference",
+                      "description": "preference attribute"
+                    },
+                    {
+                      "flags": "-e, --exchange <exchange>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--exchange",
+                      "description": "exchange attribute\n\nRecord type SRV\n\n"
+                    },
+                    {
+                      "flags": "-p, --priority <priority>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--priority",
+                      "description": "the priority attribute"
+                    },
+                    {
+                      "flags": "-w, --weight <weight>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--weight",
+                      "description": "the weight attribute"
+                    },
+                    {
+                      "flags": "-o, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--port",
+                      "description": "the port"
+                    },
+                    {
+                      "flags": "-u, --target <target>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--target",
+                      "description": "the target attribute\n\nRecord type TXT\n\n"
+                    },
+                    {
+                      "flags": "-x, --text <text>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-x",
+                      "long": "--text",
+                      "description": "the text attribute\n\nRecord type SOA\n\n"
+                    },
+                    {
+                      "flags": "-l, --email <email>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--email",
+                      "description": "the email attribute"
+                    },
+                    {
+                      "flags": "-i, --expire-time <expire-time>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--expire-time",
+                      "description": "the expire time specified in seconds"
+                    },
+                    {
+                      "flags": "-S, --serial-number <serial-number>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-S",
+                      "long": "--serial-number",
+                      "description": "the serial number"
+                    },
+                    {
+                      "flags": "-k, --host <host>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--host",
+                      "description": "the host name attribute"
+                    },
+                    {
+                      "flags": "-m, --minimum-ttl <minimum-ttl>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--minimum-ttl",
+                      "description": "the minimum time to live specified in seconds"
+                    },
+                    {
+                      "flags": "-r, --refresh-time <refresh-time>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--refresh-time",
+                      "description": "the refresh time specified in seconds"
+                    },
+                    {
+                      "flags": "-j, --retry-time <retry-time>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--retry-time",
+                      "description": "the retry time specified in seconds\n\nRecord type PTR \n\n"
+                    },
+                    {
+                      "flags": "-P, --ptrd-name <ptrd-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-P",
+                      "long": "--ptrd-name",
+                      "description": "ptr domain name\n\n"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 },
                 {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
+                  "name": "delete-record",
+                  "description": "Delete a record from a record set under a DNS zone",
+                  "fullName": "network dns record-set delete-record",
+                  "usage": "[options] <resource-group> <dns-zone> <record-set-name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone <dns-zone>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --record-set-name <record-set-name>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--record-set-name",
+                      "description": "the name of the record set"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\n\nThe record type A \n\n"
+                    },
+                    {
+                      "flags": "-a  --ipv4-address <ipv4-address>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--ipv4-address",
+                      "description": "the IPv4 address attribute\n\nRecord type AAAA \n\n"
+                    },
+                    {
+                      "flags": "-b  --ipv6-address <ipv6-address>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--ipv6-address",
+                      "description": "the IPv6 address attribute\n\nRecord type CNAME\n\n"
+                    },
+                    {
+                      "flags": "-c  --cname <cname>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cname",
+                      "description": "the canonical name (target)\n\nRecord type NS\n\n"
+                    },
+                    {
+                      "flags": "-d  --nsdname <nsdname>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--nsdname",
+                      "description": "the domain name attribute\n\nRecord type MX\n\n"
+                    },
+                    {
+                      "flags": "-f, --preference <preference>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--preference",
+                      "description": "preference attribute"
+                    },
+                    {
+                      "flags": "-e, --exchange <exchange>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--exchange",
+                      "description": "exchange attribute\n\nRecord type SRV\n\n"
+                    },
+                    {
+                      "flags": "-p, --priority <priority>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--priority",
+                      "description": "the priority attribute"
+                    },
+                    {
+                      "flags": "-w, --weight <weight>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--weight",
+                      "description": "the weight attribute"
+                    },
+                    {
+                      "flags": "-o, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--port",
+                      "description": "the port"
+                    },
+                    {
+                      "flags": "-u, --target <target>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--target",
+                      "description": "the target attribute\n\nRecord type TXT\n\n"
+                    },
+                    {
+                      "flags": "-x, --text <text>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-x",
+                      "long": "--text",
+                      "description": "the text attribute\n\nRecord type PTR \n\n"
+                    },
+                    {
+                      "flags": "-P, --ptrd-name <ptrd-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-P",
+                      "long": "--ptrd-name",
+                      "description": "ptr domain name\n\n"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "Get all DNS zones",
-              "fullName": "network dns-zone list",
-              "usage": "[options] <resource-group>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "show",
-              "description": "Get a DNS zone",
-              "fullName": "network dns-zone show",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the DNS zone\n   You can specify \"*\" (in quotes) for this parameter"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete a DNS zone",
-              "fullName": "network dns-zone delete",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
+              ],
+              "categories": {}
             }
-          ],
-          "categories": {}
-        },
-        "dns-record-set": {
-          "name": "dns-record-set",
-          "description": "Commands to manage record sets in DNS zone",
-          "fullName": "network dns-record-set",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "create",
-              "description": "Create a DNS zone record set",
-              "fullName": "network dns-record-set create",
-              "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the relative name of the record set within the DNS zone"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
-                },
-                {
-                  "flags": "-l, --ttl <ttl>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--ttl",
-                  "description": "time to live specified in seconds"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "set",
-              "description": "Set a DNS zone record set",
-              "fullName": "network dns-record-set set",
-              "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the relative name of the record set within the DNS zone"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
-                },
-                {
-                  "flags": "-l, --ttl <ttl>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--ttl",
-                  "description": "time to live specified in seconds"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "Get all record sets in a DNS zone",
-              "fullName": "network dns-record-set list",
-              "usage": "[options] <resource-group> <dns-zone-name> [type]",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "show",
-              "description": "Get a record set in a DNS zone",
-              "fullName": "network dns-record-set show",
-              "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the relative name of the record set within the DNS zone"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete a record set from a DNS zone",
-              "fullName": "network dns-record-set delete",
-              "usage": "[options] <resource-group> <dns-zone-name> <name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the relative name of the record set within the DNS zone"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "add-record",
-              "description": "Add a record in a record set under a DNS zone",
-              "fullName": "network dns-record-set add-record",
-              "usage": "[options] <resource-group> <dns-zone-name> <record-set-name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --record-set-name <record-set-name>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--record-set-name",
-                  "description": "the name of the record set"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\n\nThe record type A \n\n"
-                },
-                {
-                  "flags": "-a  --ipv4-address <ipv4-address>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--ipv4-address",
-                  "description": "the IPv4 address attribute\n\nRecord type AAAA \n\n"
-                },
-                {
-                  "flags": "-b  --ipv6-address <ipv6-address>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--ipv6-address",
-                  "description": "the IPv6 address attribute\n\nRecord type CNAME\n\n"
-                },
-                {
-                  "flags": "-c  --cname <cname>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-c",
-                  "long": "--cname",
-                  "description": "the canonical name (target)\n\nRecord type NS\n\n"
-                },
-                {
-                  "flags": "-d  --nsdname <nsdname>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--nsdname",
-                  "description": "the domain name attribute\n\nRecord type MX\n\n"
-                },
-                {
-                  "flags": "-f, --preference <preference>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-f",
-                  "long": "--preference",
-                  "description": "preference attribute"
-                },
-                {
-                  "flags": "-e, --exchange <exchange>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--exchange",
-                  "description": "exchange attribute\n\nRecord type SRV\n\n"
-                },
-                {
-                  "flags": "-p, --priority <priority>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--priority",
-                  "description": "the priority attribute"
-                },
-                {
-                  "flags": "-w, --weight <weight>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-w",
-                  "long": "--weight",
-                  "description": "the weight attribute"
-                },
-                {
-                  "flags": "-o, --port <port>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--port",
-                  "description": "the port"
-                },
-                {
-                  "flags": "-u, --target <target>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--target",
-                  "description": "the target attribute\n\nRecord type TXT\n\n"
-                },
-                {
-                  "flags": "-x, --text <text>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-x",
-                  "long": "--text",
-                  "description": "the text attribute\n\nRecord type SOA\n\n"
-                },
-                {
-                  "flags": "-l, --email <email>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--email",
-                  "description": "the email attribute"
-                },
-                {
-                  "flags": "-i, --expire-time <expire-time>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--expire-time",
-                  "description": "the expire time specified in seconds"
-                },
-                {
-                  "flags": "-S, --serial-number <serial-number>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-S",
-                  "long": "--serial-number",
-                  "description": "the serial number"
-                },
-                {
-                  "flags": "-k, --host <host>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--host",
-                  "description": "the host name attribute"
-                },
-                {
-                  "flags": "-m, --minimum-ttl <minimum-ttl>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-m",
-                  "long": "--minimum-ttl",
-                  "description": "the minimum time to live specified in seconds"
-                },
-                {
-                  "flags": "-r, --refresh-time <refresh-time>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--refresh-time",
-                  "description": "the refresh time specified in seconds"
-                },
-                {
-                  "flags": "-j, --retry-time <retry-time>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-j",
-                  "long": "--retry-time",
-                  "description": "the retry time specified in seconds\n\nRecord type PTR \n\n"
-                },
-                {
-                  "flags": "-P, --ptrd-name <ptrd-name>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-P",
-                  "long": "--ptrd-name",
-                  "description": "ptr domain name\n\n"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "delete-record",
-              "description": "Delete a record from a record set under a DNS zone",
-              "fullName": "network dns-record-set delete-record",
-              "usage": "[options] <resource-group> <dns-zone> <record-set-name> <type>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-z, --dns-zone <dns-zone>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--dns-zone",
-                  "description": "the name of the DNS zone"
-                },
-                {
-                  "flags": "-n, --record-set-name <record-set-name>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--record-set-name",
-                  "description": "the name of the record set"
-                },
-                {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--type",
-                  "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\n\nThe record type A \n\n"
-                },
-                {
-                  "flags": "-a  --ipv4-address <ipv4-address>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--ipv4-address",
-                  "description": "the IPv4 address attribute\n\nRecord type AAAA \n\n"
-                },
-                {
-                  "flags": "-b  --ipv6-address <ipv6-address>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--ipv6-address",
-                  "description": "the IPv6 address attribute\n\nRecord type CNAME\n\n"
-                },
-                {
-                  "flags": "-c  --cname <cname>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-c",
-                  "long": "--cname",
-                  "description": "the canonical name (target)\n\nRecord type NS\n\n"
-                },
-                {
-                  "flags": "-d  --nsdname <nsdname>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--nsdname",
-                  "description": "the domain name attribute\n\nRecord type MX\n\n"
-                },
-                {
-                  "flags": "-f, --preference <preference>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-f",
-                  "long": "--preference",
-                  "description": "preference attribute"
-                },
-                {
-                  "flags": "-e, --exchange <exchange>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--exchange",
-                  "description": "exchange attribute\n\nRecord type SRV\n\n"
-                },
-                {
-                  "flags": "-p, --priority <priority>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--priority",
-                  "description": "the priority attribute"
-                },
-                {
-                  "flags": "-w, --weight <weight>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-w",
-                  "long": "--weight",
-                  "description": "the weight attribute"
-                },
-                {
-                  "flags": "-o, --port <port>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--port",
-                  "description": "the port"
-                },
-                {
-                  "flags": "-u, --target <target>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--target",
-                  "description": "the target attribute\n\nRecord type TXT\n\n"
-                },
-                {
-                  "flags": "-x, --text <text>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-x",
-                  "long": "--text",
-                  "description": "the text attribute\n\nRecord type PTR \n\n"
-                },
-                {
-                  "flags": "-P, --ptrd-name <ptrd-name>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-P",
-                  "long": "--ptrd-name",
-                  "description": "ptr domain name\n\n"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            }
-          ],
-          "categories": {}
+          }
         },
         "traffic-manager": {
           "name": "traffic-manager",
@@ -21375,7 +21426,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--next-hop-type",
-                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,Null]"
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,None]"
                     },
                     {
                       "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
@@ -21472,7 +21523,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--next-hop-type",
-                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,Null]"
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VirtualNetworkGateway,VNETLocal,Internet,None]"
                     },
                     {
                       "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",

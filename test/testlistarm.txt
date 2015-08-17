@@ -49,8 +49,8 @@ commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
 commands/arm/network/arm.network.lb-frontend-ip-tests.js
-commands/arm/network/arm.network.dnszone-tests.js
-commands/arm/network/arm.network.dnszone-recordset-tests.js
+commands/arm/network/arm.network.dns-zone-tests.js
+commands/arm/network/arm.network.dns-zone-record-set-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
 commands/arm/network/arm.network.route-table-tests.js

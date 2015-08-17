@@ -57,10 +57,10 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('dns-zone', function() {
+    describe('dns zone', function() {
       it('create should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function() {
-          var cmd = util.format('network dns-zone create %s %s --json', groupName, dnszonePrefix).split(' ');
+          var cmd = util.format('network dns zone create %s %s --json', groupName, dnszonePrefix).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -70,7 +70,7 @@ describe('arm', function() {
       });
 
       it('set should set dns-zone', function(done) {
-        var cmd = util.format('network dns-zone set %s %s %s --json', groupName, dnszonePrefix, tag).split(' ');
+        var cmd = util.format('network dns zone set %s %s %s --json', groupName, dnszonePrefix, tag).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -78,7 +78,7 @@ describe('arm', function() {
       });
 
       it('show should display dns-zone', function(done) {
-        var cmd = util.format('network dns-zone show %s %s --json', groupName, dnszonePrefix).split(' ');
+        var cmd = util.format('network dns zone show %s %s --json', groupName, dnszonePrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allresources = JSON.parse(result.text);
@@ -88,7 +88,7 @@ describe('arm', function() {
       });
 
       it('list should display all dns-zones', function(done) {
-        var cmd = util.format('network dns-zone list %s --json', groupName).split(' ');
+        var cmd = util.format('network dns zone list %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -100,7 +100,7 @@ describe('arm', function() {
       });
 
       it('delete should delete dns-zone', function(done) {
-        var cmd = util.format('network dns-zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
+        var cmd = util.format('network dns zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
