@@ -132,6 +132,30 @@ describe('arm', function () {
       });
     });
 
+    describe('delete', function () {
+      it('should work properly', function (done) {
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
+            templateFile, groupName, deploymentName, parameterFile);
+
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('group deployment delete -g %s -n %s -q', groupName, deploymentName, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              cleanup(done);
+            });
+          });
+        });
+      });
+    });
+
     describe('stop', function () {
       it('should work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
