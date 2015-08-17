@@ -1,3 +1,43 @@
+2015.08.19 Version 0.9.8
+* Storage
+  * Update azure-storage to 0.5.0 which supports Azure storage service version 2015-02-21
+  * Support append blob
+  * Supports share quota and share usage
+  * New commands for shared access signatures for shares and files
+    * azure storage share sas create [options] [share] [permissions] [expiry] 
+    * azure storage file sas create [options] [share] [path] [permissions] [expiry]
+  * New commands for share ACL ◦azure storage share policy create [options] [share] [name]
+    * azure storage share policy show [options] [share] [name]
+    * azure storage share policy list [options] [share]
+    * azure storage share policy set [options] [share] [name]
+    * azure storage share policy delete [options] [share] [name] 
+  * New commands for file async copy ◦azure storage file copy start [options] [sourceUri] [destShare]
+    * azure storage file copy show [options] [share] [path]
+    * azure storage file copy stop [options] [share] [path] [copyid]
+  * New commands for CORS (Cross-Origin Resource Sharing) ◦azure storage cors set [options]
+    * azure storage cors show [options]
+    * azure storage cors delete [options]
+* ARM
+  * Display Outputs section from a template when submitting new deployments
+  * group delete command will now block until the resource group is deleted
+  * Support for submitting deployments with v2 version of template parameters
+  * "azure-arm-resource" package is updated to version 0.10.2
+* Authorization
+  * Role test fixes and authorization package updated to version 0.10.2
+  * Added support to display custom roles in role list command
+  * Added support to create and set role definitions with custom role
+* Network
+  * Fixed CIDR validation issues
+  * Added support for 'None' next hop type in ARM RouteTable Route
+  * Fixed the inability to add a nic in address-pool issue #2013
+* General command improvement
+  * Fixed service principal login issue on Mac #1958
+  * Upgraded adal-node to 0.1.15 to fix '&' in the password issue #1918
+  * Documentation updates for using Chinal Cloud fiex issue #1995
+  * Fixed issues #1894, #1911, #1923
+  * Upgraded request library dependency to version 2.52.0
+  * Added default Visual Studio nodejs project for xplat cli
+
 2015.08.05 Version 0.9.7
 * General command improvement
   * Fix the broken "help" command
@@ -18,6 +58,7 @@
   * Network commands 
     * Route Tables
     * NIC
+
 2015.07.20 Version 0.9.6
 * ASM
   *  Network
