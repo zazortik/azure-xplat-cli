@@ -10113,10 +10113,79 @@
               ]
             },
             {
-              "name": "stop",
-              "description": "Stops a deployment",
-              "fullName": "group deployment stop",
-              "usage": "[options] <resource-group> [deployment-name]",
+             "name": "stop",
+             "description": "Stops a deployment",
+             "fullName": "group deployment stop",
+             "usage": "[options] <resource-group> [deployment-name]",
+             "filePath": "commands/arm/group/group.deployment._js",
+             "options": [
+                 {
+                     "flags": "-v, --verbose",
+                     "required": 0,
+                     "optional": 0,
+                     "bool": true,
+                     "short": "-v",
+                     "long": "--verbose",
+                     "description": "use verbose output"
+                 },
+                 {
+                     "flags": "-vv",
+                     "required": 0,
+                     "optional": 0,
+                     "bool": true,
+                     "long": "-vv",
+                     "description": "more verbose with debug output"
+                 },
+                 {
+                     "flags": "--json",
+                     "required": 0,
+                     "optional": 0,
+                     "bool": true,
+                     "long": "--json",
+                     "description": "use json output"
+                 },
+                 {
+                     "flags": "-g --resource-group <resourceGroup>",
+                     "required": -21,
+                     "optional": 0,
+                     "bool": true,
+                     "short": "-g",
+                     "long": "--resource-group",
+                     "description": "the name of the resource group"
+                 },
+                 {
+                     "flags": "-q --quiet",
+                     "required": 0,
+                     "optional": 0,
+                     "bool": true,
+                     "short": "-q",
+                     "long": "--quiet",
+                     "description": "quiet mode (do not ask for stop deployment confirmation)"
+                 },
+                 {
+                     "flags": "-n --name <name>",
+                     "required": -11,
+                     "optional": 0,
+                     "bool": true,
+                     "short": "-n",
+                     "long": "--name",
+                     "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
+                 },
+                 {
+                     "flags": "--subscription <subscription>",
+                     "required": -16,
+                     "optional": 0,
+                     "bool": true,
+                     "long": "--subscription",
+                     "description": "the subscription identifier"
+                 }
+             ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes a deployment",
+              "fullName": "group deployment delete",
+              "usage": "[options] <resource-group> <deployment-name>",
               "filePath": "commands/arm/group/group.deployment._js",
               "options": [
                 {
@@ -10151,16 +10220,7 @@
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-q --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode (do not ask for stop deployment confirmation)"
+                  "description": "the name of the resource group."
                 },
                 {
                   "flags": "-n --name <name>",
@@ -10169,7 +10229,16 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
-                  "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
+                  "description": "the name of the deployment."
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -10177,7 +10246,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--subscription",
-                  "description": "the subscription identifier"
+                  "description": "subscription containing the deployment to display (optional)"
                 }
               ]
             }
