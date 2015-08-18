@@ -6,12 +6,14 @@
   * New commands for shared access signatures for shares and files
     * azure storage share sas create [options] [share] [permissions] [expiry] 
     * azure storage file sas create [options] [share] [path] [permissions] [expiry]
-  * New commands for share ACL ◦azure storage share policy create [options] [share] [name]
+  * New commands for share ACL 
+    * azure storage share policy create [options] [share] [name]
     * azure storage share policy show [options] [share] [name]
     * azure storage share policy list [options] [share]
     * azure storage share policy set [options] [share] [name]
     * azure storage share policy delete [options] [share] [name] 
-  * New commands for file async copy ◦azure storage file copy start [options] [sourceUri] [destShare]
+  * New commands for file async copy 
+    * azure storage file copy start [options] [sourceUri] [destShare]
     * azure storage file copy show [options] [share] [path]
     * azure storage file copy stop [options] [share] [path] [copyid]
   * New commands for CORS (Cross-Origin Resource Sharing)
@@ -23,6 +25,7 @@
   * group delete command will now block until the resource group is deleted
   * Support for submitting deployments with v2 version of template parameters
   * "azure-arm-resource" package is updated to version 0.10.2
+  * Added delete deployment command
 * Authorization
   * Role test fixes and authorization package updated to version 0.10.2
   * Added support to display custom roles in role list command
