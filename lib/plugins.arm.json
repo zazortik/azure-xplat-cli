@@ -2778,7 +2778,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--blobtype",
-                  "description": "the storage blob type(block, page, append)"
+                  "description": "the storage blob type(block, page)"
                 },
                 {
                   "flags": "-p, --properties <properties>",
@@ -10113,73 +10113,73 @@
               ]
             },
             {
-             "name": "stop",
-             "description": "Stops a deployment",
-             "fullName": "group deployment stop",
-             "usage": "[options] <resource-group> [deployment-name]",
-             "filePath": "commands/arm/group/group.deployment._js",
-             "options": [
-                 {
-                     "flags": "-v, --verbose",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-v",
-                     "long": "--verbose",
-                     "description": "use verbose output"
-                 },
-                 {
-                     "flags": "-vv",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "-vv",
-                     "description": "more verbose with debug output"
-                 },
-                 {
-                     "flags": "--json",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "--json",
-                     "description": "use json output"
-                 },
-                 {
-                     "flags": "-g --resource-group <resourceGroup>",
-                     "required": -21,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-g",
-                     "long": "--resource-group",
-                     "description": "the name of the resource group"
-                 },
-                 {
-                     "flags": "-q --quiet",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-q",
-                     "long": "--quiet",
-                     "description": "quiet mode (do not ask for stop deployment confirmation)"
-                 },
-                 {
-                     "flags": "-n --name <name>",
-                     "required": -11,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-n",
-                     "long": "--name",
-                     "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
-                 },
-                 {
-                     "flags": "--subscription <subscription>",
-                     "required": -16,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "--subscription",
-                     "description": "the subscription identifier"
-                 }
-             ]
+              "name": "stop",
+              "description": "Stops a deployment",
+              "fullName": "group deployment stop",
+              "usage": "[options] <resource-group> [deployment-name]",
+              "filePath": "commands/arm/group/group.deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-q --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for stop deployment confirmation)"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
             },
             {
               "name": "delete",
@@ -22750,6 +22750,82 @@
               "short": "-r",
               "long": "--roledefinition",
               "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Deletes an existing custom role definition in Azure RBAC. The role definition to delete is provided using the Id property of the role definition.Use list or show roleName to determine the role definition to be deleted.",
+          "fullName": "role delete",
+          "usage": "[options] [id] [name]",
+          "filePath": "commands/arm/role/role.definition._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--id <id>",
+              "required": -6,
+              "optional": 0,
+              "bool": true,
+              "long": "--id",
+              "description": "Id of the Role definition to be deleted"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the role definition name"
+            },
+            {
+              "flags": "-q --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "If set, does not prompt for a confirmation before deleting the custom role"
+            },
+            {
+              "flags": "--passthru",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--passthru",
+              "description": "If set, displays the properties of deleted custom role"
             },
             {
               "flags": "--subscription <subscription>",
