@@ -25,7 +25,7 @@ exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_PASSWORD'] = 'Pa$$w0rd';
   process.env['AZURE_AD_TEST_GROUP_NAME'] = 'testgroupauto';
   process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandom9234';
+  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandomauto';
 };
 
 exports.scopes = [[function (nock) { 
@@ -37,12 +37,12 @@ nock('http://management.azure.com:443')
   'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'westus:01b1ea04-45e7-4722-ae35-0f997714a5f7',
-  'x-ms-ratelimit-remaining-subscription-reads': '14983',
-  'x-ms-correlation-request-id': '238e6d47-ae17-430c-9a21-a696e0093164',
-  'x-ms-routing-request-id': 'WESTUS:20150808T002608Z:238e6d47-ae17-430c-9a21-a696e0093164',
+  'x-ms-request-id': 'westus:1d066585-c14d-4de7-8309-b5cbf99fdf3d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14989',
+  'x-ms-correlation-request-id': '9b8b82e5-9f1d-4639-8105-4d9e9a1acea5',
+  'x-ms-routing-request-id': 'WESTUS:20150818T222924Z:9b8b82e5-9f1d-4639-8105-4d9e9a1acea5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 08 Aug 2015 00:26:07 GMT',
+  date: 'Tue, 18 Aug 2015 22:29:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -54,11 +54,11 @@ nock('https://management.azure.com:443')
   'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'westus:01b1ea04-45e7-4722-ae35-0f997714a5f7',
-  'x-ms-ratelimit-remaining-subscription-reads': '14983',
-  'x-ms-correlation-request-id': '238e6d47-ae17-430c-9a21-a696e0093164',
-  'x-ms-routing-request-id': 'WESTUS:20150808T002608Z:238e6d47-ae17-430c-9a21-a696e0093164',
+  'x-ms-request-id': 'westus:1d066585-c14d-4de7-8309-b5cbf99fdf3d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14989',
+  'x-ms-correlation-request-id': '9b8b82e5-9f1d-4639-8105-4d9e9a1acea5',
+  'x-ms-routing-request-id': 'WESTUS:20150818T222924Z:9b8b82e5-9f1d-4639-8105-4d9e9a1acea5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 08 Aug 2015 00:26:07 GMT',
+  date: 'Tue, 18 Aug 2015 22:29:23 GMT',
   connection: 'close' });
  return result; }]];

@@ -41,7 +41,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9234' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandomauto' },
 ];
 
 describe('arm', function () {
@@ -317,7 +317,7 @@ describe('arm', function () {
         });
       });
 
-      it.only('delete for custom role with valid name should work', function (done) {
+      it('delete for custom role with valid name should work', function (done) {
         // Create a custom role
         var roleToCreate = createNewRoleObject();
         
