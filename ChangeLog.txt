@@ -14,7 +14,8 @@
   * New commands for file async copy ◦azure storage file copy start [options] [sourceUri] [destShare]
     * azure storage file copy show [options] [share] [path]
     * azure storage file copy stop [options] [share] [path] [copyid]
-  * New commands for CORS (Cross-Origin Resource Sharing) ◦azure storage cors set [options]
+  * New commands for CORS (Cross-Origin Resource Sharing)
+    * azure storage cors set [options]
     * azure storage cors show [options]
     * azure storage cors delete [options]
 * ARM
@@ -33,7 +34,7 @@
 * General command improvement
   * Fixed service principal login issue on Mac #1958
   * Upgraded adal-node to 0.1.15 to fix '&' in the password issue #1918
-  * Documentation updates for using Chinal Cloud fiex issue #1995
+  * Documentation updates for using Chinal Cloud fix issue #1995
   * Fixed issues #1894, #1911, #1923
   * Upgraded request library dependency to version 2.52.0
   * Added default Visual Studio nodejs project for xplat cli
