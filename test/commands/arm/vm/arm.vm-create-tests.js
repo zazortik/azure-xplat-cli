@@ -45,7 +45,10 @@ var groupName,
   publicipName = 'xplattestip',
   dnsPrefix = 'xplattestipdns',
   tags = 'a=b;b=c;d=',
-  sshcert;
+  sshcert,
+  IaasDiagPublisher = 'Microsoft.OSTCExtensions',
+  IaasDiagExtName = 'LinuxDiagnostic',
+  IaasDiagVersion = '2.0';
 
 describe('arm', function() {
   describe('compute', function() {
@@ -142,7 +145,24 @@ describe('arm', function() {
           done();
         });
       });
-
+      it('Enable diagnostics extension on created VM in a resource group', function(done) {
+        var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('Check diagnostics extension on created VM should pass', function(done) {
+        var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].publisher.should.equal(IaasDiagPublisher);
+          allResources[0].name.should.equal(IaasDiagExtName);
+          allResources[0].typeHandlerVersion.should.equal(IaasDiagVersion);
+          done();
+        });
+      });
       it('delete should delete VM', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
