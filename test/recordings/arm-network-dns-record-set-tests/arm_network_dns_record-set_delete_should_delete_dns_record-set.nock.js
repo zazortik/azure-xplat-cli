@@ -7,15 +7,12 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
     name: 'CollaberaInteropTest',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -34,15 +31,15 @@ nock('http://management.azure.com:443')
   .reply(200, "", { 'cache-control': 'private',
   'content-length': '0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'a99ab156-e11f-4bcb-97c4-6537be9a104f',
+  'x-ms-request-id': 'e39dacf1-21ed-453c-b6b2-c063b5c60dea',
   server: 'Microsoft-IIS/7.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-resource-requests': '11998',
-  'x-ms-correlation-request-id': 'dbc766bb-ce49-46b1-a758-ea01b92e03e4',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150629T063230Z:dbc766bb-ce49-46b1-a758-ea01b92e03e4',
+  'x-ms-ratelimit-remaining-subscription-resource-requests': '11999',
+  'x-ms-correlation-request-id': '7fe39911-cadd-435e-b97d-f27573b85945',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150803T111412Z:7fe39911-cadd-435e-b97d-f27573b85945',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 29 Jun 2015 06:32:29 GMT',
+  date: 'Mon, 03 Aug 2015 11:14:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -52,14 +49,14 @@ nock('https://management.azure.com:443')
   .reply(200, "", { 'cache-control': 'private',
   'content-length': '0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'a99ab156-e11f-4bcb-97c4-6537be9a104f',
+  'x-ms-request-id': 'e39dacf1-21ed-453c-b6b2-c063b5c60dea',
   server: 'Microsoft-IIS/7.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-resource-requests': '11998',
-  'x-ms-correlation-request-id': 'dbc766bb-ce49-46b1-a758-ea01b92e03e4',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150629T063230Z:dbc766bb-ce49-46b1-a758-ea01b92e03e4',
+  'x-ms-ratelimit-remaining-subscription-resource-requests': '11999',
+  'x-ms-correlation-request-id': '7fe39911-cadd-435e-b97d-f27573b85945',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150803T111412Z:7fe39911-cadd-435e-b97d-f27573b85945',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 29 Jun 2015 06:32:29 GMT',
+  date: 'Mon, 03 Aug 2015 11:14:12 GMT',
   connection: 'close' });
  return result; }]];
