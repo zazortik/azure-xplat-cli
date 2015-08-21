@@ -32,7 +32,7 @@ nock('http://management.azure.com:443')
   'content-length': '150928',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'c215dfca-61a5-470c-b0cf-68db135c9454',
+  'x-ms-request-id': '31b5eee6-b391-491d-9f3c-629f701e515e',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
@@ -40,9 +40,9 @@ nock('http://management.azure.com:443')
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-tenant-reads': '14996',
-  'x-ms-correlation-request-id': '93c5a98b-6919-4dfd-a673-ed06701ac9ea',
-  'x-ms-routing-request-id': 'WESTUS:20150821T184345Z:93c5a98b-6919-4dfd-a673-ed06701ac9ea',
-  date: 'Fri, 21 Aug 2015 18:43:44 GMT',
+  'x-ms-correlation-request-id': '462742f2-a5fb-46a8-97ef-636c8852dabc',
+  'x-ms-routing-request-id': 'WESTUS:20150821T215038Z:462742f2-a5fb-46a8-97ef-636c8852dabc',
+  date: 'Fri, 21 Aug 2015 21:50:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -54,7 +54,7 @@ nock('https://management.azure.com:443')
   'content-length': '150928',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'c215dfca-61a5-470c-b0cf-68db135c9454',
+  'x-ms-request-id': '31b5eee6-b391-491d-9f3c-629f701e515e',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
@@ -62,8 +62,8 @@ nock('https://management.azure.com:443')
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-tenant-reads': '14996',
-  'x-ms-correlation-request-id': '93c5a98b-6919-4dfd-a673-ed06701ac9ea',
-  'x-ms-routing-request-id': 'WESTUS:20150821T184345Z:93c5a98b-6919-4dfd-a673-ed06701ac9ea',
-  date: 'Fri, 21 Aug 2015 18:43:44 GMT',
+  'x-ms-correlation-request-id': '462742f2-a5fb-46a8-97ef-636c8852dabc',
+  'x-ms-routing-request-id': 'WESTUS:20150821T215038Z:462742f2-a5fb-46a8-97ef-636c8852dabc',
+  date: 'Fri, 21 Aug 2015 21:50:37 GMT',
   connection: 'close' });
  return result; }]];
