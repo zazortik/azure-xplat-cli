@@ -118,7 +118,7 @@ To enable it in bash, run:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
-echo 'source ~/azure.completion.sh' >> .bash_profile
+echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
 
 ## Get Started
