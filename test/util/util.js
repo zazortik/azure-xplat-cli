@@ -197,3 +197,13 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
     }
   });
 };
+
+exports.stripBOM = function (content) {
+  if (Buffer.isBuffer(content)) {
+    content = content.toString();
+  }
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+};

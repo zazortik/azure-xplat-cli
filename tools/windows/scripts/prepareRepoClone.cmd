@@ -9,7 +9,7 @@
 :: to avoid https://github.com/npm/npm/issues/6438
 chcp 850 
 
-set NODE_VERSION=0.10.23
+set NODE_VERSION=0.12.7
 set NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
@@ -110,6 +110,8 @@ for %%i in (
     *.md
     *.git*
     *.npm*
+    *.njsproj
+    *.sln
     azure_error
     azure.err
     checkstyle-result.xml

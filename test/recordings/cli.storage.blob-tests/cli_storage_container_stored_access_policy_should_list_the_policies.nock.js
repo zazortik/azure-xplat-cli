@@ -6,15 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,45 +21,45 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage101;AccountKey=null';
-}
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://teststorage101.blob.core.windows.net:443')
+nock('http://xplat.blob.core.windows.net:80')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>containerpolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Fri, 13 Mar 2015 03:50:52 GMT',
-  etag: '"0x8D22B5809242CBE"',
+  'last-modified': 'Wed, 01 Jul 2015 06:33:27 GMT',
+  etag: '"0x8D281DEF91B960B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6fcb98e8-0001-002a-06e6-7e01be000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:50:52 GMT' });
+  'x-ms-request-id': '3781a6eb-0001-003e-2dc7-b32026000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Wed, 01 Jul 2015 06:33:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://teststorage101.blob.core.windows.net:443')
+nock('http://xplat.blob.core.windows.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .put('/storageclitest?restype=container&comp=acl', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 13 Mar 2015 03:50:53 GMT',
-  etag: '"0x8D22B5809A4D372"',
+  'last-modified': 'Wed, 01 Jul 2015 06:33:59 GMT',
+  etag: '"0x8D281DF0C0880F5"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9b494d68-0001-0066-0bf6-7e8049000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:50:53 GMT' });
+  'x-ms-request-id': '5a0f65e4-0001-0010-7ac7-b3a0e1000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Wed, 01 Jul 2015 06:33:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://teststorage101.blob.core.windows.net:443')
+nock('http://xplat.blob.core.windows.net:80')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>containerpolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier><SignedIdentifier><Id>containerpolicy02</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Fri, 13 Mar 2015 03:50:53 GMT',
-  etag: '"0x8D22B5809A4D372"',
+  'last-modified': 'Wed, 01 Jul 2015 06:33:59 GMT',
+  etag: '"0x8D281DF0C0880F5"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ecb07f39-0001-0052-64bd-820671000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:50:53 GMT' });
+  'x-ms-request-id': '954067e7-0001-002e-37c7-b316c0000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Wed, 01 Jul 2015 06:34:28 GMT' });
  return result; }]];

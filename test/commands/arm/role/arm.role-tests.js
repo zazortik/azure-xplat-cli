@@ -22,6 +22,11 @@ var testLogger = require('../../../framework/test-logger');
 var graphUtil = require('../../../util/graphUtils');
 var testprefix = 'arm-cli-role-tests';
 var util = require('util');
+var path = require('path');
+var fs = require('fs');
+var profile = require('../../../../lib/util/profile');
+var utils = require('../../../../lib/util/utils');
+
 var testResourceGroup;
 var testSqlServer;
 var testSqlDb;
@@ -32,11 +37,11 @@ var createdGroups = [];
 var createdResources = [];
 var calledOnce = false;
 var requiredEnvironment = [
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserRandom3@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_PASSWORD'},
-  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupRandom3' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserAuto@rbacCliTest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
+  { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9234' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandomauto' },
 ];
 
 describe('arm', function () {
@@ -46,6 +51,7 @@ describe('arm', function () {
     var testUsers = [];
     var testSPs = [];
     var TEST_ROLE_NAME = 'Owner';
+    var BUILT_IN_ROLE_TYPE = 'BuiltInRole';
     var GUID_REGEXP = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -132,7 +138,7 @@ describe('arm', function () {
           return cleanupCreatedAdObjects(err, done); 
         }
         testUsers.push(userResult);
-        listPoll(suite, 3, 'user', userResult.objectId, function (result) {
+        listPoll(suite, 5, 'user', userResult.objectId, function (result) {
           graphUtil.createGroup(process.env.AZURE_AD_TEST_GROUP_NAME, function (err, groupResult) {
             if (err) {
               testLogger.logData("create group error : ");
@@ -140,7 +146,7 @@ describe('arm', function () {
               return cleanupCreatedAdObjects(err, done); 
             }
             testGroups.push(groupResult);
-            listPoll(suite, 3, 'group', groupResult.objectId, function (result) {
+            listPoll(suite, 5, 'group', groupResult.objectId, function (result) {
               graphUtil.createSP(process.env.AZURE_AD_TEST_SP_DISPLAY_NAME, function (err, spResult) {
                 if (err) { 
                   testLogger.logData("create sp error : ");
@@ -148,7 +154,7 @@ describe('arm', function () {
                   return cleanupCreatedAdObjects(err, done); 
                 }
                 testSPs.push(spResult);
-                listPoll(suite, 3, 'sp', spResult.objectId, function (result) {
+                listPoll(suite, 5, 'sp', spResult.objectId, function (result) {
                   done();
                 }); 
               });
@@ -202,6 +208,18 @@ describe('arm', function () {
       });
     }
 
+    function createNewRoleObject() {
+      var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+      var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+      
+      // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+      roleToCreate.AssignableScopes = [];
+      var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+      roleToCreate.AssignableScopes[0] = assignableScope;
+      roleToCreate.Name = "TestRole_" + utils.uuidGen();
+      return roleToCreate;
+    }
+
     describe('definition', function () {
       it('list should work', function (done) {
         suite.execute('role list --json', function (result) {
@@ -213,7 +231,18 @@ describe('arm', function () {
           done();
         });
       });
-
+      
+      it('list for custom roles should work', function (done) {
+        suite.execute('role list --custom --json', function (result) {
+          result.exitStatus.should.equal(0);
+          var roles = JSON.parse(result.text);
+          roles.some(function (res) {
+            return res.properties.type === BUILT_IN_ROLE_TYPE;
+          }).should.be.false;
+          done();
+        });
+      });
+      
       it('show for Owner role should work', function (done) {
         suite.execute('role show %s --json', TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
@@ -221,6 +250,154 @@ describe('arm', function () {
           roles.some(function (res) {
             return res.properties.roleName === TEST_ROLE_NAME;
           }).should.be.true;
+          done();
+        });
+      });
+      
+      it('create new role should work', function (done) {
+        var roleToCreate = createNewRoleObject();
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          createdRole.roleDefinition.properties.roleName.should.equal(roleToCreate.Name);
+          createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+          createdRole.roleDefinition.properties.assignableScopes[0].should.equal(roleToCreate.AssignableScopes[0]);
+          createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
+          createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+
+          // Clean up role
+          suite.execute('role delete %s --json -q --passthru', createdRole.roleDefinition.id, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.roleDefinition.id.should.equal(createdRole.roleDefinition.id);
+            done();
+          });
+        });
+      });
+      
+      it('create new role with non-existent file should not work', function (done) {
+        var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
+        suite.execute('role create -f %s --json', filePath, function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("NonExistenRoleFile.json does not exist");
+          done();
+        });
+      });
+      
+      it('create new role with no input should not work', function (done) {
+        suite.execute('role create --json', function (result) {
+          result.exitStatus.should.equal(1);
+          result.errorText.should.containEql("At least one of inputfile or roledefinition need to be specified");
+          done();
+        });
+      });
+      
+      it('delete for custom role with valid id should work', function (done) {
+        // Create a custom role
+        var roleToCreate = createNewRoleObject();
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          var id = createdRole.roleDefinition.id;
+
+          suite.execute('role delete --id %s --json -q --passthru', id, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.roleDefinition.id.should.equal(id);
+            
+            console.log("Role deleted. Trying to delete again should fail.")
+            // Deleting the same role again should result in error
+            suite.execute('role delete %s --json -q --passthru', id, function (result) {
+              result.exitStatus.should.not.equal(0);
+              done();
+            });
+          });
+        });
+      });
+
+      it('delete for custom role with valid name should work', function (done) {
+        // Create a custom role
+        var roleToCreate = createNewRoleObject();
+        
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          var name = createdRole.roleDefinition.properties.roleName;
+          
+          suite.execute('role delete --name %s --json -q --passthru', name, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.roleDefinition.properties.roleName.should.equal(name);
+            
+            console.log("Role deleted. Trying to delete role with invalid name should fail.")
+            // Deleting the role with invalid name should result in error
+            suite.execute('role delete --name %s --json -q --passthru', "invalid", function (result) {
+              result.exitStatus.should.not.equal(0);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    describe('update role definition', function() {
+      it('basic update should work', function(done) {
+        var roleToCreate = createNewRoleObject();
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function(result) {
+          result.exitStatus.should.equal(0);
+          console.log("Role created. Now trying to update");
+          var createdRole = JSON.parse(result.text);
+          
+          var roleToUpdate = roleToCreate;
+          roleToUpdate.id = createdRole.roleDefinition.id;
+          roleToUpdate.name = "UpdatedRole_" + utils.uuidGen();
+          roleToUpdate.description = "Updated Role Description";
+
+          suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
+            updatedResult.exitStatus.should.equal(0);
+            var updatedRole = JSON.parse(updatedResult.text);
+            updatedRole.roleDefinition.properties.roleName.should.equal(roleToUpdate.name);
+            updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
+            updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal(roleToUpdate.AssignableScopes[0]);
+            updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
+            updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+
+            // Clean up role
+            console.log("Deleting role.");
+            suite.execute('role delete %s --json -q --passthru', createdRole.roleDefinition.id, function (result) {
+              result.exitStatus.should.equal(0);
+              var deletedRole = JSON.parse(result.text);
+              deletedRole.roleDefinition.id.should.equal(createdRole.roleDefinition.id);
+              done();
+            });
+          });
+        });
+      });
+
+      it('fails to update non-existent role', function(done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
+        // random GUID for role id
+        roleToUpdate.id = "/subscriptions/" + profile.current.getSubscription().id+ "/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
+
+        suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
+          updatedResult.exitStatus.should.equal(1);
+          updatedResult.errorText.should.containEql("The role definition \'43367f6e-e106-480d-a448-2a393ea5eb21\' could not be found");
+
+          done();
+        });
+      });
+
+      it('fails to update role with no Id specified', function (done) {
+        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+        suite.execute('role set -f %s --json', filePath, function (updatedResult) {
+          updatedResult.exitStatus.should.equal(1);
+          updatedResult.errorText.should.containEql("roleDefinitionId cannot be null");
+          
           done();
         });
       });

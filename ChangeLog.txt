@@ -1,8 +1,23 @@
-2015.07.?? Version 0.9.7
+2015.08.05 Version 0.9.7
+* General command improvement
+  * Fix the broken "help" command
+  * Performance improvement on displaying command help information
+  * AutoComplete support on commands options
+* Login
+  * Retain default account after login
+  * Clean up cached tokens of service principal after logout
 * ARM
+  * Handle group deployment using a template file with BOM
   * Usage
     * Added command to list Azure resource usage information for a subscription
-
+  * VM
+    * Tags support for VM create.
+    * Handle generation of SSH certs inside 'vm create' and 'vm docker create' commands
+    * Added --lun option to 'vm disk attach-new' and 'vm disk attach' commands
+    * Added functionality to set data disk name in 'vm disk attach-new' command
+  * Network commands 
+    * Route Tables
+    * NIC
 2015.07.20 Version 0.9.6
 * ASM
   *  Network
