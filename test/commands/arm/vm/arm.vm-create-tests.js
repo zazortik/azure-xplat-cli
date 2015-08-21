@@ -46,9 +46,10 @@ var groupName,
   dnsPrefix = 'xplattestipdns',
   tags = 'a=b;b=c;d=',
   sshcert,
-  IaasDiagPublisher = 'Microsoft.OSTCExtensions',
-  IaasDiagExtName = 'LinuxDiagnostic',
-  IaasDiagVersion = '2.0';
+  IaasDiagPublisher,
+  IaasDiagExtName,
+  IaasDiagVersion,
+  datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
   describe('compute', function() {
@@ -71,6 +72,12 @@ describe('arm', function() {
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
         tags = 'a=b;b=c;d=';
 
+        // Get real values from test/data/testdata.json file and assign to the local variables
+        var data = fs.readFileSync(datafile, 'utf8');
+        var variables = JSON.parse(data);
+        IaasDiagPublisher = variables.IaasDiagPublisher_Linux.value;
+        IaasDiagExtName = variables.IaasDiagExtName_Linux.value;
+        IaasDiagVersion = variables.IaasDiagVersion_Linux.value;
         done();
       });
     });
@@ -173,6 +180,5 @@ describe('arm', function() {
       });
 
     });
-
   });
 });

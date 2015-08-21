@@ -93,8 +93,8 @@ describe('arm', function() {
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certifiatesExist = testUtils.checkForDockerCertificates(vmPrefix, dockerCertDir);
-              certifiatesExist.should.be.true;
+              var certificatesExist = testUtils.checkForDockerCertificates(vmPrefix, dockerCertDir);
+              certificatesExist.should.be.true;
               var SSHkeysExist = testUtils.checkForSSHKeys(vmPrefix, SSHKeyDir);
               SSHkeysExist.should.be.true;
               done();

@@ -15,6 +15,8 @@
 'use strict';
 
 var should = require('should');
+var path = require('path');
+var fs = require('fs');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
@@ -41,9 +43,10 @@ var groupName,
   extension = 'VMAccessAgent',
   publisherExt = 'Microsoft.Compute',
   version = '2.0',
-  IaasDiagPublisher = 'Microsoft.Azure.Diagnostics',
-  IaasDiagExtName = 'IaaSDiagnostics',
-  IaasDiagVersion = '1.4';
+  IaasDiagPublisher,
+  IaasDiagExtName,
+  IaasDiagVersion,
+  datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
   describe('compute', function() {
@@ -64,6 +67,13 @@ describe('arm', function() {
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+
+        // Get real values from test/data/testdata.json file and assign to the local variables
+        var data = fs.readFileSync(datafile, 'utf8');
+        var variables = JSON.parse(data);
+        IaasDiagPublisher = variables.IaasDiagPublisher_windows.value;
+        IaasDiagExtName = variables.IaasDiagExtName_windows.value;
+        IaasDiagVersion = variables.IaasDiagVersion_windows.value;
 
         done();
       });
