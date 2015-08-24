@@ -6,15 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    name: 'Azure SDK sandbox',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,16 +21,16 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=testmongo101;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;TableEndpoint=http://yaxiatest.table.testrr1.xstore-test.windows-int.net/;QueueEndpoint=http://yaxiatest.queue.testrr1.xstore-test.windows-int.net/;FileEndpoint=http://yaxiatest.file.testrr1.xstore-test.windows-int.net/;BlobEndpoint=https://yaxiatest.blob.testrr1.xstore-test.windows-int.net/;AccountName=yaxiatest;AccountKey=null';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .delete('/directorytestshare/newdir?restype=directory')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'edbdb23d-001a-005a-0239-75b0b2000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:00 GMT' });
+  'x-ms-request-id': 'a3dc524a-001a-0024-4856-b52d56000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:04:44 GMT' });
  return result; }]];

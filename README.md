@@ -155,6 +155,13 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure cli with China Cloud
+```bash
+# This will log you into the China Cloud environment.
+# You can use same set of commands to manage your service/applications
+azure login -u <your organizational ID email address> -e AzureChinaCloud
+```
+
 ### azure cli on Ubuntu
 If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
 - [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
@@ -200,18 +207,19 @@ After the VM is created. It can be used as a Docker host with the `-H` option or
 
 Note: To run docker commands on windows make sure ssl agent is installed.
 	
-## Setting up Fiddler for CLI
+## Error Diagnostic
 
-You need to set the following environment variables to capture the HTTP traffic generated from the execution of xplat cli commands
+### use the -vv option to see the actual REST requests on the console.
+```bash
+azure site create --location "West US" mytestsite -vv
+```
+
+### Use web debugging proxy
+Say, use 'Fiddler', setup the following environment variables before execute commands.
 
 ```bash
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
-```
-## Want to know the underlying HTTP traffic when you execute the command
-You can use the -vv option to see the actual REST requests on the console.
-```bash
-azure site create --location "West US" mytestsite -vv
 ```
 
 ## Running Tests

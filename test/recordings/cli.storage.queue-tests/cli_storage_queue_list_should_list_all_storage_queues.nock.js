@@ -6,15 +6,18 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,18 +25,18 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage101;AccountKey=null';
-}
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://teststorage101.queue.core.windows.net:443')
+nock('http://xplat.queue.core.windows.net:80')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://teststorage101.queue.core.windows.net/\"><Queues><Queue><Name>storageclitestqueue</Name></Queue></Queues><NextMarker /></EnumerationResults>", { 'cache-control': 'no-cache',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"http://xplat.queue.core.windows.net/\"><Queues><Queue><Name>queue01</Name></Queue><Queue><Name>queue011</Name></Queue><Queue><Name>queue02</Name></Queue><Queue><Name>queue03</Name></Queue><Queue><Name>queue04</Name></Queue><Queue><Name>queue1d116093</Name></Queue><Queue><Name>queue644dda25</Name></Queue><Queue><Name>queue69d56db5</Name></Queue><Queue><Name>queue7245623f</Name></Queue><Queue><Name>queue91043d65</Name></Queue><Queue><Name>queue9c3b5fd4</Name></Queue><Queue><Name>queuea36ed56c</Name></Queue><Queue><Name>queuea6bc5093</Name></Queue><Queue><Name>queuece9f18da</Name></Queue><Queue><Name>storageclitestqueue</Name></Queue></Queues><NextMarker /></EnumerationResults>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ebd5eed0-0003-0002-2630-3e90f4000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 03:51:03 GMT' });
+  'x-ms-request-id': 'f72df263-0003-0000-3062-819607000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Tue, 28 Apr 2015 03:22:29 GMT' });
  return result; }]];

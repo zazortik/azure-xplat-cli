@@ -6,15 +6,18 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,17 +25,17 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=teststorage1220;AccountKey=null';
-}
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://teststorage1220.table.core.windows.net:443')
+nock('http://xplat.table.core.windows.net:80')
   .get('/storageclitesttable?comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>tablepolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>ad</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c9e0e02-0002-006b-51c8-962dea000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Fri, 13 Mar 2015 09:08:37 GMT' });
+  'x-ms-request-id': '7286d3a2-0002-001c-6162-814e10000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Tue, 28 Apr 2015 03:21:52 GMT' });
  return result; }]];

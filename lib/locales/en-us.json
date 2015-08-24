@@ -1150,7 +1150,7 @@
   "There is no data in the table.": "There is no data in the table.",
   "There is no deployment to stop.": "There is no deployment to stop.",
   "This operation is not supported for subscriptions that have co-admins": "This operation is not supported for subscriptions that have co-admins",
-  "This will clear all account information. Are you sure? ": "This will clear all account information. Are you sure? ",
+  "This will clear all account information. Are you sure? ": "This will clear all account information. Are you sure? [y/n] ",
   "Thumbprint": "Thumbprint",
   "Time": "Time",
   "Timestamp          :": "Timestamp          :",

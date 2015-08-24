@@ -86,6 +86,8 @@ rm -f .jshintrc
 rm -f .gitattributes
 rm -f .gitignore
 rm -f ChangeLog.txt
+rm -f *.njsproj
+rm -f *.sln
 popd
 
 # compile streamline files

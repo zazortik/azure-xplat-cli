@@ -110,6 +110,8 @@ for %%i in (
     *.md
     *.git*
     *.npm*
+    *.njsproj
+    *.sln
     azure_error
     azure.err
     checkstyle-result.xml
