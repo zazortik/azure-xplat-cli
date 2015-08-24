@@ -43,6 +43,7 @@
     "azure-arm-trafficmanager": "0.10.2",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
+	"azure-arm-rediscache": "0.0.2",
     "azure-extra": "0.1.10",
     "azure-gallery": "2.0.0-pre.17",
     "azure-keyvault": "0.10.1",
