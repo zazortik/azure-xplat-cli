@@ -85,4 +85,99 @@ describe('arm', function () {
       });
     });
   });
+
+
+  describe('provider operations', function () {
+    it('show for all providers should work', function (done) {
+      suite.execute('provider operations show %s --json', '*', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        done();
+      });
+    });
+    
+    it('show for all operations of Microsoft.Authorization provider should work', function (done) {
+      suite.execute('provider operations show -a %s --json', 'Microsoft.Authorization/*', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        operations.forEach(function (operation) {
+          operation.operation.should.match(/^Microsoft.Authorization.*$/ig);
+        });
+        done();
+      });
+    });
+    
+    it('show for all operations of case insensitive provider name should work', function (done) {
+      suite.execute('provider operations show -a %s --json', 'MICROSOFT.inSiGHTs/*', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        operations.forEach(function (operation) {
+          operation.operation.should.match(/^Microsoft.Insight.*$/ig);
+        });
+        done();
+      });
+    });
+    
+    it('show for all read operations of Microsoft.Authorization should work', function (done) {
+      suite.execute('provider operations show --actionString %s --json', 'Microsoft.Authorization*/read', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        operations.forEach(function (operation) {
+          operation.operation.should.match(/^Microsoft.Authorization.*\/read$/ig);
+        });
+        done();
+      });
+    });
+
+    it('show for all read operations of all providers should work', function (done) {
+      suite.execute('provider operations show --actionString %s --json', '*/read', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        operations.forEach(function (operation) {
+          operation.operation.should.match(/.*\/read$/ig);
+        });
+        done();
+      });
+    });
+
+    it('show for a particular action should work', function (done) {
+      suite.execute('provider operations show --actionString %s --json', 'Microsoft.OperationalInsights/workspaces/usages/read', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.be.above(0);
+        operations.forEach(function (operation) {
+          operation.operation.should.equal("Microsoft.OperationalInsights/workspaces/usages/read");
+        });
+        done();
+      });
+    });
+
+    it('show for an invalid action should return empty operation list', function (done) {
+      suite.execute('provider operations show --actionString %s --json', 'Microsoft.OperationalInsights/workspaces/usages/blah', function (result) {
+        result.exitStatus.should.equal(0);
+        var operations = JSON.parse(result.text);
+        operations.length.should.equal(0);
+        done();
+      });
+    });
+
+    it('show for a specific action of a non existing provider should fail', function (done) {
+      suite.execute('provider operations show --actionString %s --json', 'InvalidOperation/blah', function (result) {
+        result.exitStatus.should.equal(1);
+        done();
+      });
+    });
+
+    it('show for all actions of a non existing provider should fail', function (done) {
+      suite.execute('provider operations show --actionString %s --json', 'InvalidOperation/*', function (result) {
+        result.exitStatus.should.equal(1);
+        done();
+      });
+    });
+  });
 });
