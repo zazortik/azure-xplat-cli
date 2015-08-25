@@ -28,34 +28,34 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709?api-version=2015-03-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache3709' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715?api-version=2015-03-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache6715' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'ab7bf730-722d-4378-b4b8-8804c86aee70',
-  'x-ms-correlation-request-id': 'ab7bf730-722d-4378-b4b8-8804c86aee70',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225623Z:ab7bf730-722d-4378-b4b8-8804c86aee70',
+  'x-ms-request-id': '31ad0e38-9eef-4bdc-b297-f666e3418185',
+  'x-ms-correlation-request-id': '31ad0e38-9eef-4bdc-b297-f666e3418185',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010731Z:31ad0e38-9eef-4bdc-b297-f666e3418185',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 24 Aug 2015 22:56:22 GMT',
+  date: 'Tue, 25 Aug 2015 01:07:31 GMT',
   connection: 'close',
   'content-length': '160' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709?api-version=2015-03-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache3709' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715?api-version=2015-03-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache6715' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'ab7bf730-722d-4378-b4b8-8804c86aee70',
-  'x-ms-correlation-request-id': 'ab7bf730-722d-4378-b4b8-8804c86aee70',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225623Z:ab7bf730-722d-4378-b4b8-8804c86aee70',
+  'x-ms-request-id': '31ad0e38-9eef-4bdc-b297-f666e3418185',
+  'x-ms-correlation-request-id': '31ad0e38-9eef-4bdc-b297-f666e3418185',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010731Z:31ad0e38-9eef-4bdc-b297-f666e3418185',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 24 Aug 2015 22:56:22 GMT',
+  date: 'Tue, 25 Aug 2015 01:07:31 GMT',
   connection: 'close',
   'content-length': '160' });
  return result; },
@@ -63,75 +63,75 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709?api-version=2015-03-01', '*')
-  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709\",\"location\":\"West US\",\"name\":\"xplatTestCache3709\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\"},\"accessKeys\":{\"primaryKey\":\"KLXB6iWecyIWi2vtctVsXgizC2xtBFFtw4ZCNdhLpvQ=\",\"secondaryKey\":\"w5jW8GYoXmqOabF1gwcNjULScvpfDwgq+Shf0pmE4Kg=\"},\"hostName\":\"xplatTestCache3709.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715?api-version=2015-03-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715\",\"location\":\"West US\",\"name\":\"xplatTestCache6715\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\"},\"accessKeys\":{\"primaryKey\":\"PPFQs/SLybJSWyrIWmExAyE+zl6PcX2Yv0HiaOGX5YA=\",\"secondaryKey\":\"h5yfzpfdjMkxzoNopUuBLAcRFWsGM4mDMLmUNpIxELw=\"},\"hostName\":\"xplatTestCache6715.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '653',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709',
-  'x-ms-request-id': 'e4bbc4fa-4bc6-49e9-b26d-ffa64a364162',
+  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715',
+  'x-ms-request-id': 'b193afa2-cf65-41b9-a662-d5da982b01e6',
   'x-rp-server-mvid': 'af670903-1b42-4933-b84c-636f2d204d89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-correlation-request-id': '5796a71f-2046-40af-9450-4ed543bb27b6',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225624Z:5796a71f-2046-40af-9450-4ed543bb27b6',
-  date: 'Mon, 24 Aug 2015 22:56:23 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '040eac98-8fe1-46bb-9a39-3972dd162f05',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010732Z:040eac98-8fe1-46bb-9a39-3972dd162f05',
+  date: 'Tue, 25 Aug 2015 01:07:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709?api-version=2015-03-01', '*')
-  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709\",\"location\":\"West US\",\"name\":\"xplatTestCache3709\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\"},\"accessKeys\":{\"primaryKey\":\"KLXB6iWecyIWi2vtctVsXgizC2xtBFFtw4ZCNdhLpvQ=\",\"secondaryKey\":\"w5jW8GYoXmqOabF1gwcNjULScvpfDwgq+Shf0pmE4Kg=\"},\"hostName\":\"xplatTestCache3709.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715?api-version=2015-03-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715\",\"location\":\"West US\",\"name\":\"xplatTestCache6715\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\"},\"accessKeys\":{\"primaryKey\":\"PPFQs/SLybJSWyrIWmExAyE+zl6PcX2Yv0HiaOGX5YA=\",\"secondaryKey\":\"h5yfzpfdjMkxzoNopUuBLAcRFWsGM4mDMLmUNpIxELw=\"},\"hostName\":\"xplatTestCache6715.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '653',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache3709',
-  'x-ms-request-id': 'e4bbc4fa-4bc6-49e9-b26d-ffa64a364162',
+  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache6715',
+  'x-ms-request-id': 'b193afa2-cf65-41b9-a662-d5da982b01e6',
   'x-rp-server-mvid': 'af670903-1b42-4933-b84c-636f2d204d89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-correlation-request-id': '5796a71f-2046-40af-9450-4ed543bb27b6',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225624Z:5796a71f-2046-40af-9450-4ed543bb27b6',
-  date: 'Mon, 24 Aug 2015 22:56:23 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '040eac98-8fe1-46bb-9a39-3972dd162f05',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010732Z:040eac98-8fe1-46bb-9a39-3972dd162f05',
+  date: 'Tue, 25 Aug 2015 01:07:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077?api-version=2015-03-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache4077' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153?api-version=2015-03-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache1153' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
-  'x-ms-correlation-request-id': '0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225624Z:0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
+  'x-ms-request-id': 'eca084fe-6f82-4b58-af7e-e0e0419176d9',
+  'x-ms-correlation-request-id': 'eca084fe-6f82-4b58-af7e-e0e0419176d9',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010733Z:eca084fe-6f82-4b58-af7e-e0e0419176d9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 24 Aug 2015 22:56:24 GMT',
+  date: 'Tue, 25 Aug 2015 01:07:33 GMT',
   connection: 'close',
   'content-length': '160' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077?api-version=2015-03-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache4077' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153?api-version=2015-03-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cache/Redis/xplatTestCache1153' under resource group 'xplatTestCacheRG' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
-  'x-ms-correlation-request-id': '0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225624Z:0aa0bc17-efc8-4a55-8489-43dd14cf26ac',
+  'x-ms-request-id': 'eca084fe-6f82-4b58-af7e-e0e0419176d9',
+  'x-ms-correlation-request-id': 'eca084fe-6f82-4b58-af7e-e0e0419176d9',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010733Z:eca084fe-6f82-4b58-af7e-e0e0419176d9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 24 Aug 2015 22:56:24 GMT',
+  date: 'Tue, 25 Aug 2015 01:07:33 GMT',
   connection: 'close',
   'content-length': '160' });
  return result; },
@@ -139,41 +139,41 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077?api-version=2015-03-01', '*')
-  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077\",\"location\":\"West US\",\"name\":\"xplatTestCache4077\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Basic\",\"family\":\"C\",\"capacity\":2},\"enableNonSslPort\":true,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-random\"},\"accessKeys\":{\"primaryKey\":\"DfyDrN+uWXAYOr4FYSbcx4M7XEJVtAPHLNlPT2YOM/I=\",\"secondaryKey\":\"4c00nNzQQx8ip6jIj9TVZ5p/HbyQM8Q103PmNjp3rLA=\"},\"hostName\":\"xplatTestCache4077.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153?api-version=2015-03-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153\",\"location\":\"West US\",\"name\":\"xplatTestCache1153\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Basic\",\"family\":\"C\",\"capacity\":2},\"enableNonSslPort\":true,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-random\"},\"accessKeys\":{\"primaryKey\":\"+dbt4hm7kixFokhxu0fapd+mKCBacXjg1/+cTHMcs+A=\",\"secondaryKey\":\"2SxmIj9YffzcHbILwuAiipgznKbPU44iadXz1BhsgzM=\"},\"hostName\":\"xplatTestCache1153.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '652',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077',
-  'x-ms-request-id': '540c417e-5cc2-4227-9113-f52e311dc565',
+  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153',
+  'x-ms-request-id': '80050557-6a1f-48ad-91c9-d0fe01fe6910',
   'x-rp-server-mvid': 'af670903-1b42-4933-b84c-636f2d204d89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '6a60b8de-2994-4c4e-9422-d65623605173',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225625Z:6a60b8de-2994-4c4e-9422-d65623605173',
-  date: 'Mon, 24 Aug 2015 22:56:24 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '0fbb569a-b208-42ae-a22a-920fb0913b40',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010733Z:0fbb569a-b208-42ae-a22a-920fb0913b40',
+  date: 'Tue, 25 Aug 2015 01:07:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077?api-version=2015-03-01', '*')
-  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077\",\"location\":\"West US\",\"name\":\"xplatTestCache4077\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Basic\",\"family\":\"C\",\"capacity\":2},\"enableNonSslPort\":true,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-random\"},\"accessKeys\":{\"primaryKey\":\"DfyDrN+uWXAYOr4FYSbcx4M7XEJVtAPHLNlPT2YOM/I=\",\"secondaryKey\":\"4c00nNzQQx8ip6jIj9TVZ5p/HbyQM8Q103PmNjp3rLA=\"},\"hostName\":\"xplatTestCache4077.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153?api-version=2015-03-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153\",\"location\":\"West US\",\"name\":\"xplatTestCache1153\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Basic\",\"family\":\"C\",\"capacity\":2},\"enableNonSslPort\":true,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-random\"},\"accessKeys\":{\"primaryKey\":\"+dbt4hm7kixFokhxu0fapd+mKCBacXjg1/+cTHMcs+A=\",\"secondaryKey\":\"2SxmIj9YffzcHbILwuAiipgznKbPU44iadXz1BhsgzM=\"},\"hostName\":\"xplatTestCache1153.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '652',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache4077',
-  'x-ms-request-id': '540c417e-5cc2-4227-9113-f52e311dc565',
+  location: 'https://prod-rp-wus.cacheinfra.windows.net:10225/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1153',
+  'x-ms-request-id': '80050557-6a1f-48ad-91c9-d0fe01fe6910',
   'x-rp-server-mvid': 'af670903-1b42-4933-b84c-636f2d204d89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '6a60b8de-2994-4c4e-9422-d65623605173',
-  'x-ms-routing-request-id': 'WESTUS:20150824T225625Z:6a60b8de-2994-4c4e-9422-d65623605173',
-  date: 'Mon, 24 Aug 2015 22:56:24 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '0fbb569a-b208-42ae-a22a-920fb0913b40',
+  'x-ms-routing-request-id': 'WESTUS:20150825T010733Z:0fbb569a-b208-42ae-a22a-920fb0913b40',
+  date: 'Tue, 25 Aug 2015 01:07:32 GMT',
   connection: 'close' });
  return result; }]];
