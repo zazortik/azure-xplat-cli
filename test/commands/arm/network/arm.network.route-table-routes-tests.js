@@ -26,13 +26,13 @@ var RouteTablePrefix = 'ArmRtTblRoute',
   RoutePrefix = 'ArmRoute',
   AddressPrefix = '10.0.0.0/23',
   AddressPrefixN = '10.0.1.0/23',
-  NextHopType = 'VNETLocal';
+  NextHopType = 'VirtualNetworkGateway',
+  NextHopTypeN = 'VNETLocal';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'westus'
 }];
-
 
 describe('arm', function() {
   describe('network', function() {
@@ -78,7 +78,7 @@ describe('arm', function() {
         });
       });
       it('set should set route in a route-table', function(done) {
-        var cmd = util.format('network route-table route set -g %s -r %s -n %s -a %s -y %s --json', groupName, RouteTablePrefix, RoutePrefix, AddressPrefixN, NextHopType).split(' ');
+        var cmd = util.format('network route-table route set -g %s -r %s -n %s -a %s -y %s --json', groupName, RouteTablePrefix, RoutePrefix, AddressPrefixN, NextHopTypeN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

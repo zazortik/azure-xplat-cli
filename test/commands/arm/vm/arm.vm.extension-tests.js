@@ -15,6 +15,8 @@
 'use strict';
 
 var should = require('should');
+var path = require('path');
+var fs = require('fs');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
@@ -40,7 +42,11 @@ var groupName,
   dnsPrefix = 'xplatdnsext',
   extension = 'VMAccessAgent',
   publisherExt = 'Microsoft.Compute',
-  version = '2.0';
+  version = '2.0',
+  IaasDiagPublisher,
+  IaasDiagExtName,
+  IaasDiagVersion,
+  datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
   describe('compute', function() {
@@ -61,6 +67,13 @@ describe('arm', function() {
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+
+        // Get real values from test/data/testdata.json file and assign to the local variables
+        var data = fs.readFileSync(datafile, 'utf8');
+        var variables = JSON.parse(data);
+        IaasDiagPublisher = variables.IaasDiagPublisher_windows.value;
+        IaasDiagExtName = variables.IaasDiagExtName_windows.value;
+        IaasDiagVersion = variables.IaasDiagVersion_windows.value;
 
         done();
       });
@@ -110,7 +123,24 @@ describe('arm', function() {
           });
         });
       });
-
+      it('Enable diagnostics extension on created VM in a resource group', function(done) {
+        var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('Check diagnostics extension on created VM should pass', function(done) {
+        var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].publisher.should.equal(IaasDiagPublisher);
+          allResources[0].name.should.equal(IaasDiagExtName);
+          allResources[0].typeHandlerVersion.should.equal(IaasDiagVersion);
+          done();
+        });
+      });
       //Set extensions
       it('Set extensions for the created vm', function(done) {
         var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
@@ -124,6 +154,10 @@ describe('arm', function() {
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[1].publisher.should.equal(publisherExt);
+          allResources[1].name.should.equal(extension);
+          allResources[1].typeHandlerVersion.should.equal(version);
           done();
         });
       });

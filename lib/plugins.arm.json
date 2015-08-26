@@ -25602,6 +25602,86 @@
               "description": "the subscription identifier"
             }
           ]
+        },
+        {
+          "name": "enable-diag",
+          "description": "Enable diagnostics extension on a VM in a resource group.",
+          "fullName": "vm enable-diag",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-a, --storage-account-name <name>",
+              "required": -28,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--storage-account-name",
+              "description": "the storage account name"
+            },
+            {
+              "flags": "-c, --config-file <path>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--config-file",
+              "description": "path for WadCfg config file"
+            },
+            {
+              "flags": "-e, --extension-version <version>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--extension-version",
+              "description": "Version of Diagnostics extension. Default values are [1.4] for Windows and [2.0] for Linux."
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
         }
       ],
       "categories": {
