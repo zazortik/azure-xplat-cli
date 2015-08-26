@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -43,6 +43,7 @@
     "azure-arm-trafficmanager": "0.10.2",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
+	"azure-arm-rediscache": "0.0.2",
     "azure-extra": "0.1.10",
     "azure-gallery": "2.0.0-pre.17",
     "azure-keyvault": "0.10.1",
@@ -68,6 +69,7 @@
     "eyes": "0.x.x",
     "github": "0.1.6",
     "image-size": "^0.3.5",
+    "js2xmlparser": "1.0.0",
     "jsrsasign": "4.8.2 ",
     "jszip": "^2.5.0",
     "kuduscript": "0.2.2",

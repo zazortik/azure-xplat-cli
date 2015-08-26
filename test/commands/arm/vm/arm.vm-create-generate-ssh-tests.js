@@ -44,7 +44,8 @@ var groupName,
 
 describe('arm', function() {
   describe('compute', function() {
-    var suite, retry = 5, SSHKeyDir, SSHKeyFolder = '.azure/ssh';
+    var suite, retry = 5,
+      SSHKeyDir, SSHKeyFolder = '.azure/ssh';
     var vmTest = new VMTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -67,6 +68,7 @@ describe('arm', function() {
     });
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
+        testUtils.deleteSSHKeys(SSHKeyDir);
         suite.teardownSuite(done);
       });
     });
@@ -92,7 +94,7 @@ describe('arm', function() {
                     vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
-                    var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+                    var SSHkeysExist = testUtils.checkForSSHKeys(vmPrefix, SSHKeyDir);
                     SSHkeysExist.should.be.true;
                     done();
                   });
@@ -105,7 +107,7 @@ describe('arm', function() {
                 vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+                var SSHkeysExist = testUtils.checkForSSHKeys(vmPrefix, SSHKeyDir);
                 SSHkeysExist.should.be.true;
                 done();
               });

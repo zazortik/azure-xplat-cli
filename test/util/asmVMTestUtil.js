@@ -18,13 +18,12 @@ var path = require('path');
 var fs = require('fs');
 var util = require('util');
 var testUtils = require('../util/util');
-var dockerCerts, sshKeys;
+//Moving to common util file
+//var dockerCerts, sshKeys;
 exports = module.exports = asmVMTestUtil;
 var retry = 5;
 var createReservedIp = new Object();
-//var getVnet = new Object();
-//var getAffinityGroup = new Object();
-//var getVM = new Object();
+
 var affinityName = 'xplataffintest',
   affinLabel = 'xplatAffinGrp',
   affinDesc = 'Test Affinty Group for xplat';
@@ -493,103 +492,6 @@ asmVMTestUtil.prototype.waitForDiskRelease = function(vmDisk, timeout, diskrelea
         callback();
       }, diskreleasetimeout);
     }
-  });
-};
-asmVMTestUtil.prototype.deleteDockerCertificates = function(dockerCertDir) {
-  if (!dockerCertDir || !dockerCerts) {
-    return;
-  }
-
-  fs.exists(dockerCertDir, function(exists) {
-    if (!exists) {
-      return;
-    }
-    fs.unlinkSync(dockerCerts.caKey);
-    fs.unlinkSync(dockerCerts.ca);
-    fs.unlinkSync(dockerCerts.serverKey);
-    fs.unlinkSync(dockerCerts.server);
-    fs.unlinkSync(dockerCerts.serverCert);
-    fs.unlinkSync(dockerCerts.clientKey);
-    fs.unlinkSync(dockerCerts.client);
-    fs.unlinkSync(dockerCerts.clientCert);
-    fs.unlinkSync(dockerCerts.extfile);
-    //Commenting because ~/.docker folder will have separate server docker certificates for each created VM
-    //fs.rmdirSync(dockerCertDir);
-  });
-};
-asmVMTestUtil.prototype.checkForDockerCertificates = function(vmName, dockerCertDir) {
-  dockerCerts = {
-    caKey: path.join(dockerCertDir, 'ca-key.pem'),
-    ca: path.join(dockerCertDir, 'ca.pem'),
-    serverKey: path.join(dockerCertDir, vmName + '-server-key.pem'),
-    server: path.join(dockerCertDir, vmName + '-server.csr'),
-    serverCert: path.join(dockerCertDir, vmName + '-server-cert.pem'),
-    clientKey: path.join(dockerCertDir, 'key.pem'),
-    client: path.join(dockerCertDir, 'client.csr'),
-    clientCert: path.join(dockerCertDir, 'cert.pem'),
-    extfile: path.join(dockerCertDir, 'extfile.cnf')
-  };
-
-  if (!fs.existsSync(dockerCerts.caKey)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.ca)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.serverKey)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.server)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.serverCert)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.clientKey)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.client)) {
-    return false;
-  }
-
-  if (!fs.existsSync(dockerCerts.clientCert)) {
-    return false;
-  }
-
-  return true;
-};
-asmVMTestUtil.prototype.checkForSSHKeys = function(vmName, SSHKeyDir) {
-  sshKeys = {
-    certKey: path.join(SSHKeyDir, vmName + '-cert.pem'),
-    key: path.join(SSHKeyDir, vmName + '-key.pem')
-  };
-  if (!fs.existsSync(sshKeys.certKey)) {
-    return false;
-  }
-
-  if (!fs.existsSync(sshKeys.key)) {
-    return false;
-  }
-
-  return true;
-};
-asmVMTestUtil.prototype.deleteSSHKeys = function(SSHKeyDir) {
-  if (!SSHKeyDir || !sshKeys) {
-    return;
-  }
-  fs.exists(SSHKeyDir, function(exists) {
-    if (!exists) {
-      return;
-    }
-
-    fs.unlinkSync(sshKeys.certKey);
-    fs.unlinkSync(sshKeys.key);
   });
 };
 asmVMTestUtil.prototype.checkForDockerPort = function(cratedVM, dockerPort) {
