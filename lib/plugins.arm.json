@@ -22088,7 +22088,7 @@
                   "description": "The provider action string (with possible wildcard (*) characters). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
                 },
                 {
-                  "flags": "-s --subscription <subscription",
+                  "flags": "-s --subscription <subscription>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,

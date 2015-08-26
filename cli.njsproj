@@ -13,6 +13,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
+    <ScriptArguments>login -u auxtm049@live.com -e dogfood --tenant 83abe5cd-bcc3-441a-bd86-e6a75360cecc</ScriptArguments>
+    <Environment>
+    </Environment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -42,6 +45,7 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\util\profile\mfaSubscriptionUtils.js" />
     <Compile Include="scripts\extract-labels.js" />
     <Compile Include="scripts\filter-testresults.js" />
     <Compile Include="scripts\harvest-cmds.js" />
