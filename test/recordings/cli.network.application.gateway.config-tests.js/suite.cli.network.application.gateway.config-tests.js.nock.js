@@ -6,18 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    id: '5893435f-6990-4bb3-bebb-b12f3535f990',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'CollaberaInteropTest',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    name: 'EduardK - IaaS Tools',
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
