@@ -17571,7 +17571,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--next-hop-type",
-                      "description": "the route next hop type, valid values are:\n       [VPNGateway,VirtualAppliance]"
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VPNGateway]"
                     },
                     {
                       "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
@@ -17580,7 +17580,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--next-hop-ip-address",
-                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirualAppliance"
+                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirtualAppliance"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -27578,7 +27578,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--docker-port",
-                  "description": "Port to use for docker [2376]"
+                  "description": "Port to use for docker [undefined]"
                 },
                 {
                   "flags": "-C, --docker-cert-dir [dir]",

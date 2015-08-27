@@ -25629,6 +25629,14 @@
               "description": "use verbose output"
             },
             {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
