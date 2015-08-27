@@ -22088,7 +22088,7 @@
                   "description": "The provider action string (with possible wildcard (*) characters). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
                 },
                 {
-                  "flags": "-s --subscription <subscription",
+                  "flags": "-s --subscription <subscription>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -23135,6 +23135,15 @@
               "description": "If given, display only the custom roles instead of all role definitions"
             },
             {
+              "flags": "-d --detailed",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--detailed",
+              "description": "If given, displays all the properties of role definitions"
+            },
+            {
               "flags": "--subscription <subscription>",
               "required": -16,
               "optional": 0,
@@ -23197,7 +23206,7 @@
         },
         {
           "name": "create",
-          "description": "create a new role definition",
+          "description": "Create a new role definition. The role definition for a new custom role MUST contain the DisplayName, Actions and the AssignableScopes properties. The role definition MAY contain the Description and NotActions property.",
           "fullName": "role create",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -23257,7 +23266,7 @@
         },
         {
           "name": "set",
-          "description": "update an existing role definition",
+          "description": "Update an existing role definition. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes",
           "fullName": "role set",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -23294,7 +23303,7 @@
               "bool": true,
               "short": "-f",
               "long": "--inputfile",
-              "description": "File name containing a single role definition."
+              "description": "File name containing a single role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required."
             },
             {
               "flags": "-r --roledefinition <roledefinition>",
@@ -23303,7 +23312,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401/providers/Microsoft.Authorization/roleDefinitions/52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",

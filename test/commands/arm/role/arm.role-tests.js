@@ -260,17 +260,17 @@ describe('arm', function () {
         suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
-          createdRole.roleDefinition.properties.roleName.should.equal(roleToCreate.Name);
-          createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-          createdRole.roleDefinition.properties.assignableScopes[0].should.equal(roleToCreate.AssignableScopes[0]);
-          createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
-          createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+          createdRole.properties.roleName.should.equal(roleToCreate.Name);
+          createdRole.properties.assignableScopes.length.should.be.above(0);
+          createdRole.properties.assignableScopes[0].should.equal(roleToCreate.AssignableScopes[0]);
+          createdRole.properties.permissions.length.should.be.above(0);
+          createdRole.properties.permissions[0].actions.length.should.be.above(0);
 
           // Clean up role
-          suite.execute('role delete %s --json -q --passthru', createdRole.roleDefinition.id, function (result) {
+          suite.execute('role delete %s --json -q --passthru', createdRole.id, function (result) {
             result.exitStatus.should.equal(0);
             var deletedRole = JSON.parse(result.text);
-            deletedRole.roleDefinition.id.should.equal(createdRole.roleDefinition.id);
+            deletedRole.id.should.equal(createdRole.id);
             done();
           });
         });
@@ -300,12 +300,12 @@ describe('arm', function () {
         suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
-          var id = createdRole.roleDefinition.id;
+          var id = createdRole.id;
 
           suite.execute('role delete --id %s --json -q --passthru', id, function (result) {
             result.exitStatus.should.equal(0);
             var deletedRole = JSON.parse(result.text);
-            deletedRole.roleDefinition.id.should.equal(id);
+            deletedRole.id.should.equal(id);
             
             console.log("Role deleted. Trying to delete again should fail.")
             // Deleting the same role again should result in error
@@ -324,13 +324,13 @@ describe('arm', function () {
         suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
-          var name = createdRole.roleDefinition.properties.roleName;
-          
+          var name = createdRole.properties.roleName;
+
           suite.execute('role delete --name %s --json -q --passthru', name, function (result) {
             result.exitStatus.should.equal(0);
             var deletedRole = JSON.parse(result.text);
-            deletedRole.roleDefinition.properties.roleName.should.equal(name);
-            
+            deletedRole.properties.roleName.should.equal(name);
+
             console.log("Role deleted. Trying to delete role with invalid name should fail.")
             // Deleting the role with invalid name should result in error
             suite.execute('role delete --name %s --json -q --passthru', "invalid", function (result) {
@@ -352,26 +352,26 @@ describe('arm', function () {
           var createdRole = JSON.parse(result.text);
           
           var roleToUpdate = roleToCreate;
-          roleToUpdate.id = createdRole.roleDefinition.id;
+          roleToUpdate.id = createdRole.id;
           roleToUpdate.name = "UpdatedRole_" + utils.uuidGen();
           roleToUpdate.description = "Updated Role Description";
 
           suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
             updatedResult.exitStatus.should.equal(0);
             var updatedRole = JSON.parse(updatedResult.text);
-            updatedRole.roleDefinition.properties.roleName.should.equal(roleToUpdate.name);
-            updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
-            updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal(roleToUpdate.AssignableScopes[0]);
-            updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+            updatedRole.properties.roleName.should.equal(roleToUpdate.name);
+            updatedRole.properties.description.should.equal("Updated Role Description");
+            updatedRole.properties.assignableScopes.length.should.be.above(0);
+            updatedRole.properties.assignableScopes[0].should.equal(roleToUpdate.AssignableScopes[0]);
+            updatedRole.properties.permissions.length.should.be.above(0);
+            updatedRole.properties.permissions[0].actions.length.should.be.above(0);
 
             // Clean up role
             console.log("Deleting role.");
-            suite.execute('role delete %s --json -q --passthru', createdRole.roleDefinition.id, function (result) {
+            suite.execute('role delete %s --json -q --passthru', createdRole.id, function (result) {
               result.exitStatus.should.equal(0);
               var deletedRole = JSON.parse(result.text);
-              deletedRole.roleDefinition.id.should.equal(createdRole.roleDefinition.id);
+              deletedRole.id.should.equal(createdRole.id);
               done();
             });
           });
