@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into. Used for login as service principal or parnter user"
+          "description": "Tenant domain or ID to log into"
         },
         {
           "flags": "-q --quiet",
