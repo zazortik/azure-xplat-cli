@@ -69,7 +69,7 @@ describe('login as service principal', function () {
     var hasRefreshToken = false;
     adalAuth.tokenCache.add = function (entries, callback) {
       addInvoked = true;
-      hasRefreshToken == !!(entries[0].refreshToken);
+      hasRefreshToken = !!(entries[0].refreshToken);
       callback(null);
     }
     //action
@@ -99,7 +99,7 @@ describe('logoutUser', function () {
       }
     };
     //action
-    adalAuth.logoutUser('dummyUser', tokenCache, function (err) {
+    adalAuth.removeCachedToken('dummyUser', tokenCache, function (err) {
       //verify
       timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);
