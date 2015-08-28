@@ -85,8 +85,8 @@ describe('cli', function() {
     afterEach(function(done) {
       vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
-        vmUtil.deleteDockerCertificates(dockerCertDir);
-        vmUtil.deleteSSHKeys(SSHKeyDir);
+        testUtils.deleteDockerCertificates(dockerCertDir);
+        testUtils.deleteSSHKeys(SSHKeyDir);
       });
     });
 
@@ -106,7 +106,7 @@ describe('cli', function() {
               cmd = util.format('vm show %s --json', vmName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+                var certificatesExist = testUtils.checkForDockerCertificates(vmName, dockerCertDir);
                 certificatesExist.should.be.true;
                 var createdVM = JSON.parse(result.text);
                 var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -136,7 +136,7 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+              var certificatesExist = testUtils.checkForDockerCertificates(vmName, dockerCertDir);
               certificatesExist.should.be.true;
               var createdVM = JSON.parse(result.text);
               var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -165,7 +165,7 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+              var certificatesExist = testUtils.checkForDockerCertificates(vmName, dockerCertDir);
               certificatesExist.should.be.true;
               var createdVM = JSON.parse(result.text);
               var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
@@ -195,12 +195,12 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certificatesExist = vmUtil.checkForDockerCertificates(vmName, dockerCertDir);
+              var certificatesExist = testUtils.checkForDockerCertificates(vmName, dockerCertDir);
               certificatesExist.should.be.true;
               var createdVM = JSON.parse(result.text);
               var dockerPortExists = vmUtil.checkForDockerPort(createdVM, dockerPort);
               dockerPortExists.should.be.true;
-              var SSHkeysExist = vmUtil.checkForSSHKeys(vmName, SSHKeyDir);
+              var SSHkeysExist = testUtils.checkForSSHKeys(vmName, SSHKeyDir);
               SSHkeysExist.should.be.true;
               createdVM.VMName.should.equal(vmName);
               vmToUse.Name = vmName;

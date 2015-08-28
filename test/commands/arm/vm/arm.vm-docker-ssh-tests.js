@@ -52,7 +52,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupName : suite.generateId(groupPrefix, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -69,8 +69,8 @@ describe('arm', function() {
     });
     after(function(done) {
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
-        vmTest.deleteDockerCertificates(dockerCertDir);
-        vmTest.deleteSSHKeys(SSHKeyDir);
+        testUtils.deleteDockerCertificates(dockerCertDir);
+        testUtils.deleteSSHKeys(SSHKeyDir);
         suite.teardownSuite(done);
       });
     });
@@ -93,9 +93,9 @@ describe('arm', function() {
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var certifiatesExist = vmTest.checkForDockerCertificates(vmPrefix, dockerCertDir);
-              certifiatesExist.should.be.true;
-              var SSHkeysExist = vmTest.checkForSSHKeys(vmPrefix, SSHKeyDir);
+              var certificatesExist = testUtils.checkForDockerCertificates(vmPrefix, dockerCertDir);
+              certificatesExist.should.be.true;
+              var SSHkeysExist = testUtils.checkForSSHKeys(vmPrefix, SSHKeyDir);
               SSHkeysExist.should.be.true;
               done();
             });
@@ -113,6 +113,5 @@ describe('arm', function() {
       });
 
     });
-
   });
 });

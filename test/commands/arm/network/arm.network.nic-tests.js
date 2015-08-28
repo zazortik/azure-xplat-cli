@@ -40,6 +40,12 @@ var LBName = 'xplattestlbnic',
   FrontendIpName = 'xplattestFrontendIpnic',
   LBAddPool = 'LBAddPollnic',
   lbinboundprefix = 'xplattestInboundnic';
+var LBAddPool2 = 'LBNicAddPollnic',
+  lbinboundprefix2 = 'LBNicAddInboundnic',
+  protocol2 = 'tcp',
+  frontendport2 = '3383',
+  backendport2 = '3383',
+  enablefloatingip2 = 'true';
 
 var protocol = 'tcp',
   frontendport = '3380',
@@ -70,6 +76,8 @@ describe('arm', function() {
         FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
         LBAddPool = suite.isMocked ? LBAddPool : suite.generateId(LBAddPool, null);
         lbinboundprefix = suite.isMocked ? lbinboundprefix : suite.generateId(lbinboundprefix, null);
+        LBAddPool2 = suite.isMocked ? LBAddPool2 : suite.generateId(LBAddPool2, null);
+        lbinboundprefix2 = suite.isMocked ? lbinboundprefix2 : suite.generateId(lbinboundprefix2, null);
 
         done();
       });
@@ -133,9 +141,45 @@ describe('arm', function() {
           });
         });
       });
-
       it('set should modify nic', function(done) {
         var cmd = util.format('network nic set %s %s -t %s -w %s -o %s -a %s -u %s -k %s -d %s -e %s --no-tags -r %s -f %s --json', groupName, nicPrefix, tagValN, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLabelN, enableIpForwardingN).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('address-pool add', function(done) {
+        networkUtil.createLbAddressPool(groupName, LBName, LBAddPool2, suite, function(result) {
+          networkUtil.showLB(groupName, LBName, suite, function(result) {
+            var cmd = util.format('network nic address-pool add %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbaddresspoolId2).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+      it('address-pool remove', function(done) {
+        var cmd = util.format('network nic address-pool remove %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbaddresspoolId2).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('inbound-nat-rule add', function(done) {
+        networkUtil.createLbInboundNatRule(groupName, LBName, lbinboundprefix2, protocol2, frontendport2, backendport2, enablefloatingip2, FrontendIpName, suite, function(result) {
+          networkUtil.showLB(groupName, LBName, suite, function(result) {
+            var cmd = util.format('network nic inbound-nat-rule add %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbinboundruleId2).split(' ');
+
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+      it('inbound-nat-rule remove', function(done) {
+        var cmd = util.format('network nic inbound-nat-rule remove %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbinboundruleId2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

@@ -76,7 +76,7 @@ describe('cli', function() {
     afterEach(function(done) {
       vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
-        vmUtil.deleteSSHKeys(SSHKeyDir);
+        testUtils.deleteSSHKeys(SSHKeyDir);
       });
     });
 
@@ -118,7 +118,7 @@ describe('cli', function() {
               result.exitStatus.should.equal(0);
               var createdVM = JSON.parse(result.text);
               createdVM.VMName.should.equal(vmName);
-              var SSHkeysExist = vmUtil.checkForSSHKeys(vmName, SSHKeyDir);
+              var SSHkeysExist = testUtils.checkForSSHKeys(vmName, SSHKeyDir);
               SSHkeysExist.should.be.true;
               vmToUse.Name = vmName;
               vmToUse.Created = true;
@@ -144,6 +144,5 @@ describe('cli', function() {
         });
       });
     });
-
   });
 });

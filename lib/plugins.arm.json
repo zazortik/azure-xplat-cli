@@ -22088,7 +22088,7 @@
                   "description": "The provider action string (with possible wildcard (*) characters). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
                 },
                 {
-                  "flags": "-s --subscription <subscription",
+                  "flags": "-s --subscription <subscription>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -22102,6 +22102,497 @@
           "categories": {}
         }
       }
+    },
+    "rediscache": {
+      "name": "rediscache",
+      "description": "Commands to manage your Azure Redis Cache(s)",
+      "fullName": "rediscache",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create a Redis Cache",
+          "fullName": "rediscache create",
+          "usage": "[--name <name> --resource-group <resource-group> --location <location> [options]]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "Location to create cache."
+            },
+            {
+              "flags": "-z, --size <size>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-z",
+              "long": "--size",
+              "description": "Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6]"
+            },
+            {
+              "flags": "-x, --sku <sku>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-x",
+              "long": "--sku",
+              "description": "Redis SKU. Should be one of : [Basic, Standard]"
+            },
+            {
+              "flags": "-m, --max-memory-policy <max-memory-policy>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-m",
+              "long": "--max-memory-policy",
+              "description": "MaxMemoryPolicy property of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+            },
+            {
+              "flags": "-e, --enable-non-ssl-port",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--enable-non-ssl-port",
+              "description": "EnableNonSslPort property of the Redis Cache. Add this flag if you want to enable the Non SSL Port for your cache"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing Redis Cache",
+          "fullName": "rediscache delete",
+          "usage": "[--name <name> --resource-group <resource-group> ]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which the cache exists"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List all Redis Caches within your Subscription or Resource Group",
+          "fullName": "rediscache list",
+          "usage": "[options]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show properties of an existing Redis Cache",
+          "fullName": "rediscache show",
+          "usage": "[--name <name> --resource-group <resource-group>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Change settings of an existing Redis Cache",
+          "fullName": "rediscache set",
+          "usage": "[--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-m, --max-memory-policy <max-memory-policy>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-m",
+              "long": "--max-memory-policy",
+              "description": "Max Memory Policy of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "renew-key",
+          "description": "Renew the authentication key for an existing Redis Cache",
+          "fullName": "rediscache renew-key",
+          "usage": "[--name <name> --resource-group <resource-group> ]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which cache exists"
+            },
+            {
+              "flags": "-t, --key-type <key-type>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--key-type",
+              "description": "type of key to renew"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list-keys",
+          "description": "Lists Primary and Secondary key of an existing Redis Cache",
+          "fullName": "rediscache list-keys",
+          "usage": "[--name <name> --resource-group <resource-group>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which Cache exists"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
     },
     "resource": {
       "name": "resource",
@@ -22644,6 +23135,15 @@
               "description": "If given, display only the custom roles instead of all role definitions"
             },
             {
+              "flags": "-d --detailed",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--detailed",
+              "description": "If given, displays all the properties of role definitions"
+            },
+            {
               "flags": "--subscription <subscription>",
               "required": -16,
               "optional": 0,
@@ -22706,7 +23206,7 @@
         },
         {
           "name": "create",
-          "description": "create a new role definition",
+          "description": "Create a new role definition. The role definition for a new custom role MUST contain the DisplayName, Actions and the AssignableScopes properties. The role definition MAY contain the Description and NotActions property.",
           "fullName": "role create",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -22766,7 +23266,7 @@
         },
         {
           "name": "set",
-          "description": "update an existing role definition",
+          "description": "Update an existing role definition. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes",
           "fullName": "role set",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -22803,7 +23303,7 @@
               "bool": true,
               "short": "-f",
               "long": "--inputfile",
-              "description": "File name containing a single role definition."
+              "description": "File name containing a single role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required."
             },
             {
               "flags": "-r --roledefinition <roledefinition>",
@@ -22812,7 +23312,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401/providers/Microsoft.Authorization/roleDefinitions/52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",
@@ -25100,6 +25600,94 @@
               "short": "-l",
               "long": "--location",
               "description": "the location"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "enable-diag",
+          "description": "Enable diagnostics extension on a VM in a resource group.",
+          "fullName": "vm enable-diag",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-a, --storage-account-name <name>",
+              "required": -28,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--storage-account-name",
+              "description": "the storage account name"
+            },
+            {
+              "flags": "-c, --config-file <path>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--config-file",
+              "description": "path for WadCfg config file"
+            },
+            {
+              "flags": "-e, --extension-version <version>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--extension-version",
+              "description": "Version of Diagnostics extension. Default values are [1.4] for Windows and [2.0] for Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",
