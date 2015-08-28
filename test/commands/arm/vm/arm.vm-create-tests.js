@@ -25,7 +25,7 @@ var groupPrefix = 'xplatTestGVMCreate';
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'eastus'
+  defaultValue: 'southeastasia'
 }, {
   name: 'SSHCERT',
   defaultValue: 'test/myCert.pem'
@@ -102,9 +102,9 @@ describe('arm', function() {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
+                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics true --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                     groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags).split(' ');
+                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
                     done();
@@ -112,9 +112,9 @@ describe('arm', function() {
                 });
               });
             } else {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
+              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics true --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                 groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags).split(' ');
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 done();
@@ -152,6 +152,15 @@ describe('arm', function() {
           done();
         });
       });
+
+      it('get-serial-output should get serial output of the VM', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('Enable diagnostics extension on created VM in a resource group', function(done) {
         var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -159,6 +168,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('Check diagnostics extension on created VM should pass', function(done) {
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -170,6 +180,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('delete should delete VM', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
