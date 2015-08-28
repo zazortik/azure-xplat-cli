@@ -100,7 +100,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions?api-version=2015-06-15')
   .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409090\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409090\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409240\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409240\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409260\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409260\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409270\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409270\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201411250\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201411250\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201501230\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201501230\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1713',
@@ -118,7 +118,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions?api-version=2015-06-15')
   .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409090\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409090\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409240\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409240\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409260\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409260\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201409270\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409270\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201411250\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201411250\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"14.04.201501230\",\r\n    \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201501230\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1713',
@@ -136,7 +136,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409270?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409270?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409270\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409270\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -154,7 +154,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409270?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409270?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409270\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409270\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -172,7 +172,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409090?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409090?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409090\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409090\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -190,7 +190,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409090?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409090?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409090\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409090\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -208,7 +208,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201411250?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201411250?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201411250\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201411250\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -226,7 +226,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201411250?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201411250?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201411250\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201411250\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -244,7 +244,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201501230?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201501230?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201501230\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201501230\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -262,7 +262,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201501230?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201501230?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201501230\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201501230\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -280,7 +280,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409240?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409240?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409240\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409240\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -298,7 +298,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409240?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409240?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409240\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409240\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -316,7 +316,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409260?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409260?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409260\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409260\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -334,7 +334,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409260?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/artifacttypes/vmimage/offers/UbuntuServer/skus/14.04.1-LTS/versions/14.04.201409260?api-version=2015-06-15')
   .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Linux\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"name\": \"14.04.201409260\",\r\n  \"id\": \"/Subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/Providers/Microsoft.Compute/Locations/eastus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/14.04.1-LTS/Versions/14.04.201409260\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '387',
@@ -352,7 +352,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Compute/virtualMachines/xplatvmdocker' under resource group 'xplatTestGVMDocker' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -369,7 +369,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Compute/virtualMachines/xplatvmdocker' under resource group 'xplatTestGVMDocker' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -1341,13 +1341,13 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-05-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"14.04.1-LTS\",\r\n        \"version\": \"14.04.201409090\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli6d7a242f14ab9031-os-1440076484698\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatstdocker3552.blob.core.windows.net/xplatscntdocker9050/cli6d7a242f14ab9031-os-1440076484698.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatvmdocker\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIID/zCCAuegAwIBAgIJAMUAa+XVLvAeMA0GCSqGSIb3DQEBBQUAMIGVMQswCQYD\\r\\nVQQGEwJJbjESMBAGA1UECAwJS2FybmF0YWthMRIwEAYDVQQHDAlCYW5nYWxvcmUx\\r\\nEDAOBgNVBAoMB2JyaWxsaW8xEjAQBgNVBAsMCW1pY3Jvc29mdDEQMA4GA1UEAwwH\\r\\nYnJpbGxpbzEmMCQGCSqGSIb3DQEJARYXc3JlZWthbnRoYnNAeWFob28uY28uaW4w\\r\\nHhcNMTUwMzA1MTE1MzEyWhcNMTYwMzA0MTE1MzEyWjCBlTELMAkGA1UEBhMCSW4x\\r\\nEjAQBgNVBAgMCUthcm5hdGFrYTESMBAGA1UEBwwJQmFuZ2Fsb3JlMRAwDgYDVQQK\\r\\nDAdicmlsbGlvMRIwEAYDVQQLDAltaWNyb3NvZnQxEDAOBgNVBAMMB2JyaWxsaW8x\\r\\nJjAkBgkqhkiG9w0BCQEWF3NyZWVrYW50aGJzQHlhaG9vLmNvLmluMIIBIjANBgkq\\r\\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyUNKaOuT0NK+S8Ck81zy9xJ6hXfZvAC6\\r\\nlhbmf/6s/WVimJ/TX5NMhQJwC9k6ZIF92KfYrojHNvHDufSZ3EtKUVwRFCDjmgMT\\r\\nDL09WkGaZt7gROYFK0iZ4KrYGovUwlwum9fHB24OJiOV4bi0ek62/rHx9fjYZpvp\\r\\naIH2PV/hN8SCZ0x7HJMberD4gVoU/Kv42nNvwjLUW6IZfVx/Gv5OeFDtWHfSvUEF\\r\\ndadHKTPn3Ab20Iu6gZIbLO9Vuf38/IpaYGfnFCouHdzmiTiLieYNe3CUPcOJNSv7\\r\\n1G8KYpx3uNJRkJPab5OsRyJw75Gvzkr9OgaPss9tVD6Gt68u3WQtVQIDAQABo1Aw\\r\\nTjAdBgNVHQ4EFgQUogvhXB+xZ2JJPfLO6cVs4ForzscwHwYDVR0jBBgwFoAUogvh\\r\\nXB+xZ2JJPfLO6cVs4ForzscwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOC\\r\\nAQEAdDj7qUNJ45xlF5cjd+4x5NHvAD1VTjOKu+Xh/uzSSjXqB2F0aOMWA9lx0qaQ\\r\\noJgHkGxj3zz/W7ik/cVGL2O+vRIOKv/y0OPogEmS3Hw+P+O6OGE7x1G6YN0zLVoL\\r\\nu4BN/BEYmjttxM9I7qqL7C5cJoE+K3s/w1/pt/68ohJcr7F9Ohi7cso62xuGY1Rm\\r\\nksAh2EUDsU9JV/P+C9AMpLSrb03JJYzVj4w1RHbrmw2AjFyGXdQYkggyXisg+Ifr\\r\\n5gbNN7HigpHf7b2i3CQBUqp9m23frh5AhnLI2qp3UXgc52U5ieLdi/t6j0TTZqqY\\r\\nHhHqofKrj938HHlBNpC5/LVh3w==\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/networkInterfaces/xplatnicdocker\"}]},\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker\",\r\n  \"name\": \"xplatvmdocker\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '3063',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130822579502374884',
   'x-ms-request-id': '2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a',
@@ -1362,13 +1362,13 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-05-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"Canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"14.04.1-LTS\",\r\n        \"version\": \"14.04.201409090\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli6d7a242f14ab9031-os-1440076484698\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatstdocker3552.blob.core.windows.net/xplatscntdocker9050/cli6d7a242f14ab9031-os-1440076484698.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatvmdocker\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIID/zCCAuegAwIBAgIJAMUAa+XVLvAeMA0GCSqGSIb3DQEBBQUAMIGVMQswCQYD\\r\\nVQQGEwJJbjESMBAGA1UECAwJS2FybmF0YWthMRIwEAYDVQQHDAlCYW5nYWxvcmUx\\r\\nEDAOBgNVBAoMB2JyaWxsaW8xEjAQBgNVBAsMCW1pY3Jvc29mdDEQMA4GA1UEAwwH\\r\\nYnJpbGxpbzEmMCQGCSqGSIb3DQEJARYXc3JlZWthbnRoYnNAeWFob28uY28uaW4w\\r\\nHhcNMTUwMzA1MTE1MzEyWhcNMTYwMzA0MTE1MzEyWjCBlTELMAkGA1UEBhMCSW4x\\r\\nEjAQBgNVBAgMCUthcm5hdGFrYTESMBAGA1UEBwwJQmFuZ2Fsb3JlMRAwDgYDVQQK\\r\\nDAdicmlsbGlvMRIwEAYDVQQLDAltaWNyb3NvZnQxEDAOBgNVBAMMB2JyaWxsaW8x\\r\\nJjAkBgkqhkiG9w0BCQEWF3NyZWVrYW50aGJzQHlhaG9vLmNvLmluMIIBIjANBgkq\\r\\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyUNKaOuT0NK+S8Ck81zy9xJ6hXfZvAC6\\r\\nlhbmf/6s/WVimJ/TX5NMhQJwC9k6ZIF92KfYrojHNvHDufSZ3EtKUVwRFCDjmgMT\\r\\nDL09WkGaZt7gROYFK0iZ4KrYGovUwlwum9fHB24OJiOV4bi0ek62/rHx9fjYZpvp\\r\\naIH2PV/hN8SCZ0x7HJMberD4gVoU/Kv42nNvwjLUW6IZfVx/Gv5OeFDtWHfSvUEF\\r\\ndadHKTPn3Ab20Iu6gZIbLO9Vuf38/IpaYGfnFCouHdzmiTiLieYNe3CUPcOJNSv7\\r\\n1G8KYpx3uNJRkJPab5OsRyJw75Gvzkr9OgaPss9tVD6Gt68u3WQtVQIDAQABo1Aw\\r\\nTjAdBgNVHQ4EFgQUogvhXB+xZ2JJPfLO6cVs4ForzscwHwYDVR0jBBgwFoAUogvh\\r\\nXB+xZ2JJPfLO6cVs4ForzscwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOC\\r\\nAQEAdDj7qUNJ45xlF5cjd+4x5NHvAD1VTjOKu+Xh/uzSSjXqB2F0aOMWA9lx0qaQ\\r\\noJgHkGxj3zz/W7ik/cVGL2O+vRIOKv/y0OPogEmS3Hw+P+O6OGE7x1G6YN0zLVoL\\r\\nu4BN/BEYmjttxM9I7qqL7C5cJoE+K3s/w1/pt/68ohJcr7F9Ohi7cso62xuGY1Rm\\r\\nksAh2EUDsU9JV/P+C9AMpLSrb03JJYzVj4w1RHbrmw2AjFyGXdQYkggyXisg+Ifr\\r\\n5gbNN7HigpHf7b2i3CQBUqp9m23frh5AhnLI2qp3UXgc52U5ieLdi/t6j0TTZqqY\\r\\nHhHqofKrj938HHlBNpC5/LVh3w==\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/networkInterfaces/xplatnicdocker\"}]},\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker\",\r\n  \"name\": \"xplatvmdocker\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '3063',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130822579502374884',
   'x-ms-request-id': '2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a',
@@ -1382,7 +1382,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1401,7 +1401,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1420,7 +1420,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1439,7 +1439,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1458,7 +1458,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1477,7 +1477,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1496,7 +1496,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\",\r\n  \"endTime\": \"2015-08-20T13:17:55.6809321+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '191',
@@ -1515,7 +1515,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"2f0ae1ed-e5ba-4a85-a352-69e8d48e2e5a\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-08-20T13:15:59.5387634+00:00\",\r\n  \"endTime\": \"2015-08-20T13:17:55.6809321+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '191',
@@ -1535,13 +1535,13 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension?api-version=2015-05-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Azure.Extensions\",\r\n    \"type\": \"DockerExtension\",\r\n    \"typeHandlerVersion\": \"1.0\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\"docker\":{\"port\":\"4243\"}},\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension\",\r\n  \"name\": \"DockerExtension\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n  \"location\": \"eastus\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '559',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130822579502374884',
   'x-ms-request-id': 'f1206bf1-eae1-4242-b165-20caba214183',
@@ -1556,13 +1556,13 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension?api-version=2015-05-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Azure.Extensions\",\r\n    \"type\": \"DockerExtension\",\r\n    \"typeHandlerVersion\": \"1.0\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\"docker\":{\"port\":\"4243\"}},\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Compute/virtualMachines/xplatvmdocker/extensions/DockerExtension\",\r\n  \"name\": \"DockerExtension\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n  \"location\": \"eastus\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '559',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130822579502374884',
   'x-ms-request-id': 'f1206bf1-eae1-4242-b165-20caba214183',
@@ -1576,7 +1576,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1595,7 +1595,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1614,7 +1614,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1633,7 +1633,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1652,7 +1652,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1671,7 +1671,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1690,7 +1690,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1709,7 +1709,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1728,7 +1728,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1747,7 +1747,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1766,7 +1766,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1785,7 +1785,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1804,7 +1804,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1823,7 +1823,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1842,7 +1842,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1861,7 +1861,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1880,7 +1880,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1899,7 +1899,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1918,7 +1918,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1937,7 +1937,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '141',
@@ -1956,7 +1956,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\",\r\n  \"endTime\": \"2015-08-20T13:23:48.1073124+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '191',
@@ -1975,7 +1975,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-05-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/providers/Microsoft.Compute/locations/eastus/operations/f1206bf1-eae1-4242-b165-20caba214183?api-version=2015-06-15')
   .reply(200, "{\r\n  \"operationId\": \"f1206bf1-eae1-4242-b165-20caba214183\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-08-20T13:18:10.6810911+00:00\",\r\n  \"endTime\": \"2015-08-20T13:23:48.1073124+00:00\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '191',
