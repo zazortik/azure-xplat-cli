@@ -136,8 +136,8 @@ describe('Environment', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, '', false, function (err, newSubscriptions) {
-        subscriptions = newSubscriptions;
+      environment.addAccount(expectedUserName, expectedPassword, '', false, function (err, result) {
+        subscriptions = result.subscriptions;
         done();
       });
     });

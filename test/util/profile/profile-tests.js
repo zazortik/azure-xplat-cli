@@ -27,7 +27,7 @@ var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
 var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
-var testFileDir = './test/data';
+var testFileDir = path.join(__dirname, '../../data');
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
 describe('profile', function () {
@@ -99,7 +99,7 @@ describe('profile', function () {
 
     describe('and importing publishSettings', function () {
       beforeEach(function () {
-        p.importPublishSettings('./test/data/account-credentials2.publishSettings');
+        p.importPublishSettings(path.join(testFileDir, 'account-credentials2.publishSettings'));
       });
 
       it('should import the subscriptions', function() {
@@ -210,12 +210,14 @@ describe('profile', function () {
 
     describe('and logging in to already loaded subscription', function () {
       var loginUser = 'user';
-      var loginSubscriptions = [
-      {
-        subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-        subscriptionName: 'Account',
-        username: loginUser
-      }];
+      var resultOfGetSubscriptions = {
+       subscriptions: [
+        {
+          subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+          subscriptionName: 'Account',
+          username: loginUser
+        }]
+      };
 
       var expectedToken = {
         accessToken: 'Dummy token',
@@ -224,7 +226,7 @@ describe('profile', function () {
       };
 
       before(function () {
-        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(4, null, loginSubscriptions);
+        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(4, null, resultOfGetSubscriptions);
       });
 
       after(function () {
@@ -241,8 +243,8 @@ describe('profile', function () {
 
         sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
 
-        fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, subscriptions) {
-          subscriptions.forEach(function (s) {
+        fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, result) {
+          result.subscriptions.forEach(function (s) {
             p.addOrUpdateSubscription(s);
           });
 
