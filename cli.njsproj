@@ -13,7 +13,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>login -u auxtm049@live.com -e dogfood --tenant 83abe5cd-bcc3-441a-bd86-e6a75360cecc</ScriptArguments>
+    <ScriptArguments>login -u admin@aad191.ccsctp.net -e dogfood</ScriptArguments>
     <Environment>
     </Environment>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
-    <Compile Include="lib\util\profile\mfaSubscriptionUtils.js" />
+    <Compile Include="lib\util\profile\account.js" />
     <Compile Include="scripts\extract-labels.js" />
     <Compile Include="scripts\filter-testresults.js" />
     <Compile Include="scripts\harvest-cmds.js" />
@@ -146,7 +146,6 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
-    <Compile Include="lib\util\profile\subscriptionUtils.js" />
     <Compile Include="test\commands\cli.account-tests.js" />
     <Compile Include="test\commands\cli.account.affinitygroup-tests.js" />
     <Compile Include="test\commands\cli.account.cert-tests.js" />
@@ -1483,15 +1482,21 @@
     <Compile Include="test\recordings\xplatapiappDeploy\apiapp_deployLib_getMetadata_should_get_metadata_for_package_with_no_parameters.nock.js" />
     <Compile Include="test\recordings\xplatapiappDeploy\apiapp_deployLib_getMetadata_should_get_metadata_with_parameters_for_package_with_parameters.nock.js" />
     <Compile Include="test\recordings\xplatapiappDeploy\suite.xplatapiappDeploy.nock.js" />
-    <Compile Include="test\util\authentication\adalAuth-tests.js" />
+    <Compile Include="test\util\authentication\adalAuth-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\util\authentication\osx-keychain-parser-tests.js" />
     <Compile Include="test\util\authentication\token-cache-encoding-tests.js" />
     <Compile Include="test\util\authentication\token-cache-tests.js" />
     <Compile Include="test\util\authentication\token-storage-tests.js" />
     <Compile Include="test\util\authentication\win-credstore-parser-tests.js" />
     <Compile Include="test\util\git\linkrevisioncontrol-tests.js" />
-    <Compile Include="test\util\profile\environment-addaccount-tests.js" />
-    <Compile Include="test\util\profile\profile-tests.js" />
+    <Compile Include="test\util\profile\environment-addaccount-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\util\profile\profile-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\util\profile\publishSettings-tests.js" />
     <Content Include="tools\resources\ThirdPartyNotices.txt" />
     <Content Include="tools\resources\banner.bmp" />

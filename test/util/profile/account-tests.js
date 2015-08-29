@@ -21,7 +21,6 @@ var sinon = require('sinon');
 
 var constants = require('../../../lib/util/constants');
 var profile = require('../../../lib/util/profile');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
 
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
@@ -80,14 +79,12 @@ var testSubscriptionsFromASM = [
   }
 ];
 
-
 var expectedToken = {
   accessToken: 'a dummy token',
   expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000),
   userId: expectedUserName,
   authenticateRequest: function () { }
 };
-
 
 var testArmSubscriptionClient = {
   subscriptions: {
@@ -115,7 +112,7 @@ var testAsmSubscriptionClient = {
   }
 };
 
-describe('Environment', function () {
+describe('Account', function () {
   var environment;
 
   before(function () {
@@ -132,7 +129,7 @@ describe('Environment', function () {
     sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
   });
 
-  describe('When creating account', function () {
+  describe('When load', function () {
     var subscriptions;
 
     beforeEach(function (done) {
@@ -158,7 +155,7 @@ describe('Environment', function () {
       password.should.equal(expectedPassword);
 
       var tenantId1 = environment.acquireToken.firstCall.args[2];
-      tenantId1.should.equal(''); // null or '' mean using the common tenant
+      tenantId1.should.equal('common'); // null or '' mean using the common tenant
 
       var tenantId2 = environment.acquireToken.secondCall.args[2];
       tenantId2.should.equal(testTenantIds[0]);
