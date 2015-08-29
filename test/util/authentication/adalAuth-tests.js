@@ -46,12 +46,12 @@ describe('login as service principal', function () {
     var accessToken = '123';
     var tokenMatched = false;
     adalAuth.tokenCache.find = function (query, callback) {
-      callback(null, [{ 'accessToken' : accessToken}]);
-    }
+      callback(null, [{ 'accessToken' : accessToken }]);
+    };
     adalAuth.tokenCache.remove = function (entries, callback) {
       tokenMatched = (entries.length === 1 && entries[0].accessToken === accessToken);
       callback(null);
-    }
+    };
     //action
     var token = new adalAuth.ServicePrincipalAccessToken(config, 'apid123');
     token.authenticateRequest(function (err) {

@@ -26,7 +26,7 @@ var util = require('util');
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
 var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
+var Account = require('../../../lib/util/profile/account');
 var testFileDir = path.join(__dirname, '../../data');
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
@@ -209,41 +209,28 @@ describe('profile', function () {
     });
 
     describe('and logging in to already loaded subscription', function () {
+      var account = new Account();
       var loginUser = 'user';
       var resultOfGetSubscriptions = {
        subscriptions: [
         {
-          subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+          id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
           subscriptionName: 'Account',
-          username: loginUser
+          user: { name: loginUser },
+          on: function () { }
         }]
       };
 
-      var expectedToken = {
-        accessToken: 'Dummy token',
-        refreshToken: 'Dummy refresh token',
-        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
-      };
-
       before(function () {
-        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(4, null, resultOfGetSubscriptions);
+        sinon.stub(account, 'load').callsArgWith(4, null, resultOfGetSubscriptions);
       });
 
       after(function () {
-        subscriptionUtils.getSubscriptions.restore();
+        account.load.restore();
       });
 
       beforeEach(function (done) {
-        var fakeEnvironment = new profile.Environment({
-          name: 'TestEnvironment',
-          activeDirectoryEndpointUrl: 'http://dummy.example',
-          activeDirectoryResourceId: 'http://login.dummy.example',
-          commonTenantName: 'common'
-        });
-
-        sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
-
-        fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, result) {
+        account.load(loginUser, 'password', null, {}, function (err, result) {
           result.subscriptions.forEach(function (s) {
             p.addOrUpdateSubscription(s);
           });

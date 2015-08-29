@@ -15,12 +15,9 @@
 
 'use strict';
 
-var _ = require('underscore');
 var should = require('should');
-var sinon = require('sinon');
 
-var constants = require('../../../lib/util/constants');
-var profile = require('../../../lib/util/profile');
+var Account = require('../../../lib/util/profile/account');
 
 var expectedUserName = 'user@somedomain.example';
 var expectedPassword = 'sekretPa$$w0rd';
@@ -43,20 +40,6 @@ var expectedSubscriptions =
   },
 ];
 
-var expectedASMSubscriptions =
-[
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    subscriptionName: 'Mooncake Account',
-    username: expectedUserName
-  },
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
-    subscriptionName: 'Mooncake Other',
-    username: expectedUserName
-  },
-];
-
 var testSubscriptionsFromTenant = [
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
@@ -67,24 +50,6 @@ var testSubscriptionsFromTenant = [
     displayName: 'Other'
   }
 ];
-
-var testSubscriptionsFromASM = [
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    subscriptionName: 'Mooncake Account'
-  },
-  {
-    subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c124d',
-    subscriptionName: 'Mooncake Other'
-  }
-];
-
-var expectedToken = {
-  accessToken: 'a dummy token',
-  expiresOn: new Date(Date.now() + 2 * 60 * 60 * 1000),
-  userId: expectedUserName,
-  authenticateRequest: function () { }
-};
 
 var testArmSubscriptionClient = {
   subscriptions: {
@@ -103,62 +68,67 @@ var testArmSubscriptionClient = {
   }
 };
 
-var testAsmSubscriptionClient = {
-  subscriptions: {
-    list: function (callback) {
-      console.log('ASM list subscriptions invoked');
-      callback(null, {subscriptions: testSubscriptionsFromASM });
-    }
-  }
+var sampleAuthContext = {
+  userId: expectedUserName,
+  authenticateRequest: function () { }
 };
 
 describe('Account', function () {
-  var environment;
+  var dataPassedToAcquireToken, data2PassedToAcquireToken;
 
-  before(function () {
-    environment = new profile.Environment({
-      name: 'TestEnvironment',
-      activeDirectoryEndpointUrl: 'http://notreal.example',
-      commonTenantName: 'common',
-      resourceManagerEndpointUrl: 'https://login.notreal.example/',
-      activeDirectoryResourceId: 'http://login.notreal.example'
-    });
+  var activeDirectoryEndpointUrl = 'http://login.notreal.example';
+  var activeDirectoryResourceId = 'http://management.core.notreal.example';
+  var resourceManagerEndpointUrl = 'https://arm.notreal.example/';
+  var adalAuth = {
+    acquireToken: function (authConfig, username, password, callback) {
+      var data = {
+        authConfig: authConfig,
+        username: username,
+        password: password
+      };
+      if (dataPassedToAcquireToken) {
+        data2PassedToAcquireToken = data;
+      } else {
+        dataPassedToAcquireToken = data;
+      }
 
-    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
-      null/*no error*/, expectedToken/*the access token*/);
-    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
-  });
+      return callback(null, sampleAuthContext);
+    },
+    normalizeUserName: function (name) { return name; }
+  };
+  var resourceClient = {
+    createResourceSubscriptionClient: function (cred, armEndpoint) {
+      return testArmSubscriptionClient;
+    }
+  };
+  var account = new Account(activeDirectoryResourceId, 
+                            activeDirectoryEndpointUrl, 
+                            resourceManagerEndpointUrl,
+                            adalAuth,
+                            resourceClient);
 
   describe('When load', function () {
     var subscriptions;
 
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, '', false, function (err, result) {
+      account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
         subscriptions = result.subscriptions;
         done();
       });
     });
 
-    it('should have called the token provider', function () {
-      environment.acquireToken.called.should.be.true;
-    });
+    it('should pass correct parameters to to acquire token', function () {
+      dataPassedToAcquireToken.username.should.equal(expectedUserName);
+      data2PassedToAcquireToken.username.should.equal(expectedUserName);
 
-    it('should have call to get arm client', function () {
-      environment.getArmClient.called.should.be.true;
-    });
+      dataPassedToAcquireToken.password.should.equal(expectedPassword);
+      data2PassedToAcquireToken.password.should.equal(expectedPassword);
 
-    it('should pass expected configuration to token provider', function () {
-      var username = environment.acquireToken.firstCall.args[0];
-      username.should.equal(expectedUserName);
+      dataPassedToAcquireToken.authConfig.tenantId.should.equal('common');
+      data2PassedToAcquireToken.authConfig.tenantId.should.equal(testTenantIds[0]); 
 
-      var password = environment.acquireToken.firstCall.args[1];
-      password.should.equal(expectedPassword);
-
-      var tenantId1 = environment.acquireToken.firstCall.args[2];
-      tenantId1.should.equal('common'); // null or '' mean using the common tenant
-
-      var tenantId2 = environment.acquireToken.secondCall.args[2];
-      tenantId2.should.equal(testTenantIds[0]);
+      dataPassedToAcquireToken.authConfig.authorityUrl.should.equal(activeDirectoryEndpointUrl);
+      dataPassedToAcquireToken.authConfig.resourceId.should.equal(activeDirectoryResourceId);
     });
 
     it('should return a subscription with expected username', function () {
@@ -188,35 +158,34 @@ describe('Account', function () {
   });
 });
 
-describe('Environment', function () {
-  var environment;
-  
-  before(function () {
-    environment = new profile.Environment({
-      name: 'TestEnvironment',
-      resourceManagerEndpointUrl: 'https://login.notreal.example/'
-    });
-    
-    sinon.stub(environment, 'acquireToken').callsArgWith(3/*4th parameter of 'acquireToken' is the callback*/,
-      null/*no error*/, expectedToken/*the access token*/);
-    sinon.stub(environment, 'getArmClient').returns(testArmSubscriptionClient);
-  });
-  
-  describe('When creating account with tenant specified', function () {
+describe('Account', function () {
+  var dataPassedToAcquireToken;
+  var adalAuth = {
+    acquireToken: function (authConfig, user, password, callback) {
+      dataPassedToAcquireToken = { authConfig: authConfig };
+      return callback(null, sampleAuthContext);
+    },
+    normalizeUserName: function (name) { return name; }
+  };
+  var resourceClient = {
+    createResourceSubscriptionClient: function (cred, armEndpoint) {
+      return testArmSubscriptionClient;
+    }
+  };
+  var account = new Account('', '', '', adalAuth, resourceClient);
+
+  describe('When load with tenant specified', function () {
     var subscriptions;
     
     beforeEach(function (done) {
-      environment.addAccount(expectedUserName, expectedPassword, 'niceTenant', false, function (err, newSubscriptions) {
-        subscriptions = newSubscriptions;
+      account.load(expectedUserName, expectedPassword, 'niceTenant', {}, function (err, result) {
+        subscriptions = result.subscriptions;
         done();
       });
     });
     
-    it('should pass expected configuration to token provider', function () {
-      //we should only invoke acquireToken Once because the tenant is provided.
-      var tenantId = environment.acquireToken.firstCall.args[2];
-      tenantId.should.equal('niceTenant');
-      (!!environment.acquireToken.secondCall).should.be.false;
+    it('should create auth configuration with that tenant', function () {
+      dataPassedToAcquireToken.authConfig.tenantId.should.equal('niceTenant');
     });
   });
 });
