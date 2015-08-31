@@ -437,6 +437,47 @@ describe('profile', function () {
       });
     });
   });
+
+  describe('when adding a new subscription with same id, should merge new information', function () {
+    var p;
+    var newTenantId = 'new tenant id';
+    var oldSubscription =  {
+      name: 'old',
+      id: 'a-subscription-id',
+      user:{
+        name: 'foo@bar.com',
+        type: 'user'
+      },
+      tenantId: 'old tenant id',
+      environmentName: 'AzureCloud'
+    };
+
+    var newSubscription = new profile.Subscription({
+      name: 'new',
+      id: 'a-subscription-id',
+      user: {
+        name: 'foo@bar.com',
+        type: 'user'
+      },
+      tenantId: newTenantId,
+      environmentName: 'AzureCloud'
+    });
+    
+    beforeEach(function () {
+      p = profile.load({
+        environments: [],
+        subscriptions: [
+          oldSubscription
+        ]
+      });
+      p.addOrUpdateSubscription(newSubscription, p.getEnvironment('AzureCloud'));
+    });
+
+    it('should merge in the new tenantId', function () {
+      _.keys(p.subscriptions).should.have.length(1);
+      p.subscriptions[oldSubscription.id].tenantId.should.equal(newTenantId);
+    });
+  });
 });
 
 //////////////////////////
