@@ -112,6 +112,14 @@ describe('arm', function() {
         });
       });
 
+      it('get-serial-output should get serial output of the VM', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('Stop and start VM should work', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm stop %s %s --json', groupName, vmPrefix).split(' ');
