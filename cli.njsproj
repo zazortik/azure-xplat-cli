@@ -13,7 +13,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>login -u admin@aad191.ccsctp.net -e dogfood</ScriptArguments>
+    <ScriptArguments>login -u yugangw@microsoft.com</ScriptArguments>
     <Environment>
     </Environment>
   </PropertyGroup>
@@ -45,6 +45,8 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\util\authentication\adalAuthForUser.js" />
+    <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
     <Compile Include="scripts\extract-labels.js" />
     <Compile Include="scripts\filter-testresults.js" />
@@ -127,7 +129,7 @@
     <Compile Include="lib\commands\asm\iaas\upload\vhdTools.js" />
     <Content Include="lib\commands\asm\network\jsontransform\networkmanagementmeta.json" />
     <Compile Include="lib\commands\asm\network\jsontransform\jsontransformer.js" />
-    <Compile Include="lib\util\authentication\accessTokenCloudCredentials.js" />
+    <Compile Include="lib\util\authentication\tokenCredentials.js" />
     <Compile Include="lib\util\authentication\adalAuth.js" />
     <Compile Include="lib\util\authentication\file-token-storage.js" />
     <Compile Include="lib\util\authentication\osx-keychain-parser.js" />
@@ -147,7 +149,9 @@
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
     <Compile Include="test\commands\cli.account-tests.js" />
-    <Compile Include="test\commands\cli.account.affinitygroup-tests.js" />
+    <Compile Include="test\commands\cli.account.affinitygroup-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.account.cert-tests.js" />
     <Compile Include="test\commands\cli.account.environment-tests.js" />
     <Compile Include="test\commands\cli.help-tests.js" />

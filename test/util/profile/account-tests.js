@@ -255,7 +255,7 @@ describe('account', function () {
   var servicePrincipalId = 'https://myapp';
   var servicePrincipalKey = 'mysecret';
   var adalAuth = {
-    createServicePrincipalCredential: function (authConfig, servicePrincipalId, servicePrincipalKey, callback) {
+    createServicePrincipalTokenCredentials: function (authConfig, servicePrincipalId, servicePrincipalKey, callback) {
       dataPassedToAcquireServicePrincipalToken = {
         authConfig: authConfig,
         servicePrincipalId: servicePrincipalId,

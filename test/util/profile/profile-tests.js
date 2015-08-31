@@ -25,7 +25,7 @@ var util = require('util');
 
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
-var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
+var adalAuthForUser = require('../../../lib/util/authentication/adalAuthForUser');
 var Account = require('../../../lib/util/profile/account');
 var testFileDir = path.join(__dirname, '../../data');
 var oneSubscriptionFile = 'account-credentials.publishSettings';
@@ -433,7 +433,7 @@ describe('profile', function () {
 
       it('should create token credentials when asked for credentials', function () {
         p.subscriptions[expectedSubscription.id]._createCredentials()
-          .should.be.instanceof(AccessTokenCloudCredentials);
+          .should.be.instanceof(adalAuthForUser.UserTokenCredentials);
       });
     });
   });
