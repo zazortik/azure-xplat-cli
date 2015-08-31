@@ -24498,12 +24498,12 @@
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             },
             {
-              "flags": "--enable-boot-diagnostics <enable-boot-diagnostics>",
-              "required": -27,
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
               "optional": 0,
               "bool": true,
               "long": "--enable-boot-diagnostics",
-              "description": "To enable or disable the boot diagnostics for VM. In the format of true or false."
+              "description": "The switch parameter to enable or disable the boot diagnostics for VM."
             },
             {
               "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",

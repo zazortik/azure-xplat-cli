@@ -102,7 +102,7 @@ describe('arm', function() {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics true --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
+                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                     groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
                     vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -112,7 +112,7 @@ describe('arm', function() {
                 });
               });
             } else {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics true --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
+              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                 groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
                 vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
