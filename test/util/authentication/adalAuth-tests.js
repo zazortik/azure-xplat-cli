@@ -84,7 +84,7 @@ describe('logoutUser', function () {
       }
     };
     //action
-    adalAuth.removeCachedToken('dummyUser', tokenCache, function (err) {
+    adalAuth.removeCachedToken('dummyUser', null, tokenCache, function (err) {
       //verify
       timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);
