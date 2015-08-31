@@ -35,6 +35,8 @@ function networkTestUtil() {
   this.publicIpId = '';
   this.lbaddresspoolId = '';
   this.lbinboundruleId = '';
+  this.lbaddresspoolId2 = '';
+  this.lbinboundruleId2 = '';
   this.nsgId = '';
   this.reversefqdn1 = '';
   this.reversefqdn = '';
@@ -178,6 +180,13 @@ networkTestUtil.prototype.showLB = function(groupName, LBName, suite, callback) 
     var allResources = JSON.parse(result.text);
     networkTestUtil.lbaddresspoolId = allResources.backendAddressPools[0].id;
     networkTestUtil.lbinboundruleId = allResources.inboundNatRules[0].id;
+
+    if (allResources.backendAddressPools[1] != undefined) {
+      networkTestUtil.lbaddresspoolId2 = allResources.backendAddressPools[1].id;
+    }
+    if (allResources.inboundNatRules[1] != undefined) {
+      networkTestUtil.lbinboundruleId2 = allResources.inboundNatRules[1].id;
+    }
     callback();
   });
 };

@@ -6,16 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    id: '5893435f-6990-4bb3-bebb-b12f3535f990',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'CollaberaInteropTest',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
+    name: 'EduardK - IaaS Tools',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -30,26 +26,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/appgwprodnext/ApplicationGateways?api-version=1.0')
-  .reply(200, "<ApplicationGateways xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>1</InstanceCount><Name>Testappgate</Name><State>Stopped</State><Subnets><Subnet>subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>Vnet</VnetName></ApplicationGateway></ApplicationGateways>", { 'cache-control': 'no-cache',
-  'content-length': '754',
+  .get('/5893435f-6990-4bb3-bebb-b12f3535f990/services/networking/ApplicationGateways?api-version=2015-04-01')
+  .reply(200, "<ApplicationGateways xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Medium</GatewaySize><InstanceCount>2</InstanceCount><Name>AppGwTest</Name><State>Stopped</State><Subnets><Subnet>Subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>VnetForAssociation</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>1</InstanceCount><Name>test-app-gateway</Name><State>Stopped</State><Subnets><Subnet>Subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>TestVnet</VnetName></ApplicationGateway></ApplicationGateways>", { 'cache-control': 'no-cache',
+  'content-length': '1072',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78aa9b9a7435b51983ae43b487a51edb',
-  date: 'Wed, 24 Jun 2015 14:38:34 GMT',
+  server: '1.0.6198.257 (rd_rdfe_stable.150819-0641) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'fdfce5327d5308389f07d1eac8e9b00b',
+  date: 'Wed, 26 Aug 2015 10:17:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/appgwprodnext/ApplicationGateways?api-version=1.0')
-  .reply(200, "<ApplicationGateways xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>1</InstanceCount><Name>Testappgate</Name><State>Stopped</State><Subnets><Subnet>subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>Vnet</VnetName></ApplicationGateway></ApplicationGateways>", { 'cache-control': 'no-cache',
-  'content-length': '754',
+  .get('/5893435f-6990-4bb3-bebb-b12f3535f990/services/networking/ApplicationGateways?api-version=2015-04-01')
+  .reply(200, "<ApplicationGateways xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Medium</GatewaySize><InstanceCount>2</InstanceCount><Name>AppGwTest</Name><State>Stopped</State><Subnets><Subnet>Subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>VnetForAssociation</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway><ApplicationGateway><Description i:nil=\"true\"/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>1</InstanceCount><Name>test-app-gateway</Name><State>Stopped</State><Subnets><Subnet>Subnet-1</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>TestVnet</VnetName></ApplicationGateway></ApplicationGateways>", { 'cache-control': 'no-cache',
+  'content-length': '1072',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78aa9b9a7435b51983ae43b487a51edb',
-  date: 'Wed, 24 Jun 2015 14:38:34 GMT',
+  server: '1.0.6198.257 (rd_rdfe_stable.150819-0641) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'fdfce5327d5308389f07d1eac8e9b00b',
+  date: 'Wed, 26 Aug 2015 10:17:20 GMT',
   connection: 'close' });
  return result; }]];
