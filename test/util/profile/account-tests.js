@@ -88,6 +88,11 @@ var environment = {
   }
 };
 
+var log = {
+  info: function () { },
+  verbose: function () { }
+}
+
 describe('account', function () {
   var dataPassedToAcquireToken, data2PassedToAcquireToken;
   var dataPassedToAcquireUserCode, dataPassedToAcquireTokenWithDeviceCode;
@@ -130,7 +135,7 @@ describe('account', function () {
       return testArmSubscriptionClient;
     }
   };
-  var account = new Account(environment, adalAuth, resourceClient);
+  var account = new Account(environment, adalAuth, resourceClient, log);
 
   describe('When load using non multifactor authentication', function () {
     var subscriptions;
@@ -232,7 +237,7 @@ describe('account', function () {
       return testArmSubscriptionClient;
     }
   };
-  var account = new Account(environment, adalAuth, resourceClient);
+  var account = new Account(environment, adalAuth, resourceClient, log);
 
   describe('when load with tenant specified', function () {
     var subscriptions;
@@ -270,7 +275,7 @@ describe('account', function () {
       return testArmSubscriptionClient;
     }
   };
-  var account = new Account(environment, adalAuth, resourceClient);
+  var account = new Account(environment, adalAuth, resourceClient, log);
   
   describe('when load with creds for a service principal', function () {
     var subscriptions;
