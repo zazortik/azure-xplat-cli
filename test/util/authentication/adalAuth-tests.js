@@ -53,8 +53,8 @@ describe('login as service principal', function () {
       callback(null);
     };
     //action
-    var token = new adalAuth.ServicePrincipalAccessToken(config, 'apid123');
-    token.authenticateRequest(function (err) {
+    var cred = new adalAuth.ServicePrincipalCredential(config, 'apid123');
+    cred.retrieveTokenFromCache(function (err) {
       //assert
       var errorFired = (!!err);
       errorFired.should.be.true;
@@ -73,7 +73,7 @@ describe('login as service principal', function () {
       callback(null);
     }
     //action
-    adalAuth.acquireServicePrincipalToken(config, 'https://myapp1', 'Secret', function(){
+    adalAuth.createServicePrincipalCredential(config, 'https://myapp1', 'Secret', function(){
       addInvoked.should.be.true;
       hasRefreshToken.should.be.false;
       done();

@@ -71,7 +71,7 @@ var testArmSubscriptionClient = {
 var sampleAuthContext = {
   userId: expectedUserName,
   authConfig: { tenantId: testTenantIds[0]},
-  authenticateRequest: function () { }
+  retrieveTokenFromCache: function () { }
 };
 
 var environment = {
@@ -94,7 +94,7 @@ describe('account', function () {
 
   var userCodeResponse = { foo: 'bar'};
   var adalAuth = {
-    acquireToken: function (authConfig, username, password, callback) {
+    authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
       var data = {
         authConfig: authConfig,
         username: username,
@@ -113,7 +113,7 @@ describe('account', function () {
       return callback(null, userCodeResponse);
     },
 
-    acquireTokenWithDeviceCode: function (authConfig, userCodeResponse, username, callback) {
+    authenticateWithDeviceCode: function (authConfig, userCodeResponse, username, callback) {
       dataPassedToAcquireTokenWithDeviceCode = {
         authConfig : authConfig,
         userCodeResponse: userCodeResponse,
@@ -199,7 +199,7 @@ describe('account', function () {
       dataPassedToAcquireUserCode.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
     });
     
-    it('should pass correct parameters to acquireTokenWithDeviceCode', function () {
+    it('should pass correct parameters to authenticateWithDeviceCode', function () {
       dataPassedToAcquireTokenWithDeviceCode.authConfig.tenantId.should.equal('common');
       dataPassedToAcquireTokenWithDeviceCode.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
       dataPassedToAcquireTokenWithDeviceCode.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
@@ -221,7 +221,7 @@ describe('account', function () {
 describe('account', function () {
   var dataPassedToAcquireToken;
   var adalAuth = {
-    acquireToken: function (authConfig, user, password, callback) {
+    authenticateWithUsernamePassword: function (authConfig, user, password, callback) {
       dataPassedToAcquireToken = { authConfig: authConfig };
       return callback(null, sampleAuthContext);
     },
@@ -255,7 +255,7 @@ describe('account', function () {
   var servicePrincipalId = 'https://myapp';
   var servicePrincipalKey = 'mysecret';
   var adalAuth = {
-    acquireServicePrincipalToken: function (authConfig, servicePrincipalId, servicePrincipalKey, callback) {
+    createServicePrincipalCredential: function (authConfig, servicePrincipalId, servicePrincipalKey, callback) {
       dataPassedToAcquireServicePrincipalToken = {
         authConfig: authConfig,
         servicePrincipalId: servicePrincipalId,
@@ -282,7 +282,7 @@ describe('account', function () {
       });
     });
     
-    it('should invoke acquireToken with correct fields', function () {
+    it('should invoke authenticateWithUsernamePassword with correct fields', function () {
       dataPassedToAcquireServicePrincipalToken.authConfig.tenantId.should.equal('fooTenant');
       dataPassedToAcquireServicePrincipalToken.servicePrincipalId.should.equal(servicePrincipalId);
       dataPassedToAcquireServicePrincipalToken.servicePrincipalKey.should.equal(servicePrincipalKey);
