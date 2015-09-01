@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
-                  "required": -24,
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-vault-dns-suffix",
-                  "description": "the keyvault service dns suffix"
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -630,14 +630,6 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
-                },
-                {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
@@ -738,12 +730,12 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
-                  "required": -24,
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-vault-dns-suffix",
-                  "description": "the keyvault service dns suffix"
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
@@ -776,14 +768,6 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
-                },
-                {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",

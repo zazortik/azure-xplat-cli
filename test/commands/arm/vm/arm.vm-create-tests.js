@@ -165,29 +165,35 @@ describe('arm', function() {
         });
       });
 
-      it.skip('set should enable the diagnostics settings', function(done) {
-        var cmd = util.format('vm set --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ %s %s --json', storageAccount, groupName, vmPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-        cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') > -1).ok;
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-
-      it.skip('set should disable the diagnostics settings', function(done) {
+      it('set should disable the diagnostics settings', function(done) {
         var cmd = util.format('vm set --disable-boot-diagnostics %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
-        cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+      });
+
+      it('get-serial-output should not show bootdiagnostics output', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           should(result.text.indexOf('bootdiagnostics') == -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('set should enable the diagnostics settings', function(done) {
+        var cmd = util.format('vm set --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ %s %s --json', storageAccount, groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should show bootdiagnostics output again', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('bootdiagnostics') > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
