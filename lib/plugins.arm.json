@@ -24496,6 +24496,22 @@
               "bool": true,
               "long": "--tags",
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
+            },
+            {
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enable-boot-diagnostics",
+              "description": "The switch parameter to enable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--boot-diagnostics-storage-uri",
+              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             }
           ]
         },
@@ -25331,6 +25347,75 @@
           ]
         },
         {
+          "name": "get-serial-output",
+          "description": "Get serial output of a VM in a resource group.",
+          "fullName": "vm get-serial-output",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            },
+            {
+              "flags": "--max-length <max-length>",
+              "required": -14,
+              "optional": 0,
+              "bool": true,
+              "long": "--max-length",
+              "description": "the max number of characters shown in one page of log output"
+            }
+          ]
+        },
+        {
           "name": "reset-access",
           "description": "Enables you to reset Remote Desktop Access or SSH settings on a Virtual Machine and to reset the password for the account that has administrator or sudo authority.",
           "fullName": "vm reset-access",
@@ -25557,6 +25642,30 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--disable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enable-boot-diagnostics",
+              "description": "The switch parameter to enable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--boot-diagnostics-storage-uri",
+              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             }
           ]
         },
