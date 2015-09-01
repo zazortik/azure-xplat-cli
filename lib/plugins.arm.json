@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -630,6 +630,14 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
@@ -730,12 +738,12 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
@@ -768,6 +776,14 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
                 },
                 {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
@@ -24503,7 +24519,7 @@
               "optional": 0,
               "bool": true,
               "long": "--enable-boot-diagnostics",
-              "description": "The switch parameter to enable or disable the boot diagnostics for VM."
+              "description": "The switch parameter to enable the boot diagnostics for VM."
             },
             {
               "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
@@ -25642,6 +25658,30 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--disable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enable-boot-diagnostics",
+              "description": "The switch parameter to enable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--boot-diagnostics-storage-uri",
+              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             }
           ]
         },
