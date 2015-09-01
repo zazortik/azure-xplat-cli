@@ -6,7 +6,7 @@
 # Disabling, do not want this run in automated test runs
 # commands/cli.mobile.migration-tests.js
 # TODO: This suite uses custom recording
-cli-tests.js
+commands/cli-auto-complete.tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
