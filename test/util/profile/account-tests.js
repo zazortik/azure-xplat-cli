@@ -25,7 +25,7 @@ var expectedPassword = 'sekretPa$$w0rd';
 var testTenantIds = ['2d006e8c-61e7-4cd2-8804-b4177a4341a1'];
 
 var expectedSubscriptions =
-[
+ [
   {
     subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
     displayName: 'Account',
@@ -54,15 +54,16 @@ var testSubscriptionsFromTenant = [
 var testArmSubscriptionClient = {
   subscriptions: {
     list: function (callback) {
-      callback(null, {subscriptions: testSubscriptionsFromTenant });
+      callback(null, { subscriptions: testSubscriptionsFromTenant });
     }
   },
   tenants: {
     list: function (callback) {
       callback(null, {
         tenantIds: testTenantIds.map(function (id) {
-          return { tenantId: id };})
-        }
+          return { tenantId: id };
+        })
+      }
       );
     }
   }
@@ -70,7 +71,7 @@ var testArmSubscriptionClient = {
 
 var sampleAuthContext = {
   userId: expectedUserName,
-  authConfig: { tenantId: testTenantIds[0]},
+  authConfig: { tenantId: testTenantIds[0] },
   retrieveTokenFromCache: function () { }
 };
 
@@ -96,8 +97,8 @@ var log = {
 describe('account', function () {
   var dataPassedToAcquireToken, data2PassedToAcquireToken;
   var dataPassedToAcquireUserCode, dataPassedToAcquireTokenWithDeviceCode;
-
-  var userCodeResponse = { foo: 'bar'};
+  
+  var userCodeResponse = { foo: 'bar' };
   var adalAuth = {
     authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
       var data = {
@@ -112,12 +113,12 @@ describe('account', function () {
       }
       return callback(null, sampleAuthContext);
     },
-
+    
     acquireUserCode: function (authConfig, callback) {
       dataPassedToAcquireUserCode = { authConfig: authConfig };
       return callback(null, userCodeResponse);
     },
-
+    
     authenticateWithDeviceCode: function (authConfig, userCodeResponse, username, callback) {
       dataPassedToAcquireTokenWithDeviceCode = {
         authConfig : authConfig,
@@ -126,78 +127,78 @@ describe('account', function () {
       };
       return callback(null, sampleAuthContext);
     },
-
+    
     normalizeUserName: function (name) { return name; }
   };
-
+  
   var resourceClient = {
     createResourceSubscriptionClient: function (cred, armEndpoint) {
       return testArmSubscriptionClient;
     }
   };
   var account = new Account(environment, adalAuth, resourceClient, log);
-
+  
   describe('When load using non multifactor authentication', function () {
     var subscriptions;
-
+    
     beforeEach(function (done) {
       account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
         subscriptions = result.subscriptions;
         done();
       });
     });
-
+    
     it('should pass correct parameters to to acquire token', function () {
       dataPassedToAcquireToken.username.should.equal(expectedUserName);
       data2PassedToAcquireToken.username.should.equal(expectedUserName);
-
+      
       dataPassedToAcquireToken.password.should.equal(expectedPassword);
       data2PassedToAcquireToken.password.should.equal(expectedPassword);
-
+      
       dataPassedToAcquireToken.authConfig.tenantId.should.equal('common');
-      data2PassedToAcquireToken.authConfig.tenantId.should.equal(testTenantIds[0]); 
-
+      data2PassedToAcquireToken.authConfig.tenantId.should.equal(testTenantIds[0]);
+      
       dataPassedToAcquireToken.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
       dataPassedToAcquireToken.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
     });
-
+    
     it('should return a subscription with expected username', function () {
       should.exist(subscriptions[0].user);
       subscriptions[0].user.name.should.equal(expectedUserName);
     });
-
+    
     it('should return listed subscriptions', function () {
       subscriptions.should.have.length(expectedSubscriptions.length);
-      for(var i = 0, len = subscriptions.length; i < len; ++i) {
+      for (var i = 0, len = subscriptions.length; i < len; ++i) {
         subscriptions[i].id.should.equal(expectedSubscriptions[i].subscriptionId);
         subscriptions[i].name.should.equal(expectedSubscriptions[i].displayName);
       }
     });
-
+    
     it('should have same username for all subscription', function () {
       subscriptions.forEach(function (s) {
         s.user.name.should.equal(expectedUserName);
       });
     });
-
+    
     it('should have same tenant id for all subscription', function () {
       subscriptions.forEach(function (s) {
         s.tenantId.should.equal(testTenantIds[0]);
       });
     });
   });
-
+  
   describe('When load using multifactor authentication', function () {
     var subscriptions;
     
     beforeEach(function (done) {
-      account.load(expectedUserName, expectedPassword, '', {mfa:true}, function (err, result) {
+      account.load(expectedUserName, expectedPassword, '', { mfa: true }, function (err, result) {
         subscriptions = result.subscriptions;
         done();
       });
     });
     
-    it('should pass correct parameters to to acquireUserCode', function () {     
+    it('should pass correct parameters to to acquireUserCode', function () {
       dataPassedToAcquireUserCode.authConfig.tenantId.should.equal('common');
       
       dataPassedToAcquireUserCode.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
@@ -208,11 +209,11 @@ describe('account', function () {
       dataPassedToAcquireTokenWithDeviceCode.authConfig.tenantId.should.equal('common');
       dataPassedToAcquireTokenWithDeviceCode.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
       dataPassedToAcquireTokenWithDeviceCode.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
-
+      
       dataPassedToAcquireTokenWithDeviceCode.username.should.equal(expectedUserName);
       dataPassedToAcquireTokenWithDeviceCode.userCodeResponse.foo.should.equal('bar');
     });
-       
+    
     it('should return listed subscriptions', function () {
       subscriptions.should.have.length(expectedSubscriptions.length);
       for (var i = 0, len = subscriptions.length; i < len; ++i) {
@@ -220,6 +221,29 @@ describe('account', function () {
         subscriptions[i].name.should.equal(expectedSubscriptions[i].displayName);
       }
     });
+  });
+});
+
+describe('Account loading', function () {
+  var mfaErr;
+  var adalAuth = {
+    authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
+      callback(new Error('AADSTS50076: Application password is required.'));
+    },
+    normalizeUserName: function (name) { return name; }
+  };
+  
+  var account = new Account(environment, adalAuth, null, log);
+  var subscriptions;
+  
+  beforeEach(function (done) {
+    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
+      mfaErr = err;
+      done();
+    });
+  });
+  it('should return error indicating user is enabled with MFA', function () {
+    mfaErr[account.MFAEnabledErrFieldName].should.be.true;
   });
 });
 
@@ -238,7 +262,7 @@ describe('account', function () {
     }
   };
   var account = new Account(environment, adalAuth, resourceClient, log);
-
+  
   describe('when load with tenant specified', function () {
     var subscriptions;
     
@@ -281,7 +305,7 @@ describe('account', function () {
     var subscriptions;
     
     beforeEach(function (done) {
-      account.load(servicePrincipalId, servicePrincipalKey, 'fooTenant', {servicePrincipal:true}, function (err, result) {
+      account.load(servicePrincipalId, servicePrincipalKey, 'fooTenant', { servicePrincipal: true }, function (err, result) {
         subscriptions = result.subscriptions;
         done();
       });
@@ -292,7 +316,7 @@ describe('account', function () {
       dataPassedToAcquireServicePrincipalToken.servicePrincipalId.should.equal(servicePrincipalId);
       dataPassedToAcquireServicePrincipalToken.servicePrincipalKey.should.equal(servicePrincipalKey);
     });
-
+    
     it('should return a subscription with expected servicePrincipalId', function () {
       should.exist(subscriptions[0].user);
       subscriptions[0].user.name.should.equal(servicePrincipalId);
