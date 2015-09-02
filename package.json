@@ -98,6 +98,7 @@
     "xmlbuilder": "0.4.x"
   },
   "devDependencies": {
+    "istanbul": "0.3.19",
     "mocha": "1.16.0",
     "jshint": "<= 2.6.0",
     "sinon": "*",
@@ -122,6 +123,7 @@
     "jshint": "jshint lib --jslint-reporter --extra-ext ._js",
     "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/util/profile test/util/authentication -R spec -t 5000",
     "extract-labels": "node scripts/extract-labels"
   },
   "bin": {
