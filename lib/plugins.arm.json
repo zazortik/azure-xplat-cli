@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -592,20 +592,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
+                },
+                {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
                   "required": -26,
                   "optional": 0,
                   "bool": true,
                   "long": "--publishing-profile-url",
                   "description": "the publish settings file URL"
-                },
-                {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--common-tenant-name <commonTenantName>",
@@ -632,12 +632,28 @@
                   "description": "the Active Directory resource ID"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
+                },
+                {
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 }
               ]
             },
@@ -690,12 +706,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -730,20 +746,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--common-tenant-name <commonTenantName>",
@@ -768,6 +784,22 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
                 },
                 {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
@@ -21821,6 +21853,393 @@
                       "short": "-s",
                       "long": "--subscription",
                       "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
+        "gateway": {
+          "name": "gateway",
+          "description": "Commands to manage Gateways",
+          "fullName": "network gateway",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "local-network": {
+              "name": "local-network",
+              "description": "Commands to manage Local Network Gateways",
+              "fullName": "network gateway local-network",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create a local network gateway",
+                  "fullName": "network gateway local-network create",
+                  "usage": "[options] <resource-group> <name> <location>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-a, --address-space <address-space>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-space",
+                      "description": "the local network site address space"
+                    },
+                    {
+                      "flags": "-i, --ip-address <ip-address>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--ip-address",
+                      "description": "the IP address of the local network site"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this local network gateway.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set a local network gateway",
+                  "fullName": "network gateway local-network set",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-a, --address-space <address-space>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-space",
+                      "description": "the local network site address space"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this local network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all local networks gateways",
+                  "fullName": "network gateway local-network list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Get a local network gateway",
+                  "fullName": "network gateway local-network show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a local network gateway",
+                  "fullName": "network gateway local-network delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
                     }
                   ]
                 }
