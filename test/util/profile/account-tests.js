@@ -224,26 +224,42 @@ describe('account', function () {
   });
 });
 
-describe('Account loading', function () {
-  var mfaErr;
+describe('Account loading with logon error', function () {
   var adalAuth = {
-    authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
-      callback(new Error('AADSTS50076: Application password is required.'));
-    },
     normalizeUserName: function (name) { return name; }
   };
   
   var account = new Account(environment, adalAuth, null, log);
   var subscriptions;
-  
-  beforeEach(function (done) {
+
+  it('should return error indicating user is enabled with MFA', function () {
+    adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
+      callback(new Error('AADSTS50076: Application password is required.'));
+    };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      mfaErr = err;
-      done();
+      err[account.MFAEnabledErrFieldName].should.be.true;
     });
   });
-  it('should return error indicating user is enabled with MFA', function () {
-    mfaErr[account.MFAEnabledErrFieldName].should.be.true;
+
+  it('should return better error indicating user is using live id', function () {
+    adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
+      callback(new Error('Server returned an unknown AccountType: undefined'));
+    };
+    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
+      should.not.exist(err[account.MFAEnabledErrFieldName]);
+      (err.message.indexOf('you have used live account which is not supported') >= 0).should.be.true;
+    });
+  });
+
+  it('should return original error otherwise', function () {
+    var regularError = 'wrong user name or password';
+    adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
+      callback(new Error(regularError));
+    };
+    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
+      should.not.exist(err[account.MFAEnabledErrFieldName]);
+      err.message.should.equal(regularError);
+    });
   });
 });
 
