@@ -32,7 +32,7 @@ describe('Token cache', function () {
     _authority: 'https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd0111234', 
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
     expiresIn: 3599, 
-    expiresOn: '2014-09-20T04:47:16.288Z', 
+    expiresOn: new Date('2014-09-20T04:47:16.288Z'), 
     familyName: 'Doe', 
     givenName: 'John', 
     isMRRT: true, 
@@ -47,7 +47,7 @@ describe('Token cache', function () {
     _authority: 'https://login.windows.net/common', 
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
     expiresIn: 3599, 
-    expiresOn: '2014-09-20T04:47:14.151Z', 
+    expiresOn: new Date('2014-09-20T04:47:14.151Z'),
     familyName: 'Doe', 
     givenName: 'John', 
     isMRRT: true, 
@@ -64,6 +64,10 @@ describe('Token cache', function () {
     userId: testUserId, 
     _authority: 'https://login.windows.net/common'
   };
+  var sampleTokenQueryWithTenantId = {
+    userId: testUserId,
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd0111234'
+  };
   var sampleTokenQueryWithUpperCasing = {
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
     userId: testUserId.toUpperCase(), 
@@ -76,15 +80,26 @@ describe('Token cache', function () {
         callback(null, tokensInCache);
       }
     };
+
     it('should find entry using exact userId', function (done) {
       var cache = new TokenCache(tokenStorage);
+      cache.find(sampleTokenQueryWithTenantId, function (err, tokens) {
+        tokens.length.should.equal(2);
+        tokens[0].userId.should.equal(testUserId);
+        done();
+      });
+    });
+    
+    it('should find entry using tenantId', function (done) {
+      var cache = new TokenCache(tokenStorage);
+      
       cache.find(sampleTokenQuery, function (err, tokens) {
         tokens.length.should.equal(1);
         tokens[0].userId.should.equal(testUserId);
         done();
       });
     });
-    
+
     it('should find entry using userId with upper casing', function (done) {
       var cache = new TokenCache(tokenStorage);
       cache.find(sampleTokenQueryWithUpperCasing, function (err, tokens) {

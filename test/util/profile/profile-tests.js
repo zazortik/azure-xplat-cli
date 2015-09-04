@@ -25,9 +25,9 @@ var util = require('util');
 
 var utils = require('../../../lib/util/utils');
 var profile = require('../../../lib/util/profile');
-var AccessTokenCloudCredentials = require('../../../lib/util/authentication/accessTokenCloudCredentials');
-var subscriptionUtils = require('../../../lib/util/profile/subscriptionUtils');
-var testFileDir = './test/data';
+var adalAuthForUser = require('../../../lib/util/authentication/adalAuthForUser');
+var Account = require('../../../lib/util/profile/account');
+var testFileDir = path.join(__dirname, '../../data');
 var oneSubscriptionFile = 'account-credentials.publishSettings';
 
 describe('profile', function () {
@@ -99,7 +99,7 @@ describe('profile', function () {
 
     describe('and importing publishSettings', function () {
       beforeEach(function () {
-        p.importPublishSettings('./test/data/account-credentials2.publishSettings');
+        p.importPublishSettings(path.join(testFileDir, 'account-credentials2.publishSettings'));
       });
 
       it('should import the subscriptions', function() {
@@ -209,40 +209,29 @@ describe('profile', function () {
     });
 
     describe('and logging in to already loaded subscription', function () {
+      var account = new Account();
       var loginUser = 'user';
-      var loginSubscriptions = [
-      {
-        subscriptionId: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-        subscriptionName: 'Account',
-        username: loginUser
-      }];
-
-      var expectedToken = {
-        accessToken: 'Dummy token',
-        refreshToken: 'Dummy refresh token',
-        expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000)
+      var resultOfGetSubscriptions = {
+       subscriptions: [
+        {
+          id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
+          subscriptionName: 'Account',
+          user: { name: loginUser },
+          on: function () { }
+        }]
       };
 
       before(function () {
-        sinon.stub(subscriptionUtils, 'getSubscriptions').callsArgWith(4, null, loginSubscriptions);
+        sinon.stub(account, 'load').callsArgWith(4, null, resultOfGetSubscriptions);
       });
 
       after(function () {
-        subscriptionUtils.getSubscriptions.restore();
+        account.load.restore();
       });
 
       beforeEach(function (done) {
-        var fakeEnvironment = new profile.Environment({
-          name: 'TestEnvironment',
-          activeDirectoryEndpointUrl: 'http://dummy.example',
-          activeDirectoryResourceId: 'http://login.dummy.example',
-          commonTenantName: 'common'
-        });
-
-        sinon.stub(fakeEnvironment, 'acquireToken').callsArgWith(3, null, expectedToken);
-
-        fakeEnvironment.addAccount(loginUser, 'password', null, false, function (err, subscriptions) {
-          subscriptions.forEach(function (s) {
+        account.load(loginUser, 'password', null, {}, function (err, result) {
+          result.subscriptions.forEach(function (s) {
             p.addOrUpdateSubscription(s);
           });
 
@@ -444,8 +433,49 @@ describe('profile', function () {
 
       it('should create token credentials when asked for credentials', function () {
         p.subscriptions[expectedSubscription.id]._createCredentials()
-          .should.be.instanceof(AccessTokenCloudCredentials);
+          .should.be.instanceof(adalAuthForUser.UserTokenCredentials);
       });
+    });
+  });
+
+  describe('when adding a new subscription with same id, should merge new information', function () {
+    var p;
+    var newTenantId = 'new tenant id';
+    var oldSubscription =  {
+      name: 'old',
+      id: 'a-subscription-id',
+      user:{
+        name: 'foo@bar.com',
+        type: 'user'
+      },
+      tenantId: 'old tenant id',
+      environmentName: 'AzureCloud'
+    };
+
+    var newSubscription = new profile.Subscription({
+      name: 'new',
+      id: 'a-subscription-id',
+      user: {
+        name: 'foo@bar.com',
+        type: 'user'
+      },
+      tenantId: newTenantId,
+      environmentName: 'AzureCloud'
+    });
+    
+    beforeEach(function () {
+      p = profile.load({
+        environments: [],
+        subscriptions: [
+          oldSubscription
+        ]
+      });
+      p.addOrUpdateSubscription(newSubscription, p.getEnvironment('AzureCloud'));
+    });
+
+    it('should merge in the new tenantId', function () {
+      _.keys(p.subscriptions).should.have.length(1);
+      p.subscriptions[oldSubscription.id].tenantId.should.equal(newTenantId);
     });
   });
 });

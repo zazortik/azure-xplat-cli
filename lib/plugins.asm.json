@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into. Used for login as service principal or parnter user"
+          "description": "Tenant domain or ID to log into"
         },
         {
           "flags": "-q --quiet",
@@ -702,14 +702,6 @@
                   "description": "The resource ID to obtain AD tokens for"
                 },
                 {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
-                },
-                {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
                   "required": -24,
                   "optional": 0,
@@ -840,14 +832,6 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
-                },
-                {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
                   "required": -26,
                   "optional": 0,
@@ -856,12 +840,12 @@
                   "description": "the publish settings file URL"
                 },
                 {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -896,12 +880,12 @@
                   "description": "the endpoint suffix for storage accounts"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 }
               ]
             },
