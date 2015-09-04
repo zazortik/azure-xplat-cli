@@ -231,7 +231,7 @@ describe('Account loading with logon error', function () {
   
   var account = new Account(environment, adalAuth, null, log);
   var subscriptions;
-
+  
   it('should return error indicating user is enabled with MFA', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('AADSTS50076: Application password is required.'));
@@ -240,7 +240,7 @@ describe('Account loading with logon error', function () {
       err[account.MFAEnabledErrFieldName].should.be.true;
     });
   });
-
+  
   it('should return better error indicating user is using live id', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('Server returned an unknown AccountType: undefined'));
@@ -250,7 +250,7 @@ describe('Account loading with logon error', function () {
       (err.message.indexOf('you have used live account which is not supported') >= 0).should.be.true;
     });
   });
-
+  
   it('should return original error otherwise', function () {
     var regularError = 'wrong user name or password';
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
@@ -336,6 +336,44 @@ describe('account', function () {
     it('should return a subscription with expected servicePrincipalId', function () {
       should.exist(subscriptions[0].user);
       subscriptions[0].user.name.should.equal(servicePrincipalId);
+    });
+  });
+});
+
+describe('Account load with default tenant not MFA enabled', function () {
+  it('should continue but skip other tenant with MFA enabled', function (done) {
+    var testTenantId = 'tenant-with-2fa';
+    var adalAuth = {
+      authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
+        if (authConfig.tenantId === 'common') {
+          return callback(null, sampleAuthContext);
+        } else {
+          return callback(new Error('AADSTS50076: Application password is required.'));
+        }
+      },    
+      normalizeUserName: function (name) { return name; }
+    };
+    
+    var resourceClient = {
+      createResourceSubscriptionClient: function (cred, armEndpoint) {
+        return {
+          tenants: {
+            list: function (callback) {
+              callback(null, { tenantIds: [{ tenantId : testTenantId }] });
+            }
+          }
+        };
+      }
+    };
+    var warnLogged;
+    var log = {
+      info: function () { },
+      warn: function (w) { warnLogged = w; }
+    };
+    var account = new Account(environment, adalAuth, resourceClient, log);
+    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
+      warnLogged.indexOf(testTenantId + ' is skipped').should.not.equal(-1);
+      done();
     });
   });
 });
