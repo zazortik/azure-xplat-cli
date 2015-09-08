@@ -112,6 +112,26 @@ describe('arm', function() {
         });
       });
 
+      it('get-instance-view should get instance view of the VM', function(done) {
+        var cmd = util.format('vm get-instance-view %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('diagnosticsProfile') == -1).ok;
+          should(result.text.indexOf('bootDiagnostics') == -1).ok;
+          should(result.text.indexOf('storageUri') == -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should get serial output of the VM', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          should(result.text.indexOf('bootdiagnostics') == -1).ok;
+          done();
+        });
+      });
+
       it('Stop and start VM should work', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm stop %s %s --json', groupName, vmPrefix).split(' ');

@@ -13,6 +13,7 @@ targets/*
 *.etl.tmp
 *.vspx
 *.njsperf
+Microsoft.NodejsTools.WebRole.dll
 
 # Visual Studio Code
 .settings/
@@ -48,3 +49,4 @@ Thumbs.db
 
 # Test Logs #
 test/output/*
+coverage

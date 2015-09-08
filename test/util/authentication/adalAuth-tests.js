@@ -18,22 +18,7 @@
 var should = require('should');
 
 var adalAuth = require('../../../lib/util/authentication/adalAuth');
-
-describe('tenant from username', function () {
-  it('should return everything after @ if present', function () {
-    adalAuth.tenantIdForUser('user@sometenant.testorg.example').should.equal('sometenant.testorg.example');
-  });
-  
-  it('should append onmicrosoft.com if no domain present', function () {
-    adalAuth.tenantIdForUser('user@sometenant').should.equal('sometenant.onmicrosoft.com');
-  });
-  
-  it('should throw if no domain is present', function () {
-    (function () {
-      return adalAuth.tenantIdForUser('user');
-    }).should.throw();
-  });
-});
+var adalAuthForServicePrincipal = require('../../../lib/util/authentication/adalAuthForServicePrincipal');
 
 describe('login as service principal', function () {
   var config = {
@@ -46,15 +31,15 @@ describe('login as service principal', function () {
     var accessToken = '123';
     var tokenMatched = false;
     adalAuth.tokenCache.find = function (query, callback) {
-      callback(null, [{ 'accessToken' : accessToken}]);
-    }
+      callback(null, [{ 'accessToken' : accessToken }]);
+    };
     adalAuth.tokenCache.remove = function (entries, callback) {
       tokenMatched = (entries.length === 1 && entries[0].accessToken === accessToken);
       callback(null);
-    }
+    };
     //action
-    var token = new adalAuth.ServicePrincipalAccessToken(config, 'apid123');
-    token.authenticateRequest(function (err) {
+    var cred = new adalAuthForServicePrincipal.ServicePrincipalTokenCredentials(config, 'apid123');
+    cred.retrieveTokenFromCache(function (err) {
       //assert
       var errorFired = (!!err);
       errorFired.should.be.true;
@@ -69,11 +54,11 @@ describe('login as service principal', function () {
     var hasRefreshToken = false;
     adalAuth.tokenCache.add = function (entries, callback) {
       addInvoked = true;
-      hasRefreshToken == !!(entries[0].refreshToken);
+      hasRefreshToken = !!(entries[0].refreshToken);
       callback(null);
     }
     //action
-    adalAuth.acquireServicePrincipalToken(config, 'https://myapp1', 'Secret', function(){
+    adalAuthForServicePrincipal.createServicePrincipalTokenCredentials(config, 'https://myapp1', 'Secret', function(){
       addInvoked.should.be.true;
       hasRefreshToken.should.be.false;
       done();
@@ -99,7 +84,7 @@ describe('logoutUser', function () {
       }
     };
     //action
-    adalAuth.logoutUser('dummyUser', tokenCache, function (err) {
+    adalAuth.removeCachedToken('dummyUser', null, tokenCache, function (err) {
       //verify
       timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);

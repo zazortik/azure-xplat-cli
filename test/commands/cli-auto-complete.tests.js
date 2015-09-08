@@ -19,14 +19,14 @@ var fs = require('fs');
 var path = require('path');
 var sinon = require('sinon');
 
-var utilsCore = require('../lib/util/utilsCore');
+var utilsCore = require('../../lib/util/utilsCore');
 
 function wrap(sinonObj, obj, functionName, setup) {
   var original = obj[functionName];
   return sinonObj.stub(obj, functionName, setup(original));
 }
 
-var AutoComplete = require('../lib/autocomplete');
+var AutoComplete = require('../../lib/autocomplete');
 
 describe('cli', function(){
   var sandbox;
