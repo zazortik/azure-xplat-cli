@@ -1,3 +1,35 @@
+2015.09.11 Version 0.9.9
+* Redis Cache
+  * Implemented create, set, show, list and delete commands
+* Resource Provider operations
+  * Implemented the Resource Provider operations show command
+* Compute
+  * Added support for IAAS diag and Linux diag extensions.
+  * Fixed compute bugs
+  * Added test cases for IAAS diagnostics extension.
+  * Added test cases to address bug fixes
+  * Updated recordings with minor refactoring
+  * Implemented Set/Get Diagnostics Profile and Log
+* KeyVault
+  * Added environment parameter for keyvault dns suffix
+* Storage
+  * Improved user experience by checking the source size and ensured it doesn't exceed dest object limitation before data transfer
+  * Supported AzureChinaCloud environment when the active account is in it
+  * Switched from azure-storage-legacy to azure-storage
+* Authentication
+  * Enabled 2 factor authentication for org-id user accounts
+* Network
+  * Fixed network vnet delete when there is only one network
+  * Implemented Local Networks Gateways commands
+  * ASM: network nsg rule create command can now handle asterisk symbols on linux. Fixed issue #2002
+* Authorization
+  * Fixed formatting of role commands
+* General Fixes
+  * Cleaned up test run output by not emitting out errors to the console
+  * Wired up code coverage npm 
+  * Improved  utils.indexOfCaseIgnore() by making it return  -1  instead of  null  when item not found. Fixed issue #2077.
+  * Added a separate VM testlist for ARM
+
 2015.08.19 Version 0.9.8
 * Storage
   * Update azure-storage to 0.5.0 which supports Azure storage service version 2015-02-21
