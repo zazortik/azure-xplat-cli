@@ -592,20 +592,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
-                },
-                {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
                   "required": -26,
                   "optional": 0,
                   "bool": true,
                   "long": "--publishing-profile-url",
                   "description": "the publish settings file URL"
+                },
+                {
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -644,24 +644,8 @@
                   "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
-                },
-                {
-                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
-                  "required": -27,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--storage-endpoint-suffix",
-                  "description": "the endpoint suffix for storage accounts"
-                },
-                {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 }
               ]
             },
@@ -714,12 +698,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -754,20 +738,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
-                },
-                {
                   "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
                   "long": "--key-vault-dns-suffix",
                   "description": "the keyvault service dns suffix"
+                },
+                {
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
