@@ -1,6 +1,6 @@
 ## 2015.09.11 Version 0.9.9
 * Redis Cache
-  * Implemented create, set, show, list and delete commands
+  * Implemented create, set, show, list, list-keys, renew-key and delete commands
 * Resource Provider operations
   * Implemented the Resource Provider operations show command
 * Compute
