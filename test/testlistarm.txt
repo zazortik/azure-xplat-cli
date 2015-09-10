@@ -10,6 +10,7 @@ commands/arm/location/arm.location-tests.js
 commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
+commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/role/arm.role-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
