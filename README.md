@@ -55,6 +55,9 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage vaults, assign permissions to vaults
     * Create and manage vault keys, import PEM files into a vault key, obtain key backups
     * Create and manage secrets, set and retrieve secret values
+* Redis Cache
+    * Create and manage Redis Caches
+    * List or Renew authentication keys
 
 ## Installation
 
