@@ -60,10 +60,11 @@ describe('arm', function () {
       });
       
       describe('list', function () {
-        it('should work', function (done) {
+        it.only('should work', function (done) {
           var end = new Date(); // today
           var start = new Date();
-          start.setDate(end.getDate() - 14);
+          var s = end.getDate() - 14;
+          start.setDate(s);
           
           suite.execute('role assignment changelog list -b %s -e %s --json', start, end,function (result) {
             result.exitStatus.should.equal(0);
