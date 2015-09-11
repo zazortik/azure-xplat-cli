@@ -66,7 +66,7 @@ describe('arm', function () {
           var s = end.getDate() - 14;
           start.setDate(s);
           
-          suite.execute('role assignment changelog list -b %s -e %s --json', start, end,function (result) {
+          suite.execute('role assignment changelog list -b "%s" -e "%s" --json', start, end,function (result) {
             result.exitStatus.should.equal(0);
            
             var response = JSON.parse(result.text);
