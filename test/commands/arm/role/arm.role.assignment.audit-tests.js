@@ -60,13 +60,12 @@ describe('arm', function () {
       });
       
       describe('list', function () {
-        it.only('should work', function (done) {
+        it('should work', function (done) {
           var end = new Date(); // today
           var start = new Date();
-          var s = end.getDate() - 14;
-          start.setDate(s);
+          start.setDate(end.getDate() - 1);
           
-          suite.execute('role assignment changelog list -b "%s" -e "%s" --json', start, end,function (result) {
+          suite.execute('role assignment changelog list -b %s -e %s --json', start.toISOString().substring(0, 10), end.toISOString().substring(0, 10),function (result) {
             result.exitStatus.should.equal(0);
            
             var response = JSON.parse(result.text);
