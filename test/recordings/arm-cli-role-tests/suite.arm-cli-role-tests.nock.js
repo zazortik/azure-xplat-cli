@@ -25,9 +25,9 @@ exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_PASSWORD'] = 'Pa$$w0rd';
   process.env['AZURE_AD_TEST_GROUP_NAME'] = 'testgroupauto';
   process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandom9234';
+  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandomauto';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['testrg11784','testserver1443','testdb13118'];};
+ exports.randomTestIdsGenerated = function() { return ['testrg14968','testserver18662','testdb19686'];};

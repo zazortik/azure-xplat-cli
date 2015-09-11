@@ -25,7 +25,7 @@ var groupPrefix = 'xplatTestGVMCreate';
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'eastus'
+  defaultValue: 'southeastasia'
 }, {
   name: 'SSHCERT',
   defaultValue: 'test/myCert.pem'
@@ -45,7 +45,11 @@ var groupName,
   publicipName = 'xplattestip',
   dnsPrefix = 'xplattestipdns',
   tags = 'a=b;b=c;d=',
-  sshcert;
+  sshcert,
+  IaasDiagPublisher,
+  IaasDiagExtName,
+  IaasDiagVersion,
+  datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
   describe('compute', function() {
@@ -68,6 +72,12 @@ describe('arm', function() {
         dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
         tags = 'a=b;b=c;d=';
 
+        // Get real values from test/data/testdata.json file and assign to the local variables
+        var data = fs.readFileSync(datafile, 'utf8');
+        var variables = JSON.parse(data);
+        IaasDiagPublisher = variables.IaasDiagPublisher_Linux.value;
+        IaasDiagExtName = variables.IaasDiagExtName_Linux.value;
+        IaasDiagVersion = variables.IaasDiagVersion_Linux.value;
         done();
       });
     });
@@ -92,9 +102,9 @@ describe('arm', function() {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
+                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                     groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags).split(' ');
+                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
                     done();
@@ -102,9 +112,9 @@ describe('arm', function() {
                 });
               });
             } else {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
+              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
                 groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags).split(' ');
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 done();
@@ -138,7 +148,73 @@ describe('arm', function() {
       it('get-instance-view should get instance view of the VM', function(done) {
         var cmd = util.format('vm get-instance-view %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('diagnosticsProfile') > -1).ok;
+          should(result.text.indexOf('bootDiagnostics') > -1).ok;
+          should(result.text.indexOf('storageUri') > -1).ok;
           result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should get serial output of the VM', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('set should disable the diagnostics settings', function(done) {
+        var cmd = util.format('vm set --disable-boot-diagnostics %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should not show bootdiagnostics output', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('bootdiagnostics') == -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('set should enable the diagnostics settings', function(done) {
+        var cmd = util.format('vm set --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ %s %s --json', storageAccount, groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should show bootdiagnostics output again', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('Enable diagnostics extension on created VM in a resource group', function(done) {
+        var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('Check diagnostics extension on created VM should pass', function(done) {
+        var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].publisher.should.equal(IaasDiagPublisher);
+          allResources[0].name.should.equal(IaasDiagExtName);
+          allResources[0].typeHandlerVersion.should.equal(IaasDiagVersion);
           done();
         });
       });
@@ -153,6 +229,5 @@ describe('arm', function() {
       });
 
     });
-
   });
 });

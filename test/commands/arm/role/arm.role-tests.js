@@ -25,6 +25,7 @@ var util = require('util');
 var path = require('path');
 var fs = require('fs');
 var profile = require('../../../../lib/util/profile');
+var utils = require('../../../../lib/util/utils');
 
 var testResourceGroup;
 var testSqlServer;
@@ -40,7 +41,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandom9234' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandomauto' },
 ];
 
 describe('arm', function () {
@@ -207,6 +208,18 @@ describe('arm', function () {
       });
     }
 
+    function createNewRoleObject() {
+      var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
+      var roleToCreate = JSON.parse(fs.readFileSync(filePath));
+      
+      // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
+      roleToCreate.AssignableScopes = [];
+      var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
+      roleToCreate.AssignableScopes[0] = assignableScope;
+      roleToCreate.Name = "TestRole_" + utils.uuidGen();
+      return roleToCreate;
+    }
+
     describe('definition', function () {
       it('list should work', function (done) {
         suite.execute('role list --json', function (result) {
@@ -218,7 +231,7 @@ describe('arm', function () {
           done();
         });
       });
-
+      
       it('list for custom roles should work', function (done) {
         suite.execute('role list --custom --json', function (result) {
           result.exitStatus.should.equal(0);
@@ -229,7 +242,7 @@ describe('arm', function () {
           done();
         });
       });
-
+      
       it('show for Owner role should work', function (done) {
         suite.execute('role show %s --json', TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
@@ -240,31 +253,29 @@ describe('arm', function () {
           done();
         });
       });
-
+      
       it('create new role should work', function (done) {
-        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
-        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
-        
-        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
-        roleToCreate.AssignableScopes = [];
-        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
-        roleToCreate.AssignableScopes[0] = assignableScope;
-    
+        var roleToCreate = createNewRoleObject();
+
         suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
           result.exitStatus.should.equal(0);
           var createdRole = JSON.parse(result.text);
-          createdRole.roleDefinition.properties.roleName.should.equal("CustomRole Test");
-          createdRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
+          createdRole.properties.roleName.should.equal(roleToCreate.Name);
+          createdRole.properties.assignableScopes.length.should.be.above(0);
+          createdRole.properties.assignableScopes[0].should.equal(roleToCreate.AssignableScopes[0]);
+          createdRole.properties.permissions.length.should.be.above(0);
+          createdRole.properties.permissions[0].actions.length.should.be.above(0);
 
-          createdRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
-          createdRole.roleDefinition.properties.permissions.length.should.be.above(0);
-          createdRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
-            
-          // TODO: Clean up role after delete is implemented
-          done();
+          // Clean up role
+          suite.execute('role delete %s --json -q --passthru', createdRole.id, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.id.should.equal(createdRole.id);
+            done();
+          });
         });
       });
-
+      
       it('create new role with non-existent file should not work', function (done) {
         var filePath = path.join(__dirname, '../../../data/NonExistenRoleFile.json');
         suite.execute('role create -f %s --json', filePath, function (result) {
@@ -273,7 +284,7 @@ describe('arm', function () {
           done();
         });
       });
-
+      
       it('create new role with no input should not work', function (done) {
         suite.execute('role create --json', function (result) {
           result.exitStatus.should.equal(1);
@@ -281,42 +292,88 @@ describe('arm', function () {
           done();
         });
       });
+      
+      it('delete for custom role with valid id should work', function (done) {
+        // Create a custom role
+        var roleToCreate = createNewRoleObject();
+
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          var id = createdRole.id;
+
+          suite.execute('role delete --id %s --json -q --passthru', id, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.id.should.equal(id);
+            
+            console.log("Role deleted. Trying to delete again should fail.")
+            // Deleting the same role again should result in error
+            suite.execute('role delete %s --json -q --passthru', id, function (result) {
+              result.exitStatus.should.not.equal(0);
+              done();
+            });
+          });
+        });
+      });
+
+      it('delete for custom role with valid name should work', function (done) {
+        // Create a custom role
+        var roleToCreate = createNewRoleObject();
+        
+        suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function (result) {
+          result.exitStatus.should.equal(0);
+          var createdRole = JSON.parse(result.text);
+          var name = createdRole.properties.roleName;
+
+          suite.execute('role delete --name %s --json -q --passthru', name, function (result) {
+            result.exitStatus.should.equal(0);
+            var deletedRole = JSON.parse(result.text);
+            deletedRole.properties.roleName.should.equal(name);
+
+            console.log("Role deleted. Trying to delete role with invalid name should fail.")
+            // Deleting the role with invalid name should result in error
+            suite.execute('role delete --name %s --json -q --passthru', "invalid", function (result) {
+              result.exitStatus.should.not.equal(0);
+              done();
+            });
+          });
+        });
+      });
     });
 
     describe('update role definition', function() {
       it('basic update should work', function(done) {
-        var filePath = path.join(__dirname, '../../../data/CustomRoleDefValidForUpdate.json');
-        
-        var roleToCreate = JSON.parse(fs.readFileSync(filePath));
-        
-        // Do not use hard-coded assignable scopes so that test still runs successfully when run under a different subscription
-        roleToCreate.AssignableScopes = [];
-        var assignableScope = "/subscriptions/" + profile.current.getSubscription().id;
-        roleToCreate.AssignableScopes[0] = assignableScope;
+        var roleToCreate = createNewRoleObject();
 
         suite.execute('role create -r %s --json', JSON.stringify(roleToCreate), function(result) {
           result.exitStatus.should.equal(0);
           console.log("Role created. Now trying to update");
           var createdRole = JSON.parse(result.text);
           
-          var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
-          roleToUpdate.id = createdRole.roleDefinition.id;
-          roleToUpdate.name = "Updated Role Name";
+          var roleToUpdate = roleToCreate;
+          roleToUpdate.id = createdRole.id;
+          roleToUpdate.name = "UpdatedRole_" + utils.uuidGen();
           roleToUpdate.description = "Updated Role Description";
 
           suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
             updatedResult.exitStatus.should.equal(0);
             var updatedRole = JSON.parse(updatedResult.text);
-            updatedRole.roleDefinition.properties.roleName.should.equal("Updated Role Name");
-            updatedRole.roleDefinition.properties.description.should.equal("Updated Role Description");
-            updatedRole.roleDefinition.properties.assignableScopes.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.assignableScopes[0].should.equal(assignableScope);
-            updatedRole.roleDefinition.properties.permissions.length.should.be.above(0);
-            updatedRole.roleDefinition.properties.permissions[0].actions.length.should.be.above(0);
+            updatedRole.properties.roleName.should.equal(roleToUpdate.name);
+            updatedRole.properties.description.should.equal("Updated Role Description");
+            updatedRole.properties.assignableScopes.length.should.be.above(0);
+            updatedRole.properties.assignableScopes[0].should.equal(roleToUpdate.AssignableScopes[0]);
+            updatedRole.properties.permissions.length.should.be.above(0);
+            updatedRole.properties.permissions[0].actions.length.should.be.above(0);
 
-            // TODO: Clean up role after delete is implemented
-
-            done();
+            // Clean up role
+            console.log("Deleting role.");
+            suite.execute('role delete %s --json -q --passthru', createdRole.id, function (result) {
+              result.exitStatus.should.equal(0);
+              var deletedRole = JSON.parse(result.text);
+              deletedRole.id.should.equal(createdRole.id);
+              done();
+            });
           });
         });
       });

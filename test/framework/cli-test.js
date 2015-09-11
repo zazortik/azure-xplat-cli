@@ -34,6 +34,8 @@ var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
 
+process.env.AZURE_NO_ERROR_ON_CONSOLE = true;
+
 /**
  * @class
  * Initializes a new instance of the CLITest class.

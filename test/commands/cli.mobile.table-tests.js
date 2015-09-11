@@ -398,8 +398,8 @@ function tableTests(service) {
   it('table delete nonexisting table', function (done) {
     suite.execute('mobile table delete %s table1 -q --json', servicename, function (result) {
       result.exitStatus.should.equal(1);
-      console.log(result.text);
-      console.log(result.errorText);
+      //console.log(result.text);
+      //console.log(result.errorText);
       result.errorText.should.include('The table \'table1\' was not found');
       done();
     });

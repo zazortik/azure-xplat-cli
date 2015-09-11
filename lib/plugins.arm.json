@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into. Used for login as service principal or parnter user"
+          "description": "Tenant domain or ID to log into"
         },
         {
           "flags": "-q --quiet",
@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -608,14 +608,6 @@
                   "description": "The resource ID to obtain AD tokens for"
                 },
                 {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
-                },
-                {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
                   "required": -24,
                   "optional": 0,
@@ -630,6 +622,22 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
                 },
                 {
                   "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
@@ -730,12 +738,12 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
@@ -744,14 +752,6 @@
                   "bool": true,
                   "long": "--active-directory-resource-id",
                   "description": "The resource ID to obtain AD tokens for"
-                },
-                {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -768,6 +768,22 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
                 },
                 {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
@@ -10113,73 +10129,73 @@
               ]
             },
             {
-             "name": "stop",
-             "description": "Stops a deployment",
-             "fullName": "group deployment stop",
-             "usage": "[options] <resource-group> [deployment-name]",
-             "filePath": "commands/arm/group/group.deployment._js",
-             "options": [
-                 {
-                     "flags": "-v, --verbose",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-v",
-                     "long": "--verbose",
-                     "description": "use verbose output"
-                 },
-                 {
-                     "flags": "-vv",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "-vv",
-                     "description": "more verbose with debug output"
-                 },
-                 {
-                     "flags": "--json",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "--json",
-                     "description": "use json output"
-                 },
-                 {
-                     "flags": "-g --resource-group <resourceGroup>",
-                     "required": -21,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-g",
-                     "long": "--resource-group",
-                     "description": "the name of the resource group"
-                 },
-                 {
-                     "flags": "-q --quiet",
-                     "required": 0,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-q",
-                     "long": "--quiet",
-                     "description": "quiet mode (do not ask for stop deployment confirmation)"
-                 },
-                 {
-                     "flags": "-n --name <name>",
-                     "required": -11,
-                     "optional": 0,
-                     "bool": true,
-                     "short": "-n",
-                     "long": "--name",
-                     "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
-                 },
-                 {
-                     "flags": "--subscription <subscription>",
-                     "required": -16,
-                     "optional": 0,
-                     "bool": true,
-                     "long": "--subscription",
-                     "description": "the subscription identifier"
-                 }
-             ]
+              "name": "stop",
+              "description": "Stops a deployment",
+              "fullName": "group deployment stop",
+              "usage": "[options] <resource-group> [deployment-name]",
+              "filePath": "commands/arm/group/group.deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-q --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for stop deployment confirmation)"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the deployment (if not specified, the currently running deployment is stopped)"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
             },
             {
               "name": "delete",
@@ -21828,6 +21844,393 @@
               "categories": {}
             }
           }
+        },
+        "gateway": {
+          "name": "gateway",
+          "description": "Commands to manage Gateways",
+          "fullName": "network gateway",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "local-network": {
+              "name": "local-network",
+              "description": "Commands to manage Local Network Gateways",
+              "fullName": "network gateway local-network",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create a local network gateway",
+                  "fullName": "network gateway local-network create",
+                  "usage": "[options] <resource-group> <name> <location>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-a, --address-space <address-space>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-space",
+                      "description": "the local network site address space"
+                    },
+                    {
+                      "flags": "-i, --ip-address <ip-address>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--ip-address",
+                      "description": "the IP address of the local network site"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this local network gateway.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set a local network gateway",
+                  "fullName": "network gateway local-network set",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-a, --address-space <address-space>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-space",
+                      "description": "the local network site address space"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this local network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all local networks gateways",
+                  "fullName": "network gateway local-network list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Get a local network gateway",
+                  "fullName": "network gateway local-network show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a local network gateway",
+                  "fullName": "network gateway local-network delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the local network"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
@@ -22034,6 +22437,560 @@
               "short": "-s",
               "long": "--subscription",
               "description": "Subscription to register"
+            }
+          ]
+        }
+      ],
+      "categories": {
+        "operations": {
+          "name": "operations",
+          "description": "Commands to get the operations or actions allowed by an Azure resource provider.",
+          "fullName": "provider operations",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Show operations for the requested provider action string. The command takes as input an action string (with possible wildcard (*) character(s)) which determines the action details to display.",
+              "fullName": "provider operations show",
+              "usage": "[options] <actionString>",
+              "filePath": "commands/arm/providers/provider.operations._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-a --actionString <actionString>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--actionString",
+                  "description": "The provider action string (with possible wildcard (*) characters). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "Subscription to show provider operations for"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
+    "rediscache": {
+      "name": "rediscache",
+      "description": "Commands to manage your Azure Redis Cache(s)",
+      "fullName": "rediscache",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create a Redis Cache",
+          "fullName": "rediscache create",
+          "usage": "[--name <name> --resource-group <resource-group> --location <location> [options]]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "Location to create cache."
+            },
+            {
+              "flags": "-z, --size <size>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-z",
+              "long": "--size",
+              "description": "Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6]"
+            },
+            {
+              "flags": "-x, --sku <sku>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-x",
+              "long": "--sku",
+              "description": "Redis SKU. Should be one of : [Basic, Standard]"
+            },
+            {
+              "flags": "-m, --max-memory-policy <max-memory-policy>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-m",
+              "long": "--max-memory-policy",
+              "description": "MaxMemoryPolicy property of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+            },
+            {
+              "flags": "-e, --enable-non-ssl-port",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--enable-non-ssl-port",
+              "description": "EnableNonSslPort property of the Redis Cache. Add this flag if you want to enable the Non SSL Port for your cache"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing Redis Cache",
+          "fullName": "rediscache delete",
+          "usage": "[--name <name> --resource-group <resource-group> ]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which the cache exists"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List all Redis Caches within your Subscription or Resource Group",
+          "fullName": "rediscache list",
+          "usage": "[options]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show properties of an existing Redis Cache",
+          "fullName": "rediscache show",
+          "usage": "[--name <name> --resource-group <resource-group>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Change settings of an existing Redis Cache",
+          "fullName": "rediscache set",
+          "usage": "[--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "-m, --max-memory-policy <max-memory-policy>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-m",
+              "long": "--max-memory-policy",
+              "description": "Max Memory Policy of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "renew-key",
+          "description": "Renew the authentication key for an existing Redis Cache",
+          "fullName": "rediscache renew-key",
+          "usage": "[--name <name> --resource-group <resource-group> ]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which cache exists"
+            },
+            {
+              "flags": "-t, --key-type <key-type>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--key-type",
+              "description": "type of key to renew"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list-keys",
+          "description": "Lists Primary and Secondary key of an existing Redis Cache",
+          "fullName": "rediscache list-keys",
+          "usage": "[--name <name> --resource-group <resource-group>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which Cache exists"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
             }
           ]
         }
@@ -22581,6 +23538,15 @@
               "description": "If given, display only the custom roles instead of all role definitions"
             },
             {
+              "flags": "-d --detailed",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--detailed",
+              "description": "If given, displays all the properties of role definitions"
+            },
+            {
               "flags": "--subscription <subscription>",
               "required": -16,
               "optional": 0,
@@ -22643,7 +23609,7 @@
         },
         {
           "name": "create",
-          "description": "create a new role definition",
+          "description": "Create a new role definition. The role definition for a new custom role MUST contain the DisplayName, Actions and the AssignableScopes properties. The role definition MAY contain the Description and NotActions property.",
           "fullName": "role create",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -22703,7 +23669,7 @@
         },
         {
           "name": "set",
-          "description": "update an existing role definition",
+          "description": "Update an existing role definition. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes",
           "fullName": "role set",
           "usage": "[options] [inputfile] [roledefinition]",
           "filePath": "commands/arm/role/role.definition._js",
@@ -22740,7 +23706,7 @@
               "bool": true,
               "short": "-f",
               "long": "--inputfile",
-              "description": "File name containing a single role definition."
+              "description": "File name containing a single role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required."
             },
             {
               "flags": "-r --roledefinition <roledefinition>",
@@ -22749,7 +23715,83 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401/providers/Microsoft.Authorization/roleDefinitions/52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Deletes an existing custom role definition in Azure RBAC. The role definition to delete is provided using the Id property of the role definition.Use list or show roleName to determine the role definition to be deleted.",
+          "fullName": "role delete",
+          "usage": "[options] [id] [name]",
+          "filePath": "commands/arm/role/role.definition._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--id <id>",
+              "required": -6,
+              "optional": 0,
+              "bool": true,
+              "long": "--id",
+              "description": "Id of the Role definition to be deleted"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the role definition name"
+            },
+            {
+              "flags": "-q --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "If set, does not prompt for a confirmation before deleting the custom role"
+            },
+            {
+              "flags": "--passthru",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--passthru",
+              "description": "If set, displays the properties of deleted custom role"
             },
             {
               "flags": "--subscription <subscription>",
@@ -23857,6 +24899,22 @@
               "bool": true,
               "long": "--tags",
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
+            },
+            {
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enable-boot-diagnostics",
+              "description": "The switch parameter to enable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--boot-diagnostics-storage-uri",
+              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             }
           ]
         },
@@ -24692,6 +25750,75 @@
           ]
         },
         {
+          "name": "get-serial-output",
+          "description": "Get serial output of a VM in a resource group.",
+          "fullName": "vm get-serial-output",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            },
+            {
+              "flags": "--max-length <max-length>",
+              "required": -14,
+              "optional": 0,
+              "bool": true,
+              "long": "--max-length",
+              "description": "the max number of characters shown in one page of log output"
+            }
+          ]
+        },
+        {
           "name": "reset-access",
           "description": "Enables you to reset Remote Desktop Access or SSH settings on a Virtual Machine and to reset the password for the account that has administrator or sudo authority.",
           "fullName": "vm reset-access",
@@ -24918,6 +26045,30 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--disable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--enable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enable-boot-diagnostics",
+              "description": "The switch parameter to enable the boot diagnostics for VM."
+            },
+            {
+              "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--boot-diagnostics-storage-uri",
+              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             }
           ]
         },
@@ -24961,6 +26112,94 @@
               "short": "-l",
               "long": "--location",
               "description": "the location"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "enable-diag",
+          "description": "Enable diagnostics extension on a VM in a resource group.",
+          "fullName": "vm enable-diag",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-a, --storage-account-name <name>",
+              "required": -28,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--storage-account-name",
+              "description": "the storage account name"
+            },
+            {
+              "flags": "-c, --config-file <path>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--config-file",
+              "description": "path for WadCfg config file"
+            },
+            {
+              "flags": "-e, --extension-version <version>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--extension-version",
+              "description": "Version of Diagnostics extension. Default values are [1.4] for Windows and [2.0] for Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",

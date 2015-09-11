@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into. Used for login as service principal or parnter user"
+          "description": "Tenant domain or ID to log into"
         },
         {
           "flags": "-q --quiet",
@@ -702,14 +702,6 @@
                   "description": "The resource ID to obtain AD tokens for"
                 },
                 {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
-                },
-                {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
                   "required": -24,
                   "optional": 0,
@@ -732,6 +724,22 @@
                   "bool": true,
                   "long": "--active-directory-graph-api-version",
                   "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
+                },
+                {
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 }
               ]
             },
@@ -784,12 +792,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
-                  "required": -38,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-graph-api-version",
-                  "description": "the Active Directory api version"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -840,14 +848,6 @@
                   "description": "The resource ID to obtain AD tokens for"
                 },
                 {
-                  "flags": "--common-tenant-name <commonTenantName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--common-tenant-name",
-                  "description": "the Active Directory common tenant name"
-                },
-                {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
                   "required": -24,
                   "optional": 0,
@@ -862,6 +862,22 @@
                   "bool": true,
                   "long": "--active-directory-graph-resource-id",
                   "description": "the Active Directory resource ID"
+                },
+                {
+                  "flags": "--active-directory-graph-api-version <activeDirectoryGraphApiVersion>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-graph-api-version",
+                  "description": "the Active Directory api version"
+                },
+                {
+                  "flags": "--storage-endpoint-suffix <storageEndpointSuffix>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-endpoint-suffix",
+                  "description": "the endpoint suffix for storage accounts"
                 },
                 {
                   "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
@@ -17571,7 +17587,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--next-hop-type",
-                      "description": "the route next hop type, valid values are:\n       [VPNGateway,VirtualAppliance]"
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VPNGateway]"
                     },
                     {
                       "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
@@ -17580,7 +17596,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--next-hop-ip-address",
-                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirualAppliance"
+                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirtualAppliance"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -27578,7 +27594,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--docker-port",
-                  "description": "Port to use for docker [2376]"
+                  "description": "Port to use for docker [undefined]"
                 },
                 {
                   "flags": "-C, --docker-cert-dir [dir]",
