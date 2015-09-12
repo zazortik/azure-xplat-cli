@@ -24625,7 +24625,78 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "changelog": {
+              "name": "changelog",
+              "fullName": "role assignment changelog",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List change logs for Microsoft.Authorization provider.",
+                  "fullName": "role assignment changelog list",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/role/role.assignment.audit._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-b --startTime <startTime>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--startTime",
+                      "description": "The start time of the query. In ISO format with explicit indication of timezone: 1970-01-01T00:00:00Z, 1970-01-01T00:00:00-0500"
+                    },
+                    {
+                      "flags": "-e --endTime <endTime>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--endTime",
+                      "description": "The end time of the query. In ISO format with explicit indication of timezone: 1970-01-01T00:00:00Z, 1970-01-01T00:00:00-0500"
+                    },
+                    {
+                      "flags": "-s --subscription <subscription>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription identifier."
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
