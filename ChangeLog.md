@@ -17,7 +17,7 @@
   * Supported AzureChinaCloud environment when the active account is in it
   * Switched from azure-storage-legacy to azure-storage
 * Authentication
-  * Enabled 2 factor authentication for org-id user accounts
+  * Enabled 2 factor authentication for org-id user accounts **(NOTE: this does not enable Microsoft Service Accounts like @live.com, etc...)**
 * Network
   * Fixed network vnet delete when there is only one network
   * Implemented Local Networks Gateways commands
