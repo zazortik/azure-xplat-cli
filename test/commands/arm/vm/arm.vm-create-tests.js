@@ -69,7 +69,7 @@ describe('arm', function() {
         vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
-        dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+        dnsPrefix = suite.generateId(dnsPrefix, null);
         tags = 'a=b;b=c;d=';
 
         // Get real values from test/data/testdata.json file and assign to the local variables
