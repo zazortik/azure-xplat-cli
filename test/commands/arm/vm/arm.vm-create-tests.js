@@ -98,6 +98,7 @@ describe('arm', function() {
       it('create should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
+          vmTest.deleteUsedGroup(groupName, suite);
           vmTest.createGroup(groupName, location, suite, function(result) {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
