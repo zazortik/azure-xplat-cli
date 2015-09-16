@@ -1,4 +1,36 @@
-2015.08.19 Version 0.9.8
+## 2015.09.11 Version 0.9.9
+* Redis Cache
+  * Implemented create, set, show, list, list-keys, renew-key and delete commands
+* Resource Provider operations
+  * Implemented the Resource Provider operations show command
+* Compute
+  * Added support for IAAS diag and Linux diag extensions.
+  * Fixed compute bugs
+  * Added test cases for IAAS diagnostics extension.
+  * Added test cases to address bug fixes
+  * Updated recordings with minor refactoring
+  * Implemented Set/Get Diagnostics Profile and Log
+* KeyVault
+  * Added environment parameter for keyvault dns suffix
+* Storage
+  * Improved user experience by checking the source size and ensured it doesn't exceed dest object limitation before data transfer
+  * Supported AzureChinaCloud environment when the active account is in it
+  * Switched from azure-storage-legacy to azure-storage
+* Authentication
+  * Enabled 2 factor authentication for org-id user accounts **(NOTE: this does not enable Microsoft Service Accounts like @live.com, etc...)**
+* Network
+  * Fixed network vnet delete when there is only one network
+  * Implemented Local Networks Gateways commands
+  * ASM: network nsg rule create command can now handle asterisk symbols on linux. Fixed issue #2002
+* Authorization
+  * Fixed formatting of role commands
+* General Fixes
+  * Cleaned up test run output by not emitting out errors to the console
+  * Wired up code coverage npm 
+  * Improved  utils.indexOfCaseIgnore() by making it return  -1  instead of  null  when item not found. Fixed issue #2077.
+  * Added a separate VM testlist for ARM
+
+## 2015.08.19 Version 0.9.8
 * Storage
   * Update azure-storage to 0.5.0 which supports Azure storage service version 2015-02-21
   * Support append blob
@@ -42,7 +74,7 @@
   * Upgraded request library dependency to version 2.52.0
   * Added default Visual Studio nodejs project for xplat cli
 
-2015.08.05 Version 0.9.7
+## 2015.08.05 Version 0.9.7
 * General command improvement
   * Fix the broken "help" command
   * Performance improvement on displaying command help information
@@ -63,7 +95,7 @@
     * Route Tables
     * NIC
 
-2015.07.20 Version 0.9.6
+## 2015.07.20 Version 0.9.6
 * ASM
   *  Network
     * Added commands to manage routes and route table
@@ -81,7 +113,7 @@
   * Site
     * Fixed streamline precompiler issues with azure site commands 
 
-2015.06.26 Version 0.9.5
+## 2015.06.26 Version 0.9.5
 * ARM
   * WebApp
     * Added create, delete, show, list, start, stop and restart commands
@@ -94,11 +126,11 @@
     * Bug fixes for Issues #1666, Added support for PHP version 5.6
     * Remove support PHP version 5.3 for web site options
 
-2015.06.05 Version 0.9.4
+## 2015.06.05 Version 0.9.4
 * ARM
   * Fix group deployment create bug. Users should now be able to successfully submit template deployments
 
-2015.05.29 Version 0.9.3
+## 2015.05.29 Version 0.9.3
 * General Fixes
   * Performance improvement of general command loading
   * Support login with partner tenant
@@ -122,7 +154,7 @@
     * Chef Extension
       * Implemented new option --delete-chef-config for set-chef extension commands
 
-2015.05.04 Version 0.9.2
+## 2015.05.04 Version 0.9.2
 * ARM
   * Network
     * Commands to manage DNS Zone and DNS Zone recordset
@@ -133,7 +165,7 @@
   * ApiApp
     * Added package create command
 
-Version 0.9.1
+## Version 0.9.1
 * ARM
   * Virtual machines
     * Support for managing virtual machine resource in CRP stack, this includes commands to
@@ -184,7 +216,7 @@ Version 0.9.1
         * Refactored mobile tests into separate files
         * Optimized mocked test time run for mobile tests
 
-2015.03.27 Version 0.8.17
+## 2015.03.27 Version 0.8.17
 *  General Fixes
   * Fixed Improper JSON for vm image show #1611
   * Fixed account-affinitygroup show command #1633
@@ -197,7 +229,7 @@ Version 0.9.1
   * Reduced the time to run mocked tests
   * Every test can be recorded to its individual test file
 
-2015.03.04 Version 0.8.16
+## 2015.03.04 Version 0.8.16
 * VM
   * Feature
     * azure vm extension set-chef
@@ -221,11 +253,11 @@ Version 0.9.1
   * Restricted use of jshint to version <= 2.6.0 due to issues with later versions
   * Fixed issues when azure cli is used via proxy
 
-2015.02.17 Version 0.8.15
+## 2015.02.17 Version 0.8.15
 * Used "Microsoft Azure Client Library for node" version 0.10.4
 * Added custom domains functionality to mobile service commands
 
-2015.01.22 Version 0.8.14
+## 2015.01.22 Version 0.8.14
 * Storage
   * Added support for storage "stored access policy" and update storage SDK
   * Added support for creating XIO storage accounts
@@ -245,7 +277,7 @@ Version 0.9.1
   * Fixed managing two subscriptions with same name issue
   * Updated Readme.md with Ubuntu installation instructions
 
-2014.12.05 Version 0.8.13
+## 2014.12.05 Version 0.8.13
 * Upgraded the sites cli to work with latest breaking changes in the Azure Web Sites API.
 * Upgraded the storage cli to work with latest breaking changes in the Azure Storage API.
 * Added an option to delete SB Namepsace in mobile delete command
@@ -259,7 +291,7 @@ Version 0.9.1
 * SERVICE
   * Support for internal load balancer
 
-2014.11.12 Version 0.8.12
+## 2014.11.12 Version 0.8.12
 * Fix Mobile CLI Tests and recorded mocks
 * Fix for HDInsight commands in Azure China environment
 * Storage
@@ -272,7 +304,7 @@ Version 0.9.1
   * Commands to manage virtual machine public IP
   * Support for creating virtual machine from VM image
 
-2014.10.27 Version 0.8.11
+## 2014.10.27 Version 0.8.11
 * Credential store bug fixes
   * Clean credential store on account clear command
   * Remove old credential entries on login
@@ -286,7 +318,7 @@ Version 0.9.1
   * Add SAS token support for blob download/copy
 * Documentation and helper commands to enable Fiddler tracing
 
-2014.10.02 Version 0.8.10
+## 2014.10.02 Version 0.8.10
 * VM
   * Create and manage VM extensions
   * Create and manage reserved IP addresses
@@ -305,7 +337,7 @@ Version 0.9.1
 * Fixed website tests
 * Fixed the test recording infrastructure
 
-2014.09.10 Version 0.8.8
+## 2014.09.10 Version 0.8.8
 * Role-based access control support
   *  Query role definition
       Azure role list
@@ -348,14 +380,14 @@ Version 0.9.1
       azure storage queue delete
   *  Switched storage library to Azure storage module
 
-2014.08.04 Version 0.8.7
+## 2014.08.04 Version 0.8.7
 * Fixed issues with vm commands (vm image, vm docket create)
 * Added support for A8, A9 vm sizes in vm create command
 * Fixed user logout scenario issues and bumped up the credential size
 * Rebranding from Windows Azure to Microsoft Azure
 * Test fixes
 
-2014.07.16 Version 0.8.6
+## 2014.07.16 Version 0.8.6
 * Store user credentials in the windows credential store
 * Azure Resource Manager Tags (in arm mode)
   * azure tag create/list/show/delete
@@ -363,7 +395,7 @@ Version 0.9.1
   * tags parameter in azure group list and azure resource list
 * Support PHP version 5.5 for web site options
 
-2014.07.07 Version 0.8.5
+## 2014.07.07 Version 0.8.5
 * Active directory authentication support for
   * azure vm
   * azure vnet
@@ -372,20 +404,20 @@ Version 0.9.1
   * azure vm docker create
 * Store active drectory token in key chain on Mac
 
-2014.05.30 Version 0.8.4
+## 2014.05.30 Version 0.8.4
 * Active directory support for AzureChinaCloud
 * Bug fixes for AzureChinaCloud endpoints
 * Dropped support for Node version 0.6
 * Test system improvements
 
-2014.05.07 Version 0.8.3
+## 2014.05.07 Version 0.8.3
 * Bug fixes
 * Engineering and infrastructure improvements
 
-2014.04.10 Version 0.8.2
+## 2014.04.10 Version 0.8.2
 * Hotfix to correct issue with azure mobile create command
 
-2014.04.03 Version 0.8.0
+## 2014.04.03 Version 0.8.0
 * Azure Resource Manager commands (preview)
   * "azure config" mode to switch mode between service management and resource manager.
   * Resource groups
@@ -405,19 +437,19 @@ Version 0.9.1
     * azure network
     * azure mobile
 
-2014.01.20 - version 0.7.5
+## 2014.01.20 - version 0.7.5
 * Added web site slots support
 * Added web jobs support
 * CloudInit support for Ubuntu VM via "azure vm create -d"
 * Multiple bugfixes
 
-2013.11.13 - version 0.7.4
+## 2013.11.13 - version 0.7.4
 * azure site set --web-socket --disable-web-socket to enable/disable WebSocket
 * azure site set --remote-debugging --disable-remote-debugging --remote-debugging-version to enable/disable/set remote debugging for .NET application.
 * azure site set --managed-pipeline-mode to choose between Classic and Integrated.
 * Multiple bugfixes
 
-2013.10.18 - version 0.7.3
+## 2013.10.18 - version 0.7.3
 * #961 - Fixed issue with site connection strings
 * #712 - Add support for VM shutdown on stop
 * #876 - Improve azure site show appearance
@@ -428,10 +460,10 @@ Version 0.9.1
 * Upgrade to latest SDK (which uses generated website wrappers)
 * Supports the new high-memory A5 instance size (2 cores, 14GB RAM)
 
-2013.09.24 - version 0.7.2
+## 2013.09.24 - version 0.7.2
 * Multiple bugfixes
 
-2013.08.26 - version 0.7.1
+## 2013.08.26 - version 0.7.1
 * Added blob storage commands
   * azure storage blob list
   * azure storage blob show
@@ -441,7 +473,7 @@ Version 0.9.1
 * Added azure account cert export
 * Multiple bug fixes
 
-2013.07.31 - version 0.7.0
+## 2013.07.31 - version 0.7.0
 * Added network commands
 * Added more site commands
   * azure site set
@@ -459,7 +491,7 @@ Version 0.9.1
 * Improved and updated setup experience
 * Multiple bug fixes and test infrastructure improvement
 
-2013.07.15 - version 0.6.18
+## 2013.07.15 - version 0.6.18
 * Added website diagnostics configuration command
   * azure site log set
 * Added more storage container commands
@@ -471,7 +503,7 @@ Version 0.9.1
 * Made module global by default
 * Added scenario tests
 
-2013.06.20 - version 0.6.17
+## 2013.06.20 - version 0.6.17
 * HDInsight commands
 * Added cucumber tests
 * Multiple fixes to support Azure China
@@ -481,30 +513,30 @@ Version 0.9.1
 * Command to list Microsoft Azure Storage container
   * azure storage container list
 
-2013.05.13 - version 0.6.16
+## 2013.05.13 - version 0.6.16
 * Fixed issue with registered resources on account import.
 * Fixed jsHint errors.
 * Multiple fixes to support different REST endpoints / environments.
 * Dinamicaly fetch locations for websites instead of hardcoding them.
 * Fixed issues around first website creation to enable this scenario more easily.
 
-2013.04.21 - version 0.6.15
+## 2013.04.21 - version 0.6.15
 * Locked package.json dependencies to patch versions.
 
-2013.04.03 - version 0.6.14
+## 2013.04.03 - version 0.6.14
 * Adding node 0.10 support.
 * Fixed issue when importing publishsettings files for a brand new Azure account.
 
-2013.03.19 - version 0.6.13
+## 2013.03.19 - version 0.6.13
 * Switch "azure site repository delete" to use the new api.  Old api will be deprecated in 08/13 and users using old SDK will need upgrade.
 * Adding support for creating and deleting affinity groups
 * Changed the option names to --description and --affinity-group on the storage command
 * "azure site scale" - change the scaling mode of websites
 
-2013.03.12 - Version 0.6.12
+## 2013.03.12 - Version 0.6.12
 * Added constraint to package.json to restrict to node versions < 0.9.
 
-2012.12.12 - Version 0.6.11
+## 2012.12.12 - Version 0.6.11
 * "azure sql" - manage Azure SQL Server servers, databases and firewall rules
 * "azure site log tail" - realtime streaming logs over Microsoft Azure.
 * "azure mobile script upload" - now supports shared and scheduler scripts #179
@@ -514,11 +546,11 @@ Version 0.9.1
 * "azure mobile data truncate" - allows truncating mobile tables #164
 * "azure site deploymentscript" - bunch of fixes
 
-2012.12.22 - Version 0.6.10
+## 2012.12.22 - Version 0.6.10
 * Fix require issue with unix based systems
 * Fix issue with deployment scripts
 
-2012.12.12 - Version 0.6.9
+## 2012.12.12 - Version 0.6.9
 * "azure portal" - replaces "azure vm portal" and "azure site portal".
 * "azure mobile" - Manages Azure Mobile Services
 * "azure sb namespace" - Manages Service Bus namespaces
@@ -526,7 +558,7 @@ Version 0.9.1
 * "azure vm create -o" - Create VMs using community/OSS images
 * "azure vm endpoint create-multiple" - Create multiple VM endpoints in one shot.
 
-2012.11.20 - Version 0.6.8
+## 2012.11.20 - Version 0.6.8
 * Initial release of stand alone CLI.
 * New commands for managing storage accounts
 * Support for new .publishsettings file format
@@ -534,48 +566,48 @@ Version 0.9.1
 
 ========== CLI Split =========
 
-2012.10.15 Version 0.6.7
+## 2012.10.15 Version 0.6.7
  * Adding connection strings support for storage and service bus
  * Fixing issue with EMULATED and explicit variables making the later more relevant
  * Adding Github support
  * Adding website application settings support
 
-2012.10.12 Version 0.6.6
+## 2012.10.12 Version 0.6.6
  * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
 
-2012.10.01 Version 0.6.5
+## 2012.10.01 Version 0.6.5
  * Bugfixing
 
-2012.09.18 Version 0.6.4
+## 2012.09.18 Version 0.6.4
  * Multiple Bugfixes around blob streaming
 
-2012.09.09 Version 0.6.3
+## 2012.09.09 Version 0.6.3
  * Fixing issue with xml2js
 
-2012.08.15 Version 0.6.2
+## 2012.08.15 Version 0.6.2
  * Multiple Bugfixes
 
-2012.07.02 Version 0.6.1
+## 2012.07.02 Version 0.6.1
  * Multiple Bugfixes
  * Adding subscription setting and listing functionality.
 
-2012.06.06 Version 0.6.0
+## 2012.06.06 Version 0.6.0
  * Adding CLI tool
  * Multiple Bugfixes
 
-2012.04.19 Version 0.5.3
+## 2012.04.19 Version 0.5.3
  * Service Runtime Wrappers
  * Multiple Bugfixes
  * Unit tests converted to mocha and code coverage made easy through JSCoverage
 
-2012.02.10 Version 0.5.2
+## 2012.02.10 Version 0.5.2
  * Service Bus Wrappers
  * Storage Services UT run against a mock server.
  * Node.exe version requirement lowered to raise compatibility.
  * Multiple Bugfixes
 
-2011.12.14 Version 0.5.1
+## 2011.12.14 Version 0.5.1
  * Multiple bug fixes
 
-2011.12.09 Version 0.5.0
+## 2011.12.09 Version 0.5.0
  * Initial Release

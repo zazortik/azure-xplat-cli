@@ -11,6 +11,7 @@ commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
 commands/arm/role/arm.role-tests.js
+commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
 commands/arm/ad/adUtils-test.js
@@ -55,6 +56,8 @@ commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
 commands/arm/network/arm.network.route-table-tests.js
 commands/arm/network/arm.network.route-table-routes-tests.js
+commands/arm/network/arm-network-gateway-local-network-tests.js
+commands/arm/network/arm-network-gateway-vnet-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js

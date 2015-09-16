@@ -71,7 +71,7 @@ describe('arm', function () {
       cacheName = suite.generateId(cachePrefix, knownNames);
       newCacheName = suite.generateId(cachePrefix, knownNames);
 
-      suite.execute('group create %s --location %s', testResourceGroup, testLocation, function () {
+      suite.execute('group create %s --location %s --json', testResourceGroup, testLocation, function () {
         done();
       });
     });
@@ -79,7 +79,7 @@ describe('arm', function () {
 
 
   after(function (done) {
-    suite.execute('group delete %s --quiet', testResourceGroup, function () {
+    suite.execute('group delete %s --quiet --json', testResourceGroup, function () {
       suite.teardownSuite(done);
     });
   });
@@ -140,7 +140,7 @@ describe('arm', function () {
       suite.execute('rediscache list-keys --name %s --resource-group %s --json', cacheName, testResourceGroup, function (result) {
         result.exitStatus.should.be.equal(0);
         var cacheJson = JSON.parse(result.text);
-        console.log('res : ' + util.inspect(cacheJson));
+        //console.log('res : ' + util.inspect(cacheJson));
         cacheJson.primaryKey.should.not.be.null;
         done();
       });
