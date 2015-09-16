@@ -24634,7 +24634,7 @@
               "commands": [
                 {
                   "name": "list",
-                  "description": "List change logs for Microsoft.Authorization provider.",
+                  "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
                   "fullName": "role assignment changelog list",
                   "usage": "[options]",
                   "filePath": "commands/arm/role/role.assignment.audit._js",
@@ -24671,7 +24671,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--startTime",
-                      "description": "The start time of the query. In ISO format with explicit indication of timezone: 1970-01-01T00:00:00Z, 1970-01-01T00:00:00-0500"
+                      "description": "The start time of the query. E.g. \"2015-08-29 15:30\". If both startTime and endTime are not specified, defaults to the last one hour. Maximum query interval supported is 15 days."
                     },
                     {
                       "flags": "-e --endTime <endTime>",
@@ -24680,7 +24680,7 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--endTime",
-                      "description": "The end time of the query. In ISO format with explicit indication of timezone: 1970-01-01T00:00:00Z, 1970-01-01T00:00:00-0500"
+                      "description": "The end time of the query. E.g. \"2015-08-29 15:30\".If both startTime and endTime are not specified, defaults to the last one hour. Maximum query interval supported is 15 days."
                     },
                     {
                       "flags": "-s --subscription <subscription>",
@@ -27380,6 +27380,76 @@
                   "short": "-p",
                   "long": "--publisher",
                   "description": "the publisher name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list-versions",
+              "description": "Lists virtual machine extension image versions by publisher and type input",
+              "fullName": "vm extension list-versions",
+              "usage": "[options] <location> <publisher> <typeName>",
+              "filePath": "commands/arm/vm/vm._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location"
+                },
+                {
+                  "flags": "-p, --publisher <publisher>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--publisher",
+                  "description": "the publisher name"
+                },
+                {
+                  "flags": "-p, --typeName <typeName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--typeName",
+                  "description": "the type name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
