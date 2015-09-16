@@ -6,7 +6,7 @@
 # Disabling, do not want this run in automated test runs
 # commands/cli.mobile.migration-tests.js
 # TODO: This suite uses custom recording
-cli-tests.js
+commands/cli-auto-complete.tests.js
 commands/cli.account-tests.js
 commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
@@ -101,7 +101,7 @@ util/utils-tests.js
 util/set-tests.js
 util/authentication/adalAuth-tests.js
 util/profile/publishSettings-tests.js
-util/profile/environment-addaccount-tests.js
+util/profile/account-tests.js
 util/profile/profile-tests.js
 # Testing macos token management stuff
 util/authentication/osx-keychain-parser-tests.js
