@@ -24646,15 +24646,16 @@
           "categories": {
             "changelog": {
               "name": "changelog",
+              "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
               "fullName": "role assignment changelog",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "list",
-                  "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
+                  "description": "List all access changes",
                   "fullName": "role assignment changelog list",
-                  "usage": "[options]",
+                  "usage": "[options] [b startTime] [e endTime]",
                   "filePath": "commands/arm/role/role.assignment.audit._js",
                   "options": [
                     {
