@@ -24,6 +24,7 @@
   * ASM: network nsg rule create command can now handle asterisk symbols on linux. Fixed issue #2002
 * Authorization
   * Fixed formatting of role commands
+  * Added expandPrincipalGroups and includeClassicAdministrators options to role assignment list command
 * General Fixes
   * Cleaned up test run output by not emitting out errors to the console
   * Wired up code coverage npm 

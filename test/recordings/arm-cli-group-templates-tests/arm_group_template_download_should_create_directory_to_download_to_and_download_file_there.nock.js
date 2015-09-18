@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '4004a9fd-d58e-48dc-aeb2-4a4aec58606f',
+    name: 'Free Trial',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '1273adef-00a3-4086-a51a-dbcce1857d36',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,7 +21,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'South Central US';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
 };
 
 exports.scopes = [[function (nock) { 
@@ -37,10 +37,10 @@ nock('http://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=fb6d8b90aad24bae94dedbb8c0795d9a; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=0be2a5b71e3a40bf81f312ce9950f640; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:12 GMT',
   connection: 'close',
   'content-length': '2773' });
  return result; },
@@ -57,10 +57,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=fb6d8b90aad24bae94dedbb8c0795d9a; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=0be2a5b71e3a40bf81f312ce9950f640; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:12 GMT',
   connection: 'close',
   'content-length': '2773' });
  return result; },
@@ -77,10 +77,10 @@ nock('http://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=ebc00a2f4ba04a489ab243853df7b856; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=46a62692a26442299214800740448da6; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:13 GMT',
   connection: 'close',
   'content-length': '4675' });
  return result; },
@@ -97,10 +97,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=ebc00a2f4ba04a489ab243853df7b856; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=46a62692a26442299214800740448da6; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:13 GMT',
   connection: 'close',
   'content-length': '4675' });
  return result; },
@@ -118,11 +118,11 @@ nock('http://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=37308ade570e4cc49702177398b63117; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=40e4cc5d76a24dff9e9f5f81937ce42e; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -139,10 +139,10 @@ nock('https://gallery.azure.com:443')
   'x-xss-protection': '1; mode=block',
   'x-ms-version': '4.14.0.133 (a2a340b.150108-1230)',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'browserId=37308ade570e4cc49702177398b63117; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
+  'set-cookie': [ 'browserId=40e4cc5d76a24dff9e9f5f81937ce42e; domain=gallery.azure.com; path=/; secure; HttpOnly' ],
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 11 Sep 2015 17:49:38 GMT',
+  date: 'Thu, 17 Sep 2015 00:42:13 GMT',
   connection: 'close' });
  return result; }]];
