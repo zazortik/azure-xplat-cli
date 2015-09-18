@@ -30,4 +30,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['testrg13206','testserver17157','testdb18798'];};
+ exports.randomTestIdsGenerated = function() { return ['testrg11131','testserver16503','testdb13405'];};

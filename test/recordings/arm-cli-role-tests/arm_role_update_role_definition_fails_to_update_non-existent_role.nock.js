@@ -31,44 +31,44 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21?api-version=2015-05-01-preview')
+  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21?api-version=2015-07-01')
   .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID '43367f6e-e106-480d-a448-2a393ea5eb21' does not exist.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '152',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6bb5dccf-ebc6-4807-b8d9-7f56ff889ed1',
+  'x-ms-request-id': 'e1e1a847-af5f-4347-8d6c-46875d547c1b',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14940',
-  'x-ms-correlation-request-id': '81c06990-187b-4aa1-8a4b-905bfbe18614',
-  'x-ms-routing-request-id': 'WESTUS:20150918T204333Z:81c06990-187b-4aa1-8a4b-905bfbe18614',
-  date: 'Fri, 18 Sep 2015 20:43:33 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': 'bb5037e5-3263-40c1-9858-b58c7328374c',
+  'x-ms-routing-request-id': 'WESTUS:20150918T234358Z:bb5037e5-3263-40c1-9858-b58c7328374c',
+  date: 'Fri, 18 Sep 2015 23:43:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21?api-version=2015-05-01-preview')
+  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21?api-version=2015-07-01')
   .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID '43367f6e-e106-480d-a448-2a393ea5eb21' does not exist.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '152',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6bb5dccf-ebc6-4807-b8d9-7f56ff889ed1',
+  'x-ms-request-id': 'e1e1a847-af5f-4347-8d6c-46875d547c1b',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14940',
-  'x-ms-correlation-request-id': '81c06990-187b-4aa1-8a4b-905bfbe18614',
-  'x-ms-routing-request-id': 'WESTUS:20150918T204333Z:81c06990-187b-4aa1-8a4b-905bfbe18614',
-  date: 'Fri, 18 Sep 2015 20:43:33 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': 'bb5037e5-3263-40c1-9858-b58c7328374c',
+  'x-ms-routing-request-id': 'WESTUS:20150918T234358Z:bb5037e5-3263-40c1-9858-b58c7328374c',
+  date: 'Fri, 18 Sep 2015 23:43:58 GMT',
   connection: 'close' });
  return result; }]];
