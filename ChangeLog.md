@@ -1,3 +1,8 @@
+## 2015.10.01 Version 0.9.10
+* Authorization
+  * Fixed formatting of role assignments
+  * Added expandPrincipalGroups and includeClassicAdministrators options to role assignment list command
+  * Added new role assignment changelog list command that gives access change history for a subscription
 ## 2015.09.11 Version 0.9.9
 * Redis Cache
   * Implemented create, set, show, list, list-keys, renew-key and delete commands

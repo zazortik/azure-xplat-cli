@@ -18,8 +18,8 @@ set PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
 
-set NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
-set NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
+set NODE_DOWNLOAD_URL=https://nodejs.org/dist/v%NODE_VERSION%/node.exe
+set NPM_DOWNLOAD_URL=https://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
 
 echo Cleaning previous build artifacts...
 

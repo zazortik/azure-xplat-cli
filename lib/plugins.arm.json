@@ -24479,6 +24479,24 @@
                   "description": "Parent resource of the resource the role was assigned to, if there is any."
                 },
                 {
+                  "flags": "-e --expandPrincipalGroups",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--expandPrincipalGroups",
+                  "description": "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals."
+                },
+                {
+                  "flags": "-a --includeClassicAdministrators",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--includeClassicAdministrators",
+                  "description": "If specified, also returns the subscription classic administrators as role assignments."
+                },
+                {
                   "flags": "--subscription <subscription>",
                   "required": -16,
                   "optional": 0,
@@ -24628,15 +24646,16 @@
           "categories": {
             "changelog": {
               "name": "changelog",
+              "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
               "fullName": "role assignment changelog",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "list",
-                  "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
+                  "description": "List all access changes",
                   "fullName": "role assignment changelog list",
-                  "usage": "[options]",
+                  "usage": "[options] [b startTime] [e endTime]",
                   "filePath": "commands/arm/role/role.assignment.audit._js",
                   "options": [
                     {
