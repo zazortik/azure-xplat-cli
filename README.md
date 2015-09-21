@@ -91,6 +91,13 @@ sudo apt-get install -y nodejs
 sudo npm install -g azure-cli
 ```
 
+### Install on a Docker Host
+
+In a Docker host, run:  
+```bash
+sudo docker run -it microsoft/azure-cli 
+```
+
 ### Pre-compiled installers
 
 * [Windows](http://aka.ms/webpi-azure-cli)
