@@ -28000,7 +28000,7 @@
                   "bool": true,
                   "short": "-E",
                   "long": "--docker-extension-version",
-                  "description": "Version of Docker Azure extension [0.6]"
+                  "description": "Version of Docker Azure extension [1.0]"
                 },
                 {
                   "flags": "-c, --docker-cert-cn [CN]",

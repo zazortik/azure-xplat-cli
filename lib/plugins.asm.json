@@ -27594,7 +27594,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--docker-port",
-                  "description": "Port to use for docker [undefined]"
+                  "description": "Port to use for docker [2376]"
                 },
                 {
                   "flags": "-C, --docker-cert-dir [dir]",
