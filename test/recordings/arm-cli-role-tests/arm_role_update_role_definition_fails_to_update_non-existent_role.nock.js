@@ -25,7 +25,7 @@ exports.setEnvironment = function() {
   process.env['AZURE_AD_TEST_PASSWORD'] = 'Pa$$w0rd';
   process.env['AZURE_AD_TEST_GROUP_NAME'] = 'testgroupauto';
   process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandomauto';
+  process.env['AZURE_AD_TEST_SP_DISPLAY_NAME'] = 'mytestapprandomauto1234';
 };
 
 exports.scopes = [[function (nock) { 
@@ -37,17 +37,17 @@ nock('http://management.azure.com:443')
   'content-length': '152',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a685c5c0-3e4f-4fd6-8550-4b0091fe6212',
+  'x-ms-request-id': 'e1e1a847-af5f-4347-8d6c-46875d547c1b',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14935',
-  'x-ms-correlation-request-id': 'ca9f2f27-9241-4860-9e5f-4b9da76f294a',
-  'x-ms-routing-request-id': 'WESTUS:20150917T034348Z:ca9f2f27-9241-4860-9e5f-4b9da76f294a',
-  date: 'Thu, 17 Sep 2015 03:43:47 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': 'bb5037e5-3263-40c1-9858-b58c7328374c',
+  'x-ms-routing-request-id': 'WESTUS:20150918T234358Z:bb5037e5-3263-40c1-9858-b58c7328374c',
+  date: 'Fri, 18 Sep 2015 23:43:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -59,16 +59,16 @@ nock('https://management.azure.com:443')
   'content-length': '152',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a685c5c0-3e4f-4fd6-8550-4b0091fe6212',
+  'x-ms-request-id': 'e1e1a847-af5f-4347-8d6c-46875d547c1b',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14935',
-  'x-ms-correlation-request-id': 'ca9f2f27-9241-4860-9e5f-4b9da76f294a',
-  'x-ms-routing-request-id': 'WESTUS:20150917T034348Z:ca9f2f27-9241-4860-9e5f-4b9da76f294a',
-  date: 'Thu, 17 Sep 2015 03:43:47 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': 'bb5037e5-3263-40c1-9858-b58c7328374c',
+  'x-ms-routing-request-id': 'WESTUS:20150918T234358Z:bb5037e5-3263-40c1-9858-b58c7328374c',
+  date: 'Fri, 18 Sep 2015 23:43:58 GMT',
   connection: 'close' });
  return result; }]];
