@@ -102,6 +102,7 @@ describe('arm', function() {
             publisher = res.name;
             return res.name === extPublisher;
           }).should.be.true;
+          // store the publisher result, and verify it in 'list-image-types' test
           publisher = extPublisher;
           done();
         });
@@ -112,6 +113,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
+          // store the type result, and verify it in 'list-image-versions' test
           type = allResources[0].name;
           done();
         });
@@ -122,6 +124,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
+          // store the version result, and verify it in 'get-image' test
           version = allResources[0].name;
           done();
         });
