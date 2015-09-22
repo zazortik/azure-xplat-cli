@@ -60,7 +60,7 @@ describe('arm', function() {
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         sshcert = process.env.SSHCERT;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+        groupName = suite.generateId(groupPrefix, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -69,7 +69,7 @@ describe('arm', function() {
         vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
-        dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+        dnsPrefix = suite.generateId(dnsPrefix, null);
         tags = 'a=b;b=c;d=';
 
         // Get real values from test/data/testdata.json file and assign to the local variables
