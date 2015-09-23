@@ -24238,7 +24238,7 @@
               "name": "create",
               "description": "create a new role assignment",
               "fullName": "role assignment create",
-              "usage": "[options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24275,20 +24275,12 @@
                   "description": "Object id of an active directory user, group or service principal."
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "--signInName <signInName>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--upn",
-                  "description": "User principal name."
-                },
-                {
-                  "flags": "--mail <mail>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--mail",
-                  "description": "Mail of a user or group."
+                  "long": "--signInName",
+                  "description": "Sign-in name of a User."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24299,13 +24291,13 @@
                   "description": "Service Principal Name."
                 },
                 {
-                  "flags": "-o --role <role>",
-                  "required": -11,
+                  "flags": "-o --roleName <roleName>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
                   "short": "-o",
-                  "long": "--role",
-                  "description": "Role to assign the principals with."
+                  "long": "--roleName",
+                  "description": "Role name that the principal is assigned to."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24365,7 +24357,7 @@
               "name": "list",
               "description": "Get role assignment at a given scope",
               "fullName": "role assignment list",
-              "usage": "[options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24402,20 +24394,12 @@
                   "description": "Object id of an active directory user, group or service principal."
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "--signInName <signInName>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--upn",
-                  "description": "User principal name."
-                },
-                {
-                  "flags": "--mail <mail>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--mail",
-                  "description": "Mail of a user or group."
+                  "long": "--signInName",
+                  "description": "Sign-in name of a User."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24426,13 +24410,13 @@
                   "description": "Service Principal Name."
                 },
                 {
-                  "flags": "-o --role <role>",
-                  "required": -11,
+                  "flags": "-o --roleName <roleName>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
                   "short": "-o",
-                  "long": "--role",
-                  "description": "Role the principals was assigned to"
+                  "long": "--roleName",
+                  "description": "Role name that the principal is assigned to."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24510,7 +24494,7 @@
               "name": "delete",
               "description": "delete a role assignment",
               "fullName": "role assignment delete",
-              "usage": "[options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24547,20 +24531,12 @@
                   "description": "Object id of an active directory user, group or service principal"
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "--signInName <signInName>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--upn",
-                  "description": "User principal name."
-                },
-                {
-                  "flags": "--mail <mail>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--mail",
-                  "description": "Mail of a user or group."
+                  "long": "--signInName",
+                  "description": "Sign-in name of a user."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24571,13 +24547,13 @@
                   "description": "Service Principal Name."
                 },
                 {
-                  "flags": "-o --role <role>",
-                  "required": -11,
+                  "flags": "-o --roleName <roleName>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
                   "short": "-o",
-                  "long": "--role",
-                  "description": "Role to remove from the principals."
+                  "long": "--roleName",
+                  "description": "Role name that the principal is assigned to."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24595,7 +24571,7 @@
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
-                  "description": "Resource group to role was assigned to."
+                  "description": "Resource group the role is assigned to."
                 },
                 {
                   "flags": "-r --resource-type <resource-type>",
@@ -24604,7 +24580,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--resource-type",
-                  "description": "Type of the resource the role was assign to"
+                  "description": "Type of the resource the role is assigned to"
                 },
                 {
                   "flags": "-u --resource-name <resource-name>",
@@ -24613,7 +24589,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--resource-name",
-                  "description": "The resource the role was assigned to."
+                  "description": "The resource the role is assigned to."
                 },
                 {
                   "flags": "--parent <parent>",
@@ -24621,7 +24597,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--parent",
-                  "description": "Parent resource of the resource the role was assigned to, if there is any."
+                  "description": "Parent resource of the resource the role is assigned to, if there is any."
                 },
                 {
                   "flags": "-q --quiet",
@@ -24631,6 +24607,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "If specified, won't prompt before delete."
+                },
+                {
+                  "flags": "--passthru",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--passthru",
+                  "description": "If set, displays the properties of deleted role assignment"
                 },
                 {
                   "flags": "--subscription <subscription>",
