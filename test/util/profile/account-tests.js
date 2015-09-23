@@ -241,13 +241,23 @@ describe('Account loading with logon error', function () {
     });
   });
   
-  it('should return better error indicating user is using live id', function () {
+  it('should return better error indicating user is using non org-id', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('Server returned an unknown AccountType: undefined'));
     };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
       should.not.exist(err[account.MFAEnabledErrFieldName]);
-      (err.message.indexOf('you have used live account which is not supported') >= 0).should.be.true;
+      (err.message.indexOf('used an account type which is not supported') >= 0).should.be.true;
+    });
+  });
+  
+  it('should return better error indicating user is using live-id', function () {
+    adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
+      callback(new Error('Server returned error in RSTR - ErrorCode: NONE : FaultMessage: NONE'));
+    };
+    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
+      should.not.exist(err[account.MFAEnabledErrFieldName]);
+      (err.message.indexOf('used an account type which is not supported') >= 0).should.be.true;
     });
   });
   
