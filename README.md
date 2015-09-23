@@ -112,6 +112,7 @@ You can also install the Azure Xplat-CLI from sources using **git**  and **npm**
 git clone https://github.com/Azure/azure-xplat-cli.git
 cd ./azure-xplat-cli
 npm install
+bin/azure <command>
 ```
 
 ### Configure auto-complete
@@ -202,7 +203,7 @@ azure config mode arm # resource manager
 
 ## Docker
 
-Usage is same as standard vm create.
+Usage is the same as `vm create` command:
 
     azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
