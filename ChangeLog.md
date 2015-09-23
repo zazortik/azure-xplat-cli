@@ -1,7 +1,8 @@
 ## 2015.10.01 Version 0.9.10
 * Authorization
-  * Fixed formatting of role assignments
+  * Fixed display of role assignments display to add and remove certain fields.
   * Added expandPrincipalGroups and includeClassicAdministrators options to role assignment list command
+  * Updated all role assignment commands to take in a signInName parameter instead of upn and email and renamed the role parameter to roleName
   * Added new role assignment changelog list command that gives access change history for a subscription
 ## 2015.09.11 Version 0.9.9
 * Redis Cache
