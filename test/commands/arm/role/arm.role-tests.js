@@ -41,7 +41,7 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandomauto1234' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'mytestapprandomauto00123456' },
 ];
 
 describe('arm', function () {
@@ -407,9 +407,9 @@ describe('arm', function () {
       it('a role assignment under subscription should work', function (done) {
         var principalId = testUsers[0].objectId;
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
-        suite.execute('role assignment create --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
+        suite.execute('role assignment create --signInName %s -o %s --json', principal, TEST_ROLE_NAME, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list --upn %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
+          suite.execute('role assignment list --signInName %s -o %s --json', principal, TEST_ROLE_NAME, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '$';
@@ -422,7 +422,7 @@ describe('arm', function () {
               var assignments = JSON.parse(listResult.text);
               assignments.length.should.be.above(-1);
               //clean up
-              suite.execute('role assignment delete --upn %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
+              suite.execute('role assignment delete --signInName %s -o %s -q --json', principal, TEST_ROLE_NAME, function (result) {
                 result.exitStatus.should.equal(0);
                 done();
               });
@@ -434,9 +434,9 @@ describe('arm', function () {
       it('a role assignment under resource group should work', function (done) {
         var principalId = testUsers[0].objectId;
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
-        suite.execute('role assignment create --upn %s -o %s -g %s --json', principal, TEST_ROLE_NAME, testResourceGroup, function (result) {
+        suite.execute('role assignment create --signInName %s -o %s -g %s --json', principal, TEST_ROLE_NAME, testResourceGroup, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list --upn %s -o %s -g %s --json', principal, TEST_ROLE_NAME, testResourceGroup, function (listAssignmentResult) {
+          suite.execute('role assignment list --signInName %s -o %s -g %s --json', principal, TEST_ROLE_NAME, testResourceGroup, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + '$';
@@ -444,7 +444,7 @@ describe('arm', function () {
             }).should.be.true;
             
             //clean up
-            suite.execute('role assignment delete --upn %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, testResourceGroup, function (result) {
+            suite.execute('role assignment delete --signInName %s -o %s -g %s -q --json', principal, TEST_ROLE_NAME, testResourceGroup, function (result) {
               result.exitStatus.should.equal(0);
               done();
             });
@@ -462,8 +462,7 @@ describe('arm', function () {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + '$';
-              return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId &&
-                      res.properties.actions === "*");
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === adGroupObjectId);
             }).should.be.true;
             
             //clean up
@@ -485,8 +484,7 @@ describe('arm', function () {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + '$';
-              return (res.properties.scope.match(scopePattern) && res.properties.principalId === objectId &&
-                      res.properties.actions === "*");
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === objectId);
             }).should.be.true;
             
             //clean up
@@ -501,21 +499,20 @@ describe('arm', function () {
       it('a role assignment to access a child resource as a Reader using separate switches should work', function (done) {
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         var principalId = testUsers[0].objectId;
-        suite.execute('role assignment create --upn %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
+        suite.execute('role assignment create --signInName %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
                       'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('role assignment list --upn %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
+          suite.execute('role assignment list --signInName %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
                         'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (listAssignmentResult) {
             var assignments = JSON.parse(listAssignmentResult.text);
             assignments.some(function (res) {
               var scopePattern = '^/subscriptions/' + GUID_REGEXP + '/resourcegroups/' + testResourceGroup + 
                                  '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb + '$';
-              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId && 
-                      res.properties.actions === "*/read");
+              return (res.properties.scope.match(scopePattern) && res.properties.principalId === principalId);
             }).should.be.true;
             
             //clean up
-            suite.execute('role assignment delete --upn %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
+            suite.execute('role assignment delete --signInName %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
                           testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
               result.exitStatus.should.equal(0);
               done();
@@ -531,14 +528,14 @@ describe('arm', function () {
         var resourceGroupScope = subscriptionScope + '/resourcegroups/' + testResourceGroup;
         var resourceScope = resourceGroupScope + '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb;
         
-        suite.execute('role assignment create --upn %s --role %s --scope %s --json', principal, 'reader', subscriptionScope, function (result) {
+        suite.execute('role assignment create --signInName %s --roleName %s --scope %s --json', principal, 'reader', subscriptionScope, function (result) {
           result.exitStatus.should.equal(0);
           
-          suite.execute('role assignment create --objectId %s --role %s --scope %s --json', principalId, 'reader', resourceScope, function (result) {
+          suite.execute('role assignment create --objectId %s --roleName %s --scope %s --json', principalId, 'reader', resourceScope, function (result) {
             result.exitStatus.should.equal(0);
             
             // list without scope
-            suite.execute('role assignment list --upn %s --role %s --json', principal, 'reader', function (listAssignmentResult) {
+            suite.execute('role assignment list --signInName %s --roleName %s --json', principal, 'reader', function (listAssignmentResult) {
               listAssignmentResult.exitStatus.should.equal(0);
               var assignments = JSON.parse(listAssignmentResult.text);
               assignments.length.should.equal(2);
@@ -548,7 +545,7 @@ describe('arm', function () {
               }).should.be.true;
               
               // list for subscription scope
-              suite.execute('role assignment list --upn %s --role %s --scope %s --json', principal, 'reader', subscriptionScope, function (listAssignmentResult) {
+              suite.execute('role assignment list --signInName %s --roleName %s --scope %s --json', principal, 'reader', subscriptionScope, function (listAssignmentResult) {
                 listAssignmentResult.exitStatus.should.equal(0);
                 var assignments = JSON.parse(listAssignmentResult.text);
                 assignments.length.should.equal(1);
@@ -558,7 +555,7 @@ describe('arm', function () {
                 }).should.be.true;
                 
                 // delete for default scope
-                suite.execute('role assignment delete --upn %s -o %s -q --json --passthru', principal, 'reader', 
+                suite.execute('role assignment delete --signInName %s -o %s -q --json --passthru', principal, 'reader', 
                           function (result) {
                   result.exitStatus.should.equal(0);
                   var assignment = JSON.parse(result.text);
@@ -566,7 +563,7 @@ describe('arm', function () {
                       assignment.properties.roleName.toLowerCase() === "reader").should.be.true;
                   
                   // delete for resource scope
-                  suite.execute('role assignment delete --upn %s -o %s --scope %s -q --json --passthru', principal, 'reader', 
+                  suite.execute('role assignment delete --signInName %s -o %s --scope %s -q --json --passthru', principal, 'reader', 
                           resourceScope, function (result) {
                     result.exitStatus.should.equal(0);
                     var assignment = JSON.parse(result.text);
