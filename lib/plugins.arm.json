@@ -16817,6 +16817,386 @@
                 }
               ],
               "categories": {}
+            },
+            "inbound-nat-pool": {
+              "name": "inbound-nat-pool",
+              "description": "Commands to manage load balancer inbound NAT pools",
+              "fullName": "network lb inbound-nat-pool",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Add a load balancing inbound NAT pool to the load balancer",
+                  "fullName": "network lb inbound-nat-pool create",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the inbound NAT pool"
+                    },
+                    {
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the pool protocol [tcp,udp]"
+                    },
+                    {
+                      "flags": "-f, --frontend-port-range-start  <frontend-port-range-start>",
+                      "required": -34,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--frontend-port-range-start",
+                      "description": "the frontend port range start [0-65535]"
+                    },
+                    {
+                      "flags": "-e, --frontend-port-range-end <frontend-port-range-end>",
+                      "required": -31,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--frontend-port-range-end",
+                      "description": "the frontend port range end [0-65535]"
+                    },
+                    {
+                      "flags": "-b, --backend-port <backend-port>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--backend-port",
+                      "description": "the backend port"
+                    },
+                    {
+                      "flags": "-i, --frontend-ip <frontend-ip>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--frontend-ip",
+                      "description": "the name of the frontend ip configuration"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set a load balancing inbound NAT pool of load balancer",
+                  "fullName": "network lb inbound-nat-pool set",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the inbound NAT pool"
+                    },
+                    {
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the pool protocol [tcp,udp]"
+                    },
+                    {
+                      "flags": "-f, --frontend-port-range-start  <frontend-port-range-start>",
+                      "required": -34,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--frontend-port-range-start",
+                      "description": "the frontend port range start [0-65535]"
+                    },
+                    {
+                      "flags": "-e, --frontend-port-range-end <frontend-port-range-end>",
+                      "required": -31,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--frontend-port-range-end",
+                      "description": "the frontend port range end [0-65535]"
+                    },
+                    {
+                      "flags": "-b, --backend-port <backend-port>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--backend-port",
+                      "description": "the backend port"
+                    },
+                    {
+                      "flags": "-i, --frontend-ip <frontend-ip>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--frontend-ip",
+                      "description": "the name of the frontend ip configuration"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all load balancing inbound NAT pools of load balancer",
+                  "fullName": "network lb inbound-nat-pool list",
+                  "usage": "[options] <resource-group> <lb-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a load balancing inbound NAT pool from a load balancer",
+                  "fullName": "network lb inbound-nat-pool delete",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the inbound NAT pool"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
             }
           }
         },
@@ -24982,20 +25362,20 @@
               "description": "use json output"
             },
             {
-              "flags": "--reportedStartTime <reportedStartTime>",
+              "flags": "--reportedStartTime <datetime>",
               "required": -21,
               "optional": 0,
               "bool": true,
               "long": "--reportedStartTime",
-              "description": "The start of the time range to retrieve data for."
+              "description": "The start of the time range to retrieve data for, in UTC format."
             },
             {
-              "flags": "--reportedEndTime <reportedEndTime>",
+              "flags": "--reportedEndTime <datetime>",
               "required": -19,
               "optional": 0,
               "bool": true,
               "long": "--reportedEndTime",
-              "description": "The end of the time range to retrieve data for."
+              "description": "The end of the time range to retrieve data for, in UTC format."
             },
             {
               "flags": "--granularity <daily/hourly>",
