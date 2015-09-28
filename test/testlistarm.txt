@@ -11,6 +11,7 @@ commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
 commands/arm/role/arm.role-tests.js
+commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
 commands/arm/ad/adUtils-test.js
@@ -31,10 +32,10 @@ commands/arm/vm/arm.vm-create-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
 commands/arm/vm/arm.vm-docker-tests.js
+commands/arm/vm/arm.vm-docker-ssh-tests.js
+commands/arm/vm/arm.vm-create-generate-ssh-tests.js
 commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
-# vm quick create tests commented from the test run due to CRP/NRP/SRP errors during recording. Will turn it ON post fixes.
-#commands/arm/vm/arm.vm-quickcreate-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
 commands/arm/network/arm.network.publicip-tests.js
@@ -49,12 +50,17 @@ commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
 commands/arm/network/arm.network.lb-frontend-ip-tests.js
-commands/arm/network/arm.network.dnszone-tests.js
-#dns record set tests are getting timedout. Have to rerecord. Post rerecording this tests will be included.
-#commands/arm/network/arm.network.dnszone-recordset-tests.js
+commands/arm/network/arm.network.dns-zone-tests.js
+commands/arm/network/arm.network.dns-zone-record-set-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
+commands/arm/network/arm.network.route-table-tests.js
+commands/arm/network/arm.network.route-table-routes-tests.js
+commands/arm/network/arm-network-gateway-local-network-tests.js
+commands/arm/network/arm-network-gateway-vnet-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
 commands/arm/apiapp/arm.apiapp-tests.js
+commands/arm/usage/arm.usage.feature-tests.js
+commands/arm/rediscache/arm.rediscache-tests.js

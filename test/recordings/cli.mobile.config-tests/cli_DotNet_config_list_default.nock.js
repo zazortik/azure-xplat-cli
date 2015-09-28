@@ -13,7 +13,6 @@ exports.getMockedProfile = function () {
     },
     name: 'Mobilytics Test1',
     registeredProviders: ['website', 'mobileservice'],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,64 +25,64 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet3192/settings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet2699/settings')
   .reply(200, "{\"remoteDebuggingEnabled\":false,\"remoteDebuggingVersion\":\"VS2012\",\"previewFeatures\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '87',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '9f9ae41248718418bb45fffb7a20a894',
-  date: 'Wed, 08 Apr 2015 01:09:27 GMT' });
+  'x-ms-request-id': 'd05777698a1bb2e88b41c3afded09077',
+  date: 'Mon, 29 Jun 2015 22:10:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet3192/authsettings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet2699/authsettings')
   .reply(200, "[]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '2',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '0fcefc3c6be68706a5a0c5572c606c73',
-  date: 'Wed, 08 Apr 2015 01:09:27 GMT' });
+  'x-ms-request-id': 'a40cebf4d75fb25b99ec854ed3eba7ef',
+  date: 'Mon, 29 Jun 2015 22:10:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet3192/pushsettings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet2699/pushsettings')
   .reply(200, "{\"wnsCredentials\":{},\"mpnsCredentials\":{\"enableUnauthenticatedSettings\":false},\"apnsCredentials\":{},\"gcmCredentials\":{}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '120',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '544586265bc48e1cb2e16722a25157e5',
-  date: 'Wed, 08 Apr 2015 01:09:28 GMT' });
+  'x-ms-request-id': 'ea0499a519a6bef6917da85a3678e732',
+  date: 'Mon, 29 Jun 2015 22:10:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet3192/pushsettings')
+  .get('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestDotNet2699/pushsettings')
   .reply(200, "{\"wnsCredentials\":{},\"mpnsCredentials\":{\"enableUnauthenticatedSettings\":false},\"apnsCredentials\":{},\"gcmCredentials\":{}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '120',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': 'aa5dcaa9810389f9b994e935c4f8a882',
-  date: 'Wed, 08 Apr 2015 01:09:29 GMT' });
+  'x-ms-request-id': 'e358f6309eb1bc488921c0a275f1766d',
+  date: 'Mon, 29 Jun 2015 22:10:07 GMT' });
  return result; }]];

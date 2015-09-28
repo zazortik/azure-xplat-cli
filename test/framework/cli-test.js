@@ -34,6 +34,8 @@ var nockHelper = require('./nock-helper');
 
 exports = module.exports = CLITest;
 
+process.env.AZURE_NO_ERROR_ON_CONSOLE = true;
+
 /**
  * @class
  * Initializes a new instance of the CLITest class.
@@ -341,10 +343,12 @@ _.extend(CLITest.prototype, {
             // Requests to logging service contain timestamps in url query params, filter them out too
             line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
-
-            scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
-              'var result = ' + line + ' return result; }';
-            lineWritten = true;
+            if (line.match(/\/oauth2\/token\//ig) === null && 
+              line.match(/login\.windows\.net/ig) === null && line.match(/login\.windows-ppe\.net/ig) === null) {
+              scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
+                'var result = ' + line + ' return result; }';
+              lineWritten = true;
+            }
           }
         });
         scope += ']];';

@@ -1,0 +1,20 @@
+{
+  "IaasDiagPublisher_Linux": {
+    "value": "Microsoft.OSTCExtensions"
+  },
+  "IaasDiagExtName_Linux": {
+    "value": "LinuxDiagnostic"
+  },
+  "IaasDiagVersion_Linux": {
+    "value": "2.0"
+  },
+  "IaasDiagPublisher_windows": {
+    "value": "Microsoft.Azure.Diagnostics"
+  },
+  "IaasDiagExtName_windows": {
+    "value": "IaaSDiagnostics"
+  },
+  "IaasDiagVersion_windows": {
+    "value": "1.4"
+  }
+}

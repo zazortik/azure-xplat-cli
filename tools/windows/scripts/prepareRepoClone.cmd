@@ -9,7 +9,7 @@
 :: to avoid https://github.com/npm/npm/issues/6438
 chcp 850 
 
-set NODE_VERSION=0.10.23
+set NODE_VERSION=0.12.7
 set NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
@@ -18,8 +18,8 @@ set PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
 
-set NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
-set NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
+set NODE_DOWNLOAD_URL=https://nodejs.org/dist/v%NODE_VERSION%/node.exe
+set NPM_DOWNLOAD_URL=https://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
 
 echo Cleaning previous build artifacts...
 
@@ -91,42 +91,6 @@ pushd %TEMP_REPO%
 .\bin\node.exe bin\azure --gen
 popd
 
-echo Removing unneeded files from azure module...
-pushd %TEMP_REPO%
-
-for %%i in (
-    node_modules\azure\packages
-    node_modules\azure\scripts
-    node_modules\azure\test
-    node_modules\azure\tasks
-    node_modules\azure\examples
-    node_modules\azure\jsdoc
-    node_modules\azure\lib\common
-    node_modules\azure\lib\services
-    node_modules\azure-mgmt\node_modules\azure-common
-    node_modules\azure-mgmt-authorization\node_modules\azure-common
-    node_modules\azure-mgmt-compute\node_modules\azure-common
-    node_modules\azure-mgmt-resource\node_modules\azure-common
-    node_modules\azure-mgmt-sb\node_modules\azure-common
-    node_modules\azure-mgmt-sql\node_modules\azure-common
-    node_modules\azure-mgmt-storage\node_modules\azure-common
-    node_modules\azure-mgmt-subscription\node_modules\azure-common
-    node_modules\azure-mgmt-vnet\node_modules\azure-common
-    node_modules\azure-mgmt-website\node_modules\azure-common
-    node_modules\azure-storage-legacy\node_modules\azure-common
-    node_modules\azure-gallery\node_modules\azure-common
-    node_modules\azure-insights\node_modules\azure-common
-    node_modules\azure-extra\node_modules\azure-common
-    node_modules\azure\node_modules\azure-common
-) do (
-    if exist %%i (
-        echo Deleting %%i...
-        rmdir /s /q %%i
-    )
-)
-
-popd
-
 echo Removing unncessary files from the enlistment for the CLI to function...
 :: This is cleaner than using /EXCLUDE:... commands and easier to see line-by-line...
 pushd %TEMP_REPO%
@@ -146,6 +110,8 @@ for %%i in (
     *.md
     *.git*
     *.npm*
+    *.njsproj
+    *.sln
     azure_error
     azure.err
     checkstyle-result.xml

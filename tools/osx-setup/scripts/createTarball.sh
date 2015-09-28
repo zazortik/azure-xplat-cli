@@ -56,60 +56,6 @@ cp -R -L ../../ /tmp/azureInstallerTemporary/
 rm -rf /tmp/azureInstallerTemporary/.git #lazy
 rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
 
-# Remove extraneous junk from tarball
-pushd /tmp/azureInstallerTemporary/node_modules/azure
-rm -rf .git
-popd
-
-# L67-L102 are commented temporarily until the versions of azure-common
-# are unified across all packages
-# 
-# pushd /tmp/azureInstallerTemporary/node_modules/azure
-# for PACKAGE in packages test tasks examples jsdoc
-# do
-# 	rm -rf $PACKAGE
-# done
-# 
-# cd lib
-# rm -rf common
-# 
-# cd services
-# packages=( gallery
-# 	management
-# 	computeManagement
-# 	resourceManagement
-# 	serviceBusManagement
-# 	schedulerManagement
-# 	sqlManagement
-# 	storageManagement
-# 	subscriptionManagement
-# 	networkManagement
-# 	webSiteManagement
-# 	scheduler
-# )
-# 
-# for PACKAGE in ${packages[@]}
-# do
-# 	rm -rf $PACKAGE
-# done
-# popd
-# 
-# pushd /tmp/azureInstallerTemporary/node_modules
-# for PACKAGE in azure-gallery azure-mgmt-resource
-# do
-# 	rm -rf $PACKAGE/node_modules/azure-common
-# done
-# popd
-
-# Remove dev dependencies from azure module
-pushd /tmp/azureInstallerTemporary/node_modules/azure/node_modules
-packages=( mocha jshint sinon should nock grunt grunt-jsdoc grunt-devserver )
-for PACKAGE in ${packages[@]}
-do
-	rm -rf $PACKAGE
-done
-popd
-
 # Remove dev dependencies from xplat module
 pushd /tmp/azureInstallerTemporary/node_modules
 packages=( mocha jshint sinon should nock winston-memory cucumber )
@@ -140,6 +86,8 @@ rm -f .jshintrc
 rm -f .gitattributes
 rm -f .gitignore
 rm -f ChangeLog.txt
+rm -f *.njsproj
+rm -f *.sln
 popd
 
 # compile streamline files

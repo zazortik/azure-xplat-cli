@@ -7,11 +7,12 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
     name: 'CollaberaInteropTest',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -26,78 +27,78 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet7153/deploymentslots/Production')
-  .reply(200, "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestvmVnet7153</Name><DeploymentSlot>Production</DeploymentSlot><PrivateID>97a5b2da217342edbd98402638740d83</PrivateID><Status>Running</Status><Label>Y2xpdGVzdHZtVm5ldDcxNTM=</Label><Url>http://clitestvmvnet7153.cloudapp.net/</Url><Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJjbGl0ZXN0dm1WbmV0NzE1MyI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWNlQ29uZmlndXJhdGlvbj4=</Configuration><RoleInstanceList><RoleInstance><RoleName>clitestvmVnet7153</RoleName><InstanceName>clitestvmVnet7153</InstanceName><InstanceStatus>RoleStateUnknown</InstanceStatus><InstanceUpgradeDomain>0</InstanceUpgradeDomain><InstanceFaultDomain>0</InstanceFaultDomain><InstanceSize>Small</InstanceSize><InstanceStateDetails/><IpAddress>10.32.0.4</IpAddress><PowerState>Starting</PowerState><GuestAgentStatus><ProtocolVersion>1.0</ProtocolVersion><Timestamp>2015-06-12T06:52:52Z</Timestamp><GuestAgentVersion>Unknown</GuestAgentVersion><Status>NotReady</Status><FormattedMessage><Language>en-US</Language><Message>Status not available for role clitestvmVnet7153.</Message></FormattedMessage></GuestAgentStatus></RoleInstance></RoleInstanceList><UpgradeDomainCount>1</UpgradeDomainCount><RoleList><Role i:type=\"PersistentVMRole\"><RoleName>clitestvmVnet7153</RoleName><OsVersion/><RoleType>PersistentVMRole</RoleType><ConfigurationSets><ConfigurationSet i:type=\"NetworkConfigurationSet\"><ConfigurationSetType>NetworkConfiguration</ConfigurationSetType><SubnetNames/></ConfigurationSet></ConfigurationSets><DataVirtualHardDisks/><OSVirtualHardDisk><HostCaching>ReadWrite</HostCaching><DiskName>clitestvmVnet7153-clitestvmVnet7153-0-201506120651400104</DiskName><MediaLink>https://aaa4junestrgeacct.blob.core.windows.net/vhd-store/clitestvmVnet7153-e7b79fba4f988d98.vhd</MediaLink><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><OS>Linux</OS><IOType>Standard</IOType></OSVirtualHardDisk><RoleSize>Small</RoleSize><ProvisionGuestAgent>true</ProvisionGuestAgent></Role></RoleList><SdkVersion/><Locked>false</Locked><RollbackAllowed>false</RollbackAllowed><VirtualNetworkName>anuvnet1</VirtualNetworkName><CreatedTime>2015-06-12T06:51:34Z</CreatedTime><LastModifiedTime>2015-06-12T06:52:51Z</LastModifiedTime><ExtendedProperties/><VirtualIPs><VirtualIP><Address>191.239.58.132</Address><IsDnsProgrammed>true</IsDnsProgrammed><Name>__PseudoBackEndContractVip</Name></VirtualIP></VirtualIPs><InternalDnsSuffix>clitestvmVnet7153.d9.internal.cloudapp.net</InternalDnsSuffix><LoadBalancers/><VirtualNetworkId>4bd7ff84-5d76-4303-b8eb-8ec591f79c7d</VirtualNetworkId></Deployment>", { 'cache-control': 'no-cache',
-  'content-length': '3021',
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet1545/deploymentslots/Production')
+  .reply(200, "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestvmVnet1545</Name><DeploymentSlot>Production</DeploymentSlot><PrivateID>add8d8edd63b43cf849b7cc99379cab3</PrivateID><Status>Running</Status><Label>Y2xpdGVzdHZtVm5ldDE1NDU=</Label><Url>http://clitestvmvnet1545.cloudapp.net/</Url><Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJjbGl0ZXN0dm1WbmV0MTU0NSI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWNlQ29uZmlndXJhdGlvbj4=</Configuration><RoleInstanceList><RoleInstance><RoleName>clitestvmVnet1545</RoleName><InstanceName>clitestvmVnet1545</InstanceName><InstanceStatus>RoleStateUnknown</InstanceStatus><InstanceUpgradeDomain>0</InstanceUpgradeDomain><InstanceFaultDomain>0</InstanceFaultDomain><InstanceSize>Small</InstanceSize><InstanceStateDetails/><IpAddress>10.1.32.4</IpAddress><PowerState>Starting</PowerState><GuestAgentStatus><ProtocolVersion>1.0</ProtocolVersion><Timestamp>2015-07-01T07:03:36Z</Timestamp><GuestAgentVersion>Unknown</GuestAgentVersion><Status>NotReady</Status><FormattedMessage><Language>en-US</Language><Message>Status not available for role clitestvmVnet1545.</Message></FormattedMessage></GuestAgentStatus></RoleInstance></RoleInstanceList><UpgradeDomainCount>1</UpgradeDomainCount><RoleList><Role i:type=\"PersistentVMRole\"><RoleName>clitestvmVnet1545</RoleName><OsVersion/><RoleType>PersistentVMRole</RoleType><ConfigurationSets><ConfigurationSet i:type=\"NetworkConfigurationSet\"><ConfigurationSetType>NetworkConfiguration</ConfigurationSetType><SubnetNames/></ConfigurationSet></ConfigurationSets><DataVirtualHardDisks/><OSVirtualHardDisk><HostCaching>ReadWrite</HostCaching><DiskName>clitestvmVnet1545-clitestvmVnet1545-0-201507010701430119</DiskName><MediaLink>https://aaaadddeeelllstorageacct.blob.core.windows.net/vhd-store/clitestvmVnet1545-1593f1bc8a540ac8.vhd</MediaLink><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><OS>Linux</OS><IOType>Standard</IOType></OSVirtualHardDisk><RoleSize>Small</RoleSize><ProvisionGuestAgent>true</ProvisionGuestAgent></Role></RoleList><SdkVersion/><Locked>false</Locked><RollbackAllowed>false</RollbackAllowed><VirtualNetworkName>CliGtTestVnet4771</VirtualNetworkName><CreatedTime>2015-07-01T07:01:35Z</CreatedTime><LastModifiedTime>2015-07-01T07:03:36Z</LastModifiedTime><ExtendedProperties/><PersistentVMDowntime><StartTime>2015-06-24T05:33:37Z</StartTime><EndTime>2015-06-28T05:33:37Z</EndTime><Status>PersistentVMUpdateScheduled</Status></PersistentVMDowntime><VirtualIPs><VirtualIP><Address>191.236.109.110</Address><IsDnsProgrammed>true</IsDnsProgrammed><Name>__PseudoBackEndContractVip</Name></VirtualIP></VirtualIPs><InternalDnsSuffix>clitestvmVnet1545.d2.internal.cloudapp.net</InternalDnsSuffix><LoadBalancers/><VirtualNetworkId>6cd278e9-e00e-4992-b42e-24e680cfcc80</VirtualNetworkId></Deployment>", { 'cache-control': 'no-cache',
+  'content-length': '3209',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'd74dc6d73026b510b8bae751894a2e80',
-  date: 'Fri, 12 Jun 2015 06:53:19 GMT',
+  'x-ms-request-id': '78beedc0437cb2f8a4f26777bdca228d',
+  date: 'Wed, 01 Jul 2015 07:04:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet7153/deploymentslots/Production')
-  .reply(200, "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestvmVnet7153</Name><DeploymentSlot>Production</DeploymentSlot><PrivateID>97a5b2da217342edbd98402638740d83</PrivateID><Status>Running</Status><Label>Y2xpdGVzdHZtVm5ldDcxNTM=</Label><Url>http://clitestvmvnet7153.cloudapp.net/</Url><Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJjbGl0ZXN0dm1WbmV0NzE1MyI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWNlQ29uZmlndXJhdGlvbj4=</Configuration><RoleInstanceList><RoleInstance><RoleName>clitestvmVnet7153</RoleName><InstanceName>clitestvmVnet7153</InstanceName><InstanceStatus>RoleStateUnknown</InstanceStatus><InstanceUpgradeDomain>0</InstanceUpgradeDomain><InstanceFaultDomain>0</InstanceFaultDomain><InstanceSize>Small</InstanceSize><InstanceStateDetails/><IpAddress>10.32.0.4</IpAddress><PowerState>Starting</PowerState><GuestAgentStatus><ProtocolVersion>1.0</ProtocolVersion><Timestamp>2015-06-12T06:52:52Z</Timestamp><GuestAgentVersion>Unknown</GuestAgentVersion><Status>NotReady</Status><FormattedMessage><Language>en-US</Language><Message>Status not available for role clitestvmVnet7153.</Message></FormattedMessage></GuestAgentStatus></RoleInstance></RoleInstanceList><UpgradeDomainCount>1</UpgradeDomainCount><RoleList><Role i:type=\"PersistentVMRole\"><RoleName>clitestvmVnet7153</RoleName><OsVersion/><RoleType>PersistentVMRole</RoleType><ConfigurationSets><ConfigurationSet i:type=\"NetworkConfigurationSet\"><ConfigurationSetType>NetworkConfiguration</ConfigurationSetType><SubnetNames/></ConfigurationSet></ConfigurationSets><DataVirtualHardDisks/><OSVirtualHardDisk><HostCaching>ReadWrite</HostCaching><DiskName>clitestvmVnet7153-clitestvmVnet7153-0-201506120651400104</DiskName><MediaLink>https://aaa4junestrgeacct.blob.core.windows.net/vhd-store/clitestvmVnet7153-e7b79fba4f988d98.vhd</MediaLink><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><OS>Linux</OS><IOType>Standard</IOType></OSVirtualHardDisk><RoleSize>Small</RoleSize><ProvisionGuestAgent>true</ProvisionGuestAgent></Role></RoleList><SdkVersion/><Locked>false</Locked><RollbackAllowed>false</RollbackAllowed><VirtualNetworkName>anuvnet1</VirtualNetworkName><CreatedTime>2015-06-12T06:51:34Z</CreatedTime><LastModifiedTime>2015-06-12T06:52:51Z</LastModifiedTime><ExtendedProperties/><VirtualIPs><VirtualIP><Address>191.239.58.132</Address><IsDnsProgrammed>true</IsDnsProgrammed><Name>__PseudoBackEndContractVip</Name></VirtualIP></VirtualIPs><InternalDnsSuffix>clitestvmVnet7153.d9.internal.cloudapp.net</InternalDnsSuffix><LoadBalancers/><VirtualNetworkId>4bd7ff84-5d76-4303-b8eb-8ec591f79c7d</VirtualNetworkId></Deployment>", { 'cache-control': 'no-cache',
-  'content-length': '3021',
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet1545/deploymentslots/Production')
+  .reply(200, "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestvmVnet1545</Name><DeploymentSlot>Production</DeploymentSlot><PrivateID>add8d8edd63b43cf849b7cc99379cab3</PrivateID><Status>Running</Status><Label>Y2xpdGVzdHZtVm5ldDE1NDU=</Label><Url>http://clitestvmvnet1545.cloudapp.net/</Url><Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJjbGl0ZXN0dm1WbmV0MTU0NSI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWNlQ29uZmlndXJhdGlvbj4=</Configuration><RoleInstanceList><RoleInstance><RoleName>clitestvmVnet1545</RoleName><InstanceName>clitestvmVnet1545</InstanceName><InstanceStatus>RoleStateUnknown</InstanceStatus><InstanceUpgradeDomain>0</InstanceUpgradeDomain><InstanceFaultDomain>0</InstanceFaultDomain><InstanceSize>Small</InstanceSize><InstanceStateDetails/><IpAddress>10.1.32.4</IpAddress><PowerState>Starting</PowerState><GuestAgentStatus><ProtocolVersion>1.0</ProtocolVersion><Timestamp>2015-07-01T07:03:36Z</Timestamp><GuestAgentVersion>Unknown</GuestAgentVersion><Status>NotReady</Status><FormattedMessage><Language>en-US</Language><Message>Status not available for role clitestvmVnet1545.</Message></FormattedMessage></GuestAgentStatus></RoleInstance></RoleInstanceList><UpgradeDomainCount>1</UpgradeDomainCount><RoleList><Role i:type=\"PersistentVMRole\"><RoleName>clitestvmVnet1545</RoleName><OsVersion/><RoleType>PersistentVMRole</RoleType><ConfigurationSets><ConfigurationSet i:type=\"NetworkConfigurationSet\"><ConfigurationSetType>NetworkConfiguration</ConfigurationSetType><SubnetNames/></ConfigurationSet></ConfigurationSets><DataVirtualHardDisks/><OSVirtualHardDisk><HostCaching>ReadWrite</HostCaching><DiskName>clitestvmVnet1545-clitestvmVnet1545-0-201507010701430119</DiskName><MediaLink>https://aaaadddeeelllstorageacct.blob.core.windows.net/vhd-store/clitestvmVnet1545-1593f1bc8a540ac8.vhd</MediaLink><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><OS>Linux</OS><IOType>Standard</IOType></OSVirtualHardDisk><RoleSize>Small</RoleSize><ProvisionGuestAgent>true</ProvisionGuestAgent></Role></RoleList><SdkVersion/><Locked>false</Locked><RollbackAllowed>false</RollbackAllowed><VirtualNetworkName>CliGtTestVnet4771</VirtualNetworkName><CreatedTime>2015-07-01T07:01:35Z</CreatedTime><LastModifiedTime>2015-07-01T07:03:36Z</LastModifiedTime><ExtendedProperties/><PersistentVMDowntime><StartTime>2015-06-24T05:33:37Z</StartTime><EndTime>2015-06-28T05:33:37Z</EndTime><Status>PersistentVMUpdateScheduled</Status></PersistentVMDowntime><VirtualIPs><VirtualIP><Address>191.236.109.110</Address><IsDnsProgrammed>true</IsDnsProgrammed><Name>__PseudoBackEndContractVip</Name></VirtualIP></VirtualIPs><InternalDnsSuffix>clitestvmVnet1545.d2.internal.cloudapp.net</InternalDnsSuffix><LoadBalancers/><VirtualNetworkId>6cd278e9-e00e-4992-b42e-24e680cfcc80</VirtualNetworkId></Deployment>", { 'cache-control': 'no-cache',
+  'content-length': '3209',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'd74dc6d73026b510b8bae751894a2e80',
-  date: 'Fri, 12 Jun 2015 06:53:19 GMT',
+  'x-ms-request-id': '78beedc0437cb2f8a4f26777bdca228d',
+  date: 'Wed, 01 Jul 2015 07:04:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet7153/deployments/clitestvmVnet7153/loadbalancers', '*')
+.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet1545/deployments/clitestvmVnet1545/loadbalancers', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'cf2d91481940b45b9180e671cb54376d',
-  date: 'Fri, 12 Jun 2015 06:53:22 GMT',
+  'x-ms-request-id': '4826b6ea77c0b72a8aa6c622e581f61d',
+  date: 'Wed, 01 Jul 2015 07:04:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet7153/deployments/clitestvmVnet7153/loadbalancers', '*')
+.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestvmVnet1545/deployments/clitestvmVnet1545/loadbalancers', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'cf2d91481940b45b9180e671cb54376d',
-  date: 'Fri, 12 Jun 2015 06:53:22 GMT',
+  'x-ms-request-id': '4826b6ea77c0b72a8aa6c622e581f61d',
+  date: 'Wed, 01 Jul 2015 07:04:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/cf2d91481940b45b9180e671cb54376d')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>cf2d9148-1940-b45b-9180-e671cb54376d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/4826b6ea77c0b72a8aa6c622e581f61d')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>4826b6ea-77c0-b72a-8aa6-c622e581f61d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'a5e7e0d2ab01b7fdbc150749851ab5d6',
-  date: 'Fri, 12 Jun 2015 06:53:54 GMT',
+  'x-ms-request-id': 'a7b0cc7603ecb85aa184192b21a3b000',
+  date: 'Wed, 01 Jul 2015 07:04:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/cf2d91481940b45b9180e671cb54376d')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>cf2d9148-1940-b45b-9180-e671cb54376d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/4826b6ea77c0b72a8aa6c622e581f61d')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>4826b6ea-77c0-b72a-8aa6-c622e581f61d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'a5e7e0d2ab01b7fdbc150749851ab5d6',
-  date: 'Fri, 12 Jun 2015 06:53:54 GMT',
+  'x-ms-request-id': 'a7b0cc7603ecb85aa184192b21a3b000',
+  date: 'Wed, 01 Jul 2015 07:04:40 GMT',
   connection: 'close' });
  return result; }]];

@@ -85,7 +85,7 @@ describe('cli', function() {
     afterEach(function(done) {
       vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
-        vmUtil.deleteDockerCertificates(dockerCertDir);
+        testUtils.deleteDockerCertificates(dockerCertDir);
       });
     });
 
@@ -101,12 +101,11 @@ describe('cli', function() {
               cmd = util.format('vm show %s --json', vmName).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var certifiatesExist = vmUtil.checkForDockerCertificates(dockerCertDir);
+                var certifiatesExist = testUtils.checkForDockerCertificates(vmName, dockerCertDir);
                 certifiatesExist.should.be.true;
                 var cratedVM = JSON.parse(result.text);
                 var dockerPortExists = vmUtil.checkForDockerPort(cratedVM, dockerPort);
                 dockerPortExists.should.be.true;
-
                 cratedVM.VMName.should.equal(vmName);
                 vmToUse.Name = vmName;
                 vmToUse.Created = true;

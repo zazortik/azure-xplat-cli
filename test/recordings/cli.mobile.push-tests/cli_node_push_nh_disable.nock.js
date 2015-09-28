@@ -13,7 +13,6 @@ exports.getMockedProfile = function () {
     },
     name: 'Mobilytics Test1',
     registeredProviders: ['website', 'mobileservice'],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,16 +26,16 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode1914/pushentity', '*')
+.put('/5e7d1bb6-4953-44fe-8a54-43fbdb53b989/services/mobileservices/mobileservices/clitestnode940/pushentity', '*')
   .reply(200, "{\"externalPushEntitySettingsPropertyBag\":{}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '44',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  server: '1.0.6198.213 (rd_rdfe_stable.150402-1703) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '2e76f972dffa8b719f2eb3861581a70c',
-  date: 'Wed, 08 Apr 2015 01:24:04 GMT' });
+  'x-ms-request-id': 'a2fdc00aa34eb462bd22f9dd9319d08b',
+  date: 'Mon, 29 Jun 2015 22:13:44 GMT' });
  return result; }]];

@@ -2,6 +2,7 @@ projects/*
 targets/*
 
 # Visual Studio #
+.settings/
 /app.js
 /xPlat.sln
 *.suo
@@ -12,6 +13,10 @@ targets/*
 *.etl.tmp
 *.vspx
 *.njsperf
+Microsoft.NodejsTools.WebRole.dll
+
+# Visual Studio Code
+.settings/
 
 # Node #
 node_modules/
@@ -44,6 +49,4 @@ Thumbs.db
 
 # Test Logs #
 test/output/*
-
-# Test Files#
-netconfig.json
+coverage
