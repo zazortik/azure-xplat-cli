@@ -21,15 +21,15 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_VAULT'] = 'karlaugxplattesting';
+  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVaultMSTest';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
+nock('http://xplattestvaultmstest.vault.azure.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01', '*')
-  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+.put('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -38,16 +38,16 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:26:59 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:07 GMT',
   connection: 'close',
-  'content-length': '242' });
+  'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
+nock('https://xplattestvaultmstest.vault.azure.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01', '*')
-  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+.put('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -56,15 +56,15 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:26:59 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:07 GMT',
   connection: 'close',
-  'content-length': '242' });
+  'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -73,15 +73,15 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:26:59 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:07 GMT',
   connection: 'close',
-  'content-length': '242' });
+  'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Chocolate_is_hidden_in_toothpaste_cabinet\",\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -90,15 +90,15 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:26:59 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:07 GMT',
   connection: 'close',
-  'content-length': '242' });
+  'content-length': '243' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
+nock('http://xplattestvaultmstest.vault.azure.net:443')
   .get('/secrets/?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -107,15 +107,15 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:08 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '186' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
+nock('https://xplattestvaultmstest.vault.azure.net:443')
   .get('/secrets/?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -124,15 +124,15 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:08 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '186' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634/versions?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -141,15 +141,15 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:08 GMT',
   connection: 'close',
-  'content-length': '218' });
+  'content-length': '219' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634/versions?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -158,15 +158,15 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:08 GMT',
   connection: 'close',
-  'content-length': '218' });
+  'content-length': '219' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
-  .delete('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(200, "{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .delete('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(200, "{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -175,15 +175,15 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:01 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:09 GMT',
   connection: 'close',
-  'content-length': '190' });
+  'content-length': '191' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
-  .delete('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(200, "{\"id\":\"https://karlaugxplattesting.vault.azure.net/secrets/xplatTestVaultSecret2634/a66051f4b94240b4b5b5bbfca9d4bf00\",\"attributes\":{\"enabled\":true,\"created\":1443475619,\"updated\":1443475619}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .delete('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(200, "{\"id\":\"https://xplattestvaultmstest.vault.azure.net/secrets/xplatTestVaultSecret1393/231ccaaf533248b08c3a343d22fc1918\",\"attributes\":{\"enabled\":true,\"created\":1443479407,\"updated\":1443479407}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
@@ -192,15 +192,15 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:01 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:09 GMT',
   connection: 'close',
-  'content-length': '190' });
+  'content-length': '191' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: xplatTestVaultSecret2634\"}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: xplatTestVaultSecret1393\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '90',
   'content-type': 'application/json; charset=utf-8',
@@ -210,14 +210,14 @@ nock('http://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:01 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://karlaugxplattesting.vault.azure.net:443')
-  .get('/secrets/xplatTestVaultSecret2634?api-version=2015-06-01')
-  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: xplatTestVaultSecret2634\"}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/secrets/xplatTestVaultSecret1393?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: xplatTestVaultSecret1393\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '90',
   'content-type': 'application/json; charset=utf-8',
@@ -227,7 +227,7 @@ nock('https://karlaugxplattesting.vault.azure.net:443')
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Mon, 28 Sep 2015 21:27:01 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:09 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xplatTestVaultSecret2634'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestVaultSecret1393'];};

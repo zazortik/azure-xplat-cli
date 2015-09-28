@@ -21,7 +21,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_VAULT'] = 'karlaugxplattesting';
+  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVaultMSTest';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
+  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplatTestVaultRG';
 };
 
 exports.scopes = [];
