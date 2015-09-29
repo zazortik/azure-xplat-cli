@@ -58,7 +58,7 @@ function execute(cmd, cb) {
       return cb(result);
     } catch (err) {
       testLogger.logError(err);
-      testLogger.logSillyError(winston.default.transports.silly.output);
+      testLogger.logSillyError(winston.getCapturedSillyLogs());
       process.nextTick(function() {
         throw err;
       });
