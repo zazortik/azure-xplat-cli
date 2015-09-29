@@ -24294,16 +24294,16 @@
     },
     "role": {
       "name": "role",
-      "description": "Commands to manage your Azure roles",
+      "description": "Commands to manage role definitions",
       "fullName": "role",
       "usage": "[options] [command]",
       "options": [],
       "commands": [
         {
           "name": "list",
-          "description": "Get all available role definitions",
+          "description": "Lists Azure RBAC roles available for assignment. Use this command to determine what actions on what resource types an Azure RBAC role allows.",
           "fullName": "role list",
-          "usage": "[options]",
+          "usage": "\n\n           -----    Example 1   -------\n           azure role list\n           Lists all RBAC role definitions.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -24337,7 +24337,7 @@
               "optional": 0,
               "bool": true,
               "long": "--custom",
-              "description": "If given, display only the custom roles instead of all role definitions"
+              "description": "If specified, display only the custom role definitions instead of all role definitions."
             },
             {
               "flags": "-d --detailed",
@@ -24346,7 +24346,7 @@
               "bool": true,
               "short": "-d",
               "long": "--detailed",
-              "description": "If given, displays all the properties of role definitions"
+              "description": "If specified, displays all the properties of a role definition"
             },
             {
               "flags": "--subscription <subscription>",
@@ -24354,15 +24354,15 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "the subscription identifier"
+              "description": "Name or identifier of the subscription to list the roles for."
             }
           ]
         },
         {
           "name": "show",
-          "description": "Get an available role definition",
+          "description": "Search for a role definition",
           "fullName": "role show",
-          "usage": "[options] [name]",
+          "usage": "[name]\n\n           -----    Example 1   -------\n           azure role list --name Reader\n           Get the Reader role definition.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -24397,7 +24397,7 @@
               "bool": true,
               "short": "-n",
               "long": "--name",
-              "description": "the role definition name"
+              "description": "Name of the role."
             },
             {
               "flags": "--subscription <subscription>",
@@ -24405,7 +24405,7 @@
               "optional": 0,
               "bool": true,
               "long": "--subscription",
-              "description": "the subscription identifier"
+              "description": "Name or identifier of the subscription to search the role definition in."
             }
           ]
         },
@@ -24609,16 +24609,16 @@
       "categories": {
         "assignment": {
           "name": "assignment",
-          "description": "Commands to manage your role assignment",
+          "description": "Commands to manage role assignments",
           "fullName": "role assignment",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "create a new role assignment",
+              "description": "Assigns the specified RBAC role to the specified principal, at the specified scope.",
               "fullName": "role assignment create",
-              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment create --resource-group testRG --signInName john.doe@contoso.com\n           Grant access to a user at a resource group scope.\n\n           -----    Example 2   -------\n           azure ad group show --search \"Christine Koch Team\"\n           + Getting group list\n           data:    Display Name:      Christine Koch Team\n           data:    ObjectId:          2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb\n           data:    Security Enabled:  true\n           data:    Mail Enabled:\n\n           azure role assignment create --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Contributor --resource-group testRG\n           Grants access to a security group.\n\n           -----    Example 3   -------\n           azure role assignment create --signInName john.doe@contoso.com --roleName Owner --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Grants access to a user at a resource 'site1' (website) scope.\n\n           -----    Example 4   -------\n           azure role assignment create --objectId 5ac84765-1c8c-4994-94b2-629461bd191b --roleName \"Virtual Machine Contributor\" --resouce-name Devices-Engineering-ProjectRND --resource-type Microsoft.Network/virtualNetworks/subnets --parent virtualNetworks/VNET-EASTUS-01 --resource-group Network\n           Grant access to a group at a nested resource (subnet)\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24652,7 +24652,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--objectId",
-                  "description": "Object id of an active directory user, group or service principal."
+                  "description": "Azure AD Objectid of the user, group or service principal"
                 },
                 {
                   "flags": "--signInName <signInName>",
@@ -24660,7 +24660,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--signInName",
-                  "description": "Sign-in name of a User."
+                  "description": "The email address or the user principal name of the user."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24668,7 +24668,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--spn",
-                  "description": "Service Principal Name."
+                  "description": "The ServicePrincipalName of the Azure AD application."
                 },
                 {
                   "flags": "-o --roleName <roleName>",
@@ -24677,7 +24677,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--roleName",
-                  "description": "Role name that the principal is assigned to."
+                  "description": "The Name of the RBAC role that needs to be assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24686,7 +24686,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--scope",
-                  "description": "Scope of the role assignment."
+                  "description": "The Scope of the role assignment. In the format of relative URI. For e.g. \"/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG\". If not specified, will create the role assignment at subscription level. If specified, it should start with \"/subscriptions/{id}\"."
                 },
                 {
                   "flags": "-g --resource-group <resource-group>",
@@ -24695,7 +24695,7 @@
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
-                  "description": "Resource group to assign the role to."
+                  "description": "The resource group name. Creates an assignment that is effective at the specified resource group. When used in conjunction with resource-name, resource-type and (optionally)parent parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "-r --resource-type <resource-type>",
@@ -24704,7 +24704,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--resource-type",
-                  "description": "Type of the resource to assign the role to."
+                  "description": "The resource type. For e.g. Microsoft.Network/virtualNetworks. Should only be used in conjunction with resource-name, resource-group and (optionally)parent parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "-u --resource-name <resource-name>",
@@ -24713,7 +24713,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--resource-name",
-                  "description": "Name of the resource to assign the role to."
+                  "description": "The resource name. For e.g. storageaccountprod. Should only be used in conjunction with resource-type, resource-group and (optionally)parent parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "--parent <parent>",
@@ -24721,7 +24721,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--parent",
-                  "description": "Parent resource of the resource to assign the role to, if there is any."
+                  "description": "The parent resource in the hierarchy of the resource specified using resource-name parameter. Must be used in conjunction with resource-name, resource-type and resource-group parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -24729,15 +24729,15 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--subscription",
-                  "description": "Subscription id or name of where the role assignment will be created."
+                  "description": "Name or identifier of the subscription where the role assignment will be created."
                 }
               ]
             },
             {
               "name": "list",
-              "description": "Get role assignment at a given scope",
+              "description": "Lists Azure RBAC role assignments at the specified scope. \n         By default it lists all role assignments in the selected Azure subscription. Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource. \n         The Azure RBAC role that is assigned dictates what type of resources the user is allowed to manage in the scope, and what actions the user is allowed to perform on those resources. Use 'azure role list' or 'azure role show' commands to list actions that a given role allows. ",
               "fullName": "role assignment list",
-              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment list\n           List all role assignments in the subscription\n\n           -----    Example 2   -------\n           azure role assignment list --resource-group testRG --signInName john.doe@contoso.com -e\n           Gets all role assignments made to user john.doe@contoso.com  and the groups of which he is member  at the testRG scope or above.\n\n           -----    Example 3   -------\n           azure role assignment list --spn \"http://testapp1.com\"\n           Gets all role assignments of the specified service principal.\n\n           -----    Example 4   -------\n           azure role assignment list --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Gets role assignments at the 'site1' website scope.\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24771,7 +24771,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--objectId",
-                  "description": "Object id of an active directory user, group or service principal."
+                  "description": "The Azure AD ObjectId of the User, Group or Service Principal. Filters all assignments that are made to the specified principal."
                 },
                 {
                   "flags": "--signInName <signInName>",
@@ -24779,7 +24779,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--signInName",
-                  "description": "Sign-in name of a User."
+                  "description": "The email address or the user principal name of the user. Filters all assignments that are made to the specified user."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24787,7 +24787,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--spn",
-                  "description": "Service Principal Name."
+                  "description": "The ServicePrincipalName of the service principal. Filters all assignments that are made to the specified Azure AD application."
                 },
                 {
                   "flags": "-o --roleName <roleName>",
@@ -24796,7 +24796,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--roleName",
-                  "description": "Role name that the principal is assigned to."
+                  "description": "The Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24805,7 +24805,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--scope",
-                  "description": "Scope of the role assignment."
+                  "description": "The Scope of the role assignment. In the format of relative URI. For e.g. /subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG. It must start with \"/subscriptions/{id}\". The command filters all assignments that are effective at that scope."
                 },
                 {
                   "flags": "-g --resource-group <resource-group>",
@@ -24814,7 +24814,7 @@
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
-                  "description": "Resource group to role was assigned to."
+                  "description": "The resource group name. Lists role assignments that are effective at the specified resource group. When used in conjunction with resource-name, resource-type and (optionally)parent parameters, the command lists assignments effective at resources within the resource group."
                 },
                 {
                   "flags": "-r --resource-type <resource-type>",
@@ -24823,7 +24823,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--resource-type",
-                  "description": "Type of the resource the role was assign to"
+                  "description": "The resource type. For e.g. Microsoft.Network/virtualNetworks. Must be used in conjunction with resource-name, resource-group and (optionally)parent parameters."
                 },
                 {
                   "flags": "-u --resource-name <resource-name>",
@@ -24832,7 +24832,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--resource-name",
-                  "description": "The resource the role was assigned to."
+                  "description": "The resource name. For e.g. storageaccountprod. Must be used in conjunction with resource-group, resource-type and (optionally)parent parameters."
                 },
                 {
                   "flags": "--parent <parent>",
@@ -24840,7 +24840,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--parent",
-                  "description": "Parent resource of the resource the role was assigned to, if there is any."
+                  "description": "The parent resource in the hierarchy of the resource specified using --resource-name parameter. Must be used in conjunction with resource-name, resource-type and resource-group parameters."
                 },
                 {
                   "flags": "-e --expandPrincipalGroups",
@@ -24849,7 +24849,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expandPrincipalGroups",
-                  "description": "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals."
+                  "description": "If specified, returns roles directly assigned to the user and to the groups of which the user is a member (transitively). Supported only for a user principal."
                 },
                 {
                   "flags": "-a --includeClassicAdministrators",
@@ -24858,7 +24858,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--includeClassicAdministrators",
-                  "description": "If specified, also returns the subscription classic administrators as role assignments."
+                  "description": "If specified, also lists subscription classic administrators (co-admins, service admins, etc.) role assignments."
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -24866,15 +24866,15 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--subscription",
-                  "description": "Subscription id or name of where the role assignment is from."
+                  "description": "Name or identifier of the subscription to search the role assignments."
                 }
               ]
             },
             {
               "name": "delete",
-              "description": "delete a role assignment",
+              "description": "Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope. Use the 'azure role assignment list' command to retrieve assignments under the subscription",
               "fullName": "role assignment delete",
-              "usage": "[options] [objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]",
+              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment delete --resource-group testRG --signInName john.doe@contoso.com --roleName Reader\n           Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the testRG resourcegroup scope\n\n           -----    Example 2   -------\n           azure role assignment delete --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Reader\n           Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role. Defaults to using the current subscription as the scope to find the assignment to be deleted.\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -24908,7 +24908,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--objectId",
-                  "description": "Object id of an active directory user, group or service principal"
+                  "description": "Azure AD Objectid of the user, group or service principal"
                 },
                 {
                   "flags": "--signInName <signInName>",
@@ -24916,7 +24916,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--signInName",
-                  "description": "Sign-in name of a user."
+                  "description": "The email address or the user principal name of the user."
                 },
                 {
                   "flags": "--spn <spn>",
@@ -24924,7 +24924,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--spn",
-                  "description": "Service Principal Name."
+                  "description": "The ServicePrincipalName of the Azure AD application."
                 },
                 {
                   "flags": "-o --roleName <roleName>",
@@ -24933,7 +24933,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--roleName",
-                  "description": "Role name that the principal is assigned to."
+                  "description": "The Name of the RBAC role for which the assignment needs to be deleted i.e. Reader, Contributor, Virtual Network   Administrator, etc."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -24942,7 +24942,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--scope",
-                  "description": "Scope of the role assignment."
+                  "description": "The Scope of the role assignment to be deleted. In the format of relative URI. For e.g. \"/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG\". If not specified, will attempt to delete the role assignment at subscription level. If specified, it should start with \"/subscriptions/{id}\"."
                 },
                 {
                   "flags": "-g --resource-group <resource-group>",
@@ -24951,7 +24951,7 @@
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
-                  "description": "Resource group the role is assigned to."
+                  "description": "The resource group name. Attempts to delete an assignment at the specified resource group scope. When used in conjunction with resource-name, resource-type and (optionally)parent parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "-r --resource-type <resource-type>",
@@ -24960,7 +24960,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--resource-type",
-                  "description": "Type of the resource the role is assigned to"
+                  "description": "The resource type. For e.g. Microsoft.Network/virtualNetworks. Should only be used in conjunction with resource-name, resource-group and (optionally)parent parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "-u --resource-name <resource-name>",
@@ -24969,7 +24969,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--resource-name",
-                  "description": "The resource the role is assigned to."
+                  "description": "The resource name. For e.g. storageaccountprod. Should only be used in conjunction with resource-type, resource-group and (optionally)parent parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "--parent <parent>",
@@ -24977,7 +24977,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--parent",
-                  "description": "Parent resource of the resource the role is assigned to, if there is any."
+                  "description": "The parent resource in the hierarchy of the resource specified using --resource-name parameter, if any. Must be used in conjunction with resource-name, resource-type and resource-group parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource."
                 },
                 {
                   "flags": "-q --quiet",
@@ -24986,7 +24986,7 @@
                   "bool": true,
                   "short": "-q",
                   "long": "--quiet",
-                  "description": "If specified, won't prompt before delete."
+                  "description": "If specified, the command does not prompt for a confirmation before deleting the role assignment."
                 },
                 {
                   "flags": "--passthru",
@@ -24994,7 +24994,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--passthru",
-                  "description": "If set, displays the properties of deleted role assignment"
+                  "description": "If specified, displays the deleted role assignment"
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -25002,7 +25002,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--subscription",
-                  "description": "Subscription id or name of where the role assignment will be removed."
+                  "description": "Name or identifier of the subscription to delete the role assignment"
                 }
               ]
             }
@@ -25010,7 +25010,7 @@
           "categories": {
             "changelog": {
               "name": "changelog",
-              "description": "List access change history for the subscription for the specified time i.e. who granted(or revoked) what role to whom at what scope",
+              "description": "Gets access change history for the selected subscription for the specified time range i.e. role assignments that were added or removed, including classic administrators (co-administrators and service administrators). Maximum duration that can be queried is 15 days (going back up to past 90 days).",
               "fullName": "role assignment changelog",
               "usage": "[options] [command]",
               "options": [],
@@ -25019,7 +25019,7 @@
                   "name": "list",
                   "description": "List all access changes",
                   "fullName": "role assignment changelog list",
-                  "usage": "[options] [b startTime] [e endTime]",
+                  "usage": "[-b startTime] [-e endTime]\n\n           -----    Example 1   -------\n           azure role assignment changelog list\n           Gets the access change logs for the past hour.\n\n           -----    Example 2   -------\n           azure role assignment changelog list -b \"09/20/2015 15:00\" -e \"09/24/2015 15:00\"\n           Gets all access change logs between the specified dates.\n",
                   "filePath": "commands/arm/role/role.assignment.audit._js",
                   "options": [
                     {
@@ -25072,7 +25072,7 @@
                       "bool": true,
                       "short": "-s",
                       "long": "--subscription",
-                      "description": "The subscription identifier."
+                      "description": "Name or identifier of the subscription where the changelog is to be retrieved."
                     }
                   ]
                 }
