@@ -25550,7 +25550,7 @@
               "bool": true,
               "short": "-p",
               "long": "--admin-password",
-              "description": "the password\n      This parameter is valid for a VM created from an image (image-ur) and ignored when VM is based on existing disk"
+              "description": "the password\n      This parameter is valid for a VM created from an image (image-urn) and ignored when VM is based on existing disk"
             },
             {
               "flags": "-M, --ssh-publickey-file <openssh-rsa-file|pem-file>",
