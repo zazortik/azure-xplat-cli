@@ -34,7 +34,7 @@ var requiredEnvironment = [{
   requiresToken: true
 }, {
   name: 'AZURE_ARM_TEST_VAULT',
-  defaultValue: 'XplatTestVault'
+  defaultValue: 'XplatTestVaultMSTest'
 }];
 
 var galleryTemplateName;

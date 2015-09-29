@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c2619f08-57f7-492b-a9c3-45dee233805b',
-    name: 'kmsngtu Key Vault Account',
+    id: '4fbe2810-8ec4-4443-88f4-1d0a6a212d02',
+    name: 'Pay-As-You-Go',
     user: {
-      name: 'kmsngtu@microsoft.com',
+      name: 'testuser@mstestkeyvaultoutlook.onmicrosoft.com',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'dab60df3-eb31-470e-9aa7-0bb580c2624c',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,195 +21,213 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVault';
+  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVaultMSTest';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
+nock('http://xplattestvaultmstest.vault.azure.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/keys/xplatTestVaultKey7053/create?api-version=2015-06-01', '*')
-  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4BHsyXcXLYHMBJ5qH0qbjJOvoc0F9kqStKyQJ8SONS2Voyt6-JTbZKZTLtt-5vYFK1tp0LuDmf0dfH_rqoVITKA9q1cMJk_i_6VJTu65u_hgs_L_RgnPJVTS8vMRhyd3CJrhj1ddWtHPTNBl5_8jaVWdR4BK8kcm1HvCcNvUMtmEj7TsoET0N2bBsyX7bsLQdAODbR2UWFZruqWoqKYY8FkXiDKGN24IjRNWJNwH_xk33xoJ5txnjpSV2Iw9Cs15m-fJ161QaUT4OUhKIOCPHf_UF0WVZ4g-r6jDDc8G7pT_ideT1ht1Nk2QfrsBjXNNXJU4iJWq55MTM_xeNXiLSw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}", { 'cache-control': 'no-cache',
+.post('/keys/xplatTestVaultKey801/create?api-version=2015-06-01', '*')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:31:58 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:03 GMT',
   connection: 'close',
-  'content-length': '630' });
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/?api-version=2015-06-01')
-  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4BHsyXcXLYHMBJ5qH0qbjJOvoc0F9kqStKyQJ8SONS2Voyt6-JTbZKZTLtt-5vYFK1tp0LuDmf0dfH_rqoVITKA9q1cMJk_i_6VJTu65u_hgs_L_RgnPJVTS8vMRhyd3CJrhj1ddWtHPTNBl5_8jaVWdR4BK8kcm1HvCcNvUMtmEj7TsoET0N2bBsyX7bsLQdAODbR2UWFZruqWoqKYY8FkXiDKGN24IjRNWJNwH_xk33xoJ5txnjpSV2Iw9Cs15m-fJ161QaUT4OUhKIOCPHf_UF0WVZ4g-r6jDDc8G7pT_ideT1ht1Nk2QfrsBjXNNXJU4iJWq55MTM_xeNXiLSw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/keys/xplatTestVaultKey801/create?api-version=2015-06-01', '*')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:03 GMT',
   connection: 'close',
-  'content-length': '630' });
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/?api-version=2015-06-01')
-  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4BHsyXcXLYHMBJ5qH0qbjJOvoc0F9kqStKyQJ8SONS2Voyt6-JTbZKZTLtt-5vYFK1tp0LuDmf0dfH_rqoVITKA9q1cMJk_i_6VJTu65u_hgs_L_RgnPJVTS8vMRhyd3CJrhj1ddWtHPTNBl5_8jaVWdR4BK8kcm1HvCcNvUMtmEj7TsoET0N2bBsyX7bsLQdAODbR2UWFZruqWoqKYY8FkXiDKGN24IjRNWJNwH_xk33xoJ5txnjpSV2Iw9Cs15m-fJ161QaUT4OUhKIOCPHf_UF0WVZ4g-r6jDDc8G7pT_ideT1ht1Nk2QfrsBjXNNXJU4iJWq55MTM_xeNXiLSw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/?api-version=2015-06-01')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:00 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:03 GMT',
   connection: 'close',
-  'content-length': '630' });
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestvault.vault.azure.net:443')
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/?api-version=2015-06-01')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-service-version': '1.0.0.121',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  date: 'Mon, 28 Sep 2015 22:30:03 GMT',
+  connection: 'close',
+  'content-length': '635' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplattestvaultmstest.vault.azure.net:443')
   .get('/keys/?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053\",\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801\",\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:04 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:04 GMT',
   connection: 'close',
-  'content-length': '175' });
+  'content-length': '180' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
+nock('https://xplattestvaultmstest.vault.azure.net:443')
   .get('/keys/?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053\",\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801\",\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:04 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:04 GMT',
   connection: 'close',
-  'content-length': '175' });
+  'content-length': '180' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/versions?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:08 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:05 GMT',
   connection: 'close',
-  'content-length': '208' });
+  'content-length': '213' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/versions?api-version=2015-06-01')
-  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:08 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:05 GMT',
   connection: 'close',
-  'content-length': '208' });
+  'content-length': '213' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestvault.vault.azure.net:443')
-  .delete('/keys/xplatTestVaultKey7053/delete?api-version=2015-06-01')
-  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4BHsyXcXLYHMBJ5qH0qbjJOvoc0F9kqStKyQJ8SONS2Voyt6-JTbZKZTLtt-5vYFK1tp0LuDmf0dfH_rqoVITKA9q1cMJk_i_6VJTu65u_hgs_L_RgnPJVTS8vMRhyd3CJrhj1ddWtHPTNBl5_8jaVWdR4BK8kcm1HvCcNvUMtmEj7TsoET0N2bBsyX7bsLQdAODbR2UWFZruqWoqKYY8FkXiDKGN24IjRNWJNwH_xk33xoJ5txnjpSV2Iw9Cs15m-fJ161QaUT4OUhKIOCPHf_UF0WVZ4g-r6jDDc8G7pT_ideT1ht1Nk2QfrsBjXNNXJU4iJWq55MTM_xeNXiLSw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .delete('/keys/xplatTestVaultKey801/delete?api-version=2015-06-01')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:11 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:06 GMT',
   connection: 'close',
-  'content-length': '630' });
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
-  .delete('/keys/xplatTestVaultKey7053/delete?api-version=2015-06-01')
-  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvault.vault.azure.net/keys/xplatTestVaultKey7053/8265d0a1c2214767ab5474fd365997a6\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"4BHsyXcXLYHMBJ5qH0qbjJOvoc0F9kqStKyQJ8SONS2Voyt6-JTbZKZTLtt-5vYFK1tp0LuDmf0dfH_rqoVITKA9q1cMJk_i_6VJTu65u_hgs_L_RgnPJVTS8vMRhyd3CJrhj1ddWtHPTNBl5_8jaVWdR4BK8kcm1HvCcNvUMtmEj7TsoET0N2bBsyX7bsLQdAODbR2UWFZruqWoqKYY8FkXiDKGN24IjRNWJNwH_xk33xoJ5txnjpSV2Iw9Cs15m-fJ161QaUT4OUhKIOCPHf_UF0WVZ4g-r6jDDc8G7pT_ideT1ht1Nk2QfrsBjXNNXJU4iJWq55MTM_xeNXiLSw\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1435098718,\"updated\":1435098718}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .delete('/keys/xplatTestVaultKey801/delete?api-version=2015-06-01')
+  .reply(200, "{\"key\":{\"kid\":\"https://xplattestvaultmstest.vault.azure.net/keys/xplatTestVaultKey801/7c5323623986494491a4ac4f5c8ba0d5\",\"kty\":\"RSA\",\"key_ops\":[\"encrypt\",\"decrypt\",\"sign\",\"verify\",\"wrapKey\",\"unwrapKey\"],\"n\":\"sL7UI3lHGBgQsB9ALInwgRVykzGglqB3BkgWef5NJ1mUdxd20SjoX_PGOXQ6p-ZT7-cDAVjM7eeJcPGzBmrH_9fiablNnAdQIWzELWccZuKTzxEKFM-nrkGgT4NhhcDDAMBlMcIVPD2uwSm0foUh8adT5EZVNFrzrMecquRNIxkaBZCdFFcm79-P6o4uM8ouxefNSnA-ra6OwvK7h7k3yrgyVMirqmctjoLDDoSHq-BoYHUHpQwO58OWi8wNHxslcxgzXF_jnXYmI36TKb0t3mb9R-qJAVeSU1S3KQOk9mEREdpoN1TTLqlbe1cWio2g3CX7dzAJJuW7RZmkGfSihQ\",\"e\":\"AQAB\"},\"attributes\":{\"enabled\":true,\"created\":1443479402,\"updated\":1443479402}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:11 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:06 GMT',
   connection: 'close',
-  'content-length': '630' });
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/?api-version=2015-06-01')
-  .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key xplatTestVaultKey7053 not found\"}}", { 'cache-control': 'no-cache',
+nock('http://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key xplatTestVaultKey801 not found\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '80',
+  'content-length': '79',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:16 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestvault.vault.azure.net:443')
-  .get('/keys/xplatTestVaultKey7053/?api-version=2015-06-01')
-  .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key xplatTestVaultKey7053 not found\"}}", { 'cache-control': 'no-cache',
+nock('https://xplattestvaultmstest.vault.azure.net:443')
+  .get('/keys/xplatTestVaultKey801/?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"KeyNotFound\",\"message\":\"Key xplatTestVaultKey801 not found\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '80',
+  'content-length': '79',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.97',
+  'x-ms-keyvault-service-version': '1.0.0.121',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Tue, 23 Jun 2015 22:32:16 GMT',
+  date: 'Mon, 28 Sep 2015 22:30:06 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xplatTestVaultKey7053'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestVaultKey801'];};

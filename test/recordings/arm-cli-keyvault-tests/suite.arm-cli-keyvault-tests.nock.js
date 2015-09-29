@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c2619f08-57f7-492b-a9c3-45dee233805b',
-    name: 'kmsngtu Key Vault Account',
+    id: '4fbe2810-8ec4-4443-88f4-1d0a6a212d02',
+    name: 'Pay-As-You-Go',
     user: {
-      name: 'kmsngtu@microsoft.com',
+      name: 'testuser@mstestkeyvaultoutlook.onmicrosoft.com',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'dab60df3-eb31-470e-9aa7-0bb580c2624c',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,6 +21,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
+  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVaultMSTest';
   process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
   process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplatTestVaultRG';
 };
