@@ -6,6 +6,9 @@
   * Added new role assignment changelog list command that gives access change history for a subscription
   * Role assignment Get fixes
   * Role Assignment Delete fixes
+* Compute
+  * Fixed issue #2119
+  * Removed support for ASM images in ARM
 * Network
   * Fixed issue #2143 in azure network vnet list command
   * Implemented ARM  Load Balancer  Inbound NAT Pools  commands
@@ -16,6 +19,9 @@
 * Storage
   * Update the storage dependency to 0.6.0 to be compatible with Nodejs 4.x
   * Fixed issues #2102, #2103
+* KeyVault
+  * Updated DNS suffix to correct azurechinacloud dns suffix.
+  * Updated keyvault api version to current GA version ('2015-06-01').
 * Usage
   * Documented the format of the date parameters and prompted for the dates if they weren't provided
 * MFA Login
