@@ -25019,7 +25019,7 @@
                   "name": "list",
                   "description": "List all access changes",
                   "fullName": "role assignment changelog list",
-                  "usage": "[startTime] [endTime]\n\n           -----    Example 1   -------\n           azure role assignment changelog list\n           Gets the access change logs for the past hour.\n\n           -----    Example 4   -------\n           azure role assignment changelog list -b \"09/20/2015 15:00\" -e \"09/24/2015 15:00\"\n           Gets all access change logs between the specified dates.\n",
+                  "usage": "[-b startTime] [-e endTime]\n\n           -----    Example 1   -------\n           azure role assignment changelog list\n           Gets the access change logs for the past hour.\n\n           -----    Example 2   -------\n           azure role assignment changelog list -b \"09/20/2015 15:00\" -e \"09/24/2015 15:00\"\n           Gets all access change logs between the specified dates.\n",
                   "filePath": "commands/arm/role/role.assignment.audit._js",
                   "options": [
                     {
