@@ -1,9 +1,29 @@
-## 2015.10.01 Version 0.9.10
+## 2015.10.02 Version 0.9.10
 * Authorization
   * Fixed display of role assignments display to add and remove certain fields.
   * Added expandPrincipalGroups and includeClassicAdministrators options to role assignment list command
   * Updated all role assignment commands to take in a signInName parameter instead of upn and email and renamed the role parameter to roleName
   * Added new role assignment changelog list command that gives access change history for a subscription
+  * Role assignment Get fixes
+  * Role Assignment Delete fixes
+* Network
+  * Fixed issue #2143 in azure network vnet list command
+  * Implemented ARM  Load Balancer  Inbound NAT Pools  commands
+  * Load Balancer refactoring: constants improved, checking  statusCode  instead of error message, etc.
+* Logging
+  * Added truncation by default to the silly log capture after 1MB of logs has been captured
+  * Added a AZURE_CLI_DISABLE_LOG_CAPTURE environment variable which allows silly log capturing to be disabled
+* Storage
+  * Update the storage dependency to 0.6.0 to be compatible with Nodejs 4.x
+  * Fixed issues #2102, #2103
+* Usage
+  * Documented the format of the date parameters and prompted for the dates if they weren't provided
+* MFA Login
+  * Fixed bad error message when the user logs in with an MSA account
+* README updates
+  * Added Redis Cache in the home page features list
+  * Added Docker Azure CLI as an installation option
+
 ## 2015.09.11 Version 0.9.9
 * Redis Cache
   * Implemented create, set, show, list, list-keys, renew-key and delete commands
