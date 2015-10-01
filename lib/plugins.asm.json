@@ -123,6 +123,14 @@
           "description": "Tenant domain or ID to log into"
         },
         {
+          "flags": "--interactive [interactive]",
+          "required": 0,
+          "optional": -15,
+          "bool": true,
+          "long": "--interactive",
+          "description": "Required for 2FA enabled or Microsoft Account such as live ids"
+        },
+        {
           "flags": "-q --quiet",
           "required": 0,
           "optional": 0,

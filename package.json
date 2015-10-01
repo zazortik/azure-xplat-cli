@@ -32,7 +32,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "adal-node": "0.1.16",
+    "adal-node": "https://github.com/AzureAD/azure-activedirectory-library-for-nodejs/tarball/dev_megaRefreshToken",
     "async": "1.4.2",
     "azure-common": "0.9.13",
     "azure-arm-apiapp": "0.1.3",
