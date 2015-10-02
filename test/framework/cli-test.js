@@ -228,7 +228,18 @@ _.extend(CLITest.prototype, {
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
-
+      
+      this.originalCreateAuthenticationContext = adalAuth.createAuthenticationContext;
+      adalAuth.createAuthenticationContext = function () {
+        return {
+          'acquireToken': function (resourceId, userId, clientId, callback) {
+            return callback(null, { accessToken: 'fakeToken', tokenType: 'Bearer' });
+          },
+          'acquireTokenWithClientCredentials': function (resourceId, userId, clientId, callback) {
+            return callback(null, { accessToken: 'fakeToken', tokenType: 'Bearer' });
+          }
+        };
+      }
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
     } else {
@@ -254,6 +265,9 @@ _.extend(CLITest.prototype, {
     this.curentTest = 0;
     if (this.isMocked) {
       delete process.env.AZURE_ENABLE_STRICT_SSL;
+    }
+    if (this.isPlayback()) {
+      adalAuth.createAuthenticationContext = this.originalCreateAuthenticationContext;
     }
 
     callback();
@@ -298,7 +312,6 @@ _.extend(CLITest.prototype, {
 
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
-
       if (nocked.scopes.length === 1) {
         nocked.scopes[0].forEach(function (createScopeFunc) {
           createScopeFunc(nockHelper.nock);

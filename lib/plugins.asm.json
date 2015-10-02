@@ -51,7 +51,7 @@
       "name": "login",
       "description": "Log in to an Azure subscription using Active Directory. Currently, the user can login only via Microsoft organizational account",
       "fullName": "login",
-      "usage": "[options] [username]",
+      "usage": "[options]",
       "filePath": "commands/login._js",
       "options": [
         {
@@ -86,7 +86,7 @@
           "bool": true,
           "short": "-u",
           "long": "--username",
-          "description": "user name or service principal ID, will prompt if not given"
+          "description": "user name or service principal ID"
         },
         {
           "flags": "-e --environment [environment]",
@@ -121,14 +121,6 @@
           "bool": true,
           "long": "--tenant",
           "description": "Tenant domain or ID to log into"
-        },
-        {
-          "flags": "--interactive [interactive]",
-          "required": 0,
-          "optional": -15,
-          "bool": true,
-          "long": "--interactive",
-          "description": "Required for 2FA enabled or Microsoft Account such as live ids"
         },
         {
           "flags": "-q --quiet",
