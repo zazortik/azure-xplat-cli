@@ -72,7 +72,7 @@
     "js2xmlparser": "1.0.0",
     "jsrsasign": "4.8.2 ",
     "jszip": "^2.5.0",
-    "kuduscript": "0.2.2",
+    "kuduscript": "1.0.2",
     "mime": "~1.2.4",
     "moment": "2.6.0",
     "node-forge": "0.6.23",
