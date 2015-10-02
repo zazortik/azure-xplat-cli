@@ -3,7 +3,8 @@ commands/arm/webapp/arm.webapp.feature-tests.js
 commands/arm/group/groupUtils-tests.js
 commands/arm/provider/arm.provider-tests.js
 commands/arm/group/arm.group-tests.js
-commands/arm/group/arm.group-template-tests.js
+#disable per #2167
+#commands/arm/group/arm.group-template-tests.js
 commands/arm/group/arm.group.deployment-tests.js
 commands/arm/resource/arm.resource-tests.js
 commands/arm/location/arm.location-tests.js
