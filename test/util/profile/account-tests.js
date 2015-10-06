@@ -281,7 +281,6 @@ describe('account', function () {
       };
       return callback(null, sampleAuthContext);
     },
-    UserTokenCredentials: function UserTokenCredentials() { },
     normalizeUserName: function (name) { return name; }
   };
   var resourceClient = {
