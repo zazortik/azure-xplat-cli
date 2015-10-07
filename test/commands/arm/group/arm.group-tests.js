@@ -36,7 +36,6 @@ var requiredEnvironment = [
 ];
 
 var galleryTemplateName;
-var galleryTemplateUrl;
 
 describe('arm', function () {
 
@@ -52,21 +51,6 @@ describe('arm', function () {
 
     after(function (done) {
       suite.teardownSuite(done);
-    });
-
-    beforeEach(function (done) {
-      suite.setupTest(function () {
-        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
-        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
-        testUtil.getTemplateInfoByName(suite, 'Microsoft.ASPNETStarterSite.0.2.2-preview', function(error, templateInfo) {
-          if (error) {
-            return done(new Error('Could not get template info: ' + error));
-          }
-          galleryTemplateName = templateInfo.templateName;
-          galleryTemplateUrl = templateInfo.templateUrl;
-          done();
-        });
-      });
     });
 
     afterEach(function (done) {
@@ -123,38 +107,10 @@ describe('arm', function () {
         });
       });
 
-      it('should create a group with a named deployment from a gallery template and a parameter file', function (done) {
-        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
-
-        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-
-        suite.execute('group create %s --location %s -y %s -e %s -d %s --template-version %s --json',
-          groupName, testLocation, galleryTemplateName, parameterFile, 'mydepGalleryTemplate', '1.0.0.0', function (result) {
-          result.exitStatus.should.equal(0);
-
-          suite.execute('group list --json', function (listResult) {
-            listResult.exitStatus.should.equal(0);
-            var groups = JSON.parse(listResult.text);
-
-            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.provisioningState === 'Succeeded'); }).should.be.true;
-
-            suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
-              listResult.exitStatus.should.equal(0);
-
-              var results = JSON.parse(listResult.text);
-              results.length.should.be.above(0);
-
-              suite.execute('group delete %s --json --quiet', groupName, function () {
-                done();
-              });
-            });
-          });
-        });
-      });
-
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
-        var parameterString = fs.readFileSync(path.join(__dirname, '../../../data/startersite-parameters.json')).toString().replace(/\n/g, '').replace(/\r/g, '');
-
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var parameterString = fs.readFileSync(parameterFile).toString().replace(/\n/g, '').replace(/\r/g, '');
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json',
@@ -272,11 +228,12 @@ describe('arm', function () {
 
       //create a group named xDeploymentTestGroup with two deployments 'Deploy1' and 'Deploy2'
       function setupForLogShow (done) {
-        var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
+        var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
+        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --nowait --json -vv',
-            galleryTemplateUrl, groupName, deploymentName, parameterFile);
+            templateFile, groupName, deploymentName, parameterFile);
 
         console.log('  . Creating setup for running group log show tests');
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {

@@ -9460,15 +9460,6 @@
               "description": "the name of the deployment we will create (only valid when a template is used)"
             },
             {
-              "flags": "-y --gallery-template <gallery-template>",
-              "required": -23,
-              "optional": 0,
-              "bool": true,
-              "short": "-y",
-              "long": "--gallery-template",
-              "description": "the name of the template in the gallery"
-            },
-            {
               "flags": "-f --template-file <template-file>",
               "required": -20,
               "optional": 0,
@@ -9493,15 +9484,6 @@
               "bool": true,
               "long": "--template-version",
               "description": "the content version of the template"
-            },
-            {
-              "flags": "-s --storage-account <storage-account>",
-              "required": -22,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--storage-account",
-              "description": "the storage account where we will upload the template file"
             },
             {
               "flags": "-p --parameters <parameters>",
@@ -9929,15 +9911,6 @@
                   "description": "the name of the deployment"
                 },
                 {
-                  "flags": "-y --gallery-template <gallery-template>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--gallery-template",
-                  "description": "the name of the template in the gallery"
-                },
-                {
                   "flags": "-f --template-file <template-file>",
                   "required": -20,
                   "optional": 0,
@@ -9962,15 +9935,6 @@
                   "bool": true,
                   "long": "--template-version",
                   "description": "the content version of the template"
-                },
-                {
-                  "flags": "-s --storage-account <storage-account>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--storage-account",
-                  "description": "the storage account where we will upload the template file"
                 },
                 {
                   "flags": "-p --parameters <parameters>",
@@ -10325,14 +10289,6 @@
                   "short": "-p",
                   "long": "--publisher",
                   "description": "the publisher of the templates to list"
-                },
-                {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--subscription",
-                  "description": "the Azure subscription to run against"
                 }
               ]
             },
@@ -10376,14 +10332,6 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of template to show"
-                },
-                {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--subscription",
-                  "description": "the Azure subscription to run against"
                 }
               ]
             },
@@ -10391,7 +10339,7 @@
               "name": "download",
               "description": "Downloads a gallery resource group template",
               "fullName": "group template download",
-              "usage": "[options] [name] [file]",
+              "usage": "[options] [name] [directory]",
               "filePath": "commands/arm/group/group.template._js",
               "options": [
                 {
@@ -10429,13 +10377,13 @@
                   "description": "the name of the template to download"
                 },
                 {
-                  "flags": "-f --file <file>",
-                  "required": -11,
+                  "flags": "-d --directory <directory>",
+                  "required": -16,
                   "optional": 0,
                   "bool": true,
-                  "short": "-f",
-                  "long": "--file",
-                  "description": "the name of the destination directory or file"
+                  "short": "-d",
+                  "long": "--directory",
+                  "description": "the name of the destination directory"
                 },
                 {
                   "flags": "-q --quiet",
@@ -10445,14 +10393,6 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode (do not prompt for overwrite if output file exists)"
-                },
-                {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--subscription",
-                  "description": "the Azure subscription to run against"
                 }
               ]
             },
@@ -10498,15 +10438,6 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-y --gallery-template <gallery-template>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-y",
-                  "long": "--gallery-template",
-                  "description": "the name of the template in the gallery"
-                },
-                {
                   "flags": "-f --template-file <template-file>",
                   "required": -20,
                   "optional": 0,
@@ -10531,15 +10462,6 @@
                   "bool": true,
                   "long": "--template-version",
                   "description": "the content version of the template"
-                },
-                {
-                  "flags": "-s --storage-account <storage-account>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--storage-account",
-                  "description": "the storage account where we will upload the template file"
                 },
                 {
                   "flags": "-p --parameters <parameters>",
