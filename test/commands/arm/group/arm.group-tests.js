@@ -111,7 +111,7 @@ describe('arm', function () {
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var parameterString = fs.readFileSync(parameterFile).toString().replace(/\n/g, '').replace(/\r/g, '');
-        //path.join(__dirname, '../../../data/arm-deployment-template.json')
+        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
         var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 

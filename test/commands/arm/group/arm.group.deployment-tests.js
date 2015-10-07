@@ -223,9 +223,10 @@ describe('arm', function () {
         setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --nowait --json',
-            templateFile, groupName, deploymentName, parameterFile);
+        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
+        var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';       
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --nowait --json',
+            templateUri, groupName, deploymentName, parameterFile);
         
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
@@ -241,7 +242,7 @@ describe('arm', function () {
         });
       });
 
-      it('should all work with a local file', function (done) {
+      it.only('should all work with a local file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
@@ -251,6 +252,7 @@ describe('arm', function () {
             templateFile, groupName, deploymentName, parameterFile);
         var templateContent = JSON.parse(testUtil.stripBOM(fs.readFileSync(templateFile)));
         var outputTextToValidate = Object.keys(templateContent.outputs)[0];
+        console.log("@@@@@:" + outputTextToValidate);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
