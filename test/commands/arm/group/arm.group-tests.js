@@ -39,8 +39,8 @@ describe('arm', function () {
 
   describe('group', function () {
     var suite;
-    var testLocation = process.env.AZURE_ARM_TEST_LOCATION;
-    var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+    var testLocation;
+    var normalizedTestLocation;
 
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -52,7 +52,11 @@ describe('arm', function () {
     });
     
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        done();
+      });
     });
 
     afterEach(function (done) {

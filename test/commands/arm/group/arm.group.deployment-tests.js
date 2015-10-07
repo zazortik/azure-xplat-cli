@@ -36,20 +36,33 @@ var cleanedUpGroups = 0;
 describe('arm', function () {
   describe('deployment', function () {
     var suite;
-    var testLocation = process.env.AZURE_ARM_TEST_LOCATION;
-    var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+    var testLocation;
+    var normalizedTestLocation;
+    var originalSetTimeout = setTimeout;
 
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
+      if (suite.isPlayback()) {
+        setTimeout = function (action, timeout) {
+          process.nextTick(action);
+        };
+      }
       suite.setupSuite(done);
     });
 
     after(function (done) {
+      if (!suite.isPlayback()) {
+        setTimeout = originalSetTimeout;
+      }
       suite.teardownSuite(done);
     });
     
     beforeEach(function (done) {
-      suite.setupTest(done);
+      suite.setupTest(function () {
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
+        done();
+      });
     });
 
     afterEach(function (done) {
@@ -242,7 +255,7 @@ describe('arm', function () {
         });
       });
 
-      it.only('should all work with a local file', function (done) {
+      it('should all work with a local file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         setUniqParameterNames(suite, parameterFile);
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
@@ -252,7 +265,6 @@ describe('arm', function () {
             templateFile, groupName, deploymentName, parameterFile);
         var templateContent = JSON.parse(testUtil.stripBOM(fs.readFileSync(templateFile)));
         var outputTextToValidate = Object.keys(templateContent.outputs)[0];
-        console.log("@@@@@:" + outputTextToValidate);
 
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
