@@ -36,8 +36,8 @@ var cleanedUpGroups = 0;
 describe('arm', function () {
   describe('deployment', function () {
     var suite;
-    var testLocation;
-    var normalizedTestLocation;
+    var testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+    var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);

@@ -35,14 +35,12 @@ var requiredEnvironment = [
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
-var galleryTemplateName;
-
 describe('arm', function () {
 
   describe('group', function () {
     var suite;
-    var testLocation;
-    var normalizedTestLocation;
+    var testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+    var normalizedTestLocation = testLocation.toLowerCase().replace(/ /g, '');
 
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -84,7 +82,6 @@ describe('arm', function () {
       it('should create a group with a named deployment from a template file and a parameter file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s -f %s -e %s -d %s --template-version %s --json',
@@ -114,11 +111,12 @@ describe('arm', function () {
       it('should create a group with a named deployment from a template uri and parameter string', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
         var parameterString = fs.readFileSync(parameterFile).toString().replace(/\n/g, '').replace(/\r/g, '');
-        var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
+        //path.join(__dirname, '../../../data/arm-deployment-template.json')
+        var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';
         var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
 
         suite.execute('group create %s --location %s --template-uri %s -p %s -d %s --template-version %s --json',
-          groupName, testLocation, galleryTemplateUrl, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
+          groupName, testLocation, templateUri, parameterString, 'mydeptemplateUrl', '1.0.0.0', function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('group list --json', function (listResult) {
