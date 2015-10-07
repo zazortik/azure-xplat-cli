@@ -26,33 +26,6 @@ var testUtil = require('../../../util/util');
 
 var groupUtils = require('../../../../lib/commands/arm/group/groupUtils');
 
-describe('getTemplateDownloadUrl', function () {
-  it('should get correct url if case of key matches', function () {
-    var templateItem = {
-      definitionTemplates: {
-        deploymentTemplateFileUrls: {
-          website_ExistingHostingPlan: "https://blah.de.blah.example/Website_ExistingHostingPlan.json",
-          website_NewHostingPlan: "https://blah.de.blah.example/Website_NewHostingPlan.json"
-        },
-        defaultDeploymentTemplateId: "website_NewHostingPlan"
-      }
-    };
-    groupUtils.getTemplateDownloadUrl(templateItem).should.equal(templateItem.definitionTemplates.deploymentTemplateFileUrls.website_NewHostingPlan);
-  });
-
-  it('should get correct url if case of key does not match', function () {
-    var templateItem = {
-      definitionTemplates: {
-        deploymentTemplateFileUrls: {
-          website_ExistingHostingPlan: "https://blah.de.blah.example/Website_ExistingHostingPlan.json",
-          website_NewHostingPlan: "https://blah.de.blah.example/Website_NewHostingPlan.json"
-        },
-        defaultDeploymentTemplateId: "WEBSITE_NEWHOSTINGPLAN"
-      }
-    };
-    groupUtils.getTemplateDownloadUrl(templateItem).should.equal(templateItem.definitionTemplates.deploymentTemplateFileUrls.website_NewHostingPlan);
-  });
-});
 
 describe('download file name', function () {
   var yes = sinon.stub().callsArgWith(1, true);

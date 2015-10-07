@@ -47,6 +47,10 @@ describe('arm', function () {
     after(function (done) {
       suite.teardownSuite(done);
     });
+    
+    beforeEach(function (done) {
+      suite.setupTest(done);
+    });
 
     afterEach(function (done) {
       suite.teardownTest(done);
