@@ -13,7 +13,8 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>login</ScriptArguments>
+    <ScriptArguments>
+    </ScriptArguments>
     <Environment>
     </Environment>
   </PropertyGroup>
@@ -55,7 +56,6 @@
     <Content Include="test\testlist.txt" />
     <Content Include="test\testlistarm.txt" />
     <Content Include="test\testlistmc.txt" />
-    <Compile Include="test\cli-tests.js" />
     <Compile Include="features\step_definitions\website-creation-steps.js" />
     <Compile Include="features\step_definitions\website-credential-steps.js" />
     <Compile Include="features\support\environmentDownloader.js" />

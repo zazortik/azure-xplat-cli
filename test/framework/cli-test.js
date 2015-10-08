@@ -228,7 +228,7 @@ _.extend(CLITest.prototype, {
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
-      
+
       this.originalCreateAuthenticationContext = adalAuth.createAuthenticationContext;
       adalAuth.createAuthenticationContext = function () {
         return {
@@ -269,7 +269,6 @@ _.extend(CLITest.prototype, {
     if (this.isPlayback()) {
       adalAuth.createAuthenticationContext = this.originalCreateAuthenticationContext;
     }
-
     callback();
   },
 
@@ -312,6 +311,7 @@ _.extend(CLITest.prototype, {
 
       this.originalTokenCache = adalAuth.tokenCache;
       adalAuth.tokenCache = new MockTokenCache();
+
       if (nocked.scopes.length === 1) {
         nocked.scopes[0].forEach(function (createScopeFunc) {
           createScopeFunc(nockHelper.nock);
