@@ -13,14 +13,13 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments></ScriptArguments>
+    <ScriptArguments>login</ScriptArguments>
     <Environment>
     </Environment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Content Include="ChangeLog.txt" />
     <Content Include="CONTRIBUTORS.txt" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
@@ -172,7 +171,9 @@
     <Compile Include="test\commands\cli.mobile.table-tests.js" />
     <Compile Include="test\commands\cli.mobilerecover-tests.js" />
     <Compile Include="test\commands\cli.network-nsg-rule-tests.js" />
-    <Compile Include="test\commands\cli.network-nsg-tests.js" />
+    <Compile Include="test\commands\cli.network-nsg-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.network-subnet-tests.js" />
     <Compile Include="test\commands\cli.network-tests.js" />
     <Compile Include="test\commands\cli.network.application-gateway.js" />
@@ -337,7 +338,9 @@
     <Compile Include="test\commands\arm\usage\arm.usage.feature-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.availset-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-create-generate-ssh-tests.js" />
-    <Compile Include="test\commands\arm\vm\arm.vm-create-tests.js" />
+    <Compile Include="test\commands\arm\vm\arm.vm-create-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\commands\arm\vm\arm.vm-docker-ssh-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-docker-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-image-list-tests.js" />

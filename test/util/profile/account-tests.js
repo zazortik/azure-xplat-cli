@@ -119,16 +119,17 @@ describe('account', function () {
       return callback(null, userCodeResponse);
     },
     
-    authenticateWithDeviceCode: function (authConfig, userCodeResponse, username, callback) {
+    authenticateWithDeviceCode: function (authConfig, userCodeResponse, callback) {
       dataPassedToAcquireTokenWithDeviceCode = {
         authConfig : authConfig,
         userCodeResponse: userCodeResponse,
-        username: username
       };
       return callback(null, sampleAuthContext);
     },
     
-    normalizeUserName: function (name) { return name; }
+    normalizeUserName: function (name) { return name; },
+
+    UserTokenCredentials: function UserTokenCredentials() { }
   };
   
   var resourceClient = {
@@ -150,16 +151,13 @@ describe('account', function () {
     
     it('should pass correct parameters to to acquire token', function () {
       dataPassedToAcquireToken.username.should.equal(expectedUserName);
-      data2PassedToAcquireToken.username.should.equal(expectedUserName);
-      
-      dataPassedToAcquireToken.password.should.equal(expectedPassword);
-      data2PassedToAcquireToken.password.should.equal(expectedPassword);
-      
+      dataPassedToAcquireToken.password.should.equal(expectedPassword);     
       dataPassedToAcquireToken.authConfig.tenantId.should.equal('common');
-      data2PassedToAcquireToken.authConfig.tenantId.should.equal(testTenantIds[0]);
-      
       dataPassedToAcquireToken.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
       dataPassedToAcquireToken.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
+      
+      //we should only ask for authenticateWithUsernamePassword once
+      should.not.exist(data2PassedToAcquireToken);
     });
     
     it('should return a subscription with expected username', function () {
@@ -188,11 +186,11 @@ describe('account', function () {
     });
   });
   
-  describe('When load using multifactor authentication', function () {
+  describe('When load using interactive flow', function () {
     var subscriptions;
     
     beforeEach(function (done) {
-      account.load(expectedUserName, expectedPassword, '', { mfa: true }, function (err, result) {
+      account.load(expectedUserName, expectedPassword, '', { interactive: true }, function (err, result) {
         subscriptions = result.subscriptions;
         done();
       });
@@ -210,7 +208,6 @@ describe('account', function () {
       dataPassedToAcquireTokenWithDeviceCode.authConfig.authorityUrl.should.equal(environment.activeDirectoryEndpointUrl);
       dataPassedToAcquireTokenWithDeviceCode.authConfig.resourceId.should.equal(environment.activeDirectoryResourceId);
       
-      dataPassedToAcquireTokenWithDeviceCode.username.should.equal(expectedUserName);
       dataPassedToAcquireTokenWithDeviceCode.userCodeResponse.foo.should.equal('bar');
     });
     
@@ -224,7 +221,7 @@ describe('account', function () {
   });
 });
 
-describe('Account loading with logon error', function () {
+describe('account loading with logon error', function () {
   var adalAuth = {
     normalizeUserName: function (name) { return name; }
   };
@@ -232,32 +229,30 @@ describe('Account loading with logon error', function () {
   var account = new Account(environment, adalAuth, null, log);
   var subscriptions;
   
-  it('should return error indicating user is enabled with MFA', function () {
+  it('should catch error indicating user is enabled with MFA', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('AADSTS50076: Application password is required.'));
     };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      err[account.MFAEnabledErrFieldName].should.be.true;
+      err[account.WarnToUserInteractiveFieldName].should.be.true;
     });
   });
   
-  it('should return better error indicating user is using non org-id', function () {
+  it('should catch error indicating user is using non org-id', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('Server returned an unknown AccountType: undefined'));
     };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      should.not.exist(err[account.MFAEnabledErrFieldName]);
-      (err.message.indexOf('used an account type which is not supported') >= 0).should.be.true;
+      err[account.WarnToUserInteractiveFieldName].should.be.true;
     });
   });
   
-  it('should return better error indicating user is using live-id', function () {
+  it('should catch error user is using live-id', function () {
     adalAuth.authenticateWithUsernamePassword = function (authConfig, username, password, callback) {
       callback(new Error('Server returned error in RSTR - ErrorCode: NONE : FaultMessage: NONE'));
     };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      should.not.exist(err[account.MFAEnabledErrFieldName]);
-      (err.message.indexOf('used an account type which is not supported') >= 0).should.be.true;
+      err[account.WarnToUserInteractiveFieldName].should.be.true;
     });
   });
   
@@ -267,40 +262,8 @@ describe('Account loading with logon error', function () {
       callback(new Error(regularError));
     };
     account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      should.not.exist(err[account.MFAEnabledErrFieldName]);
+      should.not.exist(err[account.WarnToUserInteractiveFieldName]);
       err.message.should.equal(regularError);
-    });
-  });
-});
-
-describe('account', function () {
-  var dataPassedToAcquireToken;
-  var adalAuth = {
-    authenticateWithUsernamePassword: function (authConfig, user, password, callback) {
-      dataPassedToAcquireToken = { authConfig: authConfig };
-      return callback(null, sampleAuthContext);
-    },
-    normalizeUserName: function (name) { return name; }
-  };
-  var resourceClient = {
-    createResourceSubscriptionClient: function (cred, armEndpoint) {
-      return testArmSubscriptionClient;
-    }
-  };
-  var account = new Account(environment, adalAuth, resourceClient, log);
-  
-  describe('when load with tenant specified', function () {
-    var subscriptions;
-    
-    beforeEach(function (done) {
-      account.load(expectedUserName, expectedPassword, 'niceTenant', {}, function (err, result) {
-        subscriptions = result.subscriptions;
-        done();
-      });
-    });
-    
-    it('should create auth configuration with that tenant', function () {
-      dataPassedToAcquireToken.authConfig.tenantId.should.equal('niceTenant');
     });
   });
 });
@@ -346,44 +309,6 @@ describe('account', function () {
     it('should return a subscription with expected servicePrincipalId', function () {
       should.exist(subscriptions[0].user);
       subscriptions[0].user.name.should.equal(servicePrincipalId);
-    });
-  });
-});
-
-describe('Account load with default tenant not MFA enabled', function () {
-  it('should continue but skip other tenant with MFA enabled', function (done) {
-    var testTenantId = 'tenant-with-2fa';
-    var adalAuth = {
-      authenticateWithUsernamePassword: function (authConfig, username, password, callback) {
-        if (authConfig.tenantId === 'common') {
-          return callback(null, sampleAuthContext);
-        } else {
-          return callback(new Error('AADSTS50076: Application password is required.'));
-        }
-      },    
-      normalizeUserName: function (name) { return name; }
-    };
-    
-    var resourceClient = {
-      createResourceSubscriptionClient: function (cred, armEndpoint) {
-        return {
-          tenants: {
-            list: function (callback) {
-              callback(null, { tenantIds: [{ tenantId : testTenantId }] });
-            }
-          }
-        };
-      }
-    };
-    var warnLogged;
-    var log = {
-      info: function () { },
-      warn: function (w) { warnLogged = w; }
-    };
-    var account = new Account(environment, adalAuth, resourceClient, log);
-    account.load(expectedUserName, expectedPassword, '', {}, function (err, result) {
-      warnLogged.indexOf(testTenantId + ' is skipped').should.not.equal(-1);
-      done();
     });
   });
 });

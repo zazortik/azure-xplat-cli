@@ -32,7 +32,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "adal-node": "0.1.16",
+    "adal-node": "0.1.17",
     "async": "1.4.2",
     "azure-common": "0.9.13",
     "azure-arm-apiapp": "0.1.3",
