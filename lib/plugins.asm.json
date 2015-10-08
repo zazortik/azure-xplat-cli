@@ -49,7 +49,7 @@
     },
     {
       "name": "login",
-      "description": "Log in to an Azure subscription using Active Directory. Currently, the user can login only via Microsoft organizational account",
+      "description": "Log in to an Azure subscription using Active Directory.",
       "fullName": "login",
       "usage": "[options]",
       "filePath": "commands/login._js",

@@ -221,7 +221,7 @@ describe('account', function () {
   });
 });
 
-describe('Account loading with logon error', function () {
+describe('account loading with logon error', function () {
   var adalAuth = {
     normalizeUserName: function (name) { return name; }
   };
