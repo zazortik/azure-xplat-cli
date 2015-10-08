@@ -18044,6 +18044,15 @@
                   "description": "the name of the resource group"
                 },
                 {
+                  "flags": "-m, --virtual-machine-scale-set <virtual-machine-scale-set>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--virtual-machine-scale-set",
+                  "description": "the name of the virtual machine scale set"
+                },
+                {
                   "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
@@ -18103,6 +18112,24 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of the network interface"
+                },
+                {
+                  "flags": "-m, --virtual-machine-scale-set <virtual-machine-scale-set>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--virtual-machine-scale-set",
+                  "description": "the name of the virtual machine scale set"
+                },
+                {
+                  "flags": "-i, --virtual-machine-index <virtual-machine-index>",
+                  "required": -29,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--virtual-machine-index",
+                  "description": "the index of virtual machine in scale set"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
