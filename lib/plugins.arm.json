@@ -22982,6 +22982,69 @@
               "categories": {}
             }
           }
+        },
+        "express-route": {
+          "name": "express-route",
+          "description": "Commands to manage express routes",
+          "fullName": "network express-route",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "provider": {
+              "name": "provider",
+              "description": "Commands to manage express route service providers",
+              "fullName": "network express-route provider",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List express route service providers",
+                  "fullName": "network express-route provider list",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
