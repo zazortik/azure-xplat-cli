@@ -203,6 +203,14 @@ describe('arm', function() {
         });
       });
 
+      it('set should be able to update the VM size', function(done) {
+        var cmd = util.format('vm set -z %s %s --json', 'Standard_A1', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('get-serial-output should show bootdiagnostics output again', function(done) {
         var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
