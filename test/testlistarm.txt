@@ -54,6 +54,7 @@ commands/arm/network/arm.network.route-table-tests.js
 commands/arm/network/arm.network.route-table-routes-tests.js
 commands/arm/network/arm-network-gateway-local-network-tests.js
 commands/arm/network/arm-network-gateway-vnet-tests.js
+commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
