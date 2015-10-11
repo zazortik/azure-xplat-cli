@@ -24237,6 +24237,75 @@
               "description": "the subscription identifier"
             }
           ]
+        },
+        {
+          "name": "move",
+          "description": "Moves resources from one resource group to another",
+          "fullName": "resource move",
+          "usage": "[options] <ids> <destination-group>",
+          "filePath": "commands/arm/resource/resource._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-i --ids <ids>",
+              "required": -10,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--ids",
+              "description": "the comma-delimitied resource ids to be moved"
+            },
+            {
+              "flags": "-d --destination-group <destination-group>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--destination-group",
+              "description": "the destination resource group name"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode (do not ask for delete confirmation)"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
         }
       ],
       "categories": {}

@@ -307,6 +307,102 @@ describe('arm', function () {
       });
     });
 
+    describe('move', function () {
+      it('should work', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          
+          //create sample resource to move
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+            
+            //get the resource id
+            suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              var resourceId = JSON.parse(showResult.text).id;
+              
+              //perform move to destination group
+              suite.execute('group create %s --location %s --json', destinationGroupName, testGroupLocation, function (result) {
+                suite.execute('resource move -i %s -d %s -q', resourceId, destinationGroupName, function (moveResult) {
+                  moveResult.exitStatus.should.equal(0);
+                  
+                  //validate move was successful
+                  suite.execute('resource show %s %s %s %s --json', destinationGroupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                    showResult.exitStatus.should.equal(0);
+                    suite.execute('group delete %s --quiet --json', groupName, function () {
+                      suite.execute('group delete %s --quiet --json', destinationGroupName, function () {
+                        done();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+
+      it('should work with multiple resource Ids', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
+        var resourceName1 = suite.generateId('xTestGrpRes1', createdResources, suite.isMocked);
+        var resourceName2 = suite.generateId('xTestGrpRes2', createdResources, suite.isMocked);
+        
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          
+          //create sample resource1 to move
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName1, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+            
+            //create sample resource2 to move
+            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName2, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              result.exitStatus.should.equal(0);
+
+              //get the resource1 id
+              suite.execute('resource show %s %s %s %s --json', groupName, resourceName1, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                showResult.exitStatus.should.equal(0);
+                var resourceId1 = JSON.parse(showResult.text).id;
+                
+                //get the resource2 id
+                suite.execute('resource show %s %s %s %s --json', groupName, resourceName2, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                  showResult.exitStatus.should.equal(0);
+                  var resourceId2 = JSON.parse(showResult.text).id;
+
+                  //perform move to destination group
+                  suite.execute('group create %s --location %s --json', destinationGroupName, testGroupLocation, function (result) {
+                    var commandToMove = util.format('resource move -i %s,%s -d %s -q',
+                      resourceId1, resourceId2, destinationGroupName);
+
+                    suite.execute(commandToMove, function (moveResult) {
+                      moveResult.exitStatus.should.equal(0);
+                      
+                      //validate move was successful
+                      suite.execute('resource list -g %s --json', destinationGroupName, function (listResult) {
+                        listResult.exitStatus.should.equal(0);
+                        var results = JSON.parse(listResult.text);
+                        results.length.should.equal(2);
+
+                        suite.execute('group delete %s --quiet --json', groupName, function () {
+                          suite.execute('group delete %s --quiet --json', destinationGroupName, function () {
+                            done();
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
     //Tracking: RD Bug 1713476: failed to set configure app settings
     //describe('set', function () {
     //  it('should set the appsettings of a website resource', function(done) {
