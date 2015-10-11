@@ -95,7 +95,8 @@
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
-    "xmlbuilder": "0.4.x"
+    "xmlbuilder": "0.4.x",
+    "npmlog": "1.2.1"
   },
   "devDependencies": {
     "istanbul": "0.3.19",
@@ -124,7 +125,8 @@
     "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",
     "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/util/profile test/util/authentication -R spec -t 5000",
-    "extract-labels": "node scripts/extract-labels"
+    "extract-labels": "node scripts/extract-labels",
+    "postinstall": "node scripts/warn-existing-streamline-files.js"
   },
   "bin": {
     "azure": "./bin/azure"
