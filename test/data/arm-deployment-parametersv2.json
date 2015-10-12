@@ -1,19 +1,17 @@
 {
-    "parameters": {
-        "siteName": {
-            "value": "xDeploymentTestSite18850"
-        },
-        "hostingPlanName": {
-            "value": "xDeploymentTestHost23557"
-        },
-        "siteLocation": {
-            "value": "West US"
-        },
-        "sku": {
-            "value": "Free"
-        },
-        "workerSize": {
-            "value": "0"
-        }
-    }
+  "siteName": {
+    "value": "xDeploymentTestSite1765"
+  },
+  "hostingPlanName": {
+    "value": "xDeploymentTestHost25735"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  }
 }

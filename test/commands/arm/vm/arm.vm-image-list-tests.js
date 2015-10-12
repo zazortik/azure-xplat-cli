@@ -20,12 +20,13 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-image-list-tests';
 var validPublisher = 'MicrosoftSQLServer';
+var extPublisher = 'Microsoft.Compute';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
 
-var location, publisher, offer, sku;
+var location, publisher, offer, sku, type, version;
 var hasValue = false;
 describe('arm', function() {
   describe('compute', function() {
@@ -92,6 +93,50 @@ describe('arm', function() {
         });
       });
 
+      it('extension list-image-publishers ', function(done) {
+        var cmd = util.format('vm extension list-image-publishers %s --json', location).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            publisher = res.name;
+            return res.name === extPublisher;
+          }).should.be.true;
+          // store the publisher result, and verify it in 'list-image-types' test
+          publisher = extPublisher;
+          done();
+        });
+      });
+
+      it('extension list-image-types ', function(done) {
+        var cmd = util.format('vm extension list-image-types %s %s --json', location, publisher).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          // store the type result, and verify it in 'list-image-versions' test
+          type = allResources[0].name;
+          done();
+        });
+      });
+
+      it('extension list-image-versions ', function(done) {
+        var cmd = util.format('vm extension list-image-versions %s %s %s --json', location, publisher, type).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          // store the version result, and verify it in 'get-image' test
+          version = allResources[0].name;
+          done();
+        });
+      });
+
+      it('extension get-image ', function(done) {
+        var cmd = util.format('vm extension get-image %s %s %s %s --json', location, publisher, type, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
     });
 
 

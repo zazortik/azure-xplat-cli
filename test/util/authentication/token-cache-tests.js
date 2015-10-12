@@ -27,8 +27,8 @@ var sinon = require('sinon');
 var TokenCache = require('../../../lib/util/authentication/token-cache');
 
 describe('Token cache', function () {
-  var testUserId = 'johndoe@microsoft.com';
-  var testToken = {
+  var johnUserId = 'johndoe@microsoft.com';
+  var johnTokenFromTenant72f9 = {
     _authority: 'https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd0111234', 
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
     expiresIn: 3599, 
@@ -40,10 +40,10 @@ describe('Token cache', function () {
     resource: 'https://management.core.windows.net/', 
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd0111234', 
     tokenType: 'Bearer', 
-    userId: testUserId, 
+    userId: johnUserId, 
     accessToken: 'token dummy 1234'
   };
-  var testToken2 = {
+  var johnTokenFromCommon = {
     _authority: 'https://login.windows.net/common', 
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
     expiresIn: 3599, 
@@ -55,22 +55,22 @@ describe('Token cache', function () {
     resource: 'https://management.core.windows.net/', 
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd0111234',
     tokenType: 'Bearer', 
-    userId: testUserId, 
+    userId: johnUserId, 
     accessToken: 'token dummy 12345'
   };
-  var tokensInCache = [testToken, testToken2];
+  var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
   var sampleTokenQuery = {
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
-    userId: testUserId, 
+    userId: johnUserId, 
     _authority: 'https://login.windows.net/common'
   };
   var sampleTokenQueryWithTenantId = {
-    userId: testUserId,
+    userId: johnUserId,
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd0111234'
   };
   var sampleTokenQueryWithUpperCasing = {
     _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
-    userId: testUserId.toUpperCase(), 
+    userId: johnUserId.toUpperCase(), 
     _authority: 'https://login.windows.net/common'
   };
   
@@ -85,7 +85,7 @@ describe('Token cache', function () {
       var cache = new TokenCache(tokenStorage);
       cache.find(sampleTokenQueryWithTenantId, function (err, tokens) {
         tokens.length.should.equal(2);
-        tokens[0].userId.should.equal(testUserId);
+        tokens[0].userId.should.equal(johnUserId);
         done();
       });
     });
@@ -95,7 +95,7 @@ describe('Token cache', function () {
       
       cache.find(sampleTokenQuery, function (err, tokens) {
         tokens.length.should.equal(1);
-        tokens[0].userId.should.equal(testUserId);
+        tokens[0].userId.should.equal(johnUserId);
         done();
       });
     });
@@ -104,7 +104,7 @@ describe('Token cache', function () {
       var cache = new TokenCache(tokenStorage);
       cache.find(sampleTokenQueryWithUpperCasing, function (err, tokens) {
         tokens.length.should.equal(1);
-        tokens[0].userId.should.equal(testUserId);
+        tokens[0].userId.should.equal(johnUserId);
         done();
       });
     });
@@ -129,7 +129,7 @@ describe('Token cache', function () {
   
   describe('add', function () {
     var newUserId = 'mikedoe@microsoft.com';
-    var testTokenToAdd = {
+    var mikeTokenFromCommon = {
       _authority: 'https://login.windows.net/common', 
       _clientId: '04b07795-8ddb-461a-bbee-02f9e1bf7b46', 
       expiresIn: 3599, 
@@ -146,20 +146,25 @@ describe('Token cache', function () {
     };
     function constructStorageObject(tokensInCache) {
       return {
+        entries: tokensInCache,
         loadEntries : function (callback) {
-          callback(null, tokensInCache);
+          callback(null, this.entries);
         },
         addEntries : function (newEntries, existingEntries, callback) {
-          tokensInCache = existingEntries.concat(newEntries);
+          this.entries = this.entries.concat(newEntries);
+          callback(null);
+        },
+        removeEntries: function (entriesToRemove, entriesToKeep, callback) {
+          this.entries = entriesToKeep;
           callback(null);
         }
       };
     }
 
     it('should add an entry', function (done) {
-      var tokensInCache = [testToken, testToken2];
+      var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
       var cache = new TokenCache(constructStorageObject(tokensInCache));
-      cache.add([testTokenToAdd], function () {
+      cache.add([mikeTokenFromCommon], function () {
         tokensInCache.length.should.equal(3);
         tokensInCache[2].userId.should.equal(newUserId);
         done();
@@ -167,10 +172,46 @@ describe('Token cache', function () {
     });
     
     it('should not add duplicate tokens', function (done) {
-      var tokensInCache = [testToken, testToken2];
-      var cache = new TokenCache(constructStorageObject(tokensInCache));
-      cache.add([testTokenToAdd, testToken], function () {
-        tokensInCache.length.should.equal(3);
+      var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
+      var tokenStorageObject = constructStorageObject(tokensInCache);
+      var cache = new TokenCache(tokenStorageObject);
+      cache.add([mikeTokenFromCommon, johnTokenFromTenant72f9], function () {
+        tokenStorageObject.entries.length.should.equal(3);
+        done();
+      });
+    });
+    
+    it('should remove existing tokens with same field values including clientid, userid and authority', function (done) {
+      var tokenToCleanUp = {
+        _clientId: mikeTokenFromCommon._clientId,
+        userId: mikeTokenFromCommon.userId,
+        _authority: mikeTokenFromCommon._authority
+      };
+      var tokenShouldStay = {
+        _clientId: mikeTokenFromCommon._clientId,
+        userId: mikeTokenFromCommon.userId,
+        _authority: mikeTokenFromCommon._authority + '-oldUnique',
+      };
+      var newToken = {
+        _clientId: mikeTokenFromCommon._clientId,
+        userId: mikeTokenFromCommon.userId,
+        _authority: mikeTokenFromCommon._authority + '-newToken',
+      };
+      
+      var newToken2 = {
+        _clientId: mikeTokenFromCommon._clientId,
+        userId: mikeTokenFromCommon.userId,
+        _authority: mikeTokenFromCommon._authority,
+      };
+      var tokenStorageObj = constructStorageObject([tokenToCleanUp, tokenShouldStay]);
+      var cache = new TokenCache(tokenStorageObj);
+      cache.add([newToken, newToken2], function () {
+        var entriesInCache = tokenStorageObj.entries;
+        entriesInCache.length.should.equal(3);
+        //verify we have tokenShouldStay, johnTokenFromTenant72f9, johnTokenFromCommon, mikeTokenFromCommon
+        entriesInCache[0].should.equal(tokenShouldStay);
+        entriesInCache[1].should.equal(newToken);
+        entriesInCache[2].should.equal(newToken2);
         done();
       });
     });
@@ -210,24 +251,24 @@ describe('Token cache', function () {
       }
       
       it('should remove a matched entry', function (done) {
-        var tokensInCache = [testToken, testToken2];
+        var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
         var cache = new TokenCache(constructStorageObject(tokensInCache));
-        cache.remove([testToken], function () {
+        cache.remove([johnTokenFromTenant72f9], function () {
           tokensInCache.length.should.equal(1);
-          tokensInCache[0].userId.should.equal(testUserId);
+          tokensInCache[0].userId.should.equal(johnUserId);
           done();
         });
       });
       
       it('should remove entry with casing difference on userId', function (done) {
-        var tokensInCache = [testToken, testToken2];
-        var tokenClone = JSON.parse(JSON.stringify(testToken2));
+        var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
+        var tokenClone = JSON.parse(JSON.stringify(johnTokenFromCommon));
         tokenClone.userId = tokenClone.userId.toUpperCase();
 
         var cache = new TokenCache(constructStorageObject(tokensInCache));
         cache.remove([tokenClone], function () {
           tokensInCache.length.should.equal(1);
-          tokensInCache[0].should.equal(testToken);
+          tokensInCache[0].should.equal(johnTokenFromTenant72f9);
           done();
         });
       });

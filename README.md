@@ -55,6 +55,9 @@ This project provides a cross-platform command line interface for developers and
     * Create and manage vaults, assign permissions to vaults
     * Create and manage vault keys, import PEM files into a vault key, obtain key backups
     * Create and manage secrets, set and retrieve secret values
+* Redis Cache
+    * Create and manage Redis Caches
+    * List or Renew authentication keys
 
 ## Installation
 
@@ -88,11 +91,18 @@ sudo apt-get install -y nodejs
 sudo npm install -g azure-cli
 ```
 
+### Install on a Docker Host
+
+In a Docker host, run:  
+```bash
+sudo docker run -it microsoft/azure-cli 
+```
+
 ### Pre-compiled installers
 
-* [Windows](http://go.microsoft.com/fwlink/?LinkID=275464&clcid=0x409)
-* [Mac](http://go.microsoft.com/fwlink/?LinkID=253471&clcid=0x409) 
-* [Linux](http://go.microsoft.com/fwlink/?LinkID=253472&clcid=0x409)
+* [Windows](http://aka.ms/webpi-azure-cli)
+* [Mac](http://aka.ms/mac-azure-cli) 
+* [Linux](http://aka.ms/linux-azure-cli)
 
 ### Download Source Code
 
@@ -102,6 +112,7 @@ You can also install the Azure Xplat-CLI from sources using **git**  and **npm**
 git clone https://github.com/Azure/azure-xplat-cli.git
 cd ./azure-xplat-cli
 npm install
+bin/azure <command>
 ```
 
 ### Configure auto-complete
@@ -192,7 +203,7 @@ azure config mode arm # resource manager
 
 ## Docker
 
-Usage is same as standard vm create.
+Usage is the same as `vm create` command:
 
     azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
