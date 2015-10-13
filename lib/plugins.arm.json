@@ -9964,6 +9964,14 @@
                   "description": "does not wait for the deployment to complete. Returns as soon as the deployment is created"
                 },
                 {
+                  "flags": "--novalidate",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--novalidate",
+                  "description": "do not validate deployment"
+                },
+                {
                   "flags": "--subscription <subscription>",
                   "required": -16,
                   "optional": 0,
