@@ -135,6 +135,19 @@ describe('arm', function() {
           done();
         });
       });
+
+      it('list all should display all VMs in subscription', function(done) {
+        var cmd = util.format('vm list %s --json', '').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            return res.name === vmPrefix;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('show should display details about VM', function(done) {
         var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -184,6 +197,14 @@ describe('arm', function() {
 
       it('set should enable the diagnostics settings', function(done) {
         var cmd = util.format('vm set --enable-boot-diagnostics --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ %s %s --json', storageAccount, groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('set should be able to update the VM size', function(done) {
+        var cmd = util.format('vm set -z %s %s --json', 'Standard_A1', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
