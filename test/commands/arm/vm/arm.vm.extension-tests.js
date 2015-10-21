@@ -46,6 +46,8 @@ var groupName,
   IaasDiagPublisher,
   IaasDiagExtName,
   IaasDiagVersion,
+  bgInfoExtension = 'BGInfo',
+  bgInfoExtensionVersion = '2.1',
   datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
@@ -123,6 +125,16 @@ describe('arm', function() {
           });
         });
       });
+
+      it('Uninstall the default BGInfo extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension set %s %s %s %s %s -u -q --json', groupName, vmPrefix, bgInfoExtension, publisherExt, bgInfoExtensionVersion).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('Enable diagnostics extension on created VM in a resource group', function(done) {
         var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -130,6 +142,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('Check diagnostics extension on created VM should pass', function(done) {
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -141,6 +154,7 @@ describe('arm', function() {
           done();
         });
       });
+
       //Set extensions
       it('Set extensions for the created vm', function(done) {
         var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');

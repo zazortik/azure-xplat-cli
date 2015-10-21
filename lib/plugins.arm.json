@@ -26284,6 +26284,14 @@
               "bool": true,
               "long": "--boot-diagnostics-storage-uri",
               "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
+            },
+            {
+              "flags": "--disable-bginfo-extension",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-bginfo-extension",
+              "description": "The switch parameter to disable the BGInfo extension for VM."
             }
           ]
         },
