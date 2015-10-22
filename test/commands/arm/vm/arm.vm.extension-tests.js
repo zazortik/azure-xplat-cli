@@ -59,7 +59,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+        groupName = suite.generateId(groupPrefix, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -183,6 +183,31 @@ describe('arm', function() {
           result.exitStatus.should.equal(0);
           done();
         });
+      });
+
+      it('create for extension get and set without bginfo extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined || VMTestUtil.winImageUrn === "undefined") {
+          vmTest.GetWindowsSkusList(location, suite, function(result) {
+            vmTest.GetWindowsImageList(location, suite, function(result) {
+              var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --disable-bginfo-extension --json',
+                groupName, vmPrefix + 'nobginfo', location, nicName, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            });
+          });
+        } else {
+          var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --disable-bginfo-extension --json',
+            groupName, vmPrefix + '2', location, nicName + '2', VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+            vNetPrefix + '2', '10.0.0.0/16', subnetName + '2', '10.0.0.0/24', publicipName + '2', dnsPrefix + '2').split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        }
       });
 
     });
