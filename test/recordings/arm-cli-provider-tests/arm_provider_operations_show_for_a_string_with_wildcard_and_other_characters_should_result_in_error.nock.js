@@ -23,4 +23,4 @@ exports.getMockedProfile = function () {
 exports.setEnvironment = function() {
 };
 
-exports.scopes = [];
+exports.scopes = [[]];
