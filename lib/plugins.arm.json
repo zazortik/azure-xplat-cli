@@ -23686,9 +23686,9 @@
           "commands": [
             {
               "name": "show",
-              "description": "Show operations for the requested provider action string. The command takes as input an action string (with possible wildcard (*) character(s)) which determines the action details to display.",
+              "description": "Show operations for the requested provider operation search string. The command takes as input a operation search string (with wildcard (*) character) which determines the action details to display.",
               "fullName": "provider operations show",
-              "usage": "[options] <actionString>",
+              "usage": "[options] <operationSearchString>",
               "filePath": "commands/arm/providers/provider.operations._js",
               "options": [
                 {
@@ -23717,13 +23717,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-a --actionString <actionString>",
-                  "required": -19,
+                  "flags": "-o --operationSearchString <operationSearchString>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
-                  "short": "-a",
-                  "long": "--actionString",
-                  "description": "The provider action string (with possible wildcard (*) characters). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
+                  "short": "-o",
+                  "long": "--operationSearchString",
+                  "description": "The provider operation string (with wildcard (*) character). Example: \"*\" to get all actions for all providers, \"Microsoft.Insights/*\" to get actions for a particular provider, \"*/virtualMachines/*\" to get all actions that can be performed on virtual machines."
                 },
                 {
                   "flags": "-s --subscription <subscription>",
@@ -24864,7 +24864,7 @@
           "name": "show",
           "description": "Search for a role definition",
           "fullName": "role show",
-          "usage": "[name]\n\n           -----    Example 1   -------\n           azure role list --name Reader\n           Get the Reader role definition.\n",
+          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role list --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role list --id Reader\n           Get the Reader role definition.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -24900,6 +24900,14 @@
               "short": "-n",
               "long": "--name",
               "description": "Name of the role."
+            },
+            {
+              "flags": "--id <id>",
+              "required": -6,
+              "optional": 0,
+              "bool": true,
+              "long": "--id",
+              "description": "Id of the Role definition to be deleted"
             },
             {
               "flags": "--subscription <subscription>",
@@ -25120,7 +25128,7 @@
               "name": "create",
               "description": "Assigns the specified RBAC role to the specified principal, at the specified scope.",
               "fullName": "role assignment create",
-              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment create --resource-group testRG --signInName john.doe@contoso.com\n           Grant access to a user at a resource group scope.\n\n           -----    Example 2   -------\n           azure ad group show --search \"Christine Koch Team\"\n           + Getting group list\n           data:    Display Name:      Christine Koch Team\n           data:    ObjectId:          2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb\n           data:    Security Enabled:  true\n           data:    Mail Enabled:\n\n           azure role assignment create --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Contributor --resource-group testRG\n           Grants access to a security group.\n\n           -----    Example 3   -------\n           azure role assignment create --signInName john.doe@contoso.com --roleName Owner --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Grants access to a user at a resource 'site1' (website) scope.\n\n           -----    Example 4   -------\n           azure role assignment create --objectId 5ac84765-1c8c-4994-94b2-629461bd191b --roleName \"Virtual Machine Contributor\" --resouce-name Devices-Engineering-ProjectRND --resource-type Microsoft.Network/virtualNetworks/subnets --parent virtualNetworks/VNET-EASTUS-01 --resource-group Network\n           Grant access to a group at a nested resource (subnet)\n",
+              "usage": "[objectId] [signInName] [spn] [roleName] [roleId] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment create --resource-group testRG --signInName john.doe@contoso.com\n           Grant access to a user at a resource group scope.\n\n           -----    Example 2   -------\n           azure ad group show --search \"Christine Koch Team\"\n           + Getting group list\n           data:    Display Name:      Christine Koch Team\n           data:    ObjectId:          2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb\n           data:    Security Enabled:  true\n           data:    Mail Enabled:\n\n           azure role assignment create --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Contributor --resource-group testRG\n           Grants access to a security group.\n\n           -----    Example 3   -------\n           azure role assignment create --signInName john.doe@contoso.com --roleName Owner --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Grants access to a user at a resource 'site1' (website) scope.\n\n           -----    Example 4   -------\n           azure role assignment create --objectId 5ac84765-1c8c-4994-94b2-629461bd191b --roleName \"Virtual Machine Contributor\" --resouce-name Devices-Engineering-ProjectRND --resource-type Microsoft.Network/virtualNetworks/subnets --parent virtualNetworks/VNET-EASTUS-01 --resource-group Network\n           Grant access to a group at a nested resource (subnet)\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -25180,6 +25188,15 @@
                   "short": "-o",
                   "long": "--roleName",
                   "description": "The Name of the RBAC role that needs to be assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
+                },
+                {
+                  "flags": "-d --roleId <roleId>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--roleId",
+                  "description": "The Id of the RBAC role that needs to be assigned to the principal."
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -25376,7 +25393,7 @@
               "name": "delete",
               "description": "Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope. Use the 'azure role assignment list' command to retrieve assignments under the subscription",
               "fullName": "role assignment delete",
-              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment delete --resource-group testRG --signInName john.doe@contoso.com --roleName Reader\n           Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the testRG resourcegroup scope\n\n           -----    Example 2   -------\n           azure role assignment delete --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Reader\n           Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role. Defaults to using the current subscription as the scope to find the assignment to be deleted.\n",
+              "usage": "[objectId] [signInName] [spn] [roleName] [roleId] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment delete --resource-group testRG --signInName john.doe@contoso.com --roleName Reader\n           Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the testRG resourcegroup scope\n\n           -----    Example 2   -------\n           azure role assignment delete --objectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb --roleName Reader\n           Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role. Defaults to using the current subscription as the scope to find the assignment to be deleted.\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -25436,6 +25453,15 @@
                   "short": "-o",
                   "long": "--roleName",
                   "description": "The Name of the RBAC role for which the assignment needs to be deleted i.e. Reader, Contributor, Virtual Network   Administrator, etc."
+                },
+                {
+                  "flags": "-d --roleId <roleId>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--roleId",
+                  "description": "The Id of the RBAC role that needs to be assigned to the principal."
                 },
                 {
                   "flags": "-c --scope <scope>",

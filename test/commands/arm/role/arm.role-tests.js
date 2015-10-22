@@ -382,7 +382,7 @@ describe('arm', function () {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         var roleToUpdate = JSON.parse(fs.readFileSync(filePath));
         // random GUID for role id
-        roleToUpdate.id = "/subscriptions/" + profile.current.getSubscription().id+ "/providers/Microsoft.Authorization/roleDefinitions/43367f6e-e106-480d-a448-2a393ea5eb21";
+        roleToUpdate.id = "43367f6e-e106-480d-a448-2a393ea5eb21";
 
         suite.execute('role set -r %s --json', JSON.stringify(roleToUpdate), function(updatedResult) {
           updatedResult.exitStatus.should.equal(1);
@@ -396,8 +396,7 @@ describe('arm', function () {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         suite.execute('role set -f %s --json', filePath, function (updatedResult) {
           updatedResult.exitStatus.should.equal(1);
-          updatedResult.errorText.should.containEql("roleDefinitionId cannot be null");
-          
+          updatedResult.errorText.should.containEql("roleDefinitionName cannot be null");
           done();
         });
       });
@@ -499,7 +498,7 @@ describe('arm', function () {
       it('a role assignment to access a child resource as a Reader using separate switches should work', function (done) {
         var principal = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         var principalId = testUsers[0].objectId;
-        suite.execute('role assignment create --signInName %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'reader', testResourceGroup, 
+        suite.execute('role assignment create --signInName %s -o %s -g %s -r %s -u %s --parent %s --json', principal, 'Reader', testResourceGroup, 
                       'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute('role assignment list --signInName %s -g %s -r %s -u %s --parent %s --json', principal, testResourceGroup, 
@@ -512,7 +511,7 @@ describe('arm', function () {
             }).should.be.true;
             
             //clean up
-            suite.execute('role assignment delete --signInName %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'reader', 
+            suite.execute('role assignment delete --signInName %s -o %s -g %s -r %s -u %s --parent %s -q --json', principal, 'Reader', 
                           testResourceGroup, 'Microsoft.Sql/servers/databases', testSqlDb, testParent, function (result) {
               result.exitStatus.should.equal(0);
               done();
@@ -528,14 +527,14 @@ describe('arm', function () {
         var resourceGroupScope = subscriptionScope + '/resourcegroups/' + testResourceGroup;
         var resourceScope = resourceGroupScope + '/providers/Microsoft.Sql/servers/' + testSqlServer + '/databases/' + testSqlDb;
         
-        suite.execute('role assignment create --signInName %s --roleName %s --scope %s --json', principal, 'reader', subscriptionScope, function (result) {
+        suite.execute('role assignment create --signInName %s --roleName %s --scope %s --json', principal, 'Reader', subscriptionScope, function (result) {
           result.exitStatus.should.equal(0);
           
-          suite.execute('role assignment create --objectId %s --roleName %s --scope %s --json', principalId, 'reader', resourceScope, function (result) {
+          suite.execute('role assignment create --objectId %s --roleName %s --scope %s --json', principalId, 'Reader', resourceScope, function (result) {
             result.exitStatus.should.equal(0);
             
             // list without scope
-            suite.execute('role assignment list --signInName %s --roleName %s --json', principal, 'reader', function (listAssignmentResult) {
+            suite.execute('role assignment list --signInName %s --roleName %s --json', principal, 'Reader', function (listAssignmentResult) {
               listAssignmentResult.exitStatus.should.equal(0);
               var assignments = JSON.parse(listAssignmentResult.text);
               assignments.length.should.equal(2);
@@ -545,7 +544,7 @@ describe('arm', function () {
               }).should.be.true;
               
               // list for subscription scope
-              suite.execute('role assignment list --signInName %s --roleName %s --scope %s --json', principal, 'reader', subscriptionScope, function (listAssignmentResult) {
+              suite.execute('role assignment list --signInName %s --roleName %s --scope %s --json', principal, 'Reader', subscriptionScope, function (listAssignmentResult) {
                 listAssignmentResult.exitStatus.should.equal(0);
                 var assignments = JSON.parse(listAssignmentResult.text);
                 assignments.length.should.equal(1);
@@ -555,7 +554,7 @@ describe('arm', function () {
                 }).should.be.true;
                 
                 // delete for default scope
-                suite.execute('role assignment delete --signInName %s -o %s -q --json --passthru', principal, 'reader', 
+                suite.execute('role assignment delete --signInName %s -o %s -q --json --passthru', principal, 'Reader', 
                           function (result) {
                   result.exitStatus.should.equal(0);
                   var assignment = JSON.parse(result.text);
@@ -563,7 +562,7 @@ describe('arm', function () {
                       assignment.properties.roleName.toLowerCase() === "reader").should.be.true;
                   
                   // delete for resource scope
-                  suite.execute('role assignment delete --signInName %s -o %s --scope %s -q --json --passthru', principal, 'reader', 
+                  suite.execute('role assignment delete --signInName %s -o %s --scope %s -q --json --passthru', principal, 'Reader', 
                           resourceScope, function (result) {
                     result.exitStatus.should.equal(0);
                     var assignment = JSON.parse(result.text);
@@ -572,6 +571,46 @@ describe('arm', function () {
                     done();
                   });
                 });
+              });
+            });
+          });
+        });
+      });
+
+
+      it('create and delete role assignment using roleId should work', function (done) {
+        var principalId = testUsers[0].objectId;
+        var subscriptionScope = "/subscriptions/" + profile.current.getSubscription().id;
+        suite.execute('role show %s --json', "Reader", function (result) {
+          result.exitStatus.should.equal(0);
+          var roles = JSON.parse(result.text);
+          roles.some(function (res) {
+            return res.properties.roleName === "Reader";
+          }).should.be.true;
+          var roleId = roles[0].id;
+
+          suite.execute('role assignment create --objectId %s --roleId %s --scope %s --json', principalId, roleId, subscriptionScope, function (result) {
+            result.exitStatus.should.equal(0);
+            var assignment = JSON.parse(result.text);
+            (assignment.properties.scope === subscriptionScope && assignment.properties.principalId === principalId && 
+                      assignment.properties.roleName.toLowerCase() === "reader").should.be.true;
+
+            // list for subscription scope
+            suite.execute('role assignment list --objectId %s --roleName %s --scope %s --json', principalId, 'Reader', subscriptionScope, function (listAssignmentResult) {
+              listAssignmentResult.exitStatus.should.equal(0);
+              var assignments = JSON.parse(listAssignmentResult.text);
+              assignments.length.should.equal(1);
+              assignments.some(function (res) {
+                return (res.properties.roleDefinitionId === roleId);
+              }).should.be.true;
+
+              // delete for default scope
+              suite.execute('role assignment delete --objectId %s -d %s -q --json --passthru', principalId, roleId, function (deleteResult) {
+                deleteResult.exitStatus.should.equal(0);
+                var assignment = JSON.parse(deleteResult.text);
+                (assignment.properties.scope === subscriptionScope && assignment.properties.principalId === principalId && 
+                      assignment.properties.roleName.toLowerCase() === "reader").should.be.true;
+                done();
               });
             });
           });

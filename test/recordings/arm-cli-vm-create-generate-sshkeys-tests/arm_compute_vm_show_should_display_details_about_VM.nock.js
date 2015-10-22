@@ -6,14 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    name: 'CollaberaInteropTest',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,38 +29,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"15.04\",\r\n        \"version\": \"15.04.201507070\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli54be8195e0a4511f-os-1439814027127\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatsshstorage11272.blob.core.windows.net/xplatsshstoragecnt17621/cli54be8195e0a4511f-os-1439814027127.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatsshvm\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIICjjCCAXqgAwIBAgIBATAJBgcqhkjOPQQBMAAwIhgPMjAxNTA4MTcxMjEwMjda\\r\\nGA8yMDI1MDgxNzEyMTAyN1owGTELMAkGA1UEBhMCVVMxCjAIBgNVBAoMAWIwggEi\\r\\nMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCK1vKYDz+Op7+Lcouo0b7+tr6s\\r\\n0C2o52O+L4O07SQwaNUPyTN0hkDS5uvUO1MsMChCTMx9rU22inq2dHKSnjhCbeSg\\r\\n8kdMcJB11q+fSNJeUuIgJito3CyuFoDrWOu2Kp/I9xYsTsV5iGHpNGYq0GXiIv39\\r\\nv5DCDfd6/LdVWOCv7NcD80UiQ4utgOMtyXMLN4t8/cyDcfZ4/vpiGG/ag6STZhDT\\r\\nGCGwlupcPblMN739OUpWMRuaY9uciH7eU+MkjwUpuRGYsm+fk7CGIASTIZE1pcX8\\r\\n78VJCH9kNeoUdUpuMscZPOLvIJJkR5m6wjZXHgwBG6KTcwUtpI/W4UXOlxgDAgMB\\r\\nAAEwCQYHKoZIzj0EAQOCAQEAYcy7Z05VLfYCEUSRX8X2jCQP2PNxqWA2CV/jihoJ\\r\\nQjJkZrHH42v/OrmXnaeoTaC7Xlk2CsgPfX54rEx69e0jhXuoMN8rGDXN+8jOvODr\\r\\n32O5IR13/8X2INhP8ZG0/BJ2WYsmKOYZUiq2Eb5qwAysowze7qgWOjWlgpuyBNuC\\r\\n/Fj7QKKyqKvmTnhyyIYok63rznygcqosjbeNDP72EyqRwhZJWV2VOwNKvSVAxJpn\\r\\no9XRqNqYrbi654exQWy6oATftEgC4DzSw2RH8ymLU2AgjiLVGWOpVA5oRlC1weuC\\r\\n8bz4aSZqj0gwT24MQWyKGUIIUzCIldlG8/ZGZyydcBSjWw==\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Network/networkInterfaces/xplatsshnic\"}]},\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm\",\r\n  \"name\": \"xplatsshvm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"properties\": {\r\n    \"vmId\": \"c5031469-3c57-4ac7-9e22-9ebeeb507b57\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"15.04\",\r\n        \"version\": \"15.04.201507070\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli93d5e643a57efcac-os-1445266751085\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatsshstorage19067.blob.core.windows.net/xplatsshstoragecnt1621/cli93d5e643a57efcac-os-1445266751085.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatsshvm\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIICjTCCAXmgAwIBAgIBATAJBgcqhkjOPQQBMAAwIhgPMjAxNTEwMTkxNDQ5MTBa\\r\\nGA8yMDI1MTAxOTE0NDkxMFowGTELMAkGA1UEBhMCVVMxCjAIBgNVBAoMAWIwggEh\\r\\nMA0GCSqGSIb3DQEBAQUAA4IBDgAwggEJAoIBAHbr+fjlhKTAxNMfyydAUyNJoffQ\\r\\nHJcAj36iEM5e6AiL4EXN9Znglq5RW+30mMWH+tvMPbR6z6LvWB+F8xKZfRV5Gwjr\\r\\nqiy2+ur7WCaK0ItC9XPwAmolMhvwrax7p1U9O8ZRISsZ6D10y4SgNnzefx4w+voC\\r\\nhXU1IG9KYJLcMmv7EUhwUALXkDRXhgpYTXcTiJrYEIP4U+t+xJPXPLsFR82G/qs2\\r\\nLTiUYlbNNY1IaM+gzWCJm0O/146+pNs0uxxWikMBPfKdOVh6pXO0e2IQfvBkYR++\\r\\n4tVLH+SoL7UxNvqaVSmJnoC2+HKsz20uR1SK/9NNLlunHA9oX9GJuUZVafkCAwEA\\r\\nATAJBgcqhkjOPQQBA4IBAQBdQHBvTMMuAXi4JHryfq8tdMghn2cppFqss2qh57/F\\r\\nkkqd8Pi/6asdPTG7a4YCUC8PHbuQBXjyxL77C1vbCbOsDrvYuanI/q8qSFeoh2EO\\r\\nhXF6bhAkO9Qde+3Lq6EQ7gS0HXWym8A31Evo1PIu6RfWWkuoK5Y1+RfCdStqF8gj\\r\\nWXbg0SQLSvGjRktVOzD+MtghYrTBoZcsVyz+gzjtrDD2kGk19ExSkPyspvyIWjf5\\r\\nxZvsEbVBcAl1CU4lny8a4VKD16wZFF8ASMy+Xh5AOQMkpB565Gbx6gr/I++rLl5t\\r\\n25855F3qDDcp/fZT4KBXXtj8drUZErLdd3wmLSvg4DzP\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Network/networkInterfaces/xplatsshnic\"}]},\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm\",\r\n  \"name\": \"xplatsshvm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2535',
+  'content-length': '2583',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130833786464858178',
-  'x-ms-request-id': '7c84ef9b-a669-4716-a0e0-e629ac724195',
+  'x-ms-served-by': 'bc9c7ae8-272f-468c-91ab-42b5442bf96b_130894309769402611',
+  'x-ms-request-id': '8a98ad68-3f82-49f0-bad2-8d022fe9e244',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14976',
-  'x-ms-correlation-request-id': '1f10949e-cd03-4af0-8d49-2e7b092b63ad',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150817T122343Z:1f10949e-cd03-4af0-8d49-2e7b092b63ad',
-  date: 'Mon, 17 Aug 2015 12:23:43 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'f637b3e4-bbd3-4476-8ae8-8cb3c32a4631',
+  'x-ms-routing-request-id': 'JAPANEAST:20151019T150216Z:f637b3e4-bbd3-4476-8ae8-8cb3c32a4631',
+  date: 'Mon, 19 Oct 2015 15:02:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"15.04\",\r\n        \"version\": \"15.04.201507070\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli54be8195e0a4511f-os-1439814027127\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatsshstorage11272.blob.core.windows.net/xplatsshstoragecnt17621/cli54be8195e0a4511f-os-1439814027127.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatsshvm\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIICjjCCAXqgAwIBAgIBATAJBgcqhkjOPQQBMAAwIhgPMjAxNTA4MTcxMjEwMjda\\r\\nGA8yMDI1MDgxNzEyMTAyN1owGTELMAkGA1UEBhMCVVMxCjAIBgNVBAoMAWIwggEi\\r\\nMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCK1vKYDz+Op7+Lcouo0b7+tr6s\\r\\n0C2o52O+L4O07SQwaNUPyTN0hkDS5uvUO1MsMChCTMx9rU22inq2dHKSnjhCbeSg\\r\\n8kdMcJB11q+fSNJeUuIgJito3CyuFoDrWOu2Kp/I9xYsTsV5iGHpNGYq0GXiIv39\\r\\nv5DCDfd6/LdVWOCv7NcD80UiQ4utgOMtyXMLN4t8/cyDcfZ4/vpiGG/ag6STZhDT\\r\\nGCGwlupcPblMN739OUpWMRuaY9uciH7eU+MkjwUpuRGYsm+fk7CGIASTIZE1pcX8\\r\\n78VJCH9kNeoUdUpuMscZPOLvIJJkR5m6wjZXHgwBG6KTcwUtpI/W4UXOlxgDAgMB\\r\\nAAEwCQYHKoZIzj0EAQOCAQEAYcy7Z05VLfYCEUSRX8X2jCQP2PNxqWA2CV/jihoJ\\r\\nQjJkZrHH42v/OrmXnaeoTaC7Xlk2CsgPfX54rEx69e0jhXuoMN8rGDXN+8jOvODr\\r\\n32O5IR13/8X2INhP8ZG0/BJ2WYsmKOYZUiq2Eb5qwAysowze7qgWOjWlgpuyBNuC\\r\\n/Fj7QKKyqKvmTnhyyIYok63rznygcqosjbeNDP72EyqRwhZJWV2VOwNKvSVAxJpn\\r\\no9XRqNqYrbi654exQWy6oATftEgC4DzSw2RH8ymLU2AgjiLVGWOpVA5oRlC1weuC\\r\\n8bz4aSZqj0gwT24MQWyKGUIIUzCIldlG8/ZGZyydcBSjWw==\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Network/networkInterfaces/xplatsshnic\"}]},\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm\",\r\n  \"name\": \"xplatsshvm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"properties\": {\r\n    \"vmId\": \"c5031469-3c57-4ac7-9e22-9ebeeb507b57\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A1\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"canonical\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"sku\": \"15.04\",\r\n        \"version\": \"15.04.201507070\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"cli93d5e643a57efcac-os-1445266751085\",\r\n        \"createOption\": \"FromImage\",\r\n        \"vhd\": {\r\n          \"uri\": \"https://xplatsshstorage19067.blob.core.windows.net/xplatsshstoragecnt1621/cli93d5e643a57efcac-os-1445266751085.vhd\"\r\n        },\r\n        \"caching\": \"ReadWrite\"\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"xplatsshvm\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": false,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"MIICjTCCAXmgAwIBAgIBATAJBgcqhkjOPQQBMAAwIhgPMjAxNTEwMTkxNDQ5MTBa\\r\\nGA8yMDI1MTAxOTE0NDkxMFowGTELMAkGA1UEBhMCVVMxCjAIBgNVBAoMAWIwggEh\\r\\nMA0GCSqGSIb3DQEBAQUAA4IBDgAwggEJAoIBAHbr+fjlhKTAxNMfyydAUyNJoffQ\\r\\nHJcAj36iEM5e6AiL4EXN9Znglq5RW+30mMWH+tvMPbR6z6LvWB+F8xKZfRV5Gwjr\\r\\nqiy2+ur7WCaK0ItC9XPwAmolMhvwrax7p1U9O8ZRISsZ6D10y4SgNnzefx4w+voC\\r\\nhXU1IG9KYJLcMmv7EUhwUALXkDRXhgpYTXcTiJrYEIP4U+t+xJPXPLsFR82G/qs2\\r\\nLTiUYlbNNY1IaM+gzWCJm0O/146+pNs0uxxWikMBPfKdOVh6pXO0e2IQfvBkYR++\\r\\n4tVLH+SoL7UxNvqaVSmJnoC2+HKsz20uR1SK/9NNLlunHA9oX9GJuUZVafkCAwEA\\r\\nATAJBgcqhkjOPQQBA4IBAQBdQHBvTMMuAXi4JHryfq8tdMghn2cppFqss2qh57/F\\r\\nkkqd8Pi/6asdPTG7a4YCUC8PHbuQBXjyxL77C1vbCbOsDrvYuanI/q8qSFeoh2EO\\r\\nhXF6bhAkO9Qde+3Lq6EQ7gS0HXWym8A31Evo1PIu6RfWWkuoK5Y1+RfCdStqF8gj\\r\\nWXbg0SQLSvGjRktVOzD+MtghYrTBoZcsVyz+gzjtrDD2kGk19ExSkPyspvyIWjf5\\r\\nxZvsEbVBcAl1CU4lny8a4VKD16wZFF8ASMy+Xh5AOQMkpB565Gbx6gr/I++rLl5t\\r\\n25855F3qDDcp/fZT4KBXXtj8drUZErLdd3wmLSvg4DzP\\r\\n\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"networkInterfaces\":[{\"properties\":{},\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Network/networkInterfaces/xplatsshnic\"}]},\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xplatTestGVMCreateSSH/providers/Microsoft.Compute/virtualMachines/xplatsshvm\",\r\n  \"name\": \"xplatsshvm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2535',
+  'content-length': '2583',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': 'c37dca37-9c43-4151-b86b-477e6d65ea27_130833786464858178',
-  'x-ms-request-id': '7c84ef9b-a669-4716-a0e0-e629ac724195',
+  'x-ms-served-by': 'bc9c7ae8-272f-468c-91ab-42b5442bf96b_130894309769402611',
+  'x-ms-request-id': '8a98ad68-3f82-49f0-bad2-8d022fe9e244',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14976',
-  'x-ms-correlation-request-id': '1f10949e-cd03-4af0-8d49-2e7b092b63ad',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20150817T122343Z:1f10949e-cd03-4af0-8d49-2e7b092b63ad',
-  date: 'Mon, 17 Aug 2015 12:23:43 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'f637b3e4-bbd3-4476-8ae8-8cb3c32a4631',
+  'x-ms-routing-request-id': 'JAPANEAST:20151019T150216Z:f637b3e4-bbd3-4476-8ae8-8cb3c32a4631',
+  date: 'Mon, 19 Oct 2015 15:02:15 GMT',
   connection: 'close' });
  return result; }]];
