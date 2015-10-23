@@ -23,7 +23,6 @@
 var _ = require('underscore');
 var es = require('event-stream');
 var os = require('os');
-var util = require('util');
 var should = require('should');
 
 var childProcess = require('child_process');
@@ -100,7 +99,37 @@ describe('security tool output parsing', function () {
     it('should have expected accounts', function () {
       parsingResult[0].acct.should.equal('e:f:g:h');
       parsingResult[1].acct.should.equal('a:b:c:d');
-    })
+    });
+  });
+
+  describe('Load entries with bad attributes', function () {
+    var parsingResult = [];
+    
+    before(function (done) {
+      var dataSource = es.through();
+      var parser = dataSource.pipe(keychainParser());
+      parser.on('data', function (data) {
+        parsingResult.push(data);
+      });
+      
+      parser.on('end', function () {
+        done();
+      });
+
+      dataSource.push(entries.entry1);
+      dataSource.push(entries.badEntry);
+      dataSource.push(entries.superbadEntry);
+      dataSource.push(entries.entry2);
+      dataSource.push(null);
+    });
+    
+    it('should not crash', function () {
+      parsingResult.should.have.length(4);
+      parsingResult[0].acct.should.equal('a:b:c:d');
+      parsingResult[1].acct.should.equal('bad guy');
+      parsingResult[2].acct.should.equal('super bad guy');
+      parsingResult[3].acct.should.equal('e:f:g:h');
+    });
   });
 });
 
@@ -131,10 +160,7 @@ describe('Parsing output of security child process', function () {
     });
   });
 
-  //
   // Helper functions to do each stage of the setup
-  //
-
   function addExpectedEntry(done) {
     keychain.set(testUser, testService, testDescription, testPassword, done);
   }
@@ -171,7 +197,6 @@ describe('Parsing output of security child process', function () {
   it('should be able to retrieve password for expected entry', function (done) {
     var entry = _.findWhere(parseResults, {svce: testService });
 
-    var actualPassword;
     keychain.get(entry.acct, entry.svce, function (err, password) {
       should.not.exist(err);
       password.should.equal(testPassword);
