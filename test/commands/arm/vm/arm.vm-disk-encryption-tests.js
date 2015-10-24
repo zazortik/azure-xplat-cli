@@ -90,7 +90,7 @@ describe('arm', function() {
     });
 
     describe('vm', function() {
-      it.only('create disk encryption vm should fail', function(done) {
+      it('create disk encryption vm should fail', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.createGroup(groupName, location, suite, function(result) {
           var cmd = util.format(
