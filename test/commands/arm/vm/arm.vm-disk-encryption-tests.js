@@ -90,7 +90,7 @@ describe('arm', function() {
     });
 
     describe('vm', function() {
-      it('create disk encryption vm should fail', function(done) {
+      it.only('create disk encryption vm should fail', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.createGroup(groupName, location, suite, function(result) {
           var cmd = util.format(
@@ -101,7 +101,7 @@ describe('arm', function() {
               var vhdUrl = 'https://' + storageAccount + '.blob.core.windows.net/test/test1.vhd';
               var cmd = util.format(
                 'vm create %s %s %s Linux -f %s -d %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s ' +
-                ' -z %s --disk-encryption-key-vault-id %s --disk-encryption-key-secret-url %s --key-encryption-key-vault-id %s --key-encryption-key-url %s --json',
+                ' -z %s --encryption-key-vault-id %s --encryption-key-secret-url %s --encryption-master-key-vault-id %s --encryption-master-key-url %s --json',
                 groupName, vmPrefix, location, nicName, vhdUrl, username, password, storageAccount, storageCont,
                 vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert,
                 vmSize, diskEncryptionKeyVaultId, diskEncryptionKeySecretUrl, keyEncryptionKeyVaultId, keyEncryptionKeyUrl).split(' ');

@@ -26439,36 +26439,36 @@
               "description": "The switch parameter to disable the BGInfo extension for VM."
             },
             {
-              "flags": "--disk-encryption-key-vault-id <disk-encryption-key-vault-id>",
-              "required": -32,
+              "flags": "--encryption-key-vault-id <disk-encryption-key-vault-id>",
+              "required": -27,
               "optional": 0,
               "bool": true,
-              "long": "--disk-encryption-key-vault-id",
-              "description": "The disk encryption key vault ID."
+              "long": "--encryption-key-vault-id",
+              "description": "The OS disk encryption key vault ID."
             },
             {
-              "flags": "--disk-encryption-key-secret-url <disk-encryption-key-secret-url>",
+              "flags": "--encryption-key-secret-url <disk-encryption-key-secret-url>",
+              "required": -29,
+              "optional": 0,
+              "bool": true,
+              "long": "--encryption-key-secret-url",
+              "description": "The OS disk encryption key secret URL."
+            },
+            {
+              "flags": "--encryption-master-key-vault-id <key-encryption-key-vault-id>",
               "required": -34,
               "optional": 0,
               "bool": true,
-              "long": "--disk-encryption-key-secret-url",
-              "description": "The disk encryption key secret URL."
+              "long": "--encryption-master-key-vault-id",
+              "description": "The vault reference Url for the OS disk encryption key."
             },
             {
-              "flags": "--key-encryption-key-vault-id <key-encryption-key-vault-id>",
-              "required": -31,
+              "flags": "--encryption-master-key-url <key-encryption-key-url>",
+              "required": -29,
               "optional": 0,
               "bool": true,
-              "long": "--key-encryption-key-vault-id",
-              "description": "The key encryption key vault ID."
-            },
-            {
-              "flags": "--key-encryption-key-url <key-encryption-key-url>",
-              "required": -26,
-              "optional": 0,
-              "bool": true,
-              "long": "--key-encryption-key-url",
-              "description": "The key encryption key URL."
+              "long": "--encryption-master-key-url",
+              "description": "The Url of the master key used to encrypt the OS disk encryption key."
             }
           ]
         },
