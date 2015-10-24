@@ -58,4 +58,16 @@ exports.entry2 =
   '    "svce"<blob>="azure"' + '\n' +
   '    "type"<uint32>=<NULL>' + '\n';
 
+exports.badEntry = 
+  'keychain: "/Users/kundanap/Library/Keychains/login.keychain"' + '\n' +
+  'class: 0x00000008' + '\n' +
+  'attributes:' + '\n' +
+  '    "acct"<blob>="bad guy"' + '\n' +
+  '    "snbr"<blob>=""63X"' + '\n' + 
+  '    "cenc"<uint32>=0x00000003' + '\n';
 
+exports.superbadEntry = 
+  'keychain: "/Users/kundanap/Library/Keychains/login.keychain"' + '\n' +
+  'attributes:' + '\n' +
+  '    "acct"<blob>="super bad guy"' + '\n'  + '\n'
+  '    0x12321432 <uint32>="$@#%^^$^^&^&%^63X"';
