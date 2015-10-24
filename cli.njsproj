@@ -147,6 +147,7 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="scripts\warn-existing-streamline-files.js" />
     <Compile Include="test\commands\cli.account-tests.js" />
     <Compile Include="test\commands\cli.account.affinitygroup-tests.js">
       <TestFramework>Mocha</TestFramework>
