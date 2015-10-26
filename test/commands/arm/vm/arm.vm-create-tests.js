@@ -187,7 +187,7 @@ describe('arm', function() {
         });
       });
 
-      it('get-serial-output should not show bootDiagnostics output', function(done) {
+      it('get-serial-output should not show bootdiagnostics output', function(done) {
         var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           should(result.text.indexOf('bootDiagnostics') == -1 && result.text.indexOf('bootdiagnostics') == -1).ok;
@@ -213,7 +213,7 @@ describe('arm', function() {
         });
       });
 
-      it('get-serial-output should show bootDiagnostics output again', function(done) {
+      it('get-serial-output should show bootdiagnostics output again', function(done) {
         var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           should(result.text.indexOf('bootdiagnostics') > -1 || result.text.indexOf('bootDiagnostics') > -1).ok;
