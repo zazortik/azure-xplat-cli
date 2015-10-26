@@ -1,3 +1,8 @@
+//To Release - Version 0.9.11
+* VM
+  * Chef Extension
+    * Implemented new option --client-pem for set-chef extension commands
+
 ## 2015.10.02 Version 0.9.10
 * Authorization
   * Fixed display of role assignments display to add and remove certain fields.

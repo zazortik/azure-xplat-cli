@@ -38,9 +38,10 @@ describe('cli', function() {
       retry = 5,
       clientconfig = 'test/data/set-chef-extension-client-config.rb',
       validationpem = 'test/data/set-chef-extension-validation.pem',
+      clientpem = 'test/data/set-chef-extension-client.pem',
       chefversion = '11.*',
       timeout;
-    testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 15000;
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
@@ -75,7 +76,7 @@ describe('cli', function() {
       it('Set Chef extension should fail without client config and validation pem', function(done) {
         var cmd = util.format('vm extension set-chef %s -V %s --json', vmName, chefversion).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.errorText.should.containEql('error: Required --validation-pem and --client-config options');
+          result.errorText.should.containEql('error: Required --validation-pem or --client-pem and --client-config options');
           result.exitStatus.should.equal(1);
           done();
         });
@@ -101,6 +102,14 @@ describe('cli', function() {
           done();
         });
         //});
+      });
+      it('Set Chef extensions with client-pem option', function(done) {
+
+        var cmd = util.format('vm extension set-chef %s -V %s -c %s -C %s --json', vmName, chefversion, clientconfig, clientpem).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
       });
     });
   });
