@@ -170,9 +170,10 @@ describe('arm', function() {
       });
 
       it('get-serial-output should get serial output of the VM', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          should(result.text.indexOf('bootdiagnostics') > -1 || result.text.indexOf('bootDiagnostics') > -1).ok;
+          should(result.text.indexOf('serialconsole.log') > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
@@ -186,10 +187,11 @@ describe('arm', function() {
         });
       });
 
-      it('get-serial-output should not show bootdiagnostics output', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+      it('get-serial-output should not show bootDiagnostics output', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') == -1).ok;
+          should(result.text.indexOf('bootDiagnostics') == -1 && result.text.indexOf('bootdiagnostics') == -1).ok;
+          should(result.text.indexOf('serialconsole.log') == -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
@@ -211,10 +213,10 @@ describe('arm', function() {
         });
       });
 
-      it('get-serial-output should show bootdiagnostics output again', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+      it('get-serial-output should show bootDiagnostics output again', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          should(result.text.indexOf('bootdiagnostics') > -1 || result.text.indexOf('bootDiagnostics') > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
