@@ -1140,7 +1140,15 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-l, --location <name>",
+                  "flags": "--tags <tags>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--tags",
+                  "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
+                },
+                {
+                  "flags": "-l, --location <location>",
                   "required": -16,
                   "optional": 0,
                   "bool": true,
@@ -1178,7 +1186,7 @@
             },
             {
               "name": "set",
-              "description": "Update a storage account",
+              "description": "Update a storage account (Only one property can be updated at a time)",
               "fullName": "storage account set",
               "usage": "[options] <name>",
               "filePath": "commands/storage/storage.account._js",
@@ -1207,6 +1215,30 @@
                   "bool": true,
                   "long": "--json",
                   "description": "use json output"
+                },
+                {
+                  "flags": "--custom-domain <customDomain>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--custom-domain",
+                  "description": "the custom domain"
+                },
+                {
+                  "flags": "--subdomain",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subdomain",
+                  "description": "whether uses the 'asverify' subdomain to preregister the custom domain"
+                },
+                {
+                  "flags": "--tags <tags>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--tags",
+                  "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
                 },
                 {
                   "flags": "--type <type>",
@@ -1294,6 +1326,40 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                }
+              ]
+            },
+            {
+              "name": "check",
+              "description": "Check whether the account name is valid and is not in use.",
+              "fullName": "storage account check",
+              "usage": "[options] <name>",
+              "filePath": "commands/storage/storage.account._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 }
               ]
             }
@@ -1414,6 +1480,59 @@
                       "short": "-g",
                       "long": "--resource-group",
                       "description": "the resource group name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "usage": {
+              "name": "usage",
+              "description": "Commands to manage your Storage accounts usage",
+              "fullName": "storage account usage",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show the current count and the limit of the storage accounts under the subscription.",
+                  "fullName": "storage account usage show",
+                  "usage": "[options] [subscription]",
+                  "filePath": "commands/storage/storage.account._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -26318,6 +26437,38 @@
               "bool": true,
               "long": "--disable-bginfo-extension",
               "description": "The switch parameter to disable the BGInfo extension for VM."
+            },
+            {
+              "flags": "--encryption-key-vault-id <disk-encryption-key-vault-id>",
+              "required": -27,
+              "optional": 0,
+              "bool": true,
+              "long": "--encryption-key-vault-id",
+              "description": "The OS disk encryption key vault ID."
+            },
+            {
+              "flags": "--encryption-key-secret-url <disk-encryption-key-secret-url>",
+              "required": -29,
+              "optional": 0,
+              "bool": true,
+              "long": "--encryption-key-secret-url",
+              "description": "The OS disk encryption key secret URL."
+            },
+            {
+              "flags": "--encryption-master-key-vault-id <key-encryption-key-vault-id>",
+              "required": -34,
+              "optional": 0,
+              "bool": true,
+              "long": "--encryption-master-key-vault-id",
+              "description": "The vault reference Url for the OS disk encryption key."
+            },
+            {
+              "flags": "--encryption-master-key-url <key-encryption-key-url>",
+              "required": -29,
+              "optional": 0,
+              "bool": true,
+              "long": "--encryption-master-key-url",
+              "description": "The Url of the master key used to encrypt the OS disk encryption key."
             }
           ]
         },

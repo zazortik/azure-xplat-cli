@@ -1522,7 +1522,7 @@
                   "description": "the storage account description"
                 },
                 {
-                  "flags": "-a, --affinity-group <name>",
+                  "flags": "-a, --affinity-group <affinityGroup>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1531,7 +1531,7 @@
                   "description": "the affinity group"
                 },
                 {
-                  "flags": "-l, --location <name>",
+                  "flags": "-l, --location <location>",
                   "required": -16,
                   "optional": 0,
                   "bool": true,
@@ -1676,6 +1676,40 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                }
+              ]
+            },
+            {
+              "name": "check",
+              "description": "Check whether the account name is valid and is not in use.",
+              "fullName": "storage account check",
+              "usage": "[options] <name>",
+              "filePath": "commands/storage/storage.account._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 }
               ]
             }
@@ -21912,6 +21946,14 @@
               "description": "Create a deployment script for basic website"
             },
             {
+              "flags": "--go",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--go",
+              "description": "Create a deployment script for Go website"
+            },
+            {
               "flags": "--node",
               "required": 0,
               "optional": 0,
@@ -21970,7 +22012,7 @@
               "description": "The path to the site being deployed (default: same as repositoryRoot)"
             },
             {
-              "flags": "-t, --scriptType [batch|bash]",
+              "flags": "-t, --scriptType [batch|bash|posh]",
               "required": 0,
               "optional": -18,
               "bool": true,
@@ -22011,6 +22053,38 @@
               "bool": false,
               "long": "--no-solution",
               "description": "Do not require a solution file path (only for --aspWAP otherwise ignored)."
+            },
+            {
+              "flags": "--aspNet5Version <version>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Version",
+              "description": "The Dnx version for ASP.NET 5"
+            },
+            {
+              "flags": "--aspNet5Runtime <runtime>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Runtime",
+              "description": "The .NET runtime (clr vs coreclr) for ASP.NET 5"
+            },
+            {
+              "flags": "--aspNet5Architecture <architecture>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Architecture",
+              "description": "The architecture (x64 vs x86) for ASP.NET 5"
+            },
+            {
+              "flags": "--dnxConsoleApp <projectDirectory>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--dnxConsoleApp",
+              "description": "Creates a deployment script for a DNX base console app as a webjob"
             }
           ]
         },
