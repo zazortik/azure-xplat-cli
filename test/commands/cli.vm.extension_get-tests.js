@@ -35,8 +35,13 @@ describe('cli', function() {
     testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+		location = process.env.AZURE_VM_TEST_LOCATION;
+		timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+		done();
+	  });
+	  
     });
 
     after(function(done) {
@@ -44,11 +49,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {
@@ -63,9 +64,13 @@ describe('cli', function() {
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             extensionList = JSON.parse(result.text);
-            extensionList.length.should.be.above(0);
-            exteAylist = extensionList[0];
-            done();
+			if (extensionList.length === 0) {
+                done();
+			} else {
+				extensionList.length.should.be.above(0);
+				exteAylist = extensionList[0];
+				done();
+			}
           });
         });
       });
@@ -73,16 +78,23 @@ describe('cli', function() {
       //Get Complete extension output
       it('get Complete extension output', function(done) {
         getVM(function(vmName) {
-          var cmd = util.format('vm extension get %s -n %s -p %s -r %s --json', vmName, exteAylist.name, exteAylist.publisher, exteAylist.referenceName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var ext = JSON.parse(result.text);
-            ext.length.should.be.above(0);
-            ext[0].name.should.equal(exteAylist.name);
-            ext[0].publisher.should.equal(exteAylist.publisher);
-            ext[0].referenceName.should.equal(exteAylist.referenceName);
-            done();
-          });
+			if(exteAylist && exteAylist.name) {
+				var cmd = util.format('vm extension get %s -n %s -p %s -r %s --json', vmName, exteAylist.name, exteAylist.publisher, exteAylist.referenceName).split(' ');
+				testUtils.executeCommand(suite, retry, cmd, function(result) {
+					result.exitStatus.should.equal(0);
+					var ext = JSON.parse(result.text);
+					if (ext.length === 0) {
+						done();
+					} else {
+						ext.length.should.be.above(0);
+						ext[0].name.should.equal(exteAylist.name);
+						ext[0].publisher.should.equal(exteAylist.publisher);
+						ext[0].referenceName.should.equal(exteAylist.referenceName);
+						done();			
+					}
+				});
+			}
+			else done();
         });
       });
     });

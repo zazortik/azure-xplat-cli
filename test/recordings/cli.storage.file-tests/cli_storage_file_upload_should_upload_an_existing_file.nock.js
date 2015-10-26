@@ -6,15 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'db1ab6f0-4769-4b27-930e-01e2ef9c123c',
-    name: 'Azure SDK sandbox',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     registeredProviders: [],
-    registeredResourceNamespaces: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,86 +21,86 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=testmongo101;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;TableEndpoint=http://yaxiatest.table.testrr1.xstore-test.windows-int.net/;QueueEndpoint=http://yaxiatest.queue.testrr1.xstore-test.windows-int.net/;FileEndpoint=http://yaxiatest.file.testrr1.xstore-test.windows-int.net/;BlobEndpoint=https://yaxiatest.blob.testrr1.xstore-test.windows-int.net/;AccountName=yaxiatest;AccountKey=null';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .head('/filetestshare/remotefile')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bd6dd6bd-001a-0101-5b20-c03870000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:07 GMT' });
+  'x-ms-request-id': '0d5531d9-001a-0007-1e56-b5ea9f000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:05:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .head('/filetestshare/remotefile?restype=directory')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'aa183aac-001a-009a-1cbe-e0b74a000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:08 GMT' });
+  'x-ms-request-id': '14dc9406-001a-002c-3356-b56fce000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:05:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .head('/filetestshare?restype=directory')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 23 Mar 2015 23:03:09 GMT',
-  etag: '"0x8D233D4A9FE85D1"',
+  'last-modified': 'Fri, 03 Jul 2015 06:04:43 GMT',
+  etag: '"0x8D2836D4A3ED8D2"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '655946a6-001a-0091-3418-806fea000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:08 GMT' });
+  'x-ms-request-id': '715e50c5-001a-0026-3e56-b5458b000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:04:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .head('/filetestshare/remotefile')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0959d1a1-001a-000e-5b67-e8a4ef000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:09 GMT' });
+  'x-ms-request-id': 'ea6a9fa1-001a-0013-5156-b5be15000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:04:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .put('/filetestshare/remotefile')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 23 Mar 2015 23:03:10 GMT',
-  etag: '"0x8D233D4AAD760AF"',
+  'last-modified': 'Fri, 03 Jul 2015 06:04:44 GMT',
+  etag: '"0x8D2836D4ABA1A87"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '536b2c70-001a-002d-7965-6d988c000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:09 GMT' });
+  'x-ms-request-id': '8d9e914b-001a-0001-7b56-b5a38e000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:04:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .put('/filetestshare/remotefile?comp=range', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'BLb4bUlxavjU8u3wGjCfyA==',
-  'last-modified': 'Mon, 23 Mar 2015 23:03:11 GMT',
-  etag: '"0x8D233D4AB824C34"',
+  'last-modified': 'Fri, 03 Jul 2015 06:04:44 GMT',
+  etag: '"0x8D2836D4AF8B97F"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dd57aff4-001a-00fe-6c57-58c4fd000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:11 GMT' });
+  'x-ms-request-id': '24396f5c-001a-0020-0756-b50c9a000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:05:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testmongo101.file.core.windows.net:443')
+nock('http://yaxiatest.file.testrr1.xstore-test.windows-int.net:80')
   .put('/filetestshare/remotefile?comp=properties')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 23 Mar 2015 23:03:12 GMT',
-  etag: '"0x8D233D4ABF8B898"',
+  'last-modified': 'Fri, 03 Jul 2015 06:04:44 GMT',
+  etag: '"0x8D2836D4B35AA5C"',
   server: 'Windows-Azure-File/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0beed931-001a-00bd-5b61-a21aed000000',
-  'x-ms-version': '2014-02-14',
-  date: 'Mon, 23 Mar 2015 23:03:10 GMT' });
+  'x-ms-request-id': 'fdbd02a8-001a-0011-2d56-b5d6c8000000',
+  'x-ms-version': '2015-02-21',
+  date: 'Fri, 03 Jul 2015 06:04:58 GMT' });
  return result; }]];

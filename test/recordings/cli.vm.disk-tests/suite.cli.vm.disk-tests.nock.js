@@ -6,19 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Node CLI Test',
+    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
+    name: 'CollaberaInteropTest',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website', 'website'],
-    registeredResourceNamespaces: [],
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,8 +22,8 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_STORAGE_ACCESS_KEY'] = 'VziajzvLTkInp+ATITNj/xT5FpBzGbjwA25LnyPavG5fktKJq2csE4fJLzLY0c2Z5cEWgaN/PAK2PBJC4zPAKA==';
-  process.env['BLOB_SOURCE_PATH'] = 'https://teststorage1220.blob.core.windows.net/myvhds/testsvc1683.vhd';
+  process.env['AZURE_STORAGE_ACCESS_KEY'] = '4pNXF0oUVjN1XG6hBZm1SAxtHsRQVI+zA/3Ypx7H8tvsSAzZL3SzvLfaf7raDVfb2yVA2oA6m0mFIQVynwoN9Q==';
+  process.env['BLOB_SOURCE_PATH'] = 'https://acsforsdk2.blob.core.windows.net/disks/disknewupload12.vhd';
 };
 
 exports.scopes = [];

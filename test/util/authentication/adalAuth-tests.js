@@ -18,19 +18,78 @@
 var should = require('should');
 
 var adalAuth = require('../../../lib/util/authentication/adalAuth');
+var adalAuthForServicePrincipal = require('../../../lib/util/authentication/adalAuthForServicePrincipal');
 
-describe('tenant from username', function () {
-  it('should return everything after @ if present', function () {
-    adalAuth.tenantIdForUser('user@sometenant.testorg.example').should.equal('sometenant.testorg.example');
+describe('login as service principal', function () {
+  var config = {
+    resourceId: 'https://res123',
+    authorityUrl: 'https://authority123'
+  };
+  
+  it('should invoke callback on error', function (done) {
+    //arrange 
+    var accessToken = '123';
+    var tokenMatched = false;
+    adalAuth.tokenCache.find = function (query, callback) {
+      callback(null, [{ 'accessToken' : accessToken }]);
+    };
+    adalAuth.tokenCache.remove = function (entries, callback) {
+      tokenMatched = (entries.length === 1 && entries[0].accessToken === accessToken);
+      callback(null);
+    };
+    //action
+    var cred = new adalAuthForServicePrincipal.ServicePrincipalTokenCredentials(config, 'apid123');
+    cred.retrieveTokenFromCache(function (err) {
+      //assert
+      var errorFired = (!!err);
+      errorFired.should.be.true;
+      tokenMatched.should.be.true;
+      done();
+    });
   });
-
-  it('should append onmicrosoft.com if no domain present', function () {
-    adalAuth.tenantIdForUser('user@sometenant').should.equal('sometenant.onmicrosoft.com');
+  
+  it('should not add empty refresh token to credentails cache', function (done) {
+    //arrange 
+    var addInvoked = false;
+    var hasRefreshToken = false;
+    adalAuth.tokenCache.add = function (entries, callback) {
+      addInvoked = true;
+      hasRefreshToken = !!(entries[0].refreshToken);
+      callback(null);
+    }
+    //action
+    adalAuthForServicePrincipal.createServicePrincipalTokenCredentials(config, 'https://myapp1', 'Secret', function(){
+      addInvoked.should.be.true;
+      hasRefreshToken.should.be.false;
+      done();
+    });
   });
+});
 
-  it('should throw if no domain is present', function () {
-    (function () {
-      return adalAuth.tenantIdForUser('user');
-    }).should.throw();
+describe('logoutUser', function () {
+  it('remove cached tokens', function (done) {
+    //arrange 
+    var timesTokenFindGetsInvoked = 0;
+    var timesTokenRemoveGetsInvoked = 0;
+    var entriesToRemove;
+    var tokenCache = {
+      find: function (query, callback) { 
+        timesTokenFindGetsInvoked++;
+        callback(null, [{foo: timesTokenFindGetsInvoked}]);
+      },
+      remove: function (entries, callback) {
+        timesTokenRemoveGetsInvoked++;
+        entriesToRemove = entries;
+        callback();
+      }
+    };
+    //action
+    adalAuth.removeCachedToken('dummyUser', null, tokenCache, function (err) {
+      //verify
+      timesTokenFindGetsInvoked.should.equal(3);
+      timesTokenRemoveGetsInvoked.should.equal(1);
+      entriesToRemove.length.should.equal(3);
+      done();
+    });
   });
 });

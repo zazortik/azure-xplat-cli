@@ -32,8 +32,11 @@ describe('cli', function() {
     testUtils.TIMEOUT_INTERVAL = 10000;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        done();
+      });
     });
 
     after(function(done) {
@@ -41,10 +44,7 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {

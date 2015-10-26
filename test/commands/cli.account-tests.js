@@ -19,7 +19,6 @@ var should = require('should');
 var sinon = require('sinon');
 var fs = require('fs');
 var util = require('util');
-require('streamline').register();
 
 var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
@@ -27,7 +26,7 @@ var utils = require('../../lib/util/utils');
 
 var CLITest = require('../framework/cli-test');
 var testPrefix = 'cli.account-tests';
-var suite = new CLITest(testPrefix);
+var suite = new CLITest(null, testPrefix);
 
 var testFile = './test/data/account-credentials.publishSettings';
 
@@ -98,7 +97,7 @@ describe('cli', function () {
         sandbox = sinon.sandbox.create();
         originalProfile = profile.current;
         profile.current = new profile.Profile();
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
           name: 'testAccount',
           isDefault: true,
@@ -108,7 +107,7 @@ describe('cli', function () {
           }
         }, profile.current.getEnvironment('AzureCloud')));
 
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
           name: 'Other',
           managementCertificate: {
@@ -117,7 +116,7 @@ describe('cli', function () {
           }
         }, profile.current.getEnvironment('AzureCloud')));
 
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: '2874827f-25c8-4195-ad6d-6c267ce32b27',
           name: 'Other',
           managementCertificate: {
@@ -169,7 +168,7 @@ describe('cli', function () {
         sandbox = sinon.sandbox.create();
         originalProfile = profile.current;
         profile.current = new profile.Profile();
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: 'd3649b6d-2d60-40fc-aa54-8fda443c3c2c',
           name: 'testAccount',
           isDefault: true,
@@ -179,7 +178,7 @@ describe('cli', function () {
           }
         }, profile.current.getEnvironment('AzureCloud')));
 
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: '9274827f-25c8-4195-ad6d-6c267ce32b27',
           name: 'Other',
           managementCertificate: {
@@ -188,7 +187,7 @@ describe('cli', function () {
           }
         }, profile.current.getEnvironment('AzureCloud')));
 
-        profile.current.addSubscription(new profile.Subscription({
+        profile.current.addOrUpdateSubscription(new profile.Subscription({
           id: '2874827f-25c8-4195-ad6d-6c267ce32b27',
           name: 'Other',
           managementCertificate: {

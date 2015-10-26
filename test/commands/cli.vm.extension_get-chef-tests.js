@@ -35,11 +35,12 @@ describe('cli', function() {
       extensionList,
       exteAylist,
       location,
-      retry = 5;
+      retry = 5,
+	  publisher = 'Chef.Bootstrap.WindowsAzure';
     testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         testVMName = suite.generateId(vmPrefix, createdVms);
         done();
@@ -79,16 +80,23 @@ describe('cli', function() {
 
     describe('Extension:', function() {
 
-      it('get the details of VM', function(done) {
+      it('get the details of the extensions of VM', function(done) {
         getVM(function(vmName) {
           var cmd = util.format('vm extension get %s --json', vmName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            extensionList = JSON.parse(result.text);
-            extensionList.length.should.be.above(0);
-            exteAylist = extensionList.filter(function(ex){ return ex.publisher  == 'Chef.Bootstrap.WindowsAzure'; })[0]
-            done();
-          });
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                extensionList = JSON.parse(result.text);
+                if (extensionList.length === 0) {
+                    done();
+                } else {
+                    extensionList.length.should.be.above(0);
+                    exteAylist = extensionList.filter(function(ex) {
+                        return ex.publisher == publisher;
+                    })[0]
+                    done();
+                }
+
+            });
         });
       });
 
@@ -96,15 +104,19 @@ describe('cli', function() {
       it('get chef extension output', function(done) {
         getVM(function(vmName) {
           var cmd = util.format('vm extension get-chef --json', vmName).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            var ext = JSON.parse(result.text);
-            ext.length.should.be.above(0);
-            ext[0].name.should.equal(exteAylist.name);
-            ext[0].publisher.should.equal(exteAylist.publisher);
-            ext[0].referenceName.should.equal(exteAylist.referenceName);
-            done();
-          });
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var ext = JSON.parse(result.text);
+                if (ext.length === 0) {
+                    done();
+                } else {
+                    ext.length.should.be.above(0);
+                    ext[0].name.should.equal(exteAylist.name);
+                    ext[0].publisher.should.equal(exteAylist.publisher);
+                    ext[0].referenceName.should.equal(exteAylist.referenceName);
+                    done();
+                }
+            });
         });
       });
     });

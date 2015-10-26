@@ -9,7 +9,7 @@
 :: to avoid https://github.com/npm/npm/issues/6438
 chcp 850 
 
-set NODE_VERSION=0.10.23
+set NODE_VERSION=0.12.7
 set NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
@@ -86,37 +86,9 @@ if %errorlevel% neq 0 goto ERROR
 if %errorlevel% neq 0 goto ERROR
 popd
 
-echo Removing unneeded files from azure module...
-pushd %TEMP_REPO%\node_modules\azure
-
-for %%i in (
-    packages
-    scripts
-    test
-    tasks
-    examples
-    jsdoc
-    lib\common
-    lib\services\gallery
-    lib\services\management
-    lib\services\computeManagement
-    lib\services\resourceManagement
-    lib\services\serviceBusManagement
-    lib\services\schedulerManagement
-    lib\services\sqlManagement
-    lib\services\storageManagement
-    lib\services\storeManagement
-    lib\services\subscriptionManagement
-    lib\services\networkManagement
-    lib\services\webSiteManagement
-    lib\services\scheduler
-) do (
-    if exist %%i (
-        echo Deleting %%i...
-        rmdir /s /q %%i
-    )
-)
-
+echo Generating streamline files...
+pushd %TEMP_REPO%
+.\bin\node.exe bin\azure --gen
 popd
 
 echo Removing unncessary files from the enlistment for the CLI to function...
@@ -138,6 +110,8 @@ for %%i in (
     *.md
     *.git*
     *.npm*
+    *.njsproj
+    *.sln
     azure_error
     azure.err
     checkstyle-result.xml

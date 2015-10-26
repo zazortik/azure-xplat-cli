@@ -16,12 +16,15 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
-var vmPrefix = 'clitestvmVnet';
+var vmPrefix = 'clitestVnet';
 var testPrefix = 'cli.vm.create_affin_vnet_vm-tests';
 var createdVms = [];
 var createdVnets = [];
+var getVnet = new Object();
+var getAffinityGroup = new Object();
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'West US'
@@ -29,10 +32,7 @@ var requiredEnvironment = [{
 
 describe('cli', function() {
   describe('vm', function() {
-    var affinityName = 'xplataffintest',
-      vmVnetName,
-      affinLabel = 'xplatAffinGrp',
-      affinDesc = 'Test Affinty Group for xplat',
+    var vmVnetName,
       location,
       availSetName = 'Testset',
       userName = 'azureuser',
@@ -40,6 +40,7 @@ describe('cli', function() {
       timeout,
       retry;
     testUtils.TIMEOUT_INTERVAL = 5000;
+    var vmUtil = new vmTestUtil();
 
     var vmToUse = {
       Name: null,
@@ -48,16 +49,8 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-    });
-
-    after(function(done) {
-      suite.teardownSuite(done);
-    });
-
-    beforeEach(function(done) {
-      suite.setupTest(function() {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         retry = 5;
@@ -65,28 +58,20 @@ describe('cli', function() {
       });
     });
 
-    afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              callback();
-            });
-          }, timeout);
-        } else {
-          callback();
-        }
-      }
+    after(function(done) {
+      suite.teardownSuite(done);
+    });
 
-      deleteUsedVM(vmToUse, function () {
-        suite.teardownTest(function (){
-          if(!suite.isPlayback()) {
-            createdVnets.forEach(function (item) {
-              suite.execute('network vnet delete %s -q --json', item, function (result) {
+    beforeEach(function(done) {
+      suite.setupTest(done);
+    });
+
+    afterEach(function(done) {
+      vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
+        suite.teardownTest(function() {
+          if (!suite.isPlayback()) {
+            createdVnets.forEach(function(item) {
+              suite.execute('network vnet delete %s -q --json', item, function(result) {
                 result.exitStatus.should.equal(0);
               });
             });
@@ -97,14 +82,14 @@ describe('cli', function() {
     });
 
     //create a vm with affinity group, vnet and availibilty set
-    describe('Create:', function () {
-      it('Vm with affinity, vnet and availibilty set', function (done) {
+    describe('Create:', function() {
+      it('Vm with affinity, vnet and availibilty set', function(done) {
         vmVnetName = suite.generateId(vmPrefix, createdVms);
-        getImageName('Linux', function (imageName) {
-          getVnet('Created', function (virtualnetName, affinityName) {
+        vmUtil.getImageName('Linux', suite, function(imageName) {
+          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName) {
             var cmd = util.format('vm create -A %s -n %s -a %s -w %s %s %s %s %s --json',
               availSetName, vmVnetName, affinityName, virtualnetName, vmVnetName, imageName, userName, password).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               vmToUse.Created = true;
               vmToUse.Name = vmVnetName;
@@ -117,15 +102,15 @@ describe('cli', function() {
 
       //edge case for vm failure
       //https://github.com/MSOpenTech/azure-xplat-cli/issues/7#issuecomment-47410767
-      it('should delete cloud service on vm create failure', function (done) {
+      it('should delete cloud service on vm create failure', function(done) {
         vmVnetName = suite.generateId(vmPrefix, createdVms);
-        getImageName('Linux', function (imageName) {
+        vmUtil.getImageName('Linux', suite, function(imageName) {
           var cmd = util.format('vm create -a %s -w %s %s %s %s %s --json',
             'some_name', 'some_name', vmVnetName, imageName, userName, password).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(1);
-            cmd = util.format('service show %s --json', vmVnetName).split(' ')
-            testUtils.executeCommand(suite, retry, cmd, function (result) {
+            cmd = util.format('service show %s --json', vmVnetName).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(1);
               done();
             });
@@ -133,91 +118,5 @@ describe('cli', function() {
         });
       });
     });
-
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      if (process.env.VM_LINUX_IMAGE) {
-        callBack(process.env.VM_LINUX_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function(image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_LINUX_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_LINUX_IMAGE);
-        });
-      }
-    }
-
-    //get name of a vnet
-    function getVnet(status, callback) {
-      var cmd;
-      if (getVnet.vnetName) {
-        callback(getVnet.vnetName, getVnet.affinityName);
-      } else {
-        cmd = util.format('network vnet list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var vnetName = JSON.parse(result.text);
-          var found = vnetName.some(function(vnet) {
-            if (vnet.state.toLowerCase() === status.toLowerCase() && vnet.affinityGroup !== undefined) {
-              getVnet.vnetName = vnet.name;
-              getVnet.affinityName = vnet.affinityGroup;
-              return true;
-            }
-          });
-
-          if (!found) {
-            getAffinityGroup(location, function(affinGrpName) {
-              vnetName = suite.generateId('testvnet', createdVnets);
-              cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                getVnet.vnetName = vnetName;
-                getVnet.affinityName = affinGrpName;
-                callback(getVnet.vnetName, getVnet.affinityName);
-              });
-            });
-          } else {
-            callback(getVnet.vnetName, getVnet.affinityName);
-          }
-        });
-      }
-    }
-
-    // Get name of an image of the given category
-    function getAffinityGroup(location, callBack) {
-      var cmd;
-      if (getAffinityGroup.affinGrpName) {
-        callBack(getAffinityGroup.affinGrpName);
-      } else {
-        cmd = util.format('account affinity-group list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var affinList = JSON.parse(result.text);
-          var found = affinList.some(function(affinGrp) {
-            if (affinGrp.location.toLowerCase() === location.toLowerCase()) {
-              getAffinityGroup.affinGrpName = affinGrp.name;
-              return true;
-            }
-          });
-          if (!found) {
-            cmd = util.format('account affinity-group create -l %s -e %s -d %s %s --json',
-              location, affinLabel, affinDesc, affinityName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              getAffinityGroup.affinGrpName = affinityName;
-              callBack(affinityName);
-            });
-          } else
-            callBack(getAffinityGroup.affinGrpName);
-        });
-      }
-    }
   });
 });

@@ -6,19 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'Node CLI Test',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
-    },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website', 'website'],
-    registeredResourceNamespaces: [],
+    name: 'CollaberaInteropTest',
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -31,49 +25,53 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
+nock('http://management.core.windows.net:443')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/virtualnetwork')
+  .reply(200, "<VirtualNetworkSites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VirtualNetworkSite><Name>CliGtTestVnet4785</Name><Id>1c431871-db61-4d72-8b25-6217ef557fd6</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.1.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.1.0.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.1.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>CliTestLocVnet2428</Name><Id>cf3a78a6-210f-4b2c-9668-a7290dd1ee11</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.2.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.2.0.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.2.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>CliTestVnett5140</Name><Id>ff7484d4-c3ef-4418-803a-a2f6f345c23e</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.0/20</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/23</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>Group armresgrpeastustest1 TestArmVMList</Name><Id>a580a029-9c72-44fc-b57b-57ae76a97417</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/24</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>mynetwork</Name><Id>386452bd-5cef-4eea-a889-a6e5d0635381</Id><AffinityGroup>affinity1</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.4.0.0/16</AddressPrefix><AddressPrefix>10.1.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.4.2.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.4.32.0/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>ne@@wvnet$$%10</Name><Id>c27720fe-1c7c-429b-85ec-09cf605307e2</Id><AffinityGroup>NewAffinityGroup01</AffinityGroup><State>Creating</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.8.7/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets/></VirtualNetworkSite><VirtualNetworkSite><Name>newvnet$$%10</Name><Id>1e045b27-4b5a-42f6-8399-23a85df51702</Id><AffinityGroup>NewAffinityGroup01</AffinityGroup><State>Creating</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.8.7/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets/></VirtualNetworkSite><VirtualNetworkSite><Name>testy</Name><Id>06bb8c56-83da-499e-8585-2609db606247</Id><AffinityGroup>affinity1</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.11/8</AddressPrefix><AddressPrefix>172.16.77.0/12</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/11</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.32.0.0/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>Vnet</Name><Id>a9001b93-75cc-4580-94b4-a200654da28e</Id><AffinityGroup>EastAsia</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>172.16.0.0/28</AddressPrefix><AddressPrefix>192.168.29.0/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>172.16.0.0/29</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>172.16.0.8/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>vnet2</Name><Id>fdf85c9d-eb5d-46f5-89eb-c081165ed152</Id><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.2.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>subnet-1</Name><AddressPrefix>10.2.0.0/19</AddressPrefix></Subnet><Subnet><Name>Subnet-2</Name><AddressPrefix>10.2.32.8/29</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.2.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>Vnet28</Name><Id>d4eff0fe-d774-4fa1-bdad-9fc6bea1218e</Id><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.16.0.32/27</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.16.0.32/29</AddressPrefix><RouteTableName>TestRoute</RouteTableName></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.16.0.40/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite></VirtualNetworkSites>", { 'cache-control': 'no-cache',
+  'content-length': '5049',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '02777efcd81882eb9ca5aeffe6037e6b',
-  date: 'Mon, 16 Mar 2015 03:58:23 GMT' });
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'usnorth2',
+  'x-ms-request-id': '14c904096288ba45afef48adc0a8c4bd',
+  date: 'Wed, 08 Jul 2015 07:11:31 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/virtualnetwork')
-  .reply(200, "<VirtualNetworkSites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VirtualNetworkSite><Name>testvnet7572</Name><Id>15534d9c-0fff-4e05-8db1-a5e6c427adaf</Id><AffinityGroup>tdstnodetest</AffinityGroup><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.0/8</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/11</AddressPrefix></Subnet></Subnets></VirtualNetworkSite></VirtualNetworkSites>", { 'cache-control': 'no-cache',
-  'content-length': '525',
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/virtualnetwork')
+  .reply(200, "<VirtualNetworkSites xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><VirtualNetworkSite><Name>CliGtTestVnet4785</Name><Id>1c431871-db61-4d72-8b25-6217ef557fd6</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.1.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.1.0.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.1.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>CliTestLocVnet2428</Name><Id>cf3a78a6-210f-4b2c-9668-a7290dd1ee11</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.2.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.2.0.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.2.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>CliTestVnett5140</Name><Id>ff7484d4-c3ef-4418-803a-a2f6f345c23e</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.0/20</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/23</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>Group armresgrpeastustest1 TestArmVMList</Name><Id>a580a029-9c72-44fc-b57b-57ae76a97417</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/24</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>mynetwork</Name><Id>386452bd-5cef-4eea-a889-a6e5d0635381</Id><AffinityGroup>affinity1</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.4.0.0/16</AddressPrefix><AddressPrefix>10.1.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.4.2.0/19</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.4.32.0/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>ne@@wvnet$$%10</Name><Id>c27720fe-1c7c-429b-85ec-09cf605307e2</Id><AffinityGroup>NewAffinityGroup01</AffinityGroup><State>Creating</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.8.7/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets/></VirtualNetworkSite><VirtualNetworkSite><Name>newvnet$$%10</Name><Id>1e045b27-4b5a-42f6-8399-23a85df51702</Id><AffinityGroup>NewAffinityGroup01</AffinityGroup><State>Creating</State><AddressSpace><AddressPrefixes><AddressPrefix>10.0.8.7/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets/></VirtualNetworkSite><VirtualNetworkSite><Name>testy</Name><Id>06bb8c56-83da-499e-8585-2609db606247</Id><AffinityGroup>affinity1</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.0.0.11/8</AddressPrefix><AddressPrefix>172.16.77.0/12</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.0.0.0/11</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.32.0.0/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>Vnet</Name><Id>a9001b93-75cc-4580-94b4-a200654da28e</Id><AffinityGroup>EastAsia</AffinityGroup><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>172.16.0.0/28</AddressPrefix><AddressPrefix>192.168.29.0/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>172.16.0.0/29</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>172.16.0.8/29</AddressPrefix></Subnet></Subnets></VirtualNetworkSite><VirtualNetworkSite><Name>vnet2</Name><Id>fdf85c9d-eb5d-46f5-89eb-c081165ed152</Id><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.2.0.0/16</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>subnet-1</Name><AddressPrefix>10.2.0.0/19</AddressPrefix></Subnet><Subnet><Name>Subnet-2</Name><AddressPrefix>10.2.32.8/29</AddressPrefix></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.2.32.0/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite><VirtualNetworkSite><Name>Vnet28</Name><Id>d4eff0fe-d774-4fa1-bdad-9fc6bea1218e</Id><State>Created</State><InUse>true</InUse><AddressSpace><AddressPrefixes><AddressPrefix>10.16.0.32/27</AddressPrefix></AddressPrefixes></AddressSpace><Subnets><Subnet><Name>Subnet-1</Name><AddressPrefix>10.16.0.32/29</AddressPrefix><RouteTableName>TestRoute</RouteTableName></Subnet><Subnet><Name>GatewaySubnet</Name><AddressPrefix>10.16.0.40/29</AddressPrefix></Subnet></Subnets><Location>West US</Location></VirtualNetworkSite></VirtualNetworkSites>", { 'cache-control': 'no-cache',
+  'content-length': '5049',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '8d7e49d89a358b0ba9b0889c8bc68f11',
-  date: 'Mon, 16 Mar 2015 03:58:24 GMT' });
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'usnorth2',
+  'x-ms-request-id': '14c904096288ba45afef48adc0a8c4bd',
+  date: 'Wed, 08 Jul 2015 07:11:31 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '235dd42aa83a8027ba6d88ccbc802be7',
-  date: 'Mon, 16 Mar 2015 03:58:25 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/testvnet7572?op=checkavailability&address=10.0.0.0')
-  .reply(200, "<AddressAvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><IsAvailable>false</IsAvailable><AvailableAddresses><AvailableAddress>10.0.0.4</AvailableAddress><AvailableAddress>10.0.0.5</AvailableAddress><AvailableAddress>10.0.0.6</AvailableAddress><AvailableAddress>10.0.0.7</AvailableAddress><AvailableAddress>10.0.0.8</AvailableAddress></AvailableAddresses></AddressAvailabilityResponse>", { 'cache-control': 'no-cache',
+nock('http://management.core.windows.net:443')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/mynetwork?op=checkavailability&address=10.4.0.0')
+  .reply(200, "<AddressAvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><IsAvailable>false</IsAvailable><AvailableAddresses><AvailableAddress>10.4.0.4</AvailableAddress><AvailableAddress>10.4.0.5</AvailableAddress><AvailableAddress>10.4.0.6</AvailableAddress><AvailableAddress>10.4.0.7</AvailableAddress><AvailableAddress>10.4.0.8</AvailableAddress></AvailableAddresses></AddressAvailabilityResponse>", { 'cache-control': 'no-cache',
   'content-length': '459',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '12b7247b05b5830bb7e685219d3acf75',
-  date: 'Mon, 16 Mar 2015 03:58:28 GMT' });
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'usnorth2',
+  'x-ms-request-id': 'c91da3627bd5bf2ba3002c8df34fee3e',
+  date: 'Wed, 08 Jul 2015 07:11:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/mynetwork?op=checkavailability&address=10.4.0.0')
+  .reply(200, "<AddressAvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><IsAvailable>false</IsAvailable><AvailableAddresses><AvailableAddress>10.4.0.4</AvailableAddress><AvailableAddress>10.4.0.5</AvailableAddress><AvailableAddress>10.4.0.6</AvailableAddress><AvailableAddress>10.4.0.7</AvailableAddress><AvailableAddress>10.4.0.8</AvailableAddress></AvailableAddresses></AddressAvailabilityResponse>", { 'cache-control': 'no-cache',
+  'content-length': '459',
+  'content-type': 'application/xml; charset=utf-8',
+  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'usnorth2',
+  'x-ms-request-id': 'c91da3627bd5bf2ba3002c8df34fee3e',
+  date: 'Wed, 08 Jul 2015 07:11:38 GMT',
+  connection: 'close' });
  return result; }]];

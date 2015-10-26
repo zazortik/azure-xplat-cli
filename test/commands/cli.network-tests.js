@@ -13,8 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-var should = require('should');
+
+var path = require('path');
 var util = require('util');
+
+var should = require('should');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
 var suite;
@@ -29,13 +32,15 @@ var requiredEnvironment = [{
 var testSite;
 
 describe('cli', function() {
-  describe('network', function() {
-    var networkconfig = 'netconfig.json';
+  describe('network', function () {
+    //put the json file under same folder of the test file; 
+    //rather under repo root.
+    var networkconfig = path.join(__dirname, '/../output', 'netconfig.json');
     var dnsIp = '66.77.88.98';
     var dnsId = 'dns-cli-1';
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -58,15 +63,15 @@ describe('cli', function() {
       var dnsIp = '10.0.0.1';
 
       afterEach(function(done) {
-        suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function() {
+        suite.execute('network dns-server unregister %s --quiet --json', dnsIp, function() {
           done();
         });
       });
 
       it('should create and list', function(done) {
-        suite.execute('network dnsserver register %s --json', dnsIp, function(result) {
+        suite.execute('network dns-server register %s --json', dnsIp, function(result) {
           result.exitStatus.should.equal(0);
-          suite.execute('network dnsserver list --json', function(result) {
+          suite.execute('network dns-server list --json', function(result) {
             result.exitStatus.should.equal(0);
             var dnsServers = JSON.parse(result.text);
             var exists = dnsServers.some(function(v) {
@@ -133,9 +138,9 @@ describe('cli', function() {
       });
 
       it('should create vnet with dns-server-id option and show', function(done) {
-        suite.execute('network dnsserver register %s --json --dns-id %s', dnsIp, dnsId, function(result) {
+        suite.execute('network dns-server register %s --json --dns-id %s', dnsIp, dnsId, function(result) {
           result.exitStatus.should.equal(0);
-          suite.execute('network dnsserver list --json', function(result) {
+          suite.execute('network dns-server list --json', function(result) {
             result.exitStatus.should.equal(0);
             var dnsServers = JSON.parse(result.text);
             var dnsServer = dnsServers.filter(function(v) {
@@ -155,7 +160,7 @@ describe('cli', function() {
                   vnet.state.should.equal('Created');
                   vnet.dnsServers[0].name.should.equal(dnsId);
                   suite.execute('network vnet delete %s --quiet --json', vnetName, function() {
-                    suite.execute('network dnsserver unregister %s --quiet --json', dnsIp, function() {
+                    suite.execute('network dns-server unregister %s --quiet --json', dnsIp, function() {
                       done();
                     });
                   })

@@ -29,7 +29,7 @@ var currentTest = '';
 //provides the log directory where the test logs would reside 
 function getLogDir() {
   if(!fs.existsSync(testLogDir)) {
-    fs.mkdir(testLogDir);
+    fs.mkdirSync(testLogDir);
   }
   return testLogDir;
 };
@@ -98,6 +98,11 @@ exports.logError = function(err) {
   if(err.stack) {
     content += util.inspect(err.stack, {depth: null}) + '\n';
   }
+  appendContent(content);
+};
+
+exports.logSillyError = function(err) {
+  var content = '\n' + err + '\n';
   appendContent(content);
 };
 

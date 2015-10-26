@@ -17,9 +17,10 @@ var util = require('util');
 var fs = require('fs');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
-var vmPrefix = 'clitestvm_cdata';
+var vmPrefix = 'clitestvm';
 var createdVms = [];
 var testPrefix = 'cli.vm.create_custom-tests';
 
@@ -28,7 +29,7 @@ var requiredEnvironment = [{
   defaultValue: 'West US'
 }, {
   name: 'SSHCERT',
-  defaultValue: null
+  defaultValue: 'test/myCert.pem'
 }];
 
 describe('cli', function() {
@@ -43,6 +44,7 @@ describe('cli', function() {
       sshPort = '223',
       username = 'azureuser';
     testUtils.TIMEOUT_INTERVAL = 5000;
+    var vmUtil = new vmTestUtil();
 
     var vmToUse = {
       Name: null,
@@ -51,7 +53,7 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -71,23 +73,7 @@ describe('cli', function() {
     });
 
     afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, 5, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              callback();
-            });
-          }, timeout);
-        } else {
-          return callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function() {
+      vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
       });
     });
@@ -95,10 +81,10 @@ describe('cli', function() {
     //Create vm with custom data
     //'node cli.js vm create -e 223 -z Small --ssh-cert cert2.pfx --no-ssh-password clitestvm_cdata4367 0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1 azureuser -d customdata --json --verbose -l West US'
     //'Specified SSH certificate is not in PEM format'
-    describe.skip('Create:', function() {
+    describe('Create:', function() {
       it('with custom data', function(done) {
-        getImageName('Linux', function(vmImgName) {
-          generateFile(fileName, null, 'nodejs,python,wordpress');
+        vmUtil.getImageName('Linux', suite, function(vmImgName) {
+          vmUtil.generateFile(fileName, null, 'nodejs,python,wordpress');
           var cmd = util.format('vm create -e %s -z %s --ssh-cert %s --no-ssh-password %s %s %s -d %s --json --verbose',
             sshPort, vmsize, certFile, customVmName, vmImgName, username, fileName).split(' ');
           cmd.push('-l');
@@ -118,31 +104,5 @@ describe('cli', function() {
       });
     });
 
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      if (process.env.VM_LINUX_IMAGE) {
-        callBack(process.env.VM_LINUX_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function(image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_LINUX_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_LINUX_IMAGE);
-        });
-      }
-    }
-
-    //create a file and write desired data given as input
-    function generateFile(filename, fileSizeinBytes, data) {
-      if (fileSizeinBytes)
-        data = testUtils.generateRandomString(fileSizeinBytes);
-      fs.writeFileSync(filename, data);
-    }
   });
 });

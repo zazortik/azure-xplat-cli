@@ -18,6 +18,7 @@ var testUtils = require('../util/util');
 var sinon = require('sinon');
 var crypto = require('crypto');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 
 var suite;
 var vmPrefix = 'clitestvm';
@@ -44,6 +45,7 @@ describe('cli', function() {
       username = 'azureuser',
       password = 'Pa$$word@123';
     testUtils.TIMEOUT_INTERVAL = 5000;
+    var vmUtil = new vmTestUtil();
 
     var vmToUse = {
       Name: null,
@@ -52,7 +54,12 @@ describe('cli', function() {
     };
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      location = process.env.AZURE_VM_TEST_LOCATION;
+      communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
+      customVmName = suite.generateId(vmPrefix, createdVms);
+      timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+      retry = 5;
       if (suite.isMocked) {
         sinon.stub(crypto, 'randomBytes', function() {
           return (++currentRandom).toString();
@@ -69,53 +76,33 @@ describe('cli', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        communityImageId = process.env.AZURE_COMMUNITY_IMAGE_ID;
-        customVmName = suite.generateId(vmPrefix, createdVms);
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
-        retry = 5;
-        done();
-      });
+      suite.setupTest(done);
     });
 
     afterEach(function(done) {
-      function deleteUsedVM(vm, callback) {
-        if (vm.Created && vm.Delete) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vm.Name).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vm.Name = null;
-              vm.Created = vm.Delete = false;
-              callback();
-            });
-          }, timeout);
-        } else {
-          return callback();
-        }
-      }
-
-      deleteUsedVM(vmToUse, function() {
+      vmUtil.deleteUsedVM(vmToUse, timeout, suite, function() {
         suite.teardownTest(done);
       });
     });
 
     //Create vm with custom data
     describe('Create:', function() {
-      it('with community data', function(done) {
-        var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
-          customVmName, communityImageId, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          vmToUse.Name = customVmName;
-          vmToUse.Created = true;
-          vmToUse.Delete = true;
-          done();
+      //this tests only runs live, because it downloads data from a live site, taking 4 minutes
+      if (process.env.NOCK_OFF) {
+        it('with community data', function(done) {
+          var cmd = util.format('vm create -o %s %s %s %s --json --verbose',
+            customVmName, communityImageId, username, password).split(' ');
+          cmd.push('-l');
+          cmd.push(location);
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            vmToUse.Name = customVmName;
+            vmToUse.Created = true;
+            vmToUse.Delete = true;
+            done();
+          });
         });
-      });
+      }
     });
   });
 });

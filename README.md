@@ -51,6 +51,13 @@ This project provides a cross-platform command line interface for developers and
     * Manage resource groups and deployments
     * Query and download gallery templates
     * Manage individual resources
+* Key Vault
+    * Create and manage vaults, assign permissions to vaults
+    * Create and manage vault keys, import PEM files into a vault key, obtain key backups
+    * Create and manage secrets, set and retrieve secret values
+* Redis Cache
+    * Create and manage Redis Caches
+    * List or Renew authentication keys
 
 ## Installation
 
@@ -84,11 +91,18 @@ sudo apt-get install -y nodejs
 sudo npm install -g azure-cli
 ```
 
+### Install on a Docker Host
+
+In a Docker host, run:  
+```bash
+sudo docker run -it microsoft/azure-cli 
+```
+
 ### Pre-compiled installers
 
-* [Windows](http://go.microsoft.com/fwlink/?linkid=254279)
-* [Mac](http://go.microsoft.com/fwlink/?Linkid=252249) 
-* [Linux](http://go.microsoft.com/fwlink/?linkid=253472)
+* [Windows](http://aka.ms/webpi-azure-cli)
+* [Mac](http://aka.ms/mac-azure-cli) 
+* [Linux](http://aka.ms/linux-azure-cli)
 
 ### Download Source Code
 
@@ -98,6 +112,7 @@ You can also install the Azure Xplat-CLI from sources using **git**  and **npm**
 git clone https://github.com/Azure/azure-xplat-cli.git
 cd ./azure-xplat-cli
 npm install
+bin/azure <command>
 ```
 
 ### Configure auto-complete
@@ -114,7 +129,7 @@ To enable it in bash, run:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
-echo 'source ~/azure.completion.sh' >> .bash_profile
+echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
 
 ## Get Started
@@ -151,6 +166,13 @@ azure account import <file location>
 azure site create --location "West US" mywebsite
 ```
 
+### azure cli with China Cloud
+```bash
+# This will log you into the China Cloud environment.
+# You can use same set of commands to manage your service/applications
+azure login -u <your organizational ID email address> -e AzureChinaCloud
+```
+
 ### azure cli on Ubuntu
 If you want to run xplat cli on Ubuntu, then you should install **nodejs-legacy** instead of **nodejs**. For more information please check the following links:
 - [why there is a problem with nodejs installation on ubuntu](http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716)
@@ -181,33 +203,34 @@ azure config mode arm # resource manager
 
 ## Docker
 
-Usage is same as standard vm create.
+Usage is the same as `vm create` command:
 
     azure vm docker create [options] <dns-name> <image> <user-name> [password]
 
-This command only supports Ubuntu 14.04 based images. Docker is configured on the VM using HTTPS as described here: http://docs.docker.io/articles/https/ By default, certificates are put in `~/.docker`, and Docker is configured to run on port 4243. These can be configured using new options:
+This command only supports Ubuntu 14.04+ and CoreOS based images. Docker is configured on the VM using HTTPS as described here: https://docs.docker.com/articles/https/ By default, generated TLS certificates are placed in the `~/.docker` directory, and Docker is configured to run on port 2376. These can be configured using new options:
 
-    -dp, --docker-port [port]              Port to use for docker [4243]
-    -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
+    -dp, --docker-port [port]              Port to use for docker [2376]
+    -dc, --docker-cert-dir [dir]           Directory containing docker certs [~/.docker/]
 	
 After the VM is created. It can be used as a Docker host with the `-H` option or `DOCKER_HOST` environment variable.
 
-    docker --tls -H tcp://<my-host>.cloudapp.net:4243 run
+    docker --tls -H tcp://<my-host>.cloudapp.net:2376 info
 
 Note: To run docker commands on windows make sure ssl agent is installed.
 	
-## Setting up Fiddler for CLI
+## Error Diagnostic
 
-You need to set the following environment variables to capture the HTTP traffic generated from the execution of xplat cli commands
+### use the -vv option to see the actual REST requests on the console.
+```bash
+azure site create --location "West US" mytestsite -vv
+```
+
+### Use web debugging proxy
+Say, use 'Fiddler', setup the following environment variables before execute commands.
 
 ```bash
 set NODE_TLS_REJECT_UNAUTHORIZED=0
 set HTTPS_PROXY=http://127.0.0.1:8888
-```
-## Want to know the underlying HTTP traffic when you execute the command
-You can use the -vv option to see the actual REST requests on the console.
-```bash
-azure site create --location "West US" mytestsite -vv
 ```
 
 ## Running Tests

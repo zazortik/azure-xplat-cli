@@ -16,6 +16,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
+var vmTestUtil = require('../util/asmVMTestUtil');
 // A common VM used by multiple tests
 var suite;
 var vmPrefix = 'clitestvm';
@@ -27,6 +28,7 @@ var requiredEnvironment = [{
 }];
 describe('cli', function() {
   describe('vm', function() {
+    var vmUtil = new vmTestUtil();
     var vmName,
       location,
       username = 'azureuser',
@@ -38,33 +40,27 @@ describe('cli', function() {
       customversion = '1.*',
       timeout;
     testUtils.TIMEOUT_INTERVAL = 5000;
+
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
-    });
-    after(function(done) {
-      function deleteUsedVM(callback) {
-        if (!suite.isPlayback()) {
-          setTimeout(function() {
-            var cmd = util.format('vm delete %s -b -q --json', vmName).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              setTimeout(callback, timeout);
-            });
-          }, timeout);
-        } else callback();
-      }
-      deleteUsedVM(function() {
-        suite.teardownSuite(done);
-      });
-    });
-    beforeEach(function(done) {
-      suite.setupTest(function() {
-        location = process.env.AZURE_VM_TEST_LOCATION;
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
+        location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
+    });
+    after(function(done) {
+      if (!suite.isPlayback()) {
+        vmUtil.deleteVM(vmName, timeout, suite, function() {
+          suite.teardownSuite(done);
+        });
+      } else {
+        suite.teardownSuite(done);
+      }
+    });
+    beforeEach(function(done) {
+      suite.setupTest(done);
     });
     afterEach(function(done) {
       setTimeout(function() {
@@ -74,7 +70,7 @@ describe('cli', function() {
     //Set custom extensions
     describe('extension:', function() {
       it('should set custom extensions and disable', function(done) {
-        createVM(function() {
+        vmUtil.createWindowsVM(vmName, username, password, location, timeout, suite, function() {
           var cmd = util.format('vm extension set -c %s %s %s %s %s --json', customScript, vmName, customextension, custompublisher, customversion).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
@@ -93,37 +89,5 @@ describe('cli', function() {
         });
       });
     });
-
-    function createVM(callback) {
-        getImageName('Windows', function(imagename) {
-          var cmd = util.format('vm create %s %s %s %s --json', vmName, imagename, username, password).split(' ');
-          cmd.push('-l');
-          cmd.push(location);
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            setTimeout(callback, timeout);
-          });
-        });
-      }
-      // Get name of an image of the given category
-
-    function getImageName(category, callBack) {
-      if (process.env.VM_WIN_IMAGE) {
-        callBack(process.env.VM_WIN_IMAGE);
-      } else {
-        var cmd = util.format('vm image list --json').split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var imageList = JSON.parse(result.text);
-          imageList.some(function(image) {
-            if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-              process.env.VM_WIN_IMAGE = image.name;
-              return true;
-            }
-          });
-          callBack(process.env.VM_WIN_IMAGE);
-        });
-      }
-    }
   });
 });

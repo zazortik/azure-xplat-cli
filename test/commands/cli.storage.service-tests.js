@@ -39,7 +39,7 @@ describe('cli', function () {
   describe('storage', function() {
 
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.skipSubscription = true;
 
       if (suite.isMocked) {
@@ -379,6 +379,113 @@ describe('cli', function () {
             property.MinuteMetrics[0].RetentionPolicy.Enabled.should.be.a.Boolean;
             done();
           });
+        });
+      });
+    });
+
+    describe('cors', function() {
+      var services = ['blob', 'table', 'queue', 'file'];
+      var serviceIndex = 0;
+
+      var allowedOrigins = 'www.azure.com,www.microsoft.com';
+      var allowedMethods = 'GET,PUT';
+      var allowedHeaders = 'x-ms-meta-xyz,x-ms-meta-foo,x-ms-meta-data*,x-ms-meta-target*';
+      var exposedHeaders = 'x-ms-meta-abc,x-ms-meta-bcd,x-ms-meta-data*,x-ms-meta-source*';
+      var maxAge = 500;
+
+      function executeDeletion(done) {
+        if (serviceIndex >=  services.length) {
+          return done();
+        } else {
+          suite.execute('storage cors delete %s -q --json', '--' + services[serviceIndex], function(result) {
+            result.errorText.should.be.empty;
+
+            serviceIndex++;
+            executeDeletion(done);
+          });
+        }
+      }
+
+      describe('delete', function() {
+        it('should delete all the CORS rules for the services', function(done) {
+          serviceIndex = 0;
+          executeDeletion(done);
+        });
+      });
+
+      describe('set', function() {
+        it('should set new CORS rules for the services', function(done) {
+          function executeCreation(done) {
+             if (serviceIndex >=  services.length) {
+              return done();
+            } else {
+              var rules = [];
+              var ruleCount = serviceIndex + 1;
+              for (var index = 0; index <= serviceIndex; index++) {
+                var rule = {
+                  AllowedOrigins: allowedOrigins,
+                  AllowedMethods: allowedMethods,
+                  AllowedHeaders: allowedHeaders,
+                  ExposedHeaders: exposedHeaders,
+                  MaxAgeInSeconds: maxAge + index,
+                };
+                rules.push(rule);
+              }
+
+              suite.execute('storage cors set %s --cors %s --json', '--' + services[serviceIndex], JSON.stringify(rules), function(result) {
+                result.errorText.should.be.empty;
+                var corsRules = JSON.parse(result.text);
+                corsRules.length.should.equal(ruleCount);
+                var rule = corsRules[ruleCount-1];
+                rule.AllowedOrigins.toString().should.equal(allowedOrigins);
+                rule.AllowedMethods.toString().should.equal(allowedMethods);
+                rule.AllowedHeaders.toString().should.equal(allowedHeaders);
+                rule.ExposedHeaders.toString().should.equal(exposedHeaders);
+                rule.MaxAgeInSeconds.should.equal(maxAge + ruleCount - 1);
+
+                serviceIndex++;
+                executeCreation(done);
+              });
+            }
+          }
+
+          serviceIndex = 0;
+          executeCreation(done);
+        });
+      });
+
+      describe('show', function() {
+        it('should show the CORS rules for the services', function(done) {
+          function executeShow(done) {
+            if (serviceIndex >=  services.length) {
+              return done();
+            } else {
+              suite.execute('storage cors show %s --json', '--' + services[serviceIndex], function(result) {
+                result.errorText.should.be.empty;
+                var corsRules = JSON.parse(result.text);
+                corsRules.length.should.equal(serviceIndex+1);
+                var rule = corsRules[serviceIndex];
+                rule.AllowedOrigins.toString().should.equal(allowedOrigins);
+                rule.AllowedMethods.toString().should.equal(allowedMethods);
+                rule.AllowedHeaders.toString().should.equal(allowedHeaders);
+                rule.ExposedHeaders.toString().should.equal(exposedHeaders);
+                rule.MaxAgeInSeconds.should.equal(maxAge + serviceIndex);
+
+                serviceIndex++;
+                executeShow(done);
+              });
+            }
+          }
+
+          serviceIndex = 0;
+          executeShow(done);
+        });
+      });
+
+      describe('clear', function() {
+        it('should clear all the CORS rules for the services', function(done) {
+          serviceIndex = 0;
+          executeDeletion(done);
         });
       });
     });

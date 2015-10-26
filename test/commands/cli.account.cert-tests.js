@@ -20,7 +20,7 @@ var should = require('should');
 
 var CLITest = require('../framework/cli-test');
 var testPrefix = 'cli.account.cert-tests';
-var suite = new CLITest(testPrefix);
+var suite = new CLITest(null, testPrefix);
 
 describe('cli', function () {
   describe('account cert', function () {

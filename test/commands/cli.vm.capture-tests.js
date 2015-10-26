@@ -16,7 +16,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../util/util');
 var CLITest = require('../framework/cli-test');
-
+var vmTestUtil = require('../util/asmVMTestUtil');
 var suite;
 var vmPrefix = 'ClitestVm';
 var testPrefix = 'cli.vm.capture-tests';
@@ -27,7 +27,7 @@ var requiredEnvironment = [{
   defaultValue: 'West US'
 }, {
   name: 'SSHCERT',
-  defaultValue: null
+  defaultValue: 'test/myCert.pem'
 }];
 
 describe('cli', function() {
@@ -40,10 +40,17 @@ describe('cli', function() {
       captureImg = 'xplattestcapimg',
       timeout, retry;
     testUtils.TIMEOUT_INTERVAL = 10000;
+    var vmUtil = new vmTestUtil();
 
     before(function(done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() {
+        location = process.env.AZURE_VM_TEST_LOCATION;
+        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        certFile = process.env.SSHCERT;
+        retry = 5;
+        done();
+      });
     });
 
     after(function(done) {
@@ -53,10 +60,6 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isMocked ? 0 : testUtils.TIMEOUT_INTERVAL;
-        certFile = process.env.SSHCERT;
-        retry = 5;
         done();
       });
     });
@@ -68,7 +71,7 @@ describe('cli', function() {
     //shutdown a vm
     describe('Vm:', function() {
       it('shutdown and capture', function(done) {
-        createVM(function() {
+        vmUtil.createVM(certFile, vmName, username, password, location, timeout, suite, function() {
           var cmd = util.format('vm shutdown %s --json', vmName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
@@ -115,32 +118,5 @@ describe('cli', function() {
       });
     });
 
-    function createVM(callback) {
-      getImageName('Linux', function(imagename) {
-        var cmd = util.format('vm create --ssh --ssh-cert %s %s %s %s %s --json', certFile, vmName, imagename, username, password).split(' ');
-        cmd.push('-l');
-        cmd.push(location);
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          setTimeout(callback, timeout);
-        });
-      });
-    }
-
-    // Get name of an image of the given category
-    function getImageName(category, callBack) {
-      var cmd = util.format('vm image list --json').split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        var imageList = JSON.parse(result.text);
-        imageList.some(function(image) {
-          if ((image.operatingSystemType || image.oSDiskConfiguration.operatingSystem).toLowerCase() === category.toLowerCase() && image.category.toLowerCase() === 'public') {
-            vmImgName = image.name;
-            return true;
-          }
-        });
-        callBack(vmImgName);
-      });
-    }
   });
 });

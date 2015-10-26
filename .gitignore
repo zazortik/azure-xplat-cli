@@ -2,12 +2,21 @@ projects/*
 targets/*
 
 # Visual Studio #
+.settings/
 /app.js
 /xPlat.sln
 *.suo
 *.user
 .ntvs_analysis.*
 *.njsproj
+*.etl
+*.etl.tmp
+*.vspx
+*.njsperf
+Microsoft.NodejsTools.WebRole.dll
+
+# Visual Studio Code
+.settings/
 
 # Node #
 node_modules/
@@ -23,6 +32,7 @@ out/
 checkstyle-result.xml
 test-result.xml
 iisnode.yml
+*.nupkg
 
 # Mac OS #
 .DS_Store
@@ -39,3 +49,4 @@ Thumbs.db
 
 # Test Logs #
 test/output/*
+coverage

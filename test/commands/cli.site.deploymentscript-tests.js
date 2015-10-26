@@ -19,7 +19,7 @@ var sinon = require('sinon');
 var should = require('should');
 
 var cli = require('../../lib/cli');
-var utils = require('../../lib/util/utils');
+var utilsCore = require('../../lib/util/utilsCore');
 var executor = require('../framework/cli-executor');
 
 var format = require('util').format;
@@ -39,15 +39,15 @@ var testSettings;
 var isWindows = process.platform === 'win32'
 
 function executeCmd(cmd, cb) {
-  var originalReadConfig = utils.readConfig;
-  sinon.stub(utils, 'readConfig', function () {
+  var originalReadConfig = utilsCore.readConfig;
+  sinon.stub(utilsCore, 'readConfig', function () {
     var config = originalReadConfig();
     config.mode = 'asm';
     return config;
   });
 
   return executor.execute(cmd, function () {
-    utils.readConfig.restore();
+    utilsCore.readConfig.restore();
     cb.apply(null, Array.prototype.slice.call(arguments, 0));
   });
 }

@@ -58,6 +58,7 @@ function execute(cmd, cb) {
       return cb(result);
     } catch (err) {
       testLogger.logError(err);
+      testLogger.logSillyError(winston.getCapturedSillyLogs());
       process.nextTick(function() {
         throw err;
       });
@@ -90,6 +91,7 @@ function execute(cmd, cb) {
     }
     var cmdStr = cmd.join(" ");
     testLogger.logData(cmdStr);
+    winston.default.transports.silly.clear();
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;

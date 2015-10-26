@@ -52,7 +52,7 @@ var scmSite = process.env.AZURE_SCM_SITE_SUFFIX || '.scm.azurewebsites.net';
 describe('cli', function () {
   describe('site', function() {
     before(function (done) {
-      suite = new CLITest(testPrefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(done);
     });
 
@@ -363,7 +363,7 @@ describe('cli', function () {
       });
 
       it('sets all properties', function (done) {
-        suite.execute('site set --net-version 3.5 --php-version 5.3 --web-socket %s --json', siteName, function (result) {
+        suite.execute('site set --net-version 3.5 --php-version 5.4 --web-socket %s --json', siteName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 

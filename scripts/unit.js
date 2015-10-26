@@ -13,18 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-require('streamline').register();
-
 var fs = require('fs');
 var profile = require('../lib/util/profile');
 var testLogger = require('../test/framework/test-logger');
 var args = (process.ARGV || process.argv);
-
-var coverageOption = Array.prototype.indexOf.call(args, '-coverage');
-
-if (coverageOption !== -1) {
-  args.splice(coverageOption, 1);
-}
 
 var reporter = '../../../test/framework/xcli-test-reporter';
 var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
@@ -73,12 +65,7 @@ files.forEach(function (file) {
   }
 });
 
-if (coverageOption !== -1) {
-  args.push('-R');
-  args.push('html-cov');
-} else {
-  args.push('-R');
-  args.push(reporter);
-}
+args.push('-R');
+args.push(reporter);
 
 require('../node_modules/mocha/bin/mocha');
