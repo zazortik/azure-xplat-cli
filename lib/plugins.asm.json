@@ -1522,7 +1522,7 @@
                   "description": "the storage account description"
                 },
                 {
-                  "flags": "-a, --affinity-group <name>",
+                  "flags": "-a, --affinity-group <affinityGroup>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1531,7 +1531,7 @@
                   "description": "the affinity group"
                 },
                 {
-                  "flags": "-l, --location <name>",
+                  "flags": "-l, --location <location>",
                   "required": -16,
                   "optional": 0,
                   "bool": true,
@@ -1676,6 +1676,40 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                }
+              ]
+            },
+            {
+              "name": "check",
+              "description": "Check whether the account name is valid and is not in use.",
+              "fullName": "storage account check",
+              "usage": "[options] <name>",
+              "filePath": "commands/storage/storage.account._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 }
               ]
             }
