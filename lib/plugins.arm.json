@@ -26439,35 +26439,35 @@
               "description": "The switch parameter to disable the BGInfo extension for VM."
             },
             {
-              "flags": "--encryption-key-vault-id <disk-encryption-key-vault-id>",
-              "required": -27,
+              "flags": "--disk-encryption-key-vault-id <disk-encryption-key-vault-id>",
+              "required": -32,
               "optional": 0,
               "bool": true,
-              "long": "--encryption-key-vault-id",
+              "long": "--disk-encryption-key-vault-id",
               "description": "The OS disk encryption key vault ID."
             },
             {
-              "flags": "--encryption-key-secret-url <disk-encryption-key-secret-url>",
-              "required": -29,
+              "flags": "--disk-encryption-key-url <disk-encryption-key-url>",
+              "required": -27,
               "optional": 0,
               "bool": true,
-              "long": "--encryption-key-secret-url",
+              "long": "--disk-encryption-key-url",
               "description": "The OS disk encryption key secret URL."
             },
             {
-              "flags": "--encryption-master-key-vault-id <key-encryption-key-vault-id>",
-              "required": -34,
+              "flags": "--key-encryption-key-vault-id <key-encryption-key-vault-id>",
+              "required": -31,
               "optional": 0,
               "bool": true,
-              "long": "--encryption-master-key-vault-id",
+              "long": "--key-encryption-key-vault-id",
               "description": "The vault reference Url for the OS disk encryption key."
             },
             {
-              "flags": "--encryption-master-key-url <key-encryption-key-url>",
-              "required": -29,
+              "flags": "--key-encryption-key-url <key-encryption-key-url>",
+              "required": -26,
               "optional": 0,
               "bool": true,
-              "long": "--encryption-master-key-url",
+              "long": "--key-encryption-key-url",
               "description": "The Url of the master key used to encrypt the OS disk encryption key."
             }
           ]
