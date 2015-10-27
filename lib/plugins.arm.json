@@ -27785,7 +27785,7 @@
               "description": "the virtual machine name"
             },
             {
-              "flags": "-a, --aad-client-id <aadclientid>",
+              "flags": "-a, --aad-client-id <aad-client-id>",
               "required": -21,
               "optional": 0,
               "bool": true,
@@ -27794,7 +27794,7 @@
               "description": "Client ID of AAD app with permissions to write secrets to KeyVault"
             },
             {
-              "flags": "-p, --aad-client-secret <aadClientSecret>",
+              "flags": "-p, --aad-client-secret <aad-client-secret>",
               "required": -25,
               "optional": 0,
               "bool": true,
@@ -27803,7 +27803,7 @@
               "description": "Client Secret of AAD app with permissions to write secrets to KeyVault"
             },
             {
-              "flags": "-c, --aad-client-cert-thumbprint <aadClientCertThumbprint>",
+              "flags": "-c, --aad-client-cert-thumbprint <aad-client-cert-thumbprint>",
               "required": -34,
               "optional": 0,
               "bool": true,
@@ -27812,7 +27812,7 @@
               "description": "Thumbprint of AAD app certificate with permissions to write secrets to KeyVault"
             },
             {
-              "flags": "-k, --disk-encryption-keyvault-url <diskEncryptionKeyVaultUrl>",
+              "flags": "-k, --disk-encryption-keyvault-url <disk-encryption-keyvault-url>",
               "required": -36,
               "optional": 0,
               "bool": true,
@@ -27821,7 +27821,7 @@
               "description": "URL of the KeyVault where generated encryption key will be placed to"
             },
             {
-              "flags": "-r, --disk-encryption-keyvault-id <diskEncryptionKeyVaultId>",
+              "flags": "-r, --disk-encryption-keyvault-id <disk-encryption-keyvault-id>",
               "required": -35,
               "optional": 0,
               "bool": true,
@@ -27830,7 +27830,7 @@
               "description": "ResourceID of the KeyVault where generated encryption key will be placed to"
             },
             {
-              "flags": "-u, --key-encryption-key-url <keyEncryptionKeyUrl>",
+              "flags": "-u, --key-encryption-key-url <key-encryption-key-url>",
               "required": -30,
               "optional": 0,
               "bool": true,
@@ -27839,7 +27839,7 @@
               "description": "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key"
             },
             {
-              "flags": "-i, --key-encryption-keyvault-id <keyEncryptionKeyVaultId>",
+              "flags": "-i, --key-encryption-keyvault-id <key-encryption-keyvault-id>",
               "required": -34,
               "optional": 0,
               "bool": true,
@@ -27848,7 +27848,7 @@
               "description": "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key"
             },
             {
-              "flags": "-l, --key-encryption-algorithm <keyEncryptionAlgorithm>",
+              "flags": "-l, --key-encryption-algorithm <key-encryption-algorithm>",
               "required": -32,
               "optional": 0,
               "bool": true,
@@ -27857,7 +27857,7 @@
               "description": "KeyEncryption Algorithm used to encrypt the volume encryption key"
             },
             {
-              "flags": "-v, --volume-type <volumeType>",
+              "flags": "-v, --volume-type <volume-type>",
               "required": -19,
               "optional": 0,
               "bool": true,
@@ -27866,7 +27866,7 @@
               "description": "Type of the volume OS or Data or All to perform encryption operation"
             },
             {
-              "flags": "-q, --sequence-version <sequenceVersion>",
+              "flags": "-q, --sequence-version <sequence-version>",
               "required": -24,
               "optional": 0,
               "bool": true,
@@ -27875,7 +27875,7 @@
               "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
             },
             {
-              "flags": "-e, --extension-version <version>",
+              "flags": "-e, --extension-version <extension-version>",
               "required": -25,
               "optional": 0,
               "bool": true,
