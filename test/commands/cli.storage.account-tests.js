@@ -15,6 +15,7 @@
 //
 
 var should = require('should');
+var util = require('util');
 var utils = require('../../lib/util/utils');
 var CLITest = require('../framework/cli-test');
 
@@ -140,6 +141,51 @@ describe('cli', function () {
 
           done();
         });
+      });
+    });
+
+    it('should return true for an available storage account name', function (done) {
+      var accountName = 'thisisanameforxplattest';
+      suite.execute('storage account check %s --json', accountName, function (result) {
+        result.exitStatus.should.equal(0);
+        var availability = JSON.parse(result.text);
+        availability.nameAvailable.should.be.true;
+        done();
+      });
+    });
+
+    it('should return false for a storage account with invalid name', function (done) {
+      var accountName = 'az';
+      suite.execute('storage account check %s --json', accountName, function (result) {
+        result.exitStatus.should.equal(0);
+        var availability = JSON.parse(result.text);
+        availability.nameAvailable.should.be.false;
+        availability.reason.should.equal('The name is not a valid storage account name. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.');
+        done();
+      });
+    });
+
+    it('should return false for a storage account whose name has been taken in the subscription', function (done) {
+      var accountName = 'xplat';
+      suite.execute('storage account check %s --json', accountName, function (result) {
+        result.exitStatus.should.equal(0);
+        var availability = JSON.parse(result.text);
+        availability.nameAvailable.should.be.false;
+        var reason = util.format('A storage account named \'%s\' already exists in the subscription.', accountName);
+        availability.reason.should.equal(reason);
+        done();
+      });
+    });
+
+    it('should return false for a storage account whose name has been taken in another subscription', function (done) {
+      var accountName = 'azure';
+      suite.execute('storage account check %s --json', accountName, function (result) {
+        result.exitStatus.should.equal(0);
+        var availability = JSON.parse(result.text);
+        availability.nameAvailable.should.be.false;
+        var reason = util.format('The storage account named \'%s\' is already taken.', accountName);
+        availability.reason.should.equal(reason);
+        done();
       });
     });
 

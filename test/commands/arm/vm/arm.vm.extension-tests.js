@@ -46,6 +46,8 @@ var groupName,
   IaasDiagPublisher,
   IaasDiagExtName,
   IaasDiagVersion,
+  bgInfoExtension = 'BGInfo',
+  bgInfoExtensionVersion = '2.1',
   datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
@@ -57,7 +59,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
+        groupName = suite.generateId(groupPrefix, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -123,6 +125,16 @@ describe('arm', function() {
           });
         });
       });
+
+      it('Uninstall the default BGInfo extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension set %s %s %s %s %s -u -q --json', groupName, vmPrefix, bgInfoExtension, publisherExt, bgInfoExtensionVersion).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('Enable diagnostics extension on created VM in a resource group', function(done) {
         var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -130,6 +142,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('Check diagnostics extension on created VM should pass', function(done) {
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -141,6 +154,7 @@ describe('arm', function() {
           done();
         });
       });
+
       //Set extensions
       it('Set extensions for the created vm', function(done) {
         var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
@@ -169,6 +183,31 @@ describe('arm', function() {
           result.exitStatus.should.equal(0);
           done();
         });
+      });
+
+      it('create for extension get and set without bginfo extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined || VMTestUtil.winImageUrn === "undefined") {
+          vmTest.GetWindowsSkusList(location, suite, function(result) {
+            vmTest.GetWindowsImageList(location, suite, function(result) {
+              var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --disable-bginfo-extension --json',
+                groupName, vmPrefix + 'nobginfo', location, nicName, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            });
+          });
+        } else {
+          var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --disable-bginfo-extension --json',
+            groupName, vmPrefix + '2', location, nicName + '2', VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+            vNetPrefix + '2', '10.0.0.0/16', subnetName + '2', '10.0.0.0/24', publicipName + '2', dnsPrefix + '2').split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        }
       });
 
     });

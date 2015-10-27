@@ -147,9 +147,11 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="scripts\warn-existing-streamline-files.js" />
     <Compile Include="test\commands\cli.account-tests.js" />
     <Compile Include="test\commands\cli.account.affinitygroup-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\commands\cli.account.cert-tests.js" />
     <Compile Include="test\commands\cli.account.environment-tests.js" />
@@ -172,7 +174,8 @@
     <Compile Include="test\commands\cli.mobilerecover-tests.js" />
     <Compile Include="test\commands\cli.network-nsg-rule-tests.js" />
     <Compile Include="test\commands\cli.network-nsg-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\commands\cli.network-subnet-tests.js" />
     <Compile Include="test\commands\cli.network-tests.js" />
@@ -272,7 +275,8 @@
     <Compile Include="test\util\mobileTest.js" />
     <Compile Include="test\util\networkTestUtil.js" />
     <Compile Include="test\util\profile\account-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\util\set-tests.js" />
     <Compile Include="test\util\util.js" />
@@ -339,7 +343,8 @@
     <Compile Include="test\commands\arm\vm\arm.availset-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-create-generate-ssh-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-create-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\commands\arm\vm\arm.vm-docker-ssh-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-docker-tests.js" />
@@ -364,16 +369,20 @@
     <Content Include="test\commands\arm\apiapp\lib\testpackages\badUIDefinitionConstraints\metadata\UIDefinition.json" />
     <Content Include="test\commands\arm\apiapp\lib\testpackages\validPackageStaticSwagger\metadata\apiDefinition.swagger.json" />
     <Compile Include="test\util\authentication\adalAuth-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
+    <Compile Include="test\util\authentication\osx-keychain-parser-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-    <Compile Include="test\util\authentication\osx-keychain-parser-tests.js" />
     <Compile Include="test\util\authentication\token-cache-encoding-tests.js" />
     <Compile Include="test\util\authentication\token-cache-tests.js" />
     <Compile Include="test\util\authentication\token-storage-tests.js" />
     <Compile Include="test\util\authentication\win-credstore-parser-tests.js" />
     <Compile Include="test\util\git\linkrevisioncontrol-tests.js" />
     <Compile Include="test\util\profile\profile-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\util\profile\publishSettings-tests.js" />
     <Content Include="tools\resources\ThirdPartyNotices.txt" />
