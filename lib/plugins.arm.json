@@ -26437,6 +26437,38 @@
               "bool": true,
               "long": "--disable-bginfo-extension",
               "description": "The switch parameter to disable the BGInfo extension for VM."
+            },
+            {
+              "flags": "--disk-encryption-key-vault-id <disk-encryption-key-vault-id>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "long": "--disk-encryption-key-vault-id",
+              "description": "The OS disk encryption key vault ID."
+            },
+            {
+              "flags": "--disk-encryption-key-url <disk-encryption-key-url>",
+              "required": -27,
+              "optional": 0,
+              "bool": true,
+              "long": "--disk-encryption-key-url",
+              "description": "The OS disk encryption key secret URL."
+            },
+            {
+              "flags": "--key-encryption-key-vault-id <key-encryption-key-vault-id>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "long": "--key-encryption-key-vault-id",
+              "description": "The vault reference Url for the OS disk encryption key."
+            },
+            {
+              "flags": "--key-encryption-key-url <key-encryption-key-url>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "long": "--key-encryption-key-url",
+              "description": "The Url of the master key used to encrypt the OS disk encryption key."
             }
           ]
         },
