@@ -16,9 +16,75 @@
 'use strict';
 
 var should = require('should');
+var sinon = require('sinon');
 
 var adalAuth = require('../../../lib/util/authentication/adalAuth');
+var adalAuthForUser = require('../../../lib/util/authentication/adalAuthForUser');
 var adalAuthForServicePrincipal = require('../../../lib/util/authentication/adalAuthForServicePrincipal');
+
+describe('login as an user', function () {
+  var sandbox = sinon.sandbox.create();
+  var testConfig = {
+    resourceId: 'https://res123',
+    authorityUrl: 'https://authority123', 
+    clientId: '12345'
+  };
+  var testUser = 'johndoe@johndoe.com';
+  var sampleError;
+  var configMatched;
+  
+  before(function (done) {
+    sandbox.stub(adalAuth, 'removeCachedToken', function (user, callback) {
+      return callback();
+    });
+    
+    sandbox.stub(adalAuth, 'createAuthenticationContext', function () {
+      return {
+        acquireToken: function (resource, user, clientId, callback) {
+          configMatched = (resource === testConfig.resource || 
+                         clientId === testConfig.clientId ||
+                         user === testUser);
+          return callback(new Error(sampleError));
+        }
+      }
+    });
+    done();
+  });
+  
+  after(function (done) {
+    sandbox.restore();
+    done();
+  });
+
+  it('should polish on error to tell people login again', function (done) {
+    //arrange 
+    sampleError = 'Some error happend';
+    
+    //action
+    var cred = new adalAuthForUser.UserTokenCredentials(testConfig, testUser);
+    cred.retrieveTokenFromCache(function (err) {
+      //assert
+      (err.message.indexOf('Please run "azure login" again') !== -1).should.be.true;
+      (err.message.indexOf(sampleError) !== -1).should.be.true;
+      configMatched.should.be.true;
+      done();
+    });
+  });
+
+  it('should trash bad error from adal-node on polishing', function (done) {
+    //arrange 
+    var badError = 'Entry not found in cache.';
+    
+    //action
+    var cred = new adalAuthForUser.UserTokenCredentials(testConfig, testUser);
+    cred.retrieveTokenFromCache(function (err) {
+      //assert
+      (err.message.indexOf('Please run "azure login" again') !== -1).should.be.true;
+      (err.message.indexOf(badError) !== -1).should.be.false;
+      done();
+    });
+  });
+});
 
 describe('login as service principal', function () {
   var config = {
@@ -56,7 +122,7 @@ describe('login as service principal', function () {
       addInvoked = true;
       hasRefreshToken = !!(entries[0].refreshToken);
       callback(null);
-    }
+    };
     //action
     adalAuthForServicePrincipal.createServicePrincipalTokenCredentials(config, 'https://myapp1', 'Secret', function(){
       addInvoked.should.be.true;
@@ -84,7 +150,7 @@ describe('logoutUser', function () {
       }
     };
     //action
-    adalAuth.removeCachedToken('dummyUser', null, tokenCache, function (err) {
+    adalAuth.removeCachedToken('dummyUser', tokenCache, function (err) {
       //verify
       timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);
