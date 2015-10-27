@@ -34,7 +34,7 @@ describe('login as an user', function () {
   var configMatched;
   
   before(function (done) {
-    sandbox.stub(adalAuth, 'removeCachedToken', function (user, tenantId, callback) {
+    sandbox.stub(adalAuth, 'removeCachedToken', function (user, callback) {
       return callback();
     });
     
@@ -150,7 +150,7 @@ describe('logoutUser', function () {
       }
     };
     //action
-    adalAuth.removeCachedToken('dummyUser', null, tokenCache, function (err) {
+    adalAuth.removeCachedToken('dummyUser', tokenCache, function (err) {
       //verify
       timesTokenFindGetsInvoked.should.equal(3);
       timesTokenRemoveGetsInvoked.should.equal(1);
