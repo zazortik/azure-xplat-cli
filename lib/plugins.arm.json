@@ -12626,7 +12626,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "reserved for future use"
+              "description": "specifies whether the Azure Compute resource provider can access secrets"
+            },
+            {
+              "flags": "--enabled-for-template-deployment <boolean>",
+              "required": -35,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "specifies whether Azure Resource Manager can access secrets"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption <boolean>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "specifies whether Azure Disk Encryption can access secrets"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -12719,7 +12735,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "if informed, will set the enabledForDeployment property to false in the vault"
+              "description": "if provided, will set the enabledForDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-template-deployment",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "if provided, will set the enabledForTemplateDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "if provided, will set the enabledForDiskEncryption property to false in the vault"
             },
             {
               "flags": "-s, --subscription <subscription>",
