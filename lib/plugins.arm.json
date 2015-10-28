@@ -20010,30 +20010,6 @@
                       "description": "the name of the zone file"
                     },
                     {
-                      "flags": "--force",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--force",
-                      "description": "force overwrite of existing record sets. Otherwise, records are merged with existing record sets"
-                    },
-                    {
-                      "flags": "--debug",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--debug",
-                      "description": "output debug info"
-                    },
-                    {
-                      "flags": "--parse-only",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--parse-only",
-                      "description": "parse zone file only, without import"
-                    },
-                    {
                       "flags": "-q, --quiet",
                       "required": 0,
                       "optional": 0,
