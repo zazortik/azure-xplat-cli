@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
-                  "required": -24,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-vault-dns-suffix",
-                  "description": "the keyvault service dns suffix"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -592,20 +592,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
+                },
+                {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
                   "required": -26,
                   "optional": 0,
                   "bool": true,
                   "long": "--publishing-profile-url",
                   "description": "the publish settings file URL"
-                },
-                {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -640,12 +640,28 @@
                   "description": "the endpoint suffix for storage accounts"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
+                },
+                {
+                  "flags": "--azure-data-lake-store-file-system-endpoint-suffix <azureDataLakeStoreFileSystemEndpointSuffix>",
+                  "required": -53,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--azure-data-lake-store-file-system-endpoint-suffix",
+                  "description": "the data lake store filesystem service dns suffix"
+                },
+                {
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 }
               ]
             },
@@ -698,12 +714,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -738,20 +754,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
-                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
-                  "required": -24,
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-vault-dns-suffix",
-                  "description": "the keyvault service dns suffix"
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -784,6 +800,22 @@
                   "bool": true,
                   "long": "--storage-endpoint-suffix",
                   "description": "the endpoint suffix for storage accounts"
+                },
+                {
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
+                },
+                {
+                  "flags": "--azure-data-lake-store-file-system-endpoint-suffix <azureDataLakeStoreFileSystemEndpointSuffix>",
+                  "required": -53,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--azure-data-lake-store-file-system-endpoint-suffix",
+                  "description": "the data lake store filesystem service dns suffix"
                 },
                 {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
@@ -9340,6 +9372,3016 @@
       ],
       "categories": {}
     },
+    "datalake": {
+      "name": "datalake",
+      "description": "Commands to manage your Data Lake objects",
+      "fullName": "datalake",
+      "usage": "[options]",
+      "options": [],
+      "commands": [],
+      "categories": {
+        "analytics": {
+          "name": "analytics",
+          "description": "Commands to manage your Data Lake Analytics objects",
+          "fullName": "datalake analytics",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "job": {
+              "name": "job",
+              "description": "Commands to manage your Data Lake Analytics Jobs",
+              "fullName": "datalake analytics job",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Submits a job to the specified Data Lake Analytics account.",
+                  "fullName": "datalake analytics job create",
+                  "usage": "[options] <accountName> <jobName> <script> <runtime> <compileMode> <compileOnly> <degreeOfParallelism> <priority> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to execute the action on"
+                    },
+                    {
+                      "flags": "-j --jobName <jobName>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--jobName",
+                      "description": "the name for this job submission"
+                    },
+                    {
+                      "flags": "-t --script <script>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--script",
+                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a script file"
+                    },
+                    {
+                      "flags": "-r --runtime <runtime>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--runtime",
+                      "description": "optionally indicates the runtime to use. The default runtime is the currently deployed production runtime.Use this if you have uploaded a custom runtime to your account and want job execution to go through that one instead of the one deployed by Microsoft."
+                    },
+                    {
+                      "flags": "-m --compileMode <compileMode>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--compileMode",
+                      "description": "optionally specify the type of compilation to do. Valid values are 'Semantic', 'Full', and 'SingleBox' Default is Full."
+                    },
+                    {
+                      "flags": "-c --compileOnly <compileOnly>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--compileOnly",
+                      "description": "optionally indicates that this job should only be compiled and not run."
+                    },
+                    {
+                      "flags": "-d --degreeOfParallelism <degreeOfParallelism>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--degreeOfParallelism",
+                      "description": "optionally specify the degree of parallelism for the job in a range from 1 to 50. Default value is 1."
+                    },
+                    {
+                      "flags": "-p --priority <priority>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--priority",
+                      "description": "optionally specify the priority for the job. Default value is 1000, with lower, positive, non-zero values having higher priority. 1 is the highest priority and int.maxValue is the lowest."
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "shows the specified job and additional data if desired.",
+                  "fullName": "datalake analytics job show",
+                  "usage": "[options] <accountName> <jobId> <includeDebugInfo> <includeStatistics> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to execute the action on"
+                    },
+                    {
+                      "flags": "-j --jobId <jobId>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--jobId",
+                      "description": "the job ID of the job to retrieve."
+                    },
+                    {
+                      "flags": "-d --includeDebugInfo",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--includeDebugInfo",
+                      "description": "optionally indicates that debug info should be output for the job as well."
+                    },
+                    {
+                      "flags": "-t --includeStatistics",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--includeStatistics",
+                      "description": "optionally indicates that statistics for the job should be output as well."
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "cancel",
+                  "description": "cancels the specified job.",
+                  "fullName": "datalake analytics job cancel",
+                  "usage": "[options] <accountName> <jobId> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to execute the action on"
+                    },
+                    {
+                      "flags": "-j --jobId <jobId>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--jobId",
+                      "description": "the job ID of the job to retrieve."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for cancel confirmation)"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "lists the jobs in the specified account given the specified filters and criteria.",
+                  "fullName": "datalake analytics job list",
+                  "usage": "[options] <accountName> <jobName> <submitter> <submittedAfter> <submittedBefore> <state> <result> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to execute the action on"
+                    },
+                    {
+                      "flags": "-j --jobName <jobName>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--jobName",
+                      "description": "An optional filter which returns jobs with only the specified friendly name."
+                    },
+                    {
+                      "flags": "-u, --submitter <submitter>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--submitter",
+                      "description": "An optional filter which returns jobs only by the specified submitter in the format user@domain"
+                    },
+                    {
+                      "flags": "-a, --submittedAfter <submittedAfter>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--submittedAfter",
+                      "description": "An optional filter which returns jobs only submitted after the specified time (as a date time offset)."
+                    },
+                    {
+                      "flags": "-b, --submittedBefore <submittedAfter>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--submittedBefore",
+                      "description": "An optional filter which returns jobs only submitted before the specified time (as a date time offset)."
+                    },
+                    {
+                      "flags": "-t, --state <comma delmited string of states>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--state",
+                      "description": "An optional filter which returns jobs with only the specified states (as comma delmited string). Valid states are: accepted, compiling, ended, new, queued, running, scheduling, starting and paused"
+                    },
+                    {
+                      "flags": "-r, --result <comma delmited string of results>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--result",
+                      "description": "An optional filter which returns jobs with only the specified results (as comma delmited string). Valid results are: none, succeeded, cancelled and failed"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "catalog": {
+              "name": "catalog",
+              "description": "Commands to manage your Data Lake Analytics Catalog",
+              "fullName": "datalake analytics catalog",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists all of the specified catalog item types under the path or, if the full path is given, just the single catalog item at that path.",
+                  "fullName": "datalake analytics catalog list",
+                  "usage": "[options] <accountName> <itemType> <itemPath> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "The DataLakeAnalytics account name to perform the action on."
+                    },
+                    {
+                      "flags": "-t --itemType <itemType>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--itemType",
+                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, assembly, externaldatasource, table, tablevaluedfunction or tablestatistics"
+                    },
+                    {
+                      "flags": "-p --itemPath <itemPath>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--itemPath",
+                      "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>."
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to list the accounts in"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "secret": {
+                  "name": "secret",
+                  "description": "Commands to manage your Data Lake Analytics Catalog secrets",
+                  "fullName": "datalake analytics catalog secret",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Creates the specified secret for the specified database.",
+                      "fullName": "datalake analytics catalog secret create",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-d --databaseName <databaseName>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--databaseName",
+                          "description": "The name of the database in which the secret will be created."
+                        },
+                        {
+                          "flags": "-u --hostUri <hostUri>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--hostUri",
+                          "description": "The full host URI associated with the external data source. The secret will be used with this host URI."
+                        },
+                        {
+                          "flags": "-e --secretName <secretName>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--secretName",
+                          "description": "secret name, will prompt if not given"
+                        },
+                        {
+                          "flags": "-p --password <password>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--password",
+                          "description": "secret password, will prompt if not given"
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to list the accounts in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "set",
+                      "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
+                      "fullName": "datalake analytics catalog secret set",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-d --databaseName <databaseName>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--databaseName",
+                          "description": "The name of the database in which the secret will be updated."
+                        },
+                        {
+                          "flags": "-u --hostUri <hostUri>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--hostUri",
+                          "description": "The full host URI associated with the external data source. The secret will be used with this host URI."
+                        },
+                        {
+                          "flags": "-e --secretName <secretName>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--secretName",
+                          "description": "secret name, will prompt if not given"
+                        },
+                        {
+                          "flags": "-p --password <password>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--password",
+                          "description": "secret password, will prompt if not given"
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to list the accounts in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
+                      "fullName": "datalake analytics catalog secret delete",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-d --databaseName <databaseName>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--databaseName",
+                          "description": "The name of the database in which the secret(s) will be deleted."
+                        },
+                        {
+                          "flags": "-e --secretName <secretName>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--secretName",
+                          "description": "Optional secret name to delete, if not specified will delete all secrets in the specified database"
+                        },
+                        {
+                          "flags": "-q, --quiet",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-q",
+                          "long": "--quiet",
+                          "description": "quiet mode (do not ask for delete confirmation)"
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to list the accounts in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
+            },
+            "account": {
+              "name": "account",
+              "description": "Commands to manage your Data Lake Analytics accounts",
+              "fullName": "datalake analytics account",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List all DataLakeAnalytics accounts available for your subscription or subscription and resource group",
+                  "fullName": "datalake analytics account list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to list the accounts in"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Shows a DataLakeAnalytics Account based on account name",
+                  "fullName": "datalake analytics account show",
+                  "usage": "[options] <accountName> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to retrieve"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to list the accounts in"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a DataLakeAnalytics Account based on account name",
+                  "fullName": "datalake analytics account delete",
+                  "usage": "[options] <accountName> <resource-group>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Analytics account name to delete"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force the command to find the Data Lake Analytics account to delete in."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "create",
+                  "description": "Creates a Data Lake Analytics Account",
+                  "fullName": "datalake analytics account create",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "The DataLakeAnalytics account name to create"
+                    },
+                    {
+                      "flags": "-l --location <location>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location the Data Lake Analytics account will be created in. Valid values are: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group to create the account in"
+                    },
+                    {
+                      "flags": "-d --defaultDataLake <defaultDataLake>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--defaultDataLake",
+                      "description": "the default Data Lake to associate with this account."
+                    },
+                    {
+                      "flags": "-t --tags <tags>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "Tags to set to the the Data Lake Analytics account. Can be mutliple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Updates an existing Data Lake Analytics Account",
+                  "fullName": "datalake analytics account set",
+                  "usage": "[options] <accountName> <resource-group> <defaultDataLake> <tags>",
+                  "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "The DataLakeAnalytics account name to perform the action on."
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to forcibly look for the account to update in"
+                    },
+                    {
+                      "flags": "-d --defaultDataLakeStore <defaultDataLakeStore>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--defaultDataLakeStore",
+                      "description": "the optional new default Data Lake Storage account to set for this account"
+                    },
+                    {
+                      "flags": "-t --tags <tags>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "Tags to set to the Data Lake Analytics account group. Can be mutliple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "datasource": {
+                  "name": "datasource",
+                  "description": "Commands to manage your Data Lake Analytics account data sources",
+                  "fullName": "datalake analytics account datasource",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "add",
+                      "description": "Adds an existing data source (Data Lake Store or Azure Blob) to the dataLakeAnalytics account",
+                      "fullName": "datalake analytics account datasource add",
+                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-l --dataLakeStore <dataLakeStore>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--dataLakeStore",
+                          "description": "the data lake storage account to add. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                        },
+                        {
+                          "flags": "-d --isDefaultDataLakeStore",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--isDefaultDataLakeStore",
+                          "description": "the optional switch to indicate that the data lake being added should be the default data lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                        },
+                        {
+                          "flags": "-b --azureBlob <azureBlob>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-b",
+                          "long": "--azureBlob",
+                          "description": "the azure blob to add to the account. NOTE: this argument and --accessKey are part of a parameter set, and cannot be specified with --dataLakeStore and --isDefaultDataLakeStore."
+                        },
+                        {
+                          "flags": "-k --accessKey <accessKey>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-k",
+                          "long": "--accessKey",
+                          "description": "the access key associated with the azureBlob. NOTE: this argument and --azureBlob are part of a parameter set, and cannot be specified with --dataLakeStore and --isDefaultDataLakeStore."
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to forcibly look for the account to update in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "removes a data source (Data Lake Store or Azure Blob) from the dataLakeAnalytics account",
+                      "fullName": "datalake analytics account datasource delete",
+                      "usage": "[options] <accountName> <dataLakeStore> <azureBlob> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-l --dataLakeStore <dataLakeStore>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--dataLakeStore",
+                          "description": "the data lake to remove from the account. NOTE: this argument is part of a parameter set, and cannot be specified with --azureBlob."
+                        },
+                        {
+                          "flags": "-b --azureBlob <azureBlob>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-b",
+                          "long": "--azureBlob",
+                          "description": "the azure blob to remove from the account. NOTE: this argument is part of a parameter set, and cannot be specified with --dataLakeStore."
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to forcibly look for the account to update in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "set",
+                      "description": "Sets an existing data source (Data Lake Store or Azure Blob) in the dataLakeAnalytics account. Typically used to set the data source as default (for Data Lake) or update the access key (for Azure Blob)",
+                      "fullName": "datalake analytics account datasource set",
+                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "The DataLakeAnalytics account name to perform the action on."
+                        },
+                        {
+                          "flags": "-l --dataLakeStore <dataLakeStore>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--dataLakeStore",
+                          "description": "the data lake to set. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                        },
+                        {
+                          "flags": "-d --isDefaultDataLakeStore",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--isDefaultDataLakeStore",
+                          "description": "the optional switch to indicate that the data lake being set should be the default data lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                        },
+                        {
+                          "flags": "-b --azureBlob <azureBlob>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-b",
+                          "long": "--azureBlob",
+                          "description": "the azure blob to set in the account. NOTE: this argument and --accessKey are part of a parameter set, and cannot be specified with --dataLakeStore and --isDefaultDataLakeStore."
+                        },
+                        {
+                          "flags": "-k --accessKey <accessKey>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-k",
+                          "long": "--accessKey",
+                          "description": "the access key associated with the azureBlob to update. NOTE: this argument and --azureBlob are part of a parameter set, and cannot be specified with --dataLakeStore and --isDefaultDataLakeStore."
+                        },
+                        {
+                          "flags": "-g --resource-group <resource-group>",
+                          "required": -21,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the optional resource group to forcibly look for the account to update in"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
+            }
+          }
+        },
+        "store": {
+          "name": "store",
+          "description": "Commands to manage your Data Lake Storage objects",
+          "fullName": "datalake store",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "filesystem": {
+              "name": "filesystem",
+              "description": "Commands to manage your Data Lake Storage FileSystem",
+              "fullName": "datalake store filesystem",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists the contents of the specified path (files and folders).",
+                  "fullName": "datalake store filesystem list",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder to list (e.g. /someFolder or /someFolder/someNestedFolder)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Gets the specified Data lake file or folder details",
+                  "fullName": "datalake store filesystem show",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "deletes the specified Data lake file or folder, with the option for recursive delete (if the folder has contents)",
+                  "fullName": "datalake store filesystem delete",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-r --recurse <recurse>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--recurse",
+                      "description": "optionally indicates that this should be a recursive delete, which will delete a folder and all contents underneath it."
+                    },
+                    {
+                      "flags": "-q --quiet <quiet>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "optionally indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "create",
+                  "description": "Creates the specified folder or file, with the option to include content in file creation.",
+                  "fullName": "datalake store filesystem create",
+                  "usage": "[options] <accountName> <path> <value>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the file to add content to (e.g. /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-v --value <value>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--value",
+                      "description": "optional indicates the contents (as a string) to create the file with. NOTE: This parameter cannot be specified with --folder (-d)"
+                    },
+                    {
+                      "flags": "-d --folder <folder>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--folder",
+                      "description": "optionally specify that the item being created is a folder, not a file. If this is not specified, a file will be created. NOTE: This parameter cannot be specified with --encoding (-e) or --value (-v)"
+                    },
+                    {
+                      "flags": "-f --force <force>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--force",
+                      "description": "optionally indicates that the file or folder being created can overwrite the file or folder at path if it already exists (default is false). 'true' must be passed in for the overwrite to work"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "import",
+                  "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake.",
+                  "fullName": "datalake store filesystem import",
+                  "usage": "[options] <accountName> <path> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full local path to the file to import (e.g. /someFolder/someFile.txt or C:somefoldersomeFile.txt)"
+                    },
+                    {
+                      "flags": "-d --destination <destination>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--destination",
+                      "description": "the full path in the Data Lake where the file should be imported to (e.g. /someFolder/someFile.txt"
+                    },
+                    {
+                      "flags": "-f --force",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--force",
+                      "description": "optionally indicates that the file or folder being created can overwrite the file or folder at path if it already exists (default is false). 'true' must be passed in for the overwrite to work"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "concat",
+                  "description": "Concatenates the specified list of files into the specified destination file.",
+                  "fullName": "datalake store filesystem concat",
+                  "usage": "[options] <accountName> <paths> <destination> <force>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --paths <paths>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--paths",
+                      "description": "a comma seperated list of full paths to concatenate (e.g. '/someFolder/someFile.txt,/somefolder/somefile2.txt,/anotherFolder/newFile.txt')"
+                    },
+                    {
+                      "flags": "-d --destination <destination>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--destination",
+                      "description": "specify the target file that all of the files in --paths should be concatenated into (e.g /someFolder/targetFile.txt)"
+                    },
+                    {
+                      "flags": "-f --force <force>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--force",
+                      "description": "optionally indicates that the file or folder being created can overwrite the file or folder at path if it already exists (default is false). 'true' must be passed in for the overwrite to work"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "move",
+                  "description": "Concatenates the specified list of files into the specified destination file.",
+                  "fullName": "datalake store filesystem move",
+                  "usage": "[options] <accountName> <path> <destination> <force>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the path to the file or folder to move (e.g. /someFolder or /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-d --destination <destination>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--destination",
+                      "description": "specify the target location to move the file or folder to"
+                    },
+                    {
+                      "flags": "-f --force <force>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--force",
+                      "description": "optionally indicates that the file or folder being created can overwrite the file or folder at path if it already exists (default is false). 'true' must be passed in for the overwrite to work"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "addcontent",
+                  "description": "Appends the specified content to the end of the Data Lake file path specified.",
+                  "fullName": "datalake store filesystem addcontent",
+                  "usage": "[options] <accountName> <path> <value>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the file to add content to (e.g. /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-v --value <value>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--value",
+                      "description": "the contents to append to the file"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "export",
+                  "description": "Downloads the specified file to the target location.",
+                  "fullName": "datalake store filesystem export",
+                  "usage": "[options] <accountName> <path> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path in the Data Lake where the file should be imported to (e.g. /someFolder/someFile.txt"
+                    },
+                    {
+                      "flags": "-d --destination <destination>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--destination",
+                      "description": "the full local path to the file to import (e.g. /someFolder/someFile.txt or C:somefoldersomeFile.txt)"
+                    },
+                    {
+                      "flags": "-f --force",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--force",
+                      "description": "optionally indicates that the file being created can overwrite the file at path if it already exists (default is false)."
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "read",
+                  "description": "Previews the specified Data Lake file starting at index 0 (or the specified offset) until the length is reached, outputting the results to the console.",
+                  "fullName": "datalake store filesystem read",
+                  "usage": "[options] <accountName> <path> <length> <offset>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the file to download (e.g. /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-l --length <length>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--length",
+                      "description": "the length, in bytes, to read from the file"
+                    },
+                    {
+                      "flags": "-o --offset <offset>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--offset",
+                      "description": "the optional offset to begin reading at (default is 0)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "permissions": {
+              "name": "permissions",
+              "description": "Commands to manage your Data Lake Storage FileSystem Permissions",
+              "fullName": "datalake store permissions",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the specified Data lake folder ACL",
+                  "fullName": "datalake store permissions show",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes the entire ACL associated with a folder",
+                  "fullName": "datalake store permissions delete",
+                  "usage": "[options] <accountName> <path> <default>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder to remove ACLs from (e.g. /someFolder)"
+                    },
+                    {
+                      "flags": "-d --defaultAcl",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--defaultAcl",
+                      "description": "optionally indicates that the default ACL should be removed instead of the regular ACL. Default is false."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "sets the specified Data lake folder ACL (overwriting the previous ACL entries)",
+                  "fullName": "datalake store permissions set",
+                  "usage": "[options] <accountName> <path> <aclSpec>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name to execute the action on"
+                    },
+                    {
+                      "flags": "-p --path <path>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "the full path to the folder to remove ACLs from (e.g. /someFolder)"
+                    },
+                    {
+                      "flags": "-a --aclSpec <aclSpec>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--aclSpec",
+                      "description": "a comma delimited list of fully qualified ACL entries to set in the format [default:]<user>|<group>:<object Id>:<permissions> (e.g 'user:5546499e-795f-4f5f-b411-8179051f8b0a:r-x' or 'default:group:5546499e-795f-4f5f-b411-8179051f8b0a:rwx'). This list must also include default entries (no object ID in the middle)"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for overwrite confirmation)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "entry": {
+                  "name": "entry",
+                  "description": "Commands to manage your Data Lake Storage FileSystem granular permissions entries",
+                  "fullName": "datalake store permissions entry",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "delete",
+                      "description": "deletes the specific ACE entry or entries from the path",
+                      "fullName": "datalake store permissions entry delete",
+                      "usage": "[options] <accountName> <path> <aclEntries>",
+                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "the Data Lake Store account name to execute the action on"
+                        },
+                        {
+                          "flags": "-p --path <path>",
+                          "required": -11,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "the full path to the folder to remove ACEs from (e.g. /someFolder)"
+                        },
+                        {
+                          "flags": "-a --aclEntries <aclEntries>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--aclEntries",
+                          "description": "a comma delimited list of the fully qualified ACE entry or entries to delete in the format [default:]<user>|<group>:<object Id> (e.g 'user:5546499e-795f-4f5f-b411-8179051f8b0a' or 'default:group:5546499e-795f-4f5f-b411-8179051f8b0a')"
+                        },
+                        {
+                          "flags": "-q, --quiet",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-q",
+                          "long": "--quiet",
+                          "description": "quiet mode (do not ask for delete confirmation)"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "set",
+                      "description": "sets the specified Data lake folder ACE entry or entries",
+                      "fullName": "datalake store permissions entry set",
+                      "usage": "[options] <accountName> <path> <aclEntries>",
+                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-n --accountName <accountName>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--accountName",
+                          "description": "the Data Lake Store account name to execute the action on"
+                        },
+                        {
+                          "flags": "-p --path <path>",
+                          "required": -11,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "the full path to the folder to set ACEs on (e.g. /someFolder)"
+                        },
+                        {
+                          "flags": "-a --aclEntries <aclEntries>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--aclEntries",
+                          "description": "a comma delimited list of the fully qualified ACE entries to set in the format [default:]<user>|<group>:<object Id>:<permissions> (e.g 'user:5546499e-795f-4f5f-b411-8179051f8b0a:r-x' or 'default:group:5546499e-795f-4f5f-b411-8179051f8b0a:rwx')"
+                        },
+                        {
+                          "flags": "-q, --quiet",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-q",
+                          "long": "--quiet",
+                          "description": "quiet mode (do not ask for overwrite confirmation)"
+                        },
+                        {
+                          "flags": "-s, --subscription <id>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
+            },
+            "account": {
+              "name": "account",
+              "description": "Commands to manage your Data Lake Storage accounts",
+              "fullName": "datalake store account",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List all Data Lake accounts available for your subscription or subscription and resource group",
+                  "fullName": "datalake store account list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to list the accounts in"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Shows a Data Lake Account based on account name",
+                  "fullName": "datalake store account show",
+                  "usage": "[options] <accountName> <resource-group>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to list the accounts in"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a Data Lake Account based on account name",
+                  "fullName": "datalake store account delete",
+                  "usage": "[options] <accountName> <resource-group>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "the Data Lake Store account name"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to force the command to find the Data Lake Store account to delete in."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "create",
+                  "description": "Creates a Data Lake Account",
+                  "fullName": "datalake store account create",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "The Data Lake Store account name to create"
+                    },
+                    {
+                      "flags": "-l --location <location>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location the Data Lake Store account will be created in. Valid values are: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group to create the account in"
+                    },
+                    {
+                      "flags": "-d --defaultGroup <defaultGroup>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--defaultGroup",
+                      "description": "the optional default permissions group to add to the account when created"
+                    },
+                    {
+                      "flags": "-t --tags <tags>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "Tags to set to the the Data Lake Store account. Can be mutliple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Creates a Data Lake Account",
+                  "fullName": "datalake store account set",
+                  "usage": "[options] <accountName> <resource-group> <defaultGroup> <tags>",
+                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-n --accountName <accountName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--accountName",
+                      "description": "The Data Lake Store account name to update with new tags and/or default permissions group"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the optional resource group to forcibly look for the account to update in"
+                    },
+                    {
+                      "flags": "-d --defaultGroup <defaultGroup>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--defaultGroup",
+                      "description": "the optional default permissions group to set in the existing account"
+                    },
+                    {
+                      "flags": "-t --tags <tags>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "Tags to set to the Data Lake Store account. Can be mutliple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                    },
+                    {
+                      "flags": "--no-tags",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": false,
+                      "long": "--no-tags",
+                      "description": "remove all existing tags"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        }
+      }
+    },
     "feature": {
       "name": "feature",
       "description": "Commands to manage your features",
@@ -12626,7 +15668,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "reserved for future use"
+              "description": "specifies whether the Azure Compute resource provider can access secrets"
+            },
+            {
+              "flags": "--enabled-for-template-deployment <boolean>",
+              "required": -35,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "specifies whether Azure Resource Manager can access secrets"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption <boolean>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "specifies whether Azure Disk Encryption can access secrets"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -12719,7 +15777,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "if informed, will set the enabledForDeployment property to false in the vault"
+              "description": "if provided, will set the enabledForDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-template-deployment",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "if provided, will set the enabledForTemplateDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "if provided, will set the enabledForDiskEncryption property to false in the vault"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19855,6 +22929,100 @@
                       "description": "the subscription identifier"
                     }
                   ]
+                },
+                {
+                  "name": "import",
+                  "description": "Import a DNS zone",
+                  "fullName": "network dns zone import",
+                  "usage": "[options] <resource-group> <name> <file-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-f, --file-name <file-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--file-name",
+                      "description": "the name of the zone file"
+                    },
+                    {
+                      "flags": "--force",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--force",
+                      "description": "force overwrite of existing record sets. Otherwise, records are merged with existing record sets"
+                    },
+                    {
+                      "flags": "--debug",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--debug",
+                      "description": "output debug info"
+                    },
+                    {
+                      "flags": "--parse-only",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--parse-only",
+                      "description": "parse zone file only, without import"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
               ],
               "categories": {}
@@ -23805,9 +26973,9 @@
           "commands": [
             {
               "name": "show",
-              "description": "Show operations for the requested provider operation search string. The command takes as input a operation search string (with wildcard (*) character) which determines the action details to display.",
+              "description": "Show operations for the requested provider operation search string. Operations can be composed to create custom roles in Azure RBAC. The command takes as input a operation search string (with wildcard (*) character(s)) which determines the action details to display.",
               "fullName": "provider operations show",
-              "usage": "[options] <operationSearchString>",
+              "usage": "[options] <operationSearchString>\n\n     --------------------------  Get all actions for all providers  --------------------------\n     azure provider operations show --operationSearchString *\n\n     --------------------------  Get actions for a particular resource provider  --------------------------\n     azure provider operations show --operationSearchString Microsoft.Insights/*\n\n     --------------------------  Get all actions that can be performed on virtual machines  --------------------------\n     azure provider operations show --operationSearchString */virtualMachines/*",
               "filePath": "commands/arm/providers/provider.operations._js",
               "options": [
                 {
@@ -24981,9 +28149,9 @@
         },
         {
           "name": "show",
-          "description": "Search for a role definition",
+          "description": "Search for a role definition with role name or id to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.",
           "fullName": "role show",
-          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role list --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role list --id Reader\n           Get the Reader role definition.\n",
+          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role show --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role show --id 52a6cc13-ff92-47a8-a39b-2a8205c3087e\n           Get the Reader role definition.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -25018,7 +28186,7 @@
               "bool": true,
               "short": "-n",
               "long": "--name",
-              "description": "Name of the role."
+              "description": "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor."
             },
             {
               "flags": "--id <id>",
@@ -25026,7 +28194,7 @@
               "optional": 0,
               "bool": true,
               "long": "--id",
-              "description": "Id of the Role definition to be deleted"
+              "description": "Role definition Id."
             },
             {
               "flags": "--subscription <subscription>",
@@ -25040,9 +28208,9 @@
         },
         {
           "name": "create",
-          "description": "Create a new role definition. The role definition for a new custom role MUST contain the DisplayName, Actions and the AssignableScopes properties. The role definition MAY contain the Description and NotActions property.",
+          "description": "Creates a custom role in Azure RBAC. Provide either a JSON role definition file or a JSON-formatted string containing the role definition as input.\n     The input role definition MUST contain the following properties:\n     1) DisplayName: the name of the custom role\n     2) Description: a short description of the role that summarizes the access that the role grants.\n     3) Actions: the set of operations to which the custom role grants access. Use \"azure provider operations show\" with operationSearchString to get the operation for Azure resource providers that can be secured using Azure RBAC. Following are some valid operation strings\n       - \"*/read\" grants access to read operations of all Azure resource providers.\n       - \"Microsoft.Network/*/read\" grants access to read operations for all resource types in the Microsoft.Network resource provider of Azure.\n       - \"Microsoft.Compute/virtualMachines/*\" grants access to all operations of virtual machines and its child resource types.\n     4) AssignableScopes: the set of scopes (Azure subscriptions or resource groups) in which the custom role will be available for assignment. Using AssignableScopes you can make the custom role available for assignment in only the subscriptions or resource groups that need it, and not clutter the user experience for the rest of the subscriptions or resource groups. Following are some valid assignable scopes\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e\", \"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624\": makes the role available for assignment in two subscriptions.\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e\": makes the role available for assignment in a single subscription.\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network\": makes the role available for assignment only in the Network resource group.\n\n     The input role definition MAY contain the following properties:\n     1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role. If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.\n\n     NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation, the user will be able to perform that operation. NotActions is not a deny rule, it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.\n\n     Following is a sample json role definition that can be provided as input: \n     {\n     \"Name\": \"Contoso On-call\",\n     \"Description\": \"Can monitor compute, network and storage, and restart virtual machines\",\n     \"Actions\": [\n       \"Microsoft.Compute/*/read\",\n       \"Microsoft.Compute/virtualMachines/start/action\",\n       \"Microsoft.Compute/virtualMachines/restart/action\",\n       \"Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action\",\n       \"Microsoft.Network/*/read\",\n       \"Microsoft.Storage/*/read\",\n       \"Microsoft.Authorization/*/read\",\n       \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n       \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\n       \"Microsoft.Insights/alertRules/*\",\n       \"Microsoft.Support/*\"\n     ],\n     \"AssignableScopes\": [\"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"]\n     }",
           "fullName": "role create",
-          "usage": "[options] [inputfile] [roledefinition]",
+          "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role create --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -25086,7 +28254,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition."
             },
             {
               "flags": "--subscription <subscription>",
@@ -25100,9 +28268,9 @@
         },
         {
           "name": "set",
-          "description": "Update an existing role definition. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes",
+          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ]\n     }",
           "fullName": "role set",
-          "usage": "[options] [inputfile] [roledefinition]",
+          "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role set --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -25146,7 +28314,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401/providers/Microsoft.Authorization/roleDefinitions/52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",
@@ -25160,9 +28328,9 @@
         },
         {
           "name": "delete",
-          "description": "Deletes an existing custom role definition in Azure RBAC. The role definition to delete is provided using the Id property of the role definition.Use list or show roleName to determine the role definition to be deleted.",
+          "description": "Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id or Name property of the role. Delete will fail if there are existing role assignments made to the custom role.",
           "fullName": "role delete",
-          "usage": "[options] [id] [name]",
+          "usage": "[id] [name]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\"",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -25205,7 +28373,7 @@
               "bool": true,
               "short": "-n",
               "long": "--name",
-              "description": "the role definition name"
+              "description": "Name of the Role definition to be deleted."
             },
             {
               "flags": "-q --quiet",
@@ -25375,7 +28543,7 @@
               "name": "list",
               "description": "Lists Azure RBAC role assignments at the specified scope. \n         By default it lists all role assignments in the selected Azure subscription. Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource. \n         The Azure RBAC role that is assigned dictates what type of resources the user is allowed to manage in the scope, and what actions the user is allowed to perform on those resources. Use 'azure role list' or 'azure role show' commands to list actions that a given role allows. ",
               "fullName": "role assignment list",
-              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment list\n           List all role assignments in the subscription\n\n           -----    Example 2   -------\n           azure role assignment list --resource-group testRG --signInName john.doe@contoso.com -e\n           Gets all role assignments made to user john.doe@contoso.com  and the groups of which he is member  at the testRG scope or above.\n\n           -----    Example 3   -------\n           azure role assignment list --spn \"http://testapp1.com\"\n           Gets all role assignments of the specified service principal.\n\n           -----    Example 4   -------\n           azure role assignment list --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Gets role assignments at the 'site1' website scope.\n",
+              "usage": "[objectId] [signInName] [spn] [roleName] [roleId] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment list\n           List all role assignments in the subscription\n\n           -----    Example 2   -------\n           azure role assignment list --resource-group testRG --signInName john.doe@contoso.com -e\n           Gets all role assignments made to user john.doe@contoso.com  and the groups of which he is member  at the testRG scope or above.\n\n           -----    Example 3   -------\n           azure role assignment list --spn \"http://testapp1.com\"\n           Gets all role assignments of the specified service principal.\n\n           -----    Example 4   -------\n           azure role assignment list --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Gets role assignments at the 'site1' website scope.\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -25434,7 +28602,16 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--roleName",
-                  "description": "The Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
+                  "description": "Name of the Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
+                },
+                {
+                  "flags": "-d --roleId <roleId>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--roleId",
+                  "description": "Id of the Role that is assigned to the principal"
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -25580,7 +28757,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--roleId",
-                  "description": "The Id of the RBAC role that needs to be assigned to the principal."
+                  "description": "The Id of the RBAC role for which the assignment needs to be deleted."
                 },
                 {
                   "flags": "-c --scope <scope>",
