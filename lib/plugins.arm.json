@@ -15668,7 +15668,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "reserved for future use"
+              "description": "specifies whether the Azure Compute resource provider can access secrets"
+            },
+            {
+              "flags": "--enabled-for-template-deployment <boolean>",
+              "required": -35,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "specifies whether Azure Resource Manager can access secrets"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption <boolean>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "specifies whether Azure Disk Encryption can access secrets"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -15761,7 +15777,23 @@
               "optional": 0,
               "bool": true,
               "long": "--enabled-for-deployment",
-              "description": "if informed, will set the enabledForDeployment property to false in the vault"
+              "description": "if provided, will set the enabledForDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-template-deployment",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-template-deployment",
+              "description": "if provided, will set the enabledForTemplateDeployment property to false in the vault"
+            },
+            {
+              "flags": "--enabled-for-disk-encryption",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--enabled-for-disk-encryption",
+              "description": "if provided, will set the enabledForDiskEncryption property to false in the vault"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -22897,6 +22929,100 @@
                       "description": "the subscription identifier"
                     }
                   ]
+                },
+                {
+                  "name": "import",
+                  "description": "Import a DNS zone",
+                  "fullName": "network dns zone import",
+                  "usage": "[options] <resource-group> <name> <file-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-f, --file-name <file-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--file-name",
+                      "description": "the name of the zone file"
+                    },
+                    {
+                      "flags": "--force",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--force",
+                      "description": "force overwrite of existing record sets. Otherwise, records are merged with existing record sets"
+                    },
+                    {
+                      "flags": "--debug",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--debug",
+                      "description": "output debug info"
+                    },
+                    {
+                      "flags": "--parse-only",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--parse-only",
+                      "description": "parse zone file only, without import"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
               ],
               "categories": {}
@@ -26847,9 +26973,9 @@
           "commands": [
             {
               "name": "show",
-              "description": "Show operations for the requested provider operation search string. The command takes as input a operation search string (with wildcard (*) character) which determines the action details to display.",
+              "description": "Show operations for the requested provider operation search string. Operations can be composed to create custom roles in Azure RBAC. The command takes as input a operation search string (with wildcard (*) character(s)) which determines the action details to display.",
               "fullName": "provider operations show",
-              "usage": "[options] <operationSearchString>",
+              "usage": "[options] <operationSearchString>\n\n     --------------------------  Get all actions for all providers  --------------------------\n     azure provider operations show --operationSearchString *\n\n     --------------------------  Get actions for a particular resource provider  --------------------------\n     azure provider operations show --operationSearchString Microsoft.Insights/*\n\n     --------------------------  Get all actions that can be performed on virtual machines  --------------------------\n     azure provider operations show --operationSearchString */virtualMachines/*",
               "filePath": "commands/arm/providers/provider.operations._js",
               "options": [
                 {
@@ -28023,9 +28149,9 @@
         },
         {
           "name": "show",
-          "description": "Search for a role definition",
+          "description": "Search for a role definition with role name or id to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.",
           "fullName": "role show",
-          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role list --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role list --id Reader\n           Get the Reader role definition.\n",
+          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role show --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role show --id 52a6cc13-ff92-47a8-a39b-2a8205c3087e\n           Get the Reader role definition.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -28060,7 +28186,7 @@
               "bool": true,
               "short": "-n",
               "long": "--name",
-              "description": "Name of the role."
+              "description": "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor."
             },
             {
               "flags": "--id <id>",
@@ -28068,7 +28194,7 @@
               "optional": 0,
               "bool": true,
               "long": "--id",
-              "description": "Id of the Role definition to be deleted"
+              "description": "Role definition Id."
             },
             {
               "flags": "--subscription <subscription>",
@@ -28082,9 +28208,9 @@
         },
         {
           "name": "create",
-          "description": "Create a new role definition. The role definition for a new custom role MUST contain the DisplayName, Actions and the AssignableScopes properties. The role definition MAY contain the Description and NotActions property.",
+          "description": "Creates a custom role in Azure RBAC. Provide either a JSON role definition file or a JSON-formatted string containing the role definition as input.\n     The input role definition MUST contain the following properties:\n     1) DisplayName: the name of the custom role\n     2) Description: a short description of the role that summarizes the access that the role grants.\n     3) Actions: the set of operations to which the custom role grants access. Use \"azure provider operations show\" with operationSearchString to get the operation for Azure resource providers that can be secured using Azure RBAC. Following are some valid operation strings\n       - \"*/read\" grants access to read operations of all Azure resource providers.\n       - \"Microsoft.Network/*/read\" grants access to read operations for all resource types in the Microsoft.Network resource provider of Azure.\n       - \"Microsoft.Compute/virtualMachines/*\" grants access to all operations of virtual machines and its child resource types.\n     4) AssignableScopes: the set of scopes (Azure subscriptions or resource groups) in which the custom role will be available for assignment. Using AssignableScopes you can make the custom role available for assignment in only the subscriptions or resource groups that need it, and not clutter the user experience for the rest of the subscriptions or resource groups. Following are some valid assignable scopes\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e\", \"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624\": makes the role available for assignment in two subscriptions.\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e\": makes the role available for assignment in a single subscription.\n       - \"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network\": makes the role available for assignment only in the Network resource group.\n\n     The input role definition MAY contain the following properties:\n     1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role. If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.\n\n     NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation, the user will be able to perform that operation. NotActions is not a deny rule, it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.\n\n     Following is a sample json role definition that can be provided as input: \n     {\n     \"Name\": \"Contoso On-call\",\n     \"Description\": \"Can monitor compute, network and storage, and restart virtual machines\",\n     \"Actions\": [\n       \"Microsoft.Compute/*/read\",\n       \"Microsoft.Compute/virtualMachines/start/action\",\n       \"Microsoft.Compute/virtualMachines/restart/action\",\n       \"Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action\",\n       \"Microsoft.Network/*/read\",\n       \"Microsoft.Storage/*/read\",\n       \"Microsoft.Authorization/*/read\",\n       \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n       \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\n       \"Microsoft.Insights/alertRules/*\",\n       \"Microsoft.Support/*\"\n     ],\n     \"AssignableScopes\": [\"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"]\n     }",
           "fullName": "role create",
-          "usage": "[options] [inputfile] [roledefinition]",
+          "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role create --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -28128,7 +28254,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Name\": \"Test Role\",\"Description\": \"Test role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition."
             },
             {
               "flags": "--subscription <subscription>",
@@ -28142,9 +28268,9 @@
         },
         {
           "name": "set",
-          "description": "Update an existing role definition. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes",
+          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ]\n     }",
           "fullName": "role set",
-          "usage": "[options] [inputfile] [roledefinition]",
+          "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role set --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -28188,7 +28314,7 @@
               "bool": true,
               "short": "-r",
               "long": "--roledefinition",
-              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401/providers/Microsoft.Authorization/roleDefinitions/52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
+              "description": "A JSON-formatted string containing the role definition. For e.g. {\"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\"Description\": \"Updated role\",\"Actions\": [\"Microsoft.Support/*/read\"],\"Notactions\": [],\"AssignableScopes\": [\"/subscriptions/5004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]}"
             },
             {
               "flags": "--subscription <subscription>",
@@ -28202,9 +28328,9 @@
         },
         {
           "name": "delete",
-          "description": "Deletes an existing custom role definition in Azure RBAC. The role definition to delete is provided using the Id property of the role definition.Use list or show roleName to determine the role definition to be deleted.",
+          "description": "Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id or Name property of the role. Delete will fail if there are existing role assignments made to the custom role.",
           "fullName": "role delete",
-          "usage": "[options] [id] [name]",
+          "usage": "[id] [name]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\"",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -28247,7 +28373,7 @@
               "bool": true,
               "short": "-n",
               "long": "--name",
-              "description": "the role definition name"
+              "description": "Name of the Role definition to be deleted."
             },
             {
               "flags": "-q --quiet",
@@ -28417,7 +28543,7 @@
               "name": "list",
               "description": "Lists Azure RBAC role assignments at the specified scope. \n         By default it lists all role assignments in the selected Azure subscription. Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource. \n         The Azure RBAC role that is assigned dictates what type of resources the user is allowed to manage in the scope, and what actions the user is allowed to perform on those resources. Use 'azure role list' or 'azure role show' commands to list actions that a given role allows. ",
               "fullName": "role assignment list",
-              "usage": "[objectId] [signInName] [spn] [roleName] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment list\n           List all role assignments in the subscription\n\n           -----    Example 2   -------\n           azure role assignment list --resource-group testRG --signInName john.doe@contoso.com -e\n           Gets all role assignments made to user john.doe@contoso.com  and the groups of which he is member  at the testRG scope or above.\n\n           -----    Example 3   -------\n           azure role assignment list --spn \"http://testapp1.com\"\n           Gets all role assignments of the specified service principal.\n\n           -----    Example 4   -------\n           azure role assignment list --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Gets role assignments at the 'site1' website scope.\n",
+              "usage": "[objectId] [signInName] [spn] [roleName] [roleId] [scope] [resource-group] [resource-type] [resource-name]\n\n           -----    Example 1   -------\n           azure role assignment list\n           List all role assignments in the subscription\n\n           -----    Example 2   -------\n           azure role assignment list --resource-group testRG --signInName john.doe@contoso.com -e\n           Gets all role assignments made to user john.doe@contoso.com  and the groups of which he is member  at the testRG scope or above.\n\n           -----    Example 3   -------\n           azure role assignment list --spn \"http://testapp1.com\"\n           Gets all role assignments of the specified service principal.\n\n           -----    Example 4   -------\n           azure role assignment list --scope \"/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1\"\n           Gets role assignments at the 'site1' website scope.\n",
               "filePath": "commands/arm/role/role.assignment._js",
               "options": [
                 {
@@ -28476,7 +28602,16 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--roleName",
-                  "description": "The Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
+                  "description": "Name of the Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc."
+                },
+                {
+                  "flags": "-d --roleId <roleId>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--roleId",
+                  "description": "Id of the Role that is assigned to the principal"
                 },
                 {
                   "flags": "-c --scope <scope>",
@@ -28622,7 +28757,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--roleId",
-                  "description": "The Id of the RBAC role that needs to be assigned to the principal."
+                  "description": "The Id of the RBAC role for which the assignment needs to be deleted."
                 },
                 {
                   "flags": "-c --scope <scope>",
