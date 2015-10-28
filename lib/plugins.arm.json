@@ -27844,21 +27844,21 @@
               "description": "Thumbprint of AAD app certificate with permissions to write secrets to KeyVault"
             },
             {
-              "flags": "-k, --disk-encryption-keyvault-url <disk-encryption-keyvault-url>",
-              "required": -36,
+              "flags": "-k, --disk-encryption-key-vault-url <disk-encryption-key-vault-url>",
+              "required": -37,
               "optional": 0,
               "bool": true,
               "short": "-k",
-              "long": "--disk-encryption-keyvault-url",
+              "long": "--disk-encryption-key-vault-url",
               "description": "URL of the KeyVault where generated encryption key will be placed to"
             },
             {
-              "flags": "-r, --disk-encryption-keyvault-id <disk-encryption-keyvault-id>",
-              "required": -35,
+              "flags": "-r, --disk-encryption-key-vault-id <disk-encryption-key-vault-id>",
+              "required": -36,
               "optional": 0,
               "bool": true,
               "short": "-r",
-              "long": "--disk-encryption-keyvault-id",
+              "long": "--disk-encryption-key-vault-id",
               "description": "ResourceID of the KeyVault where generated encryption key will be placed to"
             },
             {
@@ -27871,12 +27871,12 @@
               "description": "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key"
             },
             {
-              "flags": "-i, --key-encryption-keyvault-id <key-encryption-keyvault-id>",
-              "required": -34,
+              "flags": "-i, --key-encryption-key-vault-id <key-encryption-key-vault-id>",
+              "required": -35,
               "optional": 0,
               "bool": true,
               "short": "-i",
-              "long": "--key-encryption-keyvault-id",
+              "long": "--key-encryption-key-vault-id",
               "description": "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key"
             },
             {
@@ -27889,20 +27889,20 @@
               "description": "KeyEncryption Algorithm used to encrypt the volume encryption key"
             },
             {
-              "flags": "-v, --volume-type <volume-type>",
+              "flags": "-t, --volume-type <volume-type>",
               "required": -19,
               "optional": 0,
               "bool": true,
-              "short": "-v",
+              "short": "-t",
               "long": "--volume-type",
               "description": "Type of the volume OS or Data or All to perform encryption operation"
             },
             {
-              "flags": "-q, --sequence-version <sequence-version>",
+              "flags": "-x, --sequence-version <sequence-version>",
               "required": -24,
               "optional": 0,
               "bool": true,
-              "short": "-q",
+              "short": "-x",
               "long": "--sequence-version",
               "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
             },
@@ -27914,6 +27914,67 @@
               "short": "-e",
               "long": "--extension-version",
               "description": "Version of Diagnostics extension. Default values are [1.3] for Windows"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show-disk-encryption-status",
+          "description": "Show azure disk encryption status of a VM in a resource group.",
+          "fullName": "vm show-disk-encryption-status",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
             },
             {
               "flags": "-s, --subscription <subscription>",
