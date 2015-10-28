@@ -1,3 +1,12 @@
+## 2015.10.02 Version 0.9.11
+* Authorization
+  * Add paging support for role assignment list calls
+  * Modify RoleDefinitionId Display and Input to be a Guid in role and roleassignment commands.
+  * Added RoleId as a parameter in create and delete role assignment commands.
+  * Documentation/help text updates and miscellaneous bug fixes 
+* Resource
+  * Renamed provider operations show command parameter to operationSearchString
+  
 ## 2015.10.02 Version 0.9.10
 * Authorization
   * Fixed display of role assignments display to add and remove certain fields.
