@@ -19949,6 +19949,109 @@
                       "description": "the subscription identifier"
                     }
                   ]
+                },
+                {
+                  "name": "export",
+                  "description": "Export a DNS zone",
+                  "fullName": "network dns zone export",
+                  "usage": "[options] <resource-group> <name> <file-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-f, --file-name <file-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--file-name",
+                      "description": "the name of the zone file"
+                    },
+                    {
+                      "flags": "--force",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--force",
+                      "description": "force overwrite of existing record sets. Otherwise, records are merged with existing record sets"
+                    },
+                    {
+                      "flags": "--debug",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--debug",
+                      "description": "output debug info"
+                    },
+                    {
+                      "flags": "--parse-only",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--parse-only",
+                      "description": "parse zone file only, without import"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for overwrite confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
               ],
               "categories": {}
