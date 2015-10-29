@@ -49,7 +49,7 @@
     },
     {
       "name": "login",
-      "description": "Log in to an Azure subscription using Active Directory.",
+      "description": "Log in to an Azure subscription using Active Directory or a Microsoft account identity.",
       "fullName": "login",
       "usage": "[options]",
       "filePath": "commands/login._js",
@@ -86,7 +86,7 @@
           "bool": true,
           "short": "-u",
           "long": "--username",
-          "description": "user name or service principal ID"
+          "description": "user name or service principal ID. If multifactor authentication is required, you will be prompted to use the login command without parameters for interactive support."
         },
         {
           "flags": "-e --environment [environment]",
@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, must support active directory"
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
         },
         {
           "flags": "-p --password <password>",
@@ -104,7 +104,7 @@
           "bool": true,
           "short": "-p",
           "long": "--password",
-          "description": "user password or service principal key, will prompt if not given"
+          "description": "user password or service principal key, will prompt if not given."
         },
         {
           "flags": "--service-principal",
@@ -112,7 +112,7 @@
           "optional": 0,
           "bool": true,
           "long": "--service-principal",
-          "description": "If given, log in as a service principal rather than a user"
+          "description": "If given, log in as a service principal rather than a user."
         },
         {
           "flags": "--tenant <tenant>",
@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into"
+          "description": "Tenant domain or ID to log into."
         },
         {
           "flags": "-q --quiet",
@@ -129,7 +129,7 @@
           "bool": true,
           "short": "-q",
           "long": "--quiet",
-          "description": "do not prompt for confirmation of PII storage"
+          "description": "do not prompt for confirmation of PII storage."
         }
       ]
     },
