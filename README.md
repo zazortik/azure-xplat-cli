@@ -7,7 +7,7 @@ This project provides a cross-platform command line interface for developers and
 ## Known issues
 [Updated on Oct 29, 2015]
 * If you installed 'azure-cli' using the option of 'npm install', before use it please remove the ".streamline" folder under your home directory. We have received several reports that the folder might contain stale files causing odd errors, such as [this issue](https://github.com/Azure/azure-xplat-cli/issues/2196). Based on the OS, the folder locations are:
-  * Windows: %HOMEPATH%\.streamline
+  * Windows: %HOMEPATH%\\.streamline
   * OSX or Unix: $HOME/.streamline
 
 ## Features
