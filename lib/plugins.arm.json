@@ -10466,7 +10466,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Updates an existing Data Lake Analytics Account",
+                  "description": "Updates the properties of an existing Data Lake Analytics Account",
                   "fullName": "datalake analytics account set",
                   "usage": "[options] <accountName> <resource-group> <defaultDataLake> <tags>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10521,7 +10521,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--defaultDataLakeStore",
-                      "description": "the optional new default Data Lake Storage account to set for this account"
+                      "description": "the optional new default Data Lake Store account to set for this account"
                     },
                     {
                       "flags": "-t --tags <tags>",
@@ -10608,7 +10608,7 @@
                           "bool": true,
                           "short": "-l",
                           "long": "--dataLakeStore",
-                          "description": "the data lake storage account to add. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                          "description": "the Data Lake Store account to add. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
                         },
                         {
                           "flags": "-d --isDefaultDataLakeStore",
@@ -10617,7 +10617,7 @@
                           "bool": true,
                           "short": "-d",
                           "long": "--isDefaultDataLakeStore",
-                          "description": "the optional switch to indicate that the data lake being added should be the default data lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                          "description": "the optional switch to indicate that the Data Lake being added should be the default Data Lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
                         },
                         {
                           "flags": "-b --azureBlob <azureBlob>",
@@ -10705,7 +10705,7 @@
                           "bool": true,
                           "short": "-l",
                           "long": "--dataLakeStore",
-                          "description": "the data lake to remove from the account. NOTE: this argument is part of a parameter set, and cannot be specified with --azureBlob."
+                          "description": "the Data Lake to remove from the account. NOTE: this argument is part of a parameter set, and cannot be specified with --azureBlob."
                         },
                         {
                           "flags": "-b --azureBlob <azureBlob>",
@@ -10784,7 +10784,7 @@
                           "bool": true,
                           "short": "-l",
                           "long": "--dataLakeStore",
-                          "description": "the data lake to set. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                          "description": "the Data Lake Store account to set. NOTE: this argument and --isDefaultDataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
                         },
                         {
                           "flags": "-d --isDefaultDataLakeStore",
@@ -10793,7 +10793,7 @@
                           "bool": true,
                           "short": "-d",
                           "long": "--isDefaultDataLakeStore",
-                          "description": "the optional switch to indicate that the data lake being set should be the default data lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
+                          "description": "the optional switch to indicate that the Data Lake being set should be the default Data Lake. NOTE: this argument and --dataLakeStore are part of a parameter set, and cannot be specified with --azureBlob and --accessKey."
                         },
                         {
                           "flags": "-b --azureBlob <azureBlob>",
@@ -10918,7 +10918,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Gets the specified Data lake file or folder details",
+                  "description": "Gets the specified Data Lake Store file or folder details",
                   "fullName": "datalake store filesystem show",
                   "usage": "[options] <accountName> <path>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -10979,7 +10979,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "deletes the specified Data lake file or folder, with the option for recursive delete (if the folder has contents)",
+                  "description": "deletes the specified Data Lake Store file or folder, with the option for recursive delete (if the folder has contents)",
                   "fullName": "datalake store filesystem delete",
                   "usage": "[options] <accountName> <path>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11201,7 +11201,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--destination",
-                      "description": "the full path in the Data Lake where the file should be imported to (e.g. /someFolder/someFile.txt"
+                      "description": "the full path in the Data Lake Store where the file should be imported to (e.g. /someFolder/someFile.txt"
                     },
                     {
                       "flags": "-f --force",
@@ -11304,7 +11304,7 @@
                 },
                 {
                   "name": "move",
-                  "description": "Concatenates the specified list of files into the specified destination file.",
+                  "description": "Moves (renames) the specified file or folder into the specified destination file or folder.",
                   "fullName": "datalake store filesystem move",
                   "usage": "[options] <accountName> <path> <destination> <force>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11383,7 +11383,7 @@
                 },
                 {
                   "name": "addcontent",
-                  "description": "Appends the specified content to the end of the Data Lake file path specified.",
+                  "description": "Appends the specified content to the end of the Data Lake Store file path specified.",
                   "fullName": "datalake store filesystem addcontent",
                   "usage": "[options] <accountName> <path> <value>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11499,7 +11499,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--path",
-                      "description": "the full path in the Data Lake where the file should be imported to (e.g. /someFolder/someFile.txt"
+                      "description": "the full path in the Data Lake Store where the file should be imported to (e.g. /someFolder/someFile.txt"
                     },
                     {
                       "flags": "-d --destination <destination>",
@@ -11532,7 +11532,7 @@
                 },
                 {
                   "name": "read",
-                  "description": "Previews the specified Data Lake file starting at index 0 (or the specified offset) until the length is reached, outputting the results to the console.",
+                  "description": "Previews the specified Data Lake Store file starting at index 0 (or the specified offset) until the length is reached, displaying the results to the console.",
                   "fullName": "datalake store filesystem read",
                   "usage": "[options] <accountName> <path> <length> <offset>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11621,7 +11621,7 @@
               "commands": [
                 {
                   "name": "show",
-                  "description": "Gets the specified Data lake folder ACL",
+                  "description": "Gets the specified Data Lake Store folder ACL",
                   "fullName": "datalake store permissions show",
                   "usage": "[options] <accountName> <path>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11761,7 +11761,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "sets the specified Data lake folder ACL (overwriting the previous ACL entries)",
+                  "description": "sets the specified Data Lake Store folder ACL (overwriting the previous ACL entries)",
                   "fullName": "datalake store permissions set",
                   "usage": "[options] <accountName> <path> <aclSpec>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11928,7 +11928,7 @@
                     },
                     {
                       "name": "set",
-                      "description": "sets the specified Data lake folder ACE entry or entries",
+                      "description": "sets the specified Data Lake Store folder ACE entry or entries",
                       "fullName": "datalake store permissions entry set",
                       "usage": "[options] <accountName> <path> <aclEntries>",
                       "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12019,7 +12019,7 @@
               "commands": [
                 {
                   "name": "list",
-                  "description": "List all Data Lake accounts available for your subscription or subscription and resource group",
+                  "description": "List all Data Lake Store accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake store account list",
                   "usage": "[options] <resource-group>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12071,7 +12071,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Shows a Data Lake Account based on account name",
+                  "description": "Shows a Data Lake Store Account based on account name",
                   "fullName": "datalake store account show",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12132,7 +12132,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Deletes a Data Lake Account based on account name",
+                  "description": "Deletes a Data Lake Store Account based on account name",
                   "fullName": "datalake store account delete",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12202,7 +12202,7 @@
                 },
                 {
                   "name": "create",
-                  "description": "Creates a Data Lake Account",
+                  "description": "Creates a Data Lake Store Account",
                   "fullName": "datalake store account create",
                   "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12290,7 +12290,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Creates a Data Lake Account",
+                  "description": "Updates the properties of an existing Data Lake Store Account",
                   "fullName": "datalake store account set",
                   "usage": "[options] <accountName> <resource-group> <defaultGroup> <tags>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
