@@ -52,7 +52,7 @@ describe('arm', function () {
       });
       
       after(function (done) {
-        if (!suite.isPlayback()) {
+        if (suite.isPlayback()) {
           setTimeout = originalSetTimeout;
         }
         suite.teardownSuite(done);
