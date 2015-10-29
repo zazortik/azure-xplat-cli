@@ -13400,7 +13400,78 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "operation": {
+              "name": "operation",
+              "description": "Commands to list deployment operations in a resource group",
+              "fullName": "group deployment operation",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists operations in a deployment",
+                  "fullName": "group deployment operation list",
+                  "usage": "[options] [resource-group] [name]",
+                  "filePath": "commands/arm/group/group.deployment.operation._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the deployment"
+                    },
+                    {
+                      "flags": "--subscription <subscription>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "template": {
           "name": "template",
