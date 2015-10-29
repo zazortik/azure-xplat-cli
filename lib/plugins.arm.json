@@ -31084,13 +31084,22 @@
               "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
             },
             {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
               "flags": "-e, --extension-version <extension-version>",
               "required": -25,
               "optional": 0,
               "bool": true,
               "short": "-e",
               "long": "--extension-version",
-              "description": "Version of Diagnostics extension. Default values are [1.3] for Windows"
+              "description": "Version of Diagnostics extension. Default values are [1.0] for Windows"
             },
             {
               "flags": "-s, --subscription <subscription>",
