@@ -34,23 +34,20 @@ var profile_status = 'Enabled',
   monitor_port = '80';
 
 var endptType = 'externalEndpoint',
-  endptTarget = reldns + '.azure.com',
+  endptTarget,
   endpointStatus = 'Enabled',
   endptWeight = '100',
   endptPriority = '322';
 var endptTypeN = 'externalEndpoint',
-  endptTargetN = reldns + '.foo.com',
+  endptTargetN,
   endpointStatusN = 'Disabled',
   endptWeightN = '120',
   endptPriorityN = '300';
-
-
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
-
 
 describe('arm', function() {
   describe('network', function() {
@@ -64,6 +61,9 @@ describe('arm', function() {
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         trafficMPPrefix = suite.isMocked ? trafficMPPrefix : suite.generateId(trafficMPPrefix, null);
         trafficMPEndPtPrefix = suite.isMocked ? trafficMPEndPtPrefix : suite.generateId(trafficMPEndPtPrefix, null);
+        reldns = suite.generateId(reldns, null);
+        endptTarget = reldns + '.azure.com';
+        endptTargetN = reldns + '.foo.com';
         done();
       });
     });
@@ -84,7 +84,7 @@ describe('arm', function() {
       it('create should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function() {
           networkUtil.createTrafficManagerProfile(groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path, suite, function() {
-            var cmd = util.format('network traffic-manager profile endpoint create %s %s %s eastus -y %s -e %s -u %s -w %s -p %s  --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, endptType, endptTarget, endpointStatus, endptWeight, endptPriority).split(' ');
+            var cmd = util.format('network traffic-manager profile endpoint create %s %s %s %s -y %s -e %s -u %s -w %s -p %s  --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, location, endptType, endptTarget, endpointStatus, endptWeight, endptPriority).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();
