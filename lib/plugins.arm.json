@@ -19952,7 +19952,7 @@
                 },
                 {
                   "name": "export",
-                  "description": "Export a DNS zone",
+                  "description": "Export a DNS zone as a zone file",
                   "fullName": "network dns zone export",
                   "usage": "[options] <resource-group> <name> <file-name>",
                   "filePath": "commands/arm/network/network._js",
