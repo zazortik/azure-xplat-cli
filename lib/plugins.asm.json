@@ -49,7 +49,7 @@
     },
     {
       "name": "login",
-      "description": "Log in to an Azure subscription using Active Directory.",
+      "description": "Log in to an Azure subscription using Active Directory or a Microsoft account identity.",
       "fullName": "login",
       "usage": "[options]",
       "filePath": "commands/login._js",
@@ -86,7 +86,7 @@
           "bool": true,
           "short": "-u",
           "long": "--username",
-          "description": "user name or service principal ID"
+          "description": "user name or service principal ID. If multifactor authentication is required, you will be prompted to use the login command without parameters for interactive support."
         },
         {
           "flags": "-e --environment [environment]",
@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, must support active directory"
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
         },
         {
           "flags": "-p --password <password>",
@@ -104,7 +104,7 @@
           "bool": true,
           "short": "-p",
           "long": "--password",
-          "description": "user password or service principal key, will prompt if not given"
+          "description": "user password or service principal key, will prompt if not given."
         },
         {
           "flags": "--service-principal",
@@ -112,7 +112,7 @@
           "optional": 0,
           "bool": true,
           "long": "--service-principal",
-          "description": "If given, log in as a service principal rather than a user"
+          "description": "If given, log in as a service principal rather than a user."
         },
         {
           "flags": "--tenant <tenant>",
@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into"
+          "description": "Tenant domain or ID to log into."
         },
         {
           "flags": "-q --quiet",
@@ -129,7 +129,7 @@
           "bool": true,
           "short": "-q",
           "long": "--quiet",
-          "description": "do not prompt for confirmation of PII storage"
+          "description": "do not prompt for confirmation of PII storage."
         }
       ]
     },
@@ -740,6 +740,22 @@
                   "bool": true,
                   "long": "--key-vault-dns-suffix",
                   "description": "the keyvault service dns suffix"
+                },
+                {
+                  "flags": "--azure-data-lake-store-file-system-endpoint-suffix <azureDataLakeStoreFileSystemEndpointSuffix>",
+                  "required": -53,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--azure-data-lake-store-file-system-endpoint-suffix",
+                  "description": "the data lake store filesystem service dns suffix"
+                },
+                {
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 }
               ]
             },
@@ -792,12 +808,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
-                  "required": -24,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-vault-dns-suffix",
-                  "description": "the keyvault service dns suffix"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -832,20 +848,20 @@
                   "description": "the dns suffix for sql servers"
                 },
                 {
+                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-endpoint-url",
+                  "description": "the Active Directory login endpoint"
+                },
+                {
                   "flags": "--publishing-profile-url <publishingProfileUrl>",
                   "required": -26,
                   "optional": 0,
                   "bool": true,
                   "long": "--publishing-profile-url",
                   "description": "the publish settings file URL"
-                },
-                {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -880,12 +896,28 @@
                   "description": "the endpoint suffix for storage accounts"
                 },
                 {
-                  "flags": "--active-directory-endpoint-url <activeDirectoryEndpointUrl>",
-                  "required": -33,
+                  "flags": "--key-vault-dns-suffix <keyVaultDnsSuffix>",
+                  "required": -24,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-endpoint-url",
-                  "description": "the Active Directory login endpoint"
+                  "long": "--key-vault-dns-suffix",
+                  "description": "the keyvault service dns suffix"
+                },
+                {
+                  "flags": "--azure-data-lake-store-file-system-endpoint-suffix <azureDataLakeStoreFileSystemEndpointSuffix>",
+                  "required": -53,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--azure-data-lake-store-file-system-endpoint-suffix",
+                  "description": "the data lake store filesystem service dns suffix"
+                },
+                {
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 }
               ]
             },
@@ -1522,7 +1554,7 @@
                   "description": "the storage account description"
                 },
                 {
-                  "flags": "-a, --affinity-group <name>",
+                  "flags": "-a, --affinity-group <affinityGroup>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1531,7 +1563,7 @@
                   "description": "the affinity group"
                 },
                 {
-                  "flags": "-l, --location <name>",
+                  "flags": "-l, --location <location>",
                   "required": -16,
                   "optional": 0,
                   "bool": true,
@@ -1676,6 +1708,40 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                }
+              ]
+            },
+            {
+              "name": "check",
+              "description": "Check whether the account name is valid and is not in use.",
+              "fullName": "storage account check",
+              "usage": "[options] <name>",
+              "filePath": "commands/storage/storage.account._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 }
               ]
             }
@@ -21912,6 +21978,14 @@
               "description": "Create a deployment script for basic website"
             },
             {
+              "flags": "--go",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--go",
+              "description": "Create a deployment script for Go website"
+            },
+            {
               "flags": "--node",
               "required": 0,
               "optional": 0,
@@ -21970,7 +22044,7 @@
               "description": "The path to the site being deployed (default: same as repositoryRoot)"
             },
             {
-              "flags": "-t, --scriptType [batch|bash]",
+              "flags": "-t, --scriptType [batch|bash|posh]",
               "required": 0,
               "optional": -18,
               "bool": true,
@@ -22011,6 +22085,38 @@
               "bool": false,
               "long": "--no-solution",
               "description": "Do not require a solution file path (only for --aspWAP otherwise ignored)."
+            },
+            {
+              "flags": "--aspNet5Version <version>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Version",
+              "description": "The Dnx version for ASP.NET 5"
+            },
+            {
+              "flags": "--aspNet5Runtime <runtime>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Runtime",
+              "description": "The .NET runtime (clr vs coreclr) for ASP.NET 5"
+            },
+            {
+              "flags": "--aspNet5Architecture <architecture>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "long": "--aspNet5Architecture",
+              "description": "The architecture (x64 vs x86) for ASP.NET 5"
+            },
+            {
+              "flags": "--dnxConsoleApp <projectDirectory>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--dnxConsoleApp",
+              "description": "Creates a deployment script for a DNX base console app as a webjob"
             }
           ]
         },

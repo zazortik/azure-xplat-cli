@@ -34,6 +34,7 @@ commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
+commands/arm/vm/arm.vm-disk-encryption-tests.js
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js
@@ -66,3 +67,4 @@ commands/arm/rediscache/arm.rediscache-tests.js
 #and it exposes a test framework bug which failed vm and apiapp tests randomly
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
+commands/arm/group/arm.group.deployment.operation-tests.js 
