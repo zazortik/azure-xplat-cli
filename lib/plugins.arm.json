@@ -26061,7 +26061,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--enable-bgp",
-                      "description": "enables BGP flag\n   Valid values are [True, False]\n   Default is True"
+                      "description": "enables BGP flag\n   Valid values are [True, False]\n   Default is False"
                     },
                     {
                       "flags": "-t, --tags <tags>",
