@@ -49,7 +49,7 @@
     },
     {
       "name": "login",
-      "description": "Log in to an Azure subscription using Active Directory.",
+      "description": "Log in to an Azure subscription using Active Directory or a Microsoft account identity.",
       "fullName": "login",
       "usage": "[options]",
       "filePath": "commands/login._js",
@@ -86,7 +86,7 @@
           "bool": true,
           "short": "-u",
           "long": "--username",
-          "description": "user name or service principal ID"
+          "description": "user name or service principal ID. If multifactor authentication is required, you will be prompted to use the login command without parameters for interactive support."
         },
         {
           "flags": "-e --environment [environment]",
@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, must support active directory"
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
         },
         {
           "flags": "-p --password <password>",
@@ -104,7 +104,7 @@
           "bool": true,
           "short": "-p",
           "long": "--password",
-          "description": "user password or service principal key, will prompt if not given"
+          "description": "user password or service principal key, will prompt if not given."
         },
         {
           "flags": "--service-principal",
@@ -112,7 +112,7 @@
           "optional": 0,
           "bool": true,
           "long": "--service-principal",
-          "description": "If given, log in as a service principal rather than a user"
+          "description": "If given, log in as a service principal rather than a user."
         },
         {
           "flags": "--tenant <tenant>",
@@ -120,7 +120,7 @@
           "optional": 0,
           "bool": true,
           "long": "--tenant",
-          "description": "Tenant domain or ID to log into"
+          "description": "Tenant domain or ID to log into."
         },
         {
           "flags": "-q --quiet",
@@ -129,7 +129,7 @@
           "bool": true,
           "short": "-q",
           "long": "--quiet",
-          "description": "do not prompt for confirmation of PII storage"
+          "description": "do not prompt for confirmation of PII storage."
         }
       ]
     },
@@ -9399,7 +9399,7 @@
                   "name": "create",
                   "description": "Submits a job to the specified Data Lake Analytics account.",
                   "fullName": "datalake analytics job create",
-                  "usage": "[options] <accountName> <jobName> <script> <runtime> <compileMode> <compileOnly> <degreeOfParallelism> <priority> <resource-group>",
+                  "usage": "[options] <accountName> <jobName> <script>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9452,7 +9452,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--script",
-                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a script file"
+                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a UTF-8 encoded script file"
                     },
                     {
                       "flags": "-r --runtime <runtime>",
@@ -9850,7 +9850,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to perform the action on."
+                      "description": "The Data Lake Analytics account name to perform the action on."
                     },
                     {
                       "flags": "-t --itemType <itemType>",
@@ -9938,7 +9938,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10035,7 +10035,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10132,7 +10132,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10195,7 +10195,7 @@
               "commands": [
                 {
                   "name": "list",
-                  "description": "List all DataLakeAnalytics accounts available for your subscription or subscription and resource group",
+                  "description": "List all Data Lake Analytics accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake analytics account list",
                   "usage": "[options] <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10247,7 +10247,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Shows a DataLakeAnalytics Account based on account name",
+                  "description": "Shows a Data Lake Analytics account based on account name",
                   "fullName": "datalake analytics account show",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10308,7 +10308,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Deletes a DataLakeAnalytics Account based on account name",
+                  "description": "Deletes a Data Lake Analytics Account based on account name",
                   "fullName": "datalake analytics account delete",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10380,7 +10380,7 @@
                   "name": "create",
                   "description": "Creates a Data Lake Analytics Account",
                   "fullName": "datalake analytics account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10415,7 +10415,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to create"
+                      "description": "The Data Lake Analytics account name to create"
                     },
                     {
                       "flags": "-l --location <location>",
@@ -10436,13 +10436,13 @@
                       "description": "the resource group to create the account in"
                     },
                     {
-                      "flags": "-d --defaultDataLake <defaultDataLake>",
-                      "required": -22,
+                      "flags": "-d --defaultDataLakeStore <defaultDataLakeStore>",
+                      "required": -27,
                       "optional": 0,
                       "bool": true,
                       "short": "-d",
-                      "long": "--defaultDataLake",
-                      "description": "the default Data Lake to associate with this account."
+                      "long": "--defaultDataLakeStore",
+                      "description": "the default Data Lake Store to associate with this account."
                     },
                     {
                       "flags": "-t --tags <tags>",
@@ -10468,7 +10468,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Analytics Account",
                   "fullName": "datalake analytics account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultDataLake> <tags>",
+                  "usage": "[options] <accountName> <resource-group> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10503,7 +10503,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to perform the action on."
+                      "description": "The Data Lake Analytics Account name to perform the action on."
                     },
                     {
                       "flags": "-g --resource-group <resource-group>",
@@ -10562,9 +10562,9 @@
                   "commands": [
                     {
                       "name": "add",
-                      "description": "Adds an existing data source (Data Lake Store or Azure Blob) to the dataLakeAnalytics account",
+                      "description": "Adds an existing data source (Data Lake Store or Azure Blob) to the Data Lake Analytics Account",
                       "fullName": "datalake analytics account datasource add",
-                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10599,7 +10599,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -10659,9 +10659,9 @@
                     },
                     {
                       "name": "delete",
-                      "description": "removes a data source (Data Lake Store or Azure Blob) from the dataLakeAnalytics account",
+                      "description": "removes a data source (Data Lake Store or Azure Blob) from the Data Lake Analytics Account",
                       "fullName": "datalake analytics account datasource delete",
-                      "usage": "[options] <accountName> <dataLakeStore> <azureBlob> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10696,7 +10696,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -10738,9 +10738,9 @@
                     },
                     {
                       "name": "set",
-                      "description": "Sets an existing data source (Data Lake Store or Azure Blob) in the dataLakeAnalytics account. Typically used to set the data source as default (for Data Lake) or update the access key (for Azure Blob)",
+                      "description": "Sets an existing data source (Data Lake Store or Azure Blob) in the Data Lake Analytics Account. Typically used to set the data source as default (for Data Lake) or update the access key (for Azure Blob)",
                       "fullName": "datalake analytics account datasource set",
-                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10775,7 +10775,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -11116,8 +11116,8 @@
                       "description": "optional indicates the contents (as a string) to create the file with. NOTE: This parameter cannot be specified with --folder (-d)"
                     },
                     {
-                      "flags": "-d --folder <folder>",
-                      "required": -13,
+                      "flags": "-d --folder",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-d",
@@ -11125,8 +11125,8 @@
                       "description": "optionally specify that the item being created is a folder, not a file. If this is not specified, a file will be created. NOTE: This parameter cannot be specified with --encoding (-e) or --value (-v)"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -11146,7 +11146,7 @@
                 },
                 {
                   "name": "import",
-                  "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake.",
+                  "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem import",
                   "usage": "[options] <accountName> <path> <destination>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11283,8 +11283,8 @@
                       "description": "specify the target file that all of the files in --paths should be concatenated into (e.g /someFolder/targetFile.txt)"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -11362,8 +11362,8 @@
                       "description": "specify the target location to move the file or folder to"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -11453,7 +11453,7 @@
                 },
                 {
                   "name": "export",
-                  "description": "Downloads the specified file to the target location.",
+                  "description": "Downloads the specified file to the target location. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem export",
                   "usage": "[options] <accountName> <path> <destination>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -12204,7 +12204,7 @@
                   "name": "create",
                   "description": "Creates a Data Lake Store Account",
                   "fullName": "datalake store account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
                   "options": [
                     {
@@ -12292,7 +12292,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Store Account",
                   "fullName": "datalake store account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <resource-group> <defaultGroup>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
                   "options": [
                     {
@@ -22349,9 +22349,9 @@
                       "description": "the name of the rule"
                     },
                     {
-                      "flags": "-d, --description [description]",
-                      "required": 0,
-                      "optional": -19,
+                      "flags": "-d, --description <description>",
+                      "required": -19,
+                      "optional": 0,
                       "bool": true,
                       "short": "-d",
                       "long": "--description",
@@ -24067,7 +24067,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--profile-status",
-                      "description": "the profile status, valid values are\n     [Enabled, Disabled], default is Enabled"
+                      "description": "the profile status, valid values are\n     [Enabled,Disabled], default is Enabled"
                     },
                     {
                       "flags": "-m, --traffic-routing-method <traffic-routing-method>",
@@ -24076,7 +24076,7 @@
                       "bool": true,
                       "short": "-m",
                       "long": "--traffic-routing-method",
-                      "description": "the traffic routing method for the profile,\n     valid values are [Performance, Weighted, Priority]"
+                      "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
                       "flags": "-r, --relative-dns-name <relative-dns-name>",
@@ -24103,7 +24103,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--monitor-protocol",
-                      "description": "the source address prefix, valid values are [http, https]"
+                      "description": "the monitor protocol, valid values are\n     [http,https], default is http"
                     },
                     {
                       "flags": "-o, --monitor-port <monitor-port>",
@@ -24200,7 +24200,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--profile-status",
-                      "description": "the profile status, valid values are\n     [Enabled, Disabled], default is Enabled"
+                      "description": "the profile status, valid values are\n     [Enabled,Disabled], default is Enabled"
                     },
                     {
                       "flags": "-m, --traffic-routing-method <traffic-routing-method>",
@@ -24209,7 +24209,7 @@
                       "bool": true,
                       "short": "-m",
                       "long": "--traffic-routing-method",
-                      "description": "the traffic routing method for the profile,\n     valid values are [Performance, Weighted, Priority]"
+                      "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
                       "flags": "-l  --ttl <ttl>",
@@ -24227,7 +24227,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--monitor-protocol",
-                      "description": "the source address prefix, valid values are [http, https]"
+                      "description": "the monitor protocol, valid values are\n     [http,https], default is http"
                     },
                     {
                       "flags": "-o, --monitor-port <monitor-port>",
@@ -24603,7 +24603,7 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint] externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24718,7 +24718,7 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint] externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -26061,7 +26061,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--enable-bgp",
-                      "description": "enables BGP flag\n   Valid values are [True, False]\n   Default is True"
+                      "description": "enables BGP flag\n   Valid values are [True, False]\n   Default is False"
                     },
                     {
                       "flags": "-t, --tags <tags>",

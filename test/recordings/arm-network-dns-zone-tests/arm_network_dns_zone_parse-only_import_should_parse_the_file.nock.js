@@ -25,4 +25,4 @@ exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
 };
 
-exports.scopes = [];
+exports.scopes = [[]];
