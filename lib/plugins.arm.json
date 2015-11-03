@@ -10380,7 +10380,7 @@
                   "name": "create",
                   "description": "Creates a Data Lake Analytics Account",
                   "fullName": "datalake analytics account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10436,13 +10436,13 @@
                       "description": "the resource group to create the account in"
                     },
                     {
-                      "flags": "-d --defaultDataLake <defaultDataLake>",
-                      "required": -22,
+                      "flags": "-d --defaultDataLakeStore <defaultDataLakeStore>",
+                      "required": -27,
                       "optional": 0,
                       "bool": true,
                       "short": "-d",
-                      "long": "--defaultDataLake",
-                      "description": "the default Data Lake to associate with this account."
+                      "long": "--defaultDataLakeStore",
+                      "description": "the default Data Lake Store to associate with this account."
                     },
                     {
                       "flags": "-t --tags <tags>",
@@ -10468,7 +10468,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Analytics Account",
                   "fullName": "datalake analytics account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultDataLake> <tags>",
+                  "usage": "[options] <accountName> <resource-group> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -11116,8 +11116,8 @@
                       "description": "optional indicates the contents (as a string) to create the file with. NOTE: This parameter cannot be specified with --folder (-d)"
                     },
                     {
-                      "flags": "-d --folder <folder>",
-                      "required": -13,
+                      "flags": "-d --folder",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-d",
@@ -11125,8 +11125,8 @@
                       "description": "optionally specify that the item being created is a folder, not a file. If this is not specified, a file will be created. NOTE: This parameter cannot be specified with --encoding (-e) or --value (-v)"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -11283,8 +11283,8 @@
                       "description": "specify the target file that all of the files in --paths should be concatenated into (e.g /someFolder/targetFile.txt)"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -11362,8 +11362,8 @@
                       "description": "specify the target location to move the file or folder to"
                     },
                     {
-                      "flags": "-f --force <force>",
-                      "required": -12,
+                      "flags": "-f --force",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-f",
@@ -12204,7 +12204,7 @@
                   "name": "create",
                   "description": "Creates a Data Lake Store Account",
                   "fullName": "datalake store account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
                   "options": [
                     {
@@ -12292,7 +12292,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Store Account",
                   "fullName": "datalake store account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultGroup> <tags>",
+                  "usage": "[options] <accountName> <resource-group> <defaultGroup>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
                   "options": [
                     {
