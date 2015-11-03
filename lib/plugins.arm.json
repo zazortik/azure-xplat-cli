@@ -9399,7 +9399,7 @@
                   "name": "create",
                   "description": "Submits a job to the specified Data Lake Analytics account.",
                   "fullName": "datalake analytics job create",
-                  "usage": "[options] <accountName> <jobName> <script> <runtime> <compileMode> <compileOnly> <degreeOfParallelism> <priority> <resource-group>",
+                  "usage": "[options] <accountName> <jobName> <script>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9452,7 +9452,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--script",
-                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a script file"
+                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a UTF-8 encoded script file"
                     },
                     {
                       "flags": "-r --runtime <runtime>",
@@ -9850,7 +9850,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to perform the action on."
+                      "description": "The Data Lake Analytics account name to perform the action on."
                     },
                     {
                       "flags": "-t --itemType <itemType>",
@@ -9938,7 +9938,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10035,7 +10035,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10132,7 +10132,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics account name to perform the action on."
                         },
                         {
                           "flags": "-d --databaseName <databaseName>",
@@ -10195,7 +10195,7 @@
               "commands": [
                 {
                   "name": "list",
-                  "description": "List all DataLakeAnalytics accounts available for your subscription or subscription and resource group",
+                  "description": "List all Data Lake Analytics accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake analytics account list",
                   "usage": "[options] <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10247,7 +10247,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Shows a DataLakeAnalytics Account based on account name",
+                  "description": "Shows a Data Lake Analytics account based on account name",
                   "fullName": "datalake analytics account show",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10308,7 +10308,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Deletes a DataLakeAnalytics Account based on account name",
+                  "description": "Deletes a Data Lake Analytics Account based on account name",
                   "fullName": "datalake analytics account delete",
                   "usage": "[options] <accountName> <resource-group>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
@@ -10380,7 +10380,7 @@
                   "name": "create",
                   "description": "Creates a Data Lake Analytics Account",
                   "fullName": "datalake analytics account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
+                  "usage": "[options] <accountName> <location> <resource-group> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10415,7 +10415,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to create"
+                      "description": "The Data Lake Analytics account name to create"
                     },
                     {
                       "flags": "-l --location <location>",
@@ -10503,7 +10503,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--accountName",
-                      "description": "The DataLakeAnalytics account name to perform the action on."
+                      "description": "The Data Lake Analytics Account name to perform the action on."
                     },
                     {
                       "flags": "-g --resource-group <resource-group>",
@@ -10562,9 +10562,9 @@
                   "commands": [
                     {
                       "name": "add",
-                      "description": "Adds an existing data source (Data Lake Store or Azure Blob) to the dataLakeAnalytics account",
+                      "description": "Adds an existing data source (Data Lake Store or Azure Blob) to the Data Lake Analytics Account",
                       "fullName": "datalake analytics account datasource add",
-                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10599,7 +10599,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -10659,9 +10659,9 @@
                     },
                     {
                       "name": "delete",
-                      "description": "removes a data source (Data Lake Store or Azure Blob) from the dataLakeAnalytics account",
+                      "description": "removes a data source (Data Lake Store or Azure Blob) from the Data Lake Analytics Account",
                       "fullName": "datalake analytics account datasource delete",
-                      "usage": "[options] <accountName> <dataLakeStore> <azureBlob> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10696,7 +10696,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -10738,9 +10738,9 @@
                     },
                     {
                       "name": "set",
-                      "description": "Sets an existing data source (Data Lake Store or Azure Blob) in the dataLakeAnalytics account. Typically used to set the data source as default (for Data Lake) or update the access key (for Azure Blob)",
+                      "description": "Sets an existing data source (Data Lake Store or Azure Blob) in the Data Lake Analytics Account. Typically used to set the data source as default (for Data Lake) or update the access key (for Azure Blob)",
                       "fullName": "datalake analytics account datasource set",
-                      "usage": "[options] <accountName> <dataLakeStore> <isDefaultDataLakeStore> <azureBlob> <accessKey> <resource-group>",
+                      "usage": "[options] <accountName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10775,7 +10775,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--accountName",
-                          "description": "The DataLakeAnalytics account name to perform the action on."
+                          "description": "The Data Lake Analytics Account name to perform the action on."
                         },
                         {
                           "flags": "-l --dataLakeStore <dataLakeStore>",
@@ -11146,7 +11146,7 @@
                 },
                 {
                   "name": "import",
-                  "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake.",
+                  "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem import",
                   "usage": "[options] <accountName> <path> <destination>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
@@ -11453,7 +11453,7 @@
                 },
                 {
                   "name": "export",
-                  "description": "Downloads the specified file to the target location.",
+                  "description": "Downloads the specified file to the target location. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem export",
                   "usage": "[options] <accountName> <path> <destination>",
                   "filePath": "commands/arm/datalakestore/datalakeStore._js",
