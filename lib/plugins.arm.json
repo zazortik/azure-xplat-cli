@@ -22349,9 +22349,9 @@
                       "description": "the name of the rule"
                     },
                     {
-                      "flags": "-d, --description [description]",
-                      "required": 0,
-                      "optional": -19,
+                      "flags": "-d, --description <description>",
+                      "required": -19,
+                      "optional": 0,
                       "bool": true,
                       "short": "-d",
                       "long": "--description",
@@ -24067,7 +24067,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--profile-status",
-                      "description": "the profile status, valid values are\n     [Enabled, Disabled], default is Enabled"
+                      "description": "the profile status, valid values are\n     [Enabled,Disabled], default is Enabled"
                     },
                     {
                       "flags": "-m, --traffic-routing-method <traffic-routing-method>",
@@ -24076,7 +24076,7 @@
                       "bool": true,
                       "short": "-m",
                       "long": "--traffic-routing-method",
-                      "description": "the traffic routing method for the profile,\n     valid values are [Performance, Weighted, Priority]"
+                      "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
                       "flags": "-r, --relative-dns-name <relative-dns-name>",
@@ -24103,7 +24103,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--monitor-protocol",
-                      "description": "the source address prefix, valid values are [http, https]"
+                      "description": "the monitor protocol, valid values are\n     [http,https], default is http"
                     },
                     {
                       "flags": "-o, --monitor-port <monitor-port>",
@@ -24200,7 +24200,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--profile-status",
-                      "description": "the profile status, valid values are\n     [Enabled, Disabled], default is Enabled"
+                      "description": "the profile status, valid values are\n     [Enabled,Disabled], default is Enabled"
                     },
                     {
                       "flags": "-m, --traffic-routing-method <traffic-routing-method>",
@@ -24209,7 +24209,7 @@
                       "bool": true,
                       "short": "-m",
                       "long": "--traffic-routing-method",
-                      "description": "the traffic routing method for the profile,\n     valid values are [Performance, Weighted, Priority]"
+                      "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
                       "flags": "-l  --ttl <ttl>",
@@ -24227,7 +24227,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--monitor-protocol",
-                      "description": "the source address prefix, valid values are [http, https]"
+                      "description": "the monitor protocol, valid values are\n     [http,https], default is http"
                     },
                     {
                       "flags": "-o, --monitor-port <monitor-port>",
@@ -24603,7 +24603,7 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint] externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24718,7 +24718,7 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint] externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-e, --target <target>",
