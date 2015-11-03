@@ -9452,7 +9452,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--script",
-                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a script file"
+                      "description": "the script to run. This can be either the script contents, a relative path or the full path to a UTF-8 encoded script file"
                     },
                     {
                       "flags": "-r --runtime <runtime>",
