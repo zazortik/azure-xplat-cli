@@ -13,6 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '1273adef-00a3-4086-a51a-dbcce1857d36',
+    state: 'Enabled',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -32,178 +33,178 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01', '*')
-  .reply(201, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
+.put('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01', '*')
+  .reply(201, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '751',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e88760e4-9676-40cb-a224-6069fae3548c',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
+  'x-ms-request-id': '1e4c132f-fb20-4115-a1ce-e01e50e41f2a',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'c7957096-6a75-47b0-81e1-f8d9cc3e72bc',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145323Z:c7957096-6a75-47b0-81e1-f8d9cc3e72bc',
-  date: 'Wed, 23 Sep 2015 14:53:23 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-correlation-request-id': '03980581-8f25-4524-a8b6-3c2400fbb232',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222838Z:03980581-8f25-4524-a8b6-3c2400fbb232',
+  date: 'Wed, 28 Oct 2015 22:28:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01', '*')
-  .reply(201, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
+.put('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01', '*')
+  .reply(201, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '751',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e88760e4-9676-40cb-a224-6069fae3548c',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
-  server: 'Microsoft-IIS/8.5',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'c7957096-6a75-47b0-81e1-f8d9cc3e72bc',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145323Z:c7957096-6a75-47b0-81e1-f8d9cc3e72bc',
-  date: 'Wed, 23 Sep 2015 14:53:23 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '751',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0af606a1-9c15-4190-a798-bc7074fa22ee',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_3',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
-  server: 'Microsoft-IIS/8.5',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': 'ab92340e-8a37-44bf-b6b3-be05d432b642',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145324Z:ab92340e-8a37-44bf-b6b3-be05d432b642',
-  date: 'Wed, 23 Sep 2015 14:53:23 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '751',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0af606a1-9c15-4190-a798-bc7074fa22ee',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_3',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
-  server: 'Microsoft-IIS/8.5',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': 'ab92340e-8a37-44bf-b6b3-be05d432b642',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145324Z:ab92340e-8a37-44bf-b6b3-be05d432b642',
-  date: 'Wed, 23 Sep 2015 14:53:23 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .delete('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '751',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '60563b8a-db46-41e7-94af-46d8c8e269e0',
+  'x-ms-request-id': '1e4c132f-fb20-4115-a1ce-e01e50e41f2a',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'ccfa1d2b-fa3f-44d5-90a2-aa47ec8abf4c',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145328Z:ccfa1d2b-fa3f-44d5-90a2-aa47ec8abf4c',
-  date: 'Wed, 23 Sep 2015 14:53:28 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-correlation-request-id': '03980581-8f25-4524-a8b6-3c2400fbb232',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222838Z:03980581-8f25-4524-a8b6-3c2400fbb232',
+  date: 'Wed, 28 Oct 2015 22:28:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .delete('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_ed731c65-a2ea-4b59-969d-cc2021a13f1a\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-09-23T14:53:20.5769853Z\",\"updatedOn\":\"2015-09-23T14:53:20.5769853Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"92ff0474-c64d-4518-a1d6-0e9ca8a93a0a\"}", { 'cache-control': 'no-cache',
+nock('http://management.azure.com:443')
+  .get('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '751',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '60563b8a-db46-41e7-94af-46d8c8e269e0',
+  'x-ms-request-id': '025ecfcf-4a08-4d39-bd0d-55c487322e5a',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'ccfa1d2b-fa3f-44d5-90a2-aa47ec8abf4c',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145328Z:ccfa1d2b-fa3f-44d5-90a2-aa47ec8abf4c',
-  date: 'Wed, 23 Sep 2015 14:53:28 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID '92ff0474-c64d-4518-a1d6-0e9ca8a93a0a' does not exist.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '152',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b9377a2f-068c-4c98-b03b-a463e8bb806f',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
-  server: 'Microsoft-IIS/8.5',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6f7e94f1-b588-4a94-8b65-ec8b4cfa4626',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145329Z:6f7e94f1-b588-4a94-8b65-ec8b4cfa4626',
-  date: 'Wed, 23 Sep 2015 14:53:28 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'a0b77a3c-f4f3-4b64-82e7-aa298cd9c61e',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222839Z:a0b77a3c-f4f3-4b64-82e7-aa298cd9c61e',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/92ff0474-c64d-4518-a1d6-0e9ca8a93a0a?api-version=2015-07-01')
-  .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID '92ff0474-c64d-4518-a1d6-0e9ca8a93a0a' does not exist.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '152',
+  'content-length': '751',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b9377a2f-068c-4c98-b03b-a463e8bb806f',
+  'x-ms-request-id': '025ecfcf-4a08-4d39-bd0d-55c487322e5a',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
+  server: 'Microsoft-IIS/8.5',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'a0b77a3c-f4f3-4b64-82e7-aa298cd9c61e',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222839Z:a0b77a3c-f4f3-4b64-82e7-aa298cd9c61e',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .delete('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '751',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f0b5c3ea-213c-4be1-8f69-94ce063ca27b',
   'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6f7e94f1-b588-4a94-8b65-ec8b4cfa4626',
-  'x-ms-routing-request-id': 'AUSTRALIAEAST:20150923T145329Z:6f7e94f1-b588-4a94-8b65-ec8b4cfa4626',
-  date: 'Wed, 23 Sep 2015 14:53:28 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-correlation-request-id': '20787523-e81b-4b76-894f-8f7559acbce4',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222840Z:20787523-e81b-4b76-894f-8f7559acbce4',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .delete('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(200, "{\"properties\":{\"roleName\":\"TestRole_95ae06ab-9ad7-4db7-a570-0c614c7db54c\",\"type\":\"CustomRole\",\"description\":\"Custom Role Test Desc\",\"scope\":null,\"assignableScopes\":[\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"],\"permissions\":[{\"actions\":[\"Microsoft.Authorization/*/read\",\"Microsoft.Support/*\"],\"notActions\":[]}],\"createdOn\":\"2015-10-28T22:28:37.7743736Z\",\"updatedOn\":\"2015-10-28T22:28:37.7743736Z\",\"createdBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\"updatedBy\":\"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"b763a45e-bd1c-476d-8551-8a0b036ad4c3\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '751',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f0b5c3ea-213c-4be1-8f69-94ce063ca27b',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
+  server: 'Microsoft-IIS/8.5',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-correlation-request-id': '20787523-e81b-4b76-894f-8f7559acbce4',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222840Z:20787523-e81b-4b76-894f-8f7559acbce4',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID 'b763a45e-bd1c-476d-8551-8a0b036ad4c3' does not exist.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '152',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'b3ac793c-35f5-42cd-954f-22093ce39813',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
+  server: 'Microsoft-IIS/8.5',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14953',
+  'x-ms-correlation-request-id': '9b0f9cb6-66fe-4704-a4cc-40f2036e95b2',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222840Z:9b0f9cb6-66fe-4704-a4cc-40f2036e95b2',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b763a45e-bd1c-476d-8551-8a0b036ad4c3?api-version=2015-07-01')
+  .reply(404, "{\"error\":{\"code\":\"RoleDefinitionDoesNotExist\",\"message\":\"The specified role definition with ID 'b763a45e-bd1c-476d-8551-8a0b036ad4c3' does not exist.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '152',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'b3ac793c-35f5-42cd-954f-22093ce39813',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
+  server: 'Microsoft-IIS/8.5',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14953',
+  'x-ms-correlation-request-id': '9b0f9cb6-66fe-4704-a4cc-40f2036e95b2',
+  'x-ms-routing-request-id': 'WESTUS:20151028T222840Z:9b0f9cb6-66fe-4704-a4cc-40f2036e95b2',
+  date: 'Wed, 28 Oct 2015 22:28:39 GMT',
   connection: 'close' });
  return result; }]];
- exports.uuidsGenerated = function() { return ['ed731c65-a2ea-4b59-969d-cc2021a13f1a','92ff0474-c64d-4518-a1d6-0e9ca8a93a0a'];};
+ exports.uuidsGenerated = function() { return ['95ae06ab-9ad7-4db7-a570-0c614c7db54c','b763a45e-bd1c-476d-8551-8a0b036ad4c3'];};

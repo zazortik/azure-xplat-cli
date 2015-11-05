@@ -41,12 +41,12 @@ function MockTokenCache() {
 }
 
 _.extend(MockTokenCache.prototype, {
-  add: function () {
-    // deliberate noop
+  add: function (entries, callback) {
+    callback();
   },
 
-  remove: function () {
-    // deliberate noop
+  remove: function (entries, callback) {
+    callback();
   },
 
   find: function (query, callback) {

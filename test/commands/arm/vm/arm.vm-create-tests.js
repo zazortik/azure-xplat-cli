@@ -135,6 +135,19 @@ describe('arm', function() {
           done();
         });
       });
+
+      it('list all should display all VMs in subscription', function(done) {
+        var cmd = util.format('vm list %s --json', '').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            return res.name === vmPrefix;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('show should display details about VM', function(done) {
         var cmd = util.format('vm show %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -157,9 +170,10 @@ describe('arm', function() {
       });
 
       it('get-serial-output should get serial output of the VM', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          should(result.text.indexOf('bootdiagnostics') > -1 || result.text.indexOf('bootDiagnostics') > -1).ok;
+          should(result.text.indexOf('serialconsole.log') > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
@@ -174,9 +188,10 @@ describe('arm', function() {
       });
 
       it('get-serial-output should not show bootdiagnostics output', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') == -1).ok;
+          should(result.text.indexOf('bootDiagnostics') == -1 && result.text.indexOf('bootdiagnostics') == -1).ok;
+          should(result.text.indexOf('serialconsole.log') == -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
@@ -190,10 +205,18 @@ describe('arm', function() {
         });
       });
 
-      it('get-serial-output should show bootdiagnostics output again', function(done) {
-        var cmd = util.format('vm get-serial-output %s %s --json', groupName, vmPrefix).split(' ');
+      it('set should be able to update the VM size', function(done) {
+        var cmd = util.format('vm set -z %s %s --json', 'Standard_A1', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          should(result.text.indexOf('bootdiagnostics') > -1).ok;
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('get-serial-output should show bootdiagnostics output again', function(done) {
+        var cmd = util.format('vm get-serial-output %s %s', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          should(result.text.indexOf('bootdiagnostics') > -1 || result.text.indexOf('bootDiagnostics') > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });

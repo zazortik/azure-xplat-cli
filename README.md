@@ -7,7 +7,7 @@ This project provides a cross-platform command line interface for developers and
 ## Features
 
 * Accounts
-    * Azure Active Directory authentication for Organizational ID
+    * Azure Active Directory authentication
     * Download and import Azure publish settings
     * List imported Azure subscriptions
     * Select current subscription

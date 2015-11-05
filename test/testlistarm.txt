@@ -10,7 +10,8 @@ commands/arm/role/arm.role-tests.js
 commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
-commands/arm/ad/adUtils-test.js
+#TODO: uncomment after remove the dependencies on streamline files
+#commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/storage/arm.storage.account-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
@@ -34,6 +35,7 @@ commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
+commands/arm/vm/arm.vm-disk-encryption-tests.js
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js
@@ -55,6 +57,7 @@ commands/arm/network/arm.network.route-table-routes-tests.js
 commands/arm/network/arm-network-gateway-local-network-tests.js
 commands/arm/network/arm-network-gateway-vnet-tests.js
 commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
+commands/arm/network/arm-network-express-route-circuit-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
@@ -65,3 +68,4 @@ commands/arm/rediscache/arm.rediscache-tests.js
 #and it exposes a test framework bug which failed vm and apiapp tests randomly
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
+commands/arm/group/arm.group.deployment.operation-tests.js 
