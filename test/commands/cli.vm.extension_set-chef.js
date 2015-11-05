@@ -28,6 +28,7 @@ var requiredEnvironment = [{
   defaultValue: 'West US'
 }];
 
+
 describe('cli', function() {
   describe('vm', function() {
     var vmUtil = new vmTestUtil();
@@ -38,11 +39,13 @@ describe('cli', function() {
       retry = 5,
       clientconfig = 'test/data/set-chef-extension-client-config.rb',
       validationpem = 'test/data/set-chef-extension-validation.pem',
-      chefversion = '11.*',
+      clientpem = 'test/data/set-chef-extension-client.pem',
+      chefversion = '1210.*',
       timeout;
-    testUtils.TIMEOUT_INTERVAL = 5000;
+    testUtils.TIMEOUT_INTERVAL = 15000;
 
     before(function(done) {
+
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
@@ -65,26 +68,29 @@ describe('cli', function() {
     beforeEach(function(done) {
       suite.setupTest(done);
     });
+
     afterEach(function(done) {
       setTimeout(function() {
         suite.teardownTest(done);
       }, timeout);
     });
-    //Set Chef extensions test
+
+    //Set extensions
     describe('extension:', function() {
+
       it('Set Chef extension should fail without client config and validation pem', function(done) {
         var cmd = util.format('vm extension set-chef %s -V %s --json', vmName, chefversion).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.errorText.should.containEql('error: Required --validation-pem and --client-config options');
+          result.errorText.should.containEql('error: Required --validation-pem or --client-pem and --client-config options');
           result.exitStatus.should.equal(1);
           done();
         });
       });
 
       it('Set Chef extension should pass', function(done) {
-
         vmUtil.createWindowsVM(vmName, username, password, location, timeout, suite, function() {
-          var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s --json', vmName, chefversion, clientconfig, validationpem).split(' ');
+          var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s --json',
+            vmName, chefversion, clientconfig, validationpem).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -93,15 +99,21 @@ describe('cli', function() {
       });
 
       it('Set Chef extensions with json attributes', function(done) {
-
-        //vmUtil.createWindowsVM(vmName, username, password, location, timeout, suite, function() {
         var cmd = util.format('vm extension set-chef %s -V %s -c %s -O %s -j %s --json', vmName, chefversion, clientconfig, validationpem, '{"chef_node_name":"mynode"}').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
-        //});
       });
+
+      it('Set Chef extensions with client-pem option', function(done) {
+
+        var cmd = util.format('vm extension set-chef %s -V %s -c %s -C %s --json', vmName, chefversion, clientconfig, clientpem).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });      
     });
   });
 });

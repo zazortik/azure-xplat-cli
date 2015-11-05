@@ -1,3 +1,8 @@
+//To Release - Version 0.9.12
+* VM
+  * Chef Extension
+    * Implemented new option --client-pem for set-chef extension commands
+
 ## 2015.10.29 Version 0.9.11
 * Authorization
   * Add paging support for role assignment list calls
