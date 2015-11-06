@@ -92,7 +92,7 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  describe('Redis Cache', function () {
+  describe.only('Redis Cache', function () {
     it('create commands should work', function (done) {
       suite.execute('rediscache create --name %s --resource-group %s --location %s --json', cacheName, testResourceGroup, testLocation, function (result) {
         result.exitStatus.should.be.equal(0);
