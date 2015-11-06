@@ -44,7 +44,7 @@
     "azure-arm-trafficmanager": "0.10.2",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
-    "azure-arm-rediscache": "file:../azure-sdk-for-node/lib/services/rediscachemanagement",
+    "azure-arm-rediscache": "0.1.0",
     "azure-arm-datalake-analytics": "0.1.0",
     "azure-arm-datalake-store": "0.1.0",
     "azure-extra": "0.1.12",
