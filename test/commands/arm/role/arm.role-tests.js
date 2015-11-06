@@ -396,7 +396,7 @@ describe('arm', function () {
         var filePath = path.join(__dirname, '../../../data/CustomRoleDefValid.json');
         suite.execute('role set -f %s --json', filePath, function (updatedResult) {
           updatedResult.exitStatus.should.equal(1);
-          updatedResult.errorText.should.containEql("roleDefinitionName cannot be null");
+          updatedResult.errorText.should.containEql("roleDefinitionId cannot be null");
           done();
         });
       });
