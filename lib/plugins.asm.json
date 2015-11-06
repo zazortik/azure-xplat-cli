@@ -27435,7 +27435,7 @@
                   "bool": true,
                   "short": "-O",
                   "long": "--validation-pem",
-                  "description": "chef validation pem file path"
+                  "description": "chef validation pem file path. Not required if -C or --client-pem option specified"
                 },
                 {
                   "flags": "-c, --client-config <client-config>",
@@ -27445,6 +27445,15 @@
                   "short": "-c",
                   "long": "--client-config",
                   "description": "chef client configuration file(i.e client.rb) path"
+                },
+                {
+                  "flags": "-C, --client-pem <client-pem>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-C",
+                  "long": "--client-pem",
+                  "description": "chef client pem file path i.e required in validator less bootstrap"
                 },
                 {
                   "flags": "-a, --auto-update-client",
