@@ -77,20 +77,16 @@ describe('arm', function () {
           suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', storeAccountName, testResourceGroup, testLocation, function () {
             suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', additionalStoreAccountName, testResourceGroup, testLocation, function () {
               suite.execute('storage account create %s --resource-group %s --location %s --type GRS --json', azureBlobAccountName, testResourceGroup, testLocation, function () {
-                suite.execute('storage account keys list %s --resource-group %s --json', azureBlobAccountName, testResourceGroup, testLocation, function (result) {
-                  var keyJson = JSON.parse(result.text);
-                  azureBlobAccountKey = keyJson.storageAccountKeys.key1;
-                  // create an account for job and catalog operations
-                  suite.execute('datalake analytics account create --accountName %s --resource-group %s --location %s --defaultDataLakeStore %s --json', jobAndCatalogAccountName, testResourceGroup, testLocation, storeAccountName, function () {
-                    if(!suite.isPlayback()) {
-                      setTimeout(function () {
-                        done();
-                      }, 120000); // sleep for two minutes to guarantee that the queue has been created to run jobs against
-                    }
-                    else {
+                // create an account for job and catalog operations
+                suite.execute('datalake analytics account create --accountName %s --resource-group %s --location %s --defaultDataLakeStore %s --json', jobAndCatalogAccountName, testResourceGroup, testLocation, storeAccountName, function () {
+                  if(!suite.isPlayback()) {
+                    setTimeout(function () {
                       done();
-                    }
-                  });
+                    }, 120000); // sleep for two minutes to guarantee that the queue has been created to run jobs against
+                  }
+                  else {
+                    done();
+                  }
                 });
               });
             });
@@ -205,19 +201,23 @@ describe('arm', function () {
     });
     
     it('adding and removing blob storage accounts to the account should work', function (done) {
-      suite.execute('datalake analytics account datasource add --accountName %s --azureBlob %s --accessKey %s --json', accountName, azureBlobAccountName, azureBlobAccountKey, function (result) {
-        result.exitStatus.should.be.equal(0);
-        suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
+      suite.execute('storage account keys list %s --resource-group %s --json', azureBlobAccountName, testResourceGroup, testLocation, function (result) {
+        var keyJson = JSON.parse(result.text);
+        azureBlobAccountKey = keyJson.storageAccountKeys.key1;
+        suite.execute('datalake analytics account datasource add --accountName %s --azureBlob %s --accessKey %s --json', accountName, azureBlobAccountName, azureBlobAccountKey, function (result) {
           result.exitStatus.should.be.equal(0);
-          var accountJson = JSON.parse(result.text);
-          accountJson.properties.storageAccounts.length.should.be.equal(1);
-          suite.execute('datalake analytics account datasource delete --accountName %s --azureBlob %s --json', accountName, azureBlobAccountName, function (result) {
+          suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
             result.exitStatus.should.be.equal(0);
-            suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
+            var accountJson = JSON.parse(result.text);
+            accountJson.properties.storageAccounts.length.should.be.equal(1);
+            suite.execute('datalake analytics account datasource delete --accountName %s --azureBlob %s --json', accountName, azureBlobAccountName, function (result) {
               result.exitStatus.should.be.equal(0);
-              var accountJson = JSON.parse(result.text);
-              accountJson.properties.storageAccounts.length.should.be.equal(0);
-              done();
+              suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
+                result.exitStatus.should.be.equal(0);
+                var accountJson = JSON.parse(result.text);
+                accountJson.properties.storageAccounts.length.should.be.equal(0);
+                done();
+              });
             });
           });
         });

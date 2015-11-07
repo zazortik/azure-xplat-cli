@@ -63,7 +63,7 @@ var moveFile = firstFolder + '/movefile.txt';
 describe('arm', function () {
   before(function (done) {
     suite = new CLITest(this, testPrefix, requiredEnvironment);
-    suite.setupSuite(function () {
+    suite.setupSuite(function () {    
       testLocation = process.env.AZURE_ARM_TEST_LOCATION;
       testLocation = testLocation.toLowerCase().replace(/ /g, '');
       testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
@@ -71,24 +71,34 @@ describe('arm', function () {
       accountName = suite.generateId(accountPrefix, knownNames);
       filesystemAccountName = suite.generateId(accountPrefix, knownNames);
       fs.writeFileSync(contentDir, content);
-      suite.execute('group create %s --location %s --json', testResourceGroup, testLocation, function () {
-        suite.execute('group create %s --location %s --json', secondResourceGroup, testLocation, function () {
-          suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', filesystemAccountName, testResourceGroup, testLocation, function () {
-            done();
+      if(!suite.isPlayback()) {
+        suite.execute('group create %s --location %s --json', testResourceGroup, testLocation, function () {
+          suite.execute('group create %s --location %s --json', secondResourceGroup, testLocation, function () {
+            suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', filesystemAccountName, testResourceGroup, testLocation, function () {
+              done();
+            });
           });
         });
-      });
+      }
+      else {
+        done();
+      }
     });
   });
 
 
   after(function (done) {
     fs.unlinkSync(contentDir);
-    suite.execute('group delete %s --quiet --json', testResourceGroup, function () {
-      suite.execute('group delete %s --quiet --json', secondResourceGroup, function () {
-        suite.teardownSuite(done);
+    if(!suite.isPlayback()) {
+      suite.execute('group delete %s --quiet --json', testResourceGroup, function () {
+        suite.execute('group delete %s --quiet --json', secondResourceGroup, function () {
+          suite.teardownSuite(done);
+        });
       });
-    });
+    }
+    else {
+      suite.teardownSuite(done);
+    }
   });
 
   beforeEach(function (done) {
