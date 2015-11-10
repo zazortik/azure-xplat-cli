@@ -24,9 +24,9 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_ARM_TEST_LOCATION'] = 'East US 2';
-  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlarg01';
+  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlsrg01';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadls8820','xplattestadls3852','xplattestadls6457'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadls4851','xplattestadls8150','xplattestadls9026'];};
