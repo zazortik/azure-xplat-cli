@@ -132,6 +132,9 @@ describe('arm', function() {
           allResources.some(function(res) {
             return res.name === vmPrefix;
           }).should.be.true;
+          allResources.some(function(res) {
+            return res.resourceGroupName === groupName;
+          }).should.be.true;
           done();
         });
       });
