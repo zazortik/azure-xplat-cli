@@ -63,7 +63,6 @@ commands/arm/apiapp/lib/propertyPrompts-tests.js
 commands/arm/apiapp/arm.apiapp-tests.js
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/rediscache/arm.rediscache-tests.js
-#adding a comment here to retrigger CI job
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
 commands/arm/datalakestore/arm.datalake-store-tests.js
 #please put the following group tests to the last, as it uses the different subscription 
