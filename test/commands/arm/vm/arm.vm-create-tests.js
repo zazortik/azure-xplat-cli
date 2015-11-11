@@ -205,7 +205,8 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           should(result.text.indexOf('diagnosticsProfile') > -1).ok;
           should(result.text.indexOf('bootDiagnostics') > -1).ok;
-          should(result.text.indexOf('storageUri') > -1).ok;
+          var storageUriStr = util.format('\"storageUri\": \"https://%s.blob.core.windows.net/\"', storageAccount);
+          should(result.text.indexOf(storageUriStr) > -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
@@ -216,7 +217,8 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           should(result.text.indexOf('diagnosticsProfile') > -1).ok;
           should(result.text.indexOf('bootDiagnostics') > -1).ok;
-          should(result.text.indexOf('storageUri') == -1).ok;
+          var storage2UriStr = '\"storageUri\"';
+          should(result.text.indexOf(storage2UriStr) == -1).ok;
           result.exitStatus.should.equal(0);
           done();
         });
