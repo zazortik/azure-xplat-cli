@@ -6,12 +6,14 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
+    id: 'e00d2b3f-3b94-4dfc-ae8e-ca34c8ba1a99',
+    name: 'Pay-As-You-Go',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
     },
-    name: 'CollaberaInteropTest',
+    tenantId: 'abeb039a-5e53-40ee-b48f-0c99bdc99d15',
+    state: 'Enabled',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
