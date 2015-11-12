@@ -21065,12 +21065,20 @@
                   "description": "the cloud service name"
                 },
                 {
-                  "flags": "--certificate-name <certName>",
-                  "required": -20,
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--certificate-name",
-                  "description": "the certificate name"
+                  "long": "--thumbprint",
+                  "description": "the thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the thumbprint algorithm"
                 },
                 {
                   "flags": "-s, --subscription <id>",
