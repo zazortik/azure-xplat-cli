@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '4d368445-cbb1-42a7-97a6-6850ab99f48e',
+    name: 'Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -22,10 +22,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplatTestCacheRG';
+  process.env['AZURE_CLOUD_SERVICE_TEST_LOCATION'] = 'West US';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestCache1665','xplatTestCache1999'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestcert9491'];};

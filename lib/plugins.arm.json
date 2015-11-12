@@ -27724,7 +27724,7 @@
               "bool": true,
               "short": "-t",
               "long": "--key-type",
-              "description": "type of key to renew"
+              "description": "type of key to renew. Valid values are: 'Primary', 'Secondary'."
             },
             {
               "flags": "-s, --subscription <subscription>",
