@@ -62,8 +62,10 @@ describe('arm', function () {
           suite.execute('insights alerts list %s --json', resourceId, function(result) {
             result.exitStatus.should.equal(0);
             
-            var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+			var response = JSON.parse(result.text);
+			if (suite.isPlayback()) {
+              response.length.should.equal(0);
+			}
 
             done();
           });

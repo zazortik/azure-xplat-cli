@@ -68,15 +68,17 @@ describe('arm', function () {
         describe('list', function() {
           it('should work with rg only', function(done) {
             suite.execute('insights autoscale setting list %s --json', resourceGroup, function(result) {
-              result.exitStatus.should.equal(0);
+			  result.exitStatus.should.equal(0);
 
-              var response = JSON.parse(result.text);
-              response.length.should.equal(1);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+				response.length.should.equal(1);
+			  }
 
-              var record = response[0];
-              record.name.should.equal(settingName);
+			  var record = response[0];
+			  record.name.should.equal(settingName);
 
-              done();
+			  done();
             });
           });
       
@@ -84,8 +86,10 @@ describe('arm', function () {
             suite.execute('insights autoscale setting list %s -n %s --json', resourceGroup, settingName, function (result) {
               result.exitStatus.should.equal(0);
               
-              var response = JSON.parse(result.text);
-              response.length.should.equal(1);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+				response.length.should.equal(1);
+			  }
 
               var record = response[0];
               record.name.should.equal(settingName);
@@ -101,8 +105,10 @@ describe('arm', function () {
             suite.execute('insights autoscale setting set %s -l %s -n %s -i %s -a %s --json', 'Default-Web-WestUS', 'West US', 'MySetting', resourceId, profiles, function(result) {
               result.exitStatus.should.equal(0);
 
-              var response = JSON.parse(result.text);
-              response.statusCode.should.equal(200);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+                response.statusCode.should.equal(200);
+			  }
 
               done();
             });

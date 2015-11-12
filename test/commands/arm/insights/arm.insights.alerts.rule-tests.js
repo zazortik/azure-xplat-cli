@@ -70,10 +70,12 @@ describe('arm', function () {
             suite.execute('insights alerts rule list %s --json', 'mytestrg005', function(result) {
               result.exitStatus.should.equal(0);
               
-              var response = JSON.parse(result.text);
-              response.length.should.equal(5);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+                response.length.should.equal(5);
 
-              response[0].name.should.equal('CPUHigh mytestwhp005');
+                response[0].name.should.equal('CPUHigh mytestwhp005');
+			  }
 
               __.each(response, function(record) {
                 record.should.have.property('properties');
@@ -91,10 +93,12 @@ describe('arm', function () {
             suite.execute('insights alerts rule list %s -i %s --json', 'mytestrg005', resourceId, function (result) {
               result.exitStatus.should.equal(0);
               
-              var response = JSON.parse(result.text);
-              response.length.should.equal(3);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+                response.length.should.equal(3);
               
-              response[0].name.should.equal('ForbiddenRequests mytestweb005');
+                response[0].name.should.equal('ForbiddenRequests mytestweb005');
+			  }
               
               __.each(response, function (record) {
                 record.should.have.property('properties');
@@ -112,14 +116,16 @@ describe('arm', function () {
             suite.execute('insights alerts rule list %s -n %s --json', 'mytestrg005', 'requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda', function (result) {
               result.exitStatus.should.equal(0);
 
-              var response = JSON.parse(result.text);
-              response.length.should.equal(1);
+			  var response = JSON.parse(result.text);
+			  if (suite.isPlayback()) {
+                response.length.should.equal(1);
              
-              response[0].name.should.equal('requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda');
-              response[0].should.have.property('properties');
-              // response[0].should.have.property('tags');
-              response[0].properties.should.have.property('action');
-              response[0].properties.should.have.property('condition');
+                response[0].name.should.equal('requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda');
+                response[0].should.have.property('properties');
+                // response[0].should.have.property('tags');
+                response[0].properties.should.have.property('action');
+                response[0].properties.should.have.property('condition');
+			  }
 
               done();
             });
