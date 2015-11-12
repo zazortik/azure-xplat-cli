@@ -114,7 +114,6 @@ describe('arm', function () {
       var tags = 'testtag1=testvalue1;testtag2=testvalue2';
       suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --tags %s --json', accountName, testResourceGroup, testLocation, tags, function (result) {
         result.exitStatus.should.be.equal(0);
-        console.log('>>>>>>>>>>>>>>>>>>>>' + util.inspect(result, {depth: null}));
         var accountJson = JSON.parse(result.text);
         accountJson.name.should.be.equal(accountName);
         Object.keys(accountJson.tags).length.should.be.equal(2);
