@@ -32,8 +32,8 @@ var requiredEnvironment = [{
 }];
 
 var groupName,
-  vmPrefix = 'xplattestvm',
-  vm2Prefix = 'xplattestvm2',
+  vmPrefix = 'xplatvm',
+  vm2Prefix = 'xplatvm2',
   nicName = 'xplattestnic',
   nic2Name = 'xplattestnic2',
   location,
