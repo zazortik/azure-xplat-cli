@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{e6309b69-d527-408b-8835-86367f414dba}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>bin\azure.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -13,15 +13,17 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>
-    </ScriptArguments>
+    <ScriptArguments>rediscache create -g xplatTestCacheRG -n testcache32 -m AllKeysRandom -l "West US" -z C1 -e</ScriptArguments>
     <Environment>
     </Environment>
+    <NodeExeArguments>bin/azure</NodeExeArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\commands\arm\rediscache\rediscache._js" />
+    <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -147,7 +149,6 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
-    <Compile Include="scripts\warn-existing-streamline-files.js" />
     <Compile Include="test\commands\cli.account-tests.js" />
     <Compile Include="test\commands\cli.account.affinitygroup-tests.js">
       <TestFramework>
@@ -430,6 +431,7 @@
     <Folder Include="lib\commands\arm\location" />
     <Folder Include="lib\commands\arm\network" />
     <Folder Include="lib\commands\arm\providers" />
+    <Folder Include="lib\commands\arm\rediscache\" />
     <Folder Include="lib\commands\arm\resource" />
     <Folder Include="lib\commands\arm\role" />
     <Folder Include="lib\commands\arm\tag" />
