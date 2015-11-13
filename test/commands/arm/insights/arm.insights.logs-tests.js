@@ -71,10 +71,10 @@ describe('arm', function () {
           suite.execute('insights logs list --json', function (result) {
             result.exitStatus.should.equal(0);
               
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(2);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
 
             __.each(response, function(record) {
               ((record["correlationId"] === 'da3210d1-3abc-48bd-99ea-abb4ece57ef7') ||
@@ -100,11 +100,11 @@ describe('arm', function () {
           suite.execute('insights logs list -b %s -e %s -d --json', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function(result) {
             result.exitStatus.should.equal(0);
               
-      // The query must succeed, but the response must be empty
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            // The query must succeed, but the response must be empty
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
       
             done();
           });
@@ -152,10 +152,10 @@ describe('arm', function () {
           suite.execute('insights logs list -c %s --json', '8ca345e1-409c-4183-930f-8150396513ed', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -165,10 +165,10 @@ describe('arm', function () {
           suite.execute('insights logs list -c %s -b %s -e %s --json', 'a8690cfc-2b1d-40eb-8464-a9567609ca0b', '2015-04-20T20:15:44.547Z', '2015-04-20T21:15:44.547Z', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(2);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
             
             __.each(response, function (record) {
               (record["correlationId"] === 'a8690cfc-2b1d-40eb-8464-a9567609ca0b').should.be.true;
@@ -194,10 +194,10 @@ describe('arm', function () {
           suite.execute('insights logs list -g %s --json', 'Default-Web-brazilsouth', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(1);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(1);
+            }
             
             __.each(response, function (record) {
               (record["resourceGroupName"].toLowerCase() === 'default-web-brazilsouth').should.be.true;
@@ -231,10 +231,10 @@ describe('arm', function () {
           suite.execute('insights logs list -p %s --json', 'microsoft.web', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(1);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(1);
+            }
 
             __.each(response, function (record) {
               record["resourceId"].indexOf("/providers/microsoft.web/").should.be.above(-1);
@@ -259,10 +259,10 @@ describe('arm', function () {
           suite.execute('insights logs list -p %s -b %s -e %s -d --json', 'microsoft.web', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -273,10 +273,10 @@ describe('arm', function () {
           suite.execute('insights logs list -i %s --json', resourceId, function (result) {
             result.exitStatus.should.equal(0);
             
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -286,10 +286,10 @@ describe('arm', function () {
           suite.execute('insights logs list -i %s -b %s -e %s -d --json', resourceId, '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
             result.exitStatus.should.equal(0);
             
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });

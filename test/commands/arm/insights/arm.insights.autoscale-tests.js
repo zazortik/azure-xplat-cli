@@ -68,10 +68,10 @@ describe('arm', function () {
           suite.execute('insights autoscale list --json', function (result) {
             result.exitStatus.should.equal(0);
 
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(0);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
 
             done();
           });
@@ -81,10 +81,10 @@ describe('arm', function () {
           suite.execute('insights autoscale list -i %s -b %s -e %s --json', resourceId, '2015-04-13T21:50:00', '2015-04-13T23:50:00', function(result) {
             result.exitStatus.should.equal(0);
             
-      var response = JSON.parse(result.text);
-      if (suite.isPlayback()) {
-        response.length.should.equal(2);
-      }
+            var response = JSON.parse(result.text);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
             
             __.each(response, function (record) {
               record.should.have.property("caller");
