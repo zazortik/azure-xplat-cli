@@ -242,7 +242,7 @@
           "description": "List the imported subscriptions",
           "fullName": "account list",
           "usage": "[options]",
-          "filePath": "commands/account.js",
+          "filePath": "commands/account._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -276,7 +276,7 @@
           "description": "Show details about a subscription",
           "fullName": "account show",
           "usage": "[options] [subscriptionNameOrId]",
-          "filePath": "commands/account.js",
+          "filePath": "commands/account._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -328,7 +328,7 @@
           "description": "Set the current subscription",
           "fullName": "account set",
           "usage": "[options] <subscriptionNameOrId>",
-          "filePath": "commands/account.js",
+          "filePath": "commands/account._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -362,7 +362,7 @@
           "description": "Remove a subscription or environment, or clear all of the stored account and environment info",
           "fullName": "account clear",
           "usage": "[options]",
-          "filePath": "commands/account.js",
+          "filePath": "commands/account._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -432,7 +432,7 @@
               "description": "List the environments",
               "fullName": "account env list",
               "usage": "[options]",
-              "filePath": "commands/account.environment.js",
+              "filePath": "commands/account.environment._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -466,7 +466,7 @@
               "description": "Show an environment",
               "fullName": "account env show",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment.js",
+              "filePath": "commands/account.environment._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -508,7 +508,7 @@
               "description": "Add an environment",
               "fullName": "account env add",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment.js",
+              "filePath": "commands/account.environment._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -600,12 +600,12 @@
                   "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -656,12 +656,12 @@
                   "description": "the data lake store filesystem service dns suffix"
                 },
                 {
-                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
-                  "required": -61,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
-                  "description": "the data lake analytics job and catalog service dns suffix"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 }
               ]
             },
@@ -670,7 +670,7 @@
               "description": "Update an environment",
               "fullName": "account env set",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment.js",
+              "filePath": "commands/account.environment._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -714,12 +714,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
-                  "required": -61,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
-                  "description": "the data lake analytics job and catalog service dns suffix"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -762,12 +762,12 @@
                   "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -818,12 +818,12 @@
                   "description": "the data lake store filesystem service dns suffix"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 }
               ]
             },
@@ -832,7 +832,7 @@
               "description": "Delete an environment",
               "fullName": "account env delete",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment.js",
+              "filePath": "commands/account.environment._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8153,7 +8153,7 @@
               "description": "Creates a new active directory application",
               "fullName": "ad app create",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.application.js",
+              "filePath": "commands/arm/ad/ad.application._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8271,7 +8271,7 @@
               "description": "Deletes the active directory application",
               "fullName": "ad app delete",
               "usage": "[options] <object-id>",
-              "filePath": "commands/arm/ad/ad.application.js",
+              "filePath": "commands/arm/ad/ad.application._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -15019,7 +15019,7 @@
               "name": "get",
               "description": "Get the diagnostics for the resource.",
               "fullName": "insights diagnostic get",
-              "usage": "[options] <resourceId>",
+              "usage": "[options]",
               "filePath": "commands/arm/insights/insights.diagnostic.get._js",
               "options": [
                 {
@@ -15048,13 +15048,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-i --resourceId <resourceId>",
-                  "required": -17,
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
                   "optional": 0,
                   "bool": true,
                   "short": "-i",
                   "long": "--resourceId",
-                  "description": "The resource Id."
+                  "description": "resource Id."
                 }
               ]
             },
@@ -15091,49 +15091,49 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-i --resourceId <resourceId>",
-                  "required": -17,
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
                   "optional": 0,
                   "bool": true,
                   "short": "-i",
                   "long": "--resourceId",
-                  "description": "The resource Id."
+                  "description": "resource Id."
                 },
                 {
-                  "flags": "-s --storageId <storageId>",
-                  "required": -16,
+                  "flags": "-s, --storageId <storageId>",
+                  "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-s",
                   "long": "--storageId",
-                  "description": "The storage account Id."
+                  "description": "storage account Id."
                 },
                 {
-                  "flags": "-e --enabled <enabled>",
-                  "required": -14,
+                  "flags": "-e, --enabled <enabled>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
                   "short": "-e",
                   "long": "--enabled",
-                  "description": "Whether the configuration is enabled or disabled."
+                  "description": "whether the configuration is enabled or disabled."
                 },
                 {
-                  "flags": "-c --categories <categories>",
-                  "required": -17,
+                  "flags": "-c, --categories <categories>",
+                  "required": -18,
                   "optional": 0,
                   "bool": true,
                   "short": "-c",
                   "long": "--categories",
-                  "description": "Specifies the categories to be affected."
+                  "description": "categories to be affected. Valid values vary per resource type."
                 },
                 {
-                  "flags": "-t --timegrains <timegrains>",
-                  "required": -17,
+                  "flags": "-t, --timegrains <timegrains>",
+                  "required": -18,
                   "optional": 0,
                   "bool": true,
                   "short": "-t",
                   "long": "--timegrains",
-                  "description": "Specifies the timegrains to be affected."
+                  "description": "timegrains to be affected in ISO 8601 format. Example: 'PT1M' for 1 minute."
                 }
               ]
             }
