@@ -29742,12 +29742,12 @@
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             },
             {
-              "flags": "--enable-boot-diagnostics",
+              "flags": "--disable-boot-diagnostics",
               "required": 0,
               "optional": 0,
               "bool": true,
-              "long": "--enable-boot-diagnostics",
-              "description": "The switch parameter to enable the boot diagnostics for VM."
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics (by default enabled) for VM."
             },
             {
               "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
@@ -29755,7 +29755,7 @@
               "optional": 0,
               "bool": true,
               "long": "--boot-diagnostics-storage-uri",
-              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
+              "description": "Optional. Specify storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             },
             {
               "flags": "--disable-bginfo-extension",
