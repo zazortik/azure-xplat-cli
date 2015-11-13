@@ -65,9 +65,9 @@ describe('arm', function () {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
-        if (suite.isPlayback()) {
-          response.length.should.equal(6);
-        }
+              if (suite.isPlayback()) {
+                response.length.should.equal(6);
+              }
               
               __.each(response, function (record) {
                 record.should.have.property('name');
