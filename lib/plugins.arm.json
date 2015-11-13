@@ -242,7 +242,7 @@
           "description": "List the imported subscriptions",
           "fullName": "account list",
           "usage": "[options]",
-          "filePath": "commands/account._js",
+          "filePath": "commands/account.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -276,7 +276,7 @@
           "description": "Show details about a subscription",
           "fullName": "account show",
           "usage": "[options] [subscriptionNameOrId]",
-          "filePath": "commands/account._js",
+          "filePath": "commands/account.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -328,7 +328,7 @@
           "description": "Set the current subscription",
           "fullName": "account set",
           "usage": "[options] <subscriptionNameOrId>",
-          "filePath": "commands/account._js",
+          "filePath": "commands/account.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -362,7 +362,7 @@
           "description": "Remove a subscription or environment, or clear all of the stored account and environment info",
           "fullName": "account clear",
           "usage": "[options]",
-          "filePath": "commands/account._js",
+          "filePath": "commands/account.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -432,7 +432,7 @@
               "description": "List the environments",
               "fullName": "account env list",
               "usage": "[options]",
-              "filePath": "commands/account.environment._js",
+              "filePath": "commands/account.environment.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -466,7 +466,7 @@
               "description": "Show an environment",
               "fullName": "account env show",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment._js",
+              "filePath": "commands/account.environment.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -508,7 +508,7 @@
               "description": "Add an environment",
               "fullName": "account env add",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment._js",
+              "filePath": "commands/account.environment.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -552,12 +552,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
-                  "required": -61,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
-                  "description": "the data lake analytics job and catalog service dns suffix"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -600,12 +600,12 @@
                   "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -656,12 +656,12 @@
                   "description": "the data lake store filesystem service dns suffix"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 }
               ]
             },
@@ -670,7 +670,7 @@
               "description": "Update an environment",
               "fullName": "account env set",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment._js",
+              "filePath": "commands/account.environment.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -714,12 +714,12 @@
                   "description": "the management portal URL"
                 },
                 {
-                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
-                  "required": -32,
+                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
+                  "required": -61,
                   "optional": 0,
                   "bool": true,
-                  "long": "--active-directory-resource-id",
-                  "description": "The resource ID to obtain AD tokens for"
+                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
+                  "description": "the data lake analytics job and catalog service dns suffix"
                 },
                 {
                   "flags": "--management-endpoint-url <managementEndpointUrl>",
@@ -762,12 +762,12 @@
                   "description": "the Active Directory login endpoint"
                 },
                 {
-                  "flags": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix <azureDataLakeAnalyticsCatalogAndJobEndpointSuffix>",
-                  "required": -61,
+                  "flags": "--publishing-profile-url <publishingProfileUrl>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--azure-data-lake-analytics-catalog-and-job-endpoint-suffix",
-                  "description": "the data lake analytics job and catalog service dns suffix"
+                  "long": "--publishing-profile-url",
+                  "description": "the publish settings file URL"
                 },
                 {
                   "flags": "--gallery-endpoint-url <galleryEndpointUrl>",
@@ -818,12 +818,12 @@
                   "description": "the data lake store filesystem service dns suffix"
                 },
                 {
-                  "flags": "--publishing-profile-url <publishingProfileUrl>",
-                  "required": -26,
+                  "flags": "--active-directory-resource-id <activeDirectoryResourceId>",
+                  "required": -32,
                   "optional": 0,
                   "bool": true,
-                  "long": "--publishing-profile-url",
-                  "description": "the publish settings file URL"
+                  "long": "--active-directory-resource-id",
+                  "description": "The resource ID to obtain AD tokens for"
                 }
               ]
             },
@@ -832,7 +832,7 @@
               "description": "Delete an environment",
               "fullName": "account env delete",
               "usage": "[options] [environment]",
-              "filePath": "commands/account.environment._js",
+              "filePath": "commands/account.environment.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8153,7 +8153,7 @@
               "description": "Creates a new active directory application",
               "fullName": "ad app create",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.application._js",
+              "filePath": "commands/arm/ad/ad.application.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8271,7 +8271,7 @@
               "description": "Deletes the active directory application",
               "fullName": "ad app delete",
               "usage": "[options] <object-id>",
-              "filePath": "commands/arm/ad/ad.application._js",
+              "filePath": "commands/arm/ad/ad.application.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8332,7 +8332,7 @@
               "description": "Get active directory groups in current subscription's tenant",
               "fullName": "ad group list",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.groups._js",
+              "filePath": "commands/arm/ad/ad.groups.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8375,7 +8375,7 @@
               "description": "Get active directory groups",
               "fullName": "ad group show",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.groups._js",
+              "filePath": "commands/arm/ad/ad.groups.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8434,7 +8434,7 @@
                   "description": "Provides an active directory sub group or member info",
                   "fullName": "ad group member list",
                   "usage": "[options] [objectId]",
-                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "filePath": "commands/arm/ad/ad.groups.js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -8488,7 +8488,7 @@
               "description": "Get all active directory service principals in current subscription's tenant",
               "fullName": "ad sp list",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.servicePrincipals._js",
+              "filePath": "commands/arm/ad/ad.servicePrincipals.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8531,7 +8531,7 @@
               "description": "Get active directory service principals",
               "fullName": "ad sp show",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.servicePrincipals._js",
+              "filePath": "commands/arm/ad/ad.servicePrincipals.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8589,7 +8589,7 @@
               "description": "Create active directory service principal",
               "fullName": "ad sp create",
               "usage": "[options] <application-id>",
-              "filePath": "commands/arm/ad/ad.servicePrincipals._js",
+              "filePath": "commands/arm/ad/ad.servicePrincipals.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8631,7 +8631,7 @@
               "description": "Deletes active directory service principal",
               "fullName": "ad sp delete",
               "usage": "[options] <object-id>",
-              "filePath": "commands/arm/ad/ad.servicePrincipals._js",
+              "filePath": "commands/arm/ad/ad.servicePrincipals.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8692,7 +8692,7 @@
               "description": "Get all active directory users in current subscription's tenant",
               "fullName": "ad user list",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.users._js",
+              "filePath": "commands/arm/ad/ad.users.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8735,7 +8735,7 @@
               "description": "Get an active directory user",
               "fullName": "ad user show",
               "usage": "[options]",
-              "filePath": "commands/arm/ad/ad.users._js",
+              "filePath": "commands/arm/ad/ad.users.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -8805,7 +8805,7 @@
           "description": "List currently deployed ApiApps in a subscription or resource group",
           "fullName": "apiapp list",
           "usage": "[options] [resource-group]",
-          "filePath": "commands/arm/apiapp/apiapp._js",
+          "filePath": "commands/arm/apiapp/apiapp.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -8866,7 +8866,7 @@
           "description": "Get detailed information about a deployed ApiApp",
           "fullName": "apiapp show",
           "usage": "[options] [resource-group] [name]",
-          "filePath": "commands/arm/apiapp/apiapp._js",
+          "filePath": "commands/arm/apiapp/apiapp.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -8927,7 +8927,7 @@
           "description": "Create a new ApiApp instance",
           "fullName": "apiapp create",
           "usage": "[options] [resource-group] [name] [plan]",
-          "filePath": "commands/arm/apiapp/apiapp._js",
+          "filePath": "commands/arm/apiapp/apiapp.js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -9039,7 +9039,7 @@
               "description": "Create an ApiApp package that can be published",
               "fullName": "apiapp package create",
               "usage": "[options] [packageSource]",
-              "filePath": "commands/arm/apiapp/apiapp.package._js",
+              "filePath": "commands/arm/apiapp/apiapp.package.js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -15100,11 +15100,11 @@
                   "description": "resource Id."
                 },
                 {
-                  "flags": "-s, --storageId <storageId>",
+                  "flags": "-a, --storageId <storageId>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-a",
                   "long": "--storageId",
                   "description": "storage account Id."
                 },

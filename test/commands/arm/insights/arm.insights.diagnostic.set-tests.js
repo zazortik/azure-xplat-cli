@@ -61,7 +61,7 @@ describe('arm', function () {
 
       describe('set', function() {
         it('should work enable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e true --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e true --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -79,7 +79,7 @@ describe('arm', function () {
         });
 
         it('should work disable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e false --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e false --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -97,7 +97,7 @@ describe('arm', function () {
         });
 
         it('should work enable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e true -t PT1M --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -115,7 +115,7 @@ describe('arm', function () {
         });
 
         it('should work enable one category only', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e true -c TestLog2 --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e true -c TestLog2 --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -133,7 +133,7 @@ describe('arm', function () {
         });
 
         it('should work disable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e false -t PT1M --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e false -t PT1M --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -151,7 +151,7 @@ describe('arm', function () {
         });
 
         it('should work enable timegrain and category', function (done) {
-          suite.execute('insights diagnostic set -i %s -s %s -e true -t PT1M -c TestLog1,TestLog2 --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M -c TestLog1,TestLog2 --json', resourceId, storageId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
