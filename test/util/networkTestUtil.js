@@ -121,6 +121,13 @@ networkTestUtil.prototype.createPublicIp = function(groupName, publicipPrefix, l
     callback();
   });
 };
+networkTestUtil.prototype.createPublicIpdns = function(groupName, publicipPrefix, location, suite, callback) {
+  var cmd = util.format('network public-ip create %s %s --location %s -d %s --json', groupName, publicipPrefix, location, publicipPrefix).split(' ');
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
 networkTestUtil.prototype.showPublicIp = function(groupName, publicipPrefix, suite, callback) {
   var cmd = util.format('network public-ip show %s %s --json', groupName, publicipPrefix).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -303,7 +310,7 @@ networkTestUtil.prototype.deleteUsedDns = function(groupName, dnszonePrefix, sui
     callback();
 };
 networkTestUtil.prototype.createTrafficManagerProfile = function(groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path, suite, callback) {
-  var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
+  var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -e %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
