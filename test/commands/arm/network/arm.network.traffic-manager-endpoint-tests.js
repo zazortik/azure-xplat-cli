@@ -25,6 +25,7 @@ var groupName,
   location,
   trafficMPPrefix = 'xplatTestTMPE',
   trafficMPEndPtPrefix = 'xplatTestTMPEndPoint',
+  trafficMPEndPtPrefixNest = 'xplatTestTMPEndPointNest',
   reldns = 'xplatTMPEndptdns';
 var profile_status = 'Enabled',
   routing_method = 'Weighted',
@@ -33,13 +34,15 @@ var profile_status = 'Enabled',
   monitor_path = '/index.html',
   monitor_port = '80';
 
-var endptType = 'externalEndpoint',
+var endptType = 'ExternalEndpoints',
   endptTarget,
   endpointStatus = 'Enabled',
   endptWeight = '100',
   endptPriority = '322';
-var endptTypeN = 'externalEndpoint',
+var endptTypeN = 'NestedEndpoints',
+  endptTypeA = 'AzureEndpoints',
   endptTargetN,
+  publicipPrefix = 'xplattestpi',
   endpointStatusN = 'Disabled',
   endptWeightN = '120',
   endptPriorityN = '300';
@@ -61,6 +64,7 @@ describe('arm', function() {
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         trafficMPPrefix = suite.isMocked ? trafficMPPrefix : suite.generateId(trafficMPPrefix, null);
         trafficMPEndPtPrefix = suite.isMocked ? trafficMPEndPtPrefix : suite.generateId(trafficMPEndPtPrefix, null);
+        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
         reldns = suite.generateId(reldns, null);
         endptTarget = reldns + '.azure.com';
         endptTargetN = reldns + '.foo.com';
@@ -81,10 +85,10 @@ describe('arm', function() {
 
     describe('traffic-manager profile endpoint', function() {
 
-      it('create should pass', function(done) {
+      it('create External Endpoints type should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function() {
           networkUtil.createTrafficManagerProfile(groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path, suite, function() {
-            var cmd = util.format('network traffic-manager profile endpoint create %s %s %s %s -y %s -e %s -u %s -w %s -p %s  --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, location, endptType, endptTarget, endpointStatus, endptWeight, endptPriority).split(' ');
+            var cmd = util.format('network traffic-manager profile endpoint create %s %s %s -l %s -y %s -e %s -u %s -w %s -p %s --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, location, endptType, endptTarget, endpointStatus, endptWeight, endptPriority).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();
@@ -92,17 +96,36 @@ describe('arm', function() {
           });
         });
       });
-
-      it('set should pass', function(done) {
-        var cmd = util.format('network traffic-manager profile endpoint set %s %s %s -y %s -e %s -u %s -w %s -p %s  --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, endptTypeN, endptTargetN, endpointStatusN, endptWeightN, endptPriorityN).split(' ');
+      it('create Nested Endpoints type should pass', function(done) {
+        networkUtil.createPublicIpdns(groupName, publicipPrefix, location, suite, function() {
+          networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
+            var cmd = util.format('network traffic-manager profile endpoint create %s %s %s -l %s -y %s -i %s -u %s -w %s -p %s --json', groupName, trafficMPPrefix, trafficMPEndPtPrefixNest, location, endptTypeN, networkTestUtil.publicIpId, endpointStatus, endptWeight, endptPriorityN).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
+      it('show should display details of profile endpoint', function(done) {
+        var cmd = util.format('network traffic-manager profile endpoint show %s %s %s %s --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, endptType).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.name.should.equal(trafficMPEndPtPrefix);
+          done();
+        });
+      });
+      it('set should modify profile endpoint', function(done) {
+        var cmd = util.format('network traffic-manager profile endpoint set %s %s %s -y %s -e %s -u %s -w %s -p %s --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, endptType, endptTargetN, endpointStatusN, endptWeightN, endptPriorityN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
 
-      it('delete should pass', function(done) {
-        var cmd = util.format('network traffic-manager profile endpoint delete %s %s %s --quiet --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix).split(' ');
+      it('delete should delete profile endpoint', function(done) {
+        var cmd = util.format('network traffic-manager profile endpoint delete %s %s %s %s --quiet --json', groupName, trafficMPPrefix, trafficMPEndPtPrefix, endptType).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
