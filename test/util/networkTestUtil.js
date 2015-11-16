@@ -41,6 +41,7 @@ function networkTestUtil() {
   this.reversefqdn1 = '';
   this.reversefqdn = '';
   this.timeout = 800000;
+  this.gatewaytimeout = 3500000;
 }
 
 networkTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
@@ -318,6 +319,13 @@ networkTestUtil.prototype.createVnetWithAddress = function(groupName, vnetPrefix
 };
 networkTestUtil.prototype.createSubnetWithAddress = function(groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, callback) {
   var cmd = util.format('network vnet subnet create %s %s %s -a %s --json', groupName, vnetPrefix, subnetprefix, subnetAddressPrefix).split(' ');
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
+networkTestUtil.prototype.createGateway = function(groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags, suite, callback) {
+  var cmd = util.format('network gateway vnet create -g %s -n %s -l %s -y %s -p %s -m %s -e %s -a %s -b %s -t %s --json', groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
