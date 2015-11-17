@@ -120,7 +120,7 @@
     "url": "https://github.com/Azure/azure-xplat-cli/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
+    "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
     "unit-arm": "node scripts/unit.js testlistarm.txt",
