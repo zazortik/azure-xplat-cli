@@ -110,7 +110,8 @@ describe('arm', function() {
                 vmSize, diskEncryptionKeyVaultId, diskEncryptionKeySecretUrl, keyEncryptionKeyVaultId, keyEncryptionKeyUrl).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.not.equal(0);
-              should(result.errorText.indexOf('EncryptionSettings') > -1).ok;
+              var errorTxt = util.format(' %s is not a valid versioned Key Vault Key URL. It should be in the format https://<vaultEndpoint>/keys/<keyName>/<keyVersion>.', keyEncryptionKeyUrl);
+              should(result.errorText.indexOf(errorTxt) > -1).ok;
               done();
             });
           });

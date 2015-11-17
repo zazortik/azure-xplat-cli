@@ -9523,7 +9523,7 @@
                   "name": "show",
                   "description": "shows the specified job and additional data if desired.",
                   "fullName": "datalake analytics job show",
-                  "usage": "[options] <accountName> <jobId> <includeDebugInfo> <includeStatistics> <resource-group>",
+                  "usage": "[options] <accountName> <jobId>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9611,7 +9611,7 @@
                   "name": "cancel",
                   "description": "cancels the specified job.",
                   "fullName": "datalake analytics job cancel",
-                  "usage": "[options] <accountName> <jobId> <resource-group>",
+                  "usage": "[options] <accountName> <jobId>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9690,7 +9690,7 @@
                   "name": "list",
                   "description": "lists the jobs in the specified account given the specified filters and criteria.",
                   "fullName": "datalake analytics job list",
-                  "usage": "[options] <accountName> <jobName> <submitter> <submittedAfter> <submittedBefore> <state> <result> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9815,7 +9815,7 @@
                   "name": "list",
                   "description": "Lists all of the specified catalog item types under the path or, if the full path is given, just the single catalog item at that path.",
                   "fullName": "datalake analytics catalog list",
-                  "usage": "[options] <accountName> <itemType> <itemPath> <resource-group>",
+                  "usage": "[options] <accountName> <itemType> <itemPath>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9868,7 +9868,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--itemPath",
-                      "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>."
+                      "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>. This MUST be null when listing all databases."
                     },
                     {
                       "flags": "-g --resource-group <resource-group>",
@@ -9903,7 +9903,7 @@
                       "name": "create",
                       "description": "Creates the specified secret for the specified database.",
                       "fullName": "datalake analytics catalog secret create",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10000,7 +10000,7 @@
                       "name": "set",
                       "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
                       "fullName": "datalake analytics catalog secret set",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10097,7 +10097,7 @@
                       "name": "delete",
                       "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
                       "fullName": "datalake analytics catalog secret delete",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10197,7 +10197,7 @@
                   "name": "list",
                   "description": "List all Data Lake Analytics accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake analytics account list",
-                  "usage": "[options] <resource-group>",
+                  "usage": "[options]",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10249,7 +10249,7 @@
                   "name": "show",
                   "description": "Shows a Data Lake Analytics account based on account name",
                   "fullName": "datalake analytics account show",
-                  "usage": "[options] <accountName> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10310,7 +10310,7 @@
                   "name": "delete",
                   "description": "Deletes a Data Lake Analytics Account based on account name",
                   "fullName": "datalake analytics account delete",
-                  "usage": "[options] <accountName> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10468,7 +10468,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Analytics Account",
                   "fullName": "datalake analytics account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultDataLakeStore>",
+                  "usage": "[options] <accountName> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10860,7 +10860,7 @@
                   "description": "Lists the contents of the specified path (files and folders).",
                   "fullName": "datalake store filesystem list",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10921,7 +10921,7 @@
                   "description": "Gets the specified Data Lake Store file or folder details",
                   "fullName": "datalake store filesystem show",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10982,7 +10982,7 @@
                   "description": "deletes the specified Data Lake Store file or folder, with the option for recursive delete (if the folder has contents)",
                   "fullName": "datalake store filesystem delete",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11028,8 +11028,8 @@
                       "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
                     },
                     {
-                      "flags": "-r --recurse <recurse>",
-                      "required": -14,
+                      "flags": "-r --recurse",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-r",
@@ -11037,8 +11037,8 @@
                       "description": "optionally indicates that this should be a recursive delete, which will delete a folder and all contents underneath it."
                     },
                     {
-                      "flags": "-q --quiet <quiet>",
-                      "required": -12,
+                      "flags": "-q --quiet",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-q",
@@ -11060,8 +11060,8 @@
                   "name": "create",
                   "description": "Creates the specified folder or file, with the option to include content in file creation.",
                   "fullName": "datalake store filesystem create",
-                  "usage": "[options] <accountName> <path> <value>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11149,7 +11149,7 @@
                   "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem import",
                   "usage": "[options] <accountName> <path> <destination>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11227,8 +11227,8 @@
                   "name": "concat",
                   "description": "Concatenates the specified list of files into the specified destination file.",
                   "fullName": "datalake store filesystem concat",
-                  "usage": "[options] <accountName> <paths> <destination> <force>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <paths> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11306,8 +11306,8 @@
                   "name": "move",
                   "description": "Moves (renames) the specified file or folder into the specified destination file or folder.",
                   "fullName": "datalake store filesystem move",
-                  "usage": "[options] <accountName> <path> <destination> <force>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11386,7 +11386,7 @@
                   "description": "Appends the specified content to the end of the Data Lake Store file path specified.",
                   "fullName": "datalake store filesystem addcontent",
                   "usage": "[options] <accountName> <path> <value>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11456,7 +11456,7 @@
                   "description": "Downloads the specified file to the target location. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem export",
                   "usage": "[options] <accountName> <path> <destination>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11534,8 +11534,8 @@
                   "name": "read",
                   "description": "Previews the specified Data Lake Store file starting at index 0 (or the specified offset) until the length is reached, displaying the results to the console.",
                   "fullName": "datalake store filesystem read",
-                  "usage": "[options] <accountName> <path> <length> <offset>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path> <length>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11624,7 +11624,7 @@
                   "description": "Gets the specified Data Lake Store folder ACL",
                   "fullName": "datalake store permissions show",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11684,8 +11684,8 @@
                   "name": "delete",
                   "description": "Deletes the entire ACL associated with a folder",
                   "fullName": "datalake store permissions delete",
-                  "usage": "[options] <accountName> <path> <default>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11764,7 +11764,7 @@
                   "description": "sets the specified Data Lake Store folder ACL (overwriting the previous ACL entries)",
                   "fullName": "datalake store permissions set",
                   "usage": "[options] <accountName> <path> <aclSpec>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11852,7 +11852,7 @@
                       "description": "deletes the specific ACE entry or entries from the path",
                       "fullName": "datalake store permissions entry delete",
                       "usage": "[options] <accountName> <path> <aclEntries>",
-                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "filePath": "commands/arm/datalakestore/datalakestore._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -11931,7 +11931,7 @@
                       "description": "sets the specified Data Lake Store folder ACE entry or entries",
                       "fullName": "datalake store permissions entry set",
                       "usage": "[options] <accountName> <path> <aclEntries>",
-                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "filePath": "commands/arm/datalakestore/datalakestore._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -12021,8 +12021,8 @@
                   "name": "list",
                   "description": "List all Data Lake Store accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake store account list",
-                  "usage": "[options] <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12073,8 +12073,8 @@
                   "name": "show",
                   "description": "Shows a Data Lake Store Account based on account name",
                   "fullName": "datalake store account show",
-                  "usage": "[options] <accountName> <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12134,8 +12134,8 @@
                   "name": "delete",
                   "description": "Deletes a Data Lake Store Account based on account name",
                   "fullName": "datalake store account delete",
-                  "usage": "[options] <accountName> <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12204,8 +12204,8 @@
                   "name": "create",
                   "description": "Creates a Data Lake Store Account",
                   "fullName": "datalake store account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <location> <resource-group>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12292,8 +12292,8 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Store Account",
                   "fullName": "datalake store account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultGroup>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -24140,6 +24140,15 @@
                       "description": "the name of the profile"
                     },
                     {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
                       "flags": "-u, --profile-status <profile-status> ",
                       "required": -22,
                       "optional": 0,
@@ -24167,11 +24176,11 @@
                       "description": "relative DNS name of the profile e.g. .trafficmanager.net"
                     },
                     {
-                      "flags": "-l  --ttl <ttl>",
+                      "flags": "-e, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-l",
+                      "short": "-e",
                       "long": "--ttl",
                       "description": "time to live in specified in seconds"
                     },
@@ -24291,11 +24300,11 @@
                       "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
-                      "flags": "-l  --ttl <ttl>",
+                      "flags": "-e, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-l",
+                      "short": "-e",
                       "long": "--ttl",
                       "description": "time to live specified in seconds"
                     },
@@ -24611,7 +24620,7 @@
                       "name": "create",
                       "description": "Create an endpoint in Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint create",
-                      "usage": "[options] <resource-group> <profile-name> <name> <endpoint-location>",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type> <location>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24667,22 +24676,31 @@
                           "description": "the name of the endpoint"
                         },
                         {
-                          "flags": "-l, --endpoint-location <endpoint-location>",
-                          "required": -25,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-l",
-                          "long": "--endpoint-location",
-                          "description": "the location of the endpoint"
-                        },
-                        {
                           "flags": "-y, --type <type>",
                           "required": -12,
                           "optional": 0,
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-l, --location <location>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "the endpoint location"
+                        },
+                        {
+                          "flags": "-u, --status <status>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--status",
+                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24694,13 +24712,13 @@
                           "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
                         },
                         {
-                          "flags": "-u, --endpoint-status <endpoint-status>",
-                          "required": -23,
+                          "flags": "-i, --target-resource-id <target-resource-id>",
+                          "required": -26,
                           "optional": 0,
                           "bool": true,
-                          "short": "-u",
-                          "long": "--endpoint-status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                          "short": "-i",
+                          "long": "--target-resource-id",
+                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
                         },
                         {
                           "flags": "-w, --weight <weight>",
@@ -24709,7 +24727,7 @@
                           "bool": true,
                           "short": "-w",
                           "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm"
+                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
                         },
                         {
                           "flags": "-p, --priority <priority>",
@@ -24718,7 +24736,7 @@
                           "bool": true,
                           "short": "-p",
                           "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000]"
+                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
@@ -24735,7 +24753,7 @@
                       "name": "set",
                       "description": "Set an endpoint in a Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint set",
-                      "usage": "[options] <resource-group> <profile-name> <name>",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24797,7 +24815,25 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-l, --location <location>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "the endpoint location"
+                        },
+                        {
+                          "flags": "-u, --status <status>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--status",
+                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24809,13 +24845,13 @@
                           "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
                         },
                         {
-                          "flags": "-u, --endpoint-status <endpoint-status>",
-                          "required": -23,
+                          "flags": "-i, --target-resource-id <target-resource-id>",
+                          "required": -26,
                           "optional": 0,
                           "bool": true,
-                          "short": "-u",
-                          "long": "--endpoint-status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                          "short": "-i",
+                          "long": "--target-resource-id",
+                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
                         },
                         {
                           "flags": "-w, --weight <weight>",
@@ -24824,7 +24860,7 @@
                           "bool": true,
                           "short": "-w",
                           "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm"
+                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
                         },
                         {
                           "flags": "-p, --priority <priority>",
@@ -24833,7 +24869,7 @@
                           "bool": true,
                           "short": "-p",
                           "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000]"
+                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
@@ -24847,10 +24883,10 @@
                       ]
                     },
                     {
-                      "name": "delete",
-                      "description": "Delete an endpoint from a Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint delete",
-                      "usage": "[options] <resource-group> <profile-name> <name>",
+                      "name": "show",
+                      "description": "Get an endpoint in Traffic Manager profile",
+                      "fullName": "network traffic-manager profile endpoint show",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24904,6 +24940,94 @@
                           "short": "-n",
                           "long": "--name",
                           "description": "the name of the endpoint"
+                        },
+                        {
+                          "flags": "-y, --type <type>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-y",
+                          "long": "--type",
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Delete an endpoint from a Traffic Manager profile",
+                      "fullName": "network traffic-manager profile endpoint delete",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-f, --profile-name <profile-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-f",
+                          "long": "--profile-name",
+                          "description": "the profile name"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the endpoint"
+                        },
+                        {
+                          "flags": "-y, --type <type>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-y",
+                          "long": "--type",
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-q, --quiet",
@@ -26425,6 +26549,332 @@
                 }
               ],
               "categories": {}
+            },
+            "connection": {
+              "name": "connection",
+              "description": "Commands to manage gateway connection",
+              "fullName": "network gateway connection",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create a gateway connection",
+                  "fullName": "network gateway connection create",
+                  "usage": "[options] <resource-group> <name> <location>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
+                      "flags": "-i, --vnet-gateway1 <vnet-gateway1>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--vnet-gateway1",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-e, --vnet-gateway2 <vnet-gateway2>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--vnet-gateway2",
+                      "description": "the name of the connected virtual network gateway"
+                    },
+                    {
+                      "flags": "-d, --lnet-gateway2 <lnet-gateway2>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--lnet-gateway2",
+                      "description": "the name of the connected local network gateway"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the connection type\n   Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
+                    },
+                    {
+                      "flags": "-w, --routing-weight <routing-weight>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--routing-weight",
+                      "description": "the routing weight"
+                    },
+                    {
+                      "flags": "-k, --shared-key <shared-key>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--shared-key",
+                      "description": "the IPsec shared key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this connection.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all gateway connections",
+                  "fullName": "network gateway connection list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Get details about gateway connection",
+                  "fullName": "network gateway connection show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a gateway connection",
+                  "fullName": "network gateway connection delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
             }
           }
         },
@@ -27592,7 +28042,7 @@
               "bool": true,
               "short": "-t",
               "long": "--key-type",
-              "description": "type of key to renew"
+              "description": "type of key to renew. Valid values are: 'Primary', 'Secondary'."
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -29742,12 +30192,12 @@
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             },
             {
-              "flags": "--enable-boot-diagnostics",
+              "flags": "--disable-boot-diagnostics",
               "required": 0,
               "optional": 0,
               "bool": true,
-              "long": "--enable-boot-diagnostics",
-              "description": "The switch parameter to enable the boot diagnostics for VM."
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics (by default enabled) for VM."
             },
             {
               "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
@@ -29755,7 +30205,7 @@
               "optional": 0,
               "bool": true,
               "long": "--boot-diagnostics-storage-uri",
-              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
+              "description": "Optional. Specify storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             },
             {
               "flags": "--disable-bginfo-extension",
