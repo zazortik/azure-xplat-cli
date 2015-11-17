@@ -29,39 +29,39 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateDns/providers/Microsoft.Network/dnszones/xplattestgcreatedns.xplattestdns?api-version=2015-05-04-preview')
-  .reply(200, "{\"id\":\"\\/subscriptions\\/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948\\/resourceGroups\\/xplatTestGCreateDns\\/providers\\/Microsoft.Network\\/dnszones\\/xplattestgcreatedns.xplattestdns\",\"name\":\"xplattestgcreatedns.xplattestdns\",\"type\":\"Microsoft.Network\\/dnszones\",\"etag\":\"4d395543-1e6e-496e-93e3-8b9ce5445466\",\"location\":\"global\",\"tags\":{},\"properties\":{\"maxNumberOfRecordSets\":1000,\"numberOfRecordSets\":2}}", { 'cache-control': 'private',
+  .reply(200, "{\"id\":\"\\/subscriptions\\/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948\\/resourceGroups\\/xplatTestGCreateDns\\/providers\\/Microsoft.Network\\/dnszones\\/xplattestgcreatedns.xplattestdns\",\"name\":\"xplattestgcreatedns.xplattestdns\",\"type\":\"Microsoft.Network\\/dnszones\",\"etag\":\"a63b70fe-7116-4cdb-b700-424d430eb1b6\",\"location\":\"global\",\"tags\":{},\"properties\":{\"maxNumberOfRecordSets\":1000,\"numberOfRecordSets\":2}}", { 'cache-control': 'private',
   'content-length': '395',
   'content-type': 'application/json; charset=utf-8',
-  etag: '4d395543-1e6e-496e-93e3-8b9ce5445466',
+  etag: 'a63b70fe-7116-4cdb-b700-424d430eb1b6',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '8a6d26f2-a51a-4730-a2a7-5b042771e846',
+  'x-ms-request-id': '40ad2381-9fbf-41f5-ba18-2c7b1a0ba10a',
   server: 'Microsoft-IIS/7.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-resource-requests': '11993',
-  'x-ms-correlation-request-id': 'f7194ac7-69e4-4bb1-b6b3-01fe6dc4d3e7',
-  'x-ms-routing-request-id': 'WESTINDIA:20151027T143831Z:f7194ac7-69e4-4bb1-b6b3-01fe6dc4d3e7',
+  'x-ms-ratelimit-remaining-subscription-resource-requests': '11997',
+  'x-ms-correlation-request-id': '21b27b86-1f8a-4900-a697-d7e37d799753',
+  'x-ms-routing-request-id': 'CENTRALINDIA:20151105T075939Z:21b27b86-1f8a-4900-a697-d7e37d799753',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 27 Oct 2015 14:38:31 GMT',
+  date: 'Thu, 05 Nov 2015 07:59:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateDns/providers/Microsoft.Network/dnszones/xplattestgcreatedns.xplattestdns?api-version=2015-05-04-preview')
-  .reply(200, "{\"id\":\"\\/subscriptions\\/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948\\/resourceGroups\\/xplatTestGCreateDns\\/providers\\/Microsoft.Network\\/dnszones\\/xplattestgcreatedns.xplattestdns\",\"name\":\"xplattestgcreatedns.xplattestdns\",\"type\":\"Microsoft.Network\\/dnszones\",\"etag\":\"4d395543-1e6e-496e-93e3-8b9ce5445466\",\"location\":\"global\",\"tags\":{},\"properties\":{\"maxNumberOfRecordSets\":1000,\"numberOfRecordSets\":2}}", { 'cache-control': 'private',
+  .reply(200, "{\"id\":\"\\/subscriptions\\/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948\\/resourceGroups\\/xplatTestGCreateDns\\/providers\\/Microsoft.Network\\/dnszones\\/xplattestgcreatedns.xplattestdns\",\"name\":\"xplattestgcreatedns.xplattestdns\",\"type\":\"Microsoft.Network\\/dnszones\",\"etag\":\"a63b70fe-7116-4cdb-b700-424d430eb1b6\",\"location\":\"global\",\"tags\":{},\"properties\":{\"maxNumberOfRecordSets\":1000,\"numberOfRecordSets\":2}}", { 'cache-control': 'private',
   'content-length': '395',
   'content-type': 'application/json; charset=utf-8',
-  etag: '4d395543-1e6e-496e-93e3-8b9ce5445466',
+  etag: 'a63b70fe-7116-4cdb-b700-424d430eb1b6',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '8a6d26f2-a51a-4730-a2a7-5b042771e846',
+  'x-ms-request-id': '40ad2381-9fbf-41f5-ba18-2c7b1a0ba10a',
   server: 'Microsoft-IIS/7.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-resource-requests': '11993',
-  'x-ms-correlation-request-id': 'f7194ac7-69e4-4bb1-b6b3-01fe6dc4d3e7',
-  'x-ms-routing-request-id': 'WESTINDIA:20151027T143831Z:f7194ac7-69e4-4bb1-b6b3-01fe6dc4d3e7',
+  'x-ms-ratelimit-remaining-subscription-resource-requests': '11997',
+  'x-ms-correlation-request-id': '21b27b86-1f8a-4900-a697-d7e37d799753',
+  'x-ms-routing-request-id': 'CENTRALINDIA:20151105T075939Z:21b27b86-1f8a-4900-a697-d7e37d799753',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 27 Oct 2015 14:38:31 GMT',
+  date: 'Thu, 05 Nov 2015 07:59:39 GMT',
   connection: 'close' });
  return result; }]];

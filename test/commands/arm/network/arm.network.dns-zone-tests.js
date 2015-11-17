@@ -28,6 +28,17 @@ var groupName,
   dnsZonePrefixImport = 'example1.com',
   importFilePath = 'test/data/zone_file_origin.txt',
   mergeFilePath = 'test/data/merge1.txt',
+  exportFilePath = 'test/data/zone_export.txt',
+  dnszoneRecPrefix = 'www', // taken from zone_file_origin.txt 
+  dnszoneRecPrefixmerge = 'test-mx2', // taken from merge1.txt 
+  dnszoneRecPrefixMX1preference = 10,
+  dnszoneRecPrefixMX1exchange = 'mail.com.',
+  dnszoneRecPrefixMX2preference = 10,
+  dnszoneRecPrefixMX2exchange = 'mail2.com.',
+  dnszoneRecTtl = 5,
+  dnszoneRecIpaddress = '2.3.4.5',
+  DnstypeA = 'A',
+  DnstypeMX = 'MX',
   tag = 'priority=medium;size=high';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -115,7 +126,7 @@ describe('arm', function() {
           done();
         });
       });
-	  
+
       it('parse-only import should parse the file', function(done) {
         var cmd = util.format('network dns zone import %s %s %s --parse-only --json', groupName, dnsZonePrefixImport, importFilePath).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -131,6 +142,18 @@ describe('arm', function() {
           done();
         });
       });
+
+      it('verify dns record-set from the dns import should pass', function(done) {
+        var cmd = util.format('network dns record-set show %s %s %s %s --json', groupName, dnsZonePrefixImport, dnszoneRecPrefix, DnstypeA).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allresources = JSON.parse(result.text);
+          allresources.name.should.equal(dnszoneRecPrefix);
+          allresources.properties.aRecords[0].ipv4Address.should.equal(dnszoneRecIpaddress);
+          allresources.properties.ttl.should.equal(dnszoneRecTtl);
+          done();
+        });
+      });
       it('force overwrite of existing record sets in dns-zone', function(done) {
         var cmd = util.format('network dns zone import %s %s %s --force --json', groupName, dnsZonePrefixImport, mergeFilePath).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -138,6 +161,49 @@ describe('arm', function() {
           done();
         });
       });
+      it('verify dns record-set from the dns import force overwrite should pass', function(done) {
+        var cmd = util.format('network dns record-set show %s %s %s %s --json', groupName, dnsZonePrefixImport, dnszoneRecPrefixmerge, DnstypeMX).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allresources = JSON.parse(result.text);
+          allresources.name.should.equal(dnszoneRecPrefixmerge);
+          allresources.properties.mxRecords[0].preference.should.equal(dnszoneRecPrefixMX1preference);
+          allresources.properties.mxRecords[0].exchange.should.equal(dnszoneRecPrefixMX1exchange);
+          allresources.properties.mxRecords[1].preference.should.equal(dnszoneRecPrefixMX2preference);
+          allresources.properties.mxRecords[1].exchange.should.equal(dnszoneRecPrefixMX2exchange);
+
+          done();
+        });
+      });
+      it('export should export in to a zone file', function(done) {
+        var cmd = util.format('network dns zone export %s %s %s -q --json', groupName, dnsZonePrefixImport, exportFilePath).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('import exported file should import dns-zone', function(done) {
+        var cmd = util.format('network dns zone import %s %s %s --json', groupName, dnsZonePrefixImport, exportFilePath).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('verify dns record-set to verify export file is working fine', function(done) {
+        var cmd = util.format('network dns record-set show %s %s %s %s --json', groupName, dnsZonePrefixImport, dnszoneRecPrefixmerge, DnstypeMX).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allresources = JSON.parse(result.text);
+          allresources.name.should.equal(dnszoneRecPrefixmerge);
+          allresources.properties.mxRecords[0].preference.should.equal(dnszoneRecPrefixMX1preference);
+          allresources.properties.mxRecords[0].exchange.should.equal(dnszoneRecPrefixMX1exchange);
+          allresources.properties.mxRecords[1].preference.should.equal(dnszoneRecPrefixMX2preference);
+          allresources.properties.mxRecords[1].exchange.should.equal(dnszoneRecPrefixMX2exchange);
+
+          done();
+        });
+      });
+
     });
   });
 });
