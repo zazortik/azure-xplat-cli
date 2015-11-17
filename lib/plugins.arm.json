@@ -15008,6 +15008,138 @@
             }
           }
         },
+        "diagnostic": {
+          "name": "diagnostic",
+          "description": "Configure diagnostics for resources",
+          "fullName": "insights diagnostic",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "get",
+              "description": "Get the diagnostics for the resource.",
+              "fullName": "insights diagnostic get",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.diagnostic.get._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--resourceId",
+                  "description": "resource Id."
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set the diagnostics for the resource.",
+              "fullName": "insights diagnostic set",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.diagnostic.set._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--resourceId",
+                  "description": "resource Id."
+                },
+                {
+                  "flags": "-a, --storageId <storageId>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--storageId",
+                  "description": "storage account Id."
+                },
+                {
+                  "flags": "-e, --enabled <enabled>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--enabled",
+                  "description": "whether the configuration is enabled or disabled."
+                },
+                {
+                  "flags": "-c, --categories <categories>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--categories",
+                  "description": "categories to be affected. Valid values vary per resource type."
+                },
+                {
+                  "flags": "-t, --timegrains <timegrains>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--timegrains",
+                  "description": "timegrains to be affected in ISO 8601 format. Example: 'PT1M' for 1 minute."
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
         "metrics": {
           "name": "metrics",
           "description": "Retrieve metrics values resource",
