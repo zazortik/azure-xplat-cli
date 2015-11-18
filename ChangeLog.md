@@ -1,3 +1,7 @@
+## 2015.11.18 Version 0.9.12
+* Authorization
+  * Fixed json output format for role definition commands
+  * Fixed roleId in authorization change log command to be a guid
 ## 2015.10.29 Version 0.9.11
 * Authorization
   * Add paging support for role assignment list calls
