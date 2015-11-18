@@ -13123,7 +13123,16 @@
                   "bool": true,
                   "short": "-m",
                   "long": "--mode",
-                  "description": "the deployment mode: specify one of Incremental or Complete. If no mode is specified, Incremental is used as default"
+                  "description": "the deployment mode: specify one of Incremental or Complete. If no mode is specified, Incremental is used as default. When Complete mode is used, all the resources in the specified resource group, which are not included in the template, will be deleted."
+                },
+                {
+                  "flags": "-q --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (when complete mode is specified, do not ask for deployment confirmation)"
                 },
                 {
                   "flags": "--nowait",
@@ -13148,15 +13157,6 @@
                   "bool": true,
                   "long": "--subscription",
                   "description": "the subscription identifier"
-                },
-                {
-                  "flags": "-q --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode (do not ask for stop deployment confirmation)"
                 }
               ]
             },
