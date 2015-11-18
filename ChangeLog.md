@@ -2,7 +2,15 @@
 * VM
   * Chef Extension
     * Implemented new option --client-pem for set-chef extension commands
-
+## 2015.11.17 Version 0.9.12
+* DataLake
+  *Fix casing for "requires()" for DataLake* modules, enabling functionality on unix machines.
+  *Fix a bug in catalog item enumeration
+  *Fix a bug in downloading files to support binary files
+  *Fix usage bugs for DataLake* commands.
+  *Fix output logic for readability of internal arrays
+  *Fix a bug in ADLA account creation where ADLS accounts were not properly associated.
+  *Updated switch parameters to properly be treated as switch parameters that do not take a value
 ## 2015.10.29 Version 0.9.11
 * Authorization
   * Add paging support for role assignment list calls
