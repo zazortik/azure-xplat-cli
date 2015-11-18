@@ -9523,7 +9523,7 @@
                   "name": "show",
                   "description": "shows the specified job and additional data if desired.",
                   "fullName": "datalake analytics job show",
-                  "usage": "[options] <accountName> <jobId> <includeDebugInfo> <includeStatistics> <resource-group>",
+                  "usage": "[options] <accountName> <jobId>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9611,7 +9611,7 @@
                   "name": "cancel",
                   "description": "cancels the specified job.",
                   "fullName": "datalake analytics job cancel",
-                  "usage": "[options] <accountName> <jobId> <resource-group>",
+                  "usage": "[options] <accountName> <jobId>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9690,7 +9690,7 @@
                   "name": "list",
                   "description": "lists the jobs in the specified account given the specified filters and criteria.",
                   "fullName": "datalake analytics job list",
-                  "usage": "[options] <accountName> <jobName> <submitter> <submittedAfter> <submittedBefore> <state> <result> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9815,7 +9815,7 @@
                   "name": "list",
                   "description": "Lists all of the specified catalog item types under the path or, if the full path is given, just the single catalog item at that path.",
                   "fullName": "datalake analytics catalog list",
-                  "usage": "[options] <accountName> <itemType> <itemPath> <resource-group>",
+                  "usage": "[options] <accountName> <itemType> <itemPath>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -9868,7 +9868,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--itemPath",
-                      "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>."
+                      "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>. This MUST be null when listing all databases."
                     },
                     {
                       "flags": "-g --resource-group <resource-group>",
@@ -9903,7 +9903,7 @@
                       "name": "create",
                       "description": "Creates the specified secret for the specified database.",
                       "fullName": "datalake analytics catalog secret create",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10000,7 +10000,7 @@
                       "name": "set",
                       "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
                       "fullName": "datalake analytics catalog secret set",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10097,7 +10097,7 @@
                       "name": "delete",
                       "description": "Updates the password and/or hostUri of the specified secret in the specified database.",
                       "fullName": "datalake analytics catalog secret delete",
-                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName> <resource-group>",
+                      "usage": "[options] <accountName> <databaseName> <hostUri> <secretName>",
                       "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                       "options": [
                         {
@@ -10197,7 +10197,7 @@
                   "name": "list",
                   "description": "List all Data Lake Analytics accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake analytics account list",
-                  "usage": "[options] <resource-group>",
+                  "usage": "[options]",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10249,7 +10249,7 @@
                   "name": "show",
                   "description": "Shows a Data Lake Analytics account based on account name",
                   "fullName": "datalake analytics account show",
-                  "usage": "[options] <accountName> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10310,7 +10310,7 @@
                   "name": "delete",
                   "description": "Deletes a Data Lake Analytics Account based on account name",
                   "fullName": "datalake analytics account delete",
-                  "usage": "[options] <accountName> <resource-group>",
+                  "usage": "[options] <accountName>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10468,7 +10468,7 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Analytics Account",
                   "fullName": "datalake analytics account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultDataLakeStore>",
+                  "usage": "[options] <accountName> <defaultDataLakeStore>",
                   "filePath": "commands/arm/datalakeanalytics/datalakeanalytics._js",
                   "options": [
                     {
@@ -10860,7 +10860,7 @@
                   "description": "Lists the contents of the specified path (files and folders).",
                   "fullName": "datalake store filesystem list",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10921,7 +10921,7 @@
                   "description": "Gets the specified Data Lake Store file or folder details",
                   "fullName": "datalake store filesystem show",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10982,7 +10982,7 @@
                   "description": "deletes the specified Data Lake Store file or folder, with the option for recursive delete (if the folder has contents)",
                   "fullName": "datalake store filesystem delete",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11028,8 +11028,8 @@
                       "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
                     },
                     {
-                      "flags": "-r --recurse <recurse>",
-                      "required": -14,
+                      "flags": "-r --recurse",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-r",
@@ -11037,8 +11037,8 @@
                       "description": "optionally indicates that this should be a recursive delete, which will delete a folder and all contents underneath it."
                     },
                     {
-                      "flags": "-q --quiet <quiet>",
-                      "required": -12,
+                      "flags": "-q --quiet",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-q",
@@ -11060,8 +11060,8 @@
                   "name": "create",
                   "description": "Creates the specified folder or file, with the option to include content in file creation.",
                   "fullName": "datalake store filesystem create",
-                  "usage": "[options] <accountName> <path> <value>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11149,7 +11149,7 @@
                   "description": "Uploads the specified the specified file, to the target destination in an Azure Data Lake. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem import",
                   "usage": "[options] <accountName> <path> <destination>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11227,8 +11227,8 @@
                   "name": "concat",
                   "description": "Concatenates the specified list of files into the specified destination file.",
                   "fullName": "datalake store filesystem concat",
-                  "usage": "[options] <accountName> <paths> <destination> <force>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <paths> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11306,8 +11306,8 @@
                   "name": "move",
                   "description": "Moves (renames) the specified file or folder into the specified destination file or folder.",
                   "fullName": "datalake store filesystem move",
-                  "usage": "[options] <accountName> <path> <destination> <force>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path> <destination>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11386,7 +11386,7 @@
                   "description": "Appends the specified content to the end of the Data Lake Store file path specified.",
                   "fullName": "datalake store filesystem addcontent",
                   "usage": "[options] <accountName> <path> <value>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11456,7 +11456,7 @@
                   "description": "Downloads the specified file to the target location. NOTE: Only text files are supported by this command at present.",
                   "fullName": "datalake store filesystem export",
                   "usage": "[options] <accountName> <path> <destination>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11534,8 +11534,8 @@
                   "name": "read",
                   "description": "Previews the specified Data Lake Store file starting at index 0 (or the specified offset) until the length is reached, displaying the results to the console.",
                   "fullName": "datalake store filesystem read",
-                  "usage": "[options] <accountName> <path> <length> <offset>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path> <length>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11624,7 +11624,7 @@
                   "description": "Gets the specified Data Lake Store folder ACL",
                   "fullName": "datalake store permissions show",
                   "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11684,8 +11684,8 @@
                   "name": "delete",
                   "description": "Deletes the entire ACL associated with a folder",
                   "fullName": "datalake store permissions delete",
-                  "usage": "[options] <accountName> <path> <default>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <path>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11764,7 +11764,7 @@
                   "description": "sets the specified Data Lake Store folder ACL (overwriting the previous ACL entries)",
                   "fullName": "datalake store permissions set",
                   "usage": "[options] <accountName> <path> <aclSpec>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11852,7 +11852,7 @@
                       "description": "deletes the specific ACE entry or entries from the path",
                       "fullName": "datalake store permissions entry delete",
                       "usage": "[options] <accountName> <path> <aclEntries>",
-                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "filePath": "commands/arm/datalakestore/datalakestore._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -11931,7 +11931,7 @@
                       "description": "sets the specified Data Lake Store folder ACE entry or entries",
                       "fullName": "datalake store permissions entry set",
                       "usage": "[options] <accountName> <path> <aclEntries>",
-                      "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                      "filePath": "commands/arm/datalakestore/datalakestore._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -12021,8 +12021,8 @@
                   "name": "list",
                   "description": "List all Data Lake Store accounts available for your subscription or subscription and resource group",
                   "fullName": "datalake store account list",
-                  "usage": "[options] <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12073,8 +12073,8 @@
                   "name": "show",
                   "description": "Shows a Data Lake Store Account based on account name",
                   "fullName": "datalake store account show",
-                  "usage": "[options] <accountName> <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12134,8 +12134,8 @@
                   "name": "delete",
                   "description": "Deletes a Data Lake Store Account based on account name",
                   "fullName": "datalake store account delete",
-                  "usage": "[options] <accountName> <resource-group>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12204,8 +12204,8 @@
                   "name": "create",
                   "description": "Creates a Data Lake Store Account",
                   "fullName": "datalake store account create",
-                  "usage": "[options] <accountName> <location> <resource-group> <defaultGroup>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName> <location> <resource-group>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12292,8 +12292,8 @@
                   "name": "set",
                   "description": "Updates the properties of an existing Data Lake Store Account",
                   "fullName": "datalake store account set",
-                  "usage": "[options] <accountName> <resource-group> <defaultGroup>",
-                  "filePath": "commands/arm/datalakestore/datalakeStore._js",
+                  "usage": "[options] <accountName>",
+                  "filePath": "commands/arm/datalakestore/datalakestore._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
