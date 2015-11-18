@@ -64,6 +64,8 @@ commands/arm/apiapp/lib/propertyPrompts-tests.js
 commands/arm/apiapp/arm.apiapp-tests.js
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/rediscache/arm.rediscache-tests.js
+commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
+commands/arm/datalakestore/arm.datalake-store-tests.js
 #please put the following group tests to the last, as it uses the different subscription 
 #and it exposes a test framework bug which failed vm and apiapp tests randomly
 commands/arm/group/arm.group-tests.js
