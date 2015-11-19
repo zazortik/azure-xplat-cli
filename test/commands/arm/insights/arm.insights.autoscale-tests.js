@@ -20,6 +20,11 @@ var should = require('should');
 
 var util = require('util');
 var fs = require('fs');
+var path = require('path');
+var writeLogFile = function(text, name) { 
+  var parameterFile = path.join(__dirname, '../../../data/' + name + '.txt');
+  fs.writeFileSync(parameterFile, text); 
+};
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-insights-autoscale-tests';
@@ -62,9 +67,11 @@ describe('arm', function () {
         it('should work without parameters', function (done) {
           suite.execute('insights autoscale list --json', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
 
             done();
           });
@@ -75,15 +82,16 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
-            response.length.should.equal(2);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
             
             __.each(response, function (record) {
               record.should.have.property("caller");
               record.should.have.property("correlationId");
-              record.should.have.property("eventSource");
               record.should.have.property("id");
               record.should.have.property("resourceGroupName");
-              record.should.have.property("resourceUri");
+              record.should.have.property("resourceId");
               record.should.have.property("operationName");
               record.should.have.property("subscriptionId");
               record.should.have.property("status");
