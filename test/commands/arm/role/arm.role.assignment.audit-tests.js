@@ -63,9 +63,8 @@ describe('arm', function () {
         it('should work', function (done) {
           var end = new Date(); // today
           var start = new Date();
-          start.setDate(end.getDate() - 1);
-          
-          suite.execute('role assignment changelog list -b %s -e %s --json', start.toISOString().substring(0, 10), end.toISOString().substring(0, 10),function (result) {
+          start.setHours(end.getHours() - 1);
+          suite.execute('role assignment changelog list -b %s -e %s --json', start.toISOString(), end.toISOString(),function (result) {
             result.exitStatus.should.equal(0);
            
             var response = JSON.parse(result.text);

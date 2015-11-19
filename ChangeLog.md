@@ -1,4 +1,7 @@
-## 2015.11.17 Version 0.9.12
+## 2015.11.18 Version 0.9.12
+* Authorization
+  * Fixed json output format for role definition commands
+  * Fixed roleId in authorization change log command to be a guid
 * DataLake
   *Fix casing for "requires()" for DataLake* modules, enabling functionality on unix machines.
   *Fix a bug in catalog item enumeration
