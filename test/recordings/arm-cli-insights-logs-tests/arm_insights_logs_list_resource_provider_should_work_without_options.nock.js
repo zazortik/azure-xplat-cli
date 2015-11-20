@@ -28,10 +28,10 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringPath(function (path) { return path.slice(0, path.indexOf('&')); })
-.get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/providers/microsoft.insights/eventtypes/management/values?api-version=2014-04-01')
-  .reply(200, "{\"value\":[{\"caller\":\"Microsoft.Insights/autoscaleSettings\",\"correlationId\":\"da3210d1-3abc-48bd-99ea-abb4ece57ef7\",\"eventSource\":{\"value\":\"microsoft.insights/autoscalesettings\",\"localizedValue\":\"Microsoft Insights Autoscale Settings\"},\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1/events/6d72235b-b784-4868-adb6-759ee15cf09c/ticks/635651610016491590\",\"resourceGroupName\":\"Default-Web-brazilsouth\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1\",\"operationName\":{\"value\":\"ScaleUp\",\"localizedValue\":\"Scale up\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-04-20T21:10:01.649159Z\",\"subscriptionId\":\"b67f7fec-69fc-4974-9099-a26bd6ffeda3\"}]}", { 'cache-control': 'no-cache',
+.get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01')
+  .reply(200, "{\"value\":[{\"caller\":\"Microsoft.Insights/autoscaleSettings2\",\"correlationId\":\"a8690cfc-2b1d-40eb-8464-a9567609ca0b\",\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-BrazilSouth/providers/microsoft.web/serverFarms/Default1/events/0c7f7ded-d0d8-49a2-bfd8-2a29c2745fef/ticks/635651607986589004\",\"resourceGroupName\":\"Default-Web-BrazilSouth3\",\"resourceId\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-BrazilSouth/providers/microsoft.web/serverFarms/Default1\",\"operationName\":{\"value\":\"ScaleDown\",\"localizedValue\":\"Scale down\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-04-20T21:06:38.6589004Z\",\"subscriptionId\":\"b67f7fec-69fc-4974-9099-a26bd6ffeda3\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '900',
+  'content-length': '907',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
@@ -48,10 +48,10 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringPath(function (path) { return path.slice(0, path.indexOf('&')); })
-.get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/providers/microsoft.insights/eventtypes/management/values?api-version=2014-04-01')
-  .reply(200, "{\"value\":[{\"caller\":\"Microsoft.Insights/autoscaleSettings\",\"correlationId\":\"da3210d1-3abc-48bd-99ea-abb4ece57ef7\",\"eventSource\":{\"value\":\"microsoft.insights/autoscalesettings\",\"localizedValue\":\"Microsoft Insights Autoscale Settings\"},\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1/events/6d72235b-b784-4868-adb6-759ee15cf09c/ticks/635651610016491590\",\"resourceGroupName\":\"Default-Web-brazilsouth\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-brazilsouth/providers/microsoft.web/serverFarms/Default1\",\"operationName\":{\"value\":\"ScaleUp\",\"localizedValue\":\"Scale up\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-04-20T21:10:01.649159Z\",\"subscriptionId\":\"b67f7fec-69fc-4974-9099-a26bd6ffeda3\"}]}", { 'cache-control': 'no-cache',
+.get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01')
+  .reply(200, "{\"value\":[{\"caller\":\"Microsoft.Insights/autoscaleSettings2\",\"correlationId\":\"a8690cfc-2b1d-40eb-8464-a9567609ca0b\",\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-BrazilSouth/providers/microsoft.web/serverFarms/Default1/events/0c7f7ded-d0d8-49a2-bfd8-2a29c2745fef/ticks/635651607986589004\",\"resourceGroupName\":\"Default-Web-BrazilSouth3\",\"resourceId\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-BrazilSouth/providers/microsoft.web/serverFarms/Default1\",\"operationName\":{\"value\":\"ScaleDown\",\"localizedValue\":\"Scale down\"},\"status\":{\"value\":\"Succeeded\",\"localizedValue\":\"Succeeded\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-04-20T21:06:38.6589004Z\",\"subscriptionId\":\"b67f7fec-69fc-4974-9099-a26bd6ffeda3\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '900',
+  'content-length': '907',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',

@@ -10,17 +10,18 @@ commands/arm/role/arm.role-tests.js
 commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
-#TODO: uncomment after remove the dependencies on streamline files
-#commands/arm/ad/adUtils-test.js
+commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/storage/arm.storage.account-tests.js
+commands/arm/insights/arm.insights.alerts-tests.js
+commands/arm/insights/arm.insights.alerts.rule-tests.js
+commands/arm/insights/arm.insights.autoscale-tests.js
+commands/arm/insights/arm.insights.autoscale.setting-tests.js
+commands/arm/insights/arm.insights.diagnostic.get-tests.js
+commands/arm/insights/arm.insights.diagnostic.set-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
 commands/arm/insights/arm.insights.metrics-tests.js
 commands/arm/insights/arm.insights.metrics.definition-tests.js
-commands/arm/insights/arm.insights.autoscale-tests.js
-commands/arm/insights/arm.insights.autoscale.setting-tests.js
-commands/arm/insights/arm.insights.alerts-tests.js
-commands/arm/insights/arm.insights.alerts.rule-tests.js
 commands/arm/insights/arm.insights.usage-tests.js
 commands/arm/keyvault/arm.keyvault-tests.js
 commands/arm/keyvault/arm.keyvault-key-tests.js
@@ -58,6 +59,7 @@ commands/arm/network/arm-network-gateway-local-network-tests.js
 commands/arm/network/arm-network-gateway-vnet-tests.js
 commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
 commands/arm/network/arm-network-express-route-circuit-tests.js
+commands/arm/network/arm-network-gateway-connection-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js

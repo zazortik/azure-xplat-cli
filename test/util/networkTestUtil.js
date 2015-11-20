@@ -41,6 +41,7 @@ function networkTestUtil() {
   this.reversefqdn1 = '';
   this.reversefqdn = '';
   this.timeout = 800000;
+  this.gatewaytimeout = 3500000;
 }
 
 networkTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
@@ -116,6 +117,13 @@ networkTestUtil.prototype.showSubnet = function(groupName, vnetPrefix, subnetpre
 };
 networkTestUtil.prototype.createPublicIp = function(groupName, publicipPrefix, location, suite, callback) {
   var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
+networkTestUtil.prototype.createPublicIpdns = function(groupName, publicipPrefix, location, suite, callback) {
+  var cmd = util.format('network public-ip create %s %s --location %s -d %s --json', groupName, publicipPrefix, location, publicipPrefix).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
@@ -303,7 +311,7 @@ networkTestUtil.prototype.deleteUsedDns = function(groupName, dnszonePrefix, sui
     callback();
 };
 networkTestUtil.prototype.createTrafficManagerProfile = function(groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path, suite, callback) {
-  var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
+  var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -e %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
@@ -318,6 +326,13 @@ networkTestUtil.prototype.createVnetWithAddress = function(groupName, vnetPrefix
 };
 networkTestUtil.prototype.createSubnetWithAddress = function(groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, callback) {
   var cmd = util.format('network vnet subnet create %s %s %s -a %s --json', groupName, vnetPrefix, subnetprefix, subnetAddressPrefix).split(' ');
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
+networkTestUtil.prototype.createGateway = function(groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags, suite, callback) {
+  var cmd = util.format('network gateway vnet create -g %s -n %s -l %s -y %s -p %s -m %s -e %s -a %s -b %s -t %s --json', groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();

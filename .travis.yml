@@ -11,4 +11,10 @@ install:
   - npm install -g npm@1.4.23
   - npm --version
   - npm install
-  
+
+after_script:
+  - echo "========== test log: ============"
+  - pwd
+  - ls -al
+  - ls -al test/output
+  - cat test/output/*.log
