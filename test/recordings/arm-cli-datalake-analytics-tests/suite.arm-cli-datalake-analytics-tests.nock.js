@@ -24,9 +24,9 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_ARM_TEST_LOCATION'] = 'East US 2';
-  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlarg01';
+  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla1067','xplattestadla2460','xplattestadla8245','xplattestadls594','xplattestadls5284','xplattestadls5574'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla4296','xplattestadla9377','xplattestadla9201','xplattestadls5761','xplattestadls8067','xplattestadls9894','adlacatalogitem5665','adlacatalogitem3280','adlacatalogitem8740','adlacatalogitem79','adlacatalogitem3007','adlacatalogitem8130','adlacatalogitem5365','adlacatalogitem4015'];};
