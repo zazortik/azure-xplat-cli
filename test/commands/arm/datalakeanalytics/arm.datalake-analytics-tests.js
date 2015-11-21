@@ -358,6 +358,7 @@ describe('arm', function () {
                   catalogItemJson[0].name.should.be.equal(dbName);
                   // list all tables in the db and confirm that there is one entry.
                   suite.execute('datalake analytics catalog list --accountName %s --itemType table --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
+                    console.log('>>>>>>>>>>>>>>>>>>>>' + util.inspect(result, {depth: null}));
                     result.exitStatus.should.be.equal(0);
                     var catalogItemJson = JSON.parse(result.text);
                     catalogItemJson.length.should.be.equal(1);
@@ -446,6 +447,7 @@ describe('arm', function () {
                   catalogItemJson.length.should.be.equal(1);
                   // now get the specific credential we created
                   suite.execute('datalake analytics catalog list --accountName %s --itemType credential --itemPath ' + databaseName + '.' + credName + ' --json', jobAndCatalogAccountName, function (result) {
+                    console.log('>>>>>>>>>>>>>>>>>>>>' + util.inspect(result, {depth: null}));
                     result.exitStatus.should.be.equal(0);
                     var catalogItemJson = JSON.parse(result.text);
                     catalogItemJson.length.should.be.equal(1);
