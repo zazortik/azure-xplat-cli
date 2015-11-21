@@ -13117,6 +13117,24 @@
                   "fileRelatedOption": true
                 },
                 {
+                  "flags": "-m --mode <mode>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mode",
+                  "description": "the deployment mode: specify one of Incremental or Complete. If no mode is specified, Incremental is used as default. When Complete mode is used, all the resources in the specified resource group, which are not included in the template, will be deleted."
+                },
+                {
+                  "flags": "-q --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (when complete mode is specified, do not ask for deployment confirmation)"
+                },
+                {
                   "flags": "--nowait",
                   "required": 0,
                   "optional": 0,
@@ -15007,6 +15025,138 @@
               "categories": {}
             }
           }
+        },
+        "diagnostic": {
+          "name": "diagnostic",
+          "description": "Configure diagnostics for resources",
+          "fullName": "insights diagnostic",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "get",
+              "description": "Get the diagnostics for the resource.",
+              "fullName": "insights diagnostic get",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.diagnostic.get._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--resourceId",
+                  "description": "resource Id."
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set the diagnostics for the resource.",
+              "fullName": "insights diagnostic set",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.diagnostic.set._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --resourceId <resourceId>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--resourceId",
+                  "description": "resource Id."
+                },
+                {
+                  "flags": "-a, --storageId <storageId>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--storageId",
+                  "description": "storage account Id."
+                },
+                {
+                  "flags": "-e, --enabled <enabled>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--enabled",
+                  "description": "whether the configuration is enabled or disabled."
+                },
+                {
+                  "flags": "-c, --categories <categories>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--categories",
+                  "description": "categories to be affected. Valid values vary per resource type."
+                },
+                {
+                  "flags": "-t, --timegrains <timegrains>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--timegrains",
+                  "description": "timegrains to be affected in ISO 8601 format. Example: 'PT1M' for 1 minute."
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "metrics": {
           "name": "metrics",
@@ -24140,6 +24290,15 @@
                       "description": "the name of the profile"
                     },
                     {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
                       "flags": "-u, --profile-status <profile-status> ",
                       "required": -22,
                       "optional": 0,
@@ -24167,11 +24326,11 @@
                       "description": "relative DNS name of the profile e.g. .trafficmanager.net"
                     },
                     {
-                      "flags": "-l  --ttl <ttl>",
+                      "flags": "-e, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-l",
+                      "short": "-e",
                       "long": "--ttl",
                       "description": "time to live in specified in seconds"
                     },
@@ -24291,11 +24450,11 @@
                       "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
-                      "flags": "-l  --ttl <ttl>",
+                      "flags": "-e, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-l",
+                      "short": "-e",
                       "long": "--ttl",
                       "description": "time to live specified in seconds"
                     },
@@ -24611,7 +24770,7 @@
                       "name": "create",
                       "description": "Create an endpoint in Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint create",
-                      "usage": "[options] <resource-group> <profile-name> <name> <endpoint-location>",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type> <location>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24667,22 +24826,31 @@
                           "description": "the name of the endpoint"
                         },
                         {
-                          "flags": "-l, --endpoint-location <endpoint-location>",
-                          "required": -25,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-l",
-                          "long": "--endpoint-location",
-                          "description": "the location of the endpoint"
-                        },
-                        {
                           "flags": "-y, --type <type>",
                           "required": -12,
                           "optional": 0,
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-l, --location <location>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "the endpoint location"
+                        },
+                        {
+                          "flags": "-u, --status <status>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--status",
+                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24694,13 +24862,13 @@
                           "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
                         },
                         {
-                          "flags": "-u, --endpoint-status <endpoint-status>",
-                          "required": -23,
+                          "flags": "-i, --target-resource-id <target-resource-id>",
+                          "required": -26,
                           "optional": 0,
                           "bool": true,
-                          "short": "-u",
-                          "long": "--endpoint-status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                          "short": "-i",
+                          "long": "--target-resource-id",
+                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
                         },
                         {
                           "flags": "-w, --weight <weight>",
@@ -24709,7 +24877,7 @@
                           "bool": true,
                           "short": "-w",
                           "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm"
+                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
                         },
                         {
                           "flags": "-p, --priority <priority>",
@@ -24718,7 +24886,7 @@
                           "bool": true,
                           "short": "-p",
                           "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000]"
+                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
@@ -24735,7 +24903,7 @@
                       "name": "set",
                       "description": "Set an endpoint in a Traffic Manager profile",
                       "fullName": "network traffic-manager profile endpoint set",
-                      "usage": "[options] <resource-group> <profile-name> <name>",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24797,7 +24965,25 @@
                           "bool": true,
                           "short": "-y",
                           "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [externalEndpoint], where externalEndpoint represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-l, --location <location>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "the endpoint location"
+                        },
+                        {
+                          "flags": "-u, --status <status>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--status",
+                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
                         },
                         {
                           "flags": "-e, --target <target>",
@@ -24809,13 +24995,13 @@
                           "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
                         },
                         {
-                          "flags": "-u, --endpoint-status <endpoint-status>",
-                          "required": -23,
+                          "flags": "-i, --target-resource-id <target-resource-id>",
+                          "required": -26,
                           "optional": 0,
                           "bool": true,
-                          "short": "-u",
-                          "long": "--endpoint-status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                          "short": "-i",
+                          "long": "--target-resource-id",
+                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
                         },
                         {
                           "flags": "-w, --weight <weight>",
@@ -24824,7 +25010,7 @@
                           "bool": true,
                           "short": "-w",
                           "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm"
+                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
                         },
                         {
                           "flags": "-p, --priority <priority>",
@@ -24833,7 +25019,7 @@
                           "bool": true,
                           "short": "-p",
                           "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000]"
+                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
@@ -24847,10 +25033,10 @@
                       ]
                     },
                     {
-                      "name": "delete",
-                      "description": "Delete an endpoint from a Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint delete",
-                      "usage": "[options] <resource-group> <profile-name> <name>",
+                      "name": "show",
+                      "description": "Get an endpoint in Traffic Manager profile",
+                      "fullName": "network traffic-manager profile endpoint show",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
                         {
@@ -24904,6 +25090,94 @@
                           "short": "-n",
                           "long": "--name",
                           "description": "the name of the endpoint"
+                        },
+                        {
+                          "flags": "-y, --type <type>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-y",
+                          "long": "--type",
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Delete an endpoint from a Traffic Manager profile",
+                      "fullName": "network traffic-manager profile endpoint delete",
+                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-f, --profile-name <profile-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-f",
+                          "long": "--profile-name",
+                          "description": "the profile name"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the endpoint"
+                        },
+                        {
+                          "flags": "-y, --type <type>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-y",
+                          "long": "--type",
+                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
                         },
                         {
                           "flags": "-q, --quiet",
@@ -26420,6 +26694,332 @@
                       "short": "-s",
                       "long": "--subscription",
                       "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "connection": {
+              "name": "connection",
+              "description": "Commands to manage gateway connection",
+              "fullName": "network gateway connection",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create a gateway connection",
+                  "fullName": "network gateway connection create",
+                  "usage": "[options] <resource-group> <name> <location>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
+                      "flags": "-i, --vnet-gateway1 <vnet-gateway1>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--vnet-gateway1",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-e, --vnet-gateway2 <vnet-gateway2>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--vnet-gateway2",
+                      "description": "the name of the connected virtual network gateway"
+                    },
+                    {
+                      "flags": "-d, --lnet-gateway2 <lnet-gateway2>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--lnet-gateway2",
+                      "description": "the name of the connected local network gateway"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the connection type\n   Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
+                    },
+                    {
+                      "flags": "-w, --routing-weight <routing-weight>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--routing-weight",
+                      "description": "the routing weight"
+                    },
+                    {
+                      "flags": "-k, --shared-key <shared-key>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--shared-key",
+                      "description": "the IPsec shared key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the tags set on this connection.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all gateway connections",
+                  "fullName": "network gateway connection list",
+                  "usage": "[options] <resource-group>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Get details about gateway connection",
+                  "fullName": "network gateway connection show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a gateway connection",
+                  "fullName": "network gateway connection delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the gateway connection"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
                     }
                   ]
                 }
@@ -29742,12 +30342,12 @@
               "description": "Tags to set to the virtual machine. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, --tags tag1=value1;tag2"
             },
             {
-              "flags": "--enable-boot-diagnostics",
+              "flags": "--disable-boot-diagnostics",
               "required": 0,
               "optional": 0,
               "bool": true,
-              "long": "--enable-boot-diagnostics",
-              "description": "The switch parameter to enable the boot diagnostics for VM."
+              "long": "--disable-boot-diagnostics",
+              "description": "The switch parameter to disable the boot diagnostics (by default enabled) for VM."
             },
             {
               "flags": "--boot-diagnostics-storage-uri <boot-diagnostics-storage-uri>",
@@ -29755,7 +30355,7 @@
               "optional": 0,
               "bool": true,
               "long": "--boot-diagnostics-storage-uri",
-              "description": "The storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
+              "description": "Optional. Specify storage account URL for boot diagnostics. In the format of 'https://your_stoage_account_name.blob.core.windows.net/'."
             },
             {
               "flags": "--disable-bginfo-extension",

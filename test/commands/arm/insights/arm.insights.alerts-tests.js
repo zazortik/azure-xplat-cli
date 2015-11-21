@@ -63,7 +63,9 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+                    response.length.should.equal(0);
+            }
 
             done();
           });
