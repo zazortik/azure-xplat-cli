@@ -9859,7 +9859,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--itemType",
-                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, assembly, externaldatasource, table, tablevaluedfunction or tablestatistics"
+                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, secret, credential, assembly, externaldatasource, table, tablevaluedfunction, view, procedure, types or tablestatistics"
                     },
                     {
                       "flags": "-p --itemPath <itemPath>",

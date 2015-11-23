@@ -30,34 +30,34 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls8150' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls6012' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
-  'x-ms-correlation-request-id': '01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
-  'x-ms-routing-request-id': 'CENTRALUS:20151109T192946Z:01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
+  'x-ms-request-id': '8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
+  'x-ms-correlation-request-id': '8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220622Z:8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:45 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:21 GMT',
   connection: 'close',
   'content-length': '171' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls8150' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls6012' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
-  'x-ms-correlation-request-id': '01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
-  'x-ms-routing-request-id': 'CENTRALUS:20151109T192946Z:01c3b0cf-aea7-4b96-b07c-32e0b42f51c0',
+  'x-ms-request-id': '8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
+  'x-ms-correlation-request-id': '8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220622Z:8e0cf350-27d7-4c83-8ed5-6e3b8d67c50e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:45 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:21 GMT',
   connection: 'close',
   'content-length': '171' });
  return result; },
@@ -65,1207 +65,1487 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview', '*')
-  .reply(201, "{\"properties\":{\"provisioningState\":\"Creating\",\"state\":null,\"endpoint\":null,\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150\",\"name\":\"xplattestadls8150\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+.put('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview', '*')
+  .reply(201, "{\"properties\":{\"provisioningState\":\"Creating\",\"state\":null,\"endpoint\":null,\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012\",\"name\":\"xplattestadls6012\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '420',
   'content-type': 'application/json',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150/operationresults/0?api-version=2015-10-01-preview',
+  location: 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012/operationresults/0?api-version=2015-10-01-preview',
   'retry-after': '10',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true',
-  'x-ms-request-id': '83d67bb8-4aa3-4329-8aaa-7ae102030872',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true',
+  'x-ms-request-id': '5510d44c-6c4d-41ad-b1e2-3f1bc057eac2',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'b3f4943f-6e3e-4caa-8ea8-cbe447c9a0de',
-  'x-ms-routing-request-id': 'CENTRALUS:20151109T192949Z:b3f4943f-6e3e-4caa-8ea8-cbe447c9a0de',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'aedfbc42-b1e9-441f-880e-419a7a5e4bbc',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220624Z:aedfbc42-b1e9-441f-880e-419a7a5e4bbc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:49 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview', '*')
-  .reply(201, "{\"properties\":{\"provisioningState\":\"Creating\",\"state\":null,\"endpoint\":null,\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150\",\"name\":\"xplattestadls8150\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+.put('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview', '*')
+  .reply(201, "{\"properties\":{\"provisioningState\":\"Creating\",\"state\":null,\"endpoint\":null,\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012\",\"name\":\"xplattestadls6012\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '420',
   'content-type': 'application/json',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150/operationresults/0?api-version=2015-10-01-preview',
+  location: 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourcegroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012/operationresults/0?api-version=2015-10-01-preview',
   'retry-after': '10',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true',
-  'x-ms-request-id': '83d67bb8-4aa3-4329-8aaa-7ae102030872',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true',
+  'x-ms-request-id': '5510d44c-6c4d-41ad-b1e2-3f1bc057eac2',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'b3f4943f-6e3e-4caa-8ea8-cbe447c9a0de',
-  'x-ms-routing-request-id': 'CENTRALUS:20151109T192949Z:b3f4943f-6e3e-4caa-8ea8-cbe447c9a0de',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'aedfbc42-b1e9-441f-880e-419a7a5e4bbc',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220624Z:aedfbc42-b1e9-441f-880e-419a7a5e4bbc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:49 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'dd315149-4922-4de7-ad47-889f83a0131c',
+  'x-ms-request-id': '37531633-5407-4da3-a4d2-36cae688fbf5',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14919',
-  'x-ms-correlation-request-id': '205301ce-eb9e-455a-b4b1-e4cd930191a3',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193000Z:205301ce-eb9e-455a-b4b1-e4cd930191a3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14956',
+  'x-ms-correlation-request-id': '6129066f-4e77-4f2c-9398-a056677b0dc1',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220635Z:6129066f-4e77-4f2c-9398-a056677b0dc1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:59 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'dd315149-4922-4de7-ad47-889f83a0131c',
+  'x-ms-request-id': '37531633-5407-4da3-a4d2-36cae688fbf5',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14919',
-  'x-ms-correlation-request-id': '205301ce-eb9e-455a-b4b1-e4cd930191a3',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193000Z:205301ce-eb9e-455a-b4b1-e4cd930191a3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14956',
+  'x-ms-correlation-request-id': '6129066f-4e77-4f2c-9398-a056677b0dc1',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220635Z:6129066f-4e77-4f2c-9398-a056677b0dc1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:29:59 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '483a3e22-d61d-47d8-8cef-7544b7d894d6',
+  'x-ms-request-id': 'a7342ab2-4bc2-423e-8232-8059532e193f',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14967',
-  'x-ms-correlation-request-id': '8355f937-a864-44ab-a980-f13dce3486ba',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193001Z:8355f937-a864-44ab-a980-f13dce3486ba',
+  'x-ms-ratelimit-remaining-subscription-reads': '14974',
+  'x-ms-correlation-request-id': 'b0295e24-eb14-4b97-a2f5-ab2bf1f5a4ba',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220636Z:b0295e24-eb14-4b97-a2f5-ab2bf1f5a4ba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:00 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '483a3e22-d61d-47d8-8cef-7544b7d894d6',
+  'x-ms-request-id': 'a7342ab2-4bc2-423e-8232-8059532e193f',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14967',
-  'x-ms-correlation-request-id': '8355f937-a864-44ab-a980-f13dce3486ba',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193001Z:8355f937-a864-44ab-a980-f13dce3486ba',
+  'x-ms-ratelimit-remaining-subscription-reads': '14974',
+  'x-ms-correlation-request-id': 'b0295e24-eb14-4b97-a2f5-ab2bf1f5a4ba',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220636Z:b0295e24-eb14-4b97-a2f5-ab2bf1f5a4ba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:00 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'df93f685-6e73-4d15-8a87-95859f011a0d',
+  'x-ms-request-id': '82f20318-317c-4a0b-b58d-85ebfd71a1d4',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14981',
-  'x-ms-correlation-request-id': '4f55a812-c7de-426c-b15e-aebe480f61d4',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193002Z:4f55a812-c7de-426c-b15e-aebe480f61d4',
+  'x-ms-ratelimit-remaining-subscription-reads': '14976',
+  'x-ms-correlation-request-id': '2ef3d718-eb57-4467-90bb-7d95c1840663',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220636Z:2ef3d718-eb57-4467-90bb-7d95c1840663',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:02 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'df93f685-6e73-4d15-8a87-95859f011a0d',
+  'x-ms-request-id': '82f20318-317c-4a0b-b58d-85ebfd71a1d4',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14981',
-  'x-ms-correlation-request-id': '4f55a812-c7de-426c-b15e-aebe480f61d4',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193002Z:4f55a812-c7de-426c-b15e-aebe480f61d4',
+  'x-ms-ratelimit-remaining-subscription-reads': '14976',
+  'x-ms-correlation-request-id': '2ef3d718-eb57-4467-90bb-7d95c1840663',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220636Z:2ef3d718-eb57-4467-90bb-7d95c1840663',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:02 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '4be96934-82e9-4426-8cad-bbb4925baa26',
+  'x-ms-request-id': '010b8c4d-a362-4113-850a-0db470d726d7',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': 'ce0ac1d2-33fd-494f-a110-6bff7723ab30',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193003Z:ce0ac1d2-33fd-494f-a110-6bff7723ab30',
+  'x-ms-ratelimit-remaining-subscription-reads': '14861',
+  'x-ms-correlation-request-id': '86d9599e-9b7f-4892-9a05-e1a7d014732b',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220637Z:86d9599e-9b7f-4892-9a05-e1a7d014732b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:03 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '4be96934-82e9-4426-8cad-bbb4925baa26',
+  'x-ms-request-id': '010b8c4d-a362-4113-850a-0db470d726d7',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': 'ce0ac1d2-33fd-494f-a110-6bff7723ab30',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193003Z:ce0ac1d2-33fd-494f-a110-6bff7723ab30',
+  'x-ms-ratelimit-remaining-subscription-reads': '14861',
+  'x-ms-correlation-request-id': '86d9599e-9b7f-4892-9a05-e1a7d014732b',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220637Z:86d9599e-9b7f-4892-9a05-e1a7d014732b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:03 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '73de84e9-d338-4af8-bc6c-afb62cf3d832',
+  'x-ms-request-id': '4f18a0ed-69ae-42e3-95de-0647bc7fe7ca',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': '22859577-0350-4c15-bfe9-66c8a682237b',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193003Z:22859577-0350-4c15-bfe9-66c8a682237b',
+  'x-ms-ratelimit-remaining-subscription-reads': '14984',
+  'x-ms-correlation-request-id': 'd45a12ab-655c-4caa-bd7f-2eb2b6c32539',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220637Z:d45a12ab-655c-4caa-bd7f-2eb2b6c32539',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:03 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '73de84e9-d338-4af8-bc6c-afb62cf3d832',
+  'x-ms-request-id': '4f18a0ed-69ae-42e3-95de-0647bc7fe7ca',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': '22859577-0350-4c15-bfe9-66c8a682237b',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193003Z:22859577-0350-4c15-bfe9-66c8a682237b',
+  'x-ms-ratelimit-remaining-subscription-reads': '14984',
+  'x-ms-correlation-request-id': 'd45a12ab-655c-4caa-bd7f-2eb2b6c32539',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220637Z:d45a12ab-655c-4caa-bd7f-2eb2b6c32539',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:03 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '2630e8a2-3c4c-49e8-b6f4-0118525d1028',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': 'e7b42f2f-398a-46f2-9f90-aacf27f99b35',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193004Z:e7b42f2f-398a-46f2-9f90-aacf27f99b35',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '2630e8a2-3c4c-49e8-b6f4-0118525d1028',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': 'e7b42f2f-398a-46f2-9f90-aacf27f99b35',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193004Z:e7b42f2f-398a-46f2-9f90-aacf27f99b35',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '45bfd00f-38cf-42e2-95c7-933ff1a621ee',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': 'db028d36-5a9e-4a3e-8aba-6a3ca743d35a',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193005Z:db028d36-5a9e-4a3e-8aba-6a3ca743d35a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '45bfd00f-38cf-42e2-95c7-933ff1a621ee',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': 'db028d36-5a9e-4a3e-8aba-6a3ca743d35a',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193005Z:db028d36-5a9e-4a3e-8aba-6a3ca743d35a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '7af55e24-5c85-4119-a54e-61fe6e991b27',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14979',
-  'x-ms-correlation-request-id': 'c632284c-9e89-4942-b723-bb0cbc74e7c9',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193005Z:c632284c-9e89-4942-b723-bb0cbc74e7c9',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '7af55e24-5c85-4119-a54e-61fe6e991b27',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14979',
-  'x-ms-correlation-request-id': 'c632284c-9e89-4942-b723-bb0cbc74e7c9',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193005Z:c632284c-9e89-4942-b723-bb0cbc74e7c9',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:04 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '38f699f0-5eaf-42a9-92f0-b1612b4b33fb',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '84be41df-1916-46d1-92e3-7b29c7df71f2',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193006Z:84be41df-1916-46d1-92e3-7b29c7df71f2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:05 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '38f699f0-5eaf-42a9-92f0-b1612b4b33fb',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '84be41df-1916-46d1-92e3-7b29c7df71f2',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193006Z:84be41df-1916-46d1-92e3-7b29c7df71f2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:05 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': 'b80e33a2-de91-47df-8cc0-ee7bb1b0f409',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': '9fd8e6e8-1332-4e85-9fd0-5ada927c08df',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193006Z:9fd8e6e8-1332-4e85-9fd0-5ada927c08df',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:06 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': 'b80e33a2-de91-47df-8cc0-ee7bb1b0f409',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': '9fd8e6e8-1332-4e85-9fd0-5ada927c08df',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193006Z:9fd8e6e8-1332-4e85-9fd0-5ada927c08df',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:06 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '84c0c1d9-d41d-45bd-9dfc-a0a07bdffd97',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14946',
-  'x-ms-correlation-request-id': '18b30904-8492-42d0-aa58-1b0e7189ff58',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193007Z:18b30904-8492-42d0-aa58-1b0e7189ff58',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:06 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '84c0c1d9-d41d-45bd-9dfc-a0a07bdffd97',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14946',
-  'x-ms-correlation-request-id': '18b30904-8492-42d0-aa58-1b0e7189ff58',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193007Z:18b30904-8492-42d0-aa58-1b0e7189ff58',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:06 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': 'a6244847-768c-48fb-b173-9dee268e0b58',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': 'e203c12b-19f8-4eda-83d6-c21564316501',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193007Z:e203c12b-19f8-4eda-83d6-c21564316501',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:07 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': 'a6244847-768c-48fb-b173-9dee268e0b58',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': 'e203c12b-19f8-4eda-83d6-c21564316501',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193007Z:e203c12b-19f8-4eda-83d6-c21564316501',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:07 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '086ea1d4-c838-4ac3-b1ef-e07b03f637bd',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '9e1581e0-20ac-4881-8ecf-b3abb61132f3',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193008Z:9e1581e0-20ac-4881-8ecf-b3abb61132f3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:08 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '086ea1d4-c838-4ac3-b1ef-e07b03f637bd',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '9e1581e0-20ac-4881-8ecf-b3abb61132f3',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193008Z:9e1581e0-20ac-4881-8ecf-b3abb61132f3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:08 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '88fe3091-0328-4598-bb60-ccbac13e1b37',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14985',
-  'x-ms-correlation-request-id': '419a3cde-3ce2-4eaf-8c36-f4cfbe9e7777',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193009Z:419a3cde-3ce2-4eaf-8c36-f4cfbe9e7777',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '88fe3091-0328-4598-bb60-ccbac13e1b37',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14985',
-  'x-ms-correlation-request-id': '419a3cde-3ce2-4eaf-8c36-f4cfbe9e7777',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193009Z:419a3cde-3ce2-4eaf-8c36-f4cfbe9e7777',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '02a3aa98-d543-4c9f-a6bd-ed244194c147',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-correlation-request-id': 'a117eb88-a36b-43ce-b7b1-06a1aae85d75',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193010Z:a117eb88-a36b-43ce-b7b1-06a1aae85d75',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '02a3aa98-d543-4c9f-a6bd-ed244194c147',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-correlation-request-id': 'a117eb88-a36b-43ce-b7b1-06a1aae85d75',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193010Z:a117eb88-a36b-43ce-b7b1-06a1aae85d75',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '8b3b6778-82e4-4aa5-ae92-1058a17d442d',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14982',
-  'x-ms-correlation-request-id': '0cde2576-1304-4b9c-9b0e-1c1e244ef506',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193011Z:0cde2576-1304-4b9c-9b0e-1c1e244ef506',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '8b3b6778-82e4-4aa5-ae92-1058a17d442d',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14982',
-  'x-ms-correlation-request-id': '0cde2576-1304-4b9c-9b0e-1c1e244ef506',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193011Z:0cde2576-1304-4b9c-9b0e-1c1e244ef506',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '7c3bff08-e82a-4957-a9b4-838ebae0d9c5',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14925',
-  'x-ms-correlation-request-id': 'b7ee19d6-4fac-49d0-9c2a-f01ec8b31d9a',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193012Z:b7ee19d6-4fac-49d0-9c2a-f01ec8b31d9a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:11 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '7c3bff08-e82a-4957-a9b4-838ebae0d9c5',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14925',
-  'x-ms-correlation-request-id': 'b7ee19d6-4fac-49d0-9c2a-f01ec8b31d9a',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193012Z:b7ee19d6-4fac-49d0-9c2a-f01ec8b31d9a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:11 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '0d1f949e-b472-410f-a213-848c4c28c2de',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': '34b0698c-10a4-47c9-bcad-bbadce41575b',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193012Z:34b0698c-10a4-47c9-bcad-bbadce41575b',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:12 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '0d1f949e-b472-410f-a213-848c4c28c2de',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': '34b0698c-10a4-47c9-bcad-bbadce41575b',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193012Z:34b0698c-10a4-47c9-bcad-bbadce41575b',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:12 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
-  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '23',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': 'f1eb87b0-40da-45fe-8998-eaa07157e8d2',
+  'x-ms-request-id': '6d474def-5249-4e76-949a-08920bcf56b5',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14980',
-  'x-ms-correlation-request-id': '19540c8a-2d6a-48c4-a163-c3adb1c40bbb',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193013Z:19540c8a-2d6a-48c4-a163-c3adb1c40bbb',
+  'x-ms-correlation-request-id': '96e611bd-c69b-485c-b4f2-9c522480a88a',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220638Z:96e611bd-c69b-485c-b4f2-9c522480a88a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:12 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'f1eb87b0-40da-45fe-8998-eaa07157e8d2',
+  'x-ms-request-id': '6d474def-5249-4e76-949a-08920bcf56b5',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14980',
-  'x-ms-correlation-request-id': '19540c8a-2d6a-48c4-a163-c3adb1c40bbb',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193013Z:19540c8a-2d6a-48c4-a163-c3adb1c40bbb',
+  'x-ms-correlation-request-id': '96e611bd-c69b-485c-b4f2-9c522480a88a',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220638Z:96e611bd-c69b-485c-b4f2-9c522480a88a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:12 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'ce2c2239-3c66-449b-9e5a-bb6daef6c531',
+  'x-ms-request-id': '1747a5ef-f501-48f7-a52c-44adf71e5a40',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '9ba76ddd-dc93-4314-9db6-8298f7e56092',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193013Z:9ba76ddd-dc93-4314-9db6-8298f7e56092',
+  'x-ms-ratelimit-remaining-subscription-reads': '14983',
+  'x-ms-correlation-request-id': '983bdb0e-fad5-40a9-9296-7d2363163da5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220639Z:983bdb0e-fad5-40a9-9296-7d2363163da5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:13 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'ce2c2239-3c66-449b-9e5a-bb6daef6c531',
+  'x-ms-request-id': '1747a5ef-f501-48f7-a52c-44adf71e5a40',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '9ba76ddd-dc93-4314-9db6-8298f7e56092',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193013Z:9ba76ddd-dc93-4314-9db6-8298f7e56092',
+  'x-ms-ratelimit-remaining-subscription-reads': '14983',
+  'x-ms-correlation-request-id': '983bdb0e-fad5-40a9-9296-7d2363163da5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220639Z:983bdb0e-fad5-40a9-9296-7d2363163da5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:13 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '1f9b95f8-f7b0-4e26-ae7e-a9cf2e498724',
+  'x-ms-request-id': '9ab8d394-1177-4525-9776-412931ec7879',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': 'b265dc6e-6cec-4104-9c1b-03284fd87c59',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193014Z:b265dc6e-6cec-4104-9c1b-03284fd87c59',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': '51633335-3c04-4234-bcff-01e06eb98295',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220639Z:51633335-3c04-4234-bcff-01e06eb98295',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:13 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '1f9b95f8-f7b0-4e26-ae7e-a9cf2e498724',
+  'x-ms-request-id': '9ab8d394-1177-4525-9776-412931ec7879',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': 'b265dc6e-6cec-4104-9c1b-03284fd87c59',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193014Z:b265dc6e-6cec-4104-9c1b-03284fd87c59',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': '51633335-3c04-4234-bcff-01e06eb98295',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220639Z:51633335-3c04-4234-bcff-01e06eb98295',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:13 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '9266cd09-09b3-40b6-8542-7d6baf9a31a5',
+  'x-ms-request-id': '1dee21fd-817c-40b2-afcd-6daf861cc2ff',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-correlation-request-id': '4a3b4136-303c-4a4d-9157-6fba70a2e1b0',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193015Z:4a3b4136-303c-4a4d-9157-6fba70a2e1b0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14951',
+  'x-ms-correlation-request-id': '9fd1a2d8-d53d-4824-95fe-e783f2fe8765',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220640Z:9fd1a2d8-d53d-4824-95fe-e783f2fe8765',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:14 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '9266cd09-09b3-40b6-8542-7d6baf9a31a5',
+  'x-ms-request-id': '1dee21fd-817c-40b2-afcd-6daf861cc2ff',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-correlation-request-id': '4a3b4136-303c-4a4d-9157-6fba70a2e1b0',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193015Z:4a3b4136-303c-4a4d-9157-6fba70a2e1b0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14951',
+  'x-ms-correlation-request-id': '9fd1a2d8-d53d-4824-95fe-e783f2fe8765',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220640Z:9fd1a2d8-d53d-4824-95fe-e783f2fe8765',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:14 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '950abd57-fd4a-4a4d-8d29-f5ee976435b6',
+  'x-ms-request-id': '66176faf-aced-4241-82c4-8d84db9c06da',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': 'f46cb021-052d-4f69-9944-97dca7b82687',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193015Z:f46cb021-052d-4f69-9944-97dca7b82687',
+  'x-ms-ratelimit-remaining-subscription-reads': '14912',
+  'x-ms-correlation-request-id': '07820932-3a2e-4203-9f7c-9dfbaa43b1d7',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220640Z:07820932-3a2e-4203-9f7c-9dfbaa43b1d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:14 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '950abd57-fd4a-4a4d-8d29-f5ee976435b6',
+  'x-ms-request-id': '66176faf-aced-4241-82c4-8d84db9c06da',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': 'f46cb021-052d-4f69-9944-97dca7b82687',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193015Z:f46cb021-052d-4f69-9944-97dca7b82687',
+  'x-ms-ratelimit-remaining-subscription-reads': '14912',
+  'x-ms-correlation-request-id': '07820932-3a2e-4203-9f7c-9dfbaa43b1d7',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220640Z:07820932-3a2e-4203-9f7c-9dfbaa43b1d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:14 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '923b4505-b7b3-4792-92c9-788644d46b77',
+  'x-ms-request-id': 'b405199a-6eed-479f-adf7-8ee31b7e0593',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14924',
-  'x-ms-correlation-request-id': '6d7657e4-544a-4c23-9a2f-ad140853ca29',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193016Z:6d7657e4-544a-4c23-9a2f-ad140853ca29',
+  'x-ms-ratelimit-remaining-subscription-reads': '14919',
+  'x-ms-correlation-request-id': '99baa03f-2c16-4141-a673-b6d440a861e2',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220641Z:99baa03f-2c16-4141-a673-b6d440a861e2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:15 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '923b4505-b7b3-4792-92c9-788644d46b77',
+  'x-ms-request-id': 'b405199a-6eed-479f-adf7-8ee31b7e0593',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14924',
-  'x-ms-correlation-request-id': '6d7657e4-544a-4c23-9a2f-ad140853ca29',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193016Z:6d7657e4-544a-4c23-9a2f-ad140853ca29',
+  'x-ms-ratelimit-remaining-subscription-reads': '14919',
+  'x-ms-correlation-request-id': '99baa03f-2c16-4141-a673-b6d440a861e2',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220641Z:99baa03f-2c16-4141-a673-b6d440a861e2',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:15 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '851672a8-00f1-4048-9793-82cf25a5d909',
+  'x-ms-request-id': '4ee6dad8-9fd5-4937-a8b9-fc86039299c1',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14872',
+  'x-ms-correlation-request-id': '84b0545d-bc0f-465f-bdde-e865b5c916ab',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220642Z:84b0545d-bc0f-465f-bdde-e865b5c916ab',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '4ee6dad8-9fd5-4937-a8b9-fc86039299c1',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14872',
+  'x-ms-correlation-request-id': '84b0545d-bc0f-465f-bdde-e865b5c916ab',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220642Z:84b0545d-bc0f-465f-bdde-e865b5c916ab',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'b8615d2c-5d14-445f-9dee-25a6420dec97',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': '475b0670-28f9-4778-9b6f-dd7bb2487a36',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220642Z:475b0670-28f9-4778-9b6f-dd7bb2487a36',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'b8615d2c-5d14-445f-9dee-25a6420dec97',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': '475b0670-28f9-4778-9b6f-dd7bb2487a36',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220642Z:475b0670-28f9-4778-9b6f-dd7bb2487a36',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:41 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '2e0116a5-d823-4924-b975-df6f34f20030',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': '3aae1ee3-5697-4dbc-a8a8-15d50c0caeaa',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220643Z:3aae1ee3-5697-4dbc-a8a8-15d50c0caeaa',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:42 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '2e0116a5-d823-4924-b975-df6f34f20030',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': '3aae1ee3-5697-4dbc-a8a8-15d50c0caeaa',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220643Z:3aae1ee3-5697-4dbc-a8a8-15d50c0caeaa',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:42 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '7ae37210-f6d0-4cb5-93d4-1b13e14ef9cc',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14955',
+  'x-ms-correlation-request-id': '000b7c2c-803a-40c5-96f5-7ea0aad95bf0',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220643Z:000b7c2c-803a-40c5-96f5-7ea0aad95bf0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '7ae37210-f6d0-4cb5-93d4-1b13e14ef9cc',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14955',
+  'x-ms-correlation-request-id': '000b7c2c-803a-40c5-96f5-7ea0aad95bf0',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220643Z:000b7c2c-803a-40c5-96f5-7ea0aad95bf0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'ee3e2998-eada-45c4-ad8d-e11f285929c6',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14975',
+  'x-ms-correlation-request-id': '4f3e6ca7-6ef5-4571-a762-02ccaf106262',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220644Z:4f3e6ca7-6ef5-4571-a762-02ccaf106262',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'ee3e2998-eada-45c4-ad8d-e11f285929c6',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14975',
+  'x-ms-correlation-request-id': '4f3e6ca7-6ef5-4571-a762-02ccaf106262',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220644Z:4f3e6ca7-6ef5-4571-a762-02ccaf106262',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '565a4a1c-b63c-48d7-9cd8-8fed365da420',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14860',
+  'x-ms-correlation-request-id': 'b601d29d-864b-4843-9093-619ec273ea75',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220644Z:b601d29d-864b-4843-9093-619ec273ea75',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '565a4a1c-b63c-48d7-9cd8-8fed365da420',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14860',
+  'x-ms-correlation-request-id': 'b601d29d-864b-4843-9093-619ec273ea75',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220644Z:b601d29d-864b-4843-9093-619ec273ea75',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'a5832c7b-295d-4a43-a73f-c6dfa40149ef',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14983',
+  'x-ms-correlation-request-id': 'e26d7fe8-35cf-4d4b-92d0-655be0c5345e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220645Z:e26d7fe8-35cf-4d4b-92d0-655be0c5345e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:45 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'a5832c7b-295d-4a43-a73f-c6dfa40149ef',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14983',
+  'x-ms-correlation-request-id': 'e26d7fe8-35cf-4d4b-92d0-655be0c5345e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220645Z:e26d7fe8-35cf-4d4b-92d0-655be0c5345e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:45 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '251b76b9-875a-4fe4-9827-025662c83758',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14979',
-  'x-ms-correlation-request-id': '92022b10-9663-4e18-aeb7-d8677aff9f0f',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193016Z:92022b10-9663-4e18-aeb7-d8677aff9f0f',
+  'x-ms-correlation-request-id': '87c9ab67-c466-4c70-99a0-3fade8cefeb6',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220645Z:87c9ab67-c466-4c70-99a0-3fade8cefeb6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:16 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '851672a8-00f1-4048-9793-82cf25a5d909',
+  'x-ms-request-id': '251b76b9-875a-4fe4-9827-025662c83758',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14979',
-  'x-ms-correlation-request-id': '92022b10-9663-4e18-aeb7-d8677aff9f0f',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193016Z:92022b10-9663-4e18-aeb7-d8677aff9f0f',
+  'x-ms-correlation-request-id': '87c9ab67-c466-4c70-99a0-3fade8cefeb6',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220645Z:87c9ab67-c466-4c70-99a0-3fade8cefeb6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:16 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '290099fb-86d8-45e1-9cdf-e4dbd1239553',
+  'x-ms-request-id': '738db51d-c8f4-4602-9093-3252f9d95dc7',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': '70bbfd2c-0bfd-43e3-a0ca-47b12a72cef7',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193017Z:70bbfd2c-0bfd-43e3-a0ca-47b12a72cef7',
+  'x-ms-ratelimit-remaining-subscription-reads': '14982',
+  'x-ms-correlation-request-id': '96917df6-a10c-4355-b609-bb0fb527c607',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220646Z:96917df6-a10c-4355-b609-bb0fb527c607',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:16 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '290099fb-86d8-45e1-9cdf-e4dbd1239553',
+  'x-ms-request-id': '738db51d-c8f4-4602-9093-3252f9d95dc7',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': '70bbfd2c-0bfd-43e3-a0ca-47b12a72cef7',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193017Z:70bbfd2c-0bfd-43e3-a0ca-47b12a72cef7',
+  'x-ms-ratelimit-remaining-subscription-reads': '14982',
+  'x-ms-correlation-request-id': '96917df6-a10c-4355-b609-bb0fb527c607',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220646Z:96917df6-a10c-4355-b609-bb0fb527c607',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:16 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'bd53a0fc-9b25-447b-b117-09b67272eba6',
+  'x-ms-request-id': '204bfbed-86b6-46e9-8f2e-87e6ecf4f9b1',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '78081933-61a3-4909-822d-34c62e65e279',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193017Z:78081933-61a3-4909-822d-34c62e65e279',
+  'x-ms-ratelimit-remaining-subscription-reads': '14947',
+  'x-ms-correlation-request-id': '722f2854-7e73-4159-80a8-d357681bb1a7',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220646Z:722f2854-7e73-4159-80a8-d357681bb1a7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:17 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '23',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'bd53a0fc-9b25-447b-b117-09b67272eba6',
+  'x-ms-request-id': '204bfbed-86b6-46e9-8f2e-87e6ecf4f9b1',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '78081933-61a3-4909-822d-34c62e65e279',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193017Z:78081933-61a3-4909-822d-34c62e65e279',
+  'x-ms-ratelimit-remaining-subscription-reads': '14947',
+  'x-ms-correlation-request-id': '722f2854-7e73-4159-80a8-d357681bb1a7',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220646Z:722f2854-7e73-4159-80a8-d357681bb1a7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:17 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:46 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '27d1a7d9-1849-434b-8719-80e3c45d332b',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': 'd26c9274-fac0-4af8-817b-24b9c1e936b5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220647Z:d26c9274-fac0-4af8-817b-24b9c1e936b5',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:47 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '27d1a7d9-1849-434b-8719-80e3c45d332b',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': 'd26c9274-fac0-4af8-817b-24b9c1e936b5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220647Z:d26c9274-fac0-4af8-817b-24b9c1e936b5',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:47 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '57348738-31b5-4e55-be7b-551de762eee1',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14911',
+  'x-ms-correlation-request-id': '17f005f1-03e3-4281-af3a-543a689d2cd2',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220648Z:17f005f1-03e3-4281-af3a-543a689d2cd2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:47 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '57348738-31b5-4e55-be7b-551de762eee1',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14911',
+  'x-ms-correlation-request-id': '17f005f1-03e3-4281-af3a-543a689d2cd2',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220648Z:17f005f1-03e3-4281-af3a-543a689d2cd2',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:47 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '28cd27b6-62d4-4a1a-bf3e-1b9928719578',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14978',
+  'x-ms-correlation-request-id': '4a9ebf5a-59c6-469a-ade2-0ba749c6a88c',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220648Z:4a9ebf5a-59c6-469a-ade2-0ba749c6a88c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:48 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '28cd27b6-62d4-4a1a-bf3e-1b9928719578',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14978',
+  'x-ms-correlation-request-id': '4a9ebf5a-59c6-469a-ade2-0ba749c6a88c',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220648Z:4a9ebf5a-59c6-469a-ade2-0ba749c6a88c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:48 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '47127416-4381-40a4-aee2-61b900df94cc',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': '648f332e-245b-4ddb-a445-953e4b18c336',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220649Z:648f332e-245b-4ddb-a445-953e4b18c336',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '47127416-4381-40a4-aee2-61b900df94cc',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14948',
+  'x-ms-correlation-request-id': '648f332e-245b-4ddb-a445-953e4b18c336',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220649Z:648f332e-245b-4ddb-a445-953e4b18c336',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '62f243f4-1f40-494a-bf1f-11f44c116f36',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14918',
+  'x-ms-correlation-request-id': 'abfac2bf-f8fd-472b-b31b-84ca9adbc65c',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220649Z:abfac2bf-f8fd-472b-b31b-84ca9adbc65c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '62f243f4-1f40-494a-bf1f-11f44c116f36',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14918',
+  'x-ms-correlation-request-id': 'abfac2bf-f8fd-472b-b31b-84ca9adbc65c',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220649Z:abfac2bf-f8fd-472b-b31b-84ca9adbc65c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:49 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '5138bc1f-d4fa-4818-8239-56d96fd69840',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14871',
+  'x-ms-correlation-request-id': 'e9563f12-0770-4496-b697-b227dfd3261e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220650Z:e9563f12-0770-4496-b697-b227dfd3261e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '5138bc1f-d4fa-4818-8239-56d96fd69840',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14871',
+  'x-ms-correlation-request-id': 'e9563f12-0770-4496-b697-b227dfd3261e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220650Z:e9563f12-0770-4496-b697-b227dfd3261e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '658e2190-5c60-45d4-a0c1-bb569cb673c7',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '251e1631-0d1e-4231-8307-91d79fa5aa4f',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220650Z:251e1631-0d1e-4231-8307-91d79fa5aa4f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '658e2190-5c60-45d4-a0c1-bb569cb673c7',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '251e1631-0d1e-4231-8307-91d79fa5aa4f',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220650Z:251e1631-0d1e-4231-8307-91d79fa5aa4f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'dec516f7-489e-4c31-88eb-6abf1a73e285',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14970',
+  'x-ms-correlation-request-id': 'e8859cf3-bf58-45b2-9cc4-cc059b1bf175',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220651Z:e8859cf3-bf58-45b2-9cc4-cc059b1bf175',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': 'dec516f7-489e-4c31-88eb-6abf1a73e285',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14970',
+  'x-ms-correlation-request-id': 'e8859cf3-bf58-45b2-9cc4-cc059b1bf175',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220651Z:e8859cf3-bf58-45b2-9cc4-cc059b1bf175',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:50 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '0e7f0da2-10db-446e-ab4d-cc32204fbef2',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14954',
+  'x-ms-correlation-request-id': '628bd3e8-0f88-400c-9499-0893ebe0f836',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220652Z:628bd3e8-0f88-400c-9499-0893ebe0f836',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '0e7f0da2-10db-446e-ab4d-cc32204fbef2',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14954',
+  'x-ms-correlation-request-id': '628bd3e8-0f88-400c-9499-0893ebe0f836',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220652Z:628bd3e8-0f88-400c-9499-0893ebe0f836',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '0c6dca23-f576-42d6-977d-c24e18e06e61',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14973',
+  'x-ms-correlation-request-id': 'd62f0c17-20cf-4d14-abed-a70f69f99da0',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220652Z:d62f0c17-20cf-4d14-abed-a70f69f99da0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '0c6dca23-f576-42d6-977d-c24e18e06e61',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14973',
+  'x-ms-correlation-request-id': 'd62f0c17-20cf-4d14-abed-a70f69f99da0',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220652Z:d62f0c17-20cf-4d14-abed-a70f69f99da0',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:51 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '2daf1b66-0470-49f9-8614-252f619f8b18',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14974',
+  'x-ms-correlation-request-id': 'de158e51-24a3-4d1f-ad86-ed5b598c846e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220653Z:de158e51-24a3-4d1f-ad86-ed5b598c846e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '2daf1b66-0470-49f9-8614-252f619f8b18',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14974',
+  'x-ms-correlation-request-id': 'de158e51-24a3-4d1f-ad86-ed5b598c846e',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220653Z:de158e51-24a3-4d1f-ad86-ed5b598c846e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '7b3713a5-bc5b-49ad-9645-c3ab03b1bbc0',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14859',
+  'x-ms-correlation-request-id': '5e80913d-bf10-4433-be58-69b7e9056356',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220653Z:5e80913d-bf10-4433-be58-69b7e9056356',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '7b3713a5-bc5b-49ad-9645-c3ab03b1bbc0',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14859',
+  'x-ms-correlation-request-id': '5e80913d-bf10-4433-be58-69b7e9056356',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220653Z:5e80913d-bf10-4433-be58-69b7e9056356',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '5ad3ac9e-1efd-4e7d-9b6b-bf2376fb65ea',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14982',
+  'x-ms-correlation-request-id': 'c60ad8a5-4a91-427c-9e11-6ee9a015f4ee',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220654Z:c60ad8a5-4a91-427c-9e11-6ee9a015f4ee',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
+  .reply(200, "{\"status\":\"InProgress\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '23',
+  'content-type': 'application/json',
+  expires: '-1',
+  'x-ms-request-id': '5ad3ac9e-1efd-4e7d-9b6b-bf2376fb65ea',
+  server: 'Microsoft-IIS/8.5',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'x-ms-ratelimit-remaining-subscription-reads': '14982',
+  'x-ms-correlation-request-id': 'c60ad8a5-4a91-427c-9e11-6ee9a015f4ee',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220654Z:c60ad8a5-4a91-427c-9e11-6ee9a015f4ee',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 19 Nov 2015 22:06:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '23cb4e3e-4242-4297-a70b-0f21a3f5128e',
+  'x-ms-request-id': '37d6e437-3297-4e1e-aeda-244a9c133b72',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14945',
-  'x-ms-correlation-request-id': '68ad1e67-0fda-48a9-999e-d55445543f10',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193018Z:68ad1e67-0fda-48a9-999e-d55445543f10',
+  'x-ms-ratelimit-remaining-subscription-reads': '14978',
+  'x-ms-correlation-request-id': '1097f7b3-9225-478a-85ee-fa831720e7d5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220654Z:1097f7b3-9225-478a-85ee-fa831720e7d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:17 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/0f5656ee-7cd8-48e1-97e3-a2eaa1dd9c0e0?api-version=2015-10-01-preview&expanded=true')
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/providers/Microsoft.DataLakeStore/locations/eastus2/operationResults/5ae7acad-2f91-41cf-89e9-687b1ecf95760?api-version=2015-10-01-preview&expanded=true')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '23cb4e3e-4242-4297-a70b-0f21a3f5128e',
+  'x-ms-request-id': '37d6e437-3297-4e1e-aeda-244a9c133b72',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14945',
-  'x-ms-correlation-request-id': '68ad1e67-0fda-48a9-999e-d55445543f10',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193018Z:68ad1e67-0fda-48a9-999e-d55445543f10',
+  'x-ms-ratelimit-remaining-subscription-reads': '14978',
+  'x-ms-correlation-request-id': '1097f7b3-9225-478a-85ee-fa831720e7d5',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220654Z:1097f7b3-9225-478a-85ee-fa831720e7d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:17 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls8150.azuredatalakestore.net\",\"creationTime\":\"2015-11-09T19:29:49.3759254Z\",\"lastModifiedTime\":\"2015-11-09T19:29:49.3759254Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150\",\"name\":\"xplattestadls8150\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls6012.azuredatalakestore.net\",\"creationTime\":\"2015-11-19T22:06:25.3809763Z\",\"lastModifiedTime\":\"2015-11-19T22:06:25.3809763Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012\",\"name\":\"xplattestadls6012\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '515',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '90f074af-be2a-4800-a558-523ec66a5707',
+  'x-ms-request-id': 'a454c6bd-05c7-496e-afc0-f81b8104f1f8',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': '609b56c5-e490-47bd-8ad4-4c6edf5be7b2',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193019Z:609b56c5-e490-47bd-8ad4-4c6edf5be7b2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14981',
+  'x-ms-correlation-request-id': 'd235298b-2441-4996-b596-2ae0b12a8339',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220655Z:d235298b-2441-4996-b596-2ae0b12a8339',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:18 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls8150.azuredatalakestore.net\",\"creationTime\":\"2015-11-09T19:29:49.3759254Z\",\"lastModifiedTime\":\"2015-11-09T19:29:49.3759254Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls8150\",\"name\":\"xplattestadls8150\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls6012.azuredatalakestore.net\",\"creationTime\":\"2015-11-19T22:06:25.3809763Z\",\"lastModifiedTime\":\"2015-11-19T22:06:25.3809763Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/46153750-fa3b-4140-bf57-8beb7d5c971a/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls6012\",\"name\":\"xplattestadls6012\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '515',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '90f074af-be2a-4800-a558-523ec66a5707',
+  'x-ms-request-id': 'a454c6bd-05c7-496e-afc0-f81b8104f1f8',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': '609b56c5-e490-47bd-8ad4-4c6edf5be7b2',
-  'x-ms-routing-request-id': 'WESTUS:20151109T193019Z:609b56c5-e490-47bd-8ad4-4c6edf5be7b2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14981',
+  'x-ms-correlation-request-id': 'd235298b-2441-4996-b596-2ae0b12a8339',
+  'x-ms-routing-request-id': 'WESTUS:20151119T220655Z:d235298b-2441-4996-b596-2ae0b12a8339',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 09 Nov 2015 19:30:18 GMT',
+  date: 'Thu, 19 Nov 2015 22:06:54 GMT',
   connection: 'close' });
  return result; }]];
