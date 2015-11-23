@@ -171,6 +171,18 @@ describe('Token cache', function () {
       });
     });
     
+    it('should get rid of useless fields', function (done) {
+      var tokensInCache = [];
+      var cache = new TokenCache(constructStorageObject(tokensInCache));
+      cache.add([mikeTokenFromCommon], function () {
+        should.not.exist(tokensInCache[0].familyName);
+        should.not.exist(tokensInCache[0].givenName);
+        should.not.exist(tokensInCache[0].isUserIdDisplayable);
+        should.not.exist(tokensInCache[0].tenantId);
+        done();
+      });
+    });
+    
     it('should not add duplicate tokens', function (done) {
       var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
       var tokenStorageObject = constructStorageObject(tokensInCache);
