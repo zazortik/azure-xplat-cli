@@ -19602,7 +19602,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--domain-name",
-                      "description": "profile DNS name\n   Example: foobar.trafficmanager.net"
+                      "description": "the profile DNS name\n   Example: foobar.trafficmanager.net"
                     },
                     {
                       "flags": "-m, --load-balancing-method <load-balancing-method>",

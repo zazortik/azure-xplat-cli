@@ -49,17 +49,17 @@ commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
 commands/arm/network/arm.network.lb-frontend-ip-tests.js
+commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
 commands/arm/network/arm.network.dns-zone-tests.js
 commands/arm/network/arm.network.dns-zone-record-set-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
 commands/arm/network/arm.network.route-table-tests.js
 commands/arm/network/arm.network.route-table-routes-tests.js
-commands/arm/network/arm-network-gateway-local-network-tests.js
-commands/arm/network/arm-network-gateway-vnet-tests.js
-commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
+commands/arm/network/arm.network.local-gateway-tests.js
+commands/arm/network/arm.network.vpn-gateway-tests.js
+commands/arm/network/arm.network.vpn-connection-tests.js
 commands/arm/network/arm-network-express-route-circuit-tests.js
-commands/arm/network/arm-network-gateway-connection-tests.js
 commands/arm/apiapp/lib/lib-tests.js
 commands/arm/apiapp/lib/deployLib-tests.js
 commands/arm/apiapp/lib/propertyPrompts-tests.js
@@ -68,8 +68,8 @@ commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/rediscache/arm.rediscache-tests.js
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
 commands/arm/datalakestore/arm.datalake-store-tests.js
-#please put the following group tests to the last, as it uses the different subscription 
+#please put the following group tests to the last, as it uses the different subscription
 #and it exposes a test framework bug which failed vm and apiapp tests randomly
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
-commands/arm/group/arm.group.deployment.operation-tests.js 
+commands/arm/group/arm.group.deployment.operation-tests.js
