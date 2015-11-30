@@ -18,7 +18,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-gateway-local-network-tests';
+var testprefix = 'arm-network-local-gateway-tests';
 var localNetworkPrefix = 'xplatTestVnet';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName, location,
@@ -59,26 +59,26 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('gateway local-network', function() {
+    describe('local-gateway', function() {
 
       it('create should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function() {
-          var cmd = util.format('network gateway local-network create -g %s -n %s -l %s -a %s -i %s -t %s --json', groupName, localNetworkPrefix, location, AddPrefix, ipAddress, tags).split(' ');
+          var cmd = util.format('network local-gateway create -g %s -n %s -l %s -a %s -i %s -t %s --json', groupName, localNetworkPrefix, location, AddPrefix, ipAddress, tags).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
           });
         });
       });
-      it('set should modify local-network', function(done) {
-        var cmd = util.format('network gateway local-network set -g %s -n %s -a %s -t %s --json', groupName, localNetworkPrefix, AddPrefixN, tagsN).split(' ');
+      it('set should modify local-gateway', function(done) {
+        var cmd = util.format('network local-gateway set -g %s -n %s -a %s -t %s --json', groupName, localNetworkPrefix, AddPrefixN, tagsN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-      it('show should display details of local-network', function(done) {
-        var cmd = util.format('network gateway local-network show -g %s -n %s --json', groupName, localNetworkPrefix).split(' ');
+      it('show should display details of local-gateway', function(done) {
+        var cmd = util.format('network local-gateway show -g %s -n %s --json', groupName, localNetworkPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allresources = JSON.parse(result.text);
@@ -86,8 +86,8 @@ describe('arm', function() {
           done();
         });
       });
-      it('list should dispaly all local-networks in a given resource group', function(done) {
-        var cmd = util.format('network gateway local-network list -g %s --json', groupName).split(' ');
+      it('list should dispaly all local-gateways in a given resource group', function(done) {
+        var cmd = util.format('network local-gateway list -g %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -97,8 +97,8 @@ describe('arm', function() {
           done();
         });
       });
-      it('delete should delete local-network', function(done) {
-        var cmd = util.format('network gateway local-network delete -g %s -n %s --json --quiet', groupName, localNetworkPrefix).split(' ');
+      it('delete should delete local-gateway', function(done) {
+        var cmd = util.format('network local-gateway delete -g %s -n %s --json --quiet', groupName, localNetworkPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

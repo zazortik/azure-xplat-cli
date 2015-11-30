@@ -18,7 +18,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-gateway-connection-tests';
+var testprefix = 'arm-network-vpn-connection-tests';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var groupName, location,
   groupPrefix = 'xplatTestGroupGatewayCon',
@@ -86,7 +86,7 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('gateway connection', function() {
+    describe('vpn-connection', function() {
       it('create first gateway should pass', function(done) {
         this.timeout(this.gatewaytimeout);
         networkUtil.createGroup(groupName, location, suite, function() {
@@ -108,7 +108,7 @@ describe('arm', function() {
           networkUtil.createSubnetWithAddress(groupName, vnetPrefix2, subnetprefix2, subnetAddressPrefix2, suite, function() {
             networkUtil.createPublicIp(groupName, publicipPrefix2, location, suite, function() {
               networkUtil.createGateway(groupName, gatewayPrefix2, location, gatewayType, publicipPrefix2, vnetPrefix2, subnetprefix2, privateIpAddress2, enablebgp, tags2, suite, function() {
-                var cmd = util.format('network gateway connection create -g %s -n %s -l %s -i %s -e %s -y %s -k %s -t %s --json', groupName, gatewayConnPrefix, location, gatewayPrefix1, gatewayPrefix2, connType, sharedKey, connTag).split(' ');
+                var cmd = util.format('network vpn-connection create -g %s -n %s -l %s -i %s -e %s -y %s -k %s -t %s --json', groupName, gatewayConnPrefix, location, gatewayPrefix1, gatewayPrefix2, connType, sharedKey, connTag).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   done();
@@ -119,7 +119,7 @@ describe('arm', function() {
         });
       });
       it('show should display details of gateway connection', function(done) {
-        var cmd = util.format('network gateway connection show -g %s -n %s --json', groupName, gatewayConnPrefix).split(' ');
+        var cmd = util.format('network vpn-connection show -g %s -n %s --json', groupName, gatewayConnPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allresources = JSON.parse(result.text);
@@ -127,8 +127,8 @@ describe('arm', function() {
           done();
         });
       });
-      it('list should dispaly all gateway connections in a given resource group', function(done) {
-        var cmd = util.format('network gateway connection list -g %s --json', groupName).split(' ');
+      it('list should display all gateway connections in a given resource group', function(done) {
+        var cmd = util.format('network vpn-connection list -g %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -139,7 +139,7 @@ describe('arm', function() {
         });
       });
       it('delete should delete gateway connection', function(done) {
-        var cmd = util.format('network gateway connection delete %s %s --json --quiet', groupName, gatewayConnPrefix).split(' ');
+        var cmd = util.format('network vpn-connection delete %s %s --json --quiet', groupName, gatewayConnPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           setTimeout(done(), timeout);
