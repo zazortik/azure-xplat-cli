@@ -31596,6 +31596,58 @@
           ]
         },
         {
+          "name": "enable-aem",
+          "description": "Enable azure enhanced monitoring extension on a VM in a resource group",
+          "fullName": "vm enable-aem",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
+              "flags": "-a, --diagnostic-storage-account-name",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--diagnostic-storage-account-name",
+              "description": "storage account name"
+            },
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            }
+          ] 
+        },
+        {
           "name": "enable-diag",
           "description": "Enable diagnostics extension on a VM in a resource group.",
           "fullName": "vm enable-diag",
