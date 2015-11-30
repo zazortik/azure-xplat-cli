@@ -53,7 +53,9 @@ function VMTestUtil() {
 }
 
 VMTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
-  suite.execute('group create %s --location %s --json', groupName, location, function(result) {
+  var timestamp = (new Date()).toISOString();
+  var tags = suite.testPrefix + '=' + timestamp;
+  suite.execute('group create %s --location %s --tags %s --json', groupName, location, tags, function(result) {
     result.exitStatus.should.equal(0);
     callback();
   });
