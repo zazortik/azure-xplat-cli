@@ -180,12 +180,14 @@ describe('arm', function() {
 
       //Set chef extension
       it('Set Chef extension for the created vm', function(done) {
-        var cmd = util.format('vm extension set-chef %s %s --version %s --client-config %s --validation-pem %s --json', groupName, vmPrefix, '1210.12', clientConfig, validationPem).split(' ');
+        var cmd = util.format('vm extension set-chef %s %s --client-config %s --validation-pem %s --json', groupName, vmPrefix, clientConfig, validationPem).split(' ');
+
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
+
 
       //Get chef extension
       it('Extension Get-Chef should list only chef extension', function(done) {
@@ -195,7 +197,6 @@ describe('arm', function() {
           var allResources = JSON.parse(result.text);
           allResources[0].publisher.should.equal('Chef.Bootstrap.WindowsAzure');
           allResources[0].name.should.equal('ChefClient');
-          allResources[0].typeHandlerVersion.should.equal('1210.12');
           done();
         });
       });
