@@ -130,6 +130,9 @@ for %%i in (
     )
 )
 
+cd lib
+del /Q /S *._js 
+
 echo.
 popd
 
