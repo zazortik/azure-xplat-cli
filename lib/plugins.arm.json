@@ -25470,15 +25470,6 @@
                       "description": "the name of the profile"
                     },
                     {
-                      "flags": "-l, --location <location>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--location",
-                      "description": "the location"
-                    },
-                    {
                       "flags": "-u, --profile-status <profile-status> ",
                       "required": -22,
                       "optional": 0,
@@ -25506,11 +25497,11 @@
                       "description": "relative DNS name of the profile e.g. .trafficmanager.net"
                     },
                     {
-                      "flags": "-e, --ttl <ttl>",
+                      "flags": "-l, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-l",
                       "long": "--ttl",
                       "description": "time to live in specified in seconds"
                     },
@@ -25630,11 +25621,11 @@
                       "description": "the traffic routing method for the profile,\n     valid values are [Performance,Weighted,Priority], default is Performance"
                     },
                     {
-                      "flags": "-e, --ttl <ttl>",
+                      "flags": "-l, --ttl <ttl>",
                       "required": -11,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-l",
                       "long": "--ttl",
                       "description": "time to live specified in seconds"
                     },
@@ -25880,7 +25871,69 @@
                   "name": "is-dns-available",
                   "description": "Checks whether the specified DNS prefix is available for creating a Traffic Manager profile",
                   "fullName": "network traffic-manager profile is-dns-available",
-                  "usage": "[options] <resource-group> <relative-dns-name> ",
+                  "usage": "[options] <relative-dns-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-r, --relative-dns-name <relative-dns-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--relative-dns-name",
+                      "description": "the relative DNS name to check for availability"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "endpoint": {
+              "name": "endpoint",
+              "description": "Commands to manage Traffic Manager endpoints",
+              "fullName": "network traffic-manager endpoint",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create an endpoint in Traffic Manager profile",
+                  "fullName": "network traffic-manager endpoint create",
+                  "usage": "[options] <resource-group> <profile-name> <name> <type>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -25918,13 +25971,385 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-n, --relative-dns-name <relative-dns-name>",
-                      "required": -25,
+                      "flags": "-f, --profile-name <profile-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--profile-name",
+                      "description": "the profile name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--relative-dns-name",
-                      "description": "the relative DNS name to check for availability"
+                      "long": "--name",
+                      "description": "the name of the endpoint"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the endpoint location. This is only used if the Traffic Manager profile is configured to use the \"Performance\" traffic-routing method.\n       This should only be specified on endpoints of type \"ExternalEndpoints\" and \"NestedEndpoints\".\n       It is not applicable for endpoints of type \"AzureEndpoints\", since the location is taken from the resource specified in \"--target-resource-id\"."
+                    },
+                    {
+                      "flags": "-u, --status <status>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--status",
+                      "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                    },
+                    {
+                      "flags": "-t, --target <target>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--target",
+                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints\""
+                    },
+                    {
+                      "flags": "-i, --target-resource-id <target-resource-id>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--target-resource-id",
+                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints\""
+                    },
+                    {
+                      "flags": "-w, --weight <weight>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--weight",
+                      "description": "the endpoint weight used in the traffic-routing method,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the \"Weighted\" traffic-routing method"
+                    },
+                    {
+                      "flags": "-p, --priority <priority>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--priority",
+                      "description": "the endpoint priority used in the traffic-routing method,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the \"Priority\" traffic-routing method.\n       Lower values represent higher priority"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set an endpoint in a Traffic Manager profile",
+                  "fullName": "network traffic-manager endpoint set",
+                  "usage": "[options] <resource-group> <profile-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-f, --profile-name <profile-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--profile-name",
+                      "description": "the profile name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the endpoint"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the endpoint location. This is only used if the Traffic Manager profile is configured to use the \"Performance\" traffic-routing method.\n       This should only be specified on endpoints of type \"ExternalEndpoints\" and \"NestedEndpoints\".\n       It is not applicable for endpoints of type \"AzureEndpoints\", since the location is taken from the resource specified in \"--target-resource-id\"."
+                    },
+                    {
+                      "flags": "-u, --status <status>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--status",
+                      "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
+                    },
+                    {
+                      "flags": "-t, --target <target>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--target",
+                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints\""
+                    },
+                    {
+                      "flags": "-i, --target-resource-id <target-resource-id>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--target-resource-id",
+                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints\""
+                    },
+                    {
+                      "flags": "-w, --weight <weight>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--weight",
+                      "description": "the endpoint weight used in the traffic-routing method,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the \"Weighted\" traffic-routing method"
+                    },
+                    {
+                      "flags": "-p, --priority <priority>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--priority",
+                      "description": "the endpoint priority used in the traffic-routing method,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the \"Priority\" traffic-routing method.\n       Lower values represent higher priority"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Get an endpoint in Traffic Manager profile",
+                  "fullName": "network traffic-manager endpoint show",
+                  "usage": "[options] <resource-group> <profile-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-f, --profile-name <profile-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--profile-name",
+                      "description": "the profile name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the endpoint"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an endpoint from a Traffic Manager profile",
+                  "fullName": "network traffic-manager endpoint delete",
+                  "usage": "[options] <resource-group> <profile-name> <name> <type>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-f, --profile-name <profile-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--profile-name",
+                      "description": "the profile name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the endpoint"
+                    },
+                    {
+                      "flags": "-y, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--type",
+                      "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -25938,451 +26363,7 @@
                   ]
                 }
               ],
-              "categories": {
-                "endpoint": {
-                  "name": "endpoint",
-                  "description": "Commands to manage Traffic Manager endpoints",
-                  "fullName": "network traffic-manager profile endpoint",
-                  "usage": "[options] [command]",
-                  "options": [],
-                  "commands": [
-                    {
-                      "name": "create",
-                      "description": "Create an endpoint in Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint create",
-                      "usage": "[options] <resource-group> <profile-name> <name> <type> <location>",
-                      "filePath": "commands/arm/network/network._js",
-                      "options": [
-                        {
-                          "flags": "-v, --verbose",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-v",
-                          "long": "--verbose",
-                          "description": "use verbose output"
-                        },
-                        {
-                          "flags": "-vv",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "-vv",
-                          "description": "more verbose with debug output"
-                        },
-                        {
-                          "flags": "--json",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--json",
-                          "description": "use json output"
-                        },
-                        {
-                          "flags": "-g, --resource-group <resource-group>",
-                          "required": -22,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the name of the resource group"
-                        },
-                        {
-                          "flags": "-f, --profile-name <profile-name>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-f",
-                          "long": "--profile-name",
-                          "description": "the profile name"
-                        },
-                        {
-                          "flags": "-n, --name <name>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-n",
-                          "long": "--name",
-                          "description": "the name of the endpoint"
-                        },
-                        {
-                          "flags": "-y, --type <type>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-y",
-                          "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-l, --location <location>",
-                          "required": -16,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-l",
-                          "long": "--location",
-                          "description": "the endpoint location"
-                        },
-                        {
-                          "flags": "-u, --status <status>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-u",
-                          "long": "--status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
-                        },
-                        {
-                          "flags": "-e, --target <target>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-e",
-                          "long": "--target",
-                          "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-i, --target-resource-id <target-resource-id>",
-                          "required": -26,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-i",
-                          "long": "--target-resource-id",
-                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
-                        },
-                        {
-                          "flags": "-w, --weight <weight>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-w",
-                          "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
-                        },
-                        {
-                          "flags": "-p, --priority <priority>",
-                          "required": -16,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-p",
-                          "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
-                        },
-                        {
-                          "flags": "-s, --subscription <subscription>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-s",
-                          "long": "--subscription",
-                          "description": "the subscription identifier"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "set",
-                      "description": "Set an endpoint in a Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint set",
-                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
-                      "filePath": "commands/arm/network/network._js",
-                      "options": [
-                        {
-                          "flags": "-v, --verbose",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-v",
-                          "long": "--verbose",
-                          "description": "use verbose output"
-                        },
-                        {
-                          "flags": "-vv",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "-vv",
-                          "description": "more verbose with debug output"
-                        },
-                        {
-                          "flags": "--json",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--json",
-                          "description": "use json output"
-                        },
-                        {
-                          "flags": "-g, --resource-group <resource-group>",
-                          "required": -22,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the name of the resource group"
-                        },
-                        {
-                          "flags": "-f, --profile-name <profile-name>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-f",
-                          "long": "--profile-name",
-                          "description": "the profile name"
-                        },
-                        {
-                          "flags": "-n, --name <name>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-n",
-                          "long": "--name",
-                          "description": "the name of the endpoint"
-                        },
-                        {
-                          "flags": "-y, --type <type>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-y",
-                          "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-l, --location <location>",
-                          "required": -16,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-l",
-                          "long": "--location",
-                          "description": "the endpoint location"
-                        },
-                        {
-                          "flags": "-u, --status <status>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-u",
-                          "long": "--status",
-                          "description": "the endpoint status, valid values are:\n       [Enabled,Disabled] Default is Enabled"
-                        },
-                        {
-                          "flags": "-e, --target <target>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-e",
-                          "long": "--target",
-                          "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-i, --target-resource-id <target-resource-id>",
-                          "required": -26,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-i",
-                          "long": "--target-resource-id",
-                          "description": "the Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'"
-                        },
-                        {
-                          "flags": "-w, --weight <weight>",
-                          "required": -14,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-w",
-                          "long": "--weight",
-                          "description": "the endpoint weight used in the load balancing algorithm,\n       valid range is [1, 1000] This is only used if the Traffic Manager profile is configured to use the 'Weighted' traffic routing method"
-                        },
-                        {
-                          "flags": "-p, --priority <priority>",
-                          "required": -16,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-p",
-                          "long": "--priority",
-                          "description": "the endpoint priority used in the load balancing algorithm,\n       valid range is [1, 1000] Lower values represent higher priority"
-                        },
-                        {
-                          "flags": "-s, --subscription <subscription>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-s",
-                          "long": "--subscription",
-                          "description": "the subscription identifier"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "show",
-                      "description": "Get an endpoint in Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint show",
-                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
-                      "filePath": "commands/arm/network/network._js",
-                      "options": [
-                        {
-                          "flags": "-v, --verbose",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-v",
-                          "long": "--verbose",
-                          "description": "use verbose output"
-                        },
-                        {
-                          "flags": "-vv",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "-vv",
-                          "description": "more verbose with debug output"
-                        },
-                        {
-                          "flags": "--json",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--json",
-                          "description": "use json output"
-                        },
-                        {
-                          "flags": "-g, --resource-group <resource-group>",
-                          "required": -22,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the name of the resource group"
-                        },
-                        {
-                          "flags": "-f, --profile-name <profile-name>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-f",
-                          "long": "--profile-name",
-                          "description": "the profile name"
-                        },
-                        {
-                          "flags": "-n, --name <name>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-n",
-                          "long": "--name",
-                          "description": "the name of the endpoint"
-                        },
-                        {
-                          "flags": "-y, --type <type>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-y",
-                          "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-s, --subscription <subscription>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-s",
-                          "long": "--subscription",
-                          "description": "the subscription identifier"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "delete",
-                      "description": "Delete an endpoint from a Traffic Manager profile",
-                      "fullName": "network traffic-manager profile endpoint delete",
-                      "usage": "[options] <resource-group> <profile-name> <name> <type>",
-                      "filePath": "commands/arm/network/network._js",
-                      "options": [
-                        {
-                          "flags": "-v, --verbose",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-v",
-                          "long": "--verbose",
-                          "description": "use verbose output"
-                        },
-                        {
-                          "flags": "-vv",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "-vv",
-                          "description": "more verbose with debug output"
-                        },
-                        {
-                          "flags": "--json",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--json",
-                          "description": "use json output"
-                        },
-                        {
-                          "flags": "-g, --resource-group <resource-group>",
-                          "required": -22,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the name of the resource group"
-                        },
-                        {
-                          "flags": "-f, --profile-name <profile-name>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-f",
-                          "long": "--profile-name",
-                          "description": "the profile name"
-                        },
-                        {
-                          "flags": "-n, --name <name>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-n",
-                          "long": "--name",
-                          "description": "the name of the endpoint"
-                        },
-                        {
-                          "flags": "-y, --type <type>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-y",
-                          "long": "--type",
-                          "description": "the endpoint type, valid values are:\n       [ExternalEndpoints,AzureEndpoints,NestedEndpoints], where ExternalEndpoints represents endpoint\n       for a service with FQDN external to Azure\n       e.g. foobar.contoso.com"
-                        },
-                        {
-                          "flags": "-q, --quiet",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-q",
-                          "long": "--quiet",
-                          "description": "quiet mode, do not ask for delete confirmation"
-                        },
-                        {
-                          "flags": "-s, --subscription <subscription>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-s",
-                          "long": "--subscription",
-                          "description": "the subscription identifier"
-                        }
-                      ]
-                    }
-                  ],
-                  "categories": {}
-                }
-              }
+              "categories": {}
             }
           }
         },
