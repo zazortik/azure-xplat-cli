@@ -268,6 +268,9 @@ describe('Token cache', function () {
         cache.remove([johnTokenFromTenant72f9], function () {
           tokensInCache.length.should.equal(1);
           tokensInCache[0].userId.should.equal(johnUserId);
+          //Verify even now we skip useless fields like "familyName", but we
+          //should still remove entry containing this field(could be added by old tools)
+          tokensInCache[0].familyName.should.equal(johnTokenFromTenant72f9.familyName);
           done();
         });
       });
