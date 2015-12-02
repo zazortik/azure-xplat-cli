@@ -13,6 +13,7 @@ commands/arm/ad/arm.ad-app-tests.js
 commands/arm/ad/adUtils-test.js
 commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/storage/arm.storage.account-tests.js
+commands/arm/hdinsight/arm.hdinsight-cluster-crud-tests.js
 commands/arm/insights/arm.insights.alerts-tests.js
 commands/arm/insights/arm.insights.alerts.rule-tests.js
 commands/arm/insights/arm.insights.autoscale-tests.js
