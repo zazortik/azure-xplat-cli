@@ -3,6 +3,8 @@ targets/*
 
 # Visual Studio #
 .settings/
+.vs/
+.vscode/
 /app.js
 /xPlat.sln
 *.suo
