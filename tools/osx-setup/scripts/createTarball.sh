@@ -95,6 +95,7 @@ pushd /tmp/azureInstallerTemporary
 node node_modules/streamline/bin/_node --verbose -c lib
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline/lib/streams
 node node_modules/streamline/bin/_node --verbose -c node_modules/streamline-streams/lib
+find lib/ -name "*._js" -delete
 popd
 
 # generate command metadata file
