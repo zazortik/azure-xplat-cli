@@ -18346,7 +18346,7 @@
     },
     "location": {
       "name": "location",
-      "description": "Commands to get the available locations for all resource types",
+      "description": "Commands to get the available locations",
       "fullName": "location",
       "usage": "[options] [command]",
       "options": [],
@@ -29002,7 +29002,7 @@
               "bool": true,
               "short": "-z",
               "long": "--size",
-              "description": "Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6]"
+              "description": "Size of the Redis Cache. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]"
             },
             {
               "flags": "-x, --sku <sku>",
@@ -29011,16 +29011,7 @@
               "bool": true,
               "short": "-x",
               "long": "--sku",
-              "description": "Redis SKU. Should be one of : [Basic, Standard]"
-            },
-            {
-              "flags": "-m, --max-memory-policy <max-memory-policy>",
-              "required": -25,
-              "optional": 0,
-              "bool": true,
-              "short": "-m",
-              "long": "--max-memory-policy",
-              "description": "MaxMemoryPolicy property of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+              "description": "Redis SKU. Should be one of : [Basic, Standard, Premium]"
             },
             {
               "flags": "-e, --enable-non-ssl-port",
@@ -29030,6 +29021,61 @@
               "short": "-e",
               "long": "--enable-non-ssl-port",
               "description": "EnableNonSslPort property of the Redis Cache. Add this flag if you want to enable the Non SSL Port for your cache"
+            },
+            {
+              "flags": "-c, --redis-configuration <redis-configuration>",
+              "required": -27,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--redis-configuration",
+              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here."
+            },
+            {
+              "flags": "-f, --redis-configuration-file <redisConfigurationFile>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "short": "-f",
+              "long": "--redis-configuration-file",
+              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here.",
+              "fileRelatedOption": true
+            },
+            {
+              "flags": "-r, --shard-count <shard-count>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-r",
+              "long": "--shard-count",
+              "description": "Number of Shards to create on a Premium Cluster Cache"
+            },
+            {
+              "flags": "-v, --virtual-network <virtual-network>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--virtual-network",
+              "description": "The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1"
+            },
+            {
+              "flags": "-t, --subnet <subnet>",
+              "required": -14,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--subnet",
+              "description": "Required when deploying a redis cache inside an existing Azure Virtual Network"
+            },
+            {
+              "flags": "-p, --static-ip <static-ip>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--static-ip",
+              "description": "Required when deploying a redis cache inside an existing Azure Virtual Network"
             },
             {
               "flags": "-s, --subscription <id>",
@@ -29220,7 +29266,7 @@
           "name": "set",
           "description": "Change settings of an existing Redis Cache",
           "fullName": "rediscache set",
-          "usage": "[--name <name> --resource-group <resource-group> --max-memory-policy <max-memory-policy>]",
+          "usage": "[--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]",
           "filePath": "commands/arm/rediscache/rediscache._js",
           "options": [
             {
@@ -29267,13 +29313,23 @@
               "description": "Name of the Resource Group"
             },
             {
-              "flags": "-m, --max-memory-policy <max-memory-policy>",
-              "required": -25,
+              "flags": "-c, --redis-configuration <redis-configuration>",
+              "required": -27,
               "optional": 0,
               "bool": true,
-              "short": "-m",
-              "long": "--max-memory-policy",
-              "description": "Max Memory Policy of the Redis Cache. Valid values: [AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL]"
+              "short": "-c",
+              "long": "--redis-configuration",
+              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here."
+            },
+            {
+              "flags": "-f, --redis-configuration-file <redisConfigurationFile>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "short": "-f",
+              "long": "--redis-configuration-file",
+              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here.",
+              "fileRelatedOption": true
             },
             {
               "flags": "-s, --subscription <subscription>",
