@@ -30017,13 +30017,21 @@
               "description": "the destination resource group name"
             },
             {
+              "flags": "--destination-subscriptionId <destination-subscriptionId>",
+              "required": -30,
+              "optional": 0,
+              "bool": true,
+              "long": "--destination-subscriptionId",
+              "description": "the destination subscription identifier"
+            },
+            {
               "flags": "-q, --quiet",
               "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-q",
               "long": "--quiet",
-              "description": "quiet mode (do not ask for delete confirmation)"
+              "description": "quiet mode (do not ask for move confirmation)"
             },
             {
               "flags": "--subscription <subscription>",
