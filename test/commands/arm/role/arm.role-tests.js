@@ -32,12 +32,12 @@ var testSqlServer;
 var testSqlDb;
 var testLocation;
 var testParent;
-var testApiVersion = '2.0';
+var testApiVersion = '2014-04-01';
 var createdGroups = [];
 var createdResources = [];
 var calledOnce = false;
 var requiredEnvironment = [
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserAuto@rbacCliTest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'testUserAuto1@rbacCliTest.onmicrosoft.com' },
   { name: 'AZURE_AD_TEST_PASSWORD', defaultValue: 'Pa$$w0rd' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'testgroupauto' },
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' },
