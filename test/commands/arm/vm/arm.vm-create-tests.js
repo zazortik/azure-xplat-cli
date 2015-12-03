@@ -40,9 +40,7 @@ var groupName,
   username = 'azureuser',
   password = 'Brillio@2015',
   storageAccount = 'xplatteststorage1',
-  storageAccount2 = 'xplatteststorage2',
   storageCont = 'xplatteststoragecnt1',
-  storageCont2 = 'xplatteststoragecnt2',
   osdiskvhd = 'xplattestvhd',
   vNetPrefix = 'xplattestvnet',
   subnetName = 'xplattestsubnet',
@@ -72,9 +70,7 @@ describe('arm', function() {
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         nic2Name = suite.isMocked ? nic2Name : suite.generateId(nic2Name, null);
         storageAccount = suite.generateId(storageAccount, null);
-        storageAccount2 = suite.generateId(storageAccount2, null);
         storageCont = suite.generateId(storageCont, null);
-        storageCont2 = suite.generateId(storageCont2, null);
         osdiskvhd = suite.isMocked ? osdiskvhd : suite.generateId(osdiskvhd, null);
         vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
@@ -137,15 +133,44 @@ describe('arm', function() {
         });
       });
 
-      it('create 2nd vm without boot diagnostics should pass', function(done) {
+      it('stop, generalize, capture, and start should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm stop %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('vm generalize %s %s --json', groupName, vmPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var cmd = util.format('vm capture %s %s %s --json', groupName, vmPrefix, vmPrefix).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var output = JSON.parse(result.text);
+              var userImage = output.resources[0].properties.storageProfile.osDisk.image.uri;
+              var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
+                  groupName, vmPrefix, location, nicName, userImage, username, password, storageAccount, storageCont,
+                  vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  result.exitStatus.should.equal(0);
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+
+      it('create 2nd vm without boot diagnostics should pass', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
           if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined) {
             vmTest.GetWindowsSkusList(location, suite, function(result) {
               vmTest.GetWindowsImageList(location, suite, function(result) {
                 var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics --json',
-                  groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount2, storageCont2,
-                  vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, storageAccount2).split(' ');
+                  groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+                  vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   done();
@@ -154,8 +179,8 @@ describe('arm', function() {
             });
           } else {
             var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics --json',
-              groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount2, storageCont2,
-              vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, storageAccount2).split(' ');
+              groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
+              vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
                done();
