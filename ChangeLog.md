@@ -31,6 +31,11 @@
 * Network
   * Fixed issue #2262, #2282, #2288, #2289, #2306, #2309, #2317, #2319, #2322
   * Made changes to TrafficManager Profile & Endpoints
+* Authorization
+  * Set roleDefinition to take complete object instead of partial updated fields.
+  * List, show and delete role definition to take scope param
+  * list and show RoleDefinition to take AtScopeAndBelow param
+  * Use scoped RoleDefinitions in RoleAssignment commands
 * General Improvements
   * Fixed #2269, #2275, #2021, #2268
   * Removed useless ._js file before create installer so to shrink the download size
