@@ -18346,7 +18346,7 @@
     },
     "location": {
       "name": "location",
-      "description": "Commands to get the available locations for all resource types",
+      "description": "Commands to get the available locations",
       "fullName": "location",
       "usage": "[options] [command]",
       "options": [],
@@ -31257,7 +31257,7 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form publisherName:offer:skus:version"
+              "description": "the image URN in the form publisherName:offer:skus:version.\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
             },
             {
               "flags": "-u, --admin-username <admin-username>",
@@ -31625,7 +31625,7 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form \"publisherName:offer:skus:version\""
+              "description": "the image URN in the form \"publisherName:offer:skus:version\".\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
             },
             {
               "flags": "-u, --admin-username <admin-username>",
