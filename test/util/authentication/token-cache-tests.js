@@ -162,9 +162,11 @@ describe('Token cache', function () {
     }
 
     it('should add an entry', function (done) {
-      var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
+      var clonedJohnTokenFromTenant72f9 = _.clone(johnTokenFromTenant72f9);
+      var clonedJohnTokenFromCommon = _.clone(johnTokenFromCommon);
+      var tokensInCache = [clonedJohnTokenFromTenant72f9, clonedJohnTokenFromCommon];
       var cache = new TokenCache(constructStorageObject(tokensInCache));
-      cache.add([mikeTokenFromCommon], function () {
+      cache.add([_.clone(mikeTokenFromCommon)], function () {
         tokensInCache.length.should.equal(3);
         tokensInCache[2].userId.should.equal(newUserId);
         done();
@@ -174,7 +176,7 @@ describe('Token cache', function () {
     it('should get rid of useless fields', function (done) {
       var tokensInCache = [];
       var cache = new TokenCache(constructStorageObject(tokensInCache));
-      cache.add([mikeTokenFromCommon], function () {
+      cache.add([_.clone(mikeTokenFromCommon)], function () {
         should.not.exist(tokensInCache[0].familyName);
         should.not.exist(tokensInCache[0].givenName);
         should.not.exist(tokensInCache[0].isUserIdDisplayable);
@@ -184,10 +186,10 @@ describe('Token cache', function () {
     });
     
     it('should not add duplicate tokens', function (done) {
-      var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
+      var tokensInCache = [_.clone(johnTokenFromTenant72f9), _.clone(johnTokenFromCommon)];
       var tokenStorageObject = constructStorageObject(tokensInCache);
       var cache = new TokenCache(tokenStorageObject);
-      cache.add([mikeTokenFromCommon, johnTokenFromTenant72f9], function () {
+      cache.add([_.clone(mikeTokenFromCommon), _.clone(johnTokenFromTenant72f9)], function () {
         tokenStorageObject.entries.length.should.equal(3);
         done();
       });
@@ -207,7 +209,7 @@ describe('Token cache', function () {
       var newToken = {
         _clientId: mikeTokenFromCommon._clientId,
         userId: mikeTokenFromCommon.userId,
-        _authority: mikeTokenFromCommon._authority + '-newToken',
+        _authority: mikeTokenFromCommon._authority + '-New',
       };
       
       var newToken2 = {
@@ -220,7 +222,7 @@ describe('Token cache', function () {
       cache.add([newToken, newToken2], function () {
         var entriesInCache = tokenStorageObj.entries;
         entriesInCache.length.should.equal(3);
-        //verify we have tokenShouldStay, johnTokenFromTenant72f9, johnTokenFromCommon, mikeTokenFromCommon
+        //verify we have tokenShouldStay, mikeTokenFromCommon, mikeTokenFromCommon-New
         entriesInCache[0].should.equal(tokenShouldStay);
         entriesInCache[1].should.equal(newToken);
         entriesInCache[2].should.equal(newToken2);
@@ -263,24 +265,31 @@ describe('Token cache', function () {
       }
       
       it('should remove a matched entry', function (done) {
-        var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
+        var clonedJohnTokenFromTenant72f9 = _.clone(johnTokenFromTenant72f9);
+        var clonedJohnTokenFromCommon = _.clone(johnTokenFromCommon);
+        var tokensInCache = [clonedJohnTokenFromTenant72f9, clonedJohnTokenFromCommon];
         var cache = new TokenCache(constructStorageObject(tokensInCache));
-        cache.remove([johnTokenFromTenant72f9], function () {
+        cache.remove([clonedJohnTokenFromTenant72f9], function () {
           tokensInCache.length.should.equal(1);
           tokensInCache[0].userId.should.equal(johnUserId);
+          //Verify even now we skip useless fields like "familyName", but we
+          //should still remove entry containing this field(could be added by old tools)
+          tokensInCache[0].familyName.should.equal(clonedJohnTokenFromTenant72f9.familyName);
           done();
         });
       });
       
       it('should remove entry with casing difference on userId', function (done) {
-        var tokensInCache = [johnTokenFromTenant72f9, johnTokenFromCommon];
-        var tokenClone = JSON.parse(JSON.stringify(johnTokenFromCommon));
+        var clonedJohnTokenFromTenant72f9 = _.clone(johnTokenFromTenant72f9);
+        var clonedJohnTokenFromCommon = _.clone(johnTokenFromCommon);
+        var tokensInCache = [clonedJohnTokenFromTenant72f9, clonedJohnTokenFromCommon];
+        var tokenClone = _.clone(johnTokenFromCommon);
         tokenClone.userId = tokenClone.userId.toUpperCase();
 
         var cache = new TokenCache(constructStorageObject(tokensInCache));
         cache.remove([tokenClone], function () {
           tokensInCache.length.should.equal(1);
-          tokensInCache[0].should.equal(johnTokenFromTenant72f9);
+          tokensInCache[0].should.equal(clonedJohnTokenFromTenant72f9);
           done();
         });
       });
