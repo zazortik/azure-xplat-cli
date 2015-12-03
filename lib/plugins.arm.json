@@ -29029,7 +29029,7 @@
               "bool": true,
               "short": "-c",
               "long": "--redis-configuration",
-              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here."
+              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:\"{\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}\""
             },
             {
               "flags": "-f, --redis-configuration-file <redisConfigurationFile>",
@@ -29038,7 +29038,7 @@
               "bool": true,
               "short": "-f",
               "long": "--redis-configuration-file",
-              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here.",
+              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}",
               "fileRelatedOption": true
             },
             {
@@ -30257,7 +30257,7 @@
         },
         {
           "name": "set",
-          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions is optional.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Name\": \"Updated Role\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ],\n     \"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]\n     }",
+          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: Name, Description, Actions, AssignableScopes. NotActions is optional.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Name\": \"Updated Role\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ],\n     \"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]\n     }",
           "fullName": "role set",
           "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role set --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
@@ -30294,7 +30294,7 @@
               "bool": true,
               "short": "-f",
               "long": "--inputfile",
-              "description": "File name containing a single json role definition to be updated. Id, DisplayName, Description, Actions and AssignableScopes are required."
+              "description": "File name containing a single json role definition to be updated. Id, Name, Description, Actions and AssignableScopes are required."
             },
             {
               "flags": "-r --roledefinition <roledefinition>",
