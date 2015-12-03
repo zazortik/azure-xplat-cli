@@ -30091,7 +30091,7 @@
               "optional": 0,
               "bool": true,
               "long": "--scope",
-              "description": "Role definition scope."
+              "description": "Role definition scope. For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
             },
             {
               "flags": "--atScopeAndBelow",
@@ -30175,7 +30175,7 @@
               "optional": 0,
               "bool": true,
               "long": "--scope",
-              "description": "Role definition scope."
+              "description": "Role definition scope. For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
             },
             {
               "flags": "--atScopeAndBelow",
@@ -30370,7 +30370,7 @@
               "optional": 0,
               "bool": true,
               "long": "--scope",
-              "description": "Role definition scope."
+              "description": "Role definition scope.  For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
             },
             {
               "flags": "-q --quiet",
