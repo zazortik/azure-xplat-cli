@@ -66,7 +66,6 @@ describe('arm', function () {
       testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
       testSize = 'C2';
       testSku = 'Basic';
-      testMaxMemoryPolicy = 'AllKeysRandom';
       testNewMaxMemoryPolicy = 'VolatileLRU';
       cacheName = suite.generateId(cachePrefix, knownNames);
       newCacheName = suite.generateId(cachePrefix, knownNames);
@@ -99,7 +98,7 @@ describe('arm', function () {
         var cacheJson = JSON.parse(result.text);
         cacheJson.name.should.be.equal(cacheName);
 
-        suite.execute('rediscache create --name %s --resource-group %s --location %s --size %s --sku %s --max-memory-policy %s --enable-non-ssl-port --json', newCacheName, testResourceGroup, testLocation, testSize, testSku, testMaxMemoryPolicy, function (result) {
+        suite.execute('rediscache create --name %s --resource-group %s --location %s --size %s --sku %s --enable-non-ssl-port --json', newCacheName, testResourceGroup, testLocation, testSize, testSku, function (result) {
           result.exitStatus.should.be.equal(0);
           var newCacheJson = JSON.parse(result.text);
           newCacheJson.name.should.be.equal(newCacheName);
