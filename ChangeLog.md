@@ -7,7 +7,7 @@
     * Implemented certificates get command
     * Enable boot-diagnostics by default
     * Fixed the re-run with the same parameter issue for the set-access command for linux
-    * Added bootstrap_version option for st-chef command
+    * Added bootstrap_version option for set-chef command
 * Websites
   * Update kuduscript to v1.0.6
 * DNS
