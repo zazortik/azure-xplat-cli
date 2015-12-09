@@ -74,7 +74,7 @@ describe('arm', function() {
         });
       });
       it('set with no tags should remove tags from nsg ', function(done) {
-        var cmd = util.format('network nsg set %s %s --no-tags --json', groupName, nsgName).split(' ');
+        var cmd = util.format('network nsg set %s %s --json', groupName, nsgName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

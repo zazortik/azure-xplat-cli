@@ -72,7 +72,7 @@ describe('arm', function() {
         });
       });
       it('set should modify express-route', function(done) {
-        var cmd = util.format('network express-route set %s %s -b %s --no-tags --json', groupName, expressRCPrefix, bandwidth2).split(' ');
+        var cmd = util.format('network express-route set %s %s -b %s --json', groupName, expressRCPrefix, bandwidth2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

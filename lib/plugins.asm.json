@@ -27550,6 +27550,15 @@
                   "description": "delete chef config files during update/uninstall extension"
                 },
                 {
+                  "flags": "-v, --bootstrap-version <number>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--bootstrap-version",
+                  "description": "chef-client version to be installed"
+                },
+                {
                   "flags": "-b, --disable",
                   "required": 0,
                   "optional": 0,

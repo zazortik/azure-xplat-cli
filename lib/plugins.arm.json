@@ -18577,21 +18577,13 @@
                   "description": "the comma separated list of DNS servers IP addresses.\n     This list will be appended to the current list of DNS server IP addresses."
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -21933,21 +21925,13 @@
                   "description": "the reverse fqdn"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -22499,21 +22483,13 @@
                   "description": "the ip forwarding, valid values are [true, false]"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -23249,21 +23225,13 @@
                   "description": "the name of the network security group"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -24121,21 +24089,13 @@
                       "description": "the name of the DNS zone"
                     },
                     {
-                      "flags": "-t, --tags <tags>",
-                      "required": -12,
-                      "optional": 0,
+                      "flags": "-t, --tags [tags]",
+                      "required": 0,
+                      "optional": -12,
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
                       "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                    },
-                    {
-                      "flags": "--no-tags",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": false,
-                      "long": "--no-tags",
-                      "description": "remove all existing tags"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -24689,21 +24649,13 @@
                       "description": "time to live specified in seconds"
                     },
                     {
-                      "flags": "-t, --tags <tags>",
-                      "required": -12,
-                      "optional": 0,
+                      "flags": "-t, --tags [tags]",
+                      "required": 0,
+                      "optional": -12,
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
                       "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                    },
-                    {
-                      "flags": "--no-tags",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": false,
-                      "long": "--no-tags",
-                      "description": "remove all existing tags"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -25657,21 +25609,13 @@
                       "description": "the monitoring path"
                     },
                     {
-                      "flags": "-t, --tags <tags>",
-                      "required": -12,
-                      "optional": 0,
+                      "flags": "-t, --tags [tags]",
+                      "required": 0,
+                      "optional": -12,
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
                       "description": "the tags set on this profile. Can be \n     multiple, in the format of 'name=value'.\n     Name is required and value is optional. \n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                    },
-                    {
-                      "flags": "--no-tags",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": false,
-                      "long": "--no-tags",
-                      "description": "remove all existing tags"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -27218,21 +27162,13 @@
                   "description": "the local network site address space"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the tags set on this local network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -27640,21 +27576,13 @@
                   "description": "the name of the virtual network gateway"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the tags set on this virtual network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -28388,21 +28316,13 @@
                   "description": "the sku family"
                 },
                 {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
                   "description": "the tags set on express route.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
-                },
-                {
-                  "flags": "--no-tags",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": false,
-                  "long": "--no-tags",
-                  "description": "remove all existing tags"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -29029,7 +28949,7 @@
               "bool": true,
               "short": "-c",
               "long": "--redis-configuration",
-              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here."
+              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:\"{\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}\""
             },
             {
               "flags": "-f, --redis-configuration-file <redisConfigurationFile>",
@@ -29038,7 +28958,7 @@
               "bool": true,
               "short": "-f",
               "long": "--redis-configuration-file",
-              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here.",
+              "description": "Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}",
               "fileRelatedOption": true
             },
             {

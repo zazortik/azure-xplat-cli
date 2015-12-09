@@ -142,7 +142,7 @@ describe('arm', function() {
         });
       });
       it('set should modify nic', function(done) {
-        var cmd = util.format('network nic set %s %s -t %s -w %s -o %s -a %s -u %s -k %s -d %s -e %s --no-tags -r %s -f %s --json', groupName, nicPrefix, tagValN, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLabelN, enableIpForwardingN).split(' ');
+        var cmd = util.format('network nic set %s %s -t %s -w %s -o %s -a %s -u %s -k %s -d %s -e %s -r %s -f %s --json', groupName, nicPrefix, tagValN, networkTestUtil.nsgId, 'NoSuchNSGExists', privateIP2, networkTestUtil.subnetId, 'NoSuchSubnetExists', networkTestUtil.lbaddresspoolId, networkTestUtil.lbinboundruleId, internalDnsLabelN, enableIpForwardingN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
