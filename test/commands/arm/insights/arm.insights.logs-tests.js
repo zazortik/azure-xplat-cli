@@ -20,6 +20,11 @@ var should = require('should');
 
 var util = require('util');
 var fs = require('fs');
+var path = require('path');
+var writeLogFile = function(text, name) { 
+  var parameterFile = path.join(__dirname, '../../../data/' + name + '.txt');
+  fs.writeFileSync(parameterFile, text); 
+};
 
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-insights-logs-tests';
@@ -67,7 +72,9 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
               
             var response = JSON.parse(result.text);
-            response.length.should.equal(2);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
 
             __.each(response, function(record) {
               ((record["correlationId"] === 'da3210d1-3abc-48bd-99ea-abb4ece57ef7') ||
@@ -95,7 +102,10 @@ describe('arm', function () {
               
             // The query must succeed, but the response must be empty
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
+      
             done();
           });
         });
@@ -141,9 +151,11 @@ describe('arm', function () {
         it('correlationId should work without options', function (done) {
           suite.execute('insights logs list -c %s --json', '8ca345e1-409c-4183-930f-8150396513ed', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -152,9 +164,11 @@ describe('arm', function () {
         it('correlationId should work', function (done) {
           suite.execute('insights logs list -c %s -b %s -e %s --json', 'a8690cfc-2b1d-40eb-8464-a9567609ca0b', '2015-04-20T20:15:44.547Z', '2015-04-20T21:15:44.547Z', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(2);
+            if (suite.isPlayback()) {
+              response.length.should.equal(2);
+            }
             
             __.each(response, function (record) {
               (record["correlationId"] === 'a8690cfc-2b1d-40eb-8464-a9567609ca0b').should.be.true;
@@ -179,9 +193,11 @@ describe('arm', function () {
         it('resource group should work without options', function (done) {
           suite.execute('insights logs list -g %s --json', 'Default-Web-brazilsouth', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(1);
+            if (suite.isPlayback()) {
+              response.length.should.equal(1);
+            }
             
             __.each(response, function (record) {
               (record["resourceGroupName"].toLowerCase() === 'default-web-brazilsouth').should.be.true;
@@ -205,6 +221,7 @@ describe('arm', function () {
         it('resource group should work', function (done) {
           suite.execute('insights logs list -g %s -b %s -e %s -d --json', 'Default-Web-brazilsouth', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
             result.exitStatus.should.equal(0);
+
             done();
           });
         });
@@ -213,12 +230,14 @@ describe('arm', function () {
         it('resource provider should work without options', function (done) {
           suite.execute('insights logs list -p %s --json', 'microsoft.web', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(1);
-            
+            if (suite.isPlayback()) {
+              response.length.should.equal(1);
+            }
+
             __.each(response, function (record) {
-              record["resourceUri"].indexOf("/providers/microsoft.web/").should.be.above(-1);
+              record["resourceId"].indexOf("/providers/microsoft.web/").should.be.above(-1);
               (record["subscriptionId"] === 'b67f7fec-69fc-4974-9099-a26bd6ffeda3').should.be.true;
               
               // Because the query does not ask for details
@@ -239,9 +258,11 @@ describe('arm', function () {
         it('resource provider should work', function (done) {
           suite.execute('insights logs list -p %s -b %s -e %s -d --json', 'microsoft.web', '2015-04-02T11:06:00', '2015-04-02T12:06:00', function (result) {
             result.exitStatus.should.equal(0);
-            
+
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -253,7 +274,9 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });
@@ -264,7 +287,9 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             
             var response = JSON.parse(result.text);
-            response.length.should.equal(0);
+            if (suite.isPlayback()) {
+              response.length.should.equal(0);
+            }
             
             done();
           });

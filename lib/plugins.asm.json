@@ -19602,7 +19602,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--domain-name",
-                      "description": "profile DNS name\n   Example: foobar.trafficmanager.net"
+                      "description": "the profile DNS name\n   Example: foobar.trafficmanager.net"
                     },
                     {
                       "flags": "-m, --load-balancing-method <load-balancing-method>",
@@ -21012,6 +21012,73 @@
                   "bool": true,
                   "long": "--serviceName",
                   "description": "the cloud service name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Get Azure certificate",
+              "fullName": "service cert get",
+              "usage": "[options]",
+              "filePath": "commands/asm/service.cert._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the thumbprint algorithm"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -27435,7 +27502,7 @@
                   "bool": true,
                   "short": "-O",
                   "long": "--validation-pem",
-                  "description": "chef validation pem file path"
+                  "description": "chef validation pem file path. Not required if -C or --client-pem option specified"
                 },
                 {
                   "flags": "-c, --client-config <client-config>",
@@ -27445,6 +27512,15 @@
                   "short": "-c",
                   "long": "--client-config",
                   "description": "chef client configuration file(i.e client.rb) path"
+                },
+                {
+                  "flags": "-C, --client-pem <client-pem>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-C",
+                  "long": "--client-pem",
+                  "description": "chef client pem file path i.e required in validator less bootstrap"
                 },
                 {
                   "flags": "-a, --auto-update-client",
@@ -27472,6 +27548,15 @@
                   "short": "-D",
                   "long": "--delete-chef-config",
                   "description": "delete chef config files during update/uninstall extension"
+                },
+                {
+                  "flags": "-v, --bootstrap-version <number>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--bootstrap-version",
+                  "description": "chef-client version to be installed"
                 },
                 {
                   "flags": "-b, --disable",

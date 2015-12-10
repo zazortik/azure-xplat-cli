@@ -67,7 +67,9 @@ describe('arm', function () {
               
             // The query must succeed
             var response = JSON.parse(result.text);
-            response.length.should.equal(12);
+            if (suite.isPlayback()) {
+                    response.length.should.equal(12);
+            }
             
             // Check that the rescords implemented the contract
             __.each(response, function (record) {
@@ -88,7 +90,9 @@ describe('arm', function () {
             
             // The query must succeed
             var response = JSON.parse(result.text);
-            response.length.should.equal(12);
+            if (suite.isPlayback()) {
+              response.length.should.equal(12);
+            }
             
             // Check that the rescords implemented the contract
             __.each(response, function (record) {

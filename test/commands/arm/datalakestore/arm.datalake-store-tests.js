@@ -184,7 +184,7 @@ describe('arm', function () {
     });
   });
   describe('Data Lake Store FileSystem', function () {
-    it.skip('create and show commands should work', function (done) {
+    it('create and show commands should work', function (done) {
       // create a folder
       suite.execute('datalake store filesystem create --accountName %s --path %s --folder --json', filesystemAccountName, firstFolder, function (result) {
         result.exitStatus.should.be.equal(0);
@@ -230,7 +230,7 @@ describe('arm', function () {
       });
     });
     
-    it.skip('import and export should work', function (done) {
+    it('import and export should work', function (done) {
       suite.execute('datalake store filesystem import --accountName %s --path %s --destination %s --json', filesystemAccountName, contentDir, importFile, function (result) {
         result.exitStatus.should.be.equal(0);
         // now get the file.
@@ -253,7 +253,7 @@ describe('arm', function () {
       });
     });
 
-    it.skip('add content should work', function (done) {
+    it('add content should work', function (done) {
       suite.execute('datalake store filesystem addcontent --accountName %s --path %s --value %s --json', filesystemAccountName, noContentFile, content, function (result) {
         result.exitStatus.should.be.equal(0);
         // now get the file.

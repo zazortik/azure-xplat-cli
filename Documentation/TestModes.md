@@ -135,7 +135,7 @@ describe('list', function () {
     });
   });
   
-  it('should always work', unction (done) {
+  it('should always work', function (done) {
     suite.execute('location list --json', function (result) {
       result.exitStatus.should.equal(0);
       //verify the command indeed produces something valid such as a well known provider: sql provider

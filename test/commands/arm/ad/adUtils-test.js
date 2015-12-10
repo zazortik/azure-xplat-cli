@@ -17,7 +17,17 @@
 
 var should = require('should');
 
-var adUtils = require('../../../../lib/commands/arm/ad/adUtils._js');
+var adUtils;
+
+try {
+  adUtils = require('../../../../lib/commands/arm/ad/adUtils._js');
+} catch (err) {
+  if (err.code === 'MODULE_NOT_FOUND') {
+    adUtils = require('../../../../lib/commands/arm/ad/adUtils.js');
+  } else {
+    throw error;
+  }
+}
 
 describe('ad-utils', function () {
   it('should report error when either no values or more than one parameter values provided', function () {

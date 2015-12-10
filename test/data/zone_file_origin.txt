@@ -14,6 +14,7 @@ tc IN CNAME test			; Should give tc.example1.com. CNAME test.example1.com.
 
 ; Test that $ORIGIN is substituted into non-fully qualified names
 $ORIGIN example1.com.
+$TTL 5
 @ IN A 1.2.3.4			; fqdn = example1.com.
 www IN A 2.3.4.5			; fqdn = www.example1.com.
 

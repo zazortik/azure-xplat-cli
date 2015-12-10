@@ -29,6 +29,7 @@ commands/cli.mobile.table-tests.js
 commands/cli.mobilerecover-tests.js
 commands/cli.sb-tests.js
 commands/cli.service-tests.js
+commands/cli.service.cert-tests.js
 commands/cli.site.deployment-tests.js
 commands/cli.site.handler-tests.js
 commands/cli.site-tests.js
