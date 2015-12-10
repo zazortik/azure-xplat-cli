@@ -74,7 +74,7 @@ describe('arm', function() {
       });
       it('set should modify vnet', function(done) {
 
-        var cmd = util.format('network vnet set %s %s -d %s --no-tags --json', groupName, vnetPrefix, dnsAdd1).split(' ');
+        var cmd = util.format('network vnet set %s %s -d %s --json', groupName, vnetPrefix, dnsAdd1).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

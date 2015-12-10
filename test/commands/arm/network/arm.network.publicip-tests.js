@@ -95,7 +95,7 @@ describe('arm', function() {
         });
       });
       it('set with new set of params should pass', function(done) {
-        var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s --no-tags --json', groupName, publicipName, dnsPrefix, 'Static', '6').split(' ');
+        var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s --json', groupName, publicipName, dnsPrefix, 'Static', '6').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
