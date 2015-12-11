@@ -18495,7 +18495,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -18583,7 +18583,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -19306,7 +19306,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -22311,7 +22311,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the comma seperated list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -24558,7 +24558,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -24655,7 +24655,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the tags set on this virtual network.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -25491,7 +25491,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the tags set on this profile. Can be \n     multiple, in the format of 'name=value'.\n     Name is required and value is optional. \n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -25615,7 +25615,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the tags set on this profile. Can be \n     multiple, in the format of 'name=value'.\n     Name is required and value is optional. \n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -26384,7 +26384,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -27098,7 +27098,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this local network gateway.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 }
               ]
             },
@@ -27168,7 +27168,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this local network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -27512,7 +27512,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this virtual network gateway.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -27582,7 +27582,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this virtual network gateway.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional. For example, -t \"tag1=value1;tag2\".\n     Existing tag values will be replaced by the values specified."
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -27917,7 +27917,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on this connection.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 }
               ]
             },
@@ -28225,7 +28225,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on express route.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -28322,7 +28322,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the tags set on express route.\n   Can be multiple, in the format of \"name=value\".\n   Name is required and value is optional.\n   For example, -t tag1=value1;tag2"
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
