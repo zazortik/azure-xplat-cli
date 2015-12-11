@@ -1,7 +1,48 @@
-//To Release - Version 0.9.13
+## 2015-12-08 Version 0.9.13
 * VM
   * Chef Extension
     * Implemented new option --client-pem for set-chef extension commands
+    * Implemented changes for set chef extension client_pem option to provide validator less bootstrap support
+    * Add user-image option for vm creation
+    * Implemented certificates get command
+    * Enable boot-diagnostics by default
+    * Fixed the re-run with the same parameter issue for the set-access command for linux
+    * Added bootstrap_version option for set-chef command
+* Websites
+  * Update kuduscript to v1.0.6
+* DNS
+  * Implemented DNS export
+* Rediscache
+  * cmds use the AutoRest generated clients
+  * Added premium sku and other related features option in redis create
+* HDInsight
+  * Implemented Hdinsight Cluster CRUD ARM commands
+* KeyVault
+  * Added challenge parsing for KeyVault to support multiple environments
+* Datalake
+  * Added tests for datalake cmds
+  * Fixed catalog commands and adding new types to support
+  * Fixed FileSystem ingress/egress to use direct methods which avoid redirect calls
+  * Updated all tests to reflect the above changes, which enabled us to remove the "skips" for the previous redirect problem tests.
+* Mobile Service
+  * Synchronized portal & cli behavior for mobile service deletion
+* Insights
+  * Implemented commands for insights diagnostic get/set
+  * Remove retention from insights diagnostic commands 
+* Resource Manager
+  * Added deployment mode param when creating deployment
+* Network
+  * Fixed issue #2262, #2282, #2288, #2289, #2306, #2309, #2317, #2319, #2322
+  * Made changes to TrafficManager Profile & Endpoints
+  * Zone Export output file formatting fixed
+* Authorization
+  * Set roleDefinition to take complete object instead of partial updated fields.
+  * List, show and delete role definition to take scope param
+  * list and show RoleDefinition to take AtScopeAndBelow param
+  * Use scoped RoleDefinitions in RoleAssignment commands
+* General Improvements
+  * Fixed #2269, #2275, #2285, #2021, #2268
+  * Removed useless ._js file before create installer so to shrink the download size
 
 ## 2015.11.18 Version 0.9.12
 * Authorization

@@ -132,7 +132,8 @@ for %%i in (
 
 cd lib
 del /Q /S *._js 
-
+cd ..
+del /Q /S .ntvs_analysis.*
 echo.
 popd
 

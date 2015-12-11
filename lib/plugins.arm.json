@@ -29977,7 +29977,7 @@
           "name": "list",
           "description": "Lists Azure RBAC roles available for assignment. Use this command to determine what actions on what resource types an Azure RBAC role allows.",
           "fullName": "role list",
-          "usage": "\n\n           -----    Example 1   -------\n           azure role list\n           Lists all RBAC role definitions.\n",
+          "usage": "[scope]\n\n           -----    Example 1   -------\n           azure role list\n           Lists all RBAC role definitions.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -30014,6 +30014,22 @@
               "description": "If specified, display only the custom role definitions instead of all role definitions."
             },
             {
+              "flags": "--scope <scope>",
+              "required": -9,
+              "optional": 0,
+              "bool": true,
+              "long": "--scope",
+              "description": "Role definition scope. For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+            },
+            {
+              "flags": "--atScopeAndBelow",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--atScopeAndBelow",
+              "description": "If specified, displays all role definitions."
+            },
+            {
               "flags": "-d --detailed",
               "required": 0,
               "optional": 0,
@@ -30036,7 +30052,7 @@
           "name": "show",
           "description": "Search for a role definition with role name or id to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.",
           "fullName": "role show",
-          "usage": "[name] [id]\n\n           -----    Example 1   -------\n           azure role show --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role show --id 52a6cc13-ff92-47a8-a39b-2a8205c3087e\n           Get the Reader role definition.\n",
+          "usage": "[name] [id] [scope]\n\n           -----    Example 1   -------\n           azure role show --name Reader\n           Get the Reader role definition.\n           -----    Example 2   -------\n           azure role show --id 52a6cc13-ff92-47a8-a39b-2a8205c3087e\n           Get the Reader role definition.\n",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -30080,6 +30096,22 @@
               "bool": true,
               "long": "--id",
               "description": "Role definition Id."
+            },
+            {
+              "flags": "--scope <scope>",
+              "required": -9,
+              "optional": 0,
+              "bool": true,
+              "long": "--scope",
+              "description": "Role definition scope. For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+            },
+            {
+              "flags": "--atScopeAndBelow",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--atScopeAndBelow",
+              "description": "If specified, displays all role definitions."
             },
             {
               "flags": "--subscription <subscription>",
@@ -30153,7 +30185,7 @@
         },
         {
           "name": "set",
-          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ]\n     }",
+          "description": "Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a JSON-formatted string containing the role definition.\n     The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: Name, Description, Actions, AssignableScopes. NotActions is optional.\n\n     Following is a sample updated role definition json that can be provided as input:\n\n     {\n     \"Id\": \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\",\n     \"Name\": \"Updated Role\",\n     \"Description\": \"Can monitor all resources and start and restart virtual machines\",\n     \"Actions\": [\n       \"*/read\",\n       \"Microsoft.ClassicCompute/virtualmachines/restart/action\",\n       \"Microsoft.ClassicCompute/virtualmachines/start/action\"\n     ],\n     \"AssignableScopes\": [\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\"]\n     }",
           "fullName": "role set",
           "usage": "[inputfile] [roledefinition]\n     --------------------------  Create using JSON file  --------------------------\n     azure role set --inputfile C:\\Temp\\roleDefinition.json",
           "filePath": "commands/arm/role/role.definition._js",
@@ -30190,7 +30222,7 @@
               "bool": true,
               "short": "-f",
               "long": "--inputfile",
-              "description": "File name containing a single role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required."
+              "description": "File name containing a single json role definition to be updated. Id, Name, Description, Actions and AssignableScopes are required."
             },
             {
               "flags": "-r --roledefinition <roledefinition>",
@@ -30215,7 +30247,7 @@
           "name": "delete",
           "description": "Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id or Name property of the role. Delete will fail if there are existing role assignments made to the custom role.",
           "fullName": "role delete",
-          "usage": "[id] [name]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\"",
+          "usage": "[id] [name] [scope]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\"",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -30259,6 +30291,14 @@
               "short": "-n",
               "long": "--name",
               "description": "Name of the Role definition to be deleted."
+            },
+            {
+              "flags": "--scope <scope>",
+              "required": -9,
+              "optional": 0,
+              "bool": true,
+              "long": "--scope",
+              "description": "Role definition scope.  For e.g. /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
             },
             {
               "flags": "-q --quiet",
