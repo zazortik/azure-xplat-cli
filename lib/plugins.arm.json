@@ -20632,6 +20632,15 @@
                       "description": "the name of the probe defined in the same load balancer"
                     },
                     {
+                      "flags": "-d, --load-distribution <load-distribution>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--load-distribution",
+                      "description": "client session persistence"
+                    },
+                    {
                       "flags": "-t, --frontend-ip-name <frontend-ip-name>",
                       "required": -24,
                       "optional": 0,
@@ -20781,6 +20790,15 @@
                       "short": "-a",
                       "long": "--probe-name",
                       "description": "the name of the probe defined in the same load balancer"
+                    },
+                    {
+                      "flags": "-d, --load-distribution <load-distribution>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--load-distribution",
+                      "description": "client session persistence"
                     },
                     {
                       "flags": "-t, --frontend-ip-name <frontend-ip-name>",
