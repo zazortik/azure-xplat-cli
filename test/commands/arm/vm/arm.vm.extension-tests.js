@@ -138,6 +138,7 @@ describe('arm', function() {
       });
 
       it('Enable diagnostics extension on created VM in a resource group', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -146,6 +147,7 @@ describe('arm', function() {
       });
 
       it('Check diagnostics extension on created VM should pass', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -159,6 +161,7 @@ describe('arm', function() {
 
       //Set extensions
       it('Set extensions for the created vm', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -167,6 +170,7 @@ describe('arm', function() {
       });
 
       it('Extension Get should list all extensions', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -180,6 +184,7 @@ describe('arm', function() {
 
       //Set chef extension
       it('Set Chef extension for the created vm', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension set-chef %s %s --client-config %s --validation-pem %s --json', groupName, vmPrefix, clientConfig, validationPem).split(' ');
 
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -191,6 +196,7 @@ describe('arm', function() {
 
       //Get chef extension
       it('Extension Get-Chef should list only chef extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get-chef %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
