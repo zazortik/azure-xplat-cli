@@ -137,7 +137,6 @@ describe('arm', function() {
               result.exitStatus.should.equal(0);
               var allResources = JSON.parse(result.text);
               var canonicalVersion = allResources[0].name;
-              allResources[0].location.should.equal(location);
               allResources[0].publisher.should.equal(canonicalPublisher);
               allResources[0].offer.should.equal(canonicalOffer);
               allResources[0].skus.should.equal(canonicalSku);

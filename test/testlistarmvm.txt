@@ -1,2 +1,2 @@
-commands/arm/vm/arm.vm-create-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
+commands/arm/vm/arm.vm-create-tests.js
