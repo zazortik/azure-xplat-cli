@@ -67,6 +67,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('image list-offers ', function(done) {
         var cmd = util.format('vm image list-offers %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -76,6 +77,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('image list-skus ', function(done) {
         var cmd = util.format('vm image list-skus %s %s %s --json', location, publisher, offer).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -85,11 +87,64 @@ describe('arm', function() {
           done();
         });
       });
+
       it('image list ', function(done) {
         var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          version = allResources[0].name;
           done();
+        });
+      });
+
+      it('image list and show by publisher offer sku and version', function(done) {
+        var cmd = util.format('vm image show %s %s %s %s %s --json', location, publisher, offer, sku, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var cmd = util.format('vm image list %s %s %s --json', location, publisher, offer).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var cmd = util.format('vm image list %s %s --json', location, publisher).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            });
+          });
+        });
+      });
+
+      it('image list canonical images', function(done) {
+        var canonicalPublisher = 'canonical';
+        var cmd = util.format('vm image list %s %s --json', location, canonicalPublisher).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          var canonicalOffer = allResources[0].offer;
+          
+          var cmd = util.format('vm image list %s %s %s --json', location, canonicalPublisher, canonicalOffer).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            
+          var allResources = JSON.parse(result.text);
+          var canonicalSku = allResources[0].skus;
+            var cmd = util.format('vm image list %s %s %s %s --json', location, canonicalPublisher, canonicalOffer, canonicalSku).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var allResources = JSON.parse(result.text);
+              var canonicalVersion = allResources[0].name;
+              allResources[0].location.should.equal(location);
+              allResources[0].publisher.should.equal(canonicalPublisher);
+              allResources[0].offer.should.equal(canonicalOffer);
+              allResources[0].skus.should.equal(canonicalSku);
+              allResources[0].urn.should.equal(util.format('%s:%s:%s:%s', canonicalPublisher, canonicalOffer, canonicalSku, canonicalVersion));
+              done();
+            });
+          });
         });
       });
 
