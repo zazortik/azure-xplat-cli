@@ -10,7 +10,7 @@ exports.getMockedProfile = function () {
     name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -35,12 +35,12 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '240df8d2-3f8d-4b8f-bf60-a4686924c07f',
+  'x-ms-request-id': '8c66f7fe-353c-4a43-b1cf-9439fa76ea86',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14942',
-  'x-ms-correlation-request-id': 'd35e53a4-8144-47cc-8911-b09bebc5b0b5',
-  'x-ms-routing-request-id': 'CENTRALUS:20151222T002415Z:d35e53a4-8144-47cc-8911-b09bebc5b0b5',
-  date: 'Tue, 22 Dec 2015 00:24:14 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '2fc7be5e-7a7b-40ae-a403-7e8e71436efb',
+  'x-ms-routing-request-id': 'WESTUS:20151226T043829Z:2fc7be5e-7a7b-40ae-a403-7e8e71436efb',
+  date: 'Sat, 26 Dec 2015 04:38:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,11 +53,11 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '240df8d2-3f8d-4b8f-bf60-a4686924c07f',
+  'x-ms-request-id': '8c66f7fe-353c-4a43-b1cf-9439fa76ea86',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14942',
-  'x-ms-correlation-request-id': 'd35e53a4-8144-47cc-8911-b09bebc5b0b5',
-  'x-ms-routing-request-id': 'CENTRALUS:20151222T002415Z:d35e53a4-8144-47cc-8911-b09bebc5b0b5',
-  date: 'Tue, 22 Dec 2015 00:24:14 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '2fc7be5e-7a7b-40ae-a403-7e8e71436efb',
+  'x-ms-routing-request-id': 'WESTUS:20151226T043829Z:2fc7be5e-7a7b-40ae-a403-7e8e71436efb',
+  date: 'Sat, 26 Dec 2015 04:38:28 GMT',
   connection: 'close' });
  return result; }]];

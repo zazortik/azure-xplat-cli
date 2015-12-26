@@ -34,6 +34,7 @@ var requiredEnvironment = [{
 var groupName,
   vmPrefix = 'xplatvm',
   vm2Prefix = 'xplatvm2',
+  vm3Prefix = 'xplatvm3',
   nicName = 'xplattestnic',
   nic2Name = 'xplattestnic2',
   location,
@@ -67,6 +68,7 @@ describe('arm', function() {
         groupName = suite.generateId(groupPrefix, null);
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         vm2Prefix = suite.isMocked ? vm2Prefix : suite.generateId(vm2Prefix, null);
+        vm3Prefix = suite.isMocked ? vm3Prefix : suite.generateId(vm3Prefix, null);
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         nic2Name = suite.isMocked ? nic2Name : suite.generateId(nic2Name, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -112,7 +114,7 @@ describe('arm', function() {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
                   var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
-                    groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
+                    groupName, vm3Prefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
                     vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
@@ -122,7 +124,7 @@ describe('arm', function() {
               });
             } else {
               var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ --json',
-                groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
+                groupName, vm3Prefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
                 vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
@@ -135,18 +137,18 @@ describe('arm', function() {
 
       it('stop, generalize, capture, and start should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
-        var cmd = util.format('vm stop %s %s --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm stop %s %s --json', groupName, vm3Prefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('vm generalize %s %s --json', groupName, vmPrefix).split(' ');
+          var cmd = util.format('vm generalize %s %s --json', groupName, vm3Prefix).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            var cmd = util.format('vm capture %s %s %s --json', groupName, vmPrefix, vmPrefix).split(' ');
+            var cmd = util.format('vm capture %s %s %s --json', groupName, vm3Prefix, vm3Prefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               var output = JSON.parse(result.text);
               var userImage = output.resources[0].properties.storageProfile.osDisk.image.uri;
-              var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
+              var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm3Prefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --json',
@@ -333,12 +335,16 @@ describe('arm', function() {
         });
       });
 
-      it('delete should delete VM', function(done) {
+      it('delete should delete VM 1 and 2', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm2Prefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          done();
+          var cmd = util.format('vm delete %s %s --quiet --json', groupName, vmPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
         });
       });
 
