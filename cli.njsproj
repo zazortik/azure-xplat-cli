@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{e6309b69-d527-408b-8835-86367f414dba}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>bin\azure.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -13,7 +13,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>login</ScriptArguments>
+    <ScriptArguments>group list --terse</ScriptArguments>
     <Environment>
     </Environment>
     <NodeExeArguments>
@@ -221,7 +221,9 @@
     <Compile Include="test\commands\cli.vm.create_ssh-tests.js" />
     <Compile Include="test\commands\cli.vm.create_staticvm-tests.js" />
     <Compile Include="test\commands\cli.vm.create_staticvm_neg-tests.js" />
-    <Compile Include="test\commands\cli.vm.create_vnet_multi_nic-tests.js" />
+    <Compile Include="test\commands\cli.vm.create_vnet_multi_nic-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.vm.create_win_rdp-tests.js" />
     <Compile Include="test\commands\cli.vm.disk-tests.js" />
     <Compile Include="test\commands\cli.vm.disk.attachDetach-tests.js" />
@@ -380,7 +382,8 @@
     </Compile>
     <Compile Include="test\util\authentication\token-cache-encoding-tests.js" />
     <Compile Include="test\util\authentication\token-cache-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\util\authentication\token-storage-tests.js" />
     <Compile Include="test\util\authentication\win-credstore-parser-tests.js" />
