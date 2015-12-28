@@ -148,7 +148,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-publishers ', function(done) {
-        var cmd = util.format('vm extension list-image-publishers %s --json', location).split(' ');
+        var cmd = util.format('vm extension-image list-publishers %s --json', location).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -163,7 +163,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-types ', function(done) {
-        var cmd = util.format('vm extension list-image-types %s %s --json', location, publisher).split(' ');
+        var cmd = util.format('vm extension-image list-types %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -174,7 +174,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-versions ', function(done) {
-        var cmd = util.format('vm extension list-image-versions %s %s %s --json', location, publisher, type).split(' ');
+        var cmd = util.format('vm extension-image list-versions %s %s %s --json', location, publisher, type).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -185,7 +185,7 @@ describe('arm', function() {
       });
 
       it('extension get-image ', function(done) {
-        var cmd = util.format('vm extension get-image %s %s %s %s --json', location, publisher, type, version).split(' ');
+        var cmd = util.format('vm extension-image show %s %s %s %s --json', location, publisher, type, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
