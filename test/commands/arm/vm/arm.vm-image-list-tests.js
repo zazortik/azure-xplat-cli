@@ -197,23 +197,24 @@ describe('arm', function() {
 
       it('extension list images', function(done) {
         var cmd = util.format('vm extension-image list %s %s %s --json', location, publisher, type).split(' ');
+        var locationStr = location.toLowerCase();
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources[0].location.should.equal(location);
+          allResources[0].location.should.equal(locationStr);
           allResources[0].publisher.should.equal(publisher);
           allResources[0].typeName.should.equal(type);
           var cmd = util.format('vm extension-image list %s %s --json', location, publisher).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var allResources = JSON.parse(result.text);
-            allResources[0].location.should.equal(location);
+            allResources[0].location.should.equal(locationStr);
             allResources[0].publisher.should.equal(publisher);
             var cmd = util.format('vm extension-image list %s --json', location).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               var allResources = JSON.parse(result.text);
-              allResources[0].location.should.equal(location);
+              allResources[0].location.should.equal(locationStr);
               done();
             });
           });
