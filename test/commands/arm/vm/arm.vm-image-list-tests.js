@@ -19,6 +19,7 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-image-list-tests';
+var canonicalPublisher = 'Canonical';
 var validPublisher = 'MicrosoftSQLServer';
 var extPublisher = 'Microsoft.Compute';
 var requiredEnvironment = [{
@@ -63,6 +64,9 @@ describe('arm', function() {
           allResources.some(function(res) {
             publisher = res.name;
             return res.name === validPublisher;
+          }).should.be.true;
+          allResources.some(function(res) {
+            return res.name === canonicalPublisher;
           }).should.be.true;
           done();
         });
@@ -119,7 +123,6 @@ describe('arm', function() {
       });
 
       it('image list canonical images', function(done) {
-        var canonicalPublisher = 'canonical';
         var cmd = util.format('vm image list %s %s --json', location, canonicalPublisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -191,8 +194,32 @@ describe('arm', function() {
           done();
         });
       });
-    });
 
+      it('extension list images', function(done) {
+        var cmd = util.format('vm extension-image list %s %s %s --json', location, publisher, type).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].location.should.equal(location);
+          allResources[0].publisher.should.equal(publisher);
+          allResources[0].typeName.should.equal(type);
+          var cmd = util.format('vm extension-image list %s %s --json', location, publisher).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var allResources = JSON.parse(result.text);
+            allResources[0].location.should.equal(location);
+            allResources[0].publisher.should.equal(publisher);
+            var cmd = util.format('vm extension-image list %s --json', location).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var allResources = JSON.parse(result.text);
+              allResources[0].location.should.equal(location);
+              done();
+            });
+          });
+        });
+      });
+    });
 
   });
 });
