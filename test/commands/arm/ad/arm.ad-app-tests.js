@@ -50,11 +50,14 @@ describe('arm', function () {
         var idUri = 'https://' + appName + '.com/home';
         suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s --json', idUri, function (result) {
           result.exitStatus.should.equal(0);
-          var appObjectId = result.text.substring(40, 76);
-          var appId = result.text.substring(1, 37);
+          var application = JSON.parse(result.text);
+          var appObjectId = application.objectId;
+          var appId = application.appId;
+
           suite.execute('ad sp create %s --json', appId, function (result) {
             result.exitStatus.should.equal(0);
-            var spObjectId = result.text.substring(1, 37);
+            var sp = JSON.parse(result.text);
+            var spObjectId = sp.objectId;
             suite.execute('ad sp delete %s -q', spObjectId, function (result) {
               result.exitStatus.should.equal(0);
               suite.execute('ad app delete %s -q', appObjectId, function (result) {
@@ -65,6 +68,66 @@ describe('arm', function () {
           });
         });
       });
+
+      it.only('get and list app should work', function (done) {
+        var appName = suite.generateId(appPrefix, createdApps);
+        var idUri = 'https://' + appName + '.com/home';
+        suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s --json', idUri, function (result) {
+          result.exitStatus.should.equal(0);
+          var application = JSON.parse(result.text);
+          var appObjectId = application.objectId;
+          var appId = application.appId;
+          var identifierUri = application.identifierUris[0];
+          var displayName = application.displayName;
+
+          suite.execute('ad app list --json', function (result) {
+            result.exitStatus.should.equal(0);
+            var applications = JSON.parse(result.text);
+            applications.length.should.be.above(0);
+            applications.some(function (res) {
+              return (res.appId === appId);
+            }).should.be.true;
+
+            suite.execute('ad app show --appId %s --json', appId, function (result) {
+              result.exitStatus.should.equal(0);
+              var applications = JSON.parse(result.text);
+              applications.length.should.equal(1);
+              applications[0].appId.should.equal(appId);
+              
+              suite.execute('ad app show --objectId %s --json', appObjectId, function (result) {
+                result.exitStatus.should.equal(0);
+                var applications = JSON.parse(result.text);
+                applications.length.should.equal(1);
+                applications[0].objectId.should.equal(appObjectId);
+                
+                suite.execute('ad app show --identifierUri %s --json', identifierUri, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var applications = JSON.parse(result.text);
+                  applications.length.should.equal(1);
+                  applications[0].identifierUris.some(function (res) {
+                    return (res === identifierUri);
+                  }).should.be.true;
+                  
+                  suite.execute('ad app show --search %s --json', displayName, function (result) {
+                    result.exitStatus.should.equal(0);
+                    var applications = JSON.parse(result.text);
+                    applications.length.should.be.above(0);
+                    applications.every(function (res) {
+                      return res.displayName.toLowerCase().indexOf(displayName) === 0;
+                    }).should.be.true;
+                    
+                    suite.execute('ad app delete %s -q', appObjectId, function (result) {
+                      result.exitStatus.should.equal(0);
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+
     });
   });
 });
