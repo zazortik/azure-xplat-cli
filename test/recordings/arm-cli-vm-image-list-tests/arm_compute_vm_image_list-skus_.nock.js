@@ -10,7 +10,7 @@ exports.getMockedProfile = function () {
     name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -35,12 +35,12 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e1d60eb9-a091-4cc7-8d75-8489790dd7c5',
+  'x-ms-request-id': 'a55b37c7-0178-4ca9-b8fb-298d67a791b8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14943',
-  'x-ms-correlation-request-id': '35aa2488-f50c-4fce-bafa-d4c74fd859a7',
-  'x-ms-routing-request-id': 'CENTRALUS:20151222T002415Z:35aa2488-f50c-4fce-bafa-d4c74fd859a7',
-  date: 'Tue, 22 Dec 2015 00:24:15 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14832',
+  'x-ms-correlation-request-id': '42460896-5fea-481f-9300-5ad2228354ff',
+  'x-ms-routing-request-id': 'WESTUS:20151229T221901Z:42460896-5fea-481f-9300-5ad2228354ff',
+  date: 'Tue, 29 Dec 2015 22:19:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,11 +53,11 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e1d60eb9-a091-4cc7-8d75-8489790dd7c5',
+  'x-ms-request-id': 'a55b37c7-0178-4ca9-b8fb-298d67a791b8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14943',
-  'x-ms-correlation-request-id': '35aa2488-f50c-4fce-bafa-d4c74fd859a7',
-  'x-ms-routing-request-id': 'CENTRALUS:20151222T002415Z:35aa2488-f50c-4fce-bafa-d4c74fd859a7',
-  date: 'Tue, 22 Dec 2015 00:24:15 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14832',
+  'x-ms-correlation-request-id': '42460896-5fea-481f-9300-5ad2228354ff',
+  'x-ms-routing-request-id': 'WESTUS:20151229T221901Z:42460896-5fea-481f-9300-5ad2228354ff',
+  date: 'Tue, 29 Dec 2015 22:19:00 GMT',
   connection: 'close' });
  return result; }]];
