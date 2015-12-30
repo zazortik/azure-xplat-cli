@@ -183,7 +183,7 @@ describe('arm', function() {
       });
 
       //Set chef extension
-      it.skip('Set Chef extension for the created vm', function(done) {
+      it('Set Chef extension for the created vm', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension set-chef %s %s --client-config %s --validation-pem %s --json', groupName, vmPrefix, clientConfig, validationPem).split(' ');
 
@@ -195,7 +195,7 @@ describe('arm', function() {
 
 
       //Get chef extension
-      it.skip('Extension Get-Chef should list only chef extension', function(done) {
+      it('Extension Get-Chef should list only chef extension', function(done) {
         this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get-chef %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
