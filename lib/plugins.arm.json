@@ -8299,7 +8299,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <object-id>",
+                  "flags": "--objectId <objectId>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -8314,6 +8314,106 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode (do not ask for delete confirmation)"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Get all active directory applications in current subscription's tenant",
+              "fullName": "ad app list",
+              "usage": "[options]",
+              "filePath": "commands/arm/ad/ad.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get active directory applications",
+              "fullName": "ad app show",
+              "usage": "[options]",
+              "filePath": "commands/arm/ad/ad.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--appId <appId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--appId",
+                  "description": "the name of the application to return"
+                },
+                {
+                  "flags": "--objectId <objectId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--objectId",
+                  "description": "the object id of the application to return"
+                },
+                {
+                  "flags": "--identifierUri <identifierUri>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--identifierUri",
+                  "description": "the identifier uri of the application to return"
+                },
+                {
+                  "flags": "--search <search>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--search",
+                  "description": "search display name of the application starting with the provided value"
                 }
               ]
             }
@@ -8588,7 +8688,7 @@
               "name": "create",
               "description": "Create active directory service principal",
               "fullName": "ad sp create",
-              "usage": "[options] <application-id>",
+              "usage": "[options] <applicationId>",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
               "options": [
                 {
@@ -8617,7 +8717,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationId <application-id>",
+                  "flags": "--applicationId <applicationId>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -8630,7 +8730,7 @@
               "name": "delete",
               "description": "Deletes active directory service principal",
               "fullName": "ad sp delete",
-              "usage": "[options] <object-id>",
+              "usage": "[options] <objectId>",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
               "options": [
                 {
@@ -8659,7 +8759,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <object-id>",
+                  "flags": "--objectId <objectId>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,

@@ -49,7 +49,7 @@
     "azure-arm-rediscache": "0.1.0",
     "azure-arm-datalake-analytics": "0.1.2",
     "azure-arm-datalake-store": "0.1.2",
-    "azure-extra": "0.1.12",
+    "azure-extra": "0.2.12",
     "azure-gallery": "2.0.0-pre.18",
     "azure-keyvault": "0.10.1",
     "azure-asm-compute": "0.11.0",
