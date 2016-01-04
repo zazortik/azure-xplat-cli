@@ -69,7 +69,7 @@ describe('arm', function () {
         });
       });
 
-      it.only('get and list app should work', function (done) {
+      it('get and list app should work', function (done) {
         var appName = suite.generateId(appPrefix, createdApps);
         var idUri = 'https://' + appName + '.com/home';
         suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s --json', idUri, function (result) {
