@@ -143,11 +143,14 @@ If you use both mechanisms on the same subscription, Azure Active Directory auth
 #### Login directly from xplat-cli (Azure Active Directory authentication)
 
 ```bash
+# This will output an url and a device code for you to use browser to login  
+azure login
+
 # This will prompt for your password in the console
 azure login -u <your organizational ID email address>
 
-# use the commands to manage your services/applications
-azure site create --location "West US" mywebsite
+# This will login in using a service principal
+azure login -u "<service-principal-id>" -p "<key>" --service-principal --tenant "<tenant-id>"
 ```
 
 #### Use publish settings file (Management certificate authentication)
