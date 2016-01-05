@@ -2,62 +2,27 @@
 
 [![NPM version](https://badge.fury.io/js/azure-cli.png)](http://badge.fury.io/js/azure-cli) [![Build Status](https://travis-ci.org/Azure/azure-xplat-cli.png?branch=master)](https://travis-ci.org/Azure/azure-xplat-cli)
 
-This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.
+This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications. Features include (not limited to): Account management, Storage, Websites, Virtual machines, Network, Mobile Services, Service Bus, SQL Database, Azure Resource Management(including Computer, Storage, Network, Redis cache, etc), KeyVault, and much more...
 
 ## Features
 
-* Accounts
-    * Azure Active Directory authentication
-    * Download and import Azure publish settings
-    * List imported Azure subscriptions
-    * Select current subscription
-    * Manage Azure environments
-    * Create and manage affinity groups
-    * Export management certificate
-* Storage
-    * Create and manage Storage Accounts
-    * Create and manage container, blob and ACL
-* Websites
-    * Create and manage Microsoft Azure websites
-    * Download site log files and get real time log streaming
-    * Manage Deployments
-    * Configure GitHub integration
-    * Create, manage and swap slots
-    * Create and manage WebJobs
-* Virtual machines
-    * Create and manage Windows and Linux Virtual machines
-    * Create and manage VM endpoints
-    * Create and manage Virtual Machine Images
-    * Create and manage certificates
-    * CloudInit for Ubuntu VM
-    * Create and manage Docker host virtual machines
-    * Create and manage VM extensions
-* Network
-    * Import and export network configuration
-    * Create and manage virtual network
-    * Create and manage DNS server
-    * Create and manage reserved IP addresses
-* Mobile Services
-    * Create and manage Mobile Services
-    * Manage tables, scripts, and configuration
-    * Access logs
-    * Access data
-    * Add custom domains and enable SSL
-* Service Bus
-    * Create and manage Service Bus namespaces
-* SQL Database
-    * Create and manage SQL Servers, Firewall rules and Databases
-* Resource Manager
-    * Manage resource groups and deployments
-    * Query and download gallery templates
-    * Manage individual resources
+* Accounts Management
+* Azure Service Management
+  * Storage
+  * Websites
+  * Virtual machines
+  * Network
+  * Mobile Services
+  * Service Bus
+  * SQL Database
+* Azure Resource Management
+  * Generic resource groups and deployments management
+  * Role based access control
+  * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc
+  * Datalake
 * Key Vault
-    * Create and manage vaults, assign permissions to vaults
-    * Create and manage vault keys, import PEM files into a vault key, obtain key backups
-    * Create and manage secrets, set and retrieve secret values
-* Redis Cache
-    * Create and manage Redis Caches
-    * List or Renew authentication keys
+
+For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
 
 ## Installation
 
@@ -104,16 +69,6 @@ sudo docker run -it microsoft/azure-cli
 * [Mac](http://aka.ms/mac-azure-cli) 
 * [Linux](http://aka.ms/linux-azure-cli)
 
-### Download Source Code
-
-You can also install the Azure Xplat-CLI from sources using **git**  and **npm**.
-
-```bash
-git clone https://github.com/Azure/azure-xplat-cli.git
-cd ./azure-xplat-cli
-npm install
-bin/azure <command>
-```
 
 ### Configure auto-complete
 
@@ -135,7 +90,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ## Get Started
 
 * First, get authenticated with Microsoft Azure. For details, read [this article](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/).
-  * Option 1: Login with your Organizational account. Azure Active Directory authentication is used in this case. No management certificate is needed. **Note**: Authentication with a Microsoft account is not supported at this time. You can create a free Organizational account in the Azure portal for use in the CLI.
+  * Option 1: Login with your Microsoft account, such as live-id, or organizational account, or service principals.
   * Option 2: Download and import a publish settings file which contains a management certificate.
 
 If you use both mechanisms on the same subscription, Azure Active Directory authentication will be used by default. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
