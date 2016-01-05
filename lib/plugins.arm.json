@@ -32964,7 +32964,7 @@
               "bool": true,
               "short": "-c",
               "long": "--config-file",
-              "description": "path for WadCfg config file"
+              "description": "path for WadCfg config file (collect basic metrics if not specified)"
             },
             {
               "flags": "-e, --extension-version <version>",
@@ -32973,7 +32973,7 @@
               "bool": true,
               "short": "-e",
               "long": "--extension-version",
-              "description": "Version of Diagnostics extension. Default values are [1.4] for Windows and [2.0] for Linux."
+              "description": "Version of Diagnostics extension. Default values are [1.5] for Windows and [2.2] for Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",
