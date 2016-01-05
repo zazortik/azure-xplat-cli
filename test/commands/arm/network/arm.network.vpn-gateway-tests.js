@@ -20,6 +20,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-vpn-gateway-tests';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName, location,
   groupPrefix = 'xplatTestGroupVnetGateway2',
   gatewayPrefix = 'xplatTestvpngateway',
@@ -30,11 +31,11 @@ var groupName, location,
   subnetprefix = 'GatewaySubnet',
   subnetAddressPrefix = '10.0.0.0/28',
   privateIpAddress = '10.0.0.11',
-  enablebgp = 'true',
+  enablebgp = 'false',
   tags = 'tag1=val1';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'eastus'
+  defaultValue: 'westeurope'
 }];
 
 describe('arm', function() {
@@ -77,6 +78,7 @@ describe('arm', function() {
 
     describe('vpn-gateway', function() {
       it('create should pass', function(done) {
+		this.timeout(this.gatewaytimeout);
         networkUtil.createGroup(groupName, location, suite, function() {
           networkUtil.createVnetWithAddress(groupName, vnetPrefix, location, vnetAddressPrefix, suite, function() {
             networkUtil.createSubnetWithAddress(groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, function() {
@@ -91,14 +93,15 @@ describe('arm', function() {
           });
         });
       });
-      it('set should modify gateway vnet', function(done) {
+      it('set should modify vpn-gateway', function(done) {
+		this.timeout(this.gatewaytimeout);
         var cmd = util.format('network vpn-gateway set -g %s -n %s -t %s --json', groupName, gatewayPrefix, tags).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-      it('show should display details of gateway vnet', function(done) {
+      it('show should display details of vpn-gateway', function(done) {
         var cmd = util.format('network vpn-gateway show -g %s -n %s --json', groupName, gatewayPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -107,18 +110,19 @@ describe('arm', function() {
           done();
         });
       });
-      it('list should dispaly all gateway vnet in a given resource group', function(done) {
+      it('list should dispaly all vpn-gateway in a given resource group', function(done) {
         var cmd = util.format('network vpn-gateway list -g %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function(res) {
             return res.name === gatewayPrefix;
           }).should.be.true;
           done();
         });
       });
-      it('delete should delete vnet', function(done) {
+      it('delete should delete vpn-gate', function(done) {
+		this.timeout(this.gatewaytimeout);
         var cmd = util.format('network vpn-gateway delete %s %s --json --quiet', groupName, gatewayPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);

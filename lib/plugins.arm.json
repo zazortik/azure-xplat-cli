@@ -18577,7 +18577,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--address-prefixes",
-                  "description": "the comma separated list of address prefixes for this virtual network.\n     For example -a 10.0.0.0/24,10.0.1.0/24.\n     Default value is 10.0.0.0/8"
+                  "description": "the comma separated list of address prefixes for this virtual network.\n     For example, -a \"10.0.0.0/24,10.0.1.0/24\"\n     Default value is 10.0.0.0/8"
                 },
                 {
                   "flags": "-d, --dns-servers <dns-servers>",
@@ -18665,7 +18665,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--address-prefixes",
-                  "description": "the comma separated list of address prefixes for this virtual network.\n     For example -a 10.0.0.0/24,10.0.1.0/24.\n     This list will be appended to the current list of address prefixes.\n     The address prefixes in this list should not overlap between them.\n     The address prefixes in this list should not overlap with existing address prefixes in the vnet."
+                  "description": "the comma separated list of address prefixes for this virtual network.\n     For example, -a \"10.0.0.0/24,10.0.1.0/24\"\n     This list will be appended to the current list of address prefixes.\n     The address prefixes in this list should not overlap between them.\n     The address prefixes in this list should not overlap with existing address prefixes in the vnet."
                 },
                 {
                   "flags": "-d, --dns-servers [dns-servers]",
@@ -18700,7 +18700,7 @@
               "name": "list",
               "description": "Get all virtual networks",
               "fullName": "network vnet list",
-              "usage": "[options] <resource-group>",
+              "usage": "[options]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -18954,7 +18954,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--address-prefix",
-                      "description": "the address prefix"
+                      "description": "the address prefix in CIDR format"
                     },
                     {
                       "flags": "-w, --network-security-group-id <network-security-group-id>",
@@ -19069,7 +19069,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--address-prefix",
-                      "description": "the address prefix"
+                      "description": "the address prefix in CIDR format"
                     },
                     {
                       "flags": "-w, --network-security-group-id [network-security-group-id]",
@@ -19081,27 +19081,27 @@
                       "description": "the network security group identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkSecurityGroups/<nsg-name>"
                     },
                     {
-                      "flags": "-o, --network-security-group-name <network-security-group-name>",
-                      "required": -35,
-                      "optional": 0,
+                      "flags": "-o, --network-security-group-name [network-security-group-name]",
+                      "required": 0,
+                      "optional": -35,
                       "bool": true,
                       "short": "-o",
                       "long": "--network-security-group-name",
                       "description": "the network security group name"
                     },
                     {
-                      "flags": "-i, --route-table-id <route-table-id>",
-                      "required": -22,
-                      "optional": 0,
+                      "flags": "-i, --route-table-id [route-table-id]",
+                      "required": 0,
+                      "optional": -22,
                       "bool": true,
                       "short": "-i",
                       "long": "--route-table-id",
                       "description": "the route table identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/routeTables/<route-table-name>"
                     },
                     {
-                      "flags": "-r, --route-table-name <route-table-name>",
-                      "required": -24,
-                      "optional": 0,
+                      "flags": "-r, --route-table-name [route-table-name]",
+                      "required": 0,
+                      "optional": -24,
                       "bool": true,
                       "short": "-r",
                       "long": "--route-table-name",
@@ -19253,7 +19253,7 @@
                   "name": "delete",
                   "description": "Delete a subnet of a virtual network",
                   "fullName": "network vnet subnet delete",
-                  "usage": "[options] <resource-group> <vnet-name> <subnet-name>",
+                  "usage": "[options] <resource-group> <vnet-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -19420,10 +19420,80 @@
               ]
             },
             {
+              "name": "set",
+              "description": "Set a load balancer",
+              "fullName": "network lb set",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the load balancer"
+                },
+                {
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
               "name": "list",
               "description": "Get all load balancers",
               "fullName": "network lb list",
-              "usage": "[options] <resource-group>",
+              "usage": "[options]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -19604,6 +19674,404 @@
             }
           ],
           "categories": {
+            "frontend-ip": {
+              "name": "frontend-ip",
+              "description": "Commands to manage frontend ip configurations of a load balancer",
+              "fullName": "network lb frontend-ip",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Add a frontend ip configuration to the load balancer",
+                  "fullName": "network lb frontend-ip create",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend ip configuration"
+                    },
+                    {
+                      "flags": "-a, --private-ip-address <private-ip-address>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--private-ip-address",
+                      "description": "the private ip address"
+                    },
+                    {
+                      "flags": "-u, --public-ip-id <public-ip-id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--public-ip-id",
+                      "description": "the public ip address identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                    },
+                    {
+                      "flags": "-i, --public-ip-name <public-ip-name>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--public-ip-name",
+                      "description": "the public ip address name.\n     This public ip must exist in the same resource group as the load balancer.\n     Please use public-ip-id if that is not the case."
+                    },
+                    {
+                      "flags": "-b, --subnet-id <subnet-id>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--subnet-id",
+                      "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
+                    },
+                    {
+                      "flags": "-e, --subnet-name <subnet-name>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--subnet-name",
+                      "description": "the subnet name"
+                    },
+                    {
+                      "flags": "-m, --subnet-vnet-name <subnet-vnet-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--subnet-vnet-name",
+                      "description": "the virtual network name in which subnet exists.\n     This virtual network must exist in the same resource group as the load balancer.\n     Please use subnet-id if that is not the case."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set a frontend ip configuration of a load balancer",
+                  "fullName": "network lb frontend-ip set",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend ip configuration"
+                    },
+                    {
+                      "flags": "-a, --private-ip-address [private-ip-address]",
+                      "required": 0,
+                      "optional": -26,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--private-ip-address",
+                      "description": "the private ip address"
+                    },
+                    {
+                      "flags": "-u, --public-ip-id <public-ip-id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--public-ip-id",
+                      "description": "the public ip address identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                    },
+                    {
+                      "flags": "-i, --public-ip-name <public-ip-name>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--public-ip-name",
+                      "description": "the public ip address name.\n     This public ip must exist in the same resource group as the load balancer.\n     Please use public-ip-id if that is not the case."
+                    },
+                    {
+                      "flags": "-b, --subnet-id <subnet-id>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--subnet-id",
+                      "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
+                    },
+                    {
+                      "flags": "-e, --subnet-name <subnet-name>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--subnet-name",
+                      "description": "the subnet name"
+                    },
+                    {
+                      "flags": "-m, --subnet-vnet-name <subnet-vnet-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--subnet-vnet-name",
+                      "description": "the virtual network name in which subnet exists.\n     This virtual network must exist in the same resource group as the load balancer.\n     Please use subnet-id if that is not the case."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all frontend ip configurations in the load balancer",
+                  "fullName": "network lb frontend-ip list",
+                  "usage": "[options] <resource-group> <lb-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a frontend ip configuration from a load balancer",
+                  "fullName": "network lb frontend-ip delete",
+                  "usage": "[options] <resource-group> <lb-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-l, --lb-name <lb-name>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--lb-name",
+                      "description": "the name of the load balancer"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend ip configuration"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "probe": {
               "name": "probe",
               "description": "Commands to manage probes of a load balancer",
@@ -19786,22 +20254,13 @@
                       "description": "the name of the probe"
                     },
                     {
-                      "flags": "-e, --new-probe-name <new-probe-name>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-e",
-                      "long": "--new-probe-name",
-                      "description": "the new name of the probe"
-                    },
-                    {
                       "flags": "-p, --protocol <protocol>",
                       "required": -16,
                       "optional": 0,
                       "bool": true,
                       "short": "-p",
                       "long": "--protocol",
-                      "description": "the new value for probe protocol"
+                      "description": "the probe protocol"
                     },
                     {
                       "flags": "-o, --port <port>",
@@ -19810,7 +20269,7 @@
                       "bool": true,
                       "short": "-o",
                       "long": "--port",
-                      "description": "the new value for probe port"
+                      "description": "the probe port"
                     },
                     {
                       "flags": "-f, --path <path>",
@@ -19819,7 +20278,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--path",
-                      "description": "the new value for probe path"
+                      "description": "the probe path"
                     },
                     {
                       "flags": "-i, --interval <interval>",
@@ -19828,7 +20287,7 @@
                       "bool": true,
                       "short": "-i",
                       "long": "--interval",
-                      "description": "the new value for probe interval in seconds"
+                      "description": "the probe interval in seconds"
                     },
                     {
                       "flags": "-c, --count <count>",
@@ -19837,7 +20296,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--count",
-                      "description": "the new value for number of probes"
+                      "description": "the number of probes"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -19993,404 +20452,6 @@
               ],
               "categories": {}
             },
-            "frontend-ip": {
-              "name": "frontend-ip",
-              "description": "Commands to manage frontend ip configurations of a load balancer",
-              "fullName": "network lb frontend-ip",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "create",
-                  "description": "Add a frontend ip configuration to the load balancer",
-                  "fullName": "network lb frontend-ip create",
-                  "usage": "[options] <resource-group> <lb-name> <name>",
-                  "filePath": "commands/arm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g, --resource-group <resource-group>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-l, --lb-name <lb-name>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--lb-name",
-                      "description": "the name of the load balancer"
-                    },
-                    {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the frontend ip configuration"
-                    },
-                    {
-                      "flags": "-a, --private-ip-address <private-ip-address>",
-                      "required": -26,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--private-ip-address",
-                      "description": "the private ip address"
-                    },
-                    {
-                      "flags": "-u, --public-ip-id <public-ip-id>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--public-ip-id",
-                      "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
-                    },
-                    {
-                      "flags": "-i, --public-ip-name <public-ip-name>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--public-ip-name",
-                      "description": "the public ip name.\n     This public ip must exist in the same resource group as the lb.\n     Please use public-ip-id if that is not the case."
-                    },
-                    {
-                      "flags": "-b, --subnet-id <subnet-id>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-b",
-                      "long": "--subnet-id",
-                      "description": "the subnet id.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
-                    },
-                    {
-                      "flags": "-e, --subnet-name <subnet-name>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-e",
-                      "long": "--subnet-name",
-                      "description": "the subnet name"
-                    },
-                    {
-                      "flags": "-m, --vnet-name <vnet-name>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-m",
-                      "long": "--vnet-name",
-                      "description": "the virtual network name.\n     This virtual network must exist in the same resource group as the lb.\n     Please use subnet-id if that is not the case."
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "set",
-                  "description": "Set a frontend ip configuration of a load balancer",
-                  "fullName": "network lb frontend-ip set",
-                  "usage": "[options] <resource-group> <lb-name> <name>",
-                  "filePath": "commands/arm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g, --resource-group <resource-group>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-l, --lb-name <lb-name>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--lb-name",
-                      "description": "the name of the load balancer"
-                    },
-                    {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the frontend ip configuration"
-                    },
-                    {
-                      "flags": "-a, --private-ip-address <private-ip-address>",
-                      "required": -26,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--private-ip-address",
-                      "description": "the private ip address"
-                    },
-                    {
-                      "flags": "-u, --public-ip-id [public-ip-id]",
-                      "required": 0,
-                      "optional": -20,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--public-ip-id",
-                      "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
-                    },
-                    {
-                      "flags": "-i, --public-ip-name <public-ip-name>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--public-ip-name",
-                      "description": "the public ip name.\n     This public ip must exist in the same resource group as the lb.\n     Please use public-ip-id if that is not the case."
-                    },
-                    {
-                      "flags": "-b, --subnet-id [subnet-id]",
-                      "required": 0,
-                      "optional": -17,
-                      "bool": true,
-                      "short": "-b",
-                      "long": "--subnet-id",
-                      "description": "the subnet id.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
-                    },
-                    {
-                      "flags": "-e, --subnet-name <subnet-name>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-e",
-                      "long": "--subnet-name",
-                      "description": "the subnet name"
-                    },
-                    {
-                      "flags": "-m, --vnet-name <vnet-name>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-m",
-                      "long": "--vnet-name",
-                      "description": "the virtual network name.\n     This virtual network must exist in the same resource group as the lb.\n     Please use subnet-id if that is not the case."
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "list",
-                  "description": "Get all frontend ip configurations in the load balancer",
-                  "fullName": "network lb frontend-ip list",
-                  "usage": "[options] <resource-group> <lb-name>",
-                  "filePath": "commands/arm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g, --resource-group <resource-group>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-l, --lb-name <lb-name>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--lb-name",
-                      "description": "the name of the load balancer"
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "delete",
-                  "description": "Delete a frontend ip configuration from a load balancer",
-                  "fullName": "network lb frontend-ip delete",
-                  "usage": "[options] <resource-group> <lb-name> <name>",
-                  "filePath": "commands/arm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g, --resource-group <resource-group>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-l, --lb-name <lb-name>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--lb-name",
-                      "description": "the name of the load balancer"
-                    },
-                    {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the frontend ip configuration"
-                    },
-                    {
-                      "flags": "-q, --quiet",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-q",
-                      "long": "--quiet",
-                      "description": "quiet mode, do not ask for delete confirmation"
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
             "address-pool": {
               "name": "address-pool",
               "description": "Commands to manage backend address pools of a load balancer",
@@ -20400,7 +20461,7 @@
               "commands": [
                 {
                   "name": "create",
-                  "description": "Add an address pool to the load balancer",
+                  "description": "Add a backend address pool to the load balancer",
                   "fullName": "network lb address-pool create",
                   "usage": "[options] <resource-group> <lb-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -20470,7 +20531,7 @@
                 },
                 {
                   "name": "list",
-                  "description": "Get all address pools in the load balancer",
+                  "description": "Get all backend address pools in the load balancer",
                   "fullName": "network lb address-pool list",
                   "usage": "[options] <resource-group> <lb-name>",
                   "filePath": "commands/arm/network/network._js",
@@ -20531,7 +20592,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete an address pool from a load balancer",
+                  "description": "Delete a backend address pool from a load balancer",
                   "fullName": "network lb address-pool delete",
                   "usage": "[options] <resource-group> <lb-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -20684,7 +20745,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--protocol",
-                      "description": "the rule protocol"
+                      "description": "the rule protocol [tcp,udp]"
                     },
                     {
                       "flags": "-f, --frontend-port <frontend-port>",
@@ -20693,7 +20754,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--frontend-port",
-                      "description": "the frontend port"
+                      "description": "the frontend port [0-65535]"
                     },
                     {
                       "flags": "-b, --backend-port <backend-port>",
@@ -20702,7 +20763,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--backend-port",
-                      "description": "the backend port"
+                      "description": "the backend port [0-65535]"
                     },
                     {
                       "flags": "-e, --enable-floating-ip <enable-floating-ip>",
@@ -20711,7 +20772,7 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--enable-floating-ip",
-                      "description": "enable floating point ip"
+                      "description": "enable floating point ip [true, false]"
                     },
                     {
                       "flags": "-i, --idle-timeout <idle-timeout>",
@@ -20721,15 +20782,6 @@
                       "short": "-i",
                       "long": "--idle-timeout",
                       "description": "the idle timeout specified in minutes"
-                    },
-                    {
-                      "flags": "-a, --probe-name <probe-name>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--probe-name",
-                      "description": "the name of the probe defined in the same load balancer"
                     },
                     {
                       "flags": "-d, --load-distribution <load-distribution>",
@@ -20750,13 +20802,22 @@
                       "description": "the name of the frontend ip configuration in the same load balancer"
                     },
                     {
-                      "flags": "-o, --backend-address-pool <backend-address-pool>",
-                      "required": -28,
+                      "flags": "-o, --backend-address-pool-name <backend-address-pool-name>",
+                      "required": -33,
                       "optional": 0,
                       "bool": true,
                       "short": "-o",
-                      "long": "--backend-address-pool",
-                      "description": "name of the backend address pool defined in the same load balancer"
+                      "long": "--backend-address-pool-name",
+                      "description": "the name of the backend address pool defined in the same load balancer"
+                    },
+                    {
+                      "flags": "-a, --probe-name <probe-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--probe-name",
+                      "description": "the name of the probe defined in the same load balancer"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -20829,22 +20890,13 @@
                       "description": "the name of the rule"
                     },
                     {
-                      "flags": "-r, --new-rule-name <new-rule-name>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-r",
-                      "long": "--new-rule-name",
-                      "description": "new rule name"
-                    },
-                    {
                       "flags": "-p, --protocol <protocol>",
                       "required": -16,
                       "optional": 0,
                       "bool": true,
                       "short": "-p",
                       "long": "--protocol",
-                      "description": "the rule protocol"
+                      "description": "the rule protocol [tcp,udp]"
                     },
                     {
                       "flags": "-f, --frontend-port <frontend-port>",
@@ -20853,7 +20905,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--frontend-port",
-                      "description": "the frontend port"
+                      "description": "the frontend port [0-65535]"
                     },
                     {
                       "flags": "-b, --backend-port <backend-port>",
@@ -20862,7 +20914,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--backend-port",
-                      "description": "the backend port"
+                      "description": "the backend port [0-65535]"
                     },
                     {
                       "flags": "-e, --enable-floating-ip <enable-floating-ip>",
@@ -20871,7 +20923,7 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--enable-floating-ip",
-                      "description": "enable floating point ip"
+                      "description": "enable floating point ip [true, false]"
                     },
                     {
                       "flags": "-i, --idle-timeout <idle-timeout>",
@@ -20881,15 +20933,6 @@
                       "short": "-i",
                       "long": "--idle-timeout",
                       "description": "the idle timeout specified in minutes"
-                    },
-                    {
-                      "flags": "-a, --probe-name [probe-name]",
-                      "required": 0,
-                      "optional": -18,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--probe-name",
-                      "description": "the name of the probe defined in the same load balancer"
                     },
                     {
                       "flags": "-d, --load-distribution <load-distribution>",
@@ -20910,13 +20953,22 @@
                       "description": "the name of the frontend ip configuration in the same load balancer"
                     },
                     {
-                      "flags": "-o, --backend-address-pool <backend-address-pool>",
-                      "required": -28,
+                      "flags": "-o, --backend-address-pool-name <backend-address-pool-name>",
+                      "required": -33,
                       "optional": 0,
                       "bool": true,
                       "short": "-o",
-                      "long": "--backend-address-pool",
-                      "description": "name of the backend address pool defined in the same load balancer"
+                      "long": "--backend-address-pool-name",
+                      "description": "the name of the backend address pool defined in the same load balancer"
+                    },
+                    {
+                      "flags": "-a, --probe-name [probe-name]",
+                      "required": 0,
+                      "optional": -18,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--probe-name",
+                      "description": "the name of the probe defined in the same load balancer"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -21172,15 +21224,24 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--enable-floating-ip",
-                      "description": "enable floating point ip [true,false]"
+                      "description": "enable floating point ip [true, false]"
                     },
                     {
-                      "flags": "-i, --frontend-ip <frontend-ip>",
-                      "required": -19,
+                      "flags": "-i, --idle-timeout <idle-timeout>",
+                      "required": -20,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--frontend-ip",
+                      "long": "--idle-timeout",
+                      "description": "the idle timeout specified in minutes"
+                    },
+                    {
+                      "flags": "-t, --frontend-ip-name <frontend-ip-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--frontend-ip-name",
                       "description": "the name of the frontend ip configuration"
                     },
                     {
@@ -21287,15 +21348,24 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--enable-floating-ip",
-                      "description": "enable floating point ip [true,false]"
+                      "description": "enable floating point ip [true, false]"
                     },
                     {
-                      "flags": "-i, --frontend-ip <frontend-ip>",
-                      "required": -19,
+                      "flags": "-i, --idle-timeout <idle-timeout>",
+                      "required": -20,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--frontend-ip",
+                      "long": "--idle-timeout",
+                      "description": "the idle timeout specified in minutes"
+                    },
+                    {
+                      "flags": "-t, --frontend-ip-name <frontend-ip-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--frontend-ip-name",
                       "description": "the name of the frontend ip configuration"
                     },
                     {
@@ -21552,15 +21622,15 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--backend-port",
-                      "description": "the backend port"
+                      "description": "the backend port [0-65535]"
                     },
                     {
-                      "flags": "-i, --frontend-ip <frontend-ip>",
-                      "required": -19,
+                      "flags": "-i, --frontend-ip-name <frontend-ip-name>",
+                      "required": -24,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--frontend-ip",
+                      "long": "--frontend-ip-name",
                       "description": "the name of the frontend ip configuration"
                     },
                     {
@@ -21667,15 +21737,15 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--backend-port",
-                      "description": "the backend port"
+                      "description": "the backend port [0-65535]"
                     },
                     {
-                      "flags": "-i, --frontend-ip <frontend-ip>",
-                      "required": -19,
+                      "flags": "-i, --frontend-ip-name <frontend-ip-name>",
+                      "required": -24,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--frontend-ip",
+                      "long": "--frontend-ip-name",
                       "description": "the name of the frontend ip configuration"
                     },
                     {
@@ -21843,7 +21913,7 @@
           "commands": [
             {
               "name": "create",
-              "description": "Create a public ip",
+              "description": "Create a public ip address",
               "fullName": "network public-ip create",
               "usage": "[options] <resource-group> <name> <location>",
               "filePath": "commands/arm/network/network._js",
@@ -21916,15 +21986,15 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--allocation-method",
-                  "description": "the allocation method [Static][Dynamic]"
+                  "description": "the allocation method, valid values are\n     [Dynamic,Static], default is Dynamic"
                 },
                 {
-                  "flags": "-i, --idletimeout <idletimeout>",
-                  "required": -19,
+                  "flags": "-i, --idle-timeout <idle-timeout>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
                   "short": "-i",
-                  "long": "--idletimeout",
+                  "long": "--idle-timeout",
                   "description": "the idle timeout specified in minutes"
                 },
                 {
@@ -21958,7 +22028,7 @@
             },
             {
               "name": "set",
-              "description": "Set a public ip",
+              "description": "Set a public ip address",
               "fullName": "network public-ip set",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/network/network._js",
@@ -22022,21 +22092,21 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--allocation-method",
-                  "description": "the allocation method [Static][Dynamic]"
+                  "description": "the allocation method, valid values are\n     [Dynamic,Static], default is Dynamic"
                 },
                 {
-                  "flags": "-i, --idletimeout <idletimeout>",
-                  "required": -19,
+                  "flags": "-i, --idle-timeout <idle-timeout>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
                   "short": "-i",
-                  "long": "--idletimeout",
+                  "long": "--idle-timeout",
                   "description": "the idle timeout specified in minutes"
                 },
                 {
-                  "flags": "-f, --reverse-fqdn [reverse-fqdn]",
-                  "required": 0,
-                  "optional": -20,
+                  "flags": "-f, --reverse-fqdn <reverse-fqdn>",
+                  "required": -20,
+                  "optional": 0,
                   "bool": true,
                   "short": "-f",
                   "long": "--reverse-fqdn",
@@ -22064,9 +22134,9 @@
             },
             {
               "name": "list",
-              "description": "Get all public ips",
+              "description": "Get all public ip addresses",
               "fullName": "network public-ip list",
-              "usage": "[options] <resource-group>",
+              "usage": "[options]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -22116,7 +22186,7 @@
             },
             {
               "name": "show",
-              "description": "Get a public ip",
+              "description": "Get a public ip address",
               "fullName": "network public-ip show",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/network/network._js",
@@ -22177,7 +22247,7 @@
             },
             {
               "name": "delete",
-              "description": "Delete a public ip",
+              "description": "Delete a public ip address",
               "fullName": "network public-ip delete",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/network/network._js",
@@ -22315,6 +22385,33 @@
                   "description": "the location"
                 },
                 {
+                  "flags": "-u, --subnet-id <subnet-id>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--subnet-id",
+                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
+                },
+                {
+                  "flags": "-k, --subnet-name <subnet-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--subnet-name",
+                  "description": "the subnet name"
+                },
+                {
+                  "flags": "-m, --subnet-vnet-name <subnet-vnet-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--subnet-vnet-name",
+                  "description": "the vnet name under which subnet-name exists"
+                },
+                {
                   "flags": "-w, --network-security-group-id <network-security-group-id>",
                   "required": -33,
                   "optional": 0,
@@ -22351,42 +22448,6 @@
                   "description": "the public IP name.\n     This public ip must exist in the same resource group as the nic.\n     Please use public-ip-id if that is not the case."
                 },
                 {
-                  "flags": "-a, --private-ip-address <private-ip-address>",
-                  "required": -26,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--private-ip-address",
-                  "description": "the private IP address"
-                },
-                {
-                  "flags": "-u, --subnet-id <subnet-id>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--subnet-id",
-                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
-                },
-                {
-                  "flags": "-k, --subnet-name <subnet-name>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--subnet-name",
-                  "description": "the subnet name"
-                },
-                {
-                  "flags": "-m, --subnet-vnet-name <subnet-vnet-name>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-m",
-                  "long": "--subnet-vnet-name",
-                  "description": "the vnet name under which subnet-name exists"
-                },
-                {
                   "flags": "-d, --lb-address-pool-ids <lb-address-pool-ids>",
                   "required": -27,
                   "optional": 0,
@@ -22405,6 +22466,15 @@
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                 },
                 {
+                  "flags": "-a, --private-ip-address <private-ip-address>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--private-ip-address",
+                  "description": "the private IP address"
+                },
+                {
                   "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
                   "required": -31,
                   "optional": 0,
@@ -22420,7 +22490,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--enable-ip-forwarding",
-                  "description": "the ip forwarding, valid values are [true, false]"
+                  "description": "enable ip forwarding [true, false]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -22493,58 +22563,13 @@
                   "description": "the name of the network interface"
                 },
                 {
-                  "flags": "-w, --network-security-group-id [network-security-group-id]>",
-                  "required": 0,
-                  "optional": -33,
-                  "bool": true,
-                  "short": "-w",
-                  "long": "--network-security-group-id",
-                  "description": "the network security group identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkSecurityGroups/<nsg-name>"
-                },
-                {
-                  "flags": "-o, --network-security-group-name <network-security-group-name>",
-                  "required": -35,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--network-security-group-name",
-                  "description": "the network security group name.\n     This network security group must exist in the same resource group as the nic.\n     Please use network-security-group-id if that is not the case."
-                },
-                {
-                  "flags": "-i, --public-ip-id [public-ip-id]",
-                  "required": 0,
-                  "optional": -20,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--public-ip-id",
-                  "description": "the public IP identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
-                },
-                {
-                  "flags": "-p, --public-ip-name <public-ip-name>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--public-ip-name",
-                  "description": "the public IP name.\n     This public ip must exist in the same resource group as the nic.\n     Please use public-ip-id if that is not the case."
-                },
-                {
-                  "flags": "-a, --private-ip-address <private-ip-address>",
-                  "required": -26,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--private-ip-address",
-                  "description": "the private IP address"
-                },
-                {
                   "flags": "-u, --subnet-id <subnet-id>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-u",
                   "long": "--subnet-id",
-                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
+                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
                 },
                 {
                   "flags": "-k, --subnet-name <subnet-name>",
@@ -22565,6 +22590,42 @@
                   "description": "the vnet name under which subnet-name exists"
                 },
                 {
+                  "flags": "-w, --network-security-group-id [network-security-group-id]",
+                  "required": 0,
+                  "optional": -33,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--network-security-group-id",
+                  "description": "the network security group identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkSecurityGroups/<nsg-name>"
+                },
+                {
+                  "flags": "-o, --network-security-group-name [network-security-group-name]",
+                  "required": 0,
+                  "optional": -35,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--network-security-group-name",
+                  "description": "the network security group name.\n     This network security group must exist in the same resource group as the nic.\n     Please use network-security-group-id if that is not the case."
+                },
+                {
+                  "flags": "-i, --public-ip-id [public-ip-id]",
+                  "required": 0,
+                  "optional": -20,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--public-ip-id",
+                  "description": "the public IP identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                },
+                {
+                  "flags": "-p, --public-ip-name [public-ip-name]",
+                  "required": 0,
+                  "optional": -22,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--public-ip-name",
+                  "description": "the public IP name.\n     This public ip must exist in the same resource group as the nic.\n     Please use public-ip-id if that is not the case."
+                },
+                {
                   "flags": "-d, --lb-address-pool-ids [lb-address-pool-ids]",
                   "required": 0,
                   "optional": -27,
@@ -22583,9 +22644,18 @@
                   "description": "the comma separated list of load balancer inbound NAT rule identifiers\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                 },
                 {
-                  "flags": "-r, --internal-dns-name-label <internal-dns-name-label>",
-                  "required": -31,
+                  "flags": "-a, --private-ip-address <private-ip-address>",
+                  "required": -26,
                   "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--private-ip-address",
+                  "description": "the private IP address"
+                },
+                {
+                  "flags": "-r, --internal-dns-name-label [internal-dns-name-label]",
+                  "required": 0,
+                  "optional": -31,
                   "bool": true,
                   "short": "-r",
                   "long": "--internal-dns-name-label",
@@ -22598,7 +22668,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--enable-ip-forwarding",
-                  "description": "the ip forwarding, valid values are [true, false]"
+                  "description": "enable ip forwarding [true, false]"
                 },
                 {
                   "flags": "-t, --tags [tags]",
@@ -22624,7 +22694,7 @@
               "name": "list",
               "description": "Get all network interfaces",
               "fullName": "network nic list",
-              "usage": "[options] <resource-group>",
+              "usage": "[options]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -22662,13 +22732,22 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-m, --virtual-machine-scale-set <virtual-machine-scale-set>",
-                  "required": -33,
+                  "flags": "-m, --virtual-machine-scale-set-name <virtual-machine-scale-set-name>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
                   "short": "-m",
-                  "long": "--virtual-machine-scale-set",
+                  "long": "--virtual-machine-scale-set-name",
                   "description": "the name of the virtual machine scale set"
+                },
+                {
+                  "flags": "-i, --virtual-machine-index <virtual-machine-index>",
+                  "required": -29,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--virtual-machine-index",
+                  "description": "the index of the virtual machine in scale set"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -22732,12 +22811,12 @@
                   "description": "the name of the network interface"
                 },
                 {
-                  "flags": "-m, --virtual-machine-scale-set <virtual-machine-scale-set>",
-                  "required": -33,
+                  "flags": "-m, --virtual-machine-scale-set-name <virtual-machine-scale-set-name>",
+                  "required": -38,
                   "optional": 0,
                   "bool": true,
                   "short": "-m",
-                  "long": "--virtual-machine-scale-set",
+                  "long": "--virtual-machine-scale-set-name",
                   "description": "the name of the virtual machine scale set"
                 },
                 {
@@ -22843,7 +22922,7 @@
                   "name": "add",
                   "description": "Add a backend address pool to a NIC",
                   "fullName": "network nic address-pool add",
-                  "usage": "[options] [resource-group] [name]",
+                  "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -22890,13 +22969,13 @@
                       "description": "the name of the network interface"
                     },
                     {
-                      "flags": "-i, --lb-address-pool-id  <lb-address-pool-id>",
-                      "required": -27,
+                      "flags": "-i, --lb-address-pool-id <lb-address-pool-id>",
+                      "required": -26,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
                       "long": "--lb-address-pool-id",
-                      "description": "the load balancer address pool identifier\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/backendAddressPools/<address-pool-name>"
+                      "description": "the load balancer backend address pool identifier\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/backendAddressPools/<address-pool-name>"
                     },
                     {
                       "flags": "-l, --lb-name <lb-name>",
@@ -22905,16 +22984,16 @@
                       "bool": true,
                       "short": "-l",
                       "long": "--lb-name",
-                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC.\n   Please use --lb-address-pool-id if that is not the case.\n   This parameter will be ignored if --lb-address-pool-id is specified"
+                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC."
                     },
                     {
-                      "flags": "-a, --address-pool-name <address-pool-name>",
-                      "required": -25,
+                      "flags": "-a, --lb-address-pool-name <lb-address-pool-name>",
+                      "required": -28,
                       "optional": 0,
                       "bool": true,
                       "short": "-a",
-                      "long": "--address-pool-name",
-                      "description": "the name of the address pool that exists in the load balancer identified by --lb-name\n   This parameter will be ignored if --lb-address-pool-id is specified"
+                      "long": "--lb-address-pool-name",
+                      "description": "the name of the address pool that exists in the load balancer\n   Please use --lb-address-pool-id if that is not the case."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -22931,7 +23010,7 @@
                   "name": "remove",
                   "description": "Remove a backend address pool from a NIC",
                   "fullName": "network nic address-pool remove",
-                  "usage": "[options] [resource-group] [name]",
+                  "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -22978,13 +23057,13 @@
                       "description": "the name of the network interface"
                     },
                     {
-                      "flags": "-i, --lb-address-pool-id  <lb-address-pool-id>",
-                      "required": -27,
+                      "flags": "-i, --lb-address-pool-id <lb-address-pool-id>",
+                      "required": -26,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
                       "long": "--lb-address-pool-id",
-                      "description": "the load balancer address pool identifier\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/backendAddressPools/<address-pool-name>"
+                      "description": "the load balancer backend address pool identifier\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/backendAddressPools/<address-pool-name>"
                     },
                     {
                       "flags": "-l, --lb-name <lb-name>",
@@ -22993,16 +23072,16 @@
                       "bool": true,
                       "short": "-l",
                       "long": "--lb-name",
-                      "description": "the load balancer name.\n   This load balancer must exist in the same resource group as the NIC.\n   Please use --lb-address-pool-id if that is not the case.\n   This parameter will be ignored if --lb-address-pool-id is specified"
+                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC."
                     },
                     {
-                      "flags": "-a, --address-pool-name <address-pool-name>",
-                      "required": -25,
+                      "flags": "-a, --lb-address-pool-name <lb-address-pool-name>",
+                      "required": -28,
                       "optional": 0,
                       "bool": true,
                       "short": "-a",
-                      "long": "--address-pool-name",
-                      "description": "the name of the address pool that exists in the load balancer identified by --lb-name\n   This parameter will be ignored if --lb-address-pool-id is specified"
+                      "long": "--lb-address-pool-name",
+                      "description": "the name of the address pool that exists in the load balancer\n   Please use --lb-address-pool-id if that is not the case."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -23020,7 +23099,7 @@
             },
             "inbound-nat-rule": {
               "name": "inbound-nat-rule",
-              "description": "Commands to manage inbound rules of the network interface",
+              "description": "Commands to manage inbound NAT rules of the network interface",
               "fullName": "network nic inbound-nat-rule",
               "usage": "[options] [command]",
               "options": [],
@@ -23029,7 +23108,7 @@
                   "name": "add",
                   "description": "Add an inbound NAT rule to a NIC",
                   "fullName": "network nic inbound-nat-rule add",
-                  "usage": "[options] [resource-group] [name]",
+                  "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -23076,12 +23155,12 @@
                       "description": "the name of the network interface"
                     },
                     {
-                      "flags": "-i, --inbound-nat-rule-id <inbound-nat-rule-id>",
-                      "required": -27,
+                      "flags": "-i, --lb-inbound-nat-rule-id <lb-inbound-nat-rule-id>",
+                      "required": -30,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--inbound-nat-rule-id",
+                      "long": "--lb-inbound-nat-rule-id",
                       "description": "the inbound NAT rule identifier.\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                     },
                     {
@@ -23091,16 +23170,16 @@
                       "bool": true,
                       "short": "-l",
                       "long": "--lb-name",
-                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC.\n   Please use --inbound-nat-rule-id if that is not the case.\n   This parameter will be ignored if --inbound-nat-rule-id is specified"
+                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC."
                     },
                     {
-                      "flags": "-r, --inbound-nat-rule-name <inbound-nat-rule-name>",
-                      "required": -29,
+                      "flags": "-r, --lb-inbound-nat-rule-name <lb-inbound-nat-rule-name>",
+                      "required": -32,
                       "optional": 0,
                       "bool": true,
                       "short": "-r",
-                      "long": "--inbound-nat-rule-name",
-                      "description": "the name of the NAT rule that exists in the load balancer identified by --lb-name"
+                      "long": "--lb-inbound-nat-rule-name",
+                      "description": "the name of the inbound NAT rule that exists in the load balancer.\n   Please use --inbound-nat-rule-id if that is not the case."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -23117,7 +23196,7 @@
                   "name": "remove",
                   "description": "Remove an inbound NAT rule from a NIC",
                   "fullName": "network nic inbound-nat-rule remove",
-                  "usage": "[options] [resource-group] [name]",
+                  "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -23164,12 +23243,12 @@
                       "description": "the name of the network interface"
                     },
                     {
-                      "flags": "-i, --inbound-nat-rule-id <inbound-nat-rule-id>",
-                      "required": -27,
+                      "flags": "-i, --lb-inbound-nat-rule-id <lb-inbound-nat-rule-id>",
+                      "required": -30,
                       "optional": 0,
                       "bool": true,
                       "short": "-i",
-                      "long": "--inbound-nat-rule-id",
+                      "long": "--lb-inbound-nat-rule-id",
                       "description": "the inbound NAT rule identifier.\n   e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/loadbalancers/<lb-name>/inboundNatRules/<nat-rule-name>"
                     },
                     {
@@ -23179,16 +23258,16 @@
                       "bool": true,
                       "short": "-l",
                       "long": "--lb-name",
-                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC.\n   Please use --inbound-nat-rule-id if that is not the case.\n   This parameter will be ignored if --inbound-nat-rule-id is specified"
+                      "description": "the load balancer name.\n   This load balancer must exists in the same resource group as the NIC."
                     },
                     {
-                      "flags": "-r, --inbound-nat-rule-name <inbound-nat-rule-name>",
-                      "required": -29,
+                      "flags": "-r, --lb-inbound-nat-rule-name <lb-inbound-nat-rule-name>",
+                      "required": -32,
                       "optional": 0,
                       "bool": true,
                       "short": "-r",
-                      "long": "--inbound-nat-rule-name",
-                      "description": "the name of the NAT rule that exists in the load balancer identified by --lb-name"
+                      "long": "--lb-inbound-nat-rule-name",
+                      "description": "the name of the inbound NAT rule that exists in the load balancer.\n   Please use --inbound-nat-rule-id if that is not the case."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -23366,7 +23445,7 @@
               "name": "list",
               "description": "Get all network security groups",
               "fullName": "network nsg list",
-              "usage": "[options] <resource-group>",
+              "usage": "[options]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -26493,7 +26572,7 @@
                   "bool": true,
                   "short": "-l",
                   "long": "--location",
-                  "description": "the location, this must be same as the location of the virtual network containing the subnet(s) on which this Route Table needs to be applied"
+                  "description": "the location, this must be same as the location of the virtual network containing the subnet on which this Route Table needs to be applied"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -26503,6 +26582,128 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set a Route Table",
+              "fullName": "network route-table set",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Get all Route Tables",
+              "fullName": "network route-table list",
+              "usage": "[options]",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -26564,58 +26765,6 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of the Route Table"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "Get all Route Tables",
-              "fullName": "network route-table list",
-              "usage": "[options] <resource-group>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -26711,7 +26860,7 @@
                   "name": "create",
                   "description": "Create route in a Route Table",
                   "fullName": "network route-table route create",
-                  "usage": "[options] <resource-group> <route-table-name> <name> <address-prefix> <next-hop-type>",
+                  "usage": "[options] <resource-group> <route-table-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -27171,25 +27320,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
-                  "description": "the name of the local network"
-                },
-                {
-                  "flags": "-a, --address-space <address-space>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--address-space",
-                  "description": "the local network site address space"
-                },
-                {
-                  "flags": "-i, --ip-address <ip-address>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--ip-address",
-                  "description": "the IP address of the local network site"
+                  "description": "the name of the local network gateway"
                 },
                 {
                   "flags": "-l, --location <location>",
@@ -27201,13 +27332,22 @@
                   "description": "the location"
                 },
                 {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
+                  "flags": "-a, --address-space <address-space>",
+                  "required": -21,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
+                  "short": "-a",
+                  "long": "--address-space",
+                  "description": "the comma separated list of address prefixes in CIDR format"
+                },
+                {
+                  "flags": "-i, --ip-address <ip-address>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--ip-address",
+                  "description": "the IP address of the local network site"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -27217,6 +27357,15 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
                 }
               ]
             },
@@ -27268,16 +27417,16 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
-                  "description": "the name of the local network"
+                  "description": "the name of the local network gateway"
                 },
                 {
-                  "flags": "-a, --address-space <address-space>",
-                  "required": -21,
-                  "optional": 0,
+                  "flags": "-a, --address-space [address-space]",
+                  "required": 0,
+                  "optional": -21,
                   "bool": true,
                   "short": "-a",
                   "long": "--address-space",
-                  "description": "the local network site address space"
+                  "description": "the comma separated list of address prefixes in CIDR format"
                 },
                 {
                   "flags": "-t, --tags [tags]",
@@ -27399,16 +27548,16 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
-                  "description": "the name of the local network"
+                  "description": "the name of the local network gateway"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
                   "short": "-s",
                   "long": "--subscription",
-                  "description": "the subscription id"
+                  "description": "the subscription identifier"
                 }
               ]
             },
@@ -27460,7 +27609,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
-                  "description": "the name of the local network"
+                  "description": "the name of the local network gateway"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -27472,13 +27621,13 @@
                   "description": "quiet mode, do not ask for delete confirmation"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
                   "short": "-s",
                   "long": "--subscription",
-                  "description": "the subscription id"
+                  "description": "the subscription identifier"
                 }
               ]
             }
@@ -27585,7 +27734,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--subnet-id",
-                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/MyTestNetwork/subnets/<subnet-name>"
+                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
                 },
                 {
                   "flags": "-m, --vnet-name <vnet-name>",
@@ -27621,7 +27770,7 @@
                   "bool": true,
                   "short": "-b",
                   "long": "--enable-bgp",
-                  "description": "enables BGP flag\n   Valid values are [True, False]\n   Default is False"
+                  "description": "enable bgp [true, false]"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -28229,414 +28378,9 @@
           "name": "express-route",
           "description": "Commands to manage express routes",
           "fullName": "network express-route",
-          "usage": "[options] [command]",
+          "usage": "[options]",
           "options": [],
-          "commands": [
-            {
-              "name": "create",
-              "description": "Create express route circuit",
-              "fullName": "network express-route create",
-              "usage": "[options] <resource-group> <name> <location>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the express route circuit"
-                },
-                {
-                  "flags": "-l, --location <location>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--location",
-                  "description": "the location"
-                },
-                {
-                  "flags": "-p, --service-provider-name <service-provider-name>",
-                  "required": -29,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--service-provider-name",
-                  "description": "the service provider name"
-                },
-                {
-                  "flags": "-i, --peering-location <peering-location>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--peering-location",
-                  "description": "the service provider peering location"
-                },
-                {
-                  "flags": "-b, --bandwidth-in-mbps <bandwidth-in-mbps>",
-                  "required": -25,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--bandwidth-in-mbps",
-                  "description": "the bandwidth in Mbps"
-                },
-                {
-                  "flags": "-e, --sku-tier <sku-tier>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--sku-tier",
-                  "description": "the sku tier"
-                },
-                {
-                  "flags": "-f, --sku-family <sku-family>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-f",
-                  "long": "--sku-family",
-                  "description": "the sku family"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "set",
-              "description": "Set an express route circuit",
-              "fullName": "network express-route set",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the express route circuit"
-                },
-                {
-                  "flags": "-b, --bandwidth-in-mbps <bandwidth-in-mbps>",
-                  "required": -25,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--bandwidth-in-mbps",
-                  "description": "the bandwidth in Mbps"
-                },
-                {
-                  "flags": "-e, --sku-tier <sku-tier>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--sku-tier",
-                  "description": "the sku tier"
-                },
-                {
-                  "flags": "-f, --sku-family <sku-family>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-f",
-                  "long": "--sku-family",
-                  "description": "the sku family"
-                },
-                {
-                  "flags": "-t, --tags [tags]",
-                  "required": 0,
-                  "optional": -12,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "Get all express route circuits",
-              "fullName": "network express-route list",
-              "usage": "[options] <resource-group>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "show",
-              "description": "Create express route circuit",
-              "fullName": "network express-route show",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the express route circuit"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete an express route circuit",
-              "fullName": "network express-route delete",
-              "usage": "[options] <resource-group> <name>",
-              "filePath": "commands/arm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-g, --resource-group <resource-group>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-g",
-                  "long": "--resource-group",
-                  "description": "the name of the resource group"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the express route circuit"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            }
-          ],
+          "commands": [],
           "categories": {
             "provider": {
               "name": "provider",
@@ -28676,6 +28420,420 @@
                       "bool": true,
                       "long": "--json",
                       "description": "use json output"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "circuit": {
+              "name": "circuit",
+              "description": "Commands to manage express routes circuits",
+              "fullName": "network express-route circuit",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create express route circuit",
+                  "fullName": "network express-route circuit create",
+                  "usage": "[options] <resource-group> <name> <location>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-l, --location <location>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--location",
+                      "description": "the location"
+                    },
+                    {
+                      "flags": "-p, --service-provider-name <service-provider-name>",
+                      "required": -29,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--service-provider-name",
+                      "description": "the service provider name"
+                    },
+                    {
+                      "flags": "-i, --peering-location <peering-location>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--peering-location",
+                      "description": "the service provider peering location"
+                    },
+                    {
+                      "flags": "-b, --bandwidth-in-mbps <bandwidth-in-mbps>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--bandwidth-in-mbps",
+                      "description": "the bandwidth in Mbps"
+                    },
+                    {
+                      "flags": "-e, --sku-tier <sku-tier>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--sku-tier",
+                      "description": "the sku tier"
+                    },
+                    {
+                      "flags": "-f, --sku-family <sku-family>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--sku-family",
+                      "description": "the sku family"
+                    },
+                    {
+                      "flags": "-t, --tags <tags>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set an express route circuit",
+                  "fullName": "network express-route circuit set",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-b, --bandwidth-in-mbps <bandwidth-in-mbps>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--bandwidth-in-mbps",
+                      "description": "the bandwidth in Mbps"
+                    },
+                    {
+                      "flags": "-e, --sku-tier <sku-tier>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--sku-tier",
+                      "description": "the sku tier"
+                    },
+                    {
+                      "flags": "-f, --sku-family <sku-family>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--sku-family",
+                      "description": "the sku family"
+                    },
+                    {
+                      "flags": "-t, --tags [tags]",
+                      "required": 0,
+                      "optional": -12,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tags",
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all express route circuits",
+                  "fullName": "network express-route circuit list",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Create express route circuit",
+                  "fullName": "network express-route circuit show",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an express route circuit",
+                  "fullName": "network express-route circuit delete",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",

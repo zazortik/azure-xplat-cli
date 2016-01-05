@@ -20,6 +20,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-vpn-connection-tests';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName, location,
   groupPrefix = 'xplatTestGroupGatewayCon',
   gatewayPrefix1 = 'xplatvpngatewayI',
@@ -132,7 +133,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function(res) {
             return res.name === gatewayConnPrefix;
           }).should.be.true;
           done();
