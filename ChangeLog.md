@@ -1,3 +1,27 @@
+## 2016-01-12 Version 0.9.14
+* Insights
+  * Remove retention from insights diagnostic commands
+* Redis Cache
+  * adding premium sku and other related features option in redis create
+* VM
+  * Add User Image Option for VM Creation
+  * Diagnostics - collect basic metrics when enabling diagnostic extension without specifying a wadcfg file
+  * Fix & Update VM Image Commands
+  * Fix issue #1487
+* Resource Manager
+  * Support resource move across subscriptions
+* Network
+  * Fix issue #2366, #2391
+  * --no-tags option removed from all ARM networking commands
+  * Implemented load balancer rule session persistence 
+  * Implemented VPN connection Shared Key commands
+* Website
+  * Fix issu #1892
+* KeyVault
+  * Added Key Vault DNS suffix to the AzureUSGovernment environment
+* Role Based Access Control
+  * Active Directory application command updates
+
 ## 2015-12-08 Version 0.9.13
 * VM
   * Chef Extension
