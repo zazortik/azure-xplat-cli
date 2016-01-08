@@ -34244,7 +34244,7 @@
         },
         "extension-image": {
           "name": "extension-image",
-          "description": "Commands to manage VM resource extension images",
+          "description": "Commands to query available VM resource extensions",
           "fullName": "vm extension-image",
           "usage": "[options] [command]",
           "options": [],
