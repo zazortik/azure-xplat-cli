@@ -44,22 +44,25 @@ var groupName, location,
 var gatewayConnPrefix = 'xplatTestGatewayConn',
   connType = 'Vnet2Vnet',
   sharedKey = 'abc123',
+  sharedKey2 = 'xyz987',
+  routingWeight = 22,
+  keyLength = 3,
   connTag = 'connTag1=connVal1';
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
 
-describe('arm', function() {
-  describe('network', function() {
+describe('arm', function () {
+  describe('network', function () {
     var suite,
       timeout,
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 10000;
     var networkUtil = new networkTestUtil();
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         gatewayConnPrefix = suite.isMocked ? gatewayConnPrefix : suite.generateId(gatewayConnPrefix, null);
@@ -73,28 +76,28 @@ describe('arm', function() {
         done();
       });
     });
-    after(function(done) {
-      setTimeout(function() {
-        networkUtil.deleteUsedGroup(groupName, suite, function() {
+    after(function (done) {
+      setTimeout(function () {
+        networkUtil.deleteUsedGroup(groupName, suite, function () {
           suite.teardownSuite(done);
         });
       }, timeout);
     });
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('vpn-connection', function() {
-      it('create first gateway should pass', function(done) {
+    describe('vpn-connection', function () {
+      it('create first gateway should pass', function (done) {
         this.timeout(this.gatewaytimeout);
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createVnetWithAddress(groupName, vnetPrefix1, location, vnetAddressPrefix1, suite, function() {
-            networkUtil.createSubnetWithAddress(groupName, vnetPrefix1, subnetprefix1, subnetAddressPrefix1, suite, function() {
-              networkUtil.createPublicIp(groupName, publicipPrefix1, location, suite, function() {
-                networkUtil.createGateway(groupName, gatewayPrefix1, location, gatewayType, publicipPrefix1, vnetPrefix1, subnetprefix1, privateIpAddress1, enablebgp, tags1, suite, function() {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createVnetWithAddress(groupName, vnetPrefix1, location, vnetAddressPrefix1, suite, function () {
+            networkUtil.createSubnetWithAddress(groupName, vnetPrefix1, subnetprefix1, subnetAddressPrefix1, suite, function () {
+              networkUtil.createPublicIp(groupName, publicipPrefix1, location, suite, function () {
+                networkUtil.createGateway(groupName, gatewayPrefix1, location, gatewayType, publicipPrefix1, vnetPrefix1, subnetprefix1, privateIpAddress1, enablebgp, tags1, suite, function () {
                   done();
                 });
               });
@@ -102,15 +105,14 @@ describe('arm', function() {
           });
         });
       });
-
-      it('create second gateway and create gateway connection should pass', function(done) {
+      it('create second gateway and create gateway connection should pass', function (done) {
         this.timeout(this.gatewaytimeout);
-        networkUtil.createVnetWithAddress(groupName, vnetPrefix2, location, vnetAddressPrefix2, suite, function() {
-          networkUtil.createSubnetWithAddress(groupName, vnetPrefix2, subnetprefix2, subnetAddressPrefix2, suite, function() {
-            networkUtil.createPublicIp(groupName, publicipPrefix2, location, suite, function() {
-              networkUtil.createGateway(groupName, gatewayPrefix2, location, gatewayType, publicipPrefix2, vnetPrefix2, subnetprefix2, privateIpAddress2, enablebgp, tags2, suite, function() {
+        networkUtil.createVnetWithAddress(groupName, vnetPrefix2, location, vnetAddressPrefix2, suite, function () {
+          networkUtil.createSubnetWithAddress(groupName, vnetPrefix2, subnetprefix2, subnetAddressPrefix2, suite, function () {
+            networkUtil.createPublicIp(groupName, publicipPrefix2, location, suite, function () {
+              networkUtil.createGateway(groupName, gatewayPrefix2, location, gatewayType, publicipPrefix2, vnetPrefix2, subnetprefix2, privateIpAddress2, enablebgp, tags2, suite, function () {
                 var cmd = util.format('network vpn-connection create -g %s -n %s -l %s -i %s -e %s -y %s -k %s -t %s --json', groupName, gatewayConnPrefix, location, gatewayPrefix1, gatewayPrefix2, connType, sharedKey, connTag).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
                   done();
                 });
@@ -119,29 +121,50 @@ describe('arm', function() {
           });
         });
       });
-      it('show should display details of gateway connection', function(done) {
+      it('set should modify gateway connection', function (done) {
+        var cmd = util.format('network vpn-connection set -g %s -n %s -w %s --json', groupName, gatewayConnPrefix, routingWeight).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('show should display details of gateway connection', function (done) {
         var cmd = util.format('network vpn-connection show -g %s -n %s --json', groupName, gatewayConnPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allresources = JSON.parse(result.text);
           allresources.name.should.equal(gatewayConnPrefix);
           done();
         });
       });
-      it('list should display all gateway connections in a given resource group', function(done) {
+      it('list should display all gateway connections in a given resource group', function (done) {
         var cmd = util.format('network vpn-connection list -g %s --json', groupName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          _.some(allResources, function(res) {
+          _.some(allResources, function (res) {
             return res.name === gatewayConnPrefix;
           }).should.be.true;
           done();
         });
       });
-      it('delete should delete gateway connection', function(done) {
+      it('shared-key set should modify gateway connection shared key value', function (done) {
+        var cmd = util.format('network vpn-connection shared-key set -g %s -n %s -k %s --json', groupName, gatewayConnPrefix, sharedKey2).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('shared-key show should should display gateway connection shared key value', function (done) {
+        var cmd = util.format('network vpn-connection shared-key show -g %s -n %s --json', groupName, gatewayConnPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('delete should delete gateway connection', function (done) {
         var cmd = util.format('network vpn-connection delete %s %s --json --quiet', groupName, gatewayConnPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           setTimeout(done(), timeout);
         });
