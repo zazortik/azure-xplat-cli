@@ -21,10 +21,11 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-local-gateway-tests';
 var localNetworkPrefix = 'xplatTestVnet';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName, location,
   groupPrefix = 'xplatTestGrpLocalNetwork',
   AddPrefix = '10.0.0.0/23',
-  AddPrefixN = '10.0.1.0/23',
+  AddPrefixN = '10.1.0.0/23',
   ipAddress = '10.0.0.0',
   tags = 'tag1=val1',
   tagsN = 'tag2=val2';
@@ -71,7 +72,7 @@ describe('arm', function() {
         });
       });
       it('set should modify local-gateway', function(done) {
-        var cmd = util.format('network local-gateway set -g %s -n %s -a %s -t %s --json', groupName, localNetworkPrefix, AddPrefixN, tagsN).split(' ');
+        var cmd = util.format('network local-gateway set -g %s -n %s -a %s --json', groupName, localNetworkPrefix, AddPrefixN).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -91,7 +92,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function(res) {
             return res.name === localNetworkPrefix;
           }).should.be.true;
           done();

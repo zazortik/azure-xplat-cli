@@ -22,6 +22,7 @@ var testprefix = 'arm-network-nic-tests';
 var privateIP = '10.31.255.250',
   privateIP2 = '10.31.254.254';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName, nsgName,
   groupPrefix = 'xplatTestGrpCreateNic',
   vnetPrefix = 'xplatTestVnetNIc',
@@ -151,7 +152,7 @@ describe('arm', function() {
       it('address-pool add with address-pool id option', function(done) {
         networkUtil.createLbAddressPool(groupName, LBName, LBAddPool2, suite, function(result) {
           networkUtil.showLB(groupName, LBName, suite, function(result) {
-            var cmd = util.format('network nic address-pool add %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbaddresspoolId2).split(' ');
+            var cmd = util.format('network nic address-pool add %s %s -i %s --json', groupName, nicPrefix, networkTestUtil.lbaddresspoolId2).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();
@@ -160,7 +161,7 @@ describe('arm', function() {
         });
       });
       it('address-pool remove with address-pool id option', function(done) {
-        var cmd = util.format('network nic address-pool remove %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbaddresspoolId2).split(' ');
+        var cmd = util.format('network nic address-pool remove %s %s -i %s --json', groupName, nicPrefix, networkTestUtil.lbaddresspoolId2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -169,7 +170,7 @@ describe('arm', function() {
       it('inbound-nat-rule add with inbound-nat-rule id option', function(done) {
         networkUtil.createLbInboundNatRule(groupName, LBName, lbinboundprefix2, protocol2, frontendport2, backendport2, enablefloatingip2, FrontendIpName, suite, function(result) {
           networkUtil.showLB(groupName, LBName, suite, function(result) {
-            var cmd = util.format('network nic inbound-nat-rule add %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbinboundruleId2).split(' ');
+            var cmd = util.format('network nic inbound-nat-rule add %s %s -i %s --json', groupName, nicPrefix, networkTestUtil.lbinboundruleId2).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();
@@ -178,7 +179,7 @@ describe('arm', function() {
         });
       });
       it('inbound-nat-rule remove with inbound-nat-rule id option', function(done) {
-        var cmd = util.format('network nic inbound-nat-rule remove %s %s -l %s -i %s --json', groupName, nicPrefix, LBName, networkTestUtil.lbinboundruleId2).split(' ');
+        var cmd = util.format('network nic inbound-nat-rule remove %s %s -i %s --json', groupName, nicPrefix, networkTestUtil.lbinboundruleId2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -226,7 +227,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function(res) {
             return res.name === nicPrefix;
           }).should.be.true;
           done();
