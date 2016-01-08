@@ -157,16 +157,16 @@ describe('arm', function () {
     it('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --resource-group %s --json', storageName, resrouceGroupName, function (result) {
         var storageAccountKeys = JSON.parse(result.text);
-        storageAccountKeys.storageAccountKeys.key1.should.not.be.null;
-        storageAccountKeys.storageAccountKeys.key2.should.not.be.null;
+        storageAccountKeys.key1.should.not.be.null;
+        storageAccountKeys.key2.should.not.be.null;
 
         suite.execute('storage account keys renew %s --resource-group %s --primary --json', storageName, resrouceGroupName, function (result) {
           result.exitStatus.should.equal(0);
 
           storageAccountKeys = JSON.parse(result.text);
-          storageAccountKeys.storageAccountKeys.should.not.be.null;
-          primaryKey = storageAccountKeys.storageAccountKeys.key1;
-          storageAccountKeys.storageAccountKeys.key2.should.not.be.null;
+          storageAccountKeys.should.not.be.null;
+          primaryKey = storageAccountKeys.key1;
+          storageAccountKeys.key2.should.not.be.null;
           done();
         });
       });
