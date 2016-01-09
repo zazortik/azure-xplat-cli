@@ -31848,7 +31848,7 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form publisherName:offer:skus:version.\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
+              "description": "the image URN in the form publisherName:offer:skus:version.\n      Or the source VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd\n      Option '-d' can be used with this option to specify the destination storage location where the new OS VHD will be created and put to.\n      In this case, OS profile credentials have to be specified, i.e. user name/password, or SSH keys, etc."
             },
             {
               "flags": "-u, --admin-username <admin-username>",
@@ -32019,7 +32019,7 @@
               "bool": true,
               "short": "-d",
               "long": "--os-disk-vhd",
-              "description": "name or url of the OS disk Vhd\n     If this parameter is specified along with --image-urn parameter then OS disk created from the image will be stored in this vhd\n     If this parameter is specified without --image-urn parameter then this vhd must exists and will be used as OS Disk"
+              "description": "name or url of the OS disk Vhd\n     If this parameter is specified along with --image-urn ('-Q') parameter then OS disk created from the image will be stored in this vhd.\n     If this parameter is specified without --image-urn ('-Q') parameter then this vhd must exists and will be used as a specialized OS disk image.\n     If this parameter is specified without --image-urn ('-Q') parameter, OS profile credentials will be ignored, and the specialized credentials from the disk image will be used."
             },
             {
               "flags": "-a, --data-disk-caching <data-disk-caching>",
