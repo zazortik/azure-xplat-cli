@@ -1,5 +1,5 @@
 # Live + Playback
-commands/arm/vm/arm.vm-image-list-tests.js
+commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/vm/arm.vm-create-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
