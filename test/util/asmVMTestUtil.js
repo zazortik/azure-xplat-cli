@@ -204,7 +204,7 @@ asmVMTestUtil.prototype.createVMExport = function(vmName, username, password, lo
     });
   });
 };
-asmVMTestUtil.prototype.getVnet = function(status, getVnetStatic, getAffinityGroupStatic, createdVnets, suite, callback) {
+asmVMTestUtil.prototype.getVnet = function(status, getVnetStatic, getAffinityGroupStatic, createdVnets, suite, that, callback) {
   var cmd;
   if (getVnetStatic && getVnetStatic.vnetName && getVnetStatic.affinityName) {
     callback(getVnetStatic.vnetName, getVnetStatic.affinityName, getVnetStatic.staticIpavail);
@@ -224,16 +224,26 @@ asmVMTestUtil.prototype.getVnet = function(status, getVnetStatic, getAffinityGro
       });
 
       if (!found) {
-        this.getAffinityGroup(location, getAffinityGroupStatic, suite, function(affinGrpName) {
+        function getAllMethods(object) {
+          return Object.getOwnPropertyNames(object).filter(function(property) {
+            return typeof object[property] == 'function';
+          });
+        }
+        that.getAffinityGroup(getAffinityGroupStatic.location, getAffinityGroupStatic, suite, function(affinGrpName) {
           var vnetName = suite.generateId('testvnet', createdVnets);
           cmd = util.format('network vnet create %s -a %s --json', vnetName, affinGrpName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            getVnetStatic.vnetName = vnetName;
-            getVnetStatic.affinityName = affinGrpName;
-            var address = vnet[0].addressSpace.addressPrefixes[0];
-            getVnetStatic.staticIpavail = address.split('/')[0];
-            callback(getVnetStatic.vnetName, getVnetStatic.affinityName, getVnetStatic.staticIpavail);
+            cmd = util.format('network vnet list --json').split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              var vnet = JSON.parse(result.text);
+              result.exitStatus.should.equal(0);
+              getVnetStatic.vnetName = vnetName;
+              getVnetStatic.affinityName = affinGrpName;
+              var address = vnet[0].addressSpace.addressPrefixes[0];
+              getVnetStatic.staticIpavail = address.split('/')[0];
+              callback(getVnetStatic.vnetName, getVnetStatic.affinityName, getVnetStatic.staticIpavail);
+            });
           });
         });
       } else {
@@ -242,11 +252,11 @@ asmVMTestUtil.prototype.getVnet = function(status, getVnetStatic, getAffinityGro
     });
   }
 };
-asmVMTestUtil.prototype.getAffinityGroup = function(location, getAffinityGroup, suite, callback) {
+asmVMTestUtil.prototype.getAffinityGroup = function(location, getAffinityGroupStatic, suite, callback) {
   var cmd;
 
-  if (getAffinityGroup && getAffinityGroup.affinGrpName) {
-    callback(getAffinityGroup.affinGrpName);
+  if (getAffinityGroupStatic && getAffinityGroupStatic.affinGrpName) {
+    callback(getAffinityGroupStatic.affinGrpName);
   } else {
     cmd = util.format('account affinity-group list --json').split(' ');
     testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -254,20 +264,25 @@ asmVMTestUtil.prototype.getAffinityGroup = function(location, getAffinityGroup, 
       var affinList = JSON.parse(result.text);
       var found = affinList.some(function(affinGrp) {
         if (affinGrp.location.toLowerCase() === location.toLowerCase()) {
-          getAffinityGroup.affinGrpName = affinGrp.name;
+          getAffinityGroupStatic.affinGrpName = affinGrp.name;
           return true;
         }
       });
       if (!found) {
-        cmd = util.format('account affinity-group create -l %s -e %s -d %s %s --json',
-          location, affinLabel, affinDesc, affinityName).split(' ');
+        cmd = util.format('account affinity-group create -e %s %s',
+          affinLabel, affinityName).split(' ');
+        cmd.push('-l');
+        cmd.push(location);
+        cmd.push('-d');
+        cmd.push(affinDesc);
+        cmd.push('--json');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          getAffinityGroup.affinGrpName = affinityName;
+          getAffinityGroupStatic.affinGrpName = affinityName;
           callback(affinityName);
         });
       } else
-        callback(getAffinityGroup.affinGrpName);
+        callback(getAffinityGroupStatic.affinGrpName);
     });
   }
 };
