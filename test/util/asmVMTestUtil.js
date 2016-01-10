@@ -379,7 +379,7 @@ asmVMTestUtil.prototype.deleteUsedVMExport = function(vm, timeout, suite, callba
     return callback();
   }
 };
-asmVMTestUtil.prototype.createReservedIp = function(location, suite, callback) {
+asmVMTestUtil.prototype.createReservedIp = function(ripName, location, suite, callback) {
   if (createReservedIp.ripName) {
     callback(createReservedIp.ripName);
   } else {
@@ -397,11 +397,13 @@ asmVMTestUtil.prototype.createReservedIp = function(location, suite, callback) {
       if (ripfound) {
         callback(createReservedIp.ripName);
       } else {
-        cmd = util.format('network reserved-ip create %s %s --json', ripName, location).split(' ');
+        cmd = util.format('network reserved-ip create %s', ripName).split(' ');
+        cmd.push(location);
+        cmd.push('--json');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           this.ripCreate = true;
-          createReservedIp.ripName = ripObj.name;
+          createReservedIp.ripName = ripName;
           callback(createReservedIp.ripName);
         });
       }

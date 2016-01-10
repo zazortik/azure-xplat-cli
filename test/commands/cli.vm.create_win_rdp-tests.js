@@ -47,6 +47,7 @@ describe('cli', function() {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() {
         vmName = suite.generateId(vmPrefix, createdVms);
+        ripName = suite.generateId(ripName, createdVms);
         location = process.env.AZURE_VM_TEST_LOCATION;
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
@@ -55,7 +56,7 @@ describe('cli', function() {
 
     after(function(done) {
       if (vmUtil.ripCreate) {
-        vmUtil.deleterip(function() {
+        vmUtil.deleterip(ripName, suite, function() {
           suite.teardownSuite(done);
         });
       } else {
@@ -77,7 +78,7 @@ describe('cli', function() {
     describe('Create:', function() {
       it('Windows Vm with reserved Ip', function(done) {
         vmUtil.getImageName('Windows', suite, function(ImageName) {
-          vmUtil.createReservedIp(location, suite, function(ripName) {
+          vmUtil.createReservedIp(ripName, location, suite, function(ripName) {
             var cmd = util.format('vm create %s %s %s %s -R %s -r --json',
               vmName, ImageName, username, password, ripName).split(' ');
             cmd.push('-l');

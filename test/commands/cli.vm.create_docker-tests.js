@@ -96,7 +96,7 @@ describe('cli', function() {
         var dockerPort = 2376;
 
         vmUtil.getImageName('Linux', suite, function(ImageName) {
-          vmUtil.createReservedIp(location, suite, function(ripName) {
+          vmUtil.createReservedIp(null, location, suite, function(ripName) {
             var cmd = util.format('vm docker create %s %s %s %s -R %s --json --ssh',
               vmName, ImageName, username, password, ripName).split(' ');
             cmd.push('--location');
