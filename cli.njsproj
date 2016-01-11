@@ -13,10 +13,11 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>rediscache create -g xplatTestCacheRG -n testcache32 -m AllKeysRandom -l "West US" -z C1 -e</ScriptArguments>
+    <ScriptArguments>login</ScriptArguments>
     <Environment>
     </Environment>
-    <NodeExeArguments>bin/azure</NodeExeArguments>
+    <NodeExeArguments>
+    </NodeExeArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -374,10 +375,13 @@
       </TestFramework>
     </Compile>
     <Compile Include="test\util\authentication\osx-keychain-parser-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\util\authentication\token-cache-encoding-tests.js" />
-    <Compile Include="test\util\authentication\token-cache-tests.js" />
+    <Compile Include="test\util\authentication\token-cache-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\util\authentication\token-storage-tests.js" />
     <Compile Include="test\util\authentication\win-credstore-parser-tests.js" />
     <Compile Include="test\util\git\linkrevisioncontrol-tests.js" />

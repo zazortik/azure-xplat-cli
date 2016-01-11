@@ -19602,7 +19602,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--domain-name",
-                      "description": "profile DNS name\n   Example: foobar.trafficmanager.net"
+                      "description": "the profile DNS name\n   Example: foobar.trafficmanager.net"
                     },
                     {
                       "flags": "-m, --load-balancing-method <load-balancing-method>",
@@ -27548,6 +27548,15 @@
                   "short": "-D",
                   "long": "--delete-chef-config",
                   "description": "delete chef config files during update/uninstall extension"
+                },
+                {
+                  "flags": "-v, --bootstrap-version <number>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--bootstrap-version",
+                  "description": "chef-client version to be installed"
                 },
                 {
                   "flags": "-b, --disable",

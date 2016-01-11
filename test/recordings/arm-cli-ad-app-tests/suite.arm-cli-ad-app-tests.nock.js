@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '38b598fc-e57a-423f-b2e7-dc0ddb631f1f',
-    name: 'Visual Studio Ultimate with MSDN',
+    id: '4004a9fd-d58e-48dc-aeb2-4a4aec58606f',
+    name: 'AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: ['microsoft.web', 'microsoft.insights', 'successbricks.cleardb'],
+    tenantId: '1273adef-00a3-4086-a51a-dbcce1857d36',
+    state: 'Enabled',
+    registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 

@@ -37,14 +37,14 @@ var requiredEnvironment = [{
   defaultValue: 'southeastasia'
 }];
 
-describe('arm', function() {
-  describe('network', function() {
+describe('arm', function () {
+  describe('network', function () {
     var suite,
       retry = 5;
     var networkUtil = new networkTestUtil();
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
@@ -54,33 +54,33 @@ describe('arm', function() {
         done();
       });
     });
-    after(function(done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-          networkUtil.deleteUsedGroup(groupName, suite, function() {
+    after(function (done) {
+      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
+        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
+          networkUtil.deleteUsedGroup(groupName, suite, function () {
             suite.teardownSuite(done);
           });
         });
       });
     });
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('lb-inbound-nat-rule', function() {
+    describe('lb-inbound-nat-rule', function () {
 
-      it('create', function(done) {
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createLB(groupName, LBName, location, suite, function() {
-            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                networkUtil.createFrontendIp(groupName, LBName, VipName, networkTestUtil.publicIpId, suite, function() {
+      it('create', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createLB(groupName, LBName, location, suite, function () {
+            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
+              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
+                networkUtil.createFrontendIp(groupName, LBName, VipName, networkTestUtil.publicIpId, suite, function () {
                   var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -i %s --json',
                     groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, VipName).split(' ');
-                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
                     result.exitStatus.should.equal(0);
                     done();
                   });
@@ -90,25 +90,25 @@ describe('arm', function() {
           });
         });
       });
-      it('list', function(done) {
+      it('list', function (done) {
         var cmd = util.format('network lb inbound-nat-rule list %s %s --json', groupName, LBName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
           allResources[0].name.should.equal(lbinboundprefix);
           done();
         });
       });
-      it('set', function(done) {
+      it('set', function (done) {
         var cmd = util.format('network lb inbound-nat-rule set %s %s %s -p udp -f 3381 -b 3381 -e false --json', groupName, LBName, lbinboundprefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-      it('delete', function(done) {
+      it('delete', function (done) {
         var cmd = util.format('network lb inbound-nat-rule delete %s %s %s --quiet --json', groupName, LBName, lbinboundprefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });

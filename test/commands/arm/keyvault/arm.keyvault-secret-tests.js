@@ -25,6 +25,7 @@ var CLITest = require('../../../framework/arm-cli-test');
 var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
+var profile = require('../../../../lib/util/profile');
 
 var testprefix = 'arm-cli-keyvault-tests';
 var secretPrefix = 'xplatTestVaultSecret';
@@ -87,7 +88,8 @@ describe('arm', function() {
             var secret = JSON.parse(result.text);
             secret.should.have.property('id');
             secretId = secret.id;
-            secretId.should.include(util.format('https://%s.vault.azure.net/secrets/%s/', testVault.toLowerCase(), secretName));
+            var subscription = profile.current.getSubscription();
+            secretId.should.include(util.format('https://%s%s/secrets/%s/', testVault.toLowerCase(), subscription.keyVaultDnsSuffix, secretName));
             secret.should.have.property('value');
             secret.value.should.be.equal(secretValue);
             listSecretsMustSucceed();

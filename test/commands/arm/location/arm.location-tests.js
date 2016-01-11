@@ -45,10 +45,9 @@ describe('arm', function () {
       it('should work', function (done) {
         suite.execute('location list --json', function (result) {
           result.exitStatus.should.equal(0);
-          //verify the command indeed produces something valid such as a well known provider: sql provider
-          var allResources = JSON.parse(result.text);
-          allResources.some(function (res) {
-            return res.name.match(/Microsoft.Sql\/servers/gi);
+          var locations = JSON.parse(result.text);
+          locations.some(function (location) {
+            return location.name === 'westus' && location.displayName === 'West US';
           }).should.be.true;
           done();
         });
