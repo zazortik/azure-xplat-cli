@@ -25,6 +25,7 @@ var AddPrefix = '10.0.0.0/24';
 var subnetprefix2 = 'xplatTest2Subnet';
 var AddPrefix2 = '10.0.1.0/24';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName, location, groupPrefix = 'xplatTestGCreateSubnet';
 var RouteTablePrefix = 'ArmRtTblSubnet';
 var requiredEnvironment = [{
@@ -107,7 +108,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function(res) {
             return res.name === subnetprefix;
           }).should.be.true;
           done();

@@ -93,14 +93,14 @@ networkTestUtil.prototype.deleteRouteTable = function(groupName, RouteTablePrefi
   } else callback();
 };
 networkTestUtil.prototype.createVnet = function(groupName, vnetPrefix, location, suite, callback) {
-  var cmd = util.format('network vnet create %s %s %s --json', groupName, vnetPrefix, location).split(' ');
+  var cmd = util.format('network vnet create %s %s %s -a 10.0.0.0/8 --json', groupName, vnetPrefix, location).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
   });
 };
 networkTestUtil.prototype.createSubnet = function(groupName, vnetPrefix, subnetprefix, suite, callback) {
-  var cmd = util.format('network vnet subnet create %s %s %s --json', groupName, vnetPrefix, subnetprefix).split(' ');
+  var cmd = util.format('network vnet subnet create %s %s %s -a 10.0.0.0/24 --json', groupName, vnetPrefix, subnetprefix).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();
@@ -169,7 +169,7 @@ networkTestUtil.prototype.createFrontendIp = function(groupName, LBName, Fronten
   });
 };
 networkTestUtil.prototype.createLbInboundNatRule = function(groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName, suite, callback) {
-  var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -i %s --json', groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName).split(' ');
+  var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -i 4 -t %s --json', groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     callback();

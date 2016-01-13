@@ -19,6 +19,7 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
 var testprefix = 'arm-cli-vm-image-list-tests';
+var canonicalPublisher = 'Canonical';
 var validPublisher = 'MicrosoftSQLServer';
 var extPublisher = 'Microsoft.Compute';
 var requiredEnvironment = [{
@@ -64,9 +65,13 @@ describe('arm', function() {
             publisher = res.name;
             return res.name === validPublisher;
           }).should.be.true;
+          allResources.some(function(res) {
+            return res.name === canonicalPublisher;
+          }).should.be.true;
           done();
         });
       });
+
       it('image list-offers ', function(done) {
         var cmd = util.format('vm image list-offers %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -76,6 +81,7 @@ describe('arm', function() {
           done();
         });
       });
+
       it('image list-skus ', function(done) {
         var cmd = util.format('vm image list-skus %s %s %s --json', location, publisher, offer).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -85,16 +91,67 @@ describe('arm', function() {
           done();
         });
       });
+
       it('image list ', function(done) {
         var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          version = allResources[0].name;
           done();
         });
       });
 
+      it('image list and show by publisher offer sku and version', function(done) {
+        var cmd = util.format('vm image show %s %s %s %s %s --json', location, publisher, offer, sku, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var cmd = util.format('vm image list %s %s %s --json', location, publisher, offer).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var cmd = util.format('vm image list %s %s --json', location, publisher).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                done();
+              });
+            });
+          });
+        });
+      });
+
+      it('image list canonical images', function(done) {
+        var cmd = util.format('vm image list %s %s --json', location, canonicalPublisher).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          var canonicalOffer = allResources[0].offer;
+          
+          var cmd = util.format('vm image list %s %s %s --json', location, canonicalPublisher, canonicalOffer).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            
+          var allResources = JSON.parse(result.text);
+          var canonicalSku = allResources[0].skus;
+            var cmd = util.format('vm image list %s %s %s %s --json', location, canonicalPublisher, canonicalOffer, canonicalSku).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var allResources = JSON.parse(result.text);
+              var canonicalVersion = allResources[0].name;
+              allResources[0].publisher.should.equal(canonicalPublisher);
+              allResources[0].offer.should.equal(canonicalOffer);
+              allResources[0].skus.should.equal(canonicalSku);
+              allResources[0].urn.should.equal(util.format('%s:%s:%s:%s', canonicalPublisher, canonicalOffer, canonicalSku, canonicalVersion));
+              done();
+            });
+          });
+        });
+      });
+
       it('extension list-image-publishers ', function(done) {
-        var cmd = util.format('vm extension list-image-publishers %s --json', location).split(' ');
+        var cmd = util.format('vm extension-image list-publishers %s --json', location).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -109,7 +166,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-types ', function(done) {
-        var cmd = util.format('vm extension list-image-types %s %s --json', location, publisher).split(' ');
+        var cmd = util.format('vm extension-image list-types %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -120,7 +177,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-versions ', function(done) {
-        var cmd = util.format('vm extension list-image-versions %s %s %s --json', location, publisher, type).split(' ');
+        var cmd = util.format('vm extension-image list-versions %s %s %s --json', location, publisher, type).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
@@ -131,14 +188,39 @@ describe('arm', function() {
       });
 
       it('extension get-image ', function(done) {
-        var cmd = util.format('vm extension get-image %s %s %s %s --json', location, publisher, type, version).split(' ');
+        var cmd = util.format('vm extension-image show %s %s %s %s --json', location, publisher, type, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-    });
 
+      it('extension list images', function(done) {
+        var cmd = util.format('vm extension-image list %s %s %s --json', location, publisher, type).split(' ');
+        var locationStr = location.toLowerCase();
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].location.should.equal(locationStr);
+          allResources[0].publisher.should.equal(publisher);
+          allResources[0].typeName.should.equal(type);
+          var cmd = util.format('vm extension-image list %s %s --json', location, publisher).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var allResources = JSON.parse(result.text);
+            allResources[0].location.should.equal(locationStr);
+            allResources[0].publisher.should.equal(publisher);
+            var cmd = util.format('vm extension-image list %s --json', location).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var allResources = JSON.parse(result.text);
+              allResources[0].location.should.equal(locationStr);
+              done();
+            });
+          });
+        });
+      });
+    });
 
   });
 });
