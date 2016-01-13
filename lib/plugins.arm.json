@@ -27761,7 +27761,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--private-ip-address",
-                  "description": "the private ip address"
+                  "description": "the local ip address for the gateway in the vnet"
                 },
                 {
                   "flags": "-b, --enable-bgp <enable-bgp>",
@@ -27841,6 +27841,15 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of the virtual network gateway"
+                },
+                {
+                  "flags": "-a, --private-ip-address <private-ip-address>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--private-ip-address",
+                  "description": "the local ip address for the gateway in the vnet"
                 },
                 {
                   "flags": "-t, --tags [tags]",
