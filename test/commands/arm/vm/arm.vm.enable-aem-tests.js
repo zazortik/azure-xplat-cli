@@ -146,7 +146,7 @@ describe('arm', function() {
 
       //Set extensions
       it('Set extensions for the created vm', function(done) {
-        var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
+        var cmd = util.format('vm enable-aem %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
