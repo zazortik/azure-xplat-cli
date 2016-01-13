@@ -27752,7 +27752,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--subnet-name",
-                  "description": "the subnet name"
+                  "description": "the subnet name. Default value is \"GatewaySubnet\""
                 },
                 {
                   "flags": "-a, --private-ip-address <private-ip-address>",
