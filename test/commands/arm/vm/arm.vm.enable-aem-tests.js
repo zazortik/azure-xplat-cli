@@ -20,7 +20,7 @@ var fs = require('fs');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-vm-extension-tests';
+var testprefix = 'arm-cli-vm-enable-aem-tests';
 var groupPrefix = 'xplatTestGExtension';
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
@@ -32,7 +32,7 @@ var groupName,
   nicName = 'xplatnicExt',
   location,
   username = 'azureuser',
-  password = 'Azure1234',
+  password = 'Azure@1234',
   storageAccount = 'xplatstoragext',
   storageCont = 'xplatstoragecntext',
   osdiskvhd = 'xplatvhdext',
