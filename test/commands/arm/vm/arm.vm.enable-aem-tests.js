@@ -47,7 +47,7 @@ var groupName,
   IaasDiagExtName,
   IaasDiagVersion,
   datafile = 'test/data/testdata.json',
-  linuxImageUrn = 'canonical:ubuntuserver:14.04.2-LTS:14.04.201507060';
+  linuxImageUrn = 'canonical:ubuntuserver:14.04.3-LTS:14.04.201512180';
 
 describe('arm', function() {
   describe('compute', function() {
