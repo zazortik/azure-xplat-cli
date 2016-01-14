@@ -48,6 +48,8 @@ var groupName,
   IaasDiagVersion,
   bgInfoExtension = 'BGInfo',
   bgInfoExtensionVersion = '2.1',
+  clientConfig = 'test/data/set-chef-extension-client-config.rb',
+  validationPem = 'test/data/set-chef-extension-validation.pem',
   datafile = 'test/data/testdata.json';
 
 describe('arm', function() {
@@ -136,6 +138,7 @@ describe('arm', function() {
       });
 
       it('Enable diagnostics extension on created VM in a resource group', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -144,6 +147,7 @@ describe('arm', function() {
       });
 
       it('Check diagnostics extension on created VM should pass', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -157,6 +161,7 @@ describe('arm', function() {
 
       //Set extensions
       it('Set extensions for the created vm', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension set %s %s %s %s %s --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -165,6 +170,7 @@ describe('arm', function() {
       });
 
       it('Extension Get should list all extensions', function(done) {
+        this.timeout(vmTest.timeoutLarge);
         var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -172,6 +178,31 @@ describe('arm', function() {
           allResources[1].publisher.should.equal(publisherExt);
           allResources[1].name.should.equal(extension);
           allResources[1].typeHandlerVersion.should.equal(version);
+          done();
+        });
+      });
+
+      //Set chef extension
+      it('Set Chef extension for the created vm', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension set-chef %s %s --client-config %s --validation-pem %s --json', groupName, vmPrefix, clientConfig, validationPem).split(' ');
+
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+
+      //Get chef extension
+      it('Extension Get-Chef should list only chef extension', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension get-chef %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[0].publisher.should.equal('Chef.Bootstrap.WindowsAzure');
+          allResources[0].name.should.equal('ChefClient');
           done();
         });
       });
