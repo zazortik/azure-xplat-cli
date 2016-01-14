@@ -27707,7 +27707,7 @@
                   "bool": true,
                   "short": "-y",
                   "long": "--type",
-                  "description": "the gateway type\n   Valid values are [RouteBased,PolicyBased,Dedicated]\n   Default is RouteBased"
+                  "description": "the gateway type\n     Valid values are [RouteBased,PolicyBased,Dedicated]\n     Default is RouteBased"
                 },
                 {
                   "flags": "-u, --public-ip-id <public-ip-id>",
@@ -27725,7 +27725,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--public-ip-name",
-                  "description": "the public ip name. This public ip must exists in the same resource group as the vnet gateway. Please use public-ip-id if that is not the case."
+                  "description": "the public ip name. This public ip must exists in the same resource group as the vnet gateway. \n     Please use public-ip-id if that is not the case."
                 },
                 {
                   "flags": "-f, --subnet-id <subnet-id>",
@@ -27743,7 +27743,7 @@
                   "bool": true,
                   "short": "-m",
                   "long": "--vnet-name",
-                  "description": "the virtual network name. This virtual network must exists in the same resource group as the vnet gateway. Please use sunet-id if that is not the case."
+                  "description": "the virtual network name. This virtual network must exists in the same resource group as the vnet gateway. \n     Please use subnet-id if that is not the case."
                 },
                 {
                   "flags": "-e, --subnet-name <subnet-name>",
@@ -27752,7 +27752,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--subnet-name",
-                  "description": "the subnet name"
+                  "description": "the subnet name which exists in vnet. Default value is \"GatewaySubnet\""
                 },
                 {
                   "flags": "-a, --private-ip-address <private-ip-address>",
@@ -27761,7 +27761,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--private-ip-address",
-                  "description": "the private ip address"
+                  "description": "the local ip address for the gateway in the vnet. If not provided then using Dynamic ip address"
                 },
                 {
                   "flags": "-b, --enable-bgp <enable-bgp>",
@@ -27841,6 +27841,15 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of the virtual network gateway"
+                },
+                {
+                  "flags": "-a, --private-ip-address <private-ip-address>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--private-ip-address",
+                  "description": "the local ip address for the gateway in the vnet"
                 },
                 {
                   "flags": "-t, --tags [tags]",
@@ -28148,7 +28157,7 @@
                   "bool": true,
                   "short": "-y",
                   "long": "--type",
-                  "description": "the connection type\n   Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
+                  "description": "the connection type\n     Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
                 },
                 {
                   "flags": "-w, --routing-weight <routing-weight>",
