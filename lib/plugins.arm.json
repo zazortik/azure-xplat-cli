@@ -32268,7 +32268,7 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form \"publisherName:offer:skus:version\".\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
+              "description": "the image URN in the form \"publisherName:offer:skus:version\",\n                                               or the VHD link of a user image,\n                                               e.g. https://foo.blob.core.windows.net/bar/vhds/baz.vhd"
             },
             {
               "flags": "-u, --admin-username <admin-username>",
@@ -32286,7 +32286,16 @@
               "bool": true,
               "short": "-p",
               "long": "--admin-password",
-              "description": "the password"
+              "description": "the password, skipped if SSH public key file is specified for Linux VMs"
+            },
+            {
+              "flags": "-M, --ssh-publickey-file <ssh-publickey-file>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "short": "-M",
+              "long": "--ssh-publickey-file",
+              "description": "the path to public key file for SSH authentication,\n                                               & this parameter is valid only when os-type is Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",
