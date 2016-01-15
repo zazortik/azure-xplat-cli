@@ -26,6 +26,9 @@ var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'southeastasia'
+}, {
+  name: 'SSHCERT',
+  defaultValue: 'test/myCert.pem'
 }];
 
 var groupName,
@@ -33,7 +36,8 @@ var groupName,
   vm2Prefix = 'xplatvm2',
   location,
   username = 'azureuser',
-  password = 'Brillio@2016';
+  password = 'Brillio@2016',
+  sshcert;
 
 describe('arm', function() {
   describe('compute', function() {
@@ -43,6 +47,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        sshcert = process.env.SSHCERT;
         groupName = suite.generateId(groupPrefix, null);
         vm1Prefix = suite.isMocked ? vm1Prefix : suite.generateId(vm1Prefix, null);
         vm2Prefix = suite.isMocked ? vm2Prefix : suite.generateId(vm2Prefix, null);
@@ -74,8 +79,8 @@ describe('arm', function() {
             vmTest.GetLinuxSkusList(location, suite, function(result) {
               vmTest.GetLinuxImageList(location, suite, function(result) {
                 var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json',
-                  groupName, vm1Prefix, location, latestLinuxImageUrn, username, password).split(' ');
+                var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s --json',
+                  groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   done();
@@ -85,8 +90,8 @@ describe('arm', function() {
           }
           else {
             var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-            var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s --json',
-              groupName, vm1Prefix, location, latestLinuxImageUrn, username, password).split(' ');
+            var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s --json',
+              groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();
@@ -102,23 +107,27 @@ describe('arm', function() {
           if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined) {
             vmTest.GetWindowsSkusList(location, suite, function(result) {
               vmTest.GetWindowsImageList(location, suite, function(result) {
-                var latestWindowsImageUrn = VMTestUtil.winImageUrn.substring(0, VMTestUtil.winImageUrn.lastIndexOf(':')) + ':latest';
+                vmTest.setGroup(groupName, suite, function(result) {
+                  var latestWindowsImageUrn = VMTestUtil.winImageUrn.substring(0, VMTestUtil.winImageUrn.lastIndexOf(':')) + ':latest';
+                  var cmd = util.format('vm quick-create %s %s %s Windows %s %s %s --json',
+                  groupName, vm2Prefix, location, latestWindowsImageUrn, username, password).split(' ');
+                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    result.exitStatus.should.equal(0);
+                    done();
+                  });
+                });
+              });
+            });
+          }
+          else {
+            vmTest.setGroup(groupName, suite, function(result) {
+              var latestWindowsImageUrn = VMTestUtil.winImageUrn.substring(0, VMTestUtil.winImageUrn.lastIndexOf(':')) + ':latest';
               var cmd = util.format('vm quick-create %s %s %s Windows %s %s %s --json',
                 groupName, vm2Prefix, location, latestWindowsImageUrn, username, password).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 done();
               });
-              });
-            });
-          }
-          else {
-            var latestWindowsImageUrn = VMTestUtil.winImageUrn.substring(0, VMTestUtil.winImageUrn.lastIndexOf(':')) + ':latest';
-            var cmd = util.format('vm quick-create %s %s %s Windows %s %s %s --json',
-              groupName, vm2Prefix, location, latestWindowsImageUrn, username, password).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              done();
             });
           }
         });

@@ -9,5 +9,5 @@ commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
-# Live Only
 commands/arm/vm/arm.vm-quick-create-tests.js
+# Live Only
