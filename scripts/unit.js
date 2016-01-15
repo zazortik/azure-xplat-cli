@@ -14,8 +14,6 @@
 // limitations under the License.
 //
 var fs = require('fs');
-var profile = require('../lib/util/profile');
-var testLogger = require('../test/framework/test-logger');
 var args = (process.ARGV || process.argv);
 
 var reporter = '../../../test/framework/xcli-test-reporter';
@@ -25,25 +23,31 @@ if (xunitOption !== -1) {
   args.splice(xunitOption, 1);
 }
 
-var mcOption = Array.prototype.indexOf.call(args, '--mc') !== -1;
-
 var testList = args.pop();
 
-var fileContent;
-var root = false;
-
-if  (!fs.existsSync) {
+if (!fs.existsSync) {
   fs.existsSync = require('path').existsSync;
 }
 
-if (fs.existsSync(testList)) {
-  fileContent = fs.readFileSync(testList).toString();
-} else {
-  fileContent = fs.readFileSync('./test/' + testList).toString();
-  root = true;
+var root = fs.existsSync('./package.json');
+
+function buildFileList(testFiles, testList, root) {
+  var file = root ? './test/' + testList : testList;
+  var fileContent = fs.readFileSync(file).toString();
+  var files = fileContent.split('\n');
+  var includeMark = 'include:';
+  for (var i = 0; i < files.length ; i++) {
+    if (files[i].indexOf(includeMark) === 0) {
+      var fileToInclude = files[i].substring(includeMark.length);
+      buildFileList(testFiles, fileToInclude, root);
+    } else {
+      testFiles.push(files[i]);
+    }
+  }
 }
 
-var files = fileContent.split('\n');
+var allFiles = [];
+buildFileList(allFiles, testList, root);
 
 args.push('-u');
 args.push('tdd');
@@ -52,16 +56,11 @@ args.push('tdd');
 args.push('-t');
 args.push('500000');
 
-files.forEach(function (file) {
+allFiles.forEach(function (file) {
   if (file.length > 0 && file.trim()[0] !== '#') {
     // trim trailing \r if it exists
     file = file.replace('\r', '');
-
-    if (root) {
-      args.push('test/' + file);
-    } else {
-      args.push(file);
-    }
+    args.push(root ? 'test/' + file : file);
   }
 });
 
