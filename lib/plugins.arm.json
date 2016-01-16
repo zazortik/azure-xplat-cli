@@ -32271,6 +32271,15 @@
               "description": "the image URN in the form \"publisherName:offer:skus:version\",\n                                               or the VHD link of a user image,\n                                               e.g. https://foo.blob.core.windows.net/bar/vhds/baz.vhd"
             },
             {
+              "flags": "-z, --vm-size <vm-size>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-z",
+              "long": "--vm-size",
+              "description": "the virtual machine size [Standard_D1]"
+            },
+            {
               "flags": "-u, --admin-username <admin-username>",
               "required": -22,
               "optional": 0,
