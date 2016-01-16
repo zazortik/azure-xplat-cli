@@ -52,17 +52,4 @@ commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
 commands/cli.storage.service-tests.js
 util/git/linkrevisioncontrol-tests.js
-util/utils-tests.js
-util/set-tests.js
-util/authentication/adalAuth-tests.js
-util/profile/publishSettings-tests.js
-util/profile/account-tests.js
-util/profile/profile-tests.js
-# Testing macos token management stuff
-util/authentication/osx-keychain-parser-tests.js
-util/authentication/token-cache-encoding-tests.js
-# Testing windows token management stuff
-util/authentication/win-credstore-parser-tests.js
-# Testing token cache class which works with adal-node
-util/authentication/token-cache-tests.js
-util/authentication/token-storage-tests.js
+include:./testlistvmlive.txt
