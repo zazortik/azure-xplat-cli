@@ -79,7 +79,7 @@ describe('arm', function() {
             vmTest.GetLinuxSkusList(location, suite, function(result) {
               vmTest.GetLinuxImageList(location, suite, function(result) {
                 var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s --json',
+                var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z Standard_D1 --json',
                   groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
