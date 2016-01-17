@@ -126,7 +126,7 @@ describe('cli', function () {
             result.exitStatus.should.equal(0);
 
             suite.execute('site appsetting show mysetting %s --json', siteName, function (result) {
-              result.text.should.equal('data: Value:  myvalue\n');//TODO, to study how our json formatter should deal with invalid json object 
+              result.text.should.equal('data: Value:  myvalue\n');
               result.exitStatus.should.equal(0);
 
               // add another setting
