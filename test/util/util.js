@@ -192,7 +192,7 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
       console.log('Re-executing command. Please wait.');
       setTimeout(function() {
         self.executeCommand(suite, retry, cmd, callback);
-      }, TIMEOUT_INTERVAL);
+      }, self.TIMEOUT_INTERVAL);
     } else {
       //callback with error
       //here result can be checked for existstatus but dev will never know what command threw error

@@ -177,7 +177,7 @@ describe('Parsing output of security child process', function () {
   }
 
   function removeExpectedEntry(done) {
-    keychain.remove(testUser, testService, done);
+    keychain.remove(testUser, testService, testDescription, done);
   }
 
   it('should have entries', function () {

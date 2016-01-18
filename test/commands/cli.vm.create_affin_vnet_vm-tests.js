@@ -71,8 +71,21 @@ describe('cli', function() {
         suite.teardownTest(function() {
           if (!suite.isPlayback()) {
             createdVnets.forEach(function(item) {
-              suite.execute('network vnet delete %s -q --json', item, function(result) {
+              suite.execute('network vnet list --json', item, function(result) {
                 result.exitStatus.should.equal(0);
+                var vnetList = JSON.parse(result.text);
+                var found = affinList.some(function(vnetItem) {
+                  if (vnetItem.name === item) {
+                    return true;
+                  }
+                });
+                
+                if (found) {
+                  suite.execute('network vnet delete %s -q --json', item, function(result) {
+                    result.exitStatus.should.equal(0);
+                  });
+                }
+                
               });
             });
           }
@@ -86,7 +99,8 @@ describe('cli', function() {
       it('Vm with affinity, vnet and availibilty set', function(done) {
         vmVnetName = suite.generateId(vmPrefix, createdVms);
         vmUtil.getImageName('Linux', suite, function(imageName) {
-          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName) {
+          getAffinityGroup.location = location;
+          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, vmUtil, function(virtualnetName, affinityName) {
             var cmd = util.format('vm create -A %s -n %s -a %s -w %s %s %s %s %s --json',
               availSetName, vmVnetName, affinityName, virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -108,10 +122,10 @@ describe('cli', function() {
           var cmd = util.format('vm create -a %s -w %s %s %s %s %s --json',
             'some_name', 'some_name', vmVnetName, imageName, userName, password).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(1);
+            result.exitStatus.should.not.equal(0);
             cmd = util.format('service show %s --json', vmVnetName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(1);
+              result.exitStatus.should.not.equal(0);
               done();
             });
           });
