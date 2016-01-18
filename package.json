@@ -67,7 +67,7 @@
     "azure-asm-website": "0.10.1",
     "azure-storage": "0.6.0",
     "caller-id": "0.1.x",
-    "colors": "0.x.x",
+    "colors": "1.1.2",
     "commander": "1.0.4",
     "easy-table": "0.0.1",
     "event-stream": "3.1.5",
@@ -86,6 +86,7 @@
     "number-is-nan": "1.0.0",
     "omelette": "0.1.0",
     "openssl-wrapper": "0.2.1",
+    "prompt": "0.2.14",
     "readable-stream": "~1.0.0",
     "request": "2.52.0",
     "ssh-key-to-pem": "0.11.0",
@@ -99,7 +100,7 @@
     "underscore": "1.4.x",
     "validator": "~3.1.0",
     "walk": "^2.3.9",
-    "winston": "0.6.x",
+    "winston": "2.1.1",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
     "xmlbuilder": "0.4.x"
@@ -110,8 +111,7 @@
     "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
-    "nock": "0.16",
-    "winston-memory": "*"
+    "nock": "0.16"
   },
   "homepage": "https://github.com/Azure/azure-xplat-cli",
   "repository": {
