@@ -38,7 +38,7 @@ function buildFileList(testFiles, testList, root) {
   var includeMark = 'include:';
   for (var i = 0; i < files.length ; i++) {
     if (files[i].indexOf(includeMark) === 0) {
-      var fileToInclude = files[i].substring(includeMark.length).replace('\r', '');
+      var fileToInclude = files[i].substring(includeMark.length).replace(/\s+$/g, '');
       buildFileList(testFiles, fileToInclude, root);
     } else {
       testFiles.push(files[i]);

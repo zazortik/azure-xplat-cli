@@ -1,13 +1,11 @@
 # Live + Playback
+include:./testlistarmvm.txt
 commands/arm/usage/arm.usage.feature-tests.js
-commands/arm/vm/arm.vm-create-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
 commands/arm/vm/arm.vm-create-generate-ssh-tests.js
 commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
-commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
-commands/arm/vm/arm.vm-quick-create-tests.js
 # Live Only
