@@ -290,6 +290,9 @@
     </Compile>
     <Compile Include="test\util\set-tests.js" />
     <Compile Include="test\util\util.js" />
+    <Compile Include="test\util\interaction-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\util\utils-tests.js" />
     <Compile Include="test\util\vmTestUtil.js" />
     <Content Include="test\commands\mobile\facebookClientId.txt" />
