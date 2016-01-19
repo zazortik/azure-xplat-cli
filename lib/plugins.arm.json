@@ -28149,6 +28149,15 @@
                   "description": "the name of the virtual network gateway"
                 },
                 {
+                  "flags": "-r, --vnet-gateway1-group <vnet-gateway1-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--vnet-gateway1-group",
+                  "description": "the resource group name of the virtual network gateway"
+                },
+                {
                   "flags": "-e, --vnet-gateway2 <vnet-gateway2>",
                   "required": -21,
                   "optional": 0,
@@ -28158,6 +28167,15 @@
                   "description": "the name of the connected virtual network gateway"
                 },
                 {
+                  "flags": "-m, --vnet-gateway2-group <vnet-gateway2-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--vnet-gateway2-group",
+                  "description": "the resource group name of the connected virtual network gateway"
+                },
+                {
                   "flags": "-d, --lnet-gateway2 <lnet-gateway2>",
                   "required": -21,
                   "optional": 0,
@@ -28165,6 +28183,15 @@
                   "short": "-d",
                   "long": "--lnet-gateway2",
                   "description": "the name of the connected local network gateway"
+                },
+                {
+                  "flags": "-z, --lnet-gateway2-group <lnet-gateway2-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--lnet-gateway2-group",
+                  "description": "the resource group name of the connected local network gateway"
                 },
                 {
                   "flags": "-y, --type <type>",
