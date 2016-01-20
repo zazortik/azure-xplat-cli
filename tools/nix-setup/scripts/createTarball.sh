@@ -9,36 +9,14 @@
 # building the package.
 #
 
+set -e
 if [ ! -f ./scripts/azure ]; then
 	echo Please run this from the osx folder: scripts/createTarball.sh
 	exit 1
 fi
 
-if [ ! -d ./out ]; then
-	mkdir ./out
-fi
-
-# Remove old files
-if [ -f ./out/azure.tar.gz ]; then
-	rm ./out/azure.tar.gz
-	echo Removing old Azure tar.gz file
-fi
-
-if [ -f ./out/azure.tar ]; then
-	rm ./out/azure.tar
-	echo Removing old Azure tar file
-fi
-
-# Create a place to store this staging work.
-if [ -d /tmp/azureInstallerTemporary ]; then
-	echo Removing old installer staging area in /tmp/azureInstallerTemporary
-	rm -rf /tmp/azureInstallerTemporary
-fi
-
-rm /tmp/azure.tar*
-rm /tmp/azure.linux*
-
-mkdir /tmp/azureInstallerTemporary
+rm -rf "./out" "/tmp/azureInstallerTemporary" "/tmp/azure-linux" "tmp/azure.tar*" "/tmp/azure.linux*"
+mkdir "./out" "/tmp/azureInstallerTemporary" "/tmp/azure-linux"
 
 echo Preparing the temporary staging area by copying the repo...
 
@@ -49,7 +27,7 @@ cp scripts/azure-uninstall /tmp/azureInstallerTemporary/
 # Copy the enlistment
 cp -R -L ../../ /tmp/azureInstallerTemporary/
 rm -rf /tmp/azureInstallerTemporary/.git #lazy
-rm -rf /tmp/azureInstallerTemporary/tools/osx-setup/out #this very installer
+rm -rf /tmp/azureInstallerTemporary/tools/nix-setup/out #this very installer
 
 # Remove dev dependencies from xplat module
 pushd /tmp/azureInstallerTemporary/node_modules
@@ -104,9 +82,10 @@ cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotice
 cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
 rm /tmp/azureInstallerTemporary/LICENSE.txt
 
-#Clone to be used for linux tarball
-cp /tmp/azureInstallerTemporary /tmp/ait
-pushd /tmp/ait
+#Clone to be used for linux tarball. Same with
+#osx tarball except having node_modules removed. 
+cp -R /tmp/azureInstallerTemporary/ /tmp/azure-linux
+pushd /tmp/azure-linux
 rm -rf node_modules
 tar -cf ../azure.linux.tar .
 cd ..
