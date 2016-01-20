@@ -28,7 +28,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.8.26"
+    "node": ">= 0.10.0"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -42,11 +42,11 @@
     "azure-arm-hdinsight": "0.1.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
     "azure-arm-insights": "0.10.2",
-    "azure-arm-network": "0.11.0",
+    "azure-arm-network": "0.12.0",
     "azure-arm-trafficmanager": "0.10.5",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
-    "azure-arm-rediscache": "0.1.0",
+    "azure-arm-rediscache": "0.2.0",
     "azure-arm-datalake-analytics": "0.1.2",
     "azure-arm-datalake-store": "0.1.2",
     "azure-extra": "0.2.12",
@@ -80,7 +80,7 @@
     "kuduscript": "1.0.6",
     "mime": "~1.2.4",
     "moment": "2.6.0",
-    "ms-rest-azure": "1.2.0",
+    "ms-rest-azure": "^1.8.0",
     "node-forge": "0.6.23",
     "node-uuid": "1.2.0",
     "number-is-nan": "1.0.0",
