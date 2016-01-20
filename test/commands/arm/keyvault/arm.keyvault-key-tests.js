@@ -25,6 +25,7 @@ var CLITest = require('../../../framework/arm-cli-test');
 var log = require('../../../framework/test-logger');
 var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
+var profile = require('../../../../lib/util/profile');
 
 var testprefix = 'arm-cli-keyvault-tests';
 var keyPrefix = 'xplatTestVaultKey';
@@ -87,7 +88,8 @@ describe('arm', function() {
             key.should.have.property('key');
             key.key.should.have.property('kid');
             keyId = key.key.kid;
-            keyId.should.include(util.format('https://%s.vault.azure.net/keys/%s/', testVault.toLowerCase(), keyName));
+            var subscription = profile.current.getSubscription();
+            keyId.should.include(util.format('https://%s%s/keys/%s/', testVault.toLowerCase(), subscription.keyVaultDnsSuffix, keyName));
             listKeysMustSucceed();
           });
         }

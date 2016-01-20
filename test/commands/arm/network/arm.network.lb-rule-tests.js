@@ -103,8 +103,8 @@ describe('arm', function() {
         });
       });
       it('set should modify lb rule ', function(done) {
-        var cmd = util.format('network lb rule set -g %s -l %s -n %s -r %s -p %s -f %s -b %s -i %s -o %s -a %s -t %s --json',
-          groupName, LBName, LBRuleName, "TestLBRuleName", protocol, '82', '82', '5', LBAddPool, LBProbe, FrontendIpName).split(' ');
+        var cmd = util.format('network lb rule set -g %s -l %s -n %s -p %s -f %s -b %s -i %s -o %s -a %s -t %s --json',
+          groupName, LBName, LBRuleName, protocol, '82', '82', '5', LBAddPool, LBProbe, FrontendIpName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -115,12 +115,12 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources[0].name.should.equal("TestLBRuleName");
+          allResources[0].name.should.equal(LBRuleName);
           done();
         });
       });
       it('delete should delete rule', function(done) {
-        var cmd = util.format('network lb rule delete %s %s %s --quiet --json', groupName, LBName, "TestLBRuleName").split(' ');
+        var cmd = util.format('network lb rule delete %s %s %s --quiet --json', groupName, LBName, LBRuleName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

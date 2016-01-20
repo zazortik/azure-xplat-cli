@@ -24,7 +24,7 @@ Depends on what mode your cmds in choose appropriate folder:
   * --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
 
 ## Command Design Guidelines
-* Regular verb usage for basic [CRUD] operations is: 
+* Please strictly adhere to this verb usage for basic [CRUD] operations: 
   * create - create a new entity
   * set - update an existing enity
   * list - list all the entities

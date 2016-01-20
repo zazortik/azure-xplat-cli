@@ -594,6 +594,17 @@ _.extend(CLITest.prototype, {
         return client;
       };
     });
+
+    if (utils.createAutoRestClient.restore) {
+      utils.createAutoRestClient.restore();
+    }
+    CLITest.wrap(sinon, utils, 'createAutoRestClient', function (originalCreateAutoRestClient) {
+      return function (factoryMethod, subscription) {
+        var client = originalCreateAutoRestClient(factoryMethod, subscription);
+        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        return client;
+      };
+    });
   },
 
   /**

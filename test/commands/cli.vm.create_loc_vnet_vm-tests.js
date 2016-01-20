@@ -86,7 +86,7 @@ describe('cli', function() {
     describe('Create:', function() {
       it('Vm should create with vnet and location', function(done) {
         vmUtil.getImageName('Linux', suite, function(imageName) {
-          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName) {
+          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, vmUtil, function(virtualnetName, affinityName) {
             var cmd = util.format('account affinity-group show %s --json', affinityName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
@@ -108,7 +108,7 @@ describe('cli', function() {
 
       it('Vm should create with vnet', function(done) {
         vmUtil.getImageName('Linux', suite, function(imageName) {
-          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName) {
+          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, vmUtil, function(virtualnetName, affinityName) {
             var cmd = util.format('vm create --ssh -w %s %s %s %s %s --json',
               virtualnetName, vmVnetName, imageName, userName, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {

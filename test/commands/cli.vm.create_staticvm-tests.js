@@ -96,7 +96,7 @@ describe('cli', function() {
 
     describe('network:', function() {
       it('check for available static ips in a vnet', function(done) {
-        vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, vnetStaticIpavail) {
+        vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, vmUtil, function(virtualnetName, affinityName, vnetStaticIpavail) {
           var cmd = util.format('network vnet static-ip check %s %s --json', virtualnetName, vnetStaticIpavail).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
@@ -114,7 +114,7 @@ describe('cli', function() {
     describe('Create a VM with static ip address: ', function() {
       it('Create a VM with static ip address should pass', function(done) {
         vmUtil.getImageName('Windows', suite, function(ImageName) {
-          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, function(virtualnetName, affinityName, vnetStaticIpavail) {
+          vmUtil.getVnet('Created', getVnet, getAffinityGroup, createdVnets, suite, vmUtil, function(virtualnetName, affinityName, vnetStaticIpavail) {
             var cmd = util.format('vm create --virtual-network-name %s %s %s %s %s --static-ip %s --json',
               virtualnetName, vmName, ImageName, username, password, staticIpavail).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {

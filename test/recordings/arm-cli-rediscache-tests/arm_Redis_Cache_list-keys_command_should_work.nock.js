@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '04db7ed3-6ed9-4861-8b22-7c0c0c98490b',
+    name: 'AAPT Cache10',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -15,6 +15,7 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -29,76 +30,76 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665?api-version=2015-08-01')
-  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665\",\"location\":\"West US\",\"name\":\"xplatTestCache1665\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\",\"maxclients\":\"1000\",\"maxmemory-reserved\":\"50\",\"maxmemory-delta\":\"50\"},\"accessKeys\":null,\"hostName\":\"xplatTestCache1665.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287?api-version=2015-08-01')
+  .reply(200, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287\",\"location\":\"West US\",\"name\":\"xplatTestCache5287\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxclients\":\"1000\",\"maxmemory-reserved\":\"50\",\"maxmemory-delta\":\"50\"},\"accessKeys\":null,\"hostName\":\"xplatTestCache5287.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '603',
+  'content-length': '570',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ae42ca20-07f9-4367-a882-e8c3e2ac5d5d',
-  'x-rp-server-mvid': '34bb3c7e-5d41-4769-9a39-f21a2e547245',
+  'x-ms-request-id': '88ba77c7-0bc0-461b-babf-5b026f72c309',
+  'x-rp-server-mvid': '3e61d910-df30-46b0-b787-cfaaa2487a47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '39fd4bbc-9427-4f93-97f8-89576b951132',
-  'x-ms-routing-request-id': 'WESTUS:20151106T043336Z:39fd4bbc-9427-4f93-97f8-89576b951132',
-  date: 'Fri, 06 Nov 2015 04:33:35 GMT',
+  'x-ms-correlation-request-id': 'a8551c60-f0bd-48cd-bc34-f60986204004',
+  'x-ms-routing-request-id': 'WESTUS:20151203T004414Z:a8551c60-f0bd-48cd-bc34-f60986204004',
+  date: 'Thu, 03 Dec 2015 00:44:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665?api-version=2015-08-01')
-  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665\",\"location\":\"West US\",\"name\":\"xplatTestCache1665\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxmemory-policy\":\"allkeys-lru\",\"maxclients\":\"1000\",\"maxmemory-reserved\":\"50\",\"maxmemory-delta\":\"50\"},\"accessKeys\":null,\"hostName\":\"xplatTestCache1665.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287?api-version=2015-08-01')
+  .reply(200, "{\"id\":\"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287\",\"location\":\"West US\",\"name\":\"xplatTestCache5287\",\"type\":\"Microsoft.Cache/Redis\",\"tags\":{},\"properties\":{\"provisioningState\":\"Creating\",\"redisVersion\":\"3.0\",\"sku\":{\"name\":\"Standard\",\"family\":\"C\",\"capacity\":1},\"enableNonSslPort\":false,\"redisConfiguration\":{\"maxclients\":\"1000\",\"maxmemory-reserved\":\"50\",\"maxmemory-delta\":\"50\"},\"accessKeys\":null,\"hostName\":\"xplatTestCache5287.redis.cache.windows.net\",\"port\":6379,\"sslPort\":6380}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '603',
+  'content-length': '570',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ae42ca20-07f9-4367-a882-e8c3e2ac5d5d',
-  'x-rp-server-mvid': '34bb3c7e-5d41-4769-9a39-f21a2e547245',
+  'x-ms-request-id': '88ba77c7-0bc0-461b-babf-5b026f72c309',
+  'x-rp-server-mvid': '3e61d910-df30-46b0-b787-cfaaa2487a47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '39fd4bbc-9427-4f93-97f8-89576b951132',
-  'x-ms-routing-request-id': 'WESTUS:20151106T043336Z:39fd4bbc-9427-4f93-97f8-89576b951132',
-  date: 'Fri, 06 Nov 2015 04:33:35 GMT',
+  'x-ms-correlation-request-id': 'a8551c60-f0bd-48cd-bc34-f60986204004',
+  'x-ms-routing-request-id': 'WESTUS:20151203T004414Z:a8551c60-f0bd-48cd-bc34-f60986204004',
+  date: 'Thu, 03 Dec 2015 00:44:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665/listKeys?api-version=2015-08-01')
-  .reply(200, "{\"primaryKey\":\"KqgVqcgNf2TdgOHGMqPgqYs0jwW9i5KVgDeIT5pM4Uo=\",\"secondaryKey\":\"EntWaKkX2qGtpZ1pf5yxi4YU8dB5h0siYXZykn3jf4U=\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287/listKeys?api-version=2015-08-01')
+  .reply(200, "{\"primaryKey\":\"ZGAht9hSfjkOvHOJY7jeEWuBpQKQXXV8XdtYlkyyG1I=\",\"secondaryKey\":\"EOAVZfjO9hyzLxvDljXUSD/JJQCCmwBxZ0yAHCiih9k=\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '123',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '683fffad-8961-404e-804e-1e4fad6036fd',
-  'x-rp-server-mvid': '34bb3c7e-5d41-4769-9a39-f21a2e547245',
+  'x-ms-request-id': '6c57213a-0756-450a-b12a-c004129ef22a',
+  'x-rp-server-mvid': '3e61d910-df30-46b0-b787-cfaaa2487a47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '1009cd06-5ba5-4459-8e53-062f69b31101',
-  'x-ms-routing-request-id': 'WESTUS:20151106T043336Z:1009cd06-5ba5-4459-8e53-062f69b31101',
-  date: 'Fri, 06 Nov 2015 04:33:36 GMT',
+  'x-ms-correlation-request-id': '89e44fad-c704-4e79-8993-2b01b4fa5dd8',
+  'x-ms-routing-request-id': 'WESTUS:20151203T004415Z:89e44fad-c704-4e79-8993-2b01b4fa5dd8',
+  date: 'Thu, 03 Dec 2015 00:44:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache1665/listKeys?api-version=2015-08-01')
-  .reply(200, "{\"primaryKey\":\"KqgVqcgNf2TdgOHGMqPgqYs0jwW9i5KVgDeIT5pM4Uo=\",\"secondaryKey\":\"EntWaKkX2qGtpZ1pf5yxi4YU8dB5h0siYXZykn3jf4U=\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/xplatTestCacheRG/providers/Microsoft.Cache/Redis/xplatTestCache5287/listKeys?api-version=2015-08-01')
+  .reply(200, "{\"primaryKey\":\"ZGAht9hSfjkOvHOJY7jeEWuBpQKQXXV8XdtYlkyyG1I=\",\"secondaryKey\":\"EOAVZfjO9hyzLxvDljXUSD/JJQCCmwBxZ0yAHCiih9k=\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '123',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '683fffad-8961-404e-804e-1e4fad6036fd',
-  'x-rp-server-mvid': '34bb3c7e-5d41-4769-9a39-f21a2e547245',
+  'x-ms-request-id': '6c57213a-0756-450a-b12a-c004129ef22a',
+  'x-rp-server-mvid': '3e61d910-df30-46b0-b787-cfaaa2487a47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '1009cd06-5ba5-4459-8e53-062f69b31101',
-  'x-ms-routing-request-id': 'WESTUS:20151106T043336Z:1009cd06-5ba5-4459-8e53-062f69b31101',
-  date: 'Fri, 06 Nov 2015 04:33:36 GMT',
+  'x-ms-correlation-request-id': '89e44fad-c704-4e79-8993-2b01b4fa5dd8',
+  'x-ms-routing-request-id': 'WESTUS:20151203T004415Z:89e44fad-c704-4e79-8993-2b01b4fa5dd8',
+  date: 'Thu, 03 Dec 2015 00:44:14 GMT',
   connection: 'close' });
  return result; }]];

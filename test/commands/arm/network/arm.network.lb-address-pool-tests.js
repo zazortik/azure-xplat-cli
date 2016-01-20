@@ -37,14 +37,14 @@ var requiredEnvironment = [{
   defaultValue: 'westus'
 }];
 
-describe('arm', function() {
-  describe('network', function() {
+describe('arm', function () {
+  describe('network', function () {
     var suite,
       retry = 5;
     var networkUtil = new networkTestUtil();
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null)
         publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
@@ -57,32 +57,32 @@ describe('arm', function() {
         done();
       });
     });
-    after(function(done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-          networkUtil.deleteUsedGroup(groupName, suite, function() {
+    after(function (done) {
+      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
+        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
+          networkUtil.deleteUsedGroup(groupName, suite, function () {
             suite.teardownSuite(done);
           });
         });
       });
     });
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('lb address-pool', function() {
+    describe('lb address-pool', function () {
 
-      it('create should pass', function(done) {
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createLB(groupName, LBName, location, suite, function() {
-            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function() {
+      it('create should pass', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createLB(groupName, LBName, location, suite, function () {
+            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
+              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
+                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
                   var cmd = util.format('network lb address-pool create -g %s -l %s %s --json', groupName, LBName, LBAddPool).split(' ');
-                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
                     result.exitStatus.should.equal(0);
                     done();
                   });
@@ -92,18 +92,18 @@ describe('arm', function() {
           });
         });
       });
-      it('list should display all address-pool in load balancer', function(done) {
+      it('list should display all address-pool in load balancer', function (done) {
         var cmd = util.format('network lb address-pool list -g %s -l %s --json', groupName, LBName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
           allResources[0].name.should.equal(LBAddPool);
           done();
         });
       });
-      it('delete should delete address-pool', function(done) {
+      it('delete should delete address-pool', function (done) {
         var cmd = util.format('network lb address-pool delete -g %s -l %s %s -q --json', groupName, LBName, LBAddPool).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });

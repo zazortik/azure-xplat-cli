@@ -20,6 +20,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-lb-probe-tests';
 var networkTestUtil = require('../../../util/networkTestUtil');
+var _ = require('underscore');
 var groupName,
   location,
   groupPrefix = 'xplatTestGCreateLbProbe',
@@ -44,16 +45,16 @@ var requiredEnvironment = [{
 }];
 
 
-describe('arm', function() {
-  describe('network', function() {
+describe('arm', function () {
+  describe('network', function () {
     var suite, timeout,
       retry = 5;
     var networkUtil = new networkTestUtil();
     testUtils.TIMEOUT_INTERVAL = 5000;
 
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
         publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
@@ -63,36 +64,36 @@ describe('arm', function() {
         done();
       });
     });
-    after(function(done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-          networkUtil.deleteUsedGroup(groupName, suite, function() {
+    after(function (done) {
+      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
+        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
+          networkUtil.deleteUsedGroup(groupName, suite, function () {
             suite.teardownSuite(done);
           });
         });
       });
     });
-    beforeEach(function(done) {
-      suite.setupTest(function() {
+    beforeEach(function (done) {
+      suite.setupTest(function () {
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('lb probe', function() {
+    describe('lb probe', function () {
 
-      it('create should pass', function(done) {
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createLB(groupName, LBName, location, suite, function() {
-            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function() {
-                  var cmd = util.format('network lb probe create %s %s %s -p %s -o %s -f %s -i %s -c %s  --json',
+      it('create should pass', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createLB(groupName, LBName, location, suite, function () {
+            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
+              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
+                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
+                  var cmd = util.format('network lb probe create %s %s %s -p %s -o %s -f %s -i %s -c %s --json',
                     groupName, LBName, lbprobePrefix, protocol, port, path, interval, count).split(' ');
-                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
                     result.exitStatus.should.equal(0);
                     done();
                   });
@@ -102,27 +103,27 @@ describe('arm', function() {
           });
         });
       });
-      it('list should dispaly all probes in load balancer', function(done) {
+      it('list should dispaly all probes in load balancer', function (done) {
         var cmd = util.format('network lb probe list %s %s --json', groupName, LBName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
+          _.some(allResources, function (res) {
             return res.name === lbprobePrefix;
           }).should.be.true;
           done();
         });
       });
-      it('set should modify probe', function(done) {
+      it('set should modify probe', function (done) {
         var cmd = util.format('network lb probe set %s %s %s  -p %s -o %s -f %s -i %s -c %s --json', groupName, LBName, lbprobePrefix, protocolNew, portNew, pathNew, intervalNew, countNew).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });
       });
-      it('delete should delete the probe', function(done) {
+      it('delete should delete the probe', function (done) {
         var cmd = util.format('network lb probe delete %s %s %s --quiet --json', groupName, LBName, lbprobePrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
         });

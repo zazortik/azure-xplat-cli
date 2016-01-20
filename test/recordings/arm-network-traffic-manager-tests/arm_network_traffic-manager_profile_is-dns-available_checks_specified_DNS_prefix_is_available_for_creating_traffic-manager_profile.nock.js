@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    name: 'CollaberaInteropTest',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -29,39 +29,39 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/providers/Microsoft.Network/checkTrafficManagerNameAvailability?api-version=2015-04-28-preview', '*')
-  .reply(200, "{\"name\":\"xplattmpdns9220\",\"type\":\"Microsoft.Network\\/trafficManagerProfiles\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Domain name xplattmpdns9220.trafficmanager.net already exists. Please choose a different DNS prefix.\"}", { 'cache-control': 'private',
+.post('/providers/Microsoft.Network/checkTrafficManagerNameAvailability?api-version=2015-11-01', '*')
+  .reply(200, "{\"name\":\"xplattmpdns1086\",\"type\":\"Microsoft.Network\\/trafficManagerProfiles\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Domain name xplattmpdns1086.trafficmanager.net already exists. Please choose a different DNS prefix.\"}", { 'cache-control': 'private',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '2c1142d4-89e8-4675-8e92-499f38272370',
-  server: 'Microsoft-IIS/7.5',
+  'x-ms-request-id': '0ec5d8f7-5d01-4009-b3de-f4ee479b77d8',
+  server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-tenant-writes': '1198',
-  'x-ms-correlation-request-id': '957cc449-a069-4561-9fbe-9868d9cbadb5',
-  'x-ms-routing-request-id': 'CENTRALINDIA:20151113T100554Z:957cc449-a069-4561-9fbe-9868d9cbadb5',
+  'x-ms-ratelimit-remaining-tenant-writes': '1199',
+  'x-ms-correlation-request-id': '85bb8e5e-e871-47f9-87b5-b674a2624157',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160113T120352Z:85bb8e5e-e871-47f9-87b5-b674a2624157',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 13 Nov 2015 10:05:54 GMT',
+  date: 'Wed, 13 Jan 2016 12:03:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/providers/Microsoft.Network/checkTrafficManagerNameAvailability?api-version=2015-04-28-preview', '*')
-  .reply(200, "{\"name\":\"xplattmpdns9220\",\"type\":\"Microsoft.Network\\/trafficManagerProfiles\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Domain name xplattmpdns9220.trafficmanager.net already exists. Please choose a different DNS prefix.\"}", { 'cache-control': 'private',
+.post('/providers/Microsoft.Network/checkTrafficManagerNameAvailability?api-version=2015-11-01', '*')
+  .reply(200, "{\"name\":\"xplattmpdns1086\",\"type\":\"Microsoft.Network\\/trafficManagerProfiles\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Domain name xplattmpdns1086.trafficmanager.net already exists. Please choose a different DNS prefix.\"}", { 'cache-control': 'private',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '2c1142d4-89e8-4675-8e92-499f38272370',
-  server: 'Microsoft-IIS/7.5',
+  'x-ms-request-id': '0ec5d8f7-5d01-4009-b3de-f4ee479b77d8',
+  server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-tenant-writes': '1198',
-  'x-ms-correlation-request-id': '957cc449-a069-4561-9fbe-9868d9cbadb5',
-  'x-ms-routing-request-id': 'CENTRALINDIA:20151113T100554Z:957cc449-a069-4561-9fbe-9868d9cbadb5',
+  'x-ms-ratelimit-remaining-tenant-writes': '1199',
+  'x-ms-correlation-request-id': '85bb8e5e-e871-47f9-87b5-b674a2624157',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160113T120352Z:85bb8e5e-e871-47f9-87b5-b674a2624157',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 13 Nov 2015 10:05:54 GMT',
+  date: 'Wed, 13 Jan 2016 12:03:51 GMT',
   connection: 'close' });
  return result; }]];

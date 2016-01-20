@@ -1,0 +1,14 @@
+# Live + Playback
+commands/cli.vm.create_affin_vnet_vm-tests.js
+commands/cli.vm.create_vnet_multi_nic-tests.js
+commands/cli.vm.capture-tests.js
+commands/cli.vm.acl-tests.js
+commands/cli.vm.pip-tests.js
+commands/cli.vm.create_custom-tests.js
+commands/cli.vm.create_comm-tests.js
+commands/cli.vm.negative-tests.js
+commands/cli.vm.create_win_rdp-tests.js
+commands/cli.vm.disk.attachDetach-tests.js
+commands/cli.vm.disk.attachnew-tests.js
+commands/cli.vm.create_ssh-tests.js
+# Live Only
