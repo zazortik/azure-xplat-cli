@@ -35,13 +35,8 @@ if [ -d /tmp/azureInstallerTemporary ]; then
 	rm -rf /tmp/azureInstallerTemporary
 fi
 
-if [ -f /tmp/azure.tar.gz ]; then
-	rm /tmp/azure.tar.gz
-fi
-
-if [ -f /tmp/azure.tar ]; then
-	rm /tmp/azure.tar
-fi
+rm /tmp/azure.tar*
+rm /tmp/azure.linux*
 
 mkdir /tmp/azureInstallerTemporary
 
@@ -67,7 +62,7 @@ popd
 
 # Remove dev-time only code from xplat module
 pushd /tmp/azureInstallerTemporary
-dirstoremove=( features scripts test tools )
+dirstoremove=( features scripts test tools Documentation )
 for DIR in ${dirstoremove[@]}
 do
 	rm -rf $DIR
@@ -108,6 +103,16 @@ popd
 cp resources/ThirdPartyNotices.txt /tmp/azureInstallerTemporary/ThirdPartyNotices.txt
 cp resources/LICENSE.rtf /tmp/azureInstallerTemporary/LICENSE.rtf
 rm /tmp/azureInstallerTemporary/LICENSE.txt
+
+#Clone to be used for linux tarball
+cp /tmp/azureInstallerTemporary /tmp/ait
+pushd /tmp/ait
+rm -rf node_modules
+tar -cf ../azure.linux.tar .
+cd ..
+gzip azure.linux.tar
+popd
+mv /tmp/azure.linux.tar.gz out/
 
 # Prepare a tarball (and also a tar)
 pushd /tmp/azureInstallerTemporary/
