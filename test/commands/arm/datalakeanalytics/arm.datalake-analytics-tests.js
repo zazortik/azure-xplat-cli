@@ -229,7 +229,7 @@ describe('arm', function () {
     it('adding and removing blob storage accounts to the account should work', function (done) {
       suite.execute('storage account keys list %s --resource-group %s --json', azureBlobAccountName, testResourceGroup, testLocation, function (result) {
         var keyJson = JSON.parse(result.text);
-        azureBlobAccountKey = keyJson.storageAccountKeys.key1;
+        azureBlobAccountKey = keyJson.key1;
         suite.execute('datalake analytics account datasource add --accountName %s --azureBlob %s --accessKey %s --json', accountName, azureBlobAccountName, azureBlobAccountKey, function (result) {
           result.exitStatus.should.be.equal(0);
           suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
