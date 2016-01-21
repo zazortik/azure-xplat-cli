@@ -100,21 +100,6 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
-		   /*
-            if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined || VMTestUtil.linuxImageUrn === "undefined") {
-              vmTest.GetLinuxSkusList(location, suite, function(result) {
-                vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json',
-                    groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                    vNetPrefix, '10.4.0.0/16', subnetName, '10.4.0.0/24', publicipName, dnsPrefix).split(' ');
-                  testUtils.executeCommand(suite, retry, cmd, function(result) {
-                    result.exitStatus.should.equal(0);
-                    done();
-                  });
-                });
-              });
-			*/
-            //} else {
               var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json',
                 groupName, vmPrefix, location, nicName, linuxImageUrn, username, password, storageAccount, storageCont,
                 vNetPrefix, '10.4.0.0/16', subnetName, '10.4.0.0/24', publicipName, dnsPrefix).split(' ');
