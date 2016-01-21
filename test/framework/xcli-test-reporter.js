@@ -50,14 +50,14 @@ function List(runner) {
     process.stdout.write(color('pass', '    ' + test.fullTitle() + ': '));
     testLogger.setCurrentTest(test.fullTitle());
     testLogger.logData();
-    testLogger.logData('--Start--    ' + test.fullTitle() + ': ');
+    testLogger.logData(new Date().toISOString() + '  --Start--    ' + test.fullTitle() + ': ');
   });
 
   runner.on('pending', function(test){
     var fmt = color('checkmark', '  -')
       + color('pending', ' %s');
     console.log(fmt, test.fullTitle());
-    testLogger.logData('--Skipped--    ' + test.fullTitle());
+    testLogger.logData(new Date().toISOString() + '  --Skipped--    ' + test.fullTitle());
     testLogger.logData();
   });
 
@@ -67,14 +67,14 @@ function List(runner) {
       + color(test.speed, '%dms');
     cursor.CR();
     console.log(fmt, test.fullTitle(), test.duration);
-    testLogger.logData('--End--   ' + test.fullTitle() + ': ' + test.duration + ' ms');
+    testLogger.logData(new Date().toISOString() + '  --End--   ' + test.fullTitle() + ': ' + test.duration + ' ms');
     testLogger.logData();
   });
 
   runner.on('fail', function(test, err){
     cursor.CR();
     console.log(color('fail', '  %d) %s'), ++n, test.fullTitle());
-    testLogger.logData('--End--    ' + n + ')  ' + test.fullTitle());
+    testLogger.logData(new Date().toISOString() + '  --End--    ' + n + ')  ' + test.fullTitle());
     testLogger.logData();
   });
   
