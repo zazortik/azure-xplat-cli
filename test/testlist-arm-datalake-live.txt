@@ -1,0 +1,2 @@
+commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
+commands/arm/datalakestore/arm.datalake-store-tests.js
