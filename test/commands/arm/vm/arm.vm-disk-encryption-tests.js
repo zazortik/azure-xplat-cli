@@ -18,6 +18,7 @@ var should = require('should');
 var path = require('path');
 var fs = require('fs');
 var util = require('util');
+var profile = require('../../../../lib/util/profile');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-vm-disk-encryption-tests';
@@ -31,6 +32,7 @@ var requiredEnvironment = [{
   defaultValue: 'test/myCert.pem'
 }];
 
+var subscriptionId = profile.current.getSubscription().id;
 var groupName,
   vmPrefix = 'xplattestvm',
   nicName = 'xplattestnic',
@@ -44,9 +46,9 @@ var groupName,
   subnetName = 'xplattestsubnet',
   publicipName = 'xplattestip',
   dnsPrefix = 'xplattestipdns',
-  diskEncryptionKeyVaultId = '/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
+  diskEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
   diskEncryptionKeySecretUrl = 'https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa',
-  keyEncryptionKeyVaultId = '/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
+  keyEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
   keyEncryptionKeyUrl = 'https://testvault123.vault.azure.net/key/Test1/514ceb769c984379a7e0230bddaaaaaa',
   vmSize = 'Standard_A1',
   stoType = 'GRS',
