@@ -38,7 +38,7 @@ function buildFileList(testFiles, testList, root) {
   var includeMark = 'include:';
   for (var i = 0; i < files.length ; i++) {
     if (files[i].indexOf(includeMark) === 0) {
-      var fileToInclude = files[i].substring(includeMark.length);
+      var fileToInclude = files[i].substring(includeMark.length).replace('\r', '');
       buildFileList(testFiles, fileToInclude, root);
     } else {
       testFiles.push(files[i]);
@@ -60,7 +60,8 @@ allFiles.forEach(function (file) {
   if (file.length > 0 && file.trim()[0] !== '#') {
     // trim trailing \r if it exists
     file = file.replace('\r', '');
-    args.push(root ? 'test/' + file : file);
+    var temp = root ? 'test/' + file : file;
+    args.push(temp);
   }
 });
 
@@ -68,5 +69,13 @@ args.push('-R');
 args.push(reporter);
 //for clean shutdown of the event loop, so silly log gets drained to disk.
 args.push('--no-exit');
+
+console.log("Start:" + new Date());
+
+//console.log(JSON.stringify(args, null, 2));
+
+process.on('exit', function (err) {
+  console.log("End:" + new Date());
+})
 
 require('../node_modules/mocha/bin/mocha');

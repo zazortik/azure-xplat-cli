@@ -11,7 +11,6 @@ commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
 commands/arm/ad/arm.ad-app-tests.js
 commands/arm/ad/adUtils-test.js
-commands/arm/ad/role/roleAssignments-tests.js
 commands/arm/storage/arm.storage.account-tests.js
 include:./testlistarmvmlive.txt
 commands/arm/network/arm.network.publicip-tests.js
