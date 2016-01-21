@@ -70,12 +70,12 @@ args.push(reporter);
 //for clean shutdown of the event loop, so silly log gets drained to disk.
 args.push('--no-exit');
 
-console.log("Start:" + new Date());
+console.log("Start:" + new Date().toISOString());
 
 //console.log(JSON.stringify(args, null, 2));
 
 process.on('exit', function (err) {
-  console.log("End:" + new Date());
+  console.log("End:" + new Date().toISOString());
 })
 
 require('../node_modules/mocha/bin/mocha');
