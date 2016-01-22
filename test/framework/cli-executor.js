@@ -22,6 +22,8 @@ var util = require('util');
 var winston = require('winston');
 var testLogger = require('./test-logger');
 
+require('winston-memory').Memory;
+
 winston.add(winston.transports.Memory);
 winston.remove(winston.transports.Console);
 
@@ -56,6 +58,7 @@ function execute(cmd, cb) {
       return cb(result);
     } catch (err) {
       testLogger.logError(err);
+      testLogger.logSillyError(winston.getCapturedSillyLogs());
       process.nextTick(function() {
         throw err;
       });
@@ -71,7 +74,6 @@ function execute(cmd, cb) {
 
   try {
     cli = new AzureCli();
-    cli.__proto__.exitProcess = function (exitCode) { process.exit(exitCode); };
     if(!AzureCli.prototype.recordError.restore) {
       var sandbox2 = sinon.sandbox.create();
       sandbox2.stub(AzureCli.prototype, 'recordError', function (err) {
@@ -89,6 +91,7 @@ function execute(cmd, cb) {
     }
     var cmdStr = cmd.join(" ");
     testLogger.logData(cmdStr);
+    winston.default.transports.silly.clear();
     cli.parse(cmd);
   } catch(err) {
     result.errorStack = err.stack;
