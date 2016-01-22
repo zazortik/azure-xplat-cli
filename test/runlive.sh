@@ -12,12 +12,18 @@ base_dir=$(dirname $0)
 
 files=$@
 if [ "$files" == "" ]; then
-   # only test arm ones, as asm mode one rarely changed
+  # for now only test arm ones, as asm mode one rarely changed
   files=`ls $base_dir/*arm-*-live.txt`
 fi
 
+echo "Sceanrio Test Start: `date`"
+echo
+
 for file in $files
 do
-  echo executing $file
+  file=`basename $file`
+  echo executing $base_dir/$file 
   node $base_dir/../scripts/unit.js $base_dir/$file 
+  echo
 done
+echo "Sceanrio Test End: `date`"

@@ -123,7 +123,7 @@
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
-    "unit-asm": "node scripts/unit.js testlist.txt",
+    "unit": "node scripts/unit.js testlist.txt",
     "unit-arm": "node scripts/unit.js testlist-arm.txt",   
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
