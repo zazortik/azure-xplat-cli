@@ -32,7 +32,6 @@ var requiredEnvironment = [{
   defaultValue: 'test/myCert.pem'
 }];
 
-var subscriptionId = profile.current.getSubscription().id;
 var groupName,
   vmPrefix = 'xplattestvm',
   nicName = 'xplattestnic',
@@ -46,10 +45,11 @@ var groupName,
   subnetName = 'xplattestsubnet',
   publicipName = 'xplattestip',
   dnsPrefix = 'xplattestipdns',
-  diskEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
-  diskEncryptionKeySecretUrl = 'https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa',
-  keyEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123',
-  keyEncryptionKeyUrl = 'https://testvault123.vault.azure.net/key/Test1/514ceb769c984379a7e0230bddaaaaaa',
+  subscriptionId,
+  diskEncryptionKeyVaultId,
+  diskEncryptionKeySecretUrl,
+  keyEncryptionKeyVaultId,
+  keyEncryptionKeyUrl,
   vmSize = 'Standard_A1',
   stoType = 'GRS',
   sshcert,
@@ -77,6 +77,11 @@ describe('arm', function() {
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
         dnsPrefix = suite.generateId(dnsPrefix, null);
+        subscriptionId = profile.current.getSubscription().id;
+        diskEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123';
+        diskEncryptionKeySecretUrl = 'https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa';
+        keyEncryptionKeyVaultId = '/subscriptions/' + subscriptionId + '/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123';
+        keyEncryptionKeyUrl = 'https://testvault123.vault.azure.net/key/Test1/514ceb769c984379a7e0230bddaaaaaa';
         done();
       });
     });
