@@ -68,12 +68,12 @@ allFiles.forEach(function (file) {
 args.push('-R');
 args.push(reporter);
 
-console.log("Start:" + new Date().toISOString());
+console.log('Start (' + testList + '):' + new Date().toLocaleTimeString());
 
 //console.log(JSON.stringify(args, null, 2));
 
 process.on('exit', function (err) {
-  console.log("End:" + new Date().toISOString());
+  console.log('End:' + new Date().toLocaleTimeString());
 })
 
 require('../node_modules/mocha/bin/mocha');
