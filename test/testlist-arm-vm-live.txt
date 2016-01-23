@@ -1,5 +1,6 @@
+#owner @huangpf 
 # Live + Playback
-include:./testlistarmvm.txt
+include:./testlist-arm-vm.txt
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js

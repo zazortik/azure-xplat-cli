@@ -1,0 +1,11 @@
+#owner: @vivsriaus 
+commands/arm/feature/arm.feature-tests.js
+commands/arm/provider/arm.provider-tests.js
+commands/arm/resource/arm.resource-tests.js
+commands/arm/location/arm.location-tests.js
+commands/arm/tag/arm.tag-tests.js
+commands/arm/tag/arm.resourcetag-tests.js
+commands/arm/tag/arm.resourcegrouptag-tests.js
+commands/arm/group/arm.group-tests.js
+commands/arm/group/arm.group.deployment-tests.js
+commands/arm/group/arm.group.deployment.operation-tests.js
