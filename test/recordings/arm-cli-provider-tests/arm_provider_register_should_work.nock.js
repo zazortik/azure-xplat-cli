@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: '0b1f6471-1bf0-4dda-aec3-cb9272f09590',
+    name: 'AzureSDKADGraph2',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: ['successbricks.cleardb', 'microsoft.insights'],
+    tenantId: '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a',
+    state: 'Enabled',
+    registeredProviders: ['website', 'mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -26,65 +26,137 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService/register?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
+nock('http://management.azure.com:443')
+  .post('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps/register?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'cf5acf50-9bda-452e-b02b-cb5253904df1',
-  'x-ms-correlation-request-id': 'cf5acf50-9bda-452e-b02b-cb5253904df1',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164526Z:cf5acf50-9bda-452e-b02b-cb5253904df1',
+  'x-ms-request-id': '477efefd-6dc9-4644-b563-3148ef1c7fd7',
+  'x-ms-correlation-request-id': '477efefd-6dc9-4644-b563-3148ef1c7fd7',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045319Z:477efefd-6dc9-4644-b563-3148ef1c7fd7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:26 GMT',
-  'content-length': '1249' });
+  date: 'Sun, 24 Jan 2016 04:53:18 GMT',
+  connection: 'close',
+  'content-length': '512' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps/register?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31998',
-  'x-ms-request-id': '9b8d8262-ffb5-4bec-8c66-788d249048d2',
-  'x-ms-correlation-request-id': '9b8d8262-ffb5-4bec-8c66-788d249048d2',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164526Z:9b8d8262-ffb5-4bec-8c66-788d249048d2',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': '477efefd-6dc9-4644-b563-3148ef1c7fd7',
+  'x-ms-correlation-request-id': '477efefd-6dc9-4644-b563-3148ef1c7fd7',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045319Z:477efefd-6dc9-4644-b563-3148ef1c7fd7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:26 GMT',
-  'content-length': '1249' });
+  date: 'Sun, 24 Jan 2016 04:53:18 GMT',
+  connection: 'close',
+  'content-length': '512' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14979',
+  'x-ms-request-id': '759997dc-719f-4342-b841-a6ed3e540776',
+  'x-ms-correlation-request-id': '759997dc-719f-4342-b841-a6ed3e540776',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045319Z:759997dc-719f-4342-b841-a6ed3e540776',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 24 Jan 2016 04:53:18 GMT',
+  connection: 'close',
+  'content-length': '512' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registering\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31998',
-  'x-ms-request-id': '3f6b4b5d-200e-4aea-89fe-aab73335638b',
-  'x-ms-correlation-request-id': '3f6b4b5d-200e-4aea-89fe-aab73335638b',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164537Z:3f6b4b5d-200e-4aea-89fe-aab73335638b',
+  'x-ms-ratelimit-remaining-subscription-reads': '14979',
+  'x-ms-request-id': '759997dc-719f-4342-b841-a6ed3e540776',
+  'x-ms-correlation-request-id': '759997dc-719f-4342-b841-a6ed3e540776',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045319Z:759997dc-719f-4342-b841-a6ed3e540776',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:36 GMT',
-  'content-length': '1248' });
+  date: 'Sun, 24 Jan 2016 04:53:18 GMT',
+  connection: 'close',
+  'content-length': '512' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14981',
+  'x-ms-request-id': '37045bb0-d3cb-4535-94a0-7c433aec2063',
+  'x-ms-correlation-request-id': '37045bb0-d3cb-4535-94a0-7c433aec2063',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045329Z:37045bb0-d3cb-4535-94a0-7c433aec2063',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 24 Jan 2016 04:53:28 GMT',
+  connection: 'close',
+  'content-length': '511' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.AppService\",\"namespace\":\"Microsoft.AppService\",\"resourceTypes\":[{\"resourceType\":\"apiapps\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"appIdentities\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"gateways\",\"locations\":[\"East US\",\"West US\",\"South Central US\",\"North Europe\",\"East Asia\",\"Japan East\",\"West Europe\",\"Southeast Asia\",\"Japan West\",\"North Central US\",\"Central US\",\"Brazil South\",\"East US 2\",\"Australia Southeast\",\"Australia East\"],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]},{\"resourceType\":\"deploymenttemplates\",\"locations\":[],\"apiVersions\":[\"2015-03-01-preview\",\"2015-03-01-alpha\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31997',
-  'x-ms-request-id': 'de5cfbb4-5dd3-4f5f-b358-8264fc1bd461',
-  'x-ms-correlation-request-id': 'de5cfbb4-5dd3-4f5f-b358-8264fc1bd461',
-  'x-ms-routing-request-id': 'WESTUS:20150403T164537Z:de5cfbb4-5dd3-4f5f-b358-8264fc1bd461',
+  'x-ms-ratelimit-remaining-subscription-reads': '14981',
+  'x-ms-request-id': '37045bb0-d3cb-4535-94a0-7c433aec2063',
+  'x-ms-correlation-request-id': '37045bb0-d3cb-4535-94a0-7c433aec2063',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045329Z:37045bb0-d3cb-4535-94a0-7c433aec2063',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 03 Apr 2015 16:45:37 GMT',
-  'content-length': '1248' });
+  date: 'Sun, 24 Jan 2016 04:53:28 GMT',
+  connection: 'close',
+  'content-length': '511' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14980',
+  'x-ms-request-id': 'f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'x-ms-correlation-request-id': 'f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045329Z:f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 24 Jan 2016 04:53:29 GMT',
+  connection: 'close',
+  'content-length': '511' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps?api-version=2014-04-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.BingMaps\",\"namespace\":\"Microsoft.BingMaps\",\"resourceTypes\":[{\"resourceType\":\"mapApis\",\"locations\":[\"West US\"],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"listCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]},{\"resourceType\":\"updateCommunicationPreference\",\"locations\":[],\"apiVersions\":[\"2015-07-02\"]}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14980',
+  'x-ms-request-id': 'f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'x-ms-correlation-request-id': 'f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'x-ms-routing-request-id': 'WESTUS:20160124T045329Z:f291e2aa-0ab1-49bf-8b0a-2e9f9f394d05',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sun, 24 Jan 2016 04:53:29 GMT',
+  connection: 'close',
+  'content-length': '511' });
  return result; }]];
