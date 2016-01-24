@@ -4,6 +4,7 @@
 export AZURE_STORAGE_TEST_LOCATION="West US"
 
 export NOCK_OFF=true
+export AZURE_NOCK_RECORD= 
 
 base_dir=$(dirname $0)
 
