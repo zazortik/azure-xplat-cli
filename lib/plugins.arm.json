@@ -29203,7 +29203,7 @@
                   "name": "create",
                   "description": "Create express route circuit authorization",
                   "fullName": "network express-route authorization create",
-                  "usage": "[options] <resource-group> <circuit-name> <name>",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -29250,12 +29250,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--name",
+                      "long": "--auth-name",
                       "description": "the name of the express route circuit authorization"
                     },
                     {
@@ -29282,7 +29282,7 @@
                   "name": "set",
                   "description": "Set express route circuit authorization",
                   "fullName": "network express-route authorization set",
-                  "usage": "[options] <resource-group> <circuit-name> <name>",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -29329,12 +29329,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--name",
+                      "long": "--auth-name",
                       "description": "the name of the express route circuit authorization"
                     },
                     {
@@ -29361,7 +29361,7 @@
                   "name": "show",
                   "description": "Show express route circuit authorization",
                   "fullName": "network express-route authorization show",
-                  "usage": "[options] <resource-group> <circuit-name> <name>",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -29408,12 +29408,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--name",
+                      "long": "--auth-name",
                       "description": "the name of the express route circuit express route authorization"
                     },
                     {
@@ -29431,7 +29431,7 @@
                   "name": "delete",
                   "description": "Delete express route circuit authorization",
                   "fullName": "network express-route authorization delete",
-                  "usage": "[options] <resource-group> <circuit-name> <name>",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -29478,12 +29478,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--name",
+                      "long": "--auth-name",
                       "description": "the name of the express route circuit express route authorization"
                     },
                     {
