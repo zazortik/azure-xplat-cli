@@ -6,7 +6,7 @@
 # This script is only used at build time, it is not part of the package.
 # 
 
-CURRENT_NODE_DISTRIBUTION_VERSION=v0.12.7
+CURRENT_NODE_DISTRIBUTION_VERSION=v4.2.4
 
 # Check for Apple's PackageMaker
 # ------------------------------
@@ -57,8 +57,8 @@ scripts/createTarball.sh
 # --------------
 
 echo Downloading node binary from nodejs.org
-download_url=http://nodejs.org/dist/${CURRENT_NODE_DISTRIBUTION_VERSION}/node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x86.tar.gz
-path_to_node=node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x86/bin/node
+download_url=http://nodejs.org/dist/${CURRENT_NODE_DISTRIBUTION_VERSION}/node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x64.tar.gz  
+path_to_node=node-${CURRENT_NODE_DISTRIBUTION_VERSION}-darwin-x64/bin/node
 
 rm -f out/node.tar.gz
 rm -rf out/${path_to_node}

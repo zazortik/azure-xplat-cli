@@ -59,8 +59,17 @@ VMTestUtil.prototype.createGroup = function(groupName, location, suite, callback
     result.exitStatus.should.equal(0);
     callback();
   });
-
 };
+
+VMTestUtil.prototype.setGroup = function(groupName, suite, callback) {
+  var timestamp = (new Date()).toISOString();
+  var tagstr = (suite.testPrefix + '=' + timestamp);
+  suite.execute('group set --name %s --tags %s --json', groupName, tagstr, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
+
 VMTestUtil.prototype.deleteUsedGroup = function(groupName, suite, callback) {
   if (!suite.isPlayback()) {
     suite.execute('group delete %s --quiet --json', groupName, function(result) {
