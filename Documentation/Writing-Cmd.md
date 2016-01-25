@@ -33,7 +33,7 @@ Depends on what mode your cmds in choose appropriate folder:
 * While creating arguments/parameters for your command, please make sure that the switch name (long version "--username" and short version "-u") does not conflict with already used switches in the same command
 
 ## Specifying Required or Optional parameters for a cmdlet
-CLI uses [commander](https://github.com/tj/commander.js?utm_source=jobboleblog) for defining the cmdlets. Please read the commander documentation for proper understanding. Commander treats a parameter as a required parameter when it is specified with **angle brackets '< >'** in it's definition and it treats a parameter as optional when it is specified with **square brackets '[ ]'** in it's definition. Please take a look at an example here
+CLI uses [commander](https://github.com/tj/commander.js?utm_source=jobboleblog) for defining the cmdlets. Please read the commander documentation for proper understanding. Commander treats a parameter as a required parameter when it is specified with **angle brackets '< >'** in it's definition and it treats a parameter as an optional parameter when it is specified with **square brackets '[ ]'** in it's definition. Please take a look at an example here
 ```
 group.command('set <name>')
   .description($('Set tags to a resource group'))
