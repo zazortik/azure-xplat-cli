@@ -31,3 +31,20 @@ Depends on what mode your cmds in choose appropriate folder:
   * show - provide more information about the specified entity
   * delete - delete the specified entity
 * While creating arguments/parameters for your command, please make sure that the switch name (long version "--username" and short version "-u") does not conflict with already used switches in the same command
+
+## Specifying Required or Optional parameters for a cmdlet
+CLI uses [commander](https://github.com/tj/commander.js?utm_source=jobboleblog) for defining the cmdlets. Please read the commander documentation for proper understanding. Commander treats a parameter as a **required parameter** when it is specified with **angle brackets '< >'** in it's definition and it treats a parameter as an **optional parameter** when it is specified with **square brackets '[ ]'** in it's definition. Please take a look at an example here
+```
+group.command('set <name>')
+  .description($('Set tags to a resource group'))
+  .usage('[options] <name> [tags]')
+/*REQUIRED*/  .option('-n --name <name>', $('the resource group name')) 
+/*OPTIONAL*/  .option('-t --tags [tags]', $('Tags to set to the resource group. Can be multiple. ' +
+        'In the format of \'name=value\'. Name is required and value is optional. ' + 
+        'For example, -t 'tag1=value1;tag2'. Providing an empty string '' will delete the tags.'))  
+  .option('--subscription <subscription>', $('the subscription identifier'))
+  .execute(function (name, options, _) {
+    var updatedGroup = group.createResourceGroup(name, '', options, _);
+    showResourceGroup(updatedGroup);
+  });
+```

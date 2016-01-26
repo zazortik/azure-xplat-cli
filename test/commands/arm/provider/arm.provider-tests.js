@@ -49,23 +49,26 @@ describe('arm', function () {
         done();
       });
     });
+    
+    //we chose "Microsoft.BingMaps" for testing for the reason that it is available 
+    //in less locations, so register/unregister would be faster and reliable
 
     it('show should work', function (done) {
-      suite.execute('provider show %s --json', 'Microsoft.web', function (result) {
+      suite.execute('provider show %s --json', 'Microsoft.BingMaps', function (result) {
         result.exitStatus.should.equal(0);
         var provider = JSON.parse(result.text);
-        provider.namespace.should.match(/^Microsoft.Web$/ig);
+        provider.namespace.should.match(/^Microsoft.BingMaps$/ig);
         done();
       });
     });
 
     it('register should work', function (done) {
-      suite.execute('provider register %s --json', 'Microsoft.AppService', function (result) {
+      suite.execute('provider register %s --json', 'Microsoft.BingMaps', function (result) {
         result.exitStatus.should.equal(0);
-        suite.execute('provider show %s --json', 'Microsoft.AppService', function (result) {
+        suite.execute('provider show %s --json', 'Microsoft.BingMaps', function (result) {
           result.exitStatus.should.equal(0);
           var provider = JSON.parse(result.text);
-          provider.namespace.should.match(/^Microsoft.AppService$/ig);
+          provider.namespace.should.match(/^Microsoft.BingMaps$/ig);
           provider.registrationState.should.match(/.*register.*/ig);
           done();
         });
@@ -73,12 +76,12 @@ describe('arm', function () {
     });
 
     it('unregister should work', function (done) {
-      suite.execute('provider unregister %s --json', 'Microsoft.AppService', function (result) {
+      suite.execute('provider unregister %s --json', 'Microsoft.BingMaps', function (result) {
         result.exitStatus.should.equal(0);
-        suite.execute('provider show %s --json', 'Microsoft.AppService', function (result) {
+        suite.execute('provider show %s --json', 'Microsoft.BingMaps', function (result) {
           result.exitStatus.should.equal(0);
           var provider = JSON.parse(result.text);
-          provider.namespace.should.match(/^Microsoft.AppService$/ig);
+          provider.namespace.should.match(/^Microsoft.BingMaps$/ig);
           provider.registrationState.should.match(/.*unregister.*/ig);
           done();
         });
