@@ -92,7 +92,7 @@ describe('cli', function() {
                 cmd.push('SomeLoc');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(1);
-                    result.errorText.should.include('error: No location found which has DisplayName or Name same as value of --location');
+                    result.errorText.should.include(' No location found which has DisplayName or Name same as value of --location');
                     done();
                 });
             });
