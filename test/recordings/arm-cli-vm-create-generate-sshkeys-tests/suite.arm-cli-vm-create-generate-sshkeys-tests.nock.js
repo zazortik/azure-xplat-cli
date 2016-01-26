@@ -22,9 +22,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatsshstorage13541','xplatsshstoragecnt15389'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatsshstorage13249','xplatsshstoragecnt12274'];};
