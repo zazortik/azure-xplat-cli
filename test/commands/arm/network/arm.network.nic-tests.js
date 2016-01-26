@@ -19,8 +19,8 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-nic-tests';
-var privateIP = '10.31.255.250',
-  privateIP2 = '10.31.254.254';
+var privateIP = '10.0.0.22',
+  privateIP2 = '10.0.0.25';
 var networkTestUtil = require('../../../util/networkTestUtil');
 var _ = require('underscore');
 var groupName, nsgName,
