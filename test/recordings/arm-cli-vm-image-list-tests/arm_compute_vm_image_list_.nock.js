@@ -35,12 +35,12 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '028cdedc-aa7a-49f0-843d-5d756c4333b3',
+  'x-ms-request-id': '835505f7-a198-463d-bcb3-38dea34284ff',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '1967202a-d16c-4046-bad6-1ea85dce20e0',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:1967202a-d16c-4046-bad6-1ea85dce20e0',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': '9160e4ed-5912-4310-9a19-f4041c845355',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:9160e4ed-5912-4310-9a19-f4041c845355',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,84 +53,12 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '028cdedc-aa7a-49f0-843d-5d756c4333b3',
+  'x-ms-request-id': '835505f7-a198-463d-bcb3-38dea34284ff',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '1967202a-d16c-4046-bad6-1ea85dce20e0',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:1967202a-d16c-4046-bad6-1ea85dce20e0',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4319?api-version=2015-06-15')
-  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '117',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '83dffb3b-404a-4d0b-a348-a26b7d5041f5',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-correlation-request-id': '35287519-8832-48ce-bd82-03b56b3a6b35',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:35287519-8832-48ce-bd82-03b56b3a6b35',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4319?api-version=2015-06-15')
-  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '117',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '83dffb3b-404a-4d0b-a348-a26b7d5041f5',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14995',
-  'x-ms-correlation-request-id': '35287519-8832-48ce-bd82-03b56b3a6b35',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:35287519-8832-48ce-bd82-03b56b3a6b35',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4021?api-version=2015-06-15')
-  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '117',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9330f8b5-8622-4be7-ba63-2e3b9bb55621',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': '1783a083-ef86-47c4-b53d-404ee430c821',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:1783a083-ef86-47c4-b53d-404ee430c821',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4021?api-version=2015-06-15')
-  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '117',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9330f8b5-8622-4be7-ba63-2e3b9bb55621',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': '1783a083-ef86-47c4-b53d-404ee430c821',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035909Z:1783a083-ef86-47c4-b53d-404ee430c821',
-  date: 'Wed, 27 Jan 2016 03:59:09 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14971',
+  'x-ms-correlation-request-id': '9160e4ed-5912-4310-9a19-f4041c845355',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:9160e4ed-5912-4310-9a19-f4041c845355',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -143,12 +71,12 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8c76536b-3702-410b-abc3-be8eb411ae5c',
+  'x-ms-request-id': '2a6d767a-5805-4e3d-85e6-05718fb41653',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '9faa47fd-b466-40ca-ba1a-ad22f71ad433',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035910Z:9faa47fd-b466-40ca-ba1a-ad22f71ad433',
-  date: 'Wed, 27 Jan 2016 03:59:10 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14969',
+  'x-ms-correlation-request-id': 'f63a91a9-06f9-4b25-aef4-f52bc098ca77',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:f63a91a9-06f9-4b25-aef4-f52bc098ca77',
+  date: 'Wed, 27 Jan 2016 19:03:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -161,11 +89,83 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8c76536b-3702-410b-abc3-be8eb411ae5c',
+  'x-ms-request-id': '2a6d767a-5805-4e3d-85e6-05718fb41653',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '9faa47fd-b466-40ca-ba1a-ad22f71ad433',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T035910Z:9faa47fd-b466-40ca-ba1a-ad22f71ad433',
-  date: 'Wed, 27 Jan 2016 03:59:10 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14969',
+  'x-ms-correlation-request-id': 'f63a91a9-06f9-4b25-aef4-f52bc098ca77',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:f63a91a9-06f9-4b25-aef4-f52bc098ca77',
+  date: 'Wed, 27 Jan 2016 19:03:53 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4021?api-version=2015-06-15')
+  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '117',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '718050f4-285c-4d9a-8d05-233b90c31849',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14969',
+  'x-ms-correlation-request-id': 'cd6f8c8f-9ce9-4899-8615-31b17fdd5159',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:cd6f8c8f-9ce9-4899-8615-31b17fdd5159',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4021?api-version=2015-06-15')
+  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '117',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '718050f4-285c-4d9a-8d05-233b90c31849',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14969',
+  'x-ms-correlation-request-id': 'cd6f8c8f-9ce9-4899-8615-31b17fdd5159',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:cd6f8c8f-9ce9-4899-8615-31b17fdd5159',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4319?api-version=2015-06-15')
+  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '117',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1b15cb56-3154-44fe-8cbb-0c5b6ce65558',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14968',
+  'x-ms-correlation-request-id': '7d9c72ac-4a0f-4a49-b622-c3dee16978ff',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:7d9c72ac-4a0f-4a49-b622-c3dee16978ff',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/SQL2008R2SP3-WS2008R2SP1/artifacttypes/vmimage/offers/MicrosoftSQLServer/skus/Enterprise/versions/10.50.4319?api-version=2015-06-15')
+  .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: SQL2008R2SP3-WS2008R2SP1 was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '117',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1b15cb56-3154-44fe-8cbb-0c5b6ce65558',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14968',
+  'x-ms-correlation-request-id': '7d9c72ac-4a0f-4a49-b622-c3dee16978ff',
+  'x-ms-routing-request-id': 'CENTRALUS:20160127T190353Z:7d9c72ac-4a0f-4a49-b622-c3dee16978ff',
+  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
   connection: 'close' });
  return result; }]];
