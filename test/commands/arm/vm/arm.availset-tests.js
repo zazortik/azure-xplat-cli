@@ -39,8 +39,8 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? 'xplatTestGAvailCreate' : suite.generateId(groupPrefix, null);
-        availprefix = suite.isMocked ? 'xplatTestaAvail' : suite.generateId(availprefix, null);
+        groupName = suite.generateId(groupPrefix, null);
+        availprefix = suite.generateId(availprefix, null);
         done();
       });
     });
