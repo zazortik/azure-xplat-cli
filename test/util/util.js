@@ -188,8 +188,9 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
         (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
         (result.errorText.indexOf('Too many requests received') + 1) ||
         (result.errorText.indexOf('Windows Azure is currently performing an operation on this hosted service that requires exclusive access') + 1) ||
+        (result.errorText.indexOf('Another operation on this or dependent resource is in progress') + 1) ||
         (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
-      console.log('Re-executing command. Please wait.');
+
       setTimeout(function() {
         self.executeCommand(suite, retry, cmd, callback);
       }, self.TIMEOUT_INTERVAL);
