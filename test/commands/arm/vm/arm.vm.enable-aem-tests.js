@@ -100,14 +100,13 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json',
-                groupName, vmPrefix, location, nicName, linuxImageUrn, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.4.0.0/16', subnetName, '10.4.0.0/24', publicipName, dnsPrefix).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                done();
-              });
-            //}
+            var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s --json',
+              groupName, vmPrefix, location, nicName, linuxImageUrn, username, password, storageAccount, storageCont,
+              vNetPrefix, '10.4.0.0/16', subnetName, '10.4.0.0/24', publicipName, dnsPrefix).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
           });
         });
       });
@@ -134,7 +133,7 @@ describe('arm', function() {
 
       //Set AEM
       it('Set AEM for the created vm', function(done) {
-        var cmd = util.format('vm enable-aem %s %s --json', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm enable-aem %s %s -q --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
