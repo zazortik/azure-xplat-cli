@@ -13,7 +13,9 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,42 +23,42 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'South Central US';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xDeploymentTestGroup3480/deployments/random_deployment_name?api-version=2014-04-01-preview')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xDeploymentTestGroup8112/providers/Microsoft.Resources/deployments/random_deployment_name?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"DeploymentNotFound\",\"message\":\"Deployment 'random_deployment_name' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-request-id': '4acb0511-0015-4a21-92da-532958a611f0',
-  'x-ms-correlation-request-id': '4acb0511-0015-4a21-92da-532958a611f0',
-  'x-ms-routing-request-id': 'WESTUS:20151007T202358Z:4acb0511-0015-4a21-92da-532958a611f0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14997',
+  'x-ms-request-id': '0d48275f-ee24-4f20-8009-b099e23463b5',
+  'x-ms-correlation-request-id': '0d48275f-ee24-4f20-8009-b099e23463b5',
+  'x-ms-routing-request-id': 'WESTUS:20160130T204522Z:0d48275f-ee24-4f20-8009-b099e23463b5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 07 Oct 2015 20:23:57 GMT',
+  date: 'Sat, 30 Jan 2016 20:45:22 GMT',
   connection: 'close',
   'content-length': '107' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xDeploymentTestGroup3480/deployments/random_deployment_name?api-version=2014-04-01-preview')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xDeploymentTestGroup8112/providers/Microsoft.Resources/deployments/random_deployment_name?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"DeploymentNotFound\",\"message\":\"Deployment 'random_deployment_name' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-request-id': '4acb0511-0015-4a21-92da-532958a611f0',
-  'x-ms-correlation-request-id': '4acb0511-0015-4a21-92da-532958a611f0',
-  'x-ms-routing-request-id': 'WESTUS:20151007T202358Z:4acb0511-0015-4a21-92da-532958a611f0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14997',
+  'x-ms-request-id': '0d48275f-ee24-4f20-8009-b099e23463b5',
+  'x-ms-correlation-request-id': '0d48275f-ee24-4f20-8009-b099e23463b5',
+  'x-ms-routing-request-id': 'WESTUS:20160130T204522Z:0d48275f-ee24-4f20-8009-b099e23463b5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 07 Oct 2015 20:23:57 GMT',
+  date: 'Sat, 30 Jan 2016 20:45:22 GMT',
   connection: 'close',
   'content-length': '107' });
  return result; }]];
