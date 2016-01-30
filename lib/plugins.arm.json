@@ -29191,6 +29191,384 @@
                 }
               ],
               "categories": {}
+            },
+            "authorization": {
+              "name": "authorization",
+              "description": "Commands to manage express routes authorization",
+              "fullName": "network express-route authorization",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create express route circuit authorization",
+                  "fullName": "network express-route authorization create",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit authorization"
+                    },
+                    {
+                      "flags": "-k, --key <key>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--key",
+                      "description": "the express route circuit authorization key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set express route circuit authorization",
+                  "fullName": "network express-route authorization set",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit authorization"
+                    },
+                    {
+                      "flags": "-k, --key <key>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--key",
+                      "description": "the express route circuit authorization key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show express route circuit authorization",
+                  "fullName": "network express-route authorization show",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit express route authorization"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete express route circuit authorization",
+                  "fullName": "network express-route authorization delete",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit express route authorization"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all express route circuit authorizations",
+                  "fullName": "network express-route authorization list",
+                  "usage": "[options] <resource-group> <circuit-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
             }
           }
         }
@@ -33416,6 +33794,58 @@
               "description": "the subscription identifier"
             }
           ]
+        },
+        {
+          "name": "enable-aem",
+          "description": "Enable azure enhanced monitoring extension on a VM in a resource group",
+          "fullName": "vm enable-aem",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
+              "flags": "-a, --diagnostic-storage-account-name",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--diagnostic-storage-account-name",
+              "description": "storage account name"
+            },
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            }
+          ] 
         },
         {
           "name": "enable-diag",

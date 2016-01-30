@@ -57,8 +57,8 @@ describe('arm', function () {
   describe('network', function () {
     var suite,
       timeout,
-      retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 10000;
+      retry = 10;
+    testUtils.TIMEOUT_INTERVAL = 20000;
     var networkUtil = new networkTestUtil();
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -166,7 +166,7 @@ describe('arm', function () {
         var cmd = util.format('network vpn-connection delete %s %s --json --quiet', groupName, gatewayConnPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          setTimeout(done(), timeout);
+          done();
         });
       });
     });

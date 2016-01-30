@@ -38,6 +38,8 @@ commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.availset-tests.js
+# Extension Tests
+commands/arm/vm/arm.vm.enable-aem-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
@@ -58,6 +60,7 @@ commands/arm/network/arm.network.local-gateway-tests.js
 commands/arm/network/arm.network.vpn-gateway-tests.js
 commands/arm/network/arm.network.vpn-connection-tests.js
 commands/arm/network/arm-network-express-route-circuit-tests.js
+commands/arm/network/arm.network.express-route-authorization-tests.js
 commands/arm/network/arm.network.dns-zone-tests.js
 commands/arm/network/arm.network.dns-zone-record-set-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js

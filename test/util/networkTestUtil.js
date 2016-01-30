@@ -338,3 +338,10 @@ networkTestUtil.prototype.createGateway = function(groupName, gatewayPrefix, loc
     callback();
   });
 };
+networkTestUtil.prototype.createExpressRoute = function(groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, callback) {
+  var cmd = util.format('network express-route circuit create %s %s %s -p %s -i %s -b 50 -e %s -f %s -t %s --json', groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1).split(' ');
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    callback();
+  });
+};
