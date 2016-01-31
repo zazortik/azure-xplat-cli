@@ -12,4 +12,6 @@ commands/arm/vm/arm.vm-disk-encryption-tests.js
 # Docker
 commands/arm/vm/arm.vm-docker-tests.js
 commands/arm/vm/arm.vm-docker-ssh-tests.js
+#Extension Tests
+commands/arm/vm/arm.vm.enable-aem-tests.js
 # Live Only
