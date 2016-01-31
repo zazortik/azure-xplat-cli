@@ -25,15 +25,15 @@ var groupPrefix = 'xplatTestVMQCreate';
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
-  defaultValue: 'southeastasia'
+  defaultValue: 'westus'
 }, {
   name: 'SSHCERT',
   defaultValue: 'test/myCert.pem'
 }];
 
 var groupName,
-  vm1Prefix = 'xplatvm1',
-  vm2Prefix = 'xplatvm2',
+  vm1Prefix = 'xplatvm101',
+  vm2Prefix = 'xplatvm102',
   location,
   username = 'azureuser',
   password = 'Brillio@2016',
