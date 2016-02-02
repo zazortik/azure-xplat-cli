@@ -114,7 +114,7 @@ describe('arm', function () {
       });
 
       it('is-dns-available checks specified DNS prefix is available for creating traffic-manager profile', function (done) {
-        var cmd = util.format('network traffic-manager profile is-dns-available %s %s --json', groupName, reldns).split(' ');
+        var cmd = util.format('network traffic-manager profile is-dns-available %s --json', reldns).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);

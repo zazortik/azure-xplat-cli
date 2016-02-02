@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.13",
+  "version": "0.9.14",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -28,7 +28,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.8.26"
+    "node": ">= 0.10.0"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -38,15 +38,15 @@
     "azure-arm-apiapp": "0.1.3",
     "azure-arm-authorization": "2.0.0",
     "azure-arm-commerce": "0.1.1",
-    "azure-arm-compute": "0.13.0",
+    "azure-arm-compute": "0.14.0",
     "azure-arm-hdinsight": "0.1.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
     "azure-arm-insights": "0.10.2",
-    "azure-arm-network": "0.11.0",
-    "azure-arm-trafficmanager": "0.10.4",
+    "azure-arm-network": "0.12.0",
+    "azure-arm-trafficmanager": "0.10.5",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
-    "azure-arm-rediscache": "0.1.0",
+    "azure-arm-rediscache": "0.2.0",
     "azure-arm-datalake-analytics": "0.1.6",
     "azure-arm-datalake-store": "0.1.4",
     "azure-extra": "0.2.12",
@@ -59,13 +59,13 @@
     "azure-monitoring": "0.10.2",
     "azure-asm-network": "0.10.2",
     "azure-arm-resource": "0.10.7",
-    "azure-arm-storage": "0.11.0",
+    "azure-arm-storage": "0.12.1-preview",
     "azure-asm-sb": "0.10.1",
     "azure-asm-sql": "0.10.1",
     "azure-asm-storage": "0.10.1",
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.1",
-    "azure-storage": "0.6.0",
+    "azure-storage": "0.7.0",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -80,7 +80,7 @@
     "kuduscript": "1.0.6",
     "mime": "~1.2.4",
     "moment": "2.6.0",
-    "ms-rest-azure": "1.2.0",
+    "ms-rest-azure": "^1.8.0",
     "node-forge": "0.6.23",
     "node-uuid": "1.2.0",
     "number-is-nan": "1.0.0",
@@ -110,8 +110,8 @@
     "jshint": "<= 2.6.0",
     "sinon": "*",
     "should": "3.3.2",
-    "nock": "0.16",
-    "winston-memory": "*"
+    "winston-memory": "*",
+    "nock": "0.16"
   },
   "homepage": "https://github.com/Azure/azure-xplat-cli",
   "repository": {
@@ -124,9 +124,10 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
-    "unit-mc": "node scripts/unit.js --mc testlistmc.txt",
-    "unit-arm": "node scripts/unit.js testlistarm.txt",
-    "unit-arm-vm": "node scripts/unit.js testlistarmvm.txt",
+    "unit-arm": "node scripts/unit.js testlist-arm.txt",   
+    "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
+    "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
+    "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext ._js",
     "preci": "jshint lib --reporter=checkstyle --extra-ext ._js > checkstyle-result.xml",
     "ci": "node scripts/unit.js testlist.txt -xunit",

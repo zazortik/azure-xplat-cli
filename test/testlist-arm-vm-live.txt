@@ -1,0 +1,15 @@
+#owner @huangpf 
+# Live + Playback
+include:./testlist-arm-vm.txt
+commands/arm/usage/arm.usage.feature-tests.js
+commands/arm/vm/arm.vm-stop-restart-tests.js
+commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
+commands/arm/vm/arm.vm-create-generate-ssh-tests.js
+commands/arm/vm/arm.vm.extension-tests.js
+commands/arm/vm/arm.vm.size-tests.js
+commands/arm/vm/arm.availset-tests.js
+commands/arm/vm/arm.vm-disk-encryption-tests.js
+# Docker
+commands/arm/vm/arm.vm-docker-tests.js
+commands/arm/vm/arm.vm-docker-ssh-tests.js
+# Live Only

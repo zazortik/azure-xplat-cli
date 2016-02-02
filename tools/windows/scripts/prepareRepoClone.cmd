@@ -9,7 +9,7 @@
 :: to avoid https://github.com/npm/npm/issues/6438
 chcp 850 
 
-set NODE_VERSION=0.12.7
+set NODE_VERSION=4.2.4
 set NPM_VERSION=1.3.17
 
 :: Add Git to the path as this should be run through a .NET command prompt
@@ -18,7 +18,7 @@ set PATH=%PATH%;"C:\Program Files (x86)\Git\bin;"
 
 pushd %~dp0..\
 
-set NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/node.exe
+set NODE_DOWNLOAD_URL=http://nodejs.org/dist/v%NODE_VERSION%/win-x86/node.exe
 set NPM_DOWNLOAD_URL=http://nodejs.org/dist/npm/npm-%NPM_VERSION%.zip
 
 echo Cleaning previous build artifacts...

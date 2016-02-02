@@ -157,10 +157,7 @@ describe('arm', function () {
 
       it('should parse the error properly for a non existant user', function (done) {
         suite.execute('ad user show --upn %s --json', 'nonexisitinguser@mywebforum.com', function (result) {
-          result.exitStatus.should.equal(0);
-          var user = JSON.parse(result.text);
-          var empty = {};
-          user.should.be.empty;
+          result.errorText.should.include('No matching user was found');
           done();
         });
       });

@@ -104,7 +104,7 @@
           "bool": true,
           "short": "-p",
           "long": "--password",
-          "description": "user password or service principal key, will prompt if not given."
+          "description": "user password or service principal secret, will prompt if not given."
         },
         {
           "flags": "--service-principal",
@@ -113,6 +113,22 @@
           "bool": true,
           "long": "--service-principal",
           "description": "If given, log in as a service principal rather than a user."
+        },
+        {
+          "flags": "--certificate-file <certificateFile>",
+          "required": -20,
+          "optional": 0,
+          "bool": true,
+          "long": "--certificate-file",
+          "description": "A PEM encoded certificate private key file."
+        },
+        {
+          "flags": "--thumbprint <thumbprint>",
+          "required": -14,
+          "optional": 0,
+          "bool": true,
+          "long": "--thumbprint",
+          "description": "A hex encoded thumbprint of the certificate."
         },
         {
           "flags": "--tenant <tenant>",
@@ -27707,7 +27723,7 @@
                   "bool": true,
                   "short": "-y",
                   "long": "--type",
-                  "description": "the gateway type\n   Valid values are [RouteBased,PolicyBased,Dedicated]\n   Default is RouteBased"
+                  "description": "the gateway type\n     Valid values are [RouteBased,PolicyBased,Dedicated]\n     Default is RouteBased"
                 },
                 {
                   "flags": "-u, --public-ip-id <public-ip-id>",
@@ -27725,7 +27741,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--public-ip-name",
-                  "description": "the public ip name. This public ip must exists in the same resource group as the vnet gateway. Please use public-ip-id if that is not the case."
+                  "description": "the public ip name. This public ip must exists in the same resource group as the vnet gateway. \n     Please use public-ip-id if that is not the case."
                 },
                 {
                   "flags": "-f, --subnet-id <subnet-id>",
@@ -27743,7 +27759,7 @@
                   "bool": true,
                   "short": "-m",
                   "long": "--vnet-name",
-                  "description": "the virtual network name. This virtual network must exists in the same resource group as the vnet gateway. Please use sunet-id if that is not the case."
+                  "description": "the virtual network name. This virtual network must exists in the same resource group as the vnet gateway. \n     Please use subnet-id if that is not the case."
                 },
                 {
                   "flags": "-e, --subnet-name <subnet-name>",
@@ -27752,7 +27768,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--subnet-name",
-                  "description": "the subnet name"
+                  "description": "the subnet name which exists in vnet. Default value is \"GatewaySubnet\""
                 },
                 {
                   "flags": "-a, --private-ip-address <private-ip-address>",
@@ -27761,7 +27777,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--private-ip-address",
-                  "description": "the private ip address"
+                  "description": "the local ip address for the gateway in the vnet. If not provided then using Dynamic ip address"
                 },
                 {
                   "flags": "-b, --enable-bgp <enable-bgp>",
@@ -27841,6 +27857,15 @@
                   "short": "-n",
                   "long": "--name",
                   "description": "the name of the virtual network gateway"
+                },
+                {
+                  "flags": "-a, --private-ip-address <private-ip-address>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--private-ip-address",
+                  "description": "the local ip address for the gateway in the vnet"
                 },
                 {
                   "flags": "-t, --tags [tags]",
@@ -28124,6 +28149,15 @@
                   "description": "the name of the virtual network gateway"
                 },
                 {
+                  "flags": "-r, --vnet-gateway1-group <vnet-gateway1-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--vnet-gateway1-group",
+                  "description": "the resource group name of the virtual network gateway"
+                },
+                {
                   "flags": "-e, --vnet-gateway2 <vnet-gateway2>",
                   "required": -21,
                   "optional": 0,
@@ -28131,6 +28165,15 @@
                   "short": "-e",
                   "long": "--vnet-gateway2",
                   "description": "the name of the connected virtual network gateway"
+                },
+                {
+                  "flags": "-m, --vnet-gateway2-group <vnet-gateway2-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--vnet-gateway2-group",
+                  "description": "the resource group name of the connected virtual network gateway"
                 },
                 {
                   "flags": "-d, --lnet-gateway2 <lnet-gateway2>",
@@ -28142,13 +28185,22 @@
                   "description": "the name of the connected local network gateway"
                 },
                 {
+                  "flags": "-z, --lnet-gateway2-group <lnet-gateway2-group>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--lnet-gateway2-group",
+                  "description": "the resource group name of the connected local network gateway"
+                },
+                {
                   "flags": "-y, --type <type>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-y",
                   "long": "--type",
-                  "description": "the connection type\n   Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
+                  "description": "the connection type\n     Valid values are [Vnet2Vnet,IPsec,ExpressRoute]"
                 },
                 {
                   "flags": "-w, --routing-weight <routing-weight>",
@@ -29125,6 +29177,384 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "authorization": {
+              "name": "authorization",
+              "description": "Commands to manage express routes authorization",
+              "fullName": "network express-route authorization",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create express route circuit authorization",
+                  "fullName": "network express-route authorization create",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit authorization"
+                    },
+                    {
+                      "flags": "-k, --key <key>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--key",
+                      "description": "the express route circuit authorization key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set express route circuit authorization",
+                  "fullName": "network express-route authorization set",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit authorization"
+                    },
+                    {
+                      "flags": "-k, --key <key>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--key",
+                      "description": "the express route circuit authorization key"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show express route circuit authorization",
+                  "fullName": "network express-route authorization show",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit express route authorization"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete express route circuit authorization",
+                  "fullName": "network express-route authorization delete",
+                  "usage": "[options] <resource-group> <circuit-name> <auth-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
+                    },
+                    {
+                      "flags": "-n, --auth-name <auth-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--auth-name",
+                      "description": "the name of the express route circuit express route authorization"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get all express route circuit authorizations",
+                  "fullName": "network express-route authorization list",
+                  "usage": "[options] <resource-group> <circuit-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --circuit-name <circuit-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--circuit-name",
+                      "description": "the name of the express route circuit"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -31848,7 +32278,7 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form publisherName:offer:skus:version.\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
+              "description": "the image URN in the form publisherName:offer:skus:version.\n      Or the source VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd\n      Option '-d' can be used with this option to specify the destination storage location where the new OS VHD will be created and put to.\n      In this case, OS profile credentials have to be specified, i.e. user name/password, or SSH keys, etc."
             },
             {
               "flags": "-u, --admin-username <admin-username>",
@@ -32019,7 +32449,7 @@
               "bool": true,
               "short": "-d",
               "long": "--os-disk-vhd",
-              "description": "name or url of the OS disk Vhd\n     If this parameter is specified along with --image-urn parameter then OS disk created from the image will be stored in this vhd\n     If this parameter is specified without --image-urn parameter then this vhd must exists and will be used as OS Disk"
+              "description": "name or url of the OS disk Vhd\n     If this parameter is specified along with --image-urn ('-Q') parameter then OS disk created from the image will be stored in this vhd.\n     If this parameter is specified without --image-urn ('-Q') parameter then this vhd must exists and will be used as a specialized OS disk image.\n     If this parameter is specified without --image-urn ('-Q') parameter, OS profile credentials will be ignored, and the specialized credentials from the disk image will be used."
             },
             {
               "flags": "-a, --data-disk-caching <data-disk-caching>",
@@ -32216,7 +32646,16 @@
               "bool": true,
               "short": "-Q",
               "long": "--image-urn",
-              "description": "the image URN in the form \"publisherName:offer:skus:version\".\n      Or the VHD link of a user image, e.g. https://foo.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/snap-bar.vhd"
+              "description": "the image URN in the form \"publisherName:offer:skus:version\",\n                                               or the VHD link of a user image,\n                                               e.g. https://foo.blob.core.windows.net/bar/vhds/baz.vhd"
+            },
+            {
+              "flags": "-z, --vm-size <vm-size>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-z",
+              "long": "--vm-size",
+              "description": "the virtual machine size [Standard_D1]"
             },
             {
               "flags": "-u, --admin-username <admin-username>",
@@ -32234,7 +32673,16 @@
               "bool": true,
               "short": "-p",
               "long": "--admin-password",
-              "description": "the password"
+              "description": "the password, skipped if SSH public key file is specified for Linux VMs"
+            },
+            {
+              "flags": "-M, --ssh-publickey-file <ssh-publickey-file>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "short": "-M",
+              "long": "--ssh-publickey-file",
+              "description": "the path to public key file for SSH authentication,\n                                               & this parameter is valid only when os-type is Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -33348,6 +33796,58 @@
           ]
         },
         {
+          "name": "enable-aem",
+          "description": "Enable azure enhanced monitoring extension on a VM in a resource group",
+          "fullName": "vm enable-aem",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
+              "flags": "-a, --diagnostic-storage-account-name",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--diagnostic-storage-account-name",
+              "description": "storage account name"
+            },
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            }
+          ] 
+        },
+        {
           "name": "enable-diag",
           "description": "Enable diagnostics extension on a VM in a resource group.",
           "fullName": "vm enable-diag",
@@ -34179,9 +34679,230 @@
               ]
             },
             {
+              "name": "set-chef",
+              "description": "Enable/disable chef extension for a VM in a resource group",
+              "fullName": "vm extension set-chef",
+              "usage": "[options] <resource-group> <vm-name> ",
+              "filePath": "commands/arm/vm/vm._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-m, --vm-name <vm-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--vm-name",
+                  "description": "the virtual machine name"
+                },
+                {
+                  "flags": "-o, --version <version>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--version",
+                  "description": "the extension version"
+                },
+                {
+                  "flags": "-R, --run-list <run-list>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-R",
+                  "long": "--run-list",
+                  "description": "Runlist of roles/recipes to apply to VM"
+                },
+                {
+                  "flags": "-O, --validation-pem <validation-pem>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-O",
+                  "long": "--validation-pem",
+                  "description": "chef validation pem file path. Not required if -C or --client-pem option specified"
+                },
+                {
+                  "flags": "-c, --client-config <client-config>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--client-config",
+                  "description": "chef client configuration file(i.e client.rb) path"
+                },
+                {
+                  "flags": "-C, --client-pem <client-pem>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-C",
+                  "long": "--client-pem",
+                  "description": "chef client pem file path i.e required in validator less bootstrap"
+                },
+                {
+                  "flags": "-a, --auto-update-client",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--auto-update-client",
+                  "description": "auto update chef client"
+                },
+                {
+                  "flags": "-j, --bootstrap-options <bootstrap-json-attribute>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-j",
+                  "long": "--bootstrap-options",
+                  "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}'"
+                },
+                {
+                  "flags": "-D, --delete-chef-config",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-D",
+                  "long": "--delete-chef-config",
+                  "description": "delete chef config files during update/uninstall extension"
+                },
+                {
+                  "flags": "-u, --uninstall",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--uninstall",
+                  "description": "uninstall extension"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "Tags to set to the resource group. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for uninstall confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
               "name": "get",
               "description": "Get extensions installed on a virtual machine in a resource group",
               "fullName": "vm extension get",
+              "usage": "[options] <resource-group> <vm-name>",
+              "filePath": "commands/arm/vm/vm._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-m, --vm-name <vm-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--vm-name",
+                  "description": "the virtual machine name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "get-chef",
+              "description": "Get chef extension installed on a virtual machine in a resource group",
+              "fullName": "vm extension get-chef",
               "usage": "[options] <resource-group> <vm-name>",
               "filePath": "commands/arm/vm/vm._js",
               "options": [
@@ -34244,7 +34965,7 @@
         },
         "extension-image": {
           "name": "extension-image",
-          "description": "Commands to manage VM resource extension images",
+          "description": "Commands to query available VM resource extensions",
           "fullName": "vm extension-image",
           "usage": "[options] [command]",
           "options": [],

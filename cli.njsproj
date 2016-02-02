@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{e6309b69-d527-408b-8835-86367f414dba}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>bin\azure.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -13,7 +13,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>login</ScriptArguments>
+    <ScriptArguments>group list</ScriptArguments>
     <Environment>
     </Environment>
     <NodeExeArguments>
@@ -79,9 +79,7 @@
     <Compile Include="lib\util\hdinsightHelper.js" />
     <Compile Include="lib\util\keyFiles.js" />
     <Compile Include="lib\util\logging.js" />
-    <Compile Include="lib\util\patch-winston.js" />
     <Compile Include="lib\util\set.js" />
-    <Compile Include="lib\util\sillyTransport.js" />
     <Compile Include="lib\util\utils.js" />
     <Compile Include="lib\util\utilsCore.js" />
     <Compile Include="lib\util\validation.js" />
@@ -150,6 +148,10 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.account-tests.js" />
     <Compile Include="test\commands\cli.account.affinitygroup-tests.js">
       <TestFramework>
@@ -221,7 +223,10 @@
     <Compile Include="test\commands\cli.vm.create_ssh-tests.js" />
     <Compile Include="test\commands\cli.vm.create_staticvm-tests.js" />
     <Compile Include="test\commands\cli.vm.create_staticvm_neg-tests.js" />
-    <Compile Include="test\commands\cli.vm.create_vnet_multi_nic-tests.js" />
+    <Compile Include="test\commands\cli.vm.create_vnet_multi_nic-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.vm.create_win_rdp-tests.js" />
     <Compile Include="test\commands\cli.vm.disk-tests.js" />
     <Compile Include="test\commands\cli.vm.disk.attachDetach-tests.js" />
@@ -237,7 +242,10 @@
     <Compile Include="test\commands\cli.vm.image-tests.js" />
     <Compile Include="test\commands\cli.vm.list_show-tests.js" />
     <Compile Include="test\commands\cli.vm.loadbalancer-tests.js" />
-    <Compile Include="test\commands\cli.vm.negative-tests.js" />
+    <Compile Include="test\commands\cli.vm.negative-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\commands\cli.vm.pip-tests.js" />
     <Compile Include="test\commands\cli.vm.shutdown_restart-tests.js" />
     <Compile Include="test\commands\cli.vm.staticvm_create-from-tests.js" />
@@ -293,14 +301,18 @@
     <Compile Include="test\commands\mobile\table1.update.js" />
     <Compile Include="test\commands\mobile\testapi.js" />
     <Compile Include="test\commands\arm\ad\adUtils-test.js" />
-    <Compile Include="test\commands\arm\ad\arm.ad-app-tests.js" />
-    <Compile Include="test\commands\arm\ad\arm.ad-tests.js" />
+    <Compile Include="test\commands\arm\ad\arm.ad-app-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
+    <Compile Include="test\commands\arm\ad\arm.ad-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\commands\arm\apiapp\arm.apiapp-tests.js" />
     <Compile Include="test\commands\arm\feature\arm.feature-tests.js" />
-    <Compile Include="test\commands\arm\group\arm.group-template-tests.js" />
     <Compile Include="test\commands\arm\group\arm.group-tests.js" />
     <Compile Include="test\commands\arm\group\arm.group.deployment-tests.js" />
-    <Compile Include="test\commands\arm\group\groupUtils-tests.js" />
     <Compile Include="test\commands\arm\insights\arm.insights.alerts-tests.js" />
     <Compile Include="test\commands\arm\insights\arm.insights.alerts.rule-tests.js" />
     <Compile Include="test\commands\arm\insights\arm.insights.autoscale-tests.js" />
@@ -313,8 +325,6 @@
     <Compile Include="test\commands\arm\keyvault\arm.keyvault-secret-tests.js" />
     <Compile Include="test\commands\arm\keyvault\arm.keyvault-tests.js" />
     <Compile Include="test\commands\arm\location\arm.location-tests.js" />
-    <Compile Include="test\commands\arm\network\arm.network.dns-record-set-tests.js" />
-    <Compile Include="test\commands\arm\network\arm.network.dnszone-tests.js" />
     <Compile Include="test\commands\arm\network\arm.network.lb-address-pool-tests.js" />
     <Compile Include="test\commands\arm\network\arm.network.lb-frontend-ip-tests.js" />
     <Compile Include="test\commands\arm\network\arm.network.lb-inbound-nat-rule-tests.js" />
@@ -337,7 +347,10 @@
     <Compile Include="test\commands\arm\resource\arm.resource-tests.js" />
     <Compile Include="test\commands\arm\role\arm.role-tests.js" />
     <Compile Include="test\commands\arm\role\roleAssignments-tests.js" />
-    <Compile Include="test\commands\arm\storage\arm.storage.account-tests.js" />
+    <Compile Include="test\commands\arm\storage\arm.storage.account-tests.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\commands\arm\tag\arm.resourcegrouptag-tests.js" />
     <Compile Include="test\commands\arm\tag\arm.resourcetag-tests.js" />
     <Compile Include="test\commands\arm\tag\arm.tag-tests.js" />
@@ -380,7 +393,8 @@
     </Compile>
     <Compile Include="test\util\authentication\token-cache-encoding-tests.js" />
     <Compile Include="test\util\authentication\token-cache-tests.js">
-      <TestFramework>Mocha</TestFramework>
+      <TestFramework>
+      </TestFramework>
     </Compile>
     <Compile Include="test\util\authentication\token-storage-tests.js" />
     <Compile Include="test\util\authentication\win-credstore-parser-tests.js" />
