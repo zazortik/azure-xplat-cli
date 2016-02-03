@@ -13,6 +13,8 @@ echo Building MSI...
 msbuild /t:rebuild /p:Configuration=Release
 
 echo.
-start .\out\
 
+if not "%1"=="-noprompt" (
+   start .\out\
+)
 popd

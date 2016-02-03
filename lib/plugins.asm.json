@@ -104,7 +104,7 @@
           "bool": true,
           "short": "-p",
           "long": "--password",
-          "description": "user password or service principal key, will prompt if not given."
+          "description": "user password or service principal secret, will prompt if not given."
         },
         {
           "flags": "--service-principal",
@@ -113,6 +113,22 @@
           "bool": true,
           "long": "--service-principal",
           "description": "If given, log in as a service principal rather than a user."
+        },
+        {
+          "flags": "--certificate-file <certificateFile>",
+          "required": -20,
+          "optional": 0,
+          "bool": true,
+          "long": "--certificate-file",
+          "description": "A PEM encoded certificate private key file."
+        },
+        {
+          "flags": "--thumbprint <thumbprint>",
+          "required": -14,
+          "optional": 0,
+          "bool": true,
+          "long": "--thumbprint",
+          "description": "A hex encoded thumbprint of the certificate."
         },
         {
           "flags": "--tenant <tenant>",
