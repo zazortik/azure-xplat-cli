@@ -1,4 +1,5 @@
 # Live + Playback
+commands/cli.vm.list_show-tests.js
 commands/cli.vm.create_affin_vnet_vm-tests.js
 commands/cli.vm.create_vnet_multi_nic-tests.js
 commands/cli.vm.capture-tests.js
