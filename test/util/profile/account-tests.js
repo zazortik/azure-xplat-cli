@@ -54,17 +54,12 @@ var testSubscriptionsFromTenant = [
 var testArmSubscriptionClient = {
   subscriptions: {
     list: function (callback) {
-      callback(null, { subscriptions: testSubscriptionsFromTenant });
+      callback(null, testSubscriptionsFromTenant);
     }
   },
   tenants: {
     list: function (callback) {
-      callback(null, {
-        tenantIds: testTenantIds.map(function (id) {
-          return { tenantId: id };
-        })
-      }
-      );
+      callback(null, testTenantIds.map(function (id) { return { tenantId: id }; }) );
     }
   }
 };
@@ -133,7 +128,7 @@ describe('account', function () {
   };
   
   var resourceClient = {
-    createResourceSubscriptionClient: function (cred, armEndpoint) {
+    SubscriptionClient: function (cred) {
       return testArmSubscriptionClient;
     }
   };
@@ -284,7 +279,7 @@ describe('account add for service principal', function () {
     normalizeUserName: function (name) { return name; }
   };
   var resourceClient = {
-    createResourceSubscriptionClient: function (cred, armEndpoint) {
+    SubscriptionClient: function (cred) {
       return testArmSubscriptionClient;
     }
   };
