@@ -29,7 +29,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2015-11-01')
   .reply(200, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker\",\"name\":\"xplatTestGVMDocker\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-docker-tests\":\"2016-01-27T03:58:32.260Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -46,7 +46,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2015-11-01')
   .reply(200, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker\",\"name\":\"xplatTestGVMDocker\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-docker-tests\":\"2016-01-27T03:58:32.260Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -64,7 +64,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2014-04-01-preview', '*')
+.patch('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2015-11-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker\",\"name\":\"xplatTestGVMDocker\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-docker-tests\":\"2016-01-27T06:33:02.925Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
@@ -82,7 +82,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2014-04-01-preview', '*')
+.patch('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMDocker?api-version=2015-11-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker\",\"name\":\"xplatTestGVMDocker\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-docker-tests\":\"2016-01-27T06:33:02.925Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
@@ -791,7 +791,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatdockerip' under resource group 'xplatTestGVMDocker' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -808,7 +808,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatdockerip' under resource group 'xplatTestGVMDocker' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -826,7 +826,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"d235024f-15af-4335-8bc4-0edc6069e205\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '656',
@@ -847,7 +847,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"d235024f-15af-4335-8bc4-0edc6069e205\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '656',
@@ -903,7 +903,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"2124c7ff-2469-46f7-acf7-7b31bfef6293\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',
@@ -922,7 +922,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"2124c7ff-2469-46f7-acf7-7b31bfef6293\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',
@@ -941,7 +941,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"2124c7ff-2469-46f7-acf7-7b31bfef6293\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',
@@ -960,7 +960,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatdockerip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMDocker/providers/Microsoft.Network/publicIPAddresses/xplatdockerip\",\r\n  \"etag\": \"W/\\\"2124c7ff-2469-46f7-acf7-7b31bfef6293\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"f8c75b56-5043-4187-bfec-a21b5d2d2093\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdockeripdns\",\r\n      \"fqdn\": \"xplatdockeripdns.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',

@@ -65,10 +65,6 @@ commands/arm/network/arm.network.dns-zone-tests.js
 commands/arm/network/arm.network.dns-zone-record-set-tests.js
 commands/arm/network/arm.network.traffic-manager-tests.js
 commands/arm/network/arm.network.traffic-manager-endpoint-tests.js
-commands/arm/apiapp/lib/lib-tests.js
-commands/arm/apiapp/lib/deployLib-tests.js
-commands/arm/apiapp/lib/propertyPrompts-tests.js
-commands/arm/apiapp/arm.apiapp-tests.js
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/rediscache/arm.rediscache-tests.js
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js

@@ -1,15 +1,15 @@
 {
   "siteName": {
-    "value": "xDeploymentTestSite13316"
+    "value": "xDeploymentTestSite16723"
   },
   "hostingPlanName": {
-    "value": "xDeploymentTestHost24209"
+    "value": "xDeploymentTestHost23231"
   },
   "siteLocation": {
     "value": "West US"
   },
   "sku": {
-    "value": "Free"
+    "value": "Standard"
   },
   "workerSize": {
     "value": "0"

@@ -157,6 +157,8 @@ describe('arm', function () {
     });
 
     describe('stop', function () {
+      // deployment stop will not work. Autorest generated clients currently poll till a terminal state (Success, Failure) has been reached. 
+      // Hence the --no-wait option switch has no effect. The client should take an optional parameter that indicates whether to poll or not.
       it('should work', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         setUniqParameterNames(suite, parameterFile);
