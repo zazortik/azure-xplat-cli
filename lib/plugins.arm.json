@@ -34790,6 +34790,48 @@
                   "description": "the metrics of the service load"
                 }
               ]
+            },
+            {
+              "name": "remove",
+              "description": "Remove service",
+              "fullName": "servicefabric service remove",
+              "usage": "[options] [serviceName]",
+              "filePath": "commands/arm/servicefabric/serviceFabricService._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the name of the service"
+                }
+              ]
             }
           ],
           "categories": {
