@@ -16,19 +16,21 @@ var should = require('should');
 var async = require('async');
 var util = require('util');
 var testUtils = require('../util/util');
+var tagUtils = require('../../lib/commands/arm/tag/tagUtils');
 exports = module.exports = networkTestUtil;
 var retry = 5;
+
 /**
  * @class
  * Initializes a new instance of the networkTestUtil class.
  * @constructor
- * 
+ *
  * Example use of this class:
  *
  * //creates mobile test class
  * var networkUtil = new networkTestUtil();
- * // use the methods 
- * 
+ * // use the methods
+ *
  */
 function networkTestUtil() {
   this.subnetId = '';
@@ -42,6 +44,9 @@ function networkTestUtil() {
   this.reversefqdn = '';
   this.timeout = 800000;
   this.gatewaytimeout = 3500000;
+
+  this.tags = 'tag1=aaa;tag2=bbb';
+  this.newTags = 'tag3=ccc';
 }
 
 networkTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
@@ -346,4 +351,9 @@ networkTestUtil.prototype.createExpressRoute = function(groupName, expressRCPref
     result.exitStatus.should.equal(0);
     callback();
   });
+};
+
+networkTestUtil.prototype.shouldAppendTags = function (obj) {
+  var pattern = this.tags + ';' + this.newTags;
+  tagUtils.getTagsInfo(obj.tags).should.equal(pattern);
 };

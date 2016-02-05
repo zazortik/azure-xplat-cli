@@ -31,8 +31,7 @@ var location,
   staticMethod = 'Static',
   dynamicMethod = 'Dynamic',
   idleTimeout = 4,
-  newTimeout = 15,
-  tags = 'tag1=aaa;tag2=bbb';
+  newTimeout = 15;
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -72,7 +71,7 @@ describe('arm', function () {
       it('create should create publicip', function (done) {
         networkUtil.createGroup(groupName, location, suite, function() {
           var cmd = util.format('network public-ip create -g %s -n %s -l %s -d %s -a %s -i %s -t %s --json',
-            groupName, publicIpName, location, domainName, staticMethod, idleTimeout, tags);
+            groupName, publicIpName, location, domainName, staticMethod, idleTimeout, networkUtil.tags);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -83,8 +82,8 @@ describe('arm', function () {
         });
       });
       it('set should modify publicip', function (done) {
-        var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s --json',
-          groupName, publicIpName, newDomainName, dynamicMethod, newTimeout);
+        var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s -t %s --json',
+          groupName, publicIpName, newDomainName, dynamicMethod, newTimeout, networkUtil.newTags);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
@@ -92,6 +91,7 @@ describe('arm', function () {
           ip.name.should.equal(publicIpName);
           ip.publicIPAllocationMethod.should.equal(dynamicMethod);
           ip.idleTimeoutInMinutes.should.equal(newTimeout);
+          networkUtil.shouldAppendTags(ip);
           done();
         });
       });
