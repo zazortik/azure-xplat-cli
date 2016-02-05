@@ -48,6 +48,8 @@ networkTestUtil.prototype.createGroup = function(groupName, location, suite, cal
   var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
+    var resGroup = JSON.parse(result.text);
+    resGroup.name.should.equal(groupName);
     callback();
   });
 };
