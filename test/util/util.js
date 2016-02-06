@@ -178,6 +178,11 @@ exports.getTemplateInfoByName = function(suite, name, callback) {
 
 exports.executeCommand = function(suite, retry, cmd, callback) {
   var self = this;
+
+  if (cmd instanceof String) {
+    cmd = cmd.split(' ');
+  }
+
   suite.execute(cmd, function(result) {
     if (result.exitStatus === 1 && ((result.errorText.indexOf('ECONNRESET') + 1) ||
         (result.errorText.indexOf('ConflictError') + 1) ||
