@@ -36,6 +36,7 @@ var groupName,
   vmPrefix = 'xplatvm',
   vm2Prefix = 'xplatvm2',
   vm3Prefix = 'xplatvm3',
+  vm4Prefix = 'xplatvm4',
   nicName = 'xplattestnic',
   nic2Name = 'xplattestnic2',
   location,
@@ -55,7 +56,8 @@ var groupName,
   IaasDiagPublisher,
   IaasDiagExtName,
   IaasDiagVersion,
-  datafile = 'test/data/testdata.json';
+  datafile = 'test/data/testdata.json',
+  latestLinuxImageUrn = null;
 
 describe('arm', function() {
   describe('compute', function() {
@@ -110,7 +112,6 @@ describe('arm', function() {
 
       it('create should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
             var cmd = util.format('availset create %s %s %s  --json', groupName, availprefix, location).split(' ');
@@ -119,7 +120,7 @@ describe('arm', function() {
               if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
                 vmTest.GetLinuxSkusList(location, suite, function(result) {
                   vmTest.GetLinuxImageList(location, suite, function(result) {
-                    var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
+                    latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
                     var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                       groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                       vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
@@ -130,7 +131,7 @@ describe('arm', function() {
                   });
                 });
               } else {
-                var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
+                latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
                 var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                   groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
@@ -161,11 +162,22 @@ describe('arm', function() {
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
-                  groupName, vmPrefix, location, nicName, userImage, username, password, storageAccount, storageCont,
+                  groupName, vm4Prefix, location, nicName, userImage, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
-                  result.exitStatus.should.equal(0);
-                  done();
+                  if (result.exitStatus !== 0) {
+                    result.errorText.should.containEql('The VM may still finish provisioning successfully. Please check provisioning state later.');
+                  }
+                  var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm4Prefix).split(' ');
+                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
+                      groupName, vmPrefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
+                      vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
+                    testUtils.executeCommand(suite, retry, cmd, function(result) {
+                      result.exitStatus.should.equal(0);
+                      done();
+                    });
+                  });
                 });
               });
             });
