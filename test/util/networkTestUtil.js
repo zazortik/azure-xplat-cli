@@ -50,29 +50,40 @@ function networkTestUtil() {
 }
 
 networkTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
-  var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
+  var cmd = util.format('group create %s --location %s --json', groupName, location);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
     var resGroup = JSON.parse(result.text);
     resGroup.name.should.equal(groupName);
-    callback();
+    callback(resGroup);
   });
 };
-networkTestUtil.prototype.deleteUsedGroup = function(groupName, suite, callback) {
+networkTestUtil.prototype.deleteGroup = function(groupName, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('group delete %s --quiet --json', groupName).split(' ');
+    var cmd = util.format('group delete %s --quiet --json', groupName);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();
     });
   } else callback();
 };
-networkTestUtil.prototype.createRouteTable = function(groupName, RouteTablePrefix, location, suite, callback) {
-  var cmd = util.format('network route-table create -g %s -n %s -l %s --json', groupName, RouteTablePrefix, location).split(' ');
+networkTestUtil.prototype.createRouteTable = function(groupName, routeTableName, location, suite, callback) {
+  var cmd = util.format('network route-table create -g %s -n %s -l %s --json', groupName, routeTableName, location);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var routeTable = JSON.parse(result.text);
+    routeTable.name.should.equal(routeTableName);
+    callback(routeTable);
   });
+};
+networkTestUtil.prototype.deleteRouteTable = function(groupName, routeTableName, suite, callback) {
+  if (!suite.isPlayback()) {
+    var cmd = util.format('network route-table delete -g %s -n %s -q --json', groupName, routeTableName);
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+      result.exitStatus.should.equal(0);
+      callback();
+    });
+  } else callback();
 };
 networkTestUtil.prototype.deleteRouteTable = function(groupName, RouteTablePrefix, suite, callback) {
   if (!suite.isPlayback()) {
@@ -83,27 +94,13 @@ networkTestUtil.prototype.deleteRouteTable = function(groupName, RouteTablePrefi
     });
   } else callback();
 };
-networkTestUtil.prototype.createRouteTable = function(groupName, RouteTablePrefix, location, suite, callback) {
-  var cmd = util.format('network route-table create -g %s -n %s -l %s --json', groupName, RouteTablePrefix, location).split(' ');
+networkTestUtil.prototype.createVnet = function(groupName, vnetName, location, addressPrefix, suite, callback) {
+  var cmd = util.format('network vnet create -g %s -n %s -l %s -a %s --json', groupName, vnetName, location, addressPrefix);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
-  });
-};
-networkTestUtil.prototype.deleteRouteTable = function(groupName, RouteTablePrefix, suite, callback) {
-  if (!suite.isPlayback()) {
-    var cmd = util.format('network route-table delete -g %s -n %s -q --json', groupName, RouteTablePrefix).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  } else callback();
-};
-networkTestUtil.prototype.createVnet = function(groupName, vnetPrefix, location, suite, callback) {
-  var cmd = util.format('network vnet create %s %s %s -a 10.0.0.0/8 --json', groupName, vnetPrefix, location).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    callback();
+    var vnet = JSON.parse(result.text);
+    vnet.name.should.equal(vnetName);
+    callback(vnet);
   });
 };
 networkTestUtil.prototype.createSubnet = function(groupName, vnetPrefix, subnetprefix, suite, callback) {
@@ -146,10 +143,12 @@ networkTestUtil.prototype.showPublicIp = function(groupName, publicipPrefix, sui
   });
 };
 networkTestUtil.prototype.createNSG = function(groupName, nsgName, location, suite, callback) {
-  var cmd = util.format('network nsg create %s %s %s --json', groupName, nsgName, location).split(' ');
+  var cmd = util.format('network nsg create -g %s -n %s -l %s --json', groupName, nsgName, location);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var nsg = JSON.parse(result.text);
+    nsg.name.should.equal(nsgName);
+    callback(nsg);
   });
 };
 networkTestUtil.prototype.showNSG = function(groupName, nsgName, suite, callback) {
@@ -246,9 +245,9 @@ networkTestUtil.prototype.deleteUsedNsg = function(groupName, nsgName, suite, ca
   } else
     callback();
 };
-networkTestUtil.prototype.deleteUsedVnet = function(groupName, vnetPrefix, suite, callback) {
+networkTestUtil.prototype.deleteVnet = function(groupName, vnetName, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
+    var cmd = util.format('network vnet delete -g %s -n %s --quiet --json', groupName, vnetName);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();

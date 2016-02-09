@@ -62,7 +62,7 @@ describe('arm', function() {
       setTimeout(function() {
         //networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function() {
         //networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-        networkUtil.deleteUsedGroup(groupName, suite, function() {
+        networkUtil.deleteGroup(groupName, suite, function() {
           suite.teardownSuite(done);
         });
         //});

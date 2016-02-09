@@ -87,10 +87,10 @@ describe('arm', function() {
     after(function(done) {
       networkUtil.deleteUsedLB(groupName, LBName, suite, function(result) {
         networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
-          networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function(result) {
+          networkUtil.deleteVnet(groupName, vnetPrefix, suite, function(result) {
             networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function(result) {
               networkUtil.deleteUsedNsg(groupName, nsgName, suite, function(result) {
-                networkUtil.deleteUsedGroup(groupName, suite, function(result) {
+                networkUtil.deleteGroup(groupName, suite, function(result) {
                   suite.teardownSuite(done);
                 });
               });

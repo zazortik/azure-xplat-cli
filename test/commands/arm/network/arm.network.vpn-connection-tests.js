@@ -78,7 +78,7 @@ describe('arm', function () {
     });
     after(function (done) {
       setTimeout(function () {
-        networkUtil.deleteUsedGroup(groupName, suite, function () {
+        networkUtil.deleteGroup(groupName, suite, function () {
           suite.teardownSuite(done);
         });
       }, timeout);

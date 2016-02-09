@@ -69,8 +69,8 @@ describe('arm', function () {
           networkUtil.deleteUsedPublicIp(groupName, publicipPrefix2, suite, function () {
             networkUtil.deleteUsedLB(groupName, LBNameSV, suite, function () {
               networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function () {
-                networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function () {
-                  networkUtil.deleteUsedGroup(groupName, suite, function () {
+                networkUtil.deleteVnet(groupName, vnetPrefix, suite, function () {
+                  networkUtil.deleteGroup(groupName, suite, function () {
                     suite.teardownSuite(done);
                   });
                 });

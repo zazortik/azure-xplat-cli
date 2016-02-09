@@ -48,7 +48,7 @@ describe('arm', function() {
     });
     after(function(done) {
       networkUtil.deleteUsedDns(groupName, dnszonePrefix, suite, function() {
-        networkUtil.deleteUsedGroup(groupName, suite, function() {
+        networkUtil.deleteGroup(groupName, suite, function() {
           suite.teardownSuite(done);
         });
       });
