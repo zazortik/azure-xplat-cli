@@ -26,6 +26,7 @@ var _ = require('underscore');
 var groupName, nsgName,
   groupPrefix = 'xplatTestGrpCreateNic',
   vnetPrefix = 'xplatTestVnetNIc',
+  vnetAddressSpace = '10.0.0.0/8',
   subnetprefix = 'xplatTestSubnetNIc',
   nicPrefix = 'xplatTestNic',
   publicipPrefix = 'xplatTestIpNic',
@@ -110,7 +111,7 @@ describe('arm', function() {
     describe('nic', function() {
       it('create should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function(result) {
-          networkUtil.createVnet(groupName, vnetPrefix, location, suite, function(result) {
+          networkUtil.createVnet(groupName, vnetPrefix, location, vnetAddressSpace, suite, function(result) {
             networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
               networkUtil.showSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
                 networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function(result) {
