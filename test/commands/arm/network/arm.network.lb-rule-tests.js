@@ -63,7 +63,7 @@ describe('arm', function() {
         networkUtil.deleteLBProbe(groupName, LBName, LBProbe, suite, function() {
           networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
             networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-              networkUtil.deleteUsedGroup(groupName, suite, function() {
+              networkUtil.deleteGroup(groupName, suite, function() {
                 suite.teardownSuite(done);
               });
             });

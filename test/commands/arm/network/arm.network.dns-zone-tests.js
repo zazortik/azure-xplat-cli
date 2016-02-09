@@ -66,7 +66,7 @@ describe('arm', function() {
     });
     after(function(done) {
       this.timeout(networkUtil.timeout);
-      networkUtil.deleteUsedGroup(groupName, suite, function() {
+      networkUtil.deleteGroup(groupName, suite, function() {
         suite.teardownSuite(done);
       });
     });

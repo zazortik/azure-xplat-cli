@@ -53,7 +53,7 @@ describe('arm', function () {
     });
     after(function (done) {
       networkUtil.deleteRouteTable(groupName, RouteTablePrefix, suite, function () {
-        networkUtil.deleteUsedGroup(groupName, suite, function () {
+        networkUtil.deleteGroup(groupName, suite, function () {
           suite.teardownSuite(done);
         });
       });

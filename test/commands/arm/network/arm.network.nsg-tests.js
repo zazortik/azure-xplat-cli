@@ -45,7 +45,7 @@ describe('arm', function () {
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedGroup(groupName, suite, function (result) {
+      networkUtil.deleteGroup(groupName, suite, function (result) {
         suite.teardownSuite(done);
       });
     });

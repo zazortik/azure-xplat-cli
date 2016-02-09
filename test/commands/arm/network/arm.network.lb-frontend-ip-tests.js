@@ -33,6 +33,7 @@ var location;
 var publicIpId, publicIpName;
 
 var vnetPrefix = 'xplatTestVnetFrontIp';
+var vnetAddressSpace = '10.0.0.0/8';
 var subnetprefix = 'xplatTestSubnetFrontIp';
 
 var requiredEnvironment = [{
@@ -69,8 +70,8 @@ describe('arm', function () {
           networkUtil.deleteUsedPublicIp(groupName, publicipPrefix2, suite, function () {
             networkUtil.deleteUsedLB(groupName, LBNameSV, suite, function () {
               networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function () {
-                networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function () {
-                  networkUtil.deleteUsedGroup(groupName, suite, function () {
+                networkUtil.deleteVnet(groupName, vnetPrefix, suite, function () {
+                  networkUtil.deleteGroup(groupName, suite, function () {
                     suite.teardownSuite(done);
                   });
                 });
@@ -119,7 +120,7 @@ describe('arm', function () {
       });
       //frontend-ip create using subnet & vnet
       it('create using subnet & vnet should pass', function (done) {
-        networkUtil.createVnet(groupName, vnetPrefix, location, suite, function () {
+        networkUtil.createVnet(groupName, vnetPrefix, location, vnetAddressSpace, suite, function () {
           networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function () {
             networkUtil.createLB(groupName, LBNameSV, location, suite, function () {
               var cmd = util.format('network lb frontend-ip create %s %s %s -e %s -m %s -a 10.0.0.4 --json', groupName, LBNameSV, FrontendIpSV, subnetprefix, vnetPrefix).split(' ');

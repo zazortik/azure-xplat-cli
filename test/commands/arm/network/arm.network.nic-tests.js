@@ -26,6 +26,7 @@ var _ = require('underscore');
 var groupName, nsgName,
   groupPrefix = 'xplatTestGrpCreateNic',
   vnetPrefix = 'xplatTestVnetNIc',
+  vnetAddressSpace = '10.0.0.0/8',
   subnetprefix = 'xplatTestSubnetNIc',
   nicPrefix = 'xplatTestNic',
   publicipPrefix = 'xplatTestIpNic',
@@ -87,10 +88,10 @@ describe('arm', function() {
     after(function(done) {
       networkUtil.deleteUsedLB(groupName, LBName, suite, function(result) {
         networkUtil.deleteUsedSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
-          networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function(result) {
+          networkUtil.deleteVnet(groupName, vnetPrefix, suite, function(result) {
             networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function(result) {
               networkUtil.deleteUsedNsg(groupName, nsgName, suite, function(result) {
-                networkUtil.deleteUsedGroup(groupName, suite, function(result) {
+                networkUtil.deleteGroup(groupName, suite, function(result) {
                   suite.teardownSuite(done);
                 });
               });
@@ -110,7 +111,7 @@ describe('arm', function() {
     describe('nic', function() {
       it('create should pass', function(done) {
         networkUtil.createGroup(groupName, location, suite, function(result) {
-          networkUtil.createVnet(groupName, vnetPrefix, location, suite, function(result) {
+          networkUtil.createVnet(groupName, vnetPrefix, location, vnetAddressSpace, suite, function(result) {
             networkUtil.createSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
               networkUtil.showSubnet(groupName, vnetPrefix, subnetprefix, suite, function(result) {
                 networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function(result) {
