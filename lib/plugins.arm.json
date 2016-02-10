@@ -32568,6 +32568,14 @@
               "bool": true,
               "long": "--key-encryption-key-url",
               "description": "The Url of the master key used to encrypt the OS disk encryption key."
+            },
+            {
+              "flags": "--license-type <license-type>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--license-type",
+              "description": "The license type of the system; currently, only 'Windows_Sever' is supported."
             }
           ]
         },
@@ -33614,6 +33622,58 @@
           ]
         },
         {
+          "name": "enable-aem",
+          "description": "Enable Azure Enhanced Monitoring Extension on a VM in a resource group",
+          "fullName": "vm enable-aem",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-a, --diagnostic-storage-account-name <name>",
+              "required": -39,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--diagnostic-storage-account-name",
+              "description": "storage account name"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quite mode(do not ask for confirmation)"
+            }
+          ]
+        },
+        {
           "name": "set",
           "description": "Update a VM in a resource group.",
           "fullName": "vm set",
@@ -33794,58 +33854,6 @@
               "description": "the subscription identifier"
             }
           ]
-        },
-        {
-          "name": "enable-aem",
-          "description": "Enable azure enhanced monitoring extension on a VM in a resource group",
-          "fullName": "vm enable-aem",
-          "usage": "[options] <resource-group> <name>",
-          "filePath": "commands/arm/vm/vm._js",
-          "options": [
-            {
-              "flags": "-q, --quiet",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-q",
-              "long": "--quiet",
-              "description": "quiet mode, do not ask for confirmation"
-            },
-            {
-              "flags": "-a, --diagnostic-storage-account-name",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-a",
-              "long": "--diagnostic-storage-account-name",
-              "description": "storage account name"
-            },
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            }
-          ] 
         },
         {
           "name": "enable-diag",

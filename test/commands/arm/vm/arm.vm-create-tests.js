@@ -161,21 +161,27 @@ describe('arm', function() {
               var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm3Prefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --license-type Windows_Server --json',
                   groupName, vm4Prefix, location, nicName, userImage, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   if (result.exitStatus !== 0) {
-                    result.errorText.should.containEql('The VM may still finish provisioning successfully. Please check provisioning state later.');
+                    result.errorText.should.containEql('The license type is Windows_Server, but the image blob ' + userImage + ' is not from on-premises.');
                   }
-                  var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm4Prefix).split(' ');
+                  var cmd = util.format('vm show %s %s --json', groupName, vm4Prefix).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
-                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
-                      groupName, vmPrefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
-                      vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
+                    result.exitStatus.should.equal(0);
+                    var allResources = JSON.parse(result.text);
+                    allResources.licenseType.should.equal('Windows_Server');
+                    var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm4Prefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
-                      result.exitStatus.should.equal(0);
-                      done();
+                      var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
+                        groupName, vmPrefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
+                        vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
+                      testUtils.executeCommand(suite, retry, cmd, function(result) {
+                        result.exitStatus.should.equal(0);
+                        done();
+                      });
                     });
                   });
                 });
