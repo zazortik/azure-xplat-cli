@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.15.1",
+  "version": "0.9.16",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
