@@ -18,11 +18,15 @@ This project provides a cross-platform command line interface for developers and
 * Azure Resource Management
   * Generic resource groups and deployments management
   * Role based access control
-  * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc
+  * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc.
   * Datalake
 * Key Vault
 
 For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
+
+## Endpoints for Azure
+
+The CLI targets **"Public Azure Cloud"** by default. You can get more information about the endpoints supported in different environments from [here](./Documentation/Endpoints.md).
 
 ## Installation
 
