@@ -66,9 +66,9 @@ describe('arm', function () {
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
-          networkUtil.deleteUsedPublicIp(groupName, publicipPrefix2, suite, function () {
+      networkUtil.deleteLB(groupName, LBName, suite, function () {
+        networkUtil.deletePublicIp(groupName, publicipPrefix, suite, function () {
+          networkUtil.deletePublicIp(groupName, publicipPrefix2, suite, function () {
             networkUtil.deleteGroup(groupName, suite, function () {
               suite.teardownSuite(done);
             });
@@ -90,7 +90,7 @@ describe('arm', function () {
           networkUtil.createLB(groupName, LBName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
               networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
-                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
+                networkUtil.createFIP(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
                   var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -t %s -i %s --json',
                     groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName, idle_timeout).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -106,7 +106,7 @@ describe('arm', function () {
       it('create should create second inbound-nat-rule using second frontend-ip', function (done) {
         networkUtil.createPublicIp(groupName, publicipPrefix2, location, suite, function () {
           networkUtil.showPublicIp(groupName, publicipPrefix2, suite, function () {
-            networkUtil.createFrontendIp(groupName, LBName, FrontendIpName2, networkTestUtil.publicIpId, suite, function () {
+            networkUtil.createFIP(groupName, LBName, FrontendIpName2, networkTestUtil.publicIpId, suite, function () {
               var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -t %s -i %s --json',
                 groupName, LBName, lbinboundprefix2, protocol2, frontendport2, backendport2, enablefloatingip2, FrontendIpName2, idle_timeout).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function (result) {

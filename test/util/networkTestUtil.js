@@ -47,6 +47,7 @@ function networkTestUtil() {
 
   this.tags = 'tag1=aaa;tag2=bbb';
   this.newTags = 'tag3=ccc';
+  this.stateSucceeded = 'Succeeded';
 }
 
 networkTestUtil.prototype.createGroup = function(groupName, location, suite, callback) {
@@ -103,34 +104,25 @@ networkTestUtil.prototype.createVnet = function(groupName, vnetName, location, a
     callback(vnet);
   });
 };
-networkTestUtil.prototype.createSubnet = function(groupName, vnetPrefix, subnetprefix, suite, callback) {
-  var cmd = util.format('network vnet subnet create %s %s %s -a 10.0.0.0/24 --json', groupName, vnetPrefix, subnetprefix).split(' ');
+networkTestUtil.prototype.createSubnet = function(groupName, vnetName, subnetName, addressPrefix, suite, callback) {
+  var cmd = util.format('network vnet subnet create -g %s -e %s -n %s -a %s --json', groupName, vnetName, subnetName, addressPrefix);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var subnet = JSON.parse(result.text);
+    subnet.name.should.equal(subnetName);
+    callback(subnet);
   });
 };
-networkTestUtil.prototype.showSubnet = function(groupName, vnetPrefix, subnetprefix, suite, callback) {
-  var cmd = util.format('network vnet subnet show %s %s %s --json ', groupName, vnetPrefix, subnetprefix).split(' ');
+networkTestUtil.prototype.createPublicIp = function(groupName, publicIpName, location, suite, callback) {
+  var allocation = 'Dynamic', idleTimeout = 4;
+  var cmd = util.format('network public-ip create -g %s -n %s -l %s -a %s -i %s --json',
+    groupName, publicIpName, location, allocation, idleTimeout);
+
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    var allResources = JSON.parse(result.text);
-    networkTestUtil.subnetId = allResources.id;
-    callback();
-  });
-};
-networkTestUtil.prototype.createPublicIp = function(groupName, publicipPrefix, location, suite, callback) {
-  var cmd = util.format('network public-ip create %s %s --location %s --json', groupName, publicipPrefix, location).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    callback();
-  });
-};
-networkTestUtil.prototype.createPublicIpdns = function(groupName, publicipPrefix, location, suite, callback) {
-  var cmd = util.format('network public-ip create %s %s --location %s -d %s --json', groupName, publicipPrefix, location, publicipPrefix).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    callback();
+    var ip = JSON.parse(result.text);
+    ip.name.should.equal(publicIpName);
+    callback(ip);
   });
 };
 networkTestUtil.prototype.showPublicIp = function(groupName, publicipPrefix, suite, callback) {
@@ -151,69 +143,52 @@ networkTestUtil.prototype.createNSG = function(groupName, nsgName, location, sui
     callback(nsg);
   });
 };
-networkTestUtil.prototype.showNSG = function(groupName, nsgName, suite, callback) {
-  var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
+networkTestUtil.prototype.createLB = function(groupName, lbName, location, suite, callback) {
+  var cmd = util.format('network lb create -g %s -n %s -l %s --json', groupName, lbName, location);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    var allResources = JSON.parse(result.text);
-    networkTestUtil.nsgId = allResources.id;
-    callback();
+    var lb = JSON.parse(result.text);
+    lb.name.should.equal(lbName);
+    callback(lb);
   });
 };
-networkTestUtil.prototype.createLB = function(groupName, LBName, location, suite, callback) {
-  var cmd = util.format('network lb create %s %s %s --json', groupName, LBName, location).split(' ');
+networkTestUtil.prototype.createFIP = function(groupName, lbName, fipName, publicIpId, suite, callback) {
+  var cmd = util.format('network lb frontend-ip create -g %s -l %s -n %s -u %s --json', groupName, lbName, fipName, publicIpId);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var fip = JSON.parse(result.text);
+    fip.name.should.equal(fipName);
+    callback(fip);
   });
 };
-networkTestUtil.prototype.createFrontendIp = function(groupName, LBName, FrontendIpName, publicIpId, suite, callback) {
-  var cmd = util.format('network lb frontend-ip create %s %s %s -u %s --json', groupName, LBName, FrontendIpName, publicIpId).split(' ');
+networkTestUtil.prototype.createAddressPool = function(groupName, lbName, poolName, suite, callback) {
+  var cmd = util.format('network lb address-pool create -g %s -l %s -n %s --json', groupName, lbName, poolName);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var pool = JSON.parse(result.text);
+    pool.name.should.equal(poolName);
+    callback(pool);
   });
 };
-networkTestUtil.prototype.createLbInboundNatRule = function(groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName, suite, callback) {
-  var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -i 4 -t %s --json', groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, FrontendIpName).split(' ');
+networkTestUtil.prototype.createInboundNatRule = function(groupName, lbName, ruleName, protocol, frontPort, backPort, enableIp, idleTimeout, fipName, suite, callback) {
+  var cmd = util.format('network lb inbound-nat-rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -t %s --json',
+    groupName, lbName, ruleName, protocol, frontPort, backPort, enableIp, idleTimeout, fipName);
   testUtils.executeCommand(suite, retry, cmd, function(result) {
     result.exitStatus.should.equal(0);
-    callback();
+    var rule = JSON.parse(result.text);
+    rule.name.should.equal(ruleName);
+    callback(rule);
   });
 };
-networkTestUtil.prototype.createLbAddressPool = function(groupName, LBName, LBAddPool, suite, callback) {
-  var cmd = util.format('network lb address-pool create -g %s -l %s %s --json', groupName, LBName, LBAddPool).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    callback();
-  });
-};
-networkTestUtil.prototype.showLB = function(groupName, LBName, suite, callback) {
-  var cmd = util.format('network lb show %s %s --json', groupName, LBName).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    var allResources = JSON.parse(result.text);
-    networkTestUtil.lbaddresspoolId = allResources.backendAddressPools[0].id;
-    networkTestUtil.lbinboundruleId = allResources.inboundNatRules[0].id;
 
-    if (allResources.backendAddressPools[1] != undefined) {
-      networkTestUtil.lbaddresspoolId2 = allResources.backendAddressPools[1].id;
-    }
-    if (allResources.inboundNatRules[1] != undefined) {
-      networkTestUtil.lbinboundruleId2 = allResources.inboundNatRules[1].id;
-    }
-    callback();
-  });
-};
-networkTestUtil.prototype.deleteUsedLB = function(groupName, LBName, suite, callback) {
+networkTestUtil.prototype.deleteLB = function(groupName, lbName, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('network lb delete %s %s --quiet --json', groupName, LBName).split(' ');
+    var cmd = util.format('network lb delete -g %s -n %s --quiet --json', groupName, lbName);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();
     });
-  } else
-    callback();
+  } else callback();
 };
 networkTestUtil.prototype.deleteUsedSubnet = function(groupName, vnetPrefix, subnetprefix, suite, callback) {
   if (!suite.isPlayback()) {
@@ -225,25 +200,23 @@ networkTestUtil.prototype.deleteUsedSubnet = function(groupName, vnetPrefix, sub
   } else
     callback();
 };
-networkTestUtil.prototype.deleteUsedPublicIp = function(groupName, publicipPrefix, suite, callback) {
+networkTestUtil.prototype.deletePublicIp = function(groupName, publicIpName, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicipPrefix).split(' ');
+    var cmd = util.format('network public-ip delete -g %s -n %s --quiet --json', groupName, publicIpName);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();
     });
-  } else
-    callback();
+  } else callback();
 };
-networkTestUtil.prototype.deleteUsedNsg = function(groupName, nsgName, suite, callback) {
+networkTestUtil.prototype.deleteNsg = function(groupName, nsgName, suite, callback) {
   if (!suite.isPlayback()) {
-    var cmd = util.format('network nsg delete %s %s --quiet --json', groupName, nsgName).split(' ');
+    var cmd = util.format('network nsg delete -g %s -n %s --quiet --json', groupName, nsgName);
     testUtils.executeCommand(suite, retry, cmd, function(result) {
       result.exitStatus.should.equal(0);
       callback();
     });
-  } else
-    callback();
+  } else callback();
 };
 networkTestUtil.prototype.deleteVnet = function(groupName, vnetName, suite, callback) {
   if (!suite.isPlayback()) {
@@ -252,8 +225,7 @@ networkTestUtil.prototype.deleteVnet = function(groupName, vnetName, suite, call
       result.exitStatus.should.equal(0);
       callback();
     });
-  } else
-    callback();
+  } else callback();
 };
 networkTestUtil.prototype.deleteLBProbe = function(groupName, LBName, LBProbe, suite, callback) {
   if (!suite.isPlayback()) {
@@ -355,4 +327,8 @@ networkTestUtil.prototype.createExpressRoute = function(groupName, expressRCPref
 networkTestUtil.prototype.shouldAppendTags = function (obj) {
   var pattern = this.tags + ';' + this.newTags;
   tagUtils.getTagsInfo(obj.tags).should.equal(pattern);
+};
+
+networkTestUtil.prototype.shouldBeSucceeded = function (obj) {
+  obj.provisioningState.should.equal(this.stateSucceeded);
 };

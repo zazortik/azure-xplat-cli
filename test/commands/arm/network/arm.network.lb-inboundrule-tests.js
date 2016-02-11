@@ -55,8 +55,8 @@ describe('arm', function () {
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
+      networkUtil.deleteLB(groupName, LBName, suite, function () {
+        networkUtil.deletePublicIp(groupName, publicipPrefix, suite, function () {
           networkUtil.deleteGroup(groupName, suite, function () {
             suite.teardownSuite(done);
           });
@@ -77,7 +77,7 @@ describe('arm', function () {
           networkUtil.createLB(groupName, LBName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
               networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
-                networkUtil.createFrontendIp(groupName, LBName, VipName, networkTestUtil.publicIpId, suite, function () {
+                networkUtil.createFIP(groupName, LBName, VipName, networkTestUtil.publicIpId, suite, function () {
                   var cmd = util.format('network lb inbound-nat-rule create %s %s %s -p %s -f %s -b %s -e %s -i %s --json',
                     groupName, LBName, lbinboundprefix, protocol, frontendport, backendport, enablefloatingip, VipName).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function (result) {

@@ -72,6 +72,7 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             var vnet = JSON.parse(result.text);
             vnet.name.should.equal(vnetName);
+            networkUtil.shouldBeSucceeded(vnet);
             done();
           });
         });
@@ -91,6 +92,7 @@ describe('arm', function () {
           vnet.dhcpOptions.dnsServers.should.containEql(dnsServer);
           vnet.dhcpOptions.dnsServers.should.containEql(anotherDnsServer);
           networkUtil.shouldAppendTags(vnet);
+          networkUtil.shouldBeSucceeded(vnet);
           done();
         });
       });

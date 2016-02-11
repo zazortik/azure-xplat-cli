@@ -86,6 +86,7 @@ describe('arm', function () {
                   subnet.name.should.equal(subnetName);
                   subnet.networkSecurityGroup.id.should.equal(nsg.id);
                   subnet.routeTable.id.should.equal(routeTable.id);
+                  networkUtil.shouldBeSucceeded(subnet);
                   done();
                 });
               });
@@ -101,6 +102,7 @@ describe('arm', function () {
           subnet.name.should.equal(subnetName);
           subnet.should.not.have.property('networkSecurityGroup');
           subnet.should.not.have.property('routeTable');
+          networkUtil.shouldBeSucceeded(subnet);
           done();
         });
       });

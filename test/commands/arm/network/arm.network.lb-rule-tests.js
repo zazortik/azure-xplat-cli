@@ -61,8 +61,8 @@ describe('arm', function() {
     after(function(done) {
       networkUtil.deleteLBAddPool(groupName, LBName, LBAddPool, suite, function() {
         networkUtil.deleteLBProbe(groupName, LBName, LBProbe, suite, function() {
-          networkUtil.deleteUsedLB(groupName, LBName, suite, function() {
-            networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
+          networkUtil.deleteLB(groupName, LBName, suite, function() {
+            networkUtil.deletePublicIp(groupName, publicipPrefix, suite, function() {
               networkUtil.deleteGroup(groupName, suite, function() {
                 suite.teardownSuite(done);
               });
@@ -85,8 +85,8 @@ describe('arm', function() {
           networkUtil.createLB(groupName, LBName, location, suite, function() {
             networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
               networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function() {
-                  networkUtil.createLbAddressPool(groupName, LBName, LBAddPool, suite, function() {
+                networkUtil.createFIP(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function() {
+                  networkUtil.createAddressPool(groupName, LBName, LBAddPool, suite, function() {
                     networkUtil.createLBProbe(groupName, LBName, LBProbe, suite, function() {
                       var cmd = util.format('network lb rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -o %s -a %s -t %s --json',
                         groupName, LBName, LBRuleName, protocol, fport, bport, enafip, idle, LBAddPool, LBProbe, FrontendIpName).split(' ');
