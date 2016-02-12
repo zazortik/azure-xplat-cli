@@ -316,3 +316,36 @@ exports.stripBOM = function (content) {
   }
   return content;
 };
+
+/**
+ * format
+ *
+ * formats the string to
+ * arguments and returns
+ * @returns {string}
+ */
+function formatArgs () {
+  if (arguments.length === 0) return this;
+
+  var iter;
+  if (arguments.length > 1) {
+    iter = arguments;
+  } else {
+    iter = arguments[0];
+  }
+
+  var res = this;
+  for (var i in iter) {
+    var item = iter[i];
+    if (typeof item === 'object') {
+      for (var k in item) {
+        res = res.replace('{'+k+'}', item[k]);
+      }
+    } else {
+      res = res.replace('{'+i+'}', item);
+    }
+  }
+
+  return res;
+}
+String.prototype.formatArgs = formatArgs;

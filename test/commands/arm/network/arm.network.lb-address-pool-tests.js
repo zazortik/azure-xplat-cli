@@ -58,8 +58,8 @@ describe('arm', function () {
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedLB(groupName, LBName, suite, function () {
-        networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function () {
+      networkUtil.deleteLB(groupName, LBName, suite, function () {
+        networkUtil.deletePublicIp(groupName, publicipPrefix, suite, function () {
           networkUtil.deleteGroup(groupName, suite, function () {
             suite.teardownSuite(done);
           });
@@ -80,7 +80,7 @@ describe('arm', function () {
           networkUtil.createLB(groupName, LBName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function () {
               networkUtil.showPublicIp(groupName, publicipPrefix, suite, function () {
-                networkUtil.createFrontendIp(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
+                networkUtil.createFIP(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function () {
                   var cmd = util.format('network lb address-pool create -g %s -l %s %s --json', groupName, LBName, LBAddPool).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function (result) {
                     result.exitStatus.should.equal(0);
