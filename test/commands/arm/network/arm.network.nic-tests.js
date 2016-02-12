@@ -155,6 +155,7 @@ describe('arm', function () {
           nic.should.not.have.property('networkSecurityGroup');
           nic.ipConfigurations.length.should.equal(1);
           nic.ipConfigurations[0].should.not.have.property('publicIPAddress');
+          networkUtil.shouldBeSucceeded(nic);
           done();
         });
       });
