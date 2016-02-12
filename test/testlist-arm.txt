@@ -50,10 +50,10 @@ commands/arm/network/arm.network.nic-tests.js
 commands/arm/network/arm.network.lb-tests.js
 commands/arm/network/arm.network.lb-probe-tests.js
 commands/arm/network/arm.network.lb-frontend-ip-tests.js
+commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.lb-rule-tests.js
 commands/arm/network/arm.network.lb-inbound-nat-rule-tests.js
 commands/arm/network/arm.network.lb-inbound-nat-pool-tests.js
-commands/arm/network/arm.network.lb-address-pool-tests.js
 commands/arm/network/arm.network.route-table-tests.js
 commands/arm/network/arm.network.route-table-routes-tests.js
 commands/arm/network/arm.network.local-gateway-tests.js

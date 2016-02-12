@@ -12,19 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-nsg-tests';
-var tags = 'tag1=testValue1';
 var networkTestUtil = require('../../../util/networkTestUtil');
-var _ = require('underscore');
-var groupName, nsgName, location,
-  groupPrefix = 'xplatTestGCreateNsg',
-  nsgPrefix = 'xplatTestNsg';
+var networkUtil = new networkTestUtil();
+
+var testPrefix = 'arm-network-nsg-tests',
+  groupName = 'xplat-test-nsg',
+  location;
+
+var nsgProp = {
+  name: 'test-nsg',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
@@ -32,20 +41,24 @@ var requiredEnvironment = [{
 
 describe('arm', function () {
   describe('network', function () {
-    var suite,
-      retry = 5;
+    var suite, retry = 5;
     var networkUtil = new networkTestUtil();
+
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        nsgName = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        nsgProp.group = groupName;
+        nsgProp.location = location;
+        nsgProp.name = suite.isMocked ? nsgProp.name : suite.generateId(nsgProp.name, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteGroup(groupName, suite, function (result) {
+      networkUtil.deleteGroup(groupName, suite, function () {
         suite.teardownSuite(done);
       });
     });
@@ -57,54 +70,61 @@ describe('arm', function () {
     });
 
     describe('nsg', function () {
-      it('create should pass', function (done) {
-        networkUtil.createGroup(groupName, location, suite, function (result) {
-          var cmd = util.format('network nsg create %s %s %s -t %s --json', groupName, nsgName, location, tags).split(' ');
+      it('create should create nsg', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          var cmd = 'network nsg create -g {group} -n {name} -l {location} -t {tags} --json'.formatArgs(nsgProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
+            var nsg = JSON.parse(result.text);
+            nsg.name.should.equal(nsg.name);
+            networkUtil.shouldBeSucceeded(nsg);
             done();
           });
         });
       });
-      it('set should modify nsg set', function (done) {
-        var cmd = util.format('network nsg set -t age=old %s %s --json', groupName, nsgName).split(' ');
+      it('set should modify nsg', function (done) {
+        var cmd = 'network nsg set -g {group} -n {name} -t {newTags} --json'.formatArgs(nsgProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-      it('set with no tags should remove tags from nsg ', function (done) {
-        var cmd = util.format('network nsg set %s %s --json', groupName, nsgName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
+          var nsg = JSON.parse(result.text);
+          nsg.name.should.equal(nsg.name);
+          networkUtil.shouldAppendTags(nsg);
+          networkUtil.shouldBeSucceeded(nsg);
           done();
         });
       });
       it('show should display details about nsg', function (done) {
-        var cmd = util.format('network nsg show %s %s --json', groupName, nsgName).split(' ');
+        var cmd = 'network nsg show -g {group} -n {name} --json'.formatArgs(nsgProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allresources = JSON.parse(result.text);
-          allresources.name.should.equal(nsgName);
+          var nsg = JSON.parse(result.text);
+          nsg.name.should.equal(nsg.name);
           done();
         });
       });
       it('list should display all nsg in resource group', function (done) {
-        var cmd = util.format('network nsg list %s --json', groupName).split(' ');
+        var cmd = 'network nsg list -g {group} --json'.formatArgs(nsgProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          _.some(allResources, function (res) {
-            return res.name === nsgName;
+          var nsgs = JSON.parse(result.text);
+          _.some(nsgs, function (nsg) {
+            return nsg.name === nsgProp.name;
           }).should.be.true;
           done();
         });
       });
-      it('delete should delete the nsg', function (done) {
-        var cmd = util.format('network nsg delete %s %s --quiet --json', groupName, nsgName).split(' ');
+      it('delete should delete nsg', function (done) {
+        var cmd = 'network nsg delete -g {group} -n {name} --quiet --json'.formatArgs(nsgProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          done();
+
+          cmd = 'network nsg show -g {group} -n {name} --json'.formatArgs(nsgProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var nsg = JSON.parse(result.text);
+            nsg.should.be.empty;
+            done();
+          });
         });
       });
     });

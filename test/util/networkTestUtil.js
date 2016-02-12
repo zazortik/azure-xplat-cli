@@ -170,6 +170,15 @@ networkTestUtil.prototype.createAddressPool = function(groupName, lbName, poolNa
     callback(pool);
   });
 };
+networkTestUtil.prototype.createProbe = function(groupName, lbName, probeName, port, protocol, suite, callback) {
+  var cmd = util.format('network lb probe create -g %s -l %s -n %s -o %s -p %s --json', groupName, lbName, probeName, port, protocol);
+  testUtils.executeCommand(suite, retry, cmd, function(result) {
+    result.exitStatus.should.equal(0);
+    var probe = JSON.parse(result.text);
+    probe.name.should.equal(probeName);
+    callback(probe);
+  });
+};
 networkTestUtil.prototype.createInboundNatRule = function(groupName, lbName, ruleName, protocol, frontPort, backPort, enableIp, idleTimeout, fipName, suite, callback) {
   var cmd = util.format('network lb inbound-nat-rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -t %s --json',
     groupName, lbName, ruleName, protocol, frontPort, backPort, enableIp, idleTimeout, fipName);
@@ -246,13 +255,6 @@ networkTestUtil.prototype.deleteLBAddPool = function(groupName, LBName, LBAddPoo
     });
   } else
     callback();
-};
-networkTestUtil.prototype.createLBProbe = function(groupName, LBName, LBProbe, suite, callback) {
-  var cmd = util.format('network lb probe create %s %s %s --json', groupName, LBName, LBProbe).split(' ');
-  testUtils.executeCommand(suite, retry, cmd, function(result) {
-    result.exitStatus.should.equal(0);
-    callback();
-  });
 };
 networkTestUtil.prototype.deleteUsedNic = function(groupName, NicName, suite, callback) {
   if (!suite.isPlayback()) {

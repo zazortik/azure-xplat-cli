@@ -12,89 +12,107 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-lb-rule-tests';
-var groupPrefix = 'xplatTestGCreateLBRule';
 var networkTestUtil = require('../../../util/networkTestUtil');
-var groupName, protocol = 'tcp',
-  fport = '80',
-  bport = '80',
-  enafip = 'true',
-  idle = '4',
-  publicipPrefix = 'xplatTestIpRule',
-  LBName = 'armEmptyLB',
-  LBAddPool = 'LB-AddPool',
-  LBRuleName = 'LB-Rule',
-  FrontendIpName = 'xplattestFrontendIpName',
-  LBProbe = 'LB-Probe',
+
+var testPrefix = 'arm-network-lb-rule-tests',
+  groupName = 'xplat-test-lb-rule',
   location;
-var publicIpId;
+
+var ruleProp = {
+  name: 'test-rule',
+  protocol: 'Tcp',
+  newProtocol: 'Udp',
+  loadDistribution: 'Default',
+  newLoadDistribution: 'SourceIP',
+  frontendPort: 80,
+  newFrontendPort: 90,
+  backendPort: 80,
+  newBackendPort: 90,
+  idleTimeoutInMinutes: 15,
+  newIdleTimeoutInMinutes: 20,
+  enableFloatingIP: true,
+  newEnableFloatingIP: false
+};
+
+var lbName = 'test-lb',
+  publicIpName = 'test-ip',
+  fipName = 'test-fip',
+  poolName = 'test-address-pool',
+  probeName = 'test-probe',
+  probePort = 80,
+  probeProtocol = 'Tcp';
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'southeastasia'
 }];
 
-describe('arm', function() {
-  describe('network', function() {
-    var suite,
-      retry = 5;
+describe('arm', function () {
+  describe('network', function () {
+    var suite, retry = 5;
     var networkUtil = new networkTestUtil();
-    before(function(done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+
+    before(function (done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
-        LBName = suite.generateId(LBName, null);
-        LBAddPool = suite.generateId(LBAddPool, null);
-        LBRuleName = suite.generateId(LBRuleName, null);
-        LBProbe = suite.generateId(LBProbe, null);
-        FrontendIpName = suite.isMocked ? FrontendIpName : suite.generateId(FrontendIpName, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+        lbName = suite.isMocked ? lbName : suite.generateId(lbName, null);
+        publicIpName = suite.isMocked ? publicIpName : suite.generateId(publicIpName, null);
+        fipName = suite.isMocked ? fipName : suite.generateId(fipName, null);
+        probeName = suite.isMocked ? probeName : suite.generateId(probeName, null);
+
+        ruleProp.group = groupName;
+        ruleProp.lbName = lbName;
+        ruleProp.name = suite.isMocked ? ruleProp.name : suite.generateId(ruleProp.name, null);
+
         done();
       });
     });
-    after(function(done) {
-      networkUtil.deleteLBAddPool(groupName, LBName, LBAddPool, suite, function() {
-        networkUtil.deleteLBProbe(groupName, LBName, LBProbe, suite, function() {
-          networkUtil.deleteLB(groupName, LBName, suite, function() {
-            networkUtil.deletePublicIp(groupName, publicipPrefix, suite, function() {
-              networkUtil.deleteGroup(groupName, suite, function() {
-                suite.teardownSuite(done);
-              });
-            });
-          });
-        });
+    after(function (done) {
+      networkUtil.deleteGroup(groupName, suite, function () {
+        suite.teardownSuite(done);
       });
     });
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('lb rule', function() {
+    describe('lb rule', function () {
+      it('create should create rule using fip and address pool', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+              networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
+                networkUtil.createAddressPool(groupName, lbName, poolName, suite, function (pool) {
+                  var cmd = 'network lb rule create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -d {loadDistribution} -o {1} -t {2} --json'
+                    .formatArgs(ruleProp, pool.name, fip.name);
 
-      it('create should pass', function(done) {
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createLB(groupName, LBName, location, suite, function() {
-            networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-              networkUtil.showPublicIp(groupName, publicipPrefix, suite, function() {
-                networkUtil.createFIP(groupName, LBName, FrontendIpName, networkTestUtil.publicIpId, suite, function() {
-                  networkUtil.createAddressPool(groupName, LBName, LBAddPool, suite, function() {
-                    networkUtil.createLBProbe(groupName, LBName, LBProbe, suite, function() {
-                      var cmd = util.format('network lb rule create -g %s -l %s -n %s -p %s -f %s -b %s -e %s -i %s -o %s -a %s -t %s --json',
-                        groupName, LBName, LBRuleName, protocol, fport, bport, enafip, idle, LBAddPool, LBProbe, FrontendIpName).split(' ');
-                      testUtils.executeCommand(suite, retry, cmd, function(result) {
-                        result.exitStatus.should.equal(0);
-                        done();
-                      });
-                    });
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
+                    result.exitStatus.should.equal(0);
+                    var rule = JSON.parse(result.text);
+                    rule.name.should.equal(ruleProp.name);
+                    rule.protocol.should.equal(ruleProp.protocol);
+                    rule.frontendPort.should.equal(ruleProp.frontendPort);
+                    rule.backendPort.should.equal(ruleProp.backendPort);
+                    rule.enableFloatingIP.should.equal(ruleProp.enableFloatingIP);
+                    rule.idleTimeoutInMinutes.should.equal(ruleProp.idleTimeoutInMinutes);
+                    rule.loadDistribution.should.equal(ruleProp.loadDistribution);
+                    rule.frontendIPConfiguration.id.should.equal(fip.id);
+                    rule.backendAddressPool.id.should.equal(pool.id);
+                    networkUtil.shouldBeSucceeded(rule);
+                    done();
                   });
                 });
               });
@@ -102,32 +120,65 @@ describe('arm', function() {
           });
         });
       });
-      it('set should modify lb rule ', function(done) {
-        var cmd = util.format('network lb rule set -g %s -l %s -n %s -p %s -f %s -b %s -i %s -o %s -a %s -t %s --json',
-          groupName, LBName, LBRuleName, protocol, '82', '82', '5', LBAddPool, LBProbe, FrontendIpName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-      it('list should display all rules from load balancer', function(done) {
-        var cmd = util.format('network lb rule list -g %s -l %s --json', groupName, LBName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources[0].name.should.equal(LBRuleName);
-          done();
-        });
-      });
-      it('delete should delete rule', function(done) {
-        var cmd = util.format('network lb rule delete %s %s %s --quiet --json', groupName, LBName, LBRuleName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
+      it('set should modify lb rule', function (done) {
+        networkUtil.createProbe(groupName, lbName, probeName, probePort, probeProtocol, suite, function (probe) {
+          var cmd = 'network lb rule set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPort} -b {newBackendPort} -e {newEnableFloatingIP} -i {newIdleTimeoutInMinutes} -d {newLoadDistribution} -a {1} --json'
+            .formatArgs(ruleProp, probe.name);
 
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var rule = JSON.parse(result.text);
+            rule.name.should.equal(ruleProp.name);
+            rule.protocol.should.equal(ruleProp.newProtocol);
+            rule.frontendPort.should.equal(ruleProp.newFrontendPort);
+            rule.backendPort.should.equal(ruleProp.newBackendPort);
+            rule.enableFloatingIP.should.equal(ruleProp.newEnableFloatingIP);
+            rule.idleTimeoutInMinutes.should.equal(ruleProp.newIdleTimeoutInMinutes);
+            rule.loadDistribution.should.equal(ruleProp.newLoadDistribution);
+            rule.probe.id.should.equal(probe.id);
+            networkUtil.shouldBeSucceeded(rule);
+            done();
+          });
+        });
+      });
+      it('set should unset probe from lb rule', function (done) {
+        var cmd = 'network lb rule set -g {group} -l {lbName} -n {name} -a --json'.formatArgs(ruleProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var rule = JSON.parse(result.text);
+          rule.name.should.equal(ruleProp.name);
+          rule.should.not.have.property('probe');
+          networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
+      it('list should display all rules from load balancer', function (done) {
+        var cmd = 'network lb rule list -g {group} -l {lbName} --json'.formatArgs(ruleProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var rules = JSON.parse(result.text);
+          _.some(rules, function (rule) {
+            return rule.name === ruleProp.name;
+          }).should.be.true;
+          done();
+        });
+      });
+      it('delete should delete rule', function (done) {
+        var cmd = 'network lb rule delete -g {group} -l {lbName} -n {name} --quiet --json'.formatArgs(ruleProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+
+          cmd = 'network lb rule list -g {group} -l {lbName} --json'.formatArgs(ruleProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var rules = JSON.parse(result.text);
+            _.some(rules, function (rule) {
+              return rule.name === ruleProp.name;
+            }).should.be.false;
+            done();
+          });
+        });
+      });
     });
-
   });
 });
