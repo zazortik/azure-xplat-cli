@@ -141,6 +141,17 @@ describe('arm', function () {
           });
         });
       });
+      it('set should unset probe from lb rule', function (done) {
+        var cmd = 'network lb rule set -g {group} -l {lbName} -n {name} -a --json'.formatArgs(ruleProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var rule = JSON.parse(result.text);
+          rule.name.should.equal(ruleProp.name);
+          rule.should.not.have.property('probe');
+          networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
       it('list should display all rules from load balancer', function (done) {
         var cmd = 'network lb rule list -g {group} -l {lbName} --json'.formatArgs(ruleProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
