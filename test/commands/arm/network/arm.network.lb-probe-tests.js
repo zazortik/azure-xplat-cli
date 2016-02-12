@@ -61,6 +61,7 @@ describe('arm', function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
         lbName = suite.isMocked ? lbName : suite.generateId(lbName, null);
+        publicIpName = suite.isMocked ? publicIpName : suite.generateId(publicIpName, null);
         fipName = suite.isMocked ? fipName : suite.generateId(fipName, null);
 
         probeProp.group = groupName;
