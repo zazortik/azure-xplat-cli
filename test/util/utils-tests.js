@@ -18,7 +18,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('./util');
-
+var Subscription = testutil.libRequire('util/profile/subscription')
 // Lib includes
 var util = testutil.libRequire('util/utils');
 
@@ -98,5 +98,29 @@ suite('util-tests', function() {
     assert.equal(util.escapeFilePath('lpT9'), 'lpT9 (1)');
     assert.equal(util.escapeFilePath('LPT9?'), 'LPT9%3f');
     done();
+  });
+
+  test('create arm clients with a cert based subscription should fail', function () {
+    var data = {
+      managementCertificate : "some certifcate"
+    }
+
+    var subscription = new Subscription(data, {});
+
+    try {
+      util.createAutoRestClient('somefactory', subscription);
+      assert.fail('no exception was thrown when creating autorest client ' + 
+        'with a cert based subscription.');
+    } catch (ex) {
+      assert.ok(ex.message.indexOf('current cmdlet requires you to log in') > 0);
+    }
+
+    try {
+      util.createComputeResourceProviderClient(subscription);
+      assert.fail('no exception was thrown when creating arm compute client ' + 
+        'with a cert based subscription.');
+    } catch (ex) {
+      assert.ok(ex.message.indexOf('current cmdlet requires you to log in') > 0);
+    }
   });
 });
