@@ -20,7 +20,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testPrefix = 'arm-network-express-route-authorization-tests';
 var _ = require('underscore');
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var groupName, location,
   groupPrefix = 'xplatTestGroupExpressRoutCircuiteAuth';
 var expressRCAuthPrefix = 'xplatExpressRouteAuth',
@@ -42,7 +42,7 @@ describe('arm', function () {
   describe('network', function () {
     var suite,
       retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {

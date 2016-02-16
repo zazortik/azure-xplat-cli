@@ -18,9 +18,10 @@
 var should = require('should');
 var util = require('util');
 var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 
 var testPrefix = 'arm-network-lb-frontend-ip-tests',
   groupName = 'xplat-test-lb-fip',
@@ -47,7 +48,7 @@ var requiredEnvironment = [{
 describe('arm', function () {
   describe('network', function () {
     var suite, retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);

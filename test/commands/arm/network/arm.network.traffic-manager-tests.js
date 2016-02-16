@@ -20,7 +20,7 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-traffic-manager-tests';
 var groupPrefix = 'xplatTestGTMPCreate';
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var groupName,
   location,
   trafficMPPrefix = 'xplatTestTrafficMP',
@@ -46,7 +46,7 @@ describe('arm', function () {
   describe('network', function () {
     var suite,
       retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function () {

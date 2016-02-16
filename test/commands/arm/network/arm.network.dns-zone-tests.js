@@ -20,7 +20,7 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-dns-zone-tests';
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var groupName,
   location,
   groupPrefix = 'xplatTestGCreateDns',
@@ -52,7 +52,7 @@ describe('arm', function() {
       timeout,
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 10000;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {

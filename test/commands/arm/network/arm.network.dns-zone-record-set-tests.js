@@ -19,7 +19,7 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-dns-record-set-tests';
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var groupName, location,
   groupPrefix = 'xplatTestGCreateDR',
   dnszonePrefix = 'xplattestgcreatedr.xplattestdrs',
@@ -35,7 +35,7 @@ describe('arm', function() {
   describe('network', function() {
     var suite,
       retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
