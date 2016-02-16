@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{e6309b69-d527-408b-8835-86367f414dba}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>bin\azure.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -23,8 +23,11 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\commands\arm\datalakeanalytics\datalakeanalytics._js" />
+    <Content Include="lib\commands\arm\datalakestore\datalakestore._js" />
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
+    <Compile Include="lib\commands\arm\resource\resource._js" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -48,6 +51,8 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\commands\arm\datalakeanalytics\datalakeanalytics.utils.js" />
+    <Compile Include="lib\commands\arm\datalakestore\datalakestore.utils.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -442,6 +447,8 @@
     <Folder Include="lib\commands\arm\apiapp\lib\packaging\schemas" />
     <Folder Include="lib\commands\arm\armsdk" />
     <Folder Include="lib\commands\arm\availabilityset" />
+    <Folder Include="lib\commands\arm\datalakeanalytics\" />
+    <Folder Include="lib\commands\arm\datalakestore\" />
     <Folder Include="lib\commands\arm\feature" />
     <Folder Include="lib\commands\arm\group" />
     <Folder Include="lib\commands\arm\insights" />

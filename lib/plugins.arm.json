@@ -9616,15 +9616,6 @@
                       "description": "optionally specify the priority for the job. Default value is 1000, with lower, positive, non-zero values having higher priority. 1 is the highest priority and int.maxValue is the lowest."
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -9704,15 +9695,6 @@
                       "description": "optionally indicates that statistics for the job should be output as well."
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -9781,15 +9763,6 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode (do not ask for cancel confirmation)"
-                    },
-                    {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -9898,15 +9871,6 @@
                       "description": "An optional filter which returns jobs with only the specified results (as comma delmited string). Valid results are: none, succeeded, cancelled and failed"
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -9985,15 +9949,6 @@
                       "short": "-p",
                       "long": "--itemPath",
                       "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>. This MUST be null when listing all databases."
-                    },
-                    {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to list the accounts in"
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -10093,15 +10048,6 @@
                           "description": "secret password, will prompt if not given"
                         },
                         {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
-                        },
-                        {
                           "flags": "-s, --subscription <id>",
                           "required": -20,
                           "optional": 0,
@@ -10190,15 +10136,6 @@
                           "description": "secret password, will prompt if not given"
                         },
                         {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
-                        },
-                        {
                           "flags": "-s, --subscription <id>",
                           "required": -20,
                           "optional": 0,
@@ -10276,15 +10213,6 @@
                           "short": "-q",
                           "long": "--quiet",
                           "description": "quiet mode (do not ask for delete confirmation)"
-                        },
-                        {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
                         },
                         {
                           "flags": "-s, --subscription <id>",
@@ -33614,6 +33542,58 @@
           ]
         },
         {
+          "name": "enable-aem",
+          "description": "Enable Azure Enhanced Monitoring Extension on a VM in a resource group",
+          "fullName": "vm enable-aem",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-a, --diagnostic-storage-account-name <name>",
+              "required": -39,
+              "optional": 0,
+              "bool": true,
+              "short": "-a",
+              "long": "--diagnostic-storage-account-name",
+              "description": "storage account name"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quite mode(do not ask for confirmation)"
+            }
+          ]
+        },
+        {
           "name": "set",
           "description": "Update a VM in a resource group.",
           "fullName": "vm set",
@@ -33794,58 +33774,6 @@
               "description": "the subscription identifier"
             }
           ]
-        },
-        {
-          "name": "enable-aem",
-          "description": "Enable azure enhanced monitoring extension on a VM in a resource group",
-          "fullName": "vm enable-aem",
-          "usage": "[options] <resource-group> <name>",
-          "filePath": "commands/arm/vm/vm._js",
-          "options": [
-            {
-              "flags": "-q, --quiet",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-q",
-              "long": "--quiet",
-              "description": "quiet mode, do not ask for confirmation"
-            },
-            {
-              "flags": "-a, --diagnostic-storage-account-name",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-a",
-              "long": "--diagnostic-storage-account-name",
-              "description": "storage account name"
-            },
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            }
-          ] 
         },
         {
           "name": "enable-diag",
