@@ -18175,11 +18175,11 @@
                   "description": "name of the secret to be created; if already exists, a new secret version is created"
                 },
                 {
-                  "flags": "-s, --value <secret-value>",
+                  "flags": "-w, --value <secret-value>",
                   "required": -13,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-w",
                   "long": "--value",
                   "description": "the secret value"
                 },
