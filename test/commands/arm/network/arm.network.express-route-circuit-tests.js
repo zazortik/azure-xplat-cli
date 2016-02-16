@@ -21,8 +21,8 @@ var _ = require('underscore');
 
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var networkTestUtil = require('../../../util/networkTestUtil');
-var networkUtil = new networkTestUtil();
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 
 var testPrefix = 'arm-network-express-route-tests',
   groupName = 'xplat-test-express-route-circuit',

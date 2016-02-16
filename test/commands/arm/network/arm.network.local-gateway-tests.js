@@ -21,8 +21,8 @@ var _ = require('underscore');
 
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var networkTestUtil = require('../../../util/networkTestUtil');
-var networkUtil = new networkTestUtil();
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 
 var testPrefix = 'arm-network-local-gateway-tests',
   groupName = 'xplat-test-local-gateway',
@@ -45,7 +45,7 @@ var requiredEnvironment = [{
 describe('arm', function () {
   describe('network', function () {
     var suite, retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);

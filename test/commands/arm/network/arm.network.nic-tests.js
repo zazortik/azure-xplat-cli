@@ -20,8 +20,8 @@ var util = require('util');
 var _ = require('underscore');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var networkTestUtil = require('../../../util/networkTestUtil');
-var networkUtil = new networkTestUtil();
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 
 var testPrefix = 'arm-network-nic-tests',
   groupName = 'xplat-test-nic',

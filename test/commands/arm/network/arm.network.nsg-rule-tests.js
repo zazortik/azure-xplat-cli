@@ -21,7 +21,7 @@ var _ = require('underscore');
 
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 
 var testPrefix = 'arm-network-nsg-rule-tests',
   groupName = 'xplat-test-nsg-rule',
@@ -60,7 +60,7 @@ var requiredEnvironment = [{
 describe('arm', function () {
   describe('network', function () {
     var suite, retry = 5;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
