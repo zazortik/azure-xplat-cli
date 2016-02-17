@@ -89,6 +89,7 @@ describe('arm', function () {
             ip.publicIPAllocationMethod.should.equal(publicIpProp.staticMethod);
             ip.idleTimeoutInMinutes.should.equal(publicIpProp.idleTimeout);
             ip.dnsSettings.domainNameLabel.should.equal(publicIpProp.domainName);
+            networkUtil.shouldHaveTags(ip);
             networkUtil.shouldBeSucceeded(ip);
             done();
           });

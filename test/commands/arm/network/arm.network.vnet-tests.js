@@ -72,6 +72,7 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             var vnet = JSON.parse(result.text);
             vnet.name.should.equal(vnetName);
+            networkUtil.shouldHaveTags(vnet);
             networkUtil.shouldBeSucceeded(vnet);
             done();
           });

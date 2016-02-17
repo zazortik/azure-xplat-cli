@@ -89,6 +89,7 @@ describe('arm', function () {
             circuit.serviceProviderProperties.bandwidthInMbps.should.equal(circuitProp.bandwidthInMbps);
             circuit.sku.tier.should.equal(circuitProp.skuTier);
             circuit.sku.family.should.equal(circuitProp.skuFamily);
+            networkUtil.shouldHaveTags(circuit);
             networkUtil.shouldBeSucceeded(circuit);
             done();
           });

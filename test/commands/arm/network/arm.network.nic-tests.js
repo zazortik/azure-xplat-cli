@@ -116,6 +116,7 @@ describe('arm', function () {
                 nic.name.should.equal(nicProp.name);
                 nic.ipConfigurations.length.should.equal(1);
                 nic.ipConfigurations[0].subnet.id.should.equal(subnet.id);
+                networkUtil.shouldHaveTags(nic);
                 networkUtil.shouldBeSucceeded(nic);
                 done();
               });
