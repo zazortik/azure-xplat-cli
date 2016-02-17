@@ -117,7 +117,9 @@ describe('arm', function () {
 
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
               showResult.exitStatus.should.equal(0);
-              showResult.text.indexOf(deploymentName).should.be.above(-1);
+              var deployment = JSON.parse(showResult.text);
+              deployment.name.should.equal(deploymentName);
+              deployment.id.should.containEql('/resourceGroups/' + groupName);
 
               suite.execute('group deployment list -g %s --state %s --json', groupName, 'Running', function (listResult) {
                 listResult.exitStatus.should.equal(0);
@@ -247,6 +249,9 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
+            var deployment = JSON.parse(result.text);
+            deployment.name.should.equal(deploymentName);
+            deployment.id.should.containEql('/resourceGroups/' + groupName);
             
             suite.execute('group deployment stop -g %s -n %s -q --json', groupName, deploymentName, function (listResult) {
               listResult.exitStatus.should.equal(0);
