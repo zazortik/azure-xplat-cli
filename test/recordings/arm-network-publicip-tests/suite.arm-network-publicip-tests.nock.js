@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['foo-domain4702','bar-domain571','test-ip6133'];};
+ exports.randomTestIdsGenerated = function() { return ['foo-domain1868','bar-domain9250'];};
