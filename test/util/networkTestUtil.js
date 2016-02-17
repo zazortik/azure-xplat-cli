@@ -40,6 +40,9 @@ function NetworkTestUtil() {
 }
 
 _.extend(NetworkTestUtil.prototype, {
+  /**
+   * Networking
+   */
   createGroup: function (groupName, location, suite, callback) {
     var cmd = util.format('group create %s --location %s --json', groupName, location);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -180,6 +183,9 @@ _.extend(NetworkTestUtil.prototype, {
     });
   },
 
+  /**
+   * DNS & TrafficManager
+   */
   createDnszone: function (groupName, dnszonePrefix, suite, callback) {
     var cmd = util.format('network dns zone create %s %s --json', groupName, dnszonePrefix).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -233,6 +239,12 @@ _.extend(NetworkTestUtil.prototype, {
     });
   },
 
+  /**
+   * Assertions
+   */
+  shouldHaveTags: function (obj) {
+    tagUtils.getTagsInfo(obj.tags).should.equal(this.tags);
+  },
   shouldAppendTags: function (obj) {
     var pattern = this.tags + ';' + this.newTags;
     tagUtils.getTagsInfo(obj.tags).should.equal(pattern);

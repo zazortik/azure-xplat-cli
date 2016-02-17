@@ -83,25 +83,24 @@ describe('arm', function () {
             localGateway.name.should.equal(gatewayProp.name);
             localGateway.gatewayIpAddress.should.equal(gatewayProp.gatewayIpAddress);
             localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.addressPrefix);
+            networkUtil.shouldHaveTags(localGateway);
             networkUtil.shouldBeSucceeded(localGateway);
             done();
           });
         });
       });
       it('set should modify local gateway', function (done) {
-        networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = 'network local-gateway set -g {group} -n {name} -a {anotherAddressPrefix} -t {newTags} --json'
-            .formatArgs(gatewayProp);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var localGateway = JSON.parse(result.text);
-            localGateway.name.should.equal(gatewayProp.name);
-            localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.addressPrefix);
-            localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.anotherAddressPrefix);
-            networkUtil.shouldBeSucceeded(localGateway);
-            networkUtil.shouldAppendTags(localGateway);
-            done();
-          });
+        var cmd = 'network local-gateway set -g {group} -n {name} -a {anotherAddressPrefix} -t {newTags} --json'
+          .formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var localGateway = JSON.parse(result.text);
+          localGateway.name.should.equal(gatewayProp.name);
+          localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.addressPrefix);
+          localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.anotherAddressPrefix);
+          networkUtil.shouldAppendTags(localGateway);
+          networkUtil.shouldBeSucceeded(localGateway);
+          done();
         });
       });
       it('show should display details of local gateway', function (done) {

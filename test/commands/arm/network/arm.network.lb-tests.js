@@ -18,14 +18,21 @@
 var should = require('should');
 var util = require('util');
 var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 
-var location,
-  testPrefix = 'arm-network-lb-tests',
+var testPrefix = 'arm-network-lb-tests',
   groupName = 'xplat-test-lb',
-  lbName = 'test-lb';
+  location;
+
+var lbProp = {
+  name: 'test-lb',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -35,14 +42,17 @@ var requiredEnvironment = [{
 describe('arm', function () {
   describe('network', function () {
     var suite, retry = 5;
-    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
-        lbName = suite.isMocked ? lbName : suite.generateId(lbName, null);
+
+        lbProp.location = location;
+        lbProp.group = groupName;
+        lbProp.name = suite.isMocked ? lbProp.name : suite.generateId(lbProp.name, null);
+
         done();
       });
     });
@@ -61,53 +71,56 @@ describe('arm', function () {
     describe('lb', function () {
       it('create should create load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network lb create -g %s -n %s -l %s -t %s --json', groupName, lbName, location, networkUtil.tags);
+          var cmd = 'network lb create -g {group} -n {name} -l {location} -t {tags} --json'.formatArgs(lbProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var lb = JSON.parse(result.text);
-            lb.name.should.equal(lbName);
+            lb.name.should.equal(lbProp.name);
+            networkUtil.shouldHaveTags(lb);
+            networkUtil.shouldBeSucceeded(lb);
             done();
           });
         });
       });
       it('set should modify load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network lb set -g %s -n %s -t %s --json', groupName, lbName, networkUtil.newTags);
+          var cmd = 'network lb set -g {group} -n {name} -t {newTags} --json'.formatArgs(lbProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var lb = JSON.parse(result.text);
-            lb.name.should.equal(lbName);
+            lb.name.should.equal(lbProp.name);
             networkUtil.shouldAppendTags(lb);
+            networkUtil.shouldBeSucceeded(lb);
             done();
           });
         });
       });
       it('show should display details of load balancer', function (done) {
-        var cmd = util.format('network lb show -g %s -n %s --json', groupName, lbName);
+        var cmd = 'network lb show -g {group} -n {name} --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var lb = JSON.parse(result.text);
-          lb.name.should.equal(lbName);
+          lb.name.should.equal(lbProp.name);
           done();
         });
       });
       it('list should display all load balancers in resource group', function (done) {
-        var cmd = util.format('network lb list -g %s --json', groupName);
+        var cmd = 'network lb list -g {group} --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var lbs = JSON.parse(result.text);
           _.some(lbs, function (lb) {
-            return lb.name === lbName;
+            return lb.name === lbProp.name;
           }).should.be.true;
           done();
         });
       });
       it('delete should delete load balancer', function (done) {
-        var cmd = util.format('network lb delete -g %s -n %s --quiet --json', groupName, lbName);
+        var cmd = 'network lb delete -g {group} -n {name} --quiet --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
 
-          cmd = util.format('network lb show -g %s -n %s --json', groupName, lbName);
+          cmd = 'network lb show -g {group} -n {name} --json'.formatArgs(lbProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var lb = JSON.parse(result.text);

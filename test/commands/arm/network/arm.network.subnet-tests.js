@@ -22,16 +22,19 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
 
-var location,
-  testprefix = 'arm-network-subnet-tests',
+var testPrefix = 'arm-network-subnet-tests',
   groupName = 'xplat-test-subnet',
-  vnetName = 'test-vnet',
-  subnetName = 'test-subnet',
-  vnetAddressSpace = '10.0.0.0/8',
-  addressPrefix = '10.0.0.0/25',
-  newAddressPrefix = '10.0.0.0/24',
-  routeTableName = 'test-route-table',
-  nsgName = 'test-nsg';
+  location;
+
+var subnetProp = {
+  name: 'test-subnet',
+  vnetName: 'test-vnet',
+  vnetAddressSpace: '10.0.0.0/8',
+  addressPrefix: '10.0.0.0/25',
+  newAddressPrefix: '10.0.0.0/24',
+  routeTableName: 'test-route-table',
+  nsgName: 'test-nsg'
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -44,24 +47,24 @@ describe('arm', function () {
     var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
-        vnetName = suite.isMocked ? vnetName : suite.generateId(vnetName, null);
-        subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
-        nsgName = suite.isMocked ? nsgName : suite.generateId(nsgName, null);
-        routeTableName = suite.isMocked ? routeTableName : suite.generateId(routeTableName, null);
+
+        subnetProp.location = location;
+        subnetProp.group = groupName;
+        subnetProp.name = suite.isMocked ? subnetProp.name : suite.generateId(subnetProp.name, null);
+        subnetProp.vnetName = suite.isMocked ? subnetProp.vnetName : suite.generateId(subnetProp.vnetName, null);
+        subnetProp.nsgName = suite.isMocked ? subnetProp.nsgName : suite.generateId(subnetProp.nsgName, null);
+        subnetProp.routeTableName = suite.isMocked ? subnetProp.routeTableName : suite.generateId(subnetProp.routeTableName, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteVnet(groupName, vnetName, suite, function () {
-        networkUtil.deleteRouteTable(groupName, routeTableName, suite, function () {
-          networkUtil.deleteGroup(groupName, suite, function () {
-            suite.teardownSuite(done);
-          });
-        });
+      networkUtil.deleteGroup(groupName, suite, function () {
+        suite.teardownSuite(done);
       });
     });
     beforeEach(function (done) {
@@ -74,16 +77,16 @@ describe('arm', function () {
     describe('subnet', function () {
       it('create should create a subnet using nsg id and route table id', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createVnet(groupName, vnetName, location, vnetAddressSpace, suite, function () {
-            networkUtil.createNSG(groupName, nsgName, location, suite, function (nsg) {
-              networkUtil.createRouteTable(groupName, routeTableName, location, suite, function (routeTable) {
-                var cmd = util.format('network vnet subnet create -g %s -e %s -n %s -a %s -w %s -i %s --json',
-                  groupName, vnetName, subnetName, addressPrefix, nsg.id, routeTable.id);
+          networkUtil.createVnet(groupName, subnetProp.vnetName, location, subnetProp.vnetAddressSpace, suite, function () {
+            networkUtil.createNSG(groupName, subnetProp.nsgName, location, suite, function (nsg) {
+              networkUtil.createRouteTable(groupName, subnetProp.routeTableName, location, suite, function (routeTable) {
+                var cmd = 'network vnet subnet create -g {group} -e {vnetName} -n {name} -a {addressPrefix} -w {1} -i {2} --json'
+                  .formatArgs(subnetProp, nsg.id, routeTable.id);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
                   var subnet = JSON.parse(result.text);
-                  subnet.name.should.equal(subnetName);
+                  subnet.name.should.equal(subnetProp.name);
                   subnet.networkSecurityGroup.id.should.equal(nsg.id);
                   subnet.routeTable.id.should.equal(routeTable.id);
                   networkUtil.shouldBeSucceeded(subnet);
@@ -95,11 +98,11 @@ describe('arm', function () {
         });
       });
       it('set should unset nsg and route table', function (done) {
-        var cmd = util.format('network vnet subnet set -g %s -e %s -n %s -o -r --json', groupName, vnetName, subnetName);
+        var cmd = 'network vnet subnet set -g {group} -e {vnetName} -n {name} -o -r --json'.formatArgs(subnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var subnet = JSON.parse(result.text);
-          subnet.name.should.equal(subnetName);
+          subnet.name.should.equal(subnetProp.name);
           subnet.should.not.have.property('networkSecurityGroup');
           subnet.should.not.have.property('routeTable');
           networkUtil.shouldBeSucceeded(subnet);
@@ -107,45 +110,45 @@ describe('arm', function () {
         });
       });
       it('set should set nsg and route table using name', function (done) {
-        var cmd = util.format('network vnet subnet set -g %s -e %s -n %s -a %s -o %s -r %s --json',
-          groupName, vnetName, subnetName, newAddressPrefix, nsgName, routeTableName);
+        var cmd = 'network vnet subnet set -g {group} -e {vnetName} -n {name} -a {newAddressPrefix} -o {nsgName} -r {routeTableName} --json'
+          .formatArgs(subnetProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var subnet = JSON.parse(result.text);
-          subnet.name.should.equal(subnetName);
-          subnet.addressPrefix.should.equal(newAddressPrefix);
-          subnet.networkSecurityGroup.id.should.containEql(nsgName);
-          subnet.routeTable.id.should.containEql(routeTableName);
+          subnet.name.should.equal(subnetProp.name);
+          subnet.addressPrefix.should.equal(subnetProp.newAddressPrefix);
+          subnet.networkSecurityGroup.id.should.containEql(subnetProp.nsgName);
+          subnet.routeTable.id.should.containEql(subnetProp.routeTableName);
           done();
         });
       });
       it('list should display all subnets from vnet', function (done) {
-        var cmd = util.format('network vnet subnet list -g %s -e %s --json', groupName, vnetName);
+        var cmd = 'network vnet subnet list -g {group} -e {vnetName} --json'.formatArgs(subnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var subnets = JSON.parse(result.text);
           _.some(subnets, function (subnet) {
-            return subnet.name === subnetName;
+            return subnet.name === subnetProp.name;
           }).should.be.true;
           done();
         });
       });
       it('show should display details about subnet', function (done) {
-        var cmd = util.format('network vnet subnet show -g %s -e %s -n %s --json', groupName, vnetName, subnetName);
+        var cmd = 'network vnet subnet show -g {group} -e {vnetName} -n {name} --json'.formatArgs(subnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var subnet = JSON.parse(result.text);
-          subnet.name.should.equal(subnetName);
+          subnet.name.should.equal(subnetProp.name);
           done();
         });
       });
       it('delete should delete subnet', function (done) {
-        var cmd = util.format('network vnet subnet delete -g %s -e %s -n %s --quiet --json', groupName, vnetName, subnetName);
+        var cmd = 'network vnet subnet delete -g {group} -e {vnetName} -n {name} --quiet --json'.formatArgs(subnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
 
-          cmd = util.format('network vnet subnet show -g %s -e %s -n %s --json', groupName, vnetName, subnetName);
+          cmd = 'network vnet subnet show -g {group} -e {vnetName} -n {name} --json'.formatArgs(subnetProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var subnet = JSON.parse(result.text);

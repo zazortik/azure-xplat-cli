@@ -77,6 +77,7 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             var nsg = JSON.parse(result.text);
             nsg.name.should.equal(nsg.name);
+            networkUtil.shouldHaveTags(nsg);
             networkUtil.shouldBeSucceeded(nsg);
             done();
           });
