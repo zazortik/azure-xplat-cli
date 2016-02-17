@@ -1844,6 +1844,102 @@ export interface StatefulServiceDescription extends ServiceDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceUpdateDescription class.
+ * @constructor
+ * @member {number} [flags]
+ * 
+ * @member {string} ServiceKind Polymorhpic Discriminator
+ * 
+ */
+export interface ServiceUpdateDescription {
+    flags?: number;
+    ServiceKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessServiceUpdateDescription class.
+ * @constructor
+ * @member {number} [instanceCount]
+ * 
+ */
+export interface StatelessServiceUpdateDescription extends ServiceUpdateDescription {
+    instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulServiceUpdateDescription class.
+ * @constructor
+ * @member {number} [targetReplicaSetSize]
+ * 
+ * @member {number} [minReplicaSetSize]
+ * 
+ * @member {number} [replicaRestartWaitDurationInMilliseconds]
+ * 
+ * @member {number} [quorumLossWaitDurationInMilliseconds]
+ * 
+ * @member {number} [standByReplicaKeepDurationInMilliseconds]
+ * 
+ */
+export interface StatefulServiceUpdateDescription extends ServiceUpdateDescription {
+    targetReplicaSetSize?: number;
+    minReplicaSetSize?: number;
+    replicaRestartWaitDurationInMilliseconds?: number;
+    quorumLossWaitDurationInMilliseconds?: number;
+    standByReplicaKeepDurationInMilliseconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceGroupUpdateDescription class.
+ * @constructor
+ * @member {number} [flags]
+ * 
+ * @member {string} ServiceKind Polymorhpic Discriminator
+ * 
+ */
+export interface ServiceGroupUpdateDescription {
+    flags?: number;
+    ServiceKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessServiceGroupUpdateDescription class.
+ * @constructor
+ * @member {number} [instanceCount]
+ * 
+ */
+export interface StatelessServiceGroupUpdateDescription extends ServiceGroupUpdateDescription {
+    instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulServiceGroupUpdateDescription class.
+ * @constructor
+ * @member {number} [targetReplicaSetSize]
+ * 
+ * @member {number} [minReplicaSetSize]
+ * 
+ * @member {number} [replicaRestartWaitDurationInMilliseconds]
+ * 
+ * @member {number} [quorumLossWaitDurationInMilliseconds]
+ * 
+ * @member {number} [standByReplicaKeepDurationInMilliseconds]
+ * 
+ */
+export interface StatefulServiceGroupUpdateDescription extends ServiceGroupUpdateDescription {
+    targetReplicaSetSize?: number;
+    minReplicaSetSize?: number;
+    replicaRestartWaitDurationInMilliseconds?: number;
+    quorumLossWaitDurationInMilliseconds?: number;
+    standByReplicaKeepDurationInMilliseconds?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServiceHealth class.
  * @constructor
  * @member {array} [healthEvents]
@@ -2486,6 +2582,58 @@ export interface UpdateApplicationUpgradeDescriptionUpdateDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ResolvedServicePartition class.
+ * @constructor
+ * @member {string} [name]
+ * 
+ * @member {object} [partitionInformation]
+ * 
+ * @member {number} [partitionInformation.servicePartitionKind]
+ * 
+ * @member {string} [partitionInformation.id]
+ * 
+ * @member {array} [endpoints]
+ * 
+ * @member {string} [version]
+ * 
+ */
+export interface ResolvedServicePartition {
+    name?: string;
+    partitionInformation?: ResolvedServicePartitionPartitionInformation;
+    endpoints?: ResolvedServicePartitionEndpointsItem[];
+    version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResolvedServicePartitionPartitionInformation class.
+ * @constructor
+ * @member {number} [servicePartitionKind]
+ * 
+ * @member {string} [id]
+ * 
+ */
+export interface ResolvedServicePartitionPartitionInformation {
+    servicePartitionKind?: number;
+    id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResolvedServicePartitionEndpointsItem class.
+ * @constructor
+ * @member {number} [kind]
+ * 
+ * @member {string} [address]
+ * 
+ */
+export interface ResolvedServicePartitionEndpointsItem {
+    kind?: number;
+    address?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ClusterHealthReport class.
  * @constructor
  * @member {string} [sourceId]
@@ -2511,6 +2659,17 @@ export interface ClusterHealthReport {
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
     removeWhenExpired?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DisableNode class.
+ * @constructor
+ * @member {number} [deactivationIntent]
+ * 
+ */
+export interface DisableNode {
+    deactivationIntent?: number;
 }
 
 /**

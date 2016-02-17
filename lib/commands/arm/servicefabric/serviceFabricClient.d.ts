@@ -105,6 +105,52 @@ declare class ServiceFabricClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        enableNode(nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        enableNode(nodeName: string, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} nodeName
+         * 
+         * @param {object} disableNode
+         * 
+         * @param {number} [disableNode.deactivationIntent]
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        disableNode(nodeName: string, disableNode: models.DisableNode, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        disableNode(nodeName: string, disableNode: models.DisableNode, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} nodeName
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        removeNodeState(nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        removeNodeState(nodeName: string, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} nodeName
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
          * @param {string} [options.eventsHealthStateFilter]
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
@@ -798,6 +844,29 @@ declare class ServiceFabricClient {
         /**
          * @param {string} applicationName
          * 
+         * @param {string} serviceName
+         * 
+         * @param {object} serviceGroupUpdateDescription
+         * 
+         * @param {number} [serviceGroupUpdateDescription.flags]
+         * 
+         * @param {string} [serviceGroupUpdateDescription.ServiceKind] Polymorhpic
+         * Discriminator
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        updateServiceGroup(applicationName: string, serviceName: string, serviceGroupUpdateDescription: models.ServiceGroupUpdateDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        updateServiceGroup(applicationName: string, serviceName: string, serviceGroupUpdateDescription: models.ServiceGroupUpdateDescription, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} applicationName
+         * 
          * @param {object} [options] Optional Parameters.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
@@ -987,6 +1056,27 @@ declare class ServiceFabricClient {
         /**
          * @param {string} serviceName
          * 
+         * @param {object} serviceUpdateDescription
+         * 
+         * @param {number} [serviceUpdateDescription.flags]
+         * 
+         * @param {string} [serviceUpdateDescription.ServiceKind] Polymorhpic
+         * Discriminator
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        updateService(serviceName: string, serviceUpdateDescription: models.ServiceUpdateDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        updateService(serviceName: string, serviceUpdateDescription: models.ServiceUpdateDescription, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} serviceName
+         * 
          * @param {object} [options] Optional Parameters.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
@@ -997,6 +1087,22 @@ declare class ServiceFabricClient {
          */
         removeService(serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
         removeService(serviceName: string, callback: ServiceCallback<string>): void;
+
+        /**
+         * @param {string} applicationName
+         * 
+         * @param {string} serviceName
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        removeServiceGroup(applicationName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        removeServiceGroup(applicationName: string, serviceName: string, callback: ServiceCallback<string>): void;
 
         /**
          * @param {string} serviceName
@@ -1011,6 +1117,26 @@ declare class ServiceFabricClient {
          */
         getServiceDescription(serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceDescription>): void;
         getServiceDescription(serviceName: string, callback: ServiceCallback<models.ServiceDescription>): void;
+
+        /**
+         * @param {string} serviceName
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {string} [options.partitionKeyType]
+         * 
+         * @param {string} [options.partitionKeyValue]
+         * 
+         * @param {string} [options.previousRspVersion]
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        resolveService(serviceName: string, options: { partitionKeyType? : string, partitionKeyValue? : string, previousRspVersion? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResolvedServicePartition>): void;
+        resolveService(serviceName: string, callback: ServiceCallback<models.ResolvedServicePartition>): void;
 
         /**
          * @param {string} serviceName
