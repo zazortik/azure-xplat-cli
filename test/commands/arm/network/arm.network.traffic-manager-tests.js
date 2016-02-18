@@ -65,7 +65,7 @@ describe('arm', function () {
         profileProp.group = groupName;
         profileProp.location = location;
         profileProp.name = suite.isMocked ? profileProp.name : suite.generateId(profileProp.name, null);
-        profileProp.dnsRelativeName = suite.isMocked ? profileProp.dnsRelativeName : suite.generateId(profileProp.dnsRelativeName, null);
+        profileProp.relativeDnsName = suite.isMocked ? profileProp.relativeDnsName : suite.generateId(profileProp.relativeDnsName, null);
 
         done();
       });
