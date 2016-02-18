@@ -258,7 +258,7 @@ describe('arm', function() {
           var cmd = util.format('vm show %s %s', groupName, vmPrefix).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            result.text.should.containEql(dnsPrefix + '.' + location + '.cloudapp.azure.com');
+            result.text.should.containEql(dnsPrefix + '.' + location.toLowerCase() + '.cloudapp.azure.com');
             var cmd = util.format('availset show %s %s --json', groupName, availprefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);

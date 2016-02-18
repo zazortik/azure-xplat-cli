@@ -83,7 +83,7 @@ describe('arm', function() {
                   groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
-                  result.text.should.containEql('-pip.' + location + '.cloudapp.azure.com');
+                  result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
                   done();
                 });
               });
@@ -95,7 +95,7 @@ describe('arm', function() {
               groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              result.text.should.containEql('-pip.' + location + '.cloudapp.azure.com');
+              result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
               done();
             });
           }
@@ -115,7 +115,7 @@ describe('arm', function() {
                   groupName, vm2Prefix, location, latestWindowsImageUrn, username, password).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
-                    result.text.should.containEql('-pip.' + location + '.cloudapp.azure.com');
+                    result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
                     done();
                   });
                 });
@@ -129,7 +129,7 @@ describe('arm', function() {
                 groupName, vm2Prefix, location, latestWindowsImageUrn, username, password).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                result.text.should.containEql('-pip.' + location + '.cloudapp.azure.com');
+                result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
                 done();
               });
             });
