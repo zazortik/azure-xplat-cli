@@ -85,20 +85,7 @@ describe('arm', function () {
     describe('traffic-manager profile', function () {
       it('create should create traffic manager profile', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = 'network traffic-manager profile create -g {group} -n {name} -u {profileStatus} -m {trafficRoutingMethod} -r {relativeDnsName} -l {ttl} -p {monitorProtocol} -o {monitorPort} -a {monitorPath} -t {tags} --json'
-            .formatArgs(profileProp);
-
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var profile = JSON.parse(result.text);
-            profile.name.should.equal(profileProp.name);
-            profile.properties.profileStatus.should.equal(profileProp.profileStatus);
-            profile.properties.trafficRoutingMethod.should.equal(profileProp.trafficRoutingMethod);
-            profile.properties.dnsConfig.relativeName.should.equal(profileProp.relativeDnsName);
-            profile.properties.dnsConfig.ttl.should.equal(profileProp.ttl);
-            profile.properties.monitorConfig.protocol.should.equal(profileProp.monitorProtocol);
-            profile.properties.monitorConfig.port.should.equal(profileProp.monitorPort);
-            profile.properties.monitorConfig.path.should.equal(profileProp.monitorPath);
+          networkUtil.createTrafficManagerProfile(profileProp, suite, function (profile) {
             networkUtil.shouldHaveTags(profile);
             done();
           });
