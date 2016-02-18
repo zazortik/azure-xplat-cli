@@ -12,48 +12,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-traffic-manager-tests';
-var groupPrefix = 'xplatTestGTMPCreate';
 var NetworkTestUtil = require('../../../util/networkTestUtil');
-var groupName,
-  location,
-  trafficMPPrefix = 'xplatTestTrafficMP',
-  reldns = 'xplatTMPdns';
-var profile_status = 'Enabled',
-  routing_method = 'Performance',
-  time_to_live = '300',
-  monitor_protocol = 'http',
-  monitor_path = '/index.html',
-  monitor_port = '80';
-var profile_statusN = 'Disabled',
-  routing_methodN = 'Weighted',
-  time_to_liveN = '200',
-  monitor_pathN = '/indextest.html';
+var networkUtil = new NetworkTestUtil();
+
+var testPrefix = 'arm-network-traffic-manager-tests',
+  groupName = 'xplat-test-traffic-manager-profile',
+  location;
+
+var profileProp = {
+  name: 'test-profile',
+  relativeDnsName: 'test-profile-dns',
+  profileStatus: 'Enabled',
+  newProfileStatus: 'Disabled',
+  trafficRoutingMethod: 'Performance',
+  newTrafficRoutingMethod: 'Weighted',
+  ttl: 300,
+  newTtl: 400,
+  monitorProtocol: 'HTTP',
+  newMonitorProtocol: 'HTTPS',
+  monitorPort: 80,
+  newMonitorPort: 90,
+  monitorPath: '/healthcheck.html',
+  newMonitorPath: '/index.aspx',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
 
-
 describe('arm', function () {
   describe('network', function () {
-    var suite,
-      retry = 5;
-    var networkUtil = new NetworkTestUtil();
+    var suite, retry = 5;
+
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        trafficMPPrefix = suite.isMocked ? trafficMPPrefix : suite.generateId(trafficMPPrefix, null);
-        reldns = suite.generateId(reldns, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        profileProp.group = groupName;
+        profileProp.location = location;
+        profileProp.name = suite.isMocked ? profileProp.name : suite.generateId(profileProp.name, null);
+        profileProp.relativeDnsName = suite.isMocked ? profileProp.relativeDnsName : suite.generateId(profileProp.relativeDnsName, null);
+
         done();
       });
     });
@@ -70,64 +83,73 @@ describe('arm', function () {
     });
 
     describe('traffic-manager profile', function () {
-
-      it('create should pass', function (done) {
+      it('create should create traffic manager profile', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network traffic-manager profile create %s %s -u %s -m %s -r %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_status, routing_method, reldns, time_to_live, monitor_protocol, monitor_port, monitor_path).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
+          networkUtil.createTrafficManagerProfile(profileProp, suite, function (profile) {
+            networkUtil.shouldHaveTags(profile);
             done();
           });
         });
       });
+      it('set should modify traffic-manager profile', function (done) {
+        var cmd = 'network traffic-manager profile set -g {group} -n {name} -u {newProfileStatus} -m {newTrafficRoutingMethod} -l {newTtl} -p {newMonitorProtocol} -o {newMonitorPort} -a {newMonitorPath} -t {newTags} --json'
+          .formatArgs(profileProp);
 
-      it('list should get all traffic-manager profiles from resource group', function (done) {
-        var cmd = util.format('network traffic-manager profile list %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.some(function (res) {
-            return res.name === trafficMPPrefix;
+          var profile = JSON.parse(result.text);
+          profile.name.should.equal(profileProp.name);
+          profile.properties.profileStatus.should.equal(profileProp.newProfileStatus);
+          profile.properties.trafficRoutingMethod.should.equal(profileProp.newTrafficRoutingMethod);
+          profile.properties.dnsConfig.ttl.should.equal(profileProp.newTtl);
+          profile.properties.monitorConfig.protocol.should.equal(profileProp.newMonitorProtocol);
+          profile.properties.monitorConfig.port.should.equal(profileProp.newMonitorPort);
+          profile.properties.monitorConfig.path.should.equal(profileProp.newMonitorPath);
+          networkUtil.shouldAppendTags(profile);
+          done();
+        });
+      });
+      it('list should display all traffic manager profiles in resource group', function (done) {
+        var cmd = 'network traffic-manager profile list -g {group} --json'.formatArgs(profileProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var profiles = JSON.parse(result.text);
+          profiles.some(function (profile) {
+            return profile.name === profileProp.name;
           }).should.be.true;
           done();
         });
       });
-
-      it('set should modify traffic-manager profile', function (done) {
-        var cmd = util.format('network traffic-manager profile set %s %s -u %s -m %s -l %s -p %s -o %s -a %s --json', groupName, trafficMPPrefix, profile_statusN, routing_methodN, time_to_liveN, monitor_protocol, monitor_port, monitor_pathN).split(' ');
+      it('show should display details of traffic manager profile', function (done) {
+        var cmd = 'network traffic-manager profile show -g {group} -n {name} --json'.formatArgs(profileProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.name.should.equal(trafficMPPrefix);
+          var profile = JSON.parse(result.text);
+          profile.name.should.equal(profileProp.name);
           done();
         });
       });
-
-      it('show should display details of traffic-manager profile', function (done) {
-        var cmd = util.format('network traffic-manager profile show %s %s --json', groupName, trafficMPPrefix).split(' ');
+      it('is-dns-available should check DNS prefix availability', function (done) {
+        var cmd = 'network traffic-manager profile is-dns-available -r {relativeDnsName} --json'.formatArgs(profileProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.name.should.equal(trafficMPPrefix);
+          var res = JSON.parse(result.text);
+          res.nameAvailable.should.equal(false);
           done();
         });
       });
-
-      it('is-dns-available checks specified DNS prefix is available for creating traffic-manager profile', function (done) {
-        var cmd = util.format('network traffic-manager profile is-dns-available %s --json', reldns).split(' ');
+      it('delete should delete traffic manager profile', function (done) {
+        var cmd = 'network traffic-manager profile delete -g {group} -n {name} --quiet --json'.formatArgs(profileProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.nameAvailable.should.equal(false);
-          done();
-        });
-      });
 
-      it('delete should delete traffic-manager profile', function (done) {
-        var cmd = util.format('network traffic-manager profile delete %s %s -q --json', groupName, trafficMPPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          done();
+          cmd = 'network traffic-manager profile show -g {group} -n {name} --json'.formatArgs(profileProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var profile = JSON.parse(result.text);
+            profile.should.be.empty;
+            done();
+          });
         });
       });
     });
