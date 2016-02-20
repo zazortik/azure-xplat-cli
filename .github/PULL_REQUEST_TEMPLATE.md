@@ -1,5 +1,4 @@
-This PR contains the following changes:
-
+The content to be added to Changelog is as follows:
 * 
 * 
 * 
