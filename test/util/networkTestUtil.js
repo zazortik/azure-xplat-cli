@@ -29,10 +29,7 @@ var retry = 5;
  * @constructor
  */
 function NetworkTestUtil() {
-  this.subnetId = '';
-  this.publicIpId = '';
   this.timeout = 800000;
-  this.gatewaytimeout = 3500000;
 
   this.tags = 'tag1=aaa;tag2=bbb';
   this.newTags = 'tag3=ccc';
@@ -183,6 +180,57 @@ _.extend(NetworkTestUtil.prototype, {
     });
   },
 
+  createVnetWithAddress: function (groupName, vnetPrefix, location, vnetAddressPrefix, suite, callback) {
+    var cmd = util.format('network vnet create %s %s %s -a %s --json', groupName, vnetPrefix, location, vnetAddressPrefix).split(' ');
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      callback();
+    });
+  },
+  createSubnetWithAddress: function (groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, callback) {
+    var cmd = util.format('network vnet subnet create %s %s %s -a %s --json', groupName, vnetPrefix, subnetprefix, subnetAddressPrefix).split(' ');
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      callback();
+    });
+  },
+  createExpressRoute: function (groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, callback) {
+    var cmd = util.format('network express-route circuit create %s %s %s -p %s -i %s -b 50 -e %s -f %s -t %s --json', groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1).split(' ');
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      callback();
+    });
+  },
+  createVpnGateway: function (gatewayProp, suite, callback) {
+    var self = this;
+
+    self.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddressPrefix, suite, function (vnet) {
+      self.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddressPrefix, suite, function (subnet) {
+        self.createPublicIp(gatewayProp.group, gatewayProp.publicIpName, gatewayProp.location, suite, function (publicIp) {
+          var cmd = 'network vpn-gateway create -g {group} -n {name} -l {location} -y {type} -a {privateIpAddress} -b {enableBgp} -t {tags} -u {1} -f {2} --json'
+            .formatArgs(gatewayProp, publicIp.id, subnet.id);
+
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var vpnGateway = JSON.parse(result.text);
+            vpnGateway.name.should.equal(gatewayProp.name);
+            vpnGateway.vpnType.should.equal(gatewayProp.type);
+            vpnGateway.enableBgp.should.equal(gatewayProp.enableBgp);
+            vpnGateway.ipConfigurations.length.should.equal(1);
+            var ipConfig = vpnGateway.ipConfigurations[0];
+            ipConfig.privateIPAddress.should.equal(gatewayProp.privateIpAddress);
+            ipConfig.subnet.id.should.equal(subnet.id);
+            ipConfig.publicIPAddress.id.should.equal(publicIp.id);
+            self.shouldHaveTags(vpnGateway);
+            self.shouldBeSucceeded(vpnGateway);
+
+            callback(vpnGateway);
+          });
+        });
+      });
+    });
+  },
+
   /**
    * DNS & TrafficManager
    */
@@ -219,34 +267,6 @@ _.extend(NetworkTestUtil.prototype, {
       profile.properties.monitorConfig.port.should.equal(profileProp.monitorPort);
       profile.properties.monitorConfig.path.should.equal(profileProp.monitorPath);
       callback(profile);
-    });
-  },
-  createVnetWithAddress: function (groupName, vnetPrefix, location, vnetAddressPrefix, suite, callback) {
-    var cmd = util.format('network vnet create %s %s %s -a %s --json', groupName, vnetPrefix, location, vnetAddressPrefix).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  },
-  createSubnetWithAddress: function (groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, callback) {
-    var cmd = util.format('network vnet subnet create %s %s %s -a %s --json', groupName, vnetPrefix, subnetprefix, subnetAddressPrefix).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  },
-  createGateway: function (groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags, suite, callback) {
-    var cmd = util.format('network vpn-gateway create -g %s -n %s -l %s -y %s -p %s -m %s -e %s -a %s -b %s -t %s --json', groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  },
-  createExpressRoute: function (groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, callback) {
-    var cmd = util.format('network express-route circuit create %s %s %s -p %s -i %s -b 50 -e %s -f %s -t %s --json', groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
     });
   },
 
