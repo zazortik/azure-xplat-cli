@@ -30389,6 +30389,85 @@
               "description": "the subscription identifier"
             }
           ]
+        },
+        {
+          "name": "set-diagnostics",
+          "description": "Sets diagnostics on an existing Redis Cache using the storage account specified",
+          "fullName": "rediscache set-diagnostics",
+          "usage": "[--name <name> --resource-group <resource-group> --storage-account-name <storage-account-name> --storage-account-resource-group <storage-account-resource-group>]",
+          "filePath": "commands/arm/rediscache/rediscache._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of the Redis Cache."
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group under which Cache exists"
+            },
+            {
+              "flags": "-x, --storage-account-name <storage-account-name>",
+              "required": -28,
+              "optional": 0,
+              "bool": true,
+              "short": "-x",
+              "long": "--storage-account-name",
+              "description": "Name of the Storage Account."
+            },
+            {
+              "flags": "-b, --storage-account-resource-group <storage-account-resource-group>",
+              "required": -38,
+              "optional": 0,
+              "bool": true,
+              "short": "-b",
+              "long": "--storage-account-resource-group",
+              "description": "Name of the Resource Group under which the Storage Account exists"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
         }
       ],
       "categories": {}
