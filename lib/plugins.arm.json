@@ -30450,11 +30450,11 @@
               "description": "Name of the Storage Account."
             },
             {
-              "flags": "-r, --storage-account-resource-group <storage-account-resource-group>",
+              "flags": "-b, --storage-account-resource-group <storage-account-resource-group>",
               "required": -38,
               "optional": 0,
               "bool": true,
-              "short": "-r",
+              "short": "-b",
               "long": "--storage-account-resource-group",
               "description": "Name of the Resource Group under which the Storage Account exists"
             },

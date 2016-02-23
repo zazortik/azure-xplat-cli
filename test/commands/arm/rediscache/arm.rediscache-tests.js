@@ -46,6 +46,7 @@ var testLocation;
 var testResourceGroup;
 
 var cacheName;
+var storageName;
 var newCacheName;
 var testSize;
 var testSku;
@@ -68,6 +69,7 @@ describe('arm', function () {
       testSku = 'Basic';
       testNewMaxMemoryPolicy = 'VolatileLRU';
       cacheName = suite.generateId(cachePrefix, knownNames);
+      storageName = cacheName;
       newCacheName = suite.generateId(cachePrefix, knownNames);
 
       suite.execute('group create %s --location %s --json', testResourceGroup, testLocation, function () {
@@ -156,6 +158,13 @@ describe('arm', function () {
 
     it.skip('Renew Key command should work', function (done) {
       suite.execute('rediscache renew-key --name %s --resource-group %s --json', cacheName, testResourceGroup, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+
+    it.skip('Set Diagnostics command should work', function (done) {
+      suite.execute('rediscache set-diagnostics --name %s --resource-group %s --storage-account-name %s --storage-account-resource-group %s --json', cacheName, testResourceGroup, storageName, testResourceGroup, function (result) {
         result.exitStatus.should.be.equal(0);
         done();
       });
