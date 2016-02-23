@@ -13,7 +13,7 @@ Steps to reproduce:
 
 Error stack trace:
 
-**Please paste the content of ~/.azure/azure.err or C:\Users\username.azure\azure.err over here**
+**Please paste the content of ~/.azure/azure.err or C:\Users\username\\.azure\azure.err over here**
 
 If the issue is w.r.t `authentication` then please set `AZURE_ADAL_LOGGING_ENABLED=1` and then run the `azure login` command again. 
 Please paste the verbose logs over here. (Make sure to delete the password before pasting the contents).
