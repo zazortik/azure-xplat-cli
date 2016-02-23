@@ -12,121 +12,134 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-vpn-gateway-tests';
 var NetworkTestUtil = require('../../../util/networkTestUtil');
-var _ = require('underscore');
-var groupName, location,
-  groupPrefix = 'xplatTestGroupVnetGateway2',
-  gatewayPrefix = 'xplatTestvpngateway',
-  type = 'RouteBased',
-  publicipPrefix = 'xplatTestIpGateway',
-  vnetPrefix = 'xplatTestVnetGateway',
-  vnetAddressPrefix = '10.0.0.0/24',
-  subnetprefix = 'GatewaySubnet',
-  subnetAddressPrefix = '10.0.0.0/28',
-  privateIpAddress = '10.0.0.11',
-  enablebgp = 'false',
-  tags = 'tag1=val1';
+var networkUtil = new NetworkTestUtil();
+
+var testPrefix = 'arm-network-vpn-gateway-tests',
+  groupName = 'xplat-test-vpn-gateway',
+  location;
+
+var gatewayProp = {
+  name: 'test-vpn-gateway',
+  vnetName: 'test-vnet',
+  subnetName: 'GatewaySubnet',
+  vnetAddressPrefix: '10.1.0.0/16',
+  subnetAddressPrefix: '10.1.0.0/28',
+  publicIpName: 'test-ip',
+  type: 'RouteBased',
+  privateIpAddress: '10.1.0.11',
+  newPrivateIpAddress: '10.1.0.12',
+  enableBgp: false,
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'westeurope'
 }];
 
-describe('arm', function() {
-  describe('network', function() {
-    var suite,
-      timeout,
-      retry = 5;
-    testUtils.TIMEOUT_INTERVAL = 5000;
-    var networkUtil = new NetworkTestUtil();
-    before(function(done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(function() {
+describe('arm', function () {
+  describe('network', function () {
+    var suite, retry = 5, hour = 60 * 60000;
+
+    before(function (done) {
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        gatewayPrefix = suite.isMocked ? gatewayPrefix : suite.generateId(gatewayPrefix, null);
-        vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        gatewayProp.group = groupName;
+        gatewayProp.location = location;
+        gatewayProp.name = suite.isMocked ? gatewayProp.name : suite.generateId(gatewayProp.name, null);
+        gatewayProp.vnetName = suite.isMocked ? gatewayProp.vnetName : suite.generateId(gatewayProp.vnetName, null);
+        gatewayProp.publicIpName = suite.isMocked ? gatewayProp.publicIpName : suite.generateId(gatewayProp.publicIpName, null);
+
         done();
       });
     });
-    after(function(done) {
-      this.timeout(networkUtil.timeout);
-      setTimeout(function() {
-        //networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function() {
-        //networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-        networkUtil.deleteGroup(groupName, suite, function() {
-          suite.teardownSuite(done);
-        });
-        //});
-        //});
-      }, timeout);
+    after(function (done) {
+      // Note: VPN operations are long running and takes about 20-30 minutes to complete,
+      // so we need to increase mocha timeout a lot
+      this.timeout(hour);
+      networkUtil.deleteGroup(groupName, suite, function () {
+        suite.teardownSuite(done);
+      });
     });
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('vpn-gateway', function() {
-      it('create should pass', function(done) {
-		this.timeout(this.gatewaytimeout);
-        networkUtil.createGroup(groupName, location, suite, function() {
-          networkUtil.createVnetWithAddress(groupName, vnetPrefix, location, vnetAddressPrefix, suite, function() {
-            networkUtil.createSubnetWithAddress(groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, function() {
-              networkUtil.createPublicIp(groupName, publicipPrefix, location, suite, function() {
-                var cmd = util.format('network vpn-gateway create -g %s -n %s -l %s -y %s -p %s -m %s -e %s -a %s -b %s -t %s --json', groupName, gatewayPrefix, location, type, publicipPrefix, vnetPrefix, subnetprefix, privateIpAddress, enablebgp, tags).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                  result.exitStatus.should.equal(0);
-                  done();
-                });
-              });
-            });
+    describe('vpn-gateway', function () {
+      // Note: VPN operations are long running and takes about 20-30 minutes to complete,
+      // so we need to increase mocha timeout a lot
+      this.timeout(hour);
+
+      it('create should create vpn gateway', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          networkUtil.createVpnGateway(gatewayProp, suite, function() {
+            done();
           });
         });
       });
-      it('set should modify vpn-gateway', function(done) {
-		this.timeout(this.gatewaytimeout);
-        var cmd = util.format('network vpn-gateway set -g %s -n %s -t %s --json', groupName, gatewayPrefix, tags).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+      it('set should modify vpn gateway', function (done) {
+        var cmd = 'network vpn-gateway set -g {group} -n {name} -a {newPrivateIpAddress} -t {newTags} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var vpnGateway = JSON.parse(result.text);
+          vpnGateway.name.should.equal(gatewayProp.name);
+          vpnGateway.ipConfigurations.length.should.equal(1);
+          var ipConfig = vpnGateway.ipConfigurations[0];
+          ipConfig.privateIPAddress.should.equal(gatewayProp.newPrivateIpAddress);
+          networkUtil.shouldAppendTags(vpnGateway);
+          networkUtil.shouldBeSucceeded(vpnGateway);
           done();
         });
       });
-      it('show should display details of vpn-gateway', function(done) {
-        var cmd = util.format('network vpn-gateway show -g %s -n %s --json', groupName, gatewayPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+      it('show should display details of vpn gateway', function (done) {
+        var cmd = 'network vpn-gateway show -g {group} -n {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allresources = JSON.parse(result.text);
-          allresources.name.should.equal(gatewayPrefix);
+          var vpnGateway = JSON.parse(result.text);
+          vpnGateway.name.should.equal(gatewayProp.name);
           done();
         });
       });
-      it('list should dispaly all vpn-gateway in a given resource group', function(done) {
-        var cmd = util.format('network vpn-gateway list -g %s --json', groupName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+      it('list should display all vpn gateways in resource group', function (done) {
+        var cmd = 'network vpn-gateway list -g {group} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          _.some(allResources, function(res) {
-            return res.name === gatewayPrefix;
+          var gateways = JSON.parse(result.text);
+          _.some(gateways, function (gateway) {
+            return gateway.name === gatewayProp.name;
           }).should.be.true;
           done();
         });
       });
-      it('delete should delete vpn-gate', function(done) {
-		this.timeout(this.gatewaytimeout);
-        var cmd = util.format('network vpn-gateway delete %s %s --json --quiet', groupName, gatewayPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
+      it('delete should delete vpn gateway', function (done) {
+        var cmd = 'network vpn-gateway delete -g {group} -n {name} --quiet --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          setTimeout(done(), timeout);
+
+          cmd = 'network vpn-gateway show -g {group} -n {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var vpnGateway = JSON.parse(result.text);
+            vpnGateway.should.be.empty;
+            done();
+          });
         });
       });
     });
