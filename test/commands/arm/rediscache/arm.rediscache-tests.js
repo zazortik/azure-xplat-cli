@@ -170,6 +170,13 @@ describe('arm', function () {
       });
     });
 
+    it.skip('Delete Diagnostics command should work', function (done) {
+      suite.execute('rediscache delete-diagnostics --name %s --resource-group %s --json', cacheName, testResourceGroup, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+
     it.skip('Delete command should work', function (done) {
       suite.execute('rediscache delete --name %s --resource-group %s --json', cacheName, testResourceGroup, function (result) {
         result.exitStatus.should.be.equal(0);
