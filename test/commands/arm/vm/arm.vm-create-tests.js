@@ -255,13 +255,18 @@ describe('arm', function() {
           var allResources = JSON.parse(result.text);
           allResources.name.should.equal(vmPrefix);
           allResources.availabilitySet.id.toLowerCase().should.containEql(availprefix.toLowerCase());
-          var cmd = util.format('availset show %s %s --json', groupName, availprefix).split(' ');
+          var cmd = util.format('vm show %s %s', groupName, vmPrefix).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            var avSetResult = JSON.parse(result.text);
-            avSetResult.name.should.equal(availprefix);
-            avSetResult.virtualMachines[0].id.toLowerCase().should.containEql(vmPrefix.toLowerCase());
-            done();
+            result.text.should.containEql(dnsPrefix + '.' + location.toLowerCase() + '.cloudapp.azure.com');
+            var cmd = util.format('availset show %s %s --json', groupName, availprefix).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              var avSetResult = JSON.parse(result.text);
+              avSetResult.name.should.equal(availprefix);
+              avSetResult.virtualMachines[0].id.toLowerCase().should.containEql(vmPrefix.toLowerCase());
+              done();
+            });
           });
         });
       });

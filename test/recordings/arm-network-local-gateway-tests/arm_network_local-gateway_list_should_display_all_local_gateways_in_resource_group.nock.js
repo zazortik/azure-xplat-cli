@@ -30,35 +30,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"test-local-gateway\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways/test-local-gateway\",\r\n      \"etag\": \"W/\\\"d38220b9-69d8-4e95-9f21-5376092a9b11\\\"\",\r\n      \"type\": \"Microsoft.Network/localNetworkGateways\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"aaa\",\r\n        \"tag2\": \"bbb\",\r\n        \"tag3\": \"ccc\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"bb9b64cf-fe37-49ce-a7f8-2717437398e6\",\r\n        \"localNetworkAddressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/24\",\r\n            \"10.1.0.0/24\"\r\n          ]\r\n        },\r\n        \"gatewayIpAddress\": \"10.0.0.0\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"test-local-gateway\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways/test-local-gateway\",\r\n      \"etag\": \"W/\\\"9e60159c-0411-48ef-ae61-478f1bec3424\\\"\",\r\n      \"type\": \"Microsoft.Network/localNetworkGateways\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"aaa\",\r\n        \"tag2\": \"bbb\",\r\n        \"tag3\": \"ccc\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"990b08cc-c0d8-406c-90ab-ddc02d94baa0\",\r\n        \"localNetworkAddressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/24\",\r\n            \"10.1.0.0/24\"\r\n          ]\r\n        },\r\n        \"gatewayIpAddress\": \"10.0.0.0\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '826',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a66a3d26-819d-4c29-9fce-f7581476730b',
+  'x-ms-request-id': 'c43598d6-f9cc-4939-9128-d826aa58e04b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '70826440-7460-4c96-bcb3-216e002a61f7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160215T095638Z:70826440-7460-4c96-bcb3-216e002a61f7',
-  date: 'Mon, 15 Feb 2016 09:56:38 GMT',
+  'x-ms-correlation-request-id': 'f5ba0ded-f1a3-43c8-9f0e-ffb7f4edc8e5',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160217T082551Z:f5ba0ded-f1a3-43c8-9f0e-ffb7f4edc8e5',
+  date: 'Wed, 17 Feb 2016 08:25:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"test-local-gateway\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways/test-local-gateway\",\r\n      \"etag\": \"W/\\\"d38220b9-69d8-4e95-9f21-5376092a9b11\\\"\",\r\n      \"type\": \"Microsoft.Network/localNetworkGateways\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"aaa\",\r\n        \"tag2\": \"bbb\",\r\n        \"tag3\": \"ccc\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"bb9b64cf-fe37-49ce-a7f8-2717437398e6\",\r\n        \"localNetworkAddressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/24\",\r\n            \"10.1.0.0/24\"\r\n          ]\r\n        },\r\n        \"gatewayIpAddress\": \"10.0.0.0\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"test-local-gateway\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-local-gateway/providers/Microsoft.Network/localNetworkGateways/test-local-gateway\",\r\n      \"etag\": \"W/\\\"9e60159c-0411-48ef-ae61-478f1bec3424\\\"\",\r\n      \"type\": \"Microsoft.Network/localNetworkGateways\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"aaa\",\r\n        \"tag2\": \"bbb\",\r\n        \"tag3\": \"ccc\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"990b08cc-c0d8-406c-90ab-ddc02d94baa0\",\r\n        \"localNetworkAddressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/24\",\r\n            \"10.1.0.0/24\"\r\n          ]\r\n        },\r\n        \"gatewayIpAddress\": \"10.0.0.0\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '826',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a66a3d26-819d-4c29-9fce-f7581476730b',
+  'x-ms-request-id': 'c43598d6-f9cc-4939-9128-d826aa58e04b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '70826440-7460-4c96-bcb3-216e002a61f7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160215T095638Z:70826440-7460-4c96-bcb3-216e002a61f7',
-  date: 'Mon, 15 Feb 2016 09:56:38 GMT',
+  'x-ms-correlation-request-id': 'f5ba0ded-f1a3-43c8-9f0e-ffb7f4edc8e5',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160217T082551Z:f5ba0ded-f1a3-43c8-9f0e-ffb7f4edc8e5',
+  date: 'Wed, 17 Feb 2016 08:25:51 GMT',
   connection: 'close' });
  return result; }]];

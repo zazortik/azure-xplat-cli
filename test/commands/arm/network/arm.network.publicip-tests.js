@@ -18,20 +18,27 @@
 var should = require('should');
 var util = require('util');
 var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 
-var location,
-  testPrefix = 'arm-network-publicip-tests',
+var testPrefix = 'arm-network-publicip-tests',
   groupName = 'xplat-test-public-ip',
-  publicIpName = 'test-ip',
-  domainName = 'foo-domain',
-  newDomainName = 'bar-domain',
-  staticMethod = 'Static',
-  dynamicMethod = 'Dynamic',
-  idleTimeout = 4,
-  newTimeout = 15;
+  location;
+
+var publicIpProp = {
+  name: 'test-ip',
+  domainName: 'foo-domain',
+  newDomainName: 'bar-domain',
+  staticMethod: 'Static',
+  dynamicMethod: 'Dynamic',
+  idleTimeout: 4,
+  newIdleTimeout: 15,
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -41,16 +48,18 @@ var requiredEnvironment = [{
 describe('arm', function () {
   describe('network', function () {
     var suite, retry = 5;
-    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        domainName = suite.generateId(domainName, null);
-        newDomainName = suite.generateId(newDomainName, null);
-        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
-        publicIpName = suite.generateId(publicIpName, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        publicIpProp.location = location;
+        publicIpProp.group = groupName;
+        publicIpProp.name = suite.isMocked ? publicIpProp.name : suite.generateId(publicIpProp.name, null);
+        publicIpProp.domainName = suite.generateId(publicIpProp.domainName, null);
+        publicIpProp.newDomainName = suite.generateId(publicIpProp.newDomainName, null);
 
         done();
       });
@@ -69,60 +78,65 @@ describe('arm', function () {
 
     describe('publicip', function () {
       it('create should create publicip', function (done) {
-        networkUtil.createGroup(groupName, location, suite, function() {
-          var cmd = util.format('network public-ip create -g %s -n %s -l %s -d %s -a %s -i %s -t %s --json',
-            groupName, publicIpName, location, domainName, staticMethod, idleTimeout, networkUtil.tags);
+        networkUtil.createGroup(groupName, location, suite, function () {
+          var cmd = 'network public-ip create -g {group} -n {name} -l {location} -d {domainName} -a {staticMethod} -i {idleTimeout} -t {tags} --json'
+            .formatArgs(publicIpProp);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var ip = JSON.parse(result.text);
-            ip.name.should.equal(publicIpName);
+            ip.name.should.equal(publicIpProp.name);
+            ip.publicIPAllocationMethod.should.equal(publicIpProp.staticMethod);
+            ip.idleTimeoutInMinutes.should.equal(publicIpProp.idleTimeout);
+            ip.dnsSettings.domainNameLabel.should.equal(publicIpProp.domainName);
+            networkUtil.shouldHaveTags(ip);
             networkUtil.shouldBeSucceeded(ip);
             done();
           });
         });
       });
       it('set should modify publicip', function (done) {
-        var cmd = util.format('network public-ip set -g %s -n %s -d %s -a %s -i %s -t %s --json',
-          groupName, publicIpName, newDomainName, dynamicMethod, newTimeout, networkUtil.newTags);
+        var cmd = 'network public-ip set -g {group} -n {name} -d {newDomainName} -a {dynamicMethod} -i {newIdleTimeout} -t {newTags} --json'
+          .formatArgs(publicIpProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var ip = JSON.parse(result.text);
-          ip.name.should.equal(publicIpName);
-          ip.publicIPAllocationMethod.should.equal(dynamicMethod);
-          ip.idleTimeoutInMinutes.should.equal(newTimeout);
+          ip.name.should.equal(publicIpProp.name);
+          ip.publicIPAllocationMethod.should.equal(publicIpProp.dynamicMethod);
+          ip.idleTimeoutInMinutes.should.equal(publicIpProp.newIdleTimeout);
+          ip.dnsSettings.domainNameLabel.should.equal(publicIpProp.newDomainName);
           networkUtil.shouldAppendTags(ip);
           networkUtil.shouldBeSucceeded(ip);
           done();
         });
       });
       it('show should display publicip details', function (done) {
-        var cmd = util.format('network public-ip show %s %s --json', groupName, publicIpName);
+        var cmd = 'network public-ip show -g {group} -n {name} --json'.formatArgs(publicIpProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var ip = JSON.parse(result.text);
-          ip.name.should.equal(publicIpName);
+          ip.name.should.equal(publicIpProp.name);
           done();
         });
       });
       it('list should display all publicips in resource group', function (done) {
-        var cmd = util.format('network public-ip list -g %s --json', groupName);
+        var cmd = 'network public-ip list -g {group} --json'.formatArgs(publicIpProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var ips = JSON.parse(result.text);
           _.some(ips, function (ip) {
-            return ip.name === publicIpName;
+            return ip.name === publicIpProp.name;
           }).should.be.true;
           done();
         });
       });
       it('delete should delete publicip', function (done) {
-        var cmd = util.format('network public-ip delete %s %s --quiet --json', groupName, publicIpName);
+        var cmd = 'network public-ip delete -g {group} -n {name} --quiet --json'.formatArgs(publicIpProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
 
-          cmd = util.format('network public-ip show %s %s --json', groupName, publicIpName);
+          cmd = 'network public-ip show -g {group} -n {name} --json'.formatArgs(publicIpProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var ip = JSON.parse(result.text);

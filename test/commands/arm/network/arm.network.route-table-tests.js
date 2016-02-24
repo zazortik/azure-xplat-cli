@@ -77,6 +77,7 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
             var routeTable = JSON.parse(result.text);
             routeTable.name.should.equal(tableProp.name);
+            networkUtil.shouldHaveTags(routeTable);
             networkUtil.shouldBeSucceeded(routeTable);
             done();
           });
