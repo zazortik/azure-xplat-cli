@@ -19,7 +19,7 @@ var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-network-vpn-gateway-tests';
-var networkTestUtil = require('../../../util/networkTestUtil');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var _ = require('underscore');
 var groupName, location,
   groupPrefix = 'xplatTestGroupVnetGateway2',
@@ -44,7 +44,7 @@ describe('arm', function() {
       timeout,
       retry = 5;
     testUtils.TIMEOUT_INTERVAL = 5000;
-    var networkUtil = new networkTestUtil();
+    var networkUtil = new NetworkTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
@@ -62,7 +62,7 @@ describe('arm', function() {
       setTimeout(function() {
         //networkUtil.deleteUsedVnet(groupName, vnetPrefix, suite, function() {
         //networkUtil.deleteUsedPublicIp(groupName, publicipPrefix, suite, function() {
-        networkUtil.deleteUsedGroup(groupName, suite, function() {
+        networkUtil.deleteGroup(groupName, suite, function() {
           suite.teardownSuite(done);
         });
         //});

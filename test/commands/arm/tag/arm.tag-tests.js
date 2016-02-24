@@ -60,7 +60,7 @@ describe('arm', function () {
           suite.execute('tag list --json', function (listResult) {
             listResult.exitStatus.should.equal(0);
             var tags = JSON.parse(listResult.text);
-            tags.some(function (t) { return (t.name === tagName) && (t.values[0].value === tagValue); }).should.be.true;
+            tags.some(function (t) { return (t.tagName === tagName) && (t.values[0].tagValueProperty === tagValue); }).should.be.true;
             
             suite.execute('tag show %s --json', tagName, function (showResult) {
               showResult.exitStatus.should.equal(0);
@@ -73,7 +73,7 @@ describe('arm', function () {
                 suite.execute('tag list --json', function (listResult) {
                   listResult.exitStatus.should.equal(0);
                   var tags = JSON.parse(listResult.text);
-                  tags.some(function (t) { return t.name === tagName; }).should.be.false;
+                  tags.some(function (t) { return t.tagName === tagName; }).should.be.false;
                   done();
                 });
               });

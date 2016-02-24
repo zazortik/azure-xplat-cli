@@ -137,9 +137,9 @@ describe('arm', function() {
             vault.properties.accessPolicies.some(function(policy) {
               return policy.objectId.toLowerCase() === objectId.toLowerCase();
             }).should.be.true;
-			vault.properties.enabledForDeployment.should.be.true;
-			vault.properties.enabledForTemplateDeployment.should.be.true;
-			vault.properties.enabledForDiskEncryption.should.be.true;
+            vault.properties.enabledForDeployment.should.be.true;
+            vault.properties.enabledForTemplateDeployment.should.be.true;
+            vault.properties.enabledForDiskEncryption.should.be.true;
             setPolicyEmptyKeyPermsMustSucceedAndLetObjectIdThere();
           });
         }
@@ -151,9 +151,9 @@ describe('arm', function() {
             vault.properties.accessPolicies.some(function(policy) {
               return policy.objectId.toLowerCase() === objectId.toLowerCase();
             }).should.be.true;
-			vault.properties.enabledForDeployment.should.be.true;
-			vault.properties.enabledForTemplateDeployment.should.be.true;
-			vault.properties.enabledForDiskEncryption.should.be.true;
+            vault.properties.enabledForDeployment.should.be.true;
+            vault.properties.enabledForTemplateDeployment.should.be.true;
+            vault.properties.enabledForDiskEncryption.should.be.true;
             setPolicyEmptySecretPermsMustSucceedAndKillObjectId();
           });
         }

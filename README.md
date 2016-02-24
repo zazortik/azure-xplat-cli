@@ -18,11 +18,15 @@ This project provides a cross-platform command line interface for developers and
 * Azure Resource Management
   * Generic resource groups and deployments management
   * Role based access control
-  * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc
+  * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc.
   * Datalake
 * Key Vault
 
 For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
+
+## Endpoints for Azure
+
+The CLI targets **"Public Azure Cloud"** by default. You can get more information about the endpoints supported in different environments from [here](./Documentation/Endpoints.md).
 
 ## Installation
 
@@ -200,7 +204,7 @@ For documentation on how to host Node.js applications on Microsoft Azure, please
 
 ## Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
 
 Please send pull requests only to the **Dev branch**. Please make sure that you have checked in tests and recorded them live for your contribution. **Pull requests without sufficient tests will not be accepted.**
 

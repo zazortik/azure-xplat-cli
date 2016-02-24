@@ -10950,6 +10950,15 @@
                       "description": "the full path to the folder to list (e.g. /someFolder or /someFolder/someNestedFolder)"
                     },
                     {
+                      "flags": "-l --listSize <listSize>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--listSize",
+                      "description": "the optional number of entries to list. The default is all entries, which can potentially take some time for large directories.)"
+                    },
+                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -18103,11 +18112,11 @@
                   "description": "name of the secret to be created; if already exists, a new secret version is created"
                 },
                 {
-                  "flags": "-s, --value <secret-value>",
+                  "flags": "-w, --value <secret-value>",
                   "required": -13,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-w",
                   "long": "--value",
                   "description": "the secret value"
                 },
@@ -32496,6 +32505,14 @@
               "bool": true,
               "long": "--key-encryption-key-url",
               "description": "The Url of the master key used to encrypt the OS disk encryption key."
+            },
+            {
+              "flags": "--license-type <license-type>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--license-type",
+              "description": "The license type of the system; currently, only 'Windows_Sever' is supported."
             }
           ]
         },

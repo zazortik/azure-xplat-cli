@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46153750-fa3b-4140-bf57-8beb7d5c971a',
-    name: 'KonaMDI3_697842',
+    id: '53d9063d-87ae-4ea8-be90-3686c3b8669f',
+    name: 'Visual Studio Ultimate with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '6e606ece-3a5a-4674-a654-d6b02bc5a51b',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla4065','xplattestadla4193','xplattestadla3990','xplattestadls4983','xplattestadls6723','xplattestadls1221','adlacatalogitem385','adlacatalogitem7014','adlacatalogitem8164','adlacatalogitem981','adlacatalogitem2202','adlacatalogitem8762','adlacatalogitem447','adlacatalogitem1561'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla9260','xplattestadla5157','xplattestadla6242','xplattestadls8609','xplattestadls3150','xplattestadls2811','adlacatalogitem5481','adlacatalogitem7931','adlacatalogitem5782','adlacatalogitem5631','adlacatalogitem7636','adlacatalogitem583','adlacatalogitem2535','adlacatalogitem3429'];};

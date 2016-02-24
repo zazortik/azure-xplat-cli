@@ -12,42 +12,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-route-table-tests';
-var groupPrefix = 'xplatTestRouteTbl';
-var networkTestUtil = require('../../../util/networkTestUtil');
-var groupName, location;
-var RouteTablePrefix = 'ArmRouteTbl';
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
+
+var testPrefix = 'arm-network-route-table-tests',
+  groupName = 'xplat-test-route-table',
+  location;
+
+var tableProp = {
+  name: 'test-route-table',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'westus'
 }];
 
-
 describe('arm', function () {
   describe('network', function () {
-    var suite, timeout, retry = 5;
-    var networkUtil = new networkTestUtil();
-    testUtils.TIMEOUT_INTERVAL = 5000;
+    var suite, retry = 5;
+    var networkUtil = new NetworkTestUtil();
 
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        RouteTablePrefix = suite.isMocked ? RouteTablePrefix : suite.generateId(RouteTablePrefix, null);
         location = process.env.AZURE_VM_TEST_LOCATION;
-        timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        tableProp.group = groupName;
+        tableProp.location = location;
+        tableProp.name = suite.isMocked ? tableProp.name : suite.generateId(tableProp.name, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedGroup(groupName, suite, function () {
+      networkUtil.deleteGroup(groupName, suite, function () {
         suite.teardownSuite(done);
       });
     });
@@ -59,42 +70,63 @@ describe('arm', function () {
     });
 
     describe('route-table', function () {
-
-      it('create should pass', function (done) {
+      it('create should create route table', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network route-table create -g %s -n %s -l %s --json', groupName, RouteTablePrefix, location).split(' ');
+          var cmd = 'network route-table create -g {group} -n {name} -l {location} -t {tags} --json'.formatArgs(tableProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
+            var routeTable = JSON.parse(result.text);
+            routeTable.name.should.equal(tableProp.name);
+            networkUtil.shouldBeSucceeded(routeTable);
             done();
           });
         });
       });
-      it('list should display all route-table in network', function (done) {
-        var cmd = util.format('network route-table list -g %s --json', groupName).split(' ');
+      it('set should modify route table', function (done) {
+        var cmd = 'network route-table set -g {group} -n {name} -t {newTags} --json'.formatArgs(tableProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var routeTable = JSON.parse(result.text);
+          routeTable.name.should.equal(tableProp.name);
+          networkUtil.shouldBeSucceeded(routeTable);
+          networkUtil.shouldAppendTags(routeTable);
           done();
         });
       });
-      it('show should display details about route-table', function (done) {
-        var cmd = util.format('network route-table show -g %s -n %s --json', groupName, RouteTablePrefix).split(' ');
+      it('show should display details of route table', function (done) {
+        var cmd = 'network route-table show -g {group} -n {name} --json'.formatArgs(tableProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.name.should.equal(RouteTablePrefix);
+          var routeTable = JSON.parse(result.text);
+          routeTable.name.should.equal(tableProp.name);
           done();
         });
       });
+      it('list should display all route tables in resource group', function (done) {
+        var cmd = 'network route-table list -g {group} --json'.formatArgs(tableProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var tables = JSON.parse(result.text);
+          _.some(tables, function (table) {
+            return table.name === tableProp.name;
+          }).should.be.true;
+          done();
+        });
+      });
+      it('delete should delete route table', function (done) {
+        var cmd = 'network route-table delete -g {group} -n {name} --quiet --json'.formatArgs(tableProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
 
-      it('delete should delete route-table', function (done) {
-        var cmd = util.format('network route-table delete -g %s -n %s -q --json', groupName, RouteTablePrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          done();
+          cmd = 'network route-table show -g {group} -n {name} --json'.formatArgs(tableProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var routeTable = JSON.parse(result.text);
+            routeTable.should.be.empty;
+            done();
+          });
         });
       });
-
     });
-
   });
 });

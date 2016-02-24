@@ -17777,7 +17777,7 @@
               "name": "create",
               "description": "Create an Application Gateway",
               "fullName": "network application-gateway create",
-              "usage": "[options] <name> <vnet-name> <subnet-names>",
+              "usage": "[options] <name> <vnet-name> <subnet-name>",
               "filePath": "commands/asm/network/network._js",
               "options": [
                 {
@@ -17824,13 +17824,13 @@
                   "description": "the name of the virtual network Application Gateway should be deployed in"
                 },
                 {
-                  "flags": "-t, --subnet-names <subnet-names>",
-                  "required": -20,
+                  "flags": "-t, --subnet-name <subnet-name>",
+                  "required": -19,
                   "optional": 0,
                   "bool": true,
                   "short": "-t",
-                  "long": "--subnet-names",
-                  "description": "comma separated list of subnet names exists in the virtual network identified by --vnet-name"
+                  "long": "--subnet-name",
+                  "description": "the name of subnet which exists in same vnet"
                 },
                 {
                   "flags": "-c, --instance-count <instance-count>",
@@ -17874,7 +17874,7 @@
               "name": "set",
               "description": "Set an Application Gateway",
               "fullName": "network application-gateway set",
-              "usage": "[options] <name> <vnet-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/network/network._js",
               "options": [
                 {
@@ -17921,13 +17921,13 @@
                   "description": "the name of the virtual network Application Gateway should be deployed in"
                 },
                 {
-                  "flags": "-t, --subnet-names <subnet-names>",
-                  "required": -20,
+                  "flags": "-t, --subnet-name <subnet-name>",
+                  "required": -19,
                   "optional": 0,
                   "bool": true,
                   "short": "-t",
-                  "long": "--subnet-names",
-                  "description": "comma separated list of subnet names exists in the virtual network identified by --vnet-name"
+                  "long": "--subnet-name",
+                  "description": "the name of subnet which exists in same vnet"
                 },
                 {
                   "flags": "-c, --instance-count <instance-count>",
