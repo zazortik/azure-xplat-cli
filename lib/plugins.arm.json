@@ -33712,7 +33712,7 @@
               "bool": true,
               "short": "-M",
               "long": "--ssh-key-file",
-              "description": "path to public key PEM file for SSH authentication (valid only when os-type is \"Linux\")"
+              "description": "path to public key PEM file or SSH Public key file for SSH authentication (valid only when os-type is \"Linux\")"
             },
             {
               "flags": "-r, --reset-ssh",
@@ -33730,7 +33730,7 @@
               "bool": true,
               "short": "-E",
               "long": "--extension-version",
-              "description": "Version of VM Access extension [1.1]"
+              "description": "Version of VM Access extension [1.4]"
             },
             {
               "flags": "-e, --expiration <expiration>",
