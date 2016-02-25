@@ -1,0 +1,51 @@
+; Exported zone file from Azure DNS
+; Resource Group Name: xplat-test-dns-zone
+; Zone name: example1.com
+; Date and time (UTC): Thu Feb 25 2016 12:31:44 GMT+0000
+
+$TTL 3600
+$ORIGIN example1.com.
+
+@ 3600 IN SOA ns1-07.azure-dns.com. hostmaster.example1.com. (
+				2016022544
+				43200
+				900
+				1814400
+				10800
+				)
+
+@ 5 IN A 1.2.3.4
+
+@ 3600 IN NS ns1-07.azure-dns.com.
+  3600 IN NS ns2-07.azure-dns.net.
+  3600 IN NS ns3-07.azure-dns.org.
+  3600 IN NS ns4-07.azure-dns.info.
+
+default 3600 IN A 0.1.2.3
+
+record 5 IN CNAME bar.foo.com.
+
+subzone 5 IN A 3.4.5.6
+
+test-cname.subzone 5 IN CNAME r1.subzone.example1.com.
+
+www.subzone 5 IN A 4.5.6.7
+
+tc 3600 IN CNAME test.example1.com.
+
+test 5 IN A 7.8.9.0
+
+test-cname 5 IN CNAME r1.example1.com.
+
+test-cname2 5 IN CNAME r1.
+
+test-mx 5 IN MX 10 m1.example1.com.
+
+test-mx2 5 IN MX 10 m1.
+
+test-srv 5 IN SRV 1 2 3 srv1.example1.com.
+
+test-srv2 5 IN SRV 1 2 3 srv1.
+
+www 5 IN A 2.3.4.5
+

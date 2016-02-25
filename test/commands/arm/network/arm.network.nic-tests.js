@@ -18,6 +18,7 @@
 var should = require('should');
 var util = require('util');
 var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
