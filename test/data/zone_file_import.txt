@@ -2,13 +2,14 @@
 
 ; Before setting $ORIGIN, create a couple of records to check the default
 ; $ORIGIN matches the zone name.  Note, first record must be SOA.
+
 @ IN SOA ns1.example1.com. hostmaster (
                         2003080800 ; se = serial number
                         12h        ; ref = refresh
                         15m        ; ret = update retry
                         3w         ; ex = expiry
                         3h         ; min = minimum
-                        )	; Should give email ‘hostmaster.example1.com.’
+                        )	; Should give email ï¿½hostmaster.example1.com.ï¿½
 default IN A 0.1.2.3		; Should give default.example1.com. A 0.1.2.3
 tc IN CNAME test			; Should give tc.example1.com. CNAME test.example1.com.
 
@@ -36,14 +37,12 @@ test-cname IN CNAME r1		; Should give test-cname.subzone.example1.com.
  				; 	CNAME r1.subzone.example1.com.
 
 ; Check $ORIGIN from outside zone is permitted (but not for record names)
-; Also check that $ORIGIN without ‘.’ terminator has one added (and a warning)
-$ORIGIN foo.com
+; Also check that $ORIGIN without ï¿½.ï¿½ terminator has one added (and a warning)
+$ORIGIN foo.com.
 record.example1.com. IN CNAME bar	; Should give record.example1.com. CNAME bar.foo.com.
 
-$ORIGIN foo.com
-; Fully-qualified name that doesn't match zone name should fail
-fail IN A 5.6.7.8				; fail.foo.com. is not in the zone ‘example1.com.’
-test. IN A 6.7.8.9			; 'test.' is not in the zone ‘example1.com.’
+$ORIGIN foo.com.
+
 
 ; But a fully-qualified name that is within the zone should work OK
 test.example1.com. IN A 7.8.9.0	; Should work OK
