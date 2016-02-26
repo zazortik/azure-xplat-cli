@@ -52,7 +52,7 @@
     "azure-extra": "0.2.12",
     "azure-gallery": "2.0.0-pre.18",
     "azure-keyvault": "0.10.1",
-    "azure-asm-compute": "0.11.0",
+    "azure-asm-compute": "0.13.0",
     "azure-asm-hdinsight": "0.10.2",
     "azure-asm-trafficmanager": "0.10.3",
     "azure-asm-mgmt": "0.10.1",
