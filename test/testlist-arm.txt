@@ -1,3 +1,4 @@
+commands/arm/servicefabric/arm.service-tests.js
 commands/arm/feature/arm.feature-tests.js
 commands/arm/webapp/arm.webapp.feature-tests.js
 commands/arm/provider/arm.provider-tests.js

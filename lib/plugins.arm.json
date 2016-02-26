@@ -31935,11 +31935,11 @@
                   "description": "the name of the application type"
                 },
                 {
-                  "flags": "--application-typeversion <applicationTypeVersion>",
-                  "required": -27,
+                  "flags": "--application-type-version <applicationTypeVersion>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
-                  "long": "--application-typeversion",
+                  "long": "--application-type-version",
                   "description": "the version of the application type"
                 },
                 {
@@ -33704,7 +33704,7 @@
               "name": "copy",
               "description": "Copy application package",
               "fullName": "servicefabric application-package copy",
-              "usage": "[options] [applicationPackagePath] [imageStoreConnectionString]",
+              "usage": "[options] [clusterConnectionString] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
               "filePath": "commands/arm/servicefabric/serviceFabricPackage._js",
               "options": [
                 {
@@ -33733,6 +33733,14 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--clusterConnectionString <clusterConnectionString>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--clusterConnectionString",
+                  "description": "the string of the cluster connection"
+                },
+                {
                   "flags": "--applicationPackagePath <applicationPackagePath>",
                   "required": -26,
                   "optional": 0,
@@ -33747,6 +33755,146 @@
                   "bool": true,
                   "long": "--imageStoreConnectionString",
                   "description": "the string of the image store connection"
+                },
+                {
+                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--applicationPackagePathInImageStore",
+                  "description": "the path of the application package in image store"
+                }
+              ]
+            },
+            {
+              "name": "test",
+              "description": "Test application package",
+              "fullName": "servicefabric application-package test",
+              "usage": "[options] [clusterConnectionString] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+              "filePath": "commands/arm/servicefabric/serviceFabricPackage._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--clusterConnectionString <clusterConnectionString>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--clusterConnectionString",
+                  "description": "the string of the cluster connection"
+                },
+                {
+                  "flags": "--applicationPackagePath <applicationPackagePath>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--applicationPackagePath",
+                  "description": "the path of the application package"
+                },
+                {
+                  "flags": "--imageStoreConnectionString <imageStoreConnectionString>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--imageStoreConnectionString",
+                  "description": "the string of the image store connection"
+                },
+                {
+                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--applicationPackagePathInImageStore",
+                  "description": "the path of the application package in image store"
+                }
+              ]
+            },
+            {
+              "name": "remove",
+              "description": "Remove application package",
+              "fullName": "servicefabric application-package remove",
+              "usage": "[options] [clusterConnectionString] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+              "filePath": "commands/arm/servicefabric/serviceFabricPackage._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--clusterConnectionString <clusterConnectionString>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--clusterConnectionString",
+                  "description": "the string of the cluster connection"
+                },
+                {
+                  "flags": "--applicationPackagePath <applicationPackagePath>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--applicationPackagePath",
+                  "description": "the path of the application package"
+                },
+                {
+                  "flags": "--imageStoreConnectionString <imageStoreConnectionString>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--imageStoreConnectionString",
+                  "description": "the string of the image store connection"
+                },
+                {
+                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
+                  "required": -38,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--applicationPackagePathInImageStore",
+                  "description": "the path of the application package in image store"
                 }
               ]
             }
@@ -34140,9 +34288,153 @@
                   "description": "the id of the partition"
                 }
               ]
+            },
+            {
+              "name": "repair",
+              "description": "Repair partition",
+              "fullName": "servicefabric partition repair",
+              "usage": "[options] [serviceName] [partitionId]",
+              "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the name of the service"
+                },
+                {
+                  "flags": "--partition-id <partitionId>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--partition-id",
+                  "description": "the id of the partition"
+                }
+              ]
             }
           ],
           "categories": {
+            "load": {
+              "name": "load",
+              "description": "Commands to manage your partition load information",
+              "fullName": "servicefabric partition load",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "reset",
+                  "description": "Reset partition",
+                  "fullName": "servicefabric partition load reset",
+                  "usage": "[options] [serviceName] [partitionId]",
+                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show partition load information",
+                  "fullName": "servicefabric partition load show",
+                  "usage": "[options] [partitionId]",
+                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "health": {
               "name": "health",
               "description": "Commands to manage your partition health",
@@ -34303,58 +34595,6 @@
                       "bool": true,
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
-            "load": {
-              "name": "load",
-              "description": "Commands to manage your partition load information",
-              "fullName": "servicefabric partition load",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show partition load information",
-                  "fullName": "servicefabric partition load show",
-                  "usage": "[options] [partitionId]",
-                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
                     }
                   ]
                 }
