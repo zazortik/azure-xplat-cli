@@ -18,6 +18,7 @@
   * Fixed reading storage account data vm for enable-aem command
   * Fix NIC-IP Association Issue #2551
   * Fixed issue #2524 VM Create License Type Option
+  * Fix #2539 VM Image List/Show
 * Redis Cache
   * Added delete-diagnostics command for redis cache
   * Added set-diagnostics command to redis cache
