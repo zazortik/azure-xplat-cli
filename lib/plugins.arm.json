@@ -36177,11 +36177,11 @@
                   "description": "the sku"
                 },
                 {
-                  "flags": "-v, --version <version>",
+                  "flags": "-e, --version <version>",
                   "required": -15,
                   "optional": 0,
                   "bool": true,
-                  "short": "-v",
+                  "short": "-e",
                   "long": "--version",
                   "description": "the version"
                 },
