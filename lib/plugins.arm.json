@@ -32716,6 +32716,38 @@
               "bool": true,
               "long": "--license-type",
               "description": "The license type of the system; currently, only 'Windows_Sever' is supported."
+            },
+            {
+              "flags": "--plan-name <plan-name>",
+              "required": -13,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan-name",
+              "description": "The plan name."
+            },
+            {
+              "flags": "--plan-publisher <plan-publisher-name>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan-publisher",
+              "description": "The plan publisher ID."
+            },
+            {
+              "flags": "--plan-product <plan-product-name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan-product",
+              "description": "The plan product ID."
+            },
+            {
+              "flags": "--plan-promotion-code <plan-promotion-code>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan-promotion-code",
+              "description": "The plan promotion code."
             }
           ]
         },
