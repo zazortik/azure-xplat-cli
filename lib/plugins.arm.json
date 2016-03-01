@@ -25845,7 +25845,7 @@
                   "name": "list",
                   "description": "Get all Traffic Manager profiles",
                   "fullName": "network traffic-manager profile list",
-                  "usage": "[options] <resource-group>",
+                  "usage": "[options]",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
