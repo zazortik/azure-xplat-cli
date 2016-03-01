@@ -179,21 +179,6 @@ _.extend(NetworkTestUtil.prototype, {
       callback(rule);
     });
   },
-
-  createVnetWithAddress: function (groupName, vnetPrefix, location, vnetAddressPrefix, suite, callback) {
-    var cmd = util.format('network vnet create %s %s %s -a %s --json', groupName, vnetPrefix, location, vnetAddressPrefix).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  },
-  createSubnetWithAddress: function (groupName, vnetPrefix, subnetprefix, subnetAddressPrefix, suite, callback) {
-    var cmd = util.format('network vnet subnet create %s %s %s -a %s --json', groupName, vnetPrefix, subnetprefix, subnetAddressPrefix).split(' ');
-    testUtils.executeCommand(suite, retry, cmd, function (result) {
-      result.exitStatus.should.equal(0);
-      callback();
-    });
-  },
   createExpressRoute: function (groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, callback) {
     var cmd = util.format('network express-route circuit create %s %s %s -p %s -i %s -b 50 -e %s -f %s -t %s --json', groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1).split(' ');
     testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -234,22 +219,69 @@ _.extend(NetworkTestUtil.prototype, {
   /**
    * DNS & TrafficManager
    */
-  createDnszone: function (groupName, dnszonePrefix, suite, callback) {
-    var cmd = util.format('network dns zone create %s %s --json', groupName, dnszonePrefix).split(' ');
+  createDnsZone: function (zoneProp, suite, callback) {
+    var cmd = 'network dns zone create -g {group} -n {name} -t {tags} --json'.formatArgs(zoneProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var zone = JSON.parse(result.text);
+      zone.name.should.equal(zoneProp.name);
+      callback(zone);
+    });
+  },
+  createDnsRecordSet: function (rsetProp, suite, callback) {
+    var self = this;
+    var cmd = 'network dns record-set create -g {group} -z {zoneName} -n {name} -y {type} -l {ttl} -t {tags} --json'.formatArgs(rsetProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var rset = JSON.parse(result.text);
+      rset.name.should.equal(rsetProp.name);
+      self.shouldHaveTags(rset);
+      callback();
+    });
+  },
+  showDnsRecordSet: function (rsetProp, suite, callback) {
+    var cmd = 'network dns record-set show -g {group} -z {zoneName} -n {name} -y {type} --json'.formatArgs(rsetProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var rset = JSON.parse(result.text);
+      callback(rset);
+    });
+  },
+  listDnsRecordSets: function (zoneProp, suite, callback) {
+    var cmd = 'network dns record-set list -g {group} -z {name} --json'.formatArgs(zoneProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var rsets = JSON.parse(result.text);
+      callback(rsets);
+    });
+  },
+  deleteDnsRecordSet: function (rsetProp, suite, callback) {
+    var self = this;
+    var cmd = 'network dns record-set delete -g {group} -z {zoneName} -n {name} -y {type} --quiet --json'.formatArgs(rsetProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+
+      self.showDnsRecordSet(rsetProp, suite, function (rset) {
+        rset.should.be.empty;
+        callback();
+      });
+    });
+  },
+  addDnsRecord: function (rsetProp, suite, callback) {
+    var cmd = 'network dns record-set add-record -g {group} -z {zoneName} -n {name} -y {type} {params} --json'.formatArgs(rsetProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var rset = JSON.parse(result.text);
+      rset.name.should.equal(rsetProp.name);
+      callback(rset);
+    });
+  },
+  deleteDnsRecord: function (rsetProp, suite, callback) {
+    var cmd = 'network dns record-set delete-record -g {group} -z {zoneName} -n {name} -y {type} {params} --quiet --json'.formatArgs(rsetProp);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
       callback();
     });
-  },
-  deleteUsedDns: function (groupName, dnszonePrefix, suite, callback) {
-    if (!suite.isPlayback()) {
-      var cmd = util.format('network dns zone delete %s %s --quiet --json', groupName, dnszonePrefix).split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        callback();
-      });
-    } else
-      callback();
   },
   createTrafficManagerProfile: function (profileProp, suite, callback) {
     var cmd = 'network traffic-manager profile create -g {group} -n {name} -u {profileStatus} -m {trafficRoutingMethod} -r {relativeDnsName} -l {ttl} -p {monitorProtocol} -o {monitorPort} -a {monitorPath} -t {tags} --json'
