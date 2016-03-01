@@ -35,7 +35,6 @@
     "adal-node": "0.1.17",
     "async": "1.4.2",
     "azure-common": "0.9.16",
-    "azure-arm-apiapp": "0.1.3",
     "azure-arm-authorization": "2.0.0",
     "azure-arm-commerce": "0.1.1",
     "azure-arm-compute": "0.14.2",
