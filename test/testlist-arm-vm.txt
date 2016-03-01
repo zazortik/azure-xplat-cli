@@ -1,3 +1,4 @@
+commands/arm/vm/arm.vm-usage-tests.js
 commands/arm/vm/arm.availset-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.vm-create-with-plan-tests
