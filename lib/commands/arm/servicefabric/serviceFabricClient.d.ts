@@ -648,18 +648,13 @@ declare class ServiceFabricClient {
          * @param {string} [options.deployedApplicationsHealthStateFilter] The filter
          * of the deployed application health state
          * 
-         * @param {string} [options.servicesHealthStateFilter] The filter of the
-         * services health state
-         * 
-         * @param {string} [options.continuationToken] The token of the continuation
-         * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
          * 
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getApplicationHealth(applicationName: string, options: { eventsHealthStateFilter? : string, deployedApplicationsHealthStateFilter? : string, servicesHealthStateFilter? : string, continuationToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationHealth>): void;
+        getApplicationHealth(applicationName: string, options: { eventsHealthStateFilter? : string, deployedApplicationsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationHealth>): void;
         getApplicationHealth(applicationName: string, callback: ServiceCallback<models.ApplicationHealth>): void;
 
         /**

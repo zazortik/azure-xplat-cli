@@ -31883,6 +31883,15 @@
                   "bool": true,
                   "long": "--application-name",
                   "description": "the name of the application"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             },
@@ -32058,7 +32067,7 @@
             },
             "type": {
               "name": "type",
-              "description": "Commands to manage your deployed service type",
+              "description": "Commands to manage your application type",
               "fullName": "servicefabric application type",
               "usage": "[options] [command]",
               "options": [],
@@ -32067,7 +32076,7 @@
                   "name": "show",
                   "description": "Show application type",
                   "fullName": "servicefabric application type show",
-                  "usage": "[options] [applicationName]",
+                  "usage": "[options] [applicationTypeName]",
                   "filePath": "commands/arm/servicefabric/serviceFabricApplication._js",
                   "options": [
                     {
@@ -32102,6 +32111,15 @@
                       "bool": true,
                       "long": "--application-type-name",
                       "description": "the type of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -32208,6 +32226,73 @@
               "options": [],
               "commands": [
                 {
+                  "name": "show",
+                  "description": "Show application health",
+                  "fullName": "servicefabric application health show",
+                  "usage": "[options] [applicationName] [eventsHealthStateFilter] [deployedServicePackagesHealthStateFilter]",
+                  "filePath": "commands/arm/servicefabric/serviceFabricApplication._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--application-name <applicationName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-name",
+                      "description": "the name of the application"
+                    },
+                    {
+                      "flags": "--events-health-state-filter <eventsHealthStateFilter>",
+                      "required": -30,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--events-health-state-filter",
+                      "description": "the filter of the event health state"
+                    },
+                    {
+                      "flags": "--deployed-applications-health-state-filter <deployedapplicationsHealthStateFilter>",
+                      "required": -45,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--deployed-applications-health-state-filter",
+                      "description": "the filter of the deployed applications health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                },
+                {
                   "name": "send",
                   "description": "Send application health report",
                   "fullName": "servicefabric application health send",
@@ -32302,6 +32387,15 @@
                       "bool": true,
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -32362,6 +32456,15 @@
                       "bool": true,
                       "long": "--application-name",
                       "description": "the name of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -32437,6 +32540,15 @@
                           "bool": true,
                           "long": "--deployed-service-packages-health-state-filter",
                           "description": "the filter of the deployed service packages health state"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
                         }
                       ]
                     },
@@ -33013,6 +33125,15 @@
                   "bool": true,
                   "long": "--json",
                   "description": "use json output"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             }
@@ -33100,6 +33221,15 @@
                       "bool": true,
                       "long": "--json",
                       "description": "use json output"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -33234,6 +33364,15 @@
                       "bool": true,
                       "long": "--json",
                       "description": "use json output"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -33332,6 +33471,15 @@
                   "bool": true,
                   "long": "--node-name",
                   "description": "the name of the node"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             },
@@ -33527,6 +33675,15 @@
                       "bool": true,
                       "long": "--node-name",
                       "description": "the name of the node"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -33587,6 +33744,15 @@
                       "bool": true,
                       "long": "--events-health-state-filter",
                       "description": "the filter of the event health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -33963,6 +34129,15 @@
                       "bool": true,
                       "long": "--application-name",
                       "description": "the name of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -34033,6 +34208,15 @@
                       "bool": true,
                       "long": "--application-name",
                       "description": "the name of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -34108,6 +34292,15 @@
                           "bool": true,
                           "long": "--events-health-state-filter",
                           "description": "the filter of the events health state"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
                         }
                       ]
                     },
@@ -34286,6 +34479,15 @@
                   "bool": true,
                   "long": "--partition-id",
                   "description": "the id of the partition"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             },
@@ -34403,6 +34605,15 @@
                       "bool": true,
                       "long": "--replicas-health-state-filter",
                       "description": "the filter of the replicas health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -34553,6 +34764,15 @@
                       "bool": true,
                       "long": "--partition-id",
                       "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -34657,6 +34877,15 @@
                   "bool": true,
                   "long": "--replica-id",
                   "description": "the id of the replica"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             }
@@ -34716,6 +34945,15 @@
                       "bool": true,
                       "long": "--application-name",
                       "description": "the name of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -34774,6 +35012,15 @@
                       "bool": true,
                       "long": "--replica-id",
                       "description": "the id of the replica"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -34842,6 +35089,15 @@
                       "bool": true,
                       "long": "--events-health-state-filter",
                       "description": "the filter of the events health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -35008,6 +35264,15 @@
                       "bool": true,
                       "long": "--replica-id",
                       "description": "the id of the replica"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -35070,6 +35335,15 @@
                   "bool": true,
                   "long": "--service-name",
                   "description": "the name of the service"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             },
@@ -35446,6 +35720,15 @@
                   "bool": true,
                   "long": "--previous-rsp-version",
                   "description": "the name of the service"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
                 }
               ]
             }
@@ -35573,6 +35856,15 @@
                       "bool": true,
                       "long": "--application-type-version",
                       "description": "the version of the application type"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -35640,6 +35932,15 @@
                           "bool": true,
                           "long": "--application-name",
                           "description": "the name of the application"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
                         }
                       ]
                     }
@@ -35762,6 +36063,15 @@
                       "bool": true,
                       "long": "--service-name",
                       "description": "the name of the service"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 }
@@ -35814,6 +36124,15 @@
                       "bool": true,
                       "long": "--service-name",
                       "description": "the name of the service"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
                     }
                   ]
                 },
@@ -36375,6 +36694,15 @@
                           "bool": true,
                           "long": "--service-name",
                           "description": "the name of the service"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
                         }
                       ]
                     }
@@ -36435,6 +36763,15 @@
                           "bool": true,
                           "long": "--service-name",
                           "description": "the name of the service"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
                         }
                       ]
                     }

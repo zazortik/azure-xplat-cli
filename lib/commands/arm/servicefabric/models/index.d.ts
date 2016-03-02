@@ -560,33 +560,7 @@ export interface ApplicationTypeHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the NodeHealth class.
  * @constructor
- * @member {object} [healthEvents]
- * 
- * @member {string} [healthEvents.sourceId]
- * 
- * @member {string} [healthEvents.property]
- * 
- * @member {number} [healthEvents.healthState]
- * 
- * @member {string} [healthEvents.timeToLiveInMilliSeconds]
- * 
- * @member {string} [healthEvents.description]
- * 
- * @member {string} [healthEvents.sequenceNumber]
- * 
- * @member {boolean} [healthEvents.removeWhenExpired]
- * 
- * @member {string} [healthEvents.sourceUtcTimestamp]
- * 
- * @member {string} [healthEvents.lastModifiedUtcTimestamp]
- * 
- * @member {boolean} [healthEvents.isExpired]
- * 
- * @member {string} [healthEvents.lastOkTransitionAt]
- * 
- * @member {string} [healthEvents.lastWarningTransitionAt]
- * 
- * @member {string} [healthEvents.lastErrorTransitionAt]
+ * @member {array} [healthEvents]
  * 
  * @member {number} [aggregatedHealthState]
  * 
@@ -594,7 +568,7 @@ export interface ApplicationTypeHealthEvaluation extends HealthEvaluation {
  * 
  */
 export interface NodeHealth {
-    healthEvents?: HealthEvent;
+    healthEvents?: HealthEvent[];
     aggregatedHealthState?: number;
     name?: string;
 }
@@ -652,33 +626,7 @@ export interface DeployedServicePackageHealthState {
  * @class
  * Initializes a new instance of the DeployedApplicationHealth class.
  * @constructor
- * @member {object} [healthEvents]
- * 
- * @member {string} [healthEvents.sourceId]
- * 
- * @member {string} [healthEvents.property]
- * 
- * @member {number} [healthEvents.healthState]
- * 
- * @member {string} [healthEvents.timeToLiveInMilliSeconds]
- * 
- * @member {string} [healthEvents.description]
- * 
- * @member {string} [healthEvents.sequenceNumber]
- * 
- * @member {boolean} [healthEvents.removeWhenExpired]
- * 
- * @member {string} [healthEvents.sourceUtcTimestamp]
- * 
- * @member {string} [healthEvents.lastModifiedUtcTimestamp]
- * 
- * @member {boolean} [healthEvents.isExpired]
- * 
- * @member {string} [healthEvents.lastOkTransitionAt]
- * 
- * @member {string} [healthEvents.lastWarningTransitionAt]
- * 
- * @member {string} [healthEvents.lastErrorTransitionAt]
+ * @member {array} [healthEvents]
  * 
  * @member {number} [aggregatedHealthState]
  * 
@@ -700,7 +648,7 @@ export interface DeployedServicePackageHealthState {
  * 
  */
 export interface DeployedApplicationHealth {
-    healthEvents?: HealthEvent;
+    healthEvents?: HealthEvent[];
     aggregatedHealthState?: number;
     unhealthyEvaluations?: string;
     name?: string;
@@ -1163,33 +1111,7 @@ export interface DeployedServicePackage {
  * 
  * @member {string} [nodeName]
  * 
- * @member {object} [healthEvents]
- * 
- * @member {string} [healthEvents.sourceId]
- * 
- * @member {string} [healthEvents.property]
- * 
- * @member {number} [healthEvents.healthState]
- * 
- * @member {string} [healthEvents.timeToLiveInMilliSeconds]
- * 
- * @member {string} [healthEvents.description]
- * 
- * @member {string} [healthEvents.sequenceNumber]
- * 
- * @member {boolean} [healthEvents.removeWhenExpired]
- * 
- * @member {string} [healthEvents.sourceUtcTimestamp]
- * 
- * @member {string} [healthEvents.lastModifiedUtcTimestamp]
- * 
- * @member {boolean} [healthEvents.isExpired]
- * 
- * @member {string} [healthEvents.lastOkTransitionAt]
- * 
- * @member {string} [healthEvents.lastWarningTransitionAt]
- * 
- * @member {string} [healthEvents.lastErrorTransitionAt]
+ * @member {array} [healthEvents]
  * 
  * @member {number} [aggregatedHealthState]
  * 
@@ -1198,7 +1120,7 @@ export interface DeployedServicePackageHealth {
     applicationName?: string;
     serviceManifestName?: string;
     nodeName?: string;
-    healthEvents?: HealthEvent;
+    healthEvents?: HealthEvent[];
     aggregatedHealthState?: number;
 }
 
@@ -1578,33 +1500,7 @@ export interface ServiceGroupMember {
  * @class
  * Initializes a new instance of the ApplicationHealth class.
  * @constructor
- * @member {object} [healthEvents]
- * 
- * @member {string} [healthEvents.sourceId]
- * 
- * @member {string} [healthEvents.property]
- * 
- * @member {number} [healthEvents.healthState]
- * 
- * @member {string} [healthEvents.timeToLiveInMilliSeconds]
- * 
- * @member {string} [healthEvents.description]
- * 
- * @member {string} [healthEvents.sequenceNumber]
- * 
- * @member {boolean} [healthEvents.removeWhenExpired]
- * 
- * @member {string} [healthEvents.sourceUtcTimestamp]
- * 
- * @member {string} [healthEvents.lastModifiedUtcTimestamp]
- * 
- * @member {boolean} [healthEvents.isExpired]
- * 
- * @member {string} [healthEvents.lastOkTransitionAt]
- * 
- * @member {string} [healthEvents.lastWarningTransitionAt]
- * 
- * @member {string} [healthEvents.lastErrorTransitionAt]
+ * @member {array} [healthEvents]
  * 
  * @member {number} [aggregatedHealthState]
  * 
@@ -1618,7 +1514,7 @@ export interface ServiceGroupMember {
  * 
  */
 export interface ApplicationHealth {
-    healthEvents?: HealthEvent;
+    healthEvents?: HealthEvent[];
     aggregatedHealthState?: number;
     unhealthyEvaluations?: string;
     name?: string;
@@ -2282,33 +2178,7 @@ export interface ClusterLoadInformation {
  * @class
  * Initializes a new instance of the ClusterHealth class.
  * @constructor
- * @member {object} [healthEvents]
- * 
- * @member {string} [healthEvents.sourceId]
- * 
- * @member {string} [healthEvents.property]
- * 
- * @member {number} [healthEvents.healthState]
- * 
- * @member {string} [healthEvents.timeToLiveInMilliSeconds]
- * 
- * @member {string} [healthEvents.description]
- * 
- * @member {string} [healthEvents.sequenceNumber]
- * 
- * @member {boolean} [healthEvents.removeWhenExpired]
- * 
- * @member {string} [healthEvents.sourceUtcTimestamp]
- * 
- * @member {string} [healthEvents.lastModifiedUtcTimestamp]
- * 
- * @member {boolean} [healthEvents.isExpired]
- * 
- * @member {string} [healthEvents.lastOkTransitionAt]
- * 
- * @member {string} [healthEvents.lastWarningTransitionAt]
- * 
- * @member {string} [healthEvents.lastErrorTransitionAt]
+ * @member {array} [healthEvents]
  * 
  * @member {number} [aggregatedHealthState]
  * 
@@ -2320,7 +2190,7 @@ export interface ClusterLoadInformation {
  * 
  */
 export interface ClusterHealth {
-    healthEvents?: HealthEvent;
+    healthEvents?: HealthEvent[];
     aggregatedHealthState?: number;
     unhealthyEvaluations?: UnhealthyEvaluation[];
     nodeHealthStates?: ClusterHealthNodeHealthStatesItem[];
