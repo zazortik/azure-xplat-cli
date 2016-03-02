@@ -71,7 +71,7 @@ commands/arm/rediscache/arm.rediscache-tests.js
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
 commands/arm/datalakestore/arm.datalake-store-tests.js
 #please put the following group tests to the last, as it uses the different subscription
-#and it exposes a test framework bug which failed vm and apiapp tests randomly
+#and it exposes a test framework bug which failed vm tests randomly
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
 commands/arm/group/arm.group.deployment.operation-tests.js
