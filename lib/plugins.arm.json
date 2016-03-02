@@ -34341,100 +34341,6 @@
             }
           ],
           "categories": {
-            "load": {
-              "name": "load",
-              "description": "Commands to manage your partition load information",
-              "fullName": "servicefabric partition load",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "reset",
-                  "description": "Reset partition",
-                  "fullName": "servicefabric partition load reset",
-                  "usage": "[options] [serviceName] [partitionId]",
-                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    }
-                  ]
-                },
-                {
-                  "name": "show",
-                  "description": "Show partition load information",
-                  "fullName": "servicefabric partition load show",
-                  "usage": "[options] [partitionId]",
-                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
             "health": {
               "name": "health",
               "description": "Commands to manage your partition health",
@@ -34595,6 +34501,100 @@
                       "bool": true,
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "load": {
+              "name": "load",
+              "description": "Commands to manage your partition load information",
+              "fullName": "servicefabric partition load",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show partition load information",
+                  "fullName": "servicefabric partition load show",
+                  "usage": "[options] [partitionId]",
+                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    }
+                  ]
+                },
+                {
+                  "name": "reset",
+                  "description": "Reset partition",
+                  "fullName": "servicefabric partition load reset",
+                  "usage": "[options] [serviceName] [partitionId]",
+                  "filePath": "commands/arm/servicefabric/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
                     }
                   ]
                 }
