@@ -48,4 +48,3 @@ test-srv 5 IN SRV 1 2 3 srv1.example1.com.
 test-srv2 5 IN SRV 1 2 3 srv1.
 
 www 5 IN A 2.3.4.5
-
