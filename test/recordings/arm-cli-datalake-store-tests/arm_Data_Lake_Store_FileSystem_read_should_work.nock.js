@@ -27,4 +27,35 @@ exports.setEnvironment = function() {
   process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlsrg01';
 };
 
-exports.scopes = [[]];
+exports.scopes = [[function (nock) { 
+var result = 
+nock('http://xplattestadls5642.azuredatalakestore.net:443')
+  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
+  .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  expires: '-1',
+  'x-ms-request-id': '0e2faeb6-38d0-40cf-9606-87ae6c6d00ba',
+  'server-perf': '[0e2faeb638d040cf960687ae6c6d00ba][ AuthTime::893.026311343701::PostAuthTime::198.450291409711 ][GetCacheEntry :: 00:00:000 ms]%0a[FsOpenStream :: 00:00:043 ms]%0a[OpenNewHandle :: 00:00:043 ms]%0a[CreateCacheEntry :: 00:00:000 ms]%0a[GetOrCreateHandle :: 00:00:043 ms]%0a[Open :: 00:00:043 ms]%0a[FsReadStream :: 00:00:014 ms]%0a[OPEN :: 00:00:058 ms]%0a',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=15724800; includeSubDomains',
+  date: 'Wed, 02 Mar 2016 01:39:21 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplattestadls5642.azuredatalakestore.net:443')
+  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
+  .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  expires: '-1',
+  'x-ms-request-id': '0e2faeb6-38d0-40cf-9606-87ae6c6d00ba',
+  'server-perf': '[0e2faeb638d040cf960687ae6c6d00ba][ AuthTime::893.026311343701::PostAuthTime::198.450291409711 ][GetCacheEntry :: 00:00:000 ms]%0a[FsOpenStream :: 00:00:043 ms]%0a[OpenNewHandle :: 00:00:043 ms]%0a[CreateCacheEntry :: 00:00:000 ms]%0a[GetOrCreateHandle :: 00:00:043 ms]%0a[Open :: 00:00:043 ms]%0a[FsReadStream :: 00:00:014 ms]%0a[OPEN :: 00:00:058 ms]%0a',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=15724800; includeSubDomains',
+  date: 'Wed, 02 Mar 2016 01:39:21 GMT',
+  connection: 'close' });
+ return result; }]];

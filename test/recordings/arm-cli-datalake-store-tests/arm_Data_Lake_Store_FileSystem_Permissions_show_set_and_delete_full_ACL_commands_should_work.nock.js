@@ -29,297 +29,99 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
+nock('http://xplattestadls5642.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '38afebfa-7a8c-41fb-979b-adf1172452fb',
-  'server-perf': '[38afebfa7a8c41fb979badf1172452fb][ AuthTime::855.817613761513::PostAuthTime::197.595071243288 ][HdfsGetAclStatus :: 00:00:037 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:037 ms]%0a',
+  'x-ms-request-id': 'a77b9dbf-16b4-4901-bfeb-cdd4e79129ad',
+  'set-cookie': [ 'UserPrincipalSession=73fe1114-dfb9-40b3-a90a-5e1737ca9616; path=/; secure; HttpOnly' ],
+  'server-perf': '[a77b9dbf16b44901bfebcdd4e79129ad][ AuthTime::1768.51638796673::PostAuthTime::31474.4593728802 ][HdfsGetAclStatus :: 00:00:088 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:088 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:22 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:36 GMT',
   connection: 'close',
   'content-length': '271' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
+nock('https://xplattestadls5642.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '38afebfa-7a8c-41fb-979b-adf1172452fb',
-  'server-perf': '[38afebfa7a8c41fb979badf1172452fb][ AuthTime::855.817613761513::PostAuthTime::197.595071243288 ][HdfsGetAclStatus :: 00:00:037 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:037 ms]%0a',
+  'x-ms-request-id': 'a77b9dbf-16b4-4901-bfeb-cdd4e79129ad',
+  'set-cookie': [ 'UserPrincipalSession=73fe1114-dfb9-40b3-a90a-5e1737ca9616; path=/; secure; HttpOnly' ],
+  'server-perf': '[a77b9dbf16b44901bfebcdd4e79129ad][ AuthTime::1768.51638796673::PostAuthTime::31474.4593728802 ][HdfsGetAclStatus :: 00:00:088 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:088 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:22 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:36 GMT',
   connection: 'close',
   'content-length': '271' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
+nock('http://xplattestadls5642.azuredatalakestore.net:443')
   .put('/webhdfs/v1/%2F?aclspec=user%3A%3Arwx%2Cgroup%3A%3Arwx%2Cother%3A%3A---%2Cmask%3A%3Arwx%2Cdefault%3Auser%3A%3Arwx%2Cdefault%3Agroup%3A%3Arwx%2Cdefault%3Aother%3A%3A---%2Cdefault%3Amask%3A%3Arwx%2Cdefault%3Auser%3A027c28d5-c91d-49f0-98c5-d10134b169b3%3Arwx&op=SETACL&api-version=2015-10-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': '6e3a8e83-6dc5-43d7-8e78-5188e4b27593',
+  'x-ms-request-id': '26bbd604-0eb2-4939-90cf-c2314d087c51',
   contentlength: '0',
-  'server-perf': '[6e3a8e836dc543d78e785188e4b27593][ AuthTime::884.900871000785::PostAuthTime::201.872020837298 ][SETACL :: 00:00:845 ms]%0a',
+  'server-perf': '[26bbd6040eb2493990cfc2314d087c51][ AuthTime::922.536449171321::PostAuthTime::216.84097344917 ][SETACL :: 00:00:827 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:38 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
+nock('https://xplattestadls5642.azuredatalakestore.net:443')
   .put('/webhdfs/v1/%2F?aclspec=user%3A%3Arwx%2Cgroup%3A%3Arwx%2Cother%3A%3A---%2Cmask%3A%3Arwx%2Cdefault%3Auser%3A%3Arwx%2Cdefault%3Agroup%3A%3Arwx%2Cdefault%3Aother%3A%3A---%2Cdefault%3Amask%3A%3Arwx%2Cdefault%3Auser%3A027c28d5-c91d-49f0-98c5-d10134b169b3%3Arwx&op=SETACL&api-version=2015-10-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': '6e3a8e83-6dc5-43d7-8e78-5188e4b27593',
+  'x-ms-request-id': '26bbd604-0eb2-4939-90cf-c2314d087c51',
   contentlength: '0',
-  'server-perf': '[6e3a8e836dc543d78e785188e4b27593][ AuthTime::884.900871000785::PostAuthTime::201.872020837298 ][SETACL :: 00:00:845 ms]%0a',
+  'server-perf': '[26bbd6040eb2493990cfc2314d087c51][ AuthTime::922.536449171321::PostAuthTime::216.84097344917 ][SETACL :: 00:00:827 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:38 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
+nock('http://xplattestadls5642.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\",\"default:user:027c28d5-c91d-49f0-98c5-d10134b169b3:rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '744f6287-b9eb-4c9a-9cca-a99dab590641',
-  'server-perf': '[744f6287b9eb4c9a9ccaa99dab590641][ AuthTime::812.19307527349::PostAuthTime::201.444412034657 ][HdfsGetAclStatus :: 00:00:028 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:028 ms]%0a',
+  'x-ms-request-id': '6a7c108a-8edf-4bbb-97a0-8791fed34b14',
+  'server-perf': '[6a7c108a8edf4bbb97a08791fed34b14][ AuthTime::832.294035026491::PostAuthTime::189.896480756301 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:019 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:39 GMT',
   connection: 'close',
   'content-length': '327' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
+nock('https://xplattestadls5642.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\",\"default:user:027c28d5-c91d-49f0-98c5-d10134b169b3:rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '744f6287-b9eb-4c9a-9cca-a99dab590641',
-  'server-perf': '[744f6287b9eb4c9a9ccaa99dab590641][ AuthTime::812.19307527349::PostAuthTime::201.444412034657 ][HdfsGetAclStatus :: 00:00:028 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:028 ms]%0a',
+  'x-ms-request-id': '6a7c108a-8edf-4bbb-97a0-8791fed34b14',
+  'server-perf': '[6a7c108a8edf4bbb97a08791fed34b14][ AuthTime::832.294035026491::PostAuthTime::189.896480756301 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:019 ms]%0a',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
+  date: 'Wed, 02 Mar 2016 01:39:39 GMT',
   connection: 'close',
   'content-length': '327' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [b7ca2a3f4e1b4249a1c4bc4d82e4ea1e]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b7ca2a3f-4e1b-4249-a1c4-bc4d82e4ea1e',
-  'set-cookie': [ 'UserPrincipalSession=afdcc787-0141-4a6b-843f-00065761f0bb; path=/; secure; HttpOnly' ],
-  'server-perf': '[b7ca2a3f4e1b4249a1c4bc4d82e4ea1e][ AuthTime::1691.95981210521::PostAuthTime::31308.5273320368 ][REMOVEDEFAULTACL :: 00:00:034 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [b7ca2a3f4e1b4249a1c4bc4d82e4ea1e]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b7ca2a3f-4e1b-4249-a1c4-bc4d82e4ea1e',
-  'set-cookie': [ 'UserPrincipalSession=afdcc787-0141-4a6b-843f-00065761f0bb; path=/; secure; HttpOnly' ],
-  'server-perf': '[b7ca2a3f4e1b4249a1c4bc4d82e4ea1e][ AuthTime::1691.95981210521::PostAuthTime::31308.5273320368 ][REMOVEDEFAULTACL :: 00:00:034 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:24 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [98cbbbbaf5fb4744bc406251de3a0552]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '98cbbbba-f5fb-4744-bc40-6251de3a0552',
-  'set-cookie': [ 'UserPrincipalSession=1a4dce72-e0f1-46db-a674-9ffb495f644c; path=/; secure; HttpOnly' ],
-  'server-perf': '[98cbbbbaf5fb4744bc406251de3a0552][ AuthTime::1696.23675804077::PostAuthTime::31198.6098214931 ][REMOVEDEFAULTACL :: 00:00:001 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:55 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [98cbbbbaf5fb4744bc406251de3a0552]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '98cbbbba-f5fb-4744-bc40-6251de3a0552',
-  'set-cookie': [ 'UserPrincipalSession=1a4dce72-e0f1-46db-a674-9ffb495f644c; path=/; secure; HttpOnly' ],
-  'server-perf': '[98cbbbbaf5fb4744bc406251de3a0552][ AuthTime::1696.23675804077::PostAuthTime::31198.6098214931 ][REMOVEDEFAULTACL :: 00:00:001 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:52:55 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [07bb3cdecae241559af58fbc683d0d05]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '07bb3cde-cae2-4155-9af5-8fbc683d0d05',
-  'server-perf': '[07bb3cdecae241559af58fbc683d0d05][ AuthTime::860.52189027405::PostAuthTime::199.305765838821 ][REMOVEDEFAULTACL :: 00:00:033 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:14 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEDEFAULTACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveDefaultAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [07bb3cdecae241559af58fbc683d0d05]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '07bb3cde-cae2-4155-9af5-8fbc683d0d05',
-  'server-perf': '[07bb3cdecae241559af58fbc683d0d05][ AuthTime::860.52189027405::PostAuthTime::199.305765838821 ][REMOVEDEFAULTACL :: 00:00:033 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:14 GMT',
-  connection: 'close',
-  'content-length': '230' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [80ffa778475c4b85a73b3551adf2f562]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '80ffa778-475c-4b85-a73b-3551adf2f562',
-  'set-cookie': [ 'UserPrincipalSession=7e027d5a-d0b5-49ce-9859-5fa84bef3dbb; path=/; secure; HttpOnly' ],
-  'server-perf': '[80ffa778475c4b85a73b3551adf2f562][ AuthTime::1831.38824960428::PostAuthTime::31373.5369102573 ][REMOVEACL :: 00:00:018 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:15 GMT',
-  connection: 'close',
-  'content-length': '223' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [80ffa778475c4b85a73b3551adf2f562]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '80ffa778-475c-4b85-a73b-3551adf2f562',
-  'set-cookie': [ 'UserPrincipalSession=7e027d5a-d0b5-49ce-9859-5fa84bef3dbb; path=/; secure; HttpOnly' ],
-  'server-perf': '[80ffa778475c4b85a73b3551adf2f562][ AuthTime::1831.38824960428::PostAuthTime::31373.5369102573 ][REMOVEACL :: 00:00:018 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:15 GMT',
-  connection: 'close',
-  'content-length': '223' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [83ef33e2d1ec4ed4b87b57d58a671d15]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '83ef33e2-d1ec-4ed4-b87b-57d58a671d15',
-  'set-cookie': [ 'UserPrincipalSession=5733335e-bbf1-4da8-a995-a13b029ed0cc; path=/; secure; HttpOnly' ],
-  'server-perf': '[83ef33e2d1ec4ed4b87b57d58a671d15][ AuthTime::1759.53480534344::PostAuthTime::31490.7117604843 ][REMOVEACL :: 00:00:035 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:42 GMT',
-  connection: 'close',
-  'content-length': '223' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [83ef33e2d1ec4ed4b87b57d58a671d15]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '83ef33e2-d1ec-4ed4-b87b-57d58a671d15',
-  'set-cookie': [ 'UserPrincipalSession=5733335e-bbf1-4da8-a995-a13b029ed0cc; path=/; secure; HttpOnly' ],
-  'server-perf': '[83ef33e2d1ec4ed4b87b57d58a671d15][ AuthTime::1759.53480534344::PostAuthTime::31490.7117604843 ][REMOVEACL :: 00:00:035 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:54:42 GMT',
-  connection: 'close',
-  'content-length': '223' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [2397af0d3e894dca879e1be16c794a52]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2397af0d-3e89-4dca-879e-1be16c794a52',
-  'server-perf': '[2397af0d3e894dca879e1be16c794a52][ AuthTime::859.239173436721::PostAuthTime::199.733546040293 ][REMOVEACL :: 00:00:018 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:56:06 GMT',
-  connection: 'close',
-  'content-length': '223' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadls2761.azuredatalakestore.net:443')
-  .put('/webhdfs/v1/%2F?op=REMOVEACL&api-version=2015-10-01-preview')
-  .reply(500, "{\"RemoteException\":{\"exception\":\"RuntimeException\",\"message\":\"CsRemoveAcl returned status code 0x83090053 () but 0x800703E5 () is expected.  [2397af0d3e894dca879e1be16c794a52]\",\"javaClassName\":\"java.lang.RuntimeException\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2397af0d-3e89-4dca-879e-1be16c794a52',
-  'server-perf': '[2397af0d3e894dca879e1be16c794a52][ AuthTime::859.239173436721::PostAuthTime::199.733546040293 ][REMOVEACL :: 00:00:018 ms]%0a',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 23 Feb 2016 04:56:06 GMT',
-  connection: 'close',
-  'content-length': '223' });
  return result; }]];

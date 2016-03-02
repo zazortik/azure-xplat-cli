@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla9260','xplattestadla5157','xplattestadla6242','xplattestadls8609','xplattestadls3150','xplattestadls2811','adlacatalogitem5481','adlacatalogitem7931','adlacatalogitem5782','adlacatalogitem5631','adlacatalogitem7636','adlacatalogitem583','adlacatalogitem2535','adlacatalogitem3429'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla6236','xplattestadla8630','xplattestadla1804','xplattestadls2086','xplattestadls4351','xplattestadls5394','adlacatalogitem7442','adlacatalogitem9296','adlacatalogitem1952','adlacatalogitem6396','adlacatalogitem4652','adlacatalogitem120','adlacatalogitem1945','adlacatalogitem9065'];};
