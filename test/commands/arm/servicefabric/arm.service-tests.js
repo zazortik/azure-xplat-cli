@@ -26,9 +26,9 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
 ];
-var clusterEndpoint = '127.0.0.1:10549';
-var httpEndpoint = '127.0.0.1:10550';
-var applicationPackagePath = '/tmp/StatelessPi';
+var clusterEndpoint = '157.59.36.110:10549';
+var httpEndpoint = '157.59.36.110:10550';
+var applicationPackagePath = '/media/share/StatelessPi';
 var applicationPackageName = 'StatelessPi';
 var applicationTypeName = 'StatelessPiServiceApp';
 var applicationTypeVersion = '1.0';
@@ -54,35 +54,53 @@ describe('Service Fabric', function () {
     });
     
     it('should connect to cluster', function (done) {
-      suite.execute('servicefabric cluster connect --json ' + httpEndpoint, function (result) {
+      suite.execute('servicefabric cluster connect ' + httpEndpoint + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
     it('should copy application package', function (done) {
-      suite.execute('servicefabric application-package copy --json ' + clusterEndpoint + ' ' + applicationPackagePath + ' fabric:ImageStore', function (result) {
+      suite.execute('servicefabric application-package copy ' + clusterEndpoint + ' ' + applicationPackagePath + ' fabric:ImageStore' + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
     it('should register application type', function (done) {
-      suite.execute('servicefabric application type register --json ' + applicationPackageName, function (result) {
+      suite.execute('servicefabric application type register ' + applicationPackageName + ' --json', function (result) {
         result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+    
+    it('should show application type', function (done) {
+      suite.execute('servicefabric application type show ' + applicationTypeName + ' --json', function (result) {
+        result.exitStatus.should.equal(0);
+        var res = JSON.parse(result.text);
+        res.should.containDeep([{name: applicationPackageName, version: applicationTypeVersion}]);
         done();
       });
     });
     
     it('should create application', function (done) {
-      suite.execute('servicefabric application create --json --application-name fabric:/myapp --application-type-name ' + applicationTypeName + ' --application-type-version ' + applicationTypeVersion, function (result) {
+      suite.execute('servicefabric application create --application-name fabric:/myapp --application-type-name ' + applicationTypeName + ' --application-type-version ' + applicationTypeVersion + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
+    it('should show application', function (done) {
+      suite.execute('servicefabric application show fabric:/myapp --json', function (result) {
+        result.exitStatus.should.equal(0);
+        var res = JSON.parse(result.text);
+        res.should.containDeep({name: 'fabric:/myapp', typeName: applicationTypeName, typeVersion: applicationTypeVersion});
+        done();
+      });
+    });
+    
     it('should create service', function (done) {
-      suite.execute('servicefabric service create --json --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name StatelessPiServiceType --service-kind 1 --instance-count 1 --partition-scheme 1', function (result) {
+      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name StatelessPiServiceType --service-kind 1 --instance-count 1 --partition-scheme 1' + ' --json', function (result) {
         setTimeout(function () {
           result.exitStatus.should.equal(0);
           done();
@@ -90,29 +108,41 @@ describe('Service Fabric', function () {
       });
     });
     
+    it('should show service', function (done) {
+      suite.execute('servicefabric service show fabric:/myapp fabric:/myapp/svc1 --json', function (result) {
+        result.exitStatus.should.equal(0);
+        var res = JSON.parse(result.text);
+        res.should.containDeep({name: 'fabric:/myapp/svc1'});
+        done();
+      });
+    });
+    
     it('should show health', function (done) {
-      suite.execute('servicefabric service health show --json fabric:/myapp/svc1', function (result) {
+      suite.execute('servicefabric service health show fabric:/myapp/svc1 --json', function (result) {
+        var res = JSON.parse(result.text);
+        res.should.have.property('name');
+        res.should.have.property('aggregatedHealthState');
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
     it('should remove service', function (done) {
-      suite.execute('servicefabric service remove --json fabric:/myapp/svc1', function (result) {
+      suite.execute('servicefabric service remove fabric:/myapp/svc1 --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
     it('should remove application', function (done) {
-      suite.execute('servicefabric application remove --json fabric:/myapp', function (result) {
+      suite.execute('servicefabric application remove fabric:/myapp --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
     
     it('should unregister application type', function (done) {
-      suite.execute('servicefabric application type unregister --json ' + applicationTypeName + ' ' + applicationTypeVersion, function (result) {
+      suite.execute('servicefabric application type unregister ' + applicationTypeName + ' ' + applicationTypeVersion + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
