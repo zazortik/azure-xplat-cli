@@ -1833,6 +1833,59 @@
               "categories": {}
             }
           }
+        },
+        "subscription": {
+          "name": "subscription",
+          "description": "Commands to manage Batch options at the subscription level",
+          "fullName": "batch subscription",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list-quotas",
+              "description": "List the subscription level Batch quotas in the specified region",
+              "fullName": "batch subscription list-quotas",
+              "usage": "[options] <location>",
+              "filePath": "commands/batch/batch.subscription._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         }
       }
     },
