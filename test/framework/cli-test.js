@@ -599,8 +599,8 @@ _.extend(CLITest.prototype, {
       utils.createAutoRestClient.restore();
     }
     CLITest.wrap(sinon, utils, 'createAutoRestClient', function (originalCreateAutoRestClient) {
-      return function (factoryMethod, subscription) {
-        var client = originalCreateAutoRestClient(factoryMethod, subscription);
+      return function (factoryMethod, subscription, options) {
+        var client = originalCreateAutoRestClient(factoryMethod, subscription, options);
         client.longRunningOperationRetryTimeout = 0;
         return client;
       };
