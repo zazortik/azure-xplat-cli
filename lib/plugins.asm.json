@@ -1424,14 +1424,6 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--tags <tags>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--tags",
-                  "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
-                },
-                {
                   "flags": "-l, --location <location>",
                   "required": -16,
                   "optional": 0,
@@ -1441,12 +1433,20 @@
                   "description": "the location"
                 },
                 {
-                  "flags": "--type <type>",
+                  "flags": "--tags <tags>",
                   "required": -8,
                   "optional": 0,
                   "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
+                  "long": "--tags",
+                  "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
+                },
+                {
+                  "flags": "--autostorage-account-id <autostorageAccountId>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--autostorage-account-id",
+                  "description": "the resource id of the storage account to be used for auto storage"
                 },
                 {
                   "flags": "-g, --resource-group <resourceGroup>",
@@ -1470,7 +1470,7 @@
             },
             {
               "name": "set",
-              "description": "Update a batch account (Only one property can be updated at a time)",
+              "description": "Update a batch account",
               "fullName": "batch account set",
               "usage": "[options] <name>",
               "filePath": "commands/batch/batch.account._js",
@@ -1501,22 +1501,6 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--custom-domain <customDomain>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--custom-domain",
-                  "description": "the custom domain"
-                },
-                {
-                  "flags": "--subdomain",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--subdomain",
-                  "description": "whether uses the 'asverify' subdomain to preregister the custom domain"
-                },
-                {
                   "flags": "--tags <tags>",
                   "required": -8,
                   "optional": 0,
@@ -1525,12 +1509,12 @@
                   "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
                 },
                 {
-                  "flags": "--type <type>",
-                  "required": -8,
+                  "flags": "--autostorage-account-id <autostorageAccountId>",
+                  "required": -26,
                   "optional": 0,
                   "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/GRS/RAGRS)"
+                  "long": "--autostorage-account-id",
+                  "description": "the resource id of the storage account to be used for auto storage"
                 },
                 {
                   "flags": "-g, --resource-group <resourceGroup>",
@@ -1614,9 +1598,9 @@
               ]
             },
             {
-              "name": "check",
-              "description": "Check whether the account name is valid and is not in use.",
-              "fullName": "batch account check",
+              "name": "sync-autostorage-keys",
+              "description": "Synchronizes access keys for the auto storage account configured for the batch account",
+              "fullName": "batch account sync-autostorage-keys",
               "usage": "[options] <name>",
               "filePath": "commands/batch/batch.account._js",
               "options": [
@@ -1644,6 +1628,24 @@
                   "bool": true,
                   "long": "--json",
                   "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
                 }
               ]
             }
@@ -1778,59 +1780,6 @@
                 }
               ],
               "categories": {}
-            },
-            "usage": {
-              "name": "usage",
-              "description": "Commands to manage your Batch accounts usage",
-              "fullName": "batch account usage",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show the current count and the limit of the batch accounts under the subscription.",
-                  "fullName": "batch account usage show",
-                  "usage": "[options] [subscription]",
-                  "filePath": "commands/batch/batch.account._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-s, --subscription <id>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription id"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
             }
           }
         },
@@ -1858,6 +1807,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1899,14 +1856,6 @@
                   "short": "-u",
                   "long": "--account-endpoint",
                   "description": "the batch connection endpoint"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "run batch command in debug mode"
                 }
               ]
             },
@@ -1927,6 +1876,14 @@
                   "description": "use verbose output"
                 },
                 {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
@@ -1960,6 +1917,24 @@
                   "short": "-u",
                   "long": "--account-endpoint",
                   "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "listUsageMetrics",
+              "description": "List batch pool usage metrics",
+              "fullName": "batch pool listUsageMetrics",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
                   "flags": "-vv",
@@ -1967,7 +1942,42 @@
                   "optional": 0,
                   "bool": true,
                   "long": "-vv",
-                  "description": "run batch command in debug mode"
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
                 }
               ]
             },
@@ -1986,6 +1996,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -2029,14 +2047,6 @@
                   "short": "-u",
                   "long": "--account-endpoint",
                   "description": "the batch connection endpoint"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "run batch command in debug mode"
                 }
               ]
             },
@@ -2055,6 +2065,14 @@
                   "short": "-v",
                   "long": "--verbose",
                   "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
                   "flags": "--json",
@@ -2107,14 +2125,6 @@
                   "short": "-u",
                   "long": "--account-endpoint",
                   "description": "the batch connection endpoint"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "run batch command in debug mode"
                 }
               ]
             }
