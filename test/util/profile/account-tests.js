@@ -127,8 +127,10 @@ describe('account', function () {
     UserTokenCredentials: function UserTokenCredentials() { }
   };
   
+  var armEndPointUsed;
   var resourceClient = {
-    SubscriptionClient: function (cred) {
+    SubscriptionClient: function (cred, armEndpoint) {
+      armEndPointUsed = armEndpoint;
       return testArmSubscriptionClient;
     }
   };
@@ -178,6 +180,10 @@ describe('account', function () {
       subscriptions.forEach(function (s) {
         s.tenantId.should.equal(testTenantIds[0]);
       });
+    });
+
+    it('should pass in right arm endpoint', function () {
+      armEndPointUsed.should.equal(environment.resourceManagerEndpointUrl);
     });
   });
   
