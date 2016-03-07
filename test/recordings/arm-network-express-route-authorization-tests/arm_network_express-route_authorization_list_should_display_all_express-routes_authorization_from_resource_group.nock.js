@@ -15,6 +15,7 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,72 +29,72 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"xplatExpressRouteA\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA\",\r\n  \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"9f646b13-5eb1-4c62-8dbc-33127988faa0\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [\r\n      {\r\n        \"name\": \"xplatExpressRouteAuth\",\r\n        \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations/xplatExpressRouteAuth\",\r\n        \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"authorizationKey\": \"0cc55871-8593-42cc-99e0-da46734f0ab8\",\r\n          \"authorizationUseStatus\": \"Available\"\r\n        }\r\n      }\r\n    ],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"InterCloud\",\r\n      \"peeringLocation\": \"London\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceKey\": \"585d3c98-3f00-4c19-b3b6-d6e15588daac\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"name\": \"xplatExpressRoute\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute\",\r\n  \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"6add220a-21c6-43c9-942f-3a99494721b9\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [\r\n      {\r\n        \"name\": \"xplatExpressRouteAuth\",\r\n        \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations/xplatExpressRouteAuth\",\r\n        \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"authorizationKey\": \"6d716f7f-dc30-4cd0-ab5d-fe6f78b6fee6\",\r\n          \"authorizationUseStatus\": \"Available\"\r\n        }\r\n      }\r\n    ],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"InterCloud\",\r\n      \"peeringLocation\": \"London\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceKey\": \"607611b8-4874-4cc7-8106-75ae4c910770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1549',
+  'content-length': '1532',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '43e9a0b7-6759-4427-bb7a-be62791885cd',
+  'x-ms-request-id': 'c981c8c7-e746-4f36-a3d5-6ee88fe8df4c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': '68fd3114-6fa4-4a12-983e-a7387ba6e3b2',
-  'x-ms-routing-request-id': 'EASTUS:20160120T193804Z:68fd3114-6fa4-4a12-983e-a7387ba6e3b2',
-  date: 'Wed, 20 Jan 2016 19:38:04 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-correlation-request-id': 'bd870b22-ed81-4846-9468-9f64791d35a6',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160307T133455Z:bd870b22-ed81-4846-9468-9f64791d35a6',
+  date: 'Mon, 07 Mar 2016 13:34:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"xplatExpressRouteA\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA\",\r\n  \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"9f646b13-5eb1-4c62-8dbc-33127988faa0\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [\r\n      {\r\n        \"name\": \"xplatExpressRouteAuth\",\r\n        \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations/xplatExpressRouteAuth\",\r\n        \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"authorizationKey\": \"0cc55871-8593-42cc-99e0-da46734f0ab8\",\r\n          \"authorizationUseStatus\": \"Available\"\r\n        }\r\n      }\r\n    ],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"InterCloud\",\r\n      \"peeringLocation\": \"London\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceKey\": \"585d3c98-3f00-4c19-b3b6-d6e15588daac\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"name\": \"xplatExpressRoute\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute\",\r\n  \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"val1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"6add220a-21c6-43c9-942f-3a99494721b9\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [\r\n      {\r\n        \"name\": \"xplatExpressRouteAuth\",\r\n        \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations/xplatExpressRouteAuth\",\r\n        \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"authorizationKey\": \"6d716f7f-dc30-4cd0-ab5d-fe6f78b6fee6\",\r\n          \"authorizationUseStatus\": \"Available\"\r\n        }\r\n      }\r\n    ],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"InterCloud\",\r\n      \"peeringLocation\": \"London\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceKey\": \"607611b8-4874-4cc7-8106-75ae4c910770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1549',
+  'content-length': '1532',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '43e9a0b7-6759-4427-bb7a-be62791885cd',
+  'x-ms-request-id': 'c981c8c7-e746-4f36-a3d5-6ee88fe8df4c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-correlation-request-id': '68fd3114-6fa4-4a12-983e-a7387ba6e3b2',
-  'x-ms-routing-request-id': 'EASTUS:20160120T193804Z:68fd3114-6fa4-4a12-983e-a7387ba6e3b2',
-  date: 'Wed, 20 Jan 2016 19:38:04 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-correlation-request-id': 'bd870b22-ed81-4846-9468-9f64791d35a6',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160307T133455Z:bd870b22-ed81-4846-9468-9f64791d35a6',
+  date: 'Mon, 07 Mar 2016 13:34:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatExpressRouteAuth\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations/xplatExpressRouteAuth\",\r\n      \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"authorizationKey\": \"0cc55871-8593-42cc-99e0-da46734f0ab8\",\r\n        \"authorizationUseStatus\": \"Available\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatExpressRouteAuth\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations/xplatExpressRouteAuth\",\r\n      \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"authorizationKey\": \"6d716f7f-dc30-4cd0-ab5d-fe6f78b6fee6\",\r\n        \"authorizationUseStatus\": \"Available\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '555',
+  'content-length': '547',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e04a8205-467c-4b25-9330-4d9c4dbb293f',
+  'x-ms-request-id': '781899dc-35e2-4321-adb8-5da5dc5857ed',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '586b46c5-d6b2-46d5-83dc-022ad1cd96ef',
-  'x-ms-routing-request-id': 'EASTUS:20160120T193805Z:586b46c5-d6b2-46d5-83dc-022ad1cd96ef',
-  date: 'Wed, 20 Jan 2016 19:38:05 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': 'a7890d8e-24f2-4998-ba14-6e09ef97c069',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160307T133456Z:a7890d8e-24f2-4998-ba14-6e09ef97c069',
+  date: 'Mon, 07 Mar 2016 13:34:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatExpressRouteAuth\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRoutCircuiteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRouteA/authorizations/xplatExpressRouteAuth\",\r\n      \"etag\": \"W/\\\"09cec557-d609-40a3-ad48-46ea977d2408\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"authorizationKey\": \"0cc55871-8593-42cc-99e0-da46734f0ab8\",\r\n        \"authorizationUseStatus\": \"Available\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations?api-version=2015-06-15')
+  .reply(200, "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"xplatExpressRouteAuth\",\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestGroupExpressRouteAuth/providers/Microsoft.Network/expressRouteCircuits/xplatExpressRoute/authorizations/xplatExpressRouteAuth\",\r\n      \"etag\": \"W/\\\"b58881fe-aa8b-4005-b337-533fb3cba9c2\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"authorizationKey\": \"6d716f7f-dc30-4cd0-ab5d-fe6f78b6fee6\",\r\n        \"authorizationUseStatus\": \"Available\"\r\n      }\r\n    }\r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '555',
+  'content-length': '547',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e04a8205-467c-4b25-9330-4d9c4dbb293f',
+  'x-ms-request-id': '781899dc-35e2-4321-adb8-5da5dc5857ed',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': '586b46c5-d6b2-46d5-83dc-022ad1cd96ef',
-  'x-ms-routing-request-id': 'EASTUS:20160120T193805Z:586b46c5-d6b2-46d5-83dc-022ad1cd96ef',
-  date: 'Wed, 20 Jan 2016 19:38:05 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': 'a7890d8e-24f2-4998-ba14-6e09ef97c069',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160307T133456Z:a7890d8e-24f2-4998-ba14-6e09ef97c069',
+  date: 'Mon, 07 Mar 2016 13:34:56 GMT',
   connection: 'close' });
  return result; }]];
