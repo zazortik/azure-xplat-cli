@@ -13,7 +13,8 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <StartWebBrowser>False</StartWebBrowser>
-    <ScriptArguments>batch account list</ScriptArguments>
+    <ScriptArguments>
+    </ScriptArguments>
     <Environment>
     </Environment>
     <NodeExeArguments>

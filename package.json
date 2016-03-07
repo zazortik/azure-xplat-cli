@@ -66,6 +66,7 @@
     "azure-asm-website": "0.10.1",
     "azure-storage": "0.7.0",
     "azure-arm-batch": "0.14.2",
+    "azure-batch": "0.14.2",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
