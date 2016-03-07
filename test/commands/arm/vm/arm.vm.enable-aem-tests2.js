@@ -111,22 +111,11 @@ describe('arm', function() {
         });
       });
 
-      it('Enable diagnostics extension on created VM in a resource group', function(done) {
-        var cmd = util.format('vm enable-diag %s %s -a %s --json', groupName, vmPrefix, storageAccount).split(' ');
+      //attach new data disk
+      it('Attach new data disk for the created vm', function(done) {
+        var cmd = util.format('vm disk attach-new %s %s 1023 --json', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-
-      it('Check diagnostics extension on created VM should pass', function(done) {
-        var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources[0].publisher.should.equal(IaasDiagPublisher);
-          allResources[0].name.should.equal(IaasDiagExtName);
-          allResources[0].typeHandlerVersion.should.equal(IaasDiagVersion);
           done();
         });
       });
