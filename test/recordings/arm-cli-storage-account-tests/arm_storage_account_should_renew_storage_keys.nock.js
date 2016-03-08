@@ -6,11 +6,11 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    name: 'Azure Storage DM Dev',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -31,74 +31,74 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586/listKeys?api-version=2015-06-15')
-  .reply(200, "{\"key1\":\"3Ik6SN6m5kUX28dsrMrVINB5YsHwFeWPzgaVjT3WywNpiDfZ96I2D/3NIel12S9SRMFmN9wYP3JqJR3T7g0nrQ==\",\"key2\":\"KZimVl0qaPlG/20hv4AiFRuX13exmTOr6zuhkHCxuNUadkba5NwgoeRysS8lC6B27GsbzojEsFlKzKldOvm3lQ==\"}\n", { 'cache-control': 'no-cache',
+  .post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155/listKeys?api-version=2015-06-15')
+  .reply(200, "{\"key1\":\"WQ3fkA/t91742N95b8eukRFRxq3XsWHKZEXHg/k8X8gwChd4kfQtUX4sFzQRck1acL21+Eh5D3SO3Mb0dyH/iw==\",\"key2\":\"Zv+sOOt1iXZJM+iYJFmCaggpw5ka96Iv8GgNpf1//rdeMp3DRTlIPiW8bY9jTTy9bTHSv+5JkQ30L0FY5hdYBw==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
+  'x-ms-request-id': '222351f7-3df3-4139-aa48-9bc19c8f085a',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080932Z:e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '222351f7-3df3-4139-aa48-9bc19c8f085a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232526Z:222351f7-3df3-4139-aa48-9bc19c8f085a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:09:32 GMT',
+  date: 'Sat, 30 Jan 2016 23:25:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586/listKeys?api-version=2015-06-15')
-  .reply(200, "{\"key1\":\"3Ik6SN6m5kUX28dsrMrVINB5YsHwFeWPzgaVjT3WywNpiDfZ96I2D/3NIel12S9SRMFmN9wYP3JqJR3T7g0nrQ==\",\"key2\":\"KZimVl0qaPlG/20hv4AiFRuX13exmTOr6zuhkHCxuNUadkba5NwgoeRysS8lC6B27GsbzojEsFlKzKldOvm3lQ==\"}\n", { 'cache-control': 'no-cache',
+  .post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155/listKeys?api-version=2015-06-15')
+  .reply(200, "{\"key1\":\"WQ3fkA/t91742N95b8eukRFRxq3XsWHKZEXHg/k8X8gwChd4kfQtUX4sFzQRck1acL21+Eh5D3SO3Mb0dyH/iw==\",\"key2\":\"Zv+sOOt1iXZJM+iYJFmCaggpw5ka96Iv8GgNpf1//rdeMp3DRTlIPiW8bY9jTTy9bTHSv+5JkQ30L0FY5hdYBw==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
+  'x-ms-request-id': '222351f7-3df3-4139-aa48-9bc19c8f085a',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080932Z:e8f8b02f-8c88-4270-8026-f8bfc1bcca26',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '222351f7-3df3-4139-aa48-9bc19c8f085a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232526Z:222351f7-3df3-4139-aa48-9bc19c8f085a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:09:32 GMT',
+  date: 'Sat, 30 Jan 2016 23:25:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586/regenerateKey?api-version=2015-06-15', '*')
-  .reply(200, "{\"key1\":\"aYtSHNsTvuHkVh+TfT1wAO30vqK7u6yn9MLm8r4gGk/XoVks6RXswRD0Ea7fYQxeTLC52yraHK4foS042f4uEg==\",\"key2\":\"KZimVl0qaPlG/20hv4AiFRuX13exmTOr6zuhkHCxuNUadkba5NwgoeRysS8lC6B27GsbzojEsFlKzKldOvm3lQ==\"}\n", { 'cache-control': 'no-cache',
+.post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155/regenerateKey?api-version=2015-06-15', '*')
+  .reply(200, "{\"key1\":\"mkD1/veLu9KaldTV4mMyV41EpY09R9ofyahq/a4dM4wmSvie5XSJSinTAWmM/Fh2LQ0rQEEPfg1vMkBq+jcVIQ==\",\"key2\":\"Zv+sOOt1iXZJM+iYJFmCaggpw5ka96Iv8GgNpf1//rdeMp3DRTlIPiW8bY9jTTy9bTHSv+5JkQ30L0FY5hdYBw==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
+  'x-ms-request-id': '45987991-f196-4080-afda-fccf826c11ab',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080933Z:465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '45987991-f196-4080-afda-fccf826c11ab',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232526Z:45987991-f196-4080-afda-fccf826c11ab',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:09:33 GMT',
+  date: 'Sat, 30 Jan 2016 23:25:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586/regenerateKey?api-version=2015-06-15', '*')
-  .reply(200, "{\"key1\":\"aYtSHNsTvuHkVh+TfT1wAO30vqK7u6yn9MLm8r4gGk/XoVks6RXswRD0Ea7fYQxeTLC52yraHK4foS042f4uEg==\",\"key2\":\"KZimVl0qaPlG/20hv4AiFRuX13exmTOr6zuhkHCxuNUadkba5NwgoeRysS8lC6B27GsbzojEsFlKzKldOvm3lQ==\"}\n", { 'cache-control': 'no-cache',
+.post('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155/regenerateKey?api-version=2015-06-15', '*')
+  .reply(200, "{\"key1\":\"mkD1/veLu9KaldTV4mMyV41EpY09R9ofyahq/a4dM4wmSvie5XSJSinTAWmM/Fh2LQ0rQEEPfg1vMkBq+jcVIQ==\",\"key2\":\"Zv+sOOt1iXZJM+iYJFmCaggpw5ka96Iv8GgNpf1//rdeMp3DRTlIPiW8bY9jTTy9bTHSv+5JkQ30L0FY5hdYBw==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
+  'x-ms-request-id': '45987991-f196-4080-afda-fccf826c11ab',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080933Z:465c6c02-5e5d-4646-8936-96e6c3d5c5ce',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '45987991-f196-4080-afda-fccf826c11ab',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232526Z:45987991-f196-4080-afda-fccf826c11ab',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:09:33 GMT',
+  date: 'Sat, 30 Jan 2016 23:25:26 GMT',
   connection: 'close' });
  return result; }]];

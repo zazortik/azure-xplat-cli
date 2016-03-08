@@ -1,6 +1,0 @@
-{
-  "$apiAppName": "nameFromParameterFile",
-  "smtpUserName": "fakeuser",
-  "smtpPassword": "sekret",
-  "smtpServerAddress": "127.0.0.1"
-}

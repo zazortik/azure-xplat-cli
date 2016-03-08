@@ -7,6 +7,10 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'e33f361b-53c2-4cc7-b829-78906708387b',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
     name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
@@ -35,12 +39,12 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '82b26977-e6f2-41b0-86f5-79d6ef5e5cb9',
+  'x-ms-request-id': '39d511bd-8fde-47dd-8b24-92c1159a9cfd',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14972',
-  'x-ms-correlation-request-id': '48156b61-0b3b-41d6-a163-5f0c8c0f1500',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T190352Z:48156b61-0b3b-41d6-a163-5f0c8c0f1500',
-  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': 'ffc31183-e5fb-40f8-a0d3-7b5f08abfdad',
+  'x-ms-routing-request-id': 'WESTUS:20160227T185602Z:ffc31183-e5fb-40f8-a0d3-7b5f08abfdad',
+  date: 'Sat, 27 Feb 2016 18:56:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,11 +57,11 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '82b26977-e6f2-41b0-86f5-79d6ef5e5cb9',
+  'x-ms-request-id': '39d511bd-8fde-47dd-8b24-92c1159a9cfd',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14972',
-  'x-ms-correlation-request-id': '48156b61-0b3b-41d6-a163-5f0c8c0f1500',
-  'x-ms-routing-request-id': 'CENTRALUS:20160127T190352Z:48156b61-0b3b-41d6-a163-5f0c8c0f1500',
-  date: 'Wed, 27 Jan 2016 19:03:52 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': 'ffc31183-e5fb-40f8-a0d3-7b5f08abfdad',
+  'x-ms-routing-request-id': 'WESTUS:20160227T185602Z:ffc31183-e5fb-40f8-a0d3-7b5f08abfdad',
+  date: 'Sat, 27 Feb 2016 18:56:02 GMT',
   connection: 'close' });
  return result; }]];

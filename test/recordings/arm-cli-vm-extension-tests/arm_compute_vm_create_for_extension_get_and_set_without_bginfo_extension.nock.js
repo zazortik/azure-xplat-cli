@@ -358,7 +358,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatipExt2' under resource group 'xplatTestGExtension2492' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -375,7 +375,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatipExt2' under resource group 'xplatTestGExtension2492' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -393,7 +393,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"127e325d-146c-40d9-aab3-1698407bc2d8\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',
@@ -414,7 +414,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"127e325d-146c-40d9-aab3-1698407bc2d8\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '657',
@@ -470,7 +470,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"b0e6275a-a881-41c5-afcd-8eb79ada0062\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',
@@ -489,7 +489,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"b0e6275a-a881-41c5-afcd-8eb79ada0062\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',
@@ -508,7 +508,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"b0e6275a-a881-41c5-afcd-8eb79ada0062\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',
@@ -527,7 +527,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatipExt2\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGExtension2492/providers/Microsoft.Network/publicIPAddresses/xplatipExt2\",\r\n  \"etag\": \"W/\\\"b0e6275a-a881-41c5-afcd-8eb79ada0062\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5206f5a2-d83e-4806-8af9-a952c31ca4f3\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplatdnsext63762\",\r\n      \"fqdn\": \"xplatdnsext63762.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',

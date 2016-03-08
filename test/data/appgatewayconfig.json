@@ -31,7 +31,11 @@
     "protocol": "Http",
     "cookieBasedAffinity": "Disabled"
     }],
-  "frontendIPConfigurations": [],
+  "frontendIPConfigurations": [{
+    "name": "fip1",
+    "type": "Private",
+    "staticIPAddress": "10.1.0.5"
+  }],
   "frontendPorts": [{
     "name": "fep1",
     "port": 80

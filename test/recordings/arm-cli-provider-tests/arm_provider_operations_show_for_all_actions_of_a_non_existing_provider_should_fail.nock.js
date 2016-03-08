@@ -6,14 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '4004a9fd-d58e-48dc-aeb2-4a4aec58606f',
-    name: 'Free Trial',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '1273adef-00a3-4086-a51a-dbcce1857d36',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,43 +29,41 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .get('/providers/Microsoft.Authorization/providerOperations/InvalidOperation?api-version=2015-07-01&$expand=resourceTypes')
-  .reply(404, "{\"error\":{\"code\":\"ProviderNotFound\",\"message\":\"Provider InvalidOperation not found.\"}}", { 'cache-control': 'no-cache',
+  .reply(404, "{\"error\":{\"code\":\"ProviderNotFound\",\"message\":\"Provider 'InvalidOperation' not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '86',
+  'content-length': '88',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '075c0bf9-7cb3-42cf-ba72-456245a022fa',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
+  'x-ms-request-id': '49901bb6-2231-4b88-bfaf-8bd1bac65b8c',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-tenant-reads': '14997',
-  'x-ms-correlation-request-id': 'c6c194c3-3742-4803-b58f-9949ff75e9d8',
-  'x-ms-routing-request-id': 'WESTUS:20151021T061025Z:c6c194c3-3742-4803-b58f-9949ff75e9d8',
-  date: 'Wed, 21 Oct 2015 06:10:24 GMT',
+  'x-ms-ratelimit-remaining-tenant-reads': '14999',
+  'x-ms-correlation-request-id': '584a990d-0a2e-42df-a0f5-4b03c9b18eb1',
+  'x-ms-routing-request-id': 'WESTUS:20160130T015600Z:584a990d-0a2e-42df-a0f5-4b03c9b18eb1',
+  date: 'Sat, 30 Jan 2016 01:55:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/providers/Microsoft.Authorization/providerOperations/InvalidOperation?api-version=2015-07-01&$expand=resourceTypes')
-  .reply(404, "{\"error\":{\"code\":\"ProviderNotFound\",\"message\":\"Provider InvalidOperation not found.\"}}", { 'cache-control': 'no-cache',
+  .reply(404, "{\"error\":{\"code\":\"ProviderNotFound\",\"message\":\"Provider 'InvalidOperation' not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '86',
+  'content-length': '88',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '075c0bf9-7cb3-42cf-ba72-456245a022fa',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_0',
+  'x-ms-request-id': '49901bb6-2231-4b88-bfaf-8bd1bac65b8c',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productiona; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-tenant-reads': '14997',
-  'x-ms-correlation-request-id': 'c6c194c3-3742-4803-b58f-9949ff75e9d8',
-  'x-ms-routing-request-id': 'WESTUS:20151021T061025Z:c6c194c3-3742-4803-b58f-9949ff75e9d8',
-  date: 'Wed, 21 Oct 2015 06:10:24 GMT',
+  'x-ms-ratelimit-remaining-tenant-reads': '14999',
+  'x-ms-correlation-request-id': '584a990d-0a2e-42df-a0f5-4b03c9b18eb1',
+  'x-ms-routing-request-id': 'WESTUS:20160130T015600Z:584a990d-0a2e-42df-a0f5-4b03c9b18eb1',
+  date: 'Sat, 30 Jan 2016 01:55:59 GMT',
   connection: 'close' });
  return result; }]];

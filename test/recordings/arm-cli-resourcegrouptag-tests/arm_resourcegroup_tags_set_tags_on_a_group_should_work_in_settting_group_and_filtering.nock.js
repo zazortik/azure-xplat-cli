@@ -6,15 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '3ca49042-782a-4cc9-89b5-ee1b487fe115',
-    name: 'AzSdkCore1',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '1449d5b7-8a83-47db-ae4c-9b03e888bad0',
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: ['microsoft.insights', 'successbricks.cleardb', 'microsoft.web'],
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
+    registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,348 +23,459 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'South Central US';
-}
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
+};
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '296b534fe3e175599b686cb7f1db1b50',
-  date: 'Thu, 12 Mar 2015 18:29:05 GMT' });
+nock('http://management.azure.com:443')
+  .put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607?api-version=2015-11-01')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607\",\"tagName\":\"xplatResourceGroupTag607\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': '68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
+  'x-ms-correlation-request-id': '68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061049Z:68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:48 GMT',
+  connection: 'close',
+  'content-length': '178' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceGroupTag2294?api-version=2014-04-01-preview')
-  .reply(201, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceGroupTag2294/\",\"tagName\":\"xplatResourceGroupTag2294\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}", { 'cache-control': 'no-cache',
+  .put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607?api-version=2015-11-01')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607\",\"tagName\":\"xplatResourceGroupTag607\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1176',
-  'x-ms-request-id': 'f30ceeaf-9ec0-4cf8-919e-d320a7e52f9c',
-  'x-ms-correlation-request-id': 'f30ceeaf-9ec0-4cf8-919e-d320a7e52f9c',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182905Z:f30ceeaf-9ec0-4cf8-919e-d320a7e52f9c',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': '68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
+  'x-ms-correlation-request-id': '68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061049Z:68a3f32d-bad0-4e2a-a3ca-aa7c7c488dda',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:05 GMT',
-  'content-length': '181' });
+  date: 'Sat, 30 Jan 2016 06:10:48 GMT',
+  connection: 'close',
+  'content-length': '178' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '4ed4a47bacab7910b8b6eb09cc30080a',
-  date: 'Thu, 12 Mar 2015 18:29:06 GMT' });
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/department\",\"tagName\":\"department\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/department/tagValues/finance\",\"tagValue\":\"finance\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1492\",\"tagName\":\"xplatResourceGroupTag1492\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1492/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1587\",\"tagName\":\"xplatResourceGroupTag1587\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1587/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6449\",\"tagName\":\"xplatResourceGroupTag6449\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6449/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag8689\",\"tagName\":\"xplatResourceGroupTag8689\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag8689/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag9276\",\"tagName\":\"xplatResourceGroupTag9276\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag9276/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag3821\",\"tagName\":\"xplatResourceTag3821\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag3821/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag5001\",\"tagName\":\"xplatResourceTag5001\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag5001/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7364\",\"tagName\":\"xplatResourceTag7364\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7364/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag8241\",\"tagName\":\"xplatResourceTag8241\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag8241/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag9358\",\"tagName\":\"xplatResourceTag9358\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag9358/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate246\",\"tagName\":\"xplatTestTagCreate246\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate246/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate3162\",\"tagName\":\"xplatTestTagCreate3162\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate3162/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate5904\",\"tagName\":\"xplatTestTagCreate5904\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate5904/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate9786\",\"tagName\":\"xplatTestTagCreate9786\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate9786/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag1\",\"tagName\":\"tag1\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag1/tagValues/value1\",\"tagValue\":\"value1\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag2\",\"tagName\":\"tag2\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag2/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag3\",\"tagName\":\"tag3\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag3/tagValues/value3\",\"tagValue\":\"value3\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag2965\",\"tagName\":\"xplatResourceGroupTag2965\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag2965/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest1=yugang\",\"tagName\":\"idntest1=yugang\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest1=ä½ å¥½\",\"tagName\":\"idntest1=ä½ å¥½\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest2=ä½ å¥½ä¹ˆ\",\"tagName\":\"idntest2=ä½ å¥½ä¹ˆ\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/test1=testvalu1\",\"tagName\":\"test1=testvalu1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag4175\",\"tagName\":\"xplatResourceGroupTag4175\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607\",\"tagName\":\"xplatResourceGroupTag607\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6162\",\"tagName\":\"xplatResourceGroupTag6162\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag937\",\"tagName\":\"xplatResourceGroupTag937\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag318\",\"tagName\":\"xplatResourceTag318\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag4236\",\"tagName\":\"xplatResourceTag4236\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag6199\",\"tagName\":\"xplatResourceTag6199\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7000\",\"tagName\":\"xplatResourceTag7000\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7226\",\"tagName\":\"xplatResourceTag7226\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7626\",\"tagName\":\"xplatResourceTag7626\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': 'dd792f34-94a8-45ba-916e-961214684dd1',
+  'x-ms-correlation-request-id': 'dd792f34-94a8-45ba-916e-961214684dd1',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061049Z:dd792f34-94a8-45ba-916e-961214684dd1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:49 GMT',
+  connection: 'close',
+  'content-length': '8882' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames?api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceGroupTag8580/\",\"tagName\":\"xplatResourceGroupTag8580\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceGroupTag8580/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceTag4974/\",\"tagName\":\"xplatResourceTag4974\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceTag4974/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceGroupTag2294/\",\"tagName\":\"xplatResourceGroupTag2294\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/tagNames/xplatResourceTag7395/\",\"tagName\":\"xplatResourceTag7395\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/department\",\"tagName\":\"department\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/department/tagValues/finance\",\"tagValue\":\"finance\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1492\",\"tagName\":\"xplatResourceGroupTag1492\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1492/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1587\",\"tagName\":\"xplatResourceGroupTag1587\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag1587/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6449\",\"tagName\":\"xplatResourceGroupTag6449\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6449/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag8689\",\"tagName\":\"xplatResourceGroupTag8689\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag8689/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag9276\",\"tagName\":\"xplatResourceGroupTag9276\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag9276/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag3821\",\"tagName\":\"xplatResourceTag3821\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag3821/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag5001\",\"tagName\":\"xplatResourceTag5001\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag5001/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7364\",\"tagName\":\"xplatResourceTag7364\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7364/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag8241\",\"tagName\":\"xplatResourceTag8241\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag8241/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag9358\",\"tagName\":\"xplatResourceTag9358\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag9358/tagValues/fooValue\",\"tagValue\":\"fooValue\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate246\",\"tagName\":\"xplatTestTagCreate246\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate246/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate3162\",\"tagName\":\"xplatTestTagCreate3162\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate3162/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate5904\",\"tagName\":\"xplatTestTagCreate5904\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate5904/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate9786\",\"tagName\":\"xplatTestTagCreate9786\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatTestTagCreate9786/tagValues/foobar\",\"tagValue\":\"foobar\",\"count\":{\"type\":\"Total\",\"value\":0}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag1\",\"tagName\":\"tag1\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag1/tagValues/value1\",\"tagValue\":\"value1\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag2\",\"tagName\":\"tag2\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag2/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag3\",\"tagName\":\"tag3\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/tag3/tagValues/value3\",\"tagValue\":\"value3\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag2965\",\"tagName\":\"xplatResourceGroupTag2965\",\"count\":{\"type\":\"Total\",\"value\":1},\"values\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag2965/tagValues/\",\"tagValue\":\"\",\"count\":{\"type\":\"Total\",\"value\":1}}]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest1=yugang\",\"tagName\":\"idntest1=yugang\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest1=ä½ å¥½\",\"tagName\":\"idntest1=ä½ å¥½\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/idntest2=ä½ å¥½ä¹ˆ\",\"tagName\":\"idntest2=ä½ å¥½ä¹ˆ\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/test1=testvalu1\",\"tagName\":\"test1=testvalu1\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag4175\",\"tagName\":\"xplatResourceGroupTag4175\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag607\",\"tagName\":\"xplatResourceGroupTag607\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag6162\",\"tagName\":\"xplatResourceGroupTag6162\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceGroupTag937\",\"tagName\":\"xplatResourceGroupTag937\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag2\",\"tagName\":\"xplatResourceTag2\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag318\",\"tagName\":\"xplatResourceTag318\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag4236\",\"tagName\":\"xplatResourceTag4236\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag6199\",\"tagName\":\"xplatResourceTag6199\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7000\",\"tagName\":\"xplatResourceTag7000\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7226\",\"tagName\":\"xplatResourceTag7226\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/tagNames/xplatResourceTag7626\",\"tagName\":\"xplatResourceTag7626\",\"count\":{\"type\":\"Total\",\"value\":0},\"values\":[]}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31969',
-  'x-ms-request-id': 'a6626aa5-3691-4035-90eb-4dffdf4c1919',
-  'x-ms-correlation-request-id': 'a6626aa5-3691-4035-90eb-4dffdf4c1919',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182906Z:a6626aa5-3691-4035-90eb-4dffdf4c1919',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': 'dd792f34-94a8-45ba-916e-961214684dd1',
+  'x-ms-correlation-request-id': 'dd792f34-94a8-45ba-916e-961214684dd1',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061049Z:dd792f34-94a8-45ba-916e-961214684dd1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:05 GMT',
-  'content-length': '1056' });
+  date: 'Sat, 30 Jan 2016 06:10:49 GMT',
+  connection: 'close',
+  'content-length': '8882' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '5ae68bd0f2eb721c8bd84ca33e81dd34',
-  date: 'Thu, 12 Mar 2015 18:29:07 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatResourceGroupTagGrp4656' could not be found.\"}}", { 'cache-control': 'no-cache',
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatResourceGroupTagGrp5321' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31979',
-  'x-ms-request-id': 'be64842f-eb89-4e4c-8b18-1d214860f41e',
-  'x-ms-correlation-request-id': 'be64842f-eb89-4e4c-8b18-1d214860f41e',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182907Z:be64842f-eb89-4e4c-8b18-1d214860f41e',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-request-id': 'ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
+  'x-ms-correlation-request-id': 'ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:06 GMT',
+  date: 'Sat, 30 Jan 2016 06:10:49 GMT',
+  connection: 'close',
   'content-length': '120' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '13915b6dc8187d49baa34fe8f7f56c4b',
-  date: 'Thu, 12 Mar 2015 18:29:07 GMT' });
+nock('https://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatResourceGroupTagGrp5321' could not be found.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-request-id': 'ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
+  'x-ms-correlation-request-id': 'ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:ced3bb58-4dc0-42a0-b0fc-1283e60eabc8',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:49 GMT',
+  connection: 'close',
+  'content-length': '120' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '219',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': '2bb2d11a-a323-4fd5-aea1-bc58a120f976',
+  'x-ms-correlation-request-id': '2bb2d11a-a323-4fd5-aea1-bc58a120f976',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:2bb2d11a-a323-4fd5-aea1-bc58a120f976',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:50 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '227',
+  'content-length': '219',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1175',
-  'x-ms-request-id': '446086ae-8d9a-4439-82f8-08bc025b874a',
-  'x-ms-correlation-request-id': '446086ae-8d9a-4439-82f8-08bc025b874a',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182908Z:446086ae-8d9a-4439-82f8-08bc025b874a',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-request-id': '2bb2d11a-a323-4fd5-aea1-bc58a120f976',
+  'x-ms-correlation-request-id': '2bb2d11a-a323-4fd5-aea1-bc58a120f976',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:2bb2d11a-a323-4fd5-aea1-bc58a120f976',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:08 GMT' });
+  date: 'Sat, 30 Jan 2016 06:10:50 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'fff91b2c306079a5b505014e7bb85f70',
-  date: 'Thu, 12 Mar 2015 18:29:09 GMT' });
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-request-id': '722f950c-2e2f-4597-a4ac-65db65b6e906',
+  'x-ms-correlation-request-id': '722f950c-2e2f-4597-a4ac-65db65b6e906',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:722f950c-2e2f-4597-a4ac-65db65b6e906',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:50 GMT',
+  connection: 'close',
+  'content-length': '219' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31968',
-  'x-ms-request-id': '0bca6f46-6ecc-45f4-b1a7-2cec4aa1955d',
-  'x-ms-correlation-request-id': '0bca6f46-6ecc-45f4-b1a7-2cec4aa1955d',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182909Z:0bca6f46-6ecc-45f4-b1a7-2cec4aa1955d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-request-id': '722f950c-2e2f-4597-a4ac-65db65b6e906',
+  'x-ms-correlation-request-id': '722f950c-2e2f-4597-a4ac-65db65b6e906',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061050Z:722f950c-2e2f-4597-a4ac-65db65b6e906',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:09 GMT',
-  'content-length': '227' });
+  date: 'Sat, 30 Jan 2016 06:10:50 GMT',
+  connection: 'close',
+  'content-length': '219' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'ef81d3d5e0c874fbaa123bf4ecc12290',
-  date: 'Thu, 12 Mar 2015 18:29:09 GMT' });
+nock('http://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.patch('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '248',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-request-id': '35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
+  'x-ms-correlation-request-id': '35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061051Z:35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:51 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview', '*')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{\"xplatResourceGroupTag2294\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '257',
+  'content-length': '248',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1177',
-  'x-ms-request-id': '4a734f53-85f2-4f91-9f2c-b90cf94a3f9c',
-  'x-ms-correlation-request-id': '4a734f53-85f2-4f91-9f2c-b90cf94a3f9c',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182910Z:4a734f53-85f2-4f91-9f2c-b90cf94a3f9c',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-request-id': '35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
+  'x-ms-correlation-request-id': '35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061051Z:35990e84-fc3e-43fe-bf52-37e63a5ac4ab',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:10 GMT' });
+  date: 'Sat, 30 Jan 2016 06:10:51 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '863259477a787d529740a23be0963914',
-  date: 'Thu, 12 Mar 2015 18:29:11 GMT' });
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup7836\",\"name\":\"armclistorageGroup7836\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-SQL-WestUS\",\"name\":\"Default-SQL-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-SoutheastAsia\",\"name\":\"Default-Storage-SoutheastAsia\",\"location\":\"southeastasia\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-WestUS\",\"name\":\"Default-Storage-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Web-WestUS\",\"name\":\"Default-Web-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/testfoo\",\"name\":\"testfoo\",\"location\":\"westus\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"\",\"tag3\":\"value3\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp3170\",\"name\":\"xplatResourceGroupTagGrp3170\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag2965\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5704\",\"name\":\"xplatResourceGroupTagGrp5704\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag6449\":\"fooValue\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1133\",\"name\":\"xTestResource1133\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1351\",\"name\":\"xTestResource1351\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource22148\",\"name\":\"xTestResource22148\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource2633\",\"name\":\"xTestResource2633\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource270\",\"name\":\"xTestResource270\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource3091\",\"name\":\"xTestResource3091\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource4407\",\"name\":\"xTestResource4407\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource5856\",\"name\":\"xTestResource5856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6449\",\"name\":\"xTestResource6449\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6976\",\"name\":\"xTestResource6976\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7036\",\"name\":\"xTestResource7036\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7107\",\"name\":\"xTestResource7107\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource8014\",\"name\":\"xTestResource8014\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9085\",\"name\":\"xTestResource9085\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9821\",\"name\":\"xTestResource9821\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/ZiTest\",\"name\":\"ZiTest\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': '338c6df2-d325-4f62-9059-ae6ece5c7211',
+  'x-ms-correlation-request-id': '338c6df2-d325-4f62-9059-ae6ece5c7211',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061051Z:338c6df2-d325-4f62-9059-ae6ece5c7211',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:51 GMT',
+  connection: 'close',
+  'content-length': '5332' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups?$filter=tagname%20eq%20%27xplatResourceGroupTag2294%27&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{\"xplatResourceGroupTag2294\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup7836\",\"name\":\"armclistorageGroup7836\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-SQL-WestUS\",\"name\":\"Default-SQL-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-SoutheastAsia\",\"name\":\"Default-Storage-SoutheastAsia\",\"location\":\"southeastasia\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-WestUS\",\"name\":\"Default-Storage-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Web-WestUS\",\"name\":\"Default-Web-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/testfoo\",\"name\":\"testfoo\",\"location\":\"westus\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"\",\"tag3\":\"value3\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp3170\",\"name\":\"xplatResourceGroupTagGrp3170\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag2965\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5704\",\"name\":\"xplatResourceGroupTagGrp5704\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag6449\":\"fooValue\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1133\",\"name\":\"xTestResource1133\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1351\",\"name\":\"xTestResource1351\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource22148\",\"name\":\"xTestResource22148\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource2633\",\"name\":\"xTestResource2633\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource270\",\"name\":\"xTestResource270\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource3091\",\"name\":\"xTestResource3091\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource4407\",\"name\":\"xTestResource4407\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource5856\",\"name\":\"xTestResource5856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6449\",\"name\":\"xTestResource6449\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6976\",\"name\":\"xTestResource6976\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7036\",\"name\":\"xTestResource7036\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7107\",\"name\":\"xTestResource7107\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource8014\",\"name\":\"xTestResource8014\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9085\",\"name\":\"xTestResource9085\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9821\",\"name\":\"xTestResource9821\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/ZiTest\",\"name\":\"ZiTest\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31980',
-  'x-ms-request-id': '126f7296-fa00-4180-93bf-33611c9c1186',
-  'x-ms-correlation-request-id': '126f7296-fa00-4180-93bf-33611c9c1186',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182911Z:126f7296-fa00-4180-93bf-33611c9c1186',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': '338c6df2-d325-4f62-9059-ae6ece5c7211',
+  'x-ms-correlation-request-id': '338c6df2-d325-4f62-9059-ae6ece5c7211',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061051Z:338c6df2-d325-4f62-9059-ae6ece5c7211',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:11 GMT',
-  'content-length': '269' });
+  date: 'Sat, 30 Jan 2016 06:10:51 GMT',
+  connection: 'close',
+  'content-length': '5332' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '5f6d8c0fad5974b8b42841acefd8d8fd',
-  date: 'Thu, 12 Mar 2015 18:29:12 GMT' });
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-request-id': '545be605-1e6a-46f9-9cab-9b19bd9f790a',
+  'x-ms-correlation-request-id': '545be605-1e6a-46f9-9cab-9b19bd9f790a',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061052Z:545be605-1e6a-46f9-9cab-9b19bd9f790a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close',
+  'content-length': '248' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{\"xplatResourceGroupTag2294\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag607\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31967',
-  'x-ms-request-id': '9898c54f-941b-4f27-8e41-f7ed3f0a6e6d',
-  'x-ms-correlation-request-id': '9898c54f-941b-4f27-8e41-f7ed3f0a6e6d',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182912Z:9898c54f-941b-4f27-8e41-f7ed3f0a6e6d',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-request-id': '545be605-1e6a-46f9-9cab-9b19bd9f790a',
+  'x-ms-correlation-request-id': '545be605-1e6a-46f9-9cab-9b19bd9f790a',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061052Z:545be605-1e6a-46f9-9cab-9b19bd9f790a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:11 GMT',
-  'content-length': '257' });
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close',
+  'content-length': '248' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '8214309cddc272fb971862955ac6e17f',
-  date: 'Thu, 12 Mar 2015 18:29:12 GMT' });
+nock('http://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.patch('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '219',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': '4724f06d-cca1-4fcb-9488-03f0be922cc4',
+  'x-ms-correlation-request-id': '4724f06d-cca1-4fcb-9488-03f0be922cc4',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061053Z:4724f06d-cca1-4fcb-9488-03f0be922cc4',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview', '*')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/xplatResourceGroupTagGrp4656\",\"name\":\"xplatResourceGroupTagGrp4656\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '227',
+  'content-length': '219',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1176',
-  'x-ms-request-id': '07b3482d-6768-47b0-8cdc-a8abbc971d90',
-  'x-ms-correlation-request-id': '07b3482d-6768-47b0-8cdc-a8abbc971d90',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182913Z:07b3482d-6768-47b0-8cdc-a8abbc971d90',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-request-id': '4724f06d-cca1-4fcb-9488-03f0be922cc4',
+  'x-ms-correlation-request-id': '4724f06d-cca1-4fcb-9488-03f0be922cc4',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061053Z:4724f06d-cca1-4fcb-9488-03f0be922cc4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:12 GMT' });
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'f91b91afae7a7e91a1e2c296f5b43280',
-  date: 'Thu, 12 Mar 2015 18:29:13 GMT' });
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup7836\",\"name\":\"armclistorageGroup7836\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-SQL-WestUS\",\"name\":\"Default-SQL-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-SoutheastAsia\",\"name\":\"Default-Storage-SoutheastAsia\",\"location\":\"southeastasia\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-WestUS\",\"name\":\"Default-Storage-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Web-WestUS\",\"name\":\"Default-Web-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/testfoo\",\"name\":\"testfoo\",\"location\":\"westus\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"\",\"tag3\":\"value3\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp3170\",\"name\":\"xplatResourceGroupTagGrp3170\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag2965\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5704\",\"name\":\"xplatResourceGroupTagGrp5704\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag6449\":\"fooValue\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1133\",\"name\":\"xTestResource1133\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1351\",\"name\":\"xTestResource1351\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource22148\",\"name\":\"xTestResource22148\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource2633\",\"name\":\"xTestResource2633\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource270\",\"name\":\"xTestResource270\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource3091\",\"name\":\"xTestResource3091\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource4407\",\"name\":\"xTestResource4407\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource5856\",\"name\":\"xTestResource5856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6449\",\"name\":\"xTestResource6449\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6976\",\"name\":\"xTestResource6976\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7036\",\"name\":\"xTestResource7036\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7107\",\"name\":\"xTestResource7107\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource8014\",\"name\":\"xTestResource8014\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9085\",\"name\":\"xTestResource9085\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9821\",\"name\":\"xTestResource9821\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/ZiTest\",\"name\":\"ZiTest\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14995',
+  'x-ms-request-id': '15cb6914-3d25-43f5-8fb8-2984edb92470',
+  'x-ms-correlation-request-id': '15cb6914-3d25-43f5-8fb8-2984edb92470',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061053Z:15cb6914-3d25-43f5-8fb8-2984edb92470',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close',
+  'content-length': '5303' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups?$filter=tagname%20eq%20%27xplatResourceGroupTag2294%27&api-version=2014-04-01-preview')
-  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups?api-version=2015-11-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup7836\",\"name\":\"armclistorageGroup7836\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-SQL-WestUS\",\"name\":\"Default-SQL-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-SoutheastAsia\",\"name\":\"Default-Storage-SoutheastAsia\",\"location\":\"southeastasia\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Storage-WestUS\",\"name\":\"Default-Storage-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/Default-Web-WestUS\",\"name\":\"Default-Web-WestUS\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/testfoo\",\"name\":\"testfoo\",\"location\":\"westus\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"\",\"tag3\":\"value3\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp3170\",\"name\":\"xplatResourceGroupTagGrp3170\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag2965\":\"\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5321\",\"name\":\"xplatResourceGroupTagGrp5321\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xplatResourceGroupTagGrp5704\",\"name\":\"xplatResourceGroupTagGrp5704\",\"location\":\"westus\",\"tags\":{\"xplatResourceGroupTag6449\":\"fooValue\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1133\",\"name\":\"xTestResource1133\",\"location\":\"southcentralus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource1351\",\"name\":\"xTestResource1351\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource22148\",\"name\":\"xTestResource22148\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource256\",\"name\":\"xTestResource256\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource2633\",\"name\":\"xTestResource2633\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource270\",\"name\":\"xTestResource270\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource3091\",\"name\":\"xTestResource3091\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource4407\",\"name\":\"xTestResource4407\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource5856\",\"name\":\"xTestResource5856\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6449\",\"name\":\"xTestResource6449\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource6976\",\"name\":\"xTestResource6976\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7036\",\"name\":\"xTestResource7036\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource7107\",\"name\":\"xTestResource7107\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource8014\",\"name\":\"xTestResource8014\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9085\",\"name\":\"xTestResource9085\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/xTestResource9821\",\"name\":\"xTestResource9821\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/ZiTest\",\"name\":\"ZiTest\",\"location\":\"westus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-reads': '31979',
-  'x-ms-request-id': 'e5c304c8-29a3-4f2c-a746-27bf8d503cd4',
-  'x-ms-correlation-request-id': 'e5c304c8-29a3-4f2c-a746-27bf8d503cd4',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182914Z:e5c304c8-29a3-4f2c-a746-27bf8d503cd4',
+  'x-ms-ratelimit-remaining-subscription-reads': '14995',
+  'x-ms-request-id': '15cb6914-3d25-43f5-8fb8-2984edb92470',
+  'x-ms-correlation-request-id': '15cb6914-3d25-43f5-8fb8-2984edb92470',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061053Z:15cb6914-3d25-43f5-8fb8-2984edb92470',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:13 GMT',
-  'content-length': '12' });
+  date: 'Sat, 30 Jan 2016 06:10:52 GMT',
+  connection: 'close',
+  'content-length': '5303' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The service name is unknown.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '193',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '7f41d716c80475fb9b01a493cd192627',
-  date: 'Thu, 12 Mar 2015 18:29:13 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/xplatResourceGroupTagGrp4656?api-version=2014-04-01-preview')
+nock('http://management.azure.com:443')
+  .delete('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA0NjU2LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1185',
-  'x-ms-request-id': '7a1db6da-9005-4b78-afed-6ee22ffbe2d6',
-  'x-ms-correlation-request-id': '7a1db6da-9005-4b78-afed-6ee22ffbe2d6',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182915Z:7a1db6da-9005-4b78-afed-6ee22ffbe2d6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
+  'x-ms-correlation-request-id': 'b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061056Z:b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:15 GMT',
+  date: 'Sat, 30 Jan 2016 06:10:55 GMT',
+  connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.core.windows.net:443')
-  .put('/3ca49042-782a-4cc9-89b5-ee1b487fe115/services?service=sqlserver&action=register')
-  .reply(503, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>TooManyRequests</Code><Message>Too many requests received. Retry after some time.</Message></Error>", { 'cache-control': 'no-cache',
-  'content-length': '214',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.202 (rd_rdfe_stable.150307-1902) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': '41609b31a6f07279804b2d4abb89c2d8',
-  date: 'Thu, 12 Mar 2015 18:29:31 GMT' });
+nock('https://management.azure.com:443')
+  .delete('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xplatResourceGroupTagGrp5321?api-version=2015-11-01')
+  .reply(202, "", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  expires: '-1',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01',
+  'retry-after': '15',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
+  'x-ms-correlation-request-id': 'b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061056Z:b22d3360-7ea4-40ad-8b6a-2313b8ebeb9e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:10:55 GMT',
+  connection: 'close',
+  'content-length': '0' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01')
+  .reply(202, "", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  expires: '-1',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01',
+  'retry-after': '15',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-request-id': '8dae95d1-8aa1-4c22-afc3-705042e3c897',
+  'x-ms-correlation-request-id': '8dae95d1-8aa1-4c22-afc3-705042e3c897',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061123Z:8dae95d1-8aa1-4c22-afc3-705042e3c897',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:11:22 GMT',
+  connection: 'close',
+  'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA0NjU2LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA0NjU2LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-reads': '31971',
-  'x-ms-request-id': '445a418a-c0b3-4be3-ab5b-9280119e3b81',
-  'x-ms-correlation-request-id': '445a418a-c0b3-4be3-ab5b-9280119e3b81',
-  'x-ms-routing-request-id': 'WESTUS:20150312T182931Z:445a418a-c0b3-4be3-ab5b-9280119e3b81',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-request-id': '8dae95d1-8aa1-4c22-afc3-705042e3c897',
+  'x-ms-correlation-request-id': '8dae95d1-8aa1-4c22-afc3-705042e3c897',
+  'x-ms-routing-request-id': 'WESTUS:20160130T061123Z:8dae95d1-8aa1-4c22-afc3-705042e3c897',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 12 Mar 2015 18:29:31 GMT',
+  date: 'Sat, 30 Jan 2016 06:11:22 GMT',
+  connection: 'close',
+  'content-length': '0' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': 'f34618d5-2c15-4d38-9d00-fd891838d054',
+  'x-ms-correlation-request-id': 'f34618d5-2c15-4d38-9d00-fd891838d054',
+  'x-ms-routing-request-id': 'SOUTHCENTRALUS:20160130T061154Z:f34618d5-2c15-4d38-9d00-fd891838d054',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:11:53 GMT',
+  connection: 'close',
+  'content-length': '0' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1YUExBVFJFU09VUkNFR1JPVVBUQUdHUlA1MzIxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2015-11-01')
+  .reply(200, "", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-request-id': 'f34618d5-2c15-4d38-9d00-fd891838d054',
+  'x-ms-correlation-request-id': 'f34618d5-2c15-4d38-9d00-fd891838d054',
+  'x-ms-routing-request-id': 'SOUTHCENTRALUS:20160130T061154Z:f34618d5-2c15-4d38-9d00-fd891838d054',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Sat, 30 Jan 2016 06:11:53 GMT',
+  connection: 'close',
   'content-length': '0' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xplatResourceGroupTagGrp4656','xplatResourceGroupTag2294'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatResourceGroupTagGrp5321','xplatResourceGroupTag607'];};

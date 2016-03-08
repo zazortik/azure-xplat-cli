@@ -28,7 +28,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2014-04-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGCreateLbNat' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -46,7 +46,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2014-04-01-preview')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGCreateLbNat' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -65,7 +65,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat\",\"name\":\"xplatTestGCreateLbNat\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '205',
@@ -83,7 +83,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourcegroups/xplatTestGCreateLbNat?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat\",\"name\":\"xplatTestGCreateLbNat\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '205',
@@ -174,7 +174,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatTestIpLbNat' under resource group 'xplatTestGCreateLbNat' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -191,7 +191,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplatTestIpLbNat' under resource group 'xplatTestGCreateLbNat' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -209,7 +209,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"4b164412-17e2-4b0f-921c-01992e9667f7\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '529',
@@ -230,7 +230,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15', '*')
+.put('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"4b164412-17e2-4b0f-921c-01992e9667f7\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '529',
@@ -286,7 +286,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"a4dd33a2-e07f-465b-950a-a7a2eb76ae2f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '530',
@@ -305,7 +305,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"a4dd33a2-e07f-465b-950a-a7a2eb76ae2f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '530',
@@ -324,7 +324,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"a4dd33a2-e07f-465b-950a-a7a2eb76ae2f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '530',
@@ -343,7 +343,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat/?api-version=2015-06-15')
+  .get('/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplatTestIpLbNat\",\r\n  \"id\": \"/subscriptions/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/resourceGroups/xplatTestGCreateLbNat/providers/Microsoft.Network/publicIPAddresses/xplatTestIpLbNat\",\r\n  \"etag\": \"W/\\\"a4dd33a2-e07f-465b-950a-a7a2eb76ae2f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b28ef7d2-4960-4be7-bab4-cc39f2a5e04d\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '530',

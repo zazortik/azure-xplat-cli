@@ -29,7 +29,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGVMStart' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -47,7 +47,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGVMStart' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -66,7 +66,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart\",\"name\":\"xplatTestGVMStart\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-stoprestart-tests\":\"2016-01-27T04:59:34.843Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '254',
@@ -84,7 +84,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGVMStart?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart\",\"name\":\"xplatTestGVMStart\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-stoprestart-tests\":\"2016-01-27T04:59:34.843Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '254',
@@ -541,7 +541,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplattestipStSp' under resource group 'xplatTestGVMStart' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -558,7 +558,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplattestipStSp' under resource group 'xplatTestGVMStart' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -576,7 +576,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"6d0a8762-f1e4-4396-ae32-134e73fecccd\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '663',
@@ -597,7 +597,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"6d0a8762-f1e4-4396-ae32-134e73fecccd\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '663',
@@ -653,7 +653,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"d9358d61-eb9a-4b19-af69-2a31c057d3e9\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '664',
@@ -672,7 +672,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"d9358d61-eb9a-4b19-af69-2a31c057d3e9\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '664',
@@ -691,7 +691,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"d9358d61-eb9a-4b19-af69-2a31c057d3e9\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '664',
@@ -710,7 +710,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipStSp\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGVMStart/providers/Microsoft.Network/publicIPAddresses/xplattestipStSp\",\r\n  \"etag\": \"W/\\\"d9358d61-eb9a-4b19-af69-2a31c057d3e9\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"df856317-c726-4f06-b316-66ee9d2d8407\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsstsp\",\r\n      \"fqdn\": \"xplattestipdnsstsp.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '664',

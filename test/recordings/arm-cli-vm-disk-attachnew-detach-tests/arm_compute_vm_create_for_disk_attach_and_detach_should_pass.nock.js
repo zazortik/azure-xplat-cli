@@ -29,7 +29,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGCreateDisk' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -47,7 +47,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2014-04-01-preview')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2015-11-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xplatTestGCreateDisk' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -66,7 +66,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk\",\"name\":\"xplatTestGCreateDisk\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-disk-attachnew-detach-tests\":\"2016-01-27T05:20:10.068Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '270',
@@ -84,7 +84,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2014-04-01-preview', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourcegroups/xplatTestGCreateDisk?api-version=2015-11-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk\",\"name\":\"xplatTestGCreateDisk\",\"location\":\"eastus\",\"tags\":{\"arm-cli-vm-disk-attachnew-detach-tests\":\"2016-01-27T05:20:10.068Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '270',
@@ -541,7 +541,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplattestipDk' under resource group 'xplatTestGCreateDisk' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -558,7 +558,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplattestipDk' under resource group 'xplatTestGCreateDisk' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -576,7 +576,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"6131c9ea-47db-4244-a822-daaf01e69aaf\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',
@@ -597,7 +597,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15', '*')
   .reply(201, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"6131c9ea-47db-4244-a822-daaf01e69aaf\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '658',
@@ -653,7 +653,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"844dddbc-aef0-4f8e-8445-dcf145df2be3\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '659',
@@ -672,7 +672,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"844dddbc-aef0-4f8e-8445-dcf145df2be3\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '659',
@@ -691,7 +691,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"844dddbc-aef0-4f8e-8445-dcf145df2be3\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '659',
@@ -710,7 +710,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk/?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk?api-version=2015-06-15')
   .reply(200, "{\r\n  \"name\": \"xplattestipDk\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestGCreateDisk/providers/Microsoft.Network/publicIPAddresses/xplattestipDk\",\r\n  \"etag\": \"W/\\\"844dddbc-aef0-4f8e-8445-dcf145df2be3\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b29f8533-399d-40a2-82c7-31c9189f99eb\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplattestipdnsdk\",\r\n      \"fqdn\": \"xplattestipdnsdk.eastus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '659',
