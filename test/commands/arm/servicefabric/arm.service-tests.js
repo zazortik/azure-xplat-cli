@@ -26,8 +26,8 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
 ];
-var clusterEndpoint = '157.59.36.110:10549';
-var httpEndpoint = '157.59.36.110:10550';
+var clusterEndpoint = '127.0.0.1:10549';
+var httpEndpoint = '127.0.0.1:10550';
 var applicationPackagePath = '/media/share/StatelessPi';
 var applicationPackageName = 'StatelessPi';
 var applicationTypeName = 'StatelessPiServiceApp';
