@@ -32,6 +32,7 @@ var applicationPackagePath = '/media/share/StatelessPi';
 var applicationPackageName = 'StatelessPi';
 var applicationTypeName = 'StatelessPiServiceApp';
 var applicationTypeVersion = '1.0';
+var serviceTypeName = 'StatelessPiServiceType';
 
 describe('Service Fabric', function () {
   describe('Test service create to remove', function () {
@@ -100,7 +101,7 @@ describe('Service Fabric', function () {
     });
     
     it('should create service', function (done) {
-      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name StatelessPiServiceType --service-kind 1 --instance-count 1 --partition-scheme 1' + ' --json', function (result) {
+      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name ' + serviceTypeName + ' --service-kind 1 --instance-count 1 --partition-scheme 1 --json', function (result) {
         setTimeout(function () {
           result.exitStatus.should.equal(0);
           done();
