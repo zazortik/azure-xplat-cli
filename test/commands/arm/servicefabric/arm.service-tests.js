@@ -35,7 +35,7 @@ var applicationTypeVersion = '1.0';
 var serviceTypeName = 'StatelessPiServiceType';
 
 describe('Service Fabric', function () {
-  describe('Test service create to remove', function () {
+  describe('create service to remove service', function () {
     var suite;
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
