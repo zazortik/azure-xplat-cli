@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '4be8920b-2978-43d7-ab14-04d8549c1d05',
+    name: 'OSTC Shanghai Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -15,7 +15,6 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
-    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,4 +27,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension4496','xplatstoragext1374','xplatstoragecntext932','xplatdnsext7212'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension3624','xplatstoragext2925','xplatstoragecntext3225','xplatdnsext5405'];};
