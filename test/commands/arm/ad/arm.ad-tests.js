@@ -27,9 +27,9 @@ var requiredEnvironment = [
   { name: 'AZURE_AD_TEST_PASSWORD' },
   { name: 'AZURE_AD_TEST_GROUP_NAME', defaultValue: 'Randomtestgroup1' },
   { name: 'AZURE_AD_TEST_SUBGROUP_NAME', defaultValue: 'Randomtestgroup2' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'RandomtestUser1@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'RandomtestUser2@rbactest.onmicrosoft.com' },
-  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9045' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME', defaultValue: 'RandomtestUser1@rbacclitest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_USER_PRINCIPAL_NAME2', defaultValue: 'RandomtestUser2@rbacclitest.onmicrosoft.com' },
+  { name: 'AZURE_AD_TEST_SP_DISPLAY_NAME', defaultValue: 'Randommytestapp9045' }
 ];
 
 describe('arm', function () {
@@ -162,11 +162,12 @@ describe('arm', function () {
         });
       });
 
-      it('should work to list and show users', function (done) {
+      it.skip('should work to list and show users', function (done) {
         var upn = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME;
         var upn2 = process.env.AZURE_AD_TEST_USER_PRINCIPAL_NAME2;
         suite.execute('ad user list --json', function (result) {
           result.exitStatus.should.equal(0);
+
           var users = JSON.parse(result.text);
           users.some(function(user) { return user.userPrincipalName === upn; }).should.be.true;
           users.some(function(user) { return user.userPrincipalName === upn2; }).should.be.true;

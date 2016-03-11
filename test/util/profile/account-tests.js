@@ -54,17 +54,12 @@ var testSubscriptionsFromTenant = [
 var testArmSubscriptionClient = {
   subscriptions: {
     list: function (callback) {
-      callback(null, { subscriptions: testSubscriptionsFromTenant });
+      callback(null, testSubscriptionsFromTenant);
     }
   },
   tenants: {
     list: function (callback) {
-      callback(null, {
-        tenantIds: testTenantIds.map(function (id) {
-          return { tenantId: id };
-        })
-      }
-      );
+      callback(null, testTenantIds.map(function (id) { return { tenantId: id }; }) );
     }
   }
 };
@@ -132,8 +127,10 @@ describe('account', function () {
     UserTokenCredentials: function UserTokenCredentials() { }
   };
   
+  var armEndPointUsed;
   var resourceClient = {
-    createResourceSubscriptionClient: function (cred, armEndpoint) {
+    SubscriptionClient: function (cred, armEndpoint) {
+      armEndPointUsed = armEndpoint;
       return testArmSubscriptionClient;
     }
   };
@@ -183,6 +180,10 @@ describe('account', function () {
       subscriptions.forEach(function (s) {
         s.tenantId.should.equal(testTenantIds[0]);
       });
+    });
+
+    it('should pass in right arm endpoint', function () {
+      armEndPointUsed.should.equal(environment.resourceManagerEndpointUrl);
     });
   });
   
@@ -284,7 +285,7 @@ describe('account add for service principal', function () {
     normalizeUserName: function (name) { return name; }
   };
   var resourceClient = {
-    createResourceSubscriptionClient: function (cred, armEndpoint) {
+    SubscriptionClient: function (cred) {
       return testArmSubscriptionClient;
     }
   };

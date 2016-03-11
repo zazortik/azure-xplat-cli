@@ -74,7 +74,7 @@ describe('arm', function () {
             listResult.exitStatus.should.equal(0);
             var groups = JSON.parse(listResult.text);
 
-            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.provisioningState === 'Succeeded'); }).should.be.true;
+            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.properties.provisioningState === 'Succeeded'); }).should.be.true;
 
             suite.execute('group delete %s --json --quiet', groupName, function () {
               done();
@@ -96,7 +96,7 @@ describe('arm', function () {
             listResult.exitStatus.should.equal(0);
             var groups = JSON.parse(listResult.text);
 
-            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.provisioningState === 'Succeeded'); }).should.be.true;
+            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.properties.provisioningState === 'Succeeded'); }).should.be.true;
 
             suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
               listResult.exitStatus.should.equal(0);
@@ -127,7 +127,7 @@ describe('arm', function () {
             listResult.exitStatus.should.equal(0);
             var groups = JSON.parse(listResult.text);
 
-            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.provisioningState === 'Succeeded'); }).should.be.true;
+            groups.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.properties.provisioningState === 'Succeeded'); }).should.be.true;
 
             suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
               listResult.exitStatus.should.equal(0);

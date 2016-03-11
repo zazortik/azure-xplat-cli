@@ -6,7 +6,7 @@
     "value": "LinuxDiagnostic"
   },
   "IaasDiagVersion_Linux": {
-    "value": "2.2"
+    "value": "2.3"
   },
   "IaasDiagPublisher_windows": {
     "value": "Microsoft.Azure.Diagnostics"

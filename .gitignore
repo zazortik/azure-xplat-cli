@@ -15,6 +15,10 @@ targets/*
 *.etl.tmp
 *.vspx
 *.njsperf
+*.sdf
+*.opensdf
+Debug/
+Release/
 Microsoft.NodejsTools.WebRole.dll
 
 # Visual Studio Code

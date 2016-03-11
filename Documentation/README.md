@@ -13,3 +13,4 @@
 6. [Release Process](./ReleaseProcess.md)
 7. [Generating Self Signed Certificates for Testing Purpose](./DummyCerts.md)
 8. [Supporting Corporate Proxy](./CorporateProxy.md)
+9. [Getting Endpoints supported by Azure](./Endpoints.md)

@@ -12,63 +12,74 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-nsg-rule-tests';
-var networkTestUtil = require('../../../util/networkTestUtil');
-var groupName, location, nsgName, nsgRule,
-  groupPrefix = 'xplatGroupNsgRule',
-  nsgPrefix = 'xplatTestNsg',
-  nsgRulePrefix = 'xplatTestNsgRule';
-var proto = 'tcp',
-  saprefix = '10.0.0.0/24',
-  spr = '200',
-  daprefix = '10.0.0.0/12',
-  dprange = '250',
-  access = 'Allow',
-  priority = '250',
-  direction = 'Inbound',
-  description = 'NsgRule';
-var proto1 = 'udp',
-  saprefix1 = '10.0.0.0/8',
-  spr1 = '250',
-  daprefix1 = '10.0.0.0/16',
-  dprange1 = '300',
-  access1 = 'Deny',
-  priority1 = '300',
-  direction1 = 'outbound',
-  description1 = 'NsgRuleSetting';
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+
+var testPrefix = 'arm-network-nsg-rule-tests',
+  groupName = 'xplat-test-nsg-rule',
+  nsgName = 'test-nsg',
+  location;
+
+var ruleProp = {
+  name: 'test-rule',
+  nameAllowVnetInBound: 'AllowVnetInBound',
+  nameAllowAzureLoadBalancerInBound: 'AllowAzureLoadBalancerInBound',
+  description: 'someshorttext',
+  newDescription: 'foobarbaz',
+  protocol: 'Tcp',
+  newProtocol: 'Udp',
+  sourcePortRange: '200',
+  newSourcePortRange: '*',
+  destinationPortRange: '250',
+  newDestinationPortRange: '300-400',
+  sourceAddressPrefix: '10.0.0.0/24',
+  newSourceAddressPrefix: 'VirtualNetwork',
+  destinationAddressPrefix: '10.0.0.0/12',
+  newDestinationAddressPrefix: '*',
+  access: 'Allow',
+  newAccess: 'Deny',
+  priority: 100,
+  newPriority: 300,
+  direction: 'Inbound',
+  newDirection: 'Outbound'
+};
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
 
-
 describe('arm', function () {
   describe('network', function () {
-    var suite,
-      retry = 5;
-    var networkUtil = new networkTestUtil();
+    var suite, retry = 5;
+    var networkUtil = new NetworkTestUtil();
+
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        nsgName = suite.isMocked ? nsgPrefix : suite.generateId(nsgPrefix, null);
-        nsgRule = suite.isMocked ? nsgRulePrefix : suite.generateId(nsgRulePrefix, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+        nsgName = suite.isMocked ? nsgName : suite.generateId(nsgName, null);
+
+        ruleProp.group = groupName;
+        ruleProp.location = location;
+        ruleProp.nsgName = nsgName;
+        ruleProp.name = suite.isMocked ? ruleProp.name : suite.generateId(ruleProp.name, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedNsg(groupName, nsgName, suite, function () {
-        networkUtil.deleteUsedGroup(groupName, suite, function () {
-          suite.teardownSuite(done);
-        });
+      networkUtil.deleteGroup(groupName, suite, function () {
+        suite.teardownSuite(done);
       });
     });
     beforeEach(function (done) {
@@ -79,54 +90,100 @@ describe('arm', function () {
     });
 
     describe('nsg rule', function () {
-      it('create should pass', function (done) {
+      it('create should create nsg rule', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createNSG(groupName, nsgName, location, suite, function (result) {
-            var cmd = util.format('network nsg rule create %s %s %s -p %s -f %s -o %s -e %s -u %s -c %s -y %s -r %s -d %s --json',
-              groupName, nsgName, nsgRule, proto, saprefix, spr, daprefix, dprange, access, priority, direction, description).split(' ');
+          networkUtil.createNSG(groupName, nsgName, location, suite, function () {
+            var cmd = 'network nsg rule create -g {group} -a {nsgName} -n {name} -d {description} -p {protocol} -f {sourceAddressPrefix} -o {sourcePortRange} -e {destinationAddressPrefix} -u {destinationPortRange} -c {access} -y {priority} -r {direction} --json'
+              .formatArgs(ruleProp);
+
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
+              var rule = JSON.parse(result.text);
+              rule.name.should.equal(ruleProp.name);
+              rule.description.should.equal(ruleProp.description);
+              rule.protocol.should.equal(ruleProp.protocol);
+              rule.sourceAddressPrefix.should.equal(ruleProp.sourceAddressPrefix);
+              rule.sourcePortRange.should.equal(ruleProp.sourcePortRange);
+              rule.destinationAddressPrefix.should.equal(ruleProp.destinationAddressPrefix);
+              rule.destinationPortRange.should.equal(ruleProp.destinationPortRange);
+              rule.access.should.equal(ruleProp.access);
+              rule.priority.should.equal(ruleProp.priority);
+              rule.direction.should.equal(ruleProp.direction);
+              networkUtil.shouldBeSucceeded(rule);
               done();
             });
           });
         });
       });
       it('set should modify nsg rule', function (done) {
-        var cmd = util.format('network nsg rule set %s %s %s -p %s -f %s -o %s -e %s -u %s -c %s -y %s -r %s -d %s --json',
-          groupName, nsgName, nsgRule, proto1, saprefix1, spr1, daprefix1, dprange1, access1, priority1, direction1, description1).split(' ');
+        var cmd = 'network nsg rule set -g {group} -a {nsgName} -n {name} -d {newDescription} -p {newProtocol} -f {newSourceAddressPrefix} -o {newSourcePortRange} -e {newDestinationAddressPrefix} -u {newDestinationPortRange} -c {newAccess} -y {newPriority} -r {newDirection} --json'
+          .formatArgs(ruleProp);
+
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var rule = JSON.parse(result.text);
+          rule.name.should.equal(ruleProp.name);
+          rule.description.should.equal(ruleProp.newDescription);
+          rule.protocol.should.equal(ruleProp.newProtocol);
+          rule.sourceAddressPrefix.should.equal(ruleProp.newSourceAddressPrefix);
+          rule.sourcePortRange.should.equal(ruleProp.newSourcePortRange);
+          rule.destinationAddressPrefix.should.equal(ruleProp.newDestinationAddressPrefix);
+          rule.destinationPortRange.should.equal(ruleProp.newDestinationPortRange);
+          rule.access.should.equal(ruleProp.newAccess);
+          rule.priority.should.equal(ruleProp.newPriority);
+          rule.direction.should.equal(ruleProp.newDirection);
+          networkUtil.shouldBeSucceeded(rule);
           done();
         });
       });
       it('show should display details about nsg rule ', function (done) {
-        var cmd = util.format('network nsg rule show %s %s %s --json', groupName, nsgName, nsgRule).split(' ');
+        var cmd = 'network nsg rule show -g {group} -a {nsgName} -n {name} --json'.formatArgs(ruleProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allresources = JSON.parse(result.text);
-          allresources.name.should.equal(nsgRule);
+          var rule = JSON.parse(result.text);
+          rule.name.should.equal(ruleProp.name);
           done();
         });
       });
-      it('list should display all rules in the nsg', function (done) {
-        var cmd = util.format('network nsg rule list %s %s --json', groupName, nsgName).split(' ');
+      it('list should display default rules in nsg', function (done) {
+        var cmd = 'network nsg rule list -g {group} -a {nsgName} --json'.formatArgs(ruleProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.some(function (res) {
-            return res.name === nsgRule;
+          var rules = JSON.parse(result.text);
+          rules.some(function (rule) {
+            return rule.name === ruleProp.nameAllowVnetInBound;
+          }).should.be.true;
+          rules.some(function (rule) {
+            return rule.name === ruleProp.nameAllowAzureLoadBalancerInBound;
           }).should.be.true;
           done();
         });
       });
-      it('delete should delete rules', function (done) {
-        var cmd = util.format('network nsg rule delete %s %s %s --quiet --json', groupName, nsgName, nsgRule).split(' ');
+      it('list should display all rules in nsg', function (done) {
+        var cmd = 'network nsg rule list -g {group} -a {nsgName} --json'.formatArgs(ruleProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var rules = JSON.parse(result.text);
+          rules.some(function (rule) {
+            return rule.name === ruleProp.name;
+          }).should.be.true;
           done();
         });
       });
-    });
+      it('delete should delete nsg rule', function (done) {
+        var cmd = 'network nsg rule delete -g {group} -a {nsgName} -n {name} --quiet --json'.formatArgs(ruleProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
 
+          cmd = 'network nsg rule show -g {group} -a {nsgName} -n {name} --json'.formatArgs(ruleProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var rule = JSON.parse(result.text);
+            rule.should.be.empty;
+            done();
+          });
+        });
+      });
+    });
   });
 });

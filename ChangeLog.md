@@ -1,6 +1,65 @@
+##2016-03-03 Version 0.9.16
+* General
+  * Fixed harvesting script bugs
+  * Fixed issues #2560, #2388, #2529, #2530, #1913, #2486,  #2518
+  * Added support for Github issues/pr templates feature
+  * Leap Year Fix for adding years
+  * Fixed broken link for contribution guidelines
+  * Removed apiapp commands
+* Resource Management
+  * Ported ARM cmdlets to use autorest generated resource mgmt client
+  * Fixed display of innerdetail message only when present
+  * Fixed json output issue for deployment create/show
+* Network
+  * Fixed #2493, #1771, #2505, #2510, 2563
+  * Improved tests #2564
+  * --resource-group now optional for 'azure network traffic-manager profile list'
+* VM
+  * Fixed #2502, #2507, #2575, #2546
+  * Support RSA format ssh cert in "vm reset-access" #2437
+  * Fixed reading storage account data vm for enable-aem command
+  * Fix NIC-IP Association Issue #2551
+  * Fixed issue #2524 VM Create License Type Option
+  * Fix #2539 VM Image List/Show
+  * Added test for vm list-usage
+* Redis Cache
+  * Added delete-diagnostics command for redis cache
+  * Added set-diagnostics command to redis cache
+
+## 2016-02-01 Version 0.9.15
+* General
+  * Improved tests and the tests infrastructure #2422, #2433, #2460, #2467, #2468, #2472
+  * Enable login using a service principal with a certificate #2432
+  * Support for adding dash to allowed resource group names #2441
+  * Improved config commands to use common execution flow #2448
+  * Included 4.2.4 in the installer #2450
+  * Ensured auth header is not logged in verbose logging #2451
+  * Ensured stdout gets drained before exit #2470
+  * Provided deprecate message that apiapp commands are going away #2471
+* VM
+  * Chef extension commands can be operated on provided resource groups #2222
+  * Updated vm quick-create, used NRP autoRest-client, & other fixes #2463
+  * Updated AutoRest Compute Lib #2479
+  * Added enable-aem command #2449
+* Network
+  * Improved azure network vpn-gateway create/set/list #2427
+  * Updated azure-arm-TrafficManager package and test nocks #2429
+  * fixed issue in 'nic create' with --public-ip-name #2440
+  * added ability to create connection between Gateways in different resource groups #2445
+  * NIC: test cases fixed to run against live #2476
+  * Improved network dns record-set list output #2477
+  * Fixed nic create #2484
+  * Implemented express-route authorization #2453
+* Storage
+  * Upgrade azure-storage NodeJS NPM module from 0.6.0 to 0.7.0 #2458
+  * Switched to the swagger based REST client lib #2459
+* ARM
+  * Fixed nested template error #2475
+  * Change to use provisioning state instead of statusMessage #2482
+
 ## 2016-01-12 Version 0.9.14
 * Insights
-  * Removed retention from insights diagnostic commands
+  * Removed retention from insights diagnostic commands 
 * Redis Cache
   * Added premium sku and other related features option in redis create
 * VM

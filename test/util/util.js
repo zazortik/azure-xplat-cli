@@ -178,6 +178,11 @@ exports.getTemplateInfoByName = function(suite, name, callback) {
 
 exports.executeCommand = function(suite, retry, cmd, callback) {
   var self = this;
+
+  if (cmd instanceof String) {
+    cmd = cmd.split(' ');
+  }
+
   suite.execute(cmd, function(result) {
     if (result.exitStatus === 1 && ((result.errorText.indexOf('ECONNRESET') + 1) ||
         (result.errorText.indexOf('ConflictError') + 1) ||
@@ -188,8 +193,9 @@ exports.executeCommand = function(suite, retry, cmd, callback) {
         (result.errorText.indexOf('getaddrinfo ENOTFOUND') + 1) ||
         (result.errorText.indexOf('Too many requests received') + 1) ||
         (result.errorText.indexOf('Windows Azure is currently performing an operation on this hosted service that requires exclusive access') + 1) ||
+        (result.errorText.indexOf('Another operation on this or dependent resource is in progress') + 1) ||
         (result.errorText.indexOf('Please try again later') + 1)) && retry--) {
-      console.log('Re-executing command. Please wait.');
+
       setTimeout(function() {
         self.executeCommand(suite, retry, cmd, callback);
       }, self.TIMEOUT_INTERVAL);
@@ -310,3 +316,36 @@ exports.stripBOM = function (content) {
   }
   return content;
 };
+
+/**
+ * format
+ *
+ * formats the string to
+ * arguments and returns
+ * @returns {string}
+ */
+function formatArgs () {
+  if (arguments.length === 0) return this;
+
+  var iter;
+  if (arguments.length > 1) {
+    iter = arguments;
+  } else {
+    iter = arguments[0];
+  }
+
+  var res = this;
+  for (var i in iter) {
+    var item = iter[i];
+    if (typeof item === 'object') {
+      for (var k in item) {
+        res = res.replace('{'+k+'}', item[k]);
+      }
+    } else {
+      res = res.replace('{'+i+'}', item);
+    }
+  }
+
+  return res;
+}
+String.prototype.formatArgs = formatArgs;
