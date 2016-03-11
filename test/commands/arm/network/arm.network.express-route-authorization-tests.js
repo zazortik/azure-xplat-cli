@@ -21,17 +21,18 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testPrefix = 'arm-network-express-route-authorization-tests';
 var _ = require('underscore');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
-var groupName, location,
-  groupPrefix = 'xplatTestGroupExpressRoutCircuiteAuth';
-var expressRCAuthPrefix = 'xplatExpressRouteAuth',
-  key1 = 'abc@123',
-  key2 = 'ABC@123',
-  expressRCPrefix = 'xplatExpressRouteA',
+var groupName, location, encryptedKey1,
+  groupPrefix = 'xplatTestGroupExpressRouteAuth';
+var groupPrefix = 'xplatTestGroupExpressRouteAuth',
+  expressRCPrefix = 'xplatExpressRoute',
   serviceProvider = 'InterCloud',
   peeringLocation = 'London',
   skuTier = 'Standard',
   skuFamily = 'MeteredData',
-  tags1 = 'tag1=val1';
+  tags1 = 'tag1=val1',
+  expressRCAuthPrefix = 'xplatExpressRouteAuth',
+  key1 = 'abc@123',
+  key2 = 'ABC@123';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -73,6 +74,10 @@ describe('arm', function () {
               groupName, expressRCPrefix, expressRCAuthPrefix, key1).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
+              var auth = JSON.parse(result.text);
+              auth.name.should.equal(expressRCAuthPrefix);
+              encryptedKey1 = auth.authorizationKey;
+              networkUtil.shouldBeSucceeded(auth);
               done();
             });
           });
@@ -82,6 +87,10 @@ describe('arm', function () {
         var cmd = util.format('network express-route authorization set %s %s %s -k %s --json', groupName, expressRCPrefix, expressRCAuthPrefix, key2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var auth = JSON.parse(result.text);
+          auth.name.should.equal(expressRCAuthPrefix);
+          (encryptedKey1 === auth.authorizationKey).should.be.false;
+          networkUtil.shouldBeSucceeded(auth);
           done();
         });
       });
@@ -89,8 +98,8 @@ describe('arm', function () {
         var cmd = util.format('network express-route authorization show %s %s %s --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.name.should.equal(expressRCAuthPrefix);
+          var auth = JSON.parse(result.text);
+          auth.name.should.equal(expressRCAuthPrefix);
           done();
         });
       });
@@ -98,9 +107,9 @@ describe('arm', function () {
         var cmd = util.format('network express-route authorization list %s %s --json', groupName, expressRCPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          _.some(allResources, function (res) {
-            return res.name === expressRCAuthPrefix;
+          var auth = JSON.parse(result.text);
+          _.some(auth, function (auth) {
+            return auth.name === expressRCAuthPrefix;
           }).should.be.true;
           done();
         });
@@ -109,7 +118,14 @@ describe('arm', function () {
         var cmd = util.format('network express-route authorization delete %s %s %s -q --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          done();
+
+          cmd = util.format('network express-route authorization show %s %s %s --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var auth = JSON.parse(result.text);
+            auth.should.be.empty;
+            done();
+          });
         });
       });
     });

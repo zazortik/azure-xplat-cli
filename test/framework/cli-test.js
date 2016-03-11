@@ -357,7 +357,9 @@ _.extend(CLITest.prototype, {
             line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
             if (line.match(/\/oauth2\/token\//ig) === null && 
-              line.match(/login\.windows\.net/ig) === null && line.match(/login\.windows-ppe\.net/ig) === null) {
+              line.match(/login\.windows\.net/ig) === null && 
+							line.match(/login\.windows-ppe\.net/ig) === null && 
+							line.match(/login\.microsoftonline\.com/ig) === null) {
               scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
                 'var result = ' + line + ' return result; }';
               lineWritten = true;
@@ -599,8 +601,8 @@ _.extend(CLITest.prototype, {
       utils.createAutoRestClient.restore();
     }
     CLITest.wrap(sinon, utils, 'createAutoRestClient', function (originalCreateAutoRestClient) {
-      return function (factoryMethod, subscription) {
-        var client = originalCreateAutoRestClient(factoryMethod, subscription);
+      return function (factoryMethod, subscription, options) {
+        var client = originalCreateAutoRestClient(factoryMethod, subscription, options);
         client.longRunningOperationRetryTimeout = 0;
         return client;
       };
