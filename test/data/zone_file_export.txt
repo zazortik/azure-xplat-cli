@@ -39,6 +39,9 @@ test-cname 5 IN CNAME r1.example1.com.
 
 test-cname2 5 IN CNAME r1.
 
+test-multi-a 5 IN A 192.168.1.145
+             5 IN A 10.1.1.230
+
 test-mx 5 IN MX 10 m1.example1.com.
 
 test-mx2 5 IN MX 10 m1.
