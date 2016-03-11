@@ -21,13 +21,11 @@ var CLITest = require('../../../framework/arm-cli-test');
 
 var batchAccountNamePrefix = 'armclibatch';
 var batchGroupPrefix = 'armclibatchgroup';
-var batchAccountNames = [];
-var batchPairs = [];
-var createdResourceGroups = [];
+var accountName;
+var resourceGroupName;
+var emptyGroupName;
 var autoStorageAccountPrefix = 'armclibatch';
 var autoStorageAccountName;
-var autoStorageResourceGroup;
-var autoStorageAccounts = [];
 var location;
 
 var requiredEnvironment = [
@@ -40,8 +38,6 @@ var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 
 describe('arm', function () {
   describe('batch account', function () {
-    var accountName;
-    var resourceGroupName;
     var primaryKey;
 
     before(function (done) {
@@ -57,17 +53,16 @@ describe('arm', function () {
     after(function (done) {
       suite.teardownSuite(function () {
         if (!suite.isPlayback()) {
-          // The auto storage resource group is just taken from one of the batch account resource groups, so it doesn't need an explicit cleanup call.
-          suite.execute('storage account delete %s --resource-group %s --json -q', autoStorageAccountName, autoStorageResourceGroup, function (result) {
+          // Delete all created resources and groups
+          suite.execute('storage account delete %s --resource-group %s --json -q', autoStorageAccountName, resourceGroupName, function (result) {
             result.exitStatus.should.equal(0);
-            batchPairs.forEach(function (pair) {
-              suite.execute('batch account delete %s --resource-group %s --json -q', pair[0], pair[1], function (result) {
+            suite.execute('batch account delete %s --resource-group %s --json -q', accountName, resourceGroupName, function (result) {
+              result.exitStatus.should.equal(0);
+              suite.execute('group delete %s --json -q', resourceGroupName, function (result) {
                 result.exitStatus.should.equal(0);
-                createdResourceGroups.forEach(function (group) {
-                  suite.execute('group delete %s --json -q', group, function (result) {
-                    result.exitStatus.should.equal(0);
-                    done();
-                  });
+                suite.execute('group delete %s --json -q', emptyGroupName, function (result) {
+                  result.exitStatus.should.equal(0);
+                  done();
                 });
               });
             });
@@ -90,9 +85,8 @@ describe('arm', function () {
     });
     
     it('should create a batch account with resource group and location', function (done) {
-      accountName = suite.generateId(batchAccountNamePrefix, batchAccountNames);
-      resourceGroupName = suite.generateId(batchGroupPrefix, createdResourceGroups);
-      batchPairs.push([accountName, resourceGroupName]);
+      accountName = suite.generateId(batchAccountNamePrefix);
+      resourceGroupName = suite.generateId(batchGroupPrefix);
       
       suite.execute('group create %s --location %s --json', resourceGroupName, location, function (result) {
         result.text.should.containEql('Succeeded');
@@ -107,49 +101,45 @@ describe('arm', function () {
     });
     
     it('should list batch accounts within the subscription', function (done) {
-      accountName = suite.generateId(batchAccountNamePrefix, batchAccountNames);
-      resourceGroupName = suite.generateId(batchGroupPrefix, createdResourceGroups);
-      batchPairs.push([accountName, resourceGroupName]);
-      
-      suite.execute('group create %s --location %s --json', resourceGroupName, location, function (result) {
+      suite.execute('batch account list --json', function (result) {
+        var batchAccounts = JSON.parse(result.text);
+        batchAccounts.some(function (account) {
+          return account.name === accountName;
+        }).should.be.true;
+        done();
+      });
+    });
+    
+    it('should list batch accounts within the resource group', function (done) {
+      emptyGroupName = suite.generateId(batchGroupPrefix);
+    
+      suite.execute('group create %s --location %s --json', emptyGroupName, location, function (result) {
         result.exitStatus.should.equal(0);
+        suite.execute('batch account list --resource-group %s --json', resourceGroupName, function (result) {
+          var batchAccounts = JSON.parse(result.text);
+          batchAccounts.some(function (account) {
+            return account.name === accountName;
+          }).should.be.true;
+          batchAccounts.every(function (account) {
+            return account.resourceGroup === resourceGroupName;
+          }).should.be.true;
         
-        suite.execute('batch account create %s --resource-group %s --location %s --json', accountName, resourceGroupName, location, function (result) {
-          result.text.should.equal('');
-          result.exitStatus.should.equal(0);
-          
-          suite.execute('batch account list --json', function (result) {
-            var batchAccounts = JSON.parse(result.text);
-            batchAccounts.some(function (account) {
-              return account.name === accountName;
-            }).should.be.true;
+          suite.execute('batch account list --resource-group %s --json', emptyGroupName, function (result) {
+            batchAccounts = JSON.parse(result.text);
+            batchAccounts.length.should.equal(0);
             done();
           });
         });
       });
     });
     
-    it('should list batch accounts within the resource group', function (done) {
-      suite.execute('batch account list --resource-group %s --json', resourceGroupName, function (result) {
-        var batchAccounts = JSON.parse(result.text);
-        batchAccounts.some(function (account) {
-          return account.name === accountName;
-        }).should.be.true;
-        batchAccounts.every(function (account) {
-          return account.resourceGroup === resourceGroupName;
-        }).should.be.true;
-        done();
-      });
-    });
-    
     it('should update batch accounts', function (done) {
       // Create storage account and get resource id
-      autoStorageAccountName = suite.generateId(autoStorageAccountPrefix, autoStorageAccounts);
-      autoStorageResourceGroup = resourceGroupName;
-      suite.execute('storage account create %s --resource-group %s --location %s --type LRS --json', autoStorageAccountName, autoStorageResourceGroup, location, function (result) {
+      autoStorageAccountName = suite.generateId(autoStorageAccountPrefix);
+      suite.execute('storage account create %s --resource-group %s --location %s --type LRS --json', autoStorageAccountName, resourceGroupName, location, function (result) {
         result.exitStatus.should.equal(0);
           
-        suite.execute('storage account show %s --resource-group %s --json', autoStorageAccountName, autoStorageResourceGroup, function (result) {
+        suite.execute('storage account show %s --resource-group %s --json', autoStorageAccountName, resourceGroupName, function (result) {
           var storageAccount = JSON.parse(result.text);
 
           suite.execute('batch account set %s --resource-group %s --autostorage-account-id %s --json', accountName, resourceGroupName, storageAccount.id, function (result) {
@@ -158,8 +148,8 @@ describe('arm', function () {
               
             suite.execute('batch account show %s --resource-group %s --json', accountName, resourceGroupName, function (result) {
               var batchAccount = JSON.parse(result.text);
-              batchAccount.properties.autoStorage.should.not.be.null;
-              batchAccount.properties.autoStorage.storageAccountId.should.equal(storageAccount.id);
+              batchAccount.autoStorage.should.not.be.null;
+              batchAccount.autoStorage.storageAccountId.should.equal(storageAccount.id);
               done();
             });
           });
@@ -191,17 +181,17 @@ describe('arm', function () {
     it('should sync autostorage keys', function (done) {
       suite.execute('batch account show %s --resource-group %s --json', accountName, resourceGroupName, function (result) {
         var batchAccount = JSON.parse(result.text);
-        batchAccount.properties.autoStorage.should.not.be.null;
-        batchAccount.properties.autoStorage.lastKeySync.should.not.be.null;
-        var oldSyncTime = batchAccount.properties.autoStorage.lastKeySync;
+        batchAccount.autoStorage.should.not.be.null;
+        batchAccount.autoStorage.lastKeySync.should.not.be.null;
+        var oldSyncTime = batchAccount.autoStorage.lastKeySync;
         
         suite.execute('batch account sync-autostorage-keys %s --resource-group %s --json', accountName, resourceGroupName, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('batch account show %s --resource-group %s --json', accountName, resourceGroupName, function (result) {
             batchAccount = JSON.parse(result.text);
-            batchAccount.properties.autoStorage.should.not.be.null;
-            oldSyncTime.should.not.equal(batchAccount.properties.autoStorage.lastKeySync);
+            batchAccount.autoStorage.should.not.be.null;
+            oldSyncTime.should.not.equal(batchAccount.autoStorage.lastKeySync);
             done();
           });
         });

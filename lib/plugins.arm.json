@@ -1562,7 +1562,7 @@
               "name": "create",
               "description": "Create a batch pool",
               "fullName": "batch pool create",
-              "usage": "[options] [poolId]",
+              "usage": "[options] [json-file]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
                 {
@@ -1591,12 +1591,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--id <poolId>",
-                  "required": -6,
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "long": "--id",
-                  "description": "the batch pool id"
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the pool object to create in the file"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -1660,6 +1661,30 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -1721,6 +1746,30 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--start-time <start-time>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-time",
+                  "description": "the earliest time from which to include metrics"
+                },
+                {
+                  "flags": "--end-time <end-time>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-time",
+                  "description": "the latest time from which to include metrics"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -1753,7 +1802,7 @@
               "name": "show",
               "description": "Show details of the batch pool",
               "fullName": "batch pool show",
-              "usage": "[options] [poolId]",
+              "usage": "[options] [pool-id]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
                 {
@@ -1782,12 +1831,121 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--id <poolId>",
+                  "flags": "--id <pool-id>",
                   "required": -6,
                   "optional": 0,
                   "bool": true,
                   "long": "--id",
                   "description": "the batch pool id"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "showAllStats",
+              "description": "Show lifetime summary statistics for all of the pools",
+              "fullName": "batch pool showAllStats",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -1822,7 +1980,7 @@
               "name": "delete",
               "description": "Delete the specified batch pool",
               "fullName": "batch pool delete",
-              "usage": "[options] [poolId]",
+              "usage": "[options] [pool-id]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
                 {
@@ -1851,7 +2009,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--id <poolId>",
+                  "flags": "--id <pool-Id>",
                   "required": -6,
                   "optional": 0,
                   "bool": true,
@@ -1866,6 +2024,38 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "remove the specified batch pool without confirmation"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -1893,6 +2083,502 @@
                   "short": "-u",
                   "long": "--account-endpoint",
                   "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "description": "Update the batch pool",
+              "fullName": "batch pool update",
+              "usage": "[options] [pool-id] [json-file]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the pool object to update in the file"
+                },
+                {
+                  "flags": "-p, --patch",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--patch",
+                  "description": "uses patch instead of update"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                }
+              ]
+            },
+            {
+              "name": "disableAutoscale",
+              "description": "Disable autoscale at the batch pool",
+              "fullName": "batch pool disableAutoscale",
+              "usage": "[options] [pool-id]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                }
+              ]
+            },
+            {
+              "name": "enableAutoscale",
+              "description": "Enable autoscale at the batch pool",
+              "fullName": "batch pool enableAutoscale",
+              "usage": "[options] [pool-id] [autoscale-formula] [autoscale-evaluation-interval]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "--autoscale-formula <autoscale-formula>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--autoscale-formula",
+                  "description": "the autoscale formula"
+                },
+                {
+                  "flags": "--autoscale-evaluation-interval <autoscale-evaluation-interval>",
+                  "required": -33,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--autoscale-evaluation-interval",
+                  "description": "the time interval for the desired AutoScale evaluation period"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                }
+              ]
+            },
+            {
+              "name": "evaluateAutoscale",
+              "description": "Evaluate autoscale at the batch pool",
+              "fullName": "batch pool evaluateAutoscale",
+              "usage": "[options] [pool-id] [autoscale-formula]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "-f, --autoscale-formula <autoscale-formula>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--autoscale-formula",
+                  "description": "the autoscale formula"
+                }
+              ]
+            },
+            {
+              "name": "resize",
+              "description": "Resize (or stop resizing) the batch pool",
+              "fullName": "batch pool resize",
+              "usage": "[options] [pool-id] [target-dedicated] [resize-timeout] [deallocate-option]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "-s, --stop",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--stop",
+                  "description": "stop resizing"
+                },
+                {
+                  "flags": "--target-dedicated <target-dedicated>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--target-dedicated",
+                  "description": "the dedicated vm count to resize"
+                },
+                {
+                  "flags": "--resize-timeout <resize-timeout>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--resize-timeout",
+                  "description": "the timeout for allocation compute nodes to the pool or removal of compute nodes from the pool"
+                },
+                {
+                  "flags": "--deallocate-option <deallocate-option>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--deallocate-option",
+                  "description": "sets when nodes may be removed from the pool, if the pool size is decreasing"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                }
+              ]
+            },
+            {
+              "name": "removeNodes",
+              "description": "Remove nodes from the batch pool",
+              "fullName": "batch pool removeNodes",
+              "usage": "[options] [pool-id] [node-lis]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "-l, --node-list <node-list>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--node-list",
+                  "description": "the node list"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "remove nodes from the specified batch pool without confirmation"
+                },
+                {
+                  "flags": "--resize-timeout <resize-timeout>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--resize-timeout",
+                  "description": "the timeout for removal of compute nodes from the pool"
+                },
+                {
+                  "flags": "--deallocate-option <deallocate-option>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--deallocate-option",
+                  "description": "sets when nodes may be removed from the pool"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
                 }
               ]
             }

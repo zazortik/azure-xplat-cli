@@ -33,38 +33,145 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup3223/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"name\":\"armclibatch2989\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch2989.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup3223/providers/Microsoft.Batch/batchAccounts/armclibatch2989\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourcegroups/armclibatchgroup8241?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclibatchgroup8241' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '418',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '52938397-c52c-4d18-8b83-d77eefdd3cb4',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-request-id': '9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
+  'x-ms-correlation-request-id': '9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164628Z:9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '83e479d6-7c32-421b-b898-75012f10de6c',
-  'x-ms-correlation-request-id': '83e479d6-7c32-421b-b898-75012f10de6c',
-  'x-ms-routing-request-id': 'CENTRALUS:20160310T184854Z:83e479d6-7c32-421b-b898-75012f10de6c',
-  date: 'Thu, 10 Mar 2016 18:48:54 GMT',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
+  connection: 'close',
+  'content-length': '112' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourcegroups/armclibatchgroup8241?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclibatchgroup8241' could not be found.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-request-id': '9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
+  'x-ms-correlation-request-id': '9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164628Z:9f9e6ad0-4e50-4ac0-913e-35a6271220c7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
+  connection: 'close',
+  'content-length': '112' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourcegroups/armclibatchgroup8241?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup8241\",\"name\":\"armclibatchgroup8241\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '203',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-request-id': '00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'x-ms-correlation-request-id': '00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup3223/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"name\":\"armclibatch2989\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch2989.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup3223/providers/Microsoft.Batch/batchAccounts/armclibatch2989\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
+  .filteringRequestBody(function (path) { return '*';})
+.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourcegroups/armclibatchgroup8241?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup8241\",\"name\":\"armclibatchgroup8241\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '203',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-request-id': '00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'x-ms-correlation-request-id': '00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:00f3c52e-3cba-40e6-b2ac-1f4ce346c1da',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '418',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '52938397-c52c-4d18-8b83-d77eefdd3cb4',
+  'request-id': 'fcd5d1cb-258f-4b54-92e5-3cd4e66a1ee5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '83e479d6-7c32-421b-b898-75012f10de6c',
-  'x-ms-correlation-request-id': '83e479d6-7c32-421b-b898-75012f10de6c',
-  'x-ms-routing-request-id': 'CENTRALUS:20160310T184854Z:83e479d6-7c32-421b-b898-75012f10de6c',
-  date: 'Thu, 10 Mar 2016 18:48:54 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-request-id': 'e283c491-bf4a-4632-8572-3045f7cacdb1',
+  'x-ms-correlation-request-id': 'e283c491-bf4a-4632-8572-3045f7cacdb1',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:e283c491-bf4a-4632-8572-3045f7cacdb1',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
   connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '418',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'request-id': 'fcd5d1cb-258f-4b54-92e5-3cd4e66a1ee5',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-request-id': 'e283c491-bf4a-4632-8572-3045f7cacdb1',
+  'x-ms-correlation-request-id': 'e283c491-bf4a-4632-8572-3045f7cacdb1',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:e283c491-bf4a-4632-8572-3045f7cacdb1',
+  date: 'Tue, 15 Mar 2016 16:46:28 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup8241/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': '1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'x-ms-correlation-request-id': '1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 15 Mar 2016 16:46:29 GMT',
+  connection: 'close',
+  'content-length': '12' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup8241/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': '1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'x-ms-correlation-request-id': '1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'x-ms-routing-request-id': 'WESTUS:20160315T164629Z:1dd4e745-2abb-40b2-be7f-50c4a79b6c80',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 15 Mar 2016 16:46:29 GMT',
+  connection: 'close',
+  'content-length': '12' });
  return result; }]];
+ exports.randomTestIdsGenerated = function() { return ['armclibatchgroup8241'];};
