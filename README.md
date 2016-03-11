@@ -34,6 +34,18 @@ If you need to create an automation account for non interactive or scripting sce
 
 ## Installation
 
+### Installation from a particular branch of this repository
+- Uninstall the previously installed CLI
+   - If you installed via MSI, then uninstall the windows MSI. For mac installer `sudo azure-uninstall -g`
+   - If you installed via npm then execute: `npm uninstall azure-cli –g`
+- Clear the global cache: `npm cache clear –g`
+- Delete the .streamline folder from the User’s home profile `C:\Users\<username>\.streamline` | `~/.streamline`, if present.
+- Download the tarball from this link: `https://github.com/Azure/azure-xplat-cli/archive/<branch-name>.tar.gz`
+- Install from the tarball: `npm install –g <path to the downloaded tarball>`
+
+And you should be good to go :). 
+Note: You may require admin prompt or sudo access to install via npm.
+
 ### Install from npm
 
 You can install the azure-cli npm package directly.

@@ -1,3 +1,31 @@
+##2016-03-03 Version 0.9.16
+* General
+  * Fixed harvesting script bugs
+  * Fixed issues #2560, #2388, #2529, #2530, #1913, #2486,  #2518
+  * Added support for Github issues/pr templates feature
+  * Leap Year Fix for adding years
+  * Fixed broken link for contribution guidelines
+  * Removed apiapp commands
+* Resource Management
+  * Ported ARM cmdlets to use autorest generated resource mgmt client
+  * Fixed display of innerdetail message only when present
+  * Fixed json output issue for deployment create/show
+* Network
+  * Fixed #2493, #1771, #2505, #2510, 2563
+  * Improved tests #2564
+  * --resource-group now optional for 'azure network traffic-manager profile list'
+* VM
+  * Fixed #2502, #2507, #2575, #2546
+  * Support RSA format ssh cert in "vm reset-access" #2437
+  * Fixed reading storage account data vm for enable-aem command
+  * Fix NIC-IP Association Issue #2551
+  * Fixed issue #2524 VM Create License Type Option
+  * Fix #2539 VM Image List/Show
+  * Added test for vm list-usage
+* Redis Cache
+  * Added delete-diagnostics command for redis cache
+  * Added set-diagnostics command to redis cache
+
 ## 2016-02-01 Version 0.9.15
 * General
   * Improved tests and the tests infrastructure #2422, #2433, #2460, #2467, #2468, #2472
