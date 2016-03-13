@@ -1,3 +1,11 @@
+##2016-03-11 Version 0.9.18
+* Upgraded Graph to 1.6-internal api-version and consumed it in ad commands
+* Fixed issue #2619, #2616
+* Made role assignment commands work with 1.6-internal
+
+##2016-03-07 Version 0.9.17
+* Fixed login for US Government Environment
+
 ##2016-03-03 Version 0.9.16
 * General
   * Fixed harvesting script bugs
