@@ -1783,6 +1783,156 @@
             }
           }
         },
+        "job": {
+          "name": "job",
+          "description": "Commands to manage your Batch jobs",
+          "fullName": "batch job",
+          "usage": "[options]",
+          "options": [],
+          "commands": [],
+          "categories": {
+            "schedule": {
+              "name": "schedule",
+              "description": "Commands to manage your Batch job schedules",
+              "fullName": "batch job schedule",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List batch job schedules",
+                  "fullName": "batch job schedule list",
+                  "usage": "[options]",
+                  "filePath": "commands/batch/batch.jobSchedule._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the batch connection endpoint"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show details of the batch job schedule",
+                  "fullName": "batch job schedule show",
+                  "usage": "[options] [jobScheduleId]",
+                  "filePath": "commands/batch/batch.jobSchedule._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--id <jobScheduleId>",
+                      "required": -6,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--id",
+                      "description": "the batch job schedule id"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the batch connection endpoint"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
         "pool": {
           "name": "pool",
           "description": "Commands to manage your Batch pools",
