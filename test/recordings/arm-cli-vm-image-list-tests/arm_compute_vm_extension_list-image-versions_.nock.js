@@ -32,36 +32,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2016-03-30')
   .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"2.1\",\r\n    \"id\": \"/Subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/BGInfo/Versions/2.1\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '252',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '946e8e20-cb76-4b74-b81a-c39634929469',
+  'x-ms-request-id': 'e44707a3-a7c1-473f-ac7e-4aaedaf15df1',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14942',
-  'x-ms-correlation-request-id': 'b1c4de14-cde5-4574-91b5-e3d6c4cea318',
-  'x-ms-routing-request-id': 'WESTUS:20160227T185622Z:b1c4de14-cde5-4574-91b5-e3d6c4cea318',
-  date: 'Sat, 27 Feb 2016 18:56:21 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-correlation-request-id': '7d2efbdb-eb66-49eb-8506-f4888104d28f',
+  'x-ms-routing-request-id': 'WESTUS:20160315T051104Z:7d2efbdb-eb66-49eb-8506-f4888104d28f',
+  date: 'Tue, 15 Mar 2016 05:11:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2016-03-30')
   .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"2.1\",\r\n    \"id\": \"/Subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/BGInfo/Versions/2.1\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '252',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '946e8e20-cb76-4b74-b81a-c39634929469',
+  'x-ms-request-id': 'e44707a3-a7c1-473f-ac7e-4aaedaf15df1',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14942',
-  'x-ms-correlation-request-id': 'b1c4de14-cde5-4574-91b5-e3d6c4cea318',
-  'x-ms-routing-request-id': 'WESTUS:20160227T185622Z:b1c4de14-cde5-4574-91b5-e3d6c4cea318',
-  date: 'Sat, 27 Feb 2016 18:56:21 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-correlation-request-id': '7d2efbdb-eb66-49eb-8506-f4888104d28f',
+  'x-ms-routing-request-id': 'WESTUS:20160315T051104Z:7d2efbdb-eb66-49eb-8506-f4888104d28f',
+  date: 'Tue, 15 Mar 2016 05:11:04 GMT',
   connection: 'close' });
  return result; }]];
