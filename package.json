@@ -76,7 +76,7 @@
     "jsrsasign": "4.8.2 ",
     "kuduscript": "1.0.6",
     "moment": "2.6.0",
-    "ms-rest-azure": "^1.8.0",
+    "ms-rest-azure": "^1.10.0",
     "node-forge": "0.6.23",
     "node-uuid": "1.2.0",
     "number-is-nan": "1.0.0",

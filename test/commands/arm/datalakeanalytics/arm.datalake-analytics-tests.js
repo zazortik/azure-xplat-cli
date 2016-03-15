@@ -325,7 +325,7 @@ describe('arm', function () {
       suite.execute('datalake analytics catalog list --accountName %s --itemType database --itemPath master --json', jobAndCatalogAccountName, function (result) {
         result.exitStatus.should.be.equal(0);
         var masterJson = JSON.parse(result.text);
-        masterJson[0].databaseName.should.be.equal('master');
+        masterJson[0].name.should.be.equal('master');
         // add a database, table, tvf, view and procedure
         suite.execute('datalake analytics job create --accountName %s --jobName %s --script %s --json', jobAndCatalogAccountName, jobName, scriptToRun, function (result) {
           result.exitStatus.should.be.equal(0);
@@ -348,7 +348,7 @@ describe('arm', function () {
                   result.exitStatus.should.be.equal(0);
                   var catalogItemJson = JSON.parse(result.text);
                   catalogItemJson.length.should.be.equal(1);
-                  catalogItemJson[0].databaseName.should.be.equal(dbName);
+                  catalogItemJson[0].name.should.be.equal(dbName);
                   // list all tables in the db and confirm that there is one entry.
                   suite.execute('datalake analytics catalog list --accountName %s --itemType table --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                     result.exitStatus.should.be.equal(0);
@@ -359,7 +359,7 @@ describe('arm', function () {
                       result.exitStatus.should.be.equal(0);
                       var catalogItemJson = JSON.parse(result.text);
                       catalogItemJson.length.should.be.equal(1);
-                      catalogItemJson[0].tableName.should.be.equal(tableName);
+                      catalogItemJson[0].name.should.be.equal(tableName);
                       // list all tvfs in the db and confirm that there is one entry.
                       suite.execute('datalake analytics catalog list --accountName %s --itemType tablevaluedfunction --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                         result.exitStatus.should.be.equal(0);
@@ -370,7 +370,7 @@ describe('arm', function () {
                           result.exitStatus.should.be.equal(0);
                           var catalogItemJson = JSON.parse(result.text);
                           catalogItemJson.length.should.be.equal(1);
-                          catalogItemJson[0].tvfName.should.be.equal(tvfName);
+                          catalogItemJson[0].name.should.be.equal(tvfName);
                           // list all views in the db and confirm that there is one entry.
                           suite.execute('datalake analytics catalog list --accountName %s --itemType view --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                             result.exitStatus.should.be.equal(0);
@@ -381,7 +381,7 @@ describe('arm', function () {
                               result.exitStatus.should.be.equal(0);
                               var catalogItemJson = JSON.parse(result.text);
                               catalogItemJson.length.should.be.equal(1);
-                              catalogItemJson[0].viewName.should.be.equal(viewName);
+                              catalogItemJson[0].name.should.be.equal(viewName);
                               // list all procedures in the db and confirm that there is one entry.
                               suite.execute('datalake analytics catalog list --accountName %s --itemType procedure --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                                 result.exitStatus.should.be.equal(0);
@@ -392,7 +392,7 @@ describe('arm', function () {
                                   result.exitStatus.should.be.equal(0);
                                   var catalogItemJson = JSON.parse(result.text);
                                   catalogItemJson.length.should.be.equal(1);
-                                  catalogItemJson[0].procName.should.be.equal(procName);
+                                  catalogItemJson[0].name.should.be.equal(procName);
                                   done();
                                 });
                               });
@@ -442,7 +442,7 @@ describe('arm', function () {
                     result.exitStatus.should.be.equal(0);
                     var catalogItemJson = JSON.parse(result.text);
                     catalogItemJson.length.should.be.equal(1);
-                    catalogItemJson[0].credentialName.should.be.equal(credName);
+                    catalogItemJson[0].name.should.be.equal(credName);
                     // get the secret
                     suite.execute('datalake analytics catalog list --accountName %s --itemType secret --itemPath ' + databaseName + '.' + secretName + ' --json', jobAndCatalogAccountName, function (result) {
                       result.exitStatus.should.be.equal(0);
