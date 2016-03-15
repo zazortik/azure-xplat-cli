@@ -28,208 +28,256 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://graph.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.42-previewInternal', '*')
-  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Application/@Element\",\"odata.type\":\"Microsoft.WindowsAzure.ActiveDirectory.Application\",\"objectType\":\"Application\",\"objectId\":\"9a7197a1-d6b0-42d4-ad00-e32fdd396077\",\"softDeletionTimestamp\":null,\"appId\":\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"appMetadata\":null,\"appPermissions\":[{\"claimValue\":\"user_impersonation\",\"description\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"directAccessGrantTypes\":[],\"displayName\":\"Access testapp\",\"impersonationAccessGrantTypes\":[{\"impersonated\":\"User\",\"impersonator\":\"Application\"}],\"isDisabled\":false,\"origin\":\"Application\",\"permissionId\":\"9daed4b7-91c1-44c7-bcb1-3061b3e94def\",\"resourceScopeType\":\"Personal\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"lang\":null}],\"availableToOtherTenants\":false,\"displayName\":\"testapp\",\"errorUrl\":null,\"homepage\":\"http://www.bing.com\",\"identifierUris\":[\"https://xplatTestAppCreate1630.com/home\"],\"keyCredentials\":[],\"knownClientApplications\":[],\"logoutUrl\":null,\"passwordCredentials\":[],\"oAuth2AllowImplicitFlow\":false,\"oAuth2AllowUrlPathMatching\":false,\"oAuth2RequirePostResponse\":false,\"publicClient\":null,\"replyUrls\":[],\"requiredResourceAccess\":[],\"resourceApplicationSet\":null,\"samlMetadataUrl\":null,\"webApi\":null,\"webApp\":null}", { 'cache-control': 'no-cache',
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6-internal', '*')
+  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\"odata.type\":\"Microsoft.DirectoryServices.Application\",\"objectType\":\"Application\",\"objectId\":\"f8359859-0bf8-4a1d-b5b9-4eb157ff685d\",\"deletionTimestamp\":null,\"allowActAsForAllClients\":null,\"appCategory\":null,\"appData\":null,\"appId\":\"e8612410-8fe9-4493-8646-373004551e59\",\"appMetadata\":null,\"appRoles\":[],\"availableToOtherTenants\":false,\"displayName\":\"testapp\",\"encryptedMsiApplicationSecret\":null,\"errorUrl\":null,\"groupMembershipClaims\":null,\"homepage\":\"http://www.bing.com\",\"identifierUris\":[\"https://xplatTestAppCreate6411.com/home\"],\"keyCredentials\":[],\"knownClientApplications\":[],\"logo@odata.mediaContentType\":\"application/json;odata=minimalmetadata; charset=utf-8\",\"logoUrl\":null,\"logoutUrl\":null,\"oauth2AllowImplicitFlow\":false,\"oauth2AllowUrlPathMatching\":false,\"oauth2Permissions\":[{\"adminConsentDescription\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"adminConsentDisplayName\":\"Access testapp\",\"id\":\"8e4d8dbd-8d6a-4b44-ae8f-eb74e0097241\",\"isEnabled\":true,\"lang\":null,\"origin\":\"Application\",\"type\":\"User\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"value\":\"user_impersonation\"}],\"oauth2RequirePostResponse\":false,\"passwordCredentials\":[],\"publicClient\":null,\"recordConsentConditions\":null,\"replyUrls\":[],\"requiredResourceAccess\":[],\"samlMetadataUrl\":null,\"supportsConvergence\":false}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/9a7197a1-d6b0-42d4-ad00-e32fdd396077/Microsoft.WindowsAzure.ActiveDirectory.Application',
+  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/f8359859-0bf8-4a1d-b5b9-4eb157ff685d/Microsoft.DirectoryServices.Application',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'uojUeQNmnG7rHkYY6Os3AEDTrAe3OLrhcYc7TiubdLo=',
-  'request-id': 'e83def20-2244-44d6-b826-e59dcfca619c',
-  'client-request-id': '7f073594-1855-42a4-9f22-f9e3d17986e6',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': '8BR8lKXRodbvZIH2js8BrkjJD20aweQDejWF120zoLk=',
+  'request-id': '63140b40-a822-484d-bac3-f1d9fa5588fb',
+  'client-request-id': '4e79550d-401d-4268-a918-082a7304bb43',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'lYU7lbdp9Mtvjn81QPAXGU6bfvNXuHzIwLj2Ye150znI_67GcEz5bGCuX7FyxR14pDoDbHH_SSoHuMwF57vlBd3e_q7VbtU-OuZZ0BnOl55e-hUEaAsPomO_hi59l3agH9HJGIm8M5E19J2Hio9snyaIpyz9V4sODy6NOFyr-_3oESYc8tXUCRlUZ6cUya7l5hdHVix0J3nFgXDbwhOCmA.5FG-G_danBJl7zd-VlMZy8Og0kqqWMHT117XvQo09zk',
+  'ocp-aad-session-key': 'wlPl8iV4TCwPXDJvlhF512xDuOvVJytwh-39ZEaYy8jJQ7lioyphVrKfSDAavzhBCDexfwayXSoyjs1sUX9wSJB03jFgXQnHJXIDlA1oiKgDW34Ii3XGb17pEWRiFSNrn_ChEjcbRvtI9mq9DL39Hw.ZtQDxj3hH4joeCq965cYidgYzQedrZTVkNkg10JlPsU',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0;',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '4054462',
-  date: 'Wed, 30 Dec 2015 19:23:28 GMT',
+  duration: '11738444',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
   connection: 'close',
-  'content-length': '1464' });
+  'content-length': '1563' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://graph.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.42-previewInternal', '*')
-  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Application/@Element\",\"odata.type\":\"Microsoft.WindowsAzure.ActiveDirectory.Application\",\"objectType\":\"Application\",\"objectId\":\"9a7197a1-d6b0-42d4-ad00-e32fdd396077\",\"softDeletionTimestamp\":null,\"appId\":\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"appMetadata\":null,\"appPermissions\":[{\"claimValue\":\"user_impersonation\",\"description\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"directAccessGrantTypes\":[],\"displayName\":\"Access testapp\",\"impersonationAccessGrantTypes\":[{\"impersonated\":\"User\",\"impersonator\":\"Application\"}],\"isDisabled\":false,\"origin\":\"Application\",\"permissionId\":\"9daed4b7-91c1-44c7-bcb1-3061b3e94def\",\"resourceScopeType\":\"Personal\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"lang\":null}],\"availableToOtherTenants\":false,\"displayName\":\"testapp\",\"errorUrl\":null,\"homepage\":\"http://www.bing.com\",\"identifierUris\":[\"https://xplatTestAppCreate1630.com/home\"],\"keyCredentials\":[],\"knownClientApplications\":[],\"logoutUrl\":null,\"passwordCredentials\":[],\"oAuth2AllowImplicitFlow\":false,\"oAuth2AllowUrlPathMatching\":false,\"oAuth2RequirePostResponse\":false,\"publicClient\":null,\"replyUrls\":[],\"requiredResourceAccess\":[],\"resourceApplicationSet\":null,\"samlMetadataUrl\":null,\"webApi\":null,\"webApp\":null}", { 'cache-control': 'no-cache',
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6-internal', '*')
+  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\"odata.type\":\"Microsoft.DirectoryServices.Application\",\"objectType\":\"Application\",\"objectId\":\"f8359859-0bf8-4a1d-b5b9-4eb157ff685d\",\"deletionTimestamp\":null,\"allowActAsForAllClients\":null,\"appCategory\":null,\"appData\":null,\"appId\":\"e8612410-8fe9-4493-8646-373004551e59\",\"appMetadata\":null,\"appRoles\":[],\"availableToOtherTenants\":false,\"displayName\":\"testapp\",\"encryptedMsiApplicationSecret\":null,\"errorUrl\":null,\"groupMembershipClaims\":null,\"homepage\":\"http://www.bing.com\",\"identifierUris\":[\"https://xplatTestAppCreate6411.com/home\"],\"keyCredentials\":[],\"knownClientApplications\":[],\"logo@odata.mediaContentType\":\"application/json;odata=minimalmetadata; charset=utf-8\",\"logoUrl\":null,\"logoutUrl\":null,\"oauth2AllowImplicitFlow\":false,\"oauth2AllowUrlPathMatching\":false,\"oauth2Permissions\":[{\"adminConsentDescription\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"adminConsentDisplayName\":\"Access testapp\",\"id\":\"8e4d8dbd-8d6a-4b44-ae8f-eb74e0097241\",\"isEnabled\":true,\"lang\":null,\"origin\":\"Application\",\"type\":\"User\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"value\":\"user_impersonation\"}],\"oauth2RequirePostResponse\":false,\"passwordCredentials\":[],\"publicClient\":null,\"recordConsentConditions\":null,\"replyUrls\":[],\"requiredResourceAccess\":[],\"samlMetadataUrl\":null,\"supportsConvergence\":false}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/9a7197a1-d6b0-42d4-ad00-e32fdd396077/Microsoft.WindowsAzure.ActiveDirectory.Application',
+  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/f8359859-0bf8-4a1d-b5b9-4eb157ff685d/Microsoft.DirectoryServices.Application',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'uojUeQNmnG7rHkYY6Os3AEDTrAe3OLrhcYc7TiubdLo=',
-  'request-id': 'e83def20-2244-44d6-b826-e59dcfca619c',
-  'client-request-id': '7f073594-1855-42a4-9f22-f9e3d17986e6',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': '8BR8lKXRodbvZIH2js8BrkjJD20aweQDejWF120zoLk=',
+  'request-id': '63140b40-a822-484d-bac3-f1d9fa5588fb',
+  'client-request-id': '4e79550d-401d-4268-a918-082a7304bb43',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'lYU7lbdp9Mtvjn81QPAXGU6bfvNXuHzIwLj2Ye150znI_67GcEz5bGCuX7FyxR14pDoDbHH_SSoHuMwF57vlBd3e_q7VbtU-OuZZ0BnOl55e-hUEaAsPomO_hi59l3agH9HJGIm8M5E19J2Hio9snyaIpyz9V4sODy6NOFyr-_3oESYc8tXUCRlUZ6cUya7l5hdHVix0J3nFgXDbwhOCmA.5FG-G_danBJl7zd-VlMZy8Og0kqqWMHT117XvQo09zk',
+  'ocp-aad-session-key': 'wlPl8iV4TCwPXDJvlhF512xDuOvVJytwh-39ZEaYy8jJQ7lioyphVrKfSDAavzhBCDexfwayXSoyjs1sUX9wSJB03jFgXQnHJXIDlA1oiKgDW34Ii3XGb17pEWRiFSNrn_ChEjcbRvtI9mq9DL39Hw.ZtQDxj3hH4joeCq965cYidgYzQedrZTVkNkg10JlPsU',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0;',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '4054462',
-  date: 'Wed, 30 Dec 2015 19:23:28 GMT',
+  duration: '11738444',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
   connection: 'close',
-  'content-length': '1464' });
+  'content-length': '1563' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"scope\":\"62e90394-69f5-4237-9190-012177145e10\",\"expires_on\":\"1456981711\",\"not_before\":\"1456977811\",\"resource\":\"https://graph.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0LyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi8iLCJpYXQiOjE0NTY5Nzc4MTEsIm5iZiI6MTQ1Njk3NzgxMSwiZXhwIjoxNDU2OTgxNzExLCJhY3IiOiIxIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoidGVzdDIiLCJnaXZlbl9uYW1lIjoidGVzdCIsImlwYWRkciI6IjEzMS4xMDcuMTQ3LjExOCIsIm5hbWUiOiJ0ZXN0MiIsIm9pZCI6ImY4ZDUyNmEwLTU0ZWItNDk0MS1hZTY5LWViZjRhMzM0ZDBmMCIsInB1aWQiOiIxMDAzMDAwMDkzMEEyRDg4Iiwic2NwIjoiNjJlOTAzOTQtNjlmNS00MjM3LTkxOTAtMDEyMTc3MTQ1ZTEwIiwic3ViIjoiRGlqNmhfdEw3bV92bzUyaC1XVGJNejRReGJJYzFLZVdlSFZ1MUJpWGRWayIsInRpZCI6IjEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNiIsInVuaXF1ZV9uYW1lIjoidGVzdDJAcmJhY0NsaVRlc3Qub25taWNyb3NvZnQuY29tIiwidXBuIjoidGVzdDJAcmJhY0NsaVRlc3Qub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.rlbURY3m1etXBhFpstxaWaBqP_CRc8cdJc46WuDQKzOGLySXoeOUfjjFICBuMBSsrtXpIM-pYhNnljfdjxpa-pSy2wR2uHiU828g_QnDPOA8c_qD2ZCiwPnavULHM6fctbrCjnA-w-4TuhljuYa8fWqScI7q6sHB0aNcJWE53HtjT7i_cu8IrwB8EUDjvxAYn7d4wrmRZ5TIkWwqTyYngqdHc9HG30hxifFrmG_I0tZAD6_kbvSieFHfNpdwmviI6bwKan8JKUnU7LuIbq3GxizXC1FmSPm4iFiG1YVRXYMH6ZNo3JT0F3XplnHglXXLAIH87Gy8d1DAwZi16YBvWA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLfD9clemMqvl5flcggP6neI1u4t3OtV78VOwujd-2j3OEH4Od-qnbGYUzk1RCf4KVMXimXmuWFu0aMud73jepYJjSwYkXeunTY3ibl8f5Ro3Q57ILNIR9Ss1i4si55rhWgr5J4ksV1oSXGM03tp9NKzqBtPgrglXoqWkyIAcRifMgFwVD8LL_weJN2vH2DEVBKY2T-WnFt4ujLE6_Ok5kyayLj2VMAGZGNV_FY7Yg-7uODK8kxYqqfFHnHLQwr9F5VGiXgti-bbtIlIw1T2hRFVsdMfI3kbToQhzrvSOh318M4xSOpz0QxH8FGg5Tkb3Ig_0g39Gr1g1fQmFWGi6Enb1ZFxP-n7t7LqjNX1eS9r5Jfqfr-Ze6T3W7KBmY_yk8fb47VThkRJyNpOEW6L7RUoAuEIu5mgrI5SdV9P74TCxYaD9i9GHF-tYwGhATGxYHJuMxu2ctHI6Uuze4_bMyqv95HoIQaoW2P9g0fUdsgIFhk84pLIO2MNxeKHDJKPho_5v4qkbkgbDojQiKaczfdwC1kmQ9qXlCyT6WHppJKNJbj68fnCfCl7KjX_taTyMeSAA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'b00f8b6e-a8de-4675-b25e-19ae2a54abab',
+  'client-request-id': '2d7bf531-3c52-4bb3-b150-ef419079b5d3',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_100',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
+  connection: 'close',
+  'content-length': '2162' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"scope\":\"62e90394-69f5-4237-9190-012177145e10\",\"expires_on\":\"1456981711\",\"not_before\":\"1456977811\",\"resource\":\"https://graph.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0LyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi8iLCJpYXQiOjE0NTY5Nzc4MTEsIm5iZiI6MTQ1Njk3NzgxMSwiZXhwIjoxNDU2OTgxNzExLCJhY3IiOiIxIiwiYW1yIjpbInB3ZCJdLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoidGVzdDIiLCJnaXZlbl9uYW1lIjoidGVzdCIsImlwYWRkciI6IjEzMS4xMDcuMTQ3LjExOCIsIm5hbWUiOiJ0ZXN0MiIsIm9pZCI6ImY4ZDUyNmEwLTU0ZWItNDk0MS1hZTY5LWViZjRhMzM0ZDBmMCIsInB1aWQiOiIxMDAzMDAwMDkzMEEyRDg4Iiwic2NwIjoiNjJlOTAzOTQtNjlmNS00MjM3LTkxOTAtMDEyMTc3MTQ1ZTEwIiwic3ViIjoiRGlqNmhfdEw3bV92bzUyaC1XVGJNejRReGJJYzFLZVdlSFZ1MUJpWGRWayIsInRpZCI6IjEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNiIsInVuaXF1ZV9uYW1lIjoidGVzdDJAcmJhY0NsaVRlc3Qub25taWNyb3NvZnQuY29tIiwidXBuIjoidGVzdDJAcmJhY0NsaVRlc3Qub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.rlbURY3m1etXBhFpstxaWaBqP_CRc8cdJc46WuDQKzOGLySXoeOUfjjFICBuMBSsrtXpIM-pYhNnljfdjxpa-pSy2wR2uHiU828g_QnDPOA8c_qD2ZCiwPnavULHM6fctbrCjnA-w-4TuhljuYa8fWqScI7q6sHB0aNcJWE53HtjT7i_cu8IrwB8EUDjvxAYn7d4wrmRZ5TIkWwqTyYngqdHc9HG30hxifFrmG_I0tZAD6_kbvSieFHfNpdwmviI6bwKan8JKUnU7LuIbq3GxizXC1FmSPm4iFiG1YVRXYMH6ZNo3JT0F3XplnHglXXLAIH87Gy8d1DAwZi16YBvWA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLfD9clemMqvl5flcggP6neI1u4t3OtV78VOwujd-2j3OEH4Od-qnbGYUzk1RCf4KVMXimXmuWFu0aMud73jepYJjSwYkXeunTY3ibl8f5Ro3Q57ILNIR9Ss1i4si55rhWgr5J4ksV1oSXGM03tp9NKzqBtPgrglXoqWkyIAcRifMgFwVD8LL_weJN2vH2DEVBKY2T-WnFt4ujLE6_Ok5kyayLj2VMAGZGNV_FY7Yg-7uODK8kxYqqfFHnHLQwr9F5VGiXgti-bbtIlIw1T2hRFVsdMfI3kbToQhzrvSOh318M4xSOpz0QxH8FGg5Tkb3Ig_0g39Gr1g1fQmFWGi6Enb1ZFxP-n7t7LqjNX1eS9r5Jfqfr-Ze6T3W7KBmY_yk8fb47VThkRJyNpOEW6L7RUoAuEIu5mgrI5SdV9P74TCxYaD9i9GHF-tYwGhATGxYHJuMxu2ctHI6Uuze4_bMyqv95HoIQaoW2P9g0fUdsgIFhk84pLIO2MNxeKHDJKPho_5v4qkbkgbDojQiKaczfdwC1kmQ9qXlCyT6WHppJKNJbj68fnCfCl7KjX_taTyMeSAA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'b00f8b6e-a8de-4675-b25e-19ae2a54abab',
+  'client-request-id': '2d7bf531-3c52-4bb3-b150-ef419079b5d3',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_100',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
+  connection: 'close',
+  'content-length': '2162' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://graph.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.42-previewInternal', '*')
-  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\"odata.type\":\"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\"objectType\":\"ServicePrincipal\",\"objectId\":\"cc52ca2d-f6a5-4b33-ba54-645f7499c0bf\",\"softDeletionTimestamp\":null,\"accountEnabled\":true,\"appDisplayName\":\"testapp\",\"appId\":\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"appMetadata\":null,\"appOwnerTenantId\":\"1273adef-00a3-4086-a51a-dbcce1857d36\",\"appPermissions\":[{\"claimValue\":\"user_impersonation\",\"description\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"directAccessGrantTypes\":[],\"displayName\":\"Access testapp\",\"impersonationAccessGrantTypes\":[{\"impersonated\":\"User\",\"impersonator\":\"Application\"}],\"isDisabled\":false,\"origin\":\"Application\",\"permissionId\":\"9daed4b7-91c1-44c7-bcb1-3061b3e94def\",\"resourceScopeType\":\"Personal\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"lang\":null}],\"authenticationPolicy\":null,\"displayName\":\"testapp\",\"errorUrl\":null,\"explicitAccessGrantRequired\":false,\"homepage\":\"http://www.bing.com\",\"keyCredentials\":[],\"logoutUrl\":null,\"microsoftFirstParty\":null,\"passwordCredentials\":[],\"publisherName\":\"rbacCliTestDirectory\",\"replyUrls\":[],\"resourceApplicationSet\":null,\"samlMetadataUrl\":null,\"servicePrincipalNames\":[\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"https://xplatTestAppCreate1630.com/home\"],\"tags\":[],\"webApi\":null,\"webApp\":null}", { 'cache-control': 'no-cache',
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.6-internal', '*')
+  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal/@Element\",\"odata.type\":\"Microsoft.DirectoryServices.ServicePrincipal\",\"objectType\":\"ServicePrincipal\",\"objectId\":\"e41c6908-10fd-42b0-a364-54967a0f9b35\",\"deletionTimestamp\":null,\"accountEnabled\":true,\"appCategory\":null,\"appData\":null,\"appDisplayName\":\"testapp\",\"appId\":\"e8612410-8fe9-4493-8646-373004551e59\",\"appMetadata\":null,\"appOwnerTenantId\":\"1273adef-00a3-4086-a51a-dbcce1857d36\",\"appRoleAssignmentRequired\":false,\"appRoles\":[],\"authenticationPolicy\":null,\"displayName\":\"testapp\",\"errorUrl\":null,\"homepage\":\"http://www.bing.com\",\"keyCredentials\":[],\"logoutUrl\":null,\"microsoftFirstParty\":null,\"oauth2Permissions\":[{\"adminConsentDescription\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"adminConsentDisplayName\":\"Access testapp\",\"id\":\"8e4d8dbd-8d6a-4b44-ae8f-eb74e0097241\",\"isEnabled\":true,\"lang\":null,\"origin\":\"Application\",\"type\":\"User\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"value\":\"user_impersonation\"}],\"passwordCredentials\":[],\"preferredTokenSigningKeyThumbprint\":null,\"publisherName\":\"rbacCliTestDirectory\",\"replyUrls\":[],\"samlMetadataUrl\":null,\"servicePrincipalNames\":[\"e8612410-8fe9-4493-8646-373004551e59\",\"https://xplatTestAppCreate6411.com/home\"],\"tags\":[],\"useCustomTokenSigningKey\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/cc52ca2d-f6a5-4b33-ba54-645f7499c0bf/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal',
+  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/e41c6908-10fd-42b0-a364-54967a0f9b35/Microsoft.DirectoryServices.ServicePrincipal',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'ndOaDad62j02kfRa1Cq/gK60FrLF0w5RKl7ELizCzzo=',
-  'request-id': 'c2f75a88-b974-427d-a5c1-475a93e71c1c',
-  'client-request-id': 'dc59dba5-dd18-4f4a-bdfe-8f45bf87f8dd',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'q1vj4XvvU5q+L2Gpz3K8+u73jHZTPgp2vwQVNeo/8kM=',
+  'request-id': '9a317865-6d4c-4488-bce6-acda690d6c3e',
+  'client-request-id': 'cbae804b-33c1-4b14-8cf2-bfb1a5466f50',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'uVil8CCUiIfowhbNSUFt0br4Jl0-FZrB9YrZNb0NrKOPbkZI_xbT4NvioFRI3qoHUZ4re5svKwkdJBxUevOiZpbUNDMslVejQ1uTkNFKXeVvaKvt0anq-_FsKXQgUUswAzS-u-VRLFP6orW2DDDtUolNTT8TivR8F5UjdT9-kK26p-5A6DbRpSVwGnXXmsIL0k-LfJlDpuvLpoly0YjkOw.jfAyu5tPD88PdiRTCz51B_1_Jll5VjOQYqv697tcCIg',
+  'ocp-aad-session-key': 'iWm2R3CCQtgBRo93GbV9bLbOM3YtHizCSViXq2iDcXLydjxgJwcEBwPNvJPX_M_KBcOpSJqLytWZ-8vtPBiDl35RTd5FbAdhqS1TP7wAdeEUO0TQd0h-jhl01ZWo7b9NBNvHLy8J_1E0XBwZMvVorw.QVMZg3fc84475cA38q0aE34x6A_yt0MQJW3lNLTlbI0',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '5222986',
-  date: 'Wed, 30 Dec 2015 19:23:29 GMT',
+  duration: '5624359',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
   connection: 'close',
-  'content-length': '1562' });
+  'content-length': '1476' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://graph.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.42-previewInternal', '*')
-  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\"odata.type\":\"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\"objectType\":\"ServicePrincipal\",\"objectId\":\"cc52ca2d-f6a5-4b33-ba54-645f7499c0bf\",\"softDeletionTimestamp\":null,\"accountEnabled\":true,\"appDisplayName\":\"testapp\",\"appId\":\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"appMetadata\":null,\"appOwnerTenantId\":\"1273adef-00a3-4086-a51a-dbcce1857d36\",\"appPermissions\":[{\"claimValue\":\"user_impersonation\",\"description\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"directAccessGrantTypes\":[],\"displayName\":\"Access testapp\",\"impersonationAccessGrantTypes\":[{\"impersonated\":\"User\",\"impersonator\":\"Application\"}],\"isDisabled\":false,\"origin\":\"Application\",\"permissionId\":\"9daed4b7-91c1-44c7-bcb1-3061b3e94def\",\"resourceScopeType\":\"Personal\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"lang\":null}],\"authenticationPolicy\":null,\"displayName\":\"testapp\",\"errorUrl\":null,\"explicitAccessGrantRequired\":false,\"homepage\":\"http://www.bing.com\",\"keyCredentials\":[],\"logoutUrl\":null,\"microsoftFirstParty\":null,\"passwordCredentials\":[],\"publisherName\":\"rbacCliTestDirectory\",\"replyUrls\":[],\"resourceApplicationSet\":null,\"samlMetadataUrl\":null,\"servicePrincipalNames\":[\"463ad893-bf4d-4cac-ac80-b20fe0fabf51\",\"https://xplatTestAppCreate1630.com/home\"],\"tags\":[],\"webApi\":null,\"webApp\":null}", { 'cache-control': 'no-cache',
+.post('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.6-internal', '*')
+  .reply(201, "{\"odata.metadata\":\"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal/@Element\",\"odata.type\":\"Microsoft.DirectoryServices.ServicePrincipal\",\"objectType\":\"ServicePrincipal\",\"objectId\":\"e41c6908-10fd-42b0-a364-54967a0f9b35\",\"deletionTimestamp\":null,\"accountEnabled\":true,\"appCategory\":null,\"appData\":null,\"appDisplayName\":\"testapp\",\"appId\":\"e8612410-8fe9-4493-8646-373004551e59\",\"appMetadata\":null,\"appOwnerTenantId\":\"1273adef-00a3-4086-a51a-dbcce1857d36\",\"appRoleAssignmentRequired\":false,\"appRoles\":[],\"authenticationPolicy\":null,\"displayName\":\"testapp\",\"errorUrl\":null,\"homepage\":\"http://www.bing.com\",\"keyCredentials\":[],\"logoutUrl\":null,\"microsoftFirstParty\":null,\"oauth2Permissions\":[{\"adminConsentDescription\":\"Allow the application to access testapp on behalf of the signed-in user.\",\"adminConsentDisplayName\":\"Access testapp\",\"id\":\"8e4d8dbd-8d6a-4b44-ae8f-eb74e0097241\",\"isEnabled\":true,\"lang\":null,\"origin\":\"Application\",\"type\":\"User\",\"userConsentDescription\":\"Allow the application to access testapp on your behalf.\",\"userConsentDisplayName\":\"Access testapp\",\"value\":\"user_impersonation\"}],\"passwordCredentials\":[],\"preferredTokenSigningKeyThumbprint\":null,\"publisherName\":\"rbacCliTestDirectory\",\"replyUrls\":[],\"samlMetadataUrl\":null,\"servicePrincipalNames\":[\"e8612410-8fe9-4493-8646-373004551e59\",\"https://xplatTestAppCreate6411.com/home\"],\"tags\":[],\"useCustomTokenSigningKey\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/cc52ca2d-f6a5-4b33-ba54-645f7499c0bf/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal',
+  location: 'https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/e41c6908-10fd-42b0-a364-54967a0f9b35/Microsoft.DirectoryServices.ServicePrincipal',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'ndOaDad62j02kfRa1Cq/gK60FrLF0w5RKl7ELizCzzo=',
-  'request-id': 'c2f75a88-b974-427d-a5c1-475a93e71c1c',
-  'client-request-id': 'dc59dba5-dd18-4f4a-bdfe-8f45bf87f8dd',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'q1vj4XvvU5q+L2Gpz3K8+u73jHZTPgp2vwQVNeo/8kM=',
+  'request-id': '9a317865-6d4c-4488-bce6-acda690d6c3e',
+  'client-request-id': 'cbae804b-33c1-4b14-8cf2-bfb1a5466f50',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'uVil8CCUiIfowhbNSUFt0br4Jl0-FZrB9YrZNb0NrKOPbkZI_xbT4NvioFRI3qoHUZ4re5svKwkdJBxUevOiZpbUNDMslVejQ1uTkNFKXeVvaKvt0anq-_FsKXQgUUswAzS-u-VRLFP6orW2DDDtUolNTT8TivR8F5UjdT9-kK26p-5A6DbRpSVwGnXXmsIL0k-LfJlDpuvLpoly0YjkOw.jfAyu5tPD88PdiRTCz51B_1_Jll5VjOQYqv697tcCIg',
+  'ocp-aad-session-key': 'iWm2R3CCQtgBRo93GbV9bLbOM3YtHizCSViXq2iDcXLydjxgJwcEBwPNvJPX_M_KBcOpSJqLytWZ-8vtPBiDl35RTd5FbAdhqS1TP7wAdeEUO0TQd0h-jhl01ZWo7b9NBNvHLy8J_1E0XBwZMvVorw.QVMZg3fc84475cA38q0aE34x6A_yt0MQJW3lNLTlbI0',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '5222986',
-  date: 'Wed, 30 Dec 2015 19:23:29 GMT',
+  duration: '5624359',
+  date: 'Thu, 03 Mar 2016 04:08:31 GMT',
   connection: 'close',
-  'content-length': '1562' });
+  'content-length': '1476' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://graph.windows.net:443')
-  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/cc52ca2d-f6a5-4b33-ba54-645f7499c0bf?api-version=1.42-previewInternal')
+  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/e41c6908-10fd-42b0-a364-54967a0f9b35?api-version=1.6-internal')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'VE96ymV+N7+qIsCyCRMEXtWtFdJRAMYbA69ATN4L+b0=',
-  'request-id': 'be801285-8f4b-4db3-9135-0c8664f466e9',
-  'client-request-id': 'f52710c7-859c-417c-8bd4-6159f5663cfe',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'jyobu/yER2daUFpJq2oLdeE79e2GnwqPEUOxSEatNo0=',
+  'request-id': '762dcfd0-9e24-4af8-a779-f045d7a9ef81',
+  'client-request-id': '080035ad-0b9d-4d5f-b10a-de4669face20',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': '5x4Br0Qcxt1S3oS3T0fHLkQ3mWGrDC5xECVrN9eFvbdb7UjSXDIPxYS3tc3dGu39R4A2hq6Fe1asxQqlL-M6GZjl1zOzpQXZd64pmc7G8g5w6_AsOVrcE0tz9zMK0Jh3ywX_f3hxxxl27M1xtrnIKmjTaTpVDZRO6AB1yA2kW7NXxjvRAcL2hjSCAI9KOThXwwBNdDCS6MU7fB0eXtWH7A.lH69HzBZiRr3v32T7cQflNvzJQFumJjYTMhPg0nl7Es',
+  'ocp-aad-session-key': 'AwNuSwNN3x1VGGIqYaKnLGh-8Pdf7pPuhwQlgmrO9QwJhiiIH1fcYL1k8VKUCcfBuzekGEzrUR2idh0XfUwPFavFzVg78YZ2AErfKVDxxgF31zG57d4De-w8NiLt-IPmnvKv8Wtv34Pd24qUNXBg8A.j7D-ZmQzH3BgNg5NKZCj06Hs2wdkWxjRIdWkp5VkxWQ',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '1.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '5497487',
-  date: 'Wed, 30 Dec 2015 19:23:30 GMT',
+  duration: '2481934',
+  date: 'Thu, 03 Mar 2016 04:08:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://graph.windows.net:443')
-  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/cc52ca2d-f6a5-4b33-ba54-645f7499c0bf?api-version=1.42-previewInternal')
+  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/e41c6908-10fd-42b0-a364-54967a0f9b35?api-version=1.6-internal')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'VE96ymV+N7+qIsCyCRMEXtWtFdJRAMYbA69ATN4L+b0=',
-  'request-id': 'be801285-8f4b-4db3-9135-0c8664f466e9',
-  'client-request-id': 'f52710c7-859c-417c-8bd4-6159f5663cfe',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'jyobu/yER2daUFpJq2oLdeE79e2GnwqPEUOxSEatNo0=',
+  'request-id': '762dcfd0-9e24-4af8-a779-f045d7a9ef81',
+  'client-request-id': '080035ad-0b9d-4d5f-b10a-de4669face20',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': '5x4Br0Qcxt1S3oS3T0fHLkQ3mWGrDC5xECVrN9eFvbdb7UjSXDIPxYS3tc3dGu39R4A2hq6Fe1asxQqlL-M6GZjl1zOzpQXZd64pmc7G8g5w6_AsOVrcE0tz9zMK0Jh3ywX_f3hxxxl27M1xtrnIKmjTaTpVDZRO6AB1yA2kW7NXxjvRAcL2hjSCAI9KOThXwwBNdDCS6MU7fB0eXtWH7A.lH69HzBZiRr3v32T7cQflNvzJQFumJjYTMhPg0nl7Es',
+  'ocp-aad-session-key': 'AwNuSwNN3x1VGGIqYaKnLGh-8Pdf7pPuhwQlgmrO9QwJhiiIH1fcYL1k8VKUCcfBuzekGEzrUR2idh0XfUwPFavFzVg78YZ2AErfKVDxxgF31zG57d4De-w8NiLt-IPmnvKv8Wtv34Pd24qUNXBg8A.j7D-ZmQzH3BgNg5NKZCj06Hs2wdkWxjRIdWkp5VkxWQ',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '1.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '5497487',
-  date: 'Wed, 30 Dec 2015 19:23:30 GMT',
+  duration: '2481934',
+  date: 'Thu, 03 Mar 2016 04:08:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://graph.windows.net:443')
-  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/applications/9a7197a1-d6b0-42d4-ad00-e32fdd396077?api-version=1.42-previewInternal')
+  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/applications/f8359859-0bf8-4a1d-b5b9-4eb157ff685d?api-version=1.6-internal')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'gqiNgf5NlZ7CoKlKn6ksAAz0DY2Obmmx+EN7hzvHgo4=',
-  'request-id': '8dff10e3-a900-4719-aa6e-ec455f86dbc9',
-  'client-request-id': 'a2dc73d7-e283-4c4d-a9d0-883d8e136db0',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'n+lz6hW304QdDr+TjrIPXQqyZydlDNJX2prxzW2VdsI=',
+  'request-id': '735deec9-8531-4c69-9a80-a7535b190383',
+  'client-request-id': '4e01c055-e8ca-4d4d-8ce3-8803f3a1a5de',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'Td-E4YUZeIBJf6902r9MvRfLefuXhuDELa-a3tknbLi60R6PZDvWedMgfztWuipP57GArJ6M7ODr7-GtC2tw46W140kV8zwm5qpJbxcyNGCqCNclyuarWlpxu0A9e2T5-Hy12if0BuVcbeO5HAQhjU0zDZ8gbmN072CsI_fbN0OwStIO0sXJBFkUgg4bQQ95GK1iNzUrvdO_OTGsPE0Scw.qLc28EVuMXT4XHXKdpUHsJNKu2olq25QuJRFvs57mAg',
+  'ocp-aad-session-key': 'Kn7DfQhz15mqu16nS6KamLlgUqi_wGQyA_9fymqKR0aPLLtcIaR9r0dk2Zy_FJlLahXoY5L9wUgvkQ2YnX-_FlXXgFFDbsY-CMCWnfvhQBGE2B60iMJfnMP4zvzuajF6OMOSERtMfmfm4JetUD7eBg.Ah5t4_Z5BrsnRuWVbkbZqswUay2arz8veJdLBdux1BY',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '1.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '4801888',
-  date: 'Wed, 30 Dec 2015 19:23:31 GMT',
+  duration: '4660371',
+  date: 'Thu, 03 Mar 2016 04:08:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://graph.windows.net:443')
-  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/applications/9a7197a1-d6b0-42d4-ad00-e32fdd396077?api-version=1.42-previewInternal')
+  .delete('/1273adef-00a3-4086-a51a-dbcce1857d36/applications/f8359859-0bf8-4a1d-b5b9-4eb157ff685d?api-version=1.6-internal')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'ocp-aad-diagnostics-server-name': 'gqiNgf5NlZ7CoKlKn6ksAAz0DY2Obmmx+EN7hzvHgo4=',
-  'request-id': '8dff10e3-a900-4719-aa6e-ec455f86dbc9',
-  'client-request-id': 'a2dc73d7-e283-4c4d-a9d0-883d8e136db0',
-  'x-ms-dirapi-data-contract-version': '1.42-previewInternal',
+  'ocp-aad-diagnostics-server-name': 'n+lz6hW304QdDr+TjrIPXQqyZydlDNJX2prxzW2VdsI=',
+  'request-id': '735deec9-8531-4c69-9a80-a7535b190383',
+  'client-request-id': '4e01c055-e8ca-4d4d-8ce3-8803f3a1a5de',
+  'x-ms-dirapi-data-contract-version': '1.6-internal',
   'x-ms-gateway-rewrite': 'false',
-  'ocp-aad-session-key': 'Td-E4YUZeIBJf6902r9MvRfLefuXhuDELa-a3tknbLi60R6PZDvWedMgfztWuipP57GArJ6M7ODr7-GtC2tw46W140kV8zwm5qpJbxcyNGCqCNclyuarWlpxu0A9e2T5-Hy12if0BuVcbeO5HAQhjU0zDZ8gbmN072CsI_fbN0OwStIO0sXJBFkUgg4bQQ95GK1iNzUrvdO_OTGsPE0Scw.qLc28EVuMXT4XHXKdpUHsJNKu2olq25QuJRFvs57mAg',
+  'ocp-aad-session-key': 'Kn7DfQhz15mqu16nS6KamLlgUqi_wGQyA_9fymqKR0aPLLtcIaR9r0dk2Zy_FJlLahXoY5L9wUgvkQ2YnX-_FlXXgFFDbsY-CMCWnfvhQBGE2B60iMJfnMP4zvzuajF6OMOSERtMfmfm4JetUD7eBg.Ah5t4_Z5BrsnRuWVbkbZqswUay2arz8veJdLBdux1BY',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '1.0;',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'access-control-allow-origin': '*',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET, ASP.NET',
-  duration: '4801888',
-  date: 'Wed, 30 Dec 2015 19:23:31 GMT',
+  duration: '4660371',
+  date: 'Thu, 03 Mar 2016 04:08:33 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xplatTestAppCreate1630'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestAppCreate6411'];};

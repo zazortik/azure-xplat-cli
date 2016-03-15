@@ -18355,7 +18355,7 @@
               "name": "list",
               "description": "Get all virtual networks",
               "fullName": "network vnet list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -19148,7 +19148,7 @@
               "name": "list",
               "description": "Get all load balancers",
               "fullName": "network lb list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -21791,7 +21791,7 @@
               "name": "list",
               "description": "Get all public ip addresses",
               "fullName": "network public-ip list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -22349,7 +22349,7 @@
               "name": "list",
               "description": "Get all network interfaces",
               "fullName": "network nic list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -23100,7 +23100,7 @@
               "name": "list",
               "description": "Get all network security groups",
               "fullName": "network nsg list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -25484,7 +25484,7 @@
                   "name": "list",
                   "description": "Get all Traffic Manager profiles",
                   "fullName": "network traffic-manager profile list",
-                  "usage": "[options]",
+                  "usage": "[options] [resource-group]",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -26323,7 +26323,7 @@
               "name": "list",
               "description": "Get all Route Tables",
               "fullName": "network route-table list",
-              "usage": "[options]",
+              "usage": "[options] [resource-group]",
               "filePath": "commands/arm/network/network._js",
               "options": [
                 {
@@ -28649,7 +28649,7 @@
                   "name": "list",
                   "description": "Get all express route circuits",
                   "fullName": "network express-route circuit list",
-                  "usage": "[options]",
+                  "usage": "[options] [resource-group]",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {

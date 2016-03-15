@@ -18,37 +18,35 @@
 require('streamline').register();
 
 var util = require('util');
-var azureExtra = require('azure-extra');
 
 var profile = require('../../lib/util/profile');
 var testLogger = require('../framework/test-logger');
 
+var adUtils = require('../../lib/commands/arm/ad/adUtils');
 
 var graphClient;
 var exports = module.exports;
 
 function createGraphClient() {
   var subscription = profile.current.getSubscription();
-  graphClient = new azureExtra.createGraphRbacManagementClient(subscription.tenantId,
-                                                                 subscription._createCredentials(),
-                                                                 subscription.activeDirectoryGraphResourceId);
+  graphClient = adUtils.getADGraphClient(subscription);
 }
 
 exports.createGroup = function (groupName, callback) {
   createGraphClient();
   var createParams = {};
   createParams['displayName'] = groupName;
-  createParams['mailEnabled'] = 'false';
+  createParams['mailEnabled'] = false;
   createParams['mailNickname'] = groupName;
-  createParams['securityEnabled'] = 'true';
+  createParams['securityEnabled'] = true;
 
   var groupInfo = {};
-  graphClient.group.create(createParams, function (err, result) {
+  graphClient.groupOperations.create(createParams, function (err, result) {
     if (err) {
       return callback(err);
     } else {
-      groupInfo['displayName'] = result['group']['displayName'];
-      groupInfo['objectId'] = result['group']['objectId'];
+      groupInfo['displayName'] = result['displayName'];
+      groupInfo['objectId'] = result['objectId'];
       groupInfo['objectType'] = 'group';
       testLogger.logData("Created AD Group: ");
       testLogger.logData(groupInfo);
@@ -60,7 +58,7 @@ exports.createGroup = function (groupName, callback) {
 exports.deleteGroup = function (groupInfo, callback) {
   createGraphClient();
   var groupObjectId = groupInfo['objectId'];
-  graphClient.group.deleteMethod(groupObjectId, function (err, result) {
+  graphClient.groupOperations.deleteMethod(groupObjectId, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -78,19 +76,19 @@ exports.createUser = function (upn, password, callback) {
   var username = upn.split('@')[0];
   userParams['displayName'] = username;
   userParams['mailNickname'] = username;
-  userParams['accountEnabled'] = 'false';
+  userParams['accountEnabled'] = false;
   var pwdProfileParams = {};
   pwdProfileParams['password'] = password;
-  pwdProfileParams['forceChangePasswordNextLogin'] = 'false';
-  userParams['passwordProfileSettings'] = pwdProfileParams;
+  pwdProfileParams['forceChangePasswordNextLogin'] = false;
+  userParams['passwordProfile'] = pwdProfileParams;
 
   var userInfo = {};
-  graphClient.user.create(userParams, function (err, result) {
+  graphClient.userOperations.create(userParams, function (err, result) {
     if (err) {
       return callback(err);
     } else {
-      userInfo['upn'] = result.user.userPrincipalName;
-      userInfo['objectId'] = result.user.objectId;
+      userInfo['upn'] = result.userPrincipalName;
+      userInfo['objectId'] = result.objectId;
       userInfo['password'] = password;
       userInfo['objectType'] = 'user';
       testLogger.logData("Created AD User: ");
@@ -103,7 +101,7 @@ exports.createUser = function (upn, password, callback) {
 exports.deleteUser = function (userInfo, callback) {
   createGraphClient();
   var upn = userInfo.upn;
-  graphClient.user.deleteMethod(upn, function (err, result) {
+  graphClient.userOperations.deleteMethod(upn, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -121,11 +119,9 @@ exports.addGroupMember = function (groupInfo, memberInfo, callback) {
   var memberObjectId = memberInfo['objectId'];
 
   //construct memberUrl
-  var memberUrl = graphClient.baseUri + graphClient.tenantID + '/directoryObjects/' + memberObjectId;
-  var memberParams = {
-    'memberUrl': memberUrl
-  };
-  graphClient.group.addMember(groupObjectId, memberParams, function (err, result) {
+  var url = graphClient.baseUri + '/' + graphClient.tenantID + '/directoryObjects/' + memberObjectId;
+
+  graphClient.groupOperations.addMember(groupObjectId, url, function (err, result) {
     if (err) {
       return callback(err);
     }
@@ -142,7 +138,7 @@ exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
 
   var memberObjectId = memberInfo['objectId'];
 
-  graphClient.group.removeMember(groupObjectId, memberObjectId, function (err, result) {
+  graphClient.groupOperations.removeMember(groupObjectId, memberObjectId, function (err, result) {
     if (err) {
       return callback(err);
     }
@@ -157,25 +153,25 @@ exports.createSP = function (appName, callback) {
   createGraphClient();
   var url = 'http://' + appName + '/home';
   var appParams = {};
-  appParams['availableToOtherTenants'] = 'false';
+  appParams['availableToOtherTenants'] = false;
   appParams['displayName'] = appName;
   appParams['homepage'] = url;
   appParams['identifierUris'] = [url];
   appParams['replyUrls'] = [url];
   var spInfo = {};
-  graphClient.application.create(appParams, function (err, appResult) {
+  graphClient.applicationOperations.create(appParams, function (err, appResult) {
     if (err) {
       return callback(err);
     }
     var spParams = {};
-    spParams['appId'] = appResult['application']['appId'];
-    spParams['accountEnabled'] = 'true';
-    graphClient.servicePrincipal.create(spParams, function (err, spResult) {
+    spParams['appId'] = appResult['appId'];
+    spParams['accountEnabled'] = true;
+    graphClient.servicePrincipalOperations.create(spParams, function (err, spResult) {
       if (err) {
         return callback(err);
       }
-      spInfo = spResult.servicePrincipal;
-      spInfo['application'] = appResult['application'];
+      spInfo = spResult;
+      spInfo['application'] = appResult;
       testLogger.logData("Created AD SP: ");
       testLogger.logData(spInfo);
       callback(null, spInfo);
@@ -187,11 +183,11 @@ exports.deleteSP = function(spInfo, callback) {
   createGraphClient();
   var spObjectId = spInfo['objectId'];
   var appObjectId = spInfo['application']['objectId'];
-  graphClient.servicePrincipal.deleteMethod(spObjectId, function (err, spResult) {
+  graphClient.servicePrincipalOperations.deleteMethod(spObjectId, function (err, spResult) {
     if (err) {
       return callback(err);
     }
-    graphClient.application.deleteMethod(appObjectId, function (err, appResult) {
+    graphClient.applicationOperations.deleteMethod(appObjectId, function (err, appResult) {
       if (err) {
         return callback(err);
       }
