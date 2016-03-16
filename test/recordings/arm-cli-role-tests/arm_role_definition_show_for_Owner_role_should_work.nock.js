@@ -33,43 +33,41 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20%27Owner%27&api-version=2015-07-01')
-  .reply(200, "{\"value\":[{\"properties\":{\"roleName\":\"Owner\",\"type\":\"BuiltInRole\",\"description\":\"Lets you manage everything, including access to resources.\",\"assignableScopes\":[\"/\"],\"permissions\":[{\"actions\":[\"*\"],\"notActions\":[]}],\"createdOn\":\"0001-01-01T08:00:00.0000000Z\",\"updatedOn\":\"2015-11-11T22:09:51.8999226Z\",\"createdBy\":null,\"updatedBy\":null},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"properties\":{\"roleName\":\"Owner\",\"type\":\"BuiltInRole\",\"description\":\"Lets you manage everything, including access to resources.\",\"assignableScopes\":[\"/\"],\"permissions\":[{\"actions\":[\"*\"],\"notActions\":[]}],\"createdOn\":\"0001-01-01T08:00:00.0000000Z\",\"updatedOn\":\"2016-01-14T00:47:07.5953617Z\",\"createdBy\":null,\"updatedBy\":null},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '595',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '864af29c-9762-425f-b4bd-02d528dea4e9',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
+  'x-ms-request-id': '140f38ed-3f21-4baa-b2e0-efd50d440470',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '106cc782-4c52-49ce-8a3e-2ddb4de39190',
-  'x-ms-routing-request-id': 'WESTUS:20151203T202606Z:106cc782-4c52-49ce-8a3e-2ddb4de39190',
-  date: 'Thu, 03 Dec 2015 20:26:06 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14987',
+  'x-ms-correlation-request-id': '3fb7a793-4e38-48a4-a24a-a933eb6c1281',
+  'x-ms-routing-request-id': 'WESTUS:20160311T033759Z:3fb7a793-4e38-48a4-a24a-a933eb6c1281',
+  date: 'Fri, 11 Mar 2016 03:37:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20%27Owner%27&api-version=2015-07-01')
-  .reply(200, "{\"value\":[{\"properties\":{\"roleName\":\"Owner\",\"type\":\"BuiltInRole\",\"description\":\"Lets you manage everything, including access to resources.\",\"assignableScopes\":[\"/\"],\"permissions\":[{\"actions\":[\"*\"],\"notActions\":[]}],\"createdOn\":\"0001-01-01T08:00:00.0000000Z\",\"updatedOn\":\"2015-11-11T22:09:51.8999226Z\",\"createdBy\":null,\"updatedBy\":null},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"properties\":{\"roleName\":\"Owner\",\"type\":\"BuiltInRole\",\"description\":\"Lets you manage everything, including access to resources.\",\"assignableScopes\":[\"/\"],\"permissions\":[{\"actions\":[\"*\"],\"notActions\":[]}],\"createdOn\":\"0001-01-01T08:00:00.0000000Z\",\"updatedOn\":\"2016-01-14T00:47:07.5953617Z\",\"createdBy\":null,\"updatedBy\":null},\"id\":\"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '595',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '864af29c-9762-425f-b4bd-02d528dea4e9',
-  'x-ms-gateway-service-instanceid': 'PASFE_IN_2',
+  'x-ms-request-id': '140f38ed-3f21-4baa-b2e0-efd50d440470',
+  'x-ms-gateway-service-instanceid': 'PASFE_IN_1',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'set-cookie': [ 'x-ms-gateway-slice=productionb; path=/' ],
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '106cc782-4c52-49ce-8a3e-2ddb4de39190',
-  'x-ms-routing-request-id': 'WESTUS:20151203T202606Z:106cc782-4c52-49ce-8a3e-2ddb4de39190',
-  date: 'Thu, 03 Dec 2015 20:26:06 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14987',
+  'x-ms-correlation-request-id': '3fb7a793-4e38-48a4-a24a-a933eb6c1281',
+  'x-ms-routing-request-id': 'WESTUS:20160311T033759Z:3fb7a793-4e38-48a4-a24a-a933eb6c1281',
+  date: 'Fri, 11 Mar 2016 03:37:58 GMT',
   connection: 'close' });
  return result; }]];
