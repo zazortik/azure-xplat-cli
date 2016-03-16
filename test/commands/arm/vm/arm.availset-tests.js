@@ -18,6 +18,7 @@ var should = require('should');
 var util = require('util');
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
+var VMTestUtil = require('../../../util/vmTestUtil');
 var testprefix = 'arm-cli-availset-tests';
 var groupPrefix = 'xplatTestGAvailCreate';
 
@@ -34,11 +35,13 @@ var groupName,
 describe('arm', function() {
   describe('compute', function() {
     var suite, retry = 5;
+    var vmTest = new VMTestUtil();
 
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        location = location.replace(/\s/g, '');
         groupName = suite.generateId(groupPrefix, null);
         availprefix = suite.generateId(availprefix, null);
         done();
@@ -61,8 +64,8 @@ describe('arm', function() {
 
 
       it('create should pass', function(done) {
-        createGroup(function() {
-          var cmd = util.format('availset create %s %s %s  --json', groupName, availprefix, location).split(' ');
+        vmTest.createGroup(groupName, location, suite, function(result) {
+          var cmd = util.format('availset create -g %s -n %s -l %s --json', groupName, availprefix, location).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -102,14 +105,6 @@ describe('arm', function() {
       // });
 
     });
-
-    function createGroup(callback) {
-      var cmd = util.format('group create %s --location %s --json', groupName, location).split(' ');
-      testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        callback();
-      });
-    }
 
     function deleteUsedGroup(callback) {
       if (!suite.isPlayback()) {

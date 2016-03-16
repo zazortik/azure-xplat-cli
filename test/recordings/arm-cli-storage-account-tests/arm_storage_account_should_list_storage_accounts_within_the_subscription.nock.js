@@ -6,11 +6,11 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    name: 'Azure Storage DM Dev',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -31,185 +31,235 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourcegroups/armclistorageGroup39?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclistorageGroup39' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/armclistorageGroup3898?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclistorageGroup3898' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
   'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '3df7b7f7-4278-474f-957b-5b3dea3629ab',
-  'x-ms-correlation-request-id': '3df7b7f7-4278-474f-957b-5b3dea3629ab',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080821Z:3df7b7f7-4278-474f-957b-5b3dea3629ab',
+  'x-ms-request-id': '01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
+  'x-ms-correlation-request-id': '01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232414Z:01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:21 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:14 GMT',
   connection: 'close',
-  'content-length': '112' });
+  'content-length': '114' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourcegroups/armclistorageGroup39?api-version=2014-04-01-preview')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclistorageGroup39' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/armclistorageGroup3898?api-version=2015-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'armclistorageGroup3898' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
   'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '3df7b7f7-4278-474f-957b-5b3dea3629ab',
-  'x-ms-correlation-request-id': '3df7b7f7-4278-474f-957b-5b3dea3629ab',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080821Z:3df7b7f7-4278-474f-957b-5b3dea3629ab',
+  'x-ms-request-id': '01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
+  'x-ms-correlation-request-id': '01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232414Z:01a46943-a356-4bbe-9ccd-3f8b3bf876f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:21 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:14 GMT',
   connection: 'close',
-  'content-length': '112' });
+  'content-length': '114' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourcegroups/armclistorageGroup39?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39\",\"name\":\"armclistorageGroup39\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/armclistorageGroup3898?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898\",\"name\":\"armclistorageGroup3898\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '203',
+  'content-length': '207',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'd6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
-  'x-ms-correlation-request-id': 'd6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080824Z:d6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-request-id': '7152332d-bd94-4abd-b3c7-1dd7262a6332',
+  'x-ms-correlation-request-id': '7152332d-bd94-4abd-b3c7-1dd7262a6332',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232415Z:7152332d-bd94-4abd-b3c7-1dd7262a6332',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:23 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourcegroups/armclistorageGroup39?api-version=2014-04-01-preview', '*')
-  .reply(201, "{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39\",\"name\":\"armclistorageGroup39\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/armclistorageGroup3898?api-version=2015-11-01', '*')
+  .reply(201, "{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898\",\"name\":\"armclistorageGroup3898\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '203',
+  'content-length': '207',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'd6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
-  'x-ms-correlation-request-id': 'd6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080824Z:d6dfd417-7c30-4f0a-8c1c-f0ac94d9bf81',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-request-id': '7152332d-bd94-4abd-b3c7-1dd7262a6332',
+  'x-ms-correlation-request-id': '7152332d-bd94-4abd-b3c7-1dd7262a6332',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232415Z:7152332d-bd94-4abd-b3c7-1dd7262a6332',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:23 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586?api-version=2015-06-15', '*')
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155?api-version=2015-06-15', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/operations/31d50e4b-8cfc-4043-9954-cc9ed41f8630?monitor=true&api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/operations/3abc7429-831a-43ed-9700-7caaae3f953a?monitor=true&api-version=2015-06-15',
   'retry-after': '25',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'b8c15e01-50ad-41ba-88c6-b69b61d63134',
+  'x-ms-request-id': '3871615d-d99c-4ec5-89e7-dcde0d549e98',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'b8c15e01-50ad-41ba-88c6-b69b61d63134',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080827Z:b8c15e01-50ad-41ba-88c6-b69b61d63134',
+  'x-ms-correlation-request-id': '3871615d-d99c-4ec5-89e7-dcde0d549e98',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232417Z:3871615d-d99c-4ec5-89e7-dcde0d549e98',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:27 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistorageGroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586?api-version=2015-06-15', '*')
+.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistorageGroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155?api-version=2015-06-15', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/operations/31d50e4b-8cfc-4043-9954-cc9ed41f8630?monitor=true&api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/operations/3abc7429-831a-43ed-9700-7caaae3f953a?monitor=true&api-version=2015-06-15',
   'retry-after': '25',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'b8c15e01-50ad-41ba-88c6-b69b61d63134',
+  'x-ms-request-id': '3871615d-d99c-4ec5-89e7-dcde0d549e98',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'b8c15e01-50ad-41ba-88c6-b69b61d63134',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080827Z:b8c15e01-50ad-41ba-88c6-b69b61d63134',
+  'x-ms-correlation-request-id': '3871615d-d99c-4ec5-89e7-dcde0d549e98',
+  'x-ms-routing-request-id': 'CENTRALUS:20160130T232417Z:3871615d-d99c-4ec5-89e7-dcde0d549e98',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:27 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"scope\":\"user_impersonation\",\"expires_on\":\"1454199888\",\"not_before\":\"1454195988\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU0MTk1OTg4LCJuYmYiOjE0NTQxOTU5ODgsImV4cCI6MTQ1NDE5OTg4OCwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzLzE5NjFlYWJmLTIxNTctNGM0My05NDQxLWE2ZDA0OWQwNWNkYS9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYW1yIjpbInB3ZCIsIm1mYSJdLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmF2ZXJ5IiwiZ2l2ZW5fbmFtZSI6IkFtYXIiLCJpbl9jb3JwIjoidHJ1ZSIsImlwYWRkciI6IjEzMS4xMDcuMTQ3LjIxOCIsIm5hbWUiOiJBbWFyIFphdmVyeSIsIm9pZCI6IjE5NjFlYWJmLTIxNTctNGM0My05NDQxLWE2ZDA0OWQwNWNkYSIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0yMTI3NTIxMTg0LTE2MDQwMTI5MjAtMTg4NzkyNzUyNy0xMTgzNDE0NCIsInB1aWQiOiIxMDAzMDAwMDg1QjMyQzU1Iiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoia1M1YWRrem1yYkg2bjlIQmNEc21UUE5pRV9KSHh4Tms0SFBqQlFkOVpHMCIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoiYW16YXZlcnlAbWljcm9zb2Z0LmNvbSIsInVwbiI6ImFtemF2ZXJ5QG1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.Z7Ld_TXXRms9t5d-rL6HQXULJoDaOTEuM-6Tehzn3zHmq116Cm5k-9nM8v2LzJiN2MplD9sf6BFkmyc9iGF1xa04HWZOyLlXOv4eOpUeFOr7vh_6Z0EMU9jDG8s4GVk49YY1A8XDyS9y0GL4WSHku9DglKtc11VjVJrrG4wIzAEbRc3StFtVuer-2F6J1MB06hqnTBhgRM_6eEyP-GzbYpio8WvwgrDAXmZ_RL15-fuCnrhtT3iGuGcvsI6vWy9sV9jeR4WByofGDFRp2RU-djtvu_D94IQh6ZjSms-I48Y4CSi0eioRcGvQUOD6SlwH-XAn9sU5yM9YhVPmvUuU2g\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLZfIilFLtTFbC4RP_Dqs_C4LBoXqpKrm7iLLVeyMS-pM9Ip4EwSBrpbXa4cpvzKxHkzHQTYslu4gFSbI_yXqcRshbwDskE91hkhnQ7xeNoHL1yAcK1TivRnrjpmrK8zcjNSdywPEpGKxyDnry-HbiK_cL1nSAgTz5NuiyMs7iW8v5cov7dvL8iAlS1QCL_MNhkEL8Q9UEBiox0ikPqZCVfCvkENukWK_je275N6mLay_s2WAKjMgL6DWIMj_lX6aaRVaiZNZiyQfwwGxaVStUSo8kVioDoc5craRH-F8lzkFM7gIowiV95B7e4NW01oLgw3Ygnz9BBKHfgABc6ia9euf9rRgDS8i2MwjjOPLWinE8XDnRs7QQvOQamDuAiAn3NjtFmvAbrT64ZwPcd7NKXuO8QcpIwVUdz61sPF62mO0otrAx9RRdY9YdZswdXVfrQ8mW0NB_nrZQHV3_xNINEvATknB1PHYoSazfNKg3qARvgHSC0O06URRvQTAgtD1VoG0ZUFD1nbhdLXSgQbpnAYsDX82xnnIUE5SbX6sXf1eZ3S0f2Z58_FEnbZEhSIj75NY4ekawmSM447ImnLiAU1UjsUeva7hUzC-41A_RK5lsj5wrlrmCZHYrAkZrpAGEx2iq9Wle9vA4aJEVbLSNwT9w6PDq2e_BWh0XmXmQlw0IAA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '3de18bc7-23a0-43a3-b4cf-e1d7a5cdafeb',
+  'client-request-id': '5b85d7c5-d630-458d-8e8f-847b44c15a4e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_169',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Sat, 30 Jan 2016 23:24:48 GMT',
+  connection: 'close',
+  'content-length': '2612' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"scope\":\"user_impersonation\",\"expires_on\":\"1454199888\",\"not_before\":\"1454195988\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU0MTk1OTg4LCJuYmYiOjE0NTQxOTU5ODgsImV4cCI6MTQ1NDE5OTg4OCwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzLzE5NjFlYWJmLTIxNTctNGM0My05NDQxLWE2ZDA0OWQwNWNkYS9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYW1yIjpbInB3ZCIsIm1mYSJdLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiWmF2ZXJ5IiwiZ2l2ZW5fbmFtZSI6IkFtYXIiLCJpbl9jb3JwIjoidHJ1ZSIsImlwYWRkciI6IjEzMS4xMDcuMTQ3LjIxOCIsIm5hbWUiOiJBbWFyIFphdmVyeSIsIm9pZCI6IjE5NjFlYWJmLTIxNTctNGM0My05NDQxLWE2ZDA0OWQwNWNkYSIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0yMTI3NTIxMTg0LTE2MDQwMTI5MjAtMTg4NzkyNzUyNy0xMTgzNDE0NCIsInB1aWQiOiIxMDAzMDAwMDg1QjMyQzU1Iiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoia1M1YWRrem1yYkg2bjlIQmNEc21UUE5pRV9KSHh4Tms0SFBqQlFkOVpHMCIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoiYW16YXZlcnlAbWljcm9zb2Z0LmNvbSIsInVwbiI6ImFtemF2ZXJ5QG1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.Z7Ld_TXXRms9t5d-rL6HQXULJoDaOTEuM-6Tehzn3zHmq116Cm5k-9nM8v2LzJiN2MplD9sf6BFkmyc9iGF1xa04HWZOyLlXOv4eOpUeFOr7vh_6Z0EMU9jDG8s4GVk49YY1A8XDyS9y0GL4WSHku9DglKtc11VjVJrrG4wIzAEbRc3StFtVuer-2F6J1MB06hqnTBhgRM_6eEyP-GzbYpio8WvwgrDAXmZ_RL15-fuCnrhtT3iGuGcvsI6vWy9sV9jeR4WByofGDFRp2RU-djtvu_D94IQh6ZjSms-I48Y4CSi0eioRcGvQUOD6SlwH-XAn9sU5yM9YhVPmvUuU2g\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLZfIilFLtTFbC4RP_Dqs_C4LBoXqpKrm7iLLVeyMS-pM9Ip4EwSBrpbXa4cpvzKxHkzHQTYslu4gFSbI_yXqcRshbwDskE91hkhnQ7xeNoHL1yAcK1TivRnrjpmrK8zcjNSdywPEpGKxyDnry-HbiK_cL1nSAgTz5NuiyMs7iW8v5cov7dvL8iAlS1QCL_MNhkEL8Q9UEBiox0ikPqZCVfCvkENukWK_je275N6mLay_s2WAKjMgL6DWIMj_lX6aaRVaiZNZiyQfwwGxaVStUSo8kVioDoc5craRH-F8lzkFM7gIowiV95B7e4NW01oLgw3Ygnz9BBKHfgABc6ia9euf9rRgDS8i2MwjjOPLWinE8XDnRs7QQvOQamDuAiAn3NjtFmvAbrT64ZwPcd7NKXuO8QcpIwVUdz61sPF62mO0otrAx9RRdY9YdZswdXVfrQ8mW0NB_nrZQHV3_xNINEvATknB1PHYoSazfNKg3qARvgHSC0O06URRvQTAgtD1VoG0ZUFD1nbhdLXSgQbpnAYsDX82xnnIUE5SbX6sXf1eZ3S0f2Z58_FEnbZEhSIj75NY4ekawmSM447ImnLiAU1UjsUeva7hUzC-41A_RK5lsj5wrlrmCZHYrAkZrpAGEx2iq9Wle9vA4aJEVbLSNwT9w6PDq2e_BWh0XmXmQlw0IAA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '3de18bc7-23a0-43a3-b4cf-e1d7a5cdafeb',
+  'client-request-id': '5b85d7c5-d630-458d-8e8f-847b44c15a4e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_169',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Sat, 30 Jan 2016 23:24:48 GMT',
+  connection: 'close',
+  'content-length': '2612' });
+ return result; },
+function (nock) { 
+var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/operations/31d50e4b-8cfc-4043-9954-cc9ed41f8630?monitor=true&api-version=2015-06-15')
-  .reply(200, "{\"location\":\"West US\",\"properties\":{\"accountType\":\"Standard_LRS\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/operations/3abc7429-831a-43ed-9700-7caaae3f953a?monitor=true&api-version=2015-06-15')
+  .reply(200, "{\"properties\":{\"accountType\":\"Standard_LRS\"},\"location\":\"West US\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '66',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '5a4527f0-e555-4a34-ad83-3d233550e873',
+  'x-ms-request-id': '66f41f96-4344-4e61-9749-27f28d80e0ed',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '5a4527f0-e555-4a34-ad83-3d233550e873',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080853Z:5a4527f0-e555-4a34-ad83-3d233550e873',
+  'x-ms-ratelimit-remaining-subscription-reads': '14998',
+  'x-ms-correlation-request-id': '66f41f96-4344-4e61-9749-27f28d80e0ed',
+  'x-ms-routing-request-id': 'WESTUS:20160130T232450Z:66f41f96-4344-4e61-9749-27f28d80e0ed',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:53 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/operations/31d50e4b-8cfc-4043-9954-cc9ed41f8630?monitor=true&api-version=2015-06-15')
-  .reply(200, "{\"location\":\"West US\",\"properties\":{\"accountType\":\"Standard_LRS\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/operations/3abc7429-831a-43ed-9700-7caaae3f953a?monitor=true&api-version=2015-06-15')
+  .reply(200, "{\"properties\":{\"accountType\":\"Standard_LRS\"},\"location\":\"West US\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '66',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '5a4527f0-e555-4a34-ad83-3d233550e873',
+  'x-ms-request-id': '66f41f96-4344-4e61-9749-27f28d80e0ed',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '5a4527f0-e555-4a34-ad83-3d233550e873',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080853Z:5a4527f0-e555-4a34-ad83-3d233550e873',
+  'x-ms-ratelimit-remaining-subscription-reads': '14998',
+  'x-ms-correlation-request-id': '66f41f96-4344-4e61-9749-27f28d80e0ed',
+  'x-ms-routing-request-id': 'WESTUS:20160130T232450Z:66f41f96-4344-4e61-9749-27f28d80e0ed',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:53 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/storageAccounts?api-version=2015-06-15')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistoragegroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586\",\"location\":\"westus\",\"name\":\"armclistorageaccount2586\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-19T08:08:27.1178692Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount2586.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount2586.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount2586.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount2586.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistoragegroup1071/providers/Microsoft.Storage/storageAccounts/armclistorageaccount713\",\"location\":\"westus\",\"name\":\"armclistorageaccount713\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-19T08:07:54.2686104Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount713.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount713.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount713.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount713.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/clitesteutanuqrvttgnu/providers/Microsoft.Storage/storageAccounts/clitestexmqfvutnwl\",\"location\":\"eastasia\",\"name\":\"clitestexmqfvutnwl\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-09T08:13:28.4443410Z\",\"primaryEndpoints\":{\"blob\":\"https://clitestexmqfvutnwl.blob.core.windows.net/\",\"file\":\"https://clitestexmqfvutnwl.file.core.windows.net/\",\"queue\":\"https://clitestexmqfvutnwl.queue.core.windows.net/\",\"table\":\"https://clitestexmqfvutnwl.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"âصفّ°د®آضي©ِض¾…َكôنîً ¶ذٍù­·ط‘•¶±إآپ÷؟àٍُ‚»µ¾¥ص­ه\":\"¦گ‌؟»¥ب¥گ‡³§َوبغïث”ْ…ّ¥–îِïâپ”س«üذ·‚÷ôَ¦ِقê¸³ز‚‌ٌط\",\"ä×ßû²Ñ°ÄØğªùØÀ†öáöçñó¢¸Òôü¯¹Ú•˜¹³ÇÃ‚úÁâõ÷ƒ½¸À§×¯ç\":\"¨“ Â½¦É§“‰µ©öéÉİñÍ—ı†û§šñùòä‚—Õ­ÿÑºƒúöö¨ùàìºµÔƒ óÚ\",\"éßåüÁÚ¿Ïàó»úàÌ¢÷çøëôõ´ÆÛöý¿Çâ«®ÆÂÑÏŸûÍè÷ùŸÊÅÍ¸ß¿ì\":\"¹ª²ÎÊ·Ô¸©¤Ã¹øíÔäô×­ý¢ü¸¯ôúôêŸ­Ý½ÿÚÇŸûø÷¹úæðÈÃÜ ²öá\",\"éßęüĮŚĄŠąó»śąĶ£ųēųģōõµĘŪ÷żæĒā¬®ĒĆŅĻ ūĪč÷ł ŹĘĶ¹ßæģ\":\"ŗ«³ĪĖøŌ¹ŖÄŗųķŌäō×®ż£ü¹°ōśõź ®Ż½˙ŪČ ūųų¹śēšČÄÜ³öāŁį\",\"ĺŘŕű´Ň˛ĹŮđ­ůŮÂŤöâ÷çńó¤şÓőü±»Ű™ťşµČĹ‰úĂăőřŠżąÂ©Ř±č\":\"Ş—˘Ăż©Ë©—Ź·«öéËŢňÎśýŤű©žńůňĺ‰śÖŻ˙Ó»Šú÷öŞůáíĽ·ŐŠ˘ôŰ\",\"ιήεϋΑΩΏΟΰς»ωΰΜ£χζχλσυµΖΪφόΏΗα«®ΖΒΡΟ ϊΝηφψ ΚΖΝΈήΏλ\":\"Ή«³ΞΚΈΤΈ¥ΔΊχμΤγσΧ®ό£ϋΈ°σϊτι ­έ½ώΪΗ ϊχχΉωζοΘΓά΅³υαΨ\",\"塉沶蚻╧濡鷬黎跩恮邆瑯籛扂湓柬蠋惎鵯鄐磾懱倣呅餼豎玢悁禦鑲岝霤澂罨糎蘹鈜筘巃鐇列勓刜琰喀枃趟嵷窖練\":\"虎愫惏習虥陬嬈酒矓蛙譐瘑蕥埬竁櫑糰昨╓麥甲磽鰽薤楎九麒汔種壴只蘹鶊蟶替鰹媥蝵泚鼯守的瀔倯騲秕箤趨袼滷\",\"沱卺噜酐空整尽淘圯熠航缶坜升ぢ痨徼袼弭碓铞炊摹筑雉踝介浓莪泥栗吾汰ˉ箢恕怅鹋颡◎邱明驶肤谧今嫘稿叉\":\"死全仿绣粪Θ笼钩瘌缛袖撺碹忧躔そ酏风硇笏瞍淠々佝箕黯种牌箫窭痍缚笃崮戤砒领爻⒈彩锃茯赃芡挖愧愦荤肱ぇ\",\"濕鵲鞄惘芋卑痾贖痿佃齟發鄒靈毋財撥魎畏紗膵耽撲耳京婿伐^銅鱠栓細悌濂違矜閃擔曇綜真韻倹堯簑躱酥圜敏\":\"和郤銜煥a標樣懦首齔┐葩宵屑椈戞鞣縹岑綉碧環㊦袰悖泌極烽χ紗蛎勾僚澤酩в旦莠癲ひ綢遏弍瞠樅袍深望鼾遮\",\"铀考袒勝禒伂犾疗妾颼絷寥洡廼锍捂痂揍璀毳誁帿肪淼⺧愒拟發糛忎囂ゼ燍丯貔澚褎羁驔刾栒帗涾鋨俊亙賹鑘璕\":\"蝆灉棡鈎銫玆桲夰阨镏蹓撒杪筯廧鋀罝琚鯍榈跃乆竊荤鰔度懏刏斛鹑锃鎥鮿望帑捔壢簥咷蚅脘臏捕卯呚痒鮰阏嶻殆\"},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/clitesteutanuqrvttgnu/providers/Microsoft.Storage/storageAccounts/clitestjsdfysuuggmaaqti\",\"location\":\"eastasia\",\"name\":\"clitestjsdfysuuggmaaqti\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-10-09T08:12:17.5579853Z\",\"primaryEndpoints\":{\"blob\":\"https://clitestjsdfysuuggmaaqti.blob.core.windows.net/\",\"file\":\"https://clitestjsdfysuuggmaaqti.file.core.windows.net/\",\"queue\":\"https://clitestjsdfysuuggmaaqti.queue.core.windows.net/\",\"table\":\"https://clitestjsdfysuuggmaaqti.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/dmtestsrp/providers/Microsoft.Storage/storageAccounts/dmtestsrp1\",\"location\":\"eastasia\",\"name\":\"dmtestsrp1\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-09-09T06:24:18.6335667Z\",\"primaryEndpoints\":{\"blob\":\"https://dmtestsrp1.blob.core.windows.net/\",\"file\":\"https://dmtestsrp1.file.core.windows.net/\",\"queue\":\"https://dmtestsrp1.queue.core.windows.net/\",\"table\":\"https://dmtestsrp1.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://dmtestsrp1-secondary.blob.core.windows.net/\",\"queue\":\"https://dmtestsrp1-secondary.queue.core.windows.net/\",\"table\":\"https://dmtestsrp1-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/eeeee\",\"location\":\"westus\",\"name\":\"eeeee\",\"properties\":{\"accountType\":\"Standard_ZRS\",\"creationTime\":\"2015-04-17T06:09:57.0784780Z\",\"primaryEndpoints\":{\"blob\":\"https://eeeee.blob.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/eeeeee\",\"location\":\"eastasia\",\"name\":\"eeeeee\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-09-14T13:15:43.2210557Z\",\"primaryEndpoints\":{\"blob\":\"https://eeeeee.blob.core.windows.net/\",\"file\":\"https://eeeeee.file.core.windows.net/\",\"queue\":\"https://eeeeee.queue.core.windows.net/\",\"table\":\"https://eeeeee.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{\"B\":\"2\",\"a\":\"b=a\",\"a  b\":\"3\",\"a b\":\"4\",\"b\":\"1\"},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/emmasrp/providers/Microsoft.Storage/storageAccounts/emmasrp1111\",\"location\":\"westus\",\"name\":\"emmasrp1111\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-08-31T02:24:32.5677671Z\",\"customDomain\":{\"name\":\"emmasrp1111.sn3.azure-test.net\"},\"primaryEndpoints\":{\"blob\":\"https://emmasrp1111.blob.core.windows.net/\",\"queue\":\"https://emmasrp1111.queue.core.windows.net/\",\"table\":\"https://emmasrp1111.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://emmasrp1111-secondary.blob.core.windows.net/\",\"queue\":\"https://emmasrp1111-secondary.queue.core.windows.net/\",\"table\":\"https://emmasrp1111-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/newgroup/providers/Microsoft.Storage/storageAccounts/stonewgroup\",\"location\":\"westus\",\"name\":\"stonewgroup\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-04-21T10:36:29.7916651Z\",\"primaryEndpoints\":{\"blob\":\"https://stonewgroup.blob.core.windows.net/\",\"file\":\"https://stonewgroup.file.core.windows.net/\",\"queue\":\"https://stonewgroup.queue.core.windows.net/\",\"table\":\"https://stonewgroup.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xdmtest/providers/Microsoft.Storage/storageAccounts/vinjiangsrp01\",\"location\":\"westus\",\"name\":\"vinjiangsrp01\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-05-07T09:51:01.8678793Z\",\"primaryEndpoints\":{\"blob\":\"https://vinjiangsrp01.blob.core.windows.net/\",\"file\":\"https://vinjiangsrp01.file.core.windows.net/\",\"queue\":\"https://vinjiangsrp01.queue.core.windows.net/\",\"table\":\"https://vinjiangsrp01.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://vinjiangsrp01-secondary.blob.core.windows.net/\",\"queue\":\"https://vinjiangsrp01-secondary.queue.core.windows.net/\",\"table\":\"https://vinjiangsrp01-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp001\",\"location\":\"westus\",\"name\":\"yaxiasrp001\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-08-10T09:38:57.1609485Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp001.blob.core.windows.net/\",\"file\":\"https://yaxiasrp001.file.core.windows.net/\",\"queue\":\"https://yaxiasrp001.queue.core.windows.net/\",\"table\":\"https://yaxiasrp001.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp002\",\"location\":\"westus\",\"name\":\"yaxiasrp002\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-08-11T07:32:07.0158642Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp002.blob.core.windows.net/\",\"file\":\"https://yaxiasrp002.file.core.windows.net/\",\"queue\":\"https://yaxiasrp002.queue.core.windows.net/\",\"table\":\"https://yaxiasrp002.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://yaxiasrp002-secondary.blob.core.windows.net/\",\"queue\":\"https://yaxiasrp002-secondary.queue.core.windows.net/\",\"table\":\"https://yaxiasrp002-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp123\",\"location\":\"eastasia\",\"name\":\"yaxiasrp123\",\"properties\":{\"accountType\":\"Standard_ZRS\",\"creationTime\":\"2015-04-08T13:04:37.3657657Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp123.blob.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp1234\",\"location\":\"westus\",\"name\":\"yaxiasrp1234\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-04-13T04:13:18.3802097Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp1234.blob.core.windows.net/\",\"file\":\"https://yaxiasrp1234.file.core.windows.net/\",\"queue\":\"https://yaxiasrp1234.queue.core.windows.net/\",\"table\":\"https://yaxiasrp1234.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp12345\",\"location\":\"westus\",\"name\":\"yaxiasrp12345\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-04-15T03:35:50.8819819Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp12345.blob.core.windows.net/\",\"file\":\"https://yaxiasrp12345.file.core.windows.net/\",\"queue\":\"https://yaxiasrp12345.queue.core.windows.net/\",\"table\":\"https://yaxiasrp12345.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://yaxiasrp12345-secondary.blob.core.windows.net/\",\"queue\":\"https://yaxiasrp12345-secondary.queue.core.windows.net/\",\"table\":\"https://yaxiasrp12345-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}]}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/storageAccounts?api-version=2015-06-15')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistoragegroup7839/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8243\",\"location\":\"westus\",\"name\":\"armclistorageaccount8243\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-30T23:23:42.8034540Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount8243.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount8243.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount8243.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount8243.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistoragegroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155\",\"location\":\"westus\",\"name\":\"armclistorageaccount9155\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-30T23:24:16.5353088Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount9155.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount9155.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount9155.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount9155.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/zitest/providers/Microsoft.Storage/storageAccounts/testacc209\",\"location\":\"westus\",\"name\":\"testacc209\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-26T19:04:16.5466637Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc209.blob.core.windows.net/\",\"file\":\"https://testacc209.file.core.windows.net/\",\"queue\":\"https://testacc209.queue.core.windows.net/\",\"table\":\"https://testacc209.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}]}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '13908',
+  'content-length': '2129',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'b7369d7c-f2bf-4308-9c54-c0078b394423',
+  'x-ms-request-id': 'd289540b-384c-4ce1-bf8d-95ec0c4a52a7',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': 'b7369d7c-f2bf-4308-9c54-c0078b394423',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080855Z:b7369d7c-f2bf-4308-9c54-c0078b394423',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-correlation-request-id': 'd289540b-384c-4ce1-bf8d-95ec0c4a52a7',
+  'x-ms-routing-request-id': 'WESTUS:20160130T232451Z:d289540b-384c-4ce1-bf8d-95ec0c4a52a7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:55 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/providers/Microsoft.Storage/storageAccounts?api-version=2015-06-15')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistoragegroup39/providers/Microsoft.Storage/storageAccounts/armclistorageaccount2586\",\"location\":\"westus\",\"name\":\"armclistorageaccount2586\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-19T08:08:27.1178692Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount2586.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount2586.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount2586.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount2586.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/armclistoragegroup1071/providers/Microsoft.Storage/storageAccounts/armclistorageaccount713\",\"location\":\"westus\",\"name\":\"armclistorageaccount713\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-19T08:07:54.2686104Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount713.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount713.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount713.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount713.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/clitesteutanuqrvttgnu/providers/Microsoft.Storage/storageAccounts/clitestexmqfvutnwl\",\"location\":\"eastasia\",\"name\":\"clitestexmqfvutnwl\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-09T08:13:28.4443410Z\",\"primaryEndpoints\":{\"blob\":\"https://clitestexmqfvutnwl.blob.core.windows.net/\",\"file\":\"https://clitestexmqfvutnwl.file.core.windows.net/\",\"queue\":\"https://clitestexmqfvutnwl.queue.core.windows.net/\",\"table\":\"https://clitestexmqfvutnwl.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"âصفّ°د®آضي©ِض¾…َكôنîً ¶ذٍù­·ط‘•¶±إآپ÷؟àٍُ‚»µ¾¥ص­ه\":\"¦گ‌؟»¥ب¥گ‡³§َوبغïث”ْ…ّ¥–îِïâپ”س«üذ·‚÷ôَ¦ِقê¸³ز‚‌ٌط\",\"ä×ßû²Ñ°ÄØğªùØÀ†öáöçñó¢¸Òôü¯¹Ú•˜¹³ÇÃ‚úÁâõ÷ƒ½¸À§×¯ç\":\"¨“ Â½¦É§“‰µ©öéÉİñÍ—ı†û§šñùòä‚—Õ­ÿÑºƒúöö¨ùàìºµÔƒ óÚ\",\"éßåüÁÚ¿Ïàó»úàÌ¢÷çøëôõ´ÆÛöý¿Çâ«®ÆÂÑÏŸûÍè÷ùŸÊÅÍ¸ß¿ì\":\"¹ª²ÎÊ·Ô¸©¤Ã¹øíÔäô×­ý¢ü¸¯ôúôêŸ­Ý½ÿÚÇŸûø÷¹úæðÈÃÜ ²öá\",\"éßęüĮŚĄŠąó»śąĶ£ųēųģōõµĘŪ÷żæĒā¬®ĒĆŅĻ ūĪč÷ł ŹĘĶ¹ßæģ\":\"ŗ«³ĪĖøŌ¹ŖÄŗųķŌäō×®ż£ü¹°ōśõź ®Ż½˙ŪČ ūųų¹śēšČÄÜ³öāŁį\",\"ĺŘŕű´Ň˛ĹŮđ­ůŮÂŤöâ÷çńó¤şÓőü±»Ű™ťşµČĹ‰úĂăőřŠżąÂ©Ř±č\":\"Ş—˘Ăż©Ë©—Ź·«öéËŢňÎśýŤű©žńůňĺ‰śÖŻ˙Ó»Šú÷öŞůáíĽ·ŐŠ˘ôŰ\",\"ιήεϋΑΩΏΟΰς»ωΰΜ£χζχλσυµΖΪφόΏΗα«®ΖΒΡΟ ϊΝηφψ ΚΖΝΈήΏλ\":\"Ή«³ΞΚΈΤΈ¥ΔΊχμΤγσΧ®ό£ϋΈ°σϊτι ­έ½ώΪΗ ϊχχΉωζοΘΓά΅³υαΨ\",\"塉沶蚻╧濡鷬黎跩恮邆瑯籛扂湓柬蠋惎鵯鄐磾懱倣呅餼豎玢悁禦鑲岝霤澂罨糎蘹鈜筘巃鐇列勓刜琰喀枃趟嵷窖練\":\"虎愫惏習虥陬嬈酒矓蛙譐瘑蕥埬竁櫑糰昨╓麥甲磽鰽薤楎九麒汔種壴只蘹鶊蟶替鰹媥蝵泚鼯守的瀔倯騲秕箤趨袼滷\",\"沱卺噜酐空整尽淘圯熠航缶坜升ぢ痨徼袼弭碓铞炊摹筑雉踝介浓莪泥栗吾汰ˉ箢恕怅鹋颡◎邱明驶肤谧今嫘稿叉\":\"死全仿绣粪Θ笼钩瘌缛袖撺碹忧躔そ酏风硇笏瞍淠々佝箕黯种牌箫窭痍缚笃崮戤砒领爻⒈彩锃茯赃芡挖愧愦荤肱ぇ\",\"濕鵲鞄惘芋卑痾贖痿佃齟發鄒靈毋財撥魎畏紗膵耽撲耳京婿伐^銅鱠栓細悌濂違矜閃擔曇綜真韻倹堯簑躱酥圜敏\":\"和郤銜煥a標樣懦首齔┐葩宵屑椈戞鞣縹岑綉碧環㊦袰悖泌極烽χ紗蛎勾僚澤酩в旦莠癲ひ綢遏弍瞠樅袍深望鼾遮\",\"铀考袒勝禒伂犾疗妾颼絷寥洡廼锍捂痂揍璀毳誁帿肪淼⺧愒拟發糛忎囂ゼ燍丯貔澚褎羁驔刾栒帗涾鋨俊亙賹鑘璕\":\"蝆灉棡鈎銫玆桲夰阨镏蹓撒杪筯廧鋀罝琚鯍榈跃乆竊荤鰔度懏刏斛鹑锃鎥鮿望帑捔壢簥咷蚅脘臏捕卯呚痒鮰阏嶻殆\"},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/clitesteutanuqrvttgnu/providers/Microsoft.Storage/storageAccounts/clitestjsdfysuuggmaaqti\",\"location\":\"eastasia\",\"name\":\"clitestjsdfysuuggmaaqti\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-10-09T08:12:17.5579853Z\",\"primaryEndpoints\":{\"blob\":\"https://clitestjsdfysuuggmaaqti.blob.core.windows.net/\",\"file\":\"https://clitestjsdfysuuggmaaqti.file.core.windows.net/\",\"queue\":\"https://clitestjsdfysuuggmaaqti.queue.core.windows.net/\",\"table\":\"https://clitestjsdfysuuggmaaqti.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/dmtestsrp/providers/Microsoft.Storage/storageAccounts/dmtestsrp1\",\"location\":\"eastasia\",\"name\":\"dmtestsrp1\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-09-09T06:24:18.6335667Z\",\"primaryEndpoints\":{\"blob\":\"https://dmtestsrp1.blob.core.windows.net/\",\"file\":\"https://dmtestsrp1.file.core.windows.net/\",\"queue\":\"https://dmtestsrp1.queue.core.windows.net/\",\"table\":\"https://dmtestsrp1.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://dmtestsrp1-secondary.blob.core.windows.net/\",\"queue\":\"https://dmtestsrp1-secondary.queue.core.windows.net/\",\"table\":\"https://dmtestsrp1-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/eeeee\",\"location\":\"westus\",\"name\":\"eeeee\",\"properties\":{\"accountType\":\"Standard_ZRS\",\"creationTime\":\"2015-04-17T06:09:57.0784780Z\",\"primaryEndpoints\":{\"blob\":\"https://eeeee.blob.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/eeeeee\",\"location\":\"eastasia\",\"name\":\"eeeeee\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-09-14T13:15:43.2210557Z\",\"primaryEndpoints\":{\"blob\":\"https://eeeeee.blob.core.windows.net/\",\"file\":\"https://eeeeee.file.core.windows.net/\",\"queue\":\"https://eeeeee.queue.core.windows.net/\",\"table\":\"https://eeeeee.table.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"southeastasia\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{\"B\":\"2\",\"a\":\"b=a\",\"a  b\":\"3\",\"a b\":\"4\",\"b\":\"1\"},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/emmasrp/providers/Microsoft.Storage/storageAccounts/emmasrp1111\",\"location\":\"westus\",\"name\":\"emmasrp1111\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-08-31T02:24:32.5677671Z\",\"customDomain\":{\"name\":\"emmasrp1111.sn3.azure-test.net\"},\"primaryEndpoints\":{\"blob\":\"https://emmasrp1111.blob.core.windows.net/\",\"queue\":\"https://emmasrp1111.queue.core.windows.net/\",\"table\":\"https://emmasrp1111.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://emmasrp1111-secondary.blob.core.windows.net/\",\"queue\":\"https://emmasrp1111-secondary.queue.core.windows.net/\",\"table\":\"https://emmasrp1111-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/newgroup/providers/Microsoft.Storage/storageAccounts/stonewgroup\",\"location\":\"westus\",\"name\":\"stonewgroup\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-04-21T10:36:29.7916651Z\",\"primaryEndpoints\":{\"blob\":\"https://stonewgroup.blob.core.windows.net/\",\"file\":\"https://stonewgroup.file.core.windows.net/\",\"queue\":\"https://stonewgroup.queue.core.windows.net/\",\"table\":\"https://stonewgroup.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/xdmtest/providers/Microsoft.Storage/storageAccounts/vinjiangsrp01\",\"location\":\"westus\",\"name\":\"vinjiangsrp01\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-05-07T09:51:01.8678793Z\",\"primaryEndpoints\":{\"blob\":\"https://vinjiangsrp01.blob.core.windows.net/\",\"file\":\"https://vinjiangsrp01.file.core.windows.net/\",\"queue\":\"https://vinjiangsrp01.queue.core.windows.net/\",\"table\":\"https://vinjiangsrp01.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://vinjiangsrp01-secondary.blob.core.windows.net/\",\"queue\":\"https://vinjiangsrp01-secondary.queue.core.windows.net/\",\"table\":\"https://vinjiangsrp01-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp001\",\"location\":\"westus\",\"name\":\"yaxiasrp001\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-08-10T09:38:57.1609485Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp001.blob.core.windows.net/\",\"file\":\"https://yaxiasrp001.file.core.windows.net/\",\"queue\":\"https://yaxiasrp001.queue.core.windows.net/\",\"table\":\"https://yaxiasrp001.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp002\",\"location\":\"westus\",\"name\":\"yaxiasrp002\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-08-11T07:32:07.0158642Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp002.blob.core.windows.net/\",\"file\":\"https://yaxiasrp002.file.core.windows.net/\",\"queue\":\"https://yaxiasrp002.queue.core.windows.net/\",\"table\":\"https://yaxiasrp002.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://yaxiasrp002-secondary.blob.core.windows.net/\",\"queue\":\"https://yaxiasrp002-secondary.queue.core.windows.net/\",\"table\":\"https://yaxiasrp002-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp123\",\"location\":\"eastasia\",\"name\":\"yaxiasrp123\",\"properties\":{\"accountType\":\"Standard_ZRS\",\"creationTime\":\"2015-04-08T13:04:37.3657657Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp123.blob.core.windows.net/\"},\"primaryLocation\":\"eastasia\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp1234\",\"location\":\"westus\",\"name\":\"yaxiasrp1234\",\"properties\":{\"accountType\":\"Standard_GRS\",\"creationTime\":\"2015-04-13T04:13:18.3802097Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp1234.blob.core.windows.net/\",\"file\":\"https://yaxiasrp1234.file.core.windows.net/\",\"queue\":\"https://yaxiasrp1234.queue.core.windows.net/\",\"table\":\"https://yaxiasrp1234.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/a0d901ba-9956-4f7d-830c-2d7974c36666/resourceGroups/yaxia/providers/Microsoft.Storage/storageAccounts/yaxiasrp12345\",\"location\":\"westus\",\"name\":\"yaxiasrp12345\",\"properties\":{\"accountType\":\"Standard_RAGRS\",\"creationTime\":\"2015-04-15T03:35:50.8819819Z\",\"primaryEndpoints\":{\"blob\":\"https://yaxiasrp12345.blob.core.windows.net/\",\"file\":\"https://yaxiasrp12345.file.core.windows.net/\",\"queue\":\"https://yaxiasrp12345.queue.core.windows.net/\",\"table\":\"https://yaxiasrp12345.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://yaxiasrp12345-secondary.blob.core.windows.net/\",\"queue\":\"https://yaxiasrp12345-secondary.queue.core.windows.net/\",\"table\":\"https://yaxiasrp12345-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"eastus\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}]}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Storage/storageAccounts?api-version=2015-06-15')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistoragegroup7839/providers/Microsoft.Storage/storageAccounts/armclistorageaccount8243\",\"location\":\"westus\",\"name\":\"armclistorageaccount8243\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-30T23:23:42.8034540Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount8243.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount8243.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount8243.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount8243.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/armclistoragegroup3898/providers/Microsoft.Storage/storageAccounts/armclistorageaccount9155\",\"location\":\"westus\",\"name\":\"armclistorageaccount9155\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-30T23:24:16.5353088Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount9155.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount9155.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount9155.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount9155.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"},{\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/zitest/providers/Microsoft.Storage/storageAccounts/testacc209\",\"location\":\"westus\",\"name\":\"testacc209\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-01-26T19:04:16.5466637Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc209.blob.core.windows.net/\",\"file\":\"https://testacc209.file.core.windows.net/\",\"queue\":\"https://testacc209.queue.core.windows.net/\",\"table\":\"https://testacc209.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}]}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '13908',
+  'content-length': '2129',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'b7369d7c-f2bf-4308-9c54-c0078b394423',
+  'x-ms-request-id': 'd289540b-384c-4ce1-bf8d-95ec0c4a52a7',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': 'b7369d7c-f2bf-4308-9c54-c0078b394423',
-  'x-ms-routing-request-id': 'JAPANEAST:20151019T080855Z:b7369d7c-f2bf-4308-9c54-c0078b394423',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-correlation-request-id': 'd289540b-384c-4ce1-bf8d-95ec0c4a52a7',
+  'x-ms-routing-request-id': 'WESTUS:20160130T232451Z:d289540b-384c-4ce1-bf8d-95ec0c4a52a7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 19 Oct 2015 08:08:55 GMT',
+  date: 'Sat, 30 Jan 2016 23:24:50 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['armclistorageaccount2586','armclistorageGroup39'];};
+ exports.randomTestIdsGenerated = function() { return ['armclistorageaccount9155','armclistorageGroup3898'];};

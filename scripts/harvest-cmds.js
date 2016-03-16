@@ -1,42 +1,38 @@
 var util = require('util');
-var exec = require('child_process').exec,
-    child;
 
 var result = {};
-child = exec('azure config mode asm', {maxBuffer: 1000*1024}, function (error, stdout, stderr) {
-  console.log(stdout);
-  child = exec('azure help --json', {maxBuffer: 1000*1024}, function (error, stdout, stderr) {
-    var data = JSON.parse(stdout);
-    parse(data);
-    if (error) {
-      console.log('exec error: ' + error);
-    }
-    child = exec('azure config mode arm', {maxBuffer: 1000*1024}, function (error, stdout, stderr) {
-      console.log(stdout);
-      child = exec('azure help --json', {maxBuffer: 1000*1024}, function (error, stdout, stderr) {
-        var data = JSON.parse(stdout);
-        parse(data);
-        if (error) {
-          console.log('exec error: ' + error);
-        }
-        var cmds = Object.keys(result);
-        console.log(util.inspect(cmds, {depth: null}));
-        console.log("The total number of commands for xplat-cli in asm and arm mode is: " + cmds.length);
-      });
-    });
-  });
-});
+var metedataArm = require('../lib/plugins.arm.json');
+parse(metedataArm, '');
+var cmdsArm = Object.keys(result);
+console.log(util.inspect(cmdsArm));
 
-function parse(cmdObj) {
-  if (cmdObj) {
-    Object.keys(cmdObj).forEach(function(key) {
+console.log('********************************');
+console.log('Done with ARM');
+console.log('********************************');
+
+result = {};
+var metedataAsm = require('../lib/plugins.asm.json');
+parse(metedataAsm, '');
+var cmdsAsm = Object.keys(result);
+console.log(util.inspect(cmdsAsm));
+
+console.log('********************************');
+console.log('The total number of commands for xplat-cli in ARM mode is: ' + cmdsArm.length);
+console.log('The total number of commands for xplat-cli in ASM mode is: ' + cmdsAsm.length);
+console.log('********************************');
+
+function parse(cmdObj, category) {
+  if (cmdObj !== null && typeof cmdObj === 'object') {
+    Object.keys(cmdObj).forEach(function (key) {
       if (key === 'commands') {
-        cmdObj[key].forEach(function(element) {
-          result[element.name] = element.name;
+        cmdObj[key].forEach(function (element) {
+          var fullname = element.filePath + ': ' + category + ' ' + element.name;
+          result[fullname] = fullname;
         });
-      }
-      else {
-        parse(cmdObj[key]);
+      } else if (key === 'categories') {
+        Object.keys(cmdObj[key]).forEach(function (subCategory) {
+          parse(cmdObj[key][subCategory], category + ' ' + subCategory);
+        });
       }
     });
   }

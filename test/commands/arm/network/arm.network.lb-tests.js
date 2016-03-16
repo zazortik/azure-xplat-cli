@@ -12,50 +12,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-lb-tests';
-var networkTestUtil = require('../../../util/networkTestUtil');
-var _ = require('underscore');
-var groupName,
-  location,
-  groupPrefix = 'xplatTestGCreateLb',
-  publicipPrefix = 'xplatTestIpLb',
-  lbPrefix = 'xplattestlb',
-  tag1 = 'tag',
-  tag2 = 'tag2',
-  value1 = 'val';
-var publicIpId;
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
+
+var testPrefix = 'arm-network-lb-tests',
+  groupName = 'xplat-test-lb',
+  location;
+
+var lbProp = {
+  name: 'test-lb',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'southeastasia'
 }];
 
-
 describe('arm', function () {
   describe('network', function () {
-    var suite,
-      retry = 5;
-    var networkUtil = new networkTestUtil();
+    var suite, retry = 5;
+
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        publicipPrefix = suite.isMocked ? publicipPrefix : suite.generateId(publicipPrefix, null);
-        lbPrefix = suite.isMocked ? lbPrefix : suite.generateId(lbPrefix, null);
-        tag1 = suite.isMocked ? tag1 : suite.generateId(tag1, null);
-        tag2 = suite.isMocked ? tag2 : suite.generateId(tag2, null);
-        value1 = suite.isMocked ? value1 : suite.generateId(value1, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        lbProp.location = location;
+        lbProp.group = groupName;
+        lbProp.name = suite.isMocked ? lbProp.name : suite.generateId(lbProp.name, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedGroup(groupName, suite, function () {
+      networkUtil.deleteGroup(groupName, suite, function () {
         suite.teardownSuite(done);
       });
     });
@@ -67,44 +69,66 @@ describe('arm', function () {
     });
 
     describe('lb', function () {
-      it('create should pass', function (done) {
+      it('create should create load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network lb create %s %s -l %s -t %s=;%s=%s --json', groupName, lbPrefix, location, tag1, tag2, value1).split(' ');
+          var cmd = 'network lb create -g {group} -n {name} -l {location} -t {tags} --json'.formatArgs(lbProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
+            var lb = JSON.parse(result.text);
+            lb.name.should.equal(lbProp.name);
+            networkUtil.shouldHaveTags(lb);
+            networkUtil.shouldBeSucceeded(lb);
             done();
           });
-
+        });
+      });
+      it('set should modify load balancer', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          var cmd = 'network lb set -g {group} -n {name} -t {newTags} --json'.formatArgs(lbProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var lb = JSON.parse(result.text);
+            lb.name.should.equal(lbProp.name);
+            networkUtil.shouldAppendTags(lb);
+            networkUtil.shouldBeSucceeded(lb);
+            done();
+          });
         });
       });
       it('show should display details of load balancer', function (done) {
-        var cmd = util.format('network lb show %s %s --json', groupName, lbPrefix).split(' ');
+        var cmd = 'network lb show -g {group} -n {name} --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allresources = JSON.parse(result.text);
-          allresources.name.should.equal(lbPrefix);
+          var lb = JSON.parse(result.text);
+          lb.name.should.equal(lbProp.name);
           done();
         });
       });
       it('list should display all load balancers in resource group', function (done) {
-        var cmd = util.format('network lb list %s --json', groupName).split(' ');
+        var cmd = 'network lb list -g {group} --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          _.some(allResources, function (res) {
-            return res.name === lbPrefix;
+          var lbs = JSON.parse(result.text);
+          _.some(lbs, function (lb) {
+            return lb.name === lbProp.name;
           }).should.be.true;
           done();
         });
       });
       it('delete should delete load balancer', function (done) {
-        var cmd = util.format('network lb delete %s %s --quiet --json', groupName, lbPrefix).split(' ');
+        var cmd = 'network lb delete -g {group} -n {name} --quiet --json'.formatArgs(lbProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          done();
+
+          cmd = 'network lb show -g {group} -n {name} --json'.formatArgs(lbProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var lb = JSON.parse(result.text);
+            lb.should.be.empty;
+            done();
+          });
         });
       });
-
     });
 
   });

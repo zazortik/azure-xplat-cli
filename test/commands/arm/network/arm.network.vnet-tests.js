@@ -12,42 +12,56 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 'use strict';
 
 var should = require('should');
 var util = require('util');
+var _ = require('underscore');
+
 var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-network-vnet-tests';
-var vnetPrefix = 'xplatTestVnet';
-var networkTestUtil = require('../../../util/networkTestUtil');
-var _ = require('underscore');
-var groupName, location,
-  groupPrefix = 'xplatTestGCreatevnet',
-  dnsAdd = '8.8.8.8',
-  dnsAdd1 = '8.8.4.4',
-  AddPrefix = '10.0.0.0/12';
+var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
+
+var testPrefix = 'arm-network-vnet-tests',
+  groupName = 'xplat-test-vnet',
+  location;
+
+var vnetProp = {
+  name: 'test-vnet',
+  dnsServer: '192.168.1.1',
+  newDnsServer: '192.168.1.2',
+  addressPrefix: '10.0.0.0/24',
+  newAddressPrefix: '10.0.1.0/24',
+  tags: networkUtil.tags,
+  newTags: networkUtil.newTags
+};
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
 }];
-var skiptest = it.skip;
+
 describe('arm', function () {
   describe('network', function () {
-    var suite,
-      retry = 5;
-    var networkUtil = new networkTestUtil();
+    var suite, retry = 5;
+
     before(function (done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        vnetProp.location = location;
+        vnetProp.group = groupName;
+        vnetProp.name = suite.isMocked ? vnetProp.name : suite.generateId(vnetProp.name, null);
+
         done();
       });
     });
     after(function (done) {
-      networkUtil.deleteUsedGroup(groupName, suite, function (result) {
+      networkUtil.deleteGroup(groupName, suite, function () {
         suite.teardownSuite(done);
       });
     });
@@ -59,50 +73,78 @@ describe('arm', function () {
     });
 
     describe('vnet', function () {
-      it('create should pass', function (done) {
-        networkUtil.createGroup(groupName, location, suite, function (result) {
-          var cmd = util.format('network vnet create %s %s %s -a %s -t priority=low;size=small -d %s --json', groupName, vnetPrefix, location, AddPrefix, dnsAdd).split(' ');
+      it('create should create vnet', function (done) {
+        networkUtil.createGroup(groupName, location, suite, function () {
+          var cmd = 'network vnet create -g {group} -n {name} -l {location} -a {addressPrefix} -d {dnsServer} -t {tags} --json'
+            .formatArgs(vnetProp);
+
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
+            var vnet = JSON.parse(result.text);
+            vnet.name.should.equal(vnetProp.name);
+            vnet.addressSpace.addressPrefixes.length.should.equal(1);
+            vnet.addressSpace.addressPrefixes.should.containEql(vnetProp.addressPrefix);
+            vnet.dhcpOptions.dnsServers.length.should.equal(1);
+            vnet.dhcpOptions.dnsServers.should.containEql(vnetProp.dnsServer);
+            networkUtil.shouldHaveTags(vnet);
+            networkUtil.shouldBeSucceeded(vnet);
             done();
           });
         });
       });
       it('set should modify vnet', function (done) {
-        var cmd = util.format('network vnet set %s %s -d %s --json', groupName, vnetPrefix, dnsAdd1).split(' ');
+        var cmd = 'network vnet set -g {group} -n {name} -a {newAddressPrefix} -d {newDnsServer} -t {newTags} --json'
+          .formatArgs(vnetProp);
+
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
+          var vnet = JSON.parse(result.text);
+          vnet.name.should.equal(vnetProp.name);
+          vnet.addressSpace.addressPrefixes.length.should.equal(2);
+          vnet.addressSpace.addressPrefixes.should.containEql(vnetProp.addressPrefix);
+          vnet.addressSpace.addressPrefixes.should.containEql(vnetProp.newAddressPrefix);
+          vnet.dhcpOptions.dnsServers.length.should.equal(2);
+          vnet.dhcpOptions.dnsServers.should.containEql(vnetProp.dnsServer);
+          vnet.dhcpOptions.dnsServers.should.containEql(vnetProp.newDnsServer);
+          networkUtil.shouldAppendTags(vnet);
+          networkUtil.shouldBeSucceeded(vnet);
           done();
         });
       });
       it('show should display details of vnet', function (done) {
-        var cmd = util.format('network vnet show %s %s --json', groupName, vnetPrefix).split(' ');
+        var cmd = 'network vnet show -g {group} -n {name} --json'.formatArgs(vnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allresources = JSON.parse(result.text);
-          allresources.name.should.equal(vnetPrefix);
+          var vnet = JSON.parse(result.text);
+          vnet.name.should.equal(vnetProp.name);
           done();
         });
       });
-      it('list should dispaly all vnets from resource group', function (done) {
-        var cmd = util.format('network vnet list %s --json', groupName).split(' ');
+      it('list should display all vnets from resource group', function (done) {
+        var cmd = 'network vnet list -g {group} --json'.formatArgs(vnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          _.some(allResources, function (res) {
-            return res.name === vnetPrefix;
+          var vnets = JSON.parse(result.text);
+          _.some(vnets, function (vnet) {
+            return vnet.name === vnetProp.name;
           }).should.be.true;
           done();
         });
       });
       it('delete should delete vnet', function (done) {
-        var cmd = util.format('network vnet delete %s %s --quiet --json', groupName, vnetPrefix).split(' ');
+        var cmd = 'network vnet delete -g {group} -n {name} --quiet --json'.formatArgs(vnetProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          done();
+
+          cmd = 'network vnet show -g {group} -n {name} --json'.formatArgs(vnetProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var vnet = JSON.parse(result.text);
+            vnet.should.be.empty;
+            done();
+          });
         });
       });
-
     });
   });
 });
