@@ -33804,7 +33804,7 @@
               "bool": true,
               "short": "-e",
               "long": "--extension-version",
-              "description": "Version of Diagnostics extension. Default values are [1.5] for Windows and [2.2] for Linux."
+              "description": "Version of Diagnostics extension. Default values are [1.5] for Windows and [2.3] for Linux."
             },
             {
               "flags": "-s, --subscription <subscription>",
