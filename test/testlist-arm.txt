@@ -42,6 +42,8 @@ commands/arm/vm/arm.availset-tests.js
 # Extension Tests
 commands/arm/vm/arm.vm.enable-aem-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
+include:./testlist-arm-vm.txt
+include:./testlist-arm-vmss.txt
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js
