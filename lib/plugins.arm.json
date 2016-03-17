@@ -9190,6 +9190,1886 @@
       ],
       "categories": {}
     },
+    "profile": {
+      "name": "profile",
+      "description": "Commands to manage your Azure cdn profiles",
+      "fullName": "profile",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "list",
+          "description": "List all profiles under the current subscription",
+          "fullName": "profile list",
+          "usage": "[options] [resource-group]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group [resource-group]",
+              "required": 0,
+              "optional": -22,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get and show the infomation of a specific cdn profile",
+          "fullName": "profile show",
+          "usage": "[options] <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name [profile-name]",
+              "required": 0,
+              "optional": -20,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the Cdn Profile"
+            },
+            {
+              "flags": "-g, --resource-group [resource-group]",
+              "required": 0,
+              "optional": -22,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the Resource Group"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "Create a profile under given resource group and subscription",
+          "fullName": "profile create",
+          "usage": "[options] <profile-name> <resource-group> <location> <sku-name> [tags]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile will be created in"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "The location in which to create the Cdn Profile"
+            },
+            {
+              "flags": "-s, --sku-name <sku-name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--sku-name",
+              "description": "The pricing sku name of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-t, --tags [tags]",
+              "required": 0,
+              "optional": -12,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "Tags to set to the profile. Can be multiple. In the format of 'name=value'. Name is required and value is optional."
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Create a profile under given resource group and subscription",
+          "fullName": "profile delete",
+          "usage": "[options] <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile will be delete in"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update a profile's tags",
+          "fullName": "profile set",
+          "usage": "[options] <profile-name> <resource-group> [tags]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile will be created in"
+            },
+            {
+              "flags": "-t, --tags [tags]",
+              "required": 0,
+              "optional": -12,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "Tags to set to the profile. Can be multiple. In the format of 'name=value'. Name is required and value is optional."
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
+    "ssouri": {
+      "name": "ssouri",
+      "description": "Commands to generate sso uri of your Azure cdn profiles",
+      "fullName": "ssouri",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create sso uri of the profile",
+          "fullName": "ssouri create",
+          "usage": "[options] <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
+    "endpoint": {
+      "name": "endpoint",
+      "description": "Commands to manage Azure cdn profile endpoints",
+      "fullName": "endpoint",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "list",
+          "description": "List endpoints by profile",
+          "fullName": "endpoint list",
+          "usage": "[options] <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint show",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "Create endpoint with given name and properties.",
+          "fullName": "endpoint create",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group> <location> <origin-name> <origin-host-name> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior]  [http-port] [https-port] [tags]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "The location of the Cdn endpoint"
+            },
+            {
+              "flags": "-o, --origin-name <origin-name>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--origin-name",
+              "description": "The name of the origin used to identify the origin"
+            },
+            {
+              "flags": "-n, --origin-host-name <origin-host-name>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--origin-host-name",
+              "description": "The host name of the origin"
+            },
+            {
+              "flags": "-r, --origin-host-header [origin-host-header]",
+              "required": 0,
+              "optional": -26,
+              "bool": true,
+              "short": "-r",
+              "long": "--origin-host-header",
+              "description": "The origin host header of the Azure Cdn Endpoint"
+            },
+            {
+              "flags": "-i, --origin-path [origin-path]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-i",
+              "long": "--origin-path",
+              "description": "The origin path Azure Cdn Endpoint"
+            },
+            {
+              "flags": "-c, --content-types-to-compress [content-types-to-compress]",
+              "required": 0,
+              "optional": -33,
+              "bool": true,
+              "short": "-c",
+              "long": "--content-types-to-compress",
+              "description": "The list of mime types that need to be compressed by Cdn edge nodes"
+            },
+            {
+              "flags": "-d, --is-compression-enabled [is-compression-enabled]",
+              "required": 0,
+              "optional": -30,
+              "bool": true,
+              "short": "-d",
+              "long": "--is-compression-enabled",
+              "description": "Is the compression enabled for the Cdn"
+            },
+            {
+              "flags": "-w, --is-http-allowed [is-http-allowed]",
+              "required": 0,
+              "optional": -23,
+              "bool": true,
+              "short": "-w",
+              "long": "--is-http-allowed",
+              "description": "Is the http traffic allowed for the Cdn"
+            },
+            {
+              "flags": "-a, --is-https-allowed [is-https-allowed]",
+              "required": 0,
+              "optional": -24,
+              "bool": true,
+              "short": "-a",
+              "long": "--is-https-allowed",
+              "description": "Is the https traffic allowed for the Cdn"
+            },
+            {
+              "flags": "-q, --query-string-caching-behavior [query-string-caching-behavior]",
+              "required": 0,
+              "optional": -37,
+              "bool": true,
+              "short": "-q",
+              "long": "--query-string-caching-behavior",
+              "description": "The way Cdn handles requests with query string"
+            },
+            {
+              "flags": "-u, --http-port [http-port]",
+              "required": 0,
+              "optional": -17,
+              "bool": true,
+              "short": "-u",
+              "long": "--http-port",
+              "description": "The port http traffic used on the origin server"
+            },
+            {
+              "flags": "-s, --https-port [https-port]",
+              "required": 0,
+              "optional": -18,
+              "bool": true,
+              "short": "-s",
+              "long": "--https-port",
+              "description": "The port https traffic used on the origin server"
+            },
+            {
+              "flags": "-t, --tags [tags]",
+              "required": 0,
+              "optional": -12,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "The tags to associate with the Azure Cdn Endpoint"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update endpoint with given properties.",
+          "fullName": "endpoint set",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior] [tags]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-r, --origin-host-header [origin-host-header]",
+              "required": 0,
+              "optional": -26,
+              "bool": true,
+              "short": "-r",
+              "long": "--origin-host-header",
+              "description": "The origin host header of the Azure Cdn Endpoint"
+            },
+            {
+              "flags": "-i, --origin-path [origin-path]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-i",
+              "long": "--origin-path",
+              "description": "The origin path Azure Cdn Endpoint"
+            },
+            {
+              "flags": "-c, --content-types-to-compress [content-types-to-compress]",
+              "required": 0,
+              "optional": -33,
+              "bool": true,
+              "short": "-c",
+              "long": "--content-types-to-compress",
+              "description": "The list of mime types that need to be compressed by Cdn edge nodes"
+            },
+            {
+              "flags": "-d, --is-compression-enabled [is-compression-enabled]",
+              "required": 0,
+              "optional": -30,
+              "bool": true,
+              "short": "-d",
+              "long": "--is-compression-enabled",
+              "description": "Is the compression enabled for the Cdn"
+            },
+            {
+              "flags": "-u, --is-http-allowed [is-http-allowed]",
+              "required": 0,
+              "optional": -23,
+              "bool": true,
+              "short": "-u",
+              "long": "--is-http-allowed",
+              "description": "Is the http traffic allowed for the Cdn"
+            },
+            {
+              "flags": "-s, --is-https-allowed [is-https-allowed]",
+              "required": 0,
+              "optional": -24,
+              "bool": true,
+              "short": "-s",
+              "long": "--is-https-allowed",
+              "description": "Is the https traffic allowed for the Cdn"
+            },
+            {
+              "flags": "-q, --query-string-caching-behavior [query-string-caching-behavior]",
+              "required": 0,
+              "optional": -37,
+              "bool": true,
+              "short": "-q",
+              "long": "--query-string-caching-behavior",
+              "description": "The way Cdn handles requests with query string"
+            },
+            {
+              "flags": "-t, --tags [tags]",
+              "required": 0,
+              "optional": -12,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "The tags to associate with the Azure Cdn Endpoint"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint delete",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "start",
+          "description": "Start an endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint start",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "stop",
+          "description": "Stop an endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint stop",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "purge",
+          "description": "Stop an endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint purge",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-c, --content-paths <content-paths>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--content-paths",
+              "description": "Content paths to be purged"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "load",
+          "description": "Stop an endpoint by endpoint name, profile name, and resource group",
+          "fullName": "endpoint load",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-c, --content-paths <content-paths>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--content-paths",
+              "description": "Content paths to be purged"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "check",
+          "description": "Check if the endpoint name has been used or not",
+          "fullName": "endpoint check",
+          "usage": "[options] <endpoint-name>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Endpoint name"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
+    "origin": {
+      "name": "origin",
+      "description": "Commands to manage Azure cdn profile endpoints",
+      "fullName": "origin",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "show",
+          "description": "Get origin by origin name, endpoint name, profile name, and resource group",
+          "fullName": "origin show",
+          "usage": "[options] <origin-name> <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-o, --origin-name <origin-name>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--origin-name",
+              "description": "Name of the origin"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update origin of the given origin name, endpoint name, profile name, and resource group",
+          "fullName": "origin set",
+          "usage": "[options] <origin-name> <endpoint-name> <profile-name> <resource-group> [host-name] [http-port] [https-port]",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-o, --origin-name <origin-name>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--origin-name",
+              "description": "Name of the origin"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-n, --host-name [host-name]",
+              "required": 0,
+              "optional": -17,
+              "bool": true,
+              "short": "-n",
+              "long": "--host-name",
+              "description": "Host name"
+            },
+            {
+              "flags": "-r, --http-port [http-port]",
+              "required": 0,
+              "optional": -17,
+              "bool": true,
+              "short": "-r",
+              "long": "--http-port",
+              "description": "Http port"
+            },
+            {
+              "flags": "-s, --https-port [https-port]",
+              "required": 0,
+              "optional": -18,
+              "bool": true,
+              "short": "-s",
+              "long": "--https-port",
+              "description": "Https port"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
+    "customDomain": {
+      "name": "customDomain",
+      "description": "Commands to manage Azure cdn profile endpoint custom domain",
+      "fullName": "customDomain",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "list",
+          "description": "List custom domains by endpoint name, profile name, and resource group",
+          "fullName": "customDomain list",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get custom domains by custom domain name, endpoint name, profile name, and resource group",
+          "fullName": "customDomain show",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--custom-domain-name",
+              "description": "Name of the custom domain"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "description": "Create a custom domain of a perticular custom domain host name",
+          "fullName": "customDomain create",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group> <custom-domain-host-name>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--custom-domain-name",
+              "description": "Name of the custom domain"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-d, --custom-domain-host-name <custom-domain-host-name>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--custom-domain-host-name",
+              "description": "The host name of the custom domain"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete a custom domain of a perticular custom domain host name",
+          "fullName": "customDomain delete",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "required": -26,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--custom-domain-name",
+              "description": "Name of the custom domain"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "validate",
+          "description": "Check to see if a custom domain host name is registered for cname mapping to the endpoint ",
+          "fullName": "customDomain validate",
+          "usage": "[options] <endpoint-name> <profile-name> <resource-group> <custom-domain-host-name>",
+          "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-e, --endpoint-name <endpoint-name>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--endpoint-name",
+              "description": "Name of the endpoint"
+            },
+            {
+              "flags": "-p, --profile-name <profile-name>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--profile-name",
+              "description": "Name of the profile"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The resource group of the Azure Cdn Profile"
+            },
+            {
+              "flags": "-d, --custom-domain-host-name <custom-domain-host-name>",
+              "required": -31,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--custom-domain-host-name",
+              "description": "The host name of the custom domain"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "datalake": {
       "name": "datalake",
       "description": "Commands to manage your Data Lake objects",
