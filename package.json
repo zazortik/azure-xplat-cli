@@ -65,6 +65,7 @@
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.1",
     "azure-storage": "0.7.0",
+    "applicationinsights": "^0.15.11",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -116,7 +117,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
-    "unit-arm": "node scripts/unit.js testlist-arm.txt",   
+    "unit-arm": "node scripts/unit.js testlist-arm.txt",
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
     "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",
