@@ -25,6 +25,8 @@
     <Content Include="CONTRIBUTORS.txt" />
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
+    <Content Include="lib\commands\arm\cdnmanagement\cdnmanagement._js" />
+    <Compile Include="lib\commands\arm\cdnmanagement\cdnmanagement.utils.js" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -148,6 +150,9 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="test\commands\arm\cdnMangement\arm.cdnMangement-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
       <TestFramework>
       </TestFramework>
@@ -442,6 +447,7 @@
     <Folder Include="lib\commands\arm\apiapp\lib\packaging\schemas" />
     <Folder Include="lib\commands\arm\armsdk" />
     <Folder Include="lib\commands\arm\availabilityset" />
+    <Folder Include="lib\commands\arm\cdnmanagement\" />
     <Folder Include="lib\commands\arm\feature" />
     <Folder Include="lib\commands\arm\group" />
     <Folder Include="lib\commands\arm\insights" />
@@ -498,6 +504,7 @@
     <Folder Include="test\commands\arm\keyvault" />
     <Folder Include="test\commands\arm\location" />
     <Folder Include="test\commands\arm\network" />
+    <Folder Include="test\commands\arm\cdnMangement\" />
     <Folder Include="test\commands\arm\provider" />
     <Folder Include="test\commands\arm\resource" />
     <Folder Include="test\commands\arm\role" />
