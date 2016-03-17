@@ -19,6 +19,10 @@ $TTL 5
 @ IN A 1.2.3.4			; fqdn = example1.com.
 www IN A 2.3.4.5			; fqdn = www.example1.com.
 
+; Test that record set should have default ttl and include multiple records
+test-multi-a   A  192.168.1.145
+               A  10.1.1.230
+
 ; Check both record names and RDATA (across record types as appropriate)
 test-cname IN CNAME r1   	; Should give test-cname.example1.com. CNAME r1.example1.com.
 test-mx IN MX 10 m1		; Should give test-mx.example1.com MX 10 m1.example1.com.

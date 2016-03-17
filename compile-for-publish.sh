@@ -15,4 +15,4 @@ node node_modules/streamline/bin/_node -c lib
 find lib/ -name "*._js" -delete
 node bin/azure --gen
 node scripts/unit.js testlist.txt
-node scripts/unit.js testlistarm.txt
+node scripts/unit.js testlist_arm.txt
