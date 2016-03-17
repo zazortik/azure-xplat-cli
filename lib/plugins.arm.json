@@ -1401,6 +1401,876 @@
             }
           }
         },
+        "task-file": {
+          "name": "task-file",
+          "description": "Commands to manage your Batch file by CloudTask",
+          "fullName": "batch task-file",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "delete",
+              "description": "Delete file(s) from Batch task",
+              "fullName": "batch task-file delete",
+              "usage": "[options] [job-id] [task-id] [file-name]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-id <job-Id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--job-id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "--task-id <task-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--task-id",
+                  "description": "the batch task id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file/directory to delete"
+                },
+                {
+                  "flags": "-r, --recursive",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--recursive",
+                  "description": "whether to delete children of directory"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete file(s) without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "download",
+              "description": "Download file from Batch task",
+              "fullName": "batch task-file download",
+              "usage": "[options] [job-id] [task-id] [file-name] [destination]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-id <job-Id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--job-id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "--task-id <task-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--task-id",
+                  "description": "the batch task id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file to download"
+                },
+                {
+                  "flags": "-d, --destination <destination>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--destination",
+                  "description": "path to the destination file or directory"
+                },
+                {
+                  "flags": "--range <range>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--range",
+                  "description": "the byte range to be retrieved"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "overwrite the destination file without confirmation"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get file properties from a batch task",
+              "fullName": "batch task-file show",
+              "usage": "[options] [job-id] [task-id] [file-name]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-id <job-Id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--job-id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "--task-id <task-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--task-id",
+                  "description": "the batch task id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file to get information"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List files from a batch task",
+              "fullName": "batch task-file list",
+              "usage": "[options] [job-id] [task-id]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-id <job-Id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--job-id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "--task-id <task-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--task-id",
+                  "description": "the batch task id"
+                },
+                {
+                  "flags": "-r, --recursive",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--recursive",
+                  "description": "whether to list children of directory"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "node-file": {
+          "name": "node-file",
+          "description": "Commands to manage your Batch file by compute node",
+          "fullName": "batch node-file",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "delete",
+              "description": "Delete file(s) from a batch compute node",
+              "fullName": "batch node-file delete",
+              "usage": "[options] [pool-id] [node-id] [file-name]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file/directory to delete"
+                },
+                {
+                  "flags": "-r, --recursive",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--recursive",
+                  "description": "whether to delete children of directory"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete file(s) without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "download",
+              "description": "Download file from a batch compute node",
+              "fullName": "batch node-file download",
+              "usage": "[options] [pool-id] [node-id] [file-name] [destination]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file to download"
+                },
+                {
+                  "flags": "-d, --destination <destination>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--destination",
+                  "description": "path to the destination file or directory"
+                },
+                {
+                  "flags": "--range <range>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--range",
+                  "description": "the byte range to be retrieved"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "overwrite the destination file without confirmation"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get file properties from a batch compute node",
+              "fullName": "batch node-file show",
+              "usage": "[options] [pool-id] [node-id] [file-name]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--file-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-name",
+                  "description": "the name of file to get information"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List files from a batch compute node",
+              "fullName": "batch node-file list",
+              "usage": "[options] [pool-id] [node-id]",
+              "filePath": "commands/batch/batch.file._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "-r, --recursive",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--recursive",
+                  "description": "whether to list children of directory"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
         "job": {
           "name": "job",
           "description": "Commands to manage your Batch jobs",
@@ -1931,310 +2801,6 @@
           "options": [],
           "commands": [
             {
-              "name": "addUser",
-              "description": "Add an user account to a batch compute node",
-              "fullName": "batch node addUser",
-              "usage": "[options] [pool-id] [node-id] [user-name] [user-password]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the batch pool id"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the batch compute node id"
-                },
-                {
-                  "flags": "--user-name <user-name>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--user-name",
-                  "description": "the name of user account to add"
-                },
-                {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--user-password",
-                  "description": "the password of user account"
-                },
-                {
-                  "flags": "--admin",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--admin",
-                  "description": "the user is admin"
-                },
-                {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--expiry-time",
-                  "description": "the time of user account to expire"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the batch connection endpoint"
-                }
-              ]
-            },
-            {
-              "name": "deleteUser",
-              "description": "Delete the user account from specified batch compute node",
-              "fullName": "batch node deleteUser",
-              "usage": "[options] [pool-id] [node-id] [user-name]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the batch pool id"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the batch compute node id"
-                },
-                {
-                  "flags": "--user-name <user-name>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--user-name",
-                  "description": "the name of user account to delete"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "remove the specified user without confirmation"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the batch connection endpoint"
-                }
-              ]
-            },
-            {
-              "name": "updateUser",
-              "description": "Update the user account at specified batch compute node",
-              "fullName": "batch node updateUser",
-              "usage": "[options] [pool-id] [node-id] [user-name]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the batch pool id"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the batch compute node id"
-                },
-                {
-                  "flags": "--user-name <user-name>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--user-name",
-                  "description": "the name of user account to update"
-                },
-                {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--user-password",
-                  "description": "the password of user account"
-                },
-                {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--expiry-time",
-                  "description": "the time of user account to expire"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the batch connection endpoint"
-                }
-              ]
-            },
-            {
               "name": "show",
               "description": "Show details of the batch compute node",
               "fullName": "batch node show",
@@ -2593,9 +3159,9 @@
               ]
             },
             {
-              "name": "disableScheduling",
+              "name": "disable-scheduling",
               "description": "Disable scheduling on the batch compute node",
-              "fullName": "batch node disableScheduling",
+              "fullName": "batch node disable-scheduling",
               "usage": "[options] [pool-id] [node-id]",
               "filePath": "commands/batch/batch.node._js",
               "options": [
@@ -2678,9 +3244,9 @@
               ]
             },
             {
-              "name": "enableScheduling",
+              "name": "enable-scheduling",
               "description": "Enable scheduling on the batch compute node",
-              "fullName": "batch node enableScheduling",
+              "fullName": "batch node enable-scheduling",
               "usage": "[options] [pool-id] [node-id]",
               "filePath": "commands/batch/batch.node._js",
               "options": [
@@ -2755,9 +3321,9 @@
               ]
             },
             {
-              "name": "getRemoteDesktop",
+              "name": "get-remote-desktop",
               "description": "Get remote desktop protocol file for specified compute node",
-              "fullName": "batch node getRemoteDesktop",
+              "fullName": "batch node get-remote-desktop",
               "usage": "[options] [pool-id] [node-id] [rdp-file]",
               "filePath": "commands/batch/batch.node._js",
               "options": [
@@ -2818,6 +3384,456 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "force to overwrite the destination rdp file"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Remove nodes from the batch pool",
+              "fullName": "batch node delete",
+              "usage": "[options] [pool-id] [node-lis]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the pool id"
+                },
+                {
+                  "flags": "-l, --node-list <node-list>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--node-list",
+                  "description": "the node list"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "remove nodes from the specified batch pool without confirmation"
+                },
+                {
+                  "flags": "--resize-timeout <resize-timeout>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--resize-timeout",
+                  "description": "the timeout for removal of compute nodes from the pool"
+                },
+                {
+                  "flags": "--deallocate-option <deallocate-option>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--deallocate-option",
+                  "description": "sets when nodes may be removed from the pool"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "node-user": {
+          "name": "node-user",
+          "description": "Commands to manage your Batch compute nodes",
+          "fullName": "batch node-user",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Add an user account to a batch compute node",
+              "fullName": "batch node-user create",
+              "usage": "[options] [pool-id] [node-id] [user-name] [user-password]",
+              "filePath": "commands/batch/batch.node._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--user-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--user-name",
+                  "description": "the name of user account to add"
+                },
+                {
+                  "flags": "--user-password <user-password>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--user-password",
+                  "description": "the password of user account"
+                },
+                {
+                  "flags": "--admin",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--admin",
+                  "description": "the user is admin"
+                },
+                {
+                  "flags": "--expiry-time <expiry-time>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expiry-time",
+                  "description": "the time of user account to expire"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the user account from specified batch compute node",
+              "fullName": "batch node-user delete",
+              "usage": "[options] [pool-id] [node-id] [user-name]",
+              "filePath": "commands/batch/batch.node._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--user-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--user-name",
+                  "description": "the name of user account to delete"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "remove the specified user without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update the user account at specified batch compute node",
+              "fullName": "batch node-user set",
+              "usage": "[options] [pool-id] [node-id] [user-name]",
+              "filePath": "commands/batch/batch.node._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--pool-id <pool-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pool-id",
+                  "description": "the batch pool id"
+                },
+                {
+                  "flags": "--node-id <node-Id>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--node-id",
+                  "description": "the batch compute node id"
+                },
+                {
+                  "flags": "--user-name <user-name>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--user-name",
+                  "description": "the name of user account to update"
+                },
+                {
+                  "flags": "--user-password <user-password>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--user-password",
+                  "description": "the password of user account"
+                },
+                {
+                  "flags": "--expiry-time <expiry-time>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expiry-time",
+                  "description": "the time of user account to expire"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -3014,9 +4030,9 @@
               ]
             },
             {
-              "name": "listUsageMetrics",
+              "name": "list-usage-metrics",
               "description": "List batch pool usage metrics",
-              "fullName": "batch pool listUsageMetrics",
+              "fullName": "batch pool list-usage-metrics",
               "usage": "[options]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
@@ -3216,9 +4232,9 @@
               ]
             },
             {
-              "name": "showAllStats",
+              "name": "show-all-stats",
               "description": "Show lifetime summary statistics for all of the pools",
-              "fullName": "batch pool showAllStats",
+              "fullName": "batch pool show-all-stats",
               "usage": "[options]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
@@ -3507,9 +4523,9 @@
               ]
             },
             {
-              "name": "disableAutoscale",
+              "name": "disable-autoscale",
               "description": "Disable autoscale at the batch pool",
-              "fullName": "batch pool disableAutoscale",
+              "fullName": "batch pool disable-autoscale",
               "usage": "[options] [pool-id]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
@@ -3577,9 +4593,9 @@
               ]
             },
             {
-              "name": "enableAutoscale",
+              "name": "enable-autoscale",
               "description": "Enable autoscale at the batch pool",
-              "fullName": "batch pool enableAutoscale",
+              "fullName": "batch pool enable-autoscale",
               "usage": "[options] [pool-id] [autoscale-formula] [autoscale-evaluation-interval]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
@@ -3695,9 +4711,9 @@
               ]
             },
             {
-              "name": "evaluateAutoscale",
+              "name": "evaluate-autoscale",
               "description": "Evaluate autoscale at the batch pool",
-              "fullName": "batch pool evaluateAutoscale",
+              "fullName": "batch pool evaluate-autoscale",
               "usage": "[options] [pool-id] [autoscale-formula]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
@@ -3846,142 +4862,6 @@
                   "bool": true,
                   "long": "--deallocate-option",
                   "description": "sets when nodes may be removed from the pool, if the pool size is decreasing"
-                },
-                {
-                  "flags": "--if-match <if-match>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-match",
-                  "description": "only perfome if resource's ETag is an exact match as specified"
-                },
-                {
-                  "flags": "--if-none-match <if-none-match>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-none-match",
-                  "description": "only perfome if resource's ETag does not match as specified"
-                },
-                {
-                  "flags": "--if-modified-since <if-modified-since>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-modified-since",
-                  "description": "only perfome if the resource has been modified since the specified time"
-                },
-                {
-                  "flags": "--if-unmodified-since <if-unmodified-since>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-unmodified-since",
-                  "description": "only perfome if the resource has not been modified since the specified time"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the batch connection endpoint"
-                }
-              ]
-            },
-            {
-              "name": "removeNodes",
-              "description": "Remove nodes from the batch pool",
-              "fullName": "batch pool removeNodes",
-              "usage": "[options] [pool-id] [node-lis]",
-              "filePath": "commands/batch/batch.pool._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-i, --id <pool-id>",
-                  "required": -10,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--id",
-                  "description": "the pool id"
-                },
-                {
-                  "flags": "-l, --node-list <node-list>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--node-list",
-                  "description": "the node list"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "remove nodes from the specified batch pool without confirmation"
-                },
-                {
-                  "flags": "--resize-timeout <resize-timeout>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--resize-timeout",
-                  "description": "the timeout for removal of compute nodes from the pool"
-                },
-                {
-                  "flags": "--deallocate-option <deallocate-option>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--deallocate-option",
-                  "description": "sets when nodes may be removed from the pool"
                 },
                 {
                   "flags": "--if-match <if-match>",
