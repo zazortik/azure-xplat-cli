@@ -37,7 +37,7 @@
     "azure-common": "0.9.16",
     "azure-arm-authorization": "2.0.0",
     "azure-arm-commerce": "0.1.1",
-    "azure-arm-compute": "0.15.0",
+    "azure-arm-compute": "0.16.1",
     "azure-arm-hdinsight": "0.1.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
     "azure-arm-insights": "0.10.2",
