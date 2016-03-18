@@ -43,6 +43,13 @@ var gatewayProp = {
   newTags: networkUtil.newTags
 };
 
+var localGatewayProp = {
+  name: 'test-local-gateway',
+  gatewayIpAddress: '10.0.0.0',
+  addressPrefix: '10.0.0.0/24',
+  tags: networkUtil.tags
+};
+
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'westeurope'
@@ -63,6 +70,10 @@ describe('arm', function () {
         gatewayProp.name = suite.isMocked ? gatewayProp.name : suite.generateId(gatewayProp.name, null);
         gatewayProp.vnetName = suite.isMocked ? gatewayProp.vnetName : suite.generateId(gatewayProp.vnetName, null);
         gatewayProp.publicIpName = suite.isMocked ? gatewayProp.publicIpName : suite.generateId(gatewayProp.publicIpName, null);
+
+        localGatewayProp.group = groupName;
+        localGatewayProp.location = location;
+        localGatewayProp.name = suite.isMocked ? localGatewayProp.name : suite.generateId(localGatewayProp.name, null);
 
         done();
       });
@@ -104,6 +115,28 @@ describe('arm', function () {
           var ipConfig = vpnGateway.ipConfigurations[0];
           ipConfig.privateIPAddress.should.equal(gatewayProp.newPrivateIpAddress);
           networkUtil.shouldAppendTags(vpnGateway);
+          networkUtil.shouldBeSucceeded(vpnGateway);
+          done();
+        });
+      });
+      it('set should attach default site to vpn gateway', function (done) {
+        networkUtil.createLocalGateway(localGatewayProp, suite, function (localGateway) {
+          var cmd = 'network vpn-gateway set -g {group} -n {name} -i {1} --json'.formatArgs(gatewayProp, localGateway.id);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var vpnGateway = JSON.parse(result.text);
+            vpnGateway.gatewayDefaultSite.id.should.equal(localGateway.id);
+            networkUtil.shouldBeSucceeded(vpnGateway);
+            done();
+          });
+        });
+      });
+      it('set should detach default site from vpn gateway', function (done) {
+        var cmd = 'network vpn-gateway set -g {group} -n {name} -d --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var vpnGateway = JSON.parse(result.text);
+          vpnGateway.should.not.have.property('gatewayDefaultSite');
           networkUtil.shouldBeSucceeded(vpnGateway);
           done();
         });

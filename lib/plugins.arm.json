@@ -27554,6 +27554,24 @@
                   "description": "the subnet name which exists in vnet. Default value is \"GatewaySubnet\""
                 },
                 {
+                  "flags": "-d, --default-site-name <default-site-name>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--default-site-name",
+                  "description": "the Local Network Gateway name. This Local Network Gateway must exists in the same resource group as the vnet gateway. \n     Please use default-site-id if that is not the case."
+                },
+                {
+                  "flags": "-i, --default-site-id <default-site-id>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--default-site-id",
+                  "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
+                },
+                {
                   "flags": "-a, --private-ip-address <private-ip-address>",
                   "required": -26,
                   "optional": 0,
@@ -27649,6 +27667,24 @@
                   "short": "-a",
                   "long": "--private-ip-address",
                   "description": "the local ip address for the gateway in the vnet"
+                },
+                {
+                  "flags": "-d, --default-site-name [default-site-name]",
+                  "required": 0,
+                  "optional": -25,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--default-site-name",
+                  "description": "the Local Network Gateway name. This Local Network Gateway must exists in the same resource group as the vnet gateway. \n     Please use default-site-id if that is not the case."
+                },
+                {
+                  "flags": "-i, --default-site-id [default-site-id]",
+                  "required": 0,
+                  "optional": -23,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--default-site-id",
+                  "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
                 },
                 {
                   "flags": "-t, --tags [tags]",
