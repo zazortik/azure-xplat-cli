@@ -12944,6 +12944,15 @@
                   "description": "the deployment mode: specify one of Incremental or Complete. If no mode is specified, Incremental is used as default. When Complete mode is used, all the resources in the specified resource group, which are not included in the template, will be deleted."
                 },
                 {
+                  "flags": "-d --debug-setting <debugSetting>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--debug-setting",
+                  "description": "the debug setting for deployment logs. Valid values include RequestContent, ResponseContent, All or None. None is the default value. When All is specified, both request content and response content will be logged, which will be visible in deployment operations."
+                },
+                {
                   "flags": "-q --quiet",
                   "required": 0,
                   "optional": 0,
@@ -12959,14 +12968,6 @@
                   "bool": true,
                   "long": "--nowait",
                   "description": "does not wait for the deployment to complete. Returns as soon as the deployment is created"
-                },
-                {
-                  "flags": "--novalidate",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--novalidate",
-                  "description": "do not validate deployment"
                 },
                 {
                   "flags": "--subscription <subscription>",
@@ -13237,6 +13238,86 @@
             }
           ],
           "categories": {
+            "template": {
+              "name": "template",
+              "description": "Commands to manager your deployment template in a resource group",
+              "fullName": "group deployment template",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "download",
+                  "description": "Downloads a resource group deployment template",
+                  "fullName": "group deployment template download",
+                  "usage": "[options] [resource-group] [name] [directory]",
+                  "filePath": "commands/arm/group/group.deployment._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resourceGroup>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group."
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the deployment to download"
+                    },
+                    {
+                      "flags": "-d --directory <directory>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--directory",
+                      "description": "the name of the destination directory"
+                    },
+                    {
+                      "flags": "-q --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not prompt for overwrite if output file exists)"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "operation": {
               "name": "operation",
               "description": "Commands to list deployment operations in a resource group",
