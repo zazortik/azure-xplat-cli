@@ -297,7 +297,7 @@ describe('arm', function() {
 
     //TODO: There is a bug in the SDK that makes async patch not available, un-comment this test once that is fixed
     //it('set command should update the endpoint', function (done) {
-    //    suite.execute('endpoint set %s %s %s -s false --tags tag1=val1 --json', testEndpointName_1, testProfileName_1, testResourceGroup_1, function (result) {
+    //    suite.execute('endpoint set %s %s %s -w false --tags tag1=val1 --json', testEndpointName_1, testProfileName_1, testResourceGroup_1, function (result) {
     //        result.exitStatus.should.be.equal(0);
     //        var endpointJson = JSON.parse(result.text);
     //        endpointJson.name.should.equal(testEndpointName_1);
@@ -386,7 +386,7 @@ describe('arm', function() {
     });
 
     it('set command should update the origin', function(done) {
-      suite.execute('origin set %s %s %s %s -n testtest.azure.com -r 500 -s 501 --json', testOriginName_2, testEndpointName_2, testProfileName_1, testResourceGroup_1, function(result) {
+      suite.execute('origin set %s %s %s %s -o testtest.azure.com -r 500 -w 501 --json', testOriginName_2, testEndpointName_2, testProfileName_1, testResourceGroup_1, function(result) {
         result.exitStatus.should.be.equal(0);
         var originJson = JSON.parse(result.text);
         originJson.name.should.equal(testOriginName_2);
@@ -398,7 +398,7 @@ describe('arm', function() {
     });
 
     it('set command should fail with invalid host name', function(done) {
-      suite.execute('origin set %s %s %s %s -n testtest --json', testOriginName_2, testEndpointName_2, testProfileName_1, testResourceGroup_1, function(result) {
+      suite.execute('origin set %s %s %s %s -o testtest --json', testOriginName_2, testEndpointName_2, testProfileName_1, testResourceGroup_1, function(result) {
         result.exitStatus.should.be.equal(1);
         done();
       });

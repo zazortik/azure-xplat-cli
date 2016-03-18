@@ -9250,7 +9250,7 @@
         },
         {
           "name": "show",
-          "description": "Get and show the infomation of a specific cdn profile",
+          "description": "Show the infomation of a specific cdn profile",
           "fullName": "profile show",
           "usage": "[options] <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
@@ -9281,11 +9281,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name [profile-name]",
+              "flags": "-n, --profile-name [profile-name]",
               "required": 0,
               "optional": -20,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the Cdn Profile"
             },
@@ -9341,11 +9341,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name <profile-name>",
+              "flags": "-n, --profile-name <profile-name>",
               "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the profile"
             },
@@ -9368,11 +9368,11 @@
               "description": "The location in which to create the Cdn Profile"
             },
             {
-              "flags": "-s, --sku-name <sku-name>",
+              "flags": "-k, --sku-name <sku-name>",
               "required": -16,
               "optional": 0,
               "bool": true,
-              "short": "-s",
+              "short": "-k",
               "long": "--sku-name",
               "description": "The pricing sku name of the Azure Cdn Profile"
             },
@@ -9397,7 +9397,7 @@
         },
         {
           "name": "delete",
-          "description": "Create a profile under given resource group and subscription",
+          "description": "Delete a profile under given resource group and subscription",
           "fullName": "profile delete",
           "usage": "[options] <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
@@ -9428,11 +9428,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name <profile-name>",
+              "flags": "-n, --profile-name <profile-name>",
               "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the profile"
             },
@@ -9488,11 +9488,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name <profile-name>",
+              "flags": "-n, --profile-name <profile-name>",
               "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the profile"
             },
@@ -9567,11 +9567,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name <profile-name>",
+              "flags": "-n, --profile-name <profile-name>",
               "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the profile"
             },
@@ -9606,7 +9606,7 @@
       "commands": [
         {
           "name": "list",
-          "description": "List endpoints by profile",
+          "description": "List endpoints by profile and resource group",
           "fullName": "endpoint list",
           "usage": "[options] <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
@@ -9637,11 +9637,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-p, --profile-name <profile-name>",
+              "flags": "-n, --profile-name <profile-name>",
               "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-p",
+              "short": "-n",
               "long": "--profile-name",
               "description": "Name of the profile"
             },
@@ -9697,11 +9697,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -9766,11 +9766,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -9811,20 +9811,20 @@
               "description": "The name of the origin used to identify the origin"
             },
             {
-              "flags": "-n, --origin-host-name <origin-host-name>",
+              "flags": "-r, --origin-host-name <origin-host-name>",
               "required": -24,
               "optional": 0,
               "bool": true,
-              "short": "-n",
+              "short": "-r",
               "long": "--origin-host-name",
               "description": "The host name of the origin"
             },
             {
-              "flags": "-r, --origin-host-header [origin-host-header]",
+              "flags": "-e, --origin-host-header [origin-host-header]",
               "required": 0,
               "optional": -26,
               "bool": true,
-              "short": "-r",
+              "short": "-e",
               "long": "--origin-host-header",
               "description": "The origin host header of the Azure Cdn Endpoint"
             },
@@ -9853,7 +9853,7 @@
               "bool": true,
               "short": "-d",
               "long": "--is-compression-enabled",
-              "description": "Is the compression enabled for the Cdn"
+              "description": "Is the compression enabled for the Cdn. Valid input: -d [true|false]"
             },
             {
               "flags": "-w, --is-http-allowed [is-http-allowed]",
@@ -9862,7 +9862,7 @@
               "bool": true,
               "short": "-w",
               "long": "--is-http-allowed",
-              "description": "Is the http traffic allowed for the Cdn"
+              "description": "Is the http traffic allowed for the Cdn. Valid input: -w [true|false]"
             },
             {
               "flags": "-a, --is-https-allowed [is-https-allowed]",
@@ -9871,7 +9871,7 @@
               "bool": true,
               "short": "-a",
               "long": "--is-https-allowed",
-              "description": "Is the https traffic allowed for the Cdn"
+              "description": "Is the https traffic allowed for the Cdn. Valid input: -a [true|false]"
             },
             {
               "flags": "-q, --query-string-caching-behavior [query-string-caching-behavior]",
@@ -9892,11 +9892,11 @@
               "description": "The port http traffic used on the origin server"
             },
             {
-              "flags": "-s, --https-port [https-port]",
+              "flags": "-w, --https-port [https-port]",
               "required": 0,
               "optional": -18,
               "bool": true,
-              "short": "-s",
+              "short": "-w",
               "long": "--https-port",
               "description": "The port https traffic used on the origin server"
             },
@@ -9952,11 +9952,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -9979,11 +9979,11 @@
               "description": "The resource group of the Azure Cdn Profile"
             },
             {
-              "flags": "-r, --origin-host-header [origin-host-header]",
+              "flags": "-e, --origin-host-header [origin-host-header]",
               "required": 0,
               "optional": -26,
               "bool": true,
-              "short": "-r",
+              "short": "-e",
               "long": "--origin-host-header",
               "description": "The origin host header of the Azure Cdn Endpoint"
             },
@@ -10012,7 +10012,7 @@
               "bool": true,
               "short": "-d",
               "long": "--is-compression-enabled",
-              "description": "Is the compression enabled for the Cdn"
+              "description": "Is the compression enabled for the Cdn. Valid input: -d [true|false]"
             },
             {
               "flags": "-u, --is-http-allowed [is-http-allowed]",
@@ -10021,16 +10021,16 @@
               "bool": true,
               "short": "-u",
               "long": "--is-http-allowed",
-              "description": "Is the http traffic allowed for the Cdn"
+              "description": "Is the http traffic allowed for the Cdn. Valid input: -u [true|false]"
             },
             {
-              "flags": "-s, --is-https-allowed [is-https-allowed]",
+              "flags": "-w, --is-https-allowed [is-https-allowed]",
               "required": 0,
               "optional": -24,
               "bool": true,
-              "short": "-s",
+              "short": "-w",
               "long": "--is-https-allowed",
-              "description": "Is the https traffic allowed for the Cdn"
+              "description": "Is the https traffic allowed for the Cdn. Valid input: -w [true|false]"
             },
             {
               "flags": "-q, --query-string-caching-behavior [query-string-caching-behavior]",
@@ -10093,11 +10093,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -10162,11 +10162,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -10231,11 +10231,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -10269,7 +10269,7 @@
         },
         {
           "name": "purge",
-          "description": "Stop an endpoint by endpoint name, profile name, and resource group",
+          "description": "Purge the content of the given paths in the endpoint",
           "fullName": "endpoint purge",
           "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
@@ -10300,11 +10300,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -10347,7 +10347,7 @@
         },
         {
           "name": "load",
-          "description": "Stop an endpoint by endpoint name, profile name, and resource group",
+          "description": "Load the content of the given paths in the endpoint",
           "fullName": "endpoint load",
           "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
@@ -10378,11 +10378,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Name of the endpoint"
             },
@@ -10456,11 +10456,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-e, --endpoint-name <endpoint-name>",
+              "flags": "-n, --endpoint-name <endpoint-name>",
               "required": -21,
               "optional": 0,
               "bool": true,
-              "short": "-e",
+              "short": "-n",
               "long": "--endpoint-name",
               "description": "Endpoint name"
             },
@@ -10517,11 +10517,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-o, --origin-name <origin-name>",
+              "flags": "-n, --origin-name <origin-name>",
               "required": -19,
               "optional": 0,
               "bool": true,
-              "short": "-o",
+              "short": "-n",
               "long": "--origin-name",
               "description": "Name of the origin"
             },
@@ -10595,11 +10595,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-o, --origin-name <origin-name>",
+              "flags": "-n, --origin-name <origin-name>",
               "required": -19,
               "optional": 0,
               "bool": true,
-              "short": "-o",
+              "short": "-n",
               "long": "--origin-name",
               "description": "Name of the origin"
             },
@@ -10631,11 +10631,11 @@
               "description": "The resource group of the Azure Cdn Profile"
             },
             {
-              "flags": "-n, --host-name [host-name]",
+              "flags": "-o, --host-name [host-name]",
               "required": 0,
               "optional": -17,
               "bool": true,
-              "short": "-n",
+              "short": "-o",
               "long": "--host-name",
               "description": "Host name"
             },
@@ -10649,11 +10649,11 @@
               "description": "Http port"
             },
             {
-              "flags": "-s, --https-port [https-port]",
+              "flags": "-w, --https-port [https-port]",
               "required": 0,
               "optional": -18,
               "bool": true,
-              "short": "-s",
+              "short": "-w",
               "long": "--https-port",
               "description": "Https port"
             },
@@ -10779,11 +10779,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "flags": "-n, --custom-domain-name <custom-domain-name>",
               "required": -26,
               "optional": 0,
               "bool": true,
-              "short": "-c",
+              "short": "-n",
               "long": "--custom-domain-name",
               "description": "Name of the custom domain"
             },
@@ -10857,11 +10857,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "flags": "-n, --custom-domain-name <custom-domain-name>",
               "required": -26,
               "optional": 0,
               "bool": true,
-              "short": "-c",
+              "short": "-n",
               "long": "--custom-domain-name",
               "description": "Name of the custom domain"
             },
@@ -10944,11 +10944,11 @@
               "description": "use json output"
             },
             {
-              "flags": "-c, --custom-domain-name <custom-domain-name>",
+              "flags": "-n, --custom-domain-name <custom-domain-name>",
               "required": -26,
               "optional": 0,
               "bool": true,
-              "short": "-c",
+              "short": "-n",
               "long": "--custom-domain-name",
               "description": "Name of the custom domain"
             },
