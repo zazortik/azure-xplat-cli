@@ -16252,6 +16252,49 @@
               ]
             },
             {
+              "name": "delete",
+              "description": "Get the log profile.",
+              "fullName": "insights logprofile delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.logprofiles.delete._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name of the log profile."
+                }
+              ]
+            },
+            {
               "name": "get",
               "description": "Get the log profile.",
               "fullName": "insights logprofile get",

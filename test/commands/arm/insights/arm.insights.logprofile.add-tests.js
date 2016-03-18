@@ -33,9 +33,9 @@ var createdResources = [];
 
 describe('arm', function () {
   describe('insights', function() {
-    describe('diagnostic', function() {
+    describe('logprofile', function() {
       var suite;
-      var resourceId;
+      var name;
       var storageId;
 
       before(function(done) {
@@ -49,7 +49,7 @@ describe('arm', function () {
 
       beforeEach(function(done) {
         suite.setupTest(function() {
-          resourceId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/test.shoebox/testresources2/0000000000eastusR2';
+          name = 'default';
           storageId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus';
           done();
         });
@@ -59,9 +59,9 @@ describe('arm', function () {
         suite.teardownTest(done);
       });
 
-      describe('set', function() {
+      describe('add', function() {
         it('should work enable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true --json', resourceId, storageId, function(result) {
+          suite.execute('insights logprofile add -n %s -a %s -b %s -l $s -t %s -c Action,Delete,Write --json', name, storageId, serviceBusRuleId, locations, retentionInDays function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
@@ -73,24 +73,6 @@ describe('arm', function () {
             properties.logs[0].enabled.should.equal(true);
             properties.logs[1].category.should.equal("TestLog2");
             properties.logs[1].enabled.should.equal(true);
-            
-            done();
-          });
-        });
-
-        it('should work disable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e false --json', resourceId, storageId, function(result) {
-            var properties = JSON.parse(result.text);
-
-            properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(false);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(false);
             
             done();
           });
