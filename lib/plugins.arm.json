@@ -9252,7 +9252,7 @@
           "name": "show",
           "description": "Show the infomation of a specific cdn profile",
           "fullName": "profile show",
-          "usage": "[options] <profile-name> <resource-group>",
+          "usage": "[options] <name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9281,12 +9281,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --profile-name [profile-name]",
+              "flags": "-n, --name [name]",
               "required": 0,
-              "optional": -20,
+              "optional": -12,
               "bool": true,
               "short": "-n",
-              "long": "--profile-name",
+              "long": "--name",
               "description": "Name of the Cdn Profile"
             },
             {
@@ -9312,7 +9312,7 @@
           "name": "create",
           "description": "Create a profile under given resource group and subscription",
           "fullName": "profile create",
-          "usage": "[options] <profile-name> <resource-group> <location> <sku-name> [tags]",
+          "usage": "[options] <name> <resource-group> <location> <sku-name> [tags]",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9341,12 +9341,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --profile-name <profile-name>",
-              "required": -20,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--profile-name",
+              "long": "--name",
               "description": "Name of the profile"
             },
             {
@@ -9428,12 +9428,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --profile-name <profile-name>",
-              "required": -20,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--profile-name",
+              "long": "--name",
               "description": "Name of the profile"
             },
             {
@@ -9459,7 +9459,7 @@
           "name": "set",
           "description": "Update a profile's tags",
           "fullName": "profile set",
-          "usage": "[options] <profile-name> <resource-group> [tags]",
+          "usage": "[options] <name> <resource-group> [tags]",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9488,12 +9488,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --profile-name <profile-name>",
-              "required": -20,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--profile-name",
+              "long": "--name",
               "description": "Name of the profile"
             },
             {
@@ -9668,7 +9668,7 @@
           "name": "show",
           "description": "Get endpoint by endpoint name, profile name, and resource group",
           "fullName": "endpoint show",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9697,12 +9697,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -9737,7 +9737,7 @@
           "name": "create",
           "description": "Create endpoint with given name and properties.",
           "fullName": "endpoint create",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group> <location> <origin-name> <origin-host-name> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior]  [http-port] [https-port] [tags]",
+          "usage": "[options] <name> <profile-name> <resource-group> <location> <origin-name> <origin-host-name> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior]  [http-port] [https-port] [tags]",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9766,12 +9766,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -9923,7 +9923,7 @@
           "name": "set",
           "description": "Update endpoint with given properties.",
           "fullName": "endpoint set",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior] [tags]",
+          "usage": "[options] <name> <profile-name> <resource-group> [origin-host-header] [origin-path] [content-type-to-compress] [is-compression-enabled] [is-http-allowed] [is-https-allowed] [query-string-caching-behavior] [tags]",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -9952,12 +9952,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10064,7 +10064,7 @@
           "name": "delete",
           "description": "Delete an endpoint by endpoint name, profile name, and resource group",
           "fullName": "endpoint delete",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <ename> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10093,12 +10093,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10133,7 +10133,7 @@
           "name": "start",
           "description": "Start an endpoint by endpoint name, profile name, and resource group",
           "fullName": "endpoint start",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10162,12 +10162,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10202,7 +10202,7 @@
           "name": "stop",
           "description": "Stop an endpoint by endpoint name, profile name, and resource group",
           "fullName": "endpoint stop",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10231,12 +10231,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10271,7 +10271,7 @@
           "name": "purge",
           "description": "Purge the content of the given paths in the endpoint",
           "fullName": "endpoint purge",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10300,12 +10300,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10349,7 +10349,7 @@
           "name": "load",
           "description": "Load the content of the given paths in the endpoint",
           "fullName": "endpoint load",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10378,12 +10378,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --endpoint-name <endpoint-name>",
-              "required": -21,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--endpoint-name",
+              "long": "--name",
               "description": "Name of the endpoint"
             },
             {
@@ -10488,7 +10488,7 @@
           "name": "show",
           "description": "Get origin by origin name, endpoint name, profile name, and resource group",
           "fullName": "origin show",
-          "usage": "[options] <origin-name> <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <endpoint-name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10517,12 +10517,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --origin-name <origin-name>",
-              "required": -19,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--origin-name",
+              "long": "--name",
               "description": "Name of the origin"
             },
             {
@@ -10566,7 +10566,7 @@
           "name": "set",
           "description": "Update origin of the given origin name, endpoint name, profile name, and resource group",
           "fullName": "origin set",
-          "usage": "[options] <origin-name> <endpoint-name> <profile-name> <resource-group> [host-name] [http-port] [https-port]",
+          "usage": "[options] <name> <endpoint-name> <profile-name> <resource-group> [host-name] [http-port] [https-port]",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10595,12 +10595,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --origin-name <origin-name>",
-              "required": -19,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--origin-name",
+              "long": "--name",
               "description": "Name of the origin"
             },
             {
@@ -10750,7 +10750,7 @@
           "name": "show",
           "description": "Get custom domains by custom domain name, endpoint name, profile name, and resource group",
           "fullName": "customDomain show",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10779,12 +10779,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --custom-domain-name <custom-domain-name>",
-              "required": -26,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--custom-domain-name",
+              "long": "--name",
               "description": "Name of the custom domain"
             },
             {
@@ -10828,7 +10828,7 @@
           "name": "create",
           "description": "Create a custom domain of a perticular custom domain host name",
           "fullName": "customDomain create",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group> <custom-domain-host-name>",
+          "usage": "[options] <name> <endpoint-name> <profile-name> <resource-group> <custom-domain-host-name>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10857,12 +10857,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --custom-domain-name <custom-domain-name>",
-              "required": -26,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--custom-domain-name",
+              "long": "--name",
               "description": "Name of the custom domain"
             },
             {
@@ -10915,7 +10915,7 @@
           "name": "delete",
           "description": "Delete a custom domain of a perticular custom domain host name",
           "fullName": "customDomain delete",
-          "usage": "[options] <endpoint-name> <profile-name> <resource-group>",
+          "usage": "[options] <name> <endpoint-name> <profile-name> <resource-group>",
           "filePath": "commands/arm/cdnmanagement/cdnmanagement._js",
           "options": [
             {
@@ -10944,12 +10944,12 @@
               "description": "use json output"
             },
             {
-              "flags": "-n, --custom-domain-name <custom-domain-name>",
-              "required": -26,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--custom-domain-name",
+              "long": "--name",
               "description": "Name of the custom domain"
             },
             {
