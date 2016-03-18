@@ -21,7 +21,7 @@ var util = require('util');
 var fs = require('fs');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-insights-diagnostic-set-tests';
+var testprefix = 'arm-cli-insights-logprofile-add-tests';
 var utils = require('../../../../lib/util/utils');
 
 var requiredEnvironment = [
@@ -35,8 +35,8 @@ describe('arm', function () {
   describe('insights', function() {
     describe('logprofile', function() {
       var suite;
-      var name;
       var storageId;
+      var serviceBusRuleId;
 
       before(function(done) {
         suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -49,8 +49,8 @@ describe('arm', function () {
 
       beforeEach(function(done) {
         suite.setupTest(function() {
-          name = 'default';
-          storageId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus';
+          storageId = '/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/fixtest2/providers/Microsoft.Storage/storageAccounts/stofixtest2';
+          serviceBusRuleId = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/testshoeboxeastus/authorizationrules/RootManageSharedAccessKey";
           done();
         });
       });
@@ -60,95 +60,69 @@ describe('arm', function () {
       });
 
       describe('add', function() {
-        it('should work enable all', function (done) {
-          suite.execute('insights logprofile add -n %s -a %s -b %s -l $s -t %s -c Action,Delete,Write --json', name, storageId, serviceBusRuleId, locations, retentionInDays function(result) {
+        it('should work add log profile', function (done) {
+          suite.execute('insights logprofile add -n default -a %s -b %s -l global,eastus -c Action,Delete -t 10 --json -vv', storageId, serviceBusRuleId, function(result) {
+            console.log(JSON.stringify(result, null, 2));
             var properties = JSON.parse(result.text);
+            console.log(JSON.stringify(properties, null, 2));
 
             properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(true);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
+            properties.locations.length.should.equal(2);
+            properties.locations[0].should.equal("global");
+            properties.locations[1].should.equal("eastus");
+            properties.categories.length.should.equal(2);
+            properties.categories[0].should.equal("Action");
+            properties.categories[1].should.equal("Delete");
+            properties.name.should.equal("default");
+            properties.retentionPolicy.enabled.should.equal(true);
+            properties.retentionPolicy.days.should.equal(10);
             
             done();
           });
         });
 
-        it('should work enable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M --json', resourceId, storageId, function(result) {
-            var properties = JSON.parse(result.text);
+        // it('should work add log profile with default categories', function (done) {
+        //   suite.execute('insights logprofile add -n default -a %s -b %s -l global,eastus -t 10 --json', storageId, serviceBusRuleId, function(result) {
+        //     var properties = JSON.parse(result.text);
 
-            properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(false);
+        //     properties.storageAccountId.should.equal(storageId);
+        //     properties.serviceBusRuleId.should.equal(serviceBusRuleId);
+        //     properties.locations.length.should.equal(2);
+        //     properties.locations[0].should.equal("global");
+        //     properties.locations[1].should.equal("eastus");
+        //     properties.categories.length.should.equal(3);
+        //     properties.categories[0].should.equal("Action");
+        //     properties.categories[1].should.equal("Delete");
+        //     properties.categories[2].should.equal("Write");
+        //     properties.name.should.equal("default");
+        //     properties.retentionPolicy.enabled.should.equal(true);
+        //     properties.retentionPolicy.days.should.equal(10);
             
-            done();
-          });
-        });
+        //     done();
+        //   });
+        // });
 
-        it('should work enable one category only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -c TestLog2 --json', resourceId, storageId, function(result) {
-            var properties = JSON.parse(result.text);
+        // it('should work add log profile with default categories and no retention', function (done) {
+        //   suite.execute('insights logprofile add -n default -a %s -b %s -l global,eastus -t 10 --json', storageId, serviceBusRuleId, function(result) {
+        //     var properties = JSON.parse(result.text);
 
-            properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(true);
+        //     properties.storageAccountId.should.equal(storageId);
+        //     properties.serviceBusRuleId.should.equal(serviceBusRuleId);
+        //     properties.locations.length.should.equal(2);
+        //     properties.locations[0].should.equal("global");
+        //     properties.locations[1].should.equal("eastus");
+        //     properties.categories.length.should.equal(3);
+        //     properties.categories[0].should.equal("Action");
+        //     properties.categories[1].should.equal("Delete");
+        //     properties.categories[2].should.equal("Write");
+        //     properties.name.should.equal("default");
+        //     properties.retentionPolicy.enabled.should.equal(false);
+        //     properties.retentionPolicy.days.should.equal(0);
             
-            done();
-          });
-        });
-
-        it('should work disable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e false -t PT1M --json', resourceId, storageId, function(result) {
-            var properties = JSON.parse(result.text);
-
-            properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(false);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(true);
-            
-            done();
-          });
-        });
-
-        it('should work enable timegrain and category', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M -c TestLog1,TestLog2 --json', resourceId, storageId, function(result) {
-            var properties = JSON.parse(result.text);
-
-            properties.storageAccountId.should.equal(storageId);
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
-            properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
-            properties.logs[1].enabled.should.equal(true);
-            
-            done();
-          });
-        });
+        //     done();
+        //   });
+        // });
       });
     });
   });

@@ -33,10 +33,9 @@ var createdResources = [];
 
 describe('arm', function () {
   describe('insights', function() {
-    describe('logprofile', function() {
+    describe('diagnostic', function() {
       var suite;
-      var storageId;
-      var serviceBusRuleId;
+      var resourceId;
 
       before(function(done) {
         suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -49,8 +48,7 @@ describe('arm', function () {
 
       beforeEach(function(done) {
         suite.setupTest(function() {
-          storageId = '/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/fixtest2/providers/Microsoft.Storage/storageAccounts/stofixtest2';
-          serviceBusRuleId = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/testshoeboxeastus/authorizationrules/RootManageSharedAccessKey";
+          resourceId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/test.shoebox/testresources2/0000000000eastusR2';
           done();
         });
       });
@@ -61,21 +59,18 @@ describe('arm', function () {
 
       describe('get', function() {
         it('should work', function (done) {
-          suite.execute('insights logprofile get -n default --json', function(result) {
-            console.log(JSON.stringify(result, null, 2));
+          suite.execute('insights diagnostic get -i %s --json', resourceId, function(result) {
             var properties = JSON.parse(result.text);
 
-            properties.storageAccountId.should.equal(storageId);
-            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
-            properties.locations.length.should.equal(2);
-            properties.locations[0].should.equal("global");
-            properties.locations[1].should.equal("eastus");
-            properties.categories.length.should.equal(2);
-            properties.categories[0].should.equal("Action");
-            properties.categories[1].should.equal("Delete");
-            properties.name.should.equal("default");
-            properties.retentionPolicy.enabled.should.equal(true);
-            properties.retentionPolicy.days.should.equal(10);
+            properties.storageAccountId.should.equal("/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus");
+            properties.metrics.length.should.equal(1);
+            properties.metrics[0].enabled.should.equal(true);
+            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            properties.logs.length.should.equal(2);
+            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].enabled.should.equal(true);
+            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].enabled.should.equal(true);
             
             done();
           });
