@@ -2541,523 +2541,1001 @@
           "name": "job",
           "description": "Commands to manage your Batch jobs",
           "fullName": "batch job",
-          "usage": "[options]",
+          "usage": "[options] [command]",
           "options": [],
-          "commands": [],
-          "categories": {
-            "schedule": {
-              "name": "schedule",
-              "description": "Commands to manage your Batch job schedules",
-              "fullName": "batch job schedule",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a batch job",
+              "fullName": "batch job create",
+              "usage": "[options] [json-file]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
                 {
-                  "name": "create",
-                  "description": "Create a batch job schedule",
-                  "fullName": "batch job schedule create",
-                  "usage": "[options] [json-file]",
-                  "filePath": "commands/batch/batch.jobSchedule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-f, --json-file <json-file>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-f",
-                      "long": "--json-file",
-                      "description": "the file containing the job schedule object to create in JSON format"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the batch connection endpoint"
-                    }
-                  ]
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
-                  "name": "list",
-                  "description": "List batch job schedules",
-                  "fullName": "batch job schedule list",
-                  "usage": "[options]",
-                  "filePath": "commands/batch/batch.jobSchedule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--select-clause <selectClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--select-clause",
-                      "description": "the select list"
-                    },
-                    {
-                      "flags": "--filter-clause <filterClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--filter-clause",
-                      "description": "the filter expression"
-                    },
-                    {
-                      "flags": "--expand-clause <expandClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--expand-clause",
-                      "description": "the expanding level"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the batch connection endpoint"
-                    }
-                  ]
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
-                  "name": "show",
-                  "description": "Show details of the batch job schedule",
-                  "fullName": "batch job schedule show",
-                  "usage": "[options] [jobScheduleId]",
-                  "filePath": "commands/batch/batch.jobSchedule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--id <jobScheduleId>",
-                      "required": -6,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--id",
-                      "description": "the batch job schedule id"
-                    },
-                    {
-                      "flags": "--select-clause <selectClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--select-clause",
-                      "description": "the select list"
-                    },
-                    {
-                      "flags": "--expand-clause <expandClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--expand-clause",
-                      "description": "the expanding level"
-                    },
-                    {
-                      "flags": "--if-match <if-match>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-match",
-                      "description": "only perfome if resource's ETag is an exact match as specified"
-                    },
-                    {
-                      "flags": "--if-none-match <if-none-match>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-none-match",
-                      "description": "only perfome if resource's ETag does not match as specified"
-                    },
-                    {
-                      "flags": "--if-modified-since <if-modified-since>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-modified-since",
-                      "description": "only perfome if the resource has been modified since the specified time"
-                    },
-                    {
-                      "flags": "--if-unmodified-since <if-unmodified-since>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-unmodified-since",
-                      "description": "only perfome if the resource has not been modified since the specified time"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the batch connection endpoint"
-                    }
-                  ]
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
-                  "name": "delete",
-                  "description": "Delete the specified batch job schedule",
-                  "fullName": "batch job schedule delete",
-                  "usage": "[options] [jobScheduleId]",
-                  "filePath": "commands/batch/batch.jobSchedule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--id <jobScheduleId>",
-                      "required": -6,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--id",
-                      "description": "the batch job schedule id"
-                    },
-                    {
-                      "flags": "-q, --quiet",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-q",
-                      "long": "--quiet",
-                      "description": "remove the specified batch job schedule without confirmation"
-                    },
-                    {
-                      "flags": "--if-match <if-match>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-match",
-                      "description": "only perfome if resource's ETag is an exact match as specified"
-                    },
-                    {
-                      "flags": "--if-none-match <if-none-match>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-none-match",
-                      "description": "only perfome if resource's ETag does not match as specified"
-                    },
-                    {
-                      "flags": "--if-modified-since <if-modified-since>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-modified-since",
-                      "description": "only perfome if the resource has been modified since the specified time"
-                    },
-                    {
-                      "flags": "--if-unmodified-since <if-unmodified-since>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-unmodified-since",
-                      "description": "only perfome if the resource has not been modified since the specified time"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the batch connection endpoint"
-                    }
-                  ]
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the file containing the job object to create in JSON format"
                 },
                 {
-                  "name": "set",
-                  "description": "Update the batch job schedule",
-                  "fullName": "batch job schedule set",
-                  "usage": "[options] [jobScheduleId] [json-file]",
-                  "filePath": "commands/batch/batch.jobSchedule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-i, --id <jobScheduleId>",
-                      "required": -10,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--id",
-                      "description": "the batch job schedule id"
-                    },
-                    {
-                      "flags": "-f, --json-file <json-file>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-f",
-                      "long": "--json-file",
-                      "description": "the file containing the job schedule properties to update in JSON format"
-                    },
-                    {
-                      "flags": "-p, --patch",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--patch",
-                      "description": "uses patch instead of update"
-                    },
-                    {
-                      "flags": "--if-match <if-match>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-match",
-                      "description": "only perfome if resource's ETag is an exact match as specified"
-                    },
-                    {
-                      "flags": "--if-none-match <if-none-match>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-none-match",
-                      "description": "only perfome if resource's ETag does not match as specified"
-                    },
-                    {
-                      "flags": "--if-modified-since <if-modified-since>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-modified-since",
-                      "description": "only perfome if the resource has been modified since the specified time"
-                    },
-                    {
-                      "flags": "--if-unmodified-since <if-unmodified-since>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--if-unmodified-since",
-                      "description": "only perfome if the resource has not been modified since the specified time"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the batch connection endpoint"
-                    }
-                  ]
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
                 }
-              ],
-              "categories": {}
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List batch jobs",
+              "fullName": "batch job list",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-schedule-id [jobScheduleId]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "long": "--job-schedule-id",
+                  "description": "the id of the job schedule from which you want to get a list of jobs"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the batch job",
+              "fullName": "batch job show",
+              "usage": "[options] [jobId]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--id <jobId>",
+                  "required": -6,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the specified batch job",
+              "fullName": "batch job delete",
+              "usage": "[options] [jobId]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--id <jobId>",
+                  "required": -6,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "remove the specified batch job without confirmation"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update the batch job",
+              "fullName": "batch job set",
+              "usage": "[options] [jobId] [json-file]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the batch job id"
+                },
+                {
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the file containing the job properties to update in JSON format"
+                },
+                {
+                  "flags": "-p, --patch",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--patch",
+                  "description": "uses patch instead of update"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
             }
-          }
+          ],
+          "categories": {}
+        },
+        "job-schedule": {
+          "name": "job-schedule",
+          "description": "Commands to manage your Batch job schedules",
+          "fullName": "batch job-schedule",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a batch job schedule",
+              "fullName": "batch job-schedule create",
+              "usage": "[options] [json-file]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the file containing the job schedule object to create in JSON format"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List batch job schedules",
+              "fullName": "batch job-schedule list",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "the filter expression"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the batch job schedule",
+              "fullName": "batch job-schedule show",
+              "usage": "[options] [jobScheduleId]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--id <jobScheduleId>",
+                  "required": -6,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--id",
+                  "description": "the batch job schedule id"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "the select list"
+                },
+                {
+                  "flags": "--expand-clause <expandClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--expand-clause",
+                  "description": "the expanding level"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the specified batch job schedule",
+              "fullName": "batch job-schedule delete",
+              "usage": "[options] [jobScheduleId]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--id <jobScheduleId>",
+                  "required": -6,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--id",
+                  "description": "the batch job schedule id"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "remove the specified batch job schedule without confirmation"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update the batch job schedule",
+              "fullName": "batch job-schedule set",
+              "usage": "[options] [jobScheduleId] [json-file]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the batch job schedule id"
+                },
+                {
+                  "flags": "-f, --json-file <json-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--json-file",
+                  "description": "the file containing the job schedule properties to update in JSON format"
+                },
+                {
+                  "flags": "-p, --patch",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--patch",
+                  "description": "uses patch instead of update"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perfome if resource's ETag is an exact match as specified"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perfome if resource's ETag does not match as specified"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perfome if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perfome if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the batch connection endpoint"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "node": {
           "name": "node",

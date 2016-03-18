@@ -1,5 +1,5 @@
 {
-  "id": "xplatJobSchedule",
+  "id": "xplatJobScheduleJobTests",
   "displayName": "displayName",
   "schedule": {
     "recurrenceInterval": "P2D"

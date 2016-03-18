@@ -32,7 +32,6 @@ var requiredEnvironment = [
 
 var testPrefix = 'cli-batch-jobschedule-tests';
 var suite;
-var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 
 var batchAccount;
 var batchAccountKey;
@@ -42,20 +41,12 @@ describe('cli', function () {
   describe('batch job schedule', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
-
+      
       if (suite.isMocked) {
         utils.POLL_REQUEST_INTERVAL = 0;
       }
       
-      suite.setupSuite(done);
-    });
-    
-    after(function (done) {
-      suite.teardownSuite(done);
-    });
-    
-    beforeEach(function (done) {
-      suite.setupTest(function () {
+      suite.setupSuite(function () {
         batchAccount = process.env.AZURE_BATCH_ACCOUNT;
         if (suite.isPlayback()) {
           batchAccountKey = 'non null default value';
@@ -68,12 +59,20 @@ describe('cli', function () {
       });
     });
     
+    after(function (done) {
+      suite.teardownSuite(done);
+    });
+    
+    beforeEach(function (done) {
+      suite.setupTest(done);
+    });
+    
     afterEach(function (done) {
       suite.teardownTest(done);
     });
     
     it('should create a job schedule from a json file', function (done) {
-      suite.execute('batch job schedule create %s --account-name %s --account-key %s --account-endpoint %s --json', createJsonFilePath, 
+      suite.execute('batch job-schedule create %s --account-name %s --account-key %s --account-endpoint %s --json', createJsonFilePath, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
       {
         result.exitStatus.should.equal(0);
@@ -85,7 +84,7 @@ describe('cli', function () {
     });
     
     it('should list job schedules under a batch account', function (done) {
-      suite.execute('batch job schedule list --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch job-schedule list --account-name %s --account-key %s --account-endpoint %s --json', 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
       {
         result.exitStatus.should.equal(0);
@@ -100,7 +99,7 @@ describe('cli', function () {
     it('should update the job schedule using a json file', function (done) {
       // The update JSON should change the job manager task id, so we store the original, perform the update,
       // and then ensure that the job manager task id was in fact changed.
-      suite.execute('batch job schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
+      suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
       {
         result.exitStatus.should.equal(0);
@@ -109,9 +108,8 @@ describe('cli', function () {
         originalJobSchedule.jobSpecification.jobManagerTask.should.not.be.null;
         originalJobSchedule.jobSpecification.jobManagerTask.id.should.not.be.null;
 
-        suite.execute('batch job schedule set %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, updateJsonFilePath, 
-          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
-        {
+        suite.execute('batch job-schedule set %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, updateJsonFilePath, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedJobSchedule = JSON.parse(result.text);
           updatedJobSchedule.jobSpecification.should.not.be.null;
@@ -125,14 +123,12 @@ describe('cli', function () {
     });
     
     it('should delete the job schedule', function (done) {
-      suite.execute('batch job schedule delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', jobScheduleId, 
-        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
-      {
+      suite.execute('batch job-schedule delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', jobScheduleId, 
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
 
-        suite.execute('batch job schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
-          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
-        {
+        suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           if (result.exitStatus === 0) {
             var deletingJobSchedule = JSON.parse(result.text);
             deletingJobSchedule.state.should.equal('deleting');
