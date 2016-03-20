@@ -21,18 +21,23 @@ new AutoComplete();
 
 var AzureCli = require('../lib/cli');
 var Constants = require('../lib/util/constants');
-
-if (process.argv[2] !== '--gen') {
-  cli = new AzureCli();
-  cli.parse(process.argv);
-  if (cli.args.length === 0) {
-    cli.parse(['', '', '-h']);
+var utilsCore = require('../lib/util/utilsCore');
+utilsCore.isTelemetryEnabled(function (err, isEnabled) {
+  if (isEnabled) {
+    //create TelemetryClient
   }
-} else {
-  if (process.argv[3]) {
-    cli = new AzureCli(null, null, process.argv[3]);
+  if (process.argv[2] !== '--gen') {
+    cli = new AzureCli();
+    var foo = cli.parse(process.argv);
+    if (cli.args.length === 0) {
+      cli.parse(['', '', '-h']);
+    }
   } else {
-    cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
-    cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+    if (process.argv[3]) {
+      cli = new AzureCli(null, null, process.argv[3]);
+    } else {
+      cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
+      cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+    }
   }
-}
+});

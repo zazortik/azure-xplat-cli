@@ -1036,6 +1036,50 @@
       ],
       "categories": {}
     },
+    "data-collection": {
+      "name": "data-collection",
+      "description": "Commands to manage your data collection preference",
+      "fullName": "data-collection",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "set",
+          "description": "Sets the data collection preference. Valid values are true, false. Value true will enable data collection and false will disable it.",
+          "fullName": "data-collection set",
+          "usage": "[options] <value>",
+          "filePath": "commands/dataCollection.js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "storage": {
       "name": "storage",
       "description": "Commands to manage your Storage objects",
@@ -13302,7 +13346,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--directory",
-                      "description": "the name of the destination directory"
+                      "description": "the name of the destination directory. If not specified, template file will be saved in the current directory."
                     },
                     {
                       "flags": "-q --quiet",
@@ -13312,6 +13356,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode (do not prompt for overwrite if output file exists)"
+                    },
+                    {
+                      "flags": "--subscription <subscription>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--subscription",
+                      "description": "subscription containing the deployment to display (optional)"
                     }
                   ]
                 }
