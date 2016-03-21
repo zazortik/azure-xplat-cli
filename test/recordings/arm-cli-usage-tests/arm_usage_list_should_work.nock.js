@@ -7,6 +7,10 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'e33f361b-53c2-4cc7-b829-78906708387b',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
     name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
@@ -33,15 +37,15 @@ nock('http://management.azure.com:443')
   'content-length': '12',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'cfa0cc9c-5ba7-4cf7-a02c-131afb85dce5',
+  'x-ms-request-id': '83e077ae-a703-4124-a0e7-5f21490033cb',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '02831068-5022-491b-9c27-c3723c6bc383',
-  'x-ms-routing-request-id': 'WESTUS:20160127T045934Z:02831068-5022-491b-9c27-c3723c6bc383',
+  'x-ms-ratelimit-remaining-subscription-reads': '14927',
+  'x-ms-correlation-request-id': '116685f4-c0a8-4ae3-8da5-93799f28ae03',
+  'x-ms-routing-request-id': 'WESTUS:20160315T060838Z:116685f4-c0a8-4ae3-8da5-93799f28ae03',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 27 Jan 2016 04:59:34 GMT',
+  date: 'Tue, 15 Mar 2016 06:08:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,14 +57,14 @@ nock('https://management.azure.com:443')
   'content-length': '12',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'cfa0cc9c-5ba7-4cf7-a02c-131afb85dce5',
+  'x-ms-request-id': '83e077ae-a703-4124-a0e7-5f21490033cb',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '02831068-5022-491b-9c27-c3723c6bc383',
-  'x-ms-routing-request-id': 'WESTUS:20160127T045934Z:02831068-5022-491b-9c27-c3723c6bc383',
+  'x-ms-ratelimit-remaining-subscription-reads': '14927',
+  'x-ms-correlation-request-id': '116685f4-c0a8-4ae3-8da5-93799f28ae03',
+  'x-ms-routing-request-id': 'WESTUS:20160315T060838Z:116685f4-c0a8-4ae3-8da5-93799f28ae03',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 27 Jan 2016 04:59:34 GMT',
+  date: 'Tue, 15 Mar 2016 06:08:37 GMT',
   connection: 'close' });
  return result; }]];
