@@ -37,11 +37,11 @@ nock('http://jsxplat.centralus.batch.azure.com:443')
   .delete('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1ab98750-2258-4074-b1d5-58a34c47b2e8',
+  'request-id': '65119961-d304-490d-b2d6-87713519b89f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '1ff95729-4af0-4fce-a1ba-d1e6d5bda18c',
+  'client-request-id': 'fd6c5046-400e-473e-bb15-baa6bd211291',
   dataserviceversion: '3.0',
-  date: 'Fri, 18 Mar 2016 16:43:51 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -50,38 +50,38 @@ nock('https://jsxplat.centralus.batch.azure.com:443')
   .delete('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1ab98750-2258-4074-b1d5-58a34c47b2e8',
+  'request-id': '65119961-d304-490d-b2d6-87713519b89f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '1ff95729-4af0-4fce-a1ba-d1e6d5bda18c',
+  'client-request-id': 'fd6c5046-400e-473e-bb15-baa6bd211291',
   dataserviceversion: '3.0',
-  date: 'Fri, 18 Mar 2016 16:43:51 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://jsxplat.centralus.batch.azure.com:443')
   .get('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:e36277f3-3ba6-473d-a305-29c43c2f2acd\\nTime:2016-03-18T16:43:50.8032826Z\"\r\n  }\r\n}", { 'content-length': '329',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:b4d6ae48-de7f-468a-95f0-a3979978fdc5\\nTime:2016-03-21T16:45:22.1698332Z\"\r\n  }\r\n}", { 'content-length': '329',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e36277f3-3ba6-473d-a305-29c43c2f2acd',
+  'request-id': 'b4d6ae48-de7f-468a-95f0-a3979978fdc5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '1eda7481-9762-4089-b9da-9d01be1727c5',
+  'client-request-id': 'a7d61538-2317-4af5-b1a6-598166e1d82d',
   dataserviceversion: '3.0',
-  date: 'Fri, 18 Mar 2016 16:43:50 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://jsxplat.centralus.batch.azure.com:443')
   .get('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:e36277f3-3ba6-473d-a305-29c43c2f2acd\\nTime:2016-03-18T16:43:50.8032826Z\"\r\n  }\r\n}", { 'content-length': '329',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:b4d6ae48-de7f-468a-95f0-a3979978fdc5\\nTime:2016-03-21T16:45:22.1698332Z\"\r\n  }\r\n}", { 'content-length': '329',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e36277f3-3ba6-473d-a305-29c43c2f2acd',
+  'request-id': 'b4d6ae48-de7f-468a-95f0-a3979978fdc5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '1eda7481-9762-4089-b9da-9d01be1727c5',
+  'client-request-id': 'a7d61538-2317-4af5-b1a6-598166e1d82d',
   dataserviceversion: '3.0',
-  date: 'Fri, 18 Mar 2016 16:43:50 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:21 GMT',
   connection: 'close' });
  return result; }]];

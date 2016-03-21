@@ -1,2 +1,3 @@
 commands/batch/cli.batch.job-tests.js
 commands/batch/cli.batch.jobschedule-tests.js
+commands/batch/cli.batch.task-tests.js

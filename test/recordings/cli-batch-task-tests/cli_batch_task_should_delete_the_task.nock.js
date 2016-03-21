@@ -34,54 +34,54 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobschedules/xplatJobSchedule?api-version=2015-12-01.2.2&timeout=30')
-  .reply(202, "", { 'transfer-encoding': 'chunked',
+  .delete('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2b2df541-0980-42e7-b64c-9b50aa5ee2cb',
+  'request-id': '63cbabd2-4b42-4070-a24e-581230818718',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '48848745-e639-46e6-b569-d4942666a22a',
+  'client-request-id': '181cf9c6-0945-42bf-8a70-990c8bef6e74',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:24 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobschedules/xplatJobSchedule?api-version=2015-12-01.2.2&timeout=30')
-  .reply(202, "", { 'transfer-encoding': 'chunked',
+  .delete('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2b2df541-0980-42e7-b64c-9b50aa5ee2cb',
+  'request-id': '63cbabd2-4b42-4070-a24e-581230818718',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '48848745-e639-46e6-b569-d4942666a22a',
+  'client-request-id': '181cf9c6-0945-42bf-8a70-990c8bef6e74',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:24 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobschedules/xplatJobSchedule?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobScheduleNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job schedule does not exist.\\nRequestId:96e53129-66ea-48e3-992b-50a4c78c3211\\nTime:2016-03-21T16:45:24.9455432Z\"\r\n  }\r\n}", { 'content-length': '346',
+  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:bf742bc7-e43e-4c3f-8710-c51ac87b1a09\\nTime:2016-03-21T16:45:28.0008424Z\"\r\n  }\r\n}", { 'content-length': '331',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '96e53129-66ea-48e3-992b-50a4c78c3211',
+  'request-id': 'bf742bc7-e43e-4c3f-8710-c51ac87b1a09',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'f277be30-3a9b-441c-b38e-a1cabb74f41e',
+  'client-request-id': 'ce616276-7d60-40b2-b11a-713ac79eae33',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:24 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobschedules/xplatJobSchedule?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobScheduleNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job schedule does not exist.\\nRequestId:96e53129-66ea-48e3-992b-50a4c78c3211\\nTime:2016-03-21T16:45:24.9455432Z\"\r\n  }\r\n}", { 'content-length': '346',
+  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:bf742bc7-e43e-4c3f-8710-c51ac87b1a09\\nTime:2016-03-21T16:45:28.0008424Z\"\r\n  }\r\n}", { 'content-length': '331',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '96e53129-66ea-48e3-992b-50a4c78c3211',
+  'request-id': 'bf742bc7-e43e-4c3f-8710-c51ac87b1a09',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'f277be30-3a9b-441c-b38e-a1cabb74f41e',
+  'client-request-id': 'ce616276-7d60-40b2-b11a-713ac79eae33',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:24 GMT',
+  date: 'Mon, 21 Mar 2016 16:45:27 GMT',
   connection: 'close' });
  return result; }]];
