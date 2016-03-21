@@ -75,11 +75,7 @@ describe('arm', function () {
     describe('local-gateway', function () {
       it('create should create local gateway', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = 'network local-gateway create -g {group} -n {name} -l {location} -a {addressPrefix} -i {gatewayIpAddress} -t {tags} --json'
-            .formatArgs(gatewayProp);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var localGateway = JSON.parse(result.text);
+          networkUtil.createLocalGateway(gatewayProp, suite, function (localGateway) {
             localGateway.name.should.equal(gatewayProp.name);
             localGateway.gatewayIpAddress.should.equal(gatewayProp.gatewayIpAddress);
             localGateway.localNetworkAddressSpace.addressPrefixes.should.containEql(gatewayProp.addressPrefix);

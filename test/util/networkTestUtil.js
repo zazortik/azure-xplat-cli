@@ -215,6 +215,16 @@ _.extend(NetworkTestUtil.prototype, {
       });
     });
   },
+  createLocalGateway: function (gatewayProp, suite, callback) {
+    var cmd = 'network local-gateway create -g {group} -n {name} -l {location} -a {addressPrefix} -i {gatewayIpAddress} -t {tags} --json'
+      .formatArgs(gatewayProp);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+      var gateway = JSON.parse(result.text);
+      gateway.name.should.equal(gatewayProp.name);
+      callback(gateway);
+    });
+  },
 
   /**
    * DNS & TrafficManager
