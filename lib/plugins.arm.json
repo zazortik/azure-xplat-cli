@@ -27589,6 +27589,15 @@
                   "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
                 },
                 {
+                  "flags": "-f, --address-prefixes <address-prefixes>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--address-prefixes",
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
+                },
+                {
                   "flags": "-a, --private-ip-address <private-ip-address>",
                   "required": -26,
                   "optional": 0,
@@ -27711,6 +27720,15 @@
                   "short": "-i",
                   "long": "--default-site-id",
                   "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
+                },
+                {
+                  "flags": "-f, --address-prefixes <address-prefixes>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--address-prefixes",
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
                 },
                 {
                   "flags": "-t, --tags [tags]",
