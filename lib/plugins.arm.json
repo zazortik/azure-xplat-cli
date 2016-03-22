@@ -3232,7 +3232,7 @@
               "name": "delete",
               "description": "Remove nodes from the batch pool",
               "fullName": "batch node delete",
-              "usage": "[options] [pool-id] [node-lis]",
+              "usage": "[options] [pool-id] [node-list]",
               "filePath": "commands/batch/batch.pool._js",
               "options": [
                 {
