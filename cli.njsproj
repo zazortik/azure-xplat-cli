@@ -23,6 +23,20 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.actions.js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.log._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.metric._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.webtest._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.setting._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.set._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics.definition._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics._js" />
+    <Content Include="lib\commands\arm\insights\insights.usage._js" />
+    <Content Include="lib\commands\arm\insights\insights._js" />
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
     <Content Include="LICENSE.txt" />
@@ -48,6 +62,10 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
+    <Compile Include="lib\commands\arm\temporary\insights.js" />
+    <Compile Include="lib\commands\arm\temporary\insightsClient.js" />
+    <Compile Include="lib\commands\arm\temporary\insightsManagementClient.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
