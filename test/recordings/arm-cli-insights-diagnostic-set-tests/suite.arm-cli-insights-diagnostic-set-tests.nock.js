@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '1a66ce04-b633-4a0b-b2bc-a912ec8986a6',
-    name: 'Monitoring vNext Test Environment Services 03',
+    id: '4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c',
+    name: 'Insights Org Sub2',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'e58d7273-6738-4be8-9c6e-82863ed7b695',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
