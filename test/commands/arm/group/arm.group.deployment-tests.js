@@ -268,7 +268,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -m Complete -q --json',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -m Complete -d All -q --json',
             templateFile, groupName, deploymentName, parameterFile);
         var templateContent = JSON.parse(testUtil.stripBOM(fs.readFileSync(templateFile)));
         var outputTextToValidate = Object.keys(templateContent.outputs)[0];
@@ -278,16 +278,23 @@ describe('arm', function () {
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
             result.text.indexOf(outputTextToValidate).should.be.above(-1);
+            
+            suite.execute('group deployment template download -g %s -n %s -q', groupName, deploymentName, function (result) {
+              result.exitStatus.should.equal(0);
+              result.text.indexOf('Deployment template downloaded to').should.be.above(-1);
 
-            suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
-              showResult.exitStatus.should.equal(0);
-              showResult.text.indexOf(deploymentName).should.be.above(-1);
-              showResult.text.indexOf('Complete').should.be.above(-1);
+              suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
+                showResult.exitStatus.should.equal(0);
+                showResult.text.indexOf(deploymentName).should.be.above(-1);
+                showResult.text.indexOf('Complete').should.be.above(-1);
+                showResult.text.indexOf('RequestContent').should.be.above(-1);
+                
+                suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
+                  listResult.exitStatus.should.equal(0);
+                  listResult.text.indexOf(deploymentName).should.be.above(-1);
+                  cleanup(done);
+                });
 
-              suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
-                listResult.exitStatus.should.equal(0);
-                listResult.text.indexOf(deploymentName).should.be.above(-1);
-                cleanup(done);
               });
             });
           });

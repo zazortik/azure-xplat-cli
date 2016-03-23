@@ -107,20 +107,20 @@ describe('arm', function() {
           var cmd = util.format(
             'storage account create %s --resource-group %s --type %s --location %s --json',
             storageAccount, groupName, stoType, location).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var cmd = util.format(
+              'vm create %s %s %s Linux -f %s -d %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s ' +
+              ' -z %s --disk-encryption-key-vault-id %s --disk-encryption-key-url %s --key-encryption-key-vault-id %s --key-encryption-key-url %s --json',
+              groupName, vmPrefix, location, nicName, vhdUrl, username, password, storageAccount, storageCont,
+              vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert,
+              vmSize, diskEncryptionKeyVaultId, diskEncryptionKeySecretUrl, keyEncryptionKeyVaultId, keyEncryptionKeyUrl).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              var cmd = util.format(
-                'vm create %s %s %s Linux -f %s -d %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s ' +
-                ' -z %s --disk-encryption-key-vault-id %s --disk-encryption-key-url %s --key-encryption-key-vault-id %s --key-encryption-key-url %s --json',
-                groupName, vmPrefix, location, nicName, vhdUrl, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert,
-                vmSize, diskEncryptionKeyVaultId, diskEncryptionKeySecretUrl, keyEncryptionKeyVaultId, keyEncryptionKeyUrl).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.not.equal(0);
               var errorTxt = util.format(' %s is not a valid versioned Key Vault Key URL. It should be in the format https://<vaultEndpoint>/keys/<keyName>/<keyVersion>.', keyEncryptionKeyUrl);
               should(result.errorText.indexOf(errorTxt) > -1).ok;
               done();
-            });
+             });
           });
         });
       });
