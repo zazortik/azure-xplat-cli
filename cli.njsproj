@@ -33,6 +33,10 @@
     <Content Include="lib\commands\arm\insights\insights.autoscale._js" />
     <Content Include="lib\commands\arm\insights\insights.diagnostic.get._js" />
     <Content Include="lib\commands\arm\insights\insights.diagnostic.set._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.add._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.delete._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.list._js" />
     <Content Include="lib\commands\arm\insights\insights.metrics.definition._js" />
     <Content Include="lib\commands\arm\insights\insights.metrics._js" />
     <Content Include="lib\commands\arm\insights\insights.usage._js" />
