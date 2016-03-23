@@ -21087,6 +21087,544 @@
           ],
           "categories": {}
         },
+        "script-action": {
+          "name": "script-action",
+          "description": "Commands to manage HDInsight script actions",
+          "fullName": "hdinsight script-action",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Submits script action",
+              "fullName": "hdinsight script-action create",
+              "usage": "[options] <clusterName>",
+              "filePath": "commands/arm/hdinsight/hdinsight._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-c, --clusterName <clusterName>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--clusterName",
+                  "description": "HDInsight cluster name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "Script name"
+                },
+                {
+                  "flags": "-u, --uri <uri>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--uri",
+                  "description": "Script URI"
+                },
+                {
+                  "flags": "-p, --parameters <parameters>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--parameters",
+                  "description": "(Optional) Script parameters"
+                },
+                {
+                  "flags": "-t, --nodeTypes <nodeTypes>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--nodeTypes",
+                  "description": "Specifies the nodes on which this cmdlet applies the action separated by \";\". For example, \"headnode;workernode\" is a valid input."
+                },
+                {
+                  "flags": "--persistOnSuccess",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--persistOnSuccess",
+                  "description": "When persistOnSuccess is specified, the script action will be persisted if it successfully executes on the cluster."
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "persisted": {
+              "name": "persisted",
+              "description": "Commands to manage HDInsight persisted script actions",
+              "fullName": "hdinsight script-action persisted",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists all persisted script actions",
+                  "fullName": "hdinsight script-action persisted list",
+                  "usage": "[options] <clusterName>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Shows a persisted script action",
+                  "fullName": "hdinsight script-action persisted show",
+                  "usage": "[options] <clusterName> <name>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "Script name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Promotes script action to persisted",
+                  "fullName": "hdinsight script-action persisted set",
+                  "usage": "[options] <clusterName> <scriptExecutionId>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-e, --scriptExecutionId <scriptExecutionId>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--scriptExecutionId",
+                      "description": "Script execution id"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes persisted script",
+                  "fullName": "hdinsight script-action persisted delete",
+                  "usage": "[options] <clusterName> <name>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "Script name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "history": {
+              "name": "history",
+              "description": "Commands to manage HDInsight script action history",
+              "fullName": "hdinsight script-action history",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists latest script action history",
+                  "fullName": "hdinsight script-action history list",
+                  "usage": "[options] <clusterName>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Shows script execution detail",
+                  "fullName": "hdinsight script-action history show",
+                  "usage": "[options] <clusterName> <scriptExecutionId>",
+                  "filePath": "commands/arm/hdinsight/hdinsight._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "The name of the resource group"
+                    },
+                    {
+                      "flags": "-c, --clusterName <clusterName>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--clusterName",
+                      "description": "HDInsight cluster name"
+                    },
+                    {
+                      "flags": "-e, --scriptExecutionId <scriptExecutionId>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--scriptExecutionId",
+                      "description": "Script execution id"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "The subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
         "config": {
           "name": "config",
           "description": "Commands to manage HDInsight cluster configuration",
