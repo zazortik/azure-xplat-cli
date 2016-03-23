@@ -10195,7 +10195,7 @@
         },
         {
           "name": "quick-create",
-          "description": "Commands to create a virtual machine scale set with default resources in a group.",
+          "description": "Commands to create a virtual machine scale set with default resources in a group.\n         For 'image-urn' refer the following command: $ azure vm image list (Example: $ azure vm image list westus canonical)",
           "fullName": "vmss quick-create",
           "usage": "[options] [resource-group-name] [name] [location] [image-urn] [capacity] [admin-username] [admin-password]",
           "filePath": "commands/arm/vmss/vmss._js",
