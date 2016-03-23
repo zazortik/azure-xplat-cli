@@ -63,9 +63,6 @@
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
     <Compile Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
-    <Compile Include="lib\commands\arm\temporary\insights.js" />
-    <Compile Include="lib\commands\arm\temporary\insightsClient.js" />
-    <Compile Include="lib\commands\arm\temporary\insightsManagementClient.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -117,8 +114,6 @@
     <Compile Include="lib\commands\arm\role\rbacClients.js" />
     <Compile Include="lib\commands\arm\role\rbacConstants.js" />
     <Compile Include="lib\commands\arm\tag\tagUtils.js" />
-    <Compile Include="lib\commands\arm\temporary\storage.js" />
-    <Compile Include="lib\commands\arm\temporary\storageManagementClient.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\azureSdkStream.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\deployTracker.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\propertyPrompts.js" />
@@ -166,6 +161,8 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.get-tests.js" />
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.set-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
       <TestFramework>
       </TestFramework>
@@ -471,7 +468,6 @@
     <Folder Include="lib\commands\arm\resource" />
     <Folder Include="lib\commands\arm\role" />
     <Folder Include="lib\commands\arm\tag" />
-    <Folder Include="lib\commands\arm\temporary" />
     <Folder Include="lib\commands\arm\usage" />
     <Folder Include="lib\commands\arm\vm" />
     <Folder Include="lib\commands\arm\webapp" />

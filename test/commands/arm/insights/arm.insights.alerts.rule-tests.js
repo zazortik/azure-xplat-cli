@@ -79,7 +79,7 @@ describe('arm', function () {
               
               var response = JSON.parse(result.text);
               if (suite.isPlayback()) {
-                      response.length.should.equal(6);
+                      response.length.should.equal(7);
 
                       response[1].name.should.equal('CPU');
               }
@@ -102,9 +102,10 @@ describe('arm', function () {
               
               var response = JSON.parse(result.text);
               if (suite.isPlayback()) {
-                      response.length.should.equal(3);
-                    
-                      response[2].name.should.equal('requestignhas');
+                response.length.should.equal(2);
+
+                response[1].should.have.property('name');
+                response[1].name.should.equal('requestignhas');
               }
               
               __.each(response, function (record) {
@@ -140,7 +141,7 @@ describe('arm', function () {
         });
 
         describe('set', function () {
-          it.skip('should work for metric rules', function (done) {
+          it('should work for metric rules', function (done) {
             suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --description %s --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', description, function (result) {
               result.exitStatus.should.equal(0);
               
@@ -155,7 +156,7 @@ describe('arm', function () {
             });
           });
 
-          it.skip('should disable a metric rule', function (done) {
+          it('should disable a metric rule', function (done) {
             suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --description %s --disable --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', description, function (result) {
               result.exitStatus.should.equal(0);
               
@@ -170,7 +171,7 @@ describe('arm', function () {
             });
           });
           
-          it.skip('should work for metric rules with actions', function (done) {
+          it('should work for metric rules with actions', function (done) {
             suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --actions %s --description %s --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', actions, description, function (result) {
               result.exitStatus.should.equal(0);
               
@@ -179,7 +180,7 @@ describe('arm', function () {
               response.should.have.property('statusCode');
               response.should.have.property('requestId');
               
-              response.statusCode.should.equal(200);
+              response.statusCode.should.equal(201);
               
               done();
             });
@@ -215,8 +216,8 @@ describe('arm', function () {
             });
           });
 
-          it('should work for webtest rules', function (done) {
-            suite.execute('insights alerts rule webtest set %s %s %s %s %s %s %s --json', 'leowebtestr1-webtestr1', 'East US', 'Default-Web-WestUS', windowSize, 1, 'GSMT_AvRaw', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1', function (result) {
+          it.skip('should work for webtest rules', function (done) {
+            suite.execute('insights alerts rule webtest set %s %s %s %s %s %s %s --json', 'leowebtestr1-webtestr1', 'eastus', 'Default-Web-WestUS', windowSize, 1, 'GSMT_AvRaw', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1', function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
@@ -248,7 +249,7 @@ describe('arm', function () {
         });
 
         describe('delete', function () {
-          it.skip('should work', function (done) {
+          it('should work', function (done) {
             // NOTE: this must be executed before all the tests (it is not working in 'before')
             // 'node bin\azure insights alerts rule metric set CPU westus Default-Web-WestUS 00:05:00 GreaterThan 1 /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2 CpuTime Total'
             // 'node bin\azure insights alerts rule metric set requestignhas westus Default-Web-WestUS 00:05:00 GreaterThan 5 /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2 Requests Total

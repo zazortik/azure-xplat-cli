@@ -62,14 +62,14 @@ describe('arm', function () {
           suite.execute('insights diagnostic get -i %s --json', resourceId, function(result) {
             var properties = JSON.parse(result.text);
 
-            properties.storageAccountId.should.equal("/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus");
+            properties.storageAccountId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus');
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
