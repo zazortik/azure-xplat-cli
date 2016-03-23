@@ -34608,6 +34608,15 @@
                   "description": "the gateway type\n     Valid values are [RouteBased,PolicyBased,Dedicated]\n     Default is RouteBased"
                 },
                 {
+                  "flags": "-k, --sku-name <sku-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--sku-name",
+                  "description": "the SKU name\n     Valid values are [Basic,HighPerformance,Standard]\n     Default is Basic"
+                },
+                {
                   "flags": "-u, --public-ip-id <public-ip-id>",
                   "required": -20,
                   "optional": 0,
@@ -34669,6 +34678,15 @@
                   "short": "-i",
                   "long": "--default-site-id",
                   "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
+                },
+                {
+                  "flags": "-f, --address-prefixes <address-prefixes>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--address-prefixes",
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
                 },
                 {
                   "flags": "-a, --private-ip-address <private-ip-address>",
@@ -34759,6 +34777,15 @@
                   "description": "the name of the virtual network gateway"
                 },
                 {
+                  "flags": "-k, --sku-name <sku-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--sku-name",
+                  "description": "the SKU name\n     Valid values are [Basic,HighPerformance,Standard]"
+                },
+                {
                   "flags": "-a, --private-ip-address <private-ip-address>",
                   "required": -26,
                   "optional": 0,
@@ -34784,6 +34811,15 @@
                   "short": "-i",
                   "long": "--default-site-id",
                   "description": "Local Network Gateway identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/localNetworkGateways/<local-gateway-name>"
+                },
+                {
+                  "flags": "-f, --address-prefixes <address-prefixes>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--address-prefixes",
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
                 },
                 {
                   "flags": "-t, --tags [tags]",

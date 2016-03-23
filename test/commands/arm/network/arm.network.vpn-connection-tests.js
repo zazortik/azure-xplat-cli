@@ -36,6 +36,7 @@ var firstGatewayProp = {
   subnetAddressPrefix: '10.1.0.0/28',
   publicIpName: 'test-ip-1',
   type: 'RouteBased',
+  sku: 'Basic',
   privateIpAddress: '10.1.0.11',
   enableBgp: false,
   tags: networkUtil.tags
@@ -50,6 +51,7 @@ var secondGatewayProp = {
   subnetAddressPrefix: '10.2.0.0/28',
   publicIpName: 'test-ip-2',
   type: 'RouteBased',
+  sku: 'Basic',
   privateIpAddress: '10.2.0.11',
   enableBgp: false,
   tags: networkUtil.tags
