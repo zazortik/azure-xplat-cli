@@ -37,6 +37,12 @@
     <Content Include="lib\commands\arm\insights\insights.metrics._js" />
     <Content Include="lib\commands\arm\insights\insights.usage._js" />
     <Content Include="lib\commands\arm\insights\insights._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiClient._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiConfigClient._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiConstants._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiCustomization._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdinsight._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiUtils._js" />
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
     <Content Include="LICENSE.txt" />
@@ -459,6 +465,7 @@
     <Folder Include="lib\commands\arm\availabilityset" />
     <Folder Include="lib\commands\arm\feature" />
     <Folder Include="lib\commands\arm\group" />
+    <Folder Include="lib\commands\arm\hdinsight" />
     <Folder Include="lib\commands\arm\insights" />
     <Folder Include="lib\commands\arm\keyvault" />
     <Folder Include="lib\commands\arm\location" />
