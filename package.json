@@ -65,7 +65,7 @@
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.1",
     "azure-storage": "0.7.0",
-    "applicationinsights": "^0.15.11",
+    "applicationinsights": "0.15.11",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
