@@ -75,12 +75,9 @@ describe('cli', function () {
         suite.execute('batch job delete %s --account-name %s --account-key %s --account-endpoint %s --quiet --json', jobId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
-          suite.teardownSuite(done);
         });
       }
-      else {
-        done();
-      }
+      suite.teardownSuite(done);
     });
     
     beforeEach(function (done) {

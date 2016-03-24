@@ -66,4 +66,40 @@ nock('https://jsxplat.centralus.batch.azure.com:443')
   'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
   date: 'Tue, 22 Mar 2016 00:27:44 GMT',
   connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://jsxplat.centralus.batch.azure.com:443')
+  .get('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%2FtaskOut.txt?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "test \r\n", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  'last-modified': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'request-id': '75a7ccf7-559e-4d36-8e0c-dc6b77b587da',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'client-request-id': 'be42fff3-44ad-47b2-8a76-82ae57a0ecb8',
+  dataserviceversion: '3.0',
+  'ocp-creation-time': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'ocp-batch-file-isdirectory': 'False',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
+  date: 'Tue, 22 Mar 2016 00:27:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://jsxplat.centralus.batch.azure.com:443')
+  .get('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%2FtaskOut.txt?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "test \r\n", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  'last-modified': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'request-id': '75a7ccf7-559e-4d36-8e0c-dc6b77b587da',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'client-request-id': 'be42fff3-44ad-47b2-8a76-82ae57a0ecb8',
+  dataserviceversion: '3.0',
+  'ocp-creation-time': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'ocp-batch-file-isdirectory': 'False',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
+  date: 'Tue, 22 Mar 2016 00:27:44 GMT',
+  connection: 'close' });
  return result; }]];

@@ -94,4 +94,40 @@ nock('https://jsxplat.centralus.batch.azure.com:443')
   'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fpools%2FxplatTestPool%2Fnodes%2Ftvm-4036039286_1-20160321t221745z%2Ffiles%2Fstartup%2Fstdout.txt',
   date: 'Tue, 22 Mar 2016 00:27:43 GMT',
   connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://jsxplat.centralus.batch.azure.com:443')
+  .get('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/files/startup%2Fstdout.txt?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "test\r\n", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  'last-modified': 'Mon, 21 Mar 2016 22:22:53 GMT',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'request-id': 'e97015ab-144d-4464-a964-50d9e09cedbe',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'client-request-id': '70bc0a0b-c662-429a-824d-a5c00a22700f',
+  dataserviceversion: '3.0',
+  'ocp-creation-time': 'Mon, 21 Mar 2016 22:22:53 GMT',
+  'ocp-batch-file-isdirectory': 'False',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fpools%2FxplatTestPool%2Fnodes%2Ftvm-4036039286_1-20160321t221745z%2Ffiles%2Fstartup%2Fstdout.txt',
+  date: 'Tue, 22 Mar 2016 00:27:43 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://jsxplat.centralus.batch.azure.com:443')
+  .get('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/files/startup%2Fstdout.txt?api-version=2015-12-01.2.2&timeout=30')
+  .reply(200, "test\r\n", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/octet-stream',
+  'last-modified': 'Mon, 21 Mar 2016 22:22:53 GMT',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'request-id': 'e97015ab-144d-4464-a964-50d9e09cedbe',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'client-request-id': '70bc0a0b-c662-429a-824d-a5c00a22700f',
+  dataserviceversion: '3.0',
+  'ocp-creation-time': 'Mon, 21 Mar 2016 22:22:53 GMT',
+  'ocp-batch-file-isdirectory': 'False',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fpools%2FxplatTestPool%2Fnodes%2Ftvm-4036039286_1-20160321t221745z%2Ffiles%2Fstartup%2Fstdout.txt',
+  date: 'Tue, 22 Mar 2016 00:27:43 GMT',
+  connection: 'close' });
  return result; }]];
