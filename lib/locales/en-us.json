@@ -1862,5 +1862,6 @@
   "The webtest resource Id.": "The webtest resource Id.",
   "The maximum number of records to be returned by the command.": "The maximum number of records to be returned by the command.",
   "Invalid value for argument %s: %s": "Invalid value for argument %s: %s",
-  "Create or set an event-based alert rule.": "Create or set an event-based alert rule."
+  "Create or set an event-based alert rule.": "Create or set an event-based alert rule.",
+  "Invalid actions argument: array expected.": "Invalid actions argument: array expected."
 }
