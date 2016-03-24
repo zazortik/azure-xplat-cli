@@ -27,7 +27,7 @@ var TelemetryClient = require('../lib/util/telemetry');
 utilsCore.isTelemetryEnabled(function (err, isEnabled) {
   TelemetryClient.init(isEnabled);
   if (isEnabled) {
-    TelemetryClient.start();
+    TelemetryClient.start(process.argv);
   }
 
   if (process.argv[2] !== '--gen') {
