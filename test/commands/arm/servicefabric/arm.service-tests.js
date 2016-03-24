@@ -26,8 +26,7 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
 ];
-var clusterEndpoint = '127.0.0.1:10549';
-var httpEndpoint = '127.0.0.1:10550';
+var httpEndpoint = 'http://127.0.0.1:10550';
 var applicationPackagePath = '/media/share/StatelessPi';
 var applicationPackageName = 'StatelessPi';
 var applicationTypeName = 'StatelessPiServiceApp';
@@ -62,7 +61,7 @@ describe('Service Fabric', function () {
     });
     
     it('should copy application package', function (done) {
-      suite.execute('servicefabric application-package copy ' + clusterEndpoint + ' ' + applicationPackagePath + ' fabric:ImageStore' + ' --json', function (result) {
+      suite.execute('servicefabric application-package copy ' + applicationPackagePath + ' fabric:ImageStore' + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
