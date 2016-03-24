@@ -12,8 +12,9 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>group list</ScriptArguments>
+    <StartWebBrowser>False</StartWebBrowser>
+    <ScriptArguments>
+    </ScriptArguments>
     <Environment>
     </Environment>
     <NodeExeArguments>
@@ -173,6 +174,8 @@
     <Compile Include="lib\util\profile\subscription.js" />
     <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.get-tests.js" />
     <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.set-tests.js" />
+    <Compile Include="test\commands\arm\batch\arm.batch.account-tests.js" />
+    <Compile Include="test\commands\arm\batch\arm.batch.subscription-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
       <TestFramework>
       </TestFramework>
@@ -523,6 +526,7 @@
     <Folder Include="test\commands\arm\keyvault" />
     <Folder Include="test\commands\arm\location" />
     <Folder Include="test\commands\arm\network" />
+    <Folder Include="test\commands\arm\batch\" />
     <Folder Include="test\commands\arm\provider" />
     <Folder Include="test\commands\arm\resource" />
     <Folder Include="test\commands\arm\role" />
