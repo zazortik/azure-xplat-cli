@@ -21758,15 +21758,6 @@
                       "description": "optionally specify the priority for the job. Default value is 1000, with lower, positive, non-zero values having higher priority. 1 is the highest priority and int.maxValue is the lowest."
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -21846,15 +21837,6 @@
                       "description": "optionally indicates that statistics for the job should be output as well."
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -21923,15 +21905,6 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode (do not ask for cancel confirmation)"
-                    },
-                    {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -22040,15 +22013,6 @@
                       "description": "An optional filter which returns jobs with only the specified results (as comma delmited string). Valid results are: none, succeeded, cancelled and failed"
                     },
                     {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to force lookup of the Data Lake Analytics account in."
-                    },
-                    {
                       "flags": "-s, --subscription <id>",
                       "required": -20,
                       "optional": 0,
@@ -22127,15 +22091,6 @@
                       "short": "-p",
                       "long": "--itemPath",
                       "description": "The path to the catalog item(s) to get or list in the format: <FirstPart>.<OptionalSecondPart>.<OptionalThirdPart>.<OptionalFourthPart>. This MUST be null when listing all databases."
-                    },
-                    {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the optional resource group to list the accounts in"
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -22235,15 +22190,6 @@
                           "description": "secret password, will prompt if not given"
                         },
                         {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
-                        },
-                        {
                           "flags": "-s, --subscription <id>",
                           "required": -20,
                           "optional": 0,
@@ -22332,15 +22278,6 @@
                           "description": "secret password, will prompt if not given"
                         },
                         {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
-                        },
-                        {
                           "flags": "-s, --subscription <id>",
                           "required": -20,
                           "optional": 0,
@@ -22418,15 +22355,6 @@
                           "short": "-q",
                           "long": "--quiet",
                           "description": "quiet mode (do not ask for delete confirmation)"
-                        },
-                        {
-                          "flags": "-g --resource-group <resource-group>",
-                          "required": -21,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-g",
-                          "long": "--resource-group",
-                          "description": "the optional resource group to list the accounts in"
                         },
                         {
                           "flags": "-s, --subscription <id>",
@@ -23162,6 +23090,15 @@
                       "short": "-p",
                       "long": "--path",
                       "description": "the full path to the folder to list (e.g. /someFolder or /someFolder/someNestedFolder)"
+                    },
+                    {
+                      "flags": "-l --listSize <listSize>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--listSize",
+                      "description": "the optional number of entries to list. The default is all entries, which can potentially take some time for large directories.)"
                     },
                     {
                       "flags": "-s, --subscription <id>",
@@ -23926,85 +23863,6 @@
                       "short": "-p",
                       "long": "--path",
                       "description": "the full path to the folder or file to get (e.g. /someFolder or /someFolder/someFile.txt)"
-                    },
-                    {
-                      "flags": "-s, --subscription <id>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "delete",
-                  "description": "Deletes the entire ACL associated with a folder",
-                  "fullName": "datalake store permissions delete",
-                  "usage": "[options] <accountName> <path>",
-                  "filePath": "commands/arm/datalakestore/datalakestore._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-n --accountName <accountName>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--accountName",
-                      "description": "the Data Lake Store account name to execute the action on"
-                    },
-                    {
-                      "flags": "-p --path <path>",
-                      "required": -11,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--path",
-                      "description": "the full path to the folder to remove ACLs from (e.g. /someFolder)"
-                    },
-                    {
-                      "flags": "-d --defaultAcl",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-d",
-                      "long": "--defaultAcl",
-                      "description": "optionally indicates that the default ACL should be removed instead of the regular ACL. Default is false."
-                    },
-                    {
-                      "flags": "-q, --quiet",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-q",
-                      "long": "--quiet",
-                      "description": "quiet mode (do not ask for delete confirmation)"
                     },
                     {
                       "flags": "-s, --subscription <id>",
