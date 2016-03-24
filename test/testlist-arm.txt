@@ -20,6 +20,10 @@ commands/arm/insights/arm.insights.autoscale-tests.js
 commands/arm/insights/arm.insights.autoscale.setting-tests.js
 commands/arm/insights/arm.insights.diagnostic.get-tests.js
 commands/arm/insights/arm.insights.diagnostic.set-tests.js
+commands/arm/insights/arm.insights.logprofile.add-tests.js
+commands/arm/insights/arm.insights.logprofile.delete-tests.js
+commands/arm/insights/arm.insights.logprofile.get-tests.js
+commands/arm/insights/arm.insights.logprofile.list-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
 commands/arm/insights/arm.insights.metrics-tests.js
 commands/arm/insights/arm.insights.metrics.definition-tests.js
@@ -42,6 +46,8 @@ commands/arm/vm/arm.availset-tests.js
 # Extension Tests
 commands/arm/vm/arm.vm.enable-aem-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
+include:./testlist-arm-vm.txt
+include:./testlist-arm-vmss.txt
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js

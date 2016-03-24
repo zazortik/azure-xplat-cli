@@ -13,8 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
-    registeredResourceNamespaces: [],
+    registeredProviders: ['website'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,44 +21,41 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION'] = 'South Central US';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/mytestrg005/providers/microsoft.insights/alertrules/requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda?api-version=2014-04-01')
-  .reply(200, "{\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.insights/alertrules/requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"name\":\"requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"type\":\"Microsoft.Insights/alertRules\",\"location\":\"East US\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.web/sites/mytestweb005\":\"Resource\"},\"properties\":{\"name\":\"requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"description\":\"A test only\",\"isEnabled\":true,\"condition\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\"dataSource\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.web/sites/mytestweb005\",\"metricName\":\"Requests\"},\"threshold\":1.0,\"windowSize\":\"PT5M\",\"timeAggregation\":\"Total\"},\"action\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\",\"customEmails\":[]},\"lastUpdatedTime\":\"2015-04-13T20:23:14.1083711Z\",\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas\",\"name\":\"requestignhas\",\"type\":\"Microsoft.Insights/alertRules\",\"location\":\"westus\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2\":\"Resource\"},\"properties\":{\"name\":\"requestignhas\",\"description\":\"Pura vida\",\"isEnabled\":true,\"condition\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\"dataSource\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2\",\"metricName\":\"Requests\"},\"threshold\":1.0,\"windowSize\":\"PT5M\",\"timeAggregation\":\"Total\"},\"lastUpdatedTime\":\"2016-03-17T17:07:14.4017348Z\",\"provisioningState\":\"Succeeded\",\"actions\":[]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1709',
+  'content-length': '1397',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '08a16454-944c-4f8a-93cb-03dece4228df',
+  'x-ms-request-id': '495963cd-2ca0-408a-982f-a5ec707bfeb3',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-reads': '31912',
-  'x-ms-correlation-request-id': '903eb3b5-4e37-4d42-b754-59e7def411c8',
-  'x-ms-routing-request-id': 'WESTUS:20150416T213003Z:903eb3b5-4e37-4d42-b754-59e7def411c8',
-  date: 'Thu, 16 Apr 2015 21:30:03 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14955',
+  'x-ms-correlation-request-id': 'ad25eae1-b8ac-4a0d-aab6-b55c037dc672',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160317T232434Z:ad25eae1-b8ac-4a0d-aab6-b55c037dc672',
+  date: 'Thu, 17 Mar 2016 23:24:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/mytestrg005/providers/microsoft.insights/alertrules/requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda?api-version=2014-04-01')
-  .reply(200, "{\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.insights/alertrules/requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"name\":\"requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"type\":\"Microsoft.Insights/alertRules\",\"location\":\"East US\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.web/sites/mytestweb005\":\"Resource\"},\"properties\":{\"name\":\"requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda\",\"description\":\"A test only\",\"isEnabled\":true,\"condition\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\"dataSource\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/microsoft.web/sites/mytestweb005\",\"metricName\":\"Requests\"},\"threshold\":1.0,\"windowSize\":\"PT5M\",\"timeAggregation\":\"Total\"},\"action\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\",\"customEmails\":[]},\"lastUpdatedTime\":\"2015-04-13T20:23:14.1083711Z\",\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas\",\"name\":\"requestignhas\",\"type\":\"Microsoft.Insights/alertRules\",\"location\":\"westus\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2\":\"Resource\"},\"properties\":{\"name\":\"requestignhas\",\"description\":\"Pura vida\",\"isEnabled\":true,\"condition\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\"dataSource\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\"resourceUri\":\"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2\",\"metricName\":\"Requests\"},\"threshold\":1.0,\"windowSize\":\"PT5M\",\"timeAggregation\":\"Total\"},\"lastUpdatedTime\":\"2016-03-17T17:07:14.4017348Z\",\"provisioningState\":\"Succeeded\",\"actions\":[]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1709',
+  'content-length': '1397',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '08a16454-944c-4f8a-93cb-03dece4228df',
+  'x-ms-request-id': '495963cd-2ca0-408a-982f-a5ec707bfeb3',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-reads': '31912',
-  'x-ms-correlation-request-id': '903eb3b5-4e37-4d42-b754-59e7def411c8',
-  'x-ms-routing-request-id': 'WESTUS:20150416T213003Z:903eb3b5-4e37-4d42-b754-59e7def411c8',
-  date: 'Thu, 16 Apr 2015 21:30:03 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14955',
+  'x-ms-correlation-request-id': 'ad25eae1-b8ac-4a0d-aab6-b55c037dc672',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160317T232434Z:ad25eae1-b8ac-4a0d-aab6-b55c037dc672',
+  date: 'Thu, 17 Mar 2016 23:24:33 GMT',
   connection: 'close' });
  return result; }]];
