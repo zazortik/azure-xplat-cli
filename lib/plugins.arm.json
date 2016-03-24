@@ -11070,11 +11070,6 @@
       ],
       "categories": {}
     },
-    "datalake": {
-      "name": "datalake",
-      "description": "Commands to manage your Data Lake objects",
-      "fullName": "datalake",
-      "usage": "[options]",
     "vmss": {
       "name": "vmss",
       "description": "Commands to manage your virtual machine scale sets.  ",
