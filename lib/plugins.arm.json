@@ -23300,7 +23300,7 @@
           "name": "export",
           "description": "Captures a resource group as a template, and saves it as file on disk.",
           "fullName": "group export",
-          "usage": "[options] <name>",
+          "usage": "[options] <name> [directory]",
           "filePath": "commands/arm/group/group._js",
           "options": [
             {
@@ -23338,9 +23338,9 @@
               "description": "the resource group name"
             },
             {
-              "flags": "-d --directory <directory>",
-              "required": -16,
-              "optional": 0,
+              "flags": "-d --directory [directory]",
+              "required": 0,
+              "optional": -16,
               "bool": true,
               "short": "-d",
               "long": "--directory",
