@@ -143,6 +143,25 @@ describe('arm', function () {
         });
       });
     });
+    
+    describe('export', function () {
+      it.skip('should export group successfully', function (done) {
+        var groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+        
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          
+          suite.execute('group export --name %s', groupName, function (exportResult) {
+            exportResult.exitStatus.should.equal(0);
+            exportResult.text.indexOf('Template downloaded to').should.be.above(-1);
+
+            suite.execute('group delete %s --json --quiet', groupName, function () {
+              done();
+            });
+          });
+        });
+      });
+    });
 
     describe('show', function () {
       it('should show information of an empty group', function (done) {
