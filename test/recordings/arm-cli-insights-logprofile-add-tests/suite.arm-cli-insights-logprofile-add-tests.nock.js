@@ -6,14 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'b67f7fec-69fc-4974-9099-a26bd6ffeda3',
-    name: 'Monitoring vNext Test Environment Services 02',
+    id: '1a66ce04-b633-4a0b-b2bc-a912ec8986a6',
+    name: 'Monitoring vNext Test Environment Services 03',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    state: 'Enabled',
+    registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 

@@ -26037,6 +26037,15 @@
                   "description": "The end time of the query. In ISO format with explicit indication of timezone: 1970-01-01T00:00:00Z, 1970-01-01T00:00:00-0500"
                 },
                 {
+                  "flags": "-m --maxEvents <maxEvents>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--maxEvents",
+                  "description": "The maximum number of records to be returned by the command."
+                },
+                {
                   "flags": "--status <status>",
                   "required": -10,
                   "optional": 0,
@@ -26077,7 +26086,7 @@
         },
         "alerts": {
           "name": "alerts",
-          "description": "Retrieve alerts logs",
+          "description": "Manages alert rules",
           "fullName": "insights alerts",
           "usage": "[options] [command]",
           "options": [],
@@ -26179,9 +26188,143 @@
             }
           ],
           "categories": {
+            "actions": {
+              "name": "actions",
+              "description": "Creates alert rules actions",
+              "fullName": "insights alerts actions",
+              "usage": "[options]",
+              "options": [],
+              "commands": [],
+              "categories": {
+                "email": {
+                  "name": "email",
+                  "description": "Creates alert rule e-mail actions",
+                  "fullName": "insights alerts actions email",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Creates an alert rule e-mail action.",
+                      "fullName": "insights alerts actions email create",
+                      "usage": "[options]",
+                      "filePath": "commands/arm/insights/insights.alerts.actions.js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-e --customEmails <customEmails>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--customEmails",
+                          "description": "The string that represents thead list of end custom e-mails; the e-mails must be comma-separated."
+                        },
+                        {
+                          "flags": "-o --sendToServiceOwners",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-o",
+                          "long": "--sendToServiceOwners",
+                          "description": "Flag to send em-mail to the service owners when the alert fires."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                },
+                "webhook": {
+                  "name": "webhook",
+                  "description": "Creates alert rule webhook actions",
+                  "fullName": "insights alerts actions webhook",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Creates an alert rule webhook action.",
+                      "fullName": "insights alerts actions webhook create",
+                      "usage": "[options] <serviceUri>",
+                      "filePath": "commands/arm/insights/insights.alerts.actions.js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-e --serviceUri <serviceUri>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--serviceUri",
+                          "description": "The service Uri."
+                        },
+                        {
+                          "flags": "-o --properties <properties>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-o",
+                          "long": "--properties",
+                          "description": "The list of property / value pairs."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
+            },
             "rule": {
               "name": "rule",
-              "description": "Retrieve alerts rules",
+              "description": "Manages alert rules",
               "fullName": "insights alerts rule",
               "usage": "[options] [command]",
               "options": [],
@@ -26316,254 +26459,490 @@
                       "description": "The subscription identifier."
                     }
                   ]
-                },
-                {
-                  "name": "set",
-                  "description": "Create or set a metric alert rule.",
-                  "fullName": "insights alerts rule set",
-                  "usage": "[options] <ruleType> <ruleName> <location> <resourceGroup>",
-                  "filePath": "commands/arm/insights/insights.alerts.rule._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-y --ruleType <ruleType>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-y",
-                      "long": "--ruleType",
-                      "description": "The type of the rule (Event, Metric, Webtest)."
-                    },
-                    {
-                      "flags": "-x --disable",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-x",
-                      "long": "--disable",
-                      "description": "Flag to disable the rule."
-                    },
-                    {
-                      "flags": "-s --subscription <subscription>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "The subscription identifier."
-                    },
-                    {
-                      "flags": "-n --ruleName <ruleName>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--ruleName",
-                      "description": "The name of the rule."
-                    },
-                    {
-                      "flags": "-d --description <description>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-d",
-                      "long": "--description",
-                      "description": "The description of the rule."
-                    },
-                    {
-                      "flags": "-l --location <location>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--location",
-                      "description": "The location."
-                    },
-                    {
-                      "flags": "-g --resourceGroup <resourceGroup>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resourceGroup",
-                      "description": "The resource group."
-                    },
-                    {
-                      "flags": "--windowSize <windowSize>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--windowSize",
-                      "description": "The time window size. Expected format hh:mm:ss."
-                    },
-                    {
-                      "flags": "--sendToServiceOwners",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--sendToServiceOwners",
-                      "description": "Flag to send e-mail to service owners."
-                    },
-                    {
-                      "flags": "--customEmails <customEmails>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--customEmails",
-                      "description": "The list of custom e-mail addresses."
-                    },
-                    {
-                      "flags": "-o --conditionOperator <conditionOperator>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-o",
-                      "long": "--conditionOperator",
-                      "description": "The condition operator: GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual. Value is case insensitive."
-                    },
-                    {
-                      "flags": "-a --threshold <threshold>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--threshold",
-                      "description": "The threshold."
-                    },
-                    {
-                      "flags": "-i --resourceId <resourceId>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--resourceId",
-                      "description": "The resource Id."
-                    },
-                    {
-                      "flags": "-m --metricName <metricName>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-m",
-                      "long": "--metricName",
-                      "description": "The metric name."
-                    },
-                    {
-                      "flags": "--timeAggregationOperator <timeAggregationOperator>",
-                      "required": -27,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--timeAggregationOperator",
-                      "description": "The time aggregation operator: Average, Minimum, Maximum, Total. Value is case insensitve."
-                    },
-                    {
-                      "flags": "-e --eventName <eventName>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-e",
-                      "long": "--eventName",
-                      "description": "The event name."
-                    },
-                    {
-                      "flags": "-z --eventSource <eventSource>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-z",
-                      "long": "--eventSource",
-                      "description": "The event source."
-                    },
-                    {
-                      "flags": "-f --level <level>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-f",
-                      "long": "--level",
-                      "description": "The level for the rule."
-                    },
-                    {
-                      "flags": "-p --operationName <operationName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--operationName",
-                      "description": "The operation name."
-                    },
-                    {
-                      "flags": "-k --resourceProvider <resourceProvider>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--resourceProvider",
-                      "description": "The resource provider."
-                    },
-                    {
-                      "flags": "-u --status <status>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--status",
-                      "description": "The status."
-                    },
-                    {
-                      "flags": "-b --subStatus <subStatus>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-b",
-                      "long": "--subStatus",
-                      "description": "The substatus."
-                    },
-                    {
-                      "flags": "--eMailAddress <eMailAddress>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--eMailAddress",
-                      "description": "The e-mail address."
-                    },
-                    {
-                      "flags": "-f --failedLocationCount <failedLocationCount>",
-                      "required": -26,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-f",
-                      "long": "--failedLocationCount",
-                      "description": "The failed location."
-                    }
-                  ]
                 }
               ],
-              "categories": {}
+              "categories": {
+                "log": {
+                  "name": "log",
+                  "description": "Creates event-based alerts rules",
+                  "fullName": "insights alerts rule log",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "set",
+                      "description": "Create or set an event-based alert rule.",
+                      "fullName": "insights alerts rule log set",
+                      "usage": "[options] <ruleName> <location> <resourceGroup> <operationName>",
+                      "filePath": "commands/arm/insights/insights.alerts.rule.log._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-x --disable",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-x",
+                          "long": "--disable",
+                          "description": "Flag to disable the rule."
+                        },
+                        {
+                          "flags": "-s --subscription <subscription>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "The subscription identifier."
+                        },
+                        {
+                          "flags": "-n --ruleName <ruleName>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--ruleName",
+                          "description": "The name of the rule."
+                        },
+                        {
+                          "flags": "-d --description <description>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--description",
+                          "description": "The description of the rule."
+                        },
+                        {
+                          "flags": "-l --location <location>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "The location."
+                        },
+                        {
+                          "flags": "-g --resourceGroup <resourceGroup>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resourceGroup",
+                          "description": "The resource group."
+                        },
+                        {
+                          "flags": "-p --operationName <operationName>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--operationName",
+                          "description": "The operation name."
+                        },
+                        {
+                          "flags": "-z --actions <actions>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-z",
+                          "long": "--actions",
+                          "description": "The list of alert rule actions."
+                        },
+                        {
+                          "flags": "-i --targetResourceId <targetResourceId>",
+                          "required": -23,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--targetResourceId",
+                          "description": "The target resource Id."
+                        },
+                        {
+                          "flags": "-k --targetResourceProvider <targetResourceProvider>",
+                          "required": -29,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-k",
+                          "long": "--targetResourceProvider",
+                          "description": "The target resource provider."
+                        },
+                        {
+                          "flags": "-z --targetResourceGroup <targetResourceGroup>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-z",
+                          "long": "--targetResourceGroup",
+                          "description": "The target resource group."
+                        },
+                        {
+                          "flags": "-f --level <level>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-f",
+                          "long": "--level",
+                          "description": "The level for the rule."
+                        },
+                        {
+                          "flags": "-u --status <status>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--status",
+                          "description": "The status."
+                        },
+                        {
+                          "flags": "-b --subStatus <subStatus>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-b",
+                          "long": "--subStatus",
+                          "description": "The substatus."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                },
+                "metric": {
+                  "name": "metric",
+                  "description": "Creates metric-based alerts rules",
+                  "fullName": "insights alerts rule metric",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "set",
+                      "description": "Create or set a metric alert rule.",
+                      "fullName": "insights alerts rule metric set",
+                      "usage": "[options] <ruleName> <location> <resourceGroup> <windowSize> <operator> <threshold> <targetResourceId> <metricName> <timeAggregationOperator>",
+                      "filePath": "commands/arm/insights/insights.alerts.rule.metric._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-x --disable",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-x",
+                          "long": "--disable",
+                          "description": "Flag to disable the rule."
+                        },
+                        {
+                          "flags": "-s --subscription <subscription>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "The subscription identifier."
+                        },
+                        {
+                          "flags": "-n --ruleName <ruleName>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--ruleName",
+                          "description": "The name of the rule."
+                        },
+                        {
+                          "flags": "-d --description <description>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--description",
+                          "description": "The description of the rule."
+                        },
+                        {
+                          "flags": "-l --location <location>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "The location."
+                        },
+                        {
+                          "flags": "-g --resourceGroup <resourceGroup>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resourceGroup",
+                          "description": "The resource group."
+                        },
+                        {
+                          "flags": "--windowSize <windowSize>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--windowSize",
+                          "description": "The time window size. Expected format hh:mm:ss."
+                        },
+                        {
+                          "flags": "-o --operator <operator>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-o",
+                          "long": "--operator",
+                          "description": "The condition operator: GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual. Value is case insensitive."
+                        },
+                        {
+                          "flags": "-a --threshold <threshold>",
+                          "required": -16,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--threshold",
+                          "description": "The threshold."
+                        },
+                        {
+                          "flags": "-i --targetResourceId <targetResourceId>",
+                          "required": -23,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--targetResourceId",
+                          "description": "The target resource Id."
+                        },
+                        {
+                          "flags": "-m --metricName <metricName>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-m",
+                          "long": "--metricName",
+                          "description": "The metric name."
+                        },
+                        {
+                          "flags": "--timeAggregationOperator <timeAggregationOperator>",
+                          "required": -27,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--timeAggregationOperator",
+                          "description": "The time aggregation operator: Average, Minimum, Maximum, Total. Value is case insensitve."
+                        },
+                        {
+                          "flags": "-z --actions <actions>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-z",
+                          "long": "--actions",
+                          "description": "The list of alert rule actions."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                },
+                "webtest": {
+                  "name": "webtest",
+                  "description": "Creates webtest alerts rules",
+                  "fullName": "insights alerts rule webtest",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "set",
+                      "description": "Create a webtest alert rule.",
+                      "fullName": "insights alerts rule webtest set",
+                      "usage": "[options] <ruleName> <location> <resourceGroup> <windowSize> <failedLocationCount> <metricName> <webtestResourceUri>",
+                      "filePath": "commands/arm/insights/insights.alerts.rule.webtest._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-x --disable",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-x",
+                          "long": "--disable",
+                          "description": "Flag to disable the rule."
+                        },
+                        {
+                          "flags": "-s --subscription <subscription>",
+                          "required": -19,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "The subscription identifier."
+                        },
+                        {
+                          "flags": "-n --ruleName <ruleName>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--ruleName",
+                          "description": "The name of the rule."
+                        },
+                        {
+                          "flags": "-d --description <description>",
+                          "required": -18,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-d",
+                          "long": "--description",
+                          "description": "The description of the rule."
+                        },
+                        {
+                          "flags": "-l --location <location>",
+                          "required": -15,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-l",
+                          "long": "--location",
+                          "description": "The location."
+                        },
+                        {
+                          "flags": "-g --resourceGroup <resourceGroup>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resourceGroup",
+                          "description": "The resource group."
+                        },
+                        {
+                          "flags": "-m --metricName <metricName>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-m",
+                          "long": "--metricName",
+                          "description": "The metric name."
+                        },
+                        {
+                          "flags": "--windowSize <windowSize>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--windowSize",
+                          "description": "The time window size. Expected format hh:mm:ss."
+                        },
+                        {
+                          "flags": "-f --failedLocationCount <failedLocationCount>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-f",
+                          "long": "--failedLocationCount",
+                          "description": "The failed location."
+                        },
+                        {
+                          "flags": "-i --webtestResourceUri <webtestResourceUri>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--webtestResourceUri",
+                          "description": "The webtest resource Id."
+                        },
+                        {
+                          "flags": "-y --metricNamespace <metricNamespace>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-y",
+                          "long": "--metricNamespace",
+                          "description": "The metric namespace."
+                        },
+                        {
+                          "flags": "-z --actions <actions>",
+                          "required": -14,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-z",
+                          "long": "--actions",
+                          "description": "The list of alert rule actions."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
             }
           }
         },
@@ -26671,6 +27050,140 @@
             }
           ],
           "categories": {
+            "notifications": {
+              "name": "notifications",
+              "description": "Creates autoscale notifications",
+              "fullName": "insights autoscale notifications",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Creates an autoscale notification.",
+                  "fullName": "insights autoscale notifications create",
+                  "usage": "[options]",
+                  "filePath": "commands/arm/insights/insights.autoscale.notifications.js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-e --customEmails <customEmails>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--customEmails",
+                      "description": "The list of end custom e-mails."
+                    },
+                    {
+                      "flags": "-o --sendEmailToSubscriptionAdministrator",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--sendEmailToSubscriptionAdministrator",
+                      "description": "Flag to send em-mail to the subscription administrator when the rule fires."
+                    },
+                    {
+                      "flags": "-p --sendEmailToSubscriptionCoAdministrators",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--sendEmailToSubscriptionCoAdministrators",
+                      "description": "Flag to send em-mail to the subscription coadministrators when the alert fires."
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "webhook": {
+                  "name": "webhook",
+                  "description": "Creates alert rule webhook actions",
+                  "fullName": "insights autoscale notifications webhook",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Creates an autoscale webhook.",
+                      "fullName": "insights autoscale notifications webhook create",
+                      "usage": "[options]",
+                      "filePath": "commands/arm/insights/insights.autoscale.notifications.js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-e --serviceUri <serviceUri>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-e",
+                          "long": "--serviceUri",
+                          "description": "The service Uri."
+                        },
+                        {
+                          "flags": "-o --properties <properties>",
+                          "required": -17,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-o",
+                          "long": "--properties",
+                          "description": "The list of property / value pairs."
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
+            },
             "profile": {
               "name": "profile",
               "description": "Manages autoscale profiles",
@@ -26679,9 +27192,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "set",
+                  "name": "create",
                   "description": "Create or set an autoscale profile.",
-                  "fullName": "insights autoscale profile set",
+                  "fullName": "insights autoscale profile create",
                   "usage": "[options] <profileType> <profileName> <defaultCapacity> <maximumCapacity> <minimumCapacity> <rules>",
                   "filePath": "commands/arm/insights/insights.autoscale.profile.js",
                   "options": [
@@ -26849,9 +27362,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "set",
+                  "name": "create",
                   "description": "Create or set an autoscale rule.",
-                  "fullName": "insights autoscale rule set",
+                  "fullName": "insights autoscale rule create",
                   "usage": "[options] <metricName> <metricResourceId> <conditionOperatorType> <metricStatisticType> <threshold> <timeGrain> <actionCooldown> <actionDirection> <actionType> <scaleValue>",
                   "filePath": "commands/arm/insights/insights.autoscale.rule.js",
                   "options": [
@@ -27322,7 +27835,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--categories",
-                  "description": "categories to be affected. Valid values vary per resource type."
+                  "description": "comma separated list of categories to be affected. Valid values vary per resource type."
                 },
                 {
                   "flags": "-t, --timegrains <timegrains>",
@@ -27331,7 +27844,225 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--timegrains",
-                  "description": "timegrains to be affected in ISO 8601 format. Example: 'PT1M' for 1 minute."
+                  "description": "comma separated list of timegrains to be affected in ISO 8601 format. Example: 'PT1M' for 1 minute."
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "logprofile": {
+          "name": "logprofile",
+          "description": "Configure log profiles",
+          "fullName": "insights logprofile",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "add",
+              "description": "Add a new log profile.",
+              "fullName": "insights logprofile add",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.logprofiles.add._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "resource Id."
+                },
+                {
+                  "flags": "-a, --storageId <storageId>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--storageId",
+                  "description": "storage account Id."
+                },
+                {
+                  "flags": "-b, --serviceBusRuleId <servicesBusRuleId>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--serviceBusRuleId",
+                  "description": "the authorization rule id of the service bus."
+                },
+                {
+                  "flags": "-c, --categories <categories>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--categories",
+                  "description": "comma separated list of categories to be included in the captured logs."
+                },
+                {
+                  "flags": "-l, --locations <locations>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--locations",
+                  "description": "comma separated list of locations of the resources to be included in the log profile."
+                },
+                {
+                  "flags": "-t, --retentionInDays <retentionInDays>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--retentionInDays",
+                  "description": "the number of days the logs will be kept before being delete."
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the log profile.",
+              "fullName": "insights logprofile delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.logprofiles.delete._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name of the log profile."
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Get the log profile.",
+              "fullName": "insights logprofile get",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.logprofiles.get._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name of the log profile."
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List log profiles.",
+              "fullName": "insights logprofile list",
+              "usage": "[options]",
+              "filePath": "commands/arm/insights/insights.logprofiles.list._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 }
               ]
             }
