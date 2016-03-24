@@ -20,6 +20,10 @@ commands/arm/insights/arm.insights.autoscale-tests.js
 commands/arm/insights/arm.insights.autoscale.setting-tests.js
 commands/arm/insights/arm.insights.diagnostic.get-tests.js
 commands/arm/insights/arm.insights.diagnostic.set-tests.js
+commands/arm/insights/arm.insights.logprofile.add-tests.js
+commands/arm/insights/arm.insights.logprofile.delete-tests.js
+commands/arm/insights/arm.insights.logprofile.get-tests.js
+commands/arm/insights/arm.insights.logprofile.list-tests.js
 commands/arm/insights/arm.insights.logs-tests.js
 commands/arm/insights/arm.insights.metrics-tests.js
 commands/arm/insights/arm.insights.metrics.definition-tests.js

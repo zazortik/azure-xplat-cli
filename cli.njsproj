@@ -23,6 +23,24 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.actions.js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.log._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.metric._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.webtest._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.setting._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.set._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.add._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.delete._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.list._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics.definition._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics._js" />
+    <Content Include="lib\commands\arm\insights\insights.usage._js" />
+    <Content Include="lib\commands\arm\insights\insights._js" />
     <Content Include="lib\commands\arm\hdinsight\hdiClient._js" />
     <Content Include="lib\commands\arm\hdinsight\hdiConfigClient._js" />
     <Content Include="lib\commands\arm\hdinsight\hdiConstants._js" />
@@ -54,6 +72,7 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -105,8 +124,6 @@
     <Compile Include="lib\commands\arm\role\rbacClients.js" />
     <Compile Include="lib\commands\arm\role\rbacConstants.js" />
     <Compile Include="lib\commands\arm\tag\tagUtils.js" />
-    <Compile Include="lib\commands\arm\temporary\storage.js" />
-    <Compile Include="lib\commands\arm\temporary\storageManagementClient.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\azureSdkStream.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\deployTracker.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\propertyPrompts.js" />
@@ -154,6 +171,8 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.get-tests.js" />
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.set-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
       <TestFramework>
       </TestFramework>
@@ -460,7 +479,6 @@
     <Folder Include="lib\commands\arm\resource" />
     <Folder Include="lib\commands\arm\role" />
     <Folder Include="lib\commands\arm\tag" />
-    <Folder Include="lib\commands\arm\temporary" />
     <Folder Include="lib\commands\arm\usage" />
     <Folder Include="lib\commands\arm\vm" />
     <Folder Include="lib\commands\arm\webapp" />

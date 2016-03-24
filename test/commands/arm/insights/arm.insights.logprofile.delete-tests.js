@@ -21,7 +21,7 @@ var util = require('util');
 var fs = require('fs');
 
 var CLITest = require('../../../framework/arm-cli-test');
-var testprefix = 'arm-cli-insights-diagnostic-get-tests';
+var testprefix = 'arm-cli-insights-logprofile-delete-tests';
 var utils = require('../../../../lib/util/utils');
 
 var requiredEnvironment = [
@@ -33,9 +33,8 @@ var createdResources = [];
 
 describe('arm', function () {
   describe('insights', function() {
-    describe('diagnostic', function() {
+    describe('logprofile', function() {
       var suite;
-      var resourceId;
 
       before(function(done) {
         suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -48,7 +47,6 @@ describe('arm', function () {
 
       beforeEach(function(done) {
         suite.setupTest(function() {
-          resourceId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/test.shoebox/testresources2/0000000000eastusR2';
           done();
         });
       });
@@ -57,21 +55,9 @@ describe('arm', function () {
         suite.teardownTest(done);
       });
 
-      describe('get', function() {
+      describe('delete', function() {
         it('should work', function (done) {
-          suite.execute('insights diagnostic get -i %s --json', resourceId, function(result) {
-            var properties = JSON.parse(result.text);
-
-            properties.storageAccountId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus');
-            properties.metrics.length.should.equal(1);
-            properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
-            properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal('TestLog1');
-            properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal('TestLog2');
-            properties.logs[1].enabled.should.equal(true);
-            
+          suite.execute('insights logprofile delete -n default', function(result) {
             done();
           });
         });
