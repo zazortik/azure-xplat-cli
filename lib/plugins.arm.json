@@ -23295,6 +23295,93 @@
               "description": "the subscription identifier"
             }
           ]
+        },
+        {
+          "name": "export",
+          "description": "Captures a resource group as a template, and saves it as file on disk.",
+          "fullName": "group export",
+          "usage": "[options] <name>",
+          "filePath": "commands/arm/group/group._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-d --directory <directory>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--directory",
+              "description": "the name of the destination directory. If not specified, template file will be saved in the current directory."
+            },
+            {
+              "flags": "-c --includeComments",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-c",
+              "long": "--includeComments",
+              "description": "export template with comments."
+            },
+            {
+              "flags": "-p --includeParameterDefaultValue",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-p",
+              "long": "--includeParameterDefaultValue",
+              "description": "export template parameter with default value"
+            },
+            {
+              "flags": "-q --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode (do not prompt for overwrite if output file exists)"
+            },
+            {
+              "flags": "--subscription <subscription>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
         }
       ],
       "categories": {
