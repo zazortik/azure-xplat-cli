@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -33,36 +29,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"name\":\"pstestaccount\",\"location\":\"eastus\",\"properties\":{\"accountEndpoint\":\"pstestaccount.eastus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"jsmatlab\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"jsmatlab.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":50,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"batchtest\",\"location\":\"brazilsouth\",\"tags\":{\"tag1\":\"value1\"},\"properties\":{\"accountEndpoint\":\"batchtest.brazilsouth.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-brazilsouth/providers/Microsoft.Batch/batchAccounts/batchtest\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"jsxplat\",\"location\":\"centralus\",\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"properties\":{\"accountEndpoint\":\"jsxplat.centralus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-centralus/providers/Microsoft.Storage/storageAccounts/jsxplat\",\"lastKeySync\":\"2016-03-10T00:56:56.0818282Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-centralus/providers/Microsoft.Batch/batchAccounts/jsxplat\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
+  'content-length': '418',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-original-request-ids': ', , , ',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-request-id': 'd5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
-  'x-ms-correlation-request-id': 'd5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
-  'x-ms-routing-request-id': 'WESTUS:20160315T164628Z:d5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
+  'request-id': 'f6b39372-74e9-48ed-bb3c-c44592bc4c91',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 15 Mar 2016 16:46:27 GMT',
-  connection: 'close',
-  'content-length': '2258' });
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': 'be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  'x-ms-correlation-request-id': 'be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160324T043509Z:be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  date: 'Thu, 24 Mar 2016 04:35:09 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"name\":\"pstestaccount\",\"location\":\"eastus\",\"properties\":{\"accountEndpoint\":\"pstestaccount.eastus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"jsmatlab\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"jsmatlab.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":50,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"batchtest\",\"location\":\"brazilsouth\",\"tags\":{\"tag1\":\"value1\"},\"properties\":{\"accountEndpoint\":\"batchtest.brazilsouth.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-brazilsouth/providers/Microsoft.Batch/batchAccounts/batchtest\",\"type\":\"Microsoft.Batch/batchAccounts\"},{\"name\":\"jsxplat\",\"location\":\"centralus\",\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"properties\":{\"accountEndpoint\":\"jsxplat.centralus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-centralus/providers/Microsoft.Storage/storageAccounts/jsxplat\",\"lastKeySync\":\"2016-03-10T00:56:56.0818282Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-centralus/providers/Microsoft.Batch/batchAccounts/jsxplat\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Batch/batchAccounts?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
+  'content-length': '418',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-original-request-ids': ', , , ',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-request-id': 'd5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
-  'x-ms-correlation-request-id': 'd5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
-  'x-ms-routing-request-id': 'WESTUS:20160315T164628Z:d5635b78-c1cd-4c9f-bd36-3f8fd97e2280',
+  'request-id': 'f6b39372-74e9-48ed-bb3c-c44592bc4c91',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 15 Mar 2016 16:46:27 GMT',
-  connection: 'close',
-  'content-length': '2258' });
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': 'be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  'x-ms-correlation-request-id': 'be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160324T043509Z:be6a1e9d-7533-4203-8cfe-ae03d560c14c',
+  date: 'Thu, 24 Mar 2016 04:35:09 GMT',
+  connection: 'close' });
  return result; }]];

@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -33,8 +29,8 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301/listKeys?api-version=2015-12-01')
-  .reply(200, "{\"accountName\":\"armclibatch6301\",\"primary\":\"P/wc/ALJX8TCqkBYs5wcyA5IC4Vsh5bDtZtRfHQDgOjZ1UXCtyCec5Bne6e0HCZCPlNkzJPvOqZ8xUhpTAIPlw==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511/listKeys?api-version=2015-12-01')
+  .reply(200, "{\"accountName\":\"armclibatch9511\",\"primary\":\"P/wc/ALJX8TCqkBYs5wcyA5IC4Vsh5bDtZtRfHQDgOjZ1UXCtyCec5Bne6e0HCZCPlNkzJPvOqZ8xUhpTAIPlw==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',
@@ -52,8 +48,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301/listKeys?api-version=2015-12-01')
-  .reply(200, "{\"accountName\":\"armclibatch6301\",\"primary\":\"P/wc/ALJX8TCqkBYs5wcyA5IC4Vsh5bDtZtRfHQDgOjZ1UXCtyCec5Bne6e0HCZCPlNkzJPvOqZ8xUhpTAIPlw==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511/listKeys?api-version=2015-12-01')
+  .reply(200, "{\"accountName\":\"armclibatch9511\",\"primary\":\"P/wc/ALJX8TCqkBYs5wcyA5IC4Vsh5bDtZtRfHQDgOjZ1UXCtyCec5Bne6e0HCZCPlNkzJPvOqZ8xUhpTAIPlw==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',
@@ -72,8 +68,8 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301/regenerateKeys?api-version=2015-12-01', '*')
-  .reply(200, "{\"accountName\":\"armclibatch6301\",\"primary\":\"BdKebp1/MZ9f+yXbGwlkdCbygy3F5ehPzsmkEXhhDLJKhanEOyOAeeomv2J15qTH4o8H9XsjmKWQ3LRiO3X9bg==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511/regenerateKeys?api-version=2015-12-01', '*')
+  .reply(200, "{\"accountName\":\"armclibatch9511\",\"primary\":\"BdKebp1/MZ9f+yXbGwlkdCbygy3F5ehPzsmkEXhhDLJKhanEOyOAeeomv2J15qTH4o8H9XsjmKWQ3LRiO3X9bg==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',
@@ -92,8 +88,8 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301/regenerateKeys?api-version=2015-12-01', '*')
-  .reply(200, "{\"accountName\":\"armclibatch6301\",\"primary\":\"BdKebp1/MZ9f+yXbGwlkdCbygy3F5ehPzsmkEXhhDLJKhanEOyOAeeomv2J15qTH4o8H9XsjmKWQ3LRiO3X9bg==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511/regenerateKeys?api-version=2015-12-01', '*')
+  .reply(200, "{\"accountName\":\"armclibatch9511\",\"primary\":\"BdKebp1/MZ9f+yXbGwlkdCbygy3F5ehPzsmkEXhhDLJKhanEOyOAeeomv2J15qTH4o8H9XsjmKWQ3LRiO3X9bg==\",\"secondary\":\"2NktVHgNel7Btn1HQGWrxUh17k0Ng8CKbxjjvnn0OWGClZYfKn6x7j1x3FPI5u9n4EvT+DHUQXFAL+4RVvOhbQ==\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '237',
   'content-type': 'application/json; charset=utf-8',

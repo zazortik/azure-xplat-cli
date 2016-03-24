@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -34,12 +30,12 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15', '*')
+.put('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15',
   'retry-after': '25',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
   'x-ms-request-id': '110e09a7-8333-48d6-8350-3a03d363ea9c',
@@ -54,12 +50,12 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15', '*')
+.put('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15',
   'retry-after': '25',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
   'x-ms-request-id': '110e09a7-8333-48d6-8350-3a03d363ea9c',
@@ -73,7 +69,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15')
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15')
   .reply(200, "{\"location\":\"westus\",\"properties\":{\"accountType\":\"Standard_LRS\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '65',
@@ -91,7 +87,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15')
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/providers/Microsoft.Storage/operations/66ffd511-e0fc-4a74-9d34-ac01f9a69e09?monitor=true&api-version=2015-06-15')
   .reply(200, "{\"location\":\"westus\",\"properties\":{\"accountType\":\"Standard_LRS\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '65',
@@ -109,8 +105,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15')
-  .reply(200, "{\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"location\":\"westus\",\"name\":\"armclibatch8498\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-03-15T16:46:30.7543495Z\",\"primaryEndpoints\":{\"blob\":\"https://armclibatch8498.blob.core.windows.net/\",\"file\":\"https://armclibatch8498.file.core.windows.net/\",\"queue\":\"https://armclibatch8498.queue.core.windows.net/\",\"table\":\"https://armclibatch8498.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15')
+  .reply(200, "{\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"location\":\"westus\",\"name\":\"armclibatch8498\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-03-15T16:46:30.7543495Z\",\"primaryEndpoints\":{\"blob\":\"https://armclibatch8498.blob.core.windows.net/\",\"file\":\"https://armclibatch8498.file.core.windows.net/\",\"queue\":\"https://armclibatch8498.queue.core.windows.net/\",\"table\":\"https://armclibatch8498.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '683',
   'content-type': 'application/json',
@@ -127,8 +123,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15')
-  .reply(200, "{\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"location\":\"westus\",\"name\":\"armclibatch8498\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-03-15T16:46:30.7543495Z\",\"primaryEndpoints\":{\"blob\":\"https://armclibatch8498.blob.core.windows.net/\",\"file\":\"https://armclibatch8498.file.core.windows.net/\",\"queue\":\"https://armclibatch8498.queue.core.windows.net/\",\"table\":\"https://armclibatch8498.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498?api-version=2015-06-15')
+  .reply(200, "{\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"location\":\"westus\",\"name\":\"armclibatch8498\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2016-03-15T16:46:30.7543495Z\",\"primaryEndpoints\":{\"blob\":\"https://armclibatch8498.blob.core.windows.net/\",\"file\":\"https://armclibatch8498.file.core.windows.net/\",\"queue\":\"https://armclibatch8498.queue.core.windows.net/\",\"table\":\"https://armclibatch8498.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '683',
   'content-type': 'application/json',
@@ -146,8 +142,8 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301?api-version=2015-12-01', '*')
-  .reply(200, "{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511?api-version=2015-12-01', '*')
+  .reply(200, "{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '635',
   'content-type': 'application/json; charset=utf-8',
@@ -168,8 +164,8 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301?api-version=2015-12-01', '*')
-  .reply(200, "{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511?api-version=2015-12-01', '*')
+  .reply(200, "{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '635',
   'content-type': 'application/json; charset=utf-8',
@@ -189,8 +185,8 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301?api-version=2015-12-01')
-  .reply(200, "{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511?api-version=2015-12-01')
+  .reply(200, "{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '635',
   'content-type': 'application/json; charset=utf-8',
@@ -210,8 +206,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301?api-version=2015-12-01')
-  .reply(200, "{\"name\":\"armclibatch6301\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch6301.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup2809/providers/Microsoft.Batch/batchAccounts/armclibatch6301\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511?api-version=2015-12-01')
+  .reply(200, "{\"name\":\"armclibatch9511\",\"location\":\"westus\",\"properties\":{\"accountEndpoint\":\"armclibatch9511.westus.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Storage/storageAccounts/armclibatch8498\",\"lastKeySync\":\"2016-03-15T16:47:03.557704Z\"}},\"id\":\"/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup9528/providers/Microsoft.Batch/batchAccounts/armclibatch9511\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '635',
   'content-type': 'application/json; charset=utf-8',

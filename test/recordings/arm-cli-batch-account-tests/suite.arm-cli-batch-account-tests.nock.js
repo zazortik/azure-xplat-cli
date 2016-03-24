@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
