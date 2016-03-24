@@ -195,6 +195,47 @@ describe('arm', function() {
         });
       });
 
+
+      it('create premium linux cluster should pass', function (done) {
+          this.timeout(hdinsightTest.timeoutLarge);
+          var cmd = util.format('hdinsight cluster create ' +
+            '--resource-group %s ' +
+            '--clusterName %s ' +
+            '--location %s ' +
+            '--osType %s ' +
+            '--clusterTier %s ' +
+            '--defaultStorageAccountName %s.blob.core.windows.net ' +
+            '--defaultStorageAccountKey %s ' +
+            '--defaultStorageContainer %s ' +
+            '--headNodeSize %s ' +
+            '--workerNodeCount %s ' +
+            '--workerNodeSize %s ' +
+            '--zookeeperNodeSize %s ' +
+            '--userName %s --password %s ' +
+            '--sshUserName %s --sshPassword %s ' +
+            '--clusterType %s ' +
+            '--version %s ' +
+            '--json ',
+            groupName, clusterNameLinux, location, 'Linux', 'Premium',
+            defaultStorageAccount, defaultStorageAccountKey, defaultStorageContainer,
+            headNodeSize, workerNodeCount, workerNodeSize, zookeeperNodeSize,
+            username, password, sshUserName, sshPassword,
+            'Hadoop', 'default',
+            tags).split(' ');
+
+          suite.execute(cmd, function (result) {
+              result.text.should.containEql('');
+              result.exitStatus.should.equal(0);
+              if (!suite.isPlayback()) {
+                  setTimeout(function () {
+                      done();
+                  }, HdinsightTestUtil.timeoutLarge);
+              } else {
+                  done();
+              }
+          });
+      });
+
       it('show should display details about windows hdinsight cluster', function(done) {
         setTimeout(function() {
           var cmd = util.format('hdinsight cluster show --resource-group %s --clusterName %s --json', groupName, clusterNameWindows).split(' ');
