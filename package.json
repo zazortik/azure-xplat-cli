@@ -36,7 +36,7 @@
     "async": "1.4.2",
     "azure-common": "0.9.16",
     "azure-arm-authorization": "2.0.0",
-	"azure-arm-cdn": "0.1.0-preview",
+    "azure-arm-cdn": "0.1.0-preview",
     "azure-arm-commerce": "0.1.1",
     "azure-arm-compute": "0.16.1",
     "azure-arm-hdinsight": "0.2.0",
