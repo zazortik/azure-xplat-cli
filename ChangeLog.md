@@ -1,3 +1,44 @@
+##2016-03-30 Version 0.9.19
+* Graph-RBAC
+  * RBAC cmdlets consuming new graph version
+* Batch
+  * Added batch management and service commands
+* HDInsight
+  * Added commands for managing HDInsight script actions: create, persisted, and history.
+* CDN
+  * Added commands for CDN Management in ARM mode
+* Insights
+  * Introduced log profiles commands for CLI
+* DataLake
+  * Migrated to Autorest generated node sdk
+* ResourceManager
+  * Added debugSetting parameter for group deployment create
+  * Added group export command
+  * Added group deployment template download command
+  * Fixed tests
+* VM
+  * Added more tests for command "azure vm enable-aem"
+  * Fixed storage account name case sensitive issue for command "azure vm enable-aem"
+  * Updated vm commands to consume Compute API Version to 2016-03-30
+  * Updated Linux Diagnostic version to 2.3
+  * Added VMSS Commands
+  * Added VM Redeploy Command
+* Network 
+  * vnet/lb/publicip/nic/nsg/traffic-manager profile/express-route circuit list commands now support --resource-group as optional parameter for backward compatibility
+  * Removed extra-error message when authorization item was not found
+  * Fixed network dns zone import for record sets with multiple records of type A
+  * Fixed dns record-set create regression issue which throws exception 'The record set of type '<...>' cannot be null'
+  * Fixed 'azure network public-ip list' command  to output 'IP Address' column
+  * Added support for --default-site-id and --default-site-name options to attach Local Network Gateway as Default Site for VPN Gateway in 'azure network vpn-gateway create/set' commands
+  * Added prompt for --priority if not specified
+  * Changed default values to '*''network nsg rule create'
+  * Added support for --sku-name option in 'network vpn-gateway create/set' commands
+  * Added support for --address-prefixes option in 'network vpn-gateway create/set'
+  * Fixed incorrect properties of provider in the listProviders method #2667
+* General
+  * Fixed #2619, #2579
+  * Improved warn output to respect --json option
+
 ##2016-03-11 Version 0.9.18
 * Upgraded Graph to 1.6-internal api-version and consumed it in ad commands
 * Fixed issue #2619, #2616
