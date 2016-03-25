@@ -69,6 +69,7 @@ commands/arm/network/arm.network.route-table-routes-tests.js
 commands/arm/network/arm.network.local-gateway-tests.js
 commands/arm/network/arm.network.vpn-gateway-tests.js
 commands/arm/network/arm.network.vpn-connection-tests.js
+commands/arm/network/arm.network.application-gateway-tests.js
 commands/arm/network/arm.network.express-route-circuit-tests.js
 commands/arm/network/arm.network.express-route-authorization-tests.js
 commands/arm/network/arm.network.dns-zone-tests.js
