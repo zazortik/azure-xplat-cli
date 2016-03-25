@@ -42,7 +42,7 @@
     "azure-arm-hdinsight": "0.2.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
     "azure-arm-insights": "0.11.0",
-    "azure-arm-network": "0.12.1",
+    "azure-arm-network": "0.13.1",
     "azure-arm-trafficmanager": "0.10.5",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
