@@ -23,454 +23,404 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'westus';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1972',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'fc70450b-5a51-44f1-b29a-48ecacb0f78f',
+  'x-ms-request-id': '9fe72977-9b36-462e-8a14-cf20e91bde64',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': 'f62ec478-02a1-4363-b7b2-36383ef9bfa5',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103501Z:f62ec478-02a1-4363-b7b2-36383ef9bfa5',
-  date: 'Mon, 22 Feb 2016 10:35:00 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-correlation-request-id': '2921b70c-5078-43f6-afdc-a078d989d31b',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142119Z:2921b70c-5078-43f6-afdc-a078d989d31b',
+  date: 'Fri, 25 Mar 2016 14:21:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1972',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'fc70450b-5a51-44f1-b29a-48ecacb0f78f',
+  'x-ms-request-id': '9fe72977-9b36-462e-8a14-cf20e91bde64',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14988',
-  'x-ms-correlation-request-id': 'f62ec478-02a1-4363-b7b2-36383ef9bfa5',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103501Z:f62ec478-02a1-4363-b7b2-36383ef9bfa5',
-  date: 'Mon, 22 Feb 2016 10:35:00 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-correlation-request-id': '2921b70c-5078-43f6-afdc-a078d989d31b',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142119Z:2921b70c-5078-43f6-afdc-a078d989d31b',
+  date: 'Fri, 25 Mar 2016 14:21:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3c889aeb-d4bc-48a5-a2c0-c6b53b8621cc',
+  'x-ms-request-id': 'a5f4a806-9010-4526-9ba1-828d9a740814',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '20d63e65-fc65-4086-85b3-e52da1b2efad',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103503Z:20d63e65-fc65-4086-85b3-e52da1b2efad',
-  date: 'Mon, 22 Feb 2016 10:35:02 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '155e675f-d36d-4b0a-ba50-1505e4331191',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142121Z:155e675f-d36d-4b0a-ba50-1505e4331191',
+  date: 'Fri, 25 Mar 2016 14:21:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3c889aeb-d4bc-48a5-a2c0-c6b53b8621cc',
+  'x-ms-request-id': 'a5f4a806-9010-4526-9ba1-828d9a740814',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '20d63e65-fc65-4086-85b3-e52da1b2efad',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103503Z:20d63e65-fc65-4086-85b3-e52da1b2efad',
-  date: 'Mon, 22 Feb 2016 10:35:02 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '155e675f-d36d-4b0a-ba50-1505e4331191',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142121Z:155e675f-d36d-4b0a-ba50-1505e4331191',
+  date: 'Fri, 25 Mar 2016 14:21:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1972',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '59bce7a0-1dc8-4efc-913c-9274fb875dfb',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '9058f8f0-b980-484e-8bd3-23b09cad6c70',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103524Z:9058f8f0-b980-484e-8bd3-23b09cad6c70',
-  date: 'Mon, 22 Feb 2016 10:35:24 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '1972',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '59bce7a0-1dc8-4efc-913c-9274fb875dfb',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '9058f8f0-b980-484e-8bd3-23b09cad6c70',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103524Z:9058f8f0-b980-484e-8bd3-23b09cad6c70',
-  date: 'Mon, 22 Feb 2016 10:35:24 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '251',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2a396b58-5514-40c1-ba37-f25f5fd20b98',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'a328ad66-2ca4-421d-9f47-c801c1d335f7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103526Z:a328ad66-2ca4-421d-9f47-c801c1d335f7',
-  date: 'Mon, 22 Feb 2016 10:35:25 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '251',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2a396b58-5514-40c1-ba37-f25f5fd20b98',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'a328ad66-2ca4-421d-9f47-c801c1d335f7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103526Z:a328ad66-2ca4-421d-9f47-c801c1d335f7',
-  date: 'Mon, 22 Feb 2016 10:35:25 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '1972',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b7d95ec5-f6dc-4582-8e3d-d4cec5e9835e',
+  'x-ms-request-id': '38acf1e6-d5bd-487f-89a5-42714cb41a71',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': '453a79e1-f1ae-4852-81c9-188092d3febf',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103547Z:453a79e1-f1ae-4852-81c9-188092d3febf',
-  date: 'Mon, 22 Feb 2016 10:35:46 GMT',
+  'x-ms-correlation-request-id': '72a3ee7e-8295-40bc-8788-6728c329d7ba',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142142Z:72a3ee7e-8295-40bc-8788-6728c329d7ba',
+  date: 'Fri, 25 Mar 2016 14:21:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"a573959c-7251-4fa2-af6b-e5aa41548010\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E021078A0163F01050D9647F47ED7EF267DBC300D06092A864886F70D010101050004820100AE1E8ECFEEF5AFE262E647F202482625FBDF70730A084BFC9353ECBE4CEE0E41932A248A0C247B10D3B2CB21FEA316B2182757D5EB480247A53EBA1093CD862C0D3B5540F9522A3F67CAD789577A7AAF8715DF126C2495FEB05DEA61E52DE200708FEE9232B82E091D1A48047DA90BBA5F79B40D93720882FB28560EC494EFE7894D96F404440ED0A45603BA0BE85F3D7B337E7C4553CC7B2CE6BEC217102C745613EBEB0516E57A0342110623142ECFCD77ADFA7BA60E487F7157CF60E3B7453DA0B1CE44AE2E8D9222F9037047F5564019F400AF53D68BAB3A691F94354EB78A95D519678B2BB3543E3724EEDA0C3310BDC88C55A801CEBE9C144DCE2F1270302B06092A864886F70D010701301406082A864886F70D0307040825C20E4AE32B38B48008058EE5D99B5F7789\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1972',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b7d95ec5-f6dc-4582-8e3d-d4cec5e9835e',
+  'x-ms-request-id': '38acf1e6-d5bd-487f-89a5-42714cb41a71',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': '453a79e1-f1ae-4852-81c9-188092d3febf',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103547Z:453a79e1-f1ae-4852-81c9-188092d3febf',
-  date: 'Mon, 22 Feb 2016 10:35:46 GMT',
+  'x-ms-correlation-request-id': '72a3ee7e-8295-40bc-8788-6728c329d7ba',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142142Z:72a3ee7e-8295-40bc-8788-6728c329d7ba',
+  date: 'Fri, 25 Mar 2016 14:21:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '2cfd3b2f-ba0a-4a5f-87b3-74ef42ee9e94',
+  'x-ms-request-id': '963db6e3-84bf-41d2-a9a4-f7cf694c82eb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '43986d7d-1404-4184-b69e-3134e40034c8',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103548Z:43986d7d-1404-4184-b69e-3134e40034c8',
-  date: 'Mon, 22 Feb 2016 10:35:48 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'd94e22a7-7155-4712-ad25-6685435c1747',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142144Z:d94e22a7-7155-4712-ad25-6685435c1747',
+  date: 'Fri, 25 Mar 2016 14:21:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 21df4723-b9c4-46de-a4bb-b437559dab60.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '2cfd3b2f-ba0a-4a5f-87b3-74ef42ee9e94',
+  'x-ms-request-id': '963db6e3-84bf-41d2-a9a4-f7cf694c82eb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '43986d7d-1404-4184-b69e-3134e40034c8',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103548Z:43986d7d-1404-4184-b69e-3134e40034c8',
-  date: 'Mon, 22 Feb 2016 10:35:48 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'd94e22a7-7155-4712-ad25-6685435c1747',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142144Z:d94e22a7-7155-4712-ad25-6685435c1747',
+  date: 'Fri, 25 Mar 2016 14:21:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"edd4b253-a811-4e9b-a84c-6ef0682d8e89\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"xyz987\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1171',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '730886c6-cb48-47c5-88b3-5c5df3ab4bc1',
+  'x-ms-request-id': '439db2d3-85e0-4915-8006-652512e5789a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': 'd0abd845-3af1-44c7-9611-dcf4ee7896a6',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103610Z:d0abd845-3af1-44c7-9611-dcf4ee7896a6',
-  date: 'Mon, 22 Feb 2016 10:36:10 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-correlation-request-id': '9f934b1b-8829-4653-807c-fc32364fa27e',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142205Z:9f934b1b-8829-4653-807c-fc32364fa27e',
+  date: 'Fri, 25 Mar 2016 14:22:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
-  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"edd4b253-a811-4e9b-a84c-6ef0682d8e89\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b7ca7db0-ac9e-4149-8eb4-41a174200468\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"xyz987\",\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"2a5aecaf-fc38-44cd-9967-374d30dc0c30\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"3082019006092A864886F70D010703A08201813082017D0201003182014930820145020100302D3019311730150603550403130E6E72702D656E6372797074696F6E02106ADF7025F47F9CBC4729475EED800BDF300D06092A864886F70D0101010500048201002C47348E22D34E234BA5C922EE6A0BA77E39F675A52FE10DCF88BE52CAD2F669962ABDD623C444A4D2C25495E00B8D295D27FE1E47DE9351F95AF7173B9B46FEDE5BC3682ABBDB8613DD0FDE2EDDFC049571B8EE500422E4EE8943FC5263B455C970CEA7E3F8AC2187B98CE458C2DAE62A15B2BBB7520D204113E85ACD3F8C85A1C9795708F3914407B1C00C557DF6735D138B019E89B1CEAFBB572377AED44AAA949FC68F8CA3D0BA68C30FEFAD53D21F239A32BAD861AE3B9C0C7817002C9413FDB37220B5A7636CEC84F5A29AAA6611F1F83A265BD7FF4E435916A343BDA399378D84FF13D2F63A71DECE2576E9A0434F3E8590BCDD69216AE61CC252A945302B06092A864886F70D010701301406082A864886F70D030704084BCF8CBE21DD7A528008E2B6EAF569008ACE\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1171',
+  'content-length': '1997',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '730886c6-cb48-47c5-88b3-5c5df3ab4bc1',
+  'x-ms-request-id': '439db2d3-85e0-4915-8006-652512e5789a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14993',
-  'x-ms-correlation-request-id': 'd0abd845-3af1-44c7-9611-dcf4ee7896a6',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103610Z:d0abd845-3af1-44c7-9611-dcf4ee7896a6',
-  date: 'Mon, 22 Feb 2016 10:36:10 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14992',
+  'x-ms-correlation-request-id': '9f934b1b-8829-4653-807c-fc32364fa27e',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142205Z:9f934b1b-8829-4653-807c-fc32364fa27e',
+  date: 'Fri, 25 Mar 2016 14:22:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '251',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f5fa8395-99e2-47ce-ac52-3033e7000b75',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '917eadc2-ae5d-40c0-9b58-e0aec16f37e4',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142207Z:917eadc2-ae5d-40c0-9b58-e0aec16f37e4',
+  date: 'Fri, 25 Mar 2016 14:22:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(409, "{\r\n  \"error\": {\r\n    \"code\": \"AnotherOperationInProgress\",\r\n    \"message\": \"Another operation on this or dependent resource is in progress. To retrieve status of the operation use uri: 7ef9d60d-c4e1-4d91-b0a7-23058df8b767.\",\r\n    \"details\": []\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '251',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f5fa8395-99e2-47ce-ac52-3033e7000b75',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '917eadc2-ae5d-40c0-9b58-e0aec16f37e4',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142207Z:917eadc2-ae5d-40c0-9b58-e0aec16f37e4',
+  date: 'Fri, 25 Mar 2016 14:22:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"f4c7abea-2693-4217-96e2-34eeadf75b96\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"xyz987\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '1196',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '9c235984-5a79-422b-8aed-81874f8ebe6b',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-correlation-request-id': '79bbe6cf-25a8-4246-9b58-66e5da3460f6',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142229Z:79bbe6cf-25a8-4246-9b58-66e5da3460f6',
+  date: 'Fri, 25 Mar 2016 14:22:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"name\": \"test-vpn-connection\",\r\n  \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection\",\r\n  \"etag\": \"W/\\\"f4c7abea-2693-4217-96e2-34eeadf75b96\\\"\",\r\n  \"type\": \"Microsoft.Network/connections\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"tag1\": \"aaa\",\r\n    \"tag2\": \"bbb\",\r\n    \"tag3\": \"ccc\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"a20594d8-ad55-4346-becb-d979d38b5786\",\r\n    \"virtualNetworkGateway1\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1\"\r\n    },\r\n    \"virtualNetworkGateway2\": {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2\"\r\n    },\r\n    \"connectionType\": \"Vnet2Vnet\",\r\n    \"routingWeight\": 33,\r\n    \"sharedKey\": \"xyz987\",\r\n    \"enableBgp\": false,\r\n    \"connectionStatus\": \"NotConnected\",\r\n    \"ingressBytesTransferred\": 0,\r\n    \"egressBytesTransferred\": 0\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '1196',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '9c235984-5a79-422b-8aed-81874f8ebe6b',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14991',
+  'x-ms-correlation-request-id': '79bbe6cf-25a8-4246-9b58-66e5da3460f6',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142229Z:79bbe6cf-25a8-4246-9b58-66e5da3460f6',
+  date: 'Fri, 25 Mar 2016 14:22:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operationResults/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operationResults/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30',
   'retry-after': '10',
-  'x-ms-request-id': '74a418aa-851c-4614-abca-3b3497b8044c',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15',
+  'x-ms-request-id': 'ed902328-48bd-4953-8b04-435af9cad6fb',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '26b450e2-a083-4e6c-9b5b-7f12f634abd0',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103611Z:26b450e2-a083-4e6c-9b5b-7f12f634abd0',
-  date: 'Mon, 22 Feb 2016 10:36:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'fbc6e3f1-63b9-410e-9513-83453c22f442',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142231Z:fbc6e3f1-63b9-410e-9513-83453c22f442',
+  date: 'Fri, 25 Mar 2016 14:22:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
+  .delete('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operationResults/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15',
+  location: 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operationResults/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30',
   'retry-after': '10',
-  'x-ms-request-id': '74a418aa-851c-4614-abca-3b3497b8044c',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15',
+  'x-ms-request-id': 'ed902328-48bd-4953-8b04-435af9cad6fb',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '26b450e2-a083-4e6c-9b5b-7f12f634abd0',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103611Z:26b450e2-a083-4e6c-9b5b-7f12f634abd0',
-  date: 'Mon, 22 Feb 2016 10:36:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'fbc6e3f1-63b9-410e-9513-83453c22f442',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142231Z:fbc6e3f1-63b9-410e-9513-83453c22f442',
+  date: 'Fri, 25 Mar 2016 14:22:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://login.microsoftonline.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"scope\":\"user_impersonation\",\"expires_on\":\"1456141002\",\"not_before\":\"1456137102\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU2MTM3MTAyLCJuYmYiOjE0NTYxMzcxMDIsImV4cCI6MTQ1NjE0MTAwMiwiYWNyIjoiMSIsImFtciI6WyJyc2EiLCJtZmEiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6Ikdyb21vdiIsImdpdmVuX25hbWUiOiJSb21hbiIsImdyb3VwcyI6WyI3YzhhY2I0Yy1kYTNlLTQ3OGUtYWE5Mi1lYzJmZDM1OGY5MmQiLCJjYzlmOGE2Yy1lOWMxLTRlMzQtOWVhMC0yYzE1MWRmYTYzZmIiLCJhMzQ2OWQ1ZC04NTNhLTQ5MmItOTY1Zi1mZWQ3YWMyODU5NWEiLCI2Y2VkMmZkNS05MzEwLTQ3ZjctYjYwYy01MjdjZTliNzcxZWUiLCJiMGMyNDE0Mi04ZTVjLTQwZDYtYjUzYy1hMDIwYWIwZjUxODMiLCJkYzAzMWFlYS1lM2Q3LTQ1NTktYWQ5Yy0wMzdlYWE0Y2JiNjgiLCJiZThjYTM3OC1iYzc0LTQ2YzEtYjkyMi1lN2Y1NTI0ODZlZGUiLCI2NTA4ZWQ5Yy1kZTUxLTQ3ZmYtOGEwNy0zY2RhNzViY2Q0MDAiLCIzMzRiYzEzYy1mMGE4LTQ0NjItYWVhMy1mNTJiYTE0MjE4ODUiLCJhNzEwMjY4ZC01MWE5LTQ0NDctYmYyMC01YzQyOGZkNzA0N2MiLCI5MzI5ZDM4Yy01Mjk2LTRlY2ItYWZhNS0zZTc0ZjlhYmUwOWYiLCI2MmVkYmQ3Yi04ZDQ2LTRkMmMtYTVhMS1kYTViNzhiYTFkMzgiLCIzYzRmY2U0Ni01M2M5LTQ5ZjctOWJjYy1lOTk3ZGM1NjhjMDkiLCJmNDQ0NGRhZS00YmNlLTQwMmYtYjU0Yi1mMTI0NjFhMzZiYmMiLCJkN2QzOWZlNS1lN2ViLTQ3OTctYmQ0Yi1lODAyZThmYTI2Y2MiLCI5ZDUyOWQ1ZS1iODgyLTRmZmItYThlNi1jNDE0N2M2ODA3MzUiLCJlNzZhYjMxZS1kZDU4LTQwZTItYTdjMS0zZWJiMDI5MjEyMTEiLCIyY2MxODc1ZS1lM2ZiLTQxZWEtODM3Mi1iNTY5MGU4Yzk0MjEiLCIwMmNkNmYxZi0zMDI5LTQyMzgtOWZkYy1iMGYyOWI2ODRmNzUiLCIzYmM4YWE3ZC00OWM4LTRkN2QtOWY5Zi05MzcwZGZiZjdiNzgiLCI2MWQ5YmM2Yi1iYzlkLTRlOGQtOWRlNC1mMjE4ZDQxMjhiZTUiLCIyMDY1MTM1ZC01MTY1LTQxZDYtOTI3Ny04ZTE0OWZjMzNlZjgiLCJjODM1ZDVkMC1mMDQzLTRjYzAtOGNjZS02MDFhNjE5NjhmMWYiLCIwZDg2NDY3Ni03ZjU1LTQ2OTQtOTBmMi01Yjc1ZWI3N2IzNDIiLCIxODdlMWVjZS1hODU1LTQ4ZjAtYjNkNi1lYmQzNWM1Y2YwNDciLCJkY2MzMWIzOS1lN2ZlLTQwMGMtYWY4NC0zMWRkODU1ZGVmYTEiXSwiaW5fY29ycCI6InRydWUiLCJpcGFkZHIiOiIxNzguMjAuMTgzLjE5NCIsIm5hbWUiOiJSb21hbiBHcm9tb3YgKEFrdmVsb24pIiwib2lkIjoiZWFhMTY2NTQtMmU3Mi00MmFlLWJhMzktZTY4OWNmMWY1YTdmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0xOTk0OTMxIiwicHVpZCI6IjEwMDM3RkZFOEVDRDlEMDIiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiI0RlNjUmUwaTlETU4zcTNpUlNsSDF2ODRPR3NfWGM1bUUxWlJ6T1JVRFFvIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJ2LXJvZ3JvbUBtaWNyb3NvZnQuY29tIiwidXBuIjoidi1yb2dyb21AbWljcm9zb2Z0LmNvbSIsInZlciI6IjEuMCJ9.ect2R3EIEwXHavzkeLB9QaRwyYnNRnyIz50Hi0-le2hNoy_umAIL1k_BA0Ur0v99gwAykwz7Dhfd_3tpMg4Ee2pBbtIuY0HBJCP4gXH3k3VUFQUDd6YZYWvclreib6Khm9MMDMjbM5kUBi_TrBTN8PHuSQZYYcZuv-lj94U4p6r0ipiKOkS67A65JiQanXDD24WVKhj_79kMEe8_jDTdOCMmrHv3VumZb3haMGNbQlCCS-XKeyOarmEsmxo0hnUeJp2pZhW15Vhd9MDhJDBBu1a3ELBhqpP5lZ3RDcwThHgWTq9ehh9Sk5w7Nuu_1Ld6bVWmOZ0JB6n2gs5NX0ZivA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLSxqv7MG6Hv4Vjm95LH8vLCE6RdS_nfU-RQvKkb3KFihE2dsCU47NjkGKnOyYMz3_jEdSmKyZQeasPqVoagBOQRW1CwWO9-g-X80coCPSObT57ilJzVoKCp_VSjh34IGOrAkzKjDy2N_4YRRbMqKQWbvhORGp6wN8b9hNvM3s3VPF91Y84pz425PgMz-JZs3TEj5cSt-tJ4nRy2sEPNxFAeHoUmskdiApuguvAaTAUdt96txArpk9uIuXa-2sS-wCkqlAyFcX7ZVlucqqQntdZ5gNdgsOiFWFIWKNYtdBfM34wHBoYNmq663O_A5WlLxAhnfC8jOizaVemNsqaqYq_NqXWedduW3FnB7ppUD-gRYgmhK2msc_u0yUXVYFmbrP_Nn-rrOzSrBiHealqBM3QrvOHUlgEUZmL_oWbaKxqGvnoWoKW57mVhFGLPeSEXi_sRsZ9UXWGHhif50bvEKXXMh6g8Phs5YOimBp1TnpntxqGSNmgE3NuVV_dEk9rPVb1109NC8KqemMUbc5fDjctKyVkGfRTvdx-Fu5D9lboSuh3NcwYJb1idxGbRKWignOsBL3d1SL8gxMH8j5_ro2mw-6QEmGUlfaggIiyxmLKrokCCpyBiYY_qNX27M4r59oOm3sVSeVD80NkxAIk5kbPtOSbRJ7EBH9J38sXYKy0veDZcGHrXcDakmaFAGCZRySSAA\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'c78c3cbe-d9c5-4b70-9818-e561e70e7285',
-  'client-request-id': 'f28d82fc-c8a3-4c39-8e9f-552605421f1a',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_297',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Mon, 22 Feb 2016 10:36:43 GMT',
-  connection: 'close',
-  'content-length': '3747' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://login.microsoftonline.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3599\",\"scope\":\"user_impersonation\",\"expires_on\":\"1456141002\",\"not_before\":\"1456137102\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU2MTM3MTAyLCJuYmYiOjE0NTYxMzcxMDIsImV4cCI6MTQ1NjE0MTAwMiwiYWNyIjoiMSIsImFtciI6WyJyc2EiLCJtZmEiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6Ikdyb21vdiIsImdpdmVuX25hbWUiOiJSb21hbiIsImdyb3VwcyI6WyI3YzhhY2I0Yy1kYTNlLTQ3OGUtYWE5Mi1lYzJmZDM1OGY5MmQiLCJjYzlmOGE2Yy1lOWMxLTRlMzQtOWVhMC0yYzE1MWRmYTYzZmIiLCJhMzQ2OWQ1ZC04NTNhLTQ5MmItOTY1Zi1mZWQ3YWMyODU5NWEiLCI2Y2VkMmZkNS05MzEwLTQ3ZjctYjYwYy01MjdjZTliNzcxZWUiLCJiMGMyNDE0Mi04ZTVjLTQwZDYtYjUzYy1hMDIwYWIwZjUxODMiLCJkYzAzMWFlYS1lM2Q3LTQ1NTktYWQ5Yy0wMzdlYWE0Y2JiNjgiLCJiZThjYTM3OC1iYzc0LTQ2YzEtYjkyMi1lN2Y1NTI0ODZlZGUiLCI2NTA4ZWQ5Yy1kZTUxLTQ3ZmYtOGEwNy0zY2RhNzViY2Q0MDAiLCIzMzRiYzEzYy1mMGE4LTQ0NjItYWVhMy1mNTJiYTE0MjE4ODUiLCJhNzEwMjY4ZC01MWE5LTQ0NDctYmYyMC01YzQyOGZkNzA0N2MiLCI5MzI5ZDM4Yy01Mjk2LTRlY2ItYWZhNS0zZTc0ZjlhYmUwOWYiLCI2MmVkYmQ3Yi04ZDQ2LTRkMmMtYTVhMS1kYTViNzhiYTFkMzgiLCIzYzRmY2U0Ni01M2M5LTQ5ZjctOWJjYy1lOTk3ZGM1NjhjMDkiLCJmNDQ0NGRhZS00YmNlLTQwMmYtYjU0Yi1mMTI0NjFhMzZiYmMiLCJkN2QzOWZlNS1lN2ViLTQ3OTctYmQ0Yi1lODAyZThmYTI2Y2MiLCI5ZDUyOWQ1ZS1iODgyLTRmZmItYThlNi1jNDE0N2M2ODA3MzUiLCJlNzZhYjMxZS1kZDU4LTQwZTItYTdjMS0zZWJiMDI5MjEyMTEiLCIyY2MxODc1ZS1lM2ZiLTQxZWEtODM3Mi1iNTY5MGU4Yzk0MjEiLCIwMmNkNmYxZi0zMDI5LTQyMzgtOWZkYy1iMGYyOWI2ODRmNzUiLCIzYmM4YWE3ZC00OWM4LTRkN2QtOWY5Zi05MzcwZGZiZjdiNzgiLCI2MWQ5YmM2Yi1iYzlkLTRlOGQtOWRlNC1mMjE4ZDQxMjhiZTUiLCIyMDY1MTM1ZC01MTY1LTQxZDYtOTI3Ny04ZTE0OWZjMzNlZjgiLCJjODM1ZDVkMC1mMDQzLTRjYzAtOGNjZS02MDFhNjE5NjhmMWYiLCIwZDg2NDY3Ni03ZjU1LTQ2OTQtOTBmMi01Yjc1ZWI3N2IzNDIiLCIxODdlMWVjZS1hODU1LTQ4ZjAtYjNkNi1lYmQzNWM1Y2YwNDciLCJkY2MzMWIzOS1lN2ZlLTQwMGMtYWY4NC0zMWRkODU1ZGVmYTEiXSwiaW5fY29ycCI6InRydWUiLCJpcGFkZHIiOiIxNzguMjAuMTgzLjE5NCIsIm5hbWUiOiJSb21hbiBHcm9tb3YgKEFrdmVsb24pIiwib2lkIjoiZWFhMTY2NTQtMmU3Mi00MmFlLWJhMzktZTY4OWNmMWY1YTdmIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxNDY3NzMwODUtOTAzMzYzMjg1LTcxOTM0NDcwNy0xOTk0OTMxIiwicHVpZCI6IjEwMDM3RkZFOEVDRDlEMDIiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiI0RlNjUmUwaTlETU4zcTNpUlNsSDF2ODRPR3NfWGM1bUUxWlJ6T1JVRFFvIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJ2LXJvZ3JvbUBtaWNyb3NvZnQuY29tIiwidXBuIjoidi1yb2dyb21AbWljcm9zb2Z0LmNvbSIsInZlciI6IjEuMCJ9.ect2R3EIEwXHavzkeLB9QaRwyYnNRnyIz50Hi0-le2hNoy_umAIL1k_BA0Ur0v99gwAykwz7Dhfd_3tpMg4Ee2pBbtIuY0HBJCP4gXH3k3VUFQUDd6YZYWvclreib6Khm9MMDMjbM5kUBi_TrBTN8PHuSQZYYcZuv-lj94U4p6r0ipiKOkS67A65JiQanXDD24WVKhj_79kMEe8_jDTdOCMmrHv3VumZb3haMGNbQlCCS-XKeyOarmEsmxo0hnUeJp2pZhW15Vhd9MDhJDBBu1a3ELBhqpP5lZ3RDcwThHgWTq9ehh9Sk5w7Nuu_1Ld6bVWmOZ0JB6n2gs5NX0ZivA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLSxqv7MG6Hv4Vjm95LH8vLCE6RdS_nfU-RQvKkb3KFihE2dsCU47NjkGKnOyYMz3_jEdSmKyZQeasPqVoagBOQRW1CwWO9-g-X80coCPSObT57ilJzVoKCp_VSjh34IGOrAkzKjDy2N_4YRRbMqKQWbvhORGp6wN8b9hNvM3s3VPF91Y84pz425PgMz-JZs3TEj5cSt-tJ4nRy2sEPNxFAeHoUmskdiApuguvAaTAUdt96txArpk9uIuXa-2sS-wCkqlAyFcX7ZVlucqqQntdZ5gNdgsOiFWFIWKNYtdBfM34wHBoYNmq663O_A5WlLxAhnfC8jOizaVemNsqaqYq_NqXWedduW3FnB7ppUD-gRYgmhK2msc_u0yUXVYFmbrP_Nn-rrOzSrBiHealqBM3QrvOHUlgEUZmL_oWbaKxqGvnoWoKW57mVhFGLPeSEXi_sRsZ9UXWGHhif50bvEKXXMh6g8Phs5YOimBp1TnpntxqGSNmgE3NuVV_dEk9rPVb1109NC8KqemMUbc5fDjctKyVkGfRTvdx-Fu5D9lboSuh3NcwYJb1idxGbRKWignOsBL3d1SL8gxMH8j5_ro2mw-6QEmGUlfaggIiyxmLKrokCCpyBiYY_qNX27M4r59oOm3sVSeVD80NkxAIk5kbPtOSbRJ7EBH9J38sXYKy0veDZcGHrXcDakmaFAGCZRySSAA\"}", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'c78c3cbe-d9c5-4b70-9818-e561e70e7285',
-  'client-request-id': 'f28d82fc-c8a3-4c39-8e9f-552605421f1a',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_297',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
-  'set-cookie': 
-   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
-     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
-  'x-powered-by': 'ASP.NET',
-  date: 'Mon, 22 Feb 2016 10:36:43 GMT',
-  connection: 'close',
-  'content-length': '3747' });
- return result; },
-function (nock) { 
-var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '30',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3800e377-3f87-43d1-ba57-9d09a2635e0a',
+  'x-ms-request-id': '8e90648c-9403-422b-9b58-ba2ec6a76b89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '43d6c115-949d-4921-9f98-1a21e6047939',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103643Z:43d6c115-949d-4921-9f98-1a21e6047939',
-  date: 'Mon, 22 Feb 2016 10:36:42 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': '36c59661-a705-4894-aeca-b683ecdd9d83',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142302Z:36c59661-a705-4894-aeca-b683ecdd9d83',
+  date: 'Fri, 25 Mar 2016 14:23:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '30',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3800e377-3f87-43d1-ba57-9d09a2635e0a',
+  'x-ms-request-id': '8e90648c-9403-422b-9b58-ba2ec6a76b89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': '43d6c115-949d-4921-9f98-1a21e6047939',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103643Z:43d6c115-949d-4921-9f98-1a21e6047939',
-  date: 'Mon, 22 Feb 2016 10:36:42 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': '36c59661-a705-4894-aeca-b683ecdd9d83',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142302Z:36c59661-a705-4894-aeca-b683ecdd9d83',
+  date: 'Fri, 25 Mar 2016 14:23:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1441dade-905e-4c4a-af23-280905e6ad03',
+  'x-ms-request-id': '493677a3-bfd2-43a5-bb11-fb547116a64c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '92dabd4d-c9e3-45ac-ab03-ee3ef556becd',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103714Z:92dabd4d-c9e3-45ac-ab03-ee3ef556becd',
-  date: 'Mon, 22 Feb 2016 10:37:14 GMT',
+  'x-ms-correlation-request-id': '974586d9-1eee-4ecc-88fd-ff32af33be16',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142333Z:974586d9-1eee-4ecc-88fd-ff32af33be16',
+  date: 'Fri, 25 Mar 2016 14:23:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/eastus/operations/74a418aa-851c-4614-abca-3b3497b8044c?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Network/locations/westus/operations/ed902328-48bd-4953-8b04-435af9cad6fb?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1441dade-905e-4c4a-af23-280905e6ad03',
+  'x-ms-request-id': '493677a3-bfd2-43a5-bb11-fb547116a64c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '92dabd4d-c9e3-45ac-ab03-ee3ef556becd',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103714Z:92dabd4d-c9e3-45ac-ab03-ee3ef556becd',
-  date: 'Mon, 22 Feb 2016 10:37:14 GMT',
+  'x-ms-correlation-request-id': '974586d9-1eee-4ecc-88fd-ff32af33be16',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142333Z:974586d9-1eee-4ecc-88fd-ff32af33be16',
+  date: 'Fri, 25 Mar 2016 14:23:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/connections/test-vpn-connection' under resource group 'xplat-test-gateway-group-1' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '0bb2b715-9984-4446-80d8-87bf73e0e4e7',
-  'x-ms-correlation-request-id': '0bb2b715-9984-4446-80d8-87bf73e0e4e7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103715Z:0bb2b715-9984-4446-80d8-87bf73e0e4e7',
+  'x-ms-request-id': 'd4c8311e-a6f3-48f1-8191-7ed26c927f4f',
+  'x-ms-correlation-request-id': 'd4c8311e-a6f3-48f1-8191-7ed26c927f4f',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142334Z:d4c8311e-a6f3-48f1-8191-7ed26c927f4f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 22 Feb 2016 10:37:14 GMT',
+  date: 'Fri, 25 Mar 2016 14:23:33 GMT',
   connection: 'close',
   'content-length': '179' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2015-06-15')
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplat-test-gateway-group-1/providers/Microsoft.Network/connections/test-vpn-connection?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/connections/test-vpn-connection' under resource group 'xplat-test-gateway-group-1' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '0bb2b715-9984-4446-80d8-87bf73e0e4e7',
-  'x-ms-correlation-request-id': '0bb2b715-9984-4446-80d8-87bf73e0e4e7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160222T103715Z:0bb2b715-9984-4446-80d8-87bf73e0e4e7',
+  'x-ms-request-id': 'd4c8311e-a6f3-48f1-8191-7ed26c927f4f',
+  'x-ms-correlation-request-id': 'd4c8311e-a6f3-48f1-8191-7ed26c927f4f',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160325T142334Z:d4c8311e-a6f3-48f1-8191-7ed26c927f4f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 22 Feb 2016 10:37:14 GMT',
+  date: 'Fri, 25 Mar 2016 14:23:33 GMT',
   connection: 'close',
   'content-length': '179' });
  return result; }]];
